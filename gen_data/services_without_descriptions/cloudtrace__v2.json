@@ -1,0 +1,512 @@
+{
+    "auth": {
+        "oauth2": {
+            "scopes": {
+                "https://www.googleapis.com/auth/cloud-platform": {},
+                "https://www.googleapis.com/auth/trace.append": {}
+            }
+        }
+    },
+    "basePath": "",
+    "baseUrl": "https://cloudtrace.googleapis.com/",
+    "batchPath": "batch",
+    "canonicalName": "Cloud Trace",
+    "discoveryVersion": "v1",
+    "documentationLink": "https://cloud.google.com/trace",
+    "fullyEncodeReservedExpansion": true,
+    "icons": {
+        "x16": "http://www.google.com/images/icons/product/search-16.gif",
+        "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    },
+    "id": "cloudtrace:v2",
+    "kind": "discovery#restDescription",
+    "mtlsRootUrl": "https://cloudtrace.mtls.googleapis.com/",
+    "name": "cloudtrace",
+    "ownerDomain": "google.com",
+    "ownerName": "Google",
+    "parameters": {
+        "$.xgafv": {
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "alt": {
+            "default": "json",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json",
+                "Media download with context-dependent Content-Type",
+                "Responses with Content-Type of application/x-protobuf"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "location": "query",
+            "type": "boolean"
+        },
+        "quotaUser": {
+            "location": "query",
+            "type": "string"
+        },
+        "uploadType": {
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "location": "query",
+            "type": "string"
+        }
+    },
+    "protocol": "rest",
+    "resources": {
+        "projects": {
+            "resources": {
+                "traces": {
+                    "methods": {
+                        "batchWrite": {
+                            "flatPath": "v2/projects/{projectsId}/traces:batchWrite",
+                            "httpMethod": "POST",
+                            "id": "cloudtrace.projects.traces.batchWrite",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v2/{+name}/traces:batchWrite",
+                            "request": {
+                                "$ref": "BatchWriteSpansRequest"
+                            },
+                            "response": {
+                                "$ref": "Empty"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/trace.append"
+                            ]
+                        }
+                    },
+                    "resources": {
+                        "spans": {
+                            "methods": {
+                                "createSpan": {
+                                    "flatPath": "v2/projects/{projectsId}/traces/{tracesId}/spans/{spansId}",
+                                    "httpMethod": "POST",
+                                    "id": "cloudtrace.projects.traces.spans.createSpan",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/traces/[^/]+/spans/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+name}",
+                                    "request": {
+                                        "$ref": "Span"
+                                    },
+                                    "response": {
+                                        "$ref": "Span"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/trace.append"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "rootUrl": "https://cloudtrace.googleapis.com/",
+    "schemas": {
+        "Annotation": {
+            "id": "Annotation",
+            "properties": {
+                "attributes": {
+                    "$ref": "Attributes"
+                }
+            },
+            "type": "object"
+        },
+        "AttributeValue": {
+            "id": "AttributeValue",
+            "properties": {
+                "boolValue": {
+                    "type": "boolean"
+                },
+                "intValue": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "stringValue": {
+                    "$ref": "TruncatableString"
+                }
+            },
+            "type": "object"
+        },
+        "Attributes": {
+            "id": "Attributes",
+            "properties": {
+                "attributeMap": {
+                    "additionalProperties": {
+                        "$ref": "AttributeValue"
+                    },
+                    "type": "object"
+                },
+                "droppedAttributesCount": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "BatchWriteSpansRequest": {
+            "id": "BatchWriteSpansRequest",
+            "properties": {
+                "spans": {
+                    "items": {
+                        "$ref": "Span"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Empty": {
+            "id": "Empty",
+            "properties": {},
+            "type": "object"
+        },
+        "Link": {
+            "id": "Link",
+            "properties": {
+                "attributes": {
+                    "$ref": "Attributes"
+                },
+                "spanId": {
+                    "type": "string"
+                },
+                "traceId": {
+                    "type": "string"
+                },
+                "type": {
+                    "enum": [
+                        "TYPE_UNSPECIFIED",
+                        "CHILD_LINKED_SPAN",
+                        "PARENT_LINKED_SPAN"
+                    ],
+                    "enumDescriptions": [
+                        "The relationship of the two spans is unknown.",
+                        "The linked span is a child of the current span.",
+                        "The linked span is a parent of the current span."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Links": {
+            "id": "Links",
+            "properties": {
+                "droppedLinksCount": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "link": {
+                    "items": {
+                        "$ref": "Link"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "MessageEvent": {
+            "id": "MessageEvent",
+            "properties": {
+                "compressedSizeBytes": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "id": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "type": {
+                    "enum": [
+                        "TYPE_UNSPECIFIED",
+                        "SENT",
+                        "RECEIVED"
+                    ],
+                    "enumDescriptions": [
+                        "Unknown event type.",
+                        "Indicates a sent message.",
+                        "Indicates a received message."
+                    ],
+                    "type": "string"
+                },
+                "uncompressedSizeBytes": {
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Module": {
+            "id": "Module",
+            "properties": {
+                "buildId": {
+                    "$ref": "TruncatableString"
+                },
+                "module": {
+                    "$ref": "TruncatableString"
+                }
+            },
+            "type": "object"
+        },
+        "Span": {
+            "id": "Span",
+            "properties": {
+                "attributes": {
+                    "$ref": "Attributes"
+                },
+                "childSpanCount": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "displayName": {
+                    "$ref": "TruncatableString"
+                },
+                "endTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "links": {
+                    "$ref": "Links"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "parentSpanId": {
+                    "type": "string"
+                },
+                "sameProcessAsParentSpan": {
+                    "type": "boolean"
+                },
+                "spanId": {
+                    "type": "string"
+                },
+                "spanKind": {
+                    "enum": [
+                        "SPAN_KIND_UNSPECIFIED",
+                        "INTERNAL",
+                        "SERVER",
+                        "CLIENT",
+                        "PRODUCER",
+                        "CONSUMER"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified. Do NOT use as default.\nImplementations MAY assume SpanKind.INTERNAL to be default.",
+                        "Indicates that the span is used internally. Default value.",
+                        "Indicates that the span covers server-side handling of an RPC or other\nremote network request.",
+                        "Indicates that the span covers the client-side wrapper around an RPC or\nother remote request.",
+                        "Indicates that the span describes producer sending a message to a broker.\nUnlike client and  server, there is no direct critical path latency\nrelationship between producer and consumer spans (e.g. publishing a\nmessage to a pubsub service).",
+                        "Indicates that the span describes consumer recieving a message from a\nbroker. Unlike client and  server, there is no direct critical path\nlatency relationship between producer and consumer spans (e.g. receiving\na message from a pubsub service subscription)."
+                    ],
+                    "type": "string"
+                },
+                "stackTrace": {
+                    "$ref": "StackTrace"
+                },
+                "startTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "status": {
+                    "$ref": "Status"
+                },
+                "timeEvents": {
+                    "$ref": "TimeEvents"
+                }
+            },
+            "type": "object"
+        },
+        "StackFrame": {
+            "id": "StackFrame",
+            "properties": {
+                "columnNumber": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "fileName": {
+                    "$ref": "TruncatableString"
+                },
+                "functionName": {
+                    "$ref": "TruncatableString"
+                },
+                "lineNumber": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "loadModule": {
+                    "$ref": "Module"
+                },
+                "originalFunctionName": {
+                    "$ref": "TruncatableString"
+                },
+                "sourceVersion": {
+                    "$ref": "TruncatableString"
+                }
+            },
+            "type": "object"
+        },
+        "StackFrames": {
+            "id": "StackFrames",
+            "properties": {
+                "droppedFramesCount": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "frame": {
+                    "items": {
+                        "$ref": "StackFrame"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "StackTrace": {
+            "id": "StackTrace",
+            "properties": {
+                "stackFrames": {
+                    "$ref": "StackFrames"
+                },
+                "stackTraceHashId": {
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Status": {
+            "id": "Status",
+            "properties": {
+                "code": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "details": {
+                    "items": {
+                        "additionalProperties": {
+                            "type": "any"
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "message": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TimeEvent": {
+            "id": "TimeEvent",
+            "properties": {
+                "annotation": {
+                    "$ref": "Annotation"
+                },
+                "messageEvent": {
+                    "$ref": "MessageEvent"
+                },
+                "time": {
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TimeEvents": {
+            "id": "TimeEvents",
+            "properties": {
+                "droppedAnnotationsCount": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "droppedMessageEventsCount": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "timeEvent": {
+                    "items": {
+                        "$ref": "TimeEvent"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "TruncatableString": {
+            "id": "TruncatableString",
+            "properties": {
+                "truncatedByteCount": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "servicePath": "",
+    "title": "Cloud Trace API",
+    "version": "v2",
+    "version_module": true
+}

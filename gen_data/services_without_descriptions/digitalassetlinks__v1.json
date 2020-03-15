@@ -1,0 +1,325 @@
+{
+    "basePath": "",
+    "baseUrl": "https://digitalassetlinks.googleapis.com/",
+    "batchPath": "batch",
+    "discoveryVersion": "v1",
+    "documentationLink": "https://developers.google.com/digital-asset-links/",
+    "icons": {
+        "x16": "http://www.google.com/images/icons/product/search-16.gif",
+        "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    },
+    "id": "digitalassetlinks:v1",
+    "kind": "discovery#restDescription",
+    "mtlsRootUrl": "https://digitalassetlinks.mtls.googleapis.com/",
+    "name": "digitalassetlinks",
+    "ownerDomain": "google.com",
+    "ownerName": "Google",
+    "parameters": {
+        "$.xgafv": {
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "alt": {
+            "default": "json",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json",
+                "Media download with context-dependent Content-Type",
+                "Responses with Content-Type of application/x-protobuf"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "location": "query",
+            "type": "boolean"
+        },
+        "quotaUser": {
+            "location": "query",
+            "type": "string"
+        },
+        "uploadType": {
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "location": "query",
+            "type": "string"
+        }
+    },
+    "protocol": "rest",
+    "resources": {
+        "assetlinks": {
+            "methods": {
+                "check": {
+                    "flatPath": "v1/assetlinks:check",
+                    "httpMethod": "GET",
+                    "id": "digitalassetlinks.assetlinks.check",
+                    "parameterOrder": [],
+                    "parameters": {
+                        "relation": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "source.androidApp.certificate.sha256Fingerprint": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "source.androidApp.packageName": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "source.web.site": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "target.androidApp.certificate.sha256Fingerprint": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "target.androidApp.packageName": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "target.web.site": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/assetlinks:check",
+                    "response": {
+                        "$ref": "CheckResponse"
+                    }
+                }
+            }
+        },
+        "statements": {
+            "methods": {
+                "list": {
+                    "flatPath": "v1/statements:list",
+                    "httpMethod": "GET",
+                    "id": "digitalassetlinks.statements.list",
+                    "parameterOrder": [],
+                    "parameters": {
+                        "relation": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "source.androidApp.certificate.sha256Fingerprint": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "source.androidApp.packageName": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "source.web.site": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/statements:list",
+                    "response": {
+                        "$ref": "ListResponse"
+                    }
+                }
+            }
+        }
+    },
+    "rootUrl": "https://digitalassetlinks.googleapis.com/",
+    "schemas": {
+        "AndroidAppAsset": {
+            "id": "AndroidAppAsset",
+            "properties": {
+                "certificate": {
+                    "$ref": "CertificateInfo"
+                },
+                "packageName": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Asset": {
+            "id": "Asset",
+            "properties": {
+                "androidApp": {
+                    "$ref": "AndroidAppAsset"
+                },
+                "web": {
+                    "$ref": "WebAsset"
+                }
+            },
+            "type": "object"
+        },
+        "CertificateInfo": {
+            "id": "CertificateInfo",
+            "properties": {
+                "sha256Fingerprint": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CheckResponse": {
+            "id": "CheckResponse",
+            "properties": {
+                "debugString": {
+                    "type": "string"
+                },
+                "errorCode": {
+                    "enumDescriptions": [
+                        "",
+                        "Unable to parse query.",
+                        "Unable to fetch the asset links data.",
+                        "Invalid HTTPS certificate .",
+                        "HTTP redirects (e.g, 301) are not allowed.",
+                        "Asset links data exceeds maximum size.",
+                        "Can't parse HTTP response.",
+                        "HTTP Content-type should be application/json.",
+                        "JSON content is malformed.",
+                        "A secure asset includes an insecure asset (security downgrade).",
+                        "Too many includes (maybe a loop)."
+                    ],
+                    "items": {
+                        "enum": [
+                            "ERROR_CODE_UNSPECIFIED",
+                            "ERROR_CODE_INVALID_QUERY",
+                            "ERROR_CODE_FETCH_ERROR",
+                            "ERROR_CODE_FAILED_SSL_VALIDATION",
+                            "ERROR_CODE_REDIRECT",
+                            "ERROR_CODE_TOO_LARGE",
+                            "ERROR_CODE_MALFORMED_HTTP_RESPONSE",
+                            "ERROR_CODE_WRONG_CONTENT_TYPE",
+                            "ERROR_CODE_MALFORMED_CONTENT",
+                            "ERROR_CODE_SECURE_ASSET_INCLUDES_INSECURE",
+                            "ERROR_CODE_FETCH_BUDGET_EXHAUSTED"
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "linked": {
+                    "type": "boolean"
+                },
+                "maxAge": {
+                    "format": "google-duration",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListResponse": {
+            "id": "ListResponse",
+            "properties": {
+                "debugString": {
+                    "type": "string"
+                },
+                "errorCode": {
+                    "enumDescriptions": [
+                        "",
+                        "Unable to parse query.",
+                        "Unable to fetch the asset links data.",
+                        "Invalid HTTPS certificate .",
+                        "HTTP redirects (e.g, 301) are not allowed.",
+                        "Asset links data exceeds maximum size.",
+                        "Can't parse HTTP response.",
+                        "HTTP Content-type should be application/json.",
+                        "JSON content is malformed.",
+                        "A secure asset includes an insecure asset (security downgrade).",
+                        "Too many includes (maybe a loop)."
+                    ],
+                    "items": {
+                        "enum": [
+                            "ERROR_CODE_UNSPECIFIED",
+                            "ERROR_CODE_INVALID_QUERY",
+                            "ERROR_CODE_FETCH_ERROR",
+                            "ERROR_CODE_FAILED_SSL_VALIDATION",
+                            "ERROR_CODE_REDIRECT",
+                            "ERROR_CODE_TOO_LARGE",
+                            "ERROR_CODE_MALFORMED_HTTP_RESPONSE",
+                            "ERROR_CODE_WRONG_CONTENT_TYPE",
+                            "ERROR_CODE_MALFORMED_CONTENT",
+                            "ERROR_CODE_SECURE_ASSET_INCLUDES_INSECURE",
+                            "ERROR_CODE_FETCH_BUDGET_EXHAUSTED"
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "maxAge": {
+                    "format": "google-duration",
+                    "type": "string"
+                },
+                "statements": {
+                    "items": {
+                        "$ref": "Statement"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Statement": {
+            "id": "Statement",
+            "properties": {
+                "relation": {
+                    "type": "string"
+                },
+                "source": {
+                    "$ref": "Asset"
+                },
+                "target": {
+                    "$ref": "Asset"
+                }
+            },
+            "type": "object"
+        },
+        "WebAsset": {
+            "id": "WebAsset",
+            "properties": {
+                "site": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "servicePath": "",
+    "title": "Digital Asset Links API",
+    "version": "v1",
+    "version_module": true
+}

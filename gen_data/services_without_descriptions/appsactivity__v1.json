@@ -1,0 +1,410 @@
+{
+    "auth": {
+        "oauth2": {
+            "scopes": {
+                "https://www.googleapis.com/auth/activity": {}
+            }
+        }
+    },
+    "basePath": "/appsactivity/v1/",
+    "baseUrl": "https://www.googleapis.com/appsactivity/v1/",
+    "batchPath": "batch/appsactivity/v1",
+    "discoveryVersion": "v1",
+    "documentationLink": "https://developers.google.com/google-apps/activity/",
+    "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/LIMFwzeYrIm4FqRjPVu6tG1KWsg\"",
+    "icons": {
+        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+    },
+    "id": "appsactivity:v1",
+    "kind": "discovery#restDescription",
+    "name": "appsactivity",
+    "ownerDomain": "google.com",
+    "ownerName": "Google",
+    "parameters": {
+        "alt": {
+            "default": "json",
+            "enum": [
+                "json"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "location": "query",
+            "type": "boolean"
+        },
+        "quotaUser": {
+            "location": "query",
+            "type": "string"
+        },
+        "userIp": {
+            "location": "query",
+            "type": "string"
+        }
+    },
+    "protocol": "rest",
+    "resources": {
+        "activities": {
+            "methods": {
+                "list": {
+                    "httpMethod": "GET",
+                    "id": "appsactivity.activities.list",
+                    "parameters": {
+                        "drive.ancestorId": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "drive.fileId": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "groupingStrategy": {
+                            "default": "driveUi",
+                            "enum": [
+                                "driveUi",
+                                "none"
+                            ],
+                            "enumDescriptions": [
+                                "",
+                                ""
+                            ],
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageSize": {
+                            "default": "50",
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "source": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "userId": {
+                            "default": "me",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "activities",
+                    "response": {
+                        "$ref": "ListActivitiesResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/activity"
+                    ]
+                }
+            }
+        }
+    },
+    "rootUrl": "https://www.googleapis.com/",
+    "schemas": {
+        "Activity": {
+            "id": "Activity",
+            "properties": {
+                "combinedEvent": {
+                    "$ref": "Event"
+                },
+                "singleEvents": {
+                    "items": {
+                        "$ref": "Event"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Event": {
+            "id": "Event",
+            "properties": {
+                "additionalEventTypes": {
+                    "items": {
+                        "enum": [
+                            "comment",
+                            "create",
+                            "edit",
+                            "emptyTrash",
+                            "move",
+                            "permissionChange",
+                            "rename",
+                            "trash",
+                            "unknown",
+                            "untrash",
+                            "upload"
+                        ],
+                        "enumDescriptions": [
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "eventTimeMillis": {
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "fromUserDeletion": {
+                    "type": "boolean"
+                },
+                "move": {
+                    "$ref": "Move"
+                },
+                "permissionChanges": {
+                    "items": {
+                        "$ref": "PermissionChange"
+                    },
+                    "type": "array"
+                },
+                "primaryEventType": {
+                    "enum": [
+                        "comment",
+                        "create",
+                        "edit",
+                        "emptyTrash",
+                        "move",
+                        "permissionChange",
+                        "rename",
+                        "trash",
+                        "unknown",
+                        "untrash",
+                        "upload"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "rename": {
+                    "$ref": "Rename"
+                },
+                "target": {
+                    "$ref": "Target"
+                },
+                "user": {
+                    "$ref": "User"
+                }
+            },
+            "type": "object"
+        },
+        "ListActivitiesResponse": {
+            "id": "ListActivitiesResponse",
+            "properties": {
+                "activities": {
+                    "items": {
+                        "$ref": "Activity"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Move": {
+            "id": "Move",
+            "properties": {
+                "addedParents": {
+                    "items": {
+                        "$ref": "Parent"
+                    },
+                    "type": "array"
+                },
+                "removedParents": {
+                    "items": {
+                        "$ref": "Parent"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Parent": {
+            "id": "Parent",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "isRoot": {
+                    "type": "boolean"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Permission": {
+            "id": "Permission",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "permissionId": {
+                    "type": "string"
+                },
+                "role": {
+                    "enum": [
+                        "commenter",
+                        "fileOrganizer",
+                        "owner",
+                        "publishedReader",
+                        "reader",
+                        "writer"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "type": {
+                    "enum": [
+                        "anyone",
+                        "domain",
+                        "group",
+                        "user"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "user": {
+                    "$ref": "User"
+                },
+                "withLink": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "PermissionChange": {
+            "id": "PermissionChange",
+            "properties": {
+                "addedPermissions": {
+                    "items": {
+                        "$ref": "Permission"
+                    },
+                    "type": "array"
+                },
+                "removedPermissions": {
+                    "items": {
+                        "$ref": "Permission"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Photo": {
+            "id": "Photo",
+            "properties": {
+                "url": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Rename": {
+            "id": "Rename",
+            "properties": {
+                "newTitle": {
+                    "type": "string"
+                },
+                "oldTitle": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Target": {
+            "id": "Target",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "mimeType": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "User": {
+            "id": "User",
+            "properties": {
+                "isDeleted": {
+                    "type": "boolean"
+                },
+                "isMe": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "permissionId": {
+                    "type": "string"
+                },
+                "photo": {
+                    "$ref": "Photo"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "servicePath": "appsactivity/v1/",
+    "title": "Drive Activity API",
+    "version": "v1"
+}

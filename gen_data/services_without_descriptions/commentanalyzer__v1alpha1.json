@@ -1,0 +1,394 @@
+{
+    "auth": {
+        "oauth2": {
+            "scopes": {
+                "https://www.googleapis.com/auth/userinfo.email": {}
+            }
+        }
+    },
+    "basePath": "",
+    "baseUrl": "https://commentanalyzer.googleapis.com/",
+    "batchPath": "batch",
+    "canonicalName": "Comment Analyzer",
+    "discoveryVersion": "v1",
+    "documentationLink": "https://github.com/conversationai/perspectiveapi/blob/master/README.md",
+    "icons": {
+        "x16": "http://www.google.com/images/icons/product/search-16.gif",
+        "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    },
+    "id": "commentanalyzer:v1alpha1",
+    "kind": "discovery#restDescription",
+    "mtlsRootUrl": "https://commentanalyzer.mtls.googleapis.com/",
+    "name": "commentanalyzer",
+    "ownerDomain": "google.com",
+    "ownerName": "Google",
+    "parameters": {
+        "$.xgafv": {
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "alt": {
+            "default": "json",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json",
+                "Media download with context-dependent Content-Type",
+                "Responses with Content-Type of application/x-protobuf"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "location": "query",
+            "type": "boolean"
+        },
+        "quotaUser": {
+            "location": "query",
+            "type": "string"
+        },
+        "uploadType": {
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "location": "query",
+            "type": "string"
+        }
+    },
+    "protocol": "rest",
+    "resources": {
+        "comments": {
+            "methods": {
+                "analyze": {
+                    "flatPath": "v1alpha1/comments:analyze",
+                    "httpMethod": "POST",
+                    "id": "commentanalyzer.comments.analyze",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1alpha1/comments:analyze",
+                    "request": {
+                        "$ref": "AnalyzeCommentRequest"
+                    },
+                    "response": {
+                        "$ref": "AnalyzeCommentResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/userinfo.email"
+                    ]
+                },
+                "suggestscore": {
+                    "flatPath": "v1alpha1/comments:suggestscore",
+                    "httpMethod": "POST",
+                    "id": "commentanalyzer.comments.suggestscore",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1alpha1/comments:suggestscore",
+                    "request": {
+                        "$ref": "SuggestCommentScoreRequest"
+                    },
+                    "response": {
+                        "$ref": "SuggestCommentScoreResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/userinfo.email"
+                    ]
+                }
+            }
+        }
+    },
+    "rootUrl": "https://commentanalyzer.googleapis.com/",
+    "schemas": {
+        "AnalyzeCommentRequest": {
+            "id": "AnalyzeCommentRequest",
+            "properties": {
+                "clientToken": {
+                    "type": "string"
+                },
+                "comment": {
+                    "$ref": "TextEntry"
+                },
+                "communityId": {
+                    "type": "string"
+                },
+                "context": {
+                    "$ref": "Context"
+                },
+                "doNotStore": {
+                    "type": "boolean"
+                },
+                "languages": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "requestedAttributes": {
+                    "additionalProperties": {
+                        "$ref": "AttributeParameters"
+                    },
+                    "type": "object"
+                },
+                "sessionId": {
+                    "type": "string"
+                },
+                "spanAnnotations": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "AnalyzeCommentResponse": {
+            "id": "AnalyzeCommentResponse",
+            "properties": {
+                "attributeScores": {
+                    "additionalProperties": {
+                        "$ref": "AttributeScores"
+                    },
+                    "type": "object"
+                },
+                "clientToken": {
+                    "type": "string"
+                },
+                "detectedLanguages": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "languages": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ArticleAndParentComment": {
+            "id": "ArticleAndParentComment",
+            "properties": {
+                "article": {
+                    "$ref": "TextEntry"
+                },
+                "parentComment": {
+                    "$ref": "TextEntry"
+                }
+            },
+            "type": "object"
+        },
+        "AttributeParameters": {
+            "id": "AttributeParameters",
+            "properties": {
+                "scoreThreshold": {
+                    "format": "float",
+                    "type": "number"
+                },
+                "scoreType": {
+                    "enum": [
+                        "SCORE_TYPE_UNSPECIFIED",
+                        "PROBABILITY",
+                        "STD_DEV_SCORE",
+                        "PERCENTILE",
+                        "RAW"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified. Defaults to PROBABILITY scores if available, and otherwise\nRAW. Every model has a RAW score.",
+                        "Probability scores are in the range [0, 1] and indicate level of confidence\nin the attribute label.",
+                        "Standard deviation scores are in the range (-inf, +inf).",
+                        "Percentile scores are in the range [0, 1] and indicate the percentile of\nthe raw score, normalized with a test dataset. This is not generally\nrecommended, as the normalization is dependent on the dataset used, which\nmay not match other usecases.",
+                        "Raw scores are the raw values from the model, and may take any value. This\nis primarily for debugging/testing, and not generally recommended."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AttributeScores": {
+            "id": "AttributeScores",
+            "properties": {
+                "spanScores": {
+                    "items": {
+                        "$ref": "SpanScore"
+                    },
+                    "type": "array"
+                },
+                "summaryScore": {
+                    "$ref": "Score"
+                }
+            },
+            "type": "object"
+        },
+        "Context": {
+            "id": "Context",
+            "properties": {
+                "articleAndParentComment": {
+                    "$ref": "ArticleAndParentComment"
+                },
+                "entries": {
+                    "items": {
+                        "$ref": "TextEntry"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Score": {
+            "id": "Score",
+            "properties": {
+                "type": {
+                    "enum": [
+                        "SCORE_TYPE_UNSPECIFIED",
+                        "PROBABILITY",
+                        "STD_DEV_SCORE",
+                        "PERCENTILE",
+                        "RAW"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified. Defaults to PROBABILITY scores if available, and otherwise\nRAW. Every model has a RAW score.",
+                        "Probability scores are in the range [0, 1] and indicate level of confidence\nin the attribute label.",
+                        "Standard deviation scores are in the range (-inf, +inf).",
+                        "Percentile scores are in the range [0, 1] and indicate the percentile of\nthe raw score, normalized with a test dataset. This is not generally\nrecommended, as the normalization is dependent on the dataset used, which\nmay not match other usecases.",
+                        "Raw scores are the raw values from the model, and may take any value. This\nis primarily for debugging/testing, and not generally recommended."
+                    ],
+                    "type": "string"
+                },
+                "value": {
+                    "format": "float",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "SpanScore": {
+            "id": "SpanScore",
+            "properties": {
+                "begin": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "end": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "score": {
+                    "$ref": "Score"
+                }
+            },
+            "type": "object"
+        },
+        "SuggestCommentScoreRequest": {
+            "id": "SuggestCommentScoreRequest",
+            "properties": {
+                "attributeScores": {
+                    "additionalProperties": {
+                        "$ref": "AttributeScores"
+                    },
+                    "type": "object"
+                },
+                "clientToken": {
+                    "type": "string"
+                },
+                "comment": {
+                    "$ref": "TextEntry"
+                },
+                "communityId": {
+                    "type": "string"
+                },
+                "context": {
+                    "$ref": "Context"
+                },
+                "languages": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "sessionId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SuggestCommentScoreResponse": {
+            "id": "SuggestCommentScoreResponse",
+            "properties": {
+                "clientToken": {
+                    "type": "string"
+                },
+                "detectedLanguages": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "requestedLanguages": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "TextEntry": {
+            "id": "TextEntry",
+            "properties": {
+                "text": {
+                    "type": "string"
+                },
+                "type": {
+                    "enum": [
+                        "TEXT_TYPE_UNSPECIFIED",
+                        "PLAIN_TEXT",
+                        "HTML"
+                    ],
+                    "enumDescriptions": [
+                        "The content type is not specified. Text will be interpreted as plain text\nby default.",
+                        "Plain text.",
+                        "HTML."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "servicePath": "",
+    "title": "Perspective Comment Analyzer API",
+    "version": "v1alpha1",
+    "version_module": true
+}

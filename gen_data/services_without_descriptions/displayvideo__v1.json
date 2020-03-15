@@ -1,0 +1,448 @@
+{
+    "auth": {
+        "oauth2": {
+            "scopes": {
+                "https://www.googleapis.com/auth/display-video": {},
+                "https://www.googleapis.com/auth/doubleclickbidmanager": {}
+            }
+        }
+    },
+    "basePath": "",
+    "baseUrl": "https://displayvideo.googleapis.com/",
+    "batchPath": "batch",
+    "canonicalName": "Display Video",
+    "discoveryVersion": "v1",
+    "documentationLink": "https://developers.google.com/display-video/",
+    "fullyEncodeReservedExpansion": true,
+    "icons": {
+        "x16": "http://www.google.com/images/icons/product/search-16.gif",
+        "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    },
+    "id": "displayvideo:v1",
+    "kind": "discovery#restDescription",
+    "mtlsRootUrl": "https://displayvideo.mtls.googleapis.com/",
+    "name": "displayvideo",
+    "ownerDomain": "google.com",
+    "ownerName": "Google",
+    "parameters": {
+        "$.xgafv": {
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "alt": {
+            "default": "json",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json",
+                "Media download with context-dependent Content-Type",
+                "Responses with Content-Type of application/x-protobuf"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "location": "query",
+            "type": "boolean"
+        },
+        "quotaUser": {
+            "location": "query",
+            "type": "string"
+        },
+        "uploadType": {
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "location": "query",
+            "type": "string"
+        }
+    },
+    "protocol": "rest",
+    "resources": {
+        "media": {
+            "methods": {
+                "download": {
+                    "flatPath": "download/{downloadId}",
+                    "httpMethod": "GET",
+                    "id": "displayvideo.media.download",
+                    "parameterOrder": [
+                        "resourceName"
+                    ],
+                    "parameters": {
+                        "resourceName": {
+                            "location": "path",
+                            "pattern": "^.*$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "download/{+resourceName}",
+                    "response": {
+                        "$ref": "GoogleBytestreamMedia"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/display-video",
+                        "https://www.googleapis.com/auth/doubleclickbidmanager"
+                    ],
+                    "supportsMediaDownload": true
+                }
+            }
+        },
+        "sdfdownloadtasks": {
+            "methods": {
+                "create": {
+                    "flatPath": "v1/sdfdownloadtasks",
+                    "httpMethod": "POST",
+                    "id": "displayvideo.sdfdownloadtasks.create",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1/sdfdownloadtasks",
+                    "request": {
+                        "$ref": "CreateSdfDownloadTaskRequest"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/display-video"
+                    ]
+                }
+            },
+            "resources": {
+                "operations": {
+                    "methods": {
+                        "get": {
+                            "flatPath": "v1/sdfdownloadtasks/operations/{operationsId}",
+                            "httpMethod": "GET",
+                            "id": "displayvideo.sdfdownloadtasks.operations.get",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "location": "path",
+                                    "pattern": "^sdfdownloadtasks/operations/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "response": {
+                                "$ref": "Operation"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/display-video",
+                                "https://www.googleapis.com/auth/doubleclickbidmanager"
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "rootUrl": "https://displayvideo.googleapis.com/",
+    "schemas": {
+        "CreateSdfDownloadTaskRequest": {
+            "id": "CreateSdfDownloadTaskRequest",
+            "properties": {
+                "advertiserId": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "idFilter": {
+                    "$ref": "IdFilter"
+                },
+                "inventorySourceFilter": {
+                    "$ref": "InventorySourceFilter"
+                },
+                "parentEntityFilter": {
+                    "$ref": "ParentEntityFilter"
+                },
+                "partnerId": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "version": {
+                    "enum": [
+                        "SDF_VERSION_UNSPECIFIED",
+                        "SDF_VERSION_3_1",
+                        "SDF_VERSION_4",
+                        "SDF_VERSION_4_1",
+                        "SDF_VERSION_4_2",
+                        "SDF_VERSION_5",
+                        "SDF_VERSION_5_1"
+                    ],
+                    "enumDescriptions": [
+                        "SDF version value is not specified or is unknown in this version.",
+                        "SDF version 3.1",
+                        "SDF version 4",
+                        "SDF version 4.1",
+                        "SDF version 4.2",
+                        "SDF version 5.",
+                        "SDF version 5.1"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleBytestreamMedia": {
+            "id": "GoogleBytestreamMedia",
+            "properties": {
+                "resourceName": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "IdFilter": {
+            "id": "IdFilter",
+            "properties": {
+                "adGroupAdIds": {
+                    "items": {
+                        "format": "int64",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "adGroupIds": {
+                    "items": {
+                        "format": "int64",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "campaignIds": {
+                    "items": {
+                        "format": "int64",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "insertionOrderIds": {
+                    "items": {
+                        "format": "int64",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "lineItemIds": {
+                    "items": {
+                        "format": "int64",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "mediaProductIds": {
+                    "items": {
+                        "format": "int64",
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "InventorySourceFilter": {
+            "id": "InventorySourceFilter",
+            "properties": {
+                "inventorySourceIds": {
+                    "items": {
+                        "format": "int64",
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Operation": {
+            "id": "Operation",
+            "properties": {
+                "done": {
+                    "type": "boolean"
+                },
+                "error": {
+                    "$ref": "Status"
+                },
+                "metadata": {
+                    "additionalProperties": {
+                        "type": "any"
+                    },
+                    "type": "object"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "response": {
+                    "additionalProperties": {
+                        "type": "any"
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "ParentEntityFilter": {
+            "id": "ParentEntityFilter",
+            "properties": {
+                "fileType": {
+                    "enumDescriptions": [
+                        "Default value when type is unspecified or is unknown in this version.",
+                        "Campaign.",
+                        "Media Product.",
+                        "Insertion Order.",
+                        "Line Item.",
+                        "TrueView Ad Group.",
+                        "TrueView Ad."
+                    ],
+                    "items": {
+                        "enum": [
+                            "FILE_TYPE_UNSPECIFIED",
+                            "FILE_TYPE_CAMPAIGN",
+                            "FILE_TYPE_MEDIA_PRODUCT",
+                            "FILE_TYPE_INSERTION_ORDER",
+                            "FILE_TYPE_LINE_ITEM",
+                            "FILE_TYPE_AD_GROUP",
+                            "FILE_TYPE_AD"
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "filterIds": {
+                    "items": {
+                        "format": "int64",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "filterType": {
+                    "enum": [
+                        "FILTER_TYPE_UNSPECIFIED",
+                        "FILTER_TYPE_NONE",
+                        "FILTER_TYPE_ADVERTISER_ID",
+                        "FILTER_TYPE_CAMPAIGN_ID",
+                        "FILTER_TYPE_MEDIA_PRODUCT_ID",
+                        "FILTER_TYPE_INSERTION_ORDER_ID",
+                        "FILTER_TYPE_LINE_ITEM_ID"
+                    ],
+                    "enumDescriptions": [
+                        "Default value when type is unspecified or is unknown in this version.",
+                        "If selected, no filter will be applied to the download. Can only be used if\nan Advertiser is specified\nin CreateSdfDownloadTaskRequest.",
+                        "Advertiser ID. If selected, all filter IDs must be Advertiser IDs that\nbelong to the Partner specified\nin CreateSdfDownloadTaskRequest.",
+                        "Campaign ID. If selected, all filter IDs must be Campaign IDs that belong\nto the Advertiser or\nPartner specified in\nCreateSdfDownloadTaskRequest.",
+                        "Media Product ID. If selected, all filter IDs must be Media Product IDs\nthat belong to the Advertiser\nor Partner specified in\nCreateSdfDownloadTaskRequest. Can only be used for downloading\n`FILE_TYPE_MEDIA_PRODUCT`.",
+                        "Insertion Order ID. If selected, all filter IDs must be Insertion Order IDs\nthat belong to the Advertiser\nor Partner specified in\nCreateSdfDownloadTaskRequest. Can only be used for downloading\n`FILE_TYPE_INSERTION_ORDER`, `FILE_TYPE_LINE_ITEM`, `FILE_TYPE_AD_GROUP`,\nand `FILE_TYPE_AD`.",
+                        "Line Item ID. If selected, all filter IDs must be Line Item IDs that belong\nto the Advertiser or\nPartner specified in\nCreateSdfDownloadTaskRequest. Can only be used for downloading\n`FILE_TYPE_LINE_ITEM`, `FILE_TYPE_AD_GROUP`, and `FILE_TYPE_AD`."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SdfDownloadTask": {
+            "id": "SdfDownloadTask",
+            "properties": {
+                "resourceName": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SdfDownloadTaskMetadata": {
+            "id": "SdfDownloadTaskMetadata",
+            "properties": {
+                "createTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "endTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "version": {
+                    "enum": [
+                        "SDF_VERSION_UNSPECIFIED",
+                        "SDF_VERSION_3_1",
+                        "SDF_VERSION_4",
+                        "SDF_VERSION_4_1",
+                        "SDF_VERSION_4_2",
+                        "SDF_VERSION_5",
+                        "SDF_VERSION_5_1"
+                    ],
+                    "enumDescriptions": [
+                        "SDF version value is not specified or is unknown in this version.",
+                        "SDF version 3.1",
+                        "SDF version 4",
+                        "SDF version 4.1",
+                        "SDF version 4.2",
+                        "SDF version 5.",
+                        "SDF version 5.1"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Status": {
+            "id": "Status",
+            "properties": {
+                "code": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "details": {
+                    "items": {
+                        "additionalProperties": {
+                            "type": "any"
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "message": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "servicePath": "",
+    "title": "Display & Video 360 API",
+    "version": "v1",
+    "version_module": true
+}

@@ -1,0 +1,230 @@
+{
+    "basePath": "",
+    "baseUrl": "https://adexperiencereport.googleapis.com/",
+    "batchPath": "batch",
+    "canonicalName": "Ad Experience Report",
+    "discoveryVersion": "v1",
+    "documentationLink": "https://developers.google.com/ad-experience-report/",
+    "icons": {
+        "x16": "http://www.google.com/images/icons/product/search-16.gif",
+        "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    },
+    "id": "adexperiencereport:v1",
+    "kind": "discovery#restDescription",
+    "mtlsRootUrl": "https://adexperiencereport.mtls.googleapis.com/",
+    "name": "adexperiencereport",
+    "ownerDomain": "google.com",
+    "ownerName": "Google",
+    "parameters": {
+        "$.xgafv": {
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "alt": {
+            "default": "json",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json",
+                "Media download with context-dependent Content-Type",
+                "Responses with Content-Type of application/x-protobuf"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "location": "query",
+            "type": "boolean"
+        },
+        "quotaUser": {
+            "location": "query",
+            "type": "string"
+        },
+        "uploadType": {
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "location": "query",
+            "type": "string"
+        }
+    },
+    "protocol": "rest",
+    "resources": {
+        "sites": {
+            "methods": {
+                "get": {
+                    "flatPath": "v1/sites/{sitesId}",
+                    "httpMethod": "GET",
+                    "id": "adexperiencereport.sites.get",
+                    "parameterOrder": [
+                        "name"
+                    ],
+                    "parameters": {
+                        "name": {
+                            "location": "path",
+                            "pattern": "^sites/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+name}",
+                    "response": {
+                        "$ref": "SiteSummaryResponse"
+                    }
+                }
+            }
+        },
+        "violatingSites": {
+            "methods": {
+                "list": {
+                    "flatPath": "v1/violatingSites",
+                    "httpMethod": "GET",
+                    "id": "adexperiencereport.violatingSites.list",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1/violatingSites",
+                    "response": {
+                        "$ref": "ViolatingSitesResponse"
+                    }
+                }
+            }
+        }
+    },
+    "rootUrl": "https://adexperiencereport.googleapis.com/",
+    "schemas": {
+        "PlatformSummary": {
+            "id": "PlatformSummary",
+            "properties": {
+                "betterAdsStatus": {
+                    "enum": [
+                        "UNKNOWN",
+                        "PASSING",
+                        "WARNING",
+                        "FAILING"
+                    ],
+                    "enumDescriptions": [
+                        "Not reviewed.",
+                        "Passing.",
+                        "Warning. No longer a possible status.",
+                        "Failing."
+                    ],
+                    "type": "string"
+                },
+                "enforcementTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "filterStatus": {
+                    "enum": [
+                        "UNKNOWN",
+                        "ON",
+                        "OFF",
+                        "PAUSED",
+                        "PENDING"
+                    ],
+                    "enumDescriptions": [
+                        "N/A.",
+                        "Ad filtering is on.",
+                        "Ad filtering is off.",
+                        "Ad filtering is paused.",
+                        "Ad filtering is pending."
+                    ],
+                    "type": "string"
+                },
+                "lastChangeTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "region": {
+                    "enumDescriptions": [
+                        "Ad standard not yet defined for your region.",
+                        "Region A.",
+                        "Region B.",
+                        "Region C."
+                    ],
+                    "items": {
+                        "enum": [
+                            "REGION_UNKNOWN",
+                            "REGION_A",
+                            "REGION_B",
+                            "REGION_C"
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "reportUrl": {
+                    "type": "string"
+                },
+                "underReview": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "SiteSummaryResponse": {
+            "id": "SiteSummaryResponse",
+            "properties": {
+                "desktopSummary": {
+                    "$ref": "PlatformSummary"
+                },
+                "mobileSummary": {
+                    "$ref": "PlatformSummary"
+                },
+                "reviewedSite": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ViolatingSitesResponse": {
+            "id": "ViolatingSitesResponse",
+            "properties": {
+                "violatingSites": {
+                    "items": {
+                        "$ref": "SiteSummaryResponse"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "servicePath": "",
+    "title": "Ad Experience Report API",
+    "version": "v1",
+    "version_module": true
+}

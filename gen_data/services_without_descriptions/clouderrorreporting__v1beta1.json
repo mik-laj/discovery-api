@@ -1,0 +1,632 @@
+{
+    "auth": {
+        "oauth2": {
+            "scopes": {
+                "https://www.googleapis.com/auth/cloud-platform": {}
+            }
+        }
+    },
+    "basePath": "",
+    "baseUrl": "https://clouderrorreporting.googleapis.com/",
+    "batchPath": "batch",
+    "canonicalName": "Clouderrorreporting",
+    "discoveryVersion": "v1",
+    "documentationLink": "https://cloud.google.com/error-reporting/",
+    "icons": {
+        "x16": "http://www.google.com/images/icons/product/search-16.gif",
+        "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    },
+    "id": "clouderrorreporting:v1beta1",
+    "kind": "discovery#restDescription",
+    "mtlsRootUrl": "https://clouderrorreporting.mtls.googleapis.com/",
+    "name": "clouderrorreporting",
+    "ownerDomain": "google.com",
+    "ownerName": "Google",
+    "parameters": {
+        "$.xgafv": {
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "alt": {
+            "default": "json",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json",
+                "Media download with context-dependent Content-Type",
+                "Responses with Content-Type of application/x-protobuf"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "location": "query",
+            "type": "boolean"
+        },
+        "quotaUser": {
+            "location": "query",
+            "type": "string"
+        },
+        "uploadType": {
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "location": "query",
+            "type": "string"
+        }
+    },
+    "protocol": "rest",
+    "resources": {
+        "projects": {
+            "methods": {
+                "deleteEvents": {
+                    "flatPath": "v1beta1/projects/{projectsId}/events",
+                    "httpMethod": "DELETE",
+                    "id": "clouderrorreporting.projects.deleteEvents",
+                    "parameterOrder": [
+                        "projectName"
+                    ],
+                    "parameters": {
+                        "projectName": {
+                            "location": "path",
+                            "pattern": "^projects/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1beta1/{+projectName}/events",
+                    "response": {
+                        "$ref": "DeleteEventsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                }
+            },
+            "resources": {
+                "events": {
+                    "methods": {
+                        "list": {
+                            "flatPath": "v1beta1/projects/{projectsId}/events",
+                            "httpMethod": "GET",
+                            "id": "clouderrorreporting.projects.events.list",
+                            "parameterOrder": [
+                                "projectName"
+                            ],
+                            "parameters": {
+                                "groupId": {
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "pageSize": {
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "pageToken": {
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "projectName": {
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "serviceFilter.resourceType": {
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "serviceFilter.service": {
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "serviceFilter.version": {
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "timeRange.period": {
+                                    "enum": [
+                                        "PERIOD_UNSPECIFIED",
+                                        "PERIOD_1_HOUR",
+                                        "PERIOD_6_HOURS",
+                                        "PERIOD_1_DAY",
+                                        "PERIOD_1_WEEK",
+                                        "PERIOD_30_DAYS"
+                                    ],
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1beta1/{+projectName}/events",
+                            "response": {
+                                "$ref": "ListEventsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "report": {
+                            "flatPath": "v1beta1/projects/{projectsId}/events:report",
+                            "httpMethod": "POST",
+                            "id": "clouderrorreporting.projects.events.report",
+                            "parameterOrder": [
+                                "projectName"
+                            ],
+                            "parameters": {
+                                "projectName": {
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1beta1/{+projectName}/events:report",
+                            "request": {
+                                "$ref": "ReportedErrorEvent"
+                            },
+                            "response": {
+                                "$ref": "ReportErrorEventResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        }
+                    }
+                },
+                "groupStats": {
+                    "methods": {
+                        "list": {
+                            "flatPath": "v1beta1/projects/{projectsId}/groupStats",
+                            "httpMethod": "GET",
+                            "id": "clouderrorreporting.projects.groupStats.list",
+                            "parameterOrder": [
+                                "projectName"
+                            ],
+                            "parameters": {
+                                "alignment": {
+                                    "enum": [
+                                        "ERROR_COUNT_ALIGNMENT_UNSPECIFIED",
+                                        "ALIGNMENT_EQUAL_ROUNDED",
+                                        "ALIGNMENT_EQUAL_AT_END"
+                                    ],
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "alignmentTime": {
+                                    "format": "google-datetime",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "groupId": {
+                                    "location": "query",
+                                    "repeated": true,
+                                    "type": "string"
+                                },
+                                "order": {
+                                    "enum": [
+                                        "GROUP_ORDER_UNSPECIFIED",
+                                        "COUNT_DESC",
+                                        "LAST_SEEN_DESC",
+                                        "CREATED_DESC",
+                                        "AFFECTED_USERS_DESC"
+                                    ],
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "pageSize": {
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "pageToken": {
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "projectName": {
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "serviceFilter.resourceType": {
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "serviceFilter.service": {
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "serviceFilter.version": {
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "timeRange.period": {
+                                    "enum": [
+                                        "PERIOD_UNSPECIFIED",
+                                        "PERIOD_1_HOUR",
+                                        "PERIOD_6_HOURS",
+                                        "PERIOD_1_DAY",
+                                        "PERIOD_1_WEEK",
+                                        "PERIOD_30_DAYS"
+                                    ],
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "timedCountDuration": {
+                                    "format": "google-duration",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1beta1/{+projectName}/groupStats",
+                            "response": {
+                                "$ref": "ListGroupStatsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        }
+                    }
+                },
+                "groups": {
+                    "methods": {
+                        "get": {
+                            "flatPath": "v1beta1/projects/{projectsId}/groups/{groupsId}",
+                            "httpMethod": "GET",
+                            "id": "clouderrorreporting.projects.groups.get",
+                            "parameterOrder": [
+                                "groupName"
+                            ],
+                            "parameters": {
+                                "groupName": {
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/groups/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1beta1/{+groupName}",
+                            "response": {
+                                "$ref": "ErrorGroup"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "update": {
+                            "flatPath": "v1beta1/projects/{projectsId}/groups/{groupsId}",
+                            "httpMethod": "PUT",
+                            "id": "clouderrorreporting.projects.groups.update",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/groups/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1beta1/{+name}",
+                            "request": {
+                                "$ref": "ErrorGroup"
+                            },
+                            "response": {
+                                "$ref": "ErrorGroup"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "rootUrl": "https://clouderrorreporting.googleapis.com/",
+    "schemas": {
+        "DeleteEventsResponse": {
+            "id": "DeleteEventsResponse",
+            "properties": {},
+            "type": "object"
+        },
+        "ErrorContext": {
+            "id": "ErrorContext",
+            "properties": {
+                "httpRequest": {
+                    "$ref": "HttpRequestContext"
+                },
+                "reportLocation": {
+                    "$ref": "SourceLocation"
+                },
+                "sourceReferences": {
+                    "items": {
+                        "$ref": "SourceReference"
+                    },
+                    "type": "array"
+                },
+                "user": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ErrorEvent": {
+            "id": "ErrorEvent",
+            "properties": {
+                "context": {
+                    "$ref": "ErrorContext"
+                },
+                "eventTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "serviceContext": {
+                    "$ref": "ServiceContext"
+                }
+            },
+            "type": "object"
+        },
+        "ErrorGroup": {
+            "id": "ErrorGroup",
+            "properties": {
+                "groupId": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "trackingIssues": {
+                    "items": {
+                        "$ref": "TrackingIssue"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ErrorGroupStats": {
+            "id": "ErrorGroupStats",
+            "properties": {
+                "affectedServices": {
+                    "items": {
+                        "$ref": "ServiceContext"
+                    },
+                    "type": "array"
+                },
+                "affectedUsersCount": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "count": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "firstSeenTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "group": {
+                    "$ref": "ErrorGroup"
+                },
+                "lastSeenTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "numAffectedServices": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "representative": {
+                    "$ref": "ErrorEvent"
+                },
+                "timedCounts": {
+                    "items": {
+                        "$ref": "TimedCount"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "HttpRequestContext": {
+            "id": "HttpRequestContext",
+            "properties": {
+                "method": {
+                    "type": "string"
+                },
+                "referrer": {
+                    "type": "string"
+                },
+                "remoteIp": {
+                    "type": "string"
+                },
+                "responseStatusCode": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "userAgent": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListEventsResponse": {
+            "id": "ListEventsResponse",
+            "properties": {
+                "errorEvents": {
+                    "items": {
+                        "$ref": "ErrorEvent"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "timeRangeBegin": {
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListGroupStatsResponse": {
+            "id": "ListGroupStatsResponse",
+            "properties": {
+                "errorGroupStats": {
+                    "items": {
+                        "$ref": "ErrorGroupStats"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "timeRangeBegin": {
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ReportErrorEventResponse": {
+            "id": "ReportErrorEventResponse",
+            "properties": {},
+            "type": "object"
+        },
+        "ReportedErrorEvent": {
+            "id": "ReportedErrorEvent",
+            "properties": {
+                "context": {
+                    "$ref": "ErrorContext"
+                },
+                "eventTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "serviceContext": {
+                    "$ref": "ServiceContext"
+                }
+            },
+            "type": "object"
+        },
+        "ServiceContext": {
+            "id": "ServiceContext",
+            "properties": {
+                "resourceType": {
+                    "type": "string"
+                },
+                "service": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SourceLocation": {
+            "id": "SourceLocation",
+            "properties": {
+                "filePath": {
+                    "type": "string"
+                },
+                "functionName": {
+                    "type": "string"
+                },
+                "lineNumber": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "SourceReference": {
+            "id": "SourceReference",
+            "properties": {
+                "repository": {
+                    "type": "string"
+                },
+                "revisionId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TimedCount": {
+            "id": "TimedCount",
+            "properties": {
+                "count": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "endTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "startTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TrackingIssue": {
+            "id": "TrackingIssue",
+            "properties": {
+                "url": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "servicePath": "",
+    "title": "Error Reporting API",
+    "version": "v1beta1",
+    "version_module": true
+}

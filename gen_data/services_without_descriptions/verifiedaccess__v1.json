@@ -1,0 +1,200 @@
+{
+    "auth": {
+        "oauth2": {
+            "scopes": {
+                "https://www.googleapis.com/auth/verifiedaccess": {}
+            }
+        }
+    },
+    "basePath": "",
+    "baseUrl": "https://verifiedaccess.googleapis.com/",
+    "batchPath": "batch",
+    "canonicalName": "verifiedaccess",
+    "discoveryVersion": "v1",
+    "documentationLink": "https://www.google.com/work/chrome/",
+    "fullyEncodeReservedExpansion": true,
+    "icons": {
+        "x16": "http://www.google.com/images/icons/product/search-16.gif",
+        "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    },
+    "id": "verifiedaccess:v1",
+    "kind": "discovery#restDescription",
+    "name": "verifiedaccess",
+    "ownerDomain": "google.com",
+    "ownerName": "Google",
+    "parameters": {
+        "$.xgafv": {
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "alt": {
+            "default": "json",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json",
+                "Media download with context-dependent Content-Type",
+                "Responses with Content-Type of application/x-protobuf"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "location": "query",
+            "type": "boolean"
+        },
+        "quotaUser": {
+            "location": "query",
+            "type": "string"
+        },
+        "uploadType": {
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "location": "query",
+            "type": "string"
+        }
+    },
+    "protocol": "rest",
+    "resources": {
+        "challenge": {
+            "methods": {
+                "create": {
+                    "flatPath": "v1/challenge",
+                    "httpMethod": "POST",
+                    "id": "verifiedaccess.challenge.create",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1/challenge",
+                    "request": {
+                        "$ref": "Empty"
+                    },
+                    "response": {
+                        "$ref": "Challenge"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/verifiedaccess"
+                    ]
+                },
+                "verify": {
+                    "flatPath": "v1/challenge:verify",
+                    "httpMethod": "POST",
+                    "id": "verifiedaccess.challenge.verify",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1/challenge:verify",
+                    "request": {
+                        "$ref": "VerifyChallengeResponseRequest"
+                    },
+                    "response": {
+                        "$ref": "VerifyChallengeResponseResult"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/verifiedaccess"
+                    ]
+                }
+            }
+        }
+    },
+    "rootUrl": "https://verifiedaccess.googleapis.com/",
+    "schemas": {
+        "Challenge": {
+            "id": "Challenge",
+            "properties": {
+                "alternativeChallenge": {
+                    "$ref": "SignedData"
+                },
+                "challenge": {
+                    "$ref": "SignedData"
+                }
+            },
+            "type": "object"
+        },
+        "Empty": {
+            "id": "Empty",
+            "properties": {},
+            "type": "object"
+        },
+        "SignedData": {
+            "id": "SignedData",
+            "properties": {
+                "data": {
+                    "format": "byte",
+                    "type": "string"
+                },
+                "signature": {
+                    "format": "byte",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "VerifyChallengeResponseRequest": {
+            "id": "VerifyChallengeResponseRequest",
+            "properties": {
+                "challengeResponse": {
+                    "$ref": "SignedData"
+                },
+                "expectedIdentity": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "VerifyChallengeResponseResult": {
+            "id": "VerifyChallengeResponseResult",
+            "properties": {
+                "deviceEnrollmentId": {
+                    "type": "string"
+                },
+                "devicePermanentId": {
+                    "type": "string"
+                },
+                "signedPublicKeyAndChallenge": {
+                    "type": "string"
+                },
+                "verificationOutput": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "servicePath": "",
+    "title": "Verified Access API",
+    "version": "v1",
+    "version_module": true
+}

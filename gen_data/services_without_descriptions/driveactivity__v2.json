@@ -1,0 +1,1014 @@
+{
+    "auth": {
+        "oauth2": {
+            "scopes": {
+                "https://www.googleapis.com/auth/drive.activity": {},
+                "https://www.googleapis.com/auth/drive.activity.readonly": {}
+            }
+        }
+    },
+    "basePath": "",
+    "baseUrl": "https://driveactivity.googleapis.com/",
+    "batchPath": "batch",
+    "canonicalName": "Drive Activity",
+    "discoveryVersion": "v1",
+    "documentationLink": "https://developers.google.com/drive/activity/",
+    "fullyEncodeReservedExpansion": true,
+    "icons": {
+        "x16": "http://www.google.com/images/icons/product/search-16.gif",
+        "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    },
+    "id": "driveactivity:v2",
+    "kind": "discovery#restDescription",
+    "mtlsRootUrl": "https://driveactivity.mtls.googleapis.com/",
+    "name": "driveactivity",
+    "ownerDomain": "google.com",
+    "ownerName": "Google",
+    "parameters": {
+        "$.xgafv": {
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "alt": {
+            "default": "json",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json",
+                "Media download with context-dependent Content-Type",
+                "Responses with Content-Type of application/x-protobuf"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "location": "query",
+            "type": "boolean"
+        },
+        "quotaUser": {
+            "location": "query",
+            "type": "string"
+        },
+        "uploadType": {
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "location": "query",
+            "type": "string"
+        }
+    },
+    "protocol": "rest",
+    "resources": {
+        "activity": {
+            "methods": {
+                "query": {
+                    "flatPath": "v2/activity:query",
+                    "httpMethod": "POST",
+                    "id": "driveactivity.activity.query",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v2/activity:query",
+                    "request": {
+                        "$ref": "QueryDriveActivityRequest"
+                    },
+                    "response": {
+                        "$ref": "QueryDriveActivityResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/drive.activity",
+                        "https://www.googleapis.com/auth/drive.activity.readonly"
+                    ]
+                }
+            }
+        }
+    },
+    "rootUrl": "https://driveactivity.googleapis.com/",
+    "schemas": {
+        "Action": {
+            "id": "Action",
+            "properties": {
+                "actor": {
+                    "$ref": "Actor"
+                },
+                "detail": {
+                    "$ref": "ActionDetail"
+                },
+                "target": {
+                    "$ref": "Target"
+                },
+                "timeRange": {
+                    "$ref": "TimeRange"
+                },
+                "timestamp": {
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ActionDetail": {
+            "id": "ActionDetail",
+            "properties": {
+                "comment": {
+                    "$ref": "Comment"
+                },
+                "create": {
+                    "$ref": "Create"
+                },
+                "delete": {
+                    "$ref": "Delete"
+                },
+                "dlpChange": {
+                    "$ref": "DataLeakPreventionChange"
+                },
+                "edit": {
+                    "$ref": "Edit"
+                },
+                "move": {
+                    "$ref": "Move"
+                },
+                "permissionChange": {
+                    "$ref": "PermissionChange"
+                },
+                "reference": {
+                    "$ref": "ApplicationReference"
+                },
+                "rename": {
+                    "$ref": "Rename"
+                },
+                "restore": {
+                    "$ref": "Restore"
+                },
+                "settingsChange": {
+                    "$ref": "SettingsChange"
+                }
+            },
+            "type": "object"
+        },
+        "Actor": {
+            "id": "Actor",
+            "properties": {
+                "administrator": {
+                    "$ref": "Administrator"
+                },
+                "anonymous": {
+                    "$ref": "AnonymousUser"
+                },
+                "impersonation": {
+                    "$ref": "Impersonation"
+                },
+                "system": {
+                    "$ref": "SystemEvent"
+                },
+                "user": {
+                    "$ref": "User"
+                }
+            },
+            "type": "object"
+        },
+        "Administrator": {
+            "id": "Administrator",
+            "properties": {},
+            "type": "object"
+        },
+        "AnonymousUser": {
+            "id": "AnonymousUser",
+            "properties": {},
+            "type": "object"
+        },
+        "Anyone": {
+            "id": "Anyone",
+            "properties": {},
+            "type": "object"
+        },
+        "ApplicationReference": {
+            "id": "ApplicationReference",
+            "properties": {
+                "type": {
+                    "enum": [
+                        "UNSPECIFIED_REFERENCE_TYPE",
+                        "LINK",
+                        "DISCUSS"
+                    ],
+                    "enumDescriptions": [
+                        "The type is not available.",
+                        "The links of one or more Drive items were posted.",
+                        "Comments were made regarding a Drive item."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Assignment": {
+            "id": "Assignment",
+            "properties": {
+                "assignedUser": {
+                    "$ref": "User"
+                },
+                "subtype": {
+                    "enum": [
+                        "SUBTYPE_UNSPECIFIED",
+                        "ADDED",
+                        "DELETED",
+                        "REPLY_ADDED",
+                        "REPLY_DELETED",
+                        "RESOLVED",
+                        "REOPENED",
+                        "REASSIGNED"
+                    ],
+                    "enumDescriptions": [
+                        "Subtype not available.",
+                        "An assignment was added.",
+                        "An assignment was deleted.",
+                        "An assignment reply was added.",
+                        "An assignment reply was deleted.",
+                        "An assignment was resolved.",
+                        "A resolved assignment was reopened.",
+                        "An assignment was reassigned."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Comment": {
+            "id": "Comment",
+            "properties": {
+                "assignment": {
+                    "$ref": "Assignment"
+                },
+                "mentionedUsers": {
+                    "items": {
+                        "$ref": "User"
+                    },
+                    "type": "array"
+                },
+                "post": {
+                    "$ref": "Post"
+                },
+                "suggestion": {
+                    "$ref": "Suggestion"
+                }
+            },
+            "type": "object"
+        },
+        "ConsolidationStrategy": {
+            "id": "ConsolidationStrategy",
+            "properties": {
+                "legacy": {
+                    "$ref": "Legacy"
+                },
+                "none": {
+                    "$ref": "NoConsolidation"
+                }
+            },
+            "type": "object"
+        },
+        "Copy": {
+            "id": "Copy",
+            "properties": {
+                "originalObject": {
+                    "$ref": "TargetReference"
+                }
+            },
+            "type": "object"
+        },
+        "Create": {
+            "id": "Create",
+            "properties": {
+                "copy": {
+                    "$ref": "Copy"
+                },
+                "new": {
+                    "$ref": "New"
+                },
+                "upload": {
+                    "$ref": "Upload"
+                }
+            },
+            "type": "object"
+        },
+        "DataLeakPreventionChange": {
+            "id": "DataLeakPreventionChange",
+            "properties": {
+                "type": {
+                    "enum": [
+                        "TYPE_UNSPECIFIED",
+                        "FLAGGED",
+                        "CLEARED"
+                    ],
+                    "enumDescriptions": [
+                        "An update to the DLP state that is neither FLAGGED or CLEARED.",
+                        "Document has been flagged as containing sensitive content.",
+                        "Document is no longer flagged as containing sensitive content."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Delete": {
+            "id": "Delete",
+            "properties": {
+                "type": {
+                    "enum": [
+                        "TYPE_UNSPECIFIED",
+                        "TRASH",
+                        "PERMANENT_DELETE"
+                    ],
+                    "enumDescriptions": [
+                        "Deletion type is not available.",
+                        "An object was put into the trash.",
+                        "An object was deleted permanently."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DeletedUser": {
+            "id": "DeletedUser",
+            "properties": {},
+            "type": "object"
+        },
+        "Domain": {
+            "id": "Domain",
+            "properties": {
+                "legacyId": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Drive": {
+            "id": "Drive",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "root": {
+                    "$ref": "DriveItem"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DriveActivity": {
+            "id": "DriveActivity",
+            "properties": {
+                "actions": {
+                    "items": {
+                        "$ref": "Action"
+                    },
+                    "type": "array"
+                },
+                "actors": {
+                    "items": {
+                        "$ref": "Actor"
+                    },
+                    "type": "array"
+                },
+                "primaryActionDetail": {
+                    "$ref": "ActionDetail"
+                },
+                "targets": {
+                    "items": {
+                        "$ref": "Target"
+                    },
+                    "type": "array"
+                },
+                "timeRange": {
+                    "$ref": "TimeRange"
+                },
+                "timestamp": {
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DriveFile": {
+            "id": "DriveFile",
+            "properties": {},
+            "type": "object"
+        },
+        "DriveFolder": {
+            "id": "DriveFolder",
+            "properties": {
+                "type": {
+                    "enum": [
+                        "TYPE_UNSPECIFIED",
+                        "MY_DRIVE_ROOT",
+                        "SHARED_DRIVE_ROOT",
+                        "STANDARD_FOLDER"
+                    ],
+                    "enumDescriptions": [
+                        "The folder type is unknown.",
+                        "The folder is the root of a user's MyDrive.",
+                        "The folder is the root of a shared drive.",
+                        "The folder is a standard, non-root, folder."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DriveItem": {
+            "id": "DriveItem",
+            "properties": {
+                "driveFile": {
+                    "$ref": "DriveFile"
+                },
+                "driveFolder": {
+                    "$ref": "DriveFolder"
+                },
+                "file": {
+                    "$ref": "File"
+                },
+                "folder": {
+                    "$ref": "Folder"
+                },
+                "mimeType": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "owner": {
+                    "$ref": "Owner"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DriveItemReference": {
+            "id": "DriveItemReference",
+            "properties": {
+                "driveFile": {
+                    "$ref": "DriveFile"
+                },
+                "driveFolder": {
+                    "$ref": "DriveFolder"
+                },
+                "file": {
+                    "$ref": "File"
+                },
+                "folder": {
+                    "$ref": "Folder"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DriveReference": {
+            "id": "DriveReference",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Edit": {
+            "id": "Edit",
+            "properties": {},
+            "type": "object"
+        },
+        "File": {
+            "id": "File",
+            "properties": {},
+            "type": "object"
+        },
+        "FileComment": {
+            "id": "FileComment",
+            "properties": {
+                "legacyCommentId": {
+                    "type": "string"
+                },
+                "legacyDiscussionId": {
+                    "type": "string"
+                },
+                "linkToDiscussion": {
+                    "type": "string"
+                },
+                "parent": {
+                    "$ref": "DriveItem"
+                }
+            },
+            "type": "object"
+        },
+        "Folder": {
+            "id": "Folder",
+            "properties": {
+                "type": {
+                    "enum": [
+                        "TYPE_UNSPECIFIED",
+                        "MY_DRIVE_ROOT",
+                        "TEAM_DRIVE_ROOT",
+                        "STANDARD_FOLDER"
+                    ],
+                    "enumDescriptions": [
+                        "This item is deprecated; please see `DriveFolder.Type` instead.",
+                        "This item is deprecated; please see `DriveFolder.Type` instead.",
+                        "This item is deprecated; please see `DriveFolder.Type` instead.",
+                        "This item is deprecated; please see `DriveFolder.Type` instead."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Group": {
+            "id": "Group",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Impersonation": {
+            "id": "Impersonation",
+            "properties": {
+                "impersonatedUser": {
+                    "$ref": "User"
+                }
+            },
+            "type": "object"
+        },
+        "KnownUser": {
+            "id": "KnownUser",
+            "properties": {
+                "isCurrentUser": {
+                    "type": "boolean"
+                },
+                "personName": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Legacy": {
+            "id": "Legacy",
+            "properties": {},
+            "type": "object"
+        },
+        "Move": {
+            "id": "Move",
+            "properties": {
+                "addedParents": {
+                    "items": {
+                        "$ref": "TargetReference"
+                    },
+                    "type": "array"
+                },
+                "removedParents": {
+                    "items": {
+                        "$ref": "TargetReference"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "New": {
+            "id": "New",
+            "properties": {},
+            "type": "object"
+        },
+        "NoConsolidation": {
+            "id": "NoConsolidation",
+            "properties": {},
+            "type": "object"
+        },
+        "Owner": {
+            "id": "Owner",
+            "properties": {
+                "domain": {
+                    "$ref": "Domain"
+                },
+                "drive": {
+                    "$ref": "DriveReference"
+                },
+                "teamDrive": {
+                    "$ref": "TeamDriveReference"
+                },
+                "user": {
+                    "$ref": "User"
+                }
+            },
+            "type": "object"
+        },
+        "Permission": {
+            "id": "Permission",
+            "properties": {
+                "allowDiscovery": {
+                    "type": "boolean"
+                },
+                "anyone": {
+                    "$ref": "Anyone"
+                },
+                "domain": {
+                    "$ref": "Domain"
+                },
+                "group": {
+                    "$ref": "Group"
+                },
+                "role": {
+                    "enum": [
+                        "ROLE_UNSPECIFIED",
+                        "OWNER",
+                        "ORGANIZER",
+                        "FILE_ORGANIZER",
+                        "EDITOR",
+                        "COMMENTER",
+                        "VIEWER",
+                        "PUBLISHED_VIEWER"
+                    ],
+                    "enumDescriptions": [
+                        "The role is not available.",
+                        "A role granting full access.",
+                        "A role granting the ability to manage people and settings.",
+                        "A role granting the ability to contribute and manage content.",
+                        "A role granting the ability to contribute content. This role is sometimes\nalso known as \"writer\".",
+                        "A role granting the ability to view and comment on content.",
+                        "A role granting the ability to view content. This role is sometimes also\nknown as \"reader\".",
+                        "A role granting the ability to view content only after it has been\npublished to the web. This role is sometimes also known as \"published\nreader\". See https://support.google.com/sites/answer/6372880 for more\ninformation."
+                    ],
+                    "type": "string"
+                },
+                "user": {
+                    "$ref": "User"
+                }
+            },
+            "type": "object"
+        },
+        "PermissionChange": {
+            "id": "PermissionChange",
+            "properties": {
+                "addedPermissions": {
+                    "items": {
+                        "$ref": "Permission"
+                    },
+                    "type": "array"
+                },
+                "removedPermissions": {
+                    "items": {
+                        "$ref": "Permission"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Post": {
+            "id": "Post",
+            "properties": {
+                "subtype": {
+                    "enum": [
+                        "SUBTYPE_UNSPECIFIED",
+                        "ADDED",
+                        "DELETED",
+                        "REPLY_ADDED",
+                        "REPLY_DELETED",
+                        "RESOLVED",
+                        "REOPENED"
+                    ],
+                    "enumDescriptions": [
+                        "Subtype not available.",
+                        "A post was added.",
+                        "A post was deleted.",
+                        "A reply was added.",
+                        "A reply was deleted.",
+                        "A posted comment was resolved.",
+                        "A posted comment was reopened."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "QueryDriveActivityRequest": {
+            "id": "QueryDriveActivityRequest",
+            "properties": {
+                "ancestorName": {
+                    "type": "string"
+                },
+                "consolidationStrategy": {
+                    "$ref": "ConsolidationStrategy"
+                },
+                "filter": {
+                    "type": "string"
+                },
+                "itemName": {
+                    "type": "string"
+                },
+                "pageSize": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "pageToken": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "QueryDriveActivityResponse": {
+            "id": "QueryDriveActivityResponse",
+            "properties": {
+                "activities": {
+                    "items": {
+                        "$ref": "DriveActivity"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Rename": {
+            "id": "Rename",
+            "properties": {
+                "newTitle": {
+                    "type": "string"
+                },
+                "oldTitle": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Restore": {
+            "id": "Restore",
+            "properties": {
+                "type": {
+                    "enum": [
+                        "TYPE_UNSPECIFIED",
+                        "UNTRASH"
+                    ],
+                    "enumDescriptions": [
+                        "The type is not available.",
+                        "An object was restored from the trash."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RestrictionChange": {
+            "id": "RestrictionChange",
+            "properties": {
+                "feature": {
+                    "enum": [
+                        "FEATURE_UNSPECIFIED",
+                        "SHARING_OUTSIDE_DOMAIN",
+                        "DIRECT_SHARING",
+                        "ITEM_DUPLICATION",
+                        "DRIVE_FILE_STREAM"
+                    ],
+                    "enumDescriptions": [
+                        "The feature which changed restriction settings was not available.",
+                        "When restricted, this prevents items from being shared outside the\ndomain.",
+                        "When restricted, this prevents direct sharing of individual items.",
+                        "When restricted, this prevents actions like copy, download, and print\nthat might result in uncontrolled duplicates of items.",
+                        "When restricted, this prevents use of Drive File Stream."
+                    ],
+                    "type": "string"
+                },
+                "newRestriction": {
+                    "enum": [
+                        "RESTRICTION_UNSPECIFIED",
+                        "UNRESTRICTED",
+                        "FULLY_RESTRICTED"
+                    ],
+                    "enumDescriptions": [
+                        "The type of restriction is not available.",
+                        "The feature is available without restriction.",
+                        "The use of this feature is fully restricted."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SettingsChange": {
+            "id": "SettingsChange",
+            "properties": {
+                "restrictionChanges": {
+                    "items": {
+                        "$ref": "RestrictionChange"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Suggestion": {
+            "id": "Suggestion",
+            "properties": {
+                "subtype": {
+                    "enum": [
+                        "SUBTYPE_UNSPECIFIED",
+                        "ADDED",
+                        "DELETED",
+                        "REPLY_ADDED",
+                        "REPLY_DELETED",
+                        "ACCEPTED",
+                        "REJECTED",
+                        "ACCEPT_DELETED",
+                        "REJECT_DELETED"
+                    ],
+                    "enumDescriptions": [
+                        "Subtype not available.",
+                        "A suggestion was added.",
+                        "A suggestion was deleted.",
+                        "A suggestion reply was added.",
+                        "A suggestion reply was deleted.",
+                        "A suggestion was accepted.",
+                        "A suggestion was rejected.",
+                        "An accepted suggestion was deleted.",
+                        "A rejected suggestion was deleted."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SystemEvent": {
+            "id": "SystemEvent",
+            "properties": {
+                "type": {
+                    "enum": [
+                        "TYPE_UNSPECIFIED",
+                        "USER_DELETION",
+                        "TRASH_AUTO_PURGE"
+                    ],
+                    "enumDescriptions": [
+                        "The event type is unspecified.",
+                        "The event is a consequence of a user account being deleted.",
+                        "The event is due to the system automatically purging trash."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Target": {
+            "id": "Target",
+            "properties": {
+                "drive": {
+                    "$ref": "Drive"
+                },
+                "driveItem": {
+                    "$ref": "DriveItem"
+                },
+                "fileComment": {
+                    "$ref": "FileComment"
+                },
+                "teamDrive": {
+                    "$ref": "TeamDrive"
+                }
+            },
+            "type": "object"
+        },
+        "TargetReference": {
+            "id": "TargetReference",
+            "properties": {
+                "drive": {
+                    "$ref": "DriveReference"
+                },
+                "driveItem": {
+                    "$ref": "DriveItemReference"
+                },
+                "teamDrive": {
+                    "$ref": "TeamDriveReference"
+                }
+            },
+            "type": "object"
+        },
+        "TeamDrive": {
+            "id": "TeamDrive",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "root": {
+                    "$ref": "DriveItem"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TeamDriveReference": {
+            "id": "TeamDriveReference",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TimeRange": {
+            "id": "TimeRange",
+            "properties": {
+                "endTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "startTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UnknownUser": {
+            "id": "UnknownUser",
+            "properties": {},
+            "type": "object"
+        },
+        "Upload": {
+            "id": "Upload",
+            "properties": {},
+            "type": "object"
+        },
+        "User": {
+            "id": "User",
+            "properties": {
+                "deletedUser": {
+                    "$ref": "DeletedUser"
+                },
+                "knownUser": {
+                    "$ref": "KnownUser"
+                },
+                "unknownUser": {
+                    "$ref": "UnknownUser"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "servicePath": "",
+    "title": "Drive Activity API",
+    "version": "v2",
+    "version_module": true
+}

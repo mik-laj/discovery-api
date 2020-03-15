@@ -1,0 +1,481 @@
+{
+    "basePath": "",
+    "baseUrl": "https://homegraph.googleapis.com/",
+    "batchPath": "batch",
+    "canonicalName": "Home Graph Service",
+    "discoveryVersion": "v1",
+    "documentationLink": "https://developers.google.com/actions/smarthome/create-app#request-sync",
+    "fullyEncodeReservedExpansion": true,
+    "icons": {
+        "x16": "http://www.google.com/images/icons/product/search-16.gif",
+        "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    },
+    "id": "homegraph:v1",
+    "kind": "discovery#restDescription",
+    "mtlsRootUrl": "https://homegraph.mtls.googleapis.com/",
+    "name": "homegraph",
+    "ownerDomain": "google.com",
+    "ownerName": "Google",
+    "parameters": {
+        "$.xgafv": {
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "alt": {
+            "default": "json",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json",
+                "Media download with context-dependent Content-Type",
+                "Responses with Content-Type of application/x-protobuf"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "location": "query",
+            "type": "boolean"
+        },
+        "quotaUser": {
+            "location": "query",
+            "type": "string"
+        },
+        "uploadType": {
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "location": "query",
+            "type": "string"
+        }
+    },
+    "protocol": "rest",
+    "resources": {
+        "agentUsers": {
+            "methods": {
+                "delete": {
+                    "flatPath": "v1/agentUsers/{agentUsersId}",
+                    "httpMethod": "DELETE",
+                    "id": "homegraph.agentUsers.delete",
+                    "parameterOrder": [
+                        "agentUserId"
+                    ],
+                    "parameters": {
+                        "agentUserId": {
+                            "location": "path",
+                            "pattern": "^agentUsers/.*$",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "requestId": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+agentUserId}",
+                    "response": {
+                        "$ref": "Empty"
+                    }
+                }
+            }
+        },
+        "devices": {
+            "methods": {
+                "query": {
+                    "flatPath": "v1/devices:query",
+                    "httpMethod": "POST",
+                    "id": "homegraph.devices.query",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1/devices:query",
+                    "request": {
+                        "$ref": "QueryRequest"
+                    },
+                    "response": {
+                        "$ref": "QueryResponse"
+                    }
+                },
+                "reportStateAndNotification": {
+                    "flatPath": "v1/devices:reportStateAndNotification",
+                    "httpMethod": "POST",
+                    "id": "homegraph.devices.reportStateAndNotification",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1/devices:reportStateAndNotification",
+                    "request": {
+                        "$ref": "ReportStateAndNotificationRequest"
+                    },
+                    "response": {
+                        "$ref": "ReportStateAndNotificationResponse"
+                    }
+                },
+                "requestSync": {
+                    "flatPath": "v1/devices:requestSync",
+                    "httpMethod": "POST",
+                    "id": "homegraph.devices.requestSync",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1/devices:requestSync",
+                    "request": {
+                        "$ref": "RequestSyncDevicesRequest"
+                    },
+                    "response": {
+                        "$ref": "RequestSyncDevicesResponse"
+                    }
+                },
+                "sync": {
+                    "flatPath": "v1/devices:sync",
+                    "httpMethod": "POST",
+                    "id": "homegraph.devices.sync",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1/devices:sync",
+                    "request": {
+                        "$ref": "SyncRequest"
+                    },
+                    "response": {
+                        "$ref": "SyncResponse"
+                    }
+                }
+            }
+        }
+    },
+    "rootUrl": "https://homegraph.googleapis.com/",
+    "schemas": {
+        "AgentDeviceId": {
+            "id": "AgentDeviceId",
+            "properties": {
+                "id": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AgentOtherDeviceId": {
+            "id": "AgentOtherDeviceId",
+            "properties": {
+                "agentId": {
+                    "type": "string"
+                },
+                "deviceId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Device": {
+            "id": "Device",
+            "properties": {
+                "attributes": {
+                    "additionalProperties": {
+                        "type": "any"
+                    },
+                    "type": "object"
+                },
+                "customData": {
+                    "additionalProperties": {
+                        "type": "any"
+                    },
+                    "type": "object"
+                },
+                "deviceInfo": {
+                    "$ref": "DeviceInfo"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "$ref": "DeviceNames"
+                },
+                "notificationSupportedByAgent": {
+                    "type": "boolean"
+                },
+                "otherDeviceIds": {
+                    "items": {
+                        "$ref": "AgentOtherDeviceId"
+                    },
+                    "type": "array"
+                },
+                "roomHint": {
+                    "type": "string"
+                },
+                "structureHint": {
+                    "type": "string"
+                },
+                "traits": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "willReportState": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "DeviceInfo": {
+            "id": "DeviceInfo",
+            "properties": {
+                "hwVersion": {
+                    "type": "string"
+                },
+                "manufacturer": {
+                    "type": "string"
+                },
+                "model": {
+                    "type": "string"
+                },
+                "swVersion": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DeviceNames": {
+            "id": "DeviceNames",
+            "properties": {
+                "defaultNames": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "nicknames": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Empty": {
+            "id": "Empty",
+            "properties": {},
+            "type": "object"
+        },
+        "QueryRequest": {
+            "id": "QueryRequest",
+            "properties": {
+                "agentUserId": {
+                    "type": "string"
+                },
+                "inputs": {
+                    "items": {
+                        "$ref": "QueryRequestInput"
+                    },
+                    "type": "array"
+                },
+                "requestId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "QueryRequestInput": {
+            "id": "QueryRequestInput",
+            "properties": {
+                "payload": {
+                    "$ref": "QueryRequestPayload"
+                }
+            },
+            "type": "object"
+        },
+        "QueryRequestPayload": {
+            "id": "QueryRequestPayload",
+            "properties": {
+                "devices": {
+                    "items": {
+                        "$ref": "AgentDeviceId"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "QueryResponse": {
+            "id": "QueryResponse",
+            "properties": {
+                "payload": {
+                    "$ref": "QueryResponsePayload"
+                },
+                "requestId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "QueryResponsePayload": {
+            "id": "QueryResponsePayload",
+            "properties": {
+                "devices": {
+                    "additionalProperties": {
+                        "additionalProperties": {
+                            "type": "any"
+                        },
+                        "type": "object"
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "ReportStateAndNotificationDevice": {
+            "id": "ReportStateAndNotificationDevice",
+            "properties": {
+                "notifications": {
+                    "additionalProperties": {
+                        "type": "any"
+                    },
+                    "type": "object"
+                },
+                "states": {
+                    "additionalProperties": {
+                        "type": "any"
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "ReportStateAndNotificationRequest": {
+            "id": "ReportStateAndNotificationRequest",
+            "properties": {
+                "agentUserId": {
+                    "type": "string"
+                },
+                "eventId": {
+                    "type": "string"
+                },
+                "followUpToken": {
+                    "type": "string"
+                },
+                "payload": {
+                    "$ref": "StateAndNotificationPayload"
+                },
+                "requestId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ReportStateAndNotificationResponse": {
+            "id": "ReportStateAndNotificationResponse",
+            "properties": {
+                "requestId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RequestSyncDevicesRequest": {
+            "id": "RequestSyncDevicesRequest",
+            "properties": {
+                "agentUserId": {
+                    "type": "string"
+                },
+                "async": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "RequestSyncDevicesResponse": {
+            "id": "RequestSyncDevicesResponse",
+            "properties": {},
+            "type": "object"
+        },
+        "StateAndNotificationPayload": {
+            "id": "StateAndNotificationPayload",
+            "properties": {
+                "devices": {
+                    "$ref": "ReportStateAndNotificationDevice"
+                }
+            },
+            "type": "object"
+        },
+        "SyncRequest": {
+            "id": "SyncRequest",
+            "properties": {
+                "agentUserId": {
+                    "type": "string"
+                },
+                "requestId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SyncResponse": {
+            "id": "SyncResponse",
+            "properties": {
+                "payload": {
+                    "$ref": "SyncResponsePayload"
+                },
+                "requestId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SyncResponsePayload": {
+            "id": "SyncResponsePayload",
+            "properties": {
+                "agentUserId": {
+                    "type": "string"
+                },
+                "devices": {
+                    "items": {
+                        "$ref": "Device"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "servicePath": "",
+    "title": "HomeGraph API",
+    "version": "v1",
+    "version_module": true
+}

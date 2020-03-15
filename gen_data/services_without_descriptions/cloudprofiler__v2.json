@@ -1,0 +1,303 @@
+{
+    "auth": {
+        "oauth2": {
+            "scopes": {
+                "https://www.googleapis.com/auth/cloud-platform": {},
+                "https://www.googleapis.com/auth/monitoring": {},
+                "https://www.googleapis.com/auth/monitoring.write": {}
+            }
+        }
+    },
+    "basePath": "",
+    "baseUrl": "https://cloudprofiler.googleapis.com/",
+    "batchPath": "batch",
+    "canonicalName": "Cloud Profiler",
+    "discoveryVersion": "v1",
+    "documentationLink": "https://cloud.google.com/profiler/",
+    "fullyEncodeReservedExpansion": true,
+    "icons": {
+        "x16": "http://www.google.com/images/icons/product/search-16.gif",
+        "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    },
+    "id": "cloudprofiler:v2",
+    "kind": "discovery#restDescription",
+    "mtlsRootUrl": "https://cloudprofiler.mtls.googleapis.com/",
+    "name": "cloudprofiler",
+    "ownerDomain": "google.com",
+    "ownerName": "Google",
+    "parameters": {
+        "$.xgafv": {
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "alt": {
+            "default": "json",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json",
+                "Media download with context-dependent Content-Type",
+                "Responses with Content-Type of application/x-protobuf"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "location": "query",
+            "type": "boolean"
+        },
+        "quotaUser": {
+            "location": "query",
+            "type": "string"
+        },
+        "uploadType": {
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "location": "query",
+            "type": "string"
+        }
+    },
+    "protocol": "rest",
+    "resources": {
+        "projects": {
+            "resources": {
+                "profiles": {
+                    "methods": {
+                        "create": {
+                            "flatPath": "v2/projects/{projectsId}/profiles",
+                            "httpMethod": "POST",
+                            "id": "cloudprofiler.projects.profiles.create",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "parent": {
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v2/{+parent}/profiles",
+                            "request": {
+                                "$ref": "CreateProfileRequest"
+                            },
+                            "response": {
+                                "$ref": "Profile"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/monitoring",
+                                "https://www.googleapis.com/auth/monitoring.write"
+                            ]
+                        },
+                        "createOffline": {
+                            "flatPath": "v2/projects/{projectsId}/profiles:createOffline",
+                            "httpMethod": "POST",
+                            "id": "cloudprofiler.projects.profiles.createOffline",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "parent": {
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v2/{+parent}/profiles:createOffline",
+                            "request": {
+                                "$ref": "Profile"
+                            },
+                            "response": {
+                                "$ref": "Profile"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/monitoring",
+                                "https://www.googleapis.com/auth/monitoring.write"
+                            ]
+                        },
+                        "patch": {
+                            "flatPath": "v2/projects/{projectsId}/profiles/{profilesId}",
+                            "httpMethod": "PATCH",
+                            "id": "cloudprofiler.projects.profiles.patch",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/profiles/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "updateMask": {
+                                    "format": "google-fieldmask",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v2/{+name}",
+                            "request": {
+                                "$ref": "Profile"
+                            },
+                            "response": {
+                                "$ref": "Profile"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/monitoring",
+                                "https://www.googleapis.com/auth/monitoring.write"
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "rootUrl": "https://cloudprofiler.googleapis.com/",
+    "schemas": {
+        "CreateProfileRequest": {
+            "id": "CreateProfileRequest",
+            "properties": {
+                "deployment": {
+                    "$ref": "Deployment"
+                },
+                "profileType": {
+                    "enumDescriptions": [
+                        "Unspecified profile type.",
+                        "Thread CPU time sampling.",
+                        "Wallclock time sampling. More expensive as stops all threads.",
+                        "In-use heap profile. Represents a snapshot of the allocations that are\nlive at the time of the profiling.",
+                        "Single-shot collection of all thread stacks.",
+                        "Synchronization contention profile.",
+                        "Peak heap profile.",
+                        "Heap allocation profile. It represents the aggregation of all allocations\nmade over the duration of the profile. All allocations are included,\nincluding those that might have been freed by the end of the profiling\ninterval. The profile is in particular useful for garbage collecting\nlanguages to understand which parts of the code create most of the garbage\ncollection pressure to see if those can be optimized."
+                    ],
+                    "items": {
+                        "enum": [
+                            "PROFILE_TYPE_UNSPECIFIED",
+                            "CPU",
+                            "WALL",
+                            "HEAP",
+                            "THREADS",
+                            "CONTENTION",
+                            "PEAK_HEAP",
+                            "HEAP_ALLOC"
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Deployment": {
+            "id": "Deployment",
+            "properties": {
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object"
+                },
+                "projectId": {
+                    "type": "string"
+                },
+                "target": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Profile": {
+            "id": "Profile",
+            "properties": {
+                "deployment": {
+                    "$ref": "Deployment"
+                },
+                "duration": {
+                    "format": "google-duration",
+                    "type": "string"
+                },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "profileBytes": {
+                    "format": "byte",
+                    "type": "string"
+                },
+                "profileType": {
+                    "enum": [
+                        "PROFILE_TYPE_UNSPECIFIED",
+                        "CPU",
+                        "WALL",
+                        "HEAP",
+                        "THREADS",
+                        "CONTENTION",
+                        "PEAK_HEAP",
+                        "HEAP_ALLOC"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified profile type.",
+                        "Thread CPU time sampling.",
+                        "Wallclock time sampling. More expensive as stops all threads.",
+                        "In-use heap profile. Represents a snapshot of the allocations that are\nlive at the time of the profiling.",
+                        "Single-shot collection of all thread stacks.",
+                        "Synchronization contention profile.",
+                        "Peak heap profile.",
+                        "Heap allocation profile. It represents the aggregation of all allocations\nmade over the duration of the profile. All allocations are included,\nincluding those that might have been freed by the end of the profiling\ninterval. The profile is in particular useful for garbage collecting\nlanguages to understand which parts of the code create most of the garbage\ncollection pressure to see if those can be optimized."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "servicePath": "",
+    "title": "Stackdriver Profiler API",
+    "version": "v2",
+    "version_module": true
+}

@@ -1,0 +1,1363 @@
+{
+    "basePath": "/civicinfo/v2/",
+    "baseUrl": "https://www.googleapis.com/civicinfo/v2/",
+    "batchPath": "batch/civicinfo/v2",
+    "canonicalName": "Civic Info",
+    "discoveryVersion": "v1",
+    "documentationLink": "https://developers.google.com/civic-information",
+    "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/1WnlVFZbiNK3xcDMHn8dwHwgifk\"",
+    "icons": {
+        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+    },
+    "id": "civicinfo:v2",
+    "kind": "discovery#restDescription",
+    "name": "civicinfo",
+    "ownerDomain": "google.com",
+    "ownerName": "Google",
+    "parameters": {
+        "alt": {
+            "default": "json",
+            "enum": [
+                "json"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "location": "query",
+            "type": "boolean"
+        },
+        "quotaUser": {
+            "location": "query",
+            "type": "string"
+        },
+        "userIp": {
+            "location": "query",
+            "type": "string"
+        }
+    },
+    "protocol": "rest",
+    "resources": {
+        "divisions": {
+            "methods": {
+                "search": {
+                    "httpMethod": "GET",
+                    "id": "civicinfo.divisions.search",
+                    "parameters": {
+                        "query": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "divisions",
+                    "request": {
+                        "$ref": "DivisionSearchRequest"
+                    },
+                    "response": {
+                        "$ref": "DivisionSearchResponse"
+                    }
+                }
+            }
+        },
+        "elections": {
+            "methods": {
+                "electionQuery": {
+                    "httpMethod": "GET",
+                    "id": "civicinfo.elections.electionQuery",
+                    "path": "elections",
+                    "request": {
+                        "$ref": "ElectionsQueryRequest"
+                    },
+                    "response": {
+                        "$ref": "ElectionsQueryResponse"
+                    }
+                },
+                "voterInfoQuery": {
+                    "httpMethod": "GET",
+                    "id": "civicinfo.elections.voterInfoQuery",
+                    "parameterOrder": [
+                        "address"
+                    ],
+                    "parameters": {
+                        "address": {
+                            "location": "query",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "electionId": {
+                            "default": "0",
+                            "format": "int64",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "officialOnly": {
+                            "default": "false",
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "returnAllAvailableData": {
+                            "default": "false",
+                            "location": "query",
+                            "type": "boolean"
+                        }
+                    },
+                    "path": "voterinfo",
+                    "request": {
+                        "$ref": "VoterInfoRequest"
+                    },
+                    "response": {
+                        "$ref": "VoterInfoResponse"
+                    }
+                }
+            }
+        },
+        "representatives": {
+            "methods": {
+                "representativeInfoByAddress": {
+                    "httpMethod": "GET",
+                    "id": "civicinfo.representatives.representativeInfoByAddress",
+                    "parameters": {
+                        "address": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "includeOffices": {
+                            "default": "true",
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "levels": {
+                            "enum": [
+                                "administrativeArea1",
+                                "administrativeArea2",
+                                "country",
+                                "international",
+                                "locality",
+                                "regional",
+                                "special",
+                                "subLocality1",
+                                "subLocality2"
+                            ],
+                            "enumDescriptions": [
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                ""
+                            ],
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
+                        },
+                        "roles": {
+                            "enum": [
+                                "deputyHeadOfGovernment",
+                                "executiveCouncil",
+                                "governmentOfficer",
+                                "headOfGovernment",
+                                "headOfState",
+                                "highestCourtJudge",
+                                "judge",
+                                "legislatorLowerBody",
+                                "legislatorUpperBody",
+                                "schoolBoard",
+                                "specialPurposeOfficer"
+                            ],
+                            "enumDescriptions": [
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                ""
+                            ],
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "representatives",
+                    "request": {
+                        "$ref": "RepresentativeInfoRequest"
+                    },
+                    "response": {
+                        "$ref": "RepresentativeInfoResponse"
+                    }
+                },
+                "representativeInfoByDivision": {
+                    "httpMethod": "GET",
+                    "id": "civicinfo.representatives.representativeInfoByDivision",
+                    "parameterOrder": [
+                        "ocdId"
+                    ],
+                    "parameters": {
+                        "levels": {
+                            "enum": [
+                                "administrativeArea1",
+                                "administrativeArea2",
+                                "country",
+                                "international",
+                                "locality",
+                                "regional",
+                                "special",
+                                "subLocality1",
+                                "subLocality2"
+                            ],
+                            "enumDescriptions": [
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                ""
+                            ],
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
+                        },
+                        "ocdId": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "recursive": {
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "roles": {
+                            "enum": [
+                                "deputyHeadOfGovernment",
+                                "executiveCouncil",
+                                "governmentOfficer",
+                                "headOfGovernment",
+                                "headOfState",
+                                "highestCourtJudge",
+                                "judge",
+                                "legislatorLowerBody",
+                                "legislatorUpperBody",
+                                "schoolBoard",
+                                "specialPurposeOfficer"
+                            ],
+                            "enumDescriptions": [
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                ""
+                            ],
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "representatives/{ocdId}",
+                    "request": {
+                        "$ref": "DivisionRepresentativeInfoRequest"
+                    },
+                    "response": {
+                        "$ref": "RepresentativeInfoData"
+                    }
+                }
+            }
+        }
+    },
+    "rootUrl": "https://www.googleapis.com/",
+    "schemas": {
+        "AdministrationRegion": {
+            "id": "AdministrationRegion",
+            "properties": {
+                "electionAdministrationBody": {
+                    "$ref": "AdministrativeBody"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "local_jurisdiction": {
+                    "$ref": "AdministrationRegion"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "sources": {
+                    "items": {
+                        "$ref": "Source"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "AdministrativeBody": {
+            "id": "AdministrativeBody",
+            "properties": {
+                "absenteeVotingInfoUrl": {
+                    "type": "string"
+                },
+                "addressLines": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "ballotInfoUrl": {
+                    "type": "string"
+                },
+                "correspondenceAddress": {
+                    "$ref": "SimpleAddressType"
+                },
+                "electionInfoUrl": {
+                    "type": "string"
+                },
+                "electionOfficials": {
+                    "items": {
+                        "$ref": "ElectionOfficial"
+                    },
+                    "type": "array"
+                },
+                "electionRegistrationConfirmationUrl": {
+                    "type": "string"
+                },
+                "electionRegistrationUrl": {
+                    "type": "string"
+                },
+                "electionRulesUrl": {
+                    "type": "string"
+                },
+                "hoursOfOperation": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "physicalAddress": {
+                    "$ref": "SimpleAddressType"
+                },
+                "voter_services": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "votingLocationFinderUrl": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Candidate": {
+            "id": "Candidate",
+            "properties": {
+                "candidateUrl": {
+                    "type": "string"
+                },
+                "channels": {
+                    "items": {
+                        "$ref": "Channel"
+                    },
+                    "type": "array"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "orderOnBallot": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "party": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "photoUrl": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Channel": {
+            "id": "Channel",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Contest": {
+            "id": "Contest",
+            "properties": {
+                "ballotPlacement": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "ballotTitle": {
+                    "type": "string"
+                },
+                "candidates": {
+                    "items": {
+                        "$ref": "Candidate"
+                    },
+                    "type": "array"
+                },
+                "district": {
+                    "$ref": "ElectoralDistrict"
+                },
+                "electorateSpecifications": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "level": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "numberElected": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "numberVotingFor": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "office": {
+                    "type": "string"
+                },
+                "primaryParty": {
+                    "type": "string"
+                },
+                "referendumBallotResponses": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "referendumBrief": {
+                    "type": "string"
+                },
+                "referendumConStatement": {
+                    "type": "string"
+                },
+                "referendumEffectOfAbstain": {
+                    "type": "string"
+                },
+                "referendumPassageThreshold": {
+                    "type": "string"
+                },
+                "referendumProStatement": {
+                    "type": "string"
+                },
+                "referendumSubtitle": {
+                    "type": "string"
+                },
+                "referendumText": {
+                    "type": "string"
+                },
+                "referendumTitle": {
+                    "type": "string"
+                },
+                "referendumUrl": {
+                    "type": "string"
+                },
+                "roles": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "sources": {
+                    "items": {
+                        "$ref": "Source"
+                    },
+                    "type": "array"
+                },
+                "special": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ContextParams": {
+            "id": "ContextParams",
+            "properties": {
+                "clientProfile": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DivisionRepresentativeInfoRequest": {
+            "id": "DivisionRepresentativeInfoRequest",
+            "properties": {
+                "contextParams": {
+                    "$ref": "ContextParams"
+                }
+            },
+            "type": "object"
+        },
+        "DivisionSearchRequest": {
+            "id": "DivisionSearchRequest",
+            "properties": {
+                "contextParams": {
+                    "$ref": "ContextParams"
+                }
+            },
+            "type": "object"
+        },
+        "DivisionSearchResponse": {
+            "id": "DivisionSearchResponse",
+            "properties": {
+                "kind": {
+                    "default": "civicinfo#divisionSearchResponse",
+                    "type": "string"
+                },
+                "results": {
+                    "items": {
+                        "$ref": "DivisionSearchResult"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "DivisionSearchResult": {
+            "id": "DivisionSearchResult",
+            "properties": {
+                "aliases": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "ocdId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Election": {
+            "id": "Election",
+            "properties": {
+                "electionDay": {
+                    "type": "string"
+                },
+                "id": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "ocdDivisionId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ElectionOfficial": {
+            "id": "ElectionOfficial",
+            "properties": {
+                "emailAddress": {
+                    "type": "string"
+                },
+                "faxNumber": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "officePhoneNumber": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ElectionsQueryRequest": {
+            "id": "ElectionsQueryRequest",
+            "properties": {
+                "contextParams": {
+                    "$ref": "ContextParams"
+                }
+            },
+            "type": "object"
+        },
+        "ElectionsQueryResponse": {
+            "id": "ElectionsQueryResponse",
+            "properties": {
+                "elections": {
+                    "items": {
+                        "$ref": "Election"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "civicinfo#electionsQueryResponse",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ElectoralDistrict": {
+            "id": "ElectoralDistrict",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "kgForeignKey": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "scope": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "FieldMetadataProto": {
+            "id": "FieldMetadataProto",
+            "properties": {
+                "internal": {
+                    "$ref": "InternalFieldMetadataProto"
+                }
+            },
+            "type": "object"
+        },
+        "GeographicDivision": {
+            "id": "GeographicDivision",
+            "properties": {
+                "alsoKnownAs": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "officeIndices": {
+                    "items": {
+                        "format": "uint32",
+                        "type": "integer"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "InternalFieldMetadataProto": {
+            "id": "InternalFieldMetadataProto",
+            "properties": {
+                "isAuto": {
+                    "type": "boolean"
+                },
+                "sourceSummary": {
+                    "$ref": "InternalSourceSummaryProto"
+                }
+            },
+            "type": "object"
+        },
+        "InternalSourceSummaryProto": {
+            "id": "InternalSourceSummaryProto",
+            "properties": {
+                "dataset": {
+                    "type": "string"
+                },
+                "provider": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Office": {
+            "id": "Office",
+            "properties": {
+                "divisionId": {
+                    "type": "string"
+                },
+                "levels": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "officialIndices": {
+                    "items": {
+                        "format": "uint32",
+                        "type": "integer"
+                    },
+                    "type": "array"
+                },
+                "roles": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "sources": {
+                    "items": {
+                        "$ref": "Source"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Official": {
+            "id": "Official",
+            "properties": {
+                "address": {
+                    "items": {
+                        "$ref": "SimpleAddressType"
+                    },
+                    "type": "array"
+                },
+                "channels": {
+                    "items": {
+                        "$ref": "Channel"
+                    },
+                    "type": "array"
+                },
+                "emails": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "party": {
+                    "type": "string"
+                },
+                "phones": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "photoUrl": {
+                    "type": "string"
+                },
+                "urls": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "PointProto": {
+            "id": "PointProto",
+            "properties": {
+                "latE7": {
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "lngE7": {
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "metadata": {
+                    "$ref": "FieldMetadataProto"
+                }
+            },
+            "type": "object"
+        },
+        "PollingLocation": {
+            "id": "PollingLocation",
+            "properties": {
+                "address": {
+                    "$ref": "SimpleAddressType"
+                },
+                "endDate": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "latitude": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "longitude": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "notes": {
+                    "type": "string"
+                },
+                "pollingHours": {
+                    "type": "string"
+                },
+                "sources": {
+                    "items": {
+                        "$ref": "Source"
+                    },
+                    "type": "array"
+                },
+                "startDate": {
+                    "type": "string"
+                },
+                "voterServices": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PostalAddress": {
+            "id": "PostalAddress",
+            "properties": {
+                "addressLines": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "administrativeAreaName": {
+                    "type": "string"
+                },
+                "countryName": {
+                    "type": "string"
+                },
+                "countryNameCode": {
+                    "type": "string"
+                },
+                "dependentLocalityName": {
+                    "type": "string"
+                },
+                "dependentThoroughfareName": {
+                    "type": "string"
+                },
+                "firmName": {
+                    "type": "string"
+                },
+                "isDisputed": {
+                    "type": "boolean"
+                },
+                "languageCode": {
+                    "type": "string"
+                },
+                "localityName": {
+                    "type": "string"
+                },
+                "postBoxNumber": {
+                    "type": "string"
+                },
+                "postalCodeNumber": {
+                    "type": "string"
+                },
+                "postalCodeNumberExtension": {
+                    "type": "string"
+                },
+                "premiseName": {
+                    "type": "string"
+                },
+                "recipientName": {
+                    "type": "string"
+                },
+                "sortingCode": {
+                    "type": "string"
+                },
+                "subAdministrativeAreaName": {
+                    "type": "string"
+                },
+                "subPremiseName": {
+                    "type": "string"
+                },
+                "thoroughfareName": {
+                    "type": "string"
+                },
+                "thoroughfareNumber": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Provenance": {
+            "id": "Provenance",
+            "properties": {
+                "collidedSegmentSource": {
+                    "$ref": "StreetSegmentList"
+                },
+                "ctclContestUuid": {
+                    "type": "string"
+                },
+                "ctclOfficeUuid": {
+                    "type": "string"
+                },
+                "datasetId": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "precinctId": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "precinctSplitId": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "tsStreetSegmentId": {
+                    "type": "string"
+                },
+                "vip5PrecinctId": {
+                    "type": "string"
+                },
+                "vip5StreetSegmentId": {
+                    "type": "string"
+                },
+                "vipStreetSegmentId": {
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RepresentativeInfoData": {
+            "id": "RepresentativeInfoData",
+            "properties": {
+                "divisions": {
+                    "additionalProperties": {
+                        "$ref": "GeographicDivision"
+                    },
+                    "type": "object"
+                },
+                "offices": {
+                    "items": {
+                        "$ref": "Office"
+                    },
+                    "type": "array"
+                },
+                "officials": {
+                    "items": {
+                        "$ref": "Official"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "RepresentativeInfoRequest": {
+            "id": "RepresentativeInfoRequest",
+            "properties": {
+                "contextParams": {
+                    "$ref": "ContextParams"
+                }
+            },
+            "type": "object"
+        },
+        "RepresentativeInfoResponse": {
+            "id": "RepresentativeInfoResponse",
+            "properties": {
+                "divisions": {
+                    "additionalProperties": {
+                        "$ref": "GeographicDivision"
+                    },
+                    "type": "object"
+                },
+                "kind": {
+                    "default": "civicinfo#representativeInfoResponse",
+                    "type": "string"
+                },
+                "normalizedInput": {
+                    "$ref": "SimpleAddressType"
+                },
+                "offices": {
+                    "items": {
+                        "$ref": "Office"
+                    },
+                    "type": "array"
+                },
+                "officials": {
+                    "items": {
+                        "$ref": "Official"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SimpleAddressType": {
+            "id": "SimpleAddressType",
+            "properties": {
+                "city": {
+                    "type": "string"
+                },
+                "line1": {
+                    "type": "string"
+                },
+                "line2": {
+                    "type": "string"
+                },
+                "line3": {
+                    "type": "string"
+                },
+                "locationName": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "zip": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Source": {
+            "id": "Source",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "official": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "StreetSegment": {
+            "id": "StreetSegment",
+            "properties": {
+                "administrationRegionIds": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "beforeGeocodeId": {
+                    "type": "string"
+                },
+                "catalistUniquePrecinctCode": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "cityCouncilDistrict": {
+                    "type": "string"
+                },
+                "congressionalDistrict": {
+                    "type": "string"
+                },
+                "contestIds": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "countyCouncilDistrict": {
+                    "type": "string"
+                },
+                "countyFips": {
+                    "type": "string"
+                },
+                "datasetId": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "earlyVoteSiteByIds": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "endHouseNumber": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "geocodedPoint": {
+                    "$ref": "PointProto"
+                },
+                "geographicDivisionOcdIds": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "judicialDistrict": {
+                    "type": "string"
+                },
+                "mailOnly": {
+                    "type": "boolean"
+                },
+                "municipalDistrict": {
+                    "type": "string"
+                },
+                "ncoaAddress": {
+                    "type": "string"
+                },
+                "oddOrEvens": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "originalId": {
+                    "type": "string"
+                },
+                "pollinglocationByIds": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "precinctName": {
+                    "type": "string"
+                },
+                "precinctOcdId": {
+                    "type": "string"
+                },
+                "provenances": {
+                    "items": {
+                        "$ref": "Provenance"
+                    },
+                    "type": "array"
+                },
+                "published": {
+                    "type": "boolean"
+                },
+                "schoolDistrict": {
+                    "type": "string"
+                },
+                "startHouseNumber": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "startLatE7": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "startLngE7": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "stateHouseDistrict": {
+                    "type": "string"
+                },
+                "stateSenateDistrict": {
+                    "type": "string"
+                },
+                "streetName": {
+                    "type": "string"
+                },
+                "subAdministrativeAreaName": {
+                    "type": "string"
+                },
+                "surrogateId": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "targetsmartUniquePrecinctCode": {
+                    "type": "string"
+                },
+                "townshipDistrict": {
+                    "type": "string"
+                },
+                "unitNumber": {
+                    "type": "string"
+                },
+                "unitType": {
+                    "type": "string"
+                },
+                "vanPrecinctCode": {
+                    "type": "string"
+                },
+                "voterGeographicDivisionOcdIds": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "wardDistrict": {
+                    "type": "string"
+                },
+                "wildcard": {
+                    "type": "boolean"
+                },
+                "zip": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "StreetSegmentList": {
+            "id": "StreetSegmentList",
+            "properties": {
+                "segments": {
+                    "items": {
+                        "$ref": "StreetSegment"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "VoterInfoRequest": {
+            "id": "VoterInfoRequest",
+            "properties": {
+                "contextParams": {
+                    "$ref": "ContextParams"
+                },
+                "voterInfoSegmentResult": {
+                    "$ref": "VoterInfoSegmentResult"
+                }
+            },
+            "type": "object"
+        },
+        "VoterInfoResponse": {
+            "id": "VoterInfoResponse",
+            "properties": {
+                "contests": {
+                    "items": {
+                        "$ref": "Contest"
+                    },
+                    "type": "array"
+                },
+                "dropOffLocations": {
+                    "items": {
+                        "$ref": "PollingLocation"
+                    },
+                    "type": "array"
+                },
+                "earlyVoteSites": {
+                    "items": {
+                        "$ref": "PollingLocation"
+                    },
+                    "type": "array"
+                },
+                "election": {
+                    "$ref": "Election"
+                },
+                "kind": {
+                    "default": "civicinfo#voterInfoResponse",
+                    "type": "string"
+                },
+                "mailOnly": {
+                    "type": "boolean"
+                },
+                "normalizedInput": {
+                    "$ref": "SimpleAddressType"
+                },
+                "otherElections": {
+                    "items": {
+                        "$ref": "Election"
+                    },
+                    "type": "array"
+                },
+                "pollingLocations": {
+                    "items": {
+                        "$ref": "PollingLocation"
+                    },
+                    "type": "array"
+                },
+                "precinctId": {
+                    "type": "string"
+                },
+                "segments": {
+                    "items": {
+                        "$ref": "StreetSegment"
+                    },
+                    "type": "array"
+                },
+                "state": {
+                    "items": {
+                        "$ref": "AdministrationRegion"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "VoterInfoSegmentResult": {
+            "id": "VoterInfoSegmentResult",
+            "properties": {
+                "generatedMillis": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "postalAddress": {
+                    "$ref": "PostalAddress"
+                },
+                "request": {
+                    "$ref": "VoterInfoRequest"
+                },
+                "response": {
+                    "$ref": "VoterInfoResponse"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "servicePath": "civicinfo/v2/",
+    "title": "Google Civic Information API",
+    "version": "v2"
+}

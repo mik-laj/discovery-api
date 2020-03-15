@@ -1,0 +1,970 @@
+{
+    "basePath": "",
+    "baseUrl": "https://chat.googleapis.com/",
+    "batchPath": "batch",
+    "canonicalName": "Hangouts Chat",
+    "discoveryVersion": "v1",
+    "documentationLink": "https://developers.google.com/hangouts/chat",
+    "fullyEncodeReservedExpansion": true,
+    "icons": {
+        "x16": "http://www.google.com/images/icons/product/search-16.gif",
+        "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    },
+    "id": "chat:v1",
+    "kind": "discovery#restDescription",
+    "mtlsRootUrl": "https://chat.mtls.googleapis.com/",
+    "name": "chat",
+    "ownerDomain": "google.com",
+    "ownerName": "Google",
+    "parameters": {
+        "$.xgafv": {
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "alt": {
+            "default": "json",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json",
+                "Media download with context-dependent Content-Type",
+                "Responses with Content-Type of application/x-protobuf"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "location": "query",
+            "type": "boolean"
+        },
+        "quotaUser": {
+            "location": "query",
+            "type": "string"
+        },
+        "uploadType": {
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "location": "query",
+            "type": "string"
+        }
+    },
+    "protocol": "rest",
+    "resources": {
+        "spaces": {
+            "methods": {
+                "get": {
+                    "flatPath": "v1/spaces/{spacesId}",
+                    "httpMethod": "GET",
+                    "id": "chat.spaces.get",
+                    "parameterOrder": [
+                        "name"
+                    ],
+                    "parameters": {
+                        "name": {
+                            "location": "path",
+                            "pattern": "^spaces/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+name}",
+                    "response": {
+                        "$ref": "Space"
+                    }
+                },
+                "list": {
+                    "flatPath": "v1/spaces",
+                    "httpMethod": "GET",
+                    "id": "chat.spaces.list",
+                    "parameterOrder": [],
+                    "parameters": {
+                        "pageSize": {
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/spaces",
+                    "response": {
+                        "$ref": "ListSpacesResponse"
+                    }
+                }
+            },
+            "resources": {
+                "members": {
+                    "methods": {
+                        "get": {
+                            "flatPath": "v1/spaces/{spacesId}/members/{membersId}",
+                            "httpMethod": "GET",
+                            "id": "chat.spaces.members.get",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "location": "path",
+                                    "pattern": "^spaces/[^/]+/members/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "response": {
+                                "$ref": "Membership"
+                            }
+                        },
+                        "list": {
+                            "flatPath": "v1/spaces/{spacesId}/members",
+                            "httpMethod": "GET",
+                            "id": "chat.spaces.members.list",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "pageSize": {
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "pageToken": {
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "parent": {
+                                    "location": "path",
+                                    "pattern": "^spaces/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+parent}/members",
+                            "response": {
+                                "$ref": "ListMembershipsResponse"
+                            }
+                        }
+                    }
+                },
+                "messages": {
+                    "methods": {
+                        "create": {
+                            "flatPath": "v1/spaces/{spacesId}/messages",
+                            "httpMethod": "POST",
+                            "id": "chat.spaces.messages.create",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "parent": {
+                                    "location": "path",
+                                    "pattern": "^spaces/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "threadKey": {
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+parent}/messages",
+                            "request": {
+                                "$ref": "Message"
+                            },
+                            "response": {
+                                "$ref": "Message"
+                            }
+                        },
+                        "delete": {
+                            "flatPath": "v1/spaces/{spacesId}/messages/{messagesId}",
+                            "httpMethod": "DELETE",
+                            "id": "chat.spaces.messages.delete",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "location": "path",
+                                    "pattern": "^spaces/[^/]+/messages/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "response": {
+                                "$ref": "Empty"
+                            }
+                        },
+                        "get": {
+                            "flatPath": "v1/spaces/{spacesId}/messages/{messagesId}",
+                            "httpMethod": "GET",
+                            "id": "chat.spaces.messages.get",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "location": "path",
+                                    "pattern": "^spaces/[^/]+/messages/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "response": {
+                                "$ref": "Message"
+                            }
+                        },
+                        "update": {
+                            "flatPath": "v1/spaces/{spacesId}/messages/{messagesId}",
+                            "httpMethod": "PUT",
+                            "id": "chat.spaces.messages.update",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "location": "path",
+                                    "pattern": "^spaces/[^/]+/messages/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "updateMask": {
+                                    "format": "google-fieldmask",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "request": {
+                                "$ref": "Message"
+                            },
+                            "response": {
+                                "$ref": "Message"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "rootUrl": "https://chat.googleapis.com/",
+    "schemas": {
+        "ActionParameter": {
+            "id": "ActionParameter",
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ActionResponse": {
+            "id": "ActionResponse",
+            "properties": {
+                "type": {
+                    "enum": [
+                        "TYPE_UNSPECIFIED",
+                        "NEW_MESSAGE",
+                        "UPDATE_MESSAGE",
+                        "REQUEST_CONFIG"
+                    ],
+                    "enumDescriptions": [
+                        "Default type; will be handled as NEW_MESSAGE.",
+                        "Post as a new message in the topic.",
+                        "Update the bot's own message. (Only after CARD_CLICKED events.)",
+                        "Privately ask the user for additional auth or config."
+                    ],
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Annotation": {
+            "id": "Annotation",
+            "properties": {
+                "length": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "startIndex": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "type": {
+                    "enum": [
+                        "ANNOTATION_TYPE_UNSPECIFIED",
+                        "USER_MENTION"
+                    ],
+                    "enumDescriptions": [
+                        "Default value for the enum. DO NOT USE.",
+                        "A user is mentioned."
+                    ],
+                    "type": "string"
+                },
+                "userMention": {
+                    "$ref": "UserMentionMetadata"
+                }
+            },
+            "type": "object"
+        },
+        "Button": {
+            "id": "Button",
+            "properties": {
+                "imageButton": {
+                    "$ref": "ImageButton"
+                },
+                "textButton": {
+                    "$ref": "TextButton"
+                }
+            },
+            "type": "object"
+        },
+        "Card": {
+            "id": "Card",
+            "properties": {
+                "cardActions": {
+                    "items": {
+                        "$ref": "CardAction"
+                    },
+                    "type": "array"
+                },
+                "header": {
+                    "$ref": "CardHeader"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "sections": {
+                    "items": {
+                        "$ref": "Section"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "CardAction": {
+            "id": "CardAction",
+            "properties": {
+                "actionLabel": {
+                    "type": "string"
+                },
+                "onClick": {
+                    "$ref": "OnClick"
+                }
+            },
+            "type": "object"
+        },
+        "CardHeader": {
+            "id": "CardHeader",
+            "properties": {
+                "imageStyle": {
+                    "enum": [
+                        "IMAGE_STYLE_UNSPECIFIED",
+                        "IMAGE",
+                        "AVATAR"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "Square border.",
+                        "Circular border."
+                    ],
+                    "type": "string"
+                },
+                "imageUrl": {
+                    "type": "string"
+                },
+                "subtitle": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DeprecatedEvent": {
+            "id": "DeprecatedEvent",
+            "properties": {
+                "action": {
+                    "$ref": "FormAction"
+                },
+                "configCompleteRedirectUrl": {
+                    "type": "string"
+                },
+                "eventTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "message": {
+                    "$ref": "Message"
+                },
+                "space": {
+                    "$ref": "Space"
+                },
+                "threadKey": {
+                    "type": "string"
+                },
+                "token": {
+                    "type": "string"
+                },
+                "type": {
+                    "enum": [
+                        "UNSPECIFIED",
+                        "MESSAGE",
+                        "ADDED_TO_SPACE",
+                        "REMOVED_FROM_SPACE",
+                        "CARD_CLICKED"
+                    ],
+                    "enumDescriptions": [
+                        "Default value for the enum. DO NOT USE.",
+                        "A message was sent in a room or direct message.",
+                        "The bot was added to a room or DM.",
+                        "The bot was removed from a room or DM.",
+                        "The bot's interactive card was clicked."
+                    ],
+                    "type": "string"
+                },
+                "user": {
+                    "$ref": "User"
+                }
+            },
+            "type": "object"
+        },
+        "Empty": {
+            "id": "Empty",
+            "properties": {},
+            "type": "object"
+        },
+        "FormAction": {
+            "id": "FormAction",
+            "properties": {
+                "actionMethodName": {
+                    "type": "string"
+                },
+                "parameters": {
+                    "items": {
+                        "$ref": "ActionParameter"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Image": {
+            "id": "Image",
+            "properties": {
+                "aspectRatio": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "imageUrl": {
+                    "type": "string"
+                },
+                "onClick": {
+                    "$ref": "OnClick"
+                }
+            },
+            "type": "object"
+        },
+        "ImageButton": {
+            "id": "ImageButton",
+            "properties": {
+                "icon": {
+                    "enum": [
+                        "ICON_UNSPECIFIED",
+                        "AIRPLANE",
+                        "BOOKMARK",
+                        "BUS",
+                        "CAR",
+                        "CLOCK",
+                        "CONFIRMATION_NUMBER_ICON",
+                        "DOLLAR",
+                        "DESCRIPTION",
+                        "EMAIL",
+                        "EVENT_PERFORMER",
+                        "EVENT_SEAT",
+                        "FLIGHT_ARRIVAL",
+                        "FLIGHT_DEPARTURE",
+                        "HOTEL",
+                        "HOTEL_ROOM_TYPE",
+                        "INVITE",
+                        "MAP_PIN",
+                        "MEMBERSHIP",
+                        "MULTIPLE_PEOPLE",
+                        "OFFER",
+                        "PERSON",
+                        "PHONE",
+                        "RESTAURANT_ICON",
+                        "SHOPPING_CART",
+                        "STAR",
+                        "STORE",
+                        "TICKET",
+                        "TRAIN",
+                        "VIDEO_CAMERA",
+                        "VIDEO_PLAY"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "iconUrl": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "onClick": {
+                    "$ref": "OnClick"
+                }
+            },
+            "type": "object"
+        },
+        "KeyValue": {
+            "id": "KeyValue",
+            "properties": {
+                "bottomLabel": {
+                    "type": "string"
+                },
+                "button": {
+                    "$ref": "Button"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "contentMultiline": {
+                    "type": "boolean"
+                },
+                "icon": {
+                    "enum": [
+                        "ICON_UNSPECIFIED",
+                        "AIRPLANE",
+                        "BOOKMARK",
+                        "BUS",
+                        "CAR",
+                        "CLOCK",
+                        "CONFIRMATION_NUMBER_ICON",
+                        "DOLLAR",
+                        "DESCRIPTION",
+                        "EMAIL",
+                        "EVENT_PERFORMER",
+                        "EVENT_SEAT",
+                        "FLIGHT_ARRIVAL",
+                        "FLIGHT_DEPARTURE",
+                        "HOTEL",
+                        "HOTEL_ROOM_TYPE",
+                        "INVITE",
+                        "MAP_PIN",
+                        "MEMBERSHIP",
+                        "MULTIPLE_PEOPLE",
+                        "OFFER",
+                        "PERSON",
+                        "PHONE",
+                        "RESTAURANT_ICON",
+                        "SHOPPING_CART",
+                        "STAR",
+                        "STORE",
+                        "TICKET",
+                        "TRAIN",
+                        "VIDEO_CAMERA",
+                        "VIDEO_PLAY"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
+                "iconUrl": {
+                    "type": "string"
+                },
+                "onClick": {
+                    "$ref": "OnClick"
+                },
+                "topLabel": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListMembershipsResponse": {
+            "id": "ListMembershipsResponse",
+            "properties": {
+                "memberships": {
+                    "items": {
+                        "$ref": "Membership"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListSpacesResponse": {
+            "id": "ListSpacesResponse",
+            "properties": {
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "spaces": {
+                    "items": {
+                        "$ref": "Space"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Membership": {
+            "id": "Membership",
+            "properties": {
+                "createTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "member": {
+                    "$ref": "User"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "state": {
+                    "enum": [
+                        "MEMBERSHIP_STATE_UNSPECIFIED",
+                        "JOINED",
+                        "INVITED",
+                        "NOT_A_MEMBER"
+                    ],
+                    "enumDescriptions": [
+                        "Default, do not use.",
+                        "The user has joined the space.",
+                        "The user has been invited, is able to join the space, but currently has\nnot joined.",
+                        "The user is not a member of the space, has not been invited and is not\nable to join the space."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Message": {
+            "id": "Message",
+            "properties": {
+                "actionResponse": {
+                    "$ref": "ActionResponse"
+                },
+                "annotations": {
+                    "items": {
+                        "$ref": "Annotation"
+                    },
+                    "type": "array"
+                },
+                "argumentText": {
+                    "type": "string"
+                },
+                "cards": {
+                    "items": {
+                        "$ref": "Card"
+                    },
+                    "type": "array"
+                },
+                "createTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "fallbackText": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "previewText": {
+                    "type": "string"
+                },
+                "sender": {
+                    "$ref": "User"
+                },
+                "space": {
+                    "$ref": "Space"
+                },
+                "text": {
+                    "type": "string"
+                },
+                "thread": {
+                    "$ref": "Thread"
+                }
+            },
+            "type": "object"
+        },
+        "OnClick": {
+            "id": "OnClick",
+            "properties": {
+                "action": {
+                    "$ref": "FormAction"
+                },
+                "openLink": {
+                    "$ref": "OpenLink"
+                }
+            },
+            "type": "object"
+        },
+        "OpenLink": {
+            "id": "OpenLink",
+            "properties": {
+                "url": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Section": {
+            "id": "Section",
+            "properties": {
+                "header": {
+                    "type": "string"
+                },
+                "widgets": {
+                    "items": {
+                        "$ref": "WidgetMarkup"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Space": {
+            "id": "Space",
+            "properties": {
+                "displayName": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "type": {
+                    "enum": [
+                        "TYPE_UNSPECIFIED",
+                        "ROOM",
+                        "DM"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "A chat space where memberships are free to change. Messages in rooms are\nthreaded.",
+                        "1:1 Direct Message between a human and a bot, where all messages are\nflat."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TextButton": {
+            "id": "TextButton",
+            "properties": {
+                "onClick": {
+                    "$ref": "OnClick"
+                },
+                "text": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TextParagraph": {
+            "id": "TextParagraph",
+            "properties": {
+                "text": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Thread": {
+            "id": "Thread",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "User": {
+            "id": "User",
+            "properties": {
+                "displayName": {
+                    "type": "string"
+                },
+                "domainId": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "type": {
+                    "enum": [
+                        "TYPE_UNSPECIFIED",
+                        "HUMAN",
+                        "BOT"
+                    ],
+                    "enumDescriptions": [
+                        "Default value for the enum. DO NOT USE.",
+                        "Human user.",
+                        "Bot user."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UserMentionMetadata": {
+            "id": "UserMentionMetadata",
+            "properties": {
+                "type": {
+                    "enum": [
+                        "TYPE_UNSPECIFIED",
+                        "ADD",
+                        "MENTION"
+                    ],
+                    "enumDescriptions": [
+                        "Default value for the enum. DO NOT USE.",
+                        "Add user to space.",
+                        "Mention user in space."
+                    ],
+                    "type": "string"
+                },
+                "user": {
+                    "$ref": "User"
+                }
+            },
+            "type": "object"
+        },
+        "WidgetMarkup": {
+            "id": "WidgetMarkup",
+            "properties": {
+                "buttons": {
+                    "items": {
+                        "$ref": "Button"
+                    },
+                    "type": "array"
+                },
+                "image": {
+                    "$ref": "Image"
+                },
+                "keyValue": {
+                    "$ref": "KeyValue"
+                },
+                "textParagraph": {
+                    "$ref": "TextParagraph"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "servicePath": "",
+    "title": "Hangouts Chat API",
+    "version": "v1",
+    "version_module": true
+}

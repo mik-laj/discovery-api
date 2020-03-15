@@ -1,0 +1,1290 @@
+{
+    "auth": {
+        "oauth2": {
+            "scopes": {
+                "https://www.googleapis.com/auth/plus.login": {},
+                "https://www.googleapis.com/auth/plus.me": {},
+                "https://www.googleapis.com/auth/userinfo.email": {},
+                "https://www.googleapis.com/auth/userinfo.profile": {}
+            }
+        }
+    },
+    "basePath": "/plus/v1/",
+    "baseUrl": "https://www.googleapis.com/plus/v1/",
+    "batchPath": "batch/plus/v1",
+    "discoveryVersion": "v1",
+    "documentationLink": "https://developers.google.com/+/api/",
+    "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/w2FrgYFAkH9NArdWrHE1nhKOCxU\"",
+    "icons": {
+        "x16": "http://www.google.com/images/icons/product/gplus-16.png",
+        "x32": "http://www.google.com/images/icons/product/gplus-32.png"
+    },
+    "id": "plus:v1",
+    "kind": "discovery#restDescription",
+    "name": "plus",
+    "ownerDomain": "google.com",
+    "ownerName": "Google",
+    "parameters": {
+        "alt": {
+            "default": "json",
+            "enum": [
+                "json"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "location": "query",
+            "type": "boolean"
+        },
+        "quotaUser": {
+            "location": "query",
+            "type": "string"
+        },
+        "userIp": {
+            "location": "query",
+            "type": "string"
+        }
+    },
+    "protocol": "rest",
+    "resources": {
+        "activities": {
+            "methods": {
+                "get": {
+                    "httpMethod": "GET",
+                    "id": "plus.activities.get",
+                    "parameterOrder": [
+                        "activityId"
+                    ],
+                    "parameters": {
+                        "activityId": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "activities/{activityId}",
+                    "response": {
+                        "$ref": "Activity"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/plus.login",
+                        "https://www.googleapis.com/auth/plus.me"
+                    ]
+                },
+                "list": {
+                    "httpMethod": "GET",
+                    "id": "plus.activities.list",
+                    "parameterOrder": [
+                        "userId",
+                        "collection"
+                    ],
+                    "parameters": {
+                        "collection": {
+                            "enum": [
+                                "public"
+                            ],
+                            "enumDescriptions": [
+                                "All public activities created by the specified user."
+                            ],
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "20",
+                            "format": "uint32",
+                            "location": "query",
+                            "maximum": "100",
+                            "minimum": "1",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "userId": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "people/{userId}/activities/{collection}",
+                    "response": {
+                        "$ref": "ActivityFeed"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/plus.login",
+                        "https://www.googleapis.com/auth/plus.me"
+                    ]
+                },
+                "search": {
+                    "httpMethod": "GET",
+                    "id": "plus.activities.search",
+                    "parameterOrder": [
+                        "query"
+                    ],
+                    "parameters": {
+                        "language": {
+                            "default": "en-US",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "10",
+                            "format": "uint32",
+                            "location": "query",
+                            "maximum": "20",
+                            "minimum": "1",
+                            "type": "integer"
+                        },
+                        "orderBy": {
+                            "default": "recent",
+                            "enum": [
+                                "best",
+                                "recent"
+                            ],
+                            "enumDescriptions": [
+                                "Sort activities by relevance to the user, most relevant first.",
+                                "Sort activities by published date, most recent first."
+                            ],
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "query": {
+                            "location": "query",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "activities",
+                    "response": {
+                        "$ref": "ActivityFeed"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/plus.login",
+                        "https://www.googleapis.com/auth/plus.me"
+                    ]
+                }
+            }
+        },
+        "comments": {
+            "methods": {
+                "get": {
+                    "httpMethod": "GET",
+                    "id": "plus.comments.get",
+                    "parameterOrder": [
+                        "commentId"
+                    ],
+                    "parameters": {
+                        "commentId": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "comments/{commentId}",
+                    "response": {
+                        "$ref": "Comment"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/plus.login",
+                        "https://www.googleapis.com/auth/plus.me"
+                    ]
+                },
+                "list": {
+                    "httpMethod": "GET",
+                    "id": "plus.comments.list",
+                    "parameterOrder": [
+                        "activityId"
+                    ],
+                    "parameters": {
+                        "activityId": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "20",
+                            "format": "uint32",
+                            "location": "query",
+                            "maximum": "500",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "sortOrder": {
+                            "default": "ascending",
+                            "enum": [
+                                "ascending",
+                                "descending"
+                            ],
+                            "enumDescriptions": [
+                                "Sort oldest comments first.",
+                                "Sort newest comments first."
+                            ],
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "activities/{activityId}/comments",
+                    "response": {
+                        "$ref": "CommentFeed"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/plus.login",
+                        "https://www.googleapis.com/auth/plus.me"
+                    ]
+                }
+            }
+        },
+        "people": {
+            "methods": {
+                "get": {
+                    "httpMethod": "GET",
+                    "id": "plus.people.get",
+                    "parameterOrder": [
+                        "userId"
+                    ],
+                    "parameters": {
+                        "userId": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "people/{userId}",
+                    "response": {
+                        "$ref": "Person"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/plus.login",
+                        "https://www.googleapis.com/auth/plus.me",
+                        "https://www.googleapis.com/auth/userinfo.email",
+                        "https://www.googleapis.com/auth/userinfo.profile"
+                    ]
+                },
+                "list": {
+                    "httpMethod": "GET",
+                    "id": "plus.people.list",
+                    "parameterOrder": [
+                        "userId",
+                        "collection"
+                    ],
+                    "parameters": {
+                        "collection": {
+                            "enum": [
+                                "connected",
+                                "visible"
+                            ],
+                            "enumDescriptions": [
+                                "The list of visible people in the authenticated user's circles who also use the requesting app. This list is limited to users who made their app activities visible to the authenticated user.",
+                                "The list of people who this user has added to one or more circles, limited to the circles visible to the requesting application."
+                            ],
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "100",
+                            "format": "uint32",
+                            "location": "query",
+                            "maximum": "100",
+                            "minimum": "1",
+                            "type": "integer"
+                        },
+                        "orderBy": {
+                            "enum": [
+                                "alphabetical",
+                                "best"
+                            ],
+                            "enumDescriptions": [
+                                "Order the people by their display name.",
+                                "Order people based on the relevence to the viewer."
+                            ],
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "userId": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "people/{userId}/people/{collection}",
+                    "response": {
+                        "$ref": "PeopleFeed"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/plus.login",
+                        "https://www.googleapis.com/auth/plus.me"
+                    ]
+                },
+                "listByActivity": {
+                    "httpMethod": "GET",
+                    "id": "plus.people.listByActivity",
+                    "parameterOrder": [
+                        "activityId",
+                        "collection"
+                    ],
+                    "parameters": {
+                        "activityId": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "collection": {
+                            "enum": [
+                                "plusoners",
+                                "resharers"
+                            ],
+                            "enumDescriptions": [
+                                "List all people who have +1'd this activity.",
+                                "List all people who have reshared this activity."
+                            ],
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "20",
+                            "format": "uint32",
+                            "location": "query",
+                            "maximum": "100",
+                            "minimum": "1",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "activities/{activityId}/people/{collection}",
+                    "response": {
+                        "$ref": "PeopleFeed"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/plus.login",
+                        "https://www.googleapis.com/auth/plus.me"
+                    ]
+                },
+                "search": {
+                    "httpMethod": "GET",
+                    "id": "plus.people.search",
+                    "parameterOrder": [
+                        "query"
+                    ],
+                    "parameters": {
+                        "language": {
+                            "default": "en-US",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "25",
+                            "format": "uint32",
+                            "location": "query",
+                            "maximum": "50",
+                            "minimum": "1",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "query": {
+                            "location": "query",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "people",
+                    "response": {
+                        "$ref": "PeopleFeed"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/plus.login",
+                        "https://www.googleapis.com/auth/plus.me"
+                    ]
+                }
+            }
+        }
+    },
+    "rootUrl": "https://www.googleapis.com/",
+    "schemas": {
+        "Acl": {
+            "id": "Acl",
+            "properties": {
+                "items": {
+                    "items": {
+                        "$ref": "PlusAclentryResource"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "plus#acl",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Activity": {
+            "id": "Activity",
+            "properties": {
+                "access": {
+                    "$ref": "Acl"
+                },
+                "actor": {
+                    "properties": {
+                        "clientSpecificActorInfo": {
+                            "properties": {
+                                "youtubeActorInfo": {
+                                    "properties": {
+                                        "channelId": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "displayName": {
+                            "type": "string"
+                        },
+                        "id": {
+                            "type": "string"
+                        },
+                        "image": {
+                            "properties": {
+                                "url": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "name": {
+                            "properties": {
+                                "familyName": {
+                                    "type": "string"
+                                },
+                                "givenName": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "url": {
+                            "type": "string"
+                        },
+                        "verification": {
+                            "properties": {
+                                "adHocVerified": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                },
+                "address": {
+                    "type": "string"
+                },
+                "annotation": {
+                    "type": "string"
+                },
+                "crosspostSource": {
+                    "type": "string"
+                },
+                "etag": {
+                    "type": "string"
+                },
+                "geocode": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "plus#activity",
+                    "type": "string"
+                },
+                "location": {
+                    "$ref": "Place"
+                },
+                "object": {
+                    "properties": {
+                        "actor": {
+                            "properties": {
+                                "clientSpecificActorInfo": {
+                                    "properties": {
+                                        "youtubeActorInfo": {
+                                            "properties": {
+                                                "channelId": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "displayName": {
+                                    "type": "string"
+                                },
+                                "id": {
+                                    "type": "string"
+                                },
+                                "image": {
+                                    "properties": {
+                                        "url": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "url": {
+                                    "type": "string"
+                                },
+                                "verification": {
+                                    "properties": {
+                                        "adHocVerified": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "attachments": {
+                            "items": {
+                                "properties": {
+                                    "content": {
+                                        "type": "string"
+                                    },
+                                    "displayName": {
+                                        "type": "string"
+                                    },
+                                    "embed": {
+                                        "properties": {
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "url": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "fullImage": {
+                                        "properties": {
+                                            "height": {
+                                                "format": "uint32",
+                                                "type": "integer"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "url": {
+                                                "type": "string"
+                                            },
+                                            "width": {
+                                                "format": "uint32",
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "image": {
+                                        "properties": {
+                                            "height": {
+                                                "format": "uint32",
+                                                "type": "integer"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "url": {
+                                                "type": "string"
+                                            },
+                                            "width": {
+                                                "format": "uint32",
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "objectType": {
+                                        "type": "string"
+                                    },
+                                    "thumbnails": {
+                                        "items": {
+                                            "properties": {
+                                                "image": {
+                                                    "properties": {
+                                                        "height": {
+                                                            "format": "uint32",
+                                                            "type": "integer"
+                                                        },
+                                                        "type": {
+                                                            "type": "string"
+                                                        },
+                                                        "url": {
+                                                            "type": "string"
+                                                        },
+                                                        "width": {
+                                                            "format": "uint32",
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "url": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "type": "array"
+                                    },
+                                    "url": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "content": {
+                            "type": "string"
+                        },
+                        "id": {
+                            "type": "string"
+                        },
+                        "objectType": {
+                            "type": "string"
+                        },
+                        "originalContent": {
+                            "type": "string"
+                        },
+                        "plusoners": {
+                            "properties": {
+                                "selfLink": {
+                                    "type": "string"
+                                },
+                                "totalItems": {
+                                    "format": "uint32",
+                                    "type": "integer"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "replies": {
+                            "properties": {
+                                "selfLink": {
+                                    "type": "string"
+                                },
+                                "totalItems": {
+                                    "format": "uint32",
+                                    "type": "integer"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "resharers": {
+                            "properties": {
+                                "selfLink": {
+                                    "type": "string"
+                                },
+                                "totalItems": {
+                                    "format": "uint32",
+                                    "type": "integer"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "url": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "placeId": {
+                    "type": "string"
+                },
+                "placeName": {
+                    "type": "string"
+                },
+                "provider": {
+                    "properties": {
+                        "title": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "published": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "radius": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "updated": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "verb": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ActivityFeed": {
+            "id": "ActivityFeed",
+            "properties": {
+                "etag": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "items": {
+                    "items": {
+                        "$ref": "Activity"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "plus#activityFeed",
+                    "type": "string"
+                },
+                "nextLink": {
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "selfLink": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "updated": {
+                    "format": "date-time",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Comment": {
+            "id": "Comment",
+            "properties": {
+                "actor": {
+                    "properties": {
+                        "clientSpecificActorInfo": {
+                            "properties": {
+                                "youtubeActorInfo": {
+                                    "properties": {
+                                        "channelId": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "displayName": {
+                            "type": "string"
+                        },
+                        "id": {
+                            "type": "string"
+                        },
+                        "image": {
+                            "properties": {
+                                "url": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "url": {
+                            "type": "string"
+                        },
+                        "verification": {
+                            "properties": {
+                                "adHocVerified": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                },
+                "etag": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "inReplyTo": {
+                    "items": {
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "url": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "plus#comment",
+                    "type": "string"
+                },
+                "object": {
+                    "properties": {
+                        "content": {
+                            "type": "string"
+                        },
+                        "objectType": {
+                            "default": "comment",
+                            "type": "string"
+                        },
+                        "originalContent": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "plusoners": {
+                    "properties": {
+                        "totalItems": {
+                            "format": "uint32",
+                            "type": "integer"
+                        }
+                    },
+                    "type": "object"
+                },
+                "published": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "type": "string"
+                },
+                "updated": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "verb": {
+                    "default": "post",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CommentFeed": {
+            "id": "CommentFeed",
+            "properties": {
+                "etag": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "items": {
+                    "items": {
+                        "$ref": "Comment"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "plus#commentFeed",
+                    "type": "string"
+                },
+                "nextLink": {
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "updated": {
+                    "format": "date-time",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PeopleFeed": {
+            "id": "PeopleFeed",
+            "properties": {
+                "etag": {
+                    "type": "string"
+                },
+                "items": {
+                    "items": {
+                        "$ref": "Person"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "plus#peopleFeed",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "selfLink": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "totalItems": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "Person": {
+            "id": "Person",
+            "properties": {
+                "aboutMe": {
+                    "type": "string"
+                },
+                "ageRange": {
+                    "properties": {
+                        "max": {
+                            "format": "int32",
+                            "type": "integer"
+                        },
+                        "min": {
+                            "format": "int32",
+                            "type": "integer"
+                        }
+                    },
+                    "type": "object"
+                },
+                "birthday": {
+                    "type": "string"
+                },
+                "braggingRights": {
+                    "type": "string"
+                },
+                "circledByCount": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "cover": {
+                    "properties": {
+                        "coverInfo": {
+                            "properties": {
+                                "leftImageOffset": {
+                                    "format": "int32",
+                                    "type": "integer"
+                                },
+                                "topImageOffset": {
+                                    "format": "int32",
+                                    "type": "integer"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "coverPhoto": {
+                            "properties": {
+                                "height": {
+                                    "format": "int32",
+                                    "type": "integer"
+                                },
+                                "url": {
+                                    "type": "string"
+                                },
+                                "width": {
+                                    "format": "int32",
+                                    "type": "integer"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "layout": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "currentLocation": {
+                    "type": "string"
+                },
+                "displayName": {
+                    "type": "string"
+                },
+                "domain": {
+                    "type": "string"
+                },
+                "emails": {
+                    "items": {
+                        "properties": {
+                            "type": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "etag": {
+                    "type": "string"
+                },
+                "gender": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "image": {
+                    "properties": {
+                        "isDefault": {
+                            "type": "boolean"
+                        },
+                        "url": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "isPlusUser": {
+                    "type": "boolean"
+                },
+                "kind": {
+                    "default": "plus#person",
+                    "type": "string"
+                },
+                "language": {
+                    "type": "string"
+                },
+                "name": {
+                    "properties": {
+                        "familyName": {
+                            "type": "string"
+                        },
+                        "formatted": {
+                            "type": "string"
+                        },
+                        "givenName": {
+                            "type": "string"
+                        },
+                        "honorificPrefix": {
+                            "type": "string"
+                        },
+                        "honorificSuffix": {
+                            "type": "string"
+                        },
+                        "middleName": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "nickname": {
+                    "type": "string"
+                },
+                "objectType": {
+                    "type": "string"
+                },
+                "occupation": {
+                    "type": "string"
+                },
+                "organizations": {
+                    "items": {
+                        "properties": {
+                            "department": {
+                                "type": "string"
+                            },
+                            "endDate": {
+                                "type": "string"
+                            },
+                            "location": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "primary": {
+                                "type": "boolean"
+                            },
+                            "startDate": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "placesLived": {
+                    "items": {
+                        "properties": {
+                            "primary": {
+                                "type": "boolean"
+                            },
+                            "value": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "plusOneCount": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "relationshipStatus": {
+                    "type": "string"
+                },
+                "skills": {
+                    "type": "string"
+                },
+                "tagline": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "urls": {
+                    "items": {
+                        "properties": {
+                            "label": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "verified": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "Place": {
+            "id": "Place",
+            "properties": {
+                "address": {
+                    "properties": {
+                        "formatted": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "displayName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "plus#place",
+                    "type": "string"
+                },
+                "position": {
+                    "properties": {
+                        "latitude": {
+                            "format": "double",
+                            "type": "number"
+                        },
+                        "longitude": {
+                            "format": "double",
+                            "type": "number"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "PlusAclentryResource": {
+            "id": "PlusAclentryResource",
+            "properties": {
+                "displayName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "servicePath": "plus/v1/",
+    "title": "Google+ API",
+    "version": "v1"
+}
