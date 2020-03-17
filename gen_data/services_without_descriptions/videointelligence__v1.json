@@ -343,7 +343,8 @@
                         "Explicit content detection.",
                         "Speech transcription.",
                         "OCR text detection and tracking.",
-                        "Object detection and tracking."
+                        "Object detection and tracking.",
+                        "Logo detection, tracking, and recognition."
                     ],
                     "items": {
                         "enum": [
@@ -353,7 +354,8 @@
                             "EXPLICIT_CONTENT_DETECTION",
                             "SPEECH_TRANSCRIPTION",
                             "TEXT_DETECTION",
-                            "OBJECT_TRACKING"
+                            "OBJECT_TRACKING",
+                            "LOGO_RECOGNITION"
                         ],
                         "type": "string"
                     },
@@ -386,6 +388,38 @@
                         "$ref": "GoogleCloudVideointelligenceV1_VideoAnnotationResults"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudVideointelligenceV1_DetectedAttribute": {
+            "id": "GoogleCloudVideointelligenceV1_DetectedAttribute",
+            "properties": {
+                "confidence": {
+                    "format": "float",
+                    "type": "number"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudVideointelligenceV1_DetectedLandmark": {
+            "id": "GoogleCloudVideointelligenceV1_DetectedLandmark",
+            "properties": {
+                "confidence": {
+                    "format": "float",
+                    "type": "number"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "point": {
+                    "$ref": "GoogleCloudVideointelligenceV1_NormalizedVertex"
                 }
             },
             "type": "object"
@@ -537,6 +571,27 @@
                 },
                 "segment": {
                     "$ref": "GoogleCloudVideointelligenceV1_VideoSegment"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudVideointelligenceV1_LogoRecognitionAnnotation": {
+            "id": "GoogleCloudVideointelligenceV1_LogoRecognitionAnnotation",
+            "properties": {
+                "entity": {
+                    "$ref": "GoogleCloudVideointelligenceV1_Entity"
+                },
+                "segments": {
+                    "items": {
+                        "$ref": "GoogleCloudVideointelligenceV1_VideoSegment"
+                    },
+                    "type": "array"
+                },
+                "tracks": {
+                    "items": {
+                        "$ref": "GoogleCloudVideointelligenceV1_Track"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -796,6 +851,56 @@
             },
             "type": "object"
         },
+        "GoogleCloudVideointelligenceV1_TimestampedObject": {
+            "id": "GoogleCloudVideointelligenceV1_TimestampedObject",
+            "properties": {
+                "attributes": {
+                    "items": {
+                        "$ref": "GoogleCloudVideointelligenceV1_DetectedAttribute"
+                    },
+                    "type": "array"
+                },
+                "landmarks": {
+                    "items": {
+                        "$ref": "GoogleCloudVideointelligenceV1_DetectedLandmark"
+                    },
+                    "type": "array"
+                },
+                "normalizedBoundingBox": {
+                    "$ref": "GoogleCloudVideointelligenceV1_NormalizedBoundingBox"
+                },
+                "timeOffset": {
+                    "format": "google-duration",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudVideointelligenceV1_Track": {
+            "id": "GoogleCloudVideointelligenceV1_Track",
+            "properties": {
+                "attributes": {
+                    "items": {
+                        "$ref": "GoogleCloudVideointelligenceV1_DetectedAttribute"
+                    },
+                    "type": "array"
+                },
+                "confidence": {
+                    "format": "float",
+                    "type": "number"
+                },
+                "segment": {
+                    "$ref": "GoogleCloudVideointelligenceV1_VideoSegment"
+                },
+                "timestampedObjects": {
+                    "items": {
+                        "$ref": "GoogleCloudVideointelligenceV1_TimestampedObject"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudVideointelligenceV1_VideoAnnotationProgress": {
             "id": "GoogleCloudVideointelligenceV1_VideoAnnotationProgress",
             "properties": {
@@ -807,7 +912,8 @@
                         "EXPLICIT_CONTENT_DETECTION",
                         "SPEECH_TRANSCRIPTION",
                         "TEXT_DETECTION",
-                        "OBJECT_TRACKING"
+                        "OBJECT_TRACKING",
+                        "LOGO_RECOGNITION"
                     ],
                     "enumDescriptions": [
                         "Unspecified.",
@@ -816,7 +922,8 @@
                         "Explicit content detection.",
                         "Speech transcription.",
                         "OCR text detection and tracking.",
-                        "Object detection and tracking."
+                        "Object detection and tracking.",
+                        "Logo detection, tracking, and recognition."
                     ],
                     "type": "string"
                 },
@@ -858,6 +965,12 @@
                 },
                 "inputUri": {
                     "type": "string"
+                },
+                "logoRecognitionAnnotations": {
+                    "items": {
+                        "$ref": "GoogleCloudVideointelligenceV1_LogoRecognitionAnnotation"
+                    },
+                    "type": "array"
                 },
                 "objectAnnotations": {
                     "items": {
@@ -1006,6 +1119,38 @@
             },
             "type": "object"
         },
+        "GoogleCloudVideointelligenceV1beta2_DetectedAttribute": {
+            "id": "GoogleCloudVideointelligenceV1beta2_DetectedAttribute",
+            "properties": {
+                "confidence": {
+                    "format": "float",
+                    "type": "number"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudVideointelligenceV1beta2_DetectedLandmark": {
+            "id": "GoogleCloudVideointelligenceV1beta2_DetectedLandmark",
+            "properties": {
+                "confidence": {
+                    "format": "float",
+                    "type": "number"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "point": {
+                    "$ref": "GoogleCloudVideointelligenceV1beta2_NormalizedVertex"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudVideointelligenceV1beta2_Entity": {
             "id": "GoogleCloudVideointelligenceV1beta2_Entity",
             "properties": {
@@ -1109,6 +1254,27 @@
                 },
                 "segment": {
                     "$ref": "GoogleCloudVideointelligenceV1beta2_VideoSegment"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudVideointelligenceV1beta2_LogoRecognitionAnnotation": {
+            "id": "GoogleCloudVideointelligenceV1beta2_LogoRecognitionAnnotation",
+            "properties": {
+                "entity": {
+                    "$ref": "GoogleCloudVideointelligenceV1beta2_Entity"
+                },
+                "segments": {
+                    "items": {
+                        "$ref": "GoogleCloudVideointelligenceV1beta2_VideoSegment"
+                    },
+                    "type": "array"
+                },
+                "tracks": {
+                    "items": {
+                        "$ref": "GoogleCloudVideointelligenceV1beta2_Track"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -1281,6 +1447,56 @@
             },
             "type": "object"
         },
+        "GoogleCloudVideointelligenceV1beta2_TimestampedObject": {
+            "id": "GoogleCloudVideointelligenceV1beta2_TimestampedObject",
+            "properties": {
+                "attributes": {
+                    "items": {
+                        "$ref": "GoogleCloudVideointelligenceV1beta2_DetectedAttribute"
+                    },
+                    "type": "array"
+                },
+                "landmarks": {
+                    "items": {
+                        "$ref": "GoogleCloudVideointelligenceV1beta2_DetectedLandmark"
+                    },
+                    "type": "array"
+                },
+                "normalizedBoundingBox": {
+                    "$ref": "GoogleCloudVideointelligenceV1beta2_NormalizedBoundingBox"
+                },
+                "timeOffset": {
+                    "format": "google-duration",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudVideointelligenceV1beta2_Track": {
+            "id": "GoogleCloudVideointelligenceV1beta2_Track",
+            "properties": {
+                "attributes": {
+                    "items": {
+                        "$ref": "GoogleCloudVideointelligenceV1beta2_DetectedAttribute"
+                    },
+                    "type": "array"
+                },
+                "confidence": {
+                    "format": "float",
+                    "type": "number"
+                },
+                "segment": {
+                    "$ref": "GoogleCloudVideointelligenceV1beta2_VideoSegment"
+                },
+                "timestampedObjects": {
+                    "items": {
+                        "$ref": "GoogleCloudVideointelligenceV1beta2_TimestampedObject"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudVideointelligenceV1beta2_VideoAnnotationProgress": {
             "id": "GoogleCloudVideointelligenceV1beta2_VideoAnnotationProgress",
             "properties": {
@@ -1292,7 +1508,8 @@
                         "EXPLICIT_CONTENT_DETECTION",
                         "SPEECH_TRANSCRIPTION",
                         "TEXT_DETECTION",
-                        "OBJECT_TRACKING"
+                        "OBJECT_TRACKING",
+                        "LOGO_RECOGNITION"
                     ],
                     "enumDescriptions": [
                         "Unspecified.",
@@ -1301,7 +1518,8 @@
                         "Explicit content detection.",
                         "Speech transcription.",
                         "OCR text detection and tracking.",
-                        "Object detection and tracking."
+                        "Object detection and tracking.",
+                        "Logo detection, tracking, and recognition."
                     ],
                     "type": "string"
                 },
@@ -1343,6 +1561,12 @@
                 },
                 "inputUri": {
                     "type": "string"
+                },
+                "logoRecognitionAnnotations": {
+                    "items": {
+                        "$ref": "GoogleCloudVideointelligenceV1beta2_LogoRecognitionAnnotation"
+                    },
+                    "type": "array"
                 },
                 "objectAnnotations": {
                     "items": {
@@ -1461,6 +1685,38 @@
             },
             "type": "object"
         },
+        "GoogleCloudVideointelligenceV1p1beta1_DetectedAttribute": {
+            "id": "GoogleCloudVideointelligenceV1p1beta1_DetectedAttribute",
+            "properties": {
+                "confidence": {
+                    "format": "float",
+                    "type": "number"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudVideointelligenceV1p1beta1_DetectedLandmark": {
+            "id": "GoogleCloudVideointelligenceV1p1beta1_DetectedLandmark",
+            "properties": {
+                "confidence": {
+                    "format": "float",
+                    "type": "number"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "point": {
+                    "$ref": "GoogleCloudVideointelligenceV1p1beta1_NormalizedVertex"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudVideointelligenceV1p1beta1_Entity": {
             "id": "GoogleCloudVideointelligenceV1p1beta1_Entity",
             "properties": {
@@ -1564,6 +1820,27 @@
                 },
                 "segment": {
                     "$ref": "GoogleCloudVideointelligenceV1p1beta1_VideoSegment"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudVideointelligenceV1p1beta1_LogoRecognitionAnnotation": {
+            "id": "GoogleCloudVideointelligenceV1p1beta1_LogoRecognitionAnnotation",
+            "properties": {
+                "entity": {
+                    "$ref": "GoogleCloudVideointelligenceV1p1beta1_Entity"
+                },
+                "segments": {
+                    "items": {
+                        "$ref": "GoogleCloudVideointelligenceV1p1beta1_VideoSegment"
+                    },
+                    "type": "array"
+                },
+                "tracks": {
+                    "items": {
+                        "$ref": "GoogleCloudVideointelligenceV1p1beta1_Track"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -1736,6 +2013,56 @@
             },
             "type": "object"
         },
+        "GoogleCloudVideointelligenceV1p1beta1_TimestampedObject": {
+            "id": "GoogleCloudVideointelligenceV1p1beta1_TimestampedObject",
+            "properties": {
+                "attributes": {
+                    "items": {
+                        "$ref": "GoogleCloudVideointelligenceV1p1beta1_DetectedAttribute"
+                    },
+                    "type": "array"
+                },
+                "landmarks": {
+                    "items": {
+                        "$ref": "GoogleCloudVideointelligenceV1p1beta1_DetectedLandmark"
+                    },
+                    "type": "array"
+                },
+                "normalizedBoundingBox": {
+                    "$ref": "GoogleCloudVideointelligenceV1p1beta1_NormalizedBoundingBox"
+                },
+                "timeOffset": {
+                    "format": "google-duration",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudVideointelligenceV1p1beta1_Track": {
+            "id": "GoogleCloudVideointelligenceV1p1beta1_Track",
+            "properties": {
+                "attributes": {
+                    "items": {
+                        "$ref": "GoogleCloudVideointelligenceV1p1beta1_DetectedAttribute"
+                    },
+                    "type": "array"
+                },
+                "confidence": {
+                    "format": "float",
+                    "type": "number"
+                },
+                "segment": {
+                    "$ref": "GoogleCloudVideointelligenceV1p1beta1_VideoSegment"
+                },
+                "timestampedObjects": {
+                    "items": {
+                        "$ref": "GoogleCloudVideointelligenceV1p1beta1_TimestampedObject"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudVideointelligenceV1p1beta1_VideoAnnotationProgress": {
             "id": "GoogleCloudVideointelligenceV1p1beta1_VideoAnnotationProgress",
             "properties": {
@@ -1747,7 +2074,8 @@
                         "EXPLICIT_CONTENT_DETECTION",
                         "SPEECH_TRANSCRIPTION",
                         "TEXT_DETECTION",
-                        "OBJECT_TRACKING"
+                        "OBJECT_TRACKING",
+                        "LOGO_RECOGNITION"
                     ],
                     "enumDescriptions": [
                         "Unspecified.",
@@ -1756,7 +2084,8 @@
                         "Explicit content detection.",
                         "Speech transcription.",
                         "OCR text detection and tracking.",
-                        "Object detection and tracking."
+                        "Object detection and tracking.",
+                        "Logo detection, tracking, and recognition."
                     ],
                     "type": "string"
                 },
@@ -1798,6 +2127,12 @@
                 },
                 "inputUri": {
                     "type": "string"
+                },
+                "logoRecognitionAnnotations": {
+                    "items": {
+                        "$ref": "GoogleCloudVideointelligenceV1p1beta1_LogoRecognitionAnnotation"
+                    },
+                    "type": "array"
                 },
                 "objectAnnotations": {
                     "items": {
@@ -1916,6 +2251,38 @@
             },
             "type": "object"
         },
+        "GoogleCloudVideointelligenceV1p2beta1_DetectedAttribute": {
+            "id": "GoogleCloudVideointelligenceV1p2beta1_DetectedAttribute",
+            "properties": {
+                "confidence": {
+                    "format": "float",
+                    "type": "number"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudVideointelligenceV1p2beta1_DetectedLandmark": {
+            "id": "GoogleCloudVideointelligenceV1p2beta1_DetectedLandmark",
+            "properties": {
+                "confidence": {
+                    "format": "float",
+                    "type": "number"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "point": {
+                    "$ref": "GoogleCloudVideointelligenceV1p2beta1_NormalizedVertex"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudVideointelligenceV1p2beta1_Entity": {
             "id": "GoogleCloudVideointelligenceV1p2beta1_Entity",
             "properties": {
@@ -2019,6 +2386,27 @@
                 },
                 "segment": {
                     "$ref": "GoogleCloudVideointelligenceV1p2beta1_VideoSegment"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudVideointelligenceV1p2beta1_LogoRecognitionAnnotation": {
+            "id": "GoogleCloudVideointelligenceV1p2beta1_LogoRecognitionAnnotation",
+            "properties": {
+                "entity": {
+                    "$ref": "GoogleCloudVideointelligenceV1p2beta1_Entity"
+                },
+                "segments": {
+                    "items": {
+                        "$ref": "GoogleCloudVideointelligenceV1p2beta1_VideoSegment"
+                    },
+                    "type": "array"
+                },
+                "tracks": {
+                    "items": {
+                        "$ref": "GoogleCloudVideointelligenceV1p2beta1_Track"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -2191,6 +2579,56 @@
             },
             "type": "object"
         },
+        "GoogleCloudVideointelligenceV1p2beta1_TimestampedObject": {
+            "id": "GoogleCloudVideointelligenceV1p2beta1_TimestampedObject",
+            "properties": {
+                "attributes": {
+                    "items": {
+                        "$ref": "GoogleCloudVideointelligenceV1p2beta1_DetectedAttribute"
+                    },
+                    "type": "array"
+                },
+                "landmarks": {
+                    "items": {
+                        "$ref": "GoogleCloudVideointelligenceV1p2beta1_DetectedLandmark"
+                    },
+                    "type": "array"
+                },
+                "normalizedBoundingBox": {
+                    "$ref": "GoogleCloudVideointelligenceV1p2beta1_NormalizedBoundingBox"
+                },
+                "timeOffset": {
+                    "format": "google-duration",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudVideointelligenceV1p2beta1_Track": {
+            "id": "GoogleCloudVideointelligenceV1p2beta1_Track",
+            "properties": {
+                "attributes": {
+                    "items": {
+                        "$ref": "GoogleCloudVideointelligenceV1p2beta1_DetectedAttribute"
+                    },
+                    "type": "array"
+                },
+                "confidence": {
+                    "format": "float",
+                    "type": "number"
+                },
+                "segment": {
+                    "$ref": "GoogleCloudVideointelligenceV1p2beta1_VideoSegment"
+                },
+                "timestampedObjects": {
+                    "items": {
+                        "$ref": "GoogleCloudVideointelligenceV1p2beta1_TimestampedObject"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudVideointelligenceV1p2beta1_VideoAnnotationProgress": {
             "id": "GoogleCloudVideointelligenceV1p2beta1_VideoAnnotationProgress",
             "properties": {
@@ -2202,7 +2640,8 @@
                         "EXPLICIT_CONTENT_DETECTION",
                         "SPEECH_TRANSCRIPTION",
                         "TEXT_DETECTION",
-                        "OBJECT_TRACKING"
+                        "OBJECT_TRACKING",
+                        "LOGO_RECOGNITION"
                     ],
                     "enumDescriptions": [
                         "Unspecified.",
@@ -2211,7 +2650,8 @@
                         "Explicit content detection.",
                         "Speech transcription.",
                         "OCR text detection and tracking.",
-                        "Object detection and tracking."
+                        "Object detection and tracking.",
+                        "Logo detection, tracking, and recognition."
                     ],
                     "type": "string"
                 },
@@ -2253,6 +2693,12 @@
                 },
                 "inputUri": {
                     "type": "string"
+                },
+                "logoRecognitionAnnotations": {
+                    "items": {
+                        "$ref": "GoogleCloudVideointelligenceV1p2beta1_LogoRecognitionAnnotation"
+                    },
+                    "type": "array"
                 },
                 "objectAnnotations": {
                     "items": {
