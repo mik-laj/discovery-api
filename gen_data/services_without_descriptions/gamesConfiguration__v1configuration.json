@@ -6,31 +6,55 @@
             }
         }
     },
-    "basePath": "/games/v1configuration/",
-    "baseUrl": "https://www.googleapis.com/games/v1configuration/",
-    "batchPath": "batch/gamesConfiguration/v1configuration",
+    "basePath": "",
+    "baseUrl": "https://www.googleapis.com/",
+    "batchPath": "batch",
     "canonicalName": "Games Configuration",
     "discoveryVersion": "v1",
-    "documentationLink": "https://developers.google.com/games/services",
-    "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/z4K0BqGgF2nc5_SbHhyzPSFJuIU\"",
+    "documentationLink": "https://developers.google.com/games/",
     "icons": {
-        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
-        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+        "x16": "http://www.google.com/images/icons/product/search-16.gif",
+        "x32": "http://www.google.com/images/icons/product/search-32.gif"
     },
     "id": "gamesConfiguration:v1configuration",
     "kind": "discovery#restDescription",
+    "mtlsRootUrl": "https://www.mtls.googleapis.com/",
     "name": "gamesConfiguration",
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "$.xgafv": {
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "location": "query",
+            "type": "string"
+        },
         "alt": {
             "default": "json",
             "enum": [
-                "json"
+                "json",
+                "media",
+                "proto"
             ],
             "enumDescriptions": [
-                "Responses with Content-Type of application/json"
+                "Responses with Content-Type of application/json",
+                "Media download with context-dependent Content-Type",
+                "Responses with Content-Type of application/x-protobuf"
             ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
             "location": "query",
             "type": "string"
         },
@@ -55,7 +79,11 @@
             "location": "query",
             "type": "string"
         },
-        "userIp": {
+        "uploadType": {
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
             "location": "query",
             "type": "string"
         }
@@ -65,6 +93,7 @@
         "achievementConfigurations": {
             "methods": {
                 "delete": {
+                    "flatPath": "games/v1configuration/achievements/{achievementId}",
                     "httpMethod": "DELETE",
                     "id": "gamesConfiguration.achievementConfigurations.delete",
                     "parameterOrder": [
@@ -77,12 +106,13 @@
                             "type": "string"
                         }
                     },
-                    "path": "achievements/{achievementId}",
+                    "path": "games/v1configuration/achievements/{achievementId}",
                     "scopes": [
                         "https://www.googleapis.com/auth/androidpublisher"
                     ]
                 },
                 "get": {
+                    "flatPath": "games/v1configuration/achievements/{achievementId}",
                     "httpMethod": "GET",
                     "id": "gamesConfiguration.achievementConfigurations.get",
                     "parameterOrder": [
@@ -95,7 +125,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "achievements/{achievementId}",
+                    "path": "games/v1configuration/achievements/{achievementId}",
                     "response": {
                         "$ref": "AchievementConfiguration"
                     },
@@ -104,6 +134,7 @@
                     ]
                 },
                 "insert": {
+                    "flatPath": "games/v1configuration/applications/{applicationId}/achievements",
                     "httpMethod": "POST",
                     "id": "gamesConfiguration.achievementConfigurations.insert",
                     "parameterOrder": [
@@ -116,7 +147,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "applications/{applicationId}/achievements",
+                    "path": "games/v1configuration/applications/{applicationId}/achievements",
                     "request": {
                         "$ref": "AchievementConfiguration"
                     },
@@ -128,6 +159,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "games/v1configuration/applications/{applicationId}/achievements",
                     "httpMethod": "GET",
                     "id": "gamesConfiguration.achievementConfigurations.list",
                     "parameterOrder": [
@@ -142,8 +174,6 @@
                         "maxResults": {
                             "format": "int32",
                             "location": "query",
-                            "maximum": "200",
-                            "minimum": "1",
                             "type": "integer"
                         },
                         "pageToken": {
@@ -151,7 +181,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "applications/{applicationId}/achievements",
+                    "path": "games/v1configuration/applications/{applicationId}/achievements",
                     "response": {
                         "$ref": "AchievementConfigurationListResponse"
                     },
@@ -159,31 +189,8 @@
                         "https://www.googleapis.com/auth/androidpublisher"
                     ]
                 },
-                "patch": {
-                    "httpMethod": "PATCH",
-                    "id": "gamesConfiguration.achievementConfigurations.patch",
-                    "parameterOrder": [
-                        "achievementId"
-                    ],
-                    "parameters": {
-                        "achievementId": {
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "achievements/{achievementId}",
-                    "request": {
-                        "$ref": "AchievementConfiguration"
-                    },
-                    "response": {
-                        "$ref": "AchievementConfiguration"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/androidpublisher"
-                    ]
-                },
                 "update": {
+                    "flatPath": "games/v1configuration/achievements/{achievementId}",
                     "httpMethod": "PUT",
                     "id": "gamesConfiguration.achievementConfigurations.update",
                     "parameterOrder": [
@@ -196,7 +203,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "achievements/{achievementId}",
+                    "path": "games/v1configuration/achievements/{achievementId}",
                     "request": {
                         "$ref": "AchievementConfiguration"
                     },
@@ -212,18 +219,15 @@
         "imageConfigurations": {
             "methods": {
                 "upload": {
+                    "flatPath": "games/v1configuration/images/{resourceId}/imageType/{imageType}",
                     "httpMethod": "POST",
                     "id": "gamesConfiguration.imageConfigurations.upload",
                     "mediaUpload": {
                         "accept": [
                             "image/*"
                         ],
-                        "maxSize": "15MB",
+                        "maxSize": "15728640",
                         "protocols": {
-                            "resumable": {
-                                "multipart": true,
-                                "path": "/resumable/upload/games/v1configuration/images/{resourceId}/imageType/{imageType}"
-                            },
                             "simple": {
                                 "multipart": true,
                                 "path": "/upload/games/v1configuration/images/{resourceId}/imageType/{imageType}"
@@ -237,12 +241,9 @@
                     "parameters": {
                         "imageType": {
                             "enum": [
+                                "IMAGE_TYPE_UNSPECIFIED",
                                 "ACHIEVEMENT_ICON",
                                 "LEADERBOARD_ICON"
-                            ],
-                            "enumDescriptions": [
-                                "The icon image for an achievement resource.",
-                                "The icon image for a leaderboard resource."
                             ],
                             "location": "path",
                             "required": true,
@@ -254,7 +255,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "images/{resourceId}/imageType/{imageType}",
+                    "path": "games/v1configuration/images/{resourceId}/imageType/{imageType}",
                     "response": {
                         "$ref": "ImageConfiguration"
                     },
@@ -268,6 +269,7 @@
         "leaderboardConfigurations": {
             "methods": {
                 "delete": {
+                    "flatPath": "games/v1configuration/leaderboards/{leaderboardId}",
                     "httpMethod": "DELETE",
                     "id": "gamesConfiguration.leaderboardConfigurations.delete",
                     "parameterOrder": [
@@ -280,12 +282,13 @@
                             "type": "string"
                         }
                     },
-                    "path": "leaderboards/{leaderboardId}",
+                    "path": "games/v1configuration/leaderboards/{leaderboardId}",
                     "scopes": [
                         "https://www.googleapis.com/auth/androidpublisher"
                     ]
                 },
                 "get": {
+                    "flatPath": "games/v1configuration/leaderboards/{leaderboardId}",
                     "httpMethod": "GET",
                     "id": "gamesConfiguration.leaderboardConfigurations.get",
                     "parameterOrder": [
@@ -298,7 +301,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "leaderboards/{leaderboardId}",
+                    "path": "games/v1configuration/leaderboards/{leaderboardId}",
                     "response": {
                         "$ref": "LeaderboardConfiguration"
                     },
@@ -307,6 +310,7 @@
                     ]
                 },
                 "insert": {
+                    "flatPath": "games/v1configuration/applications/{applicationId}/leaderboards",
                     "httpMethod": "POST",
                     "id": "gamesConfiguration.leaderboardConfigurations.insert",
                     "parameterOrder": [
@@ -319,7 +323,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "applications/{applicationId}/leaderboards",
+                    "path": "games/v1configuration/applications/{applicationId}/leaderboards",
                     "request": {
                         "$ref": "LeaderboardConfiguration"
                     },
@@ -331,6 +335,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "games/v1configuration/applications/{applicationId}/leaderboards",
                     "httpMethod": "GET",
                     "id": "gamesConfiguration.leaderboardConfigurations.list",
                     "parameterOrder": [
@@ -345,8 +350,6 @@
                         "maxResults": {
                             "format": "int32",
                             "location": "query",
-                            "maximum": "200",
-                            "minimum": "1",
                             "type": "integer"
                         },
                         "pageToken": {
@@ -354,7 +357,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "applications/{applicationId}/leaderboards",
+                    "path": "games/v1configuration/applications/{applicationId}/leaderboards",
                     "response": {
                         "$ref": "LeaderboardConfigurationListResponse"
                     },
@@ -362,31 +365,8 @@
                         "https://www.googleapis.com/auth/androidpublisher"
                     ]
                 },
-                "patch": {
-                    "httpMethod": "PATCH",
-                    "id": "gamesConfiguration.leaderboardConfigurations.patch",
-                    "parameterOrder": [
-                        "leaderboardId"
-                    ],
-                    "parameters": {
-                        "leaderboardId": {
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "leaderboards/{leaderboardId}",
-                    "request": {
-                        "$ref": "LeaderboardConfiguration"
-                    },
-                    "response": {
-                        "$ref": "LeaderboardConfiguration"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/androidpublisher"
-                    ]
-                },
                 "update": {
+                    "flatPath": "games/v1configuration/leaderboards/{leaderboardId}",
                     "httpMethod": "PUT",
                     "id": "gamesConfiguration.leaderboardConfigurations.update",
                     "parameterOrder": [
@@ -399,7 +379,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "leaderboards/{leaderboardId}",
+                    "path": "games/v1configuration/leaderboards/{leaderboardId}",
                     "request": {
                         "$ref": "LeaderboardConfiguration"
                     },
@@ -419,6 +399,16 @@
             "id": "AchievementConfiguration",
             "properties": {
                 "achievementType": {
+                    "enum": [
+                        "ACHIEVEMENT_TYPE_UNSPECIFIED",
+                        "STANDARD",
+                        "INCREMENTAL"
+                    ],
+                    "enumDescriptions": [
+                        "Default value. This value is unused.",
+                        "Achievement is either locked or unlocked.",
+                        "Achievement is incremental."
+                    ],
                     "type": "string"
                 },
                 "draft": {
@@ -428,10 +418,19 @@
                     "type": "string"
                 },
                 "initialState": {
+                    "enum": [
+                        "INITIAL_STATE_UNSPECIFIED",
+                        "HIDDEN",
+                        "REVEALED"
+                    ],
+                    "enumDescriptions": [
+                        "Default value. This value is unused.",
+                        "Achievement is hidden.",
+                        "Achievement is revealed."
+                    ],
                     "type": "string"
                 },
                 "kind": {
-                    "default": "gamesConfiguration#achievementConfiguration",
                     "type": "string"
                 },
                 "published": {
@@ -454,7 +453,6 @@
                     "type": "string"
                 },
                 "kind": {
-                    "default": "gamesConfiguration#achievementConfigurationDetail",
                     "type": "string"
                 },
                 "name": {
@@ -481,7 +479,6 @@
                     "type": "array"
                 },
                 "kind": {
-                    "default": "gamesConfiguration#achievementConfigurationListResponse",
                     "type": "string"
                 },
                 "nextPageToken": {
@@ -525,6 +522,18 @@
                     "type": "integer"
                 },
                 "numberFormatType": {
+                    "enum": [
+                        "NUMBER_FORMAT_TYPE_UNSPECIFIED",
+                        "NUMERIC",
+                        "TIME_DURATION",
+                        "CURRENCY"
+                    ],
+                    "enumDescriptions": [
+                        "Default value. This value is unused.",
+                        "Numbers are formatted to have no digits or fixed number of digits after\nthe decimal point according to locale. An optional custom unit can be\nadded.",
+                        "Numbers are formatted to hours, minutes and seconds.",
+                        "Numbers are formatted to currency according to locale."
+                    ],
                     "type": "string"
                 },
                 "suffix": {
@@ -537,10 +546,19 @@
             "id": "ImageConfiguration",
             "properties": {
                 "imageType": {
+                    "enum": [
+                        "IMAGE_TYPE_UNSPECIFIED",
+                        "ACHIEVEMENT_ICON",
+                        "LEADERBOARD_ICON"
+                    ],
+                    "enumDescriptions": [
+                        "Default value. This value is unused.",
+                        "The icon image for an achievement resource.",
+                        "The icon image for a leaderboard resource."
+                    ],
                     "type": "string"
                 },
                 "kind": {
-                    "default": "gamesConfiguration#imageConfiguration",
                     "type": "string"
                 },
                 "resourceId": {
@@ -562,7 +580,6 @@
                     "type": "string"
                 },
                 "kind": {
-                    "default": "gamesConfiguration#leaderboardConfiguration",
                     "type": "string"
                 },
                 "published": {
@@ -577,6 +594,16 @@
                     "type": "string"
                 },
                 "scoreOrder": {
+                    "enum": [
+                        "SCORE_ORDER_UNSPECIFIED",
+                        "LARGER_IS_BETTER",
+                        "SMALLER_IS_BETTER"
+                    ],
+                    "enumDescriptions": [
+                        "Default value. This value is unused.",
+                        "Larger scores posted are ranked higher.",
+                        "Smaller scores posted are ranked higher."
+                    ],
                     "type": "string"
                 },
                 "token": {
@@ -592,7 +619,6 @@
                     "type": "string"
                 },
                 "kind": {
-                    "default": "gamesConfiguration#leaderboardConfigurationDetail",
                     "type": "string"
                 },
                 "name": {
@@ -618,7 +644,6 @@
                     "type": "array"
                 },
                 "kind": {
-                    "default": "gamesConfiguration#leaderboardConfigurationListResponse",
                     "type": "string"
                 },
                 "nextPageToken": {
@@ -631,7 +656,6 @@
             "id": "LocalizedString",
             "properties": {
                 "kind": {
-                    "default": "gamesConfiguration#localizedString",
                     "type": "string"
                 },
                 "locale": {
@@ -647,7 +671,6 @@
             "id": "LocalizedStringBundle",
             "properties": {
                 "kind": {
-                    "default": "gamesConfiguration#localizedStringBundle",
                     "type": "string"
                 },
                 "translations": {
@@ -660,7 +683,7 @@
             "type": "object"
         }
     },
-    "servicePath": "games/v1configuration/",
+    "servicePath": "",
     "title": "Google Play Game Services Publishing API",
     "version": "v1configuration"
 }

@@ -94,6 +94,39 @@
     "resources": {
         "projects": {
             "methods": {
+                "deleteSnapshots": {
+                    "flatPath": "v1b3/projects/{projectId}/snapshots",
+                    "httpMethod": "DELETE",
+                    "id": "dataflow.projects.deleteSnapshots",
+                    "parameterOrder": [
+                        "projectId"
+                    ],
+                    "parameters": {
+                        "location": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "projectId": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "snapshotId": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1b3/projects/{projectId}/snapshots",
+                    "response": {
+                        "$ref": "DeleteSnapshotResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly",
+                        "https://www.googleapis.com/auth/userinfo.email"
+                    ]
+                },
                 "workerMessages": {
                     "flatPath": "v1b3/projects/{projectId}/WorkerMessages",
                     "httpMethod": "POST",
@@ -365,6 +398,40 @@
                             "path": "v1b3/projects/{projectId}/jobs",
                             "response": {
                                 "$ref": "ListJobsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/compute",
+                                "https://www.googleapis.com/auth/compute.readonly",
+                                "https://www.googleapis.com/auth/userinfo.email"
+                            ]
+                        },
+                        "snapshot": {
+                            "flatPath": "v1b3/projects/{projectId}/jobs/{jobId}:snapshot",
+                            "httpMethod": "POST",
+                            "id": "dataflow.projects.jobs.snapshot",
+                            "parameterOrder": [
+                                "projectId",
+                                "jobId"
+                            ],
+                            "parameters": {
+                                "jobId": {
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "projectId": {
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1b3/projects/{projectId}/jobs/{jobId}:snapshot",
+                            "request": {
+                                "$ref": "SnapshotJobRequest"
+                            },
+                            "response": {
+                                "$ref": "Snapshot"
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform",
@@ -904,6 +971,46 @@
                                         "https://www.googleapis.com/auth/userinfo.email"
                                     ]
                                 },
+                                "snapshot": {
+                                    "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}:snapshot",
+                                    "httpMethod": "POST",
+                                    "id": "dataflow.projects.locations.jobs.snapshot",
+                                    "parameterOrder": [
+                                        "projectId",
+                                        "location",
+                                        "jobId"
+                                    ],
+                                    "parameters": {
+                                        "jobId": {
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "location": {
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "projectId": {
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}:snapshot",
+                                    "request": {
+                                        "$ref": "SnapshotJobRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "Snapshot"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/compute",
+                                        "https://www.googleapis.com/auth/compute.readonly",
+                                        "https://www.googleapis.com/auth/userinfo.email"
+                                    ]
+                                },
                                 "update": {
                                     "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}",
                                     "httpMethod": "PUT",
@@ -1102,6 +1209,47 @@
                                         }
                                     }
                                 },
+                                "snapshots": {
+                                    "methods": {
+                                        "list": {
+                                            "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/snapshots",
+                                            "httpMethod": "GET",
+                                            "id": "dataflow.projects.locations.jobs.snapshots.list",
+                                            "parameterOrder": [
+                                                "projectId",
+                                                "location",
+                                                "jobId"
+                                            ],
+                                            "parameters": {
+                                                "jobId": {
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "location": {
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "projectId": {
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/snapshots",
+                                            "response": {
+                                                "$ref": "ListSnapshotsResponse"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/compute",
+                                                "https://www.googleapis.com/auth/compute.readonly",
+                                                "https://www.googleapis.com/auth/userinfo.email"
+                                            ]
+                                        }
+                                    }
+                                },
                                 "workItems": {
                                     "methods": {
                                         "lease": {
@@ -1185,6 +1333,119 @@
                                             ]
                                         }
                                     }
+                                }
+                            }
+                        },
+                        "snapshots": {
+                            "methods": {
+                                "delete": {
+                                    "flatPath": "v1b3/projects/{projectId}/locations/{location}/snapshots/{snapshotId}",
+                                    "httpMethod": "DELETE",
+                                    "id": "dataflow.projects.locations.snapshots.delete",
+                                    "parameterOrder": [
+                                        "projectId",
+                                        "location",
+                                        "snapshotId"
+                                    ],
+                                    "parameters": {
+                                        "location": {
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "projectId": {
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "snapshotId": {
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1b3/projects/{projectId}/locations/{location}/snapshots/{snapshotId}",
+                                    "response": {
+                                        "$ref": "DeleteSnapshotResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/compute",
+                                        "https://www.googleapis.com/auth/compute.readonly",
+                                        "https://www.googleapis.com/auth/userinfo.email"
+                                    ]
+                                },
+                                "get": {
+                                    "flatPath": "v1b3/projects/{projectId}/locations/{location}/snapshots/{snapshotId}",
+                                    "httpMethod": "GET",
+                                    "id": "dataflow.projects.locations.snapshots.get",
+                                    "parameterOrder": [
+                                        "projectId",
+                                        "location",
+                                        "snapshotId"
+                                    ],
+                                    "parameters": {
+                                        "location": {
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "projectId": {
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "snapshotId": {
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1b3/projects/{projectId}/locations/{location}/snapshots/{snapshotId}",
+                                    "response": {
+                                        "$ref": "Snapshot"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/compute",
+                                        "https://www.googleapis.com/auth/compute.readonly",
+                                        "https://www.googleapis.com/auth/userinfo.email"
+                                    ]
+                                },
+                                "list": {
+                                    "flatPath": "v1b3/projects/{projectId}/locations/{location}/snapshots",
+                                    "httpMethod": "GET",
+                                    "id": "dataflow.projects.locations.snapshots.list",
+                                    "parameterOrder": [
+                                        "projectId",
+                                        "location"
+                                    ],
+                                    "parameters": {
+                                        "jobId": {
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "location": {
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "projectId": {
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1b3/projects/{projectId}/locations/{location}/snapshots",
+                                    "response": {
+                                        "$ref": "ListSnapshotsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/compute",
+                                        "https://www.googleapis.com/auth/compute.readonly",
+                                        "https://www.googleapis.com/auth/userinfo.email"
+                                    ]
                                 }
                             }
                         },
@@ -1354,6 +1615,78 @@
                                     ]
                                 }
                             }
+                        }
+                    }
+                },
+                "snapshots": {
+                    "methods": {
+                        "get": {
+                            "flatPath": "v1b3/projects/{projectId}/snapshots/{snapshotId}",
+                            "httpMethod": "GET",
+                            "id": "dataflow.projects.snapshots.get",
+                            "parameterOrder": [
+                                "projectId",
+                                "snapshotId"
+                            ],
+                            "parameters": {
+                                "location": {
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "projectId": {
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "snapshotId": {
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1b3/projects/{projectId}/snapshots/{snapshotId}",
+                            "response": {
+                                "$ref": "Snapshot"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/compute",
+                                "https://www.googleapis.com/auth/compute.readonly",
+                                "https://www.googleapis.com/auth/userinfo.email"
+                            ]
+                        },
+                        "list": {
+                            "flatPath": "v1b3/projects/{projectId}/snapshots",
+                            "httpMethod": "GET",
+                            "id": "dataflow.projects.snapshots.list",
+                            "parameterOrder": [
+                                "projectId"
+                            ],
+                            "parameters": {
+                                "jobId": {
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "location": {
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "projectId": {
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1b3/projects/{projectId}/snapshots",
+                            "response": {
+                                "$ref": "ListSnapshotsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/compute",
+                                "https://www.googleapis.com/auth/compute.readonly",
+                                "https://www.googleapis.com/auth/userinfo.email"
+                            ]
                         }
                     }
                 },
@@ -1978,6 +2311,11 @@
                     "type": "string"
                 }
             },
+            "type": "object"
+        },
+        "DeleteSnapshotResponse": {
+            "id": "DeleteSnapshotResponse",
+            "properties": {},
             "type": "object"
         },
         "DerivedSource": {
@@ -2997,6 +3335,18 @@
             },
             "type": "object"
         },
+        "ListSnapshotsResponse": {
+            "id": "ListSnapshotsResponse",
+            "properties": {
+                "snapshots": {
+                    "items": {
+                        "$ref": "Snapshot"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "MapTask": {
             "id": "MapTask",
             "properties": {
@@ -3013,6 +3363,28 @@
                     "type": "string"
                 },
                 "systemName": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "MemInfo": {
+            "id": "MemInfo",
+            "properties": {
+                "currentLimitBytes": {
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "currentRssBytes": {
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "timestamp": {
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "totalGbMs": {
+                    "format": "uint64",
                     "type": "string"
                 }
             },
@@ -3408,6 +3780,22 @@
             },
             "type": "object"
         },
+        "PubsubSnapshotMetadata": {
+            "id": "PubsubSnapshotMetadata",
+            "properties": {
+                "expireTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "snapshotName": {
+                    "type": "string"
+                },
+                "topicName": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ReadInstruction": {
             "id": "ReadInstruction",
             "properties": {
@@ -3479,9 +3867,21 @@
         "ResourceUtilizationReport": {
             "id": "ResourceUtilizationReport",
             "properties": {
+                "containers": {
+                    "additionalProperties": {
+                        "$ref": "ResourceUtilizationReport"
+                    },
+                    "type": "object"
+                },
                 "cpuTime": {
                     "items": {
                         "$ref": "CPUTime"
+                    },
+                    "type": "array"
+                },
+                "memoryInfo": {
+                    "items": {
+                        "$ref": "MemInfo"
                     },
                     "type": "array"
                 }
@@ -3783,6 +4183,74 @@
                         "type": "any"
                     },
                     "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "Snapshot": {
+            "id": "Snapshot",
+            "properties": {
+                "creationTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "diskSizeBytes": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "string"
+                },
+                "pubsubMetadata": {
+                    "items": {
+                        "$ref": "PubsubSnapshotMetadata"
+                    },
+                    "type": "array"
+                },
+                "sourceJobId": {
+                    "type": "string"
+                },
+                "state": {
+                    "enum": [
+                        "UNKNOWN_SNAPSHOT_STATE",
+                        "PENDING",
+                        "RUNNING",
+                        "READY",
+                        "FAILED",
+                        "DELETED"
+                    ],
+                    "enumDescriptions": [
+                        "Unknown state.",
+                        "Snapshot intent to create has been persisted, snapshotting of state has not\nyet started.",
+                        "Snapshotting is being performed.",
+                        "Snapshot has been created and is ready to be used.",
+                        "Snapshot failed to be created.",
+                        "Snapshot has been deleted."
+                    ],
+                    "type": "string"
+                },
+                "ttl": {
+                    "format": "google-duration",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SnapshotJobRequest": {
+            "id": "SnapshotJobRequest",
+            "properties": {
+                "location": {
+                    "type": "string"
+                },
+                "snapshotSources": {
+                    "type": "boolean"
+                },
+                "ttl": {
+                    "format": "google-duration",
+                    "type": "string"
                 }
             },
             "type": "object"
