@@ -57,12 +57,16 @@ def fetch_service(discovery, name: str, version: str):
     )
     if 'revision' in api_definition:
         del api_definition['revision']
+    if 'etag' in api_definition:
+        del api_definition['etag']
 
     save_json(
         filename=f"gen_data/services/{name}__{version}.json",
         content=api_definition
     )
     api_definition_without_descriptions = remove_key(api_definition, "description")
+    api_definition_without_descriptions = remove_key(api_definition_without_descriptions, "enumDescriptions")
+
     save_json(
         filename=f"gen_data/services_without_descriptions/{name}__{version}.json",
         content=api_definition_without_descriptions
