@@ -29,10 +29,6 @@
                 "1",
                 "2"
             ],
-            "enumDescriptions": [
-                "v1 error format",
-                "v2 error format"
-            ],
             "location": "query",
             "type": "string"
         },
@@ -46,11 +42,6 @@
                 "json",
                 "media",
                 "proto"
-            ],
-            "enumDescriptions": [
-                "Responses with Content-Type of application/json",
-                "Media download with context-dependent Content-Type",
-                "Responses with Content-Type of application/x-protobuf"
             ],
             "location": "query",
             "type": "string"
@@ -552,18 +543,6 @@
                         "UNINTENDED_DESTINATION",
                         "TRACE_TOO_LONG"
                     ],
-                    "enumDescriptions": [
-                        "Cause is unspecified.",
-                        "Aborted due to unknown network.\nThe reachability analysis cannot proceed because the user does not have\naccess to the host project's network configurations, including firewall\nrules and routes. This happens when the project is a service project and\nthe endpoints being traced are in the host project's network.",
-                        "Aborted because the IP address(es) are unknown.",
-                        "Aborted because no project information can be derived from the test\ninput.",
-                        "Aborted because the user lacks the permission to access all or part of\nthe network configurations required to run the test.",
-                        "Aborted because no valid source endpoint is derived from the input test\nrequest.",
-                        "Aborted because the source and/or destination endpoint specified in\nthe test are invalid. The possible reasons that an endpoint is\ninvalid include: malformed IP address; nonexistent instance or\nnetwork URI; IP address not in the range of specified network URI; and\ninstance not owning the network interface in the specified network.",
-                        "Aborted because traffic is sent from a public IP to an instance without\nan external IP.",
-                        "Aborted because none of the traces matches destination information\nspecified in the input test request.",
-                        "Aborted because the number of steps in the trace exceeding a certain\nlimit which may be caused by routing loop."
-                    ],
                     "type": "string"
                 },
                 "resourceUri": {
@@ -602,12 +581,6 @@
                         "ADMIN_READ",
                         "DATA_WRITE",
                         "DATA_READ"
-                    ],
-                    "enumDescriptions": [
-                        "Default case. Should never be this.",
-                        "Admin reads. Example: CloudIAM getIamPolicy",
-                        "Data writes. Example: CloudSQL Users create",
-                        "Data reads. Example: CloudSQL Users list"
                     ],
                     "type": "string"
                 }
@@ -694,12 +667,6 @@
                         "INTERNET",
                         "GOOGLE_API"
                     ],
-                    "enumDescriptions": [
-                        "Target not specified.",
-                        "Target is a Compute Engine instance.",
-                        "Target is the Internet.",
-                        "Target is a Google API."
-                    ],
                     "type": "string"
                 }
             },
@@ -727,25 +694,6 @@
                         "INSTANCE_NOT_RUNNING",
                         "TRAFFIC_TYPE_BLOCKED",
                         "GKE_MASTER_UNAUTHORIZED_ACCESS"
-                    ],
-                    "enumDescriptions": [
-                        "Cause is unspecified.",
-                        "Destination external address cannot be resolved to a known target.",
-                        "a Compute Engine instance can only send or receive a packet with a\nforeign IP <code>if ip_forward</code> is enabled.",
-                        "Dropped due to a firewall rule unless allowed due to connection tracking.",
-                        "Dropped due to no routes.",
-                        "Dropped due to invalid route. Route's next hop is a blackhole.",
-                        "Packet is sent to a wrong (unintended) network. Example: user traces a\npacket from VM1:Network1 to VM2:Network2, however, the route configured\nin Network1 sends the packet destined for VM2's IP addresss to Network3.",
-                        "Packet with internal destination address sent to Internet gateway.",
-                        "Instance with only an internal IP tries to access Google API and\nServices, and private Google access is not enabled.",
-                        "Instance with only internal IP tries to access external hosts, but\nCloud NAT is not enabled in the subnet, unless special configurations\non a VM allows this connection. See [Special Configurations for VM\ninstances](/vpc/docs/special-configurations) for details.",
-                        "Destination internal address cannot be resolved to a known target.",
-                        "Forwarding rule's protocol and ports do not match the packet header.",
-                        "Forwarding rule does not have backends configured.",
-                        "Firewalls block the health check probes to the backends and cause\nthe backends to be unavailable for traffic from the load balancer.\nSee [Health check firewall rules](/load-balancing/docs/\nhealth-checks#firewall_rules) for more details.",
-                        "Packet is sent from or to a Compute Engine instance that is not in a\nrunning state.",
-                        "The type of traffic is blocked and the user cannot configure a firewall\nrule to enable it. See [Always blocked traffic](/vpc/docs/firewalls#\nblockedtraffic) for more details.",
-                        "Access to GKE master's endpoint is not authorized.\nSee [Access to the cluster endpoints](/kubernetes-engine/docs/how-to/\nprivate-clusters#access_to_the_cluster_endpoints) for more details."
                     ],
                     "type": "string"
                 },
@@ -777,11 +725,6 @@
                         "NETWORK_TYPE_UNSPECIFIED",
                         "GCP_NETWORK",
                         "NON_GCP_NETWORK"
-                    ],
-                    "enumDescriptions": [
-                        "Default type if unspecified.",
-                        "A network hosted within Google Cloud Platform.\nTo receive more detailed output, specify the URI for the source or\ndestination network.",
-                        "A network hosted outside of Google Cloud Platform.\nThis can be an on-premises network, or a network hosted by another cloud\nprovider."
                     ],
                     "type": "string"
                 },
@@ -890,14 +833,6 @@
                         "INTERCONNECT",
                         "GKE_MASTER",
                         "IMPORTED_CUSTOM_ROUTE_NEXT_HOP"
-                    ],
-                    "enumDescriptions": [
-                        "Target not specified.",
-                        "Forwarded to a VPC peering network.",
-                        "Forwarded to a Cloud VPN gateway.",
-                        "Forwarded to an Cloud Interconnect connection.",
-                        "Forwarded to a Google Kubernetes Engine Container cluster master.",
-                        "Forwarded to the next hop of a custom route imported from a peering VPC."
                     ],
                     "type": "string"
                 }
@@ -1039,11 +974,6 @@
                         "CONFIGURED",
                         "MISCONFIGURED"
                     ],
-                    "enumDescriptions": [
-                        "State is unspecified. Default state if not populated.",
-                        "There are configured firewall rules to allow health check probes to the\nbackend.",
-                        "There are firewall rules configured to allow partial health check ranges\nor block all health check ranges.\nIf a health check probe is sent from denied IP ranges,\nthe health check to the backend will fail. Then, the backend will be\nmarked unhealthy and will not receive traffic sent to the load balancer."
-                    ],
                     "type": "string"
                 },
                 "uri": {
@@ -1060,11 +990,6 @@
                         "BACKEND_TYPE_UNSPECIFIED",
                         "BACKEND_SERVICE",
                         "TARGET_POOL"
-                    ],
-                    "enumDescriptions": [
-                        "Type is unspecified.",
-                        "Backend Service as the load balancer's backend.",
-                        "Target Pool as the load balancer's backend."
                     ],
                     "type": "string"
                 },
@@ -1088,14 +1013,6 @@
                         "HTTP_PROXY",
                         "TCP_PROXY",
                         "SSL_PROXY"
-                    ],
-                    "enumDescriptions": [
-                        "Type is unspecified.",
-                        "Internal TCP/UDP load balancer.",
-                        "Network TCP/UDP load balancer.",
-                        "HTTP(S) proxy load balancer.",
-                        "TCP proxy load balancer.",
-                        "SSL proxy load balancer."
                     ],
                     "type": "string"
                 }
@@ -1240,13 +1157,6 @@
                         "AMBIGUOUS",
                         "UNDETERMINED"
                     ],
-                    "enumDescriptions": [
-                        "Result is not specified.",
-                        "Packet originating from source is expected to reach destination.",
-                        "Packet originating from source is expected to be dropped before\nreaching destination.",
-                        "If the source and destination endpoint does not uniquely identify\nthe test location in the network, and the reachability result contains\nmultiple traces with mixed reachable and unreachable states, then this\nresult is returned.",
-                        "The reachability could not be determined. Possible reasons are:\n\n* Analysis is aborted due to permission error. User does not have read\n  permission to the projects listed in the test.\n* Analysis is aborted due to internal errors.\n* Analysis is partially complete based on configurations where the user\n  has permission.\n  The Final state indicates that the packet is forwarded to another\nnetwork where the user has no permission to access the configurations."
-                    ],
                     "type": "string"
                 },
                 "traces": {
@@ -1301,18 +1211,6 @@
                         "NEXT_HOP_INTERNET_GATEWAY",
                         "NEXT_HOP_BLACKHOLE"
                     ],
-                    "enumDescriptions": [
-                        "Unspecified type. Default value.",
-                        "Next hop is an IP address.",
-                        "Next hop is a Compute Engine instance.",
-                        "Next hop is a VPC network gateway.",
-                        "Next hop is a peering VPC.",
-                        "Next hop is an interconnect.",
-                        "Next hop is a VPN tunnel.",
-                        "Next hop is a VPN Gateway. This scenario only happens when tracing\nconnectivity from an on-premises network to GCP through a VPN. The\nanalysis simulates a packet departing from the on-premises network\nthrough a VPN tunnel and arrives at a Cloud VPN gateway.",
-                        "Next hop is an internet gateway.",
-                        "Next hop is blackhole; that is, the next hop either does not exist or is\nnot running."
-                    ],
                     "type": "string"
                 },
                 "priority": {
@@ -1328,15 +1226,6 @@
                         "PEERING_SUBNET",
                         "PEERING_STATIC",
                         "PEERING_DYNAMIC"
-                    ],
-                    "enumDescriptions": [
-                        "Unspecified type. Default value.",
-                        "Route is a subnet route automatically created by the system.",
-                        "Static route created by the user including the default route to the\nInternet.",
-                        "Dynamic route exchanged between BGP peers.",
-                        "A subnet route received from peering network.",
-                        "A static route received from peering network.",
-                        "A dynamic route received from peering network."
                     ],
                     "type": "string"
                 },
@@ -1447,29 +1336,6 @@
                         "ABORT",
                         "VIEWER_PERMISSION_MISSING"
                     ],
-                    "enumDescriptions": [
-                        "Unspecified state.",
-                        "Initial state: packet originating from a Compute Engine instance.\nAn InstanceInfo will be populated with starting instance info.",
-                        "Initial state: packet originating from Internet.\nThe endpoint info will be populated.",
-                        "Initial state: packet originating from a VPC or on-premises network\nwith internal source IP.\nIf the source is a VPC network visible to the user, a NetworkInfo\nwill be populated with details of the network.",
-                        "Config checking state: verify ingress firewall rule.",
-                        "Config checking state: verify egress firewall rule.",
-                        "Config checking state: verify route.",
-                        "Config checking state: match forwarding rule.",
-                        "Config checking state: packet sent or received under foreign IP\naddress and allowed.",
-                        "Forwarding state: arriving at a Compute Engine instance.",
-                        "Forwarding state: arriving at a Compute Engine internal load balancer.",
-                        "Forwarding state: arriving at a Compute Engine external load balancer.",
-                        "Forwarding state: arriving at a Cloud VPN gateway.",
-                        "Forwarding state: arriving at a Cloud VPN tunnel.",
-                        "Transition state: packet header translated.",
-                        "Transition state: original connection is terminated and a new proxied\nconnection is initiated.",
-                        "Final state: packet delivered.",
-                        "Final state: packet dropped.",
-                        "Final state: packet forwarded to a network with an unknown configuration.",
-                        "Final state: analysis is aborted.",
-                        "Special state: viewer of the test result does not have permission to\nsee the configuration in this step."
-                    ],
                     "type": "string"
                 },
                 "vpnGateway": {
@@ -1568,12 +1434,6 @@
                         "ROUTE_BASED",
                         "POLICY_BASED",
                         "DYNAMIC"
-                    ],
-                    "enumDescriptions": [
-                        "Unspecified type. Default value.",
-                        "Route based VPN.",
-                        "Policy based routing.",
-                        "Dynamic (BGP) routing."
                     ],
                     "type": "string"
                 },

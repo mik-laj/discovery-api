@@ -30,10 +30,6 @@
                 "1",
                 "2"
             ],
-            "enumDescriptions": [
-                "v1 error format",
-                "v2 error format"
-            ],
             "location": "query",
             "type": "string"
         },
@@ -47,11 +43,6 @@
                 "json",
                 "media",
                 "proto"
-            ],
-            "enumDescriptions": [
-                "Responses with Content-Type of application/json",
-                "Media download with context-dependent Content-Type",
-                "Responses with Content-Type of application/x-protobuf"
             ],
             "location": "query",
             "type": "string"
@@ -1883,13 +1874,6 @@
                         "ACTUATION_FAILURE",
                         "NO_CHANGE"
                     ],
-                    "enumDescriptions": [
-                        "Default type for the enum.  Value should never be returned.",
-                        "The TARGET_NUM_WORKERS_CHANGED type should be used when the target\nworker pool size has changed at the start of an actuation. An event\nshould always be specified as TARGET_NUM_WORKERS_CHANGED if it reflects\na change in the target_num_workers.",
-                        "The CURRENT_NUM_WORKERS_CHANGED type should be used when actual worker\npool size has been changed, but the target_num_workers has not changed.",
-                        "The ACTUATION_FAILURE type should be used when we want to report\nan error to the user indicating why the current number of workers\nin the pool could not be changed.\nDisplayed in the current status and history widgets.",
-                        "Used when we want to report to the user a reason why we are\nnot currently adjusting the number of workers.\nShould specify both target_num_workers, current_num_workers and a\ndecision_message."
-                    ],
                     "type": "string"
                 },
                 "targetNumWorkers": {
@@ -1914,11 +1898,6 @@
                         "AUTOSCALING_ALGORITHM_UNKNOWN",
                         "AUTOSCALING_ALGORITHM_NONE",
                         "AUTOSCALING_ALGORITHM_BASIC"
-                    ],
-                    "enumDescriptions": [
-                        "The algorithm is unknown, or unspecified.",
-                        "Disable autoscaling.",
-                        "Increase worker count over time to reduce job execution time."
                     ],
                     "type": "string"
                 },
@@ -2090,18 +2069,6 @@
                         "DISTRIBUTION",
                         "LATEST_VALUE"
                     ],
-                    "enumDescriptions": [
-                        "Counter aggregation kind was not set.",
-                        "Aggregated value is the sum of all contributed values.",
-                        "Aggregated value is the max of all contributed values.",
-                        "Aggregated value is the min of all contributed values.",
-                        "Aggregated value is the mean of all contributed values.",
-                        "Aggregated value represents the logical 'or' of all contributed values.",
-                        "Aggregated value represents the logical 'and' of all contributed values.",
-                        "Aggregated value is a set of unique contributed values.",
-                        "Aggregated value captures statistics about a distribution.",
-                        "Aggregated value tracks the latest value of a variable."
-                    ],
                     "type": "string"
                 },
                 "otherUnits": {
@@ -2117,16 +2084,6 @@
                         "TIMESTAMP_MSEC",
                         "TIMESTAMP_USEC",
                         "TIMESTAMP_NSEC"
-                    ],
-                    "enumDescriptions": [
-                        "Counter returns a value in bytes.",
-                        "Counter returns a value in bytes per second.",
-                        "Counter returns a value in milliseconds.",
-                        "Counter returns a value in microseconds.",
-                        "Counter returns a value in nanoseconds.",
-                        "Counter returns a timestamp in milliseconds.",
-                        "Counter returns a timestamp in microseconds.",
-                        "Counter returns a timestamp in nanoseconds."
                     ],
                     "type": "string"
                 }
@@ -2154,10 +2111,6 @@
                         "SYSTEM",
                         "USER"
                     ],
-                    "enumDescriptions": [
-                        "Counter was created by the Dataflow system.",
-                        "Counter was created by the user."
-                    ],
                     "type": "string"
                 },
                 "originNamespace": {
@@ -2174,11 +2127,6 @@
                         "ALL",
                         "KEY",
                         "VALUE"
-                    ],
-                    "enumDescriptions": [
-                        "Counter portion has not been set.",
-                        "Counter reports a key.",
-                        "Counter reports a value."
                     ],
                     "type": "string"
                 },
@@ -2328,12 +2276,6 @@
                         "SOURCE_DERIVATION_MODE_CHILD_OF_CURRENT",
                         "SOURCE_DERIVATION_MODE_SIBLING_OF_CURRENT"
                     ],
-                    "enumDescriptions": [
-                        "The source derivation is unknown, or unspecified.",
-                        "Produce a completely independent Source with no base.",
-                        "Produce a Source based on the Source being split.",
-                        "Produce a Source based on the base of the Source being split."
-                    ],
                     "type": "string"
                 },
                 "source": {
@@ -2462,11 +2404,6 @@
                         "FLEXRS_SPEED_OPTIMIZED",
                         "FLEXRS_COST_OPTIMIZED"
                     ],
-                    "enumDescriptions": [
-                        "Run in the default mode.",
-                        "Optimize for lower execution time.",
-                        "Optimize for lower cost."
-                    ],
                     "type": "string"
                 },
                 "internalExperiments": {
@@ -2542,20 +2479,6 @@
                         "JOB_STATE_CANCELLING",
                         "JOB_STATE_QUEUED"
                     ],
-                    "enumDescriptions": [
-                        "The job's run state isn't specified.",
-                        "`JOB_STATE_STOPPED` indicates that the job has not\nyet started to run.",
-                        "`JOB_STATE_RUNNING` indicates that the job is currently running.",
-                        "`JOB_STATE_DONE` indicates that the job has successfully completed.\nThis is a terminal job state.  This state may be set by the Cloud Dataflow\nservice, as a transition from `JOB_STATE_RUNNING`. It may also be set via a\nCloud Dataflow `UpdateJob` call, if the job has not yet reached a terminal\nstate.",
-                        "`JOB_STATE_FAILED` indicates that the job has failed.  This is a\nterminal job state.  This state may only be set by the Cloud Dataflow\nservice, and only as a transition from `JOB_STATE_RUNNING`.",
-                        "`JOB_STATE_CANCELLED` indicates that the job has been explicitly\ncancelled. This is a terminal job state. This state may only be\nset via a Cloud Dataflow `UpdateJob` call, and only if the job has not\nyet reached another terminal state.",
-                        "`JOB_STATE_UPDATED` indicates that the job was successfully updated,\nmeaning that this job was stopped and another job was started, inheriting\nstate from this one. This is a terminal job state. This state may only be\nset by the Cloud Dataflow service, and only as a transition from\n`JOB_STATE_RUNNING`.",
-                        "`JOB_STATE_DRAINING` indicates that the job is in the process of draining.\nA draining job has stopped pulling from its input sources and is processing\nany data that remains in-flight. This state may be set via a Cloud Dataflow\n`UpdateJob` call, but only as a transition from `JOB_STATE_RUNNING`. Jobs\nthat are draining may only transition to `JOB_STATE_DRAINED`,\n`JOB_STATE_CANCELLED`, or `JOB_STATE_FAILED`.",
-                        "`JOB_STATE_DRAINED` indicates that the job has been drained.\nA drained job terminated by stopping pulling from its input sources and\nprocessing any data that remained in-flight when draining was requested.\nThis state is a terminal state, may only be set by the Cloud Dataflow\nservice, and only as a transition from `JOB_STATE_DRAINING`.",
-                        "`JOB_STATE_PENDING` indicates that the job has been created but is not yet\nrunning.  Jobs that are pending may only transition to `JOB_STATE_RUNNING`,\nor `JOB_STATE_FAILED`.",
-                        "`JOB_STATE_CANCELLING` indicates that the job has been explicitly cancelled\nand is in the process of stopping.  Jobs that are cancelling may only\ntransition to `JOB_STATE_CANCELLED` or `JOB_STATE_FAILED`.",
-                        "`JOB_STATE_QUEUED` indicates that the job has been created but is being\ndelayed until launch. Jobs that are queued may only transition to\n`JOB_STATE_PENDING` or `JOB_STATE_CANCELLED`."
-                    ],
                     "type": "string"
                 }
             },
@@ -2596,17 +2519,6 @@
                         "CONSTANT_KIND",
                         "SINGLETON_KIND",
                         "SHUFFLE_KIND"
-                    ],
-                    "enumDescriptions": [
-                        "Unrecognized transform type.",
-                        "ParDo transform.",
-                        "Group By Key transform.",
-                        "Flatten transform.",
-                        "Read transform.",
-                        "Write transform.",
-                        "Constructs from a constant value, such as with Create.of.",
-                        "Creates a Singleton view of a collection.",
-                        "Opening or closing a shuffle session, often as part of a GroupByKey."
                     ],
                     "type": "string"
                 },
@@ -2719,11 +2631,6 @@
                         "UNKNOWN",
                         "LEGACY",
                         "FLEX"
-                    ],
-                    "enumDescriptions": [
-                        "Unknown Template Type.",
-                        "Legacy Template.",
-                        "Flex Template."
                     ],
                     "type": "string"
                 }
@@ -2869,20 +2776,6 @@
                         "JOB_STATE_CANCELLING",
                         "JOB_STATE_QUEUED"
                     ],
-                    "enumDescriptions": [
-                        "The job's run state isn't specified.",
-                        "`JOB_STATE_STOPPED` indicates that the job has not\nyet started to run.",
-                        "`JOB_STATE_RUNNING` indicates that the job is currently running.",
-                        "`JOB_STATE_DONE` indicates that the job has successfully completed.\nThis is a terminal job state.  This state may be set by the Cloud Dataflow\nservice, as a transition from `JOB_STATE_RUNNING`. It may also be set via a\nCloud Dataflow `UpdateJob` call, if the job has not yet reached a terminal\nstate.",
-                        "`JOB_STATE_FAILED` indicates that the job has failed.  This is a\nterminal job state.  This state may only be set by the Cloud Dataflow\nservice, and only as a transition from `JOB_STATE_RUNNING`.",
-                        "`JOB_STATE_CANCELLED` indicates that the job has been explicitly\ncancelled. This is a terminal job state. This state may only be\nset via a Cloud Dataflow `UpdateJob` call, and only if the job has not\nyet reached another terminal state.",
-                        "`JOB_STATE_UPDATED` indicates that the job was successfully updated,\nmeaning that this job was stopped and another job was started, inheriting\nstate from this one. This is a terminal job state. This state may only be\nset by the Cloud Dataflow service, and only as a transition from\n`JOB_STATE_RUNNING`.",
-                        "`JOB_STATE_DRAINING` indicates that the job is in the process of draining.\nA draining job has stopped pulling from its input sources and is processing\nany data that remains in-flight. This state may be set via a Cloud Dataflow\n`UpdateJob` call, but only as a transition from `JOB_STATE_RUNNING`. Jobs\nthat are draining may only transition to `JOB_STATE_DRAINED`,\n`JOB_STATE_CANCELLED`, or `JOB_STATE_FAILED`.",
-                        "`JOB_STATE_DRAINED` indicates that the job has been drained.\nA drained job terminated by stopping pulling from its input sources and\nprocessing any data that remained in-flight when draining was requested.\nThis state is a terminal state, may only be set by the Cloud Dataflow\nservice, and only as a transition from `JOB_STATE_DRAINING`.",
-                        "`JOB_STATE_PENDING` indicates that the job has been created but is not yet\nrunning.  Jobs that are pending may only transition to `JOB_STATE_RUNNING`,\nor `JOB_STATE_FAILED`.",
-                        "`JOB_STATE_CANCELLING` indicates that the job has been explicitly cancelled\nand is in the process of stopping.  Jobs that are cancelling may only\ntransition to `JOB_STATE_CANCELLED` or `JOB_STATE_FAILED`.",
-                        "`JOB_STATE_QUEUED` indicates that the job has been created but is being\ndelayed until launch. Jobs that are queued may only transition to\n`JOB_STATE_PENDING` or `JOB_STATE_CANCELLED`."
-                    ],
                     "type": "string"
                 },
                 "currentStateTime": {
@@ -2940,20 +2833,6 @@
                         "JOB_STATE_CANCELLING",
                         "JOB_STATE_QUEUED"
                     ],
-                    "enumDescriptions": [
-                        "The job's run state isn't specified.",
-                        "`JOB_STATE_STOPPED` indicates that the job has not\nyet started to run.",
-                        "`JOB_STATE_RUNNING` indicates that the job is currently running.",
-                        "`JOB_STATE_DONE` indicates that the job has successfully completed.\nThis is a terminal job state.  This state may be set by the Cloud Dataflow\nservice, as a transition from `JOB_STATE_RUNNING`. It may also be set via a\nCloud Dataflow `UpdateJob` call, if the job has not yet reached a terminal\nstate.",
-                        "`JOB_STATE_FAILED` indicates that the job has failed.  This is a\nterminal job state.  This state may only be set by the Cloud Dataflow\nservice, and only as a transition from `JOB_STATE_RUNNING`.",
-                        "`JOB_STATE_CANCELLED` indicates that the job has been explicitly\ncancelled. This is a terminal job state. This state may only be\nset via a Cloud Dataflow `UpdateJob` call, and only if the job has not\nyet reached another terminal state.",
-                        "`JOB_STATE_UPDATED` indicates that the job was successfully updated,\nmeaning that this job was stopped and another job was started, inheriting\nstate from this one. This is a terminal job state. This state may only be\nset by the Cloud Dataflow service, and only as a transition from\n`JOB_STATE_RUNNING`.",
-                        "`JOB_STATE_DRAINING` indicates that the job is in the process of draining.\nA draining job has stopped pulling from its input sources and is processing\nany data that remains in-flight. This state may be set via a Cloud Dataflow\n`UpdateJob` call, but only as a transition from `JOB_STATE_RUNNING`. Jobs\nthat are draining may only transition to `JOB_STATE_DRAINED`,\n`JOB_STATE_CANCELLED`, or `JOB_STATE_FAILED`.",
-                        "`JOB_STATE_DRAINED` indicates that the job has been drained.\nA drained job terminated by stopping pulling from its input sources and\nprocessing any data that remained in-flight when draining was requested.\nThis state is a terminal state, may only be set by the Cloud Dataflow\nservice, and only as a transition from `JOB_STATE_DRAINING`.",
-                        "`JOB_STATE_PENDING` indicates that the job has been created but is not yet\nrunning.  Jobs that are pending may only transition to `JOB_STATE_RUNNING`,\nor `JOB_STATE_FAILED`.",
-                        "`JOB_STATE_CANCELLING` indicates that the job has been explicitly cancelled\nand is in the process of stopping.  Jobs that are cancelling may only\ntransition to `JOB_STATE_CANCELLED` or `JOB_STATE_FAILED`.",
-                        "`JOB_STATE_QUEUED` indicates that the job has been created but is being\ndelayed until launch. Jobs that are queued may only transition to\n`JOB_STATE_PENDING` or `JOB_STATE_CANCELLED`."
-                    ],
                     "type": "string"
                 },
                 "stageStates": {
@@ -2992,11 +2871,6 @@
                         "JOB_TYPE_UNKNOWN",
                         "JOB_TYPE_BATCH",
                         "JOB_TYPE_STREAMING"
-                    ],
-                    "enumDescriptions": [
-                        "The type of the job is unspecified, or unknown.",
-                        "A batch job with a well-defined end point: data is read, data is\nprocessed, data is written, and the job is done.",
-                        "A continuously streaming job with no end: data is read,\nprocessed, and written continuously."
                     ],
                     "type": "string"
                 }
@@ -3041,14 +2915,6 @@
                         "JOB_MESSAGE_BASIC",
                         "JOB_MESSAGE_WARNING",
                         "JOB_MESSAGE_ERROR"
-                    ],
-                    "enumDescriptions": [
-                        "The message importance isn't specified, or is unknown.",
-                        "The message is at the 'debug' level: typically only useful for\nsoftware engineers working on the code the job is running.\nTypically, Dataflow pipeline runners do not display log messages\nat this level by default.",
-                        "The message is at the 'detailed' level: somewhat verbose, but\npotentially useful to users.  Typically, Dataflow pipeline\nrunners do not display log messages at this level by default.\nThese messages are displayed by default in the Dataflow\nmonitoring UI.",
-                        "The message is at the 'basic' level: useful for keeping\ntrack of the execution of a Dataflow pipeline.  Typically,\nDataflow pipeline runners display log messages at this level by\ndefault, and these messages are displayed by default in the\nDataflow monitoring UI.",
-                        "The message is at the 'warning' level: indicating a condition\npertaining to a job which may require human intervention.\nTypically, Dataflow pipeline runners display log messages at this\nlevel by default, and these messages are displayed by default in\nthe Dataflow monitoring UI.",
-                        "The message is at the 'error' level: indicating a condition\npreventing a job from succeeding.  Typically, Dataflow pipeline\nrunners display log messages at this level by default, and these\nmessages are displayed by default in the Dataflow monitoring UI."
                     ],
                     "type": "string"
                 },
@@ -3496,18 +3362,6 @@
                         "DISTRIBUTION",
                         "LATEST_VALUE"
                     ],
-                    "enumDescriptions": [
-                        "Counter aggregation kind was not set.",
-                        "Aggregated value is the sum of all contributed values.",
-                        "Aggregated value is the max of all contributed values.",
-                        "Aggregated value is the min of all contributed values.",
-                        "Aggregated value is the mean of all contributed values.",
-                        "Aggregated value represents the logical 'or' of all contributed values.",
-                        "Aggregated value represents the logical 'and' of all contributed values.",
-                        "Aggregated value is a set of unique contributed values.",
-                        "Aggregated value captures statistics about a distribution.",
-                        "Aggregated value tracks the latest value of a variable."
-                    ],
                     "type": "string"
                 },
                 "name": {
@@ -3634,18 +3488,6 @@
                         "GCS_WRITE_FOLDER",
                         "PUBSUB_TOPIC",
                         "PUBSUB_SUBSCRIPTION"
-                    ],
-                    "enumDescriptions": [
-                        "Default input type.",
-                        "The parameter specifies generic text input.",
-                        "The parameter specifies a GCS Bucket to read from.",
-                        "The parameter specifies a GCS Bucket to write to.",
-                        "The parameter specifies a GCS file path to read from.",
-                        "The parameter specifies a GCS file path to write to.",
-                        "The parameter specifies a GCS folder path to read from.",
-                        "The parameter specifies a GCS folder to write to.",
-                        "The parameter specifies a Pub/Sub Topic.",
-                        "The parameter specifies a Pub/Sub Subscription."
                     ],
                     "type": "string"
                 },
@@ -3917,11 +3759,6 @@
                         "WORKER_IP_PUBLIC",
                         "WORKER_IP_PRIVATE"
                     ],
-                    "enumDescriptions": [
-                        "The configuration is unknown, or unspecified.",
-                        "Workers should have public IP addresses.",
-                        "Workers should have private IP addresses."
-                    ],
                     "type": "string"
                 },
                 "kmsKeyName": {
@@ -3986,11 +3823,6 @@
                         "JAVA",
                         "PYTHON"
                     ],
-                    "enumDescriptions": [
-                        "UNKNOWN Language.",
-                        "Java.",
-                        "Python."
-                    ],
                     "type": "string"
                 },
                 "version": {
@@ -4021,13 +3853,6 @@
                         "STALE",
                         "DEPRECATED",
                         "UNSUPPORTED"
-                    ],
-                    "enumDescriptions": [
-                        "Cloud Dataflow is unaware of this version.",
-                        "This is a known version of an SDK, and is supported.",
-                        "A newer version of the SDK family exists, and an update is recommended.",
-                        "This version of the SDK is deprecated and will eventually be no\nlonger supported.",
-                        "Support for this SDK version has ended and it should no longer be used."
                     ],
                     "type": "string"
                 },
@@ -4222,14 +4047,6 @@
                         "FAILED",
                         "DELETED"
                     ],
-                    "enumDescriptions": [
-                        "Unknown state.",
-                        "Snapshot intent to create has been persisted, snapshotting of state has not\nyet started.",
-                        "Snapshotting is being performed.",
-                        "Snapshot has been created and is ready to be used.",
-                        "Snapshot failed to be created.",
-                        "Snapshot has been deleted."
-                    ],
                     "type": "string"
                 },
                 "ttl": {
@@ -4417,11 +4234,6 @@
                         "SOURCE_SPLIT_OUTCOME_USE_CURRENT",
                         "SOURCE_SPLIT_OUTCOME_SPLITTING_HAPPENED"
                     ],
-                    "enumDescriptions": [
-                        "The source split outcome is unknown, or unspecified.",
-                        "The current source should be processed \"as is\" without splitting.",
-                        "Splitting produced a list of bundles."
-                    ],
                     "type": "string"
                 },
                 "shards": {
@@ -4442,12 +4254,6 @@
                         "SOURCE_DERIVATION_MODE_INDEPENDENT",
                         "SOURCE_DERIVATION_MODE_CHILD_OF_CURRENT",
                         "SOURCE_DERIVATION_MODE_SIBLING_OF_CURRENT"
-                    ],
-                    "enumDescriptions": [
-                        "The source derivation is unknown, or unspecified.",
-                        "Produce a completely independent Source with no base.",
-                        "Produce a Source based on the Source being split.",
-                        "Produce a Source based on the base of the Source being split."
                     ],
                     "type": "string"
                 },
@@ -4649,11 +4455,6 @@
                         "STREAMING_COMPUTATION_TASK_UNKNOWN",
                         "STREAMING_COMPUTATION_TASK_STOP",
                         "STREAMING_COMPUTATION_TASK_START"
-                    ],
-                    "enumDescriptions": [
-                        "The streaming computation task is unknown, or unspecified.",
-                        "Stop processing specified streaming computation range(s).",
-                        "Start processing specified streaming computation range(s)."
                     ],
                     "type": "string"
                 }
@@ -4914,17 +4715,6 @@
                         "SINGLETON_KIND",
                         "SHUFFLE_KIND"
                     ],
-                    "enumDescriptions": [
-                        "Unrecognized transform type.",
-                        "ParDo transform.",
-                        "Group By Key transform.",
-                        "Flatten transform.",
-                        "Read transform.",
-                        "Write transform.",
-                        "Constructs from a constant value, such as with Create.of.",
-                        "Creates a Singleton view of a collection.",
-                        "Opening or closing a shuffle session, often as part of a GroupByKey."
-                    ],
                     "type": "string"
                 },
                 "name": {
@@ -5168,16 +4958,6 @@
                         "SDK_INSTALL_START",
                         "SDK_INSTALL_FINISH"
                     ],
-                    "enumDescriptions": [
-                        "Invalid event.",
-                        "The time the VM started.",
-                        "Our container code starts running. Multiple containers could be\ndistinguished with WorkerMessage.labels if desired.",
-                        "The worker has a functional external network connection.",
-                        "Started downloading staging files.",
-                        "Finished downloading all staging files.",
-                        "For applicable SDKs, started installation of SDK and worker packages.",
-                        "Finished installing SDK."
-                    ],
                     "type": "string"
                 },
                 "metadata": {
@@ -5269,12 +5049,6 @@
                         "DEFAULT_PACKAGE_SET_JAVA",
                         "DEFAULT_PACKAGE_SET_PYTHON"
                     ],
-                    "enumDescriptions": [
-                        "The default set of packages to stage is unknown, or unspecified.",
-                        "Indicates that no packages should be staged at the worker unless\nexplicitly specified by the job.",
-                        "Stage packages typically useful to workers written in Java.",
-                        "Stage pacakges typically useful to workers written in Python."
-                    ],
                     "type": "string"
                 },
                 "diskSizeGb": {
@@ -5292,11 +5066,6 @@
                         "WORKER_IP_UNSPECIFIED",
                         "WORKER_IP_PUBLIC",
                         "WORKER_IP_PRIVATE"
-                    ],
-                    "enumDescriptions": [
-                        "The configuration is unknown, or unspecified.",
-                        "Workers should have public IP addresses.",
-                        "Workers should have private IP addresses."
                     ],
                     "type": "string"
                 },
@@ -5356,12 +5125,6 @@
                         "TEARDOWN_ALWAYS",
                         "TEARDOWN_ON_SUCCESS",
                         "TEARDOWN_NEVER"
-                    ],
-                    "enumDescriptions": [
-                        "The teardown policy isn't specified, or is unknown.",
-                        "Always teardown the resource.",
-                        "Teardown the resource on success. This is useful for debugging\nfailures.",
-                        "Never teardown the resource. This is useful for debugging and\ndevelopment."
                     ],
                     "type": "string"
                 },

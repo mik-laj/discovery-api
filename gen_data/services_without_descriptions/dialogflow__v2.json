@@ -30,10 +30,6 @@
                 "1",
                 "2"
             ],
-            "enumDescriptions": [
-                "v1 error format",
-                "v2 error format"
-            ],
             "location": "query",
             "type": "string"
         },
@@ -47,11 +43,6 @@
                 "json",
                 "media",
                 "proto"
-            ],
-            "enumDescriptions": [
-                "Responses with Content-Type of application/json",
-                "Media download with context-dependent Content-Type",
-                "Responses with Content-Type of application/x-protobuf"
             ],
             "location": "query",
             "type": "string"
@@ -1849,12 +1840,6 @@
                         "API_VERSION_V2",
                         "API_VERSION_V2_BETA_1"
                     ],
-                    "enumDescriptions": [
-                        "Not specified.",
-                        "Legacy V1 API.",
-                        "V2 API.",
-                        "V2beta1 API."
-                    ],
                     "type": "string"
                 },
                 "avatarUri": {
@@ -1879,11 +1864,6 @@
                         "MATCH_MODE_HYBRID",
                         "MATCH_MODE_ML_ONLY"
                     ],
-                    "enumDescriptions": [
-                        "Not specified.",
-                        "Best for agents with a small number of examples in intents and/or wide\nuse of templates syntax and composite entities.",
-                        "Can be used for agents with a large number of examples in intents,\nespecially the ones using @sys.any or very large custom entities."
-                    ],
                     "type": "string"
                 },
                 "parent": {
@@ -1901,12 +1881,6 @@
                         "TIER_STANDARD",
                         "TIER_ENTERPRISE",
                         "TIER_ENTERPRISE_PLUS"
-                    ],
-                    "enumDescriptions": [
-                        "Not specified. This value should never be used.",
-                        "Standard tier.",
-                        "Enterprise tier (Essentials).",
-                        "Enterprise tier (Plus)."
                     ],
                     "type": "string"
                 },
@@ -2049,10 +2023,6 @@
                         "INTENT_VIEW_UNSPECIFIED",
                         "INTENT_VIEW_FULL"
                     ],
-                    "enumDescriptions": [
-                        "Training phrases field is not populated in the response.",
-                        "All fields are populated."
-                    ],
                     "type": "string"
                 },
                 "languageCode": {
@@ -2117,14 +2087,6 @@
                         "NEW_MESSAGE",
                         "UNRECOVERABLE_ERROR"
                     ],
-                    "enumDescriptions": [
-                        "Type not set.",
-                        "A new conversation has been opened. This is fired when a telephone call\nis answered, or a conversation is created via the API.",
-                        "An existing conversation has closed. This is fired when a telephone call\nis terminated, or a conversation is closed via the API.",
-                        "An existing conversation has received notification from Dialogflow that\nhuman intervention is required.",
-                        "An existing conversation has received a new message, either from API or\ntelephony. It is configured in\nConversationProfile.new_message_event_notification_config",
-                        "Unrecoverable error during a telephone call.\n\nIn general non-recoverable errors only occur if something was\nmisconfigured in the ConversationProfile corresponding to the call. After\na non-recoverable error, Dialogflow may stop responding.\n\nWe don't fire this event:\n* in an API call because we can directly return the error, or,\n* when we can recover from an error."
-                    ],
                     "type": "string"
                 }
             },
@@ -2183,10 +2145,6 @@
                         "AUTO_EXPANSION_MODE_UNSPECIFIED",
                         "AUTO_EXPANSION_MODE_DEFAULT"
                     ],
-                    "enumDescriptions": [
-                        "Auto expansion disabled for the entity.",
-                        "Allows an agent to recognize values that have not been explicitly\nlisted in the entity."
-                    ],
                     "type": "string"
                 },
                 "displayName": {
@@ -2207,12 +2165,6 @@
                         "KIND_MAP",
                         "KIND_LIST",
                         "KIND_REGEXP"
-                    ],
-                    "enumDescriptions": [
-                        "Not specified. This value should be never used.",
-                        "Map entity types allow mapping of a group of synonyms to a reference\nvalue.",
-                        "List entity types contain a set of entries that do not map to reference\nvalues. However, list entity types can contain references to other entity\ntypes (with or without aliases).",
-                        "Regexp entity types allow to specify regular expressions in entries\nvalues."
                     ],
                     "type": "string"
                 },
@@ -2321,10 +2273,6 @@
                         "TYPE_UNSPECIFIED",
                         "SMALLTALK"
                     ],
-                    "enumDescriptions": [
-                        "Feature type not specified.",
-                        "Fulfillment is enabled for SmallTalk."
-                    ],
                     "type": "string"
                 }
             },
@@ -2381,16 +2329,6 @@
                         "AUDIO_ENCODING_OGG_OPUS",
                         "AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE"
                     ],
-                    "enumDescriptions": [
-                        "Not specified.",
-                        "Uncompressed 16-bit signed little-endian samples (Linear PCM).",
-                        "[`FLAC`](https://xiph.org/flac/documentation.html) (Free Lossless Audio\nCodec) is the recommended encoding because it is lossless (therefore\nrecognition is not compromised) and requires only about half the\nbandwidth of `LINEAR16`. `FLAC` stream encoding supports 16-bit and\n24-bit samples, however, not all fields in `STREAMINFO` are supported.",
-                        "8-bit samples that compand 14-bit audio samples using G.711 PCMU/mu-law.",
-                        "Adaptive Multi-Rate Narrowband codec. `sample_rate_hertz` must be 8000.",
-                        "Adaptive Multi-Rate Wideband codec. `sample_rate_hertz` must be 16000.",
-                        "Opus encoded audio frames in Ogg container\n([OggOpus](https://wiki.xiph.org/OggOpus)).\n`sample_rate_hertz` must be 16000.",
-                        "Although the use of lossy encodings is not recommended, if a very low\nbitrate encoding is required, `OGG_OPUS` is highly preferred over\nSpeex encoding. The [Speex](https://speex.org/) encoding supported by\nDialogflow API has a header byte in each block, as in MIME type\n`audio/x-speex-with-header-byte`.\nIt is a variant of the RTP Speex encoding defined in\n[RFC 5574](https://tools.ietf.org/html/rfc5574).\nThe stream is a sequence of blocks, one block per RTP packet. Each block\nstarts with a byte containing the length of the block, in bytes, followed\nby one or more frames of Speex data, padded to an integral number of\nbytes (octets) as specified in RFC 5574. In other words, each RTP header\nis replaced with a single byte containing the block length. Only Speex\nwideband is supported. `sample_rate_hertz` must be 16000."
-                    ],
                     "type": "string"
                 },
                 "enableWordInfo": {
@@ -2408,12 +2346,6 @@
                         "USE_BEST_AVAILABLE",
                         "USE_STANDARD",
                         "USE_ENHANCED"
-                    ],
-                    "enumDescriptions": [
-                        "No model variant specified. In this case Dialogflow defaults to\nUSE_BEST_AVAILABLE.",
-                        "Use the best available variant of the Speech\nmodel that the caller is eligible for.\n\nPlease see the [Dialogflow\ndocs](https://cloud.google.com/dialogflow/docs/data-logging) for\nhow to make your project eligible for enhanced models.",
-                        "Use standard model variant even if an enhanced model is available.  See the\n[Cloud Speech\ndocumentation](https://cloud.google.com/speech-to-text/docs/enhanced-models)\nfor details about enhanced models.",
-                        "Use an enhanced model variant:\n\n* If an enhanced variant does not exist for the given\n  model and request language, Dialogflow falls\n  back to the standard variant.\n\n  The [Cloud Speech\n  documentation](https://cloud.google.com/speech-to-text/docs/enhanced-models)\n  describes which models have enhanced variants.\n\n* If the API caller isn't eligible for enhanced models, Dialogflow returns\n  an error. Please see the [Dialogflow\n  docs](https://cloud.google.com/dialogflow/docs/data-logging)\n  for how to make your project eligible."
                     ],
                     "type": "string"
                 },
@@ -2446,18 +2378,6 @@
                     "type": "string"
                 },
                 "defaultResponsePlatforms": {
-                    "enumDescriptions": [
-                        "Not specified.",
-                        "Facebook.",
-                        "Slack.",
-                        "Telegram.",
-                        "Kik.",
-                        "Skype.",
-                        "Line.",
-                        "Viber.",
-                        "Actions on Google.\nWhen using Actions on Google, you can choose one of the specific\nIntent.Message types that mention support for Actions on Google,\nor you can use the advanced Intent.Message.payload field.\nThe payload field provides access to AoG features not available in the\nspecific message types.\nIf using the Intent.Message.payload field, it should have a structure\nsimilar to the JSON message shown here. For more information, see\n[Actions on Google Webhook\nFormat](https://developers.google.com/actions/dialogflow/webhook)\n<pre>{\n  \"expectUserResponse\": true,\n  \"isSsml\": false,\n  \"noInputPrompts\": [],\n  \"richResponse\": {\n    \"items\": [\n      {\n        \"simpleResponse\": {\n          \"displayText\": \"hi\",\n          \"textToSpeech\": \"hello\"\n        }\n      }\n    ],\n    \"suggestions\": [\n      {\n        \"title\": \"Say this\"\n      },\n      {\n        \"title\": \"or this\"\n      }\n    ]\n  },\n  \"systemIntent\": {\n    \"data\": {\n      \"@type\": \"type.googleapis.com/google.actions.v2.OptionValueSpec\",\n      \"listSelect\": {\n        \"items\": [\n          {\n            \"optionInfo\": {\n              \"key\": \"key1\",\n              \"synonyms\": [\n                \"key one\"\n              ]\n            },\n            \"title\": \"must not be empty, but unique\"\n          },\n          {\n            \"optionInfo\": {\n              \"key\": \"key2\",\n              \"synonyms\": [\n                \"key two\"\n              ]\n            },\n            \"title\": \"must not be empty, but unique\"\n          }\n        ]\n      }\n    },\n    \"intent\": \"actions.intent.OPTION\"\n  }\n}</pre>",
-                        "Google Hangouts."
-                    ],
                     "items": {
                         "enum": [
                             "PLATFORM_UNSPECIFIED",
@@ -2548,11 +2468,6 @@
                         "WEBHOOK_STATE_ENABLED",
                         "WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING"
                     ],
-                    "enumDescriptions": [
-                        "Webhook is disabled in the agent and in the intent.",
-                        "Webhook is enabled in the agent and in the intent.",
-                        "Webhook is enabled in the agent and in the intent. Also, each slot\nfilling prompt is forwarded to the webhook."
-                    ],
                     "type": "string"
                 }
             },
@@ -2627,18 +2542,6 @@
                         "VIBER",
                         "ACTIONS_ON_GOOGLE",
                         "GOOGLE_HANGOUTS"
-                    ],
-                    "enumDescriptions": [
-                        "Not specified.",
-                        "Facebook.",
-                        "Slack.",
-                        "Telegram.",
-                        "Kik.",
-                        "Skype.",
-                        "Line.",
-                        "Viber.",
-                        "Actions on Google.\nWhen using Actions on Google, you can choose one of the specific\nIntent.Message types that mention support for Actions on Google,\nor you can use the advanced Intent.Message.payload field.\nThe payload field provides access to AoG features not available in the\nspecific message types.\nIf using the Intent.Message.payload field, it should have a structure\nsimilar to the JSON message shown here. For more information, see\n[Actions on Google Webhook\nFormat](https://developers.google.com/actions/dialogflow/webhook)\n<pre>{\n  \"expectUserResponse\": true,\n  \"isSsml\": false,\n  \"noInputPrompts\": [],\n  \"richResponse\": {\n    \"items\": [\n      {\n        \"simpleResponse\": {\n          \"displayText\": \"hi\",\n          \"textToSpeech\": \"hello\"\n        }\n      }\n    ],\n    \"suggestions\": [\n      {\n        \"title\": \"Say this\"\n      },\n      {\n        \"title\": \"or this\"\n      }\n    ]\n  },\n  \"systemIntent\": {\n    \"data\": {\n      \"@type\": \"type.googleapis.com/google.actions.v2.OptionValueSpec\",\n      \"listSelect\": {\n        \"items\": [\n          {\n            \"optionInfo\": {\n              \"key\": \"key1\",\n              \"synonyms\": [\n                \"key one\"\n              ]\n            },\n            \"title\": \"must not be empty, but unique\"\n          },\n          {\n            \"optionInfo\": {\n              \"key\": \"key2\",\n              \"synonyms\": [\n                \"key two\"\n              ]\n            },\n            \"title\": \"must not be empty, but unique\"\n          }\n        ]\n      }\n    },\n    \"intent\": \"actions.intent.OPTION\"\n  }\n}</pre>",
-                        "Google Hangouts."
                     ],
                     "type": "string"
                 },
@@ -2716,13 +2619,6 @@
                         "CROPPED",
                         "BLURRED_BACKGROUND"
                     ],
-                    "enumDescriptions": [
-                        "Fill the gaps between the image and the image container with gray\nbars.",
-                        "Fill the gaps between the image and the image container with gray\nbars.",
-                        "Fill the gaps between the image and the image container with white\nbars.",
-                        "Image is scaled such that the image width and height match or exceed\nthe container dimensions. This may crop the top and bottom of the\nimage if the scaled image height is greater than the container\nheight, or crop the left and right of the image if the scaled image\nwidth is greater than the container width. This is similar to \"Zoom\nMode\" on a widescreen TV when playing a 4:3 video.",
-                        "Pad the gaps between image and image frame with a blurred copy of the\nsame image."
-                    ],
                     "type": "string"
                 },
                 "items": {
@@ -2763,11 +2659,6 @@
                         "URL_TYPE_HINT_UNSPECIFIED",
                         "AMP_ACTION",
                         "AMP_CONTENT"
-                    ],
-                    "enumDescriptions": [
-                        "Unspecified",
-                        "Url would be an amp action",
-                        "URL that points directly to AMP content, or to a canonical URL\nwhich refers to AMP content via <link rel=\"amphtml\">."
                     ],
                     "type": "string"
                 }
@@ -2847,12 +2738,6 @@
                         "CENTER",
                         "TRAILING"
                     ],
-                    "enumDescriptions": [
-                        "Text is aligned to the leading edge of the column.",
-                        "Text is aligned to the leading edge of the column.",
-                        "Text is centered in the column.",
-                        "Text is aligned to the trailing edge of the column."
-                    ],
                     "type": "string"
                 }
             },
@@ -2928,10 +2813,6 @@
                     "enum": [
                         "RESPONSE_MEDIA_TYPE_UNSPECIFIED",
                         "AUDIO"
-                    ],
-                    "enumDescriptions": [
-                        "Unspecified.",
-                        "Response media type is audio."
                     ],
                     "type": "string"
                 }
@@ -3158,11 +3039,6 @@
                         "EXAMPLE",
                         "TEMPLATE"
                     ],
-                    "enumDescriptions": [
-                        "Not specified. This value should never be used.",
-                        "Examples do not contain @-prefixed entity type names, but example parts\ncan be annotated with entity types.",
-                        "Templates are not annotated with entity types, but they can contain\n@-prefixed entity type names as substrings.\nTemplate mode has been deprecated. Example mode is the only supported\nway to create new training phrases. If you have existing training\nphrases that you've created in template mode, those will continue to\nwork."
-                    ],
                     "type": "string"
                 }
             },
@@ -3275,12 +3151,6 @@
                         "AUTOMATED_AGENT",
                         "END_USER"
                     ],
-                    "enumDescriptions": [
-                        "Participant role not set.",
-                        "Participant is a human agent.",
-                        "Participant is an automated agent, such as a Dialogflow agent.",
-                        "Participant is an end user that has called or chatted with\nDialogflow services."
-                    ],
                     "type": "string"
                 }
             },
@@ -3328,12 +3198,6 @@
                         "OUTPUT_AUDIO_ENCODING_LINEAR_16",
                         "OUTPUT_AUDIO_ENCODING_MP3",
                         "OUTPUT_AUDIO_ENCODING_OGG_OPUS"
-                    ],
-                    "enumDescriptions": [
-                        "Not specified.",
-                        "Uncompressed 16-bit signed little-endian samples (Linear PCM).\nAudio content returned as LINEAR16 also contains a WAV header.",
-                        "MP3 audio at 32kbps.",
-                        "Opus encoded audio wrapped in an ogg container. The result will be a\nfile which can be played natively on Android, and in browsers (at least\nChrome and Firefox). The quality of the encoding is considerably higher\nthan MP3 while using approximately the same bitrate."
                     ],
                     "type": "string"
                 },
@@ -3541,11 +3405,6 @@
                         "ENTITY_OVERRIDE_MODE_OVERRIDE",
                         "ENTITY_OVERRIDE_MODE_SUPPLEMENT"
                     ],
-                    "enumDescriptions": [
-                        "Not specified. This value should be never used.",
-                        "The collection of session entities overrides the collection of entities\nin the corresponding custom entity type.",
-                        "The collection of session entities extends the collection of entities in\nthe corresponding custom entity type.\n\nNote: Even in this override mode calls to `ListSessionEntityTypes`,\n`GetSessionEntityType`, `CreateSessionEntityType` and\n`UpdateSessionEntityType` only return the additional entities added in\nthis session entity type. If you want to get the supplemented list,\nplease call EntityTypes.GetEntityType on the custom entity type\nand merge."
-                    ],
                     "type": "string"
                 },
                 "name": {
@@ -3634,13 +3493,6 @@
                         "ERROR",
                         "CRITICAL"
                     ],
-                    "enumDescriptions": [
-                        "Not specified. This value should never be used.",
-                        "The agent doesn't follow Dialogflow best practicies.",
-                        "The agent may not behave as expected.",
-                        "The agent may experience partial failures.",
-                        "The agent may completely fail."
-                    ],
                     "type": "string"
                 }
             },
@@ -3670,12 +3522,6 @@
                         "SSML_VOICE_GENDER_MALE",
                         "SSML_VOICE_GENDER_FEMALE",
                         "SSML_VOICE_GENDER_NEUTRAL"
-                    ],
-                    "enumDescriptions": [
-                        "An unspecified gender, which means that the client doesn't care which\ngender the selected voice will have.",
-                        "A male voice.",
-                        "A female voice.",
-                        "A gender-neutral voice."
                     ],
                     "type": "string"
                 }
@@ -3817,10 +3663,6 @@
                         "AUTO_EXPANSION_MODE_UNSPECIFIED",
                         "AUTO_EXPANSION_MODE_DEFAULT"
                     ],
-                    "enumDescriptions": [
-                        "Auto expansion disabled for the entity.",
-                        "Allows an agent to recognize values that have not been explicitly\nlisted in the entity."
-                    ],
                     "type": "string"
                 },
                 "displayName": {
@@ -3841,12 +3683,6 @@
                         "KIND_MAP",
                         "KIND_LIST",
                         "KIND_REGEXP"
-                    ],
-                    "enumDescriptions": [
-                        "Not specified. This value should be never used.",
-                        "Map entity types allow mapping of a group of synonyms to a reference\nvalue.",
-                        "List entity types contain a set of entries that do not map to reference\nvalues. However, list entity types can contain references to other entity\ntypes (with or without aliases).",
-                        "Regexp entity types allow to specify regular expressions in entries\nvalues."
                     ],
                     "type": "string"
                 },
@@ -3909,19 +3745,6 @@
                     "type": "string"
                 },
                 "defaultResponsePlatforms": {
-                    "enumDescriptions": [
-                        "Not specified.",
-                        "Facebook.",
-                        "Slack.",
-                        "Telegram.",
-                        "Kik.",
-                        "Skype.",
-                        "Line.",
-                        "Viber.",
-                        "Actions on Google.\nWhen using Actions on Google, you can choose one of the specific\nIntent.Message types that mention support for Actions on Google,\nor you can use the advanced Intent.Message.payload field.\nThe payload field provides access to AoG features not available in the\nspecific message types.\nIf using the Intent.Message.payload field, it should have a structure\nsimilar to the JSON message shown here. For more information, see\n[Actions on Google Webhook\nFormat](https://developers.google.com/actions/dialogflow/webhook)\n<pre>{\n  \"expectUserResponse\": true,\n  \"isSsml\": false,\n  \"noInputPrompts\": [],\n  \"richResponse\": {\n    \"items\": [\n      {\n        \"simpleResponse\": {\n          \"displayText\": \"hi\",\n          \"textToSpeech\": \"hello\"\n        }\n      }\n    ],\n    \"suggestions\": [\n      {\n        \"title\": \"Say this\"\n      },\n      {\n        \"title\": \"or this\"\n      }\n    ]\n  },\n  \"systemIntent\": {\n    \"data\": {\n      \"@type\": \"type.googleapis.com/google.actions.v2.OptionValueSpec\",\n      \"listSelect\": {\n        \"items\": [\n          {\n            \"optionInfo\": {\n              \"key\": \"key1\",\n              \"synonyms\": [\n                \"key one\"\n              ]\n            },\n            \"title\": \"must not be empty, but unique\"\n          },\n          {\n            \"optionInfo\": {\n              \"key\": \"key2\",\n              \"synonyms\": [\n                \"key two\"\n              ]\n            },\n            \"title\": \"must not be empty, but unique\"\n          }\n        ]\n      }\n    },\n    \"intent\": \"actions.intent.OPTION\"\n  }\n}</pre>",
-                        "Telephony Gateway.",
-                        "Google Hangouts."
-                    ],
                     "items": {
                         "enum": [
                             "PLATFORM_UNSPECIFIED",
@@ -4019,11 +3842,6 @@
                         "WEBHOOK_STATE_ENABLED",
                         "WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING"
                     ],
-                    "enumDescriptions": [
-                        "Webhook is disabled in the agent and in the intent.",
-                        "Webhook is enabled in the agent and in the intent.",
-                        "Webhook is enabled in the agent and in the intent. Also, each slot\nfilling prompt is forwarded to the webhook."
-                    ],
                     "type": "string"
                 }
             },
@@ -4087,19 +3905,6 @@
                         "ACTIONS_ON_GOOGLE",
                         "TELEPHONY",
                         "GOOGLE_HANGOUTS"
-                    ],
-                    "enumDescriptions": [
-                        "Not specified.",
-                        "Facebook.",
-                        "Slack.",
-                        "Telegram.",
-                        "Kik.",
-                        "Skype.",
-                        "Line.",
-                        "Viber.",
-                        "Actions on Google.\nWhen using Actions on Google, you can choose one of the specific\nIntent.Message types that mention support for Actions on Google,\nor you can use the advanced Intent.Message.payload field.\nThe payload field provides access to AoG features not available in the\nspecific message types.\nIf using the Intent.Message.payload field, it should have a structure\nsimilar to the JSON message shown here. For more information, see\n[Actions on Google Webhook\nFormat](https://developers.google.com/actions/dialogflow/webhook)\n<pre>{\n  \"expectUserResponse\": true,\n  \"isSsml\": false,\n  \"noInputPrompts\": [],\n  \"richResponse\": {\n    \"items\": [\n      {\n        \"simpleResponse\": {\n          \"displayText\": \"hi\",\n          \"textToSpeech\": \"hello\"\n        }\n      }\n    ],\n    \"suggestions\": [\n      {\n        \"title\": \"Say this\"\n      },\n      {\n        \"title\": \"or this\"\n      }\n    ]\n  },\n  \"systemIntent\": {\n    \"data\": {\n      \"@type\": \"type.googleapis.com/google.actions.v2.OptionValueSpec\",\n      \"listSelect\": {\n        \"items\": [\n          {\n            \"optionInfo\": {\n              \"key\": \"key1\",\n              \"synonyms\": [\n                \"key one\"\n              ]\n            },\n            \"title\": \"must not be empty, but unique\"\n          },\n          {\n            \"optionInfo\": {\n              \"key\": \"key2\",\n              \"synonyms\": [\n                \"key two\"\n              ]\n            },\n            \"title\": \"must not be empty, but unique\"\n          }\n        ]\n      }\n    },\n    \"intent\": \"actions.intent.OPTION\"\n  }\n}</pre>",
-                        "Telephony Gateway.",
-                        "Google Hangouts."
                     ],
                     "type": "string"
                 },
@@ -4195,13 +4000,6 @@
                         "CROPPED",
                         "BLURRED_BACKGROUND"
                     ],
-                    "enumDescriptions": [
-                        "Fill the gaps between the image and the image container with gray\nbars.",
-                        "Fill the gaps between the image and the image container with gray\nbars.",
-                        "Fill the gaps between the image and the image container with white\nbars.",
-                        "Image is scaled such that the image width and height match or exceed\nthe container dimensions. This may crop the top and bottom of the\nimage if the scaled image height is greater than the container\nheight, or crop the left and right of the image if the scaled image\nwidth is greater than the container width. This is similar to \"Zoom\nMode\" on a widescreen TV when playing a 4:3 video.",
-                        "Pad the gaps between image and image frame with a blurred copy of the\nsame image."
-                    ],
                     "type": "string"
                 },
                 "items": {
@@ -4242,11 +4040,6 @@
                         "URL_TYPE_HINT_UNSPECIFIED",
                         "AMP_ACTION",
                         "AMP_CONTENT"
-                    ],
-                    "enumDescriptions": [
-                        "Unspecified",
-                        "Url would be an amp action",
-                        "URL that points directly to AMP content, or to a canonical URL\nwhich refers to AMP content via <link rel=\"amphtml\">."
                     ],
                     "type": "string"
                 }
@@ -4326,12 +4119,6 @@
                         "CENTER",
                         "TRAILING"
                     ],
-                    "enumDescriptions": [
-                        "Text is aligned to the leading edge of the column.",
-                        "Text is aligned to the leading edge of the column.",
-                        "Text is centered in the column.",
-                        "Text is aligned to the trailing edge of the column."
-                    ],
                     "type": "string"
                 }
             },
@@ -4408,10 +4195,6 @@
                         "RESPONSE_MEDIA_TYPE_UNSPECIFIED",
                         "AUDIO"
                     ],
-                    "enumDescriptions": [
-                        "Unspecified.",
-                        "Response media type is audio."
-                    ],
                     "type": "string"
                 }
             },
@@ -4481,12 +4264,6 @@
                         "MEDIUM",
                         "TALL"
                     ],
-                    "enumDescriptions": [
-                        "Not specified.",
-                        "112 DP.",
-                        "168 DP.",
-                        "264 DP. Not available for rich card carousels when the card width\nis set to small."
-                    ],
                     "type": "string"
                 },
                 "thumbnailUri": {
@@ -4510,11 +4287,6 @@
                         "SMALL",
                         "MEDIUM"
                     ],
-                    "enumDescriptions": [
-                        "Not specified.",
-                        "120 DP. Note that tall media cannot be used.",
-                        "232 DP."
-                    ],
                     "type": "string"
                 }
             },
@@ -4532,11 +4304,6 @@
                         "HORIZONTAL",
                         "VERTICAL"
                     ],
-                    "enumDescriptions": [
-                        "Not specified.",
-                        "Horizontal layout.",
-                        "Vertical layout."
-                    ],
                     "type": "string"
                 },
                 "thumbnailImageAlignment": {
@@ -4544,11 +4311,6 @@
                         "THUMBNAIL_IMAGE_ALIGNMENT_UNSPECIFIED",
                         "LEFT",
                         "RIGHT"
-                    ],
-                    "enumDescriptions": [
-                        "Not specified.",
-                        "Thumbnail preview is left-aligned.",
-                        "Thumbnail preview is right-aligned."
                     ],
                     "type": "string"
                 }
@@ -4855,11 +4617,6 @@
                         "EXAMPLE",
                         "TEMPLATE"
                     ],
-                    "enumDescriptions": [
-                        "Not specified. This value should never be used.",
-                        "Examples do not contain @-prefixed entity type names, but example parts\ncan be annotated with entity types.",
-                        "Templates are not annotated with entity types, but they can contain\n@-prefixed entity type names as substrings.\nTemplate mode has been deprecated. Example mode is the only supported\nway to create new training phrases. If you have existing training\nphrases that you've created in template mode, those will continue to\nwork."
-                    ],
                     "type": "string"
                 }
             },
@@ -4915,12 +4672,6 @@
                         "MEDIUM",
                         "HIGH"
                     ],
-                    "enumDescriptions": [
-                        "Not specified.",
-                        "Indicates that the confidence is low.",
-                        "Indicates our confidence is medium.",
-                        "Indicates our confidence is high."
-                    ],
                     "type": "string"
                 },
                 "source": {
@@ -4938,12 +4689,6 @@
                         "PENDING",
                         "RUNNING",
                         "DONE"
-                    ],
-                    "enumDescriptions": [
-                        "State unspecified.",
-                        "The operation has been created.",
-                        "The operation is currently running.",
-                        "The operation is done, either cancelled or completed."
                     ],
                     "type": "string"
                 }
@@ -5085,11 +4830,6 @@
                         "ENTITY_OVERRIDE_MODE_UNSPECIFIED",
                         "ENTITY_OVERRIDE_MODE_OVERRIDE",
                         "ENTITY_OVERRIDE_MODE_SUPPLEMENT"
-                    ],
-                    "enumDescriptions": [
-                        "Not specified. This value should be never used.",
-                        "The collection of session entities overrides the collection of entities\nin the corresponding custom entity type.",
-                        "The collection of session entities extends the collection of entities in\nthe corresponding custom entity type.\n\nNote: Even in this override mode calls to `ListSessionEntityTypes`,\n`GetSessionEntityType`, `CreateSessionEntityType` and\n`UpdateSessionEntityType` only return the additional entities added in\nthis session entity type. If you want to get the supplemented list,\nplease call EntityTypes.GetEntityType on the custom entity type\nand merge."
                     ],
                     "type": "string"
                 },

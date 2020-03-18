@@ -32,10 +32,6 @@
                 "1",
                 "2"
             ],
-            "enumDescriptions": [
-                "v1 error format",
-                "v2 error format"
-            ],
             "location": "query",
             "type": "string"
         },
@@ -49,11 +45,6 @@
                 "json",
                 "media",
                 "proto"
-            ],
-            "enumDescriptions": [
-                "Responses with Content-Type of application/json",
-                "Media download with context-dependent Content-Type",
-                "Responses with Content-Type of application/x-protobuf"
             ],
             "location": "query",
             "type": "string"
@@ -1673,22 +1664,6 @@
                         "REDUCE_PERCENTILE_50",
                         "REDUCE_PERCENTILE_05"
                     ],
-                    "enumDescriptions": [
-                        "No cross-time series reduction. The output of the Aligner is returned.",
-                        "Reduce by computing the mean value across time series for each alignment period. This reducer is valid for DELTA and GAUGE metrics with numeric or distribution values. The value_type of the output is DOUBLE.",
-                        "Reduce by computing the minimum value across time series for each alignment period. This reducer is valid for DELTA and GAUGE metrics with numeric values. The value_type of the output is the same as the value_type of the input.",
-                        "Reduce by computing the maximum value across time series for each alignment period. This reducer is valid for DELTA and GAUGE metrics with numeric values. The value_type of the output is the same as the value_type of the input.",
-                        "Reduce by computing the sum across time series for each alignment period. This reducer is valid for DELTA and GAUGE metrics with numeric and distribution values. The value_type of the output is the same as the value_type of the input.",
-                        "Reduce by computing the standard deviation across time series for each alignment period. This reducer is valid for DELTA and GAUGE metrics with numeric or distribution values. The value_type of the output is DOUBLE.",
-                        "Reduce by computing the number of data points across time series for each alignment period. This reducer is valid for DELTA and GAUGE metrics of numeric, Boolean, distribution, and string value_type. The value_type of the output is INT64.",
-                        "Reduce by computing the number of True-valued data points across time series for each alignment period. This reducer is valid for DELTA and GAUGE metrics of Boolean value_type. The value_type of the output is INT64.",
-                        "Reduce by computing the number of False-valued data points across time series for each alignment period. This reducer is valid for DELTA and GAUGE metrics of Boolean value_type. The value_type of the output is INT64.",
-                        "Reduce by computing the ratio of the number of True-valued data points to the total number of data points for each alignment period. This reducer is valid for DELTA and GAUGE metrics of Boolean value_type. The output value is in the range 0.0, 1.0 and has value_type DOUBLE.",
-                        "Reduce by computing the 99th percentile (https://en.wikipedia.org/wiki/Percentile) of data points across time series for each alignment period. This reducer is valid for GAUGE and DELTA metrics of numeric and distribution type. The value of the output is DOUBLE.",
-                        "Reduce by computing the 95th percentile (https://en.wikipedia.org/wiki/Percentile) of data points across time series for each alignment period. This reducer is valid for GAUGE and DELTA metrics of numeric and distribution type. The value of the output is DOUBLE.",
-                        "Reduce by computing the 50th percentile (https://en.wikipedia.org/wiki/Percentile) of data points across time series for each alignment period. This reducer is valid for GAUGE and DELTA metrics of numeric and distribution type. The value of the output is DOUBLE.",
-                        "Reduce by computing the 5th percentile (https://en.wikipedia.org/wiki/Percentile) of data points across time series for each alignment period. This reducer is valid for GAUGE and DELTA metrics of numeric and distribution type. The value of the output is DOUBLE."
-                    ],
                     "type": "string"
                 },
                 "groupByFields": {
@@ -1719,27 +1694,6 @@
                         "ALIGN_PERCENTILE_05",
                         "ALIGN_PERCENT_CHANGE"
                     ],
-                    "enumDescriptions": [
-                        "No alignment. Raw data is returned. Not valid if cross-series reduction is requested. The value_type of the result is the same as the value_type of the input.",
-                        "Align and convert to DELTA. The output is delta = y1 - y0.This alignment is valid for CUMULATIVE and DELTA metrics. If the selected alignment period results in periods with no data, then the aligned value for such a period is created by interpolation. The value_type of the aligned result is the same as the value_type of the input.",
-                        "Align and convert to a rate. The result is computed as rate = (y1 - y0)/(t1 - t0), or \"delta over time\". Think of this aligner as providing the slope of the line that passes through the value at the start and at the end of the alignment_period.This aligner is valid for CUMULATIVE and DELTA metrics with numeric values. If the selected alignment period results in periods with no data, then the aligned value for such a period is created by interpolation. The output is a GAUGE metric with value_type DOUBLE.If, by \"rate\", you mean \"percentage change\", see the ALIGN_PERCENT_CHANGE aligner instead.",
-                        "Align by interpolating between adjacent points around the alignment period boundary. This aligner is valid for GAUGE metrics with numeric values. The value_type of the aligned result is the same as the value_type of the input.",
-                        "Align by moving the most recent data point before the end of the alignment period to the boundary at the end of the alignment period. This aligner is valid for GAUGE metrics. The value_type of the aligned result is the same as the value_type of the input.",
-                        "Align the time series by returning the minimum value in each alignment period. This aligner is valid for GAUGE and DELTA metrics with numeric values. The value_type of the aligned result is the same as the value_type of the input.",
-                        "Align the time series by returning the maximum value in each alignment period. This aligner is valid for GAUGE and DELTA metrics with numeric values. The value_type of the aligned result is the same as the value_type of the input.",
-                        "Align the time series by returning the mean value in each alignment period. This aligner is valid for GAUGE and DELTA metrics with numeric values. The value_type of the aligned result is DOUBLE.",
-                        "Align the time series by returning the number of values in each alignment period. This aligner is valid for GAUGE and DELTA metrics with numeric or Boolean values. The value_type of the aligned result is INT64.",
-                        "Align the time series by returning the sum of the values in each alignment period. This aligner is valid for GAUGE and DELTA metrics with numeric and distribution values. The value_type of the aligned result is the same as the value_type of the input.",
-                        "Align the time series by returning the standard deviation of the values in each alignment period. This aligner is valid for GAUGE and DELTA metrics with numeric values. The value_type of the output is DOUBLE.",
-                        "Align the time series by returning the number of True values in each alignment period. This aligner is valid for GAUGE metrics with Boolean values. The value_type of the output is INT64.",
-                        "Align the time series by returning the number of False values in each alignment period. This aligner is valid for GAUGE metrics with Boolean values. The value_type of the output is INT64.",
-                        "Align the time series by returning the ratio of the number of True values to the total number of values in each alignment period. This aligner is valid for GAUGE metrics with Boolean values. The output value is in the range 0.0, 1.0 and has value_type DOUBLE.",
-                        "Align the time series by using percentile aggregation (https://en.wikipedia.org/wiki/Percentile). The resulting data point in each alignment period is the 99th percentile of all data points in the period. This aligner is valid for GAUGE and DELTA metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.",
-                        "Align the time series by using percentile aggregation (https://en.wikipedia.org/wiki/Percentile). The resulting data point in each alignment period is the 95th percentile of all data points in the period. This aligner is valid for GAUGE and DELTA metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.",
-                        "Align the time series by using percentile aggregation (https://en.wikipedia.org/wiki/Percentile). The resulting data point in each alignment period is the 50th percentile of all data points in the period. This aligner is valid for GAUGE and DELTA metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.",
-                        "Align the time series by using percentile aggregation (https://en.wikipedia.org/wiki/Percentile). The resulting data point in each alignment period is the 5th percentile of all data points in the period. This aligner is valid for GAUGE and DELTA metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.",
-                        "Align and convert to a percentage change. This aligner is valid for GAUGE and DELTA metrics with numeric values. This alignment returns ((current - previous)/previous) * 100, where the value of previous is determined based on the alignment_period.If the values of current and previous are both 0, then the returned value is 0. If only previous is 0, the returned value is infinity.A 10-minute moving mean is computed at each point of the alignment period prior to the above calculation to smooth the metric and prevent false positives from very short-lived spikes. The moving mean is only applicable for data whose values are >= 0. Any values < 0 are treated as a missing datapoint, and are ignored. While DELTA metrics are accepted by this alignment, special care should be taken that the values for the metric will always be positive. The output is a GAUGE metric with value_type DOUBLE."
-                    ],
                     "type": "string"
                 }
             },
@@ -1754,12 +1708,6 @@
                         "AND",
                         "OR",
                         "AND_WITH_MATCHING_RESOURCE"
-                    ],
-                    "enumDescriptions": [
-                        "An unspecified combiner.",
-                        "Combine conditions using the logical AND operator. An incident is created only if all the conditions are met simultaneously. This combiner is satisfied if all conditions are met, even if they are met on completely different resources.",
-                        "Combine conditions using the logical OR operator. An incident is created if any of the listed conditions is met.",
-                        "Combine conditions using logical AND operator, but unlike the regular AND option, an incident is created only if all conditions are met simultaneously on at least one resource."
                     ],
                     "type": "string"
                 },
@@ -1974,13 +1922,6 @@
                         "DERIVE",
                         "ABSOLUTE"
                     ],
-                    "enumDescriptions": [
-                        "An unspecified data source type. This corresponds to google.api.MetricDescriptor.MetricKind.METRIC_KIND_UNSPECIFIED.",
-                        "An instantaneous measurement of a varying quantity. This corresponds to google.api.MetricDescriptor.MetricKind.GAUGE.",
-                        "A cumulative value over time. This corresponds to google.api.MetricDescriptor.MetricKind.CUMULATIVE.",
-                        "A rate of change of the measurement.",
-                        "An amount of change since the last measurement interval. This corresponds to google.api.MetricDescriptor.MetricKind.DELTA."
-                    ],
                     "type": "string"
                 },
                 "value": {
@@ -2033,13 +1974,6 @@
                         "NOT_CONTAINS_STRING",
                         "MATCHES_REGEX",
                         "NOT_MATCHES_REGEX"
-                    ],
-                    "enumDescriptions": [
-                        "No content matcher type specified (maintained for backward compatibility, but deprecated for future use). Treated as CONTAINS_STRING.",
-                        "Selects substring matching. The match succeeds if the output contains the content string. This is the default value for checks without a matcher option, or where the value of matcher is CONTENT_MATCHER_OPTION_UNSPECIFIED.",
-                        "Selects negation of substring matching. The match succeeds if the output does NOT contain the content string.",
-                        "Selects regular-expression matching. The match succeeds of the output matches the regular expression specified in the content string.",
-                        "Selects negation of regular-expression matching. The match succeeds if the output does NOT match the regular expression specified in the content string."
                     ],
                     "type": "string"
                 }
@@ -2271,12 +2205,6 @@
                         "CARDINALITY_REQUIRED",
                         "CARDINALITY_REPEATED"
                     ],
-                    "enumDescriptions": [
-                        "For fields with unknown cardinality.",
-                        "For optional fields.",
-                        "For required fields. Proto2 syntax only.",
-                        "For repeated fields."
-                    ],
                     "type": "string"
                 },
                 "defaultValue": {
@@ -2306,27 +2234,6 @@
                         "TYPE_SFIXED64",
                         "TYPE_SINT32",
                         "TYPE_SINT64"
-                    ],
-                    "enumDescriptions": [
-                        "Field type unknown.",
-                        "Field type double.",
-                        "Field type float.",
-                        "Field type int64.",
-                        "Field type uint64.",
-                        "Field type int32.",
-                        "Field type fixed64.",
-                        "Field type fixed32.",
-                        "Field type bool.",
-                        "Field type string.",
-                        "Field type group. Proto2 syntax only, and deprecated.",
-                        "Field type message.",
-                        "Field type bytes.",
-                        "Field type uint32.",
-                        "Field type enum.",
-                        "Field type sfixed32.",
-                        "Field type sfixed64.",
-                        "Field type sint32.",
-                        "Field type sint64."
                     ],
                     "type": "string"
                 },
@@ -2469,11 +2376,6 @@
                         "CREATING",
                         "RUNNING"
                     ],
-                    "enumDescriptions": [
-                        "An internal checker should never be in the unspecified state.",
-                        "The checker is being created, provisioned, and configured. A checker in this state can be returned by ListInternalCheckers or GetInternalChecker, as well as by examining the long running Operation (https://cloud.google.com/apis/design/design_patterns#long_running_operations) that created it.",
-                        "The checker is running and available for use. A checker in this state can be returned by ListInternalCheckers or GetInternalChecker as well as by examining the long running Operation (https://cloud.google.com/apis/design/design_patterns#long_running_operations) that created it. If a checker is being torn down, it is neither visible nor usable, so there is no \"deleting\" or \"down\" state."
-                    ],
                     "type": "string"
                 }
             },
@@ -2490,11 +2392,6 @@
                         "STRING",
                         "BOOL",
                         "INT64"
-                    ],
-                    "enumDescriptions": [
-                        "A variable-length string, not to exceed 1,024 characters. This is the default value type.",
-                        "Boolean; true or false.",
-                        "A 64-bit signed integer."
                     ],
                     "type": "string"
                 }
@@ -2796,14 +2693,6 @@
                         "GA",
                         "DEPRECATED"
                     ],
-                    "enumDescriptions": [
-                        "Do not use this default value.",
-                        "Early Access features are limited to a closed group of testers. To use these features, you must sign up in advance and sign a Trusted Tester agreement (which includes confidentiality provisions). These features may be unstable, changed in backward-incompatible ways, and are not guaranteed to be released.",
-                        "Alpha is a limited availability test for releases before they are cleared for widespread use. By Alpha, all significant design issues are resolved and we are in the process of verifying functionality. Alpha customers need to apply for access, agree to applicable terms, and have their projects whitelisted. Alpha releases don\u2019t have to be feature complete, no SLAs are provided, and there are no technical support obligations, but they will be far enough along that customers can actually use them in test environments or for limited-use tests -- just like they would in normal production cases.",
-                        "Beta is the point at which we are ready to open a release for any customer to use. There are no SLA or technical support obligations in a Beta release. Products will be complete from a feature perspective, but may have some open outstanding issues. Beta releases are suitable for limited production use cases.",
-                        "GA features are open to all developers and are considered stable and fully qualified for production use.",
-                        "Deprecated features are scheduled to be shut down and removed. For more information, see the \u201cDeprecation Policy\u201d section of our Terms of Service (https://cloud.google.com/terms/) and the Google Cloud Platform Subject to the Deprecation Policy (https://cloud.google.com/terms/deprecation) documentation."
-                    ],
                     "type": "string"
                 },
                 "metadata": {
@@ -2815,12 +2704,6 @@
                         "GAUGE",
                         "DELTA",
                         "CUMULATIVE"
-                    ],
-                    "enumDescriptions": [
-                        "Do not use this default value.",
-                        "An instantaneous measurement of a value.",
-                        "The change in a value during a time interval.",
-                        "A value accumulated over a time interval. Cumulative measurements in a time series should have the same start time and increasing end times, until an event resets the cumulative value to zero and sets a new start time for the following points."
                     ],
                     "type": "string"
                 },
@@ -2849,15 +2732,6 @@
                         "DISTRIBUTION",
                         "MONEY"
                     ],
-                    "enumDescriptions": [
-                        "Do not use this default value.",
-                        "The value is a boolean. This value type can be used only if the metric kind is GAUGE.",
-                        "The value is a signed 64-bit integer.",
-                        "The value is a double precision floating point number.",
-                        "The value is a text string. This value type can be used only if the metric kind is GAUGE.",
-                        "The value is a Distribution.",
-                        "The value is money."
-                    ],
                     "type": "string"
                 }
             },
@@ -2878,14 +2752,6 @@
                         "BETA",
                         "GA",
                         "DEPRECATED"
-                    ],
-                    "enumDescriptions": [
-                        "Do not use this default value.",
-                        "Early Access features are limited to a closed group of testers. To use these features, you must sign up in advance and sign a Trusted Tester agreement (which includes confidentiality provisions). These features may be unstable, changed in backward-incompatible ways, and are not guaranteed to be released.",
-                        "Alpha is a limited availability test for releases before they are cleared for widespread use. By Alpha, all significant design issues are resolved and we are in the process of verifying functionality. Alpha customers need to apply for access, agree to applicable terms, and have their projects whitelisted. Alpha releases don\u2019t have to be feature complete, no SLAs are provided, and there are no technical support obligations, but they will be far enough along that customers can actually use them in test environments or for limited-use tests -- just like they would in normal production cases.",
-                        "Beta is the point at which we are ready to open a release for any customer to use. There are no SLA or technical support obligations in a Beta release. Products will be complete from a feature perspective, but may have some open outstanding issues. Beta releases are suitable for limited production use cases.",
-                        "GA features are open to all developers and are considered stable and fully qualified for production use.",
-                        "Deprecated features are scheduled to be shut down and removed. For more information, see the \u201cDeprecation Policy\u201d section of our Terms of Service (https://cloud.google.com/terms/) and the Google Cloud Platform Subject to the Deprecation Policy (https://cloud.google.com/terms/deprecation) documentation."
                     ],
                     "type": "string"
                 },
@@ -2926,15 +2792,6 @@
                         "COMPARISON_LE",
                         "COMPARISON_EQ",
                         "COMPARISON_NE"
-                    ],
-                    "enumDescriptions": [
-                        "No ordering relationship is specified.",
-                        "True if the left argument is greater than the right argument.",
-                        "True if the left argument is greater than or equal to the right argument.",
-                        "True if the left argument is less than the right argument.",
-                        "True if the left argument is less than or equal to the right argument.",
-                        "True if the left argument is equal to the right argument.",
-                        "True if the left argument is not equal to the right argument."
                     ],
                     "type": "string"
                 },
@@ -2999,14 +2856,6 @@
                         "BETA",
                         "GA",
                         "DEPRECATED"
-                    ],
-                    "enumDescriptions": [
-                        "Do not use this default value.",
-                        "Early Access features are limited to a closed group of testers. To use these features, you must sign up in advance and sign a Trusted Tester agreement (which includes confidentiality provisions). These features may be unstable, changed in backward-incompatible ways, and are not guaranteed to be released.",
-                        "Alpha is a limited availability test for releases before they are cleared for widespread use. By Alpha, all significant design issues are resolved and we are in the process of verifying functionality. Alpha customers need to apply for access, agree to applicable terms, and have their projects whitelisted. Alpha releases don\u2019t have to be feature complete, no SLAs are provided, and there are no technical support obligations, but they will be far enough along that customers can actually use them in test environments or for limited-use tests -- just like they would in normal production cases.",
-                        "Beta is the point at which we are ready to open a release for any customer to use. There are no SLA or technical support obligations in a Beta release. Products will be complete from a feature perspective, but may have some open outstanding issues. Beta releases are suitable for limited production use cases.",
-                        "GA features are open to all developers and are considered stable and fully qualified for production use.",
-                        "Deprecated features are scheduled to be shut down and removed. For more information, see the \u201cDeprecation Policy\u201d section of our Terms of Service (https://cloud.google.com/terms/) and the Google Cloud Platform Subject to the Deprecation Policy (https://cloud.google.com/terms/deprecation) documentation."
                     ],
                     "type": "string"
                 },
@@ -3083,11 +2932,6 @@
                         "UNVERIFIED",
                         "VERIFIED"
                     ],
-                    "enumDescriptions": [
-                        "Sentinel value used to indicate that the state is unknown, omitted, or is not applicable (as in the case of channels that neither support nor require verification in order to function).",
-                        "The channel has yet to be verified and requires verification to function. Note that this state also applies to the case where the verification process has been initiated by sending a verification code but where the verification code has not been submitted to complete the process.",
-                        "It has been proven that notifications can be received on this notification channel and that someone on the project has access to messages that are delivered to that channel."
-                    ],
                     "type": "string"
                 }
             },
@@ -3113,14 +2957,6 @@
                         "BETA",
                         "GA",
                         "DEPRECATED"
-                    ],
-                    "enumDescriptions": [
-                        "Do not use this default value.",
-                        "Early Access features are limited to a closed group of testers. To use these features, you must sign up in advance and sign a Trusted Tester agreement (which includes confidentiality provisions). These features may be unstable, changed in backward-incompatible ways, and are not guaranteed to be released.",
-                        "Alpha is a limited availability test for releases before they are cleared for widespread use. By Alpha, all significant design issues are resolved and we are in the process of verifying functionality. Alpha customers need to apply for access, agree to applicable terms, and have their projects whitelisted. Alpha releases don\u2019t have to be feature complete, no SLAs are provided, and there are no technical support obligations, but they will be far enough along that customers can actually use them in test environments or for limited-use tests -- just like they would in normal production cases.",
-                        "Beta is the point at which we are ready to open a release for any customer to use. There are no SLA or technical support obligations in a Beta release. Products will be complete from a feature perspective, but may have some open outstanding issues. Beta releases are suitable for limited production use cases.",
-                        "GA features are open to all developers and are considered stable and fully qualified for production use.",
-                        "Deprecated features are scheduled to be shut down and removed. For more information, see the \u201cDeprecation Policy\u201d section of our Terms of Service (https://cloud.google.com/terms/) and the Google Cloud Platform Subject to the Deprecation Policy (https://cloud.google.com/terms/deprecation) documentation."
                     ],
                     "type": "string"
                 },
@@ -3214,11 +3050,6 @@
                         "INSTANCE",
                         "AWS_ELB_LOAD_BALANCER"
                     ],
-                    "enumDescriptions": [
-                        "Default value (not valid).",
-                        "A group of instances from Google Cloud Platform (GCP) or Amazon Web Services (AWS).",
-                        "A group of Amazon ELB load balancers."
-                    ],
                     "type": "string"
                 }
             },
@@ -3287,16 +3118,6 @@
                         "QUARTER",
                         "HALF",
                         "YEAR"
-                    ],
-                    "enumDescriptions": [
-                        "Undefined period, raises an error.",
-                        "A day.",
-                        "A week. Weeks begin on Monday, following ISO 8601 (https://en.wikipedia.org/wiki/ISO_week_date).",
-                        "A fortnight. The first calendar fortnight of the year begins at the start of week 1 according to ISO 8601 (https://en.wikipedia.org/wiki/ISO_week_date).",
-                        "A month.",
-                        "A quarter. Quarters start on dates 1-Jan, 1-Apr, 1-Jul, and 1-Oct of each year.",
-                        "A half-year. Half-years start on dates 1-Jan and 1-Jul.",
-                        "A year."
                     ],
                     "type": "string"
                 },
@@ -3409,12 +3230,6 @@
                         "DELTA",
                         "CUMULATIVE"
                     ],
-                    "enumDescriptions": [
-                        "Do not use this default value.",
-                        "An instantaneous measurement of a value.",
-                        "The change in a value during a time interval.",
-                        "A value accumulated over a time interval. Cumulative measurements in a time series should have the same start time and increasing end times, until an event resets the cumulative value to zero and sets a new start time for the following points."
-                    ],
                     "type": "string"
                 },
                 "points": {
@@ -3435,15 +3250,6 @@
                         "STRING",
                         "DISTRIBUTION",
                         "MONEY"
-                    ],
-                    "enumDescriptions": [
-                        "Do not use this default value.",
-                        "The value is a boolean. This value type can be used only if the metric kind is GAUGE.",
-                        "The value is a signed 64-bit integer.",
-                        "The value is a double precision floating point number.",
-                        "The value is a text string. This value type can be used only if the metric kind is GAUGE.",
-                        "The value is a Distribution.",
-                        "The value is money."
                     ],
                     "type": "string"
                 }
@@ -3511,10 +3317,6 @@
                         "SYNTAX_PROTO2",
                         "SYNTAX_PROTO3"
                     ],
-                    "enumDescriptions": [
-                        "Syntax proto2.",
-                        "Syntax proto3."
-                    ],
                     "type": "string"
                 }
             },
@@ -3581,13 +3383,6 @@
                     "$ref": "ResourceGroup"
                 },
                 "selectedRegions": {
-                    "enumDescriptions": [
-                        "Default value if no region is specified. Will result in Uptime checks running from all regions.",
-                        "Allows checks to run from locations within the United States of America.",
-                        "Allows checks to run from locations within the continent of Europe.",
-                        "Allows checks to run from locations within the continent of South America.",
-                        "Allows checks to run from locations within the Asia Pacific area (ex: Singapore)."
-                    ],
                     "items": {
                         "enum": [
                             "REGION_UNSPECIFIED",
@@ -3626,13 +3421,6 @@
                         "EUROPE",
                         "SOUTH_AMERICA",
                         "ASIA_PACIFIC"
-                    ],
-                    "enumDescriptions": [
-                        "Default value if no region is specified. Will result in Uptime checks running from all regions.",
-                        "Allows checks to run from locations within the United States of America.",
-                        "Allows checks to run from locations within the continent of Europe.",
-                        "Allows checks to run from locations within the continent of South America.",
-                        "Allows checks to run from locations within the Asia Pacific area (ex: Singapore)."
                     ],
                     "type": "string"
                 }
