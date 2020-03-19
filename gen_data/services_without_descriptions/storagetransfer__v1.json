@@ -374,6 +374,30 @@
             },
             "type": "object"
         },
+        "AzureBlobStorageData": {
+            "id": "AzureBlobStorageData",
+            "properties": {
+                "azureCredentials": {
+                    "$ref": "AzureCredentials"
+                },
+                "container": {
+                    "type": "string"
+                },
+                "storageAccount": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AzureCredentials": {
+            "id": "AzureCredentials",
+            "properties": {
+                "sasToken": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Date": {
             "id": "Date",
             "properties": {
@@ -503,6 +527,35 @@
                         "$ref": "TransferJob"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "NotificationConfig": {
+            "id": "NotificationConfig",
+            "properties": {
+                "eventTypes": {
+                    "items": {
+                        "enum": [
+                            "EVENT_TYPE_UNSPECIFIED",
+                            "TRANSFER_OPERATION_SUCCESS",
+                            "TRANSFER_OPERATION_FAILED",
+                            "TRANSFER_OPERATION_ABORTED"
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "payloadFormat": {
+                    "enum": [
+                        "PAYLOAD_FORMAT_UNSPECIFIED",
+                        "NONE",
+                        "JSON"
+                    ],
+                    "type": "string"
+                },
+                "pubsubTopic": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -725,6 +778,9 @@
                 "name": {
                     "type": "string"
                 },
+                "notificationConfig": {
+                    "$ref": "NotificationConfig"
+                },
                 "projectId": {
                     "type": "string"
                 },
@@ -764,6 +820,9 @@
                 },
                 "name": {
                     "type": "string"
+                },
+                "notificationConfig": {
+                    "$ref": "NotificationConfig"
                 },
                 "projectId": {
                     "type": "string"
@@ -813,6 +872,9 @@
             "properties": {
                 "awsS3DataSource": {
                     "$ref": "AwsS3Data"
+                },
+                "azureBlobStorageDataSource": {
+                    "$ref": "AzureBlobStorageData"
                 },
                 "gcsDataSink": {
                     "$ref": "GcsData"
