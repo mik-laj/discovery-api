@@ -1128,6 +1128,34 @@
                                 "https://www.googleapis.com/auth/monitoring",
                                 "https://www.googleapis.com/auth/monitoring.read"
                             ]
+                        },
+                        "query": {
+                            "flatPath": "v3/projects/{projectsId}/timeSeries:query",
+                            "httpMethod": "POST",
+                            "id": "monitoring.projects.timeSeries.query",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v3/{+name}/timeSeries:query",
+                            "request": {
+                                "$ref": "QueryTimeSeriesRequest"
+                            },
+                            "response": {
+                                "$ref": "QueryTimeSeriesResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/monitoring",
+                                "https://www.googleapis.com/auth/monitoring.read"
+                            ]
                         }
                     }
                 },
@@ -1952,6 +1980,9 @@
                 "conditionThreshold": {
                     "$ref": "MetricThreshold"
                 },
+                "conditionTimeSeriesQueryLanguage": {
+                    "$ref": "TimeSeriesQueryLanguageCondition"
+                },
                 "displayName": {
                     "type": "string"
                 },
@@ -2393,6 +2424,22 @@
                         "BOOL",
                         "INT64"
                     ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "LabelValue": {
+            "id": "LabelValue",
+            "properties": {
+                "boolValue": {
+                    "type": "boolean"
+                },
+                "int64Value": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "stringValue": {
                     "type": "string"
                 }
             },
@@ -3012,6 +3059,61 @@
             },
             "type": "object"
         },
+        "PointData": {
+            "id": "PointData",
+            "properties": {
+                "timeInterval": {
+                    "$ref": "TimeInterval"
+                },
+                "values": {
+                    "items": {
+                        "$ref": "TypedValue"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "QueryTimeSeriesRequest": {
+            "id": "QueryTimeSeriesRequest",
+            "properties": {
+                "pageSize": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "pageToken": {
+                    "type": "string"
+                },
+                "query": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "QueryTimeSeriesResponse": {
+            "id": "QueryTimeSeriesResponse",
+            "properties": {
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "partialErrors": {
+                    "items": {
+                        "$ref": "Status"
+                    },
+                    "type": "array"
+                },
+                "timeSeriesData": {
+                    "items": {
+                        "$ref": "TimeSeriesData"
+                    },
+                    "type": "array"
+                },
+                "timeSeriesDescriptor": {
+                    "$ref": "TimeSeriesDescriptor"
+                }
+            },
+            "type": "object"
+        },
         "Range": {
             "id": "Range",
             "properties": {
@@ -3256,6 +3358,54 @@
             },
             "type": "object"
         },
+        "TimeSeriesData": {
+            "id": "TimeSeriesData",
+            "properties": {
+                "labelValues": {
+                    "items": {
+                        "$ref": "LabelValue"
+                    },
+                    "type": "array"
+                },
+                "pointData": {
+                    "items": {
+                        "$ref": "PointData"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "TimeSeriesDescriptor": {
+            "id": "TimeSeriesDescriptor",
+            "properties": {
+                "labelDescriptors": {
+                    "items": {
+                        "$ref": "LabelDescriptor"
+                    },
+                    "type": "array"
+                },
+                "pointDescriptors": {
+                    "items": {
+                        "$ref": "ValueDescriptor"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "TimeSeriesQueryLanguageCondition": {
+            "id": "TimeSeriesQueryLanguageCondition",
+            "properties": {
+                "query": {
+                    "type": "string"
+                },
+                "summary": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "TimeSeriesRatio": {
             "id": "TimeSeriesRatio",
             "properties": {
@@ -3427,6 +3577,36 @@
             },
             "type": "object"
         },
+        "ValueDescriptor": {
+            "id": "ValueDescriptor",
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "metricKind": {
+                    "enum": [
+                        "METRIC_KIND_UNSPECIFIED",
+                        "GAUGE",
+                        "DELTA",
+                        "CUMULATIVE"
+                    ],
+                    "type": "string"
+                },
+                "valueType": {
+                    "enum": [
+                        "VALUE_TYPE_UNSPECIFIED",
+                        "BOOL",
+                        "INT64",
+                        "DOUBLE",
+                        "STRING",
+                        "DISTRIBUTION",
+                        "MONEY"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "VerifyNotificationChannelRequest": {
             "id": "VerifyNotificationChannelRequest",
             "properties": {
@@ -3460,7 +3640,7 @@
         }
     },
     "servicePath": "",
-    "title": "Stackdriver Monitoring API",
+    "title": "Cloud Monitoring API",
     "version": "v3",
     "version_module": true
 }

@@ -19,6 +19,7 @@
     },
     "id": "composer:v1",
     "kind": "discovery#restDescription",
+    "mtlsRootUrl": "https://composer.mtls.googleapis.com/",
     "name": "composer",
     "ownerDomain": "google.com",
     "ownerName": "Google",
@@ -417,8 +418,32 @@
                     "format": "int32",
                     "type": "integer"
                 },
+                "privateEnvironmentConfig": {
+                    "$ref": "PrivateEnvironmentConfig"
+                },
                 "softwareConfig": {
                     "$ref": "SoftwareConfig"
+                }
+            },
+            "type": "object"
+        },
+        "IPAllocationPolicy": {
+            "id": "IPAllocationPolicy",
+            "properties": {
+                "clusterIpv4CidrBlock": {
+                    "type": "string"
+                },
+                "clusterSecondaryRangeName": {
+                    "type": "string"
+                },
+                "servicesIpv4CidrBlock": {
+                    "type": "string"
+                },
+                "servicesSecondaryRangeName": {
+                    "type": "string"
+                },
+                "useIpAliases": {
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -492,6 +517,9 @@
                 "diskSizeGb": {
                     "format": "int32",
                     "type": "integer"
+                },
+                "ipAllocationPolicy": {
+                    "$ref": "IPAllocationPolicy"
                 },
                 "location": {
                     "type": "string"
@@ -585,6 +613,42 @@
                         "SUCCESSFUL",
                         "FAILED"
                     ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PrivateClusterConfig": {
+            "id": "PrivateClusterConfig",
+            "properties": {
+                "enablePrivateEndpoint": {
+                    "type": "boolean"
+                },
+                "masterIpv4CidrBlock": {
+                    "type": "string"
+                },
+                "masterIpv4ReservedRange": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PrivateEnvironmentConfig": {
+            "id": "PrivateEnvironmentConfig",
+            "properties": {
+                "cloudSqlIpv4CidrBlock": {
+                    "type": "string"
+                },
+                "enablePrivateEnvironment": {
+                    "type": "boolean"
+                },
+                "privateClusterConfig": {
+                    "$ref": "PrivateClusterConfig"
+                },
+                "webServerIpv4CidrBlock": {
+                    "type": "string"
+                },
+                "webServerIpv4ReservedRange": {
                     "type": "string"
                 }
             },
