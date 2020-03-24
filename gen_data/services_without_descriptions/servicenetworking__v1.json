@@ -432,12 +432,70 @@
                             ]
                         }
                     }
+                },
+                "roles": {
+                    "methods": {
+                        "add": {
+                            "flatPath": "v1/services/{servicesId}/roles:add",
+                            "httpMethod": "POST",
+                            "id": "servicenetworking.services.roles.add",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "parent": {
+                                    "location": "path",
+                                    "pattern": "^services/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+parent}/roles:add",
+                            "request": {
+                                "$ref": "AddRolesRequest"
+                            },
+                            "response": {
+                                "$ref": "Operation"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/service.management"
+                            ]
+                        }
+                    }
                 }
             }
         }
     },
     "rootUrl": "https://servicenetworking.googleapis.com/",
     "schemas": {
+        "AddRolesRequest": {
+            "id": "AddRolesRequest",
+            "properties": {
+                "consumerNetwork": {
+                    "type": "string"
+                },
+                "policyBinding": {
+                    "items": {
+                        "$ref": "PolicyBinding"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "AddRolesResponse": {
+            "id": "AddRolesResponse",
+            "properties": {
+                "policyBinding": {
+                    "items": {
+                        "$ref": "PolicyBinding"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "AddSubnetworkRequest": {
             "id": "AddSubnetworkRequest",
             "properties": {
@@ -1479,6 +1537,18 @@
                         "$ref": "Page"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "PolicyBinding": {
+            "id": "PolicyBinding",
+            "properties": {
+                "member": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
                 }
             },
             "type": "object"

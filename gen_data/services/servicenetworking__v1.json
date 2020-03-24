@@ -487,12 +487,77 @@
                             ]
                         }
                     }
+                },
+                "roles": {
+                    "methods": {
+                        "add": {
+                            "description": "Service producers can use this method to add roles in the shared VPC host\nproject. Each role is bound to the provided member. Each role must be\nselected from within a whitelisted set of roles. Each role is applied at\nonly the granularity specified in the whitelist.",
+                            "flatPath": "v1/services/{servicesId}/roles:add",
+                            "httpMethod": "POST",
+                            "id": "servicenetworking.services.roles.add",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "parent": {
+                                    "description": "Required. This is in a form services/{service} where {service} is the name of the\nprivate access management service. For example\n'service-peering.example.com'.",
+                                    "location": "path",
+                                    "pattern": "^services/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+parent}/roles:add",
+                            "request": {
+                                "$ref": "AddRolesRequest"
+                            },
+                            "response": {
+                                "$ref": "Operation"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/service.management"
+                            ]
+                        }
+                    }
                 }
             }
         }
     },
     "rootUrl": "https://servicenetworking.googleapis.com/",
     "schemas": {
+        "AddRolesRequest": {
+            "description": "Request for AddRoles to allow Service Producers to add roles in the shared\nVPC host project for them to use.",
+            "id": "AddRolesRequest",
+            "properties": {
+                "consumerNetwork": {
+                    "description": "Required. The network that the consumer is using to connect with services. Must be in\nthe form of projects/{project}/global/networks/{network}\n{project} is a project number, as in '12345'\n{network} is a network name.",
+                    "type": "string"
+                },
+                "policyBinding": {
+                    "description": "Required. List of policy bindings to add to shared VPC host project.",
+                    "items": {
+                        "$ref": "PolicyBinding"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "AddRolesResponse": {
+            "description": "Represents IAM roles added to the shared VPC host project.",
+            "id": "AddRolesResponse",
+            "properties": {
+                "policyBinding": {
+                    "description": "Required. List of policy bindings that were added to the shared VPC host project.",
+                    "items": {
+                        "$ref": "PolicyBinding"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "AddSubnetworkRequest": {
             "description": "Request to create a subnetwork in a previously peered service network.",
             "id": "AddSubnetworkRequest",
@@ -1867,6 +1932,21 @@
                         "$ref": "Page"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "PolicyBinding": {
+            "description": "Grouping of IAM role and IAM member.",
+            "id": "PolicyBinding",
+            "properties": {
+                "member": {
+                    "description": "Required. Member to bind the role with. See\n/iam/docs/reference/rest/v1/Policy#Binding for how to format each member.\nEg.\n  - user:myuser@mydomain.com\n  - serviceAccount:my-service-account@app.gserviceaccount.com",
+                    "type": "string"
+                },
+                "role": {
+                    "description": "Required. Role to apply. Only whitelisted roles can be used at the specified\ngranularity. The role must be one of the following:\n  - 'roles/container.hostServiceAgentUser' applied on the shared VPC host\n    project",
+                    "type": "string"
                 }
             },
             "type": "object"

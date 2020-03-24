@@ -19,6 +19,7 @@
     },
     "id": "datafusion:v1beta1",
     "kind": "discovery#restDescription",
+    "mtlsRootUrl": "https://datafusion.mtls.googleapis.com/",
     "name": "datafusion",
     "ownerDomain": "google.com",
     "ownerName": "Google",
@@ -552,6 +553,20 @@
     },
     "rootUrl": "https://datafusion.googleapis.com/",
     "schemas": {
+        "Accelerator": {
+            "id": "Accelerator",
+            "properties": {
+                "acceleratorType": {
+                    "enum": [
+                        "ACCELERATOR_TYPE_UNSPECIFIED",
+                        "CDC",
+                        "HEALTHCARE"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "AuditConfig": {
             "id": "AuditConfig",
             "properties": {
@@ -634,6 +649,12 @@
         "Instance": {
             "id": "Instance",
             "properties": {
+                "accelerators": {
+                    "items": {
+                        "$ref": "Accelerator"
+                    },
+                    "type": "array"
+                },
                 "apiEndpoint": {
                     "type": "string"
                 },
@@ -708,7 +729,8 @@
                     "enum": [
                         "TYPE_UNSPECIFIED",
                         "BASIC",
-                        "ENTERPRISE"
+                        "ENTERPRISE",
+                        "DEVELOPER"
                     ],
                     "type": "string"
                 },

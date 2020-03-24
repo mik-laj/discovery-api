@@ -2,9 +2,9 @@
     "auth": {
         "oauth2": {
             "scopes": {
-                "https://www.googleapis.com/auth/plus.me": {},
                 "https://www.googleapis.com/auth/userinfo.email": {},
-                "https://www.googleapis.com/auth/userinfo.profile": {}
+                "https://www.googleapis.com/auth/userinfo.profile": {},
+                "openid": {}
             }
         }
     },
@@ -29,10 +29,6 @@
                     "type": "string"
                 },
                 "id_token": {
-                    "location": "query",
-                    "type": "string"
-                },
-                "token_handle": {
                     "location": "query",
                     "type": "string"
                 }
@@ -90,10 +86,10 @@
                     "id": "oauth2.userinfo.get",
                     "path": "oauth2/v2/userinfo",
                     "response": {
-                        "$ref": "Userinfoplus"
+                        "$ref": "Userinfo"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/plus.me",
+                        "openid",
                         "https://www.googleapis.com/auth/userinfo.email",
                         "https://www.googleapis.com/auth/userinfo.profile"
                     ]
@@ -109,10 +105,10 @@
                                     "id": "oauth2.userinfo.v2.me.get",
                                     "path": "userinfo/v2/me",
                                     "response": {
-                                        "$ref": "Userinfoplus"
+                                        "$ref": "Userinfo"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/plus.me",
+                                        "openid",
                                         "https://www.googleapis.com/auth/userinfo.email",
                                         "https://www.googleapis.com/auth/userinfo.profile"
                                     ]
@@ -129,9 +125,6 @@
         "Tokeninfo": {
             "id": "Tokeninfo",
             "properties": {
-                "access_type": {
-                    "type": "string"
-                },
                 "audience": {
                     "type": "string"
                 },
@@ -148,9 +141,6 @@
                 "scope": {
                     "type": "string"
                 },
-                "token_handle": {
-                    "type": "string"
-                },
                 "user_id": {
                     "type": "string"
                 },
@@ -160,8 +150,8 @@
             },
             "type": "object"
         },
-        "Userinfoplus": {
-            "id": "Userinfoplus",
+        "Userinfo": {
+            "id": "Userinfo",
             "properties": {
                 "email": {
                     "type": "string"
