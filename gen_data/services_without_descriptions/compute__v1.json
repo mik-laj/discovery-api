@@ -6081,6 +6081,50 @@
                         "https://www.googleapis.com/auth/compute"
                     ]
                 },
+                "addResourcePolicies": {
+                    "httpMethod": "POST",
+                    "id": "compute.instances.addResourcePolicies",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "instance"
+                    ],
+                    "parameters": {
+                        "instance": {
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "requestId": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "zone": {
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instances/{instance}/addResourcePolicies",
+                    "request": {
+                        "$ref": "InstancesAddResourcePoliciesRequest"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
                 "aggregatedList": {
                     "httpMethod": "GET",
                     "id": "compute.instances.aggregatedList",
@@ -6674,6 +6718,50 @@
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/compute",
                         "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "removeResourcePolicies": {
+                    "httpMethod": "POST",
+                    "id": "compute.instances.removeResourcePolicies",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "instance"
+                    ],
+                    "parameters": {
+                        "instance": {
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "requestId": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "zone": {
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instances/{instance}/removeResourcePolicies",
+                    "request": {
+                        "$ref": "InstancesRemoveResourcePoliciesRequest"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
                     ]
                 },
                 "reset": {
@@ -27644,6 +27732,30 @@
                         "TERMINATED"
                     ],
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "InstancesAddResourcePoliciesRequest": {
+            "id": "InstancesAddResourcePoliciesRequest",
+            "properties": {
+                "resourcePolicies": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "InstancesRemoveResourcePoliciesRequest": {
+            "id": "InstancesRemoveResourcePoliciesRequest",
+            "properties": {
+                "resourcePolicies": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"

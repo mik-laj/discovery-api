@@ -1400,6 +1400,37 @@
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
+                                "submitAsOperation": {
+                                    "flatPath": "v1/projects/{projectId}/regions/{region}/jobs:submitAsOperation",
+                                    "httpMethod": "POST",
+                                    "id": "dataproc.projects.regions.jobs.submitAsOperation",
+                                    "parameterOrder": [
+                                        "projectId",
+                                        "region"
+                                    ],
+                                    "parameters": {
+                                        "projectId": {
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "region": {
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/projects/{projectId}/regions/{region}/jobs:submitAsOperation",
+                                    "request": {
+                                        "$ref": "SubmitJobRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
                                 "testIamPermissions": {
                                     "flatPath": "v1/projects/{projectsId}/regions/{regionsId}/jobs/{jobsId}:testIamPermissions",
                                     "httpMethod": "POST",
@@ -2582,6 +2613,25 @@
             },
             "type": "object"
         },
+        "JobMetadata": {
+            "id": "JobMetadata",
+            "properties": {
+                "jobId": {
+                    "type": "string"
+                },
+                "operationType": {
+                    "type": "string"
+                },
+                "startTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "status": {
+                    "$ref": "JobStatus"
+                }
+            },
+            "type": "object"
+        },
         "JobPlacement": {
             "id": "JobPlacement",
             "properties": {
@@ -3165,6 +3215,7 @@
                             "ANACONDA",
                             "HIVE_WEBHCAT",
                             "JUPYTER",
+                            "PRESTO",
                             "ZEPPELIN",
                             "ZOOKEEPER"
                         ],
