@@ -1,7 +1,7 @@
 import argparse
 import sys
 
-from discovery_tracker.fetch_discovery import cmd_fetch_discovery
+from discovery_tracker.fetch_discovery import cmd_fetch_apis, cmd_fetch_index
 
 
 class AirflowParser(argparse.ArgumentParser):
@@ -15,12 +15,20 @@ def create_parser():
     parser = AirflowParser(prog='API_TRACKER')
     subparsers = parser.add_subparsers(dest='subcommand')
     subparsers.required = True
-    parser_fetch_discovery = subparsers.add_parser('fetch-discovery', help='Fetch discovery items')
-    parser_fetch_discovery.add_argument('--output', help='output directory', required=True)
-    parser_fetch_discovery.add_argument(
+
+    parser_fetch_apis = subparsers.add_parser('fetch-apis', help='Fetch discovery items')
+    parser_fetch_apis.add_argument('--output', help='output directory', required=True)
+    parser_fetch_apis.add_argument(
         '--remove-descriptions', action="store_true", default=False, help='remove descriptions'
     )
-    parser_fetch_discovery.set_defaults(func=cmd_fetch_discovery)
+    parser_fetch_apis.set_defaults(func=cmd_fetch_apis)
+
+    parser_fetch_index = subparsers.add_parser('fetch-index', help='Fetch index')
+    parser_fetch_index.add_argument('--output', help='output file', required=True)
+    parser_fetch_index.add_argument(
+        '--only-cloud', action="store_true", default=False, help='only Google Cloud services'
+    )
+    parser_fetch_index.set_defaults(func=cmd_fetch_index)
     return parser
 
 

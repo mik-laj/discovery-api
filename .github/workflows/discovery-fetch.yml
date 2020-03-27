@@ -25,7 +25,7 @@ jobs:
 
     - name: Fetch API definitions
       run: |
-        python -m discovery_tracker --output gen_data/services
+        python -m discovery_tracker fetch-apis --output gen_data/services
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add gen_data
@@ -33,11 +33,27 @@ jobs:
 
     - name: Fetch API definitions without description
       run: |
-        python -m discovery_tracker --output gen_data/services_without_descriptions --remove-descriptions
+        python -m discovery_tracker fetch-apis --output gen_data/services_without_descriptions --remove-descriptions
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add gen_data
         git commit -m "Update API defintions (skipping descriptions)"
+
+    - name: Fetch Google API index
+      run: |
+        python -m discovery_tracker fetch-api-index --output gen_data/index-all.md
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add gen_data
+        git commit -m "Update Google API index"
+
+    - name: Fetch Google Cloud API index
+      run: |
+        python -m discovery_tracker fetch-api-index --output gen_data/index-cloud.md --only-cloud
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add gen_data
+        git commit -m "Update Google Cloud API index"
 
     - name: Push changes
       uses: ad-m/github-push-action@master
