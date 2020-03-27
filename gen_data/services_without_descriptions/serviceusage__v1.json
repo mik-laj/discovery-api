@@ -225,6 +225,35 @@
                         "https://www.googleapis.com/auth/service.management"
                     ]
                 },
+                "batchGet": {
+                    "flatPath": "v1/{v1Id}/{v1Id1}/services:batchGet",
+                    "httpMethod": "GET",
+                    "id": "serviceusage.services.batchGet",
+                    "parameterOrder": [
+                        "parent"
+                    ],
+                    "parameters": {
+                        "names": {
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
+                        },
+                        "parent": {
+                            "location": "path",
+                            "pattern": "^[^/]+/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+parent}/services:batchGet",
+                    "response": {
+                        "$ref": "BatchGetServicesResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only"
+                    ]
+                },
                 "disable": {
                     "flatPath": "v1/{v1Id}/{v1Id1}/services/{servicesId}:disable",
                     "httpMethod": "POST",
@@ -510,6 +539,9 @@
                 "protocol": {
                     "type": "string"
                 },
+                "renameTo": {
+                    "type": "string"
+                },
                 "selector": {
                     "type": "string"
                 }
@@ -561,6 +593,18 @@
                     },
                     "type": "array"
                 },
+                "services": {
+                    "items": {
+                        "$ref": "GoogleApiServiceusageV1Service"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "BatchGetServicesResponse": {
+            "id": "BatchGetServicesResponse",
+            "properties": {
                 "services": {
                     "items": {
                         "$ref": "GoogleApiServiceusageV1Service"
