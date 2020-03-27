@@ -25,31 +25,27 @@ jobs:
 
     - name: Fetch Google API index
       run: |
-        python -m discovery_tracker fetch-index --output gen_data/index-all.md
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add gen_data && git commit -m "Update Google API index" || true
+        python -m discovery_tracker fetch-index --output gen_data/index-all.md
 
     - name: Fetch Google Cloud API index
       run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
         python -m discovery_tracker fetch-index --output gen_data/index-cloud.md --only-cloud
+
+    - name: Fetch long API definitions
+      run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add gen_data && git commit -m "Update Google Cloud API index" || true
-
-    - name: Fetch API definitions
-      run: |
         python -m discovery_tracker fetch-apis --output gen_data/services
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add gen_data && git commit -m "Update API defintions" || true
 
-    - name: Fetch API definitions without description
+    - name: Fetch short API definitions
       run: |
-        python -m discovery_tracker fetch-apis --output gen_data/services_without_descriptions --remove-descriptions
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add gen_data && git commit -m "Update API defintions (skipping descriptions)" || true
+        python -m discovery_tracker fetch-apis --output gen_data/services_without_descriptions --remove-descriptions
 
     - name: Push changes
       uses: ad-m/github-push-action@master
