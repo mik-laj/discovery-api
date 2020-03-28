@@ -1,0 +1,446 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <h1 class="devsite-page-title">
+   Release Notes: Milestone 69
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <h2 id="current_status">
+    Current Status
+   </h2>
+   <section id="status">
+    <table>
+     <tr>
+      <td>
+       Image Family
+      </td>
+      <td>
+       cos-69-lts
+      </td>
+     </tr>
+     <tr>
+      <td>
+       Deprecated After
+      </td>
+      <td>
+       Dec 11, 2019
+      </td>
+     </tr>
+     <tr>
+      <td>
+       Kernel
+      </td>
+      <td>
+       <a href="https://chromium.googlesource.com/chromiumos/third_party/kernel/+/8549f18963962124c0f0d73667e59dbfc17c5218">
+        4.14.145
+       </a>
+      </td>
+     </tr>
+     <tr>
+      <td>
+       Kubernetes
+      </td>
+      <td>
+       v1.11.8
+      </td>
+     </tr>
+     <tr>
+      <td>
+       Docker
+      </td>
+      <td>
+       v17.03.2
+      </td>
+     </tr>
+    </table>
+   </section>
+   <h2 id="changelog_vs_milestone_68">
+    Changelog (vs Milestone 68)
+   </h2>
+   <section id="changelog">
+    <h3>
+     cos-69-10895-385-0
+    </h3>
+    <i>
+     Date: Oct 08, 2019
+    </i>
+    <ul>
+     <li>
+      Upgraded the Linux kernel to 4.14.145.
+     </li>
+     <li>
+      Backported a kernel patch to ensure the cfs cgroup quota/period ratio
+      always stays the same. This addresses a Kubernetes issue where the pod
+      cgroup could be changed into an inconsistent state.
+     </li>
+    </ul>
+    <h3>
+     cos-69-10895-348-0
+    </h3>
+    <i>
+     Date: Aug 30, 2019
+    </i>
+    <ul>
+     <li>
+      Backported upstream writeback patches to fix a Docker hung issue.
+     </li>
+    </ul>
+    <h3>
+     cos-69-10895-329-0
+    </h3>
+    <i>
+     Date: Aug 08, 2019
+    </i>
+    <ul>
+     <li>
+      Upgraded the Linux kernel to v4.14.137. This resolves CVE-2019-1125.
+     </li>
+    </ul>
+    <h3>
+     cos-69-10895-299-0
+    </h3>
+    <i>
+     Date: Jul 12, 2019
+    </i>
+    <ul>
+     <li>
+      Fixed vulnerability in app-arch/bzip2 (CVE-2019-12900).
+     </li>
+     <li>
+      Updated kernel to version v4.14.132.
+     </li>
+     <li>
+      Fixed an issue introduced by NFLX-2019-001 fixes.
+     </li>
+    </ul>
+    <h3>
+     cos-69-10895-277-0
+    </h3>
+    <i>
+     Date: Jun 19, 2019
+    </i>
+    <ul>
+     <li>
+      Updated the Linux kernel to version 4.14.127 to resolve the NFLX-2019-001
+      TCP SACK vulnerabilities.
+     </li>
+    </ul>
+    <h3>
+     cos-69-10895-273-0
+    </h3>
+    <i>
+     Date: Jun 17, 2019
+    </i>
+    <ul>
+     <li>
+      Updated kernel to version v4.14.124.
+     </li>
+    </ul>
+    <h3>
+     cos-69-10895-255-0
+    </h3>
+    <i>
+     Date: May 28, 2019
+    </i>
+    <ul>
+     <li>
+      Upgraded curl to v7.64.1 to fix CVE-2018-16890.
+     </li>
+     <li>
+      Cherry-picked upstream patch https://patchwork.kernel.org/patch/10951403/ in kernel to fix
+      a bug in lockd introduced by commit 01b79d20008d "lockd: Show pid of lockd for remote locks"
+      in Linux kernel v4.14.105.
+     </li>
+     <li>
+      Rotated keys used by UEFI Secure Boot for signing and verifying the UEFI boot path.
+     </li>
+    </ul>
+    <h3>
+     cos-69-10895-242-0
+    </h3>
+    <i>
+     Date: May 15, 2019
+    </i>
+    <ul>
+     <li>
+      Merged Linux Stable Kernel 'v4.14.119' for resolving Microarchitectural
+      Data Sampling (MDS) vulnerabilities (CVE-2018-12126, CVE-2018-12127,
+      CVE-2018-12130, CVE-2019-11091).
+     </li>
+     <li>
+      Mitigated a mount hang issue in the Linux kernel.
+     </li>
+    </ul>
+    <h3>
+     cos-69-10895-211-0
+    </h3>
+    <i>
+     Date: Apr 11, 2019
+    </i>
+    <ul>
+     <li>
+      Fixed slow access to /sys/fs/cgroup/memory/memory.stat. This resolves
+      kubelet performance degradation.
+     </li>
+    </ul>
+    <h3>
+     cos-69-10895-201-0
+    </h3>
+    <i>
+     Date: Apr 01, 2019
+    </i>
+    <ul>
+     <li>
+      Included perf tool in the image.
+     </li>
+     <li>
+      Included sosreport in the image.
+     </li>
+     <li>
+      Updated the built-in kubelet to 1.11.8.
+     </li>
+     <li>
+      Fixed an issue where Shielded VM integrity measurements weren't being
+      logged properly.
+     </li>
+     <li>
+      Merged Linux Stable Kernel 'v4.14.106'.
+     </li>
+    </ul>
+    <h3>
+     cos-69-10895-172-0
+    </h3>
+    <i>
+     Date: Feb 28, 2019
+    </i>
+    <ul>
+     <li>
+      Enabled kernel.softlockup_all_cpu_backtrace. This was previously disabled
+      to mitigate a kernel deadlock issue, which is now resolved.
+     </li>
+     <li>
+      Configured docker.service by setting RestartSecs=10 to always restart
+      Docker after 10 seconds.
+     </li>
+    </ul>
+    <h3>
+     cos-69-10895-138-0
+    </h3>
+    <i>
+     Date: Jan 24, 2019
+    </i>
+    <ul>
+     <li>
+      Backported the fix for a deadlock issue in kernel panic.
+     </li>
+     <li>
+      Merged Linux Stable Kernel 'v4.14.91'.
+     </li>
+    </ul>
+    <h3>
+     cos-69-10895-123-0
+    </h3>
+    <i>
+     Date: Jan 10, 2019
+    </i>
+    <ul>
+     <li>
+      Set CONFIG_BLK_WBT_MQ=y to improve performance isolation on
+      persistent disks. This fixes a bug where writes on a SSD persistent
+      disk can affect performance on the Standard persistent boot disk.
+     </li>
+     <li>
+      Cherry-picked Ext4 commits that address FS inconsistencies caused by
+      disruptions during NFS CREATE operation under certain conditions.
+     </li>
+     <li>
+      Merged Linux Stable Kernel 'v4.14.89'.
+     </li>
+    </ul>
+    <h3>
+     cos-69-10895-102-0
+    </h3>
+    <i>
+     Date: Dec 20, 2018
+    </i>
+    <ul>
+     <li>
+      Disabled auto update on shielded images. Images in cos-cloud
+    are not impacted by this change.
+     </li>
+     <li>
+      Enabled the "metadata_csum" ext4 feature on the stateful partition.
+    This also improves performance of boot-disk resize operation.
+     </li>
+     <li>
+      Apply IMA Policy only when cloud-audit-setup.service is explicitly
+    run.
+     </li>
+    </ul>
+    <h3>
+     cos-69-10895-93-0
+    </h3>
+    <i>
+     Date: Nov 16, 2018
+    </i>
+    <ul>
+     <li>
+      Updated kernel to v4.14.79.
+     </li>
+     <li>
+      Fixed the bug that cloud-init can't write gzipped files.
+     </li>
+    </ul>
+    <h3>
+     cos-69-10895-91-0
+    </h3>
+    <i>
+     Date: Oct 29, 2018
+    </i>
+    <ul>
+     <li>
+      Fixed an issue where an interaction between IMA and NFS could cause deadlock.
+     </li>
+     <li>
+      Fixed a stackdriver-logging.service issue observed in Containers on Compute Engine.
+     </li>
+     <li>
+      PCID is now enabled by default when supported by the CPU platform.
+     </li>
+    </ul>
+    <h3>
+     cos-69-10895-85-0
+    </h3>
+    <i>
+     Date: Oct 11, 2018
+    </i>
+    <ul>
+     <li>
+      Reset softlockup_all_cpu_backtrace to '0' to avoid kernel deadlock on
+    high CPU machines under certain circumstances.
+     </li>
+    </ul>
+    <h3>
+     cos-69-10895-71-0
+    </h3>
+    <i>
+     Date: Oct 1, 2018
+    </i>
+    <ul>
+     <li>
+      Removed userspace headers from kernel header artifact.
+     </li>
+    </ul>
+    <h3>
+     cos-69-10895-62-0
+    </h3>
+    <i>
+     Date: Sept 18, 2018
+    </i>
+    <ul>
+     <li>
+      Promoted to Stable channel.
+     </li>
+     <li>
+      Backport a fix to ensure that scsi contributes to randomness when running
+    rotational device
+      <https: 1212546="" chromium-review.googlesource.com="">
+       .
+    This addresses an issue where docker is slow to start because of
+    low entropy on standard PDs since v4.14.63 merge.
+      </https:>
+     </li>
+     <li>
+      Enabled CONFIG_RANDOM_TRUST_CPU to address entropy starvation on PD-SSD boot disks.
+      <li>
+       Upgraded OpenSSL to 1.0.2p
+      </li>
+      <li>
+       Merged Linux stable version v4.14.65
+      </li>
+      <li>
+       Backported the fix for a cloud-init bug that write_files can't deal with non-asci
+    content
+       <https: 1487877="" bugs="" bugs.launchpad.net="">
+        .
+       </https:>
+      </li>
+      <li>
+       Backport fix for a kernel warning
+    "WARNING: fs/overlayfs/readdir.c:393 ovl_iterate+0x25c/0x260 WARN_ON(!cache-&gt;refcount)"
+      </li>
+      <li>
+       Fix for Linux Kernel CVE-2018-12232
+      </li>
+      <li>
+       Backport fixes for L1 Terminal Fault (L1TF) issue (CVE-2018-3615, CVE-2018-3620 and
+    CVE-2018-3646).
+      </li>
+      <li>
+       Fixes for CVE-2018-5391.
+      </li>
+      <li>
+       Fixed a softlockup issue that occurred on single VCPU VMs when using FUSE filesystems.
+      </li>
+      <li>
+       Updated Kubernetes to v1.11.1
+      </li>
+      <li>
+       Fixes for CVE-2018-5390.
+      </li>
+      <li>
+       Increase default kernel.pid_max to 2^22.
+      </li>
+      <li>
+       Merged Linux stable version v4.14.54 into the kernel.
+      </li>
+      <li>
+       Removed SCSI CD-ROM support. This resolves CVE-2018-11506.
+      </li>
+      <li>
+       Upgraded built-in kubelet to v1.11.0
+      </li>
+      <li>
+       Updated docker-credential-gcr to 1.5.0
+      </li>
+      <li>
+       Updated BUG_REPORT_URL in /etc/os-release.
+      </li>
+      <li>
+       Enabled NFS debug configs in the kernel.
+      </li>
+      <li>
+       Enabled tcp_bbr kernel module for TCP congestion control.
+      </li>
+      <li>
+       Upgraded Git to version 2.16.4 to fix CVE 2018-11235.
+      </li>
+      <li>
+       Set '--disable-legacy-registry' Docker config to true by default.
+      </li>
+      <li>
+       Updated Kubernetes to 1.10.4.
+      </li>
+      <li>
+       Updated sshd_config to drop cbc based Ciphers.
+      </li>
+      <li>
+       Updated root CA certificates to match Mozilla NSS 3.36.1.
+      </li>
+      <li>
+       Updated OpenSSL to 1.0.2o.
+      </li>
+     </li>
+    </ul>
+   </section>
+  </div>
+  <devsite-page-rating hover-rating-star="0" position="footer" selected-rating="0">
+  </devsite-page-rating>
+  <devsite-feedback bucket="documentation" context="" data-label="Send Feedback Button" product-id="1634057" project-icon="https://www.gstatic.com/devrel-devsite/prod/v7b5dc2faf76d7d8f9465a598b12205e0a07ab55718aa34068b626b788b42e0b5/cloud/images/favicons/onecloud/super_cloud.png" project-name="Container-Optimized OS" track-metadata-position="header" track-name="sendFeedbackLink" track-type="feedback" version="devsite-webserver-20200320-r01-rc01.425533256282725650">
+   <button>
+    Send feedback
+   </button>
+  </devsite-feedback>
+ </article>
+</article>
