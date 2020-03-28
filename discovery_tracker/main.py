@@ -1,7 +1,8 @@
 import argparse
 import sys
 
-from discovery_tracker.fetch_discovery import cmd_fetch_apis, cmd_fetch_index
+from discovery_tracker.commands.fetch_apis import cmd_fetch_apis
+from discovery_tracker.commands.fetch_index import cmd_fetch_index
 
 
 class AirflowParser(argparse.ArgumentParser):

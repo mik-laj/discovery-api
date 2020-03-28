@@ -1,4 +1,6 @@
+import json
 from copy import deepcopy
+from typing import Dict
 
 
 def remove_key(obj, key):
@@ -19,4 +21,7 @@ def remove_key(obj, key):
     return result
 
 
-
+def is_json_equals(left: Dict, right: Dict) -> bool:
+    left_str = json.dumps(left, indent=" " * 4, sort_keys=True)
+    right_str = json.dumps(right, indent=" " * 4, sort_keys=True)
+    return left_str == right_str
