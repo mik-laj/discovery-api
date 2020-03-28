@@ -47,6 +47,12 @@ jobs:
         git config --local user.name "GitHub Action"
         python -m discovery_tracker fetch-apis --output gen_data/services_without_descriptions --remove-descriptions
 
+    - name: Fetch release notes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        python -m discovery_tracker fetch-release-notes --output gen_data/release_notes
+
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:

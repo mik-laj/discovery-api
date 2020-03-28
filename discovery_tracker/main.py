@@ -3,6 +3,7 @@ import sys
 
 from discovery_tracker.commands.fetch_apis import cmd_fetch_apis
 from discovery_tracker.commands.fetch_index import cmd_fetch_index
+from discovery_tracker.commands.fetch_release_notes import cmd_fetch_release_notes
 
 
 class AirflowParser(argparse.ArgumentParser):
@@ -30,6 +31,11 @@ def create_parser():
         '--only-cloud', action="store_true", default=False, help='only Google Cloud services'
     )
     parser_fetch_index.set_defaults(func=cmd_fetch_index)
+
+    parser_fetch_index = subparsers.add_parser('fetch-release-notes', help='Fetch index')
+    parser_fetch_index.add_argument('--output', help='output file', required=True)
+    parser_fetch_index.set_defaults(func=cmd_fetch_release_notes)
+
     return parser
 
 
