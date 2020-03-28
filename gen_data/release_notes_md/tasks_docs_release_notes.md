@@ -1,0 +1,39 @@
+#  Cloud Tasks release notes
+
+This page documents production updates to Cloud Tasks. You can periodically
+check this page for announcements about new or updated features, bug fixes,
+known issues, and deprecated functionality.
+
+To get the latest product updates delivered to you, add the URL of this page
+to your [ feed reader
+](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
+URL directly: ` https://cloud.google.com/feeds/cloud-tasks-release-notes.xml `
+
+##  November 20, 2019
+
+**FEATURE:**
+
+[ HTTP Targets ](https://cloud.google.com/tasks/docs/creating-http-target-
+tasks) GA release.
+
+##  May 20, 2019
+
+**FEATURE:**
+
+[ HTTP Targets ](https://cloud.google.com/tasks/docs/creating-http-target-
+tasks) Beta release.
+
+##  April 09, 2019
+
+**FEATURE:**
+
+Cloud Tasks GA release.
+
+##  September 26, 2018
+
+**FEATURE:**
+
+Cloud Tasks Beta release.
+
+Send feedback
+
