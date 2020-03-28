@@ -1,5 +1,6 @@
 import re
 
+import html2text
 import requests
 from bs4 import BeautifulSoup, Tag
 from tqdm import tqdm
@@ -196,24 +197,30 @@ def add_item_label(soup, article, label_text, selector):
 
 def cmd_fetch_release_notes(args):
     output = args.output
+    fileformat = args.format
+    assert fileformat in ('md', 'html')
 
     pbar = tqdm(RELEASE_NOTES_URLS)
     for release_notes_url in pbar:
-        process_release_note(output, release_notes_url)
+        process_release_note(output, release_notes_url, fileformat=fileformat)
 
 
-def process_release_note(output, release_notes_url):
+def process_release_note(output, release_notes_url, fileformat):
     file_slug = url_to_filename(release_notes_url)
-    output_file = f"{output}/{file_slug}.html"
+    output_file = f"{output}/{file_slug}.{fileformat}"
 
     article, soup = fetch_doc_article(release_notes_url)
     enrich_article(article, soup)
     html_content = article.prettify()
+    if fileformat == 'md':
+        content = html2text.html2text(html_content)
+    else:
+        content = html_content
 
-    old_html_content = load_text(output_file)
-    if old_html_content != html_content:
-        save_text(output_file, html_content)
+    old_content = load_text(output_file)
+    if old_content != content:
+        save_text(output_file, content)
         create_commit(
-            message=f"Update release note - {file_slug}",
+            message=f"Update release note ({fileformat}) - {file_slug}",
             files=[output_file]
         )

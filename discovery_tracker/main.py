@@ -34,6 +34,7 @@ def create_parser():
 
     parser_fetch_index = subparsers.add_parser('fetch-release-notes', help='Fetch index')
     parser_fetch_index.add_argument('--output', help='output file', required=True)
+    parser_fetch_index.add_argument('--format', help='format file [html,md]', required=False, default='html')
     parser_fetch_index.set_defaults(func=cmd_fetch_release_notes)
 
     return parser
