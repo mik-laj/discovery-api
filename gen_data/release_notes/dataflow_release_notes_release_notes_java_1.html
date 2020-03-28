@@ -1,0 +1,2669 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <h1 class="devsite-page-title">
+   Release Notes: Dataflow SDK 1.x for Java
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <section class="intro">
+    <p>
+     <aside class="warning">
+      <strong>
+       Warning:
+      </strong>
+      Dataflow SDK 1.x for Java is unsupported as of October 16, 2018. See
+      <a href="/dataflow/docs/guides/migrate-java-1-to-2">
+       Migrating from Dataflow SDK 1.x for Java
+      </a>
+      for migration guidance.
+     </aside>
+    </p>
+    <p>
+     This page documents production updates to the Dataflow SDK 1.x for Java. You can
+periodically check this page for announcements about new or updated features,
+bug fixes, known issues, and deprecated functionality. For information about
+version 2.x of the Dataflow SDK for Java, see the
+     <a href="/dataflow/release-notes/release-notes-java-2">
+      Dataflow SDK 2.x for
+  Java release notes
+     </a>
+     .
+    </p>
+    <p>
+     The
+     <a href="/dataflow/support#supportstatus">
+      support page
+     </a>
+     contains
+information about the support status of each release of the Dataflow SDK.
+    </p>
+    <p>
+     To install and use the Dataflow SDK, see the
+     <a href="/dataflow/docs/installing-dataflow-sdk">
+      Dataflow SDK installation
+  guide
+     </a>
+     .
+    </p>
+   </section>
+   <section class="xml">
+   </section>
+   <section class="releases">
+    <h2 id="october_16_2018">
+     October 16, 2018
+    </h2>
+    <div class="release-deprecated">
+     <strong>
+      DEPRECATED:
+     </strong>
+     <p>
+      Dataflow SDK 1.x for Java is
+  unsupported as of October 16, 2018. In the near future, the
+  Dataflow service will reject new Dataflow jobs
+  that are based on Dataflow SDK 1.x for Java. See
+      <a href="/dataflow/docs/guides/migrate-java-1-to-2">
+       Migrating from
+Dataflow SDK 1.x for Java
+      </a>
+      for migration guidance.
+     </p>
+    </div>
+    <h2 id="191_august_28_2017">
+     1.9.1 (August 28, 2017)
+    </h2>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      Fixed an issue with Dataflow jobs that read from
+      <code dir="ltr" translate="no">
+       CompressedSource
+      </code>
+      s with compression type set to
+      <code dir="ltr" translate="no">
+       BZIP2
+      </code>
+      are potentially losing data during processing. For more information, see
+      <a href="https://github.com/GoogleCloudPlatform/DataflowJavaSDK/issues/596">
+       Issue #596
+      </a>
+      on the GitHub repository.
+     </p>
+    </div>
+    <h2 id="190_december_20_2016">
+     1.9.0 (December 20, 2016)
+    </h2>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       Identified issue:
+      </b>
+      Dataflow jobs that read from
+      <code dir="ltr" translate="no">
+       CompressedSource
+      </code>
+      s with compression type set to
+      <code dir="ltr" translate="no">
+       BZIP2
+      </code>
+      are potentially losing data during processing. For more information, see
+      <a href="https://github.com/GoogleCloudPlatform/DataflowJavaSDK/issues/596">
+       Issue #596
+      </a>
+      on the GitHub repository.
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Added support for using the
+      <a href="/dataflow/pipelines/dataflow-monitoring-intf#error-reporting">
+       Stackdriver
+  Error Reporting Interface
+      </a>
+      .
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Added the
+      <code dir="ltr" translate="no">
+       ValueProvider
+      </code>
+      interface
+  for use in pipeline options. Making an option of type
+      <code dir="ltr" translate="no">
+       ValueProvider&lt;T&gt;
+      </code>
+      instead of
+      <code dir="ltr" translate="no">
+       T
+      </code>
+      allows its value to be supplied at runtime (rather
+  than pipeline construction time) and enables
+      <a href="/dataflow/docs/templates/overview">
+       Cloud Dataflow templates
+      </a>
+      .
+  Support for
+      <code dir="ltr" translate="no">
+       ValueProvider
+      </code>
+      has been added to
+      <code dir="ltr" translate="no">
+       TextIO
+      </code>
+      ,
+      <code dir="ltr" translate="no">
+       PubSubIO
+      </code>
+      , and
+      <code dir="ltr" translate="no">
+       BigQueryIO
+      </code>
+      and can be added to
+  arbitrary PTransforms as well. See the
+      <a href="/dataflow/docs/templates/overview">
+       documentation on Cloud Dataflow templates
+      </a>
+      for more details.
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Added the ability to automatically save profiling
+  information to Google Cloud Storage using the
+      <code dir="ltr" translate="no">
+       --saveProfilesToGcs
+      </code>
+      pipeline option. For more information on profiling pipelines executed by the
+      <code dir="ltr" translate="no">
+       DataflowPipelineRunner
+      </code>
+      , see
+      <a href="https://github.com/GoogleCloudPlatform/DataflowJavaSDK/issues/72">
+       GitHub
+  issue #72
+      </a>
+      .
+     </p>
+    </div>
+    <div class="release-deprecated">
+     <strong>
+      DEPRECATED:
+     </strong>
+     <p>
+      Deprecated the
+      <code dir="ltr" translate="no">
+       --enableProfilingAgent
+      </code>
+      pipeline option that saved profiles to the individual worker disks. For more
+  information on profiling pipelines executed by the
+      <code dir="ltr" translate="no">
+       DataflowPipelineRunner
+      </code>
+      , see
+      <a href="https://github.com/GoogleCloudPlatform/DataflowJavaSDK/issues/72">
+       GitHub
+  issue #72
+      </a>
+      .
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Changed
+      <code dir="ltr" translate="no">
+       FileBasedSource
+      </code>
+      to throw
+  an exception when reading from a file pattern that has no matches. Pipelines will now
+  fail at runtime rather than silently reading no data in this case. This change
+  affects
+      <code dir="ltr" translate="no">
+       TextIO.Read
+      </code>
+      or
+      <code dir="ltr" translate="no">
+       AvroIO.Read
+      </code>
+      when configured
+      <code dir="ltr" translate="no">
+       withoutValidation
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Enhanced
+      <code dir="ltr" translate="no">
+       Coder
+      </code>
+      validation in the
+      <code dir="ltr" translate="no">
+       DirectPipelineRunner
+      </code>
+      to catch coders that cannot properly encode
+  and decode their input.
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Improved display data throughout core transforms,
+  including properly handling arrays in
+      <code dir="ltr" translate="no">
+       PipelineOptions
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Improved performance for pipelines
+  using the
+      <code dir="ltr" translate="no">
+       DataflowPipelineRunner
+      </code>
+      in streaming mode.
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Improved scalability of the
+      <code dir="ltr" translate="no">
+       InProcessRunner
+      </code>
+      ,
+  enabling testing with larger datasets.
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Improved the cleanup of temporary files created
+  by
+      <code dir="ltr" translate="no">
+       TextIO
+      </code>
+      ,
+      <code dir="ltr" translate="no">
+       AvroIO
+      </code>
+      , and other
+      <code dir="ltr" translate="no">
+       FileBasedSource
+      </code>
+      implementations.
+     </p>
+    </div>
+    <h2 id="181_december_12_2016">
+     1.8.1 (December 12, 2016)
+    </h2>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       Identified issue:
+      </b>
+      Dataflow jobs that read from
+      <code dir="ltr" translate="no">
+       CompressedSource
+      </code>
+      s with compression type set to
+      <code dir="ltr" translate="no">
+       BZIP2
+      </code>
+      are potentially losing data during processing. For more information, see
+      <a href="https://github.com/GoogleCloudPlatform/DataflowJavaSDK/issues/596">
+       Issue #596
+      </a>
+      on the GitHub repository.
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Improved the performance of bounded side inputs
+  in the
+      <code dir="ltr" translate="no">
+       DataflowPipelineRunner
+      </code>
+      .
+     </p>
+    </div>
+    <h2 id="180_october_3_2016">
+     1.8.0 (October 3, 2016)
+    </h2>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       Identified issue:
+      </b>
+      Dataflow jobs that read from
+      <code dir="ltr" translate="no">
+       CompressedSource
+      </code>
+      s with compression type set to
+      <code dir="ltr" translate="no">
+       BZIP2
+      </code>
+      are potentially losing data during processing. For more information, see
+      <a href="https://github.com/GoogleCloudPlatform/DataflowJavaSDK/issues/596">
+       Issue #596
+      </a>
+      on the GitHub repository.
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Added support to
+      <code dir="ltr" translate="no">
+       BigQueryIO.Read
+      </code>
+      for queries in the new BigQuery
+      <a href="https://cloud.google.com/bigquery/sql-reference/">
+       Standard SQL
+      </a>
+      dialect using
+      <code dir="ltr" translate="no">
+       .withStandardSQL()
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Added support in
+      <code dir="ltr" translate="no">
+       BigQueryIO
+      </code>
+      for
+  the new
+      <code dir="ltr" translate="no">
+       BYTES
+      </code>
+      ,
+      <code dir="ltr" translate="no">
+       TIME
+      </code>
+      ,
+      <code dir="ltr" translate="no">
+       DATE
+      </code>
+      , and
+      <code dir="ltr" translate="no">
+       DATETIME
+      </code>
+      <a href="https://cloud.google.com/bigquery/sql-reference/data-types">
+       types
+      </a>
+      .
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Added support to
+      <code dir="ltr" translate="no">
+       BigtableIO.Read
+      </code>
+      for
+  reading from a restricted key range using
+      <code dir="ltr" translate="no">
+       .withKeyRange(ByteKeyRange)
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Improved initial splitting of large uncompressed
+  files in
+      <code dir="ltr" translate="no">
+       CompressedSource
+      </code>
+      , leading to better performance
+  when executing batch pipelines that use
+      <code dir="ltr" translate="no">
+       TextIO.Read
+      </code>
+      on the Cloud
+  Dataflow service.
+     </p>
+    </div>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      Fixed a
+      <a href="https://github.com/GoogleCloudPlatform/DataflowJavaSDK/issues/451">
+       performance regression
+      </a>
+      when using
+      <code dir="ltr" translate="no">
+       BigQueryIO.Write
+      </code>
+      in streaming mode.
+     </p>
+    </div>
+    <h2 id="170_september_9_2016">
+     1.7.0 (September 9, 2016)
+    </h2>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       Identified issue:
+      </b>
+      Dataflow jobs that read from
+      <code dir="ltr" translate="no">
+       CompressedSource
+      </code>
+      s with compression type set to
+      <code dir="ltr" translate="no">
+       BZIP2
+      </code>
+      are potentially losing data during processing. For more information, see
+      <a href="https://github.com/GoogleCloudPlatform/DataflowJavaSDK/issues/596">
+       Issue #596
+      </a>
+      on the GitHub repository.
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       Identified issue:
+      </b>
+      We have identified a
+  performance regression in
+      <code dir="ltr" translate="no">
+       BigQueryIO.Write
+      </code>
+      . When run in streaming
+  mode, users may see a small increase in failed inserts, though no data will be
+  lost or duplicated. For more information, see
+      <a href="https://github.com/GoogleCloudPlatform/DataflowJavaSDK/issues/451">
+       Issue #451
+      </a>
+      in the GitHub repository.
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Added support for Cloud Datastore API v1 in the
+  new
+      <code dir="ltr" translate="no">
+       com.google.cloud.dataflow.sdk.io.datastore.DatastoreIO
+      </code>
+      .
+  Deprecated the old
+      <code dir="ltr" translate="no">
+       DatastoreIO
+      </code>
+      class that supported only the
+  deprecated Cloud Datastore API v1beta2.
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Improved
+      <code dir="ltr" translate="no">
+       DatastoreIO.Read
+      </code>
+      to support
+  dynamic work rebalancing, and added an option to control the
+  number of query splits using
+      <code dir="ltr" translate="no">
+       withNumQuerySplits
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Improved
+      <code dir="ltr" translate="no">
+       DatastoreIO.Write
+      </code>
+      to work
+  with an unbounded
+      <code dir="ltr" translate="no">
+       PCollection
+      </code>
+      , supporting writing to Cloud Datastore
+  when using the
+      <code dir="ltr" translate="no">
+       DataflowPipelineRunner
+      </code>
+      in streaming mode.
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Added the ability to delete Cloud Datastore
+      <code dir="ltr" translate="no">
+       Entity
+      </code>
+      objects directly using
+      <code dir="ltr" translate="no">
+       Datastore.v1().deleteEntity
+      </code>
+      or to delete entities by key using
+      <code dir="ltr" translate="no">
+       Datastore.v1().deleteKey
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Added support for reading from a
+      <code dir="ltr" translate="no">
+       BoundedSource
+      </code>
+      to the
+      <code dir="ltr" translate="no">
+       DataflowPipelineRunner
+      </code>
+      in
+  streaming mode. This enables the use of
+      <code dir="ltr" translate="no">
+       TextIO.Read
+      </code>
+      ,
+      <code dir="ltr" translate="no">
+       AvroIO.Read
+      </code>
+      and other bounded sources in these pipelines.
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Added support for optionally writing a header
+  and/or footer to text files produced with
+      <code dir="ltr" translate="no">
+       TextIO.Write
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Added the ability to control the number of
+  output shards produced when using a
+      <code dir="ltr" translate="no">
+       Sink
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Added
+      <code dir="ltr" translate="no">
+       TestStream
+      </code>
+      to enable
+  testing of triggers with multiple panes and late data with the
+      <code dir="ltr" translate="no">
+       InProcessPipelineRunner
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Added the ability to control the rate at which
+      <code dir="ltr" translate="no">
+       UnboundedCountingInput
+      </code>
+      produces elements using
+      <code dir="ltr" translate="no">
+       withRate(long, Duration)
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Improved performance and stability for pipelines
+  using the
+      <code dir="ltr" translate="no">
+       DataflowPipelineRunner
+      </code>
+      in streaming mode.
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      To support
+      <code dir="ltr" translate="no">
+       TestStream
+      </code>
+      , reimplemented
+      <code dir="ltr" translate="no">
+       DataflowAssert
+      </code>
+      to use
+      <code dir="ltr" translate="no">
+       GroupByKey
+      </code>
+      instead of
+      <code dir="ltr" translate="no">
+       sideInputs
+      </code>
+      to check assertions. This is an update-incompatible
+  change to
+      <code dir="ltr" translate="no">
+       DataflowAssert
+      </code>
+      for pipelines run on the
+      <code dir="ltr" translate="no">
+       DataflowPipelineRunner
+      </code>
+      in streaming mode.
+     </p>
+    </div>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      Fixed an issue in which a
+      <code dir="ltr" translate="no">
+       FileBasedSink
+      </code>
+      would produce no files when writing an empty
+      <code dir="ltr" translate="no">
+       PCollection
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      Fixed an issue in which
+      <code dir="ltr" translate="no">
+       BigQueryIO.Read
+      </code>
+      could not query a table in a non-
+      <code dir="ltr" translate="no">
+       US
+      </code>
+      region when using the
+      <code dir="ltr" translate="no">
+       DirectPipelineRunner
+      </code>
+      or the
+      <code dir="ltr" translate="no">
+       InProcessPipelineRunner
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      Fixed an issue in which the combination of timestamps
+  near the end of the global window and a large
+      <code dir="ltr" translate="no">
+       allowedLateness
+      </code>
+      could cause an
+      <code dir="ltr" translate="no">
+       IllegalStateException
+      </code>
+      for pipelines run in the
+      <code dir="ltr" translate="no">
+       DirectPipelineRunner
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      Fixed a
+      <code dir="ltr" translate="no">
+       NullPointerException
+      </code>
+      that
+  could be thrown during pipeline submission when using an
+      <code dir="ltr" translate="no">
+       AfterWatermark
+      </code>
+      trigger with no late firings.
+     </p>
+    </div>
+    <h2 id="161_august_8_2016">
+     1.6.1 (August 8, 2016)
+    </h2>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       Identified issue:
+      </b>
+      Dataflow jobs that read from
+      <code dir="ltr" translate="no">
+       CompressedSource
+      </code>
+      s with compression type set to
+      <code dir="ltr" translate="no">
+       BZIP2
+      </code>
+      are potentially losing data during processing. For more information, see
+      <a href="https://github.com/GoogleCloudPlatform/DataflowJavaSDK/issues/596">
+       Issue #596
+      </a>
+      on the GitHub repository.
+     </p>
+    </div>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      Fixed an issue with Dataflow jobs reading from
+      <code dir="ltr" translate="no">
+       TextIO
+      </code>
+      with compression type set to
+      <code dir="ltr" translate="no">
+       GZIP
+      </code>
+      or
+      <code dir="ltr" translate="no">
+       BZIP2
+      </code>
+      . For more information, see
+      <a href="https://github.com/GoogleCloudPlatform/DataflowJavaSDK/issues/356">
+       Issue #356
+      </a>
+      on the
+    GitHub repository.
+     </p>
+    </div>
+    <h2 id="160_june_10_2016">
+     1.6.0 (June 10, 2016)
+    </h2>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       Identified issue:
+      </b>
+      Dataflow jobs that read from
+      <code dir="ltr" translate="no">
+       CompressedSource
+      </code>
+      s with compression type set to
+      <code dir="ltr" translate="no">
+       BZIP2
+      </code>
+      are potentially losing data during processing. For more information, see
+      <a href="https://github.com/GoogleCloudPlatform/DataflowJavaSDK/issues/596">
+       Issue #596
+      </a>
+      on the GitHub repository.
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       Identified issue:
+      </b>
+      Dataflow jobs reading from
+      <code dir="ltr" translate="no">
+       TextIO
+      </code>
+      , with compression type set to
+      <code dir="ltr" translate="no">
+       GZIP
+      </code>
+      or
+      <code dir="ltr" translate="no">
+       BZIP2
+      </code>
+      , are potentially losing data during processing. Users are
+  advised to employ the workarounds discussed in
+      <a href="https://github.com/GoogleCloudPlatform/DataflowJavaSDK/issues/356">
+       Issue #356
+      </a>
+      in the GitHub repository.
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Added display data, which allows annotating user functions (
+      <code dir="ltr" translate="no">
+       DoFn
+      </code>
+      ,
+      <code dir="ltr" translate="no">
+       CombineFn
+      </code>
+      , and
+      <code dir="ltr" translate="no">
+       WindowFn
+      </code>
+      ),
+      <code dir="ltr" translate="no">
+       Source
+      </code>
+      s, and
+      <code dir="ltr" translate="no">
+       Sink
+      </code>
+      s
+  with static metadata to be displayed in the Dataflow Monitoring Interface. Display data has
+  been implemented for core components and is automatically applied to all
+      <code dir="ltr" translate="no">
+       PipelineOptions
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Added the methods
+      <code dir="ltr" translate="no">
+       getSplitPointsConsumed
+      </code>
+      and
+      <code dir="ltr" translate="no">
+       getSplitPointsRemaining
+      </code>
+      to the
+      <code dir="ltr" translate="no">
+       BoundedReader
+      </code>
+      API to improve Dataflow's ability to automatically
+  scale a job reading from these sources. Default implementations of these functions have been
+  provided, but reader implementers should override them to provide better information when
+  available.
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Added the ability to compose multiple
+      <code dir="ltr" translate="no">
+       CombineFn
+      </code>
+      s into a single
+      <code dir="ltr" translate="no">
+       CombineFn
+      </code>
+      using
+      <code dir="ltr" translate="no">
+       CombineFns.compose
+      </code>
+      or
+      <code dir="ltr" translate="no">
+       CombineFns.composeKeyed
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Added
+      <code dir="ltr" translate="no">
+       InProcessPipelineRunner
+      </code>
+      , an
+  improvement over the
+      <code dir="ltr" translate="no">
+       DirectPipelineRunner
+      </code>
+      that better implements
+  the Dataflow model.
+      <code dir="ltr" translate="no">
+       InProcessPipelineRunner
+      </code>
+      runs on a user's local
+  machine and supports multithreaded execution, unbounded
+      <code dir="ltr" translate="no">
+       PCollections
+      </code>
+      ,
+  and triggers for speculative and late outputs.
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Reimplemented
+      <code dir="ltr" translate="no">
+       BigQueryIO
+      </code>
+      so that
+  the
+      <code dir="ltr" translate="no">
+       DirectPipelineRunner
+      </code>
+      and
+      <code dir="ltr" translate="no">
+       InProcessPipelineRunner
+      </code>
+      implementations execute similarly to the
+      <code dir="ltr" translate="no">
+       DataflowPipelineRunner
+      </code>
+      .
+  You must now specify the
+      <code dir="ltr" translate="no">
+       --tempLocation
+      </code>
+      <a href="/dataflow/pipelines/specifying-exec-params">
+       execution parameter
+      </a>
+      when using
+      <code dir="ltr" translate="no">
+       DirectPipelineRunner
+      </code>
+      or
+      <code dir="ltr" translate="no">
+       InProcessPipelineRunner
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      Improved performance of side inputs when using workers with many cores.
+     </p>
+    </div>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      Improved efficiency when using
+      <code dir="ltr" translate="no">
+       CombineFnWithContext
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      Fixed several issues related to stability in the streaming mode.
+     </p>
+    </div>
+    <h2 id="151_april_15_2016">
+     1.5.1 (April 15, 2016)
+    </h2>
+    <ul>
+     <li>
+      Fixed an issue that hid
+      <code dir="ltr" translate="no">
+       BigtableIO.Read.withRowFilter
+      </code>
+      , which allows Cloud
+    Bigtable rows to be filtered in the
+      <code dir="ltr" translate="no">
+       Read
+      </code>
+      transform.
+     </li>
+     <li>
+      Fixed support for concatenated GZip files.
+     </li>
+     <li>
+      Fixed an issue that prevented
+      <code dir="ltr" translate="no">
+       Write.to
+      </code>
+      to be used with merging windows.
+     </li>
+     <li>
+      Fixed an issue that caused excessive triggering with repeated composite triggers.
+     </li>
+     <li>
+      Fixed an issue with merging windows and triggers that finish before the end of the
+    window.
+     </li>
+    </ul>
+    <h2 id="150_march_14_2016">
+     1.5.0 (March 14, 2016)
+    </h2>
+    <p>
+     With this release, we have begun preparing the Dataflow SDK for Java for an eventual move to
+     <a href="https://www.google.com/url?sa=D&amp;q=https%3A%2F%2Fcloudplatform.googleblog.com%2F2016%2F01%2FDataflow-and-open-source-proposal-to-join-the-Apache-Incubator.html">
+      Apache Beam (incubating)
+     </a>
+     .
+  Specifically, we have refactored a number of internal APIs and removed from the SDK classes used
+  only within the worker, which will now be provided by the Google Cloud Dataflow Service
+  during job execution. This refactoring should not affect any user code.
+    </p>
+    <p>
+     Additionally, the 1.5.0 release includes the following changes:
+    </p>
+    <ul>
+     <li>
+      Enabled an indexed side input format for batch pipelines executed on the Google Cloud
+    Dataflow service. Indexed side inputs significantly increase performance for
+      <code dir="ltr" translate="no">
+       View.asList
+      </code>
+      ,
+      <code dir="ltr" translate="no">
+       View.asMap
+      </code>
+      ,
+      <code dir="ltr" translate="no">
+       View.asMultimap
+      </code>
+      ,
+    and any non-globally-windowed
+      <code dir="ltr" translate="no">
+       PCollectionView
+      </code>
+      s.
+     </li>
+     <li>
+      Upgraded to Protocol Buffers version
+      <code dir="ltr" translate="no">
+       3.0.0-beta-1
+      </code>
+      . If you use custom Protocol
+    Buffers, you should recompile them with the corresponding version of the
+      <code dir="ltr" translate="no">
+       protoc
+      </code>
+      compiler. You can continue using both version 2 and 3 of the Protocol Buffers syntax, and no
+    user pipeline code needs to change.
+     </li>
+     <li>
+      Added
+      <code dir="ltr" translate="no">
+       ProtoCoder
+      </code>
+      , which is a
+      <code dir="ltr" translate="no">
+       Coder
+      </code>
+      for Protocol Buffers messages
+    that supports both version 2 and 3 of the Protocol Buffers syntax. This coder can detect when
+    messages can be encoded deterministically.
+      <code dir="ltr" translate="no">
+       Proto2Coder
+      </code>
+      is now deprecated; we
+    recommend that all users switch to
+      <code dir="ltr" translate="no">
+       ProtoCoder
+      </code>
+      .
+     </li>
+     <li>
+      Added
+      <code dir="ltr" translate="no">
+       withoutResultFlattening
+      </code>
+      to
+      <code dir="ltr" translate="no">
+       BigQueryIO.Read
+      </code>
+      to disable
+    flattening query results when reading from BigQuery.
+     </li>
+     <li>
+      Added
+      <code dir="ltr" translate="no">
+       BigtableIO
+      </code>
+      , enabling support for reading from and writing to Google Cloud
+    Bigtable.
+     </li>
+     <li>
+      Improved
+      <code dir="ltr" translate="no">
+       CompressedSource
+      </code>
+      to detect compression format according to the file
+    extension. Added support for reading
+      <code dir="ltr" translate="no">
+       .gz
+      </code>
+      files that are transparently decompressed
+    by the underlying transport logic.
+     </li>
+    </ul>
+    <div style="font-size: 10pt; color: gray">
+     <em>
+      Apache Beam
+      <sup>
+       ™
+      </sup>
+      is a
+  trademark of The Apache Software Foundation or its affiliates in the United
+  States and/or other countries.
+     </em>
+    </div>
+    <h2 id="140_january_22_2016">
+     1.4.0 (January 22, 2016)
+    </h2>
+    <ul>
+     <li>
+      Added a series of
+      <a href="/dataflow/examples/gaming-example">
+       batch and streaming
+    example pipelines
+      </a>
+      in a mobile gaming domain that illustrate some advanced topics,
+    including windowing and triggers.
+     </li>
+     <li>
+      Added support for
+      <code dir="ltr" translate="no">
+       Combine
+      </code>
+      functions to access pipeline options and side inputs
+    through a context. See
+      <code dir="ltr" translate="no">
+       GlobalCombineFn
+      </code>
+      and
+      <code dir="ltr" translate="no">
+       PerKeyCombineFn
+      </code>
+      for
+    further details.
+     </li>
+     <li>
+      Modified
+      <code dir="ltr" translate="no">
+       ParDo.withSideInputs()
+      </code>
+      such that successive calls are
+    cumulative.
+     </li>
+     <li>
+      Modified automatic coder detection of Protocol Buffer messages; such classes now have their
+    coders provided automatically.
+     </li>
+     <li>
+      Added support for limiting the number of results returned by
+      <code dir="ltr" translate="no">
+       DatastoreIO.Source
+      </code>
+      .
+    However, when this limit is set, the operation that reads from Cloud Datastore is performed
+    by a single worker rather than executing in parallel across the worker pool.
+     </li>
+     <li>
+      Modified definition of
+      <code dir="ltr" translate="no">
+       PaneInfo.{EARLY, ON_TIME, LATE}
+      </code>
+      so that panes with only late data are always
+      <code dir="ltr" translate="no">
+       LATE
+      </code>
+      ,
+    and an
+      <code dir="ltr" translate="no">
+       ON_TIME
+      </code>
+      pane can never cause a later computation
+    to yield a
+      <code dir="ltr" translate="no">
+       LATE
+      </code>
+      pane.
+     </li>
+     <li>
+      Modified
+      <code dir="ltr" translate="no">
+       GroupByKey
+      </code>
+      to drop late data when that late data arrives for a
+    window that has expired. An expired window means the end of the window is passed by more
+    than the allowed lateness.
+     </li>
+     <li>
+      When using
+      <code dir="ltr" translate="no">
+       GlobalWindows
+      </code>
+      , you are no longer required to specify
+      <code dir="ltr" translate="no">
+       withAllowedLateness()
+      </code>
+      , since no data is ever dropped.
+     </li>
+     <li>
+      Added support for obtaining the default project ID from the default project configuration
+    produced by newer versions of the
+      <code dir="ltr" translate="no">
+       gcloud
+      </code>
+      utility. If the default project
+    configuration does not exist, Dataflow reverts to using the old project configuration
+    generated by older versions of the
+      <code dir="ltr" translate="no">
+       gcloud
+      </code>
+      utility.
+     </li>
+    </ul>
+    <h2 id="130_december_4_2015">
+     1.3.0 (December 4, 2015)
+    </h2>
+    <ul>
+     <li>
+      Improved
+      <code dir="ltr" translate="no">
+       IterableLikeCoder
+      </code>
+      to efficiently encode small values. This change is
+    backward compatible; however, if you have a running pipeline that was constructed with SDK
+    version 1.3.0 or later, it may not be possible to
+      <a href="/dataflow/pipelines/updating-a-pipeline">
+       "update"
+      </a>
+      that pipeline with a replacement
+    that was constructed using SDK version 1.2.1 or older. Updating a running pipeline with a
+    pipeline constructed using a new SDK version, however, should be successful.
+     </li>
+     <li>
+      When
+      <code dir="ltr" translate="no">
+       TextIO.Write
+      </code>
+      or
+      <code dir="ltr" translate="no">
+       AvroIO.Write
+      </code>
+      outputs to a fixed number of
+    files, added a reshard (shuffle) step immediately prior to the write step. The cost of this
+    reshard is often exceeded by additional parallelism available to the preceding stage.
+     </li>
+     <li>
+      Added support for RFC 3339 timestamps in
+      <code dir="ltr" translate="no">
+       PubsubIO
+      </code>
+      . This allows reading from Cloud
+    Pub/Sub topics published by Cloud Logging without losing timestamp information.
+     </li>
+     <li>
+      Improved memory management to help prevent pipelines in the streaming execution mode from
+    stalling when running with high memory utilization. This particularly benefits pipelines with
+    large
+      <code dir="ltr" translate="no">
+       GroupByKey
+      </code>
+      results.
+     </li>
+     <li>
+      Added ability to customize timestamps of emitted windows. Previously, the watermark was held
+    to the earliest timestamp of any buffered input. With this change, you can choose a later time
+    to allow the watermark to progress further. For example, using the end of the window will
+    prevent long-lived sessions from holding up the output. See
+      <code dir="ltr" translate="no">
+       Window.Bound.withOutputTime()
+      </code>
+      .
+     </li>
+     <li>
+      Added a simplified syntax for early and late firings with an
+      <code dir="ltr" translate="no">
+       AfterWatermark
+      </code>
+      trigger, as follows:
+      <code dir="ltr" translate="no">
+       AfterWatermark.pastEndOfWindow().withEarlyFirings(...).withLateFirings(...)
+      </code>
+      .
+     </li>
+    </ul>
+    <h2 id="121_october_21_2015">
+     1.2.1 (October 21, 2015)
+    </h2>
+    <ul>
+     <li>
+      Fixed a regression in
+      <code dir="ltr" translate="no">
+       BigQueryIO
+      </code>
+      that unnecessarily printed a lot of messages
+    when executed using
+      <code dir="ltr" translate="no">
+       DirectPipelineRunner
+      </code>
+      .
+     </li>
+    </ul>
+    <h2 id="120_october_5_2015">
+     1.2.0 (October 5, 2015)
+    </h2>
+    <ul>
+     <li>
+      Added Java 8 support. Added new
+      <code dir="ltr" translate="no">
+       MapElements
+      </code>
+      and
+      <code dir="ltr" translate="no">
+       FlatMapElements
+      </code>
+      transforms that accept Java 8 lambdas, for those cases when the full power of
+      <code dir="ltr" translate="no">
+       ParDo
+      </code>
+      is not required.
+      <code dir="ltr" translate="no">
+       Filter
+      </code>
+      and
+      <code dir="ltr" translate="no">
+       Partition
+      </code>
+      accept lambdas as well.
+    Java 8 functionality is demonstrated in a new
+      <code dir="ltr" translate="no">
+       MinimalWordCountJava8
+      </code>
+      example.
+     </li>
+     <li>
+      Enabled
+      <code dir="ltr" translate="no">
+       @DefaultCoder
+      </code>
+      annotations for generic types. Previously, a
+      <code dir="ltr" translate="no">
+       @DefaultCoder
+      </code>
+      annotation on a generic type was ignored, resulting in diminished
+    functionality and confusing error messages. It now works as expected.
+     </li>
+     <li>
+      <code dir="ltr" translate="no">
+       DatastoreIO
+      </code>
+      now supports (parallel) reads within namespaces. Entities can be
+    written to namespaces by setting the namespace in the
+      <code dir="ltr" translate="no">
+       Entity
+      </code>
+      key.
+     </li>
+     <li>
+      Limited the
+      <code dir="ltr" translate="no">
+       slf4j-jdk14
+      </code>
+      dependency to the
+      <code dir="ltr" translate="no">
+       test
+      </code>
+      scope. When a
+    Dataflow job is executing, the
+      <code dir="ltr" translate="no">
+       slf4j-api
+      </code>
+      ,
+      <code dir="ltr" translate="no">
+       slf4j-jdk14
+      </code>
+      ,
+      <code dir="ltr" translate="no">
+       jcl-over-slf4j
+      </code>
+      ,
+      <code dir="ltr" translate="no">
+       log4j-over-slf4j
+      </code>
+      , and
+      <code dir="ltr" translate="no">
+       log4j-to-slf4j
+      </code>
+      dependencies will be provided by the system.
+     </li>
+    </ul>
+    <h2 id="110_september_15_2015">
+     1.1.0 (September 15, 2015)
+    </h2>
+    <ul>
+     <li>
+      Added a coder for type
+      <code dir="ltr" translate="no">
+       Set&lt;T&gt;
+      </code>
+      to the coder registry, when type
+      <code dir="ltr" translate="no">
+       T
+      </code>
+      has its own registered coder.
+     </li>
+     <li>
+      Added
+      <code dir="ltr" translate="no">
+       NullableCoder
+      </code>
+      , which can be used in conjunction with other coders to encode
+    a
+      <code dir="ltr" translate="no">
+       PCollection
+      </code>
+      whose elements may possibly contain
+      <code dir="ltr" translate="no">
+       null
+      </code>
+      values.
+     </li>
+     <li>
+      Added
+      <code dir="ltr" translate="no">
+       Filter
+      </code>
+      as a composite
+      <code dir="ltr" translate="no">
+       PTransform
+      </code>
+      . Deprecated static methods in
+    the old
+      <code dir="ltr" translate="no">
+       Filter
+      </code>
+      implementation that return
+      <code dir="ltr" translate="no">
+       ParDo
+      </code>
+      transforms.
+     </li>
+     <li>
+      Added
+      <code dir="ltr" translate="no">
+       SourceTestUtils
+      </code>
+      , which is a set of helper functions and test harnesses for
+    testing correctness of
+      <code dir="ltr" translate="no">
+       Source
+      </code>
+      implementations.
+     </li>
+    </ul>
+    <h2 id="100_august_10_2015">
+     1.0.0 (August 10, 2015)
+    </h2>
+    <ul>
+     <li>
+      The initial General Availability (GA) version, open to all developers, and considered stable
+    and fully qualified for production use. It coincides with the General Availability of the
+    Dataflow Service.
+     </li>
+     <li>
+      Removed the default values for
+      <code dir="ltr" translate="no">
+       numWorkers
+      </code>
+      ,
+      <code dir="ltr" translate="no">
+       maxNumWorkers
+      </code>
+      , and
+    similar settings. If these are unspecified, the Dataflow Service will pick an appropriate
+    value.
+     </li>
+     <li>
+      Added checks to
+      <code dir="ltr" translate="no">
+       DirectPipelineRunner
+      </code>
+      to help ensure that
+      <code dir="ltr" translate="no">
+       DoFn
+      </code>
+      s obey
+    the existing requirement that inputs and outputs must not be modified.
+     </li>
+     <li>
+      Added support in
+      <code dir="ltr" translate="no">
+       AvroCoder
+      </code>
+      for
+      <code dir="ltr" translate="no">
+       @Nullable
+      </code>
+      fields with deterministic
+    encoding.
+     </li>
+     <li>
+      Added a requirement that anonymous
+      <code dir="ltr" translate="no">
+       CustomCoder
+      </code>
+      subclasses override
+      <code dir="ltr" translate="no">
+       getEncodingId
+      </code>
+      method.
+     </li>
+     <li>
+      Changed
+      <code dir="ltr" translate="no">
+       Source.Reader
+      </code>
+      ,
+      <code dir="ltr" translate="no">
+       BoundedSource.BoundedReader
+      </code>
+      ,
+      <code dir="ltr" translate="no">
+       UnboundedSource.UnboundedReader
+      </code>
+      to be abstract classes, instead of interfaces.
+      <code dir="ltr" translate="no">
+       AbstractBoundedReader
+      </code>
+      has been merged into
+      <code dir="ltr" translate="no">
+       BoundedSource.BoundedReader
+      </code>
+      .
+     </li>
+     <li>
+      Renamed
+      <code dir="ltr" translate="no">
+       ByteOffsetBasedSource
+      </code>
+      and
+      <code dir="ltr" translate="no">
+       ByteOffsetBasedReader
+      </code>
+      to
+      <code dir="ltr" translate="no">
+       OffsetBasedSource
+      </code>
+      and
+      <code dir="ltr" translate="no">
+       OffsetBasedReader
+      </code>
+      , introducing
+      <code dir="ltr" translate="no">
+       getBytesPerOffset
+      </code>
+      as a translation layer.
+     </li>
+     <li>
+      Changed
+      <code dir="ltr" translate="no">
+       OffsetBasedReader
+      </code>
+      , such that the subclass now has to override
+      <code dir="ltr" translate="no">
+       startImpl
+      </code>
+      and
+      <code dir="ltr" translate="no">
+       advanceImpl
+      </code>
+      , rather than
+      <code dir="ltr" translate="no">
+       start
+      </code>
+      and
+      <code dir="ltr" translate="no">
+       advance
+      </code>
+      . The protected variable
+      <code dir="ltr" translate="no">
+       rangeTracker
+      </code>
+      is now hidden and updated
+    by base class automatically. To indicate split points, use the method
+      <code dir="ltr" translate="no">
+       isAtSplitPoint
+      </code>
+      .
+     </li>
+     <li>
+      Removed methods for adjusting watermark triggers.
+     </li>
+     <li>
+      Removed an unecessary generic parameter from
+      <code dir="ltr" translate="no">
+       TimeTrigger
+      </code>
+      .
+     </li>
+     <li>
+      Removed generation of empty panes unless explicitly requested.
+     </li>
+    </ul>
+    <h2 id="04150727_july_27_2015">
+     0.4.150727 (July 27, 2015)
+    </h2>
+    <ul>
+     <li>
+      Removed the requirement to explicitly set
+      <code dir="ltr" translate="no">
+       --project
+      </code>
+      if Google Cloud SDK has the
+    default project configuration set.
+     </li>
+     <li>
+      Added support for creating BigQuery sources from a query.
+     </li>
+     <li>
+      Added support for custom unbounded sources in the
+      <code dir="ltr" translate="no">
+       DirectPipelineRunner
+      </code>
+      and
+      <code dir="ltr" translate="no">
+       DataflowPipelineRunner
+      </code>
+      . See
+      <code dir="ltr" translate="no">
+       UnboundedSource
+      </code>
+      for details.
+     </li>
+     <li>
+      Removed unnecessary
+      <code dir="ltr" translate="no">
+       ExecutionContext
+      </code>
+      argument in
+      <code dir="ltr" translate="no">
+       BoundedSource.createReader
+      </code>
+      and related methods.
+     </li>
+     <li>
+      Changed
+      <code dir="ltr" translate="no">
+       BoundedReader.splitAtFraction
+      </code>
+      to require thread-safety (i.e. safe to call
+    asynchronously with
+      <code dir="ltr" translate="no">
+       advance
+      </code>
+      or
+      <code dir="ltr" translate="no">
+       start
+      </code>
+      ). Added
+      <code dir="ltr" translate="no">
+       RangeTracker
+      </code>
+      to help implement thread-safe readers. Users are heavily encouraged to use the class rather than
+    implementing an ad-hoc solution.
+     </li>
+     <li>
+      Modified
+      <code dir="ltr" translate="no">
+       Combine
+      </code>
+      transforms by lifting them into (and above) the
+      <code dir="ltr" translate="no">
+       GroupByKey
+      </code>
+      resulting in better performance.
+     </li>
+     <li>
+      Modified triggers such that after a
+      <code dir="ltr" translate="no">
+       GroupByKey
+      </code>
+      , the system will switch to a
+    "Continuation Trigger", which attempts to preserve the original intention regarding handling of
+    speculative and late triggerings instead of returning to the default trigger.
+     </li>
+     <li>
+      Added
+      <code dir="ltr" translate="no">
+       WindowFn.getOutputTimestamp
+      </code>
+      and changed
+      <code dir="ltr" translate="no">
+       GroupByKey
+      </code>
+      behavior to
+    allow incomplete overlapping windows to not hold up progress of earlier, completed windows.
+     </li>
+     <li>
+      Changed triggering behavior so that empty panes are produced if they are the first pane after
+    the watermark (
+      <code dir="ltr" translate="no">
+       ON_TIME
+      </code>
+      ) or the final pane.
+     </li>
+     <li>
+      Removed the
+      <code dir="ltr" translate="no">
+       Window.Trigger
+      </code>
+      intermediate builder class.
+     </li>
+     <li>
+      Added validation that allowed lateness is specified on the
+      <code dir="ltr" translate="no">
+       Window
+      </code>
+      <code dir="ltr" translate="no">
+       PTransform
+      </code>
+      when a trigger is specified.
+     </li>
+     <li>
+      Re-enabled verification of
+      <code dir="ltr" translate="no">
+       GroupByKey
+      </code>
+      usage. Specifically, the key must have a
+    deterministic coder and using
+      <code dir="ltr" translate="no">
+       GroupByKey
+      </code>
+      with an unbounded
+      <code dir="ltr" translate="no">
+       PCollection
+      </code>
+      requires windowing or triggers.
+     </li>
+     <li>
+      Changed
+      <code dir="ltr" translate="no">
+       PTransform
+      </code>
+      names so that they may no longer contain the
+      <code dir="ltr" translate="no">
+       '='
+      </code>
+      or
+      <code dir="ltr" translate="no">
+       ';'
+      </code>
+      characters.
+     </li>
+    </ul>
+    <h2 id="04150710_july_10_2015">
+     0.4.150710 (July 10, 2015)
+    </h2>
+    <ul>
+     <li>
+      Added support for per-window tables to
+      <code dir="ltr" translate="no">
+       BigQueryIO
+      </code>
+      .
+     </li>
+     <li>
+      Added support for a custom source implementation for Avro.
+    See
+      <code dir="ltr" translate="no">
+       AvroSource
+      </code>
+      for more details.
+     </li>
+     <li>
+      Removed 250GiB Google Cloud Storage file size upload restriction.
+     </li>
+     <li>
+      Fixed
+      <code dir="ltr" translate="no">
+       BigQueryIO.Write
+      </code>
+      table creation bug in streaming mode.
+     </li>
+     <li>
+      Changed
+      <code dir="ltr" translate="no">
+       Source.createReader()
+      </code>
+      and
+      <code dir="ltr" translate="no">
+       BoundedSource.createReader()
+      </code>
+      to be abstract.
+     </li>
+     <li>
+      Moved
+      <code dir="ltr" translate="no">
+       Source.splitIntoBundles()
+      </code>
+      to
+      <code dir="ltr" translate="no">
+       BoundedSource.splitIntoBundles()
+      </code>
+     </li>
+     <li>
+      Added support for reading bounded views of a Pub/Sub stream in
+      <code dir="ltr" translate="no">
+       PubsubIO
+      </code>
+      for
+    non-streaming
+      <code dir="ltr" translate="no">
+       DataflowPipeline
+      </code>
+      s and
+      <code dir="ltr" translate="no">
+       DirectPipeline
+      </code>
+      s.
+     </li>
+     <li>
+      Added support for getting a
+      <code dir="ltr" translate="no">
+       Coder
+      </code>
+      using a
+      <code dir="ltr" translate="no">
+       Class
+      </code>
+      to the
+      <code dir="ltr" translate="no">
+       CoderRegistry
+      </code>
+      .
+     </li>
+     <li>
+      Changed
+      <code dir="ltr" translate="no">
+       CoderRegistry.registerCoder(Class&lt;T&gt;, Coder&lt;T&gt;)
+      </code>
+      to
+   enforce that the provided coder actually encodes values of the given class, and its use
+   with rawtypes of generic classes is forbidden as it will rarely work correctly.
+     </li>
+     <li>
+      Migrate to
+      <code dir="ltr" translate="no">
+       Create.withCoder()
+      </code>
+      and
+      <code dir="ltr" translate="no">
+       CreateTimestamped.withCoder()
+      </code>
+      instead of calling
+      <code dir="ltr" translate="no">
+       setCoder()
+      </code>
+      on the outcoming
+      <code dir="ltr" translate="no">
+       PCollection
+      </code>
+      when
+    the
+      <code dir="ltr" translate="no">
+       Create
+      </code>
+      <code dir="ltr" translate="no">
+       PTransform
+      </code>
+      is being applied.
+     </li>
+     <li>
+      Added three successively more detailed
+      <code dir="ltr" translate="no">
+       WordCount
+      </code>
+      examples.
+     </li>
+     <li>
+      Removed
+      <code dir="ltr" translate="no">
+       PTransform.getDefaultName()
+      </code>
+      which was redundant with
+      <code dir="ltr" translate="no">
+       PTransform.getKindString()
+      </code>
+      .
+     </li>
+     <li>
+      Added support a unique name check for
+      <code dir="ltr" translate="no">
+       PTransform
+      </code>
+      's during job creation.
+     </li>
+     <li>
+      Removed
+      <code dir="ltr" translate="no">
+       PTransform.withName()
+      </code>
+      and
+      <code dir="ltr" translate="no">
+       PTransform.setName()
+      </code>
+      The name of a transform is now immutable after construction. Library transforms
+    (like
+      <code dir="ltr" translate="no">
+       Combine
+      </code>
+      ) can provide builder-like methods to change the name.
+    Names can always be overridden at the location where the transform is applied using
+      <code dir="ltr" translate="no">
+       apply("name", transform)
+      </code>
+      .
+     </li>
+     <li>
+      Added the ability to select the network for worker VMs using
+      <code dir="ltr" translate="no">
+       DataflowPipelineWorkerPoolOptions.setNetwork(String)
+      </code>
+     </li>
+    </ul>
+    <h2 id="04150602_june_2_2015">
+     0.4.150602 (June 2, 2015)
+    </h2>
+    <ul>
+     <li>
+      Added a dependency on the
+      <code dir="ltr" translate="no">
+       <a href="https://cloud.google.com/sdk/gcloud/">
+        gcloud
+       </a>
+       core
+      </code>
+      component version
+    2015.02.05 or newer. Update to the latest version of
+      <code dir="ltr" translate="no">
+       gcloud
+      </code>
+      by running
+      <code dir="ltr" translate="no">
+       gcloud components update
+      </code>
+      . See
+      <a href="https://developers.google.com/accounts/docs/application-default-credentials">
+       Application
+    Default Credentials
+      </a>
+      for more details on how credentials can be specified.
+     </li>
+     <li>
+      Removed previously deprecated
+      <code dir="ltr" translate="no">
+       Flatten.create()
+      </code>
+      . Use
+      <code dir="ltr" translate="no">
+       Flatten.pCollections()
+      </code>
+      instead.
+     </li>
+     <li>
+      Removed previously deprecated
+      <code dir="ltr" translate="no">
+       Coder.isDeterministic()
+      </code>
+      . Implement
+      <code dir="ltr" translate="no">
+       Coder.verifyDeterministic()
+      </code>
+      instead.
+     </li>
+     <li>
+      Replaced
+      <code dir="ltr" translate="no">
+       DoFn.Context#createAggregator
+      </code>
+      with
+      <code dir="ltr" translate="no">
+       DoFn#createAggregator
+      </code>
+      .
+     </li>
+     <li>
+      Added support for querying the current value of an
+      <code dir="ltr" translate="no">
+       Aggregator
+      </code>
+      . See
+      <code dir="ltr" translate="no">
+       PipelineResult
+      </code>
+      for more information.
+     </li>
+     <li>
+      Added experimental
+      <code dir="ltr" translate="no">
+       DoFnWithContext
+      </code>
+      to simplify accessing additional information
+    from a
+      <code dir="ltr" translate="no">
+       DoFn
+      </code>
+      .
+     </li>
+     <li>
+      Removed experimental
+      <code dir="ltr" translate="no">
+       RequiresKeyedState
+      </code>
+      .
+     </li>
+     <li>
+      Added
+      <code dir="ltr" translate="no">
+       CannotProvideCoderException
+      </code>
+      to indicate inability to infer a coder, instead
+    of returning
+      <code dir="ltr" translate="no">
+       null
+      </code>
+      in such cases.
+     </li>
+     <li>
+      Added
+      <code dir="ltr" translate="no">
+       CoderProperties
+      </code>
+      for assembling test suites for user-defined coders.
+     </li>
+     <li>
+      Replaced a constructor of
+      <code dir="ltr" translate="no">
+       PDone
+      </code>
+      with a static factory
+      <code dir="ltr" translate="no">
+       PDone.in(Pipeline)
+      </code>
+      .
+     </li>
+     <li>
+      Updated string formatting of the
+      <code dir="ltr" translate="no">
+       TIMESTAMP
+      </code>
+      values returned by the BigQuery
+    source, when using
+      <code dir="ltr" translate="no">
+       DirectPipelineRunner
+      </code>
+      or when BigQuery data is used as a side
+    input, which aligns it with the case when BigQuery data is used as a main input.
+     </li>
+     <li>
+      Added a requirement that the value returned by
+      <code dir="ltr" translate="no">
+       Source.Reader.getCurrent()
+      </code>
+      must be
+    immutable and remain valid indefinitely.
+     </li>
+     <li>
+      Replaced some usage of
+      <code dir="ltr" translate="no">
+       Source
+      </code>
+      with
+      <code dir="ltr" translate="no">
+       BoundedSource
+      </code>
+      . For example,
+      <code dir="ltr" translate="no">
+       Read.from()
+      </code>
+      transform can now only be applied to
+      <code dir="ltr" translate="no">
+       BoundedSource
+      </code>
+      objects.
+     </li>
+     <li>
+      Moved experimental late-data handling, i.e., the data that arrives to the streaming pipeline
+    after the watermark has passed it, from
+      <code dir="ltr" translate="no">
+       PubSubIO
+      </code>
+      to
+      <code dir="ltr" translate="no">
+       Window
+      </code>
+      . Late data
+    will default to being dropped at the first
+      <code dir="ltr" translate="no">
+       GroupByKey
+      </code>
+      following a
+      <code dir="ltr" translate="no">
+       Read
+      </code>
+      operation. To allow late data through use
+      <code dir="ltr" translate="no">
+       Window.Bound#withAllowedLateness
+      </code>
+      .
+     </li>
+     <li>
+      Added experimental support for accumulating elements within a window across panes.
+     </li>
+    </ul>
+    <h2 id="04150414_april_14_2015">
+     0.4.150414 (April 14, 2015)
+    </h2>
+    <ul>
+     <li>
+      Initial Beta release of the Dataflow SDK for Java.
+     </li>
+     <li>
+      Improved execution performance in many areas of the system.
+     </li>
+     <li>
+      Added support for progress estimation and dynamic work rebalancing for user-defined
+    sources.
+     </li>
+     <li>
+      Added support for user-defined sources to provide the timestamp of the values read via
+      <code dir="ltr" translate="no">
+       Reader.getCurrentTimestamp()
+      </code>
+      .
+     </li>
+     <li>
+      Added support for user-defined sinks.
+     </li>
+     <li>
+      Added support for custom types in
+      <code dir="ltr" translate="no">
+       PubsubIO
+      </code>
+      .
+     </li>
+     <li>
+      Added support for reading and writing XML files. See
+      <code dir="ltr" translate="no">
+       XmlSource
+      </code>
+      and
+      <code dir="ltr" translate="no">
+       XmlSink
+      </code>
+      .
+     </li>
+     <li>
+      Renamed
+      <code dir="ltr" translate="no">
+       DatastoreIO.Write.to
+      </code>
+      to
+      <code dir="ltr" translate="no">
+       DatastoreIO.writeTo
+      </code>
+      . In addition,
+    entities written to Cloud Datastore must have complete keys.
+     </li>
+     <li>
+      Renamed
+      <code dir="ltr" translate="no">
+       ReadSource
+      </code>
+      transform into
+      <code dir="ltr" translate="no">
+       Read
+      </code>
+      .
+     </li>
+     <li>
+      Replaced
+      <code dir="ltr" translate="no">
+       Source.createBasicReader
+      </code>
+      with
+      <code dir="ltr" translate="no">
+       Source.createReader
+      </code>
+      .
+     </li>
+     <li>
+      Added support for triggers, which allows getting early or partial results for a window, and
+    specifying when to process late data. See
+      <code dir="ltr" translate="no">
+       Window.into.triggering
+      </code>
+      .
+      <li>
+       Reduced visibility of
+       <code dir="ltr" translate="no">
+        PTransform
+       </code>
+       's
+       <code dir="ltr" translate="no">
+        getInput()
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        getOutput()
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        getPipeline()
+       </code>
+       , and
+       <code dir="ltr" translate="no">
+        getCoderRegistry()
+       </code>
+       . These
+    methods will soon be deleted.
+      </li>
+      <li>
+       Renamed
+       <code dir="ltr" translate="no">
+        DoFn.ProcessContext#windows
+       </code>
+       to
+       <code dir="ltr" translate="no">
+        DoFn.ProcessContext#window
+       </code>
+       .
+    In order for a
+       <code dir="ltr" translate="no">
+        DoFn
+       </code>
+       to call
+       <code dir="ltr" translate="no">
+        DoFn.ProcessContext#window
+       </code>
+       , it must
+    implement
+       <code dir="ltr" translate="no">
+        RequiresWindowAccess
+       </code>
+       .
+      </li>
+      <li>
+       Added
+       <code dir="ltr" translate="no">
+        DoFn.ProcessContext#windowingInternals
+       </code>
+       to enable windowing on third-party
+    runners.
+      </li>
+      <li>
+       Added support for side inputs when running streaming pipelines on the
+       <code dir="ltr" translate="no">
+        [Blocking]DataflowPipelineRunner
+       </code>
+       .
+      </li>
+      <li>
+       Changed
+       <code dir="ltr" translate="no">
+        [Keyed]CombineFn.addInput()
+       </code>
+       to return the new accumulator value. Renamed
+       <code dir="ltr" translate="no">
+        Combine.perElement().withHotKeys()
+       </code>
+       to
+       <code dir="ltr" translate="no">
+        Combine.perElement().withHotKeyFanout()
+       </code>
+       .
+      </li>
+      <li>
+       Renamed
+       <code dir="ltr" translate="no">
+        First.of
+       </code>
+       to
+       <code dir="ltr" translate="no">
+        Sample.any
+       </code>
+       and
+       <code dir="ltr" translate="no">
+        RateLimiting
+       </code>
+       to
+       <code dir="ltr" translate="no">
+        IntraBundleParallelization
+       </code>
+       to better represent its functionality.
+      </li>
+     </li>
+    </ul>
+    <h2 id="03150326_march_26_2015">
+     0.3.150326 (March 26, 2015)
+    </h2>
+    <ul>
+     <li>
+      Added support for accessing
+      <code dir="ltr" translate="no">
+       PipelineOptions
+      </code>
+      in the Dataflow worker.
+     </li>
+     <li>
+      Removed one of the type parameters in
+      <code dir="ltr" translate="no">
+       PCollectionView
+      </code>
+      , which may require simple
+    changes to user's code that uses
+      <code dir="ltr" translate="no">
+       PCollectionView
+      </code>
+      .
+     </li>
+     <li>
+      Changed side input API to apply per window. Calls to
+      <code dir="ltr" translate="no">
+       sideInput()
+      </code>
+      now return
+    values only in the specific window corresponding to the window of the main input element, and
+    not the whole side input
+      <code dir="ltr" translate="no">
+       PCollectionView
+      </code>
+      . Consequently,
+      <code dir="ltr" translate="no">
+       sideInput()
+      </code>
+      can no longer be called from
+      <code dir="ltr" translate="no">
+       startBundle
+      </code>
+      and
+      <code dir="ltr" translate="no">
+       finishBundle
+      </code>
+      of a
+      <code dir="ltr" translate="no">
+       DoFn
+      </code>
+      .
+     </li>
+     <li>
+      Added support for viewing a
+      <code dir="ltr" translate="no">
+       PCollection
+      </code>
+      as a
+      <code dir="ltr" translate="no">
+       Map
+      </code>
+      when used as a side
+    input. See
+      <code dir="ltr" translate="no">
+       View.asMap()
+      </code>
+      .
+     </li>
+     <li>
+      Renamed custom source API to use term "bundle" instead of "shard" in all names. Additionally,
+    term "fork" is replaced with "dynamic split".
+     </li>
+     <li>
+      Custom source
+      <code dir="ltr" translate="no">
+       Reader
+      </code>
+      now requires implementing new method
+      <code dir="ltr" translate="no">
+       start()
+      </code>
+      .
+    Existing code can be fixed by simply adding this method that just calls
+      <code dir="ltr" translate="no">
+       advance()
+      </code>
+      and returns its value. Additionally, code that uses the
+      <code dir="ltr" translate="no">
+       Reader
+      </code>
+      should be updated to
+    use both
+      <code dir="ltr" translate="no">
+       start()
+      </code>
+      and
+      <code dir="ltr" translate="no">
+       advance()
+      </code>
+      , instead of
+      <code dir="ltr" translate="no">
+       advance()
+      </code>
+      only.
+     </li>
+    </ul>
+    <h2 id="03150227_february_27_2015">
+     0.3.150227 (February 27, 2015)
+    </h2>
+    <ul>
+     <li>
+      Initial Alpha version of the Dataflow SDK for Java with support for streaming pipelines.
+     </li>
+     <li>
+      Added determinism checker in
+      <code dir="ltr" translate="no">
+       AvroCoder
+      </code>
+      to make it easier to interoperate with
+      <code dir="ltr" translate="no">
+       GroupByKey
+      </code>
+      .
+     </li>
+     <li>
+      Added support for accessing
+      <code dir="ltr" translate="no">
+       PipelineOptions
+      </code>
+      in the worker.
+     </li>
+     <li>
+      Added support for compressed sources.
+     </li>
+    </ul>
+    <h2 id="03150211_february_11_2015">
+     0.3.150211 (February 11, 2015)
+    </h2>
+    <ul>
+     <li>
+      Removed the dependency on the
+      <code dir="ltr" translate="no">
+       gcloud core
+      </code>
+      component version 2015.02.05 or
+    newer.
+     </li>
+    </ul>
+    <h2 id="03150210_february_11_2015">
+     0.3.150210 (February 11, 2015)
+    </h2>
+    <p>
+     <i>
+      <b>
+       Caution:
+      </b>
+      depends on the
+      <code dir="ltr" translate="no">
+       gcloud core
+      </code>
+      component version 2015.02.05 or
+  newer.
+     </i>
+     <ul>
+      <li>
+       Included streaming pipeline runner, which, for now, requires additional whitelisting.
+      </li>
+      <li>
+       Renamed several windowing-related APIs in a non-backward-compatible way.
+      </li>
+      <li>
+       Added support for custom sources, which you can use to read from your own input formats.
+      </li>
+      <li>
+       Introduced worker parallelism: one task per processor.
+      </li>
+     </ul>
+    </p>
+    <h2 id="03150109_january_10_2015">
+     0.3.150109 (January 10, 2015)
+    </h2>
+    <ul>
+     <li>
+      Fixed several platform-specific issues for Microsoft Windows.
+     </li>
+     <li>
+      Fixed several Java 8-specific issues.
+     </li>
+     <li>
+      Added a few new examples.
+     </li>
+    </ul>
+    <h2 id="03141216_december_16_2014">
+     0.3.141216 (December 16, 2014)
+    </h2>
+    <ul>
+     <li>
+      Initial Alpha version of the Dataflow SDK for Java.
+     </li>
+    </ul>
+   </section>
+  </div>
+  <devsite-page-rating hover-rating-star="0" position="footer" selected-rating="0">
+  </devsite-page-rating>
+  <devsite-feedback bucket="Docs" context="Dataflow Docs Feedback Link" data-label="Send Feedback Button" product-id="713723" project-feedback-url="https://issuetracker.google.com/issues/new?component=187168&amp;template=0" project-icon="https://www.gstatic.com/devrel-devsite/prod/v7b5dc2faf76d7d8f9465a598b12205e0a07ab55718aa34068b626b788b42e0b5/cloud/images/favicons/onecloud/super_cloud.png" project-name="Dataflow: Stream &amp; Batch Processing" project-support-url="https://cloud.google.com/dataflow/docs/support" track-metadata-position="header" track-name="sendFeedbackLink" track-type="feedback" version="devsite-webserver-20200320-r01-rc01.425533256282725650">
+   <button>
+    Send feedback
+   </button>
+  </devsite-feedback>
+ </article>
+</article>
