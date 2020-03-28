@@ -1,9 +1,6 @@
 from copy import deepcopy
 
 
-NUM_RETRIES: int = 5
-
-
 def remove_key(obj, key):
     def _walk_recursive(_inner_obj):
         if _inner_obj is None:

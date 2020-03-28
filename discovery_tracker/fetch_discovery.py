@@ -6,11 +6,12 @@ from googleapiclient import discovery as discovery_client
 from tabulate import tabulate
 from tqdm import tqdm
 
-from discovery_tracker.constants import API_SHORT_DEFINITION_URL_FORMAT, API_LONG_DEFINITION_URL_FORMAT
+from discovery_tracker.constants import API_SHORT_DEFINITION_URL_FORMAT, API_LONG_DEFINITION_URL_FORMAT, \
+    DISCOVERY_NUM_RETRIES
 from discovery_tracker.file_utils import save_json, save_text, load_json, load_text
 from discovery_tracker.git_utils import create_commit
 from discovery_tracker.markdown_utils import md_link, md_header
-from discovery_tracker.utils import remove_key, NUM_RETRIES
+from discovery_tracker.utils import remove_key
 
 
 class TrackedService(NamedTuple):
@@ -68,7 +69,7 @@ def fetch_api_definition(discovery, tracked_service):
             .getRest(
             api=tracked_service.name,
             version=tracked_service.version
-        ).execute(num_retries=NUM_RETRIES)
+        ).execute(num_retries=DISCOVERY_NUM_RETRIES)
     )
     return api_definition
 
