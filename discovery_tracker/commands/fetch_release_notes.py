@@ -9,7 +9,6 @@ from discovery_tracker.utils.git import create_commit
 
 CLOUD_URL = "https://cloud.google.com/"
 
-# seq 1 10 1000 | xargs -n 1 ./googler 'site:cloud.google.com Relase notes'  --json  --start  | jq .[].url | cut -d "?" -f 1
 RELEASE_NOTES_URLS = [
     "https://cloud.google.com/access-context-manager/docs/release-notes",
     "https://cloud.google.com/ai-hub/docs/release-notes",
@@ -17,8 +16,11 @@ RELEASE_NOTES_URLS = [
     "https://cloud.google.com/ai-platform/deep-learning-vm/docs/release-notes",
     "https://cloud.google.com/ai-platform/docs/release-notes",
     "https://cloud.google.com/ai-platform/notebooks/docs/release-notes",
+    "https://cloud.google.com/anthos-config-management/docs/release-notes",
     "https://cloud.google.com/anthos/docs/release-notes",
     "https://cloud.google.com/anthos/gke/docs/on-prem/release-notes",
+    "https://cloud.google.com/anthos/gke/docs/release-notes",
+    "https://cloud.google.com/appengine/docs/admin-api/release-notes",
     "https://cloud.google.com/appengine/docs/flexible/custom-runtimes/release-notes",
     "https://cloud.google.com/appengine/docs/flexible/go/release-notes",
     "https://cloud.google.com/appengine/docs/flexible/php/release-notes",
@@ -34,10 +36,12 @@ RELEASE_NOTES_URLS = [
     "https://cloud.google.com/billing/docs/release-notes",
     "https://cloud.google.com/binary-authorization/docs/release-notes",
     "https://cloud.google.com/cdn/docs/release-notes",
+    "https://cloud.google.com/cloud-build/docs/release-notes",
     "https://cloud.google.com/cloud-build/release-notes",
     "https://cloud.google.com/code/docs/intellij/release-notes",
     "https://cloud.google.com/composer/docs/release-notes",
     "https://cloud.google.com/compute/docs/release-notes",
+    "https://cloud.google.com/compute/docs/security-bulletins",
     "https://cloud.google.com/config-connector/docs/release-notes",
     "https://cloud.google.com/container-optimized-os/docs/release-notes",
     "https://cloud.google.com/container-optimized-os/docs/release-notes/m69",
@@ -45,19 +49,24 @@ RELEASE_NOTES_URLS = [
     "https://cloud.google.com/container-registry/docs/release-notes",
     "https://cloud.google.com/data-catalog/docs/release-notes",
     "https://cloud.google.com/data-fusion/docs/release-notes",
+    "https://cloud.google.com/dataflow/docs/release-notes",
     "https://cloud.google.com/dataprep/docs/release-notes",
+    "https://cloud.google.com/datastore/docs/release-notes",
     "https://cloud.google.com/datastore/release-notes",
     "https://cloud.google.com/debugger/docs/release-notes",
     "https://cloud.google.com/deployment-manager/docs/release-notes",
     "https://cloud.google.com/dialogflow/docs/release-notes",
     "https://cloud.google.com/dlp/docs/release-notes",
     "https://cloud.google.com/dns/docs/release-notes",
+    "https://cloud.google.com/endpoints/docs/release-notes",
     "https://cloud.google.com/error-reporting/docs/release-notes",
     "https://cloud.google.com/event-threat-detection/docs/release-notes",
     "https://cloud.google.com/filestore/docs/release-notes",
     "https://cloud.google.com/firestore/docs/release-notes",
     "https://cloud.google.com/functions/docs/release-notes",
     "https://cloud.google.com/gke-on-prem/docs/archive/1.0/release-notes",
+    "https://cloud.google.com/healthcare/docs/release-notes",
+    "https://cloud.google.com/iam/docs/permissions-change-log",
     "https://cloud.google.com/iam/docs/release-notes",
     "https://cloud.google.com/iap/docs/release-notes",
     "https://cloud.google.com/identity-platform/docs/release-notes",
@@ -69,6 +78,7 @@ RELEASE_NOTES_URLS = [
     "https://cloud.google.com/kubernetes-engine/docs/release-notes-rapid",
     "https://cloud.google.com/kubernetes-engine/docs/release-notes-regular",
     "https://cloud.google.com/kubernetes-engine/docs/release-notes-stable",
+    "https://cloud.google.com/kubernetes-engine/docs/security-bulletins",
     "https://cloud.google.com/load-balancing/docs/release-notes",
     "https://cloud.google.com/logging/docs/release-notes",
     "https://cloud.google.com/managed-microsoft-ad/docs/release-notes",
@@ -81,6 +91,7 @@ RELEASE_NOTES_URLS = [
     "https://cloud.google.com/natural-language/automl/docs/release-notes",
     "https://cloud.google.com/network-intelligence-center/docs/release-notes",
     "https://cloud.google.com/network-tiers/docs/release-notes",
+    "https://cloud.google.com/products/operations/docs/release-notes",
     "https://cloud.google.com/profiler/docs/release-notes",
     "https://cloud.google.com/pubsub/docs/release-notes",
     "https://cloud.google.com/recommendations-ai/docs/release-notes",
@@ -104,6 +115,7 @@ RELEASE_NOTES_URLS = [
     "https://cloud.google.com/sql/docs/release-notes",
     "https://cloud.google.com/sql/docs/sqlserver/release-notes",
     "https://cloud.google.com/stackdriver/docs/release-notes",
+    "https://cloud.google.com/storage-transfer/docs/release-notes",
     "https://cloud.google.com/storage/docs/release-notes",
     "https://cloud.google.com/tasks/docs/release-notes",
     "https://cloud.google.com/tools/powershell/docs/release-notes",
@@ -112,6 +124,8 @@ RELEASE_NOTES_URLS = [
     "https://cloud.google.com/traffic-director/docs/release-notes",
     "https://cloud.google.com/translate/automl/docs/release-notes",
     "https://cloud.google.com/translate/docs/release-notes",
+    "https://cloud.google.com/velostrata/docs/release-notes",
+    "https://cloud.google.com/video-intelligence/automl/docs/release-notes",
     "https://cloud.google.com/video-intelligence/automl/object-tracking/docs/release-notes",
     "https://cloud.google.com/video-intelligence/docs/release-notes",
     "https://cloud.google.com/vision/automl/docs/release-notes",
@@ -145,8 +159,11 @@ def fetch_doc_article(url):
 def enrich_article(article, soup):
     for element in article.select("style, .devsite-article-meta"):
         element.extract()
+
     add_item_label(soup, article, "CHANGED:", ".release-changed")
     add_item_label(soup, article, "FIXED:", ".release-fixed")
+    add_item_label(soup, article, "ISSUE:", ".release-issue")
+    add_item_label(soup, article, "BREAKING:", ".release-breaking")
     add_item_label(soup, article, "DEPRECATED:", ".release-deprecated")
     add_item_label(soup, article, "FEATURE:", ".release-feature")
 
