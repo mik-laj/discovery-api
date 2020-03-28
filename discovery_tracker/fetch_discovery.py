@@ -8,10 +8,10 @@ from tqdm import tqdm
 
 from discovery_tracker.constants import API_SHORT_DEFINITION_URL_FORMAT, API_LONG_DEFINITION_URL_FORMAT, \
     DISCOVERY_NUM_RETRIES
-from discovery_tracker.file_utils import save_json, save_text, load_json, load_text
-from discovery_tracker.git_utils import create_commit
-from discovery_tracker.markdown_utils import md_link, md_header
-from discovery_tracker.utils import remove_key
+from discovery_tracker.utils.filesystem import save_json, save_text, load_json, load_text
+from discovery_tracker.utils.git import create_commit
+from discovery_tracker.utils.markdown import md_link, md_header
+from discovery_tracker.utils.dict_type import remove_key
 
 
 class TrackedService(NamedTuple):
