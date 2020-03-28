@@ -1,7 +1,7 @@
 import re
 
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Tag
 from tqdm import tqdm
 
 from discovery_tracker.utils.filesystem import load_text, save_text
@@ -181,6 +181,10 @@ def enrich_article(article, soup):
     add_item_label(soup, article, "BREAKING:", ".release-breaking")
     add_item_label(soup, article, "DEPRECATED:", ".release-deprecated")
     add_item_label(soup, article, "FEATURE:", ".release-feature")
+
+    for element in article.descendants:
+        if isinstance(element, Tag):
+            element.smooth()
 
 
 def add_item_label(soup, article, label_text, selector):
