@@ -2020,6 +2020,9 @@
                 "multiClassClassificationMetrics": {
                     "$ref": "MultiClassClassificationMetrics"
                 },
+                "rankingMetrics": {
+                    "$ref": "RankingMetrics"
+                },
                 "regressionMetrics": {
                     "$ref": "RegressionMetrics"
                 }
@@ -2588,6 +2591,12 @@
                 "clustering": {
                     "$ref": "Clustering"
                 },
+                "connectionProperties": {
+                    "items": {
+                        "type": "any"
+                    },
+                    "type": "array"
+                },
                 "createDisposition": {
                     "type": "string"
                 },
@@ -2828,6 +2837,9 @@
                 "reservation_id": {
                     "type": "string"
                 },
+                "rowLevelSecurityStatistics": {
+                    "$ref": "RowLevelSecurityStatistics"
+                },
                 "scriptStatistics": {
                     "$ref": "ScriptStatistics"
                 },
@@ -2856,11 +2868,18 @@
                 "cacheHit": {
                     "type": "boolean"
                 },
+                "ddlAffectedRowAccessPolicyCount": {
+                    "format": "int64",
+                    "type": "string"
+                },
                 "ddlOperationPerformed": {
                     "type": "string"
                 },
                 "ddlTargetRoutine": {
                     "$ref": "RoutineReference"
+                },
+                "ddlTargetRowAccessPolicy": {
+                    "$ref": "RowAccessPolicyReference"
                 },
                 "ddlTargetTable": {
                     "$ref": "TableReference"
@@ -3142,7 +3161,14 @@
                         "LINEAR_REGRESSION",
                         "LOGISTIC_REGRESSION",
                         "KMEANS",
-                        "TENSORFLOW"
+                        "MATRIX_FACTORIZATION",
+                        "DNN_CLASSIFIER",
+                        "TENSORFLOW",
+                        "DNN_REGRESSOR",
+                        "BOOSTED_TREE_REGRESSOR",
+                        "BOOSTED_TREE_CLASSIFIER",
+                        "AUTOML_REGRESSOR",
+                        "AUTOML_CLASSIFIER"
                     ],
                     "type": "string"
                 },
@@ -3333,6 +3359,12 @@
         "QueryRequest": {
             "id": "QueryRequest",
             "properties": {
+                "connectionProperties": {
+                    "items": {
+                        "type": "any"
+                    },
+                    "type": "array"
+                },
                 "defaultDataset": {
                     "$ref": "DatasetReference"
                 },
@@ -3486,6 +3518,28 @@
             },
             "type": "object"
         },
+        "RankingMetrics": {
+            "id": "RankingMetrics",
+            "properties": {
+                "averageRank": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "meanAveragePrecision": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "meanSquaredError": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "normalizedDiscountedCumulativeGain": {
+                    "format": "double",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
         "RegressionMetrics": {
             "id": "RegressionMetrics",
             "properties": {
@@ -3592,6 +3646,33 @@
                         "$ref": "Entry"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "RowAccessPolicyReference": {
+            "id": "RowAccessPolicyReference",
+            "properties": {
+                "datasetId": {
+                    "type": "string"
+                },
+                "policyId": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "string"
+                },
+                "tableId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RowLevelSecurityStatistics": {
+            "id": "RowLevelSecurityStatistics",
+            "properties": {
+                "rowLevelSecurityApplied": {
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -4101,6 +4182,10 @@
         "TrainingOptions": {
             "id": "TrainingOptions",
             "properties": {
+                "batchSize": {
+                    "format": "int64",
+                    "type": "string"
+                },
                 "dataSplitColumn": {
                     "type": "string"
                 },
@@ -4127,8 +4212,27 @@
                     ],
                     "type": "string"
                 },
+                "dropout": {
+                    "format": "double",
+                    "type": "number"
+                },
                 "earlyStop": {
                     "type": "boolean"
+                },
+                "feedbackType": {
+                    "enum": [
+                        "FEEDBACK_TYPE_UNSPECIFIED",
+                        "IMPLICIT",
+                        "EXPLICIT"
+                    ],
+                    "type": "string"
+                },
+                "hiddenUnits": {
+                    "items": {
+                        "format": "int64",
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "initialLearnRate": {
                     "format": "double",
@@ -4139,6 +4243,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "itemColumn": {
+                    "type": "string"
                 },
                 "kmeansInitializationColumn": {
                     "type": "string"
@@ -4191,7 +4298,15 @@
                     "format": "int64",
                     "type": "string"
                 },
+                "maxTreeDepth": {
+                    "format": "int64",
+                    "type": "string"
+                },
                 "minRelativeProgress": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "minSplitLoss": {
                     "format": "double",
                     "type": "number"
                 },
@@ -4202,6 +4317,10 @@
                     "format": "int64",
                     "type": "string"
                 },
+                "numFactors": {
+                    "format": "int64",
+                    "type": "string"
+                },
                 "optimizationStrategy": {
                     "enum": [
                         "OPTIMIZATION_STRATEGY_UNSPECIFIED",
@@ -4209,6 +4328,17 @@
                         "NORMAL_EQUATION"
                     ],
                     "type": "string"
+                },
+                "subsample": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "userColumn": {
+                    "type": "string"
+                },
+                "walsAlpha": {
+                    "format": "double",
+                    "type": "number"
                 },
                 "warmStart": {
                     "type": "boolean"
