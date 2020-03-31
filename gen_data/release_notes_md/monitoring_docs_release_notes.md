@@ -9,6 +9,19 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/stackdriver-release-notes.xml `
 
+##  March 30, 2020
+
+**FEATURE:**
+
+You can now write time-series data for custom and Prometheus metrics at the
+rate of 1 data point every 10 seconds. This was previously limited to 1 point
+every minute.
+
+**CHANGED:**
+
+Data for custom and Prometheus metrics is now retained for 24 months.
+Previously, the retention period was 6 weeks.
+
 ##  February 24, 2020
 
 **CHANGED:**
