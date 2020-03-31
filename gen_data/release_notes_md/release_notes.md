@@ -4,6 +4,15 @@ The following release notes cover the most recent changes over the last 30
 days. For a comprehensive list, see each individual product's release notes
 page.
 
+##  March 30, 2020
+
+**Service Directory**
+
+**FEATURE:**
+
+[ Service Directory ](https://cloud.google.com/service-directory/docs/) is
+available in **Beta** .
+
 ##  March 26, 2020
 
 **Memorystore for Memcached**
