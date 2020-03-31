@@ -20,6 +20,30 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/stackdriver-release-notes.xml `
 
+##  March 30, 2020
+
+**Cloud Monitoring**
+
+**FEATURE:**
+
+You can now write time-series data for custom and Prometheus metrics at the
+rate of 1 data point every 10 seconds. This was previously limited to 1 point
+every minute.
+
+**CHANGED:**
+
+Data for custom and Prometheus metrics is now retained for 24 months.
+Previously, the retention period was 6 weeks.
+
+**Cloud Trace**
+
+**FEATURE:**
+
+You can now use [ OpenTelemetry ](https://opentelemetry.io/) with [ Go
+](https://cloud.google.com/trace/docs/setup/go-ot) and [ Node.js
+](https://cloud.google.com/trace/docs/setup/nodejs-ot) to instrument your
+applications running on GKE and Compute Engine.
+
 ##  March 24, 2020
 
 **Cloud Profiler**
