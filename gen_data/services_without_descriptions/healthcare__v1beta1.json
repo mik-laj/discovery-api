@@ -1666,6 +1666,33 @@
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
+                                        "search": {
+                                            "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir",
+                                            "httpMethod": "GET",
+                                            "id": "healthcare.projects.locations.datasets.fhirStores.search",
+                                            "parameterOrder": [
+                                                "parent"
+                                            ],
+                                            "parameters": {
+                                                "parent": {
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "resourceType": {
+                                                    "location": "query",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1beta1/{+parent}/fhir",
+                                            "response": {
+                                                "$ref": "HttpBody"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
                                         "setIamPolicy": {
                                             "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}:setIamPolicy",
                                             "httpMethod": "POST",
@@ -2989,6 +3016,11 @@
             },
             "type": "object"
         },
+        "ExportDicomDataResponse": {
+            "id": "ExportDicomDataResponse",
+            "properties": {},
+            "type": "object"
+        },
         "ExportResourcesRequest": {
             "id": "ExportResourcesRequest",
             "properties": {
@@ -3060,6 +3092,12 @@
                 },
                 "notificationConfig": {
                     "$ref": "NotificationConfig"
+                },
+                "streamConfigs": {
+                    "items": {
+                        "$ref": "StreamConfig"
+                    },
+                    "type": "array"
                 },
                 "version": {
                     "enum": [
@@ -3252,6 +3290,18 @@
             },
             "type": "object"
         },
+        "Hl7V2NotificationConfig": {
+            "id": "Hl7V2NotificationConfig",
+            "properties": {
+                "filter": {
+                    "type": "string"
+                },
+                "pubsubTopic": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Hl7V2Store": {
             "id": "Hl7V2Store",
             "properties": {
@@ -3266,6 +3316,12 @@
                 },
                 "notificationConfig": {
                     "$ref": "NotificationConfig"
+                },
+                "notificationConfigs": {
+                    "items": {
+                        "$ref": "Hl7V2NotificationConfig"
+                    },
+                    "type": "array"
                 },
                 "parserConfig": {
                     "$ref": "ParserConfig"
@@ -3332,6 +3388,11 @@
                     "$ref": "GoogleCloudHealthcareV1beta1DicomGcsSource"
                 }
             },
+            "type": "object"
+        },
+        "ImportDicomDataResponse": {
+            "id": "ImportDicomDataResponse",
+            "properties": {},
             "type": "object"
         },
         "ImportResourcesRequest": {
@@ -3631,6 +3692,9 @@
                 "endTime": {
                     "format": "google-datetime",
                     "type": "string"
+                },
+                "logsUrl": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -3814,6 +3878,21 @@
                 },
                 "message": {
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "StreamConfig": {
+            "id": "StreamConfig",
+            "properties": {
+                "bigqueryDestination": {
+                    "$ref": "GoogleCloudHealthcareV1beta1FhirBigQueryDestination"
+                },
+                "resourceTypes": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
