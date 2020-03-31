@@ -10,6 +10,16 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/deploymentmanager-release-
 notes.xml `
 
+##  March 30, 2020
+
+**CHANGED:**
+
+If your Python templates use features that are only for Python 2.x, your
+templates will now continue to work until **June 2020** .
+
+Learn about [ migrating your templates to Python 3
+](https://cloud.google.com/deployment-manager/docs/migrate-to-python3) .
+
 ##  December 05, 2019
 
 **CHANGED:**
