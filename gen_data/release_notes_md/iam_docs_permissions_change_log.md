@@ -16,7 +16,85 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloud-iam-permissions-change-
 log.xml `
 
-##  Upcoming Cloud IAM changes for the week of 2020-03-23
+##  Upcoming Cloud IAM changes for the week of 2020-03-30
+
+Service  |  Change  |  Description  
+---|---|---  
+Customer Usage Data Processing API  |  Now GA  |
+
+The role ` roles/dataprocessing.admin ` (Data Processing Controls Resource
+Admin) is now GA.  
+  
+Customer Usage Data Processing API  |  Now GA  |
+
+The role ` roles/dataprocessing.iamAccessHistoryExporter ` (Data Processing
+IAM Access History Exporter) is now GA.  
+  
+Cloud Data Loss Prevention  |  Now GA  |
+
+The role ` roles/dlp.inspectFindingsReader ` (DLP Inspect Findings Reader) is
+now GA.  
+  
+Apigee Connect  |  Added  |  ` apigeeconnect.connections.list `  
+` apigeeconnect.endpoints.connect `  
+  
+Apigee Connect  |  Supported In Custom Roles  |  `
+apigeeconnect.connections.list `  
+` apigeeconnect.endpoints.connect `  
+  
+Service Usage  |  Added  |  ` apikeys.keys.create `  
+` apikeys.keys.delete `  
+` apikeys.keys.get `  
+` apikeys.keys.list `  
+` apikeys.keys.lookup `  
+` apikeys.keys.update `  
+  
+Cloud Asset Inventory  |  Added  |  `
+cloudasset.assets.exportCloudkmsImportJobs `  
+  
+Cloud Asset Inventory  |  Supported In Custom Roles  |  `
+cloudasset.assets.exportCloudkmsImportJobs `  
+  
+Customer Usage Data Processing API  |  Now GA  |  `
+dataprocessing.featurecontrols.list `  
+` dataprocessing.featurecontrols.update `  
+` dataprocessing.groupcontrols.list `  
+` dataprocessing.groupcontrols.update `  
+  
+Cloud Data Loss Prevention  |  Added  |  ` dlp.inspectFindings.list `  
+` dlp.jobTriggers.hybridInspect `  
+` dlp.jobs.hybridInspect `  
+  
+Cloud Data Loss Prevention  |  Now GA  |  ` dlp.inspectFindings.list `  
+` dlp.jobTriggers.hybridInspect `  
+` dlp.jobs.hybridInspect `  
+  
+Cloud Healthcare API  |  Added  |  `
+healthcare.fhirResources.translateConceptMap `  
+  
+Cloud Healthcare API  |  Supported In Custom Roles  |  `
+healthcare.fhirResources.translateConceptMap `  
+  
+Cloud Healthcare API  |  Now GA  |  `
+healthcare.fhirResources.translateConceptMap `  
+  
+Recommender  |  Added  |  `
+recommender.computeDiskIdleResourceRecommendations.get `  
+` recommender.computeDiskIdleResourceRecommendations.list `  
+` recommender.computeDiskIdleResourceRecommendations.update `  
+  
+Recommender  |  Supported In Custom Roles  |  `
+recommender.computeDiskIdleResourceRecommendations.get `  
+` recommender.computeDiskIdleResourceRecommendations.list `  
+` recommender.computeDiskIdleResourceRecommendations.update `  
+  
+Recommender  |  Now GA  |  `
+recommender.computeDiskIdleResourceRecommendations.get `  
+` recommender.computeDiskIdleResourceRecommendations.list `  
+` recommender.computeDiskIdleResourceRecommendations.update `  
+  
+  
+##  Cloud IAM changes as of 2020-03-27
 
 Service  |  Change  |  Description  
 ---|---|---  
