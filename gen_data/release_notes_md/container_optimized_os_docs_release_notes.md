@@ -7,7 +7,7 @@ project:  Stable  |  Beta  |  Dev
 ---|---|---  
       
     
-    **cos-stable-80-12739-91-0**
+    **cos-stable-80-12739-104-0**
     Kernel:         [ChromiumOS-4.19.87](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/709837de20828e09bbb42e2f6f2839efedded5a0)
     Kubernetes:     v1.16.6
     Docker:         v19.03.5
@@ -17,8 +17,8 @@ project:  Stable  |  Beta  |  Dev
 
     
     
-    **cos-beta-81-12871-38-0**
-    Kernel:         [ChromiumOS-4.19.107](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/966e554f2db06013e1e4a556255e8d1c8c1de0a7)
+    **cos-beta-81-12871-44-0**
+    Kernel:         [ChromiumOS-4.19.108](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/4d594cea40affe77720d76a1f70b5039aa488e52)
     Kubernetes:     v1.17.3
     Docker:         v19.03.6
     
