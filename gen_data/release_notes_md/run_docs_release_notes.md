@@ -18,6 +18,13 @@ managed) services using an organization policy with a [ resource locations
 constraint ](https://cloud.google.com/resource-manager/docs/organization-
 policy/defining-locations) .
 
+##  March 16, 2020
+
+**FEATURE:**
+
+Cloud Run (fully managed) now supports deploying container images from [ Cloud
+Artifact Registry ](https://cloud.google.com/artifacts/docs/overview)
+
 ##  February 12, 2020
 
 **FEATURE:**
