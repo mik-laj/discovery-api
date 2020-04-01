@@ -158,5 +158,3 @@ Cloud Run for Anthos on Google Cloud is incompatible with GKE versions `
 of these GKE versions with the add-on enabled, you must upgrade to a newer
 version of GKE.
 
-Send feedback
-
