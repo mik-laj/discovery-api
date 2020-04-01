@@ -9838,5 +9838,3 @@ are not using gcloud."
     * Cloud SQL 
   * Includes the new gauth tool for one time common authentication for all tools 
 
-Send feedback
-
