@@ -14,5 +14,3 @@ This page lists release notes pages for GCP networking products.
   * [ Virtual Private Cloud ](/vpc/docs/release-notes) (VPC) 
   * [ Cloud VPN ](/vpn/docs/resources/release-notes)
 
-Send feedback
-
