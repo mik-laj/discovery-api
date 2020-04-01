@@ -293,5 +293,3 @@ bigtableinstance, iampolicy
 
 Config Connector v0.1.1 is now available in Beta.
 
-Send feedback
-
