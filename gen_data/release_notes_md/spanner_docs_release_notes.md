@@ -468,5 +468,3 @@ being rolled out. It is expected to be completely available by February 16,
 The Cloud Spanner UI in the Google Cloud Platform Console is being rolled out
 and will be available shortly.
 
-Send feedback
-
