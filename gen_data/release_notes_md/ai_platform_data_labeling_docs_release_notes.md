@@ -16,5 +16,3 @@ bug fixes, known issues, and deprecated functionality.
 
 AI Platform Data Labeling Service Beta has been released.
 
-Send feedback
-
