@@ -786,5 +786,3 @@ versions) of the Cloud Composer image: ` composer-0.5.1-airflow-1.9.0 ` .
 **Beta launch** of Cloud Composer ( ` composer-0.5.0-airflow-1.9.0 ` ). This
 release includes [ Apache Airflow ](https://airflow.apache.org) 1.9.0.
 
-Send feedback
-
