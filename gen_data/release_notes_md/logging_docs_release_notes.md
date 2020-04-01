@@ -978,5 +978,3 @@ and [ more examples
 
 Beta release: App Engine logs can be exported to Cloud Storage and BigQuery.
 
-Send feedback
-
