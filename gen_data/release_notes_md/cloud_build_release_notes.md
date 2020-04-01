@@ -347,5 +347,3 @@ Upgraded to Docker version 1.9.1.
 
 **Beta release** of Cloud Build.
 
-Send feedback
-
