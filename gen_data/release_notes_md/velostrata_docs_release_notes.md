@@ -378,5 +378,3 @@ instance will fail to start.
 
 **Workaround** : Move the instance back and move it again to the cloud.
 
-Send feedback
-
