@@ -370,5 +370,3 @@ BigQuery dataset to drive visualization tools like [ Data Studio
 with.html) and [ documentation ](https://cloud.google.com/billing/docs/how-
 to/export-data-bigquery) for more details.
 
-Send feedback
-
