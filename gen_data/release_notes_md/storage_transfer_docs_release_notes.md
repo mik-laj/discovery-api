@@ -173,5 +173,3 @@ interface.
 
 Storage Transfer Service, a cloud-to-cloud transfer tool, launched.
 
-Send feedback
-
