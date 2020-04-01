@@ -55,5 +55,3 @@ center/docs/network-topology/concepts/overview) is in Beta.
 [ Connectivity Tests ](https://cloud.google.com/network-intelligence-
 center/docs/connectivity-tests/concepts/overview) is in Beta.
 
-Send feedback
-
