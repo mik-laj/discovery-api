@@ -164,5 +164,3 @@ resources and view billing charges based on label values.
 **Public beta release** The Cloud Healthcare API provides a managed solution
 for storing and accessing healthcare data in Google Cloud Platform (GCP).
 
-Send feedback
-
