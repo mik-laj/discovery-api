@@ -472,5 +472,3 @@ For more information, see [ Managing and unmanaging objects
 ](https://cloud.google.com/anthos-config-management/docs/managing-
 objects/anthos-config-management/docs/managing-objects) .
 
-Send feedback
-
