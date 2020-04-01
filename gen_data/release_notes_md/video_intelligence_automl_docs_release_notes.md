@@ -28,5 +28,3 @@ Microsoft Edge and Microsoft Internet Explorer do not support all features of
 AutoML Video Classification. If you encounter problems, try Google Chrome,
 Safari, or Firefox.
 
-Send feedback
-
