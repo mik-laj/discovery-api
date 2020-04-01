@@ -479,5 +479,3 @@ allows for non-NAT'ed traffic to be forwarded to a single virtual machine
 instance. See [ Forwarding rules
 ](https://cloud.google.com/vpc/docs/forwarding-rules) for more information.
 
-Send feedback
-
