@@ -110,5 +110,3 @@ different callers. For more information, see [ Using the **Focus** Filter
 
 Stackdriver Profiler is released in Beta.
 
-Send feedback
-
