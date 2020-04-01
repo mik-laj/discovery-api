@@ -1620,7 +1620,3 @@ To learn more about the fix, read the [ Kubernetes blog post
   * [ CVE-2017-1002101 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2017-1002101)
   * [ CVE-2017-1002102 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2017-1002102)
 
-  
-  
-Send feedback
-
