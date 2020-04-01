@@ -12,6 +12,28 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/compute-engine-release-
 notes.xml `
 
+##  March 31, 2020
+
+  * **Beta:** [ Collect diagnostic information from Windows VMs ](/compute/docs/instances/collecting-diagnostic-information) . 
+
+  * C2 machine types are now available in the following [ regions and zones ](/compute/docs/regions-zones#available) : 
+
+    * Frankfurt, Germany ` europe-west3-a,b `
+    * Ashburn, Northern Virginia, USA ` us-east4-a `
+  * N2 machine types are now available in the following [ regions and zones ](/compute/docs/regions-zones#available) : 
+
+    * The Dalles, Oregon, USA ` us-west1-a `
+    * Changua County, Taiwan ` asia-east1-c `
+  * M1 megamem machine types are now available in the following [ regions and zones ](/compute/docs/regions-zones#available) : 
+
+    * Eemshaven, Netherlands ` europe-west4-b `
+  * M1 ultramem machine types are now available in the following [ regions and zones ](/compute/docs/regions-zones#available) : 
+
+    * Ashburn, Northern Virginia, USA ` us-east4-a `
+  * M2 ultramem machine types are now available in the following [ regions and zones ](/compute/docs/regions-zones#available) : 
+
+    * Los Angeles, California, USA ` us-west2-a,c `
+
 ##  March 24, 2020
 
   * Committed use discounts no longer require specific ratios for cores and memory. Now you can create separate committed use discount contracts for either cores or memory. Separating cores and memory provides more flexibility and improved cost optimization. Learn more at [ Purchasing commitments for machine types ](/compute/docs/instances/signing-up-committed-use-discounts#purchasecommitment) . 
@@ -22,7 +44,7 @@ notes.xml `
 
 ##  March 19, 2020
 
-  * [ E2 machine types ](/compute/docs/machine-types#e2_machine_types) have reached General Availability. 
+  * [ E2 machine types ](/compute/docs/machine-types#e2_machine_types) are **Generally available** . 
 
 ##  March 16, 2020
 
