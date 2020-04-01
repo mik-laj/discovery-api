@@ -52,5 +52,3 @@ The Cloud PowerShell cmdlets for [ Cloud Pub/Sub
 ](https://cloud.google.com/tools/powershell/docs/pubsub) and for [ Stackdriver
 Logging ](https://cloud.google.com/tools/powershell/docs/logging) are now GA.
 
-Send feedback
-
