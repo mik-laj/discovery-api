@@ -48,5 +48,3 @@ see the following documentation:
   * [ Adding Pub/Sub Notifications to Cloud Source Repositories ](/source-repositories/docs/quickstart-adding-pubsub-notifications)
   * [ Configuring Pub/Sub Notifications ](/source-repositories/docs/configuring-notifications)
 
-Send feedback
-
