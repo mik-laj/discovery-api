@@ -99,5 +99,3 @@ platform/notebooks/docs/overview) and the [ guide to creating a new notebook
 instance ](https://cloud.google.com/ai-platform/notebooks/docs/create-new) to
 learn more.
 
-Send feedback
-
