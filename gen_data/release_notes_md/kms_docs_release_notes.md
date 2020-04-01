@@ -634,5 +634,3 @@ is [ accessible via ](https://cloud.google.com/kms/docs/accessing-the-api)
   * Google APIs Client Libraries in go, python, and java 
   * Cloud Console user interface 
 
-Send feedback
-
