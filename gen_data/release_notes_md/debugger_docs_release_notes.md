@@ -47,5 +47,3 @@ last selected location. Additionally, you can insert logpoints dynamically
 without any rebuilds or restarts. The left and right panels in debug view can
 now be collapsed for additional viewing space for source.
 
-Send feedback
-
