@@ -108,5 +108,3 @@ then provides similar products to each product found.
 
 The Beta version of Vision Product Search is now available.
 
-Send feedback
-
