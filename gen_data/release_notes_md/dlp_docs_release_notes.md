@@ -619,5 +619,3 @@ fast, scalable classification for sensitive elements. Scan small text streams
 and images or larger datasets in Cloud Storage and Cloud Datastore. The Cloud
 DLP API is currently available as a REST API.
 
-Send feedback
-
