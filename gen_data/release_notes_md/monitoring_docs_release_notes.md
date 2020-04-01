@@ -987,5 +987,3 @@ in their settings menu.
 First beta release of [ Google Cloud Monitoring powered by Stackdriver
 ](https://cloud.google.com/monitoring) .
 
-Send feedback
-
