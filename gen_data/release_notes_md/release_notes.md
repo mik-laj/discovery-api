@@ -6,6 +6,28 @@ page.
 
 ##  March 30, 2020
 
+**Cloud Monitoring**
+
+**FEATURE:**
+
+You can now write time-series data for custom and Prometheus metrics at the
+rate of 1 data point every 10 seconds. This was previously limited to 1 point
+every minute.
+
+**CHANGED:**
+
+Data for custom and Prometheus metrics is now retained for 24 months.
+Previously, the retention period was 6 weeks.
+
+**Cloud Trace**
+
+**FEATURE:**
+
+You can now use [ OpenTelemetry ](https://opentelemetry.io/) with [ Go
+](https://cloud.google.com/trace/docs/setup/go-ot) and [ Node.js
+](https://cloud.google.com/trace/docs/setup/nodejs-ot) to instrument your
+applications running on GKE and Compute Engine.
+
 **Service Directory**
 
 **FEATURE:**
@@ -30,6 +52,17 @@ Beta release of Memorystore for Memcached.
 The shutdown of 7 integrations [ announced in January
 ](https://cloud.google.com/dialogflow/docs/release-notes#January_06_2020) is
 now extended to May 6th, 2020.
+
+##  March 24, 2020
+
+**Cloud Profiler**
+
+**CHANGED:**
+
+Integration of Stackdriver Profiler with Virtual Private Cloud Service
+Controls is now Generally Available. For more information, see [ VPC Service
+Controls documentation ](https://cloud.google.com/vpc-service-controls/docs/)
+.
 
 ##  March 23, 2020
 
@@ -221,6 +254,16 @@ generally available ](https://cloud.google.com/products/#product-launch-
 stages) . You can use these attributes to specify the types of [ forwarding
 rules ](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts)
 that a member can create.
+
+**Cloud Logging**
+
+**CHANGED:**
+
+Incoming log entries must have timestamps that don't exceed the [ logs
+retention periods
+](https://cloud.google.com/logging/quotas#logs_retention_periods) in the past,
+and that don't exceed 24 hours in the future. Log entries outside those time
+boundaries aren't ingested by Cloud Logging.
 
 **Dataproc**
 
