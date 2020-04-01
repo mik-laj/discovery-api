@@ -40,5 +40,3 @@ topic.
 Web Security Scanner does not yet support applications protected by Cloud
 Identity-Aware Proxy (Cloud IAP).
 
-Send feedback
-
