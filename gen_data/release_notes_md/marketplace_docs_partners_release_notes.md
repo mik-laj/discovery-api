@@ -193,5 +193,3 @@ software. For information on setting up trials, see the [ technical setup for
 VM solutions ](https://cloud.google.com/marketplace/docs/partners/vm/select-
 pricing) .
 
-Send feedback
-
