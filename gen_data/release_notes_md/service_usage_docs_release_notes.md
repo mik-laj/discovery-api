@@ -35,5 +35,3 @@ for disabled APIs and services.
 service of Google Cloud that lets you discover and manage other APIs and
 services in your Cloud project.
 
-Send feedback
-
