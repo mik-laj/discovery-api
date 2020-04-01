@@ -83,5 +83,3 @@ domains#getting_domain_info) .
 
 Managed Microsoft AD is now in beta!
 
-Send feedback
-
