@@ -10,6 +10,19 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/aiplatformnotebooks-release-
 notes.xml `
 
+##  March 31, 2020
+
+**FEATURE:**
+
+AI Platform Notebooks is now [ Generally Available
+](https://cloud.google.com/products#product-launch-stages) . Some integrations
+with and specific features of AI Platform Notebooks are still in beta, such as
+[ Virtual Private Cloud Service Controls ](https://cloud.google.com/ai-
+platform/notebooks/docs/service-perimeter) , [ Cloud Identity and Access
+Management (Cloud IAM) ](https://cloud.google.com/ai-
+platform/notebooks/docs/iam) roles, and [ AI Platform Notebooks API
+](https://cloud.google.com/ai-platform/notebooks/docs/reference/rest) .
+
 ##  February 04, 2020
 
 **FEATURE:**
