@@ -322,5 +322,3 @@ web) and [ tutorial ](https://cloud.google.com/vision/docs/internet-detection)
 **HTTP/HTTPS image URIs** : Process images from publicly-accessible HTTP and
 HTTPS URLs.
 
-Send feedback
-
