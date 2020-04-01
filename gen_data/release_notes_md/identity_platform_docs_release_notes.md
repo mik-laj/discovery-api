@@ -29,5 +29,3 @@ Identity Platform is now GA!
 
 Welcome to the Identity Platform beta!
 
-Send feedback
-
