@@ -546,5 +546,3 @@ newer. _
 
   * Initial Alpha version of the Dataflow SDK for Java. 
 
-Send feedback
-
