@@ -145,5 +145,3 @@ Identity customers. G Suite customers just need to create a project using
 their domain email account and the Organization resource will be automatically
 provisioned for them.
 
-Send feedback
-
