@@ -10,6 +10,129 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/migrateanthos-release-notes.xml
 `
 
+##  March 30, 2020
+
+v1.3.0
+
+**FEATURE:**
+
+New ` migctl ` CLI for deploying Migrate for Anthos, creating and operating
+migrations using a structured workflow and a migration processing cluster.
+
+**FEATURE:**
+
+Introducing a unified migration workflow across all supported VM sources --
+VMware, AWS EC2, Azure VMs and Compute Engine VMs.
+
+**FEATURE:**
+
+Migrations are defined and operated using a Kubernetes CRD.
+
+**FEATURE:**
+
+Automated generation of a suggested migration plan (specified in a CRD), CI/CD
+artifacts and deployment specs. The migration process now results in
+extracting and generating container and deployment artifacts, including a
+container image and a Dockerfile, extracted data in a persistent volume,
+deployment/statefulSet, PVC and PV specs in an auto-generated YAML file for
+easy workload deployment.
+
+**FEATURE:**
+
+The Migrate for Anthos software runtime layer now offers a compatibility
+feature for older Java versions that are not container aware by reflecting the
+correct resource allocations in the container's /proc file system.
+
+**FEATURE:**
+
+Migrate for Anthos v1.0 Marketplace deployment is now removed. Migrate for
+Anthos v1.3 allows installation in v1.0 compatibility mode where needed.
+
+**FEATURE:**
+
+Preview features -- contact your Google Sales representative to enroll.
+
+  * Migrating Windows VMs with IIS ASP.NET web applications to Windows 2019 containers on GKE. 
+  * Processing migrations in Anthos on-prem. 
+
+**ISSUE:**
+
+**151505531, 150052607:** In some cases, migration can be stuck with no
+progress. When running ` migctl migration status migration-name --verbose ` ,
+you might see an event such as this:
+
+    
+    
+    could not find attached GC⁣E PD
+
+**Workaround:** Delete the migration using ` migctl migration delete ` and re-
+create it.
+
+**ISSUE:**
+
+**147211918:** In some cases, migration from AWS or Azure as a source can be
+stuck with no progress. If this happens, run ` kubectl describe storageclass `
+to view related events. You can also check the status of the matching Cloud
+Details in Migrate for Compute Engine.
+
+**ISSUE:**
+
+**146699220:** When the source VM has a systemd service with a ` NICE ` config
+property, the service might not start when running in a container.
+
+**Workaround:** Remove the ` NICE ` property in the source VM before the
+migration.
+
+**ISSUE:**
+
+**144896313:** Migration of Security-Enhanced Linux (SELinux) is not
+supported.
+
+**ISSUE:**
+
+**149900626:** Some file systems not listed in [ Compatible VM operating
+systems ](/migrate/anthos/docs/compatible-os-versions) may fail to migrate.
+When running ` migctl migration logs migration-name ` , the logs in Cloud
+Logging may show a message such as:
+
+    
+    
+    failed to mount - exit status 32 - mount: /tmp/bootdir: unknown filesystem type 'LVM2\_member'.
+
+**ISSUE:**
+
+**152194161:** Your migrated workload container fails when running a cluster
+with GKE nodes of type "COS". When you run the command ` kubectl logs
+[podname] ` , you might see the following:
+
+    
+    
+    apparmor.go:385] Couldn't set label to lxc-container-default - write /proc/1/attr/current: no such file or directory
+
+This is an indication that the required AppArmor profiles are not installed on
+the GKE nodes. To solve this, run ` migctl setup install --cos-runtime ` .
+
+**ISSUE:**
+
+**148334068:** When Migrating a physical VM from on-premises connected via
+Migrate for Compute Engine, Migrate for Anthos attempts to optimize network
+utilization and discards (rather than stream) blocks that are not in use on
+the source VM file system. In some cases, this might cause VMware storage
+sessions to time out. For assistance, please contact support.
+
+**ISSUE:**
+
+**GKE on-prem preview:** If a source was created with ` migctl source create `
+using the wrong credentials, migrations will fail. Attempts to delete the
+migration with ` migctl migration delete ` may hang in a "Terminating" state,
+as in the following example:
+
+    
+    
+    $ migctl migration list
+    NAME       PROCESS              STATE                   STATUS        PROGRESS   AGE
+    my-vm-01   generate-artifacts   createSourceSnapshots   TERMINATING   [2/13]
+
 ##  December 19, 2019
 
 v1.0.1
@@ -203,6 +326,4 @@ Migrate for Anthos CSI drive may sometimes fail connecting to the migrated VM.
 **ISSUE:**
 
 The ` kubectl cp ` command fails when copying files to the migrated pod.
-
-Send feedback
 
