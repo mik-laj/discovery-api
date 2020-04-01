@@ -92,5 +92,3 @@ Authorization Policy. Project level IAM permissions work as expected.
 In the UI, detailed error messages are not shown for invalid whitelist
 patterns on a Policy or invalid PGP keys on an Attestor.
 
-Send feedback
-
