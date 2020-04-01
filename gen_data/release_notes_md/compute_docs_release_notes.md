@@ -773,5 +773,3 @@ Engine ](https://cloud.google.com/compute/docs/gpus/) .
 
   * [ Zonal DNS names ](/compute/docs/internal-dns#zonal-dns) are available in **Beta** . Zonal DNS names are unique to each zone on your internal [ VPC ](/vpc/docs/vpc) networks. Global DNS names continue to resolve, but you can enable zonal DNS names to improve the fault tolerance of your applications when they reference instances on your internal VPC network. Read [ Zonal DNS ](/compute/docs/internal-dns#zonal-dns) to learn more. 
 
-Send feedback
-
