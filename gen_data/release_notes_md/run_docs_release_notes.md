@@ -232,5 +232,3 @@ Cloud Run (fully managed) Beta release.
 
 Cloud Run (fully managed) Alpha release.
 
-Send feedback
-
