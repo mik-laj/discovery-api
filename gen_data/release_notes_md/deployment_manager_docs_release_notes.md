@@ -477,5 +477,3 @@ FEATURE * Added new tutorial for [ creating a HTTP load-balanced deployment
 ](https://cloud.google.com/deployment-manager/docs/create-advanced-http-load-
 balanced-deployment) .
 
-Send feedback
-
