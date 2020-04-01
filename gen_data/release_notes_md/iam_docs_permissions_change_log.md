@@ -7506,7 +7506,4 @@ Cloud Functions  |  Added  |  ` dlp.kms.encrypt `
 ` dlp.riskAnalysisOperations.create `  
 ` dlp.riskAnalysisOperations.get `  
 ` dlp.riskAnalysisOperations.list `  
-  
-  
-Send feedback
 
