@@ -179,5 +179,3 @@ improvements in training performance.
 
 AutoML Natural Language Text Classification EAP release
 
-Send feedback
-
