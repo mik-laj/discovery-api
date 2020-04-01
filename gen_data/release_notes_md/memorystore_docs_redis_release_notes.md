@@ -178,5 +178,3 @@ Beta release of Cloud Memorystore for Redis.
 
 Cloud Memorystore for Redis Alpha Release launched.
 
-Send feedback
-
