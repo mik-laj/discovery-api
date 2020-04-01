@@ -166,5 +166,3 @@ _Date: Mar 25, 2019_
   * Installed the keyutils package. 
   * Installed the sosreport package. 
 
-Send feedback
-
