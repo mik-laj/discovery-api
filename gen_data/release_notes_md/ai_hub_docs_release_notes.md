@@ -73,5 +73,3 @@ TensorFlow modules, and explore all the shared components in AI Hub:
   * Understand the [ concepts ](https://cloud.google.com/ai-hub/docs/introduction) used in AI Hub. 
   * To get started, find an interactive Jupyter notebook amongst the [ public assets ](https://cloud.google.com/ai-hub/docs/public-hub-quickstart) , and publish a notebook in your [ organization's collection of assets ](https://cloud.google.com/ai-hub/docs/private-hub-quickstart) . 
 
-Send feedback
-
