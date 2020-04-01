@@ -646,5 +646,3 @@ On-Demand I/O for Nearline-class buckets no longer necessary.
 
   * Buckets created in the [ Nearline storage class ](https://cloud.google.com/storage/docs/storage-classes#nearline) now have throughput and QPS that automatically scale with your needs, at no extra cost. 
 
-Send feedback
-
