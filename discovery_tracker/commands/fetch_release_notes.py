@@ -173,7 +173,7 @@ def fetch_doc_article(url):
 
 
 def enrich_article(article, soup):
-    for element in article.select("style, .devsite-article-meta"):
+    for element in article.select("style, .devsite-article-meta, devsite-page-rating, devsite-feedback"):
         element.extract()
 
     add_item_label(soup, article, "CHANGED:", ".release-changed")
