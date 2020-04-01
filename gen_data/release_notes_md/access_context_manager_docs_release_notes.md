@@ -81,5 +81,3 @@ General availability of Access Context Manager.
 
 Access Context Manager Closed Beta launch.
 
-Send feedback
-
