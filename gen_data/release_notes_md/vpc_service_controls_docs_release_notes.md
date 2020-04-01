@@ -360,5 +360,3 @@ For more information, read about [ Logging limitations
 ](https://cloud.google.com/vpc-service-controls/docs/supported-
 products#logging) .
 
-Send feedback
-
