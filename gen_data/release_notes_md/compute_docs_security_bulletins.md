@@ -1497,7 +1497,5 @@ To find out what kernel version your instance is using:
   2. Run ` uname -r `
 
 |  Medium  |  [ CVE-2013-0871
-](https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0871)  
-  
-Send feedback
+](https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0871)
 
