@@ -23,6 +23,54 @@ page to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/kubernetes-engine-security-
 bulletins.xml `
 
+##  GCP-2020-003
+
+Description  |  Severity  |  Notes  
+---|---|---  
+  
+A vulnerability was recently discovered in Kubernetes, described in [
+CVE-2019-11254 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2019-11254) , which allows any user authorized to
+make POST requests to execute a remote Denial-of-Service attack on a
+Kubernetes API server. The Kubernetes Product Security Committee (PSC)
+released additional information on this vulnerability which can be found [
+here ](https://groups.google.com/g/kubernetes-security-announce/c/wuwEwZigXBc)
+.
+
+GKE Clusters that use [ Master Authorized Networks ](/kubernetes-
+engine/docs/how-to/authorized-networks) and [ Private clusters with no public
+endpoint ](/kubernetes-engine/docs/how-to/private-clusters#private_master)
+mitigate this vulnerability.
+
+####  What should I do?
+
+We recommend that you upgrade your cluster to a patch version containing the
+fix for this vulnerability.
+
+The patch versions which contain the fix are listed below:
+
+  * 1.13.12-gke.29 
+  * 1.14.9-gke.27 
+  * 1.14.10-gke.24 
+  * 1.15.9-gke.20 
+  * 1.16.6-gke.1 
+
+####  What vulnerabilities are addressed by this patch?
+
+The patch fixes the following Denial-of-Service (DoS) vulnerability:
+
+[ CVE-2019-11254 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2019-11254) .
+
+|
+
+Medium
+
+|
+
+[ CVE-2019-11254 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2019-11254)  
+  
 ##  GCP-2020-002
 
 Description  |  Severity  |  Notes  
