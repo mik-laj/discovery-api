@@ -234,5 +234,3 @@ Cloud IAP can't currently be enabled for App Engine flexible environment apps.
 Cloud IAP has a static 403 "failed access" page. In a future release, admins
 will be able to customize the failure message text.
 
-Send feedback
-
