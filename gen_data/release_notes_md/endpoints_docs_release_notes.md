@@ -582,5 +582,3 @@ SERVICE_CONFIG_ID ` for ` -v ` option.
     sudo docker run --name=esp -d -p 80:8080 --link=echo:echo gcr.io/endpoints-release/endpoints-runtime:1.0 -s [SERVICE_NAME] -v [SERVICE_CONFIG_ID] -a echo:8081
     
 
-Send feedback
-
