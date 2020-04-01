@@ -228,5 +228,3 @@ translation.googleapis.com ` .
 API endpoint of ` www.googleapis.com ` will continue to work, but migrate code
 to ` translation.googleapis.com ` to take advantage of the latest features.
 
-Send feedback
-
