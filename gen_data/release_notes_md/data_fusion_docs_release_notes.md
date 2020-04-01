@@ -94,5 +94,3 @@ automatic subnet creation.
 
 Cloud Data Fusion is now publicly available in beta.
 
-Send feedback
-
