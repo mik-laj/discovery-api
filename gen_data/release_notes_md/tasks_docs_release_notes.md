@@ -35,5 +35,3 @@ Cloud Tasks GA release.
 
 Cloud Tasks Beta release.
 
-Send feedback
-
