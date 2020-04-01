@@ -22,5 +22,3 @@ Cloud Scheduler GA release.
 
 Cloud Scheduler Beta release.
 
-Send feedback
-
