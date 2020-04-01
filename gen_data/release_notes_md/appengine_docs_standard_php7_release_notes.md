@@ -531,5 +531,3 @@ Version 1.9.25
 
   * Development server no longer supports the "php" runtime. This will result in a Runtime Error. Please use "php55" instead. 
 
-Send feedback
-
