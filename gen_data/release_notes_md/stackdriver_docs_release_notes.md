@@ -2719,5 +2719,3 @@ Beta release: App Engine logs can be exported to Cloud Storage and BigQuery.
 First beta release of [ Google Cloud Monitoring powered by Stackdriver
 ](https://cloud.google.com/monitoring) .
 
-Send feedback
-
