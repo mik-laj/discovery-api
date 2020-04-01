@@ -814,5 +814,3 @@ Version 1.9.25
   * appengine/user:new 
     * Add ` User.ClientID ` field. 
 
-Send feedback
-
