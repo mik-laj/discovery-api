@@ -22,5 +22,3 @@ only produces a finding once per hour.
 Event Threat Detection limits the daily number of Findings based on Google-
 provided indicators of compromise to 200 per day
 
-Send feedback
-
