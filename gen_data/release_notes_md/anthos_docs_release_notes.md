@@ -157,5 +157,3 @@ component, see the release notes for that component.
   * [ Stackdriver release notes ](https://cloud.google.com/stackdriver/docs/release-notes)
   * [ Google Cloud Marketplace release notes ](https://cloud.google.com/marketplace/docs/release-notes)
 
-Send feedback
-
