@@ -84,5 +84,3 @@ to take to modify your scripts or configurations, as applicable, see [
 Deploying Containers ](https://cloud.google.com/marketplace/docs/container-
 images) .
 
-Send feedback
-
