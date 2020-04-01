@@ -1162,5 +1162,3 @@ Availability.
     * [ InnoDB storage engine ](https://dev.mysql.com/doc/refman/5.7/en/innodb-storage-engine.html)
     * [ GTID support ](https://dev.mysql.com/doc/refman/5.7/en/replication-gtids.html)
 
-Send feedback
-
