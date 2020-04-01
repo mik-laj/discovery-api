@@ -251,5 +251,3 @@ access to data based on query parameters. [ Learn more about query-based rules
 
 Beta release of Cloud Firestore.
 
-Send feedback
-
