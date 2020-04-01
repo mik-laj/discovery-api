@@ -80,5 +80,3 @@ For a complete list of BigQuery BI Engine locations, see [ Supported regions
 [ BigQuery BI Engine ](https://cloud.google.com/bi-engine/docs) is now in [
 beta ](https://cloud.google.com/products/#product-launch-stages) .
 
-Send feedback
-
