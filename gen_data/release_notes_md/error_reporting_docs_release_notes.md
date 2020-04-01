@@ -110,5 +110,3 @@ The **GCP Console** home page now has an Error Reporting card.
 
 **Beta release** of Stackdriver Error Reporting.
 
-Send feedback
-
