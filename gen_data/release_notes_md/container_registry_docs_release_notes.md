@@ -149,5 +149,3 @@ it is suitable for experimentation and is intended to provide an early view of
 the production service, but customers are strongly encouraged not to run
 production workloads on it.
 
-Send feedback
-
