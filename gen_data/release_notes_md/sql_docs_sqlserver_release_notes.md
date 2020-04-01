@@ -118,5 +118,3 @@ The beta version of Cloud SQL for SQL Server is available. To begin creating
 SQL Server instances, see [ Creating Instances
 ](https://cloud.google.com/sql/docs/sqlserver/create-instance) .
 
-Send feedback
-
