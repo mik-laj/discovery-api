@@ -120,5 +120,3 @@ AutoML Tables EAP release
 
 Only the ` us-central1 ` location is supported.
 
-Send feedback
-
