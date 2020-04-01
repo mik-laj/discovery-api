@@ -42,5 +42,3 @@ GKE on-prem clusters.
 
 Fixed an issue with credential storage.
 
-Send feedback
-
