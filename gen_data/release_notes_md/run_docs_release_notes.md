@@ -51,7 +51,7 @@ Cloud Run is now available in the following regions:
 **FEATURE:**
 
 You can now [ allocate 2 vCPUs
-](https://cloud.google.com/run/docs/configuring/cpu) to for Cloud Run (fully
+](https://cloud.google.com/run/docs/configuring/cpu) to Cloud Run (fully
 managed) services.
 
 ##  January 07, 2020
