@@ -92,5 +92,3 @@ You can [ browse and manage Cloud Source Repositories
 ](https://cloud.google.com/tools/visual-studio/docs/source-repo) with Cloud
 Tools for Visual Studio.
 
-Send feedback
-
