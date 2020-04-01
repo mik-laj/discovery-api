@@ -32,5 +32,3 @@ Beta release of Cloud Filestore
 
   * The Beta version of Cloud Filestore is now available for use. 
 
-Send feedback
-
