@@ -209,5 +209,3 @@ interesting traces.
 **Analysis Reports** : Compare your application's latency profile across time
 and versions.
 
-Send feedback
-
