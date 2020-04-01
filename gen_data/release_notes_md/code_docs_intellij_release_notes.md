@@ -327,5 +327,3 @@ Cloud SDK release.
   * Login bug that could result in no active user being selected when adding a user. ( [ #644 ](https://github.com/GoogleCloudPlatform/gcloud-intellij/issues/644) ) 
   * Undeploying an App Engine deployment could cause an error. ( [ #599 ](https://github.com/GoogleCloudPlatform/gcloud-intellij/issues/599) ) 
 
-Send feedback
-
