@@ -29,5 +29,3 @@ credentials. Secret Manager is accessible via:
   * [ RPC API ](https://cloud.google.com/secret-manager/docs/reference/rpc/)
   * [ Cloud Console user interface ](https://cloud.google.com/secret-manager/docs/quickstart-secret-manager-console)
 
-Send feedback
-
