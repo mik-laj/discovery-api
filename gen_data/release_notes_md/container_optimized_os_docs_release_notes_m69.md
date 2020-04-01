@@ -171,5 +171,3 @@ _Date: Sept 18, 2018_
   * Updated root CA certificates to match Mozilla NSS 3.36.1. 
   * Updated OpenSSL to 1.0.2o. 
 
-Send feedback
-
