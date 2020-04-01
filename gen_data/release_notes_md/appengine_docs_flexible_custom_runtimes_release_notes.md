@@ -277,5 +277,3 @@ Beta. To use the Cloud Build service, follow these steps:
     1. [ Activate the Cloud Build API ](https://support.google.com/cloud/answer/6158841) for your project. 
     2. Use the command ` gcloud config set app/use_cloud_build True ` . This will cause all invocations of ` gcloud preview app deploy ` to use the service. To return to the default behavior, use the command ` gcloud config set app/use_cloud_build False ` . 
 
-Send feedback
-
