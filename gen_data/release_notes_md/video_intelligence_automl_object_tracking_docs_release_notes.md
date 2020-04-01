@@ -41,5 +41,3 @@ Safari, or Firefox.
 
 Cloud AutoML Video Intelligence Object Tracking Beta has been released.
 
-Send feedback
-
