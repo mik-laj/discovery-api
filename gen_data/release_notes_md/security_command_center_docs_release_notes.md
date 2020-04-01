@@ -278,5 +278,3 @@ least 10 minutes to see the updated Cloud IAM policies in Cloud SCC.
 
 Code examples are still in progress for C#, Node.js, PHP, and Ruby.
 
-Send feedback
-
