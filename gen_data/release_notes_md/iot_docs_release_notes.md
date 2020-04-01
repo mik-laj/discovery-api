@@ -131,5 +131,3 @@ managed service for securely connecting and managing IoT devices, from a few
 to millions. Ingest data from connected devices and build rich applications
 that integrate with the other big data services of Google Cloud Platform.
 
-Send feedback
-
