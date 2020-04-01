@@ -55,5 +55,3 @@ catalog/docs/) , a fully managed and scalable metadata management service that
 allows organizations to quickly discover, manage, and understand their data in
 Google Cloud.
 
-Send feedback
-
