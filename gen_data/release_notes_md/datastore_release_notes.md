@@ -375,5 +375,3 @@ deprecated.
 
   * Initial public beta release (v1beta1) of the Cloud Datastore API. 
 
-Send feedback
-
