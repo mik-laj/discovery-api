@@ -75,5 +75,3 @@ inventory/docs/overview) is a storage service that keeps a five week history
 of Google Cloud Platform (GCP) asset metadata. It allows you to export all
 asset metadata at a certain timestamp or timeframe.
 
-Send feedback
-
