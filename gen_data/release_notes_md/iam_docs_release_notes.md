@@ -286,5 +286,3 @@ IAM securely ](https://cloud.google.com/iam/docs/using-iam-securely) .
 
 Cloud IAM is now available in beta.
 
-Send feedback
-
