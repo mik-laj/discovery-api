@@ -13,6 +13,15 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/iam-release-notes.xml `
 
+##  April 01, 2020
+
+**FEATURE:**
+
+When you [ use a service account key to access Google Cloud
+](https://cloud.google.com/iam/docs/audit-logging/examples-service-
+accounts#auth-service-account-key) , your audit logs now identify the key that
+was used.
+
 ##  March 17, 2020
 
 **CHANGED:**
