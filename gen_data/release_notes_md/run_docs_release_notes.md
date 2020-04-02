@@ -9,6 +9,18 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/run-release-notes.xml `
 
+##  March 30, 2020
+
+**FEATURE:**
+
+The Cloud Run revision details panel now surfaces build information if the [
+Container Analysis API ](https://cloud.google.com/container-
+registry/docs/container-analysis) has been enabled and the container has been
+built with [ Cloud Build ](https://cloud.google.com/cloud-build) , as well as
+source repository information if the container has been built by a [ Cloud
+Build Trigger ](https://cloud.google.com/cloud-build/docs/running-
+builds/create-manage-triggers) .
+
 ##  March 23, 2020
 
 **FIXED:**
