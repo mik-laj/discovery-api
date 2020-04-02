@@ -12,6 +12,17 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/compute-engine-release-
 notes.xml `
 
+##  April 01, 2020
+
+  * You can now define where your VM instances are located relative to each other on the underlying host systems in a Google datacenter. Create a placement policy to locate VM instances close to each other for low latency, or create a policy to spread VM instances out so that they do not share the same infrastructure. See [ Defining instance location within a zone ](/compute/docs/instances/define-instance-placement) to learn more. 
+
+  * NVIDIA® Tesla® T4 GPUs are now available in the following additional regions and zones: 
+
+    * Frankfurt, Germany: ` europe-west3-b `
+
+For information about using T4 GPUs on Compute Engine, see [ GPUs on Compute
+Engine ](/compute/docs/gpus) .
+
 ##  March 31, 2020
 
   * **Beta:** [ Collect diagnostic information from Windows VMs ](/compute/docs/instances/collecting-diagnostic-information) . 
