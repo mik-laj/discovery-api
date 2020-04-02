@@ -9,6 +9,26 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/billing-release-notes.xml `
 
+##  March 23, 2020
+
+**FEATURE:**
+
+**Billing health checks** is now available on your **Cloud Billing** account
+**Overview** page in the **Cloud Console** . This feature automatically
+analyzes the health of your **Cloud Billing** account, then displays the
+results in a Billing health checks informational card, helping you avoid
+common billing-related issues and to adopt our [ best-practice recommendations
+](https://cloud.google.com/billing/docs/onboarding-checklist#checklist_3) . In
+the info card, click **_View all health checks_ ** to view a page with
+detailed recommendations, explanations, and action items to remedy issues that
+could jeopardize the safety or condition of your Cloud Billing account.
+
+To see the **Billing health checks** card, go to the [ Manage billing accounts
+page ](https://console.cloud.google.com/billing) in the Cloud Console and sign
+in, then select the name of the billing account you want to view. The Billing
+Overview page is displayed with the **BILLING ACCOUNT OVERVIEW** tab selected.
+Look for the card titled **Billing health checks** .
+
 ##  March 02, 2020
 
 **FEATURE:**
