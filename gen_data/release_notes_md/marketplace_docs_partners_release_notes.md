@@ -9,6 +9,21 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/gcp-marketplace-partners-
 release-notes.xml `
 
+##  April 01, 2020
+
+**FEATURE:**
+
+If you sell Kubernetes apps on Google Cloud Marketplace, you can now configure
+your app to target clusters where at least one node has a GPU. When users
+deploy the app, only clusters with GPUs are shown as valid deployment targets.
+
+[ Learn about modifying your app's ` schema.md ` to check for GPUs
+](https://github.com/GoogleCloudPlatform/marketplace-k8s-app-
+tools/blob/master/docs/schema.md#gpus) .
+
+[ Read the overview of selling Kubernetes apps on Google Cloud Marketplace
+](https://cloud.google.com/marketplace/docs/partners/kubernetes-solutions/) .
+
 ##  January 27, 2020
 
 **FEATURE:**
