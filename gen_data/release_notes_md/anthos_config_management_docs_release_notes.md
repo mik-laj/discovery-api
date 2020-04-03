@@ -39,6 +39,19 @@ connect with your Git host. More information can be found at [ Installing
 Anthos Config Management ](https://cloud.google.com/anthos-config-
 management/docs/how-to/installing) .
 
+##  February 21, 2020
+
+1.2.2
+
+**ISSUE:**
+
+GKE On-prem 1.2.2 includes images for ACM 1.2.1. Upgrading from ACM 1.2.1 to
+ACM 1.3 is a valid, tested, safe upgrade path.
+
+**FIXED:**
+
+Minor updates and bug fixes.
+
 ##  February 10, 2020
 
 1.2.1
