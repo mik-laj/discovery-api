@@ -15,6 +15,18 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gkeonprem-release-notes.xml `
 
+##  April 01, 2020
+
+**ISSUE:**
+
+When upgrading from version 1.2.2 to 1.3.0 by using the Bundle download in the
+[ alternate upgrade method ](https://cloud.google.com/anthos/gke/docs/on-
+prem/how-to/upgrading#alternate_upgrade_scenario) , a timeout might occur that
+will cause your user cluster upgrade to fail. To avoid this issue, you must
+perform the [ full upgrade process
+](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading) that
+includes upgrading your admin workstation with the OVA file.
+
 ##  March 23, 2020
 
 **FEATURE:**
@@ -47,6 +59,11 @@ The [ Authentication Plugin for Anthos
 integrated into and replaced with the Google Cloud command-line interface,
 which improves the authentication process and provides the user consent flow
 through ` gcloud ` commands.
+
+**FEATURE:**
+
+Added support for up to [ 100 nodes per user cluster
+](https://cloud.google.com/anthos/gke/docs/on-prem/quotas) .
 
 **FEATURE:**
 
@@ -238,6 +255,12 @@ The timeout window for F5 BIG-IP VIP validation is now longer.
 
 Fixes an issue that caused cluster upgrades to overwrite changes to add-on
 configurations.
+
+**FIXED:**
+
+Fixes the [ known issue ](https://cloud.google.com/anthos/gke/docs/on-
+prem/release-notes#January_28_2020) from 1.2.0-gke.6 that affects routing
+updates due to the route reflector configuration.
 
 ##  January 28, 2020
 
