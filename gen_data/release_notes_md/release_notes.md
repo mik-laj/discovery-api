@@ -1,8 +1,8 @@
 #  Google Cloud Platform release notes
 
 The following release notes cover the most recent changes over the last 30
-days. For a comprehensive list, see each individual product's release notes
-page.
+days. For a comprehensive list, see the [ individual product release note
+pages ](/release-notes/all) .
 
 ##  March 30, 2020
 
