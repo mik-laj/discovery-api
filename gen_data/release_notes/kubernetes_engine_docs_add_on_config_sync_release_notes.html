@@ -1,0 +1,101 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <h1 class="devsite-page-title">
+   Release notes
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <section class="intro">
+    This page documents production updates to Config Sync. Check this page for
+announcements about new or updated features, bug fixes, known issues, and
+deprecated functionality.
+   </section>
+   <section class="xml">
+    <p>
+     To get the latest product updates delivered to you, add the URL of this page to your
+     <a class="external" href="https://wikipedia.org/wiki/Comparison_of_feed_aggregators">
+      feed
+          reader
+     </a>
+     , or add the feed URL directly:
+     <code dir="ltr" translate="no">
+      https://cloud.google.com/feeds/kubernetes-engine-add-on-config-sync-release-notes.xml
+     </code>
+    </p>
+   </section>
+   <section class="releases">
+    <h2 id="120">
+     1.2.0
+    </h2>
+    <p>
+     Config Sync v1.2.0 is generally available for use in production.  This is the first version of the product.
+    </p>
+    <h3 id="known_issues">
+     Known issues
+    </h3>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      Adding an
+      <a class="external" href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension">
+       APIService
+      </a>
+      to the repo will leave Config Sync in a bad state, with the error message "[KNV2002](/kubernetes-engine/docs/add-on/config-sync/reference/errors#knv2002): failed to get server resources: unable to retrieve the complete list of server APIs."  This issue will affect both new and existing clusters syncing from this repo.  To correct the issue:
+      <li>
+       find the name of the
+       <code dir="ltr" translate="no">
+        git-importer
+       </code>
+       and
+       <code dir="ltr" translate="no">
+        syncer
+       </code>
+       pods using
+       <code dir="ltr" translate="no">
+        kubectl get pods -n config-management-system
+       </code>
+      </li>
+      <li>
+       copy those names and restart the pods with
+       <code dir="ltr" translate="no">
+        kubectl delete -n config-management-system pods git-importer-xxxx-xxxx syncer-xxxx-xxxx
+       </code>
+      </li>
+      <li>
+       These steps are required once for each cluster.
+      </li>
+      Once the pods for a cluster are restarted, syncing will be back to normal.
+     </p>
+    </div>
+    <div class="release-issue" id="known_issue_nomos_view">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       nomos view
+      </code>
+      can fail to parse CRDs (Custom Resource Definitions) that
+exist in the local clone of the repo but have not yet been synced to a cluster.
+     </p>
+     <p>
+      To work around this issue, use
+      <a href="/kubernetes-engine/docs/add-on/config-sync/how-to/nomos-command#hydrate">
+       <code dir="ltr" translate="no">
+        nomos hydrate
+       </code>
+      </a>
+      instead of
+      <code dir="ltr" translate="no">
+       nomos view
+      </code>
+      .
+     </p>
+    </div>
+   </section>
+  </div>
+ </article>
+</article>
