@@ -1,6 +1,7 @@
 from copy import deepcopy
 
 from googleapiclient import discovery as discovery_client
+from googleapiclient.errors import HttpError
 from tqdm import tqdm
 
 from discovery_tracker.data_sources.google_discovery import TrackedService, fetch_api_definition, \
@@ -58,5 +59,8 @@ def cmd_fetch_apis(args):
                 remove_description=args.remove_descriptions,
                 output_dir=args.output
             )
-        except Exception as e:
-            print(e)
+        except HttpError as e:
+            if e.resp['status'] == '404':
+                print(e)
+            else:
+                raise
