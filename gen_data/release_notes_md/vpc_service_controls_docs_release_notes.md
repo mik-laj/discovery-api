@@ -9,18 +9,38 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/vpc-sc-release-notes.xml `
 
-##  March 16, 2020
+##  April 03, 2020
+
+**FEATURE:**
+
+Beta support for bulk changes to service perimeters.
+
+Using the beta release of Access Context Manager's Bulk API, you can perform
+operations such as replacing all of your organization's service perimeters.
+For more information, see [ Making bulk changes to service perimeters
+](https://cloud.google.com/vpc-service-controls/docs/bulk-operations) .
+
+##  April 01, 2020
 
 **FEATURE:**
 
 [ Beta stage ](https://cloud.google.com/products/#product-launch-stages)
 support for the following integrations:
 
-  * AutoML Natural Language 
-  * AutoML Tables 
-  * AutoML Translation 
-  * AutoML Video Intelligence 
-  * AutoML Vision 
+  * [ Container Analysis ](https://cloud.google.com/container-registry/docs/container-analysis)
+
+##  March 31, 2020
+
+**FEATURE:**
+
+[ Beta stage ](https://cloud.google.com/products/#product-launch-stages)
+support for the following integrations:
+
+  * [ AutoML Natural Language ](https://cloud.google.com/natural-language/automl/docs)
+  * [ AutoML Tables ](https://cloud.google.com/automl-tables/docs)
+  * [ AutoML Translation ](https://cloud.google.com/translate/automl/docs)
+  * [ AutoML Video Intelligence ](https://cloud.google.com/video-intelligence/automl/docs)
+  * [ AutoML Vision ](https://cloud.google.com/vision/automl/docs)
   * [ Artifact Registry ](https://cloud.google.com/artifacts/docs)
 
 ##  March 10, 2020
