@@ -1,0 +1,547 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <div background="google-blue" class="devsite-banner devsite-banner-announcement">
+   <div class="devsite-banner-message">
+    <div class="devsite-banner-message-text">
+     You're viewing documentation for a prior version of Migrate for Compute Engine (formerly Velostrata). You can continue using this version, or use the
+     <a href="/migrate/compute-engine/docs/">
+      current version
+     </a>
+     .
+    </div>
+   </div>
+  </div>
+  <h1 class="devsite-page-title">
+   Release Notes
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <section class="intro">
+    This page documents production updates to Velostrata. You can
+periodically check this page for announcements about new or updated features,
+bug fixes, known issues, and deprecated functionality.
+   </section>
+   <section class="xml">
+    <p>
+     To get the latest product updates delivered to you, add the URL of this page to your
+     <a class="external" href="https://wikipedia.org/wiki/Comparison_of_feed_aggregators">
+      feed
+          reader
+     </a>
+     , or add the feed URL directly:
+     <code dir="ltr" translate="no">
+      https://cloud.google.com/feeds/velostrata-release-notes.xml
+     </code>
+    </p>
+   </section>
+   <section class="releases">
+    <h2 id="42">
+     4.2
+    </h2>
+    <h3 id="build_history">
+     Build history
+    </h3>
+    <table>
+     <tr>
+      <th>
+       Build number
+      </th>
+      <th>
+       Release date
+      </th>
+      <th>
+       Description
+      </th>
+     </tr>
+     <tr>
+      <td>
+       24499
+      </td>
+      <td>
+       April 15, 2019
+      </td>
+      <td>
+       Initial release.
+      </td>
+     </tr>
+     <tr>
+      <td>
+       25715
+      </td>
+      <td>
+       June 13, 2019
+      </td>
+      <td>
+       This build fixes an issue in which detach or prepare to detach tasks would hang, then eventually fail.
+       <p>
+        If you're using a version 4.2 build prior to 25715, you can fix this issue by applying the hotfix described in
+        <a href="https://storage.googleapis.com/velostrata-release/V4.2.0/4.2%20Revision%20Hot%20Fix%20135093085/Velostrata%20V4.2%20Hotfix%20%23135093085.pdf" target="_blank">
+         Velostrata v4.2 Hotfix #135093085
+        </a>
+        .
+       </p>
+       <p>
+       </p>
+      </td>
+     </tr>
+    </table>
+    <h3 id="new_features">
+     New features
+    </h3>
+    <h4 id="migration_to_sole_tenants">
+     Migration to Sole Tenants
+    </h4>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Velostrata 4.2 introduces migration to
+      <a href="/compute/docs/nodes">
+       Compute Engine Sole Tenant Nodes
+      </a>
+      .
+After
+      <a href="/compute/docs/nodes/create-nodes">
+       creating nodes
+      </a>
+      on Compute Engine,
+Velostrata handles migration to
+      <a href="/migrate/compute-engine/docs/4.2/how-to/organizing-migrations/sole-tenant-nodes">
+       Sole Tenants
+      </a>
+      using Waves.
+     </p>
+    </div>
+    <h4 id="windows_bring_your_own_license_byol">
+     Windows Bring Your Own License (BYOL)
+    </h4>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Velostrata 4.2 introduces support for
+      <a href="/migrate/compute-engine/docs/4.2/how-to/organizing-migrations/sole-tenant-nodes">
+       migration to Compute Engine
+      </a>
+      with
+      <a href="/compute/docs/instances/windows/bring-your-own-license/bringing-your-own-license-sole-tenant-nodes">
+       Windows BYOL
+      </a>
+      .
+Because of common licensing considerations, we recommend to migrating VMs with
+Windows BYOL to sole tenant nodes.
+     </p>
+    </div>
+    <h4 id="integration_with">
+     Integration with Google Cloud's operations suite
+    </h4>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Velostrata 4.2 can now send
+      <a href="/migrate/compute-engine/docs/4.2/how-to/monitoring/using-stackdriver-monitoring">
+       logs
+      </a>
+      and
+      <a href="/migrate/compute-engine/docs/4.2/how-to/monitoring/viewing-stackdriver-logs">
+       telemetry data
+      </a>
+      to
+Google Cloud's operations suite. You can
+      <a href="/migrate/compute-engine/docs/4.2/how-to/monitoring/disabling-stackdriver">
+       enable or disable logs and telemetry
+      </a>
+      data sent to Google Cloud's operations suite at any point in time.
+     </p>
+    </div>
+    <h4 id="requirements_and_os_support">
+     Requirements and OS Support
+    </h4>
+    <p>
+     See
+     <a href="/migrate/compute-engine/docs/4.2/concepts/requirements">
+      Requirements
+     </a>
+     and
+     <a href="/migrate/compute-engine/docs/4.2/reference/supported-os-versions">
+      Supported operating systems
+     </a>
+     .
+    </p>
+    <h3 id="known_issues">
+     Known Issues
+    </h3>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       #4266:
+      </b>
+      Run-in-cloud and migration operations may fail for Windows Server 2016
+workload when Symantec Endpoint Protection (SEP) is installed. This may also
+happen when SEP appears to be disabled.
+      <br/>
+      <b>
+       Workaround:
+      </b>
+      Modify workload
+Network interface bindings to remove SEP option.
+Download
+      <a href="https://gallery.technet.microsoft.com/Hyper-V-Network-VSP-Bind-cf937850">
+       Microsoft Network VSP Bind (nvspbind)
+      </a>
+      ,
+Install Microsoft_Nvspbind_package.EXE into c:\temp. ,
+Open Command prompt as an Administrator, and run the following: `nvspbind.exe /d * symc_teefer2`.
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       #1257:
+      </b>
+      When Velostrata Prep RPM is installed on a SUSE Linux Enterprise Server
+11, the VM obtains a DHCP IP address in addition to an existing static IP
+configuration. This issue occurs when the VM is started on-premises in a subnet
+that is enabled with DHCP services.
+      <br/>
+      Note: The issue does not occur when the subnet has no DHCP services. There is no
+connectivity impact for communications with the original static IP address.
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       #1027:
+      </b>
+      In some cases, when a VM is moved to Run-in-Cloud while a 3rd party
+VM-level backup solution holds a temporary snapshot, the Velostrata periodic
+write-back operations will not complete even after the backup solution deletes
+the temporary snapshot. The uncommitted writes counter on the VM will show an
+increasing size and no consistency checkpoint will be created on-premises.
+      <br/>
+      <b>
+       Workaround:
+      </b>
+      Select the Run On-Premises action for the VM and wait for the
+task to complete, which will commit all pending writes. Then select the
+Run-in-Cloud action again. Note that committing many pending writes may take a
+while. Do not use the Force option as this will result in the loss of the
+uncommitted writes.
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       #1745:
+      </b>
+      After registering the Velostrata plug-in, running the Cloud Extension
+wizard might generate an error "XXXXXXXXXX" upon "Finish".
+      <br/>
+      <b>
+       Workaround:
+      </b>
+      Un-register the Velostrata plug-in and restart the vSphere Web
+client service, then re-register the plug-in. Contact support if the issue
+persists.
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       #1667:
+      </b>
+      vCenter reboot causes Velostrata tasks in vCenter to disappear from UI.
+This is a vCenter limitation.
+      <br/>
+      <b>
+       Workaround:
+      </b>
+      Use the Velostrata PowerShell module to monitor Velostrata
+managed VMs or Cloud Extensions tasks that are currently running.
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       #1951:
+      </b>
+      With an ESXi host in maintenance mode, if a VM is moved to cloud, the
+operation will fail and get stuck in the rollback phase.
+      <br/>
+      <b>
+       Workaround:
+      </b>
+      Manually cancel the Run-in-Cloud task, migrate the VM to another
+ESXi host in the cluster and retry the Run-in-Cloud operation.
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       #1917:
+      </b>
+      A Run-in-Cloud operation fails with the error - "Failed to create
+virtual machine snapshot. The attempted operation cannot be performed in the
+current state (Powered off)".
+      <br/>
+      <b>
+       Workaround:
+      </b>
+      The VMware VM snapshot file may be pointing to a non-existent
+snapshot. Contact support for assistance in correcting the issue.
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       #1808:
+      </b>
+      In rare cases, after running a Workload back on-premises - Workload
+VMDK's are locked. In certain cases, this is due to network disruptions between
+the Velostrata management appliance and the ESXi host on which the workload is
+running.
+      <br/>
+      Note: The issue will resolve itself after 1-2 hours.
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       #2736:
+      </b>
+      During Detach, the operation might fail with the following error message
+"Operation was canceled".
+      <br/>
+      <b>
+       Workaround:
+      </b>
+      Retry the Detach operation.
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       #3775:
+      </b>
+      When performing a detach after a cancel detach operation, the action may
+fail.
+      <br/>
+      <b>
+       Workaround:
+      </b>
+      Retry the operation.
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       #3682:
+      </b>
+      In the event of certain system failures, Velostrata components
+disconnect from vCenter. In this case, an event may not be sent, resulting in
+the alarm either not being set properly or not being cleared properly.
+      <br/>
+      <b>
+       Workaround:
+      </b>
+      Clear the alarm manually in vCenter.
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       #3320:
+      </b>
+      For workloads with Windows machine using a retail license, when
+returning from the cloud, the license is not present.
+      <br/>
+      <b>
+       Workaround:
+      </b>
+      Reinstall the license.
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       #3281:
+      </b>
+      vCenter "Export OVA" operation is available when the VM in cloud is
+running in cache mode, however, this operation results in a corrupted OVA.
+      <br/>
+      <b>
+       Workaround:
+      </b>
+      Only create OVA after the detach.
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       #3142:
+      </b>
+      In rare cases, when a cloud component instance is created and system
+fails before it is tagged, the instance will remain untagged. This will not
+allow full clean-up or repair of the CE.
+      <br/>
+      <b>
+       Workaround:
+      </b>
+      Manually tag the instance, and then run "Repair".
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       #4604:
+      </b>
+      Cloud Extension high availability does not work for workloads running
+Ubuntu OS with LVM configuration.
+      <br/>
+      <b>
+       Workaround:
+      </b>
+      Update the kernel to 3.13.0-161 or higher.
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       #3199:
+      </b>
+      Suse12: Due to a bug in SUSE kernel older than 4.2, configurations that
+include BTRFS mounts with subvolumes are not supported.
+      <br/>
+      <b>
+       Workaround:
+      </b>
+      Upgrade to SUSE version with Kernel &gt;=4.2 (SP2).
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       #3570:
+      </b>
+      When using the Create Cloud Extension wizard, using illegal http proxy
+address will not generate a warning message.
+      <br/>
+      <b>
+       Workaround:
+      </b>
+      Delete the CE and then create the CE with a valid http proxy
+address.
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       #3133:
+      </b>
+      Run on-premises operation succeeded but the status is marked as failed
+with error "Failed to consolidate snapshots"
+      <br/>
+      <b>
+       Workaround:
+      </b>
+      Consolidate snapshots via vCenter, and clear the error
+manually.
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       #5547:
+      </b>
+      PowerShell client for cloud to cloud Runbook reports errors when running
+on PowerShell 3.0
+      <br/>
+      <b>
+       Workaround:
+      </b>
+      Upgrade to PowerShell 4.0
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       #5709:
+      </b>
+      When migrating RHEL 7.4 from AWS to GCP, GCP agent will not be installed
+automatically.
+      <br/>
+      <b>
+       Workaround:
+      </b>
+      Manually remove the AWS agent and install GCP agent
+     </p>
+    </div>
+   </section>
+  </div>
+ </article>
+</article>
