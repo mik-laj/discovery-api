@@ -8,6 +8,9 @@ def save_json(filename: str, content):
 
 
 def load_json(filename: str):
+    if not os.path.exists(filename):
+        return {}
+
     with open(filename, 'r') as outfile:
         return json.load(outfile)
 
