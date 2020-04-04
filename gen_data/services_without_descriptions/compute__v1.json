@@ -16390,6 +16390,48 @@
                         "https://www.googleapis.com/auth/compute.readonly"
                     ]
                 },
+                "listPreconfiguredExpressionSets": {
+                    "httpMethod": "GET",
+                    "id": "compute.securityPolicies.listPreconfiguredExpressionSets",
+                    "parameterOrder": [
+                        "project"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "500",
+                            "format": "uint32",
+                            "location": "query",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
+                        "orderBy": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/global/securityPolicies/listPreconfiguredExpressionSets",
+                    "response": {
+                        "$ref": "SecurityPoliciesListPreconfiguredExpressionSetsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
                 "patch": {
                     "httpMethod": "PATCH",
                     "id": "compute.securityPolicies.patch",
@@ -26201,6 +26243,12 @@
                 "reservationAffinity": {
                     "$ref": "ReservationAffinity"
                 },
+                "resourcePolicies": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "scheduling": {
                     "$ref": "Scheduling"
                 },
@@ -27005,6 +27053,9 @@
                         "$ref": "ManagedInstance"
                     },
                     "type": "array"
+                },
+                "nextPageToken": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -32023,6 +32074,18 @@
             },
             "type": "object"
         },
+        "PreconfiguredWafSet": {
+            "id": "PreconfiguredWafSet",
+            "properties": {
+                "expressionSets": {
+                    "items": {
+                        "$ref": "WafExpressionSet"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "Project": {
             "id": "Project",
             "properties": {
@@ -32185,6 +32248,7 @@
                         "INTERCONNECT_ATTACHMENTS_TOTAL_MBPS",
                         "INTERCONNECT_TOTAL_GBPS",
                         "INTERNAL_ADDRESSES",
+                        "IN_PLACE_SNAPSHOTS",
                         "IN_USE_ADDRESSES",
                         "IN_USE_BACKUP_SCHEDULES",
                         "IN_USE_SNAPSHOT_SCHEDULES",
@@ -32215,6 +32279,8 @@
                         "PREEMPTIBLE_NVIDIA_T4_GPUS",
                         "PREEMPTIBLE_NVIDIA_T4_VWS_GPUS",
                         "PREEMPTIBLE_NVIDIA_V100_GPUS",
+                        "PUBLIC_ADVERTISED_PREFIXES",
+                        "PUBLIC_DELEGATED_PREFIXES",
                         "REGIONAL_AUTOSCALERS",
                         "REGIONAL_INSTANCE_GROUP_MANAGERS",
                         "RESERVATIONS",
@@ -32228,6 +32294,7 @@
                         "SSD_TOTAL_GB",
                         "SSL_CERTIFICATES",
                         "STATIC_ADDRESSES",
+                        "STATIC_BYOIP_ADDRESSES",
                         "SUBNETWORKS",
                         "TARGET_HTTPS_PROXIES",
                         "TARGET_HTTP_PROXIES",
@@ -32739,6 +32806,9 @@
                         "$ref": "ManagedInstance"
                     },
                     "type": "array"
+                },
+                "nextPageToken": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -34787,6 +34857,24 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SecurityPoliciesListPreconfiguredExpressionSetsResponse": {
+            "id": "SecurityPoliciesListPreconfiguredExpressionSetsResponse",
+            "properties": {
+                "preconfiguredExpressionSets": {
+                    "$ref": "SecurityPoliciesWafConfig"
+                }
+            },
+            "type": "object"
+        },
+        "SecurityPoliciesWafConfig": {
+            "id": "SecurityPoliciesWafConfig",
+            "properties": {
+                "wafRules": {
+                    "$ref": "PreconfiguredWafSet"
                 }
             },
             "type": "object"
@@ -39049,6 +39137,36 @@
                         }
                     },
                     "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "WafExpressionSet": {
+            "id": "WafExpressionSet",
+            "properties": {
+                "aliases": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "expressions": {
+                    "items": {
+                        "$ref": "WafExpressionSetExpression"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "WafExpressionSetExpression": {
+            "id": "WafExpressionSetExpression",
+            "properties": {
+                "id": {
+                    "type": "string"
                 }
             },
             "type": "object"
