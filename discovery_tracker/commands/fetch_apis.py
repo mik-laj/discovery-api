@@ -52,8 +52,11 @@ def cmd_fetch_apis(args):
     pbar = tqdm(tracked_service_list)
     for tracked_service in pbar:
         pbar.set_description(f"Fetching: {tracked_service}")
-        process_service(
-            discovery, tracked_service,
-            remove_description=args.remove_descriptions,
-            output_dir=args.output
-        )
+        try:
+            process_service(
+                discovery, tracked_service,
+                remove_description=args.remove_descriptions,
+                output_dir=args.output
+            )
+        except Exception as e:
+            print(e)
