@@ -12,6 +12,19 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/aiplatform-release-notes.xml `
 
+##  April 03, 2020
+
+**AI Platform Training**
+
+**FEATURE:**
+
+You can now use customer-managed encryption keys (CMEK) to protect data in
+your AI Platform Training jobs. This feature is available in beta.
+
+To learn about the benefits and limitations of using CMEK, and to walk through
+configuring CMEK for a training job, read the [ guide to using CMEK with AI
+Platform Training ](https://cloud.google.com/ai-platform/training/docs/cmek) .
+
 ##  March 31, 2020
 
 **AI Platform Notebooks**
