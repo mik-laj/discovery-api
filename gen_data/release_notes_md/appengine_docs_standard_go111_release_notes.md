@@ -327,7 +327,7 @@ sdk-for-go) .
 
 Changes that might affect your app:
 
-    * As of Go 1.7, the ` context ` package has [ moved into the stdlib ](https://golang.org/doc/go1.7#context) . You must ensure that your code and dependencies work correctly with this change. You can use the [ ` fix ` command ](https://golang.org/cmd/fix/) to change your app's imports from ` “golang.org/x/net/context” ` to ` “context” ` , for example: [ ` go tool fix -r context ` ](https://golang.org/doc/go1.8#tool_fix) . 
+    * As of Go 1.7, the ` context ` package has [ moved into the stdlib ](https://golang.org/doc/go1.7#context) . You must ensure that your code and dependencies work correctly with this change. You can use the [ ` fix ` command ](https://golang.org/cmd/fix/) to change your app's imports from ` "golang.org/x/net/context" ` to ` "context" ` , for example: [ ` go tool fix -r context ` ](https://golang.org/doc/go1.8#tool_fix) . 
     * In Go 1.8, the internal representation of ` time.Time ` objects has changed and might break your app if you use either ` reflect.DeepEqual ` or ` == ` to compare ` time.Time ` values. Use [ ` time.Equal ` ](https://golang.org/pkg/time/#Time.Equal) to compare timestamps. 
 
 ##  October 11, 2017
