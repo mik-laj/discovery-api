@@ -1,0 +1,701 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <h1 class="devsite-page-title">
+   Release Notes
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <section class="intro">
+    This page documents production updates to Migrate for Anthos. You can
+periodically check this page for announcements about new or updated features,
+bug fixes, known issues, and deprecated functionality.
+   </section>
+   <section class="xml">
+    <p>
+     To get the latest product updates delivered to you, add the URL of this page to your
+     <a class="external" href="https://wikipedia.org/wiki/Comparison_of_feed_aggregators">
+      feed
+          reader
+     </a>
+     , or add the feed URL directly:
+     <code dir="ltr" translate="no">
+      https://cloud.google.com/feeds/migrateanthos-release-notes.xml
+     </code>
+    </p>
+   </section>
+   <section class="releases">
+    <html devsite="">
+     <head>
+      <meta name="no_page_title" value="true"/>
+     </head>
+     <body>
+      <section class="releases">
+       <h2 id="March_30_2020">
+        March 30, 2020
+       </h2>
+       <div class="release-note-product-version-title">
+        v1.3.0
+       </div>
+       <div class="release-feature" id="157ff346">
+        <strong>
+         FEATURE:
+        </strong>
+        <p>
+         New
+         <code dir="ltr" translate="no">
+          migctl
+         </code>
+         CLI for deploying Migrate for Anthos, creating and
+operating migrations using a structured workflow and a migration processing cluster.
+        </p>
+       </div>
+       <div class="release-feature" id="5aba75f8">
+        <strong>
+         FEATURE:
+        </strong>
+        <p>
+         Introducing a unified migration workflow across all supported VM sources --
+VMware, AWS EC2, Azure VMs and Compute Engine VMs.
+        </p>
+       </div>
+       <div class="release-feature" id="7f43a7fd">
+        <strong>
+         FEATURE:
+        </strong>
+        <p>
+         Migrations are defined and operated using a Kubernetes CRD.
+        </p>
+       </div>
+       <div class="release-feature" id="fb12bd90">
+        <strong>
+         FEATURE:
+        </strong>
+        <p>
+         Automated generation of a suggested migration plan (specified in a CRD), CI/CD
+artifacts and deployment specs. The migration process now results in extracting
+and generating container and deployment artifacts, including a container image
+and a Dockerfile, extracted data in a persistent volume, deployment/statefulSet,
+PVC and PV specs in an auto-generated YAML file for easy workload deployment.
+        </p>
+       </div>
+       <div class="release-feature" id="7ac4f6c9">
+        <strong>
+         FEATURE:
+        </strong>
+        <p>
+         The Migrate for Anthos software runtime layer now offers a compatibility
+feature for older Java versions that are not container aware by reflecting the
+correct resource allocations in the container's /proc file system.
+        </p>
+       </div>
+       <div class="release-feature" id="089ea557">
+        <strong>
+         FEATURE:
+        </strong>
+        <p>
+         Migrate for Anthos v1.0 Marketplace deployment is now removed. Migrate for Anthos v1.3 allows installation in v1.0 compatibility mode where needed.
+        </p>
+       </div>
+       <div class="release-feature" id="62053f7b">
+        <strong>
+         FEATURE:
+        </strong>
+        <p>
+         Preview features -- contact your Google Sales representative to enroll.
+        </p>
+        <ul>
+         <li>
+          Migrating Windows VMs with IIS ASP.NET web applications to Windows 2019 containers on GKE.
+         </li>
+         <li>
+          Processing migrations in Anthos on-prem.
+         </li>
+        </ul>
+       </div>
+       <div class="release-issue" id="a39bea02">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         <strong>
+          151505531, 150052607:
+         </strong>
+         In some cases, migration can be stuck with no progress. When running
+         <code dir="ltr" translate="no">
+          migctl migration status migration-name --verbose
+         </code>
+         , you might see an event such as this:
+        </p>
+        <pre class="lang-sh" dir="ltr" translate="no">could not find attached GC⁣E PD</pre>
+        <p>
+         <strong>
+          Workaround:
+         </strong>
+         Delete the migration using
+         <code dir="ltr" translate="no">
+          migctl migration delete
+         </code>
+         and re-create it.
+        </p>
+       </div>
+       <div class="release-issue" id="9eb2bd94">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         <strong>
+          147211918:
+         </strong>
+         In some cases, migration from AWS or Azure as a source can be stuck with no progress. If this happens, run
+         <code dir="ltr" translate="no">
+          kubectl describe storageclass
+         </code>
+         to view related events. You can also check the status of the matching Cloud Details in Migrate for Compute Engine.
+        </p>
+       </div>
+       <div class="release-issue" id="d563dcc5">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         <strong>
+          146699220:
+         </strong>
+         When the source VM has a systemd service with a
+         <code dir="ltr" translate="no">
+          NICE
+         </code>
+         config property, the service might not start when running in a container.
+        </p>
+        <p>
+         <strong>
+          Workaround:
+         </strong>
+         Remove the
+         <code dir="ltr" translate="no">
+          NICE
+         </code>
+         property in the source VM before the migration.
+        </p>
+       </div>
+       <div class="release-issue" id="e80d2ac5">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         <strong>
+          144896313:
+         </strong>
+         Migration of Security-Enhanced Linux (SELinux) is not supported.
+        </p>
+       </div>
+       <div class="release-issue" id="976ac814">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         <strong>
+          149900626:
+         </strong>
+         Some file systems not listed in
+         <a href="/migrate/anthos/docs/compatible-os-versions">
+          Compatible VM operating systems
+         </a>
+         may fail to migrate. When running
+         <code dir="ltr" translate="no">
+          migctl migration logs migration-name
+         </code>
+         , the logs in Cloud Logging may show a message such as:
+        </p>
+        <pre class="lang-sh" dir="ltr" translate="no">failed to mount - exit status 32 - mount: /tmp/bootdir: unknown filesystem type 'LVM2\_member'.</pre>
+       </div>
+       <div class="release-issue" id="38f86ab0">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         <strong>
+          152194161:
+         </strong>
+         Your migrated workload container fails when running a cluster with GKE nodes of type "COS". When you run the command
+         <code dir="ltr" translate="no">
+          kubectl logs [podname]
+         </code>
+         , you might see the following:
+        </p>
+        <pre class="lang-sh" dir="ltr" translate="no">apparmor.go:385] Couldn't set label to lxc-container-default - write /proc/1/attr/current: no such file or directory</pre>
+        <p>
+         This is an indication that the required AppArmor profiles are not installed on the GKE nodes. To solve this, run
+         <code dir="ltr" translate="no">
+          migctl setup install --cos-runtime
+         </code>
+         .
+        </p>
+       </div>
+       <div class="release-issue" id="5012b949">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         <strong>
+          148334068:
+         </strong>
+         When Migrating a physical VM from on-premises connected via Migrate for Compute Engine, Migrate for Anthos attempts to optimize network utilization and discards (rather than stream) blocks that are not in use on the source VM file system. In some cases, this might cause VMware storage sessions to time out. For assistance, please contact support.
+        </p>
+       </div>
+       <div class="release-issue" id="b0968282">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         <strong>
+          GKE on-prem preview:
+         </strong>
+         If a source was created with
+         <code dir="ltr" translate="no">
+          migctl source create
+         </code>
+         using the wrong credentials, migrations will fail. Attempts to delete the migration with
+         <code dir="ltr" translate="no">
+          migctl migration delete
+         </code>
+         may hang in a "Terminating" state, as in the following example:
+        </p>
+        <pre class="lang-sh" dir="ltr" translate="no">$ migctl migration list
+NAME       PROCESS              STATE                   STATUS        PROGRESS   AGE
+my-vm-01   generate-artifacts   createSourceSnapshots   TERMINATING   [2/13]</pre>
+       </div>
+       <h2 id="December_19_2019">
+        December 19, 2019
+       </h2>
+       <div class="release-note-product-version-title">
+        v1.0.1
+       </div>
+       <div class="release-fixed" id="4d1f7dea">
+        <strong>
+         FIXED:
+        </strong>
+        <p>
+         When specifying a mixed-case value for the
+         <code dir="ltr" translate="no">
+          clone_vm_disks
+         </code>
+         script's
+         <code dir="ltr" translate="no">
+          -A &lt;var&gt;app-name&lt;/var&gt;
+         </code>
+         argument, the YAML file generated by the script would include a workload name that could not be deployed.
+        </p>
+        <p>
+         The command now checks for a valid input value.
+        </p>
+       </div>
+       <div class="release-fixed" id="4f737c18">
+        <strong>
+         FIXED:
+        </strong>
+        <p>
+         The Migrate for Compute Engine password could be inadvertently logged in Stackdriver Logging.
+        </p>
+       </div>
+       <div class="release-fixed" id="28f1d235">
+        <strong>
+         FIXED:
+        </strong>
+        <p>
+         Migrate for Anthos failed to recognize a reference to a disk specified as a
+         <code dir="ltr" translate="no">
+          PARTUUID
+         </code>
+         in the
+         <code dir="ltr" translate="no">
+          fstab
+         </code>
+         file.
+         <code dir="ltr" translate="no">
+          PARTUUID
+         </code>
+         is now supported.
+        </p>
+       </div>
+       <div class="release-fixed" id="e811f62f">
+        <strong>
+         FIXED:
+        </strong>
+        <p>
+         Deleting a
+         <code dir="ltr" translate="no">
+          StatefulSet
+         </code>
+         attached to a persistent volume would leave the volume in an attached state./p&gt;
+        </p>
+       </div>
+       <div class="release-fixed" id="421260e2">
+        <strong>
+         FIXED:
+        </strong>
+        <p>
+         Using configuration YAML from a version prior to 1.0 caused the pod to enter a crashloop stage.
+        </p>
+        <p>
+         An error message now is now displayed to request that you update to
+         <a href="https://cloud.google.com/migrate/anthos/docs/yaml-reference">
+          the latest definition
+         </a>
+         .
+        </p>
+       </div>
+       <div class="release-fixed" id="c25658b5">
+        <strong>
+         FIXED:
+        </strong>
+        <p>
+         When resolving block devices in a multipath device, the operation appeared to succeed even if there was an error with one of the block devices.
+        </p>
+       </div>
+       <div class="release-fixed" id="a8e7d4cb">
+        <strong>
+         FIXED:
+        </strong>
+        <p>
+         Resolving source storage devices would sometimes fail without error if one of the devices has no partitions.
+        </p>
+       </div>
+       <div class="release-fixed" id="36ab3366">
+        <strong>
+         FIXED:
+        </strong>
+        <p>
+         Using
+         <code dir="ltr" translate="no">
+          kubectl exec
+         </code>
+         on a migration pod would sometimes display superfluous
+         <code dir="ltr" translate="no">
+          bash
+         </code>
+         warnings about
+         <code dir="ltr" translate="no">
+          LC_ALL
+         </code>
+         .
+        </p>
+       </div>
+       <div class="release-fixed" id="fc511167">
+        <strong>
+         FIXED:
+        </strong>
+        <p>
+         Attempting to switch to a non-root user with the
+         <code dir="ltr" translate="no">
+          su
+         </code>
+         command after connecting to the machine with
+         <code dir="ltr" translate="no">
+          ssh
+         </code>
+         would fail when you had previously used
+         <code dir="ltr" translate="no">
+          su
+         </code>
+         to switch to another user.
+        </p>
+       </div>
+       <div class="release-fixed" id="42be59a5">
+        <strong>
+         FIXED:
+        </strong>
+        <p>
+         Migrate for Anthos CSI drive would sometimes fail connecting to the migrated VM.
+        </p>
+       </div>
+       <div class="release-fixed" id="4ed71a41">
+        <strong>
+         FIXED:
+        </strong>
+        <p>
+         The
+         <code dir="ltr" translate="no">
+          kubectl cp
+         </code>
+         command would fail when copying files to the migrated pod.
+        </p>
+       </div>
+       <h2 id="November_13_2019">
+        November 13, 2019
+       </h2>
+       <div class="release-note-product-version-title">
+        v1.0.0
+       </div>
+       <div class="release-feature" id="d5f84c10">
+        <strong>
+         FEATURE:
+        </strong>
+        <p>
+         Migrate for Anthos supports migrating existing VMware, Amazon EC2, Azure, and Compute Engine VMs to containers on Google Kubernetes Engine. For more information, see
+         <a href="https://cloud.google.com/migrate/anthos/docs/anthos-migrate-benefits">
+          Benefits of Migrate for Anthos
+         </a>
+         .
+        </p>
+       </div>
+       <div class="release-feature" id="bcfb8076">
+        <strong>
+         FEATURE:
+        </strong>
+        <p>
+         You can monitor export of short-term storage to a persistent volume using
+         <code dir="ltr" translate="no">
+          kubectl
+         </code>
+         . For more information, see
+         <a href="https://cloud.google.com/migrate/anthos/docs/export-storage">
+          Exporting streaming PVs to permanent storage
+         </a>
+         .
+        </p>
+       </div>
+       <div class="release-feature" id="62cdd81b">
+        <strong>
+         FEATURE:
+        </strong>
+        <p>
+         Using a
+         <code dir="ltr" translate="no">
+          ConfigMap
+         </code>
+         , you can have content from application log files you specify written to Stackdriver Logging (a default list is included). For more, see
+         <a href="https://cloud.google.com/migrate/anthos/docs/configuring-stackdriver-logging">
+          Configuring logging to Stackdriver Logging
+         </a>
+         .
+        </p>
+       </div>
+       <div class="release-feature" id="74563fd4">
+        <strong>
+         FEATURE:
+        </strong>
+        <p>
+         For information on operating systems supported by Migrate for Anthos, see
+         <a href="https://cloud.google.com/migrate/anthos/docs/compatible-os-versions">
+          Compatible VM operating systems
+         </a>
+         .
+        </p>
+       </div>
+       <div class="release-issue" id="0b2d81d2">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         On the Migrate for Compute Engine portlet in VMWare vCenter, VMs will be shown as Managed by Migrate for Compute Engine during migration process. Only the cache and storage migration status are updated in this view. Other functionality, such as Migrate for Compute Engine actions, may not be functional.
+        </p>
+       </div>
+       <div class="release-issue" id="561981f3">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         For known issues and workarounds, see
+         <a href="https://cloud.google.com/migrate/anthos/docs/troubleshooting">
+          Troubleshooting Migrate for Anthos
+         </a>
+         .
+        </p>
+       </div>
+       <div class="release-issue" id="60a8bc94">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         VMs using EFI configurations are not compatible for migration with this release.
+        </p>
+       </div>
+       <div class="release-issue" id="b9dae1a0">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         Operating systems running
+         <code dir="ltr" translate="no">
+          systemd
+         </code>
+         versions lower than 234 are limited to 65536 open files.
+        </p>
+       </div>
+       <div class="release-issue" id="47a19f85">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         When using a private GKE cluster, the GKE master might be unable to reach Migrate for Anthos infrastructure (specifically, the admission-controller) by default. This is because the admission-controller pod listens on port 7000.
+        </p>
+        <p>
+         To work around this issue, add port 7000 to the firewall rules of the master node. For more, see
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#add_firewall_rules">
+          Creating a private cluster
+         </a>
+         .
+        </p>
+       </div>
+       <div class="release-issue" id="f5d81d03">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         When specifying a mixed-case value for the
+         <code dir="ltr" translate="no">
+          clone_vm_disks
+         </code>
+         script's
+         <code dir="ltr" translate="no">
+          -A &lt;var&gt;app-name&lt;/var&gt;
+         </code>
+         argument, the YAML file generated by the script includes a workload name that can not be deployed.
+        </p>
+        <p>
+         To work around this issue, specify the argument's value in lowercase only.
+        </p>
+       </div>
+       <div class="release-issue" id="07884fc8">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         The Migrate for Compute Engine password can be inadvertently logged in Stackdriver Logging.
+        </p>
+       </div>
+       <div class="release-issue" id="af3f248f">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         Migrate for Anthos fails to recognize a reference to a disk specified as a
+         <code dir="ltr" translate="no">
+          PARTUUID
+         </code>
+         in the
+         <code dir="ltr" translate="no">
+          fstab
+         </code>
+         file.
+        </p>
+       </div>
+       <div class="release-issue" id="08bd8ebf">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         Deleting a StatefulSet attached to a persistent volume will leave the volume in an attached state.
+        </p>
+       </div>
+       <div class="release-issue" id="54db8365">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         Using configuration YAML from a version prior to 1.0 causes the pod to enter a crashloop stage.
+        </p>
+        <p>
+         To work around this, update your YAML file to conform to
+         <a href="https://cloud.google.com/migrate/anthos/docs/yaml-reference">
+          the latest definition
+         </a>
+         .
+        </p>
+       </div>
+       <div class="release-issue" id="32ab00f1">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         When resolving block devices in a multipath device, the operation appears to succeed even if there was an error with one of the block devices.
+        </p>
+       </div>
+       <div class="release-issue" id="94c7f3d8">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         Resolving source storage devices would sometimes fail without error if one of the devices has no partitions.
+        </p>
+       </div>
+       <div class="release-issue" id="74292457">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         Using
+         <code dir="ltr" translate="no">
+          kubectl exec
+         </code>
+         on a migration pod sometimes displays superfluous
+         <code dir="ltr" translate="no">
+          bash
+         </code>
+         warnings about
+         <code dir="ltr" translate="no">
+          LC_ALL
+         </code>
+         . These are only cosmetic.
+        </p>
+       </div>
+       <div class="release-issue" id="80f0bba9">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         Attempting to switch to a non-root user with the
+         <code dir="ltr" translate="no">
+          su
+         </code>
+         command after connecting to the machine with
+         <code dir="ltr" translate="no">
+          ssh
+         </code>
+         fails when you have previously used
+         <code dir="ltr" translate="no">
+          su
+         </code>
+         to switch to another user.
+        </p>
+        <p>
+         To work around this issue, use
+         <code dir="ltr" translate="no">
+          kubectl exec
+         </code>
+         instead of
+         <code dir="ltr" translate="no">
+          ssh
+         </code>
+         to get a shell to the container.
+        </p>
+       </div>
+       <div class="release-issue" id="c749946e">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         Migrate for Anthos CSI drive may sometimes fail connecting to the migrated VM.
+        </p>
+       </div>
+       <div class="release-issue" id="48245b1f">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         The
+         <code dir="ltr" translate="no">
+          kubectl cp
+         </code>
+         command fails when copying files to the migrated pod.
+        </p>
+       </div>
+      </section>
+     </body>
+    </html>
+   </section>
+  </div>
+ </article>
+</article>
