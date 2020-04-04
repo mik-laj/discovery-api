@@ -19,6 +19,14 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/automl-tables-release-notes.xml
 `
 
+##  April 03, 2020
+
+**CHANGED:**
+
+Integration with [ VPC Service Controls ](https://cloud.google.com/vpc-
+service-controls/docs/overview) is now in [ beta stage
+](https://cloud.google.com/products/#product-launch-stages) .
+
 ##  November 21, 2019
 
 **FEATURE:**
