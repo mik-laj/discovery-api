@@ -10,6 +10,13 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/configconnector-release-
 notes.xml `
 
+##  April 02, 2020
+
+**FIXED:**
+
+Fixed the [ ComputeInstance idempotency issue
+](https://github.com/GoogleCloudPlatform/k8s-config-connector/issues/103)
+
 ##  March 25, 2020
 
 **FEATURE:**
