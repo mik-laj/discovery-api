@@ -85,7 +85,7 @@ The Cryptographic Requests quota has been increased from 600 QPM to 60,000
 QPM. If you use quotas to determine how much you are billed, this change could
 increase the amount you end up spending on your Cloud KMS.
 
-If you require a smaller quota than 60,000 QPM, or you don’t need a quota
+If you require a smaller quota than 60,000 QPM, or you don't need a quota
 increase, go to the [ Cloud Console Quotas page
 ](https://console.cloud.google.com/iam-
 admin/quotas?service=cloudkms.googleapis.com) and set a new value for
