@@ -805,7 +805,7 @@ Version 1.9.25
 
 **FEATURE:**
 
-  * Failed tasks in queues configured with a ‘retry_limit’ of zero will no longer be retried. 
+  * Failed tasks in queues configured with a ` retry_limit ` of zero will no longer be retried. 
 
 **FEATURE:**
 
