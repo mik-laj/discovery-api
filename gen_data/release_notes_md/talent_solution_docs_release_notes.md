@@ -27,7 +27,7 @@ provides visual data to give you more insight into:
 
   1. How your job seekers are engaging with Job Search, by showing see top queries and locations by domain. 
   2. Whether Job Search is properly configured for your application, by showing inconsistencies in your search API integration. 
-  3. Whether your client events are properly configured, by showing client events that you can correct or improve to take full advantage of Job Search’s machine learning capabilities. 
+  3. Whether your client events are properly configured, by showing client events that you can correct or improve to take full advantage of Job Search's machine learning capabilities. 
 
 ##  December 03, 2019
 
