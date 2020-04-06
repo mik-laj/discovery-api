@@ -76,6 +76,20 @@ As of this date, Cloud Talent Solution Job Search v2 is no longer available.
 Calls to v2 will result in error. The deprecation of v2 was first communicated
 in August 2018.
 
+**Dataproc**
+
+**FEATURE:**
+
+Added Presto and SparkR job type support to [ Dataproc Workflows
+](https://cloud.google.com/dataproc/docs/concepts/workflows/overview) .
+
+**FIXED:**
+
+Fixed an [ Auto Zone Placement
+](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-
+zone) bug that incorrectly returned ` INVALID_ARGUMENT ` errors as ` INTERNAL
+` errors, and didn't propagate these error messages to the user.
+
 **VPC Service Controls**
 
 **FEATURE:**
