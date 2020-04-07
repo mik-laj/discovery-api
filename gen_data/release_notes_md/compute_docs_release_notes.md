@@ -12,6 +12,18 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/compute-engine-release-
 notes.xml `
 
+##  April 06, 2020
+
+  * C2 machine types are now available in the following [ regions and zones ](/compute/docs/regions-zones#available) : 
+
+    * Ashburn, Northern Virginia, USA ` us-east4-b,c `
+  * N2 machine types are now available in the following [ regions and zones ](/compute/docs/regions-zones#available) : 
+
+    * The Dalles, Oregon, USA ` us-west1-b `
+    * Ashburn, Northern Virginia, USA ` us-east4-a `
+    * St. Ghislain, Belgium ` europe-west1-d `
+  * [ N2D machine types ](/compute/docs/machine-types#n2d_machine_types) are now **Generally Available** . 
+
 ##  April 01, 2020
 
   * You can now define where your VM instances are located relative to each other on the underlying host systems in a Google datacenter. Create a placement policy to locate VM instances close to each other for low latency, or create a policy to spread VM instances out so that they do not share the same infrastructure. See [ Defining instance location within a zone ](/compute/docs/instances/define-instance-placement) to learn more. 
