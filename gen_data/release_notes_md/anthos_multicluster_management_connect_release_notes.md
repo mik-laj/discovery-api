@@ -8,7 +8,7 @@ bug fixes, known issues, and deprecated functionality.
 
 **CHANGED:**
 
-Connect is Generally Available.
+Connect for Anthos is Generally Available.
 
 **CHANGED:**
 
