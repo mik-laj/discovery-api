@@ -24,7 +24,7 @@ Cloud AutoML Video Intelligence Classification Beta has been released.
 
 **ISSUE:**
 
-Microsoft Edge and Microsoft Internet Explorer do not support all features of
-AutoML Video Classification. If you encounter problems, try Google Chrome,
+Microsoft Internet Explorer and Microsoft Edge do not support all features of
+AutoML Video Classification. If you encounter any problems, try Google Chrome,
 Safari, or Firefox.
 
