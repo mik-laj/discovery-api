@@ -9,6 +9,12 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/composer-release-notes.xml `
 
+##  April 05, 2020
+
+**FEATURE:**
+
+Cloud Composer is now available in Salt Lake City ( ` us-west3 ` ).
+
 ##  March 31, 2020
 
 **FEATURE:**
