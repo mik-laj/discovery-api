@@ -12,6 +12,16 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/aiplatform-release-notes.xml `
 
+##  April 06, 2020
+
+**AI Platform Training**
+
+**FIXED:**
+
+[ Runtime version 2.1 ](https://cloud.google.com/ai-
+platform/training/docs/runtime-version-list) now includes scikit-learn 0.22.1
+instead of scikit-learn 0.22.
+
 ##  April 03, 2020
 
 **AI Platform Training**
