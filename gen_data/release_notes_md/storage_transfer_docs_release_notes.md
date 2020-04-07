@@ -10,6 +10,21 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/storagetransfer-release-
 notes.xml `
 
+##  March 31, 2020
+
+**FEATURE:**
+
+[ Beta stage ](https://cloud.google.com/products/#product-launch-stages)
+integration with [ VPC Service Controls ](https://cloud.google.com/vpc-
+service-controls/docs/overview)
+
+**FEATURE:**
+
+Transfer service on-premises: [ Beta stage
+](https://cloud.google.com/products/#product-launch-stages) integration with [
+VPC Service Controls ](https://cloud.google.com/vpc-service-
+controls/docs/overview)
+
 ##  March 23, 2020
 
 **FEATURE:**
