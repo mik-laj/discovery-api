@@ -1,11 +1,5 @@
 #  Release notes
 
-**Beta**
-
-This product or feature is in a pre-release state and might change or have
-limited support. For more information, see the [ product launch stages
-](/products#product-launch-stages) .
-
 This page documents production updates to Cloud Healthcare API. Check this
 page for announcements about new or updated features, bug fixes, known issues,
 and deprecated functionality.
@@ -15,6 +9,30 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/cloud-healthcare-release-
 notes.xml `
+
+##  April 07, 2020
+
+**FEATURE:**
+
+It is now possible to export resource changes to BigQuery each time a FHIR
+resource is created, updated, patched, or deleted in a FHIR store, using the
+new field for a store, [ ` streamConfigs `
+](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.fhirStores#FhirStore.FIELDS.stream_configs)
+.
+
+**FEATURE:**
+
+You can now configure the HL7v2 store with multiple Pub/Sub topics and use
+filters to send notifications to different Pub/Sub topics.
+
+**FEATURE:**
+
+**General availability release** Cloud Healthcare API is generally available
+with release version v1.
+
+For information on the differences between the v1beta1 release and the v1
+release, see [ Transitioning to the v1 API
+](https://cloud.google.com/healthcare/docs/how-tos/transition-guide) .
 
 ##  February 13, 2020
 
