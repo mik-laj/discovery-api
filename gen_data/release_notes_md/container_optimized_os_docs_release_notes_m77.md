@@ -12,6 +12,13 @@ Docker  |  v19.03.1
   
 ##  Changelog
 
+###  cos-77-12371-227-0
+
+_Date: Apr 05, 2020_
+
+  * Upgraded the Linux kernel to v4.19.112. 
+  * Backported systemd patch ba0d56f55 to address an issue that resulted in leaked mount units. 
+
 ###  cos-77-12371-208-0
 
 _Date: Mar 17, 2020_
