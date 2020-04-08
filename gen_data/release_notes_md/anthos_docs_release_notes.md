@@ -18,6 +18,7 @@ URL directly: ` https://cloud.google.com/feeds/anthos-release-notes.xml `
 ###  Release notes for updated Anthos components
 
   * [ Anthos GKE on-prem release notes ](https://cloud.google.com/anthos/gke/docs/on-prem/release-notes)
+  * [ Anthos Config Management release notes ](https://cloud.google.com/anthos-config-management/docs/release-notes)
 
 ##  February 21, 2020
 
