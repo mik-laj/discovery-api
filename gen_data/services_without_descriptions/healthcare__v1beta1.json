@@ -3072,6 +3072,9 @@
         "FhirStore": {
             "id": "FhirStore",
             "properties": {
+                "defaultSearchHandlingStrict": {
+                    "type": "boolean"
+                },
                 "disableReferentialIntegrity": {
                     "type": "boolean"
                 },
@@ -3106,6 +3109,29 @@
                         "STU3",
                         "R4"
                     ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Field": {
+            "id": "Field",
+            "properties": {
+                "maxOccurs": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "minOccurs": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "table": {
+                    "type": "string"
+                },
+                "type": {
                     "type": "string"
                 }
             },
@@ -3286,6 +3312,54 @@
                 "inputSize": {
                     "format": "int64",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GroupOrSegment": {
+            "id": "GroupOrSegment",
+            "properties": {
+                "group": {
+                    "$ref": "SchemaGroup"
+                },
+                "segment": {
+                    "$ref": "SchemaSegment"
+                }
+            },
+            "type": "object"
+        },
+        "Hl7SchemaConfig": {
+            "id": "Hl7SchemaConfig",
+            "properties": {
+                "messageSchemaConfigs": {
+                    "additionalProperties": {
+                        "$ref": "SchemaGroup"
+                    },
+                    "type": "object"
+                },
+                "version": {
+                    "items": {
+                        "$ref": "VersionSource"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Hl7TypesConfig": {
+            "id": "Hl7TypesConfig",
+            "properties": {
+                "type": {
+                    "items": {
+                        "$ref": "Type"
+                    },
+                    "type": "array"
+                },
+                "version": {
+                    "items": {
+                        "$ref": "VersionSource"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -3627,6 +3701,9 @@
                     },
                     "type": "array"
                 },
+                "schematizedData": {
+                    "$ref": "SchematizedData"
+                },
                 "sendFacility": {
                     "type": "string"
                 },
@@ -3716,6 +3793,9 @@
             "properties": {
                 "allowNullHeader": {
                     "type": "boolean"
+                },
+                "schema": {
+                    "$ref": "SchemaPackage"
                 },
                 "segmentTerminator": {
                     "format": "byte",
@@ -3815,6 +3895,90 @@
                         "LOSSLESS",
                         "ANALYTICS"
                     ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SchemaGroup": {
+            "id": "SchemaGroup",
+            "properties": {
+                "choice": {
+                    "type": "boolean"
+                },
+                "maxOccurs": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "members": {
+                    "items": {
+                        "$ref": "GroupOrSegment"
+                    },
+                    "type": "array"
+                },
+                "minOccurs": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SchemaPackage": {
+            "id": "SchemaPackage",
+            "properties": {
+                "ignoreMinOccurs": {
+                    "type": "boolean"
+                },
+                "schemas": {
+                    "items": {
+                        "$ref": "Hl7SchemaConfig"
+                    },
+                    "type": "array"
+                },
+                "schematizedParsingType": {
+                    "enum": [
+                        "SCHEMATIZED_PARSING_TYPE_UNSPECIFIED",
+                        "SOFT_FAIL",
+                        "HARD_FAIL"
+                    ],
+                    "type": "string"
+                },
+                "types": {
+                    "items": {
+                        "$ref": "Hl7TypesConfig"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SchemaSegment": {
+            "id": "SchemaSegment",
+            "properties": {
+                "maxOccurs": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "minOccurs": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SchematizedData": {
+            "id": "SchematizedData",
+            "properties": {
+                "data": {
+                    "type": "string"
+                },
+                "error": {
                     "type": "string"
                 }
             },
@@ -3941,6 +4105,42 @@
                         "$ref": "InfoTypeTransformation"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Type": {
+            "id": "Type",
+            "properties": {
+                "fields": {
+                    "items": {
+                        "$ref": "Field"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "primitive": {
+                    "enum": [
+                        "PRIMITIVE_UNSPECIFIED",
+                        "STRING",
+                        "VARIES",
+                        "UNESCAPED_STRING"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "VersionSource": {
+            "id": "VersionSource",
+            "properties": {
+                "mshField": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
                 }
             },
             "type": "object"
