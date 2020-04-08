@@ -4,6 +4,37 @@ The following release notes cover the most recent changes over the last 30
 days. For a comprehensive list, see the [ individual product release note
 pages ](/release-notes/all) .
 
+##  April 06, 2020
+
+**AI Platform Training**
+
+**FIXED:**
+
+[ Runtime version 2.1 ](https://cloud.google.com/ai-
+platform/training/docs/runtime-version-list) now includes scikit-learn 0.22.1
+instead of scikit-learn 0.22.
+
+**Cloud Bigtable**
+
+**FEATURE:**
+
+Key Visualizer for Cloud Bigtable is now integrated into the [ Google Cloud
+Console ](https://console.cloud.google.com) . The following enhancements have
+been added:
+
+  * Eligibility has been simplified to a minimum of 30 GB of data per table. 
+  * You can now specify the start and end time for a scan. 
+  * Performance data is now more recent. 
+  * Your performance data is retained for 14 days. 
+
+##  April 05, 2020
+
+**Cloud Composer**
+
+**FEATURE:**
+
+Cloud Composer is now available in Salt Lake City ( ` us-west3 ` ).
+
 ##  April 03, 2020
 
 **AI Platform Training**
@@ -261,6 +292,21 @@ should use the ` WebhookResponse.fulfillment_mesages[].payload ` field.
 [ Google Cloud Armor ](https://cloud.google.com/armor) [ integration with
 Cloud Security Command Center ](https://cloud.google.com/armor/docs/cscc-
 findings) is generally available.
+
+**Storage Transfer Service**
+
+**FEATURE:**
+
+[ Beta stage ](https://cloud.google.com/products/#product-launch-stages)
+integration with [ VPC Service Controls ](https://cloud.google.com/vpc-
+service-controls/docs/overview)
+
+**FEATURE:**
+
+Transfer service on-premises: [ Beta stage
+](https://cloud.google.com/products/#product-launch-stages) integration with [
+VPC Service Controls ](https://cloud.google.com/vpc-service-
+controls/docs/overview)
 
 **VPC Service Controls**
 
@@ -1736,115 +1782,4 @@ controls) for Managed Microsoft AD to provide additional security.
 support for:
 
   * [ Managed Service for Microsoft Active Directory ](https://cloud.google.com/managed-microsoft-ad/docs)
-
-##  March 09, 2020
-
-**AI Platform Prediction**
-
-**FEATURE:**
-
-[ Runtime version 2.1 ](https://cloud.google.com/ai-
-platform/prediction/docs/runtime-version-list) for AI Platform Prediction is
-now available.
-
-Runtime version 2.1 is the first runtime version to support TensorFlow 2 for
-online and batch prediction. Specifically, this runtime version includes
-TensorFlow 2.1.0. Review the updated [ guide to exporting TensorFlow
-SavedModels for use with AI Platform Prediction ](https://cloud.google.com/ai-
-platform/prediction/docs/exporting-savedmodel-for-prediction) for details
-about exporting compatible models by using TensorFlow 2 APIs, like Keras.
-
-When you use runtime version 2.1 for online prediction, you can currently only
-deploy TensorFlow model versions. You cannot deploy scikit-learn, XGBoost, or
-custom prediction routine artifacts for online prediction with runtime version
-2.1. For the time being, continue to use runtime version 1.15 to serve
-predictions from these types of models.
-
-Runtime version 2.1 is also the first runtime version _not_ to support Python
-2.7. The Python Software Foundation ended support for Python 2.7 on January 1,
-2020. No AI Platform runtime versions released after January 1, 2020 support
-Python 2.7.
-
-**ISSUE:**
-
-If you deploy a model version for online prediction that uses [ runtime
-version 2.1 ](https://cloud.google.com/ai-platform/prediction/docs/runtime-
-version-list) with a [ GPU ](https://cloud.google.com/ai-
-platform/prediction/docs/machine-types-online-prediction#gpus) , AI Platform
-Prediction uses TensorFlow 2.0.0 (instead of TensorFlow 2.1.0) to serve
-predictions. This is a known issue, and the release notes will be updated when
-online prediction with GPUs supports TensorFlow 2.1.0.
-
-**AI Platform Training**
-
-**FEATURE:**
-
-[ Runtime version 2.1 ](https://cloud.google.com/ai-
-platform/training/docs/runtime-version-list) for AI Platform Training is now
-available.
-
-Runtime version 2.1 is the first runtime version to support TensorFlow 2.
-Specifically, this runtime version includes TensorFlow 2.1.0. Read the new [
-Training with TensorFlow 2 guide ](https://cloud.google.com/ai-
-platform/training/docs/tensorflow-2) to learn about important differences to
-consider when using AI Platform Training with TensorFlow 2, compared to
-TensorFlow 1.
-
-Runtime version 2.1 is also the first runtime version _not_ to support Python
-2.7. The Python Software Foundation ended support for Python 2.7 on January 1,
-2020. No AI Platform runtime versions released after January 1, 2020 support
-Python 2.7.
-
-Runtime version 2.1 also updates many other dependencies; see the [ runtime
-version list ](https://cloud.google.com/ai-platform/training/docs/runtime-
-version-list) for more details.
-
-**ISSUE:**
-
-[ Runtime version 2.1 ](https://cloud.google.com/ai-
-platform/training/docs/runtime-version-list) includes scikit-learn 0.22 rather
-than 0.22.1. This is a known issue, and the release notes will be updated when
-runtime version 2.1 includes scikit-learn 0.22.1.
-
-**FEATURE:**
-
-When you train with runtime version 2.1 or later, AI Platform Training uses
-the ` chief ` task name to represent the master VM in the [ ` TF_CONFIG `
-environment variable ](https://cloud.google.com/ai-
-platform/training/docs/distributed-training-details#chief-versus-master/) .
-This environment variable is important for distributed training with
-TensorFlow. For runtime version 1.15 and earlier, AI Platform Training uses
-the ` master ` task name instead, but this task name is not supported in
-TensorFlow 2.
-
-However, by default, AI Platform Training continues to use the ` master ` task
-name in [ custom container training jobs ](https://cloud.google.com/ai-
-platform/training/docs/distributed-training-containers) . If you are
-performing multi-worker distributed training with TensorFlow 2 in a custom
-container, set the new [ ` trainingInput.useChiefInTfConfig `
-](https://cloud.google.com/ai-
-platform/training/docs/reference/rest/v1/projects.jobs#traininginput) field to
-` true ` when you create a custom container training job in order to use the `
-chief ` task name.
-
-[ Learn more about this change. ](https://cloud.google.com/ai-
-platform/training/docs/distributed-training-details#chief-versus-master)
-
-**Cloud Composer**
-
-**FEATURE:**
-
-You can now control access to the Airflow web server, either allowing access
-from any IP address (default), or specifying which IP ranges have access. For
-details, see [ Creating environments
-](https://cloud.google.com/composer/docs/how-
-to/managing/creating#creating_a_new_environment) .
-
-**Storage Transfer Service**
-
-**FEATURE:**
-
-Storage Transfer Service supports [ custom job IDs
-](https://cloud.google.com/storage-
-transfer/docs/reference/rest/v1/transferJobs#TransferJob.FIELDS.name) .
 
