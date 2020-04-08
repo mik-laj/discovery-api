@@ -12,6 +12,13 @@ Docker  |  v18.09.7
   
 ##  Changelog
 
+###  cos-73-11647-501-0
+
+_Date: Apr 05, 2020_
+
+  * Upgraded the Linux kernel to v4.14.174. 
+  * Backported systemd patch ba0d56f55 to address an issue that resulted in leaked mount units. 
+
 ###  cos-73-11647-459-0
 
 _Date: Feb 21, 2020_
@@ -108,7 +115,7 @@ _Date: May 28, 2019_
   * Upgraded containerd to version 1.2.6. 
   * Set OOM score to -999 for docker.service and containerd.service to enhance the reliability of core system daemons. 
   * Add restart policy in containerd.service, and corrected docker.service's dependency on containerd.service to allow containerd to recover from crashes. 
-  * Backport affinity changes to support napi-tx in COS. 
+  * Backported affinity changes to support napi-tx in COS. 
   * Cherry-picked upstream patch https://patchwork.kernel.org/patch/10951403/ in kernel to fix a bug in lockd introduced by commit 01b79d20008d "lockd: Show pid of lockd for remote locks" in Linux kernel v4.14.105. 
   * Rotated keys used by UEFI Secure Boot for signing and verifying the UEFI boot path. 
 
