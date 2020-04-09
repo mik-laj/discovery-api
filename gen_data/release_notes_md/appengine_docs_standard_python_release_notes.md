@@ -9,6 +9,12 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gaestd-py-release-notes.xml `
 
+##  April 08, 2020
+
+**CHANGED:**
+
+Updated Python SDK to version 1.9.90
+
 ##  March 25, 2020
 
 **CHANGED:**
