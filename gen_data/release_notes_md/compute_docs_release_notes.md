@@ -12,6 +12,10 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/compute-engine-release-
 notes.xml `
 
+##  April 08, 2020
+
+  * You can identify idle persistent disk resources by using [ idle persistent disk recommendations ](/compute/docs/disks/viewing-and-applying-idle-pd-recommendations) . Following these recommendations will help reduce unused resources and reduce your compute bill. This feature is in **Beta** . 
+
 ##  April 06, 2020
 
   * C2 machine types are now available in the following [ regions and zones ](/compute/docs/regions-zones#available) : 
