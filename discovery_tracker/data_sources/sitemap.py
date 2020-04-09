@@ -13,6 +13,9 @@ def parse_sitemap(url):
     if request.status_code != 200:
         raise SitemapParseException("Status code != 200 for url=%s" % url)
 
+    if not request.content:
+        raise SitemapParseException("Empty response")
+
     main_sitemap_doc = xmltodict.parse(request.content)
 
     if 'sitemapindex' in main_sitemap_doc:
