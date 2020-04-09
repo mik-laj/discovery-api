@@ -4,6 +4,11 @@ The following release notes cover the most recent changes over the last 30
 days. For a comprehensive list, see the [ individual product release note
 pages ](/release-notes/all) .
 
+To get the latest product updates delivered to you, add the URL of this page
+to your [ feed reader
+](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
+URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
+
 ##  April 06, 2020
 
 **AI Platform Training**
@@ -1693,93 +1698,4 @@ Support for [ ` us-west3 ` (Salt Lake City) and ` asia-northeast3 ` (Seoul)
 
 [ Secret Manager ](https://cloud.google.com/secret-manager/) is generally
 available.
-
-##  March 10, 2020
-
-**Cloud Logging**
-
-**FEATURE:**
-
-Logs Viewer (Preview) now contains a histogram panel. The histogram panel lets
-you visualize your logs data to more easily spot patterns and troubleshoot
-issues. For more information, see [ Using Logs Viewer (Preview)
-](https://cloud.google.com/logging/docs/view/logs-viewer-interface) .
-
-**Config Connector**
-
-**FEATURE:**
-
-ComputeHealthCheck's location field now supports supplying a region
-
-**FIXED:**
-
-Fixed an issue with deleting StorageBucketAccessControl when the
-ServiceAccount did not exist:
-https://github.com/GoogleCloudPlatform/k8s-config-connector/issues/39
-
-**CHANGED:**
-
-With the exception of role-bindings, moved all system components for
-namespaced mode into the cnrm-system, note: you must completely uninstall and
-reinstall to upgrade namespaced mode completely for this release.
-
-**FEATURE:**
-
-Added a version annotation to the Config Connector manifests
-
-**Dataproc**
-
-**CHANGED:**
-
-Added the following flags to ` gcloud dataproc clusters create ` and ` gcloud
-dataproc workflow-templates set-managed-cluster ` commands:
-
-  * ` --num-secondary-workers `
-  * ` --num-secondary-worker-local-ssds `
-  * ` --secondary-worker-boot-disk-size `
-  * ` --secondary-worker-boot-disk-type `
-  * ` --secondary-worker-accelerator `
-
-**DEPRECATED:**
-
-The following flags to ` gcloud dataproc clusters create ` and ` gcloud
-dataproc workflow-templates set-managed-cluster ` commands have been
-deprecated:
-
-  * ` --num-preemptible-workers `
-  * ` --num-preemptible-worker-local-ssds `
-  * ` --preemptible-worker-boot-disk-size `
-  * ` --preemptible-worker-boot-disk-type `
-  * ` --preemptible-worker-accelerator `
-
-See the related change, above, for the new flags to use in place of these
-deprecated flags.
-
-**Dialogflow**
-
-**CHANGED:**
-
-Event names are now [ limited to 150 characters
-](https://cloud.google.com/dialogflow/quotas#length_limits) .
-
-**Managed Service for Microsoft Active Directory**
-
-**FEATURE:**
-
-[ VPC Service Controls ](https://cloud.google.com/vpc-service-
-controls/docs/overview) integration is now in [ beta
-](https://cloud.google.com/products/#product-launch-stages) .
-
-Learn more about [ configuring VPC Service Controls
-](https://cloud.google.com/managed-microsoft-ad/docs/how-to-use-vpc-service-
-controls) for Managed Microsoft AD to provide additional security.
-
-**VPC Service Controls**
-
-**FEATURE:**
-
-[ Beta stage ](https://cloud.google.com/products/#product-launch-stages)
-support for:
-
-  * [ Managed Service for Microsoft Active Directory ](https://cloud.google.com/managed-microsoft-ad/docs)
 
