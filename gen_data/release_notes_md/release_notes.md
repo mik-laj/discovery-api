@@ -9,6 +9,29 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  April 08, 2020
+
+**App Engine standard environment Python**
+
+**CHANGED:**
+
+Updated Python SDK to version 1.9.90
+
+##  April 07, 2020
+
+**Dataflow**
+
+**FEATURE:**
+
+Dataflow now [ supports
+](https://cloud.google.com/dataflow/pricing#pricing_details) Dataflow Shuffle,
+Streaming Engine, FlexRS, and the following [ regional endpoints
+](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) in GA:
+
+  * ` us-east4 ` (Northern Virginia) 
+  * ` europe-west2 ` (London) 
+  * ` europe-west3 ` (Frankfurt) 
+
 ##  April 06, 2020
 
 **AI Platform Training**
@@ -902,7 +925,7 @@ more details, see [ Supported versions
 
 [ Anthos ](https://cloud.google.com/anthos) 1.3.0 is now available.
 
-###  Release notes for updated Anthos components
+**Updated components:**
 
   * [ Anthos GKE on-prem release notes ](https://cloud.google.com/anthos/gke/docs/on-prem/release-notes)
   * [ Anthos Config Management release notes ](https://cloud.google.com/anthos-config-management/docs/release-notes)
@@ -1668,34 +1691,4 @@ information on installing this version of the agent.
 [ Support for custom entries ](https://cloud.google.com/data-catalog/docs/how-
 to/custom-entries) is now in beta. This feature lets you ingest metadata of
 any type, so it can be tagged and searched in Data Catalog.
-
-##  March 11, 2020
-
-**BigQuery Data Transfer Service**
-
-**CHANGED:**
-
-BigQuery Data Transfer Service now supports the [ Zürich region
-](https://cloud.google.com/bigquery-transfer/docs/locations#locations) .
-
-**Datastore**
-
-**FEATURE:**
-
-Support for [ ` us-west3 ` (Salt Lake City) and ` asia-northeast3 ` (Seoul)
-](https://cloud.google.com/datastore/docs/locations) .
-
-**Firestore**
-
-**FEATURE:**
-
-Support for [ ` us-west3 ` (Salt Lake City) and ` asia-northeast3 ` (Seoul)
-](https://cloud.google.com/firestore/docs/locations) .
-
-**Secret Manager**
-
-**FEATURE:**
-
-[ Secret Manager ](https://cloud.google.com/secret-manager/) is generally
-available.
 
