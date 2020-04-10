@@ -43,6 +43,14 @@ support for the following integrations:
   * [ AutoML Vision ](https://cloud.google.com/vision/automl/docs)
   * [ Artifact Registry ](https://cloud.google.com/artifacts/docs)
 
+##  March 24, 2020
+
+**FEATURE:**
+
+General availability for the following integration:
+
+  * [ Cloud Functions ](https://cloud.google.com/vpc-service-controls/docs/supported-products#table_functions)
+
 ##  March 10, 2020
 
 **FEATURE:**
