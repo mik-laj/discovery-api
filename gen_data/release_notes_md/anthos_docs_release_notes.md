@@ -15,7 +15,7 @@ URL directly: ` https://cloud.google.com/feeds/anthos-release-notes.xml `
 
 [ Anthos ](https://cloud.google.com/anthos) 1.3.0 is now available.
 
-###  Release notes for updated Anthos components
+**Updated components:**
 
   * [ Anthos GKE on-prem release notes ](https://cloud.google.com/anthos/gke/docs/on-prem/release-notes)
   * [ Anthos Config Management release notes ](https://cloud.google.com/anthos-config-management/docs/release-notes)
@@ -26,7 +26,7 @@ URL directly: ` https://cloud.google.com/feeds/anthos-release-notes.xml `
 
 [ Anthos ](https://cloud.google.com/anthos) 1.2.2 is now available.
 
-###  Release notes for updated Anthos components
+**Updated components:**
 
   * [ Anthos GKE deployed on-prem release notes ](https://cloud.google.com/anthos/gke/docs/on-prem/release-notes)
 
@@ -36,7 +36,7 @@ URL directly: ` https://cloud.google.com/feeds/anthos-release-notes.xml `
 
 [ Anthos ](https://cloud.google.com/anthos) 1.2.1 is now available.
 
-###  Release notes for updated Anthos components
+**Updated components:**
 
   * [ GKE On-Prem release notes ](https://cloud.google.com/gke-on-prem/docs/release-notes)
 
@@ -46,7 +46,7 @@ URL directly: ` https://cloud.google.com/feeds/anthos-release-notes.xml `
 
 [ Anthos ](https://cloud.google.com/anthos) 1.2 is now available.
 
-###  Release notes for updated Anthos components
+**Updated components:**
 
   * [ Google Kubernetes Engine release notes ](https://cloud.google.com/kubernetes-engine/docs/release-notes)
   * [ GKE On-Prem release notes ](https://cloud.google.com/gke-on-prem/docs/release-notes)
@@ -63,7 +63,7 @@ URL directly: ` https://cloud.google.com/feeds/anthos-release-notes.xml `
 
 [ Anthos ](https://cloud.google.com/anthos) 1.1.2 is now available.
 
-###  Release notes for updated Anthos components
+**Updated components:**
 
   * [ Google Kubernetes Engine release notes ](https://cloud.google.com/kubernetes-engine/docs/release-notes)
   * [ GKE On-Prem release notes ](https://cloud.google.com/gke-on-prem/docs/release-notes)
@@ -82,7 +82,7 @@ URL directly: ` https://cloud.google.com/feeds/anthos-release-notes.xml `
 
 [ Anthos ](https://cloud.google.com/anthos) 1.1.1 is now available.
 
-###  Release notes for updated Anthos components
+**Updated components:**
 
   * [ Google Kubernetes Engine release notes ](https://cloud.google.com/kubernetes-engine/docs/release-notes)
   * [ GKE On-Prem release notes ](https://cloud.google.com/gke-on-prem/docs/release-notes)
@@ -100,7 +100,7 @@ URL directly: ` https://cloud.google.com/feeds/anthos-release-notes.xml `
 
 [ Anthos ](https://cloud.google.com/anthos) 1.1 is now available.
 
-###  Release notes for updated Anthos components
+**Updated components:**
 
   * [ Google Kubernetes Engine release notes ](https://cloud.google.com/kubernetes-engine/docs/release-notes)
   * [ GKE On-Prem release notes ](https://cloud.google.com/gke-on-prem/docs/release-notes)
@@ -118,7 +118,7 @@ URL directly: ` https://cloud.google.com/feeds/anthos-release-notes.xml `
 
 [ Anthos ](https://cloud.google.com/anthos) 1.0.2 is now available.
 
-###  Release notes for updated Anthos components
+**Updated components:**
 
   * [ GKE On-Prem release notes ](https://cloud.google.com/gke-on-prem/docs/release-notes)
 
@@ -128,7 +128,7 @@ URL directly: ` https://cloud.google.com/feeds/anthos-release-notes.xml `
 
 [ Anthos ](https://cloud.google.com/anthos) 1.0.1 is now available.
 
-###  Release notes for updated Anthos components
+**Updated components:**
 
   * [ GKE On-Prem release notes ](https://cloud.google.com/gke-on-prem/docs/release-notes)
   * [ Connect release notes ](https://cloud.google.com/anthos/multicluster-management/connect/release-notes)
@@ -139,15 +139,14 @@ URL directly: ` https://cloud.google.com/feeds/anthos-release-notes.xml `
 
 [ Anthos ](https://cloud.google.com/anthos) 1.0 is now available.
 
-For a list of components that are included in Anthos, see the [ technical
-overview ](https://cloud.google.com/anthos/docs/concepts/overview) .
+See the [ technical overview
+](https://cloud.google.com/anthos/docs/concepts/overview) to learn about the
+components of Anthos.
 
-**FEATURE:**
+Feature announcements and known issues are detailed in the release notes of
+each component.
 
-For feature announcements and known issues related to an individual Anthos
-component, see the release notes for that component.
-
-###  Release notes for updated Anthos components
+**Components:**
 
   * [ Google Kubernetes Engine release notes ](https://cloud.google.com/kubernetes-engine/docs/release-notes)
   * [ GKE On-Prem release notes ](https://cloud.google.com/gke-on-prem/docs/release-notes)
