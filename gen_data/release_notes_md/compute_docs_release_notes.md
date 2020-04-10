@@ -12,6 +12,10 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/compute-engine-release-
 notes.xml `
 
+##  April 09, 2020
+
+  * **GA:** [ Compute Engine enables Shielded VM features by default ](/compute/docs/instances/modifying-shielded-vm) . 
+
 ##  April 08, 2020
 
   * You can identify idle persistent disk resources by using [ idle persistent disk recommendations ](/compute/docs/disks/viewing-and-applying-idle-pd-recommendations) . Following these recommendations will help reduce unused resources and reduce your compute bill. This feature is in **Beta** . 
