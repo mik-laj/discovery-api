@@ -12,6 +12,43 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/aiplatform-release-notes.xml `
 
+##  April 09, 2020
+
+**AI Platform Prediction**
+
+**FIXED:**
+
+If you deploy a model version for online prediction that uses [ runtime
+version 2.1 ](https://cloud.google.com/ai-platform/prediction/docs/runtime-
+version-list) with a [ GPU ](https://cloud.google.com/ai-
+platform/prediction/docs/machine-types-online-prediction#gpus) , AI Platform
+Prediction now correctly uses TensorFlow 2.1.0 to serve predictions.
+Previously, AI Platform Prediction used TensorFlow 2.0.0 to serve predictions
+in this situation.
+
+**AI Platform Training**
+
+**FEATURE:**
+
+You can now specify virtual machine instances with the evaluator task type as
+part of your training cluster for distributed training jobs. Read more about [
+evaluators in TensorFlow distributed training ](https://cloud.google.com/ai-
+platform/training/docs/distributed-training-details) , see [ how to configure
+machine types for evaluators ](https://cloud.google.com/ai-
+platform/training/docs/machine-types) , and learn about [ using evaluators
+with custom containers ](https://cloud.google.com/ai-
+platform/training/docs/distributed-training-containers) .
+
+**CHANGED:**
+
+The maximum running time for training jobs now defaults to seven days. If a
+training job is still running after this duration, AI Platform Training
+cancels the job.
+
+[ Learn how to adjust the maximum running time for a job.
+](https://cloud.google.com/ai-platform/training/docs/training-
+jobs#configuring_the_job)
+
 ##  April 06, 2020
 
 **AI Platform Training**
