@@ -9,6 +9,164 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  April 10, 2020
+
+**BigQuery**
+
+**FEATURE:**
+
+[ BigQuery Reservations ](https://cloud.google.com/bigquery/docs/reservations-
+intro) is now [ Generally Available (GA)
+](https://cloud.google.com/products/?hl=EN#product-launch-stages) . BigQuery
+Reservations allows you to purchase BigQuery [ slots
+](https://cloud.google.com/bigquery/docs/slots) to take advantage of BigQuery
+[ flat-rate pricing
+](https://cloud.google.com/bigquery/pricing#flat_rate_pricing) and allocate
+slots for workload management.
+
+**Cloud Composer**
+
+**FEATURE:**
+
+[ Private IP Composer environments
+](https://cloud.google.com/composer/docs/concepts/private-ip) are now
+generally available (GA). See [ Configuring private IP
+](https://cloud.google.com/composer/docs/how-to/managing/configuring-private-
+ip) to learn how to use this feature.
+
+**FEATURE:**
+
+Support for [ Shared VPC networks
+](https://cloud.google.com/composer/docs/how-to/managing/configuring-shared-
+vpc) is now generally available (GA).
+
+**Cloud Load Balancing**
+
+**CHANGED:**
+
+[ Backend services documentation ](https://cloud.google.com/load-
+balancing/docs/backend-service) is updated through the Cloud Load Balancing
+doc set.
+
+**Config Connector**
+
+**FEATURE:**
+
+Add the CloudBuildTrigger resource
+
+Add the SourceRepoRepository resource
+
+**CHANGED:**
+
+miscellaneous bug fixes and improvements
+
+**Resource Manager**
+
+**FEATURE:**
+
+The Organization Policy Service resource locations constraint has launched for
+general availability. This constraint allows you to define the location where
+your resources are created, providing important data location compliance
+tools. For more information, see the [ Restricting Resource Locations
+](https://cloud.google.com/resource-manager/docs/organization-policy/defining-
+locations) .
+
+**Security Command Center**
+
+**FEATURE:**
+
+Security Health Analytics is now in general availability.
+
+  * Learn about the [ vulnerability findings ](https://cloud.google.com/security-command-center/docs/concepts-vulnerabilities-findings) provided by Security Health Analytics. 
+  * [ Get started with Security Health Analytics ](https://cloud.google.com/security-command-center/docs/quickstart-security-health-analytics) . 
+
+##  April 09, 2020
+
+**AI Platform Prediction**
+
+**FIXED:**
+
+If you deploy a model version for online prediction that uses [ runtime
+version 2.1 ](https://cloud.google.com/ai-platform/prediction/docs/runtime-
+version-list) with a [ GPU ](https://cloud.google.com/ai-
+platform/prediction/docs/machine-types-online-prediction#gpus) , AI Platform
+Prediction now correctly uses TensorFlow 2.1.0 to serve predictions.
+Previously, AI Platform Prediction used TensorFlow 2.0.0 to serve predictions
+in this situation.
+
+**AI Platform Training**
+
+**FEATURE:**
+
+You can now specify virtual machine instances with the evaluator task type as
+part of your training cluster for distributed training jobs. Read more about [
+evaluators in TensorFlow distributed training ](https://cloud.google.com/ai-
+platform/training/docs/distributed-training-details) , see [ how to configure
+machine types for evaluators ](https://cloud.google.com/ai-
+platform/training/docs/machine-types) , and learn about [ using evaluators
+with custom containers ](https://cloud.google.com/ai-
+platform/training/docs/distributed-training-containers) .
+
+**CHANGED:**
+
+The maximum running time for training jobs now defaults to seven days. If a
+training job is still running after this duration, AI Platform Training
+cancels the job.
+
+[ Learn how to adjust the maximum running time for a job.
+](https://cloud.google.com/ai-platform/training/docs/training-
+jobs#configuring_the_job)
+
+**BigQuery**
+
+**FEATURE:**
+
+Scheduling queries no longer requires the ` bigquery.transfers.update `
+permission. The ` bigquery.jobs.create ` permission can now be used to
+schedule queries. See [ Scheduling queries
+](https://cloud.google.com/bigquery/docs/scheduling-
+queries#required_permissions) for details.
+
+**Cloud CDN**
+
+**FEATURE:**
+
+TLS v1.3 is now enabled by default for all external HTTPS load balancers, SSL
+proxy load balancers, and Cloud CDN. Note that this change doesn't apply to
+internal HTTPS load balancers or Traffic Director.
+
+TLS v1.3 supports modern ciphers with forward-secrecy as a baseline and,
+critically, reduces the number of round trips required to establish a TLS
+session, which directly improves performance seen by your end-users.
+
+Clients that support TLS v1.3 include Chrome, Chromium-based browsers, and
+Android. These clients automatically negotiate TLS v1.3 without requiring any
+changes. Clients that do not support TLS v1.3 are unaffected.
+
+**Cloud Load Balancing**
+
+**FEATURE:**
+
+TLS v1.3 is now enabled by default for all external HTTPS load balancers, SSL
+proxy load balancers, and Cloud CDN. Note that this change doesn't apply to
+internal HTTPS load balancers or Traffic Director.
+
+TLS v1.3 supports modern ciphers with forward-secrecy as a baseline and,
+critically, reduces the number of round trips required to establish a TLS
+session, which directly improves performance seen by your end-users.
+
+Clients that support TLS v1.3 include Chrome, Chromium-based browsers, and
+Android. These clients automatically negotiate TLS v1.3 without requiring any
+changes. Clients that do not support TLS v1.3 are unaffected.
+
+**Dataflow**
+
+**FEATURE:**
+
+Dataflow now provides beta support for [ Flex Templates
+](https://cloud.google.com/dataflow/docs/guides/templates/using-flex-
+templates) .
+
 ##  April 08, 2020
 
 **App Engine standard environment Python**
@@ -16,6 +174,15 @@ URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 **CHANGED:**
 
 Updated Python SDK to version 1.9.90
+
+**BigQuery**
+
+**FEATURE:**
+
+BigQuery materialized views are now available as a [ beta
+](https://cloud.google.com/products#product-launch-stages) release. For more
+information, see [ Introduction to materialized views
+](https://cloud.google.com/bigquery/docs/materialized-views-intro) .
 
 ##  April 07, 2020
 
@@ -161,6 +328,26 @@ For more information, see [ Making bulk changes to service perimeters
 ](https://cloud.google.com/vpc-service-controls/docs/bulk-operations) .
 
 ##  April 02, 2020
+
+**Anthos GKE deployed on AWS**
+
+**FEATURE:**
+
+Initial beta release of Anthos GKE on AWS
+
+**CHANGED:**
+
+The release improves upon earlier releases with:
+
+  * **Improved reliability** : User clusters are now deployed in a high availability (HA) fashion, where both control plane instances as well as node pools can be placed across multiple availability zones. AWS Auto Scaling groups are also now used for resiliency. 
+
+  * **Improved security** : Control plane instances for different user clusters are now isolated in separate security groups. Instance Metadata Service Version 2 (IMDSv2) is enabled to protect against SSRF attacks, and sensitive fields in EC2 metadata are now encrypted. 
+
+  * **Easier to deploy** : The installation process for the management layer has been simplified and performs additional validation checks. It uses Terraform modules for flexible integration into different AWS environments, and customers can now leverage existing security groups and IAM resources to secure clusters. Documentation has been improved and expanded. 
+
+  * **Future-proof storage stack** : We're now using the [ EBS CSI driver ](https://github.com/kubernetes-sigs/aws-ebs-csi-driver) to manage all AWS EBS volumes. The legacy, in-tree Kubernetes EBS driver has been removed entirely, and all upcoming storage features, such as snapshots, will be provided using CSI. 
+
+  * **Updated Kubernetes version** : User clusters are now based on Kubernetes 1.15 and have passed open-source Kubernetes conformance tests. 
 
 **BigQuery**
 
@@ -917,6 +1104,14 @@ Released support for Redis version 5.0 (beta) on Memorystore for Redis. For
 more details, see [ Supported versions
 ](https://cloud.google.com/memorystore/docs/redis/supported-versions) .
 
+**VPC Service Controls**
+
+**FEATURE:**
+
+General availability for the following integration:
+
+  * [ Cloud Functions ](https://cloud.google.com/vpc-service-controls/docs/supported-products#table_functions)
+
 ##  March 23, 2020
 
 **Anthos**
@@ -1662,33 +1857,4 @@ On March 16, 2020, the [ Inline Editor
 ](https://cloud.google.com/dialogflow/docs/fulfillment-inline-editor) will use
 [ Cloud Functions ](https://cloud.google.com/functions/docs) instead of [
 Cloud Functions for Firebase ](https://firebase.google.com/docs/functions) .
-
-##  March 12, 2020
-
-**Cloud Build**
-
-**FEATURE:**
-
-The [ Create trigger ](https://console.cloud.google.com/cloud-build/triggers)
-page on the Cloud Console has been updated. To learn more about creating build
-triggers, see [ Creating and managing triggers
-](https://cloud.google.com/cloud-build/docs/running-builds/create-manage-
-triggers) .
-
-**Cloud Logging**
-
-**CHANGED:**
-
-Cloud Logging Agent for Windows version 1-11 is now available. This version
-upgrades ` fluentd ` from 1.4.2 to 1.7.4. Go to [ Installing the Cloud Logging
-agent ](https://cloud.google.com/logging/docs/agent/installation) for
-information on installing this version of the agent.
-
-**Data Catalog**
-
-**FEATURE:**
-
-[ Support for custom entries ](https://cloud.google.com/data-catalog/docs/how-
-to/custom-entries) is now in beta. This feature lets you ingest metadata of
-any type, so it can be tagged and searched in Data Catalog.
 
