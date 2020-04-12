@@ -1825,6 +1825,11 @@
                             "required": true,
                             "type": "string"
                         },
+                        "destinationKmsKeyName": {
+                            "description": "Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "destinationObject": {
                             "description": "Name of the new object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any.",
                             "location": "path",
@@ -3546,12 +3551,16 @@
                     },
                     "type": "object"
                 },
-                "zone_affinity": {
-                    "description": "The zone or zones from which the bucket is intended to use zonal quota. Requests for data from outside the specified affinities are still allowed but won\u2019t be able to use zonal quota. The zone or zones need to be within the bucket location otherwise the requests will fail with a 400 Bad Request response.",
+                "zoneAffinity": {
+                    "description": "The zone or zones from which the bucket is intended to use zonal quota. Requests for data from outside the specified affinities are still allowed but won't be able to use zonal quota. The zone or zones need to be within the bucket location otherwise the requests will fail with a 400 Bad Request response.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "zoneSeparation": {
+                    "description": "If set, objects placed in this bucket are required to be separated by disaster domain.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
