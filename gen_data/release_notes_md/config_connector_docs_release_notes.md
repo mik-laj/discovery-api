@@ -10,6 +10,18 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/configconnector-release-
 notes.xml `
 
+##  April 10, 2020
+
+**FEATURE:**
+
+Add the CloudBuildTrigger resource
+
+Add the SourceRepoRepository resource
+
+**CHANGED:**
+
+miscellaneous bug fixes and improvements
+
 ##  April 02, 2020
 
 **FIXED:**
