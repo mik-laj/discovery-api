@@ -9,6 +9,22 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/composer-release-notes.xml `
 
+##  April 10, 2020
+
+**FEATURE:**
+
+[ Private IP Composer environments
+](https://cloud.google.com/composer/docs/concepts/private-ip) are now
+generally available (GA). See [ Configuring private IP
+](https://cloud.google.com/composer/docs/how-to/managing/configuring-private-
+ip) to learn how to use this feature.
+
+**FEATURE:**
+
+Support for [ Shared VPC networks
+](https://cloud.google.com/composer/docs/how-to/managing/configuring-shared-
+vpc) is now generally available (GA).
+
 ##  April 05, 2020
 
 **FEATURE:**
