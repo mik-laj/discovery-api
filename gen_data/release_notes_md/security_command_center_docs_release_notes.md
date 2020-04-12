@@ -9,6 +9,15 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/scc-release-notes.xml `
 
+##  April 10, 2020
+
+**FEATURE:**
+
+Security Health Analytics is now in general availability.
+
+  * Learn about the [ vulnerability findings ](https://cloud.google.com/security-command-center/docs/concepts-vulnerabilities-findings) provided by Security Health Analytics. 
+  * [ Get started with Security Health Analytics ](https://cloud.google.com/security-command-center/docs/quickstart-security-health-analytics) . 
+
 ##  March 23, 2020
 
 **FEATURE:**
