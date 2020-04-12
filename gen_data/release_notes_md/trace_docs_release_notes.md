@@ -126,9 +126,8 @@ Upcoming Pricing ](https://cloud.google.com/stackdriver/pricing_v2) .
 **FEATURE:**
 
 The Trace Viewer now associates logs entries with trace spans when the
-LogEntry ` span_id ` field is specified. See [ Viewing Trace Details
-](https://cloud.google.com/trace/docs/viewing-details#log_entries) for
-details.
+LogEntry ` span_id ` field is specified. See [ Integrating with Cloud Logging
+](https://cloud.google.com/trace/docs/trace-log-integration) for details.
 
 **FIXED:**
 
@@ -175,8 +174,8 @@ information.
 
 The Trace Viewer now allows you to view associated log entries in line with
 trace spans and links to VM logs for Google Cloud Load Balancer spans. See the
-[ Log Entries section of Viewing Trace Details
-](https://cloud.google.com/trace/docs/viewing-details#log_entries) .
+[ Integrating with Cloud Logging ](https://cloud.google.com/trace/docs/trace-
+log-integration) .
 
 ##  June 05, 2017
 
