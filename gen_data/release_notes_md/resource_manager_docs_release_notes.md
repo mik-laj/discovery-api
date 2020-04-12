@@ -10,6 +10,17 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloudresourcemanager-release-
 notes.xml `
 
+##  April 10, 2020
+
+**FEATURE:**
+
+The Organization Policy Service resource locations constraint has launched for
+general availability. This constraint allows you to define the location where
+your resources are created, providing important data location compliance
+tools. For more information, see the [ Restricting Resource Locations
+](https://cloud.google.com/resource-manager/docs/organization-policy/defining-
+locations) .
+
 ##  January 30, 2020
 
 **FEATURE:**
