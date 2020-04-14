@@ -118,6 +118,66 @@
                     }
                 },
                 "sites": {
+                    "methods": {
+                        "getConfig": {
+                            "flatPath": "v1beta1/projects/{projectsId}/sites/{sitesId}/config",
+                            "httpMethod": "GET",
+                            "id": "firebasehosting.projects.sites.getConfig",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/sites/[^/]+/config$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1beta1/{+name}",
+                            "response": {
+                                "$ref": "SiteConfig"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/cloud-platform.read-only",
+                                "https://www.googleapis.com/auth/firebase",
+                                "https://www.googleapis.com/auth/firebase.readonly"
+                            ]
+                        },
+                        "updateConfig": {
+                            "flatPath": "v1beta1/projects/{projectsId}/sites/{sitesId}/config",
+                            "httpMethod": "PATCH",
+                            "id": "firebasehosting.projects.sites.updateConfig",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/sites/[^/]+/config$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "updateMask": {
+                                    "format": "google-fieldmask",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1beta1/{+name}",
+                            "request": {
+                                "$ref": "SiteConfig"
+                            },
+                            "response": {
+                                "$ref": "SiteConfig"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/firebase"
+                            ]
+                        }
+                    },
                     "resources": {
                         "channels": {
                             "resources": {
@@ -193,6 +253,149 @@
                                 }
                             }
                         },
+                        "domains": {
+                            "methods": {
+                                "create": {
+                                    "flatPath": "v1beta1/projects/{projectsId}/sites/{sitesId}/domains",
+                                    "httpMethod": "POST",
+                                    "id": "firebasehosting.projects.sites.domains.create",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/sites/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1beta1/{+parent}/domains",
+                                    "request": {
+                                        "$ref": "Domain"
+                                    },
+                                    "response": {
+                                        "$ref": "Domain"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/firebase"
+                                    ]
+                                },
+                                "delete": {
+                                    "flatPath": "v1beta1/projects/{projectsId}/sites/{sitesId}/domains/{domainsId}",
+                                    "httpMethod": "DELETE",
+                                    "id": "firebasehosting.projects.sites.domains.delete",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/sites/[^/]+/domains/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1beta1/{+name}",
+                                    "response": {
+                                        "$ref": "Empty"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/firebase"
+                                    ]
+                                },
+                                "get": {
+                                    "flatPath": "v1beta1/projects/{projectsId}/sites/{sitesId}/domains/{domainsId}",
+                                    "httpMethod": "GET",
+                                    "id": "firebasehosting.projects.sites.domains.get",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/sites/[^/]+/domains/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1beta1/{+name}",
+                                    "response": {
+                                        "$ref": "Domain"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloud-platform.read-only",
+                                        "https://www.googleapis.com/auth/firebase",
+                                        "https://www.googleapis.com/auth/firebase.readonly"
+                                    ]
+                                },
+                                "list": {
+                                    "flatPath": "v1beta1/projects/{projectsId}/sites/{sitesId}/domains",
+                                    "httpMethod": "GET",
+                                    "id": "firebasehosting.projects.sites.domains.list",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "pageSize": {
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "pageToken": {
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "parent": {
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/sites/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1beta1/{+parent}/domains",
+                                    "response": {
+                                        "$ref": "ListDomainsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloud-platform.read-only",
+                                        "https://www.googleapis.com/auth/firebase",
+                                        "https://www.googleapis.com/auth/firebase.readonly"
+                                    ]
+                                },
+                                "update": {
+                                    "flatPath": "v1beta1/projects/{projectsId}/sites/{sitesId}/domains/{domainsId}",
+                                    "httpMethod": "PUT",
+                                    "id": "firebasehosting.projects.sites.domains.update",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/sites/[^/]+/domains/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1beta1/{+name}",
+                                    "request": {
+                                        "$ref": "Domain"
+                                    },
+                                    "response": {
+                                        "$ref": "Domain"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/firebase"
+                                    ]
+                                }
+                            }
+                        },
                         "releases": {
                             "methods": {
                                 "create": {
@@ -260,6 +463,235 @@
                                         "https://www.googleapis.com/auth/firebase",
                                         "https://www.googleapis.com/auth/firebase.readonly"
                                     ]
+                                }
+                            }
+                        },
+                        "versions": {
+                            "methods": {
+                                "clone": {
+                                    "flatPath": "v1beta1/projects/{projectsId}/sites/{sitesId}/versions:clone",
+                                    "httpMethod": "POST",
+                                    "id": "firebasehosting.projects.sites.versions.clone",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/sites/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1beta1/{+parent}/versions:clone",
+                                    "request": {
+                                        "$ref": "CloneVersionRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
+                                    }
+                                },
+                                "create": {
+                                    "flatPath": "v1beta1/projects/{projectsId}/sites/{sitesId}/versions",
+                                    "httpMethod": "POST",
+                                    "id": "firebasehosting.projects.sites.versions.create",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/sites/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "sizeBytes": {
+                                            "format": "int64",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "versionId": {
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1beta1/{+parent}/versions",
+                                    "request": {
+                                        "$ref": "Version"
+                                    },
+                                    "response": {
+                                        "$ref": "Version"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/firebase"
+                                    ]
+                                },
+                                "delete": {
+                                    "flatPath": "v1beta1/projects/{projectsId}/sites/{sitesId}/versions/{versionsId}",
+                                    "httpMethod": "DELETE",
+                                    "id": "firebasehosting.projects.sites.versions.delete",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/sites/[^/]+/versions/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1beta1/{+name}",
+                                    "response": {
+                                        "$ref": "Empty"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/firebase"
+                                    ]
+                                },
+                                "list": {
+                                    "flatPath": "v1beta1/projects/{projectsId}/sites/{sitesId}/versions",
+                                    "httpMethod": "GET",
+                                    "id": "firebasehosting.projects.sites.versions.list",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "filter": {
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "pageSize": {
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "pageToken": {
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "parent": {
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/sites/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1beta1/{+parent}/versions",
+                                    "response": {
+                                        "$ref": "ListVersionsResponse"
+                                    }
+                                },
+                                "patch": {
+                                    "flatPath": "v1beta1/projects/{projectsId}/sites/{sitesId}/versions/{versionsId}",
+                                    "httpMethod": "PATCH",
+                                    "id": "firebasehosting.projects.sites.versions.patch",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/sites/[^/]+/versions/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "updateMask": {
+                                            "format": "google-fieldmask",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1beta1/{+name}",
+                                    "request": {
+                                        "$ref": "Version"
+                                    },
+                                    "response": {
+                                        "$ref": "Version"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/firebase"
+                                    ]
+                                },
+                                "populateFiles": {
+                                    "flatPath": "v1beta1/projects/{projectsId}/sites/{sitesId}/versions/{versionsId}:populateFiles",
+                                    "httpMethod": "POST",
+                                    "id": "firebasehosting.projects.sites.versions.populateFiles",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/sites/[^/]+/versions/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1beta1/{+parent}:populateFiles",
+                                    "request": {
+                                        "$ref": "PopulateVersionFilesRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "PopulateVersionFilesResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/firebase"
+                                    ]
+                                }
+                            },
+                            "resources": {
+                                "files": {
+                                    "methods": {
+                                        "list": {
+                                            "flatPath": "v1beta1/projects/{projectsId}/sites/{sitesId}/versions/{versionsId}/files",
+                                            "httpMethod": "GET",
+                                            "id": "firebasehosting.projects.sites.versions.files.list",
+                                            "parameterOrder": [
+                                                "parent"
+                                            ],
+                                            "parameters": {
+                                                "pageSize": {
+                                                    "format": "int32",
+                                                    "location": "query",
+                                                    "type": "integer"
+                                                },
+                                                "pageToken": {
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "parent": {
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/sites/[^/]+/versions/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "status": {
+                                                    "enum": [
+                                                        "STATUS_UNSPECIFIED",
+                                                        "EXPECTED",
+                                                        "ACTIVE"
+                                                    ],
+                                                    "location": "query",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1beta1/{+parent}/files",
+                                            "response": {
+                                                "$ref": "ListVersionFilesResponse"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/cloud-platform.read-only",
+                                                "https://www.googleapis.com/auth/firebase",
+                                                "https://www.googleapis.com/auth/firebase.readonly"
+                                            ]
+                                        }
+                                    }
                                 }
                             }
                         }
