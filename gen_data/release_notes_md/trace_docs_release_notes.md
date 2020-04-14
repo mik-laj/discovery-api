@@ -148,7 +148,7 @@ The Trace viewer now displays span annotations and message events written with
 the [ Stackdriver Trace API v2
 ](https://cloud.google.com/trace/docs/reference/v2/rest/) . See [ Viewing
 Trace Details ](https://cloud.google.com/trace/docs/viewing-
-details#log_entries) for more information.
+details#annotating_spans) for more information.
 
 ##  October 31, 2017
 
@@ -165,8 +165,7 @@ release. For a comparison of the v1 and v2 APIs, see [ Stackdriver Trace API
 
 The Trace viewer now shows parent-child relationships between trace spans. You
 can expand or collapse the parent spans. See [ Viewing Trace Details
-](https://cloud.google.com/trace/docs/viewing-details#log_entries) for more
-information.
+](https://cloud.google.com/trace/docs/viewing-details) for more information.
 
 ##  August 01, 2017
 
