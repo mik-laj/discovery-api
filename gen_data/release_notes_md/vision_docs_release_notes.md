@@ -8,6 +8,18 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/vision-release-notes.xml `
 
+##  April 11, 2020
+
+**FEATURE:**
+
+**CMEK compliance**
+
+Vision API is now compliant with customer-managed encryption keys (CMEK). To
+learn more, vist the [ CMEK compliance page
+](https://cloud.google.com/vision/docs/cmek) . Please note that [ Product
+Search ](https://cloud.google.com/vision/product-search/docs/) is _not_ CMEK
+compliant at this time.
+
 ##  February 24, 2020
 
 **CHANGED:**
@@ -29,11 +41,11 @@ For more information, see the [ product documentation
 after February 19, 2020**
 
 [ Detecting labels ](https://cloud.google.com/vision/docs/labels) in an image
-containing humans will result in non-gendered label such as ‘person’ being
-returned. Our prior approach was to return gendered terms, like ‘man’ or
-'woman’.
+containing humans will result in non-gendered label such as 'person' being
+returned. Our prior approach was to return gendered terms, like 'man' or
+'woman'.
 
-Given that a person’s gender cannot be inferred by appearance, we have decided
+Given that a person's gender cannot be inferred by appearance, we have decided
 to remove these labels in order to align with the [ Artificial Intelligence
 Principles at Google ](https://ai.google/principles/) , specifically Principle
 #2: Avoid creating or reinforcing unfair bias.
