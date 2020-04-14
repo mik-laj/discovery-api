@@ -9,6 +9,30 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/vpc-sc-release-notes.xml `
 
+##  April 09, 2020
+
+**FEATURE:**
+
+The beta version of the VPC accessible services feature is now available.
+
+The [ VPC accessible services ](https://cloud.google.com/vpc-service-
+controls/docs/vpc-accessible-services) feature introduces the ability to limit
+the access of network endpoints inside your service perimeter to an explicit
+set of services.
+
+To learn how to configure VPC accessible services for your perimeter, read
+about [ limiting access to services inside a perimeter
+](https://cloud.google.com/vpc-service-controls/docs/manage-service-
+perimeters#accessible-services) .
+
+**FEATURE:**
+
+The beta version of dry run mode for service perimeters is now available.
+
+This release introduces a new method of configuring service perimeters: dry
+run mode. For more information, [ read about dry run mode
+](https://cloud.google.com/vpc-service-controls/docs/dry-run-mode) .
+
 ##  April 03, 2020
 
 **FEATURE:**
