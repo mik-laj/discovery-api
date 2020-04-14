@@ -12,6 +12,19 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/aiplatform-release-notes.xml `
 
+##  April 13, 2020
+
+**AI Platform Prediction**
+
+**CHANGED:**
+
+The pricing of Compute Engine (N1) machine types for online prediction in the
+us-central1 region has changed. vCPU resources now cost $0.031613 per vCPU
+hour and RAM now costs $0.004242 per GB hour.
+
+[ Read more details about pricing. ](https://cloud.google.com/ai-
+platform/prediction/pricing)
+
 ##  April 09, 2020
 
 **AI Platform Prediction**
