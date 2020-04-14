@@ -14,6 +14,25 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/dlp-release-notes.xml `
 
+##  April 13, 2020
+
+**FEATURE:**
+
+Added additional [ infoType detectors
+](https://cloud.google.com/dlp/docs/infotypes-reference) :
+
+  * IRELAND_PPSN 
+  * IRELAND_PASSPORT 
+
+##  April 08, 2020
+
+**FEATURE:**
+
+Added additional infoType detectors:
+
+  * ` AZURE_AUTH_TOKEN `
+  * ` GCP_API_KEY `
+
 ##  March 16, 2020
 
 **FEATURE:**
