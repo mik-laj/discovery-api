@@ -9,6 +9,13 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/networkintelligence-release-
 notes.xml `
 
+##  April 14, 2020
+
+**FEATURE:**
+
+[ Firewall Insights ](https://cloud.google.com/network-intelligence-
+center/docs/firewall-insights/concepts/overview) is now in Beta.
+
 ##  March 29, 2020
 
 **FEATURE:**
