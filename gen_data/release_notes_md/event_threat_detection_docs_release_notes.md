@@ -4,6 +4,15 @@ This page documents production updates to Event Threat Detection. Check this
 page for announcements about new or updated features, bug fixes, known issues,
 and deprecated functionality.
 
+##  April 13, 2020
+
+**FEATURE:**
+
+Event Threat Detection is now in general availability.
+
+  * Learn [ how Event Threat Detection works ](https://cloud.google.com/event-threat-detection/docs/concepts-overview) . 
+  * [ Get started using Event Threat Detection ](https://cloud.google.com/event-threat-detection/docs/quickstart-etd-console) . 
+
 ##  October 31, 2019
 
 **FEATURE:**
