@@ -27,8 +27,8 @@ project:  Stable  |  Beta  |  Dev
 
     
     
-    **cos-dev-82-12962-0-0**
-    Kernel:         [ChromiumOS-4.19.107](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/d778e15bed1da70ccbcafe8c4a76d32139c291ce)
+    **cos-dev-83-13020-12-0**
+    Kernel:         [COS-4.19.114](https://cos.googlesource.com/third_party/kernel/+/a8c47ac5afe9c1a9f569b2caaa93b803a6c4d94b)
     Kubernetes:     v1.17.3
     Docker:         v19.03.6
       
