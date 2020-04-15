@@ -12,6 +12,13 @@ Docker  |  v18.09.7
   
 ##  Changelog
 
+###  cos-73-11647-510-0
+
+_Date: Apr 13, 2020_
+
+  * Disabled `accept_ra` on all interfaces by default. 
+  * Upgraded OpenSSH to 7.9_p1 to fix CVE-2018-15473. 
+
 ###  cos-73-11647-501-0
 
 _Date: Apr 05, 2020_
