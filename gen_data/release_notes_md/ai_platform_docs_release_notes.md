@@ -62,6 +62,25 @@ cancels the job.
 ](https://cloud.google.com/ai-platform/training/docs/training-
 jobs#configuring_the_job)
 
+##  April 08, 2020
+
+**AI Platform Optimizer**
+
+**FEATURE:**
+
+AI Platform Optimizer is now available in [ beta
+](https://cloud.google.com/products#product-launch-stages) .
+
+AI Platform Optimizer is a black-box optimization service that helps you tune
+hyperparameters in complex machine learning models.
+
+Visit the [ AI Platform Optimizer overview ](https://cloud.google.com/ai-
+platform/optimizer/docs/overview) to learn more about how it works. To get
+started, try using AI Platform Optimizer to [ optimize a machine learning
+model ](https://cloud.google.com/ai-platform/optimizer/docs/optimizing-ml-
+model) or to [ optimize two functions at once ](https://cloud.google.com/ai-
+platform/optimizer/docs/optimizing-multiple-objectives) .
+
 ##  April 06, 2020
 
 **AI Platform Training**
