@@ -1,0 +1,267 @@
+#  출시 노트
+
+이 페이지에는 Cloud TPU의 프로덕션 업데이트가 정리되어 있습니다. 이 페이지에서는 새로운 기능이나 업데이트된 기능, 버그 수정,
+알려진 문제, 지원 중단된 기능에 관한 공지 사항을 정기적으로 확인할 수 있습니다.
+
+최신 제품 업데이트를 제공받으려면 [ 피드 리더
+](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) 에 이 페이지의 URL을
+추가하세요.
+
+##  2019년 5월 7일
+
+**FEATURE:**
+
+Cloud TPU v2 Pod는 베타 출시 버전으로 제공됩니다.
+
+TPU 리소스는 단일 Cloud TPU에서 Cloud TPU Pod로 확장할 수 있기 때문에 단일 Cloud TPU 기기와 Cloud TPU
+Pod 중에서 하나를 선택할 필요가 없습니다. _슬라이스_ 나 코어 집합 단위로 Cloud TPU Pod의 일부만 요청할 수 있으므로 필요한
+처리 용량만 구매할 수 있습니다.
+
+[ Cloud TPU Pod(베타)는 단일 Cloud TPU v2 기기에 비해 다음과 같은 이점을 제공합니다.
+](https://cloud.google.com/tpu/docs/deciding-pod-versus-tpu?hl=ko)
+
+  * 학습 속도가 향상되어 R&D에서 빠른 반복 가능 
+  * 자동으로 확장 가능한 머신러닝(ML) 컴퓨팅을 제공하여 인적 생산성 향상 
+  * 훨씬 더 큰 모델 학습 가능 
+
+**FEATURE:**
+
+Cloud TPU v3 Pod는 베타 출시 버전으로 제공됩니다.
+
+TPU 리소스는 단일 Cloud TPU에서 Cloud TPU Pod로 확장할 수 있기 때문에 단일 Cloud TPU 기기와 Cloud TPU
+Pod 중에서 하나를 선택할 필요가 없습니다. _슬라이스_ 나 코어 집합 단위로 Cloud TPU Pod의 일부만 요청할 수 있으므로 필요한
+처리 용량만 구매할 수 있습니다.
+
+[ Cloud TPU Pod(베타)는 단일 Cloud TPU v3 기기에 비해 다음과 같은 이점을 제공합니다.
+](https://cloud.google.com/tpu/docs/deciding-pod-versus-tpu?hl=ko)
+
+  * 학습 속도가 향상되어 R&D에서 빠른 반복 가능 
+  * 자동으로 확장 가능한 머신러닝(ML) 컴퓨팅을 제공하여 인적 생산성 향상 
+  * 훨씬 더 큰 모델 학습 가능 
+
+Cloud TPU v3 Pod _(베타)_ 는 Cloud TPU v2 Pod _(베타)_ 에 비해 다음과 같은 이점을 제공합니다.
+
+* 처리 속도 향상 및 더 큰 메모리 용량 
+
+  * v2 Pod: 11.5페타플롭 및 4TB 온칩 메모리(HBM) 
+  * v3 Pod: 100페타플롭 및 32TB HBM(수냉식) 
+
+* 훨씬 더 큰 모델 학습 가능 
+
+##  2019년 3월 11일
+
+**CHANGED:**
+
+Cloud TPU는 현재 [ TensorFlow 버전 1.13
+](https://www.tensorflow.org/versions/r1.13/api_docs/?hl=ko) 을 지원합니다.
+Tensorflow 버전 1.8 및 1.9에 대한 지원은 삭제되었습니다.
+
+현재 지원되는 TensorFlow 버전은 [ Cloud TPU 버전 관리 정책
+](https://cloud.google.com/tpu/docs/supported-versions?hl=ko) 에서 확인하세요.
+
+##  2019년 1월 31일
+
+**FEATURE:**
+
+Cloud TPU v3는 현재 GA 버전(일반 안정화 버전)입니다. Cloud TPU v3 메모리는 v2 메모리의 2배입니다. TPU v3은
+성능이 향상되었으며, 더 깊은 ResNets와 더 큰 RetinaNet 이미지 등 더 많은 모델 클래스를 지원합니다. Cloud TPU
+v2에서 실행되는 기존 모델도 계속 작동합니다. 자세한 내용은 [ Cloud TPU 버전 가이드
+](https://cloud.google.com/tpu/docs/deciding-tpu-version?hl=ko) 를 참조하세요.
+
+##  2018년 11월 8일
+
+**CHANGED:**
+
+Cloud TPU는 현재 [ TensorFlow 버전 1.12
+](https://www.tensorflow.org/versions/r1.12/api_docs/?hl=ko) 를 지원합니다. 이 출시 버전은
+Cloud TPU에서 사용하는 Keras의 개선사항을 포함하고, 소프트웨어 스택 전반의 성능이 최적화되었으며, API, 오류 메시지,
+안정성이 개선되었습니다.
+
+현재 지원되는 TensorFlow 버전은 [ Cloud TPU 버전 관리 정책
+](https://cloud.google.com/tpu/docs/supported-versions?hl=ko) 에서 확인하세요.
+
+##  2018년 11월 7일
+
+**FEATURE:**
+
+Cloud TPU v2 Pod는 알파 출시 버전으로 제공됩니다.
+
+TPU 리소스는 단일 Cloud TPU에서 Cloud TPU Pod로 확장할 수 있기 때문에 단일 Cloud TPU 기기와 Cloud TPU
+Pod 중에서 하나를 선택할 필요가 없습니다. _슬라이스_ 나 코어 집합 단위로 Cloud TPU Pod의 일부만 요청할 수 있으므로 필요한
+처리 용량만 구매할 수 있습니다.
+
+[ Cloud TPU Pod(알파)는 다음과 같은 이점이 있습니다.
+](https://cloud.google.com/tpu/docs/deciding-pod-versus-tpu?hl=ko)
+
+  * 학습 속도가 향상되어 R&D에서 빠른 반복 가능 
+  * 자동으로 확장 가능한 머신러닝(ML) 컴퓨팅을 제공하여 인적 생산성 향상 
+  * 단일 ML 가속기보다 훨씬 더 큰 모델 학습 가능 
+
+##  2018년 10월 10일
+
+**FEATURE:**
+
+Cloud TPU v3는 베타 출시 버전으로 제공됩니다. 구성할 때 v2와 v3 중에서 선택할 수 있습니다.
+
+  * Cloud TPU v3 메모리는 v2 메모리의 2배입니다. TPU v3은 성능이 향상되었으며, 더 깊은 ResNets와 더 큰 RetinaNet 이미지 등 더 많은 모델 클래스를 지원합니다. 
+  * Cloud TPU v2에서 실행되는 기존 모델도 계속 작동합니다. 
+  * [ 자세한 내용은 Cloud TPU 버전 가이드 ](https://cloud.google.com/tpu/docs/deciding-tpu-version?hl=ko) 를 참조하세요. 
+
+##  2018년 10월 10일
+
+**CHANGED:**
+
+선점형 TPU는 현재 GA 버전(일반 안정화 버전)입니다. 선점형 TPU는 일반 노드보다 훨씬 저렴한 가격으로 만들고 실행할 수 있는
+Cloud TPU 노드입니다. 그러나 Cloud TPU가 다른 목적으로 리소스에 액세스해야 하는 경우에는 노드를 종료(선점)할 수 있습니다.
+
+  * [ 선점형 TPU 사용 ](https://cloud.google.com/tpu/docs/preemptible?hl=ko) 방법을 참조하세요. 
+  * 선점형 및 일반 Cloud TPU 노드의 [ 가격 ](https://cloud.google.com/tpu/docs/pricing?hl=ko) 을 검토하세요. 
+
+##  2018년 9월 27일
+
+**CHANGED:**
+
+Cloud TPU는 현재 [ TensorFlow 버전 1.11
+](https://www.tensorflow.org/versions/r1.11/api_docs/?hl=ko) 을 지원합니다.
+TensorFlow 1.11은 Keras, Colab, 즉시 실행, LARS, RNN, [ Mesh TensorFlow
+](https://github.com/tensorflow/tensor2tensor/blob/master/tensor2tensor/mesh_tensorflow/README.md)
+등 Cloud TPU에서 사용하는 모든 기능을 실험적으로 지원합니다. 이 출시 버전에는 고성능 [ Cloud Bigtable
+](https://cloud.google.com/bigtable/?hl=ko) 통합, 새로운 XLA 컴파일러 최적화, 소프트웨어 스택 전반의
+성능 최적화가 포함되어 있으며, API, 오류 메시지, 안정성이 개선되었습니다.
+
+현재 지원되는 TensorFlow 버전은 [ Cloud TPU 버전 관리 정책
+](https://cloud.google.com/tpu/docs/supported-versions?hl=ko) 에서 확인하세요.
+
+##  2018년 9월 7일
+
+**CHANGED:**
+
+TensorFlow 버전 1.7의 지원은 2018년 9월 7일에 종료됩니다. [ Cloud TPU 버전 관리 정책
+](https://cloud.google.com/tpu/docs/supported-versions?hl=ko) 에서 현재 지원되는 버전을
+참조하세요.
+
+##  2018년 7월 24일
+
+**CHANGED:**
+
+Cloud TPU를 프로모션 가격으로 제공하므로 상당한 비용 절감 효과를 얻을 수 있게 되었습니다. 다음 표에서 이전 가격 및 새로운
+가격(2018년 7월 24일 기준)을 확인할 수 있습니다.
+
+###  미국
+
+|  이전 TPU 시간당 가격  |  새로운 TPU 시간당 가격  
+---|---|---  
+Cloud TPU  |  $6.50 USD  |  $4.50 USD  
+선점형 TPU  |  $1.95 USD  |  $1.35 USD  
+  
+###  유럽
+
+|  이전 TPU 시간당 가격  |  새로운 TPU 시간당 가격  
+---|---|---  
+Cloud TPU  |  $7.15 USD  |  $4.95 USD  
+선점형 TPU  |  $2.15 USD  |  $1.485 USD  
+  
+###  아시아 태평양
+
+|  이전 TPU 시간당 가격  |  새로운 TPU 시간당 가격  
+---|---|---  
+Cloud TPU  |  $7.54 USD  |  $5.22 USD  
+선점형 TPU  |  $2.26 USD  |  $1.566 USD  
+  
+자세한 내용은 [ 가격 책정 가이드 ](https://cloud.google.com/tpu/docs/pricing?hl=ko) 를
+참조하세요.
+
+##  2018년 7월 12일
+
+**FEATURE:**
+
+Cloud TPU는 현재 Google Kubernetes Engine에서 베타 기능으로 제공됩니다. GCP에서 Kubernetes 클러스터의
+머신러닝 작업 부하를 실행하여 GKE에서 Cloud TPU 리소스를 관리하고 확장하도록 합니다.
+
+  * [ 가이드 ](https://cloud.google.com/tpu/docs/tutorials/kubernetes-engine-resnet?hl=ko) 를 따라 Cloud TPU와 GKE에서 TensorFlow ResNet-50 모델을 학습시키세요. 
+  * GKE에서 Cloud TPU를 실행하는 방법에 대한 빠른 안내는 [ GKE 설정 가이드 ](https://cloud.google.com/tpu/docs/kubernetes-engine-setup?hl=ko) 를 참조하세요. 
+
+##  2018년 7월 2일
+
+**CHANGED:**
+
+Cloud TPU는 현재 [ TensorFlow 버전 1.9
+](https://www.tensorflow.org/versions/r1.9/api_docs/?hl=ko) 를 지원합니다.
+TensorFlow 1.9는 API, 오류 메시지, 안정성이 개선되고 Cloud TPU 성능이 강화되었습니다.
+
+##  2018년 6월 27일
+
+**FEATURE:**
+
+Cloud TPU는 현재 GA 버전(일반 안정화 버전)입니다. Google의 혁신적인 TPU는 TensorFlow를 사용해 머신러닝 작업
+부하를 빠르게 처리하도록 설계되었습니다. 각 Cloud TPU는 초당 최대 180조 회의 연산 성능을 지원하여 첨단 머신러닝 모델의 학습과
+실행을 위한 강력한 연산 능력을 제공합니다.
+
+  * [ 빠른 시작 가이드 ](https://cloud.google.com/tpu/docs/quickstart?hl=ko) 를 따라 Cloud TPU를 설정하세요. 
+  * [ 가이드 ](https://cloud.google.com/tpu/docs/tutorials?hl=ko) 를 선택하여 Cloud TPU에서 특정 모델을 실행하세요. 
+
+##  2018년 6월 18일
+
+**FEATURE:**
+
+선점형 TPU는 현재 _베타_ 버전으로 제공됩니다. 선점형 TPU는 일반 노드보다 훨씬 저렴한 가격으로 만들고 실행할 수 있는 Cloud
+TPU 노드입니다. 그러나 Cloud TPU가 다른 목적으로 리소스에 액세스해야 하는 경우에는 노드를 종료(선점)할 수 있습니다.
+
+  * [ 선점형 TPU 사용 ](https://cloud.google.com/tpu/docs/preemptible?hl=ko) 방법을 참조하세요. 
+  * 선점형 및 일반 Cloud TPU 노드의 [ 가격 ](https://cloud.google.com/tpu/docs/pricing?hl=ko) 을 검토하세요. 
+
+**CHANGED:**
+
+Cloud TPU는 현재 미국(US)은 물론 유럽(EU)과 아시아 태평양(APAC) 지역에서도 사용 가능합니다. 지역별 [ 가격 정보
+](https://cloud.google.com/tpu/docs/pricing?hl=ko) 를 참조하세요. 사용 가능한 영역은 다음과
+같습니다.
+
+  * **미국**
+    * ` us-central1-b `
+    * ` us-central1-c `
+    * ` us-central1-f ` ( [ TFRC 프로그램 ](https://www.tensorflow.org/tfrc/?hl=ko) 전용) 
+  * **유럽**
+    * ` europe-west4-a `
+  * **아시아 태평양**
+    * ` asia-east1-c `
+
+##  2018년 6월 12일
+
+**CHANGED:**
+
+TensorFlow 버전 1.6은 2018년 6월 12일에 지원이 종료되었습니다. [ Cloud TPU 버전 관리 정책
+](https://cloud.google.com/tpu/docs/supported-versions?hl=ko) 에서 현재 지원되는 버전을
+참조하세요.
+
+##  2018년 4월 20일
+
+**CHANGED:**
+
+Cloud TPU는 현재 [ TensorFlow 버전 1.8
+](https://www.tensorflow.org/versions/r1.8/api_docs/?hl=ko) 을 지원합니다.
+TensorFlow 1.8은 API, 오류 메시지, 안정성이 개선되고 Cloud TPU 성능이 강화되었습니다.
+
+TensorFlow 1.7 버전의 지원은 2018년 6월 20일에 종료됩니다. [ Cloud TPU 버전 관리 정책
+](https://cloud.google.com/tpu/docs/supported-versions?hl=ko) 에서 세부정보를 참조하세요.
+
+##  2018년 4월 2일
+
+**CHANGED:**
+
+Cloud TPU는 현재 [ TensorFlow 버전 1.7
+](https://www.tensorflow.org/versions/r1.7/api_docs/?hl=ko) 을 지원합니다.
+TensorFlow 버전 1.6은 2018년 6월 2일에 지원 종료됩니다. [ Cloud TPU 버전 관리 정책
+](https://cloud.google.com/tpu/docs/supported-versions?hl=ko) 에서 세부정보를 참조하세요.
+
+##  2018년 2월 12일
+
+**FEATURE:**
+
+Cloud TPU는 베타 출시 버전으로 제공됩니다. Google의 혁신적인 TPU는 TensorFlow를 사용해 머신러닝 작업 부하를 빠르게
+처리하도록 설계되었습니다. 각 Cloud TPU는 초당 최대 180조 회의 연산 성능을 지원하여 첨단 머신러닝 모델의 학습과 실행을 위한
+강력한 연산 능력을 제공합니다.
+
+  * [ TPU 할당량 요청 ](https://cloud.google.com/tpu/docs/quota?hl=ko) 방법을 알아보세요. 
+  * [ 빠른 시작 가이드 ](https://cloud.google.com/tpu/docs/quickstart?hl=ko) 를 따라 Cloud TPU를 설정하세요. 
+  * [ 가이드 ](https://cloud.google.com/tpu/docs/tutorials?hl=ko) 를 선택하여 Cloud TPU에서 특정 모델을 실행하세요. 
+
