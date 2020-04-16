@@ -31,6 +31,276 @@
    </section>
    <section class="releases">
     <section class="releases">
+     <h2 data-text="April 15, 2020" id="April_15_2020">
+      April 15, 2020
+     </h2>
+     <div class="release-feature" id="228baef6">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Added support for
+       <a href="https://cloud.google.com/scheduler">
+        Cloud Scheduler
+       </a>
+       through
+       <code dir="ltr" translate="no">
+        gcp-types/cloudscheduler-v1:projects.locations.jobs
+       </code>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="fc092ade">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       You can now apply granular
+       <a href="https://cloud.google.com/iam/docs/permissions-reference">
+        IAM Permissions
+       </a>
+       to the
+       <a href="https://cloud.google.com/deployment-manager/docs/access-control#access_control_for">
+        Google APIs service account used by Deployment Manager
+       </a>
+       , as we've removed the requirement for
+       <code dir="ltr" translate="no">
+        roles/editor
+       </code>
+       being assigned to the service account.
+      </p>
+     </div>
+     <div class="release-changed" id="2ca123b2">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Updates on
+       <a href="https://cloud.google.com/functions">
+        Cloud Functions
+       </a>
+       resources using
+       <code dir="ltr" translate="no">
+        gcp-types/cloudfunctions-v1
+       </code>
+       now retry on 429 errors.
+      </p>
+     </div>
+     <div class="release-changed" id="c894b55c">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       GKE clusters and node pools will wait for maintenance to complete before attempting to apply any updates. Affected collections:
+      </p>
+      <ul>
+       <li>
+        <code dir="ltr" translate="no">
+         gcp-types/container-v1:projects.zones.clusters
+        </code>
+       </li>
+       <li>
+        <code dir="ltr" translate="no">
+         gcp-types/container-v1:projects.locations.clusters
+        </code>
+       </li>
+       <li>
+        <code dir="ltr" translate="no">
+         gcp-types/container-v1:projects.zones.clusters.nodePools
+        </code>
+       </li>
+       <li>
+        <code dir="ltr" translate="no">
+         gcp-types/container-v1:projects.locations.clusters.nodePools
+        </code>
+       </li>
+       <li>
+        <code dir="ltr" translate="no">
+         gcp-types/container-v1beta1:projects.zones.clusters
+        </code>
+       </li>
+       <li>
+        <code dir="ltr" translate="no">
+         gcp-types/container-v1beta1:projects.locations.clusters
+        </code>
+       </li>
+       <li>
+        <code dir="ltr" translate="no">
+         gcp-types/container-v1beta1:projects.zones.clusters.nodePools
+        </code>
+       </li>
+       <li>
+        <code dir="ltr" translate="no">
+         gcp-types/container-v1beta1:projects.locations.clusters.nodePools
+        </code>
+       </li>
+      </ul>
+     </div>
+     <div class="release-fixed" id="020d2b64">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Deployment Manager now acquires existing GKE cluster resources of type
+       <code dir="ltr" translate="no">
+        gcp-types/container-v1:projects.locations.clusters
+       </code>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="84e67e0d">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Added support for updating the following properties on
+       <code dir="ltr" translate="no">
+        gcp-types/container-v1:projects.zones.clusters
+       </code>
+       and
+       <code dir="ltr" translate="no">
+        gcp-types/container-v1:projects.locations.clusters
+       </code>
+       :
+      </p>
+      <ul>
+       <li>
+        binaryAuthorization
+       </li>
+       <li>
+        databaseEncryption
+       </li>
+       <li>
+        masterAuthorizedNetworksConfig
+       </li>
+       <li>
+        autoscaling
+       </li>
+       <li>
+        resourceUsageExportConfig
+       </li>
+       <li>
+        verticalPodAutoscaling
+       </li>
+      </ul>
+      <p>
+       Additionally, for
+       <code dir="ltr" translate="no">
+        gcp-types/container-v1beta1:projects.zones.clusters
+       </code>
+       and
+       <code dir="ltr" translate="no">
+        gcp-types/container-v1beta1:projects.locations.clusters
+       </code>
+       the following fields can also be updated:
+      </p>
+      <ul>
+       <li>
+        podSecurityPolicyConfig
+       </li>
+       <li>
+        privateClusterConfig
+       </li>
+       <li>
+        shieldedNodes
+       </li>
+       <li>
+        workloadIdentityConfig
+       </li>
+      </ul>
+     </div>
+     <div class="release-fixed" id="e6799f78">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Deployment Manager now correctly updates autoscaling properties for resources of type
+       <code dir="ltr" translate="no">
+        gcp-types/container-v1:projects.locations.clusters.nodePools
+       </code>
+       and
+       <code dir="ltr" translate="no">
+        gcp-types/container-v1beta1:projects.locations.clusters.nodePools
+       </code>
+       .
+      </p>
+     </div>
+     <div class="release-fixed" id="53060639">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Deployment Manager now correctly acquires
+       <a href="https://cloud.google.com/access-context-manager/docs">
+        Access Context Manager
+       </a>
+       resources of type
+       <code dir="ltr" translate="no">
+        gcp-types/accesscontextmanager-v1:accessPolicies.accessLevels
+       </code>
+       and
+       <code dir="ltr" translate="no">
+        gcp-types/accesscontextmanager-v1beta:accessPolicies.accessLevels
+       </code>
+       if the resources already exist.
+      </p>
+     </div>
+     <div class="release-changed" id="2b5f0f56">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Added support for updating
+       <a href="https://cloud.google.com/pubsub">
+        Cloud Pub/Sub
+       </a>
+       subscriptions using
+       <code dir="ltr" translate="no">
+        gcp-types/pubsub-v1:projects.subscriptions
+       </code>
+       .
+      </p>
+     </div>
+     <div class="release-fixed" id="95237637">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Deployment Manager now correctly deletes
+       <a href="https://cloud.google.com/compute/docs">
+        Compute Engine
+       </a>
+       forwarding rules of type
+       <code dir="ltr" translate="no">
+        compute.v1.forwardingRule
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        compute.beta.forwardingRule
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        gcp-types/compute-v1:forwardingRules
+       </code>
+       and
+       <code dir="ltr" translate="no">
+        gcp-types/compute-beta:forwardingRules
+       </code>
+       when the resource name does not match the forwarding rule name.
+      </p>
+     </div>
+     <div class="release-changed" id="d0580929">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Performance improvements when handling large Swagger / OpenAPI specs when
+       <a href="https://cloud.google.com/deployment-manager/docs/configuration/type-providers/creating-type-provider">
+        adding an API as a type provider
+       </a>
+       .
+      </p>
+     </div>
      <h2 data-text="March 30, 2020" id="March_30_2020">
       March 30, 2020
      </h2>
