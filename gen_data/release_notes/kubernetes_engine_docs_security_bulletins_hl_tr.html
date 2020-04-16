@@ -1,0 +1,3000 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <h1 class="devsite-page-title">
+   Güvenlik bültenleri
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <p>
+    Google Kubernetes Engine (GKE) ile ilgili tüm güvenlik bültenleri bu belgede açıklanmaktadır.
+   </p>
+   <p>
+    Güvenlik açıkları, etkilenen taraflar bunları ele alma imkanı bulana kadar genellikle ambargolu şekilde gizli tutulur. Bu durumlarda, ambargo kaldırılıncaya kadar GKE
+    <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=tr">
+     Sürüm Notları
+    </a>
+    'nda "güvenlik güncellemelerinden" bahsedilir. Bu noktada, sürüm notları yamanın ele aldığı güvenlik açığını yansıtacak şekilde güncellenir.
+   </p>
+   <aside class="note">
+    <strong>
+     Not:
+    </strong>
+    <span>
+     GKE üzerinde çok kiracılı iş yükleri çalıştırıyorsanız lütfen bu bültenlere özellikle dikkat edin. Bu güvenlik açıklarının çok kiracılı iş yüklerini etkilemesi daha olasıdır. GKE'deki güvenlik sınırları ve bunların iş yüklerini nasıl etkilediğiyle ilgili teknik açıklamalar için
+     <a href="https://cloudplatform.googleblog.com/2018/05/Exploring-container-security-Isolation-at-different-layers-of-the-Kubernetes-stack.html">
+      Kubernetes yığınının farklı katmanlarında yalıtım
+     </a>
+     bölümüne bakın.
+    </span>
+   </aside>
+   <p>
+    En yeni güvenlik bültenlerini almak istiyorsanız bu sayfanın URL'sini
+    <a class="external" href="https://wikipedia.org/wiki/Comparison_of_feed_aggregators">
+     feed okuyucunuza
+    </a>
+    ekleyin veya doğrudan feed URL'sini ekleyin:
+    <code dir="ltr" translate="no">
+     https://cloud.google.com/feeds/kubernetes-engine-security-bulletins.xml
+    </code>
+   </p>
+   <section class="bulletins">
+    <h2 data-text="GCP-2020-002" id="gcp-2020-002">
+     GCP-2020-002
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Kubernetes tarafından biri API sunucusunu, diğeri Kubelet'leri etkileyen
+         <a href="https://groups.google.com/forum/?hl=tr#!topic/kubernetes-security-announce/2UOlsba2g0s">
+          iki hizmet reddi güvenlik açığı
+         </a>
+         açıklanmıştır. Daha fazla bilgi için
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/89377">
+          89377
+         </a>
+         ve
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/89378">
+          89378
+         </a>
+         numaralı Kubernetes sorunlarını inceleyin.
+        </p>
+        <h4 data-text="Ne yapmalıyım?" id="ne-yapmalym">
+         Ne yapmalıyım?
+        </h4>
+        <p>
+         Güvenilmeyen kullanıcılar kümenin dahili ağında istek gönderemediği sürece tüm GKE kullanıcıları CVE-2020-8551 güvenlik açığına karşı korumaya alınmıştır.
+            Ek olarak
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/authorized-networks?hl=tr">
+          ana sistem yetkili ağların
+         </a>
+         kullanılması CVE-2020-8552 riskini azaltır.
+        </p>
+        <h4 data-text="Bunlar için ne zaman yama uygulanacak?" id="bunlar-icin-ne-zaman-yama-uygulanacak">
+         Bunlar için ne zaman yama uygulanacak?
+        </h4>
+        <p>
+         CVE-2020-8551 yamaları için düğümlerin yeni sürüme geçirilmesi gerekir. Çözümün yer alacağı yama sürümlerinin listesi aşağıda verilmiştir:
+        </p>
+        <ul>
+         <li>
+          1.15.10-gke.*
+         </li>
+         <li>
+          1.16.7-gke.*
+         </li>
+        </ul>
+        <aside class="note">
+         Not: 1.14.x ve önceki sürümler bu güvenlik açığından etkilenmez ve dolayısıyla bunlar için yama gerekmez.
+        </aside>
+        <p>
+         CVE-2020-8552 yamaları için ana sistemin yeni sürüme geçirilmesi gerekir. Çözümün yer alacağı yama sürümlerinin listesi aşağıda verilmiştir:
+        </p>
+        <ul>
+         <li>
+          1.14.10-gke.32
+         </li>
+         <li>
+          1.15.10-gke.*
+         </li>
+         <li>
+          1.16.7-gke.*
+         </li>
+        </ul>
+       </td>
+       <td>
+        <p>
+         Orta
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8551">
+          CVE-2020-8551
+         </a>
+         <br/>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8552">
+          CVE-2020-8552
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="21 Ocak 2020; son güncelleme 24 Ocak 2020" id="january_21_2020">
+     21 Ocak 2020; son güncelleme 24 Ocak 2020
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         <strong>
+          24.01.2020 Tarihli Güncelleme:
+         </strong>
+         Yama uygulanmış sürümlerin kullanıma sunulması üzerinde çalışılmaktadır ve süreç 25 Ocak 2020'de tamamlanacaktır.
+        </p>
+        <hr/>
+        <p>
+         Microsoft, Windows Crypto API'de ve eliptik eğri algoritmalı imzaları doğrulama işlevinde bir güvenlik açığı bulunduğunu açıkladı. Daha fazla bilgi için lütfen
+         <a class="external" href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2020-0601">
+          Microsoft'un açıklamasına
+         </a>
+         bakın.
+        </p>
+        <p>
+         <strong>
+          Ne yapmalıyım?
+         </strong>
+        </p>
+        <p>
+         <strong>
+          Çoğu müşterinin herhangi bir işlem yapması gerekmez. Yalnızca üzerinde Windows Server çalışan düğümler etkilenir.
+         </strong>
+        </p>
+        <p>
+         Windows Server düğümleri kullanan müşteriler, bu güvenlik açığını çözümlemek için hem düğümleri hem de bu düğümler üzerinde çalışan container mimarisine alınmış iş yüklerini yama uygulanmış sürümlerle güncellemelidir.
+        </p>
+        <p>
+         <strong>
+          Container'ları güncellemek için:
+         </strong>
+        </p>
+        <p>
+         Son güncelleme tarihi 14.1.2020 veya daha yeni olan bir
+         <a class="external" href="https://hub.docker.com/_/microsoft-windows-servercore">
+          servercore
+         </a>
+         veya
+         <a class="external" href="https://hub.docker.com/_/microsoft-windows-nanoserver">
+          nanoserver
+         </a>
+         etiketi seçerek Microsoft'un en yeni temel container görüntülerini kullanın ve container'larınızı yeniden oluşturun.
+        </p>
+        <p>
+         <strong>
+          Düğümleri güncellemek için:
+         </strong>
+        </p>
+        <p>
+         Yama uygulanmış sürümlerin kullanıma sunulması üzerinde çalışılmaktadır ve süreç 24 Ocak 2020'de tamamlanacaktır.
+        </p>
+        <p>
+         Bu tarihe kadar bekleyerek düğümlerinizi yama uygulanmış bir GKE sürümüne yükseltebilir veya en yeni Windows yamasını istediğiniz bir zamanda manuel olarak dağıtmak için Windows Update'i kullanabilirsiniz.
+        </p>
+        <p>
+         Çözümün yer alacağı yama sürümlerinin listesi aşağıda verilmiştir:
+        </p>
+        <ul>
+         <li>
+          1.14.7-gke.40
+         </li>
+         <li>
+          1.14.8-gke.33
+         </li>
+         <li>
+          1.14.9-gke.23
+         </li>
+         <li>
+          1.14.10-gke.17
+         </li>
+         <li>
+          1.15.7-gke.23
+         </li>
+         <li>
+          1.16.4-gke.22
+         </li>
+        </ul>
+        <p>
+         <strong>
+          Bu yama hangi güvenlik açıklarını ele alıyor?
+         </strong>
+        </p>
+        <p>
+         Yama, aşağıdaki güvenlik açıklarının riskini azaltır:
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-0601">
+          CVE-2020-0601
+         </a>
+         - Bu güvenlik açığı,
+         <a class="external" href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2020-0601">
+          Windows Crypto API Adres Sahteciliği Güvenlik Açığı
+         </a>
+         olarak da bilinir ve kötü amaçlı yürütülebilir dosyaların güvenli gibi gösterilmesini veya saldırganların "ortadaki adam" saldırıları yürüterek etkilenen yazılıma giden TLS bağlantılarındaki gizli bilgilerin şifresini çözmesini mümkün kılacak şekilde kötüye kullanılabilir.
+        </p>
+       </td>
+       <td>
+        <p>
+         NVD Baz Puanı: 8.1 (Yüksek)
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-0601">
+          CVE-2020-0601
+         </a>
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="14 Kasım 2019" id="november_14_2019">
+     14 Kasım 2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Kubernetes, kubernetes-csi
+         <a href="https://github.com/kubernetes-csi/external-provisioner">
+          <code dir="ltr" translate="no">
+           external-provisioner
+          </code>
+         </a>
+         ,
+         <a href="https://github.com/kubernetes-csi/external-snapshotter">
+          <code dir="ltr" translate="no">
+           external-snapshotter
+          </code>
+         </a>
+         ve
+         <a href="https://github.com/kubernetes-csi/external-resizer">
+          <code dir="ltr" translate="no">
+           external-resizer
+          </code>
+         </a>
+         yardımcı dosyalarında bir güvenlik sorunu açıkladı. Bu sorun,
+         <a href="https://kubernetes-csi.github.io/docs/drivers.html">
+          Container Depolama Arayüzü (CSI) sürücülerinde
+         </a>
+         paketlenmiş çoğu yardımcı dosya sürümünü etkilemektedir. Ayrıntılı bilgi için
+         <a href="https://github.com/kubernetes/kubernetes/issues/85233">
+          Kubernetes açıklamasına
+         </a>
+         göz atın.
+        </p>
+        <p>
+         <strong>
+          Ne yapmalıyım?
+         </strong>
+         <br/>
+         <strong>
+          Bu güvenlik açığı, yönetilen hiçbir GKE bileşenini etkilemez
+         </strong>
+         .
+            Kendi CSI sürücülerinizi GKE sürümü 1.12 veya üzerini çalıştıran
+         <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/alpha-clusters?hl=tr">
+          GKE Alfa kümelerinde
+         </a>
+         yönetiyorsanız güvenlik açığından etkilenebilirsiniz. Sorun sizi etkilediyse CSI sürücüsü tedarikçinizle iletişime geçerek yeni sürüme geçme talimatlarını edinin.
+        </p>
+        <p>
+         <strong>
+          Bu yama hangi güvenlik açıklarını ele alıyor?
+         </strong>
+         <br/>
+         <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11255">
+          CVE-2019-11255
+         </a>
+         : Bu CVE, birim verilerine dair yetkisiz erişim veya değişime izin verebilen
+         <code dir="ltr" translate="no">
+          kubernetes-csi
+         </code>
+         <a href="https://github.com/kubernetes-csi/external-provisioner">
+          <code dir="ltr" translate="no">
+           external-provisioner
+          </code>
+         </a>
+         ,
+         <a href="https://github.com/kubernetes-csi/external-snapshotter">
+          <code dir="ltr" translate="no">
+           external-snapshotter
+          </code>
+         </a>
+         ve
+         <a href="https://github.com/kubernetes-csi/external-resizer">
+          <code dir="ltr" translate="no">
+           external-resizer
+          </code>
+         </a>
+         yardımcı dosyalarında bulunur.
+         <a href="https://kubernetes-csi.github.io/docs/drivers.html">
+          CSI sürücülerinde
+         </a>
+         paket haline getirilmiş yardımcı dosyaların çoğu sürümünü etkiler.
+        </p>
+       </td>
+       <td>
+        <p>
+         Orta
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11255">
+          CVE-2019-11255
+         </a>
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="12 Kasım 2019" id="november_12_2019">
+     12 Kasım 2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Intel, spekülatif yürütme ile mikromimari durumu arasındaki etkileşimlerin verileri açığa çıkarmasına izin verebilecek CVE'ler açıkladı. Ayrıntılı bilgi için
+         <a href="https://blogs.intel.com/technology/2019/11/ipas-november-2019-intel-platform-update-ipu/">
+          Intel açıklamasına
+         </a>
+         göz atın.
+        </p>
+        <p>
+         <strong>
+          Kubernetes Engine'i çalıştıran ana makine altyapısı, müşteri iş yüklerini birbirinden ayırır. Kendinize ait çok kiracılı GKE kümelerinizde güvenilmeyen kod çalıştırmadığınız
+          <em>
+           ve
+          </em>
+          N2, M2 ya da C2 düğümlerini kullanmadığınız takdirde başka bir işlem yapmanız gerekmez.
+         </strong>
+         N1 düğümlerindeki GKE örnekleri için yeni işlem yapmanız gerekmez.
+        </p>
+        <p>
+         Anthos GKE On-Prem çalıştırıyorsanız bu durumdan etkilenmeniz donanıma bağlıdır. Lütfen altyapınızı
+         <a href="https://blogs.intel.com/technology/2019/11/ipas-november-2019-intel-platform-update-ipu/">
+          Intel açıklamasına
+         </a>
+         göre karşılaştırın.
+        </p>
+        <h4 data-text="Ne yapmalıyım?" id="ne-yapmalym_1">
+         Ne yapmalıyım?
+        </h4>
+        <p>
+         <strong>
+          Yalnızca N2, M2 veya C2 düğümlerini içeren düğüm havuzları kullanmanız
+          <em>
+           ve
+          </em>
+          bu düğümlerin kendinize ait çok kiracılı GKE kümelerinizde güvenilmeyen kod çalıştırması durumunda etkilenirsiniz.
+         </strong>
+        </p>
+        <p>
+         <strong>
+          Düğümlerinizi yeniden başlattığınızda yama uygulanır.
+         </strong>
+         Düğüm havuzunuzdaki tüm düğümleri yeniden başlatmanın en kolay yolu,
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=tr#upgrade_nodes">
+          yeni sürüme geçme
+         </a>
+         işlemini kullanarak etkilenen düğüm havuzunun tamamında zorunlu yeniden başlatma uygulamaktır.
+         <br/>
+        </p>
+        <aside class="note">
+         Not: Yeni sürüme geçme işlemi sırasında sürümleri değiştirmeniz gerekmez.
+         <code dir="ltr" translate="no">
+          cluster-version
+         </code>
+         işaretine sahip düğüm sürümünde yükseltme işlemini başlatabilirsiniz.
+        </aside>
+        <h4 data-text="Bu yama hangi güvenlik açıklarını ele alıyor?" id="bu-yama-hangi-guvenlik-acklarn-ele-alyor">
+         Bu yama hangi güvenlik açıklarını ele alıyor?
+        </h4>
+        <p>
+         Yama, aşağıdaki güvenlik açıklarının riskini azaltır:
+        </p>
+        <p>
+         <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11135">
+          CVE-2019-11135
+         </a>
+         : Bu CVE, TSX Eş Zamansız İptal (TAA) olarak da bilinir. TAA,
+         <a href="https://cloud.google.com/kubernetes-engine/docs/security-bulletins?hl=tr#may-14-2019">
+          Mikromimari Veri Örnekleme (MDS)
+         </a>
+         tarafından istismar edilen aynı mikromimari veri yapılarının kullanılmasıyla başka bir veri hırsızlığı alanı oluşturur.
+        </p>
+        <p>
+         <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12207">
+          CVE-2018-12207
+         </a>
+         : Sanal ana makineleri etkileyen bu CVE, kötü amaçlı bir konuğun korumasız bir ana makineyi çökertmesine neden olan bir Hizmet Reddi (DoS) güvenlik açığıdır. Bu CVE, "Sayfa Boyutu Değişikliğinde Makine Kontrolü Hatası" olarak da bilinir. Bu CVE, GKE'yi etkilemez.
+        </p>
+       </td>
+       <td>
+        <p>
+         Orta
+        </p>
+       </td>
+       <td>
+        <p>
+         <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11135">
+          CVE-2019-11135
+         </a>
+         <br/>
+         <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12207">
+          CVE-2018-12207
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="22 Ekim 2019" id="october_22_2019">
+     22 Ekim 2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Yakın zamanda Go programlama dilinde,
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-16276">
+          CVE-2019-16276
+         </a>
+         ile açıklanan bir güvenlik açığı tespit edildi.
+            Bu güvenlik açığı, Kimlik Doğrulama Proxy'si kullanan Kubernetes yapılandırmalarını etkileme potansiyeline sahiptir. Ayrıntılı bilgi için
+         <a class="external" href="https://groups.google.com/forum/?hl=tr#!topic/kubernetes-security-announce/PtsUCqFi4h4">
+          Kubernetes açıklamasına
+         </a>
+         göz atın.
+        </p>
+        <p>
+         Kubernetes Engine, Kimlik Doğrulama Proxy'lerinin yapılandırmalarına izin vermez ve bu nedenle bu güvenlik açığından etkilenmez.
+        </p>
+       </td>
+       <td>
+        <p>
+         Yok
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-16276">
+          CVE-2019-16276
+         </a>
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="16 Ekim 2019" id="october_16_2019">
+     16 Ekim 2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         <strong>
+          24.10.2019 Tarihli Güncelleme:
+         </strong>
+         Yamalı sürümler artık tüm alt bölgelerde kullanılabilir.
+        </p>
+        <hr/>
+        <p>
+         Yakın zamanda Kubernetes'te
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11253">
+          CVE-2019-11253
+         </a>
+         ile açıklanan bir güvenlik açığı tespit edildi. Güvenlik açığı, POST isteği yapma yetkisi olan tüm kullanıcılara, bir Kubernetes API sunucusuna uzaktan Hizmet Reddi saldırısı yürütme izni verir. Kubernetes Ürün Güvenliği Komitesi'nin (PSC) bu güvenlik açığıyla ilgili yayınladığı ek bilgilere
+         <a class="external" href="https://groups.google.com/forum/?hl=tr#!topic/kubernetes-security-announce/jk8polzSUxs">
+          buradan
+         </a>
+         ulaşabilirsiniz.
+        </p>
+        <p>
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/authorized-networks?hl=tr">
+          Ana Yetkili Ağları
+         </a>
+         ve
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters?hl=tr#private_master">
+          Herkese açık uç noktası olmayan özel kümeleri
+         </a>
+         kullanan GKE Kümeleri, bu güvenlik açığının risklerini azaltır.
+        </p>
+        <h6 data-text="Ne yapmalıyım?" id="ne-yapmalym_2">
+         Ne yapmalıyım?
+        </h6>
+        <p>
+         Kümenizi, çözümü içeren bir yama sürümü yayınlanır yayınlanmaz bu sürüme yükseltmenizi öneririz. Yamaların 14 Ekim haftası için planlanan GKE sürümüyle birlikte tüm alt bölgelerde kullanıma sunulacağını tahmin ediyoruz.
+        </p>
+        <p>
+         Çözümün yer alacağı yama sürümlerinin listesi aşağıda verilmiştir:
+        </p>
+        <ul>
+         <li>
+          1.12.10-gke.15
+         </li>
+         <li>
+          1.13.11-gke.5
+         </li>
+         <li>
+          1.14.7-gke.10
+         </li>
+         <li>
+          1.15.4-gke.15
+         </li>
+        </ul>
+        <h6 data-text="Bu yama hangi güvenlik açıklarını ele alıyor?" id="bu-yama-hangi-guvenlik-acklarn-ele-alyor_1">
+         Bu yama hangi güvenlik açıklarını ele alıyor?
+        </h6>
+        <p>
+         Yama, aşağıdaki güvenlik açıklarının riskini azaltır:
+        </p>
+        <p>
+         CVE-2019-11253, Hizmet Reddi (DoS) güvenlik açığıdır.
+        </p>
+       </td>
+       <td>
+        <p>
+         Yüksek
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11253">
+          CVE-2019-11253
+         </a>
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="16 Eylül 2019" id="september_16_2019">
+     16 Eylül 2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Bu bülten, ilk yayınının ardından güncellenmiştir.
+        </p>
+        <p>
+         Go programlama dili yakın zamanda, Hizmet Reddi (DoS) güvenlik açığı olan yeni
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9512">
+          CVE-2019-9512
+         </a>
+         ve
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9514">
+          CVE-2019-9514
+         </a>
+         güvenlik açıklarını tespit etti. GKE'de bu, kullanıcıların Kubernetes API sunucusunda aşırı CPU miktarı tüketen kötü amaçlı istekler oluşturmasına izin vererek küme kontrol düzleminin kullanılabilirliğini azaltabilir. Ayrıntılı bilgi için
+         <a class="external" href="https://groups.google.com/forum/?hl=tr#!topic/golang-announce/65QixT3tcmg">
+          Go programlama dili açıklamasına
+         </a>
+         göz atın.
+        </p>
+        <h6 data-text="Ne yapmalıyım?" id="ne-yapmalym_3">
+         Ne yapmalıyım?
+        </h6>
+        <p>
+         Kümenizi, bu güvenlik açığına yönelik çözümü içeren en son yama sürümü yayınlanır yayınlanmaz bu sürüme yükseltmenizi öneririz. Bu yamaların,
+         <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=tr#september_16_2019">
+          sürüm programı
+         </a>
+         doğrultusunda sonraki GKE sürümüyle birlikte tüm alt bölgelerde kullanıma sunulacağını tahmin ediyoruz.
+        </p>
+        <p>
+         Çözümün yer alacağı yama sürümlerinin listesi aşağıda verilmiştir:
+        </p>
+        <ul>
+         <li>
+          <strong>
+           16 Ekim 2019 Tarihli Güncelleme:
+          </strong>
+          1.12.10-gke.15
+         </li>
+         <li>
+          1.13.10-gke.0
+         </li>
+         <li>
+          1.14.6-gke.1
+         </li>
+        </ul>
+        <h6 data-text="Bu yama hangi güvenlik açığını ele alıyor?" id="bu-yama-hangi-guvenlik-acgn-ele-alyor">
+         Bu yama hangi güvenlik açığını ele alıyor?
+        </h6>
+        <p>
+         Yama, aşağıdaki güvenlik açıklarının riskini azaltır:
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9512">
+          CVE-2019-9512
+         </a>
+         ve
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9514">
+          CVE-2019-9514
+         </a>
+         , Hizmet Reddi (DoS) güvenlik açıklarıdır.
+        </p>
+       </td>
+       <td>
+        <p>
+         Yüksek
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9512">
+          CVE-2019-9512
+         </a>
+         <br/>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9514">
+          CVE-2019-9514
+         </a>
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="5 Eylül 2019" id="may-31-2019-update">
+     5 Eylül 2019
+    </h2>
+    <p>
+     <a href="#may-31-2019">
+      31 Mayıs 2019
+     </a>
+     tarihli bültende belirtilen güvenlik açığının çözümü için yayınlanan bülten güncellenmiştir.
+    </p>
+    <h2 data-text="22 Ağustos 2019" id="august-05-2019-update2">
+     22 Ağustos 2019
+    </h2>
+    <p>
+     <a href="#august-05-2019">
+      5 Ağustos 2019
+     </a>
+     tarihli bülten güncellenmiştir.
+    Önceki bültende açıklanan güvenlik açığının çözümü
+     <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=tr#august_22_2019">
+      kullanıma sunulmuştur
+     </a>
+     .
+    </p>
+    <h2 data-text="8 Ağustos 2019" id="august-05-2019-update">
+     8 Ağustos 2019
+    </h2>
+    <p>
+     <a href="#august-05-2019">
+      5 Ağustos 2019
+     </a>
+     tarihli bülten güncellenmiştir.
+    Bu bültende açıklanan güvenlik açığının çözümünün GKE'nin sonraki sürümünde kullanıma sunulacağını tahmin ediyoruz.
+    </p>
+    <h2 data-text="5 Ağustos 2019" id="august-05-2019">
+     5 Ağustos 2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Bu bülten, ilk yayınının ardından güncellenmiştir.
+        </p>
+        <p>
+         Kubernetes yakın zamanda küme kapsamındaki
+         <a class="external" href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">
+          özel kaynak
+         </a>
+         örneklerinin tüm Ad Alanlarında bulunan ad alanlı nesneler gibi işleme alınmasına izin veren
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11247">
+          CVE-2019-11247
+         </a>
+         güvenlik açığını tespit etti. Bu, yalnızca ad alanı düzeyinde RBAC izinlerine sahip kullanıcı ve hizmet hesaplarının küme kapsamındaki özel kaynaklarla etkileşim kurabileceği anlamına gelir. Bu güvenlik açığının kötü amaçlı kullanılması için saldırganın herhangi bir ad alanındaki kaynağa erişim izinlerine sahip olması gerekir.
+        </p>
+        <h6 data-text="Ne yapmalıyım?" id="ne-yapmalym_4">
+         Ne yapmalıyım?
+        </h6>
+        <p>
+         Kümenizi, bu güvenlik açığına yönelik çözümü içeren en son yama sürümü yayınlanır yayınlanmaz bu sürüme
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=tr">
+          yükseltmenizi
+         </a>
+         öneririz. Yamaların bir sonraki GKE sürümüyle birlikte tüm alt bölgelerde kullanıma sunulacağını tahmin ediyoruz. Çözümün yer alacağı yama sürümlerinin listesi aşağıda verilmiştir:
+        </p>
+        <ul>
+         <li>
+          1.11.10-gke.6
+         </li>
+         <li>
+          1.12.9-gke.13
+         </li>
+         <li>
+          1.13.7-gke.19
+         </li>
+         <li>
+          1.14.3-gke.10 (
+          <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels?hl=tr">
+           Hızlı Kanal
+          </a>
+          )
+         </li>
+        </ul>
+        <h6 data-text="Bu yama hangi güvenlik açığını ele alıyor?" id="bu-yama-hangi-guvenlik-acgn-ele-alyor_1">
+         Bu yama hangi güvenlik açığını ele alıyor?
+        </h6>
+        <p>
+         Yamada şu güvenlik açığının çözümü yer alır:
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11247">
+          CVE-2019-11247
+         </a>
+         .
+        </p>
+       </td>
+       <td>
+        <p>
+         Orta
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11247">
+          CVE-2019-11247
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="3 Temmuz 2019" id="july-03-2019-2">
+     3 Temmuz 2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         CVE-2019-11246 güvenlik açığına yönelik yayınlanan
+         <code dir="ltr" translate="no">
+          kubectl
+         </code>
+         yamalı sürümü
+         <a href="https://cloud.google.com/sdk/docs/release-notes?hl=tr#kubernetes_engine">
+          <code dir="ltr" translate="no">
+           gcloud
+          </code>
+          253.0.0
+         </a>
+         ile kullanıma sunulmuştur.
+          Daha fazla bilgi için
+         <a href="#june-25-2019">
+          25 Haziran 2019 tarihli güvenlik bültenini
+         </a>
+         inceleyin.
+        </p>
+        <p>
+         <strong>
+          Not:
+         </strong>
+         Yama,
+         <code dir="ltr" translate="no">
+          kubectl
+         </code>
+         1.11.10 sürümünde mevcut değildir.
+        </p>
+       </td>
+       <td>
+        <p>
+         Yüksek
+        </p>
+       </td>
+       <td>
+        <p>
+         <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-15664">
+          CVE-2019-11246
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="3 Temmuz 2019" id="july-03-2019">
+     3 Temmuz 2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h6 data-text="3 Temmuz 2019 Tarihli Güncelleme" id="3-temmuz-2019-tarihli-guncelleme">
+         3 Temmuz 2019 Tarihli Güncelleme
+        </h6>
+        <p>
+         Son güncellememiz yayınlandığında, 1.11.9 ve 1.11.10 sürümlerinin yamaları henüz kullanıma sunulmamıştı. Şimdi, 1.11.10-gke.5 sürümünü, her iki 1.11 sürümünün de yükseltme hedefi olarak yayınlıyoruz.
+        </p>
+        <p>
+         Bu kez, GKE ana düğümlerine yama uygulandı ve Kubernetes Engine'i çalıştıran Google altyapısına yama uygulanarak güvenlik açığına karşı korumaya alındı.
+        </p>
+        <p>
+         1.11 ana düğümleri yakın zamanda kullanımdan kaldırılacak ve 8 Temmuz 2019 haftasında otomatik olarak 1.12 sürümüne yükseltilmesi planlandı. Düğümleri yamalı bir sürüme almak için aşağıdaki önerilen adımlardan herhangi birini seçebilirsiniz:
+        </p>
+        <ul>
+         <li>
+          8 Temmuz 2019 tarihine kadar düğümlerin 1.11.10-gke.5 sürümüne yükseltme işlemini gerçekleştirin. Bu tarihten sonra, 1.11 sürümleri kullanılabilir yükseltme hedefleri listesinden kaldırılmaya başlanacaktır.
+         </li>
+         <li>
+          1.11 sürümü düğümlerde
+          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-upgrades?hl=tr">
+           otomatik yükseltmeleri
+          </a>
+          etkinleştirerek ana düğümler 1.12 sürümüne yükseltildiğinde bu düğümlerin de yükseltilmesine olanak sağlayın.
+         </li>
+         <li>
+          Hem ana düğümleri hem de düğümleri, düzeltilmiş bir 1.12 sürümüne
+          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=tr">
+           manuel olarak yükseltin
+          </a>
+          .
+         </li>
+        </ul>
+        <p>
+         24 Haziran 2019 tarihli orijinal bültende şu bilgiler yer almaktadır:
+        </p>
+        <hr/>
+        <h6 data-text="24 Haziran 2019 Tarihli Güncelleme" id="24-haziran-2019-tarihli-guncelleme">
+         24 Haziran 2019 Tarihli Güncelleme
+        </h6>
+        <p>
+         22.06.2019 21:40 UTC itibarıyla aşağıda listelenen yama uygulanmış Kubernetes sürümlerini kullanıma sunduk. Kubernetes sürümleri 1.11.0 ile 1.13.6 arasında olan ana düğümler, otomatik olarak yama uygulanmış sürüme yükseltilecektir. Çalıştırdığınız sürüm bu yamayla uyumlu değilse düğümlerinizi yükseltmeden önce uyumlu bir ana sürüme (liste aşağıda verilmiştir) yükseltme işlemi gerçekleştirin.
+        </p>
+        <p>
+         <strong>
+          Bu güvenlik açıklarının ciddiyeti nedeniyle, düğümler için otomatik yükseltme özelliği etkinleştirilmiş olsun veya olmasın, yamalar kullanıma sunulur sunulmaz hem düğümlerinizi hem de ana düğümlerinizi bu sürümlerden birine
+          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-container-cluster?hl=tr">
+           manuel olarak yükseltmenizi
+          </a>
+          öneririz.
+         </strong>
+        </p>
+        <p>
+         Yama uygulanmış sürümler:
+        </p>
+        <ul>
+         <li>
+          1.11.8-gke.10
+         </li>
+         <li>
+          1.12.7-gke.24
+         </li>
+         <li>
+          1.12.8-gke.10
+         </li>
+         <li>
+          1.13.6-gke.13
+         </li>
+        </ul>
+        <p>
+         18 Haziran 2019 tarihli orijinal bültende şu bilgiler yer almaktadır:
+        </p>
+        <hr/>
+        <p>
+         Netflix yakın zamanda Linux çekirdeklerinde üç TCP güvenlik açığı açıklamıştır:
+        </p>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11477">
+           CVE-2019-11477
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11478">
+           CVE-2019-11478
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11479">
+           CVE-2019-11479
+          </a>
+         </li>
+        </ul>
+        <p>
+         Bu CVE'lerin tamamı
+         <a class="external" href="https://github.com/Netflix/security-bulletins/blob/master/advisories/third-party/2019-001.md">
+          NFLX-2019-001
+         </a>
+         olarak adlandırılır.
+        </p>
+        <p>
+         Yama uygulanmamış Linux çekirdekleri, uzaktan tetiklenen bir hizmet reddi saldırısı güvenlik açığından etkilenebilir.
+         <strong>
+          Güvenilmeyen ağ trafiği gönderen veya alan Google Kubernetes Engine düğümleri etkilenir. Bu yüzden, iş yüklerinizi korumak için aşağıdaki çözüm adımlarını uygulamanızı öneririz.
+         </strong>
+        </p>
+        <h6 data-text="Kubernetes ana düğümleri" id="kubernetes-ana-dugumleri">
+         Kubernetes ana düğümleri
+        </h6>
+        <ul>
+         <li>
+          <p>
+           Güvenilen ağların trafiğini sınırlamak için
+           <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/authorized-networks?hl=tr">
+            Yetkili Ağlar
+           </a>
+           kullanan Kubernetes ana düğümleri etkilenmez.
+          </p>
+         </li>
+         <li>
+          <p>
+           Google'ın yönettiği GKE kümelerinin ana düğümlerine, önümüzdeki günlerde otomatik olarak yama uygulanacaktır. Müşterilerin hiçbir işlem yapması gerekmez.
+          </p>
+         </li>
+        </ul>
+        <h6 data-text="Kubernetes düğümleri" id="kubernetes-dugumleri">
+         Kubernetes düğümleri
+        </h6>
+        <p>
+         Güvenilir ağların trafiğini sınırlayan düğümler etkilenmez. Bu küme aşağıdaki özelliklere sahiptir:
+        </p>
+        <ul>
+         <li>
+          Güvenilmeyen ağlardan güvenlik duvarıyla ayrı tutulan ya da herkese açık IP'si olmayan düğümler (
+          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters?hl=tr">
+           Özel kümeler
+          </a>
+          )
+         </li>
+         <li>
+          Herkese açık LoadBalancer Hizmetleri olmayan kümeler
+         </li>
+        </ul>
+        <p>
+         Google, bu güvenlik açıklarına yönelik kalıcı bir çözüm hazırlamaktadır. Çözüm, yeni bir düğüm sürümü olarak sunulacaktır. Kalıcı çözüm kullanıma sunulduğunda bu bülteni güncelleyip tüm GKE müşterilerini e-posta ile bilgilendireceğiz.
+        </p>
+        <p>
+         Kalıcı çözüm kullanıma sunulana kadar faydalanmanız için ana makine
+         <code dir="ltr" translate="no">
+          iptables
+         </code>
+         yapılandırmasını değiştirerek çözüm uygulayan bir Kubernetes DaemonSet oluşturduk.
+        </p>
+        <h5 data-text="Ne yapmalıyım?" id="ne-yapmalym_5">
+         Ne yapmalıyım?
+        </h5>
+        <p>
+         Aşağıdaki komutu çalıştırarak Kubernetes DaemonSet'i kümenizdeki tüm düğümlere uygulayın. Bu işlem, güvenlik açığını gidermek için mevcut
+         <code dir="ltr" translate="no">
+          iptables
+         </code>
+         kurallarına bir
+         <code dir="ltr" translate="no">
+          iptables
+         </code>
+         kuralı ekler.
+         <strong>
+          Komutu, Google Cloud projesi bazında küme başına bir kez çalıştırın.
+         </strong>
+        </p>
+        <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+kubectl apply -f \
+    https://raw.githubusercontent.com/GoogleCloudPlatform\
+    /k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
+          </pre>
+        <aside class="note">
+         <p>
+          GKE'de Ipv6 desteklenmediği için ip6tables kuralı gerekli değildir.
+         </p>
+        </aside>
+        <p>
+         Yama uygulanmış düğüm sürümü kullanıma sunulduktan ve etkilenmiş olabilecek tüm düğümlerinizi yükselttikten sonra aşağıdaki komutu kullanarak DaemonSet'i kaldırabilirsiniz.
+         <strong>
+          Komutu, Google Cloud projesi bazında küme başına bir kez çalıştırın.
+         </strong>
+        </p>
+        <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+kubectl delete -f \
+    https://raw.githubusercontent.com/GoogleCloudPlatform\
+    /k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
+          </pre>
+       </td>
+       <td>
+        Yüksek
+        <br/>
+        Orta
+        <br/>
+        Orta
+        <br/>
+       </td>
+       <td>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11477">
+         CVE-2019-11477
+        </a>
+        <br/>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11478">
+         CVE-2019-11478
+        </a>
+        <br/>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11479">
+         CVE-2019-11479
+        </a>
+        <br/>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="25 Haziran 2019" id="june-25-2019">
+     25 Haziran 2019
+    </h2>
+    <table id="june-24-2019">
+     <thead>
+      <tr>
+       <th width="70%">
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         <strong>
+          03.07.2019 Tarihli Güncelleme:
+         </strong>
+         Bu yama,
+         <code dir="ltr" translate="no">
+          gcloud
+         </code>
+         253.0.0 sürümü ile 1.12.9, 1.13.6, 1.14.2 ve daha yeni
+         <code dir="ltr" translate="no">
+          kubectl
+         </code>
+         sürümleri için kullanılabilir.
+        </p>
+        <p>
+         <strong>
+          Not:
+         </strong>
+         Yama, 1.11.10 sürümünde mevcut değildir.
+        </p>
+        <hr/>
+        <p>
+         Kubernetes, yakın zamanda
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11246">
+          CVE-2019-11246
+         </a>
+         güvenlik açığını tespit etti. Bu güvenlik açığı, container içinde
+         <code dir="ltr" translate="no">
+          kubectl cp
+         </code>
+         işlemine ve kod yürütme özelliklerine erişimi olan bir saldırganın ana makinedeki dosyaları değiştirebilmesini sağlar. Bu açıklardan yararlanma, saldırganların ana makinenin dosya sisteminde dosya oluşturmasını veya değiştirmesini sağlayabilir. Ayrıntılı bilgi için
+         <a class="external" href="https://groups.google.com/forum/?hl=tr#!topic/kubernetes-security-announce/NLs2TGbfPdo">
+          Kubernetes açıklamasına
+         </a>
+         göz atın.
+        </p>
+        <p>
+         <strong>
+          Tüm Google Kubernetes Engine (GKE)
+          <code dir="ltr" translate="no">
+           gcloud
+          </code>
+          sürümleri bu güvenlik açığından etkilenmektedir. Bu nedenle,
+          <code dir="ltr" translate="no">
+           gcloud
+          </code>
+          son yama sürümü kullanıma sunulduğunda bu sürüme yükseltme yapmanızı öneririz.
+         </strong>
+         Daha sonra kullanıma sunulacak yama sürümünde bu güvenlik açığı için bir çözüm yer alacaktır.
+        </p>
+        <h6 data-text="Ne yapmalıyım?" id="ne-yapmalym_6">
+         Ne yapmalıyım?
+        </h6>
+        <p>
+         Daha sonra yayınlanacak
+         <code dir="ltr" translate="no">
+          gcloud
+         </code>
+         sürümünde
+         <code dir="ltr" translate="no">
+          kubectl
+         </code>
+         için yama uygulanmış bir sürüm yer alacaktır. Dilerseniz
+         <a class="external" href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">
+          <code dir="ltr" translate="no">
+           kubectl
+          </code>
+          için doğrudan kendiniz yükseltme yapabilirsiniz
+         </a>
+         .
+        </p>
+        <p>
+         Bu yamanın kullanıma sunulma durumunu
+         <a href="https://cloud.google.com/sdk/docs/release-notes?hl=tr">
+          <code dir="ltr" translate="no">
+           gcloud
+          </code>
+          sürüm notlarından
+         </a>
+         takip edebilirsiniz.
+        </p>
+        <h6 data-text="Bu yama hangi güvenlik açığını ele alıyor?" id="bu-yama-hangi-guvenlik-acgn-ele-alyor_2">
+         Bu yama hangi güvenlik açığını ele alıyor?
+        </h6>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11246">
+          CVE-2019-11246
+         </a>
+         güvenlik açığı, container içinde
+         <code dir="ltr" translate="no">
+          kubectl cp
+         </code>
+         çalışma ve kod yürütme özelliklerine erişimi olan bir saldırganın ana makinedeki dosyaları değiştirebilmesini sağlar. Bu açıklardan yararlanma, saldırganların ana makinenin dosya sisteminde dosya oluşturmasını veya değiştirmesini sağlayabilir
+        </p>
+       </td>
+       <td>
+        <p>
+         Yüksek
+        </p>
+       </td>
+       <td>
+        <p>
+         <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-15664">
+          CVE-2019-11246
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="18 Haziran 2019" id="june-18-2019">
+     18 Haziran 2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Docker, kısa bir süre önce
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-15664">
+          CVE-2018-15664
+         </a>
+         güvenlik açığını tespit etti. Güvenlik açığı, container içinde kod yürütebilen saldırganların dışarıdan başlatılan
+         <code dir="ltr" translate="no">
+          docker cp
+         </code>
+         işlemini ele geçirmesine izin verebilir. Bu açıklardan yararlanma, saldırganlara dosyaların yazıldığı konumu ana makine dosya sisteminde rastgele bir konumla değiştirme olanağı sağlayabilir.
+        </p>
+        <p>
+         <strong>
+          Docker çalıştıran tüm Google Kubernetes Engine (GKE) düğümleri bu güvenlik açığından etkilenmektedir. Bu nedenle, son yama sürümü kullanıma sunulduğunda bu sürüme yükseltme yapmanızı öneririz. Yakında kullanıma sunulacak bir yama sürümü bu güvenlik açığı için bir çözüm içerecektir.
+         </strong>
+        </p>
+        <p>
+         <strong>
+          1.12.7 sürümünden eski olan tüm Google Kubernetes Engine (GKE) ana düğümleri Docker çalıştırdığı için bu güvenlik açığından etkilenmektedir.
+         </strong>
+         GKE'de ana düğüm üzerinde kullanıcıların
+         <code dir="ltr" translate="no">
+          docker cp
+         </code>
+         erişimi yoktur. Bu nedenle, güvenlik açığının oluşturduğu risk GKE ana düğümleriyle sınırlıdır.
+        </p>
+        <h5 data-text="Ne yapmalıyım?" id="ne-yapmalym_7">
+         Ne yapmalıyım?
+        </h5>
+        <p>
+         Yalnızca Docker çalıştıran düğümler etkilenmektedir ve bu durum yalnızca ele geçirilebilen bir
+         <code dir="ltr" translate="no">
+          docker cp
+         </code>
+         (veya API eş değeri) komutu verildiğinde gerçekleşmektedir.
+          Bu durumun, Kubernetes ortamında oldukça sıra dışı olması beklenir.
+         <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/using-containerd?hl=tr">
+          Containerd ile COS
+         </a>
+         çalıştıran düğümler etkilenmez.
+        </p>
+        <p>
+         Düğümlerinizi yükseltmek için önce
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=tr#upgrading_the_cluster">
+          ana düğümünüzün yama uygulanmış sürüme yükseltilmesi
+         </a>
+         gerekir. Yama kullanıma sunulduğunda, ana düğüm yükseltme işlemi başlatabilir veya Google'ın ana düğümü otomatik olarak yükseltmesini bekleyebilirsiniz. Yama, daha sonra duyurulacak olan bir GKE yamasına dahil edilen Docker 18.09.7 sürümünde kullanıma sunulacaktır.
+         <strong>
+          Bu yama, yalnızca 1.13 ve üzeri GKE sürümleri için kullanıma sunulacaktır.
+         </strong>
+        </p>
+        <p>
+         Küme ana sistemlerini düzenli yükseltme sıklığında otomatik olarak yama uygulanmış sürüme yükselteceğiz. Dilerseniz yama uygulanmış sürüm kullanıma sunulduktan sonra kendiniz de ana düğüm yükseltme işlemi başlatabilirsiniz.
+        </p>
+        <p>
+         Yama kullanıma sunulduğunda bu bülten yamayı içeren sürümlerle güncellenecektir. Bu yamaların kullanıma sunulma durumunu
+         <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=tr">
+          sürüm notlarından
+         </a>
+         takip edebilirsiniz.
+        </p>
+        <h5 data-text="Bu yama hangi güvenlik açığını ele alıyor?" id="bu-yama-hangi-guvenlik-acgn-ele-alyor_3">
+         Bu yama hangi güvenlik açığını ele alıyor?
+        </h5>
+        <p>
+         Yama, aşağıdaki güvenlik açığı riskini azaltır:
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-15664">
+          CVE-2018-15664
+         </a>
+         güvenlik açığı, container içinde kod yürütebilen saldırganların dışarıdan başlatılan
+         <code dir="ltr" translate="no">
+          docker
+          cp
+         </code>
+         işlemini ele geçirmesine izin verebilir. Bu açıklardan yararlanma, saldırganlara dosyaların yazıldığı konumu ana makine dosya sisteminde rastgele bir konumla değiştirme olanağı sağlayabilir.
+        </p>
+       </td>
+       <td>
+        Yüksek
+       </td>
+       <td>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="31 Mayıs 2019" id="may-31-2019">
+     31 Mayıs 2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Bu bülten, ilk yayınının ardından güncellenmiştir.
+        </p>
+        <h6 data-text="2 Ağustos 2019 Tarihli Güncelleme" id="2-agustos-2019-tarihli-guncelleme">
+         2 Ağustos 2019 Tarihli Güncelleme
+        </h6>
+        <p>
+         Bülten ilk yayınlandığında yalnızca 1.13.6-gke.0 ile 1.13.6-gke.5 arası sürümler etkilenmişti. Regresyon nedeniyle şu anda tüm 1.13.6.x sürümleri etkilenmektedir. 1.13.6 sürümünü çalıştırıyorsanız en kısa zamanda 1.13.7 sürümüne yükseltme yapın.
+        </p>
+        <p>
+        </p>
+        <p>
+         Kubernetes projesi, kubelet v1.13.6 ve v1.14.2'de
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11245">
+          CVE-2019-11245
+         </a>
+         güvenlik açığını açıkladı. Güvenlik açığı, container görüntüsünde farklı bir kullanıcı belirtilmiş olsa bile container'ların UID 0 (genellikle
+         <code dir="ltr" translate="no">
+          root
+         </code>
+         kullanıcısıyla eşleştirilir) olarak çalışmasına yol açmaktadır.
+         <strong>
+          Container'larınız kök olmayan kullanıcı olarak çalışıyorsa ve 1.13.6-gke.0 ile 1.13.6-gke.6 arası düğüm sürümü çalıştırıyorsanız container'ları UID 0 olarak çalışmaması gereken kümelerdeki tüm Kapsüllerde
+          <code dir="ltr" translate="no">
+           RunAsUser
+          </code>
+          komutunu ayarlamanızı öneririz.
+         </strong>
+        </p>
+        <p>
+         Kök olmayan bir
+         <code dir="ltr" translate="no">
+          USER
+         </code>
+         değeri belirtilirse (örneğin, bir Dockerfile'da
+         <code dir="ltr" translate="no">
+          USER
+         </code>
+         değerini ayarlayarak) beklenmedik davranışlar ortaya çıkar. Container bir düğümde ilk kez çalıştırıldığında belirtilen UID'ye uyar. Ancak bu kusur nedeniyle ikinci çalıştırmada (ve sonraki çalıştırmalarda) container, belirtilen UID'den bağımsız olarak UID 0 olarak çalışır. Bu durum genellikle istenmeyen bir ayrıcalık artışıdır ve beklenmedik uygulama davranışına yol açabilir.
+        </p>
+        <h5 data-text="Çalıştırdığım sürümün etkilenmiş olup olmadığını nasıl anlarım?" id="calstrdgm-surumun-etkilenmis-olup-olmadgn-nasl-anlarm">
+         Çalıştırdığım sürümün etkilenmiş olup olmadığını nasıl anlarım?
+        </h5>
+        <p>
+         Aşağıdaki komutu çalıştırarak tüm düğümleri ve kubelet sürümlerini listeleyin:
+        </p>
+        <pre class="devsite-click-to-copy prettyprint" dir="ltr" suppresswarning="" translate="no">
+
+    kubectl get nodes -o=jsonpath='{range .items[*]}'\
+    '{.status.nodeInfo.machineID}'\
+    '{"\t"}{.status.nodeInfo.kubeletVersion}{"\n"}{end}'</pre>
+        <p>
+         Çıkış, aşağıdaki kubelet sürümlerini listelerse düğümleriniz etkilenmiş demektir:
+        </p>
+        <ul>
+         <li>
+          v1.13.6
+         </li>
+         <li>
+          v1.14.2
+         </li>
+        </ul>
+        <h5 data-text="Belirli bir yapılandırmamın etkilenmiş olup olmadığını nasıl anlarım?" id="belirli-bir-yaplandrmamn-etkilenmis-olup-olmadgn-nasl-anlarm">
+         Belirli bir yapılandırmamın etkilenmiş olup olmadığını nasıl anlarım?
+        </h5>
+        <p>
+         Container'larınız kök olmayan kullanıcı olarak çalışıyorsa ve 1.13.6-gke.0 ile 1.13.6-gke.6 arası düğüm sürümü çalıştırıyorsanız aşağıdaki durumlar hariç olmak üzere, düğümleriniz etkilenmiştir:
+        </p>
+        <ul>
+         <li>
+          <code dir="ltr" translate="no">
+           runAsUser
+          </code>
+          PodSecurityContext için geçerli bir kök olmayan değer belirten kapsüller etkilenmez ve normal şekilde çalışmaya devam eder.
+         </li>
+         <li>
+          Bir
+          <code dir="ltr" translate="no">
+           runAsUser
+          </code>
+          ayarını zorunlu kılan PodSecurityPolicy'ler de etkilenmez ve normal şekilde çalışmaya devam eder.
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           mustRunAsNonRoot:true
+          </code>
+          belirten kapsüller UID 0 olarak başlatılmaz ancak bu sorundan etkilendiklerinde başlatılamazlar.
+         </li>
+        </ul>
+        <h5 data-text="Ne yapmalıyım?" id="ne-yapmalym_8">
+         Ne yapmalıyım?
+        </h5>
+        <p>
+         Kümedeki UID 0 olarak çalışmaması gereken tüm kapsüllerde
+         <a class="external" href="https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod">
+          RunAsUser Güvenlik Bağlamı
+         </a>
+         'nı ayarlayın. Bu yapılandırmayı
+         <a class="external" href="https://kubernetes.io/docs/concepts/policy/pod-security-policy/">
+          PodSecurityPolicy
+         </a>
+         kullanarak uygulayabilirsiniz.
+        </p>
+       </td>
+       <td>
+        Orta
+       </td>
+       <td>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11245">
+         CVE-2019-11245
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="14 Mayıs 2019" id="may-14-2019">
+     14 Mayıs 2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         <strong>
+          11.06.2019 Tarihli Güncelleme:
+         </strong>
+         Yama, 28.05.2019 haftasında yayınlanan 1.11.10-gke.4, 1.12.8-gke.6 ve 1.13.6-gke.5 sürümlerinde ve daha yeni sürümlerde mevcuttur.
+        </p>
+        <p>
+         Intel tarafından aşağıdaki CVE'ler açıklanmıştır:
+        </p>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12126">
+           CVE-2018-12126
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12127">
+           CVE-2018-12127
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12130">
+           CVE-2018-12130
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11091">
+           CVE-2019-11091
+          </a>
+         </li>
+        </ul>
+        <p>
+         Bu CVE'lerin tamamına Mikromimari Veri Örnekleme (MDS) adı verilir. Bu güvenlik açıkları, mikromimari durumu ile kurgusal yürütme etkileşimi üzerinden verilerin savunmasız hale gelmesine neden olabilir. Ayrıntılı bilgi için
+         <a class="external" href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00233.html">
+          Intel açıklamasına
+         </a>
+         göz atın.
+        </p>
+        <p>
+         <strong>
+          Kubernetes Engine'i çalıştıran ana makine altyapısı, müşteri iş yüklerini birbirinden ayırır. Kendinize ait çok kiracılı GKE kümelerinizde güvenilmeyen kod çalıştırmıyorsanız sorundan etkilenmezsiniz.
+         </strong>
+        </p>
+        <p>
+         <strong>
+          Kubernetes Engine içinde kendilerine ait çok kiracılı hizmetlerde güvenilmeyen kod çalıştıran müşteriler için bu durum, özellikle ciddi bir güvenlik açığıdır.
+         </strong>
+         Sorunu Kubernetes Engine'de düzeltmek için düğümlerinizde Hyper-Threading'i devre dışı bırakın. Yalnızca birden çok CPU kullanan Google Kubernetes Engine (GKE) düğümleri bu güvenlik açıklarından etkilenir.
+              n1-standard-1 (GKE varsayılanı), g1-small ve f1-micro sanal makinelerinin konuk ortama yalnızca 1 vCPU sunması nedeniyle Hyper-Threading'in devre dışı bırakılmasına gerek yoktur.
+        </p>
+        <p>
+         Daha sonra duyurulacak bir
+         <a href="https://cloud.google.com/kubernetes-engine/release-notes?hl=tr">
+          yama sürümüne
+         </a>
+         boşaltma işlevini etkinleştirecek ek korumalar dahil edilecektir.
+            Önümüzdeki haftalarda, düzenli yükseltme sıklığında otomatik yükseltme özellikli ana düğümleri ve düğümleri yama uygulanmış sürüme otomatik olarak yükselteceğiz.
+         <strong>
+          Bu güvenlik açığından etkilenme riskini ortadan kaldırmak için tek başına yama yeterli değildir. Önerilen işlemler için aşağıya bakın.
+         </strong>
+        </p>
+        <p>
+         GKE On-Prem çalıştırıyorsanız kullandığınız donanıma bağlı olarak sorundan etkilenmiş olabilirsiniz. Lütfen
+         <a class="external" href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00233.html">
+          Intel açıklamasına
+         </a>
+         göz atın.
+        </p>
+        <h4 data-text="Ne yapmalıyım?" id="ne-yapmalym_9">
+         Ne yapmalıyım?
+        </h4>
+        <p>
+         <strong>
+          Kendinize ait çok kiracılı GKE kümelerinizde güvenilmeyen kod çalıştırmıyorsanız sorundan etkilenmezsiniz.
+         </strong>
+        </p>
+        <p>
+         <strong>
+          Kubernetes Engine'deki düğümler için Hyper-Threading devre dışı olacak şekilde yeni düğüm havuzları oluşturun ve iş yüklerinizi yeni düğümler için yeniden planlayın.
+         </strong>
+        </p>
+        <p>
+         n1-standard-1, g1-small ve f1-micro sanal makinelerinin konuk ortama yalnızca 1 vCPU sunması nedeniyle Hyper-Threading'in devre dışı bırakılmasına gerek yoktur.
+        </p>
+        <div class="warning">
+         <strong>
+          Uyarı:
+         </strong>
+         <ul>
+          <li>
+           Hyper-Threading devre dışı bırakıldığında, kümeleriniz ve uygulamanız performans açısından ciddi şekilde etkilenebilir. Bunu üretim kümelerinize dağıtmadan önce işlemin kabul edilebilir olduğundan emin olun.
+          </li>
+          <li>
+           Hyper-Threading, bir DaemonSet dağıtılarak GKE düğüm havuzu düzeyinde devre dışı bırakılabilir. Ancak bu DaemonSet'in dağıtılması düğüm havuzundaki tüm düğümlerinizin aynı anda yeniden başlatılmasına neden olur.
+                Bu nedenle, kümenizde yeni bir düğüm havuzu oluşturmanız, DaemonSet'i dağıtarak ilgili düğüm havuzunda Hyper-Threading'i devre dışı bırakmanız ve daha sonra iş yüklerinizi yeni düğüm havuzuna taşımanız önerilir.
+          </li>
+         </ul>
+        </div>
+        <p>
+         Hyper-Threading devre dışıyken yeni düğüm havuzu oluşturmak için:
+        </p>
+        <ol>
+         <li>
+          Kümenizde
+          <code dir="ltr" translate="no">
+           cloud.google.com/gke-smt-disabled=true
+          </code>
+          düğüm etiketine sahip yeni bir düğüm havuzu oluşturun:
+          <pre dir="ltr" translate="no">
+
+    gcloud container node-pools create smt-disabled --cluster=[CLUSTER_NAME] \
+        --node-labels=cloud.google.com/gke-smt-disabled=true</pre>
+         </li>
+         <li>
+          DaemonSet'i bu yeni düğüm havuzuna dağıtın. DaemonSet yalnızca
+          <code dir="ltr" translate="no">
+           cloud.google.com/gke-smt-disabled=true
+          </code>
+          etiketine sahip düğümlerde çalışır. Hyper-Threading'i devre dışı bırakır ve düğümü yeniden başlatır.
+          <pre dir="ltr" translate="no">
+
+    kubectl create -f \
+    https://raw.githubusercontent.com/GoogleCloudPlatform/\
+    k8s-node-tools/master/disable-smt/gke/disable-smt.yaml</pre>
+         </li>
+         <li>
+          DaemonSet kapsüllerinin çalışır durumda olduğundan emin olun.
+          <pre dir="ltr" translate="no">
+
+    kubectl get pods --selector=name=disable-smt -n kube-system</pre>
+          <p>
+           Şuna benzer bir yanıt alırsınız:
+          </p>
+          <pre dir="ltr" translate="no">
+
+    NAME                READY     STATUS    RESTARTS   AGE
+
+    disable-smt-2xnnc   1/1       Running   0          6m</pre>
+         </li>
+         <li>
+          Kapsüllerin günlüklerinde "SMT devre dışı bırakıldı" ifadesinin yer aldığından emin olun.
+          <pre dir="ltr" translate="no">
+
+    kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
+         </li>
+        </ol>
+        <p>
+         Düğüm havuzlarında DaemonSet'i çalışır durumda tutmanız gerekir. Bu sayede, havuzda oluşturulan yeni düğümlere değişiklikler otomatik olarak uygulanır. Düğüm oluşturma işlemleri, otomatik düğüm onarımı, manuel veya otomatik yükseltme ve otomatik ölçeklendirme nedeniyle tetiklenebilir.
+        </p>
+        <p>
+         Hyper-Threading'i yeniden etkinleştirmek için verilen DaemonSet'i dağıtmadan düğüm havuzunu yeniden oluşturmanız ve iş yüklerinizi yeni düğüm havuzuna taşımanız gerekir.
+        </p>
+        <p>
+         Yama kullanıma sunulduğunda düğümlerinizi manuel olarak yükseltmenizi de öneririz. Yükseltme için öncelikle
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=tr#upgrading_the_cluster">
+          ana düğümünüzü en yeni sürüme yükseltmeniz
+         </a>
+         gerekir. GKE ana düğümleri, düzenli yükseltme sıklığında otomatik olarak yükseltilecektir.
+        </p>
+        <p>
+         Yama kullanıma sunulduğunda bu bülten yamayı içeren sürümlerle güncellenecektir.
+        </p>
+        <h4 data-text="Bu yama hangi güvenlik açığını ele alıyor?" id="bu-yama-hangi-guvenlik-acgn-ele-alyor_4">
+         Bu yama hangi güvenlik açığını ele alıyor?
+        </h4>
+        <p>
+         Yama, aşağıdaki güvenlik açıklarının riskini azaltır:
+        </p>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12126">
+         CVE-2018-12126
+        </a>
+        ,
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12127">
+         CVE-2018-12127
+        </a>
+        ,
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12130">
+         CVE-2018-12130
+        </a>
+        ve
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11091">
+         CVE-2019-11091
+        </a>
+        : Bu güvenlik açıkları, kurgusal yürütmeden kötü amaçla yararlanır. Bu CVE'lerin tamamına Mikromimari Veri Örnekleme adı verilir. Bu güvenlik açıkları, mikromimari durumu ile kurgusal yürütme etkileşimi üzerinden verilerin savunmasız hale gelmesine neden olabilir.
+       </td>
+       <td>
+        Orta
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12126">
+           CVE-2018-12126
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12127">
+           CVE-2018-12127
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12130">
+           CVE-2018-12130
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11091">
+           CVE-2018-11091
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="5 Nisan 2019" id="april-05-2019">
+     5 Nisan 2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Kısa bir süre önce
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9900">
+          CVE-2019-9900
+         </a>
+         ve
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9901">
+          CVE-2019-9901
+         </a>
+         güvenlik açıkları
+         <a class="external" href="https://www.envoyproxy.io/">
+          Envoy
+         </a>
+         'da tespit edildi.
+        </p>
+        <p>
+         Envoy,
+         <a class="external" href="https://istio.io/">
+          Istio
+         </a>
+         'da gömülü olarak bulunur ve bu güvenlik açıkları, bazı durumlarda Istio politikasının aşılmasına yol açar.
+        </p>
+        <p>
+         Google Kubernetes Engine (GKE) üzerinde Istio'yu etkinleştirdiyseniz bu güvenlik açıklarından etkilenebilirsiniz.
+         <strong>
+          Etkilenen kümelerinizi en kısa sürede en son yama sürümüne yükseltmenizi ve Istio yardımcı dosyalarınızı yükseltmenizi (talimatları aşağıda verilmiştir) öneririz.
+         </strong>
+        </p>
+        <h4 data-text="Ne yapmalıyım?" id="ne-yapmalym_10">
+         Ne yapmalıyım?
+        </h4>
+        <p>
+         <strong>
+          Bu güvenlik açıklarının ciddiyeti nedeniyle, düğümler için otomatik yükseltme özelliği etkinleştirilmiş olsun veya olmasın, aşağıdaki adımlar önerilir:
+         </strong>
+        </p>
+        <ol>
+         <li>
+          <strong>
+           Yama kullanıma sunulur sunulmaz kümenizi
+           <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=tr">
+            manuel olarak yükseltin
+           </a>
+           .
+          </strong>
+         </li>
+         <li>
+          <strong>
+           <a class="external" href="https://istio.io/docs/setup/kubernetes/upgrade/steps/#sidecar-upgrade">
+            Yardımcı dosya yükseltme belgelerine
+           </a>
+           uygun şekilde yardımcı dosyalarınızı yükseltin.
+          </strong>
+         </li>
+        </ol>
+        <p>
+         Yama uygulanmış sürümler bugün saat 19:00'dan (PDT) önce tüm GKE projeleri için kullanıma sunulacaktır.
+        </p>
+        <p>
+         Bu yama aşağıdaki GKE sürümlerinde kullanıma sunulacaktır. Yama uygulanmış sürüm GKE güvenlik bültenleri sayfasında duyurulduğunda (15 Nisan 2019'da beklenmektedir) yeni kümeler varsayılan olarak yama uygulanmış sürümü kullanacaktır. Bu tarihten önce yeni bir küme oluşturursanız kümenin kullanacağı yama uygulanmış sürümü belirtmeniz gerekir.
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-upgrades?hl=tr">
+          Otomatik düğüm yükseltme
+         </a>
+         özelliğini etkinleştirmiş olan ve manuel olarak yükseltme işlemi yapmayan GKE müşterilerinin düğümleri, önümüzdeki hafta yama uygulanmış sürüme otomatik olarak yükseltilecektir.
+        </p>
+        <p>
+         Yama Uygulanmış Sürümler
+        </p>
+        <ul>
+         <li>
+          1.10.12-gke.14
+         </li>
+         <li>
+          1.11.6-gke.16
+         </li>
+         <li>
+          1.11.7-gke.18
+         </li>
+         <li>
+          1.11.8-gke.6
+         </li>
+         <li>
+          1.12.6-gke.10
+         </li>
+         <li>
+          1.13.4-gke.10
+         </li>
+        </ul>
+        <h4 data-text="Bu yama hangi güvenlik açığını ele alıyor?" id="bu-yama-hangi-guvenlik-acgn-ele-alyor_5">
+         Bu yama hangi güvenlik açığını ele alıyor?
+        </h4>
+        <p>
+         Yama, aşağıdaki güvenlik açıklarının riskini azaltır:
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9900">
+          CVE-2019-9900
+         </a>
+         ve
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9901">
+          CVE-2019-9901
+         </a>
+         .
+         <a class="external" href="https://istio.io/blog/2019/announcing-1.1.2">
+          Istio blogunda
+         </a>
+         bunlarla ilgili daha fazla bilgi edinebilirsiniz.
+        </p>
+       </td>
+       <td>
+        Yüksek
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9900">
+           CVE-2019-9900
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9901">
+           CVE-2019-9901.
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="1 Mart 2019" id="march-01-2019">
+     1 Mart 2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         <strong>
+          22.03.2019 Tarihli Güncelleme:
+         </strong>
+         Bu yama Kubernetes 1.11.8-gke.4, 1.13.4-gke.1 ve daha yeni sürümlerde mevcuttur. Yama henüz 1.12 sürümünde kullanıma sunulmamıştır. Bu yamaların kullanıma sunulma durumunu
+         <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=tr#march_19_2019">
+          sürüm notlarından
+         </a>
+         takip edebilirsiniz.
+        </p>
+        <p>
+         Kubernetes, kısa bir süre önce,
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1002100">
+          CVE-2019-1002100
+         </a>
+         kodlu yeni bir hizmet reddi güvenlik açığı tespit etti. Bu güvenlik açığı, yama isteği yapma yetkisi olan kullanıcının Kubernetes API sunucusunda aşırı miktarda CPU ve bellek kullanılmasına yol açan kötü amaçlı bir "json-patch" isteği oluşturmasına izin verir. Bu durum, küme kontrol düzleminin kullanılabilirliğini azaltabilir. Ayrıntılı bilgi için
+         <a href="https://groups.google.com/forum/?hl=tr#!topic/kubernetes-announce/vmUUNkYfG9g">
+          Kubernetes açıklamasına
+         </a>
+         göz atın.
+         <strong>
+          Bu güvenlik açıklarından tüm Google Kubernetes Engine (GKE) ana düğümleri etkilenir. Daha sonra kullanıma sunulacak bir yama sürümünde bu güvenlik açığı için bir çözüm sunulacaktır. Küme ana sistemleri, önümüzdeki haftalarda düzenli yükseltme sıklığında, yama uygulanmış sürüme otomatik olarak yükseltilecektir.
+         </strong>
+        </p>
+        <h4 data-text="Ne yapmalıyım?" id="ne-yapmalym_11">
+         Ne yapmalıyım?
+        </h4>
+        <p>
+         <strong>
+          Bu konuyla ilgili herhangi bir işlem yapmanıza gerek yoktur. GKE ana düğümleri, düzenli yükseltme sıklığında otomatik olarak yükseltilecektir.
+         </strong>
+         Ana düğümünüzü daha erken yükseltmek isterseniz
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=tr#upgrading_the_cluster">
+          ana düğümü yükseltme işlemini manuel olarak başlatabilirsiniz
+         </a>
+         .
+        </p>
+        <p>
+         Bu bülten, yama içeren sürümlerle güncellenecektir. Yamanın yalnızca 1.11 ve üzeri sürümlerde kullanıma sunulacağını, 1.10 sürümlerinde sunulmayacağını unutmayın.
+        </p>
+        <h4 data-text="Bu yama hangi güvenlik açığını ele alıyor?" id="bu-yama-hangi-guvenlik-acgn-ele-alyor_6">
+         Bu yama hangi güvenlik açığını ele alıyor?
+        </h4>
+        <p>
+         Yama, aşağıdaki güvenlik açığı riskini azaltır:
+        </p>
+        <p>
+         Güvenlik açığı
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1002100">
+          CVE-2019-1002100
+         </a>
+         , kullanıcının Kubernetes API sunucusunda aşırı miktarda CPU kullanılmasına yol açan "json-patch" isteği oluşturmasına izin verir. Bu durum, küme kontrol düzleminin kullanılabilirliğini azaltabilir.
+        </p>
+       </td>
+       <td>
+        Orta
+       </td>
+       <td>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1002100">
+         CVE-2019-1002100
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="11 Şubat 2019 (runc)" id="february-11-2019-runc">
+     11 Şubat 2019 (runc)
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Open Containers Initiative (OCI), kısa bir süre önce runc içinde
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5736">
+          CVE-2019-5736
+         </a>
+         kodlu yeni bir güvenlik açığı
+         <a class="external" href="https://groups.google.com/a/opencontainers.org/forum/m/?hl=tr#!topic/dev/Tc1ELm-8oDI">
+          tespit etti
+         </a>
+         . Bu güvenlik açığı, container'ın kod dışına alınmasıyla ana makine düğümünde kök ayrıcalıkları edinmesine izin verir.
+        </p>
+        <p>
+         <strong>
+          Bu güvenlik açığından Google Kubernetes Engine (GKE) Ubuntu düğümleriniz etkilenir. Bu nedenle, aşağıda açıklandığı gibi en kısa zamanda düğümlerinizi en son yama sürümüne
+          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=tr">
+           yükseltmenizi
+          </a>
+          öneririz.
+         </strong>
+        </p>
+        <h4 data-text="Ne yapmalıyım?" id="ne-yapmalym_12">
+         Ne yapmalıyım?
+        </h4>
+        <p>
+         Düğümlerinizi yükseltmek için öncelikle ana düğümünüzü en yeni sürüme yükseltmeniz gerekir. Bu yama Kubernetes 1.10.12-gke.7, 1.11.6-gke.11, 1.11.7-gke.4, 1.12.5-gke.5 ve daha yeni sürümlerde kullanılabilir. Bu yamaların kullanıma sunulma durumunu
+         <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=tr#february-11-2019">
+          sürüm notlarından
+         </a>
+         takip edebilirsiniz.
+        </p>
+        <p>
+         Yalnızca GKE'deki Ubuntu düğümlerinin etkilendiğini unutmayın. COS çalıştıran düğümler etkilenmez.
+        </p>
+        <p>
+         Yeni runc sürümünün bellek kullanımını artırdığını ve düşük bellek sınırları (&lt; 16 MB) belirlediyseniz container'lara ayrılan belleğin güncellenmesi gerekebileceğini unutmayın.
+        </p>
+        <h4 data-text="Bu yama hangi güvenlik açığını ele alıyor?" id="bu-yama-hangi-guvenlik-acgn-ele-alyor_7">
+         Bu yama hangi güvenlik açığını ele alıyor?
+        </h4>
+        <p>
+         Yama, aşağıdaki güvenlik açığı riskini azaltır:
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5736">
+          CVE-2019-5736
+         </a>
+         , runc içindeki bir güvenlik açığını tanımlar. Bu güvenlik açığı, kötü amaçlı bir container'ın (yürütme açısından minimum kullanıcı etkileşimi bulunan) ana makine runc ikili programının üzerine yazmasına ve böylece ana makine düğümünde kök düzeyinde kod yürütme yetkisi elde etmesine olanak verir.
+          Kök olarak çalışmayan container'lar etkilenmez. Bu güvenlik açığı, "Yüksek" güvenlik açığı olarak derecelendirilmiştir.
+        </p>
+       </td>
+       <td>
+        Yüksek
+       </td>
+       <td>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5736">
+         CVE-2019-5736
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="11 Şubat 2019 (Go)" id="february-11-2019-go">
+     11 Şubat 2019 (Go)
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         <strong>
+          25.02.2019 Tarihli Güncelleme:
+         </strong>
+         Daha önce bildirildiği gibi 1.11.7-gke.4 için yama mevcut değildir. 1.11.7 sürümünü çalıştırıyorsanız şunları yapabilirsiniz: Eski 1.11.6 sürümüne geçebilirsiniz, yeni 1.12 sürümüne geçebilirsiniz veya 04.03.2019 haftasında kullanıma sunulacak 1.11.7 yama sürümünü bekleyebilirsiniz.
+        </p>
+        <p>
+         Go programlama dili,
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-6486">
+          CVE-2019-6486
+         </a>
+         kodlu yeni bir güvenlik açığı tespit etti. Bu, P-521 ve P-384 elips biçimli eğrilerinin şifreleme/elips biçimli uygulamalarını hedef alan bir Hizmet Reddi (DoS) güvenlik açığıdır. Bu güvenlik açığı, Google Kubernetes Engine (GKE) üzerinde bir kullanıcının Kubernetes API sunucusunda aşırı miktarda CPU kullanılmasına yol açan kötü niyetli istekler oluşturmasına izin verebilir. Bu durum, küme kontrol düzleminin kullanılabilirliğini azaltabilir.
+            Ayrıntılı bilgi için
+         <a href="https://groups.google.com/forum/?hl=tr#!topic/golang-announce/mVeX35iXuSw">
+          Go programlama dili açıklamasına
+         </a>
+         göz atın.
+        </p>
+        <p>
+         <strong>
+          Bu güvenlik açıklarından tüm Google Kubernetes Engine (GKE) ana düğümleri etkilenir.
+          <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=tr#february-11-2019">
+           En son yama sürümünde
+          </a>
+          bu güvenlik açığına yönelik bir çözüm bulunur. Küme ana sistemleri, önümüzdeki haftalarda düzenli yükseltme sıklığında, yama uygulanmış sürüme otomatik olarak yükseltilecektir.
+         </strong>
+        </p>
+        <h4 data-text="Ne yapmalıyım?" id="ne-yapmalym_13">
+         Ne yapmalıyım?
+        </h4>
+        <p>
+         <strong>
+          Bu konuyla ilgili herhangi bir işlem yapmanıza gerek yoktur. GKE ana düğümleri, düzenli yükseltme sıklığında otomatik olarak yükseltilecektir.
+         </strong>
+         Ana düğümünüzü daha erken yükseltmek isterseniz
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=tr#upgrading_the_cluster">
+          ana düğümü yükseltme işlemini manuel olarak başlatabilirsiniz
+         </a>
+         .
+        </p>
+        <p>
+         Bu yama GKE 1.10.12-gke.7, 1.11.6-gke.11, 1.11.7-gke.4, 1.12.5-gke.5 ve daha yeni sürümlerde kullanılabilir.
+        </p>
+        <h4 data-text="Bu yama hangi güvenlik açığını ele alıyor?" id="bu-yama-hangi-guvenlik-acgn-ele-alyor_8">
+         Bu yama hangi güvenlik açığını ele alıyor?
+        </h4>
+        <p>
+         Yama, aşağıdaki güvenlik açığı riskini azaltır:
+        </p>
+        <p>
+         CVE-2019-6486, P-521 ve P-384 elips biçimli eğrilerinin şifreleme/elips biçimli uygulamalarını hedef alan bir güvenlik açığıdır. Kullanıcının, aşırı miktarda CPU kullanımına yol açan girişler oluşturmasına olanak verir.
+        </p>
+       </td>
+       <td>
+        Yüksek
+       </td>
+       <td>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-6486">
+         CVE-2019-6486
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="3 Aralık 2018" id="december-3-2018">
+     3 Aralık 2018
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Kubernetes kısa süre önce, nispeten düşük ayrıcalıklara sahip bir kullanıcının kubelet API'leri yetkilendirmesini atlayarak kümedeki herhangi bir düğümde yer alan herhangi bir Kapsülde rastgele işlemler yapmasına imkan tanıyan
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1002105">
+          CVE-2018-1002105
+         </a>
+         kodlu yeni bir güvenlik açığı keşfetti. Ayrıntılı bilgi için
+         <a class="external" href="https://groups.google.com/forum/?hl=tr#!topic/kubernetes-announce/GVllWCg6L88">
+          Kubernetes açıklamasına
+         </a>
+         göz atın.
+         <strong>
+          Tüm Google Kubernetes Engine (GKE) ana düğümleri bu güvenlik açıklarından etkilendi ve kümeleri
+          <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=tr#november-12-2018">
+           en yeni yama sürümlerine
+          </a>
+          yükselttik.
+            Bu konuyla ilgili herhangi bir işlem yapmanıza gerek yoktur.
+         </strong>
+        </p>
+        <h4 data-text="Ne yapmalıyım?" id="ne-yapmalym_14">
+         Ne yapmalıyım?
+        </h4>
+        <p>
+         <strong>
+          Bu konuyla ilgili herhangi bir işlem yapmanıza gerek yoktur. GKE ana düğümleri zaten yükseltilmiştir.
+         </strong>
+        </p>
+        <p>
+         Bu yama GKE 1.9.7-gke.11, 1.10.6-gke.11, 1.10.7-gke.11, 1.10.9-gke.5 ve 1.11.2-gke.18 ve daha yeni sürümler için kullanılabilir.
+        </p>
+        <h4 data-text="Bu yama hangi güvenlik açığını ele alıyor?" id="bu-yama-hangi-guvenlik-acgn-ele-alyor_9">
+         Bu yama hangi güvenlik açığını ele alıyor?
+        </h4>
+        <p>
+         Yama, aşağıdaki güvenlik açığı riskini azaltır:
+        </p>
+        <p>
+         CVE-2018-1002105 güvenlik açığı, nispeten düşük düzeyde ayrıcalıklara sahip kullanıcının, kubelet API'lerine erişim yetkilendirmesini atlamasına imkan verir. Bu durum nedeniyle kullanıcılar, ayrıcalıklarını artırabilecek ve kubelet API'sine rastgele çağrı yapmak için yükseltilebilir isteklerde bulunabilecek şekilde yetkilendirilir. Bu, Kubernetes'te Kritik bir güvenlik açığı olarak derecelendirilmiştir. GKE uygulamasında kimliği doğrulanamayan ayrıcalık artırmayı önleyen bazı ayrıntılar ışığında, Yüksek güvenlik açığı olarak derecelendirilmiştir.
+        </p>
+       </td>
+       <td>
+        Yüksek
+       </td>
+       <td>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1002105">
+         CVE-2018-1002105
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="13 Kasım 2018" id="november-13-2018">
+     13 Kasım 2018
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Açıklama
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         <strong>
+          16.11.2018 Tarihli Güncelleme:
+         </strong>
+         Potansiyel olarak etkilenen jetonların iptali ve dönüşümü tamamlanmıştır. Başka bir işlem yapılmasına gerek yoktur.
+        </p>
+        <p>
+         Google kısa süre önce Calico Container Network Interface (CNI) eklentisinde, belirli yapılandırmalarda hassas bilgilerin günlüğe kaydedilmesine neden olabilen bir sorun keşfetmiştir. Bu sorun, Tigera Technical Advisory
+         <a href="https://www.projectcalico.org/security-bulletins/">
+          TTA-2018-001
+         </a>
+         altında izlenmektedir.
+        </p>
+        <ul>
+         <li>
+          Calico CNI eklentisi, hata ayıklama düzeyinde günlük kaydıyla çalışırken günlük kayıtlarına Kubernetes API istemci yapılandırmasını yazar.
+         </li>
+         <li>
+          Calico CNI ayrıca CNI ağ yapılandırmasında "k8s_auth_token" alanı ayarlanmışsa bilgi düzeyinde günlük kayıtlarına Kubernetes API jetonunu yazar.
+         </li>
+         <li>
+          Ek olarak, hata ayıklama düzeyinde günlük kaydıyla çalışırken, hizmet hesabı jetonu, Calico tarafından okunan Calico yapılandırma dosyasında veya Calico tarafından kullanılan ortam değişkenleri olarak açık şekilde belirtilmişse Calico bileşenleri (calico/node, felix, CNI) günlük dosyalarına bu bilgiyi yazar.
+         </li>
+        </ul>
+        <p>
+         Bu jetonlar aşağıdaki izinlere sahiptir:
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <table>
+     <tbody>
+      <tr>
+       <td>
+        <pre dir="ltr" translate="no">
+
+    bgpconfigurations.crd.projectcalico.org     [create get list update watch]
+    bgppeers.crd.projectcalico.org              [create get list update watch]
+    clusterinformations.crd.projectcalico.org   [create get list update watch]
+    felixconfigurations.crd.projectcalico.org   [create get list update watch]
+    globalbgpconfigs.crd.projectcalico.org      [create get list update watch]
+    globalfelixconfigs.crd.projectcalico.org    [create get list update watch]
+    globalnetworkpolicies.crd.projectcalico.org [create get list update watch]
+    globalnetworksets.crd.projectcalico.org     [create get list update watch]
+    hostendpoints.crd.projectcalico.org         [create get list update watch]
+    ippools.crd.projectcalico.org               [create get list update watch]
+    networkpolicies.crd.projectcalico.org       [create get list update watch]
+    nodes                                       [get list update watch]
+    pods                                        [get list watch patch]
+    namespaces                                  [get list watch]
+    networkpolicies.extensions                  [get list watch]
+    endpoints                                   [get]
+    services                                    [get]
+    pods/status                                 [update]
+    networkpolicies.networking.k8s.io           [watch list]
+          </pre>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <p>
+     Küme Ağ Politikasına sahip ve Stackdriver Logging'in etkinleştirildiği Google Kubernetes Engine Kümeleri, Calico hizmet hesabı jetonlarını Stackdriver Logging'e kaydetmiştir. Ağ Politikası etkinleştirilmemiş kümeler etkilenmemiştir.
+    </p>
+    <p>
+     Calico CNI eklentisini yalnızca uyarı düzeyinde günlüğe kaydedecek ve yeni bir hizmet hesabı kullanacak şekilde taşıyan bir düzeltmeyi dağıttık. Yama uygulanan Calico kodu, sonraki bir sürümde dağıtılacaktır.
+    </p>
+    <p>
+     Önümüzdeki hafta içinde, potansiyel olarak etkilenen jetonların iptalini gerçekleştireceğiz. İptal işlemi tamamlandığında bu bülten güncellenecektir.
+     <strong>
+      Başka bir işlem yapmanıza gerek yoktur.
+     </strong>
+     (Bu dönüşüm 16.11.2018 tarihinde tamamlanmıştır)
+    </p>
+    <p>
+     Bu jetonları derhal dönüştürmek isterseniz aşağıdaki komutu çalıştırabilirsiniz. Hizmet hesabı için yeni gizli anahtar birkaç saniye içinde otomatik olarak yeniden oluşturulacaktır:
+    </p>
+    <table>
+     <tbody>
+      <tr>
+      </tr>
+     </tbody>
+     <tbody>
+     </tbody>
+    </table>
+    <table>
+     <tbody>
+      <tr>
+       <td>
+        <pre dir="ltr" translate="no">
+
+    kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
+          </pre>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <table>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Algılama" id="alglama">
+         Algılama
+        </h4>
+        <p>
+         GKE, API sunucusuna yapılan tüm erişimleri günlüğe kaydeder. Google Cloud'un beklenen IP aralığı dışından bir Calico jetonunun kullanılıp kullanılmadığını belirlemek için aşağıdaki Stackdriver sorgusunu çalıştırabilirsiniz. Bunun yalnızca GCP ağı dışından yapılan çağrı kaydı sonuçlarını döndüreceğini unutmayın. Sorguyu özel ortamınızın ihtiyaçlarına göre özelleştirmeniz gerekir.
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <table>
+     <tbody>
+      <tr>
+       <td>
+        <pre dir="ltr" translate="no">
+
+    resource.type="k8s_cluster"
+    protoPayload.authenticationInfo.principalEmail="system:serviceaccount:kube-system:calico"
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.34.208.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.192.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.200.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.59.80.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.192.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.208.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.216.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.220.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.222.0/24")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.224.0.0/13")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.216.148.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.222.176.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "173.255.112.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "192.158.28.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.192.112.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.232.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.236.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.236.48.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.251.128.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.204.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.208.0.0/13")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.167.160.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.178.192.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.2.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.4.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.8.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.16.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.32.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.64.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.0.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.128.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.192.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.240.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.8.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.16.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.32.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.64.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.128.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.154.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.196.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "208.68.108.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.184.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.188.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.202.0.0/16")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.0.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.128.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.192.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.224.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.192.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.196.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.198.0.0/16")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.0.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.128.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.200.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "2600:1900::/35")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.224.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.232.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.234.0.0/16")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.0.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.192.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.236.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.240.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.232.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.4.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.220.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.242.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.244.0.0/14")
+          </pre>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="14 Ağustos 2018" id="august-14-2018">
+     14 Ağustos 2018
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Açıklama
+       </th>
+       <th width="5%">
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Aşağıdaki CVE'ler
+         <a href="https://www.intel.com/content/www/us/en/architecture-and-technology/l1tf.html">
+          Intel tarafından açıklanmıştır
+         </a>
+         :
+        </p>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3615">
+           CVE-2018-3615
+          </a>
+          (
+          <a href="https://en.wikipedia.org/wiki/Software_Guard_Extensions">
+           SGX
+          </a>
+          için)
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3620">
+           CVE-2018-3620
+          </a>
+          (işletim sistemleri ve
+          <a href="https://en.wikipedia.org/wiki/Hyper-threading">
+           SMT
+          </a>
+          için)
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3646">
+           CVE-2018-3646
+          </a>
+          (sanallaştırma için)
+         </li>
+        </ul>
+        <p>
+         Bu CVE'lerin tamamına "L1 Terminal Fault (L1TF)" adı verilir.
+        </p>
+        <p>
+         Bu L1TF güvenlik açıkları, işlemci düzeyinde veri yapılarının yapılandırmasına saldırarak kurgusal yürütmeyi kötüye kullanır.
+          "L1", bellek erişimini hızlandırmak için kullanılan küçük bir çekirdek içi kaynak olan 1. Düzey Veri önbelleğini (L1D) temsil eder.
+        </p>
+        <p>
+         Bu güvenlik açıklarına ve Compute Engine'in çözümlerine dair daha fazla ayrıntı için
+         <a href="https://cloud.google.com/blog/products/gcp/protecting-against-the-new-l1tf-speculative-vulnerabilities?hl=tr">
+          Google Cloud blog yayınını
+         </a>
+         okuyun.
+        </p>
+        <h4 data-text="Google Kubernetes Engine etkisi" id="google-kubernetes-engine-etkisi">
+         Google Kubernetes Engine etkisi
+        </h4>
+        <p>
+         Kubernetes Engine'i çalıştıran ve müşteri Kümelerini ve Düğümlerini birbirinden ayıran altyapı, bilinen saldırılara karşı korunur.
+        </p>
+        <p>
+         Google'ın Container İçin Optimize Edilmiş İşletim Sistemi görüntüsünü kullanan ve
+         <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/node-auto-upgrades?hl=tr">
+          otomatik yükseltmenin
+         </a>
+         etkinleştirilmiş olduğu Kubernetes Engine düğüm havuzları, 20.08.2018 haftasından başlayacak şekilde kullanılabilir olduğunda COS görüntümüzün yama uygulanmış sürümlerine otomatik olarak yükseltilecektir.
+        </p>
+        <p>
+         <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/node-auto-upgrades?hl=tr">
+          Otomatik yükseltmenin
+         </a>
+         etkinleştirilmemiş olduğu Kubernetes Engine düğüm havuzlarının, COS görüntümüzün yama uygulanmış sürümü kullanılabilir olduğunda
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-container-cluster?hl=tr">
+          manuel yükseltme
+         </a>
+         işlemi yapması gerekir.
+        </p>
+       </td>
+       <td>
+        Yüksek
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3615">
+           CVE-2018-3615
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3620">
+           CVE-2018-3620
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3646">
+           CVE-2018-3646
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="6 Ağustos 2018; Son güncelleme: 5 Eylül 2018" id="august-6-2018">
+     6 Ağustos 2018; Son güncelleme: 5 Eylül 2018
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Açıklama
+       </th>
+       <th width="5%">
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="05.09.2018 Tarihli Güncelleme" id="05092018-tarihli-guncelleme">
+         05.09.2018 Tarihli Güncelleme
+        </h4>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5391">
+          CVE-2018-5391
+         </a>
+         kısa süre önce duyurulmuştur.
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390">
+          CVE-2018-5390
+         </a>
+         gibi bu da savunmasız sistemlerde hizmet reddi (DoS) saldırılarının etkisini artıran çekirdek düzeyinde bir ağ iletişimi güvenlik açığıdır. Aralarındaki temel fark, CVE-2018-5391 açığının IP bağlantıları üzerinde kötüye kullanılma riski olmasıdır. Bu bülteni, bu güvenlik açıklarının her ikisini de kapsayacak şekilde güncelledik.
+        </p>
+        <h4 data-text="Açıklama" id="acklama">
+         Açıklama
+        </h4>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390">
+          CVE-2018-5390
+         </a>
+         ("SegmentSmack") TCP bağlantıları üzerindeki savunmasız sistemlerde hizmet reddi (DoS) saldırılarının etkisini artıran çekirdek düzeyinde bir ağ iletişimi güvenlik açığını tanımlar.
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5391">
+          CVE-2018-5391
+         </a>
+         ("FragmentSmack") IP bağlantıları üzerindeki savunmasız sistemlerde hizmet reddi (DoS) saldırılarının etkisini artıran çekirdek düzeyinde bir ağ iletişimi güvenlik açığını tanımlar.
+        </p>
+        <h4 data-text="Google Kubernetes Engine etkisi" id="google-kubernetes-engine-etkisi_1">
+         Google Kubernetes Engine etkisi
+        </h4>
+        <p>
+         11.08.2018 itibarıyla tüm Kubernetes Engine ana düğümleri her iki güvenlik açığına karşı korunmaktadır. Otomatik yükseltme yapılandırması olan tüm Kubernetes Engine kümeleri de her iki güvenlik açığına karşı korunur.
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=tr">
+          Otomatik yükseltmenin
+         </a>
+         yapılandırılmamış olduğu ve en son 11.08.2018 tarihinden önce manuel olarak yükseltilmiş olan Kubernetes Engine düğüm havuzları her iki güvenlik açığından da etkilenmektedir.
+        </p>
+        <h4 data-text="Yama uygulanan sürümler" id="yama-uygulanan-surumler">
+         Yama uygulanan sürümler
+        </h4>
+        <p>
+         Bu güvenlik açığının ciddiyeti nedeniyle, yama kullanıma sunulur sunulmaz düğümlerinizi
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=tr#upgrading-nodes">
+          manuel olarak yükseltmenizi
+         </a>
+         öneririz.
+        </p>
+       </td>
+       <td>
+        Yüksek
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390">
+           CVE-2018-5390
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5391">
+           CVE-2018-5391
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="30 Mayıs 2018" id="may-30-2018">
+     30 Mayıs 2018
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Açıklama
+       </th>
+       <th width="5%">
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Kısa süre önce Git üzerinde, ayrıcalığı bulunmayan kullanıcıların gitRepo birimleriyle Kapsüller oluşturmasına izin verildiğinde Kubernetes'te ayrıcalık artırmaya imkan tanıyabilecek bir güvenlik açığı keşfedilmiştir. Bu CVE,
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-11235">
+          CVE-2018-11235
+         </a>
+         etiketiyle tanımlanmıştır.
+        </p>
+        <h4 data-text="Güvenlik açıklarından etkilendim mi?" id="guvenlik-acklarndan-etkilendim-mi">
+         Güvenlik açıklarından etkilendim mi?
+        </h4>
+        <p>
+         Aşağıdaki koşulların tamamı geçerliyse bu güvenlik açığı sizi etkilemiştir:
+        </p>
+        <ul>
+         <li>
+          Güvenilmeyen kullanıcılar Kapsül oluşturabiliyordur (veya Kapsül oluşturma işlemi tetikleyebiliyordur).
+         </li>
+         <li>
+          Güvenilmeyen kullanıcılar tarafından oluşturulan Kapsüllerde ana makine kök erişimini önleyen kısıtlamalar vardır (ör.
+          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=tr">
+           PodSecurityPolicy
+          </a>
+          ile).
+         </li>
+         <li>
+          Güvenilmeyen kullanıcılar tarafından oluşturulan Kapsüllerin gitRepo birim türünü kullanmasına izin veriliyordur.
+         </li>
+        </ul>
+        <p>
+         Tüm Kubernetes Engine düğümleri savunmasızdır.
+        </p>
+        <h4 data-text="Ne yapmalıyım?" id="ne-yapmalym_15">
+         Ne yapmalıyım?
+        </h4>
+        <p>
+         GitRepo birim türünün kullanımını yasaklayın. GitRepo birimlerini PodSecurityPolicy ile yasaklamak için
+         <code dir="ltr" translate="no">
+          gitRepo
+         </code>
+         birim türünü PodSecurityPolicy'nizdeki
+         <code dir="ltr" translate="no">
+          volumes
+         </code>
+         beyaz listesinden çıkarın.
+        </p>
+        <p>
+         Eş değer gitRepo birim davranışı, bir initContainer'dan bir EmptyDir birimine git kod deposu klonlanarak sağlanabilir:
+        </p>
+        <pre class="notranslate" dir="ltr" translate="no">
+
+<code dir="ltr" translate="no">apiVersion: v1
+    kind: Pod
+    metadata:
+      name: git-repo-example
+    spec:
+      initContainers:
+        # This container clones the desired git repo to the EmptyDir volume.
+        - name: git-clone
+          image: alpine/git # Any image with git will do
+          args:
+            - clone
+            - --single-branch
+            - --
+            - https://github.com/kubernetes/kubernetes # Your repo
+            - /repo # Put it in the volume
+          securityContext:
+            runAsUser: 1 # Any non-root user will do. Match to the workload.
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+          volumeMounts:
+            - name: git-repo
+              mountPath: /repo
+      containers:
+        ...
+      volumes:
+        - name: git-repo
+          emptyDir: {}</code></pre>
+        <h4 data-text="Hangi yama bu güvenlik açığını ele alıyor?" id="hangi-yama-bu-guvenlik-acgn-ele-alyor">
+         Hangi yama bu güvenlik açığını ele alıyor?
+        </h4>
+        <p>
+         Sonraki Kubernetes Engine sürümüne bir yama dahil edilecektir.
+            Ayrıntılı bilgi için lütfen bu bölümü tekrar kontrol edin.
+        </p>
+       </td>
+       <td>
+        Orta
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-11235">
+           CVE-2018-11235
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="21 Mayıs 2018" id="may-21-2018">
+     21 Mayıs 2018
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Açıklama
+       </th>
+       <th width="5%">
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Kısa süre önce Linux çekirdeğinde ayrıcalık artırmaya veya ayrıcalığı bulunmayan bir işlemden hizmet reddi (çekirdek kilitlenmesiyle) saldırıları gerçekleştirmeye imkan tanıyan bazı güvenlik açıkları keşfedilmiştir. Bu CVE'ler
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1000199">
+          CVE-2018-1000199
+         </a>
+         ,
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-8897">
+          CVE-2018-8897
+         </a>
+         ve
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1087">
+          CVE-2018-1087
+         </a>
+         etiketleriyle tanımlanmaktadır.
+            Tüm Kubernetes Engine düğümleri bu güvenlik açıklarından etkilenmiştir. Aşağıda ayrıntılarıyla açıklandığı şekilde en son yama sürümüne
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-container-cluster?hl=tr">
+          yükseltme
+         </a>
+         işlemi yapmanızı öneririz.
+        </p>
+        <h4 data-text="Ne yapmalıyım?" id="ne-yapmalym_16">
+         Ne yapmalıyım?
+        </h4>
+        <p>
+         Yükseltme için öncelikle ana düğümünüzü en yeni sürüme yükseltmeniz gerekir. Bu yama Kubernetes Engine 1.8.12-gke.1, Kubernetes Engine 1.9.7-gke.1 ve Kubernetes Engine 1.10.2-gke.1 için kullanılabilir.
+            Bu sürümler, hem Container İçin Optimize Edilmiş İşletim Sistemi hem de Ubuntu görüntüleri için yamalar içerir.
+        </p>
+        <p>
+         Daha önce yeni bir küme oluşturduysanız bu kümenin kullanılabilmesi için yama uygulanmış sürümü belirtmeniz gerekir.
+         <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/node-auto-upgrades?hl=tr">
+          Otomatik düğüm yükseltme
+         </a>
+         özelliğini etkinleştirmiş olan ve manuel yükseltme yapmayan müşterilerin düğümleri, önümüzdeki haftalarda yama uygulanmış sürümlere yükseltilecektir.
+        </p>
+        <h4 data-text="Bu yama hangi güvenlik açıklarını ele alıyor?" id="bu-yama-hangi-guvenlik-acklarn-ele-alyor_2">
+         Bu yama hangi güvenlik açıklarını ele alıyor?
+        </h4>
+        <p>
+         Yama, aşağıdaki güvenlik açıklarının riskini azaltır:
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1000199">
+          CVE-2018-1000199
+         </a>
+         : Bu güvenlik açığı, Linux çekirdeğini etkiler. Ayrıcalığa sahip olmayan bir kullanıcı veya işlemin sistem çekirdeğini kilitleyerek DoS saldırısına veya ayrıcalık artırmaya yol açabilmesine imkan tanır. Bu güvenlik açığı 7,8 CVSS puanı ile Yüksek güvenlik açığı olarak derecelendirilmiştir.
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-8897">
+          CVE-2018-8897
+         </a>
+         : Bu güvenlik açığı, Linux çekirdeğini etkiler. Ayrıcalığa sahip olmayan bir kullanıcı veya işlemin sistem çekirdeğini kilitleyerek DoS saldırısına yol açabilmesine imkan tanır.
+            Bu güvenlik açığı 6,5 CVSS puanı ile Orta güvenlik açığı olarak derecelendirilmiştir.
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1087">
+          CVE-2018-1087
+         </a>
+         : Bu güvenlik açığı, Linux çekirdeği KVM hipervizörünü etkiler. Ayrıcalığa sahip olmayan bir işlemin konuk çekirdeğini kilitlemesine veya potansiyel ayrıcalıklar kazanmasına imkan tanır. Bu güvenlik açığına Kubernetes Engine'in çalıştığı altyapıda yama uygulanmıştır, böylece Kubernetes Engine etkilenmemiştir. Bu güvenlik açığı 8,0 CVSS puanı ile Yüksek güvenlik açığı olarak derecelendirilmiştir.
+        </p>
+       </td>
+       <td>
+        Yüksek
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1000199">
+           CVE-2018-1000199
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-8897">
+           CVE-2018-8897
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1087">
+           CVE-2018-1087
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="12 Mart 2018" id="march-12-2018">
+     12 Mart 2018
+    </h2>
+    <table id="20180312">
+     <thead>
+      <tr>
+       <th width="70%">
+        Açıklama
+       </th>
+       <th width="5%">
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Kubernetes projesinin
+         <a class="external" href="https://groups.google.com/forum/?hl=tr#!topic/kubernetes-security-announce/P7lBjbjDKd8">
+          kısa süre önce duyurduğu
+         </a>
+         yeni güvenlik açıkları
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2017-1002101">
+          CVE-2017-1002101
+         </a>
+         ve
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2017-1002102">
+          CVE-2017-1002102
+         </a>
+         , container'ların container dışındaki dosyalara erişebilmesine imkan tanımaktadır. Tüm Kubernetes Engine düğümleri bu güvenlik açıklarından etkilenmiştir. Aşağıda ayrıntılarıyla açıklandığı şekilde en kısa sürede en yeni yama sürümüne yükseltme yapmanızı öneririz.
+        </p>
+        <h4 data-text="Ne yapmalıyım?" id="ne-yapmalym_17">
+         Ne yapmalıyım?
+        </h4>
+        <p>
+         Bu güvenlik açıklarının ciddiyeti nedeniyle, düğümler için otomatik yükseltme özelliği etkinleştirilmiş olsun veya olmasın, yama kullanıma sunulur sunulmaz düğümlerinizi
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-container-cluster?hl=tr">
+          manuel olarak yükseltmenizi
+         </a>
+         öneririz. Yama 16 Mart'ta tüm müşteriler için kullanılabilir olacaktır. Ancak
+         <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=tr#march-12-2018">
+          sürüm programına
+         </a>
+         göre, kümenizin bulunduğu alt bölgeye bağlı olarak sizin için daha önce kullanıma sunulabilir.
+        </p>
+        <p>
+         Yükseltme için öncelikle ana düğümünüzü en yeni sürüme yükseltmeniz gerekir. Bu yama Kubernetes 1.9.4-gke.1, Kubernetes 1.8.9-gke.1 ve Kubernetes 1.7.14-gke.1 için kullanılabilecektir. Yeni kümeler 30 Mart'tan itibaren varsayılan olarak yama uygulanmış sürümü kullanacaktır. Daha önce yeni bir küme oluşturursanız bu kümenin kullanılabilmesi için yama uygulanmış sürümü belirtmeniz gerekir.
+        </p>
+        <p>
+         <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/node-auto-upgrades?hl=tr">
+          Otomatik düğüm yükseltme
+         </a>
+         özelliği etkinleştirilmiş olan ve manuel yükseltme yapmayan Kubernetes Engine müşterilerinin düğümleri, 23 Nisan'da yama uygulanmış sürümlere yükseltilecektir. Ancak güvenlik açığının özelliği nedeniyle, yama kullanıma sunulur sunulmaz düğümlerinizi
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-container-cluster?hl=tr">
+          manuel olarak yükseltmenizi
+         </a>
+         öneririz.
+        </p>
+        <h4 data-text="Bu yama hangi güvenlik açıklarını ele alıyor?" id="bu-yama-hangi-guvenlik-acklarn-ele-alyor_3">
+         Bu yama hangi güvenlik açıklarını ele alıyor?
+        </h4>
+        <p>
+         Yama, aşağıdaki iki güvenlik açığının riskini azaltır:
+        </p>
+        <p>
+         CVE-2017-1002101 güvenlik açığı, container'ların
+         <a class="external" href="https://kubernetes.io/docs/concepts/storage/volumes/#using-subpath">
+          alt yol
+         </a>
+         birim bağlantılarını kullanarak birim dışındaki dosyalara erişebilmesine imkan tanır. Bu, şu anlama gelir: PodSecurityPolicy ile hostpath birimlerine container erişimini engelliyorsanız kapsülleri güncelleme veya oluşturma becerisi olan bir saldırgan, diğer herhangi bir birim türünü kullanarak bir hostpath bağlantısı kurabilir.
+        </p>
+        <p>
+         CVE-2017-1002102 güvenlik açığı, belirli birim türlerini (gizli anahtarlar, config map'ler, öngörülen birimler, Downward API birimleri) kullanan Container'ların birim dışındaki dosyaları silmesine imkan tanır. Bu, şu anlama gelir: Bu birim türlerinden birini kullanan bir container'ın güvenliği ihlal edilirse veya güvenilmeyen kullanıcıların kapsül oluşturmasına izin verirseniz bir saldırgan, bu container'ı kullanarak ana makine üzerindeki dosyaları rastgele silebilir.
+        </p>
+        <p>
+         Bu düzeltme hakkında daha fazla bilgi için
+         <a class="external" href="https://kubernetes.io/blog/2018/04/04/fixing-subpath-volume-vulnerability/">
+          Kubernetes blog yayınını
+         </a>
+         okuyun.
+        </p>
+       </td>
+       <td>
+        Yüksek
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2017-1002101">
+           CVE-2017-1002101
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2017-1002102">
+           CVE-2017-1002102
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+   </section>
+  </div>
+ </article>
+</article>
