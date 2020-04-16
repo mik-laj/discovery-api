@@ -10,6 +10,102 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/deploymentmanager-release-
 notes.xml `
 
+##  April 15, 2020
+
+**FEATURE:**
+
+Added support for [ Cloud Scheduler ](https://cloud.google.com/scheduler)
+through ` gcp-types/cloudscheduler-v1:projects.locations.jobs ` .
+
+**CHANGED:**
+
+You can now apply granular [ IAM Permissions
+](https://cloud.google.com/iam/docs/permissions-reference) to the [ Google
+APIs service account used by Deployment Manager
+](https://cloud.google.com/deployment-manager/docs/access-
+control#access_control_for) , as we've removed the requirement for `
+roles/editor ` being assigned to the service account.
+
+**CHANGED:**
+
+Updates on [ Cloud Functions ](https://cloud.google.com/functions) resources
+using ` gcp-types/cloudfunctions-v1 ` now retry on 429 errors.
+
+**CHANGED:**
+
+GKE clusters and node pools will wait for maintenance to complete before
+attempting to apply any updates. Affected collections:
+
+  * ` gcp-types/container-v1:projects.zones.clusters `
+  * ` gcp-types/container-v1:projects.locations.clusters `
+  * ` gcp-types/container-v1:projects.zones.clusters.nodePools `
+  * ` gcp-types/container-v1:projects.locations.clusters.nodePools `
+  * ` gcp-types/container-v1beta1:projects.zones.clusters `
+  * ` gcp-types/container-v1beta1:projects.locations.clusters `
+  * ` gcp-types/container-v1beta1:projects.zones.clusters.nodePools `
+  * ` gcp-types/container-v1beta1:projects.locations.clusters.nodePools `
+
+**FIXED:**
+
+Deployment Manager now acquires existing GKE cluster resources of type ` gcp-
+types/container-v1:projects.locations.clusters ` .
+
+**CHANGED:**
+
+Added support for updating the following properties on ` gcp-
+types/container-v1:projects.zones.clusters ` and ` gcp-
+types/container-v1:projects.locations.clusters ` :
+
+  * binaryAuthorization 
+  * databaseEncryption 
+  * masterAuthorizedNetworksConfig 
+  * autoscaling 
+  * resourceUsageExportConfig 
+  * verticalPodAutoscaling 
+
+Additionally, for ` gcp-types/container-v1beta1:projects.zones.clusters ` and
+` gcp-types/container-v1beta1:projects.locations.clusters ` the following
+fields can also be updated:
+
+  * podSecurityPolicyConfig 
+  * privateClusterConfig 
+  * shieldedNodes 
+  * workloadIdentityConfig 
+
+**FIXED:**
+
+Deployment Manager now correctly updates autoscaling properties for resources
+of type ` gcp-types/container-v1:projects.locations.clusters.nodePools ` and `
+gcp-types/container-v1beta1:projects.locations.clusters.nodePools ` .
+
+**FIXED:**
+
+Deployment Manager now correctly acquires [ Access Context Manager
+](https://cloud.google.com/access-context-manager/docs) resources of type `
+gcp-types/accesscontextmanager-v1:accessPolicies.accessLevels ` and ` gcp-
+types/accesscontextmanager-v1beta:accessPolicies.accessLevels ` if the
+resources already exist.
+
+**CHANGED:**
+
+Added support for updating [ Cloud Pub/Sub ](https://cloud.google.com/pubsub)
+subscriptions using ` gcp-types/pubsub-v1:projects.subscriptions ` .
+
+**FIXED:**
+
+Deployment Manager now correctly deletes [ Compute Engine
+](https://cloud.google.com/compute/docs) forwarding rules of type `
+compute.v1.forwardingRule ` , ` compute.beta.forwardingRule ` , ` gcp-
+types/compute-v1:forwardingRules ` and ` gcp-types/compute-
+beta:forwardingRules ` when the resource name does not match the forwarding
+rule name.
+
+**CHANGED:**
+
+Performance improvements when handling large Swagger / OpenAPI specs when [
+adding an API as a type provider ](https://cloud.google.com/deployment-
+manager/docs/configuration/type-providers/creating-type-provider) .
+
 ##  March 30, 2020
 
 **CHANGED:**
