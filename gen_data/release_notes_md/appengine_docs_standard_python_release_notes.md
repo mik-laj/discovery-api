@@ -9,6 +9,14 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gaestd-py-release-notes.xml `
 
+##  April 13, 2020
+
+**CHANGED:**
+
+Quotas for sockets have been removed. There is no longer a limit on the number
+of socket connections or the amount of data your Python 2 app can send and
+receive through a socket.
+
 ##  April 08, 2020
 
 **CHANGED:**
