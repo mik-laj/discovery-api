@@ -1,0 +1,279 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <h1 class="devsite-page-title">
+   Notes de version : Jalon 69
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <h2 data-text="État actuel" id="current_status">
+    État actuel
+   </h2>
+   <section id="status">
+    <table>
+     <tbody>
+      <tr>
+       <td>
+        Famille d'images
+       </td>
+       <td>
+        cos-69-lts
+       </td>
+      </tr>
+      <tr>
+       <td>
+        Obsolète à partir du
+       </td>
+       <td>
+        11 déc. 2019
+       </td>
+      </tr>
+      <tr>
+       <td>
+        Noyau
+       </td>
+       <td>
+        <a href="https://chromium.googlesource.com/chromiumos/third_party/kernel/+/edb81c460eee7a4a35e2a95ebf6450df0963398e">
+         4.14.91+
+        </a>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        Kubernetes
+       </td>
+       <td>
+        v1.11.1
+       </td>
+      </tr>
+      <tr>
+       <td>
+        Docker
+       </td>
+       <td>
+        v17.03.2
+       </td>
+      </tr>
+     </tbody>
+    </table>
+   </section>
+   <h2 data-text="Journal des modifications (depuis le jalon 68)" id="changelog_vs_milestone_68">
+    Journal des modifications (depuis le jalon 68)
+   </h2>
+   <section id="changelog">
+    <h3 data-text="cos-69-10895-172-0" id="cos-69-10895-172-0">
+     cos-69-10895-172-0
+    </h3>
+    <i>
+     Date : 28 février 2019
+    </i>
+    <ul>
+     <li>
+      Activation de kernel.softlockup_all_cpu_backtrace, qui était précédemment désactivé afin d'atténuer un problème, maintenant résolu, de blocage du noyau.
+     </li>
+     <li>
+      Configuration de docker.service en définissant RestartSecs=10 pour systématiquement redémarrer Docker au bout de 10 secondes.
+     </li>
+    </ul>
+    <h3 data-text="cos-69-10895-138-0" id="cos-69-10895-138-0">
+     cos-69-10895-138-0
+    </h3>
+    <i>
+     Date : 24 janvier 2019
+    </i>
+    <ul>
+     <li>
+      Rétroportage du correctif résolvant un problème de blocage lors d'une panique du noyau.
+     </li>
+     <li>
+      Intégration du noyau stable Linux v4.14.91.
+     </li>
+    </ul>
+    <h3 data-text="cos-69-10895-123-0" id="cos-69-10895-123-0">
+     cos-69-10895-123-0
+    </h3>
+    <i>
+     Date : 10 janvier 2019
+    </i>
+    <ul>
+     <li>
+      Définition de CONFIG_BLK_WBT_MQ=y pour améliorer l'isolation des performances sur les disques persistants. Cette modification corrige un bug à cause duquel les écritures sur un disque persistant SSD peuvent affecter les performances sur le disque de démarrage persistant standard.
+     </li>
+     <li>
+      Sélection de commits Ext4 qui corrigent des incohérences au niveau du système de fichiers, dues à des perturbations lors de l'opération NFS CREATE dans certaines conditions.
+     </li>
+     <li>
+      Intégration du noyau stable Linux v4.14.89.
+     </li>
+    </ul>
+    <h3 data-text="cos-69-10895-102-0" id="cos-69-10895-102-0">
+     cos-69-10895-102-0
+    </h3>
+    <i>
+     Date : 20 décembre 2018
+    </i>
+    <ul>
+     <li>
+      Désactivation de la mise à jour automatique sur les images protégées. Les images dans cos-cloud ne sont pas affectées par ce changement.
+     </li>
+     <li>
+      Activation de la fonctionnalité ext4 "metadata_csum" sur la partition avec état.
+    Cette modification améliore également les performances du redimensionnement du disque de démarrage.
+     </li>
+     <li>
+      Application de la stratégie IMA uniquement lorsque cloud-audit-setup.service est explicitement exécuté.
+     </li>
+    </ul>
+    <h3 data-text="cos-69-10895-93-0" id="cos-69-10895-93-0">
+     cos-69-10895-93-0
+    </h3>
+    <i>
+     Date : 16 novembre 2018
+    </i>
+    <ul>
+     <li>
+      Mise à jour du noyau vers la version v4.14.79.
+     </li>
+     <li>
+      Correction du bug empêchant cloud-init d'écrire des fichiers compressés avec gzip.
+     </li>
+    </ul>
+    <h3 data-text="cos-69-10895-91-0" id="cos-69-10895-91-0">
+     cos-69-10895-91-0
+    </h3>
+    <i>
+     Date : 29 octobre 2018
+    </i>
+    <ul>
+     <li>
+      Résolution du problème de blocage pouvant survenir lors d'une interaction entre IMA et NFS.
+     </li>
+     <li>
+      Correction d'un problème stackdriver-logging.service observé dans les conteneurs sur Compute Engine.
+     </li>
+     <li>
+      PCID est désormais activé par défaut lorsqu'il est compatible avec la plate-forme du processeur.
+     </li>
+    </ul>
+    <h3 data-text="cos-69-10895-85-0" id="cos-69-10895-85-0">
+     cos-69-10895-85-0
+    </h3>
+    <i>
+     Date : 11 octobre 2018
+    </i>
+    <ul>
+     <li>
+      Réinitialisation de softlockup_all_cpu_backtrace sur la valeur 0 pour éviter le blocage du noyau, dans certaines circonstances, sur les machines à haute capacité de processeur.
+     </li>
+    </ul>
+    <h3 data-text="cos-69-10895-71-0" id="cos-69-10895-71-0">
+     cos-69-10895-71-0
+    </h3>
+    <i>
+     Date : 1er octobre 2018
+    </i>
+    <ul>
+     <li>
+      Suppression des en-têtes d'utilisateur dans l'artefact d'en-tête du noyau.
+     </li>
+    </ul>
+    <h3 data-text="cos-69-10895-62-0" id="cos-69-10895-62-0">
+     cos-69-10895-62-0
+    </h3>
+    <i>
+     Date : 18 septembre 2018
+    </i>
+    <ul>
+     <li>
+      Promotion en version stable.
+     </li>
+     <li>
+      Rétroportage d'un correctif pour s'assurer que scsi contribue au caractère aléatoire lorsqu'il exécute un appareil rotationnel
+      <https: 1212546="" chromium-review.googlesource.com="">
+       .
+    Cette modification résout un problème de ralentissement au démarrage de docker en raison d'une entropie faible sur les disques persistants standards depuis l'intégration de la version 4.14.63.
+      </https:>
+     </li>
+     <li>
+      Activation de CONFIG_RANDOM_TRUST_CPU pour résoudre le problème de manque d'entropie sur les disques de démarrage SSD persistants.
+     </li>
+     <li>
+      Mise à niveau d'OpenSSL vers la version 1.0.2p.
+     </li>
+     <li>
+      Intégration de la version stable Linux v4.14.65.
+     </li>
+     <li>
+      Rétroportage du correctif pour le bug cloud-init empêchant write_files de traiter du contenu non-asci
+      <https: 1487877="" bugs="" bugs.launchpad.net="">
+       .
+      </https:>
+     </li>
+     <li>
+      Rétroportage d'un correctif pour l'avertissement du noyau "WARNING: fs/overlayfs/readdir.c:393 ovl_iterate+0x25c/0x260 WARN_ON(!cache-&gt;refcount)"
+     </li>
+     <li>
+      Correctif pour le noyau Linux CVE-2018-12232.
+     </li>
+     <li>
+      Rétroportage de correctifs pour le problème L1 Terminal Fault (L1TF) (CVE-2018-3615, CVE-2018-3620 et CVE-2018-3646).
+     </li>
+     <li>
+      Correctifs pour CVE-2018-5391.
+     </li>
+     <li>
+      Correction d'un problème de blocage logiciel survenant sur les VM à processeur virtuel unique lors de l'utilisation de systèmes de fichiers FUSE.
+     </li>
+     <li>
+      Mise à jour de Kubernetes vers la version v1.11.1.
+     </li>
+     <li>
+      Correctifs pour CVE-2018-5390.
+     </li>
+     <li>
+      Augmentation de la valeur kernel.pid_max par défaut à 2^22.
+     </li>
+     <li>
+      Intégration de la version stable Linux v4.14.54 dans le noyau.
+     </li>
+     <li>
+      Suppression de la compatibilité avec les CD-ROM SCSI. Cette modification corrige CVE-2018-11506.
+     </li>
+     <li>
+      Mise à niveau de Kubelet intégré vers la version v1.11.0.
+     </li>
+     <li>
+      Mise à niveau de docker-credential-gcr vers la version 1.5.0.
+     </li>
+     <li>
+      Mise à niveau de BUG_REPORT_URL dans /etc/os-release.
+     </li>
+     <li>
+      Activation des configurations de débogage NFS dans le noyau.
+     </li>
+     <li>
+      Activation du module de noyau tcp_bbr pour le contrôle de la congestion TCP.
+     </li>
+     <li>
+      Mise à niveau de Git vers la version 2.16.4 pour corriger CVE 2018-11235.
+     </li>
+     <li>
+      Définition de l'option de configuration Docker "--disable-legacy-registry" sur la valeur "true" par défaut.
+     </li>
+     <li>
+      Mise à niveau de Kubernetes vers la version 1.10.4.
+     </li>
+     <li>
+      Mise à niveau de sshd_config pour supprimer les chiffrements basés sur cbc.
+     </li>
+     <li>
+      Mise à jour des certificats CA racine pour correspondre à Mozilla NSS 3.36.1.
+     </li>
+     <li>
+      Mise à niveau de OpenSSL vers la version 1.0.2o.
+     </li>
+    </ul>
+   </section>
+  </div>
+ </article>
+</article>
