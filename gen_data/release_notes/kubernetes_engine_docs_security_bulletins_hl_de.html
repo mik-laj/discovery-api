@@ -1,0 +1,2922 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <h1 class="devsite-page-title">
+   Sicherheitsbulletins
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <p>
+    In diesem Thema werden alle Sicherheitsbulletins für Google Kubernetes Engine (GKE) beschrieben.
+   </p>
+   <p>
+    Sicherheitslücken werden häufig geheim gehalten, bis die betroffenen Parteien die Möglichkeit hatten, sie zu beheben. In diesen Fällen wird in den
+    <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=de">
+     Versionshinweisen
+    </a>
+    von GKE von "Security Updates" (Sicherheitsupdates) gesprochen, bis die Geheimhaltungsverpflichtung aufgehoben wurde. Sobald das geschehen ist, werden die Hinweise mit Informationen über die durch den Patch behobene Sicherheitslücke aktualisiert.
+   </p>
+   <aside class="note">
+    <strong>
+     Hinweis:
+    </strong>
+    <span>
+     Diese Sicherheitsbulletins sind insbesondere dann zu beachten, wenn Sie Arbeitslasten für mehrere Mandanten in GKE ausführen. Bei ihnen ist die Wahrscheinlichkeit größer, dass sie durch diese Sicherheitslücken gefährdet sind. Eine technische Beschreibung der Sicherheitsgrenzen in GKE und deren Auswirkungen auf Arbeitslasten finden Sie unter
+     <a href="https://cloudplatform.googleblog.com/2018/05/Exploring-container-security-Isolation-at-different-layers-of-the-Kubernetes-stack.html">
+      Isolation at different layers of the Kubernetes stack
+     </a>
+     .
+    </span>
+   </aside>
+   <p>
+    Fügen Sie die URL dieser Seite in den
+    <a class="external" href="https://wikipedia.org/wiki/Comparison_of_feed_aggregators">
+     Feedreader
+    </a>
+    ein oder fügen Sie die Feed-URL direkt hinzu, um die neuesten Sicherheitsbulletins zu erhalten:
+    <code dir="ltr" translate="no">
+     https://cloud.google.com/feeds/kubernetes-engine-security-bulletins.xml
+    </code>
+   </p>
+   <section class="bulletins">
+    <h2 data-text="21. Januar 2020; zuletzt aktualisiert am 24. Januar 2020" id="january_21_2020">
+     21. Januar 2020; zuletzt aktualisiert am 24. Januar 2020
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschreibung
+       </th>
+       <th>
+        Schweregrad
+       </th>
+       <th>
+        Hinweise
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         <strong>
+          Aktualisierung vom 24. Januar 2020:
+         </strong>
+         Die Einführung von Patchversionen hat bereits begonnen und wird bis zum 25. Januar 2020 abgeschlossen.
+        </p>
+        <hr/>
+        <p>
+         Microsoft hat eine Sicherheitslücke in der Windows Crypto API und ihrer Validierung von Elliptische-Kurven-Signaturen offengelegt. Weitere Informationen finden Sie in der
+         <a class="external" href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2020-0601">
+          Offenlegung von Microsoft
+         </a>
+         .
+        </p>
+        <p>
+         <strong>
+          Was soll ich tun?
+         </strong>
+        </p>
+        <p>
+         <strong>
+          Bei den meisten Kunden sind keine weiteren Maßnahmen erforderlich. Es sind nur Knoten betroffen, die Windows Server ausführen.
+         </strong>
+        </p>
+        <p>
+         Kunden, die Windows Server-Knoten verwenden, müssen sowohl die Knoten als auch die containerisierten Arbeitslasten, die auf diesen Knoten ausgeführt werden, auf gepatchte Versionen aktualisieren, um diese Sicherheitslücke zu verringern.
+        </p>
+        <p>
+         <strong>
+          So aktualisieren Sie die Container:
+         </strong>
+        </p>
+        <p>
+         Erstellen Sie Ihre Container mit den aktuellen Basis-Container-Images von Microsoft und wählen Sie dabei ein
+         <a class="external" href="https://hub.docker.com/_/microsoft-windows-servercore">
+          servercore
+         </a>
+         - oder
+         <a class="external" href="https://hub.docker.com/_/microsoft-windows-nanoserver">
+          nanoserver
+         </a>
+         -Tag mit LastUpdated-Zeit vom 14. Januar 2020 oder später aus.
+        </p>
+        <p>
+         <strong>
+          So aktualisieren Sie die Knoten:
+         </strong>
+        </p>
+        <p>
+         Die Einführung von Patchversionen hat bereits begonnen und wird bis zum 24. Januar 2020 abgeschlossen.
+        </p>
+        <p>
+         Sie können entweder bis zu diesem Zeitpunkt warten und ein Knotenupgrade für eine GKE-Patchversion vornehmen oder mit Windows Update jederzeit den aktuellen Windows-Patch manuell bereitstellen.
+        </p>
+        <p>
+         Die Sicherheitslücke wurde in folgenden Patchversionen entschärft:
+        </p>
+        <ul>
+         <li>
+          1.14.7-gke.40
+         </li>
+         <li>
+          1.14.8-gke.33
+         </li>
+         <li>
+          1.14.9-gke.23
+         </li>
+         <li>
+          1.14.10-gke.17
+         </li>
+         <li>
+          1.15.7-gke.23
+         </li>
+         <li>
+          1.16.4-gke.22
+         </li>
+        </ul>
+        <p>
+         <strong>
+          Welche Sicherheitslücken werden mit diesem Patch behoben?
+         </strong>
+        </p>
+        <p>
+         Dieser Patch dient zur Entschärfung der folgenden Sicherheitslücken:
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-0601">
+          CVE-2020-0601
+         </a>
+         – Diese Sicherheitslücke wird auch als
+         <a class="external" href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2020-0601">
+          Windows Crypto API-Spoofing-Sicherheitslücke
+         </a>
+         bezeichnet. Sie könnte dazu genutzt werden, bösartige ausführbare Dateien vertrauenswürdig zu machen oder dem Angreifer Man-in-the-Middle-Angriffe zu ermöglichen und vertrauliche Informationen über TLS-Nutzerverbindungen mit der betroffenen Software zu entschlüsseln.
+        </p>
+       </td>
+       <td>
+        <p>
+         NVD Base Score: 8,1 (hoch)
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-0601">
+          CVE-2020-0601
+         </a>
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="14. November 2019" id="november_14_2019">
+     14. November 2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschreibung
+       </th>
+       <th>
+        Schweregrad
+       </th>
+       <th>
+        Hinweise
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Kubernetes hat in den Sidecar-Containern
+         <a href="https://github.com/kubernetes-csi/external-provisioner">
+          <code dir="ltr" translate="no">
+           external-provisioner
+          </code>
+         </a>
+         ,
+         <a href="https://github.com/kubernetes-csi/external-snapshotter">
+          <code dir="ltr" translate="no">
+           external-snapshotter
+          </code>
+         </a>
+         und
+         <a href="https://github.com/kubernetes-csi/external-resizer">
+          <code dir="ltr" translate="no">
+           external-resizer
+          </code>
+         </a>
+         für kubernetes-csi ein Sicherheitsproblem festgestellt, das die meisten Versionen der in
+         <a href="https://kubernetes-csi.github.io/docs/drivers.html">
+          Container Storage Interface-Treibern (CSI)
+         </a>
+         gebündelten Sidecar-Container betrifft. Weitere Informationen erhalten Sie in der
+         <a href="https://github.com/kubernetes/kubernetes/issues/85233">
+          Mitteilung zu Kubernetes
+         </a>
+         .
+        </p>
+        <p>
+         <strong>
+          Was soll ich tun?
+         </strong>
+         <br/>
+         <strong>
+          Diese Sicherheitslücke wirkt sich nicht auf verwaltete GKE-Komponenten aus.
+         </strong>
+         Sie können betroffen sein, wenn Sie Ihre eigenen CSI-Treiber in
+         <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/alpha-clusters?hl=de">
+          GKE Alpha-Clustern
+         </a>
+         verwalten, in denen GKE Version 1.12 oder höher ausgeführt wird. Wenden Sie sich in diesem Fall bezüglich einer Upgrade-Anleitung an Ihren CSI-Treiberanbieter.
+        </p>
+        <p>
+         <strong>
+          Welche Sicherheitslücken werden mit diesem Patch behoben?
+         </strong>
+         <br/>
+         <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11255">
+          CVE-2019-11255
+         </a>
+         :
+        Diese CVE-Sicherheitslücke tritt in den Sidecar-Containern
+         <a href="https://github.com/kubernetes-csi/external-provisioner">
+          <code dir="ltr" translate="no">
+           external-provisioner
+          </code>
+         </a>
+         ,
+         <a href="https://github.com/kubernetes-csi/external-snapshotter">
+          <code dir="ltr" translate="no">
+           external-snapshotter
+          </code>
+         </a>
+         und
+         <a href="https://github.com/kubernetes-csi/external-resizer">
+          <code dir="ltr" translate="no">
+           external-resizer
+          </code>
+         </a>
+         für
+         <code dir="ltr" translate="no">
+          kubernetes-csi
+         </code>
+         auf. Sie kann zu nicht autorisierten Datenzugriffen und Änderungen führen. Das betrifft die meisten Versionen der in
+         <a href="https://kubernetes-csi.github.io/docs/drivers.html">
+          CSI-Treibern
+         </a>
+         gebündelten Sidecar-Container.
+        </p>
+       </td>
+       <td>
+        <p>
+         Mittel
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11255">
+          CVE-2019-11255
+         </a>
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="12. November 2019" id="november_12_2019">
+     12. November 2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschreibung
+       </th>
+       <th>
+        Schweregrad
+       </th>
+       <th>
+        Hinweise
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Intel hat CVE-Sicherheitslücken festgestellt, bei denen Daten Angriffen ausgesetzt sein können, die durch Interaktion einer spekulativen Ausführung mit dem mikroarchitektonischen Status erfolgen. Weitere Informationen erhalten Sie im folgenden
+         <a href="https://blogs.intel.com/technology/2019/11/ipas-november-2019-intel-platform-update-ipu/">
+          Intel-Blog
+         </a>
+         .
+        </p>
+        <p>
+         <strong>
+          In der Hostinfrastruktur, in der Kubernetes Engine ausgeführt wird, werden Arbeitslasten von Kunden isoliert. Keine weiteren Maßnahmen sind erforderlich, es sei denn, Sie führen nicht vertrauenswürdigen Code in Ihren eigenen GKE-Clustern für mehrere Mandanten aus
+          <em>
+           und
+          </em>
+          verwenden N2-, M2- oder C2-Knoten.
+         </strong>
+         Für GKE-Instanzen auf N1-Knoten sind keine neuen Maßnahmen erforderlich.
+        </p>
+        <p>
+         Bei lokaler Ausführung von Anthos GKE hängt die Anfälligkeit von der Hardware ab. Bitte prüfen Sie in folgendem
+         <a href="https://blogs.intel.com/technology/2019/11/ipas-november-2019-intel-platform-update-ipu/">
+          Intel-Blog
+         </a>
+         , ob Ihre Infrastruktur betroffen ist.
+        </p>
+        <h4 data-text="Was soll ich tun?" id="was-soll-ich-tun">
+         Was soll ich tun?
+        </h4>
+        <p>
+         <strong>
+          Sie sind nur betroffen, wenn Sie Knotenpools mit N2-, M2- oder C2-Knoten verwenden
+          <em>
+           und
+          </em>
+          wenn diese Knoten in Ihren eigenen GKE-Clustern für mehrere Mandanten nicht vertrauenswürdigen Code ausführen.
+         </strong>
+        </p>
+        <p>
+         <strong>
+          Starten Sie Ihre Knoten neu, damit der Patch angewendet wird.
+         </strong>
+         Am einfachsten starten Sie alle Knoten in Ihrem Knotenpool mit dem
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=de#upgrade_nodes">
+          Upgrade-Vorgang
+         </a>
+         neu. Sie erzwingen dadurch den Neustart aller Knoten im betroffenen Knotenpool.
+         <br/>
+        </p>
+        <aside class="note">
+         Hinweis: Während eines Upgrades ist keine Versionsänderung erforderlich. Mit dem Flag
+         <code dir="ltr" translate="no">
+          cluster-version
+         </code>
+         können Sie ein Upgrade auf dieselbe Knotenversion starten.
+        </aside>
+        <h4 data-text="Welche Sicherheitslücken werden mit diesem Patch behoben?" id="welche-sicherheitslucken-werden-mit-diesem-patch-behoben">
+         Welche Sicherheitslücken werden mit diesem Patch behoben?
+        </h4>
+        <p>
+         Dieser Patch dient zur Entschärfung der folgenden Sicherheitslücken:
+        </p>
+        <p>
+         <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11135">
+          CVE-2019-11135
+         </a>
+         : Diese CVE-Sicherheitslücke wird auch als TSX Async Abort (TAA) bezeichnet. TAA bietet einen anderen Pfad für die Daten-Exfiltration mit denselben mikroarchitektonischen Datenstrukturen, die auch durch
+         <a href="https://cloud.google.com/kubernetes-engine/docs/security-bulletins?hl=de#may-14-2019">
+          Microarchitectural Data Sampling (MDS)
+         </a>
+         gefährdet waren.
+        </p>
+        <p>
+         <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12207">
+          CVE-2018-12207
+         </a>
+         : Das ist eine DoS-Sicherheitslücke (Denial of Service) auf VM-Hosts, über die ein schädlicher Gast einen ungeschützten Host zum Absturz bringen kann. Diese CVE-Sicherheitslücke wird auch als "Machine Check Error on Page Size Change" bezeichnet. Das betrifft nicht GKE.
+        </p>
+       </td>
+       <td>
+        <p>
+         Mittel
+        </p>
+       </td>
+       <td>
+        <p>
+         <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11135">
+          CVE-2019-11135
+         </a>
+         <br/>
+         <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12207">
+          CVE-2018-12207
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="22. Oktober 2019" id="october_22_2019">
+     22. Oktober 2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschreibung
+       </th>
+       <th>
+        Schweregrad
+       </th>
+       <th>
+        Hinweise
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Im Zusammenhang mit der Programmiersprache Go wurde kürzlich eine in
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-16276">
+          CVE-2019-16276
+         </a>
+         beschriebene Sicherheitslücke festgestellt.
+            Sie kann sich auf Kubernetes-Konfigurationen auswirken, die einen Authentifizierungsproxy verwenden. Weitere Informationen erhalten Sie in der
+         <a class="external" href="https://groups.google.com/forum/?hl=de#!topic/kubernetes-security-announce/PtsUCqFi4h4">
+          Mitteilung zu Kubernetes
+         </a>
+         .
+        </p>
+        <p>
+         Da Kubernetes Engine keine Konfiguration eines Authentifizierungsproxys zulässt, ist es nicht von dieser Sicherheitslücke betroffen.
+        </p>
+       </td>
+       <td>
+        <p>
+         –
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-16276">
+          CVE-2019-16276
+         </a>
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="16. Oktober 2018" id="october_16_2019">
+     16. Oktober 2018
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschreibung
+       </th>
+       <th>
+        Schweregrad
+       </th>
+       <th>
+        Hinweise
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         <strong>
+          Aktualisierung vom 24. Oktober 2019
+         </strong>
+         : Ab sofort sind in allen Zonen Patchversionen verfügbar.
+        </p>
+        <hr/>
+        <p>
+         In Kubernetes wurde kürzlich eine in
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11253">
+          CVE-2019-11253
+         </a>
+         beschriebene Sicherheitslücke festgestellt. Sie erlaubt Nutzern, die POST-Anfragen stellen dürfen, DoS-Remoteangriffe auf Kubernetes API-Server. Das Kubernetes Product Security Committee (PSC) hat
+         <a class="external" href="https://groups.google.com/forum/?hl=de#!topic/kubernetes-security-announce/jk8polzSUxs">
+          zusätzliche Informationen
+         </a>
+         zu dieser Sicherheitslücke veröffentlicht.
+        </p>
+        <p>
+         In GKE-Clustern, die
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/authorized-networks?hl=de">
+          autorisierte Masternetzwerke
+         </a>
+         verwenden, und
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters?hl=de#private_master">
+          privaten Clustern ohne öffentlichen Endpunkt
+         </a>
+         tritt diese Sicherheitslücke seltener auf.
+        </p>
+        <h6 data-text="Was soll ich tun?" id="was-soll-ich-tun_1">
+         Was soll ich tun?
+        </h6>
+        <p>
+         Wir empfehlen ein Upgrade Ihrer Cluster auf eine Patchversion, die den Fehler behebt, sobald sie verfügbar ist. Patchversionen in allen Zonen werden voraussichtlich mit dem für die Woche vom 14. Oktober geplanten GKE-Release bereitgestellt.
+        </p>
+        <p>
+         Die Patchversionen, mit denen die Sicherheitslücke entschärft wird, sind unten aufgeführt.
+        </p>
+        <ul>
+         <li>
+          1.12.10-gke.15
+         </li>
+         <li>
+          1.13.11-gke.5
+         </li>
+         <li>
+          1.14.7-gke.10
+         </li>
+         <li>
+          1.15.4-gke.15
+         </li>
+        </ul>
+        <h6 data-text="Welche Sicherheitslücken werden mit diesem Patch behoben?" id="welche-sicherheitslucken-werden-mit-diesem-patch-behoben_1">
+         Welche Sicherheitslücken werden mit diesem Patch behoben?
+        </h6>
+        <p>
+         Dieser Patch dient zur Entschärfung der folgenden Sicherheitslücken:
+        </p>
+        <p>
+         CVE-2019-11253 ist eine DoS-Sicherheitslücke (Denial of Service).
+        </p>
+       </td>
+       <td>
+        <p>
+         Hoch
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11253">
+          CVE-2019-11253
+         </a>
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="16. September 2019" id="september_16_2019">
+     16. September 2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschreibung
+       </th>
+       <th>
+        Schweregrad
+       </th>
+       <th>
+        Hinweise
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Dieses Bulletin ist seit der ursprünglichen Veröffentlichung aktualisiert worden.
+        </p>
+        <p>
+         Im Zusammenhang mit der Programmiersprache Go wurden kürzlich die neuen DoS-Sicherheitslücken (Denial of Service)
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9512">
+          CVE-2019-9512
+         </a>
+         und
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9514">
+          CVE-2019-9514
+         </a>
+         festgestellt. In GKE könnten Nutzer dadurch schädliche Anfragen erstellen, die zu einem extrem hohen CPU-Verbrauch auf dem Kubernetes API-Server führen und damit unter Umständen die Verfügbarkeit der Steuerungsebene des Clusters reduzieren. Weitere Informationen finden Sie in der
+         <a class="external" href="https://groups.google.com/forum/?hl=de#!topic/golang-announce/65QixT3tcmg">
+          Mitteilung zur Programmiersprache Go
+         </a>
+         .
+        </p>
+        <h6 data-text="Was soll ich tun?" id="was-soll-ich-tun_2">
+         Was soll ich tun?
+        </h6>
+        <p>
+         Wir empfehlen ein Upgrade Ihres Clusters auf die neueste Patchversion, mit der diese Sicherheitslücke entschärft wird, sobald die Version verfügbar ist. Laut
+         <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=de#september_16_2019">
+          Veröffentlichungszeitplan
+         </a>
+         sollten die neuen Patchversionen in allen Zonen mit dem nächsten GKE-Release bereitgestellt werden.
+        </p>
+        <p>
+         Die Patchversionen, mit denen die Sicherheitslücke entschärft wird, sind unten aufgeführt.
+        </p>
+        <ul>
+         <li>
+          <strong>
+           Aktualisierung vom 16. Oktober 2019
+          </strong>
+          : 1.12.10-gke.15
+         </li>
+         <li>
+          1.13.10-gke.0
+         </li>
+         <li>
+          1.14.6-gke.1
+         </li>
+        </ul>
+        <h6 data-text="Welche Sicherheitslücke wird mit diesem Patch behoben?" id="welche-sicherheitslucke-wird-mit-diesem-patch-behoben">
+         Welche Sicherheitslücke wird mit diesem Patch behoben?
+        </h6>
+        <p>
+         Dieser Patch dient zur Entschärfung der folgenden Sicherheitslücken:
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9512">
+          CVE-2019-9512
+         </a>
+         und
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9514">
+          CVE-2019-9514
+         </a>
+         sind DoS-Sicherheitslücken (Denial of Service).
+        </p>
+       </td>
+       <td>
+        <p>
+         Hoch
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9512">
+          CVE-2019-9512
+         </a>
+         <br/>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9514">
+          CVE-2019-9514
+         </a>
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="5. September 2019" id="may-31-2019-update">
+     5. September 2019
+    </h2>
+    <p>
+     Das Bulletin für die Korrektur der im Bulletin vom
+     <a href="#may-31-2019">
+      31. Mai 2019
+     </a>
+     dokumentierten Sicherheitslücke wurde aktualisiert.
+    </p>
+    <h2 data-text="22. August 2019" id="august-05-2019-update2">
+     22. August 2019
+    </h2>
+    <p>
+     Das Bulletin vom
+     <a href="#august-05-2019">
+      5. August 2019
+     </a>
+     wurde aktualisiert.
+    Die Korrektur für die in dem früheren Bulletin dokumentierte Sicherheitslücke
+     <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=de#august_22_2019">
+      ist verfügbar
+     </a>
+     .
+    </p>
+    <h2 data-text="8. August 2019" id="august-05-2019-update">
+     8. August 2019
+    </h2>
+    <p>
+     Das Bulletin vom
+     <a href="#august-05-2019">
+      5. August 2019
+     </a>
+     wurde aktualisiert.
+    Die Korrektur für die in diesem Bulletin dokumentierte Sicherheitslücke ist voraussichtlich im nächsten GKE-Release verfügbar.
+    </p>
+    <h2 data-text="5. August 2019" id="august-05-2019">
+     5. August 2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschreibung
+       </th>
+       <th>
+        Schweregrad
+       </th>
+       <th>
+        Hinweise
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Dieses Bulletin ist seit der ursprünglichen Veröffentlichung aktualisiert worden.
+        </p>
+        <p>
+         Kubernetes hat kürzlich die Sicherheitslücke
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11247">
+          CVE-2019-11247
+         </a>
+         festgestellt. Dadurch können clusterbezogene
+         <a class="external" href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">
+          benutzerdefinierte Ressourceninstanzen
+         </a>
+         wie mit einem Namespace versehene Objekte behandelt werden, die in allen Namespaces existieren. Nutzer und Dienstkonten, die lediglich RBAC-Berechtigungen auf Namespace-Ebene haben, können also mit clusterbezogenen benutzerdefinierten Ressourcen interagieren. Damit der Angreifer diese Sicherheitslücke nutzen kann, benötigt er Zugriffsrechte auf die Ressource in einem Namespace.
+        </p>
+        <h6 data-text="Was soll ich tun?" id="was-soll-ich-tun_3">
+         Was soll ich tun?
+        </h6>
+        <p>
+         Wir empfehlen ein
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=de">
+          Upgrade
+         </a>
+         Ihres Clusters auf die neuste Patchversion, mit der diese Sicherheitslücke entschärft wird, sobald die Version verfügbar ist. Die Patchversionen werden voraussichtlich mit dem nächsten GCK-Release in allen Zonen bereitgestellt. Die Sicherheitslücke wurde in folgenden Patchversionen entschärft:
+        </p>
+        <ul>
+         <li>
+          1.11.10-gke.6
+         </li>
+         <li>
+          1.12.9-gke.13
+         </li>
+         <li>
+          1.13.7-gke.19
+         </li>
+         <li>
+          1.14.3-gke.10 (
+          <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels?hl=de">
+           Rapid-Kanal
+          </a>
+          )
+         </li>
+        </ul>
+        <h6 data-text="Welche Sicherheitslücke wird mit diesem Patch behoben?" id="welche-sicherheitslucke-wird-mit-diesem-patch-behoben_1">
+         Welche Sicherheitslücke wird mit diesem Patch behoben?
+        </h6>
+        <p>
+         Der Patch entschärft die Sicherheitslücke
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11247">
+          CVE-2019-11247
+         </a>
+         .
+        </p>
+       </td>
+       <td>
+        <p>
+         Mittel
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11247">
+          CVE-2019-11247
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="3. Juli 2019" id="july-03-2019-2">
+     3. Juli 2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschreibung
+       </th>
+       <th>
+        Schweregrad
+       </th>
+       <th>
+        Hinweise
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Eine Patchversion von
+         <code dir="ltr" translate="no">
+          kubectl
+         </code>
+         zur Behebung von CVE-2019-11246 steht jetzt mit
+         <a href="https://cloud.google.com/sdk/docs/release-notes?hl=de#kubernetes_engine">
+          <code dir="ltr" translate="no">
+           gcloud
+          </code>
+          253.0.0
+         </a>
+         bereit.
+          Weitere Informationen finden Sie im
+         <a href="#june-25-2019">
+          Sicherheitsbulletin vom 25. Juni 2019
+         </a>
+         .
+        </p>
+        <p>
+         <strong>
+          Hinweis:
+         </strong>
+         Der Patch ist nicht in
+         <code dir="ltr" translate="no">
+          kubectl
+         </code>
+         1.11.10 verfügbar.
+        </p>
+       </td>
+       <td>
+        <p>
+         Hoch
+        </p>
+       </td>
+       <td>
+        <p>
+         <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-15664">
+          CVE-2019-11246
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="3. Juli 2019" id="july-03-2019">
+     3. Juli 2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschreibung
+       </th>
+       <th>
+        Schweregrad
+       </th>
+       <th>
+        Hinweise
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h6 data-text="Aktualisierung vom 3. Juli 2019" id="aktualisierung-vom-3-juli-2019">
+         Aktualisierung vom 3. Juli 2019
+        </h6>
+        <p>
+         Zum Zeitpunkt der letzten Aktualisierung waren noch keine Patches für die Versionen 1.11.9 und 1.11.10 verfügbar. Jetzt wurde 1.11.10-gke.5 als Upgrade-Ziel für beide 1.11-Versionen veröffentlicht.
+        </p>
+        <p>
+         Aktuell sind die GKE-Master gepatcht. In der Google-Infrastruktur, in der Kubernetes Engine ausgeführt wird, wurde die Sicherheitslücke mit einem Patch behoben.
+        </p>
+        <p>
+         Master der Version 1.11 werden demnächst eingestellt. In der Woche vom 8. Juli 2019 ist ein automatisches Upgrade auf 1.12 geplant. Sie können eine der folgenden Maßnahmen ergreifen, um Knoten auf eine Patchversion zu aktualisieren.
+        </p>
+        <ul>
+         <li>
+          Führen Sie bis 8. Juli 2019 das Knotenupgrade auf 1.11.10-gke.5 durch. Nach diesem Datum werden die Versionen 1.11 nach und nach aus der Liste der verfügbaren Upgrade-Ziele entfernt.
+         </li>
+         <li>
+          Aktivieren Sie
+          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-upgrades?hl=de">
+           automatische Upgrades
+          </a>
+          für Knoten der Version 1.11 und lassen Sie zu, dass für die Knoten zusammen mit den Mastern ein Upgrade auf 1.12 durchgeführt wird.
+         </li>
+         <li>
+          Führen Sie ein
+          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=de">
+           manuelles Upgrade
+          </a>
+          der Master und Knoten auf eine korrigierte Version 1.12 durch.
+         </li>
+        </ul>
+        <p>
+         Nachfolgend das ursprüngliche Bulletin vom 24. Juni 2019:
+        </p>
+        <hr/>
+        <h6 data-text="Aktualisierung vom 24. Juni 2019" id="aktualisierung-vom-24-juni-2019">
+         Aktualisierung vom 24. Juni 2019
+        </h6>
+        <p>
+         Seit 22. Juni 2019, 21:40 Uhr UTC stehen die unten aufgeführten Patchversionen für Kubernetes bereit. Master zwischen den Kubernetes-Versionen 1.11.0 und 1.13.6 werden automatisch auf eine Patchversion aktualisiert. Wenn Sie keine mit diesem Patch kompatible Version ausführen, führen Sie vor dem Upgrade Ihrer Knoten ein Upgrade auf eine der unten aufgeführten kompatiblen Masterversionen durch.
+        </p>
+        <p>
+         <strong>
+          Aufgrund der Schwere dieser Sicherheitslücken empfehlen wir ungeachtet dessen, ob Sie automatische Knotenupgrades aktiviert haben, möglichst umgehend ein
+          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-container-cluster?hl=de">
+           manuelles Upgrade
+          </a>
+          Ihrer Knoten und Master auf eine dieser Versionen durchzuführen.
+         </strong>
+        </p>
+        <p>
+         Die Patchversionen:
+        </p>
+        <ul>
+         <li>
+          1.11.8-gke.10
+         </li>
+         <li>
+          1.12.7-gke.24
+         </li>
+         <li>
+          1.12.8-gke.10
+         </li>
+         <li>
+          1.13.6-gke.13
+         </li>
+        </ul>
+        <p>
+         Nachfolgend das ursprüngliche Bulletin vom 18. Juni 2019:
+        </p>
+        <hr/>
+        <p>
+         Netflix hat vor Kurzem drei TCP-Sicherheitslücken in Linux-Kernels offengelegt:
+        </p>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11477">
+           CVE-2019-11477
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11478">
+           CVE-2019-11478
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11479">
+           CVE-2019-11479
+          </a>
+         </li>
+        </ul>
+        <p>
+         Diese CVEs (Common Vulnerabilities and Exposures) werden zusammen als
+         <a class="external" href="https://github.com/Netflix/security-bulletins/blob/master/advisories/third-party/2019-001.md">
+          NFLX-2019-001
+         </a>
+         bezeichnet.
+        </p>
+        <p>
+         Nicht gepatchte Linux-Kernels können für remote ausgelöste DoS-Angriffe (Denial of Service) anfällig sein.
+         <strong>
+          Google Kubernetes Engine-Knoten, die nicht vertrauenswürdigen Netzwerktraffic senden oder empfangen, sind betroffen. Zum Schutz Ihrer Arbeitslasten empfehlen wir zur Entschärfung die folgenden Schritte.
+         </strong>
+        </p>
+        <h6 data-text="Kubernetes--Master" id="kubernetes-master">
+         Kubernetes--Master
+        </h6>
+        <ul>
+         <li>
+          <p>
+           Kubernetes-Master, die den Traffic mithilfe von
+           <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/authorized-networks?hl=de">
+            autorisierten Netzwerken
+           </a>
+           auf vertrauenswürdige Netzwerke begrenzen, sind nicht betroffen.
+          </p>
+         </li>
+         <li>
+          <p>
+           Auf Mastern für GKE-Cluster, die von Google verwaltet werden, wird in den nächsten Tagen automatisch eine Patchversion installiert. Auf Kundenseite sind keine Maßnahmen erforderlich.
+          </p>
+         </li>
+        </ul>
+        <h6 data-text="Kubernetes-Knoten" id="kubernetes-knoten">
+         Kubernetes-Knoten
+        </h6>
+        <p>
+         Knoten, die den Traffic auf vertrauenswürdige Netzwerke begrenzen, sind nicht betroffen. Hierzu zählen folgende Cluster:
+        </p>
+        <ul>
+         <li>
+          Cluster mit Knoten, die durch eine Firewall von nicht vertrauenswürdigen Netzwerken isoliert sind, oder
+          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters?hl=de">
+           private Cluster
+          </a>
+          , die keine öffentlichen IP-Adressen verwenden.
+         </li>
+         <li>
+          Cluster ohne öffentliche LoadBalancer-Dienste
+         </li>
+        </ul>
+        <p>
+         Google arbeitet derzeit an einer permanenten Entschärfung dieser Sicherheitslücken in Form einer neuen Knotenversion. Wir aktualisieren dieses Bulletin und senden eine E-Mail an alle GKE-Kunden, sobald die permanente Korrektur bereitsteht.
+        </p>
+        <p>
+         Bis die permanente Korrektur verfügbar ist, haben wir ein Kubernetes DaemonSet erstellt, mit dem zur Entschärfung die Hostkonfiguration
+         <code dir="ltr" translate="no">
+          iptables
+         </code>
+         geändert wird.
+        </p>
+        <h5 data-text="Was soll ich tun?" id="was-soll-ich-tun_4">
+         Was soll ich tun?
+        </h5>
+        <p>
+         Wenden Sie das Kubernetes DaemonSet mit dem folgenden Befehl auf alle Knoten in Ihrem Cluster an. Dadurch werden die auf dem Knoten vorhandenen Regeln
+         <code dir="ltr" translate="no">
+          iptables
+         </code>
+         durch eine weitere Regel vom Typ
+         <code dir="ltr" translate="no">
+          iptables
+         </code>
+         ergänzt, um die Sicherheitslücke zu entschärfen.
+         <strong>
+          Führen Sie den Befehl für jedes Google Cloud-Projekt einmal pro Cluster aus.
+         </strong>
+        </p>
+        <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+kubectl apply -f \
+    https://raw.githubusercontent.com/GoogleCloudPlatform\
+    /k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
+          </pre>
+        <aside class="note">
+         <p>
+          Da Ipv6 in GKE nicht unterstützt wird, ist keine Regel vom Typ "ip6tables" erforderlich.
+         </p>
+        </aside>
+        <p>
+         Sobald die Patchversion verfügbar ist und Sie ein Upgrade aller potenziell betroffenen Knoten durchgeführt haben, können Sie das DaemonSet mit dem folgenden Befehl entfernen.
+         <strong>
+          Führen Sie den Befehl für jedes Google Cloud-Projekt einmal pro Cluster aus.
+         </strong>
+        </p>
+        <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+kubectl delete -f \
+    https://raw.githubusercontent.com/GoogleCloudPlatform\
+    /k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
+          </pre>
+       </td>
+       <td>
+        Hoch
+        <br/>
+        Mittel
+        <br/>
+        Mittel
+        <br/>
+       </td>
+       <td>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11477">
+         CVE-2019-11477
+        </a>
+        <br/>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11478">
+         CVE-2019-11478
+        </a>
+        <br/>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11479">
+         CVE-2019-11479
+        </a>
+        <br/>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="25. Juni 2019" id="june-25-2019">
+     25. Juni 2019
+    </h2>
+    <table id="june-24-2019">
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschreibung
+       </th>
+       <th>
+        Schweregrad
+       </th>
+       <th>
+        Hinweise
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         <strong>
+          Aktualisierung vom 3. Juli 2019:
+         </strong>
+         Dieser Patch steht für
+         <code dir="ltr" translate="no">
+          gcloud
+         </code>
+         253.0.0 für
+         <code dir="ltr" translate="no">
+          kubectl
+         </code>
+         Version 1.12.9, 1.13.6, 1.14.2 und neuere Releases bereit.
+        </p>
+        <p>
+         <strong>
+          Hinweis:
+         </strong>
+         Der Patch ist nicht in 1.11.10 verfügbar.
+        </p>
+        <hr/>
+        <p>
+         Kubernetes hat kürzlich die Sicherheitslücke
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11246">
+          CVE-2019-11246
+         </a>
+         festgestellt. Dadurch kann ein Angreifer, der Zugriff auf einen Vorgang vom Typ
+         <code dir="ltr" translate="no">
+          kubectl cp
+         </code>
+         sowie die Codeausführung in einem Container hat, Dateien auf dem Host ändern. Angreifer haben die Möglichkeit, Dateien im Hostdateisystem zu ersetzen oder zu erstellen. Weitere Informationen erhalten Sie in der
+         <a class="external" href="https://groups.google.com/forum/?hl=de#!topic/kubernetes-security-announce/NLs2TGbfPdo">
+          Mitteilung zu Kubernetes
+         </a>
+         .
+        </p>
+        <p>
+         <strong>
+          Von dieser Sicherheitslücke sind alle
+          <code dir="ltr" translate="no">
+           gcloud
+          </code>
+          -Versionen für Google Kubernetes Engine (GKE) betroffen. Wir empfehlen daher ein Upgrade auf die neueste Patchversion von
+          <code dir="ltr" translate="no">
+           gcloud
+          </code>
+          , sobald sie bereitsteht.
+         </strong>
+         Diese Sicherheitslücke wird in einer der nächsten Patchversionen entschärft.
+        </p>
+        <h6 data-text="Was soll ich tun?" id="was-soll-ich-tun_5">
+         Was soll ich tun?
+        </h6>
+        <p>
+         Eine Patchversion von
+         <code dir="ltr" translate="no">
+          kubectl
+         </code>
+         wird in einem nächsten
+         <code dir="ltr" translate="no">
+          gcloud
+         </code>
+         -Release bereitgestellt. Sie können auch selbst
+         <a class="external" href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">
+          direkt ein Upgrade von
+          <code dir="ltr" translate="no">
+           kubectl
+          </code>
+         </a>
+         ausführen.
+        </p>
+        <p>
+         Verfolgen Sie die Verfügbarkeit des Patches in den
+         <a href="https://cloud.google.com/sdk/docs/release-notes?hl=de">
+          Versionshinweisen zu
+          <code dir="ltr" translate="no">
+           gcloud
+          </code>
+         </a>
+         .
+        </p>
+        <h6 data-text="Welche Sicherheitslücke wird mit diesem Patch behoben?" id="welche-sicherheitslucke-wird-mit-diesem-patch-behoben_2">
+         Welche Sicherheitslücke wird mit diesem Patch behoben?
+        </h6>
+        <p>
+         Durch die Sicherheitslücke
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11246">
+          CVE-2019-11246
+         </a>
+         erhalten Angreifer Zugriff auf einen Vorgang vom Typ
+         <code dir="ltr" translate="no">
+          kubectl cp
+         </code>
+         sowie die Codeausführung in einem Container und können Dateien auf dem Host ändern. Angreifer haben die Möglichkeit, Dateien im Hostdateisystem zu ersetzen oder zu erstellen.
+        </p>
+       </td>
+       <td>
+        <p>
+         Hoch
+        </p>
+       </td>
+       <td>
+        <p>
+         <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-15664">
+          CVE-2019-11246
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="18. Juni 2019" id="june-18-2019">
+     18. Juni 2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschreibung
+       </th>
+       <th>
+        Schweregrad
+       </th>
+       <th>
+        Hinweise
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Docker hat kürzlich die Sicherheitslücke
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-15664">
+          CVE-2018-15664
+         </a>
+         festgestellt. Angreifer können darüber Code in einem Container ausführen, um einen extern initiierten Vorgang vom Typ
+         <code dir="ltr" translate="no">
+          docker cp
+         </code>
+         zu hacken. Angreifer haben die Möglichkeit, den Ort, an dem eine Datei im Hostdateisystem geschrieben wird, beliebig zu ändern.
+        </p>
+        <p>
+         <strong>
+          Von dieser Sicherheitslücke sind alle Google Kubernetes Engine-Knoten (GKE) betroffen, die Docker ausführen. Wir empfehlen ein Upgrade auf die neueste Patchversion, sobald sie bereitsteht. Diese Sicherheitslücke wird in einer der nächsten Patchversionen entschärft.
+         </strong>
+        </p>
+        <p>
+         <strong>
+          Alle Google Kubernetes Engine-Master (GKE) vor Version 1.12.7 führen Docker aus und sind von dieser Sicherheitslücke betroffen.
+         </strong>
+         Da Nutzer in GKE auf dem Master keinen Zugriff auf
+         <code dir="ltr" translate="no">
+          docker cp
+         </code>
+         haben, ist das Risiko dieser Sicherheitslücke für GKE-Master begrenzt.
+        </p>
+        <h5 data-text="Was soll ich tun?" id="was-soll-ich-tun_6">
+         Was soll ich tun?
+        </h5>
+        <p>
+         Betroffen sind nur Knoten, auf denen Docker ausgeführt wird, sofern der Befehl
+         <code dir="ltr" translate="no">
+          docker cp
+         </code>
+         oder ein ähnlicher API-Befehl ausgeführt wird, der gehackt werden kann.
+          Das sollte in Kubernetes-Umgebungen relativ selten der Fall sein.
+          Knoten, die
+         <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/using-containerd?hl=de">
+          COS mit containerd
+         </a>
+         ausführen, sind nicht betroffen.
+        </p>
+        <p>
+         Damit Sie ein Knotenupgrade durchführen können, ist zuerst ein
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=de#upgrading_the_cluster">
+          Masterupgrade
+         </a>
+         auf die Patchversion erforderlich. Sobald der Patch bereitsteht, können Sie wahlweise selbst ein Masterupgrade durchführen oder warten, bis Google es automatisch ausführt. Der Patch ist in einem nächsten GKE-Patch in Docker 18.09.7 verfügbar.
+         <strong>
+          Dieser Patch gilt nur für GKE Version 1.13 und höher.
+         </strong>
+        </p>
+        <p>
+         Im Zuge der regelmäßigen Upgrades werden die Cluster-Master automatisch auf die gepatchte Version aktualisiert. Sie können auch selbst ein Masterupgrade durchführen, sobald die Patchversion bereitsteht.
+        </p>
+        <p>
+         Wir aktualisieren dieses Bulletin, sobald die Patchversionen bereitstehen. Informationen zur Verfügbarkeit der Patches finden Sie in den
+         <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=de">
+          Versionshinweisen
+         </a>
+         .
+        </p>
+        <h5 data-text="Welche Sicherheitslücke wird mit diesem Patch behoben?" id="welche-sicherheitslucke-wird-mit-diesem-patch-behoben_3">
+         Welche Sicherheitslücke wird mit diesem Patch behoben?
+        </h5>
+        <p>
+         Dieser Patch dient zur Entschärfung der folgenden Sicherheitslücke:
+        </p>
+        <p>
+         Über die Sicherheitslücke
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-15664">
+          CVE-2018-15664
+         </a>
+         können Angreifer, die zur Codeausführung in einem Container berechtigt sind, einen extern initiierten Vorgang vom Typ
+         <code dir="ltr" translate="no">
+          docker
+          cp
+         </code>
+         hacken. Angreifer haben die Möglichkeit, den Ort, an dem eine Datei im Hostdateisystem geschrieben wird, beliebig zu ändern.
+        </p>
+       </td>
+       <td>
+        Hoch
+       </td>
+       <td>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="31. Mai 2019" id="may-31-2019">
+     31. Mai 2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschreibung
+       </th>
+       <th>
+        Schweregrad
+       </th>
+       <th>
+        Hinweise
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Dieses Bulletin ist seit der ursprünglichen Veröffentlichung aktualisiert worden.
+        </p>
+        <h6 data-text="Aktualisierung vom 2. August 2019" id="aktualisierung-vom-2-august-2019">
+         Aktualisierung vom 2. August 2019
+        </h6>
+        <p>
+         Zum Zeitpunkt des ursprünglichen Bulletins waren nur 1.13.6-gke.0 bis 1.13.6-gke.5 betroffen. Aufgrund einer Regression sind jetzt alle Versionen 1.13.6.x betroffen. Wenn Sie 1.13.6 verwenden, führen Sie möglichst umgehend ein Upgrade auf 1.13.7 durch.
+        </p>
+        <p>
+        </p>
+        <p>
+         Kubernetes hat in Kubelet Version 1.13.6 und 1.14.2 die Sicherheitslücke
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11245">
+          CVE-2019-11245
+         </a>
+         festgestellt. Container können dadurch als UID 0 ausgeführt werden, was in der Regel dem Nutzer
+         <code dir="ltr" translate="no">
+          root
+         </code>
+         zugeordnet ist, selbst wenn im Container-Image ein anderer Nutzer angegeben ist.
+         <strong>
+          Wenn Ihre Container unter einem Nicht-Root-Nutzer ausgeführt werden und Sie eine Version zwischen 1.13.6-gke.0 und 1.13.6-gke.6 ausführen, empfehlen wir, im Cluster, dessen Container nicht als UID 0 ausgeführt werden sollen, auf allen Pods
+          <code dir="ltr" translate="no">
+           RunAsUser
+          </code>
+          festzulegen.
+         </strong>
+        </p>
+        <p>
+         Wenn für den Nicht-Root-Wert
+         <code dir="ltr" translate="no">
+          USER
+         </code>
+         angegeben ist, weil beispielsweise der Wert
+         <code dir="ltr" translate="no">
+          USER
+         </code>
+         in einem Dockerfile festgelegt wurde, können unerwartete Verhaltensweisen auftreten. Container, die zum ersten Mal auf einem Knoten ausgeführt werden, respektieren die angegebene UID. Aufgrund des Fehlers wird der Container jedoch ab der zweiten Ausführung ungeachtet der angegebenen UID als UID 0 ausgeführt. Das ist in der Regel eine unerwünschte eskalierte Berechtigung, die zu einem unerwarteten Verhalten der Anwendung führen kann.
+        </p>
+        <h5 data-text="Wie stelle ich fest, ob ich eine betroffene Version verwende?" id="wie-stelle-ich-fest-ob-ich-eine-betroffene-version-verwende">
+         Wie stelle ich fest, ob ich eine betroffene Version verwende?
+        </h5>
+        <p>
+         Listen Sie mit dem folgenden Befehl alle Knoten und deren Kubelet-Version auf:
+        </p>
+        <pre class="devsite-click-to-copy prettyprint" dir="ltr" suppresswarning="" translate="no">
+
+    kubectl get nodes -o=jsonpath='{range .items[*]}'\
+    '{.status.nodeInfo.machineID}'\
+    '{"\t"}{.status.nodeInfo.kubeletVersion}{"\n"}{end}'</pre>
+        <p>
+         Wenn in der Ausgabe die unten angegebenen Kubelet-Versionen aufgelistet werden, sind Ihre Knoten betroffen:
+        </p>
+        <ul>
+         <li>
+          v1.13.6
+         </li>
+         <li>
+          v1.14.2
+         </li>
+        </ul>
+        <h5 data-text="Wie stelle ich fest, ob meine spezielle Konfiguration betroffen ist?" id="wie-stelle-ich-fest-ob-meine-spezielle-konfiguration-betroffen-ist">
+         Wie stelle ich fest, ob meine spezielle Konfiguration betroffen ist?
+        </h5>
+        <p>
+         Wenn Ihre Container unter einem Nicht-Root-Nutzer ausgeführt werden und Sie eine Knotenversion zwischen 1.13.6-gke.0 und 1.13.6-gke.6 ausführen, ist Ihre Konfiguration mit Ausnahme der folgenden Fälle betroffen:
+        </p>
+        <ul>
+         <li>
+          Pods, die für den PodSecurityContext
+          <code dir="ltr" translate="no">
+           runAsUser
+          </code>
+          einen gültigen Nicht-Root-Wert angeben, sind nicht betroffen und funktionieren erwartungsgemäß.
+         </li>
+         <li>
+          Auch PodSecurityPolicies, die die Einstellung
+          <code dir="ltr" translate="no">
+           runAsUser
+          </code>
+          erzwingen, sind nicht betroffen und funktionieren weiter erwartungsgemäß.
+         </li>
+         <li>
+          Pods, die
+          <code dir="ltr" translate="no">
+           mustRunAsNonRoot:true
+          </code>
+          angeben, starten nicht als UID 0. Der Start schlägt jedoch generell fehl, wenn sie von diesem Problem betroffen sind.
+         </li>
+        </ul>
+        <h5 data-text="Was soll ich tun?" id="was-soll-ich-tun_7">
+         Was soll ich tun?
+        </h5>
+        <p>
+         Legen Sie auf allen Pods im Cluster, die nicht als UID 0 ausgeführt werden sollen, den
+         <a class="external" href="https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod">
+          RunAsUser-Sicherheitskontext
+         </a>
+         fest. Sie können diese Konfiguration mit einer
+         <a class="external" href="https://kubernetes.io/docs/concepts/policy/pod-security-policy/">
+          PodSecurityPolicy
+         </a>
+         anwenden.
+        </p>
+       </td>
+       <td>
+        Mittel
+       </td>
+       <td>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11245">
+         CVE-2019-11245
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="14. Mai 2019" id="may-14-2019">
+     14. Mai 2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschreibung
+       </th>
+       <th>
+        Schweregrad
+       </th>
+       <th>
+        Hinweise
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         <strong>
+          Aktualisierung vom 11. Juli 2019:
+         </strong>
+         Der Patch ist in 1.11.10-gke.4, 1.12.8-gke.6 und 1.13.6-gke.5 verfügbar, die in der Woche vom 28. Mai 2019 veröffentlicht wurden, sowie in neueren Releases.
+        </p>
+        <p>
+         Die folgenden CVEs (Common Vulnerabilities and Exposures) wurden von Intel offengelegt:
+        </p>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12126">
+           CVE-2018-12126
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12127">
+           CVE-2018-12127
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12130">
+           CVE-2018-12130
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11091">
+           CVE-2019-11091
+          </a>
+         </li>
+        </ul>
+        <p>
+         Diese CVEs werden zusammen als Microarchitectural Data Sampling (MDS) bezeichnet. Diese Sicherheitslücken bringen das Risiko mit sich, dass Daten Angriffen ausgesetzt sind, die durch Interaktion einer spekulativen Ausführung mit dem mikroarchitektonischen Status erfolgen. Weitere Informationen erhalten Sie im folgenden
+         <a class="external" href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00233.html">
+          Intel-Blog
+         </a>
+         .
+        </p>
+        <p>
+         <strong>
+          Die Hostinfrastruktur, auf der Kubernetes Engine ausgeführt wird, dient dazu, Arbeitslasten von Kunden voneinander zu isolieren.
+         </strong>
+         Sie sind nicht betroffen, es sei denn, Sie würden in Ihren GKE-Clustern für mehrere Mandanten nicht vertrauenswürdigen Code ausführen.
+        </p>
+        <p>
+         <strong>
+          Für Kunden, die in Kubernetes Engine in ihren eigenen Diensten für mehrere Mandanten nicht vertrauenswürdigen Code ausführen, stellt das eine besonders schwerwiegende Sicherheitslücke dar.
+         </strong>
+         Zur Entschärfung in Kubernetes Engine können Sie das Hyper-Threading in Ihren Knoten deaktivieren. Von diesen Sicherheitslücken sind nur Google Kubernetes Engine-Knoten (GKE) betroffen, die mehrere CPUs verwenden.
+              Hinweis: VMs vom Typ n1-standard-1 (GKE-Standardeinstellung), g1-small und f1-micro stellen der Gastumgebung nur eine vCPU bereit, sodass Hyper-Threading nicht deaktiviert werden muss.
+        </p>
+        <p>
+         Zusätzliche Sicherheitsfunktionen, durch die Flush-Funktionen möglich sind, werden in einer nächsten
+         <a href="https://cloud.google.com/kubernetes-engine/release-notes?hl=de">
+          Patchversion
+         </a>
+         bereitgestellt.
+            Im Zuge der regelmäßigen Upgrades werden die Master und Knoten in den nächsten Wochen automatisch auf die gepatchte Version aktualisiert.
+         <strong>
+          Der Patch allein reicht nicht aus, um die von dieser Sicherheitslücke ausgehende Gefahr zu bekämpfen. Die nachfolgenden Maßnahmen werden empfohlen.
+         </strong>
+        </p>
+        <p>
+         Wenn Sie GKE On-Prem ausführen, sind Sie je nach verwendeter Hardware unter Umständen betroffen. Weitere Informationen finden Sie in der
+         <a class="external" href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00233.html">
+          Mitteilung zu Intel
+         </a>
+         .
+        </p>
+        <h4 data-text="Was soll ich tun?" id="was-soll-ich-tun_8">
+         Was soll ich tun?
+        </h4>
+        <p>
+         <strong>
+          Sie sind nicht betroffen, es sei denn, Sie würden in Ihren GKE-Clustern für mehrere Mandanten nicht vertrauenswürdigen Code ausführen.
+         </strong>
+        </p>
+        <p>
+         <strong>
+          Erstellen Sie für Knoten in Kubernetes Engine neue Knotenpools mit deaktiviertem Hyper-Threading und verlagern Sie Ihre Arbeitslasten auf die neuen Knoten.
+         </strong>
+        </p>
+        <p>
+         Hinweis: VMs vom Typ n1-standard-1, g1-small und f1-micro stellen der Gastumgebung nur eine vCPU bereit, sodass Hyper-Threading nicht deaktiviert werden muss.
+        </p>
+        <div class="warning">
+         <strong>
+          Warnung:
+         </strong>
+         <ul>
+          <li>
+           Die Deaktivierung des Hyper-Threadings kann sich schwerwiegend auf die Leistung Ihrer Cluster und Anwendung auswirken. Prüfen Sie vor der Bereitstellung in Ihren Produktionsclustern, ob das akzeptabel ist.
+          </li>
+          <li>
+           Hyper-Threading kann in GKE auf der Knotenpoolebene durch Bereitstellung eines DaemonSet deaktiviert werden. Durch die Bereitstellung dieses DaemonSet werden jedoch alle Knoten im Knotenpool gleichzeitig neu gestartet.
+                Daher wird empfohlen, einen neuen Knotenpool in Ihrem Cluster zu erstellen, das DaemonSet bereitzustellen, um Hyper-Threading in diesem Knotenpool zu deaktivieren, und Ihre Arbeitslasten anschließend zum neuen Knotenpool zu migrieren.
+          </li>
+         </ul>
+        </div>
+        <p>
+         So erstellen Sie einen neuen Knotenpool mit deaktiviertem Hyper-Threading:
+        </p>
+        <ol>
+         <li>
+          Erstellen Sie in Ihrem Cluster einen neuen Knotenpool mit dem Knotenlabel
+          <code dir="ltr" translate="no">
+           cloud.google.com/gke-smt-disabled=true
+          </code>
+          :
+          <pre dir="ltr" translate="no">
+
+    gcloud container node-pools create smt-disabled --cluster=[CLUSTER_NAME] \
+        --node-labels=cloud.google.com/gke-smt-disabled=true</pre>
+         </li>
+         <li>
+          Stellen Sie das DaemonSet diesem neuen Knotenpool bereit. Das DaemonSet wird nur auf Knoten mit dem Label
+          <code dir="ltr" translate="no">
+           cloud.google.com/gke-smt-disabled=true
+          </code>
+          ausgeführt. Es deaktiviert Hyper-Threading und startet dann den Knoten neu.
+          <pre dir="ltr" translate="no">
+
+    kubectl create -f \
+    https://raw.githubusercontent.com/GoogleCloudPlatform/\
+    k8s-node-tools/master/disable-smt/gke/disable-smt.yaml</pre>
+         </li>
+         <li>
+          Prüfen Sie, ob die DaemonSet-Pods ausgeführt werden.
+          <pre dir="ltr" translate="no">
+
+    kubectl get pods --selector=name=disable-smt -n kube-system</pre>
+          <p>
+           Sie sollten eine Antwort ähnlich der folgenden erhalten:
+          </p>
+          <pre dir="ltr" translate="no">
+
+    NAME                READY     STATUS    RESTARTS   AGE
+
+    disable-smt-2xnnc   1/1       Running   0          6m</pre>
+         </li>
+         <li>
+          Prüfen Sie, ob in den Logs der Pods "SMT has been disabled" angegeben wird.
+          <pre dir="ltr" translate="no">
+
+    kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
+         </li>
+        </ol>
+        <p>
+         Das DaemonSet muss auf den Knotenpools weiter ausgeführt werden, damit die Änderungen automatisch auf die neu im Pool erstellten Knoten angewendet werden. Die Knotenerstellung kann durch automatische Knotenreparaturen, manuelle oder automatische Upgrades und Autoscaling ausgelöst werden.
+        </p>
+        <p>
+         Wenn Sie Hyper-Threading wieder aktivieren möchten, erstellen Sie den Knotenpool noch einmal, ohne das DaemonSet bereitzustellen. Migrieren Sie dann Ihre Arbeitslasten zum neuen Knotenpool.
+        </p>
+        <p>
+         Wir empfehlen auch ein manuelles Upgrade Ihrer Knoten, sobald der Patch bereitsteht. Führen Sie zuerst ein
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=de#upgrading_the_cluster">
+          Masterupgrade
+         </a>
+         auf die neueste Version durch. Die GKE-Master werden im Zuge der regelmäßigen Upgrades automatisch aktualisiert.
+        </p>
+        <p>
+         Dieses Bulletin wird mit den Patchversionen aktualisiert, sobald diese bereitstehen.
+        </p>
+        <h4 data-text="Welche Sicherheitslücke wird mit diesem Patch behoben?" id="welche-sicherheitslucke-wird-mit-diesem-patch-behoben_4">
+         Welche Sicherheitslücke wird mit diesem Patch behoben?
+        </h4>
+        <p>
+         Dieser Patch dient zur Entschärfung der folgenden Sicherheitslücken:
+        </p>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12126">
+         CVE-2018-12126
+        </a>
+        ,
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12127">
+         CVE-2018-12127
+        </a>
+        ,
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12130">
+         CVE-2018-12130
+        </a>
+        ,
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11091">
+         CVE-2019-11091
+        </a>
+        :
+         Diese Sicherheitslücken nutzen die spekulative Ausführung. Diese CVEs werden allgemein als "Microarchitectural Data Sampling" bezeichnet. Diese Sicherheitslücken bringen das Risiko mit sich, dass Daten Angriffen ausgesetzt sind, die durch Interaktion einer spekulativen Ausführung mit dem mikroarchitektonischen Status erfolgen.
+       </td>
+       <td>
+        Mittel
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12126">
+           CVE-2018-12126
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12127">
+           CVE-2018-12127
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12130">
+           CVE-2018-12130
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11091">
+           CVE-2018-11091
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="5. April 2019" id="april-05-2019">
+     5. April 2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschreibung
+       </th>
+       <th>
+        Schweregrad
+       </th>
+       <th>
+        Hinweise
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Kürzlich wurden die Sicherheitslücken
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9900">
+          CVE-2019-9900
+         </a>
+         und
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9901">
+          CVE-2019-9901
+         </a>
+         in
+         <a class="external" href="https://www.envoyproxy.io/">
+          Envoy
+         </a>
+         festgestellt.
+        </p>
+        <p>
+         Envoy ist in
+         <a class="external" href="https://istio.io/">
+          Istio
+         </a>
+         eingebettet. Durch die Sicherheitslücken kann die Istio-Richtlinie in manchen Fällen umgangen werden.
+        </p>
+        <p>
+         Wenn Sie Istio in Google Kubernetes Engine (GKE) aktiviert haben, können Sie von diesen Sicherheitslücken betroffen sein.
+         <strong>
+          Wir empfehlen, Ihre betroffenen Cluster auf die neueste Patchversion zu aktualisieren, sobald sie bereitsteht. Führen Sie außerdem ein Upgrade Ihrer Istio-Sidecar-Container durch. Eine Anleitung finden Sie unten.
+         </strong>
+        </p>
+        <h4 data-text="Was soll ich tun?" id="was-soll-ich-tun_9">
+         Was soll ich tun?
+        </h4>
+        <p>
+         <strong>
+          Aufgrund des Schweregrads dieser Sicherheitslücken empfehlen wir Folgendes ungeachtet dessen, ob Sie automatische Knotenupgrades aktiviert haben:
+         </strong>
+        </p>
+        <ol>
+         <li>
+          <strong>
+           Führen Sie ein
+           <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=de">
+            manuelles Upgrade
+           </a>
+           Ihres Clusters durch, sobald der Patch bereitsteht.
+          </strong>
+         </li>
+         <li>
+          <strong>
+           Führen Sie gemäß der
+           <a class="external" href="https://istio.io/docs/setup/kubernetes/upgrade/steps/#sidecar-upgrade">
+            Dokumentation zu Sidecar-Upgrades
+           </a>
+           ein Upgrade Ihrer Sidecar-Container durch.
+          </strong>
+         </li>
+        </ol>
+        <p>
+         Die Patchversionen werden heute vor 19:00 Uhr PDT für alle GKE-Projekte bereitgestellt.
+        </p>
+        <p>
+         Dieser Patch wird in den folgenden GKE-Versionen verfügbar sein. Neue Cluster verwenden standardmäßig die Patchversion, sobald sie in den Sicherheitsbulletins von GKE angekündigt wird. Wenn Sie neue Cluster jedoch vor dem 15. April 2019 erstellt haben, müssen Sie die zu verwendende Patchversion angeben. Die Knoten von GKE-Kunden, die keine
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-upgrades?hl=de">
+          automatischen Knotenupgrades
+         </a>
+         aktiviert haben und keine manuellen Upgrades durchführen, werden in der folgenden Woche automatisch mit Patchversionen aktualisiert.
+        </p>
+        <p>
+         Patchversionen:
+        </p>
+        <ul>
+         <li>
+          1.10.12-gke.14
+         </li>
+         <li>
+          1.11.6-gke.16
+         </li>
+         <li>
+          1.11.7-gke.18
+         </li>
+         <li>
+          1.11.8-gke.6
+         </li>
+         <li>
+          1.12.6-gke.10
+         </li>
+         <li>
+          1.13.4-gke.10
+         </li>
+        </ul>
+        <h4 data-text="Welche Sicherheitslücke wird mit diesem Patch behoben?" id="welche-sicherheitslucke-wird-mit-diesem-patch-behoben_5">
+         Welche Sicherheitslücke wird mit diesem Patch behoben?
+        </h4>
+        <p>
+         Dieser Patch dient zur Entschärfung der folgenden Sicherheitslücken:
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9900">
+          CVE-2019-9900
+         </a>
+         und
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9901">
+          CVE-2019-9901.
+         </a>
+         Mehr darüber können Sie im
+         <a class="external" href="https://istio.io/blog/2019/announcing-1.1.2">
+          Blog zu Istio
+         </a>
+         lesen.
+        </p>
+       </td>
+       <td>
+        Hoch
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9900">
+           CVE-2019-9900
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9901">
+           CVE-2019-9901.
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="1. März 2019" id="march-01-2019">
+     1. März 2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschreibung
+       </th>
+       <th>
+        Schweregrad
+       </th>
+       <th>
+        Hinweise
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         <strong>
+          Aktualisierung vom 22. März 2019
+         </strong>
+         : Dieser Patch ist in Kubernetes 1.11.8-gke.4, 1.13.4-gke.1 und neueren Releases verfügbar. Der Patch ist noch nicht in 1.12 verfügbar. Informationen zur Verfügbarkeit der Patches finden Sie in den
+         <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=de#march_19_2019">
+          Versionshinweisen
+         </a>
+         .
+        </p>
+        <p>
+         Kubernetes hat kürzlich die neue DoS-Sicherheitslücke (Denial of Service)
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1002100">
+          CVE-2019-1002100
+         </a>
+         festgestellt. Nutzer, die Patchanfragen stellen dürfen, können dadurch eine schädliche Anfrage vom Typ "json-patch" erstellen, die auf dem Kubernetes API-Server übermäßig viel CPU und Arbeitsspeicher verbraucht. Dadurch kann die Verfügbarkeit der Steuerungsebene des Clusters sinken. Weitere Informationen erhalten Sie in der
+         <a href="https://groups.google.com/forum/?hl=de#!topic/kubernetes-announce/vmUUNkYfG9g">
+          Mitteilung zu Kubernetes
+         </a>
+         .
+         <strong>
+          Von diesen Sicherheitslücken sind alle GKE-Master (Google Kubernetes Engine) betroffen. Diese Sicherheitslücke wird in einer der nächsten Patchversionen entschärft. Im Zuge der regelmäßigen Upgrades werden die Cluster-Master in den nächsten Wochen automatisch auf die gepatchte Version aktualisiert.
+         </strong>
+        </p>
+        <h4 data-text="Was soll ich tun?" id="was-soll-ich-tun_10">
+         Was soll ich tun?
+        </h4>
+        <p>
+         <strong>
+          Es sind keine Maßnahmen erforderlich. Die GKE-Master werden im Zuge der regelmäßigen Upgrades automatisch aktualisiert.
+         </strong>
+         Falls Ihnen das zu lange dauert, können Sie auch ein
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=de#upgrading_the_cluster">
+          Masterupgrade manuell initiieren
+         </a>
+         .
+        </p>
+        <p>
+         Dieses Bulletin wird mit den verfügbaren Patchversionen aktualisiert. Hinweis: Der Patch ist nur in Versionen ab 1.11 verfügbar, nicht aber in 1.10.
+        </p>
+        <h4 data-text="Welche Sicherheitslücke wird mit diesem Patch behoben?" id="welche-sicherheitslucke-wird-mit-diesem-patch-behoben_6">
+         Welche Sicherheitslücke wird mit diesem Patch behoben?
+        </h4>
+        <p>
+         Dieser Patch dient zur Entschärfung der folgenden Sicherheitslücke:
+        </p>
+        <p>
+         Über die Sicherheitslücke
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1002100">
+          CVE-2019-1002100
+         </a>
+         kann ein Nutzer einen Patch vom Typ "json-patch" erstellen, der auf dem Kubernetes API-Server übermäßig viel CPU verbraucht. Dadurch kann die Verfügbarkeit der Steuerungsebene des Clusters sinken.
+        </p>
+       </td>
+       <td>
+        Mittel
+       </td>
+       <td>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1002100">
+         CVE-2019-1002100
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="11. Februar 2019 (runc)" id="february-11-2019-runc">
+     11. Februar 2019 (runc)
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschreibung
+       </th>
+       <th>
+        Schweregrad
+       </th>
+       <th>
+        Hinweise
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Die Open Containers Initiative (OCI) hat vor Kurzem eine neue Sicherheitslücke (
+         <a class="external" href="https://groups.google.com/a/opencontainers.org/forum/m/?hl=de#!topic/dev/Tc1ELm-8oDI">
+          CVE-2019-5736
+         </a>
+         )
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5736">
+          in runc entdeckt
+         </a>
+         , durch die ein Container Root-Berechtigungen für den Hostknoten erhalten kann.
+        </p>
+        <p>
+         <strong>
+          Ihre GKE-Ubuntu-Knoten sind von diesen Sicherheitslücken betroffen. Wir empfehlen, so schnell wie möglich ein
+          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=de">
+           Upgrade auf die neueste Patchversion
+          </a>
+          durchzuführen, wie unten beschrieben.
+         </strong>
+        </p>
+        <h4 data-text="Was soll ich tun?" id="was-soll-ich-tun_11">
+         Was soll ich tun?
+        </h4>
+        <p>
+         Führen Sie zuerst ein Upgrade auf die neueste Version für den Master durch. Dieser Patch ist verfügbar in Kubernetes 1.10.12-gke.7, 1.11.6-gke.11, 1.11.7-gke.4, 1.12.5-gke.5 sowie neueren Releases. Informationen zur Verfügbarkeit der Patches finden Sie in den
+         <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=de#february-11-2019">
+          Versionshinweisen
+         </a>
+         .
+        </p>
+        <p>
+         Es sind nur Ubuntu-Knoten in GKE betroffen. COS-Knoten betrifft diese Sicherheitslücke nicht.
+        </p>
+        <p>
+         Die neue Version von runc benötigt mehr Arbeitsspeicher. Falls Sie niedrige Speicherlimits (&lt; 16 MB) festgelegt haben, müssen Sie unter Umständen den für Container zugewiesenen Arbeitsspeicher anpassen.
+        </p>
+        <h4 data-text="Welche Sicherheitslücke wird mit diesem Patch behoben?" id="welche-sicherheitslucke-wird-mit-diesem-patch-behoben_7">
+         Welche Sicherheitslücke wird mit diesem Patch behoben?
+        </h4>
+        <p>
+         Dieser Patch dient zur Entschärfung der folgenden Sicherheitslücke:
+        </p>
+        <p>
+         In
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5736">
+          CVE-2019-5736
+         </a>
+         wird eine Sicherheitslücke in runc beschrieben, die es einem schädlichen Container mit minimaler Nutzerinteraktion in Form eines ausführbaren Befehls ermöglicht, das runc-Hostbinärprogramm zu überschreiben und so auf dem Hostknoten Code auf Root-Ebene auszuführen.
+          Container, die nicht als Root ausgeführt werden, sind davon nicht betroffen. Der Schweregrad dieser Sicherheitslücke ist "Hoch".
+        </p>
+       </td>
+       <td>
+        Hoch
+       </td>
+       <td>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5736">
+         CVE-2019-5736
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="11. Februar 2019 (Go)" id="february-11-2019-go">
+     11. Februar 2019 (Go)
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschreibung
+       </th>
+       <th>
+        Schweregrad
+       </th>
+       <th>
+        Hinweise
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         <strong>
+          Aktualisierung vom 25. Februar 2019:
+         </strong>
+         Der Patch ist nicht, wie zuvor mitgeteilt, in 1.11.7-gke.4 verfügbar. Wenn Sie 1.11.7 verwenden, können Sie wahlweise ein Downgrade auf 1.11.6 oder ein Upgrade auf 1.12 durchführen oder bis zur Bereitstellung von Patch 1.11.7 in der Woche vom 4. März 2019 warten.
+        </p>
+        <p>
+         Im Zusammenhang mit der Programmiersprache Go wurde vor Kurzem eine neue Sicherheitslücke (
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-6486">
+          CVE-2019-6486
+         </a>
+         ), entdeckt. Hierbei handelt es sich um eine Denial of Service-Sicherheitslücke (DoS) in den Implementierungen der Elliptische-Kurven-Kryptografie für die elliptischen Kurven P-521 und P-384. In Google Kubernetes Engine (GKE) könnten Nutzer auf diese Weise schädliche Anfragen erstellen, die zu einem extrem hohen CPU-Verbrauch auf dem Kubernetes API-Server führen und damit unter Umständen die Verfügbarkeit der Steuerungsebene des Clusters reduzieren.
+            Weitere Informationen finden Sie in der
+         <a href="https://groups.google.com/forum/?hl=de#!topic/golang-announce/mVeX35iXuSw">
+          Mitteilung zur Programmiersprache Go
+         </a>
+         .
+        </p>
+        <p>
+         <strong>
+          Von diesen Sicherheitslücken sind alle GKE-Master (Google Kubernetes Engine) betroffen. Mit der
+          <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=de#february-11-2019">
+           neuesten Patchversion
+          </a>
+          lässt sich diese Sicherheitslücke entschärfen. Im Zuge der regelmäßigen Upgrades werden die Cluster-Master in den nächsten Wochen automatisch auf die gepatchte Version aktualisiert.
+         </strong>
+        </p>
+        <h4 data-text="Was soll ich tun?" id="was-soll-ich-tun_12">
+         Was soll ich tun?
+        </h4>
+        <p>
+         <strong>
+          Es sind keine Maßnahmen erforderlich. Die GKE-Master werden im Zuge der regelmäßigen Upgrades automatisch aktualisiert.
+         </strong>
+         Falls Ihnen das zu lange dauert, können Sie auch ein
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=de#upgrading_the_cluster">
+          Masterupgrade manuell initiieren
+         </a>
+         .
+        </p>
+        <p>
+         Dieser Patch ist verfügbar in GKE 1.10.12-gke.7, 1.11.6-gke.11, 1.11.7-gke.4, 1.12.5-gke.5 sowie neueren Releases.
+        </p>
+        <h4 data-text="Welche Sicherheitslücke wird mit diesem Patch behoben?" id="welche-sicherheitslucke-wird-mit-diesem-patch-behoben_8">
+         Welche Sicherheitslücke wird mit diesem Patch behoben?
+        </h4>
+        <p>
+         Dieser Patch dient zur Entschärfung der folgenden Sicherheitslücke:
+        </p>
+        <p>
+         CVE-2019-6486 ist eine Sicherheitslücke in den Implementierungen der Elliptische-Kurven-Kryptografie für die elliptischen Kurven P-521 und P-384. Nutzer können so Eingaben erstellen, die zu einem extrem hohen CPU-Verbrauch führen.
+        </p>
+       </td>
+       <td>
+        Hoch
+       </td>
+       <td>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-6486">
+         CVE-2019-6486
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="3. Dezember 2018" id="december-3-2018">
+     3. Dezember 2018
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschreibung
+       </th>
+       <th>
+        Schweregrad
+       </th>
+       <th>
+        Hinweise
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         In Kubernetes wurde vor Kurzem eine neue Sicherheitslücke festgestellt, und zwar
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1002105">
+          CVE-2018-1002105
+         </a>
+         . Dadurch können Nutzer mit relativ niedrigen Berechtigungen die Autorisierung für die Kubelet-APIs umgehen und so für jeden Pod auf jedem Knoten im Cluster beliebige Vorgänge ausführen. Weitere Informationen erhalten Sie in der
+         <a class="external" href="https://groups.google.com/forum/?hl=de#!topic/kubernetes-announce/GVllWCg6L88">
+          Mitteilung zu Kubernetes
+         </a>
+         .
+         <strong>
+          Von diesen Sicherheitslücken sind alle Google Kubernetes Engine-Master betroffen. Außerdem haben wir die Cluster bereits auf die
+          <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=de#november-12-2018">
+           aktuellen Patchversionen
+          </a>
+          aktualisiert.
+            Es sind keine Maßnahmen erforderlich.
+         </strong>
+        </p>
+        <h4 data-text="Was soll ich tun?" id="was-soll-ich-tun_13">
+         Was soll ich tun?
+        </h4>
+        <p>
+         <strong>
+          Es sind keine Maßnahmen erforderlich. Die GKE-Master wurden bereits aktualisiert.
+         </strong>
+        </p>
+        <p>
+         Dieser Patch ist verfügbar in GKE 1.9.7-gke.11, 1.10.6-gke.11, 1.10.7-gke.11, 1.10.9-gke.5 und 1.11.2-gke.18 sowie neueren Versionen.
+        </p>
+        <h4 data-text="Welche Sicherheitslücke wird mit diesem Patch behoben?" id="welche-sicherheitslucke-wird-mit-diesem-patch-behoben_9">
+         Welche Sicherheitslücke wird mit diesem Patch behoben?
+        </h4>
+        <p>
+         Dieser Patch dient zur Entschärfung der folgenden Sicherheitslücke:
+        </p>
+        <p>
+         Über die Sicherheitslücke CVE-2018-1002105 können Nutzer mit relativ geringen Berechtigungen die Autorisierung für die Kubelet-APIs umgehen. Nutzer haben dadurch die Möglichkeit, erweiterbare Anfragen zur Eskalation sowie beliebige Aufrufe an die Kubelet-API senden. Das gilt als kritische Sicherheitslücke in Kubernetes. In Anbetracht einiger Details in der Implementierung von GKE, die den nicht autorisierten Eskalationspfad verhinderten, wird diese Sicherheitslücke mit dem Schweregrad "Hoch" bewertet.
+        </p>
+       </td>
+       <td>
+        Hoch
+       </td>
+       <td>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1002105">
+         CVE-2018-1002105
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="13. November 2018" id="november-13-2018">
+     13. November 2018
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschreibung
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         <strong>
+          Update vom 16.11.2018:
+         </strong>
+         Widerruf und Wechsel aller potenziell betroffenen Tokens wurden abgeschlossen. Es sind keine weiteren Maßnahmen erforderlich.
+        </p>
+        <p>
+         Google hat kürzlich ein Problem mit dem Plug-in Calico Container Network Interface (CNI) entdeckt, das in bestimmten Konfigurationen vertrauliche Informationen protokollieren kann. Dieses Problem wird unter Tigera Technical Advisory
+         <a href="https://www.projectcalico.org/security-bulletins/">
+          TTA-2018-001
+         </a>
+         geführt.
+        </p>
+        <ul>
+         <li>
+          Beim Logging auf Debug-Ebene schreibt das Calico CNI-Plug-in die Konfiguration des Kubernetes API-Clients in die Logs.
+         </li>
+         <li>
+          Das Calico CNI schreibt auch das Kubernetes API-Token auf Informationsebene in die Logs, wenn das Feld "k8s_auth_token" in der CNI-Netzwerkkonfiguration angegeben wurde.
+         </li>
+         <li>
+          Wenn beim Logging auf Debug-Ebene entweder in der Konfigurationsdatei von Calico oder als von Calico verwendete Umgebungsvariable das Dienstkonto-Token explizit angegeben wird, schreiben Calico-Komponenten (calico/node, felix, CNI) diese Information in die Logdateien.
+         </li>
+        </ul>
+        <p>
+         Diese Tokens haben die folgenden Berechtigungen:
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <table>
+     <tbody>
+      <tr>
+       <td>
+        <pre dir="ltr" translate="no">
+
+    bgpconfigurations.crd.projectcalico.org     [create get list update watch]
+    bgppeers.crd.projectcalico.org              [create get list update watch]
+    clusterinformations.crd.projectcalico.org   [create get list update watch]
+    felixconfigurations.crd.projectcalico.org   [create get list update watch]
+    globalbgpconfigs.crd.projectcalico.org      [create get list update watch]
+    globalfelixconfigs.crd.projectcalico.org    [create get list update watch]
+    globalnetworkpolicies.crd.projectcalico.org [create get list update watch]
+    globalnetworksets.crd.projectcalico.org     [create get list update watch]
+    hostendpoints.crd.projectcalico.org         [create get list update watch]
+    ippools.crd.projectcalico.org               [create get list update watch]
+    networkpolicies.crd.projectcalico.org       [create get list update watch]
+    nodes                                       [get list update watch]
+    pods                                        [get list watch patch]
+    namespaces                                  [get list watch]
+    networkpolicies.extensions                  [get list watch]
+    endpoints                                   [get]
+    services                                    [get]
+    pods/status                                 [update]
+    networkpolicies.networking.k8s.io           [watch list]
+          </pre>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <p>
+     Google Kubernetes Engine-Cluster mit aktivierter Cluster-Netzwerkrichtlinie und aktivem Stackdriver Logging haben Calico-Dienstkonto-Tokens in Stackdriver protokolliert. Cluster ohne aktivierte Netzwerkrichtlinien sind davon nicht betroffen.
+    </p>
+    <p>
+     Es steht ein Update zur Verfügung, mit dem das Calico CNI-Plug-in dahingehend geändert wird, dass es nur auf der Warnstufe protokolliert und ein neues Dienstkonto verwendet. Der reparierte Calico-Code wird mit einem späteren Release bereitgestellt.
+    </p>
+    <p>
+     Im Laufe der nächsten Woche führen wir einen rollierenden Widerruf aller potenziell betroffenen Tokens durch. Dieses Bulletin wird aktualisiert, wenn der Widerruf abgeschlossen ist.
+     <strong>
+      Ihrerseits sind keine weiteren Maßnahmen erforderlich.
+     </strong>
+     (Der Durchlauf wurde am 16.11.2018 abgeschlossen.)
+    </p>
+    <p>
+     Wenn Sie diese Tokens sofort wechseln möchten, können Sie nachstehenden Befehl ausführen. Das neue Secret für das Dienstkonto sollte innerhalb weniger Sekunden automatisch erstellt werden:
+    </p>
+    <table>
+     <tbody>
+      <tr>
+      </tr>
+     </tbody>
+     <tbody>
+     </tbody>
+    </table>
+    <table>
+     <tbody>
+      <tr>
+       <td>
+        <pre dir="ltr" translate="no">
+
+    kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
+          </pre>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <table>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Erkennung" id="erkennung">
+         Erkennung
+        </h4>
+        <p>
+         GKE protokolliert alle Zugriffe auf den API-Server. Mit nachstehender Stackdriver-Abfrage können Sie feststellen, ob ein Calico-Token außerhalb des erwarteten IP-Bereichs von Google Cloud verwendet wurde. Es werden nur Einträge für Aufrufe von außerhalb des GCP-Netzwerks zurückgegeben. Sie können das nach Bedarf an Ihre Umgebung anpassen.
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <table>
+     <tbody>
+      <tr>
+       <td>
+        <pre dir="ltr" translate="no">
+
+    resource.type="k8s_cluster"
+    protoPayload.authenticationInfo.principalEmail="system:serviceaccount:kube-system:calico"
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.34.208.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.192.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.200.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.59.80.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.192.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.208.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.216.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.220.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.222.0/24")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.224.0.0/13")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.216.148.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.222.176.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "173.255.112.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "192.158.28.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.192.112.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.232.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.236.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.236.48.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.251.128.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.204.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.208.0.0/13")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.167.160.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.178.192.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.2.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.4.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.8.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.16.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.32.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.64.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.0.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.128.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.192.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.240.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.8.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.16.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.32.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.64.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.128.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.154.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.196.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "208.68.108.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.184.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.188.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.202.0.0/16")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.0.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.128.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.192.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.224.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.192.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.196.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.198.0.0/16")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.0.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.128.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.200.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "2600:1900::/35")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.224.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.232.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.234.0.0/16")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.0.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.192.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.236.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.240.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.232.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.4.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.220.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.242.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.244.0.0/14")
+          </pre>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="14. August 2018" id="august-14-2018">
+     14. August 2018
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschreibung
+       </th>
+       <th width="5%">
+        Schweregrad
+       </th>
+       <th>
+        Hinweise
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Die folgenden CVEs (Common Vulnerabilities and Exposures) wurden
+         <a href="https://www.intel.com/content/www/us/en/architecture-and-technology/l1tf.html">
+          von Intel festgestellt
+         </a>
+         :
+        </p>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3615">
+           CVE-2018-3615
+          </a>
+          (für
+          <a href="https://en.wikipedia.org/wiki/Software_Guard_Extensions">
+           SGX
+          </a>
+          )
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3620">
+           CVE-2018-3620
+          </a>
+          (für Betriebssysteme und
+          <a href="https://en.wikipedia.org/wiki/Hyper-threading">
+           SMT
+          </a>
+          )
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3646">
+           CVE-2018-3646
+          </a>
+          (für Virtualisierung)
+         </li>
+        </ul>
+        <p>
+         Diese CVEs werden zusammen als "L1 Terminal Fault (L1TF)" bezeichnet.
+        </p>
+        <p>
+         Durch diese L1TF-Sicherheitslücken wird die spekulative Ausführung des Prozessors dazu genutzt, Angriffe auf die Konfiguration von Datenstrukturen auf Prozessorebene durchzuführen.
+          "L1" bezeichnet den Level-1-Datencache (L1D), eine kleine On-Core-Ressource für die Beschleunigung des Speicherzugriffs.
+        </p>
+        <p>
+         Weitere Informationen zu diesen Sicherheitslücken und zu den empfohlenen Maßnahmen für Compute Engine finden Sie im
+         <a href="https://cloud.google.com/blog/products/gcp/protecting-against-the-new-l1tf-speculative-vulnerabilities?hl=de">
+          Google Cloud-Blogpost
+         </a>
+         .
+        </p>
+        <h4 data-text="Auswirkungen auf Google Kubernetes Engine" id="auswirkungen-auf-google-kubernetes-engine">
+         Auswirkungen auf Google Kubernetes Engine
+        </h4>
+        <p>
+         Die Infrastruktur, in der Kubernetes Engine ausgeführt wird und Cluster und Knoten von Kunden voneinander isoliert werden, ist vor bekannten Angriffen geschützt.
+        </p>
+        <p>
+         Kubernetes Engine-Knotenpools, die das Container-Optimized OS-Image (COS) von Google verwenden und für die
+         <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/node-auto-upgrades?hl=de">
+          automatische Upgrades
+         </a>
+         aktiviert sind, werden automatisch auf die Patchversionen unseres COS-Images aktualisiert, sobald sie verfügbar sind. Das gilt seit 20.08.2018.
+        </p>
+        <p>
+         Bei Kubernetes Engine-Knotenpools, für die keine
+         <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/node-auto-upgrades?hl=de">
+          automatischen Upgrades
+         </a>
+         aktiviert sind, müssen
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-container-cluster?hl=de">
+          manuelle Upgrades
+         </a>
+         durchgeführt werden, sobald Patchversionen des COS-Images verfügbar sind.
+        </p>
+       </td>
+       <td>
+        Hoch
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3615">
+           CVE-2018-3615
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3620">
+           CVE-2018-3620
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3646">
+           CVE-2018-3646
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="6. August 2018; letzte Aktualisierung: 5. September 2018" id="august-6-2018">
+     6. August 2018; letzte Aktualisierung: 5. September 2018
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschreibung
+       </th>
+       <th width="5%">
+        Schweregrad
+       </th>
+       <th>
+        Hinweise
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Aktualisierung vom 05.09.2018" id="aktualisierung-vom-05092018">
+         Aktualisierung vom 05.09.2018
+        </h4>
+        <p>
+         Kürzlich wurde
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5391">
+          CVE-2018-5391
+         </a>
+         festgestellt. Wie bei
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390">
+          CVE-2018-5390
+         </a>
+         wird eine Sicherheitslücke bei Netzwerken auf Kernel-Ebene beschrieben, durch die die Effektivität von DoS-Angriffen (Denial of Service) auf anfällige Systeme erhöht wird. Der Hauptunterschied besteht darin, dass CVE-2018-5391 über IP-Verbindungen ausgenutzt werden kann. Dieses Bulletin wurde aktualisiert und deckt nun beide Sicherheitslücken ab.
+        </p>
+        <h4 data-text="Beschreibung" id="beschreibung">
+         Beschreibung
+        </h4>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390">
+          CVE-2018-5390
+         </a>
+         ("SegmentSmack") beschreibt eine Netzwerk-Sicherheitslücke auf Kernel-Ebene. Dadurch wird die Effektivität von DoS-Angriffen (Denial of Service) über TCP-Verbindungen auf anfällige Systeme erhöht.
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5391">
+          CVE-2018-5391
+         </a>
+         ("FragmentSmack") beschreibt eine Netzwerk-Sicherheitslücke auf Kernel-Ebene. Dadurch wird die Effektivität von DoS-Angriffen (Denial of Service) über IP-Verbindungen auf anfällige Systeme erhöht.
+        </p>
+        <h4 data-text="Auswirkungen auf Google Kubernetes Engine" id="auswirkungen-auf-google-kubernetes-engine_1">
+         Auswirkungen auf Google Kubernetes Engine
+        </h4>
+        <p>
+         Seit dem 11.08.2018 sind Kubernetes Engine-Master vor beiden Sicherheitslücken geschützt. Außerdem sind alle Kubernetes Engine-Cluster, die für automatische Upgrades konfiguriert sind, vor beiden Sicherheitslücken geschützt.
+
+            Kubernetes Engine-Knotenpools, die nicht für
+         <a class="external" href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=de">
+          automatische Upgrades
+         </a>
+         konfiguriert sind und zum letzten Mal vor dem 11.08.2018 aktualisiert wurden, sind von beiden Sicherheitslücken betroffen.
+        </p>
+        <h4 data-text="Patchversionen" id="patchversionen">
+         Patchversionen
+        </h4>
+        <p>
+         Aufgrund des Schweregrads dieser Sicherheitslücke empfehlen wir die Durchführung eines
+         <a class="external" href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=de#upgrading_nodes">
+          manuellen Upgrades
+         </a>
+         der Knoten, sobald die Patches verfügbar sind.
+        </p>
+       </td>
+       <td>
+        Hoch
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390">
+           CVE-2018-5390
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5391">
+           CVE-2018-5391
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="30. Mai 2018" id="may-30-2018">
+     30. Mai 2018
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschreibung
+       </th>
+       <th width="5%">
+        Schweregrad
+       </th>
+       <th>
+        Hinweise
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Es wurde kürzlich eine Sicherheitslücke in Git entdeckt, die eine Rechteausweitung in Kubernetes zulässt, wenn unberechtigte Nutzer Pods mit gitRepo-Volumes erstellen dürfen. Das CVE ist mit dem Tag
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-11235">
+          CVE-2018-11235
+         </a>
+         gekennzeichnet.
+        </p>
+        <h4 data-text="Bin ich betroffen?" id="bin-ich-betroffen">
+         Bin ich betroffen?
+        </h4>
+        <p>
+         Sie sind von dieser Sicherheitslücke betroffen, wenn folgende Bedingungen erfüllt sind:
+        </p>
+        <ul>
+         <li>
+          Nicht vertrauenswürdige Nutzer können Pods erstellen (oder eine Pod-Erstellung auslösen).
+         </li>
+         <li>
+          Von nicht vertrauenswürdigen Nutzern erstellte Pods unterliegen Beschränkungen zur Vermeidung des Host-Root-Zugriffs (z. B. über
+          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=de">
+           PodSecurityPolicy
+          </a>
+          ).
+         </li>
+         <li>
+          Von nicht vertrauenswürdigen Nutzern erstellte Pods sind zur Verwendung des Volume-Typs "gitRepo" berechtigt.
+         </li>
+        </ul>
+        <p>
+         Alle Kubernetes Engine-Knoten sind gefährdet.
+        </p>
+        <h4 data-text="Was soll ich tun?" id="was-soll-ich-tun_14">
+         Was soll ich tun?
+        </h4>
+        <p>
+         Verhindern Sie die Verwendung des Volume-Typs "gitRepo". Wenn Sie Volumes vom Typ gitRepo mit der PodSecurityPolicy verbieten möchten, lassen Sie
+         <code dir="ltr" translate="no">
+          gitRepo
+         </code>
+         in der Whitelist
+         <code dir="ltr" translate="no">
+          volumes
+         </code>
+         Ihrer PodSecurityPolicy weg.
+        </p>
+        <p>
+         Ein vergleichbares gitRepo-Volume-Verhalten erzielen Sie, wenn Sie ein Git-Repository von einem initContainer in ein EmptyDir-Volume klonen:
+        </p>
+        <pre class="notranslate" dir="ltr" translate="no">
+
+<code dir="ltr" translate="no">apiVersion: v1
+    kind: Pod
+    metadata:
+      name: git-repo-example
+    spec:
+      initContainers:
+        # This container clones the desired git repo to the EmptyDir volume.
+        - name: git-clone
+          image: alpine/git # Any image with git will do
+          args:
+            - clone
+            - --single-branch
+            - --
+            - https://github.com/kubernetes/kubernetes # Your repo
+            - /repo # Put it in the volume
+          securityContext:
+            runAsUser: 1 # Any non-root user will do. Match to the workload.
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+          volumeMounts:
+            - name: git-repo
+              mountPath: /repo
+      containers:
+        ...
+      volumes:
+        - name: git-repo
+          emptyDir: {}</code></pre>
+        <h4 data-text="Welcher Patch behebt diese Sicherheitslücke?" id="welcher-patch-behebt-diese-sicherheitslucke">
+         Welcher Patch behebt diese Sicherheitslücke?
+        </h4>
+        <p>
+         Zukünftigen Kubernetes Engine-Releases wird ein entsprechender Patch hinzugefügt.
+            Weitere Informationen werden hier zukünftig zur Verfügung gestellt.
+        </p>
+       </td>
+       <td>
+        Mittel
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-11235">
+           CVE-2018-11235
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="21. Mai 2018" id="may-21-2018">
+     21. Mai 2018
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschreibung
+       </th>
+       <th width="5%">
+        Schweregrad
+       </th>
+       <th>
+        Hinweise
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Im Linux-Kernel wurden verschiedene Sicherheitslücken erkannt, bei denen eine Rechteausweitung oder ein Denial of Service (durch einen Kernel-Absturz) über einen nicht privilegierten Prozess möglich sind. Diese CVEs sind mit den Tags
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1000199">
+          CVE-2018-1000199
+         </a>
+         ,
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-8897">
+          CVE-2018-8897
+         </a>
+         und
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1087">
+          CVE-2018-1087
+         </a>
+         gekennzeichnet.
+            Alle Kubernetes Engine-Knoten sind von diesen Sicherheitslücken betroffen. Es wird empfohlen, ein
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-container-cluster?hl=de">
+          Upgrade
+         </a>
+         auf die neueste Patchversion durchzuführen (siehe unten).
+        </p>
+        <h4 data-text="Was soll ich tun?" id="was-soll-ich-tun_15">
+         Was soll ich tun?
+        </h4>
+        <p>
+         Führen Sie zuerst ein Masterupgrade auf die neueste Version durch. Dieser Patch ist in Kubernetes Engine 1.8.12-gke.1, Kubernetes Engine 1.9.7-gke.1 und Kubernetes Engine 1.10.2-gke.1 verfügbar.
+            Diese Releases umfassen sowohl Patches für Images von Container-Optimized OS als auch für Ubuntu.
+        </p>
+        <p>
+         Wenn Sie vorher einen neuen Cluster erstellen, müssen Sie die Patchversion angeben, damit diese verwendet wird. Für Knoten, für die
+         <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/node-auto-upgrades?hl=de">
+          automatische Upgrades
+         </a>
+         aktiviert sind und keine manuellen Upgrades durchgeführt werden, wird in den nächsten Wochen automatisch ein Upgrade auf Patchversionen durchgeführt.
+        </p>
+        <h4 data-text="Welche Sicherheitslücken werden mit diesem Patch behoben?" id="welche-sicherheitslucken-werden-mit-diesem-patch-behoben_2">
+         Welche Sicherheitslücken werden mit diesem Patch behoben?
+        </h4>
+        <p>
+         Dieser Patch dient zur Entschärfung der folgenden Sicherheitslücken:
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1000199">
+          CVE-2018-8897
+         </a>
+         : Diese Sicherheitslücke betrifft den Linux-Kernel. Nicht privilegierte Nutzer oder Prozesse können einen Absturz des System-Kernels auslösen und damit einen DoS-Angriff oder eine Rechteausweitung verursachen. Diese Sicherheitslücke wird mit dem Schweregrad "Hoch" bewertet, mit einem CVSS-Wert (Common Vulnerability Scoring System, etwa "Allgemeines Verwundbarkeitsbewertungssystem") von 7,8.
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-8897">
+          CVE-2018-8897
+         </a>
+         : Diese Sicherheitslücke betrifft den Linux-Kernel. Nicht privilegierte Nutzer oder Prozesse können einen Absturz des System-Kernels auslösen und damit einen DoS-Angriff verursachen.
+            Diese Sicherheitslücke wird mit dem Schweregrad "Mittel" bewertet, mit einem CVSS von 6,5.
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1087">
+          CVE-2018-1087
+         </a>
+         : Diese Sicherheitslücke betrifft den KVM-Hypervisor des Linux-Kernels. Nicht privilegierte Prozesse können einen Absturz des Guest-Kernels auslösen oder erweiterte Berechtigungen erlangen. Diese Sicherheitslücke wurde in der Infrastruktur behoben, in der Kubernetes Engine ausgeführt wird. Kubernetes Engine ist somit nicht betroffen. Diese Sicherheitslücke wurde mit dem Schweregrad "Hoch" bewertet, mit einer CVSS-Punktzahl von 8,0.
+        </p>
+       </td>
+       <td>
+        Hoch
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1000199">
+           CVE-2018-1000199
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-8897">
+           CVE-2018-8897
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1087">
+           CVE-2018-1087
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="12. März 2018" id="march-12-2018">
+     12. März 2018
+    </h2>
+    <table id="20180312">
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschreibung
+       </th>
+       <th width="5%">
+        Schweregrad
+       </th>
+       <th>
+        Hinweise
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Beim Kubernetes-Projekt wurden
+         <a class="external" href="https://groups.google.com/forum/?hl=de#!topic/kubernetes-security-announce/P7lBjbjDKd8">
+          vor Kurzem neue Sicherheitslücken festgestellt
+         </a>
+         , und zwar
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2017-1002101">
+          CVE-2017-1002101
+         </a>
+         und
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2017-1002102">
+          CVE-2017-1002102
+         </a>
+         . Durch diese Sicherheitslücken haben Container Zugriff auf Dateien außerhalb des Containers. Alle Kubernetes Engine-Knoten sind von diesen Sicherheitslücken betroffen. Wir empfehlen, so schnell wie möglich ein Upgrade auf die neueste Patchversion durchzuführen, wie unten beschrieben.
+        </p>
+        <h4 data-text="Was soll ich tun?" id="was-soll-ich-tun_16">
+         Was soll ich tun?
+        </h4>
+        <p>
+         Aufgrund des Schweregrads dieser Sicherheitslücken empfehlen wir die Durchführung eines
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-container-cluster?hl=de">
+          manuellen Upgrades
+         </a>
+         der Knoten, sobald der Patch verfügbar ist. Diese Empfehlung gilt unabhängig davon, ob automatische Upgrades aktiviert sind oder nicht. Der Patch ist ab dem 16. März für alle Kunden verfügbar. Gemäß dem
+         <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=de#march-12-2018">
+          Releasezeitplan
+         </a>
+         kann er je nach Zone, in der sich Ihr Cluster befindet, auch schon früher für Sie verfügbar sein.
+        </p>
+        <p>
+         Führen Sie zuerst ein Masterupgrade auf die neueste Version durch. Dieser Patch wird in Kubernetes 1.9.4-gke.1, Kubernetes 1.8.9-gke.1 und Kubernetes 1.7.14-gke.1 verfügbar sein. Neue Cluster verwenden die Patchversion standardmäßig ab dem 30. März. Wenn Sie bereits vor diesem Datum einen neuen Cluster erstellen, müssen Sie die Patchversion angeben, damit sie verwendet wird.
+        </p>
+        <p>
+         Knoten, für die
+         <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/node-auto-upgrades?hl=de">
+          automatische Upgrades
+         </a>
+         aktiviert sind und keine manuellen Upgrades durchgeführt werden, werden bis zum 23. April automatisch auf Patchversionen aktualisiert. Aufgrund des Schweregrads dieser Sicherheitslücke empfehlen wir jedoch die Durchführung eines
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-container-cluster?hl=de">
+          manuellen Upgrades
+         </a>
+         der Knoten, sobald der Patch verfügbar ist.
+        </p>
+        <h4 data-text="Welche Sicherheitslücken werden mit diesem Patch behoben?" id="welche-sicherheitslucken-werden-mit-diesem-patch-behoben_3">
+         Welche Sicherheitslücken werden mit diesem Patch behoben?
+        </h4>
+        <p>
+         Mit diesem Patch werden die folgenden beiden Sicherheitslücken behoben:
+        </p>
+        <p>
+         Die Sicherheitslücke CVE-2017-1002101 ermöglicht Containern, die
+         <a class="external" href="https://kubernetes.io/docs/concepts/storage/volumes/#using-subpath">
+          Subpfad
+         </a>
+         -Volume-Bereitstellungen verwenden, den Zugriff auf Dateien außerhalb des Volumes. Das bedeutet Folgendes: Wenn Sie den Containerzugriff auf Hostpfad-Volumes mit PodSecurityPolicy blockieren, kann ein Angreifer, der in der Lage ist, Pods zu aktualisieren oder zu erstellen, jeden beliebigen Hostpfad durch Verwendung eines anderen Volume-Typs bereitstellen.
+        </p>
+        <p>
+         Aufgrund der Sicherheitslücke CVE-2017-1002102 können Container, die bestimmte Volume-Typen verwenden, wie z. B. Secrets, Konfigurationspläne, projizierte Volumes oder abwärtsgerichtete API-Volumes, Dateien außerhalb des Volumes löschen. Das heißt, wenn ein Container, der einen dieser Volume-Typen verwendet, gehackt wurde oder wenn Sie nicht vertrauenswürdigen Nutzern das Erstellen von Pods ermöglichen, kann ein Angreifer diesen Container zum Löschen von beliebigen Dateien auf dem Host nutzen.
+        </p>
+        <p>
+         Weitere Informationen zur Korrektur finden Sie im
+         <a class="external" href="https://kubernetes.io/blog/2018/04/04/fixing-subpath-volume-vulnerability/">
+          Kubernetes-Blogpost
+         </a>
+         .
+        </p>
+       </td>
+       <td>
+        Hoch
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2017-1002101">
+           CVE-2017-1002101
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2017-1002102">
+           CVE-2017-1002102
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+   </section>
+  </div>
+ </article>
+</article>
