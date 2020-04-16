@@ -4,6 +4,12 @@ This page documents production updates to Access Approval. You can
 periodically check this page for announcements about new or updated features,
 bug fixes, known issues, and deprecated functionality.
 
+##  April 15, 2020
+
+**FEATURE:**
+
+Access Approval API reached General Availability (GA) status.
+
 ##  January 27, 2020
 
 **FEATURE:**
