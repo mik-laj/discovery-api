@@ -1,0 +1,101 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <h1 class="devsite-page-title">
+   版本说明
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <section class="intro">
+    本页面记录了 Config Sync 的正式版更新。您可以查看此页面，以了解有关新增的功能、经过更新的功能、已弃用的功能、错误修复和已知问题的公告。
+   </section>
+   <section class="xml">
+    <p>
+     如需接收最新产品动态，请将本页面的网址添加到您的
+     <a class="external" href="https://wikipedia.org/wiki/Comparison_of_feed_aggregators">
+      Feed 阅读器
+     </a>
+     ，或直接添加 Feed 网址：
+     <code dir="ltr" translate="no">
+      https://cloud.google.com/feeds/kubernetes-engine-add-on-config-sync-release-notes.xml
+     </code>
+    </p>
+   </section>
+   <section class="releases">
+    <h2 data-text="1.2.0" id="120">
+     1.2.0
+    </h2>
+    <p>
+     Config Sync v1.2.0 现已正式推出，适用于生产环境。这是该产品的第一个版本。
+    </p>
+    <h3 data-text="已知问题" id="known_issues">
+     已知问题
+    </h3>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      向存储库添加
+      <a class="external" href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension">
+       APIService
+      </a>
+      会导致 Config Sync 进入错误状态，并显示错误消息“[KNV2002](/kubernetes-engine/docs/add-on/config-sync/reference/errors#knv2002): failed to get server resources: unable to retrieve the complete list of server APIs”。此问题会影响通过此存储库同步的新集群和现有集群。如需纠正此问题，请按如下所述操作：
+     </p>
+     <li>
+      使用
+      <code dir="ltr" translate="no">
+       kubectl get pods -n config-management-system
+      </code>
+      查找
+      <code dir="ltr" translate="no">
+       git-importer
+      </code>
+      和
+      <code dir="ltr" translate="no">
+       syncer
+      </code>
+      pod 的名称
+     </li>
+     <li>
+      复制这些名称，然后使用
+      <code dir="ltr" translate="no">
+       kubectl delete -n config-management-system pods git-importer-xxxx-xxxx syncer-xxxx-xxxx
+      </code>
+      重新 pod
+     </li>
+     <li>
+      您必须对每个集群都执行一次这些步骤。
+     </li>
+     重新启动集群的 pod 后，同步将恢复正常。
+     <p>
+     </p>
+    </div>
+    <div class="release-issue" id="known_issue_nomos_view">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       nomos view
+      </code>
+      可能无法解析存在于存储库的本地克隆中但尚未同步到集群的 CRD（自定义资源定义）。
+     </p>
+     <p>
+      如需解决此问题，请使用
+      <a href="https://cloud.google.com/kubernetes-engine/docs/add-on/config-sync/how-to/nomos-command?hl=zh_cn#hydrate">
+       <code dir="ltr" translate="no">
+        nomos hydrate
+       </code>
+      </a>
+      代替
+      <code dir="ltr" translate="no">
+       nomos view
+      </code>
+      。
+     </p>
+    </div>
+   </section>
+  </div>
+ </article>
+</article>
