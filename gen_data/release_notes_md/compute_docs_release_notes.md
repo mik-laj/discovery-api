@@ -12,6 +12,11 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/compute-engine-release-
 notes.xml `
 
+##  April 15, 2020
+
+  * You can identify VM instances that are not being used with [ idle VM recommendations ](/compute/docs/instances/viewing-and-applying-idle-vm-recommendations) . Use these recommendations to reduce unused resources and reduce your compute bill. This feature is **Generally available** . 
+  * You can manage, maintain, and view patch compliance for your VM instances using the OS patch management feature. For more information, see [ OS patch management ](/compute/docs/os-patch-management) . This feature is now **Generally available** . 
+
 ##  April 09, 2020
 
   * **GA:** [ Compute Engine enables Shielded VM features by default ](/compute/docs/instances/modifying-shielded-vm) . 
@@ -88,7 +93,7 @@ Engine ](/compute/docs/gpus) .
 
 ##  March 11, 2020
 
-  * You can identify VM instances that are not being used with [ idle VM recommendations ](/compute/docs/instances/viewing-and-applying-idle-vm-recommendations) . Use these recommendations to reduce unused resources and reduce your compute bill. This feature is **Generally available** . 
+  * You can identify VM instances that are not being used with [ idle VM recommendations ](/compute/docs/instances/viewing-and-applying-idle-vm-recommendations) . Use these recommendations to reduce unused resources and reduce your compute bill. This feature is **Beta** . 
 
   * In **beta** , you can create an instance with 16 or 24 local SSD partitions for 6 TB and 9 TB of local SSD space, respectively. With 24 local SSD partitions, performance can reach a combined total of 2.4 million read IOPS. For more information, see [ 9 TB Local SSD maximum capacity beta ](/compute/docs/disks/local-ssd#capacity_9tb) . 
 
