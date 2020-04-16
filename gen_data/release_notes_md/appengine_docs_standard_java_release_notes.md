@@ -5,6 +5,14 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gaestd-java-release-notes.xml `
 
+##  April 13, 2020
+
+**CHANGED:**
+
+Quotas for sockets have been removed. There is no longer a limit on the number
+of socket connections or the amount of data your Java 8 app can send and
+receive through a socket.
+
 ##  March 20, 2020
 
 **CHANGED:**
