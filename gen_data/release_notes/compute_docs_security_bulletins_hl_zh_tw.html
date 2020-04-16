@@ -1,0 +1,3850 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <h1 class="devsite-page-title">
+   安全性公告
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <p>
+    我們會不定期發布與 Compute Engine 相關的安全性公告，您可以在這裡找到所有 Compute Engine 安全性公告的相關說明。
+   </p>
+   <p>
+    <a href="https://cloud.google.com/feeds/compute-engine-security-bulletins.xml?hl=zh_tw" track-metadata-position="introParagraph" track-name="xmlFeed" track-type="securityBulletins">
+     訂閱 Compute Engine 安全性公告。
+     <img alt="訂閱" src="https://cloud.google.com/images/feed-icon.png?hl=zh_tw"/>
+    </a>
+   </p>
+   <section class="bulletins">
+    <h2 data-text="發布日期：2019 年 6 月 18 日" id="20190618">
+     發布日期：2019 年 6 月 18 日
+    </h2>
+    <p>
+     <strong>
+      上次更新時間：太平洋標準時間 2019 年 6 月 25 日 6:30
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        說明
+       </th>
+       <th>
+        嚴重性
+       </th>
+       <th>
+        附註
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="說明" id="heading">
+         說明
+        </h4>
+        <p>
+         Netflix 最近揭露了 Linux 核心的 3 個 TCP 安全漏洞：
+        </p>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11477" target="_blank">
+           CVE-2019-11477
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11478" target="_blank">
+           CVE-2019-11478
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11479" target="_blank">
+           CVE-2019-11479
+          </a>
+         </li>
+        </ul>
+        <p>
+         上述 CVE 統稱為
+         <a class="external" href="https://github.com/Netflix/security-bulletins/blob/master/advisories/third-party/2019-001.md" target="_blank">
+          NFLX-2019-001
+         </a>
+         。
+        </p>
+        <h4 data-text="對 Compute Engine 的影響" id="20190618_impact">
+         對 Compute Engine 的影響
+        </h4>
+        <p>
+         託管 Compute Engine 的基礎架構具備防護機制，因此不會受到這個安全漏洞的影響。
+        </p>
+        <p>
+         如果 Compute Engine VM 執行未經修補的 Linux 作業系統，且該作業系統會傳送/接收不受信任的網路流量，這個 VM 就可能會受到這類 DoS 攻擊。因此，我們建議您在該作業系統的修補程式推出時，立即更新這些 VM 執行個體。
+        </p>
+        <p>
+         我們已針對這個安全漏洞修補會終止 TCP 連線的負載平衡器。如果 Compute Engine 執行個體只透過這些負載平衡器接收不受信任流量，則沒有安全漏洞。這些負載平衡器包括 HTTP 負載平衡器、安全資料傳輸層 (SSL) Proxy 負載平衡器，以及 TCP Proxy 負載平衡器。
+        </p>
+        <p>
+         網路負載平衡器和內部負載平衡器不會終止 TCP 連線。如果是未經修補的 Compute Engine 執行個體，且會透過這些負載平衡器接收不受信任流量，則有安全漏洞。
+        </p>
+        <h4 data-text="修補完成的映像檔與廠商資源" id="heading_1">
+         修補完成的映像檔與廠商資源
+        </h4>
+        <p>
+         當每個作業系統廠商發布修補程式資訊時，我們就會在這裡提供相關連結，包括每個 CVE 的狀態。這些公開映像檔的較舊版本並未包含這些修補程式，因此無法緩解潛在的攻擊活動：
+        </p>
+        <ul>
+         <li>
+          <code>
+           debian-cloud
+          </code>
+          專案：
+          <ul>
+           <li>
+            <code>
+             debian-9-stretch-v20190618
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           centos-cloud
+          </code>
+          專案：
+          <ul>
+           <li>
+            <code>
+             centos-6-v20190619
+            </code>
+           </li>
+           <li>
+            <code>
+             centos-7-v20190619
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           cos-cloud
+          </code>
+          專案：
+          <ul>
+           <li>
+            <code>
+             cos-dev-77-12293-0-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-beta-76-12239-21-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-stable-75-12105-77-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-73-11647-217-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-69-10895-277-0
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           coreos-cloud
+          </code>
+          專案：
+          <ul>
+           <li>
+            <code>
+             coreos-alpha-2163-2-1-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-beta-2135-3-1-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-stable-2079-6-0-v20190617
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           rhel-cloud
+          </code>
+          專案：
+          <ul>
+           <li>
+            <code>
+             rhel-6-v20190618
+            </code>
+           </li>
+           <li>
+            <code>
+             rhel-7-v20190618
+            </code>
+           </li>
+           <li>
+            <code>
+             rhel-8-v20190618
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           rhel-sap-cloud
+          </code>
+          專案：
+          <ul>
+           <li>
+            <code>
+             rhel-7-4-sap-v20190618
+            </code>
+           </li>
+           <li>
+            <code>
+             rhel-7-6-sap-v20190618
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           suse-cloud
+          </code>
+          專案：
+          <ul>
+           <li>
+            <code>
+             sles-12-sp4-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-15-v20190617
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           suse-sap-cloud
+          </code>
+          專案：
+          <ul>
+           <li>
+            <code>
+             sles-12-sp1-sap-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp2-sap-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp3-sap-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp4-sap-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-15-sap-v20190617
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           ubuntu-cloud
+          </code>
+          專案：
+          <ul>
+           <li>
+            <code>
+             ubuntu-1604-xenial-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1804-bionic-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1810-cosmic-v20190618
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1904-disco-v20190619
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1604-xenial-v20190618
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1804-bionic-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1810-cosmic-v20190618
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1904-disco-v20190618
+            </code>
+           </li>
+          </ul>
+         </li>
+        </ul>
+       </td>
+       <td>
+        中
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11477" target="_blank">
+           CVE-2019-11477
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11478" target="_blank">
+           CVE-2019-11478
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11479" target="_blank">
+           CVE-2019-11479
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="發布日期：2019 年 5 月 14 日" id="20190514">
+     發布日期：2019 年 5 月 14 日
+    </h2>
+    <p>
+     <strong>
+      上次更新時間：太平洋標準時間 2019 年 5 月 20 日 17:00
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        說明
+       </th>
+       <th>
+        嚴重性
+       </th>
+       <th>
+        附註
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="說明" id="heading_2">
+         說明
+        </h4>
+        <p>
+         Intel 已揭露下列 CVE：
+        </p>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12126" target="_blank">
+           CVE-2018-12126
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12127" target="_blank">
+           CVE-2018-12127
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12130" target="_blank">
+           CVE-2018-12130
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11091" target="_blank">
+           CVE-2019-11091
+          </a>
+         </li>
+        </ul>
+        <p>
+         上述 CVE 統稱為「微架構資料取樣」(MDS)。當系統利用微架構狀態來進行推測執行的互動時，這些安全漏洞會使資料有曝光風險。
+        </p>
+        <h4 data-text="對 Compute Engine 的影響" id="20190514_impact">
+         對 Compute Engine 的影響
+        </h4>
+        <p>
+         <strong>
+          執行 Compute Engine 的主機基礎架構會讓各個客戶工作負載之間彼此隔離。除非您在 VM 中執行不受信任的程式碼，否則就不必採取進一步的行動。
+         </strong>
+        </p>
+        <p>
+         如果客戶在 Compute Engine 虛擬機器中自己的多用戶群服務上執行不受信任的程式碼，請參考您客體 OS 廠商建議的緩解方法，其中可能包含使用 Intel 的微碼緩解功能。我們已經為新的清除功能部署訪客傳遞存取權。以下概述適用於一般訪客映像檔的緩解步驟。
+        </p>
+        <h4 data-text="修補完成的映像檔與廠商資源" id="heading_3">
+         修補完成的映像檔與廠商資源
+        </h4>
+        <p>
+         當每個作業系統廠商發布修補程式資訊時，我們就會在這裡提供相關連結，包括每個 CVE 的狀態。請使用這些映像檔來重新建立 VM 執行個體。這些公開映像檔的較舊版本並未包含這些修補程式，因此無法緩解潛在的攻擊活動：
+        </p>
+        <ul>
+         <li>
+          <code>
+           centos-cloud
+          </code>
+          專案：
+          <a class="external" href="https://lists.centos.org/pipermail/centos-announce/2019-May/023309.html" target="_blank">
+           CESA-2019:1169
+          </a>
+          、
+          <a class="external" href="https://lists.centos.org/pipermail/centos-announce/2019-May/023314.html" target="_blank">
+           CESA-2019:1168
+          </a>
+         </li>
+         <ul>
+          <li>
+           <code>
+            centos-6-v20190515
+           </code>
+          </li>
+          <li>
+           <code>
+            centos-7-v20190515
+           </code>
+          </li>
+         </ul>
+         <li>
+          <code>
+           coreos-cloud
+          </code>
+          專案：
+          <a class="external" href="https://coreos.com/os/docs/latest/disabling-smt.html" target="_blank">
+           適用於 CoreOS Container Linux 的 MDS 緩解方法
+          </a>
+         </li>
+         <ul>
+          <li>
+           <code>
+            coreos-stable-2079-4-0-v20190515
+           </code>
+          </li>
+          <li>
+           <code>
+            coreos-beta-2107-3-0-v20190515
+           </code>
+          </li>
+          <li>
+           <code>
+            coreos-alpha-2135-1-0-v20190515
+           </code>
+          </li>
+         </ul>
+         <li>
+          <code>
+           cos-cloud
+          </code>
+          專案
+         </li>
+         <ul>
+          <li>
+           <code>
+            cos-69-10895-242-0
+           </code>
+          </li>
+          <li>
+           <code>
+            cos-73-11647-182-0
+           </code>
+          </li>
+         </ul>
+         <li>
+          <code>
+           debian-cloud
+          </code>
+          專案：
+          <a class="external" href="https://www.debian.org/security/2019/dsa-4444" target="_blank">
+           DSA-4444
+          </a>
+         </li>
+         <ul>
+          <li>
+           <code>
+            debian-9-stretch-v20190514
+           </code>
+          </li>
+         </ul>
+         <li>
+          <code>
+           rhel-cloud
+          </code>
+          專案：
+          <a class="external" href="https://access.redhat.com/security/vulnerabilities/mds" target="_blank">
+           Red Hat MDS 知識庫文章
+          </a>
+         </li>
+         <ul>
+          <li>
+           <code>
+            rhel-6-v20190515
+           </code>
+          </li>
+          <li>
+           <code>
+            rhel-7-v20190517
+           </code>
+          </li>
+          <li>
+           <code>
+            rhel-8-v20190515
+           </code>
+          </li>
+         </ul>
+         <li>
+          <code>
+           rhel-sap-cloud
+          </code>
+          專案：
+          <a class="external" href="https://access.redhat.com/security/vulnerabilities/mds" target="_blank">
+           Red Hat MDS 知識庫文章
+          </a>
+         </li>
+         <ul>
+          <li>
+           <code>
+            rhel-7-4-sap-v20190515
+           </code>
+          </li>
+          <li>
+           <code>
+            rhel-7-6-sap-v20190517
+           </code>
+          </li>
+         </ul>
+         <li>
+          <code>
+           suse-cloud
+          </code>
+          專案：
+          <a class="external" href="https://www.suse.com/support/kb/doc/?id=7023736" target="_blank">
+           SUSE MDS 知識庫
+          </a>
+         </li>
+         <ul>
+          <li>
+           <code>
+            sles-12-sp4-v20190520
+           </code>
+          </li>
+          <li>
+           <code>
+            sles-15-v20190520
+           </code>
+          </li>
+         </ul>
+         <li>
+          <code>
+           suse-sap-cloud
+          </code>
+          專案
+         </li>
+         <ul>
+          <li>
+           <code>
+            sles-12-sp4-sap-v20190520
+           </code>
+          </li>
+          <li>
+           <code>
+            sles-15-sap-v20190520
+           </code>
+          </li>
+         </ul>
+         <li>
+          <code>
+           ubuntu-os-cloud
+          </code>
+          專案：
+          <a class="external" href="https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/MDS" target="_blank">
+           Ubuntu MDS Wiki
+          </a>
+         </li>
+         <ul>
+          <li>
+           <code>
+            ubuntu-1404-trusty-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-1604-xenial-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-1804-bionic-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-1810-cosmic-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-1904-disco-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-minimal-1604-xenial-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-minimal-1804-bionic-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-minimal-1810-cosmic-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-minimal-1904-disco-v20190514
+           </code>
+          </li>
+         </ul>
+         <li>
+          <code>
+           windows-cloud
+          </code>
+          和
+          <code>
+           windows-sql-cloud
+          </code>
+          專案：
+          <a class="external" href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013" target="_blank">
+           Microsoft ADV190013
+          </a>
+         </li>
+         <ul>
+          <li>
+           所有版本編號為
+           <code>
+            v20190514
+           </code>
+           的 Windows Server 和 SQL Server 公開映像檔。
+          </li>
+         </ul>
+         <li>
+          <code>
+           gce-uefi-images
+          </code>
+          專案
+         </li>
+         <ul>
+          <li>
+           <code>
+            centos-7-v20190515
+           </code>
+          </li>
+          <li>
+           <code>
+            cos-69-10895-242-0
+           </code>
+          </li>
+          <li>
+           <code>
+            cos-73-11647-182-0
+           </code>
+          </li>
+          <li>
+           <code>
+            rhel-7-v20190517
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-1804-bionic-v20190514
+           </code>
+          </li>
+          <li>
+           所有版本編號為
+           <code>
+            v20190514
+           </code>
+           的 Windows Server 公開映像檔。
+          </li>
+         </ul>
+        </ul>
+        <h4 data-text="Container-Optimized OS" id="container-optimized-os">
+         Container-Optimized OS
+        </h4>
+        <p>
+         如果您把 Container Optimized OS (COS) 當做客體 Guest OS 來使用，且您在自己的虛擬機器上執行不受信任的多用戶群工作負載，我們建議您：
+        </p>
+        <ol>
+         <li>
+          停用超執行緒功能，方法是在核心指令列上設定
+          <code>
+           nosmt
+          </code>
+          。
+          <br/>
+          <p>
+           請在現有的 COS VM 上，依照以下內容來修改
+           <code>
+            grub.cfg
+           </code>
+           ，以便設定
+           <code>
+            nosmt
+           </code>
+           選項並讓系統重新啟動：
+          </p>
+          <pre>
+
+# Run as root:
+dir="$(mktemp -d)"
+mount /dev/sda12 "${dir}"
+sed -i -e "s|cros_efi|cros_efi nosmt|g" "${dir}/efi/boot/grub.cfg"
+umount "${dir}"
+rmdir "${dir}"
+
+reboot</pre>
+          <p>
+           為方便起見，您只要執行下列指令碼就能達到執行上述指令的效果。我們建議您把該指令碼新增到您的雲端組態、開機指令碼，或執行個體範本中，以確保新的 VM 會使用這個參數。以下是會執行該指令碼的雲端組態範例。
+          </p>
+          <p class="warning">
+           <strong>
+            警告：
+           </strong>
+           這個指令會讓第一次執行該指令的執行個體立刻重新啟動。之後您在已停用超執行緒功能的執行個體上再次執行該指令時，就不會有任何效果。
+          </p>
+          <pre>
+
+# Run as root
+/bin/bash &lt;(curl -s https://storage.googleapis.com/cos-tools/scripts/disable_smt.sh)
+</pre>
+          <p>
+           如何將該指令新增到您的雲端組態中：
+          </p>
+          <pre>
+
+#cloud-config
+
+bootcmd:
+- /bin/bash -c "/bin/bash &lt;(curl -s https://storage.googleapis.com/cos-tools/scripts/disable_smt.sh)"
+</pre>
+          <p>
+           如要確認執行個體的超執行緒功能是否已停用，請查看
+           <code>
+            /sys/devices/system/cpu/smt/active
+           </code>
+           和
+           <code>
+            /sys/devices/system/cpu/smt/control
+           </code>
+           檔案的輸出內容。如果您看到
+           <code>
+            active
+           </code>
+           為
+           <code>
+            0
+           </code>
+           ，且
+           <code>
+            control
+           </code>
+           為
+           <code>
+            off
+           </code>
+           ，即代表超執行緒功能已停用：
+          </p>
+          <pre>
+
+cat /sys/devices/system/cpu/smt/active
+cat /sys/devices/system/cpu/smt/control
+</pre>
+          <p class="note">
+           <strong>
+            注意：
+           </strong>
+           如果您已經啟用執行個體上的 UEFI 安全啟動功能，就必須要在 UEFI 安全啟動功能停用的情況下重新建立執行個體、在 UEFI 安全啟動功能停用的情況下執行上述指令，然後啟用新執行個體上的 UEFI 安全啟動功能。
+          </p>
+         </li>
+         <li>
+          使用新版本的 COS 映像檔
+          <br/>
+          <p>
+           除了採用上述方法來停用超執行緒功能之外，您也應該利用上述已更新或較新版本 (如果已推出) 的 Container-Optimized OS 映像檔來
+           <a href="https://cloud.google.com/compute/docs/instances/create-start-instance?hl=zh_tw#publicimage">
+            重新建立執行個體
+           </a>
+           ，以便獲得可抵擋該安全漏洞的完整保護。
+          </p>
+         </li>
+        </ol>
+       </td>
+       <td>
+        中
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12126" target="_blank">
+           CVE-2018-12126
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12127" target="_blank">
+           CVE-2018-12127
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12130" target="_blank">
+           CVE-2018-12130
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11091" target="_blank">
+           CVE-2018-11091
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="發布日期：2018 年 8 月 14 日" id="20180814">
+     發布日期：2018 年 8 月 14 日
+    </h2>
+    <p>
+     <strong>
+      上次更新時間：太平洋標準時間 2018 年 8 月 20 日 17:00
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        說明
+       </th>
+       <th>
+        嚴重性
+       </th>
+       <th>
+        附註
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="說明" id="20180814_description">
+         說明
+        </h4>
+        <p>
+         <a href="https://www.intel.com/content/www/us/en/architecture-and-technology/l1tf.html">
+          Intel 已揭露
+         </a>
+         下列 CVE：
+        </p>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3615" target="_blank">
+           CVE-2018-3615
+          </a>
+          (發生於
+          <a href="https://en.wikipedia.org/wiki/Software_Guard_Extensions">
+           SGX
+          </a>
+          )
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3620" target="_blank">
+           CVE-2018-3620
+          </a>
+          (發生於作業系統和
+          <a href="https://en.wikipedia.org/wiki/Hyper-Threading">
+           SMT
+          </a>
+          )
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3646" target="_blank">
+           CVE-2018-3646
+          </a>
+          (發生於虛擬化作業)
+         </li>
+        </ul>
+        <p>
+         上述 CVE 統稱為「L1 終端機錯誤」(L1TF)。
+        </p>
+        <p>
+         這些 L1TF 安全漏洞會攻擊處理器層級資料結構的設定，藉此利用推測執行攻擊。「L1」是指 1 級資料快取 (L1D)，這是一種用於加快記憶體存取速度的小型核心資源。
+        </p>
+        <p>
+         歡迎參閱
+         <a href="https://cloud.google.com/blog/products/gcp/protecting-against-the-new-l1tf-speculative-vulnerabilities?hl=zh_tw">
+          Google Cloud 網誌文章
+         </a>
+         ，進一步瞭解這些安全漏洞和 Compute Engine 的解決方法。
+        </p>
+        <h4 data-text="對 Compute Engine 的影響" id="20180814_impact">
+         對 Compute Engine 的影響
+        </h4>
+        <p>
+         用於執行 Compute Engine 及隔離各個客戶工作負載的主機基礎架構具備充分的防護機制，因此未受到已知攻擊的影響。
+        </p>
+        <p>
+         我們建議 Compute Engine 的客戶更新映像檔，以免訪客環境中出現間接的惡意利用活動。對於在 Compute Engine 虛擬機器上執行多用戶群服務的客戶來說，這一點尤為重要。
+        </p>
+        <p>
+         Google Compute Engine 的客戶可以透過下列其中一種方法更新執行個體上的訪客作業系統：
+        </p>
+        <ul>
+         <li>
+          使用修補完成的公開映像檔
+          <a href="https://cloud.google.com/compute/docs/instances/create-start-instance?hl=zh_tw#publicimage">
+           重新建立現有的 VM 執行個體
+          </a>
+          。
+         </li>
+         <li>
+          在現有的執行個體上安裝由作業系統廠商提供的修補程式，並重新啟動經過修補的執行個體。
+         </li>
+        </ul>
+        <h4 data-text="修補完成的映像檔與廠商資源" id="20180814_patched_images">
+         修補完成的映像檔與廠商資源
+        </h4>
+        <p>
+         作業系統廠商發布修補程式資訊之後，我們就會在這裡提供相關連結和前述兩個 CVE 的狀態。您可以使用這些映像檔來重新建立 VM 執行個體。這些公開映像檔的舊有版本未包含這些修補程式，因此無法防範潛在的攻擊活動：
+        </p>
+        <ul>
+         <li>
+          <code>
+           centos-cloud
+          </code>
+          專案：
+          <ul>
+           <li>
+            <code>
+             centos-7-v20180815
+            </code>
+           </li>
+           <li>
+            <code>
+             centos-6-v20180815
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           coreos-cloud
+          </code>
+          專案：
+          <ul>
+           <li>
+            <code>
+             coreos-stable-1800-7-0-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-beta-1855-2-0-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-alpha-1871-0-0-v20180816
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           cos-cloud
+          </code>
+          專案：
+          <ul>
+           <li>
+            <code>
+             cos-stable-66-10452-110-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-stable-67-10575-66-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-beta-68-10718-81-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-dev-69-10895-23-0
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           debian-cloud
+          </code>
+          專案：
+          <ul>
+           <li>
+            <code>
+             debian-9-stretch-v20180820
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           rhel-cloud
+          </code>
+          專案：
+          <ul>
+           <li>
+            <code>
+             rhel-7-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             rhel-6-v20180814
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           rhel-sap-cloud
+          </code>
+          專案：
+          <ul>
+           <li>
+            <code>
+             rhel-7-sap-apps-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             rhel-7-sap-hana-v20180814
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           suse-cloud
+          </code>
+          專案：
+          <ul>
+           <li>
+            <code>
+             sles-15-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp3-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-11-sp4-v20180816
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           suse-sap-cloud
+          </code>
+          專案：
+          <ul>
+           <li>
+            <code>
+             sles-15-sap-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp3-sap-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp2-sap-v20180816
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           ubuntu-os-cloud
+          </code>
+          專案：
+          <ul>
+           <li>
+            <code>
+             ubuntu-1804-bionic-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1604-xenial-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1404-trusty-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1804-bionic-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1604-xenial-v20180814
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           windows-cloud
+          </code>
+          <code>
+           gce-uefi-images
+          </code>
+          和
+          <code>
+           windows-sql-cloud
+          </code>
+          專案：
+          <ul>
+           <li>
+            所有版本編號為
+            <code>
+             -v201800814
+            </code>
+            及較新版本的 Windows Server 和 SQL Server
+            <a class="external" href="https://cloud.google.com/compute/docs/images?hl=zh_tw#os-compute-support" target="_blank">
+             公開映像檔
+            </a>
+            都包含修補程式。
+           </li>
+          </ul>
+         </li>
+        </ul>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3615" target="_blank">
+           CVE-2018-3615
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3620" target="_blank">
+           CVE-2018-3620
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3646" target="_blank">
+           CVE-2018-3646
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="發布日期：2018 年 8 月 6 日" id="20180806">
+     發布日期：2018 年 8 月 6 日
+    </h2>
+    <p>
+     <strong>
+      上次更新時間：太平洋標準時間 2018 年 9 月 5 日 17:00
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        說明
+       </th>
+       <th>
+        嚴重性
+       </th>
+       <th>
+        附註
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="2018 年 9 月 5 日更新" id="20180905_update">
+         2018 年 9 月 5 日更新
+        </h4>
+        <p>
+         US-CERT 於 2018 年 8 月 14 日揭露
+         <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5391">
+          CVE-2018-5391
+         </a>
+         。這個安全漏洞與
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390" target="_blank">
+          CVE-2018-5390
+         </a>
+         均為核心層級的網路安全漏洞，會提高針對不安全系統進行的阻斷服務 (DoS) 攻擊效率。兩者的主要差異在於不肖人士可以透過 IP 連線利用 CVE-2018-5391。我們已更新這則公告，以補充這兩個安全漏洞的相關資訊。
+        </p>
+        <h4 data-text="說明" id="20180806_description">
+         說明
+        </h4>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390" target="_blank">
+          CVE-2018-5390
+         </a>
+         (或稱為「SegmentSmack」) 屬於核心層級的網路安全漏洞，可透過 TCP 連線提高針對不安全系統進行的阻斷服務 (DoS) 攻擊效率。
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5391" target="_blank">
+          CVE-2018-5391
+         </a>
+         (或稱為「FragmentSmack」) 屬於核心層級的網路安全漏洞，可透過 IP 連線提高針對不安全系統進行的阻斷服務 (DoS) 攻擊效率。
+        </p>
+        <h4 data-text="對 Compute Engine 的影響" id="20180806_impact">
+         對 Compute Engine 的影響
+        </h4>
+        <p>
+         執行 Compute Engine VM 的主機基礎架構並未受到影響。處理 Compute Engine VM 傳入與傳出流量的網路基礎架構具備充分的防護機制，因此未受到這個安全漏洞的影響。只會透過
+         <a href="https://cloud.google.com/load-balancing/docs/https/?hl=zh_tw">
+          HTTP(S)
+         </a>
+         、
+         <a href="https://cloud.google.com/load-balancing/docs/ssl/?hl=zh_tw">
+          SSL
+         </a>
+         或
+         <a href="https://cloud.google.com/load-balancing/docs/tcp/?hl=zh_tw">
+          TCP 負載平衡器
+         </a>
+         傳送/接收不受信任網路流量的 Compute Engine VM 已得到保護，不會受到這個安全漏洞的影響。
+        </p>
+        <p>
+         如果 Compute Engine VM 執行未經修補的作業系統，且該作業系統會直接或透過
+         <a href="https://cloud.google.com/load-balancing/docs/network/?hl=zh_tw">
+          網路負載平衡器
+         </a>
+         傳送/接收不受信任的網路流量，這個 VM 就可能受到這類 DoS 攻擊的影響。
+        </p>
+        <p>
+         VM 執行個體的作業系統廠商發布修補程式之後，建議您立即進行更新。
+        </p>
+        <p>
+         Compute Engine 的客戶可以透過下列其中一種方法更新執行個體上的訪客作業系統：
+        </p>
+        <ul>
+         <li>
+          使用修補完成的公開映像檔
+          <a href="https://cloud.google.com/compute/docs/instances/create-start-instance?hl=zh_tw#publicimage">
+           重新建立現有的 VM 執行個體
+          </a>
+          。請參閱下方的已修補公開映像檔清單。
+         </li>
+         <li>
+          在現有的執行個體上安裝由作業系統廠商提供的修補程式，並重新啟動經過修補的執行個體。
+         </li>
+        </ul>
+        <h4 data-text="修補完成的映像檔與廠商資源" id="20180806_patched_images">
+         修補完成的映像檔與廠商資源
+        </h4>
+        <p>
+         當每個作業系統廠商發布修補程式資訊時，我們就會在這裡提供相關連結。
+        </p>
+        <ul>
+         <li>
+          <code>
+           centos-cloud
+          </code>
+          專案 (僅限 CVE-2018-5390)：
+          <ul>
+           <li>
+            <code>
+             centos-7-v20180815
+            </code>
+           </li>
+           <li>
+            <code>
+             centos-6-v20180815
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           coreos-cloud
+          </code>
+          專案 (CVE-2018-5390 和 CVE-2018-5391)：
+          <ul>
+           <li>
+            <code>
+             coreos-stable-1800-7-0-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-beta-1855-2-0-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-alpha-1871-0-0-v20180816
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           cos-cloud
+          </code>
+          專案 (CVE-2018-5390 和 CVE-2018-5391)：
+          <ul>
+           <li>
+            <code>
+             cos-stable-65-10323-98-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-stable-66-10452-109-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-stable-67-10575-65-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-beta-68-10718-76-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-dev-69-10895-16-0
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           debian-cloud
+          </code>
+          專案 (CVE-2018-5390 和 CVE-2018-5391)：
+          <ul>
+           <li>
+            <code>
+             debian-9-stretch-v20180814
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           rhel-cloud
+          </code>
+          專案 (僅限 CVE-2018-5390)：
+          <ul>
+           <li>
+            <code>
+             rhel-7-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             rhel-6-v20180814
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           suse-cloud
+          </code>
+          專案 (CVE-2018-5390 和 CVE-2018-5391)：
+          <ul>
+           <li>
+            <code>
+             sles-15-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp3-v20180814
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           suse-sap-cloud
+          </code>
+          專案 (CVE-2018-5390 和 CVE-2018-5391)：
+          <ul>
+           <li>
+            <code>
+             sles-15-sap-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp3-sap-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp2-sap-v20180816
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           ubuntu-os-cloud
+          </code>
+          專案 (CVE-2018-5390 和 CVE-2018-5391)：
+          <ul>
+           <li>
+            <code>
+             ubuntu-1804-bionic-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1604-xenial-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1404-trusty-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1804-bionic-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1604-xenial-v20180814
+            </code>
+           </li>
+          </ul>
+         </li>
+        </ul>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390" target="_blank">
+           CVE-2018-5390
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5391" target="_blank">
+           CVE-2018-5391
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="發布日期：2018 年 1 月 3 日" id="20180103">
+     發布日期：2018 年 1 月 3 日
+    </h2>
+    <p>
+     <strong>
+      上次更新時間：太平洋標準時間 2018 年 5 月 21 日 15:00
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        說明
+       </th>
+       <th>
+        嚴重性
+       </th>
+       <th>
+        附註
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="2018 年 5 月 21 日更新" id="20180521_update">
+         2018 年 5 月 21 日更新
+        </h4>
+        <p>
+         <a class="external" href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00115.html" target="_blank">
+          Intel 已經揭露
+         </a>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3640" target="_blank">
+          CVE-2018-3640
+         </a>
+         和
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3639" target="_blank">
+          CVE-2018-3639
+         </a>
+         (分別為變種 3a 和變種 4)。與 Spectre 和 Meltdown 前三個變種的情況相同，執行 Compute Engine VM 執行個體的基礎架構具備充分的防護機制，因此未受到這個安全漏洞的影響。由於客戶 VM 執行個體彼此隔離，亦未受影響。另外，Compute Engine 預計將 Intel 的微碼修補程式部署至自有基礎架構。作業系統廠商與供應商提供可於 VM 內部執行的解決方法之後，在單一 VM 執行個體中處理不受信任或多用戶群工作負載的客戶即可啟用這類額外的解決方法。這些微碼修補程式必須通過 Intel 認證，並由 Compute Engine 在實際工作環境中進行測試及驗證後，Compute Engine 才會加以部署。修補程式發布之後，我們會在這個頁面中提供更詳細的時程表與相關最新消息。
+        </p>
+        <h4 data-text="說明" id="20180103_description">
+         說明
+        </h4>
+        <p>
+         這些 CVE 屬於新型攻擊的變種，會利用多種處理器中的推測執行技術。發動這類攻擊之後，未獲授權的使用者就能在多種情況下取得記憶體資料的唯讀存取權。
+        </p>
+        <p>
+         Compute Engine 使用 VM 即時遷移技術來執行主機系統和管理程序更新，因此您無須指派任何人加以管理，也不需要進行強制性維護作業或大規模重新啟動執行個體。不過請注意，無論訪客作業系統是在何種環境中運作，這類作業系統和版本都必須經過修補，否則可能會受到這種新型攻擊的威脅。
+        </p>
+        <p>
+         如要全面瞭解這種攻擊方法的相關技術資訊，請參閱
+         <a class="external" href="https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html" target="_blank">
+          Project Zero 網誌文章
+         </a>
+         。如想取得 Google 解決方法的完整詳細資訊 (包括所有產品專用資訊)，則請參閱
+         <a class="external" href="https://security.googleblog.com/2018/01/todays-cpu-vulnerability-what-you-need.html" target="_blank">
+          Google 安全性網誌文章
+         </a>
+         。
+        </p>
+        <h4 data-text="對 Compute Engine 的影響" id="20180103_impact">
+         對 Compute Engine 的影響
+        </h4>
+        <p>
+         用於執行 Compute Engine 及隔離各個客戶 VM 執行個體的基礎架構具備充分的防護機制，因此未受到已知攻擊的影響。部署我們的解決方法之後，您就能預防不肖人士未經授權即透過 VM 執行個體中運作的應用程式存取主機系統，執行相同主機系統的其他 VM 執行個體也不會遭到未經授權的存取。
+        </p>
+        <p>
+         如要避免虛擬機器執行個體中發生未經授權的存取活動，您必須透過下列其中一種方法更新這些執行個體上的訪客作業系統：
+        </p>
+        <ul>
+         <li>
+          使用經過修補的公開映像檔
+          <a class="external" href="https://cloud.google.com/compute/docs/instances/create-start-instance?hl=zh_tw#publicimage" target="_blank">
+           重新建立現有的 VM 執行個體
+          </a>
+          。請參閱下方的已修補公開映像檔清單。
+         </li>
+         <li>
+          在現有的執行個體上安裝由作業系統廠商提供的修補程式，並重新啟動經過修補的執行個體。各家作業系統廠商已提供相關的修補程式資訊，請見下方連結。
+         </li>
+        </ul>
+        <h4 data-text="修補完成的映像檔與廠商資源" id="20180103_patched_images">
+         修補完成的映像檔與廠商資源
+        </h4>
+        <p class="note">
+         <strong>
+          注意事項：
+         </strong>
+         這則安全性公告通知列出了多項 CVE，但修補完成的映像檔中可能未含所有安全漏洞的修正內容。另外，不同映像檔中提供的攻擊防護方法可能不同。請與您的作業系統廠商聯絡，確認對方在修補程式中解決的 CVE 為何，並瞭解他們採用何種防護方法。
+        </p>
+        <ul>
+         <li>
+          <code>
+           cos-cloud
+          </code>
+          專案：包含可防範變種 2 (
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5715" target="_blank">
+           CVE-2017-5715
+          </a>
+          ) 和變種 3 (
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5754" target="_blank">
+           CVE-2017-5754
+          </a>
+          ) 攻擊的修補程式。在這些映像檔中，Google 是採用
+          <a class="external" href="https://support.google.com/faqs/answer/7625886?hl=zh_tw" target="_blank">
+           Retpoline
+          </a>
+          來防範變種 2 的攻擊活動。
+          <ul>
+           <li>
+            <code>
+             cos-stable-63-10032-71-0
+            </code>
+            或
+            <code>
+             cos-stable
+            </code>
+            映像檔系列
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           centos-cloud
+          </code>
+          專案：
+          <a class="external" href="https://lwn.net/Alerts/CentOS/" target="_blank">
+           CentOS 修補程式資訊
+          </a>
+          <ul>
+           <li>
+            <code>
+             centos-7-v20180104
+            </code>
+            或
+            <code>
+             centos-7
+            </code>
+            映像檔系列
+           </li>
+           <li>
+            <code>
+             centos-6-v20180104
+            </code>
+            或
+            <code>
+             centos-6
+            </code>
+            映像檔系列
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           coreos-cloud
+          </code>
+          專案：
+          <a class="external" href="https://coreos.com/blog/container-linux-meltdown-patch" target="_blank">
+           CoreOS 修補程式資訊
+          </a>
+          <ul>
+           <li>
+            <code>
+             coreos-stable-1576-5-0-v20180105
+            </code>
+            或
+            <code>
+             coreos-stable
+            </code>
+            映像檔系列
+           </li>
+           <li>
+            <code>
+             coreos-beta-1632-1-0-v20180105
+            </code>
+            或
+            <code>
+             coreos-beta
+            </code>
+            映像檔系列
+           </li>
+           <li>
+            <code>
+             coreos-alpha-1649-0-0-v20180105
+            </code>
+            或
+            <code>
+             coreos-alpha
+            </code>
+            映像檔系列
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           debian-cloud
+          </code>
+          專案：
+          <a class="external" href="https://www.debian.org/security/#DSAS" target="_blank">
+           Debian 修補程式資訊
+          </a>
+          <ul>
+           <li>
+            <code>
+             debian-9-stretch-v20180105
+            </code>
+            或
+            <code>
+             debian-9
+            </code>
+            映像檔系列
+           </li>
+           <li>
+            <code>
+             debian-8-jessie-v20180109
+            </code>
+            或
+            <code>
+             debian-8
+            </code>
+            映像檔系列
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           rhel-cloud
+          </code>
+          專案：
+          <a class="external" href="https://access.redhat.com/security/vulnerabilities/speculativeexecution" target="_blank">
+           RHEL 修補程式資訊
+          </a>
+          <ul>
+           <li>
+            <code>
+             rhel-7-v20180104
+            </code>
+            或
+            <code>
+             rhel-7
+            </code>
+            映像檔系列
+           </li>
+           <li>
+            <code>
+             rhel-6-v20180104
+            </code>
+            或
+            <code>
+             rhel-6
+            </code>
+            映像檔系列
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           suse-cloud
+          </code>
+          專案：
+          <a class="external" href="https://www.suse.com/c/suse-addresses-meltdown-spectre-vulnerabilities/" target="_blank">
+           SUSE 修補程式資訊
+          </a>
+          <ul>
+           <li>
+            <code>
+             sles-12-sp3-v20180104
+            </code>
+            或
+            <code>
+             sles-12
+            </code>
+            映像檔系列
+           </li>
+           <li>
+            <code>
+             sles-11-sp4-v20180104
+            </code>
+            或
+            <code>
+             sles-11
+            </code>
+            映像檔系列
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           suse-sap-cloud
+          </code>
+          專案：
+          <a class="external" href="https://www.suse.com/c/suse-addresses-meltdown-spectre-vulnerabilities/" target="_blank">
+           SUSE 修補程式資訊
+          </a>
+          <ul>
+           <li>
+            <code>
+             sles-12-sp3-sap-v20180104
+            </code>
+            或
+            <code>
+             sles-12-sp3-sap
+            </code>
+            映像檔系列
+           </li>
+           <li>
+            <code>
+             sles-12-sp2-sap-v20180104
+            </code>
+            或
+            <code>
+             sles-12-sp2-sap
+            </code>
+            映像檔系列
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           ubuntu-os-cloud
+          </code>
+          專案：
+          <a class="external" href="https://insights.ubuntu.com/2018/01/04/ubuntu-updates-for-the-meltdown-spectre-vulnerabilities/" target="_blank">
+           Ubuntu 修補程式資訊
+          </a>
+          <ul>
+           <li>
+            <code>
+             ubuntu-1710-artful-v20180109
+            </code>
+            或
+            <code>
+             ubuntu-1710
+            </code>
+            映像檔系列
+           </li>
+           <li>
+            <code>
+             ubuntu-1604-xenial-v20180109
+            </code>
+            或
+            <code>
+             ubuntu-1604-lts
+            </code>
+            映像檔系列
+           </li>
+           <li>
+            <code>
+             ubuntu-1404-trusty-v20180110
+            </code>
+            或
+            <code>
+             ubuntu-1404-lts
+            </code>
+            映像檔系列
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           windows-cloud
+          </code>
+          和
+          <code>
+           windows-sql-cloud
+          </code>
+          專案：
+          <ul>
+           <li>
+            所有版本編號為
+            <code>
+             -v20180109
+            </code>
+            及較新版本的 Windows Server 和 SQL Server
+            <a class="external" href="https://cloud.google.com/compute/docs/images?hl=zh_tw#os-compute-support" target="_blank">
+             公開映像檔
+            </a>
+            都包含修補程式。不過，您必須按照 Microsoft 在
+            <a class="external" href="https://support.microsoft.com/en-gb/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution" target="_blank">
+             Windows Server 指引
+            </a>
+            支援公告中提供的建議步驟，在現有和新建立的執行個體上啟用並驗證這些解決方法。
+           </li>
+          </ul>
+         </li>
+        </ul>
+        <p>
+         您可以使用這些映像檔來
+         <a class="external" href="https://cloud.google.com/compute/docs/instances/create-start-instance?hl=zh_tw#publicimage" target="_blank">
+          重新建立 VM 執行個體
+         </a>
+         。這些公開映像檔的舊有版本未包含這些修補程式，因此無法防範潛在的攻擊活動。
+        </p>
+        <h4 data-text="硬體廠商提供的修補程式" id="20180103_hardware_patches">
+         硬體廠商提供的修補程式
+        </h4>
+        <p>
+         NVIDIA 提供經過修補的驅動程式，可防範針對已安裝 NVIDIA® 驅動程式軟體的系統進行的潛在攻擊。如想瞭解哪些驅動程式版本已修補完成，請參閱 NVIDIA 的
+         <a class="external" href="http://nvidia.custhelp.com/app/answers/detail/a_id/4611" target="_blank">
+          NVIDIA GPU 顯示器驅動程式安全性更新
+         </a>
+         相關公告。
+        </p>
+        <h4 data-text="修訂版本記錄：" id="20180103_history">
+         修訂版本記錄：
+        </h4>
+        <ul>
+         <li>
+          2018 年 5 月 21 日 14:00 (太平洋標準時間)：新增 2018 年 5 月 21 日揭露的 2 個新型變種相關資訊。
+         </li>
+         <li>
+          2018 年 1 月 10 日 15:00 (太平洋標準時間)：新增修補完成的 Windows Server 和 SQL Server 公開映像檔相關資訊。
+         </li>
+         <li>
+          2018 年 1 月 10 日 10:15 (太平洋標準時間)：將多個 Ubuntu 映像檔新增至已修補公開映像檔清單。
+         </li>
+         <li>
+          2018 年 1 月 10 日 09:50 (太平洋標準時間)：新增硬體廠商提供的修補程式相關指南。
+         </li>
+         <li>
+          2018 年 1 月 3 日至 2018 年 1 月 9 日：多次修改已修補公開映像檔清單的內容。
+         </li>
+        </ul>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5753" target="_blank">
+           CVE-2017-5753
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5715" target="_blank">
+           CVE-2017-5715
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5754" target="_blank">
+           CVE-2017-5754
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3640" target="_blank">
+           CVE-2018-3640
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3639" target="_blank">
+           CVE-2018-3639
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="發布日期：2017 年 10 月 2 日" id="20171002">
+     發布日期：2017 年 10 月 2 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        說明
+       </th>
+       <th>
+        嚴重性
+       </th>
+       <th>
+        附註
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="說明" id="heading_4">
+         說明
+        </h4>
+        <p>
+         <a class="external" href="http://www.thekelleys.org.uk/dnsmasq/doc.html" target="_blank">
+          Dnsmasq
+         </a>
+         提供 DNS、DHCP、路由器通告和網路開機服務。這個軟體通常安裝在桌機版本的 Linux (如 Ubuntu)、家用路由器和 IoT 裝置等各種系統中，並且廣泛使用於開放式網路和內部私人網絡。
+        </p>
+        <p>
+         Google 在定期的內部安全評估過程中，發現了七項值得注意的問題。在確定這些問題的嚴重性後，我們研究了它們的影響和可利用性，然後為每個問題建立內部概念驗證。我們還與 Dnsmasq 的維護人員 Simon Kelly 合作，製作了相應的修補程式來減緩問題。
+        </p>
+        <p>
+         在截至 2017 年 9 月 5 日的審查過程中，我們的團隊發現了三個潛在的遠端執行程式碼問題、一個資訊外洩和三個阻斷服務安全漏洞，這些問題會影響專案在 git 伺服器上的最新版本。
+        </p>
+        <p>
+         這些修補程式會回溯既往，並提交至
+         <a class="external" href="http://thekelleys.org.uk/gitweb/?p=dnsmasq.git;a=summary" target="_blank">
+          專案的 Git 存放區
+         </a>
+         。
+        </p>
+        <h4 data-text="對 Compute Engine 的影響" id="compute-engine">
+         對 Compute Engine 的影響
+        </h4>
+        <p>
+         根據預設，Dnsmasq 僅安裝在使用
+         <a class="external" href="https://wikipedia.org/wiki/NetworkManager" target="_blank">
+          NetworkManager
+         </a>
+         的映像檔中，且預設為停用狀態。下列 Compute Engine 公開映像檔已安裝 Dnsmasq：
+        </p>
+        <ul>
+         <li>
+          Ubuntu 16.04、16.10、17.04
+         </li>
+         <li>
+          CentOS 7
+         </li>
+         <li>
+          RHEL 7
+         </li>
+        </ul>
+        <p>
+         但是，其他映像檔可能已安裝 Dnsmasq，做為其他套件的依附元件。我們建議您更新 Debian、Ubuntu、CentOS、RHEL、SLES 和 OpenSuse 執行個體，以使用最新的作業系統映像檔。CoreOS 和 Container-Optimized OS 不會受到影響，Windows 映像檔也不會受影響。
+        </p>
+        <p>
+         執行 Debian 和 Ubuntu 的執行個體，可於執行個體中使用以下指令來更新：
+        </p>
+        <pre>
+
+sudo apt-get -y update</pre>
+        <pre>
+
+sudo apt-get -y dist-upgrade</pre>
+        <p>
+         如果是 Red Hat Enterprise Linux 和 CentOS 執行個體，請執行：
+        </p>
+        <pre>
+
+sudo yum -y upgrade</pre>
+        <p>
+         如果是 SLES 和 OpenSUSE 映像檔，請執行：
+        </p>
+        <pre>
+
+sudo zypper up</pre>
+        <p>
+         除了執行手動更新指令之外，也可以使用個別作業系統的
+         <a href="https://cloud.google.com/compute/docs/instances/create-start-instance?hl=zh_tw#publicimage">
+          映像檔系列，重新建立 VM 執行個體
+         </a>
+         。
+        </p>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14491" target="_blank">
+           CVE-2017-14491
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14492" target="_blank">
+           CVE-2017-14492
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14493" target="_blank">
+           CVE-2017-14493
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14494" target="_blank">
+           CVE-2017-14494
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14495" target="_blank">
+           CVE-2017-14495
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14496" target="_blank">
+           CVE-2017-14496
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-13704" target="_blank">
+           CVE-2017-13704
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="發布日期：2016 年 10 月 26 日" id="20161026">
+     發布日期：2016 年 10 月 26 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        說明
+       </th>
+       <th>
+        嚴重性
+       </th>
+       <th>
+        附註
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="說明" id="heading_5">
+         說明
+        </h4>
+        <p>
+         CVE-2016-5195 是 Linux 核心的記憶體子系統在處理 COW 時出現競爭狀況，破壞唯讀與寫入權限的專屬對應關係。
+        </p>
+        <p>
+         未經授權的本機使用者可利用這個安全漏洞取得對應其他唯讀記憶體的編寫存取權，從而提高他們在系統中的權限。
+        </p>
+        <p>
+         詳情請參閱
+         <a class="external" href="https://github.com/dirtycow/dirtycow.github.io/wiki/VulnerabilityDetails" target="_blank">
+          Dirty COW 常見問題
+         </a>
+         。
+        </p>
+        <h4 data-text="對 Compute Engine 的影響" id="compute-engine_1">
+         對 Compute Engine 的影響
+        </h4>
+        <p>
+         Compute Engine 上所有的 Linux 發行版和各種版本都受到影響。大多數的執行個體會自動下載並安裝較新的核心。但是，必須重新啟動才能修補正在運作中的系統。
+        </p>
+        <p>
+         使用下列的 Compute Engine 映像檔新建或重新建立的執行個體已安裝修補過的核心。
+        </p>
+        <ul>
+         <li>
+          <code>
+           centos-6-v20161026
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-7-v20161025
+          </code>
+         </li>
+         <li>
+          <code>
+           coreos-alpha-1192-2-0-v20161021
+          </code>
+         </li>
+         <li>
+          <code>
+           coreos-beta-1185-2-0-v20161021
+          </code>
+         </li>
+         <li>
+          <code>
+           coreos-stable-1122-3-0-v20161021
+          </code>
+         </li>
+         <li>
+          <code>
+           debian-8-jessie-v20161020
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-6-v20161026
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-7-v20161024
+          </code>
+         </li>
+         <li>
+          <code>
+           sles-11-sp4-v20161021
+          </code>
+         </li>
+         <li>
+          <code>
+           sles-12-sp1-v20161021
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1204-precise-v20161020
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1404-trusty-v20161020
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1604-xenial-v20161020
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1610-yakkety-v20161020
+          </code>
+         </li>
+        </ul>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <a class="external" href="https://github.com/dirtycow/dirtycow.github.io/wiki/VulnerabilityDetails" target="_blank">
+         CVE-2016-5195
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="發布日期：2016 年 2 月 16 日" id="20160216">
+     發布日期：2016 年 2 月 16 日
+    </h2>
+    <p>
+     <strong>
+      上次更新時間：2016 年 2 月 22 日
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        說明
+       </th>
+       <th>
+        嚴重性
+       </th>
+       <th>
+        附註
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="說明" id="heading_6">
+         說明
+        </h4>
+        <p>
+         CVE-2015-7547 是 glibc DNS 用戶端解析器會導致使用
+         <code>
+          getaddrinfo()
+         </code>
+         程式庫函式的軟體容易出現堆疊型緩衝區溢位問題的安全漏洞。
+        攻擊者可以藉由使用此函式的軟體，以攻擊者控制的網域名稱、攻擊者控制的 DNS 伺服器或透過攔截式攻擊來利用這項漏洞。
+        </p>
+        <p>
+         詳情請參閱
+         <a href="https://googleonlinesecurity.blogspot.ca/2016/02/cve-2015-7547-glibc-getaddrinfo-stack.html">
+          Google 線上安全性網誌
+         </a>
+         或
+         <a class="external" href="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2015-7547" target="_blank">
+          常見安全漏洞與資料外洩
+         </a>
+         (Common Vulnerabilities and Exposures，簡稱 CVE) 資料庫。
+        </p>
+        <h4 data-text="對 Compute Engine 的影響" id="compute-engine_2">
+         對 Compute Engine 的影響
+        </h4>
+        <p>
+         <strong>
+          更新 (2016 年 2 月 22 日)：
+         </strong>
+        </p>
+        <p>
+         現可使用 CoreOS、SLES 和 OpenSUSE 映像檔，重新建立您的執行個體：
+        </p>
+        <ul>
+         <li>
+          <code>
+           coreos-alpha-962-0-0-v20160218
+          </code>
+         </li>
+         <li>
+          <code>
+           coreos-beta-899-7-0-v20160218
+          </code>
+         </li>
+         <li>
+          <code>
+           coreos-stable-835-13-0-v20160218
+          </code>
+         </li>
+         <li>
+          <code>
+           opensuse-13-2-v20160222
+          </code>
+         </li>
+         <li>
+          <code>
+           opensuse-leap-42-1-v20160222
+          </code>
+         </li>
+         <li>
+          <code>
+           sles-11-sp4-v20160222
+          </code>
+         </li>
+         <li>
+          <code>
+           sles-12-sp1-v20160222
+          </code>
+         </li>
+        </ul>
+        <p>
+         <strong>
+          更新 (2016 年 2 月 17 日)：
+         </strong>
+        </p>
+        <p>
+         現可在 Ubuntu 12.04 LTS、Ubuntu 14.04 LTS 和 Ubuntu 15.10 執行個體上，使用下列指令來更新：
+        </p>
+        <ol>
+         <li>
+          <code>
+           user@my-instance:~$ sudo apt-get -y update
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo apt-get -y dist-upgrade
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo reboot
+          </code>
+         </li>
+        </ol>
+        <p>
+         除了執行手動更新指令之外，也可以利用下列的新映像檔來重新建立執行個體：
+        </p>
+        <ul>
+         <li>
+          <code>
+           backports-debian-7-wheezy-v20160216
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-6-v20160216
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-7-v20160216
+          </code>
+         </li>
+         <li>
+          <code>
+           debian-7-wheezy-v20160216
+          </code>
+         </li>
+         <li>
+          <code>
+           debian-8-jessie-v20160216
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-6-v20160216
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-7-v20160216
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1204-precise-v20160217a
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1404-trusty-v20160217a
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1510-wily-v20160217
+          </code>
+         </li>
+        </ul>
+        <p>
+         我們雖然不知道任何以 glibc 預設配置透過 Compute Engine 的 DNS 解析器來利用這個安全漏洞的方法。但是，您仍應盡速修補您的虛擬機器執行個體，因為每當發現新的漏洞，過一段時間可能就會出現新的攻擊方法。如果已啟用 edns0 (預設為停用)，您應該在完成執行個體的修補前先改為停用。
+        </p>
+        <p>
+         <strong>
+          原始公告：
+         </strong>
+        </p>
+        <p>
+         您的 Linux 發行版可能存有安全漏洞。如果您是使用 Linux 作業系統的 Compute Engine 客戶，需更新執行個體的作業系統映像檔，以消除這個漏洞。
+        </p>
+        <p>
+         執行 Debian 的執行個體，可於執行個體中使用以下指令來更新：
+        </p>
+        <ol>
+         <li>
+          <code>
+           user@my-instance:~$ sudo apt-get -y update
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo apt-get -y dist-upgrade
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo reboot
+          </code>
+         </li>
+        </ol>
+        <p>
+         另外，我們建議您為 Debian 執行個體安裝
+         <a class="external" href="https://wiki.debian.org/UnattendedUpgrades" target="_blank">
+          UnattendedUpgrades
+         </a>
+         。
+        </p>
+        <p>
+         如果是 Red Hat Enterprise Linux 執行個體，指令如下：
+        </p>
+        <ul>
+         <li>
+          <code>
+           user@my-instance:~$ sudo yum -y upgrade
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo reboot
+          </code>
+         </li>
+        </ul>
+        <p>
+         只要有作業系統維護人員針對這個漏洞發布修補程式，或者 Compute Engine 釋出了作業系統映像檔更新，我們都會更新公告。
+        </p>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <a class="external" href="https://googleonlinesecurity.blogspot.ca/2016/02/cve-2015-7547-glibc-getaddrinfo-stack.html" target="_blank">
+         CVE-2015-7547
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="發布日期：2015 年 3 月 19 日" id="20150319">
+     發布日期：2015 年 3 月 19 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        說明
+       </th>
+       <th>
+        嚴重性
+       </th>
+       <th>
+        附註
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="說明" id="heading_7">
+         說明
+        </h4>
+        <p>
+         CVE-2015-1427 是 Groovy 指令碼引擎
+         <a class="external" href="https://www.elastic.co/products/elasticsearch" target="_blank">
+          Elasticsearch
+         </a>
+         在 1.3.8 版以前和 1.4.3 之前任何 1.4.x 版的漏洞，使遠端攻擊者可繞過沙箱保護機制並執行任何的殼層指令。
+        </p>
+        <p>
+         詳情請參閱
+         <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1427" target="_blank">
+          國家安全漏洞資料庫
+         </a>
+         (National Vulnerability Database，簡稱 NVD) 或
+         <a class="external" href="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2015-1427" target="_blank">
+          常見安全漏洞與資料外洩
+         </a>
+         (Common Vulnerabilities and Exposures，簡稱 CVE) 資料庫。
+        </p>
+        <h4 data-text="對 Compute Engine 的影響" id="compute-engine_3">
+         對 Compute Engine 的影響
+        </h4>
+        <p>
+         如果您在 Compute Engine 執行個體上執行 Elasticsearch，應將 Elasticsearch 版本升級至 1.4.3 以上版本。如果您已經升級了 Elasticsearch 軟體，則不會受到這個安全漏洞的影響。
+        </p>
+        <p>
+         如果您尚未升級至 Elasticsearch 1.4.3 以上版本，可
+         <a class="external" href="http://www.elastic.co/guide/en/elasticsearch/reference/current/rolling-upgrades.html" target="_blank">
+          執行漸進式升級
+         </a>
+         。
+        </p>
+        <p>
+         如果您是在
+         <a href="https://console.cloud.google.com/?hl=zh_tw" target="console">
+          Google Cloud Platform Console
+         </a>
+         中使用
+         <a href="https://cloud.google.com/solutions/elasticsearch/click-to-deploy?hl=zh_tw">
+          點擊部署
+         </a>
+         來部署 Elasticsearch，您可以透過
+         <a href="https://console.cloud.google.com/projectselector/deployments?hl=zh_tw">
+          刪除部署項目
+         </a>
+         來移除執行 Elasticsearch 的執行個體。
+        </p>
+        <p>
+         Google Cloud Platform 團隊正在研究修復方法，以便部署 Elasticsearch 的更新版本。但是
+         <a href="https://console.cloud.google.com/?hl=zh_tw" target="console">
+          GCP 主控台
+         </a>
+         的點擊部署功能尚不適用這項修正。
+        </p>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1427" target="_blank">
+         CVE-2015-1427
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="發布日期：2015 年 1 月 29 日" id="20150129">
+     發布日期：2015 年 1 月 29 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        說明
+       </th>
+       <th>
+        嚴重性
+       </th>
+       <th>
+        附註
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="說明" id="heading_8">
+         說明
+        </h4>
+        <p>
+         <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-0235" target="_blank">
+          CVE-2015-0235 (Ghost)
+         </a>
+         是 glibc 程式庫中的一個安全漏洞。
+        </p>
+        <p>
+         App Engine、Cloud Storage、BigQuery 和 CloudSQL 客戶無需採取任何行動。Google 的伺服器已經更新，因此不會受到這個漏洞的影響。
+        </p>
+        <p>
+         Compute Engine 的客戶可能需要更新 OS 映像檔。
+        </p>
+        <h4 data-text="對 Compute Engine 的影響" id="compute-engine_4">
+         對 Compute Engine 的影響
+        </h4>
+        <p>
+         您的 Linux 發行版可能有安全漏洞。如果 Compute Engine 客戶使用的是 Debian 7、Debian 7 backports、Ubuntu 12.04 LTS、Red Hat Enterprise Linux、CentOS 或 SUSE Linux Enterprise Server 11 SP3，則需更新執行個體的作業系統映像檔，以消除這個漏洞。
+        </p>
+        <p>
+         這個漏洞不影響 Ubuntu 14.04 LTS、Ubuntu 14.10 或 SUSE Linux Enterprise Server 12。
+        </p>
+        <p>
+         我們建議您升級您的 Linux 發行版。執行 Debian 7、Debian 7 backports 或 Ubuntu 12.04 LTS 的執行個體，可於執行個體中使用以下指令來更新：
+        </p>
+        <ol>
+         <li>
+          <code>
+           user@my-instance:~$ sudo apt-get update
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo apt-get -y upgrade
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo reboot
+          </code>
+         </li>
+        </ol>
+        <p>
+         如果是 Red Hat Enterprise Linux 或 CentOS 執行個體，指令如下：
+        </p>
+        <ol>
+         <li>
+          <code>
+           user@my-instance:~$ sudo yum -y upgrade
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo reboot
+          </code>
+         </li>
+        </ol>
+        <p>
+         如果是 SUSE Linux Enterprise Server 11 SP3 執行個體，指令如下：
+        </p>
+        <ol>
+         <li>
+          <code>
+           user@my-instance:~$ sudo zypper --non-interactive up
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo reboot
+          </code>
+         </li>
+        </ol>
+        <p>
+         除了執行手動更新指令之外，使用者也可利用下列的新映像檔重新建立執行個體：
+        </p>
+        <ul>
+         <li>
+          <code>
+           debian-7-wheezy-v20150127
+          </code>
+         </li>
+         <li>
+          <code>
+           backports-debian-7-wheezy-v20150127
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-6-v20150127
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-7-v20150127
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-6-v20150127
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-7-v20150127
+          </code>
+         </li>
+         <li>
+          <code>
+           sles-11-sp3-v20150127
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1204-precise-v20150127
+          </code>
+         </li>
+        </ul>
+        <h4 data-text="對 Google 代管 VM 的影響" id="google-vm">
+         對 Google 代管 VM 的影響
+        </h4>
+        <p>
+         使用
+         <code>
+          gcloud preview app deploy
+         </code>
+         的代管 VM 使用者必須以
+         <code>
+          gcloud preview app setup-managed-vms
+         </code>
+         更新基本 Docker 容器，並透過
+         <code>
+          gcloud preview app deploy
+         </code>
+         重新部署各個運作中的應用程式。利用
+         <code>
+          appcfg
+         </code>
+         進行部署的使用者無需採取任何行動，部署項目就會自動升級。
+        </p>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-0235" target="_blank">
+         CVE-2015-0235
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="發布日期：2014 年 10 月 15 日" id="20141015">
+     發布日期：2014 年 10 月 15 日
+    </h2>
+    <p>
+     <strong>
+      上次更新時間：2014 年 10 月 17 日
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        說明
+       </th>
+       <th>
+        嚴重性
+       </th>
+       <th>
+        附註
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="說明" id="heading_9">
+         說明
+        </h4>
+        <p>
+         CVE-2014-3566 (又稱為 POODLE) 是 SSL 3.0 版在設計上的一個安全漏洞。這個漏洞讓網路攻擊者能計算出安全連線中的明文。詳情請參閱我們關於安全漏洞的
+         <a href="http://googleonlinesecurity.blogspot.com/2014/10/this-poodle-bites-exploiting-ssl-30.html">
+          網誌文章
+         </a>
+         。
+        </p>
+        <p>
+         App Engine、Cloud Storage、BigQuery 和 CloudSQL 客戶無需採取任何行動。Google 的伺服器已經更新，因此不會受到這個漏洞的影響。Compute Engine 的客戶需要更新 OS 映像檔。
+        </p>
+        <h4 data-text="對 Compute Engine 的影響" id="compute-engine_5">
+         對 Compute Engine 的影響
+        </h4>
+        <p>
+         <strong>
+          更新 (2014 年 10 月 17 日)：
+         </strong>
+        </p>
+        <p>
+         如果您使用 SSLv3，可能會受到攻擊。Compute Engine 客戶需更新執行個體的作業系統映像檔，以消除這個漏洞。
+        </p>
+        <p>
+         我們建議您升級您的 Linux 發行版。執行 Debian 的執行個體，可於執行個體中使用以下指令來更新：
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo apt-get update
+user@my-instance:~$ sudo apt-get -y upgrade
+user@my-instance:~$ sudo reboot</pre>
+        <p>
+         如果是 CentOS 執行個體，指令如下：
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo yum -y upgrade
+user@my-instance:~$ sudo reboot</pre>
+        <p>
+         除了執行手動更新指令之外，使用者也可利用下列的新映像檔重新建立執行個體：
+        </p>
+        <ul>
+         <li>
+          <code>
+           centos-6-v20141016
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-7-v20141016
+          </code>
+         </li>
+         <li>
+          <code>
+           debian-7-wheezy-v20141017
+          </code>
+         </li>
+         <li>
+          <code>
+           backports-debian-7-wheezy-v20141017
+          </code>
+         </li>
+        </ul>
+        <p>
+         我們有映像檔後，將更新 RHEL 和 SLES 映像檔公告。在此期間，RHEL 使用者可以
+         <a class="external" href="https://access.redhat.com/articles/1232123" target="_blank">
+          直接諮詢 Red Hat
+         </a>
+         ，以獲取更多資訊。
+        </p>
+        <p>
+         <strong>
+          原始公告：
+         </strong>
+        </p>
+        <p>
+         Compute Engine 客戶需更新執行個體的作業系統映像檔，以消除這個漏洞。一旦有新的作業系統映像檔可使用時，我們將更新這則安全公告與操作說明。
+        </p>
+       </td>
+       <td>
+        中
+       </td>
+       <td>
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3566" target="_blank">
+         CVE-2014-3566
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="發布日期：2014 年 9 月 24 日" id="20140924">
+     發布日期：2014 年 9 月 24 日
+    </h2>
+    <p>
+     <strong>
+      上次更新時間：2014 年 9 月 29 日
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        說明
+       </th>
+       <th>
+        嚴重性
+       </th>
+       <th>
+        附註
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="說明" id="heading_10">
+         說明
+        </h4>
+        <p>
+         這個 bash 中的錯誤 (CVE-2014-6271) 會根據任何攻擊者控制的環境變數進行剖析，讓攻擊者得以從遠端執行程式碼。最可能的利用手法是透過對暴露於網路伺服器的 CGI 指令碼進行惡意 HTTP 要求。如需詳細資訊，請參閱
+         <a class="external" href="http://seclists.org/oss-sec/2014/q3/650" target="_blank">
+          錯誤說明
+         </a>
+         。
+        </p>
+        <p>
+         除了 2014 年 9 月 26 日以前的 Compute Engine 客體 OS 映像檔外，Google Cloud Platform 產品上的這個 bash 漏洞都已獲得緩解。請參閱下面的步驟來排除 Compute Engine 映像檔中的錯誤。
+        </p>
+        <h4 data-text="對 Compute Engine 的影響" id="compute-engine_6">
+         對 Compute Engine 的影響
+        </h4>
+        <p>
+         這個錯誤可能會影響使用 CGI 指令碼的所有網站。此外，也可能會影響仰賴 PHP、Perl、Python、SSI、JAVA、C++ 和 Servlet 之類的網站，透過呼叫像是
+         <code>
+          popen
+         </code>
+         、
+         <code>
+          system
+         </code>
+         、
+         <code>
+          shell_exec
+         </code>
+         或類似的 API 調用殼層指令。若系統是透過如 SSH 指令限制或 bash 限制殼層等機制，試圖將受控管的登入存取權開放給受限制的使用者，則也可能會受到影響。
+        </p>
+        <p>
+         <strong>
+          更新 (2014 年 9 月 29 日)：
+         </strong>
+        </p>
+        <p>
+         除了執行下列的手動更新指令之外，使用者現在也可以選擇利用映像檔重新建立執行個體，以便防範其他的 bash 安全性錯誤相關安全漏洞問題，其中包含
+         <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7169" target="_blank">
+          CVE-2014-7169
+         </a>
+         、
+         <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6277" target="_blank">
+          CVE-2014-6277
+         </a>
+         、
+         <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6278" target="_blank">
+          CVE-2014-6278
+         </a>
+         、
+         <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7186" target="_blank">
+          CVE-2014-7186
+         </a>
+         和
+         <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7187" target="_blank">
+          CVE-2014-7187
+         </a>
+         。
+使用下列新映像檔來重新建立您的執行個體：
+        </p>
+        <ul>
+         <li>
+          <code>
+           centos-6-v20140926
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-7-v20140926
+          </code>
+         </li>
+         <li>
+          <code>
+           debian-7-wheezy-v20140926
+          </code>
+         </li>
+         <li>
+          <code>
+           backports-debian-7-wheezy-v20140926
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-6-v20140926
+          </code>
+         </li>
+        </ul>
+        <p>
+         <strong>
+          更新 (2014 年 9 月 25 日)：
+         </strong>
+        </p>
+        <p>
+         使用者現可選擇重新建立執行個體，而不必執行手動更新。
+如要重新建立您的執行個體，請使用以下已對這個安全漏洞進行修正的新映像檔：
+        </p>
+        <ul>
+         <li>
+          <code>
+           backports-debian-7-wheezy-v20140924
+          </code>
+         </li>
+         <li>
+          <code>
+           debian-7-wheezy-v20140924
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-6-v20140924
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-6-v20140924
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-7-v20140924
+          </code>
+         </li>
+        </ul>
+        <p>
+         至於 RHEL 和 SUSE 映像檔，可於執行個體上使用下列指令來手動更新：
+        </p>
+        <pre>
+
+# RHEL instances
+user@my-instance:~$ sudo yum -y upgrade
+
+# SUSE instances
+user@my-instance:~$ sudo zypper --non-interactive up</pre>
+        <p>
+         <strong>
+          原始公告：
+         </strong>
+        </p>
+        <p>
+         我們建議您升級您的 Linux 發行版。如果是執行 Debian 的執行個體，您可於執行個體中使用以下指令來更新：
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo apt-get update
+user@my-instance:~$ sudo apt-get -y upgrade
+</pre>
+        <p>
+         如果是 CentOS 執行個體，指令如下：
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo yum -y upgrade</pre>
+        <p>
+         如需詳細信息，請查看個別的 Linux 發行版公告：
+        </p>
+        <ul>
+         <li>
+          原始修補程式：
+          <a class="external" href="http://ftp.gnu.org/gnu/bash/" target="_blank">
+           http://ftp.gnu.org/gnu/bash/
+          </a>
+          (請見結尾為 *-patches 的項目，以找到適當版本)
+         </li>
+         <li>
+          Debian：
+          <a class="external" href="https://lists.debian.org/debian-security-announce/2014/msg00220.html" target="_blank">
+           [SECURITY] [DSA 3032-1] bash 安全性更新
+          </a>
+         </li>
+         <li>
+          RHEL:
+          <ul>
+           <li>
+            <a class="external" href="https://www.redhat.com/archives/rhsa-announce/2014-September/msg00048.html" target="_blank">
+             RHSA-2014:1293-01
+            </a>
+           </li>
+           <li>
+            <a class="external" href="https://www.redhat.com/archives/rhsa-announce/2014-September/msg00049.html" target="_blank">
+             RHSA-2014:1294-01
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          CentOS 5：
+          <a class="external" href="http://lists.centos.org/pipermail/centos-announce/2014-September/020582.html" target="_blank">
+           [CentOS-通告] CESA-2014:1293
+          </a>
+         </li>
+         <li>
+          CentOS 6：
+          <a class="external" href="http://lists.centos.org/pipermail/centos-announce/2014-September/020585.html" target="_blank">
+           [CentOS-通告] CESA-2014:1293
+          </a>
+         </li>
+         <li>
+          CentOS 7：
+          <a class="external" href="http://lists.centos.org/pipermail/centos-announce/2014-September/020583.html" target="_blank">
+           [CentOS-通告] CESA-2014:1293
+          </a>
+         </li>
+        </ul>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7169" target="_blank">
+         CVE-2014-7169
+        </a>
+        、
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6271" target="_blank">
+         CVE-2014-6271
+        </a>
+        、
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6277" target="_blank">
+         CVE-2014-6277
+        </a>
+        、
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6278" target="_blank">
+         CVE-2014-6278
+        </a>
+        、
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7186" target="_blank">
+         CVE-2014-7186
+        </a>
+        、
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7187" target="_blank">
+         CVE-2014-7187
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="發布日期：2014 年 7 月 25 日" id="20140618">
+     發布日期：2014 年 7 月 25 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        說明
+       </th>
+       <th>
+        嚴重性
+       </th>
+       <th>
+        附註
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="說明" id="heading_11">
+         說明
+        </h4>
+        <p>
+         <a class="external" href="http://www.elasticsearch.org/overview/logstash/" target="_blank">
+          Elasticsearch Logstash
+         </a>
+         容易受到 OS 指令注入攻擊，這會允許未經授權的修改和資料揭露。攻擊者可以向任何 Logstash 的資料來源傳送蓄意設計的事件，允許攻擊者使用 Logstash 處理程序的權限來執行指令。
+        </p>
+        <h4 data-text="對 Compute Engine 的影響" id="compute-engine_7">
+         對 Compute Engine 的影響
+        </h4>
+        <p>
+         這個安全漏洞會影響 Elasticsearch Logstash 版本低於 1.4.2 並啟用 zabbix 或 nagios_nsca 輸出的所有 Compute Engine 執行個體。為了防止攻擊，您可以：
+        </p>
+        <ul>
+         <li>
+          升級到 Logstash 1.4.2
+         </li>
+         <li>
+          為 1.3.x 版套用修補程式
+         </li>
+         <li>
+          停用
+          <code>
+           zabbix
+          </code>
+          與
+          <code>
+           nagios_nsca
+          </code>
+          輸出。
+         </li>
+        </ul>
+        <p>
+         深入閱讀
+         <a class="external" href="http://www.elasticsearch.org/blog/logstash-1-4-2/" target="_blank">
+          Logstash 網誌
+         </a>
+         的內容。
+        </p>
+        <p>
+         Elasticsearch 建議
+         <a class="external" href="http://www.elasticsearch.org/blog/scripting-security/" target="_blank">
+          使用防火牆
+         </a>
+         來防止不受信任的 IP 進行遠端存取。
+        </p>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-4326" target="_blank">
+         CVE-2014-4326
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="發布日期：2014 年 6 月 18 日" id="20140618">
+     發布日期：2014 年 6 月 18 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        說明
+       </th>
+       <th>
+        嚴重性
+       </th>
+       <th>
+        附註
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="說明" id="heading_12">
+         說明
+        </h4>
+        <p>
+         我們想花點時間來回應客戶對於 Google Cloud Platform 上執行的 Docker 容器安全性可能會有的任何疑慮。
+採用支援 Docker 容器、容器最佳化虛擬機器或開放原始碼 Kubernetes 排程器的 Google App Engine 擴充功能的客戶，可能都會有這些疑慮。
+        </p>
+        <p>
+         Docker 已針對這個問題提供完善的說明，按
+         <a class="external" href="http://blog.docker.com/2014/06/docker-container-breakout-proof-of-concept-exploit/" target="_blank">
+          這裡
+         </a>
+         即可瀏覽他們的網誌回應內容。請注意，一如他們在回覆內容中所說，此次發現的問題僅存在於未正式推出的舊有版本 Docker 0.11。
+        </p>
+        <p>
+         雖然全世界都在思考容器安全性問題，但我們想強調的是，以 Linux 應用程式容器為基礎的解決方案 (尤其是 Docker 容器) 可以完全在 Google Cloud Platform 的虛擬機器 (Google Compute Engine) 中運作。雖然我們支持 Docker 社群加強在 Linux 應用程式容器堆疊上的努力，但我們認識到這是一項新的技術，而且牽涉範圍廣大。我們相信就目前來說，完整的管理程序（虛擬機器）提供了更精簡和更具防禦性的介面區。虛擬機器從一開始就是為隔離惡意工作負載而設計，並盡量減少程式碼錯誤的可能性和影響。
+        </p>
+        <p>
+         我們的客戶可以放心，他們和任何可能具有惡意程式碼的第三方之間，存在全面的管理程序防線。如果我們認為 Linux 應用程式容器堆疊的穩健程度，已足以支援多租戶工作負載時，我們將會讓社群知道這一點。就目前來說，Linux 應用程式容器不會取代虛擬機器。這是完成更多工作的方式。
+        </p>
+       </td>
+       <td>
+        低
+       </td>
+       <td>
+        <a class="external" href="http://blog.docker.com/2014/06/docker-container-breakout-proof-of-concept-exploit/" target="_blank">
+         Docker 網誌文章
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="發布日期：2014 年 6 月 5 日" id="20140605">
+     發布日期：2014 年 6 月 5 日
+    </h2>
+    <p>
+     <strong>
+      上次更新時間：2014 年 6 月 9 日
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        說明
+       </th>
+       <th>
+        嚴重性
+       </th>
+       <th>
+        附註
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="說明" id="heading_13">
+         說明
+        </h4>
+        <p>
+         OpenSSL 在處理
+         <code>
+          ChangeCipherSpec
+         </code>
+         訊息上有瑕疵，導致未與握手狀態機器建立正確繫結。因此可在握手處理過程中，將訊息提前注入。如此一來，攻擊者就能蓄意操弄握手作業的漏洞，強行在 OpenSSL SSL/TLS 用戶端和伺服器中使用安全性低的加密材料。這可以用於攔截式 (MITM) 攻擊手法，讓攻擊者可以解密和修改受攻擊客戶端和伺服器的流量。
+        </p>
+        <p>
+         這個問題已標識為
+         <a class="external" href="https://www.openssl.org/news/secadv/20140605.txt" target="_blank">
+          CVE-2014-0224
+         </a>
+         。OpenSSL 團隊已修正了這個問題，並提醒 OpenSSL 社群更新 OpenSSL。
+        </p>
+        <h4 data-text="對 Compute Engine 的影響" id="compute-engine_8">
+         對 Compute Engine 的影響
+        </h4>
+        <p>
+         這個安全漏洞會影響所有使用 OpenSSL 的 Compute Engine 執行個體，包括 Debian、CentOS、Red Hat Enterprise Linux 和 SUSE Linux Enterprise Server。您可以透過使用新映像檔重新建立執行個體，也可以手動更新執行個體上的套件。
+        </p>
+        <p>
+         <strong>
+          更新 (2014 年 6 月 9 日)：
+         </strong>
+         要利用新映像檔更新執行 SUSE Linux Enterprise Server 的執行個體，請使用下列映像檔版本或更新版本重新建立執行個體：
+        </p>
+        <ul>
+         <li>
+          <code>
+           sles-11-sp3-v20140609
+          </code>
+         </li>
+        </ul>
+        <p>
+         <strong>
+          原始文章：
+         </strong>
+        </p>
+        <p>
+         要利用新映像檔更新 Debian 和 CentOS 的執行個體，請使用下列任一映像檔版本或更新版本重新建立執行個體：
+        </p>
+        <ul>
+         <li>
+          <code>
+           debian-7-wheezy-v20140605
+          </code>
+         </li>
+         <li>
+          <code>
+           backports-debian-7-wheezy-v20140605
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-6-v20140605
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-6-v20140605
+          </code>
+         </li>
+        </ul>
+        <p>
+         如要在您的執行個體上手動更新 OpenSSL，請執行以下指令來更新相應的套件。若是執行 CentOS 和 RHEL 的執行個體，可於執行個體中使用這些指令來更新 OpenSSL：
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo yum -y update
+user@my-instance:~$ sudo reboot</pre>
+        <p>
+         若是執行 Debian 的執行個體，可於執行個體中使用以下指令來更新 OpenSSL：
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo apt-get update
+user@my-instance:~$ sudo apt-get -y upgrade
+user@my-instance:~$ sudo reboot</pre>
+        <p>
+         若是執行 SUSE Linux Enterprise Server 的執行個體，可於執行個體中使用這些指令來確保 OpenSSL 是最新版本：
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo zypper --non-interactive up
+user@my-instance:~$ sudo reboot</pre>
+       </td>
+       <td>
+        中
+       </td>
+       <td>
+        <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0224" target="_blank">
+         CVE-2014-0224
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="發布日期：2014 年 4 月 8 日" id="20140408">
+     發布日期：2014 年 4 月 8 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        說明
+       </th>
+       <th>
+        嚴重性
+       </th>
+       <th>
+        附註
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="說明" id="heading_14">
+         說明
+        </h4>
+        <p>
+         在 OpenSSL 1.0.1 版到 1.0.1g 版本之前的 (1) 傳輸層安全標準 (TLS) 與 (2) DTLS 機制，未適當處理 Heartbeat Extension 封包，讓遠端攻擊者可透過蓄意建構的封包觸發緩衝區過度讀取，進而從記憶體處理程序中獲取機密資訊，例如讀取與
+         <code>
+          d1_both.c
+         </code>
+         和
+         <code>
+          t1_lib.c
+         </code>
+         有關的私密金鑰，也稱為 Heartbleed 漏洞。
+        </p>
+        <h4 data-text="對 Compute Engine 的影響" id="compute-engine_9">
+         對 Compute Engine 的影響
+        </h4>
+        <p>
+         這個安全漏洞會影響所有不具有最新 OpenSSL 版本的 Compute Engine Debian、RHEL 和 CentOS 執行個體。您可以透過使用新映像檔重新建立執行個體，也可以手動更新執行個體上的套件。
+        </p>
+        <p>
+         要使用新映像檔更新執行個體，請利用下列任一映像檔版本或更新版本重新建立執行個體：
+        </p>
+        <ul>
+         <li>
+          <code>
+           debian-7-wheezy-v20140408
+          </code>
+         </li>
+         <li>
+          <code>
+           backports-debian-7-wheezy-v20140408
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-6-v20140408
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-6-v20140408
+          </code>
+         </li>
+        </ul>
+        <p>
+         如要在您的執行個體上手動更新 OpenSSL，請執行以下指令來更新相應的套件。若是執行 CentOS 和 RHEL 的執行個體，可於執行個體中使用這些指令來確保 OpenSSL 是最新版本：
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo yum update
+user@my-instance:~$ sudo reboot</pre>
+        <p>
+         若是執行 Debian 的執行個體，可於執行個體中使用以下指令來更新 OpenSSL：
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo apt-get update
+user@my-instance:~$ sudo apt-get upgrade
+user@my-instance:~$ sudo reboot</pre>
+        <p>
+         採用 SUSE Linux 的執行個體不受影響。
+        </p>
+        <p>
+         <strong>
+          2014 年 4 月 14 日更新：
+         </strong>
+         Compute Engine 根據使用 Heartbleed 漏洞來擷取金鑰的新研究，建議 Compute Engine 客戶為任何受影響的 SSL 服務建立新的金鑰。
+        </p>
+       </td>
+       <td>
+        中
+       </td>
+       <td>
+        <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0160" target="_blank">
+         CVE-2014-0160
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="發布日期：2013 年 6 月 7 日" id="20130607">
+     發布日期：2013 年 6 月 7 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        說明
+       </th>
+       <th>
+        嚴重性
+       </th>
+       <th>
+        附註
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="說明" id="heading_15">
+         說明
+        </h4>
+        <p class="note">
+         <strong>
+          注意：
+         </strong>
+         這個安全漏洞僅對核心造成影響，且自 API 版本 v1 後的核心已遭淘汰及移除。
+        </p>
+        <p>
+         在 Linux kernel 3.9.4 之前的版本中，Broadcom B43 無線驅動程式中
+         <code>
+          drivers/net/wireless/b43/main.c
+         </code>
+         的
+         <code>
+          b43_request_firmware
+         </code>
+         函式存在格式化字串安全漏洞，本機使用者可利用 root 存取權在
+         <code>
+          fwpostfix
+         </code>
+         modprobe 參數中包含格式化字串指定碼，導致錯誤訊息的結構不當，以藉此獲取權限。
+        </p>
+        <h4 data-text="對 Compute Engine 的影響" id="compute-engine_10">
+         對 Compute Engine 的影響
+        </h4>
+        <p>
+         這個安全漏洞會影響
+         <code>
+          gcg-3.3.8-201305291443
+         </code>
+         之前的所有 Compute Engine 核心。為解決這個安全漏洞問題，Compute Engine 已淘汰所有早期核心，同時建議使用者更新執行個體和映像檔，以便使用 Compute Engine 核心
+         <code>
+          gce-v20130603
+         </code>
+         。
+         <code>
+          gce-v20130603
+         </code>
+         包含核心
+         <code>
+          gcg-3.3.8-201305291443
+         </code>
+         ，其中具有針對這項安全漏洞的修補程式。
+        </p>
+        <p>
+         如要找出您執行個體使用的核心版本：
+        </p>
+        <ol>
+         <li>
+          透過 ssh 登入您的執行個體
+         </li>
+         <li>
+          執行
+          <code>
+           uname -r
+          </code>
+         </li>
+        </ol>
+       </td>
+       <td>
+        中
+       </td>
+       <td>
+        <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2852" target="_blank">
+         CVE-2013-2852
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="發布日期：2013 年 6 月 7 日" id="20130607">
+     發布日期：2013 年 6 月 7 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        說明
+       </th>
+       <th>
+        嚴重性
+       </th>
+       <th>
+        附註
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="說明" id="heading_16">
+         說明
+        </h4>
+        <p class="note">
+         <strong>
+          注意：
+         </strong>
+         這個安全漏洞僅對核心造成影響，且自 API 版本 v1 後的核心已遭淘汰及移除。
+        </p>
+        <p>
+         在 Linux kernel 3.9.4 之前的版本中，
+         <code>
+          block/genhd.c
+         </code>
+         的 register_disk 函式存在格式化字串安全漏洞，本機使用者可利用 root 存取權將格式化字串指定碼寫入
+         <code>
+          /sys/module/md_mod/parameters/new_array
+         </code>
+         來建立蓄意設計的
+         <code>
+          /dev/md
+         </code>
+         裝置名稱，以藉此獲取權限。
+        </p>
+        <h4 data-text="對 Compute Engine 的影響" id="compute-engine_11">
+         對 Compute Engine 的影響
+        </h4>
+        <p>
+         這個安全漏洞會影響
+         <code>
+          gcg-3.3.8-201305291443
+         </code>
+         之前的所有 Compute Engine 核心。為解決這個安全漏洞問題，Compute Engine 已淘汰所有早期核心，同時建議使用者更新執行個體和映像檔，以便使用 Compute Engine 核心
+         <code>
+          gce-v20130603
+         </code>
+         。
+         <code>
+          gce-v20130603
+         </code>
+         包含核心
+         <code>
+          gcg-3.3.8-201305291443
+         </code>
+         ，其中具有針對這項安全漏洞的修補程式。
+        </p>
+        <p>
+         如要找出您執行個體使用的核心版本：
+        </p>
+        <ol>
+         <li>
+          透過 ssh 登入您的執行個體
+         </li>
+         <li>
+          執行
+          <code>
+           uname -r
+          </code>
+         </li>
+        </ol>
+       </td>
+       <td>
+        中
+       </td>
+       <td>
+        <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2851" target="_blank">
+         CVE-2013-2851
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="發布日期：2013 年 5 月 14 日" id="20130514">
+     發布日期：2013 年 5 月 14 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        說明
+       </th>
+       <th>
+        嚴重性
+       </th>
+       <th>
+        附註
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="說明" id="heading_17">
+         說明
+        </h4>
+        <p class="note">
+         <strong>
+          注意：
+         </strong>
+         這個安全漏洞僅對核心造成影響，且自 API 版本 v1 後的核心已遭淘汰及移除。
+        </p>
+        <p>
+         在 Linux kernel 3.8.9 之前的版本中，
+         <code>
+          kernel/events/core.c
+         </code>
+         的 perf_swevent_init 函式使用不正確的
+         <code>
+          integer
+         </code>
+         資料類型，本機使用者可透過蓄意設計的
+         <code>
+          perf_event_open
+         </code>
+         系統呼叫以獲取權限。
+        </p>
+        <h4 data-text="對 Compute Engine 的影響" id="compute-engine_12">
+         對 Compute Engine 的影響
+        </h4>
+        <p>
+         這個安全漏洞會影響
+         <code>
+          gcg-3.3.8-201305211623
+         </code>
+         之前的所有 Compute Engine 核心。為解決這個安全漏洞問題，Compute Engine 已淘汰所有早期核心，同時建議使用者更新執行個體和映像檔，以便使用 Compute Engine 核心
+         <code>
+          gce-v20130521
+         </code>
+         。
+         <code>
+          gce-v20130521
+         </code>
+         包含核心
+         <code>
+          gcg-3.3.8-201305211623
+         </code>
+         ，其中具有針對這項安全漏洞的修補程式。
+        </p>
+        <p>
+         如要找出您執行個體使用的核心版本：
+        </p>
+        <ol>
+         <li>
+          透過 ssh 登入您的執行個體
+         </li>
+         <li>
+          執行
+          <code>
+           uname -r
+          </code>
+         </li>
+        </ol>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2094" target="_blank">
+         CVE-2013-2094
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="發布日期：2013 年 2 月 18 日" id="20130218">
+     發布日期：2013 年 2 月 18 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        說明
+       </th>
+       <th>
+        嚴重性
+       </th>
+       <th>
+        附註
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="說明" id="heading_18">
+         說明
+        </h4>
+        <p class="note">
+         <strong>
+          注意：
+         </strong>
+         這個安全漏洞僅對核心造成影響，且自 API 版本 v1 後的核心已遭淘汰及移除。
+        </p>
+        <p>
+         在 Linux kernel 3.7.5 之前的版本中，ptrace 存在競爭狀況，本機使用者可在蓄意設計的應用程式中透過
+         <code>
+          PTRACE_SETREGS
+          ptrace
+         </code>
+         系統呼叫以獲取權限。
+        </p>
+        <h4 data-text="對 Compute Engine 的影響" id="compute-engine_13">
+         對 Compute Engine 的影響
+        </h4>
+        <p>
+         這個安全漏洞會影響 Compute Engine 核心
+         <code>
+          2.6.x-gcg-
+          <em>
+           &lt;date&gt;
+          </em>
+         </code>
+         。為了解決這個問題，Compute Engine 已淘汰 2.6.x 核心，並建議使用者更新執行個體和映像檔，以便使用 Compute Engine 核心
+         <code>
+          gce-v20130225
+         </code>
+         。
+         <code>
+          gce-v20130225
+         </code>
+         包含核心
+         <code>
+          3.3.8-gcg-201302081521
+         </code>
+         ，後者已經修補了這個安全漏洞。
+        </p>
+        <p>
+         如要找出您執行個體使用的核心版本：
+        </p>
+        <ol>
+         <li>
+          透過 ssh 登入您的執行個體
+         </li>
+         <li>
+          執行
+          <code>
+           uname -r
+          </code>
+         </li>
+        </ol>
+       </td>
+       <td>
+        中
+       </td>
+       <td>
+        <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0871" target="_blank">
+         CVE-2013-0871
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+   </section>
+  </div>
+ </article>
+</article>
