@@ -1,0 +1,1284 @@
+#  보안 게시판
+
+Compute Engine 관련 보안 게시판은 수시로 업데이트될 수 있습니다. Compute Engine에 해당하는 모든 보안 게시판은
+여기에서 확인할 수 있습니다.
+
+[ Compute Engine 보안 게시판 구독 ![구독](https://cloud.google.com/images/feed-
+icon.png?hl=ko) ](https://cloud.google.com/feeds/compute-engine-security-
+bulletins.xml?hl=ko)
+
+##  발행 일자: 2019년 6월 18일
+
+**최종 업데이트: 2019년 6월 25일 T 6:30(PST)**
+
+설명  |  심각도  |  참고  
+---|---|---  
+  
+####  설명
+
+Netflix는 최근 Linux 커널의 TCP 취약점 3가지를 공개했습니다.
+
+  * [ CVE-2019-11477 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11477)
+  * [ CVE-2019-11478 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11478)
+  * [ CVE-2019-11479 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11479)
+
+이러한 CVE를 통칭하여 [ NFLX-2019-001 ](https://github.com/Netflix/security-
+bulletins/blob/master/advisories/third-party/2019-001.md) 이라고 합니다.
+
+####  Compute Engine에 미치는 영향
+
+Compute Engine을 호스팅하는 인프라는 이 취약점으로부터 보호됩니다.
+
+패치가 적용되지 않은 Linux 운영체제를 실행하는 Compute Engine VM에서 신뢰할 수 없는 네트워크 트래픽을 전송/수신하는 경우
+이 DoS 공격에 취약합니다. 운영체제의 패치가 제공되는 즉시 VM 인스턴스를 업데이트하는 것이 좋습니다.
+
+TCP 연결을 종료하는 부하 분산기에 이 취약점을 해결하는 패치를 적용했습니다. 이 부하 분산기를 통해서만 신뢰할 수 없는 트래픽을 수신하는
+Compute Engine 인스턴스는 취약하지 않습니다. 이러한 분산기에는 HTTP 부하 분산기, SSL 프록시 부하 분산기, TCP 프록시
+부하 분산기가 있습니다.
+
+네트워크 부하 분산기 및 내부 부하 분산기는 TCP 연결을 종료하지 않습니다. 이 부하 분산기를 통해 신뢰할 수 없는 트래픽을 수신하는
+Compute Engine 인스턴스는 패치가 적용되지 않은 경우 취약합니다.
+
+####  패치가 적용된 이미지 및 공급업체 리소스
+
+각 CVE 상태를 포함한 각 운영체제 공급업체의 패치 정보가 공개될 때마다 여기에 해당 패치 정보로 연결되는 링크를 제공합니다. 공개
+이미지의 이전 버전에는 해당 패치가 포함되어 있지 않으며 예상되는 공격을 완화하지 못합니다.
+
+  * 프로젝트 ` debian-cloud ` : 
+    * ` debian-9-stretch-v20190618 `
+  * 프로젝트 ` centos-cloud ` : 
+    * ` centos-6-v20190619 `
+    * ` centos-7-v20190619 `
+  * 프로젝트 ` cos-cloud ` : 
+    * ` cos-dev-77-12293-0-0 `
+    * ` cos-beta-76-12239-21-0 `
+    * ` cos-stable-75-12105-77-0 `
+    * ` cos-73-11647-217-0 `
+    * ` cos-69-10895-277-0 `
+  * 프로젝트 ` coreos-cloud ` : 
+    * ` coreos-alpha-2163-2-1-v20190617 `
+    * ` coreos-beta-2135-3-1-v20190617 `
+    * ` coreos-stable-2079-6-0-v20190617 `
+  * 프로젝트 ` rhel-cloud ` : 
+    * ` rhel-6-v20190618 `
+    * ` rhel-7-v20190618 `
+    * ` rhel-8-v20190618 `
+  * 프로젝트 ` rhel-sap-cloud ` : 
+    * ` rhel-7-4-sap-v20190618 `
+    * ` rhel-7-6-sap-v20190618 `
+  * 프로젝트 ` suse-cloud ` : 
+    * ` sles-12-sp4-v20190617 `
+    * ` sles-15-v20190617 `
+  * 프로젝트 ` suse-sap-cloud ` : 
+    * ` sles-12-sp1-sap-v20190617 `
+    * ` sles-12-sp2-sap-v20190617 `
+    * ` sles-12-sp3-sap-v20190617 `
+    * ` sles-12-sp4-sap-v20190617 `
+    * ` sles-15-sap-v20190617 `
+  * 프로젝트 ` ubuntu-cloud ` : 
+    * ` ubuntu-1604-xenial-v20190617 `
+    * ` ubuntu-1804-bionic-v20190617 `
+    * ` ubuntu-1810-cosmic-v20190618 `
+    * ` ubuntu-1904-disco-v20190619 `
+    * ` ubuntu-minimal-1604-xenial-v20190618 `
+    * ` ubuntu-minimal-1804-bionic-v20190617 `
+    * ` ubuntu-minimal-1810-cosmic-v20190618 `
+    * ` ubuntu-minimal-1904-disco-v20190618 `
+
+|  보통  |
+
+  * [ CVE-2019-11477 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11477)
+  * [ CVE-2019-11478 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11478)
+  * [ CVE-2019-11479 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11479)
+
+  
+  
+##  발행 일자: 2019년 5월 14일
+
+**최종 업데이트: 2019년 5월 20일 T 17:00(PST)**
+
+설명  |  심각도  |  참고  
+---|---|---  
+  
+####  설명
+
+Intel은 다음과 같은 CVE를 공개했습니다.
+
+  * [ CVE-2018-12126 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12126)
+  * [ CVE-2018-12127 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12127)
+  * [ CVE-2018-12130 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12130)
+  * [ CVE-2019-11091 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11091)
+
+이러한 CVE를 통칭하여 마이크로아키텍처 데이터 샘플링(MDS)이라고 합니다. 잠재적으로 데이터가 마이크로아키텍처 상태에서 예측 실행의
+상호작용을 통해 이러한 취약점에 노출될 수 있습니다.
+
+####  Compute Engine에 미치는 영향
+
+**Compute Engine을 실행하는 호스트 인프라는 고객의 워크로드를 서로 격리합니다. VM에서 신뢰할 수 없는 코드를 실행하는 경우가
+아니면 추가 조치는 필요하지 않습니다.**
+
+Compute Engine 가상 머신 내 자체 다중 테넌트 서비스에서 신뢰할 수 없는 코드를 실행하는 고객의 경우 게스트 OS 공급업체에서
+권장하는 완화 조치를 참조하세요. 여기에는 Intel의 마이크로코드 완화 기능을 사용하는 것이 포함될 수 있습니다. Google은 게스트
+통과 액세스 권한을 새로운 삭제 기능에 배포했습니다. 다음은 일반적인 게스트 이미지에 사용할 수 있는 완화 단계를 요약한 것입니다.
+
+####  패치가 적용된 이미지 및 공급업체 리소스
+
+각 CVE 상태를 포함한 각 운영체제 공급업체의 패치 정보가 공개될 때마다 여기에 해당 패치 정보로 연결되는 링크를 제공합니다. 이 이미지는
+VM 인스턴스를 다시 만드는 데 사용됩니다. 공개 이미지의 이전 버전에는 해당 패치가 포함되어 있지 않으며 예상되는 공격을 완화하지
+못합니다.
+
+  * 프로젝트 ` centos-cloud ` : [ CESA-2019:1169 ](https://lists.centos.org/pipermail/centos-announce/2019-May/023309.html) , [ CESA-2019:1168 ](https://lists.centos.org/pipermail/centos-announce/2019-May/023314.html)
+    * ` centos-6-v20190515 `
+    * ` centos-7-v20190515 `
+  * 프로젝트 ` coreos-cloud ` : [ CoreOS Container Linux의 MDS 완화 ](https://coreos.com/os/docs/latest/disabling-smt.html)
+    * ` coreos-stable-2079-4-0-v20190515 `
+    * ` coreos-beta-2107-3-0-v20190515 `
+    * ` coreos-alpha-2135-1-0-v20190515 `
+  * 프로젝트 ` cos-cloud `
+    * ` cos-69-10895-242-0 `
+    * ` cos-73-11647-182-0 `
+  * 프로젝트 ` debian-cloud ` : [ DSA-4444 ](https://www.debian.org/security/2019/dsa-4444)
+    * ` debian-9-stretch-v20190514 `
+  * 프로젝트 ` rhel-cloud ` : [ Red Hat MDS 기술 자료 ](https://access.redhat.com/security/vulnerabilities/mds)
+    * ` rhel-6-v20190515 `
+    * ` rhel-7-v20190517 `
+    * ` rhel-8-v20190515 `
+  * 프로젝트 ` rhel-sap-cloud ` : [ Red Hat MDS 기술 자료 ](https://access.redhat.com/security/vulnerabilities/mds)
+    * ` rhel-7-4-sap-v20190515 `
+    * ` rhel-7-6-sap-v20190517 `
+  * 프로젝트 ` suse-cloud ` : [ SUSE MDS KB ](https://www.suse.com/support/kb/doc/?id=7023736)
+    * ` sles-12-sp4-v20190520 `
+    * ` sles-15-v20190520 `
+  * 프로젝트 ` suse-sap-cloud `
+    * ` sles-12-sp4-sap-v20190520 `
+    * ` sles-15-sap-v20190520 `
+  * 프로젝트 ` ubuntu-os-cloud ` : [ Ubuntu MDS 위키 ](https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/MDS)
+    * ` ubuntu-1404-trusty-v20190514 `
+    * ` ubuntu-1604-xenial-v20190514 `
+    * ` ubuntu-1804-bionic-v20190514 `
+    * ` ubuntu-1810-cosmic-v20190514 `
+    * ` ubuntu-1904-disco-v20190514 `
+    * ` ubuntu-minimal-1604-xenial-v20190514 `
+    * ` ubuntu-minimal-1804-bionic-v20190514 `
+    * ` ubuntu-minimal-1810-cosmic-v20190514 `
+    * ` ubuntu-minimal-1904-disco-v20190514 `
+  * 프로젝트 ` windows-cloud ` 및 ` windows-sql-cloud ` : [ Microsoft ADV190013 ](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013)
+    * 버전 번호가 ` v20190514 ` 인 모든 Windows Server 및 SQL Server 공개 이미지 
+  * 프로젝트 ` gce-uefi-images `
+    * ` centos-7-v20190515 `
+    * ` cos-69-10895-242-0 `
+    * ` cos-73-11647-182-0 `
+    * ` rhel-7-v20190517 `
+    * ` ubuntu-1804-bionic-v20190514 `
+    * 버전 번호가 ` v20190514 ` 인 모든 Windows Server 공개 이미지 
+
+####  컨테이너 최적화 OS
+
+컨테이너 최적화 OS(COS)를 게스트 OS로 사용하고 가상 머신에서 신뢰할 수 없는 다중 테넌트 작업 부하를 실행 중인 경우 다음 안내를
+따르는 것이 좋습니다.
+
+  1. 커널 명령줄에 ` nosmt ` 를 설정하여 하이퍼 스레딩을 사용 중지합니다.   
+
+기존 COS VM에서 다음과 같이 ` grub.cfg ` 를 수정하여 ` nosmt ` 옵션을 설정한 다음 시스템을 재부팅할 수 있습니다.
+
+    
+        
+    # Run as root:
+    dir="$(mktemp -d)"
+    mount /dev/sda12 "${dir}"
+    sed -i -e "s|cros_efi|cros_efi nosmt|g" "${dir}/efi/boot/grub.cfg"
+    umount "${dir}"
+    rmdir "${dir}"
+    
+    reboot
+
+편의상 아래의 스크립트를 실행하면 위의 명령어를 실행할 때와 동일한 결과를 얻을 수 있습니다. 새 VM에서 이 새로운 매개변수를 사용할 수
+있도록 이 스크립트를 cloud-config, 시작 스크립트 또는 인스턴스 템플릿에 포함하는 것이 좋습니다. 이 스크립트를 실행하는
+cloud-config 예시는 아래에 나와 있습니다.
+
+**경고:** 이 명령어를 처음 실행하면 인스턴스가 즉시 재부팅됩니다. 이후에 하이퍼 스레딩이 이미 사용 중지된 인스턴스에서 명령어를
+실행하는 것은 아무런 영향을 미치지 않습니다.
+
+    
+        
+    # Run as root
+    /bin/bash <(curl -s https://storage.googleapis.com/cos-tools/scripts/disable_smt.sh)
+    
+
+이 스크립트를 cloud-config에 포함하려면 다음 명령어를 실행하세요.
+
+    
+        
+    #cloud-config
+    
+    bootcmd:
+    - /bin/bash -c "/bin/bash <(curl -s https://storage.googleapis.com/cos-tools/scripts/disable_smt.sh)"
+    
+
+인스턴스에 하이퍼 스레딩이 사용 중지되었는지 확인하려면 ` /sys/devices/system/cpu/smt/active ` 및 `
+/sys/devices/system/cpu/smt/control ` 파일의 출력을 확인합니다. ` active ` 에 ` 0 ` 을, `
+control ` 에 ` off ` 를 반환하면 하이퍼 스레딩이 사용 중지된 것입니다.
+
+    
+        
+    cat /sys/devices/system/cpu/smt/active
+    cat /sys/devices/system/cpu/smt/control
+    
+
+**참고:** 인스턴스에 UEFI 보안 부팅을 사용 설정한 경우 UEFI 보안 부팅이 사용 중지된 상태에서 인스턴스를 다시 만들고, UEFI
+보안 부팅이 사용 중지된 상태에서 위의 명령어를 실행한 다음 새 인스턴스에 UEFI 보안 부팅을 사용 설정해야 합니다.
+
+  2. 새 버전의 COS 이미지를 사용합니다.   
+
+위의 설명대로 하이퍼 스레딩을 사용 중지하는 것 외에 위에 나열된 업데이트 이미지 또는 새 버전의 컨테이너 최적화 OS 이미지(사용 가능한
+경우)를 사용해 [ 인스턴스를 다시 만들어
+](https://cloud.google.com/compute/docs/instances/create-start-
+instance?hl=ko#publicimage) 취약점으로부터 완벽하게 보호해야 합니다.
+
+|  보통  |
+
+  * [ CVE-2018-12126 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12126)
+  * [ CVE-2018-12127 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12127)
+  * [ CVE-2018-12130 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12130)
+  * [ CVE-2018-11091 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11091)
+
+  
+  
+##  발행 일자: 2018년 8월 14일
+
+**최종 업데이트: 2018년 8월 20일 T 17:00(PST)**
+
+설명  |  심각도  |  참고  
+---|---|---  
+  
+####  설명
+
+[ Intel은 다음과 같은 CVE를 공개
+](https://www.intel.com/content/www/us/en/architecture-and-
+technology/l1tf.html) 했습니다.
+
+  * [ CVE-2018-3615 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3615) ( [ SGX ](https://en.wikipedia.org/wiki/Software_Guard_Extensions) 용) 
+  * [ CVE-2018-3620 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3620) (운영체제 및 [ SMT ](https://en.wikipedia.org/wiki/Hyper-Threading) 용) 
+  * [ CVE-2018-3646 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3646) (가상화용) 
+
+이러한 CVE를 통칭하여 'L1 터미널 오류(L1TF)'라고 합니다.
+
+이러한 L1TF 취약점은 프로세서 수준 데이터 구조의 구성을 공격하는 식의 예측 실행 악용 문제를 안고 있습니다. 'L1'은 레벨 1 데이터
+캐시(L1D), 즉 메모리 액세스 가속화에 사용되는 소형 온코어(on-core) 리소스를 의미합니다.
+
+이러한 취약점과 Compute Engine의 완화 조치에 대한 자세한 내용은 [ Google Cloud 블로그 글
+](https://cloud.google.com/blog/products/gcp/protecting-against-the-new-l1tf-
+speculative-vulnerabilities?hl=ko) 을 참조하세요.
+
+####  Compute Engine에 미치는 영향
+
+Compute Engine을 실행하고 고객 워크로드를 서로 격리하는 호스트 인프라는 알려진 공격으로부터 안전합니다.
+
+Compute Engine 고객은 이미지를 업데이트하여 게스트 환경의 간접적 악용 가능성을 막는 것이 좋습니다. 이는 Compute
+Engine 가상 머신에서 자체 다중 테넌트 서비스를 실행 중인 고객에게 특히 중요한 권장사항입니다.
+
+Google Compute Engine 고객은 다음 옵션 중 하나를 사용해 인스턴스의 게스트 운영체제를 업데이트할 수 있습니다.
+
+  * 패치가 적용된 공개 이미지를 사용해 [ 기존 VM 인스턴스를 다시 만듭니다 ](https://cloud.google.com/compute/docs/instances/create-start-instance?hl=ko#publicimage) . 
+  * 운영체제 공급업체에서 제공한 패치를 기존 인스턴스에 설치하고 패치가 적용된 인스턴스를 재부팅합니다. 
+
+####  패치가 적용된 이미지 및 공급업체 리소스
+
+CVE 상태를 포함한 각 운영체제 공급업체의 패치 정보가 공개될 때마다 여기에 패치 정보로 연결되는 링크를 제공합니다. 이 이미지를 사용해
+VM 인스턴스를 다시 만드세요. 공개 이미지의 이전 버전에는 해당 패치가 포함되어 있지 않으며 예상되는 공격을 완화하지 못합니다.
+
+  * 프로젝트 ` centos-cloud ` : 
+    * ` centos-7-v20180815 `
+    * ` centos-6-v20180815 `
+  * 프로젝트 ` coreos-cloud ` : 
+    * ` coreos-stable-1800-7-0-v20180816 `
+    * ` coreos-beta-1855-2-0-v20180816 `
+    * ` coreos-alpha-1871-0-0-v20180816 `
+  * 프로젝트 ` cos-cloud ` : 
+    * ` cos-stable-66-10452-110-0 `
+    * ` cos-stable-67-10575-66-0 `
+    * ` cos-beta-68-10718-81-0 `
+    * ` cos-dev-69-10895-23-0 `
+  * 프로젝트 ` debian-cloud ` : 
+    * ` debian-9-stretch-v20180820 `
+  * 프로젝트 ` rhel-cloud ` : 
+    * ` rhel-7-v20180814 `
+    * ` rhel-6-v20180814 `
+  * 프로젝트 ` rhel-sap-cloud ` : 
+    * ` rhel-7-sap-apps-v20180814 `
+    * ` rhel-7-sap-hana-v20180814 `
+  * 프로젝트 ` suse-cloud ` : 
+    * ` sles-15-v20180816 `
+    * ` sles-12-sp3-v20180814 `
+    * ` sles-11-sp4-v20180816 `
+  * 프로젝트 ` suse-sap-cloud ` : 
+    * ` sles-15-sap-v20180816 `
+    * ` sles-12-sp3-sap-v20180814 `
+    * ` sles-12-sp2-sap-v20180816 `
+  * 프로젝트 ` ubuntu-os-cloud ` : 
+    * ` ubuntu-1804-bionic-v20180814 `
+    * ` ubuntu-1604-xenial-v20180814 `
+    * ` ubuntu-1404-trusty-v20180814 `
+    * ` ubuntu-minimal-1804-bionic-v20180814 `
+    * ` ubuntu-minimal-1604-xenial-v20180814 `
+  * 프로젝트 ` windows-cloud ` ` gce-uefi-images ` 및 ` windows-sql-cloud ` : 
+    * 버전 번호가 ` -v201800814 ` 이상인 모든 Windows Server 및 SQL Server [ 공개 이미지 ](https://cloud.google.com/compute/docs/images?hl=ko#os-compute-support) 는 패치를 포함하고 있습니다. 
+
+|  높음  |
+
+  * [ CVE-2018-3615 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3615)
+  * [ CVE-2018-3620 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3620)
+  * [ CVE-2018-3646 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3646)
+
+  
+  
+##  발행 일자: 2018년 8월 6일
+
+**최종 업데이트: 2018년 9월 5일 T 17:00(PST)**
+
+설명  |  심각도  |  참고  
+---|---|---  
+  
+####  2018년 9월 5일 업데이트
+
+2018년 8월 14일 US-CERT에서 [ CVE-2018-5391 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2018-5391) 이 공개되었습니다. [ CVE-2018-5390
+](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390) 과 같은 커널 수준의
+네트워킹 취약점으로서, 취약 시스템에 대한 서비스 거부(DoS) 공격 효과가 증가한다는 문제를 안고 있습니다. 주요한 차이는
+CVE-2018-5391은 IP 연결 시 악용될 수 있다는 점입니다. 두 취약점을 모두 고려할 수 있도록 게시판이 업데이트되었습니다.
+
+####  설명
+
+[ CVE-2018-5390 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2018-5390) ('SegmentSmack')은 TCP 연결 시 취약 시스템에 대한 서비스
+거부(DoS) 공격 효과가 증가하는 커널 수준의 네트워킹 취약점입니다.
+
+[ CVE-2018-5391 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2018-5391) ('FragmentSmack')은 IP 연결 시 취약 시스템에 대한 서비스
+거부(DoS) 공격 효과가 증가하는 커널 수준의 네트워킹 취약점입니다.
+
+####  Compute Engine에 미치는 영향
+
+Compute Engine VM을 실행하는 호스트 인프라는 위험하지 않습니다. Compute Engine VM을 오가는 트래픽을 처리하는
+네트워크 인프라는 이 취약점으로부터 안전합니다. Compute Engine VM에서 [ HTTP(S)
+](https://cloud.google.com/load-balancing/docs/https/?hl=ko) , [ SSL
+](https://cloud.google.com/load-balancing/docs/ssl/?hl=ko) 또는 [ TCP 부하 분산기
+](https://cloud.google.com/load-balancing/docs/tcp/?hl=ko) 를 통해 신뢰할 수 없는 네트워크
+트래픽을 전송/수신하는 경우에 한해 이 취약점으로부터 안전합니다.
+
+패치가 적용되지 않은 운영체제를 실행하는 Compute Engine VM에서 신뢰할 수 없는 네트워크 트래픽을 직접 또는 [ 네트워크 부하
+분산기 ](https://cloud.google.com/load-balancing/docs/network/?hl=ko) 를 통해
+전송/수신하는 경우 이 DoS 공격에 취약합니다.
+
+운영체제의 패치가 제공되는 즉시 VM 인스턴스를 업데이트하는 것이 좋습니다.
+
+Compute Engine 고객은 다음 옵션 중 하나를 사용하여 인스턴스에서 게스트 운영체제를 업데이트할 수 있습니다.
+
+  * 패치가 적용된 공개 이미지를 사용해 [ 기존 VM 인스턴스를 다시 만듭니다 ](https://cloud.google.com/compute/docs/instances/create-start-instance?hl=ko#publicimage) . 패치가 적용된 공개 이미지 목록은 아래를 참조하세요. 
+  * 운영체제 공급업체에서 제공한 패치를 기존 인스턴스에 설치하고 패치가 적용된 인스턴스를 재부팅합니다. 
+
+####  패치가 적용된 이미지 및 공급업체 리소스
+
+각 운영체제 공급업체의 패치 정보가 공개될 때마다 여기에 해당 정보로 연결되는 링크를 제공합니다.
+
+  * 프로젝트 ` centos-cloud ` (CVE-2018-5390만 해당): 
+    * ` centos-7-v20180815 `
+    * ` centos-6-v20180815 `
+  * 프로젝트 ` coreos-cloud ` (CVE-2018-5390 및 CVE-2018-5391): 
+    * ` coreos-stable-1800-7-0-v20180816 `
+    * ` coreos-beta-1855-2-0-v20180816 `
+    * ` coreos-alpha-1871-0-0-v20180816 `
+  * 프로젝트 ` cos-cloud ` (CVE-2018-5390 및 CVE-2018-5391): 
+    * ` cos-stable-65-10323-98-0 `
+    * ` cos-stable-66-10452-109-0 `
+    * ` cos-stable-67-10575-65-0 `
+    * ` cos-beta-68-10718-76-0 `
+    * ` cos-dev-69-10895-16-0 `
+  * 프로젝트 ` debian-cloud ` (CVE-2018-5390 및 CVE-2018-5391): 
+    * ` debian-9-stretch-v20180814 `
+  * 프로젝트 ` rhel-cloud ` (CVE-2018-5390만 해당): 
+    * ` rhel-7-v20180814 `
+    * ` rhel-6-v20180814 `
+  * 프로젝트 ` suse-cloud ` (CVE-2018-5390 및 CVE-2018-5391): 
+    * ` sles-15-v20180816 `
+    * ` sles-12-sp3-v20180814 `
+  * 프로젝트 ` suse-sap-cloud ` (CVE-2018-5390 및 CVE-2018-5391): 
+    * ` sles-15-sap-v20180816 `
+    * ` sles-12-sp3-sap-v20180814 `
+    * ` sles-12-sp2-sap-v20180816 `
+  * 프로젝트 ` ubuntu-os-cloud ` (CVE-2018-5390 및 CVE-2018-5391): 
+    * ` ubuntu-1804-bionic-v20180814 `
+    * ` ubuntu-1604-xenial-v20180814 `
+    * ` ubuntu-1404-trusty-v20180814 `
+    * ` ubuntu-minimal-1804-bionic-v20180814 `
+    * ` ubuntu-minimal-1604-xenial-v20180814 `
+
+|  높음  |
+
+  * [ CVE-2018-5390 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390)
+  * [ CVE-2018-5391 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5391)
+
+  
+  
+##  발행 일자: 2018년 1월 3일
+
+**최종 업데이트: 2018년 5월 21일 T 15:00(PST)**
+
+설명  |  심각도  |  참고  
+---|---|---  
+  
+####  2018년 5월 21일 업데이트
+
+[ CVE-2018-3640 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2018-3640) 및 [ CVE-2018-3639
+](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3639) 와 각각의 Variants
+3a 및 4를 [ Intel에서 공개 ](https://www.intel.com/content/www/us/en/security-
+center/advisory/intel-sa-00115.html) 했습니다. Spectre 및 Meltdown의 처음 세 변종과 마찬가지로
+Compute Engine VM 인스턴스를 실행하는 인프라는 안전하며 고객 VM 인스턴스는 서로 격리되어 보호됩니다. 또한 Compute
+Engine은 Intel의 마이크로코드 패치를 Google 인프라에 배치할 계획입니다. 이를 통해 단일 VM 인스턴스에서 신뢰할 수 없는
+작업 부하나 다중 테넌트 작업 부하를 실행하는 고객은 운영체제 공급업체 및 제공업체에서 완화 조치가 제공되면 추가로 VM 내 완화 효과를
+얻을 수 있습니다. Compute Engine은 Intel에서 마이크로코드 패치를 인증하고 Compute Engine에서 프로덕션 환경의
+패치 테스트 및 검증을 완료한 후 마이크로코드 패치를 배포할 예정입니다. 자세한 일정과 업데이트가 확보되는 대로 이 페이지에 해당 정보를
+제공해 드리겠습니다.
+
+####  설명
+
+이 CVE는 여러 프로세서에서 제공되는 예측 실행 기술을 악용하는 새로운 클래스의 공격 변종입니다. 이 공격 클래스는 다양한 상황에서 메모리
+데이터에 대한 무단 읽기 전용 액세스를 허용할 수 있습니다.
+
+Compute Engine에서는 VM 라이브 마이그레이션 기술을 사용해 사용자에게 미치는 영향이 없고 강제적인 유지보수 기간이 없으며 대량
+재부팅의 필요성 없이 호스트 시스템과 하이퍼바이저 업데이트를 수행해 왔습니다. 하지만 시스템의 실행 장소에 상관없이 새로운 공격 클래스로부터
+보호하기 위해서는 모든 게스트 운영체제 및 버전에 패치를 적용해야 합니다.
+
+이 공격 방법에 대한 자세한 기술적 내용은 [ Project Zero 블로그 게시물
+](https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-
+with-side.html) 을 참조하세요. 모든 제품별 정보를 포함한 Google의 완화 조치에 대한 자세한 내용은 [ Google 보안
+블로그 글 ](https://security.googleblog.com/2018/01/todays-cpu-vulnerability-what-
+you-need.html) 을 참조하세요.
+
+####  Compute Engine에 미치는 영향
+
+Compute Engine을 실행하고 고객 VM 인스턴스를 서로 격리하는 인프라는 알려진 공격으로부터 안전합니다. Google의 완화 조치는
+VM 인스턴스 내부에서 실행되는 애플리케이션의 호스트 시스템 무단 액세스를 방지합니다. 이 완화 조치로 동일 호스트 시스템에서 실행되는 VM
+인스턴스 간의 무단 액세스도 방지됩니다.
+
+가상 머신 인스턴스 내의 무단 액세스를 막으려면 다음 옵션 중 하나를 사용하여 해당 인스턴스의 게스트 운영체제를 업데이트해야 합니다.
+
+  * 패치가 적용된 공개 이미지를 사용해 [ 기존 VM 인스턴스를 다시 만듭니다 ](https://cloud.google.com/compute/docs/instances/create-start-instance?hl=ko#publicimage) . 패치가 적용된 공개 이미지 목록은 아래를 참조하세요. 
+  * 배포에 이용한 운영체제 공급업체에서 제공한 패치를 기존 인스턴스에 설치하고 패치가 적용된 인스턴스를 재부팅합니다. 각 운영체제 공급업체의 패치 정보는 아래의 링크를 참조하세요. 
+
+####  패치가 적용된 이미지 및 공급업체 리소스
+
+**참고:** 패치가 적용된 이미지가 이 보안 게시판에 나열된 모든 CVE의 수정사항을 포함하지 않을 수도 있습니다. 또한 다른 이미지에
+이러한 공격 유형을 막는 다른 방법이 포함되어 있을 수 있습니다. 운영체제 공급업체에 문의해 공급업체의 패치에서 해결하는 CVE와 사용하는
+방지 방법을 확인하세요.
+
+  * 프로젝트 ` cos-cloud ` : Variant 2( [ CVE-2017-5715 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5715) ) 및 Variant 3( [ CVE-2017-5754 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5754) ) 공격을 막는 패치가 포함되어 있습니다. Google은 이 이미지에 [ Retpoline ](https://support.google.com/faqs/answer/7625886?hl=ko) 을 사용해 Variant 2 공격을 완화했습니다. 
+    * ` cos-stable-63-10032-71-0 ` 또는 이미지 계열 ` cos-stable `
+  * 프로젝트 ` centos-cloud ` : [ CentOS 패치 정보 ](https://lwn.net/Alerts/CentOS/)
+    * ` centos-7-v20180104 ` 또는 이미지 계열 ` centos-7 `
+    * ` centos-6-v20180104 ` 또는 이미지 계열 ` centos-6 `
+  * 프로젝트 ` coreos-cloud ` : [ CoreOS 패치 정보 ](https://coreos.com/blog/container-linux-meltdown-patch)
+    * ` coreos-stable-1576-5-0-v20180105 ` 또는 이미지 계열 ` coreos-stable `
+    * ` coreos-beta-1632-1-0-v20180105 ` 또는 이미지 계열 ` coreos-beta `
+    * ` coreos-alpha-1649-0-0-v20180105 ` 또는 이미지 계열 ` coreos-alpha `
+  * 프로젝트 ` debian-cloud ` : [ Debian 패치 정보 ](https://www.debian.org/security/#DSAS)
+    * ` debian-9-stretch-v20180105 ` 또는 이미지 계열 ` debian-9 `
+    * ` debian-8-jessie-v20180109 ` 또는 이미지 계열 ` debian-8 `
+  * 프로젝트 ` rhel-cloud ` : [ RHEL 패치 정보 ](https://access.redhat.com/security/vulnerabilities/speculativeexecution)
+    * ` rhel-7-v20180104 ` 또는 이미지 계열 ` rhel-7 `
+    * ` rhel-6-v20180104 ` 또는 이미지 계열 ` rhel-6 `
+  * 프로젝트 ` suse-cloud ` : [ SUSE 패치 정보 ](https://www.suse.com/c/suse-addresses-meltdown-spectre-vulnerabilities/)
+    * ` sles-12-sp3-v20180104 ` 또는 이미지 계열 ` sles-12 `
+    * ` sles-11-sp4-v20180104 ` 또는 이미지 계열 ` sles-11 `
+  * 프로젝트 ` suse-sap-cloud ` : [ SUSE 패치 정보 ](https://www.suse.com/c/suse-addresses-meltdown-spectre-vulnerabilities/)
+    * ` sles-12-sp3-sap-v20180104 ` 또는 이미지 계열 ` sles-12-sp3-sap `
+    * ` sles-12-sp2-sap-v20180104 ` 또는 이미지 계열 ` sles-12-sp2-sap `
+  * 프로젝트 ` ubuntu-os-cloud ` : [ Ubuntu 패치 정보 ](https://insights.ubuntu.com/2018/01/04/ubuntu-updates-for-the-meltdown-spectre-vulnerabilities/)
+    * ` ubuntu-1710-artful-v20180109 ` 또는 이미지 계열 ` ubuntu-1710 `
+    * ` ubuntu-1604-xenial-v20180109 ` 또는 이미지 계열 ` ubuntu-1604-lts `
+    * ` ubuntu-1404-trusty-v20180110 ` 또는 이미지 계열 ` ubuntu-1404-lts `
+  * 프로젝트 ` windows-cloud ` 및 ` windows-sql-cloud ` : 
+    * 버전 번호가 ` -v20180109 ` 이상인 모든 Windows Server 및 SQL Server [ 공개 이미지 ](https://cloud.google.com/compute/docs/images?hl=ko#os-compute-support) 는 패치를 포함하고 있습니다. 하지만 [ Windows Server 관련 지침 ](https://support.microsoft.com/en-gb/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) 지원 게시판에 Microsoft가 제공한 권장 작업을 따라 기존 인스턴스 및 새로 만든 인스턴스 모두에 완화 조치를 설정 및 검증해야 합니다. 
+
+이 이미지를 사용해 [ VM 인스턴스를 다시 만드세요
+](https://cloud.google.com/compute/docs/instances/create-start-
+instance?hl=ko#publicimage) . 공개 이미지의 이전 버전에는 해당 패치가 포함되어 있지 않으며 예상되는 공격을 완화하지
+못합니다.
+
+####  하드웨어 공급업체 패치
+
+NVIDIA는 패치가 적용된 드라이버를 제공해 NVIDIA® 드라이버 소프트웨어가 설치된 시스템에 예상되는 공격을 완화합니다. 패치가 적용된
+드라이버 버전은 NVIDIA의 [ NVIDIA GPU 디스플레이 드라이버 보안 업데이트
+](http://nvidia.custhelp.com/app/answers/detail/a_id/4611) 보안 게시판을 참조하세요.
+
+####  업데이트 기록:
+
+  * 2018년 5월 21일 T 14:00(PST): 2018년 5월 21일에 공개된 2개의 새 변종에 대한 정보를 추가했습니다. 
+  * 2018년 1월 10일 T 15:00(PST): 패치가 적용된 Windows Server 및 SQL Server 공개 이미지에 대한 정보를 추가했습니다. 
+  * 2018년 1월 10일 T 10:15(PST): 패치가 적용된 공개 이미지 목록에 여러 Ubuntu 이미지를 추가했습니다. 
+  * 2018년 1월 10일 T 09:50(PST): 하드웨어 공급업체 패치에 대한 지침을 추가했습니다. 
+  * 2018년 1월 3일~2018년 1월 9일: 패치가 적용된 공개 이미지 목록에서 여러 사항을 수정했습니다. 
+
+|  높음  |
+
+  * [ CVE-2017-5753 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5753)
+  * [ CVE-2017-5715 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5715)
+  * [ CVE-2017-5754 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5754)
+  * [ CVE-2018-3640 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3640)
+  * [ CVE-2018-3639 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3639)
+
+  
+  
+##  발행 일자: 2017년 10월 2일
+
+설명  |  심각도  |  참고  
+---|---|---  
+  
+####  설명
+
+[ Dnsmasq ](http://www.thekelleys.org.uk/dnsmasq/doc.html) DNS, DHCP, 라우터 알림,
+네트워크 부팅을 위한 기능을 제공합니다. 이 소프트웨어는 일반적으로 데스크톱 Linux 배포판(Ubuntu 등), 홈 라우터, IoT 기기와
+같은 다양한 시스템에 설치할 수 있습니다. Dnsmasq는 개방 인터넷 환경부터 비공개 네트워크 내부까지 폭넓게 사용됩니다.
+
+Google은 자체 정기 내부 보안 평가에서 뚜렷한 문제 7가지를 발견했습니다. 이러한 문제의 심각성을 파악한 후 그 영향과 취약점 악용
+가능성을 조사한 다음 각각에 대한 내부 개념 증명을 작성했습니다. 또한 문제를 완화할 수 있도록 Dnsmasq 유지 관리 담당자인 Simon
+Kelly와 함께 적절한 패치를 개발하기 위한 노력을 기울였습니다.
+
+리뷰 팀은 잠재적 원격 코드 실행 3건, 정보 유출 1건, 2017년 9월 5일자 프로젝트 git 서버의 최신 버전에 영향을 미치는 서비스
+거부 취약점 3건을 발견했습니다.
+
+패치는 [ 프로젝트 Git 저장소 ](http://thekelleys.org.uk/gitweb/?p=dnsmasq.git;a=summary)
+에 업스트림 및 커밋되어 있습니다.
+
+####  Compute Engine에 미치는 영향
+
+기본적으로 Dnsmasq는 [ NetworkManager ](https://wikipedia.org/wiki/NetworkManager) 를
+사용하는 이미지에만 설치 가능하며 비활성화되어 있습니다. 다음 Compute Engine 공개 이미지에는 Dnsmasq가 설치되어 있습니다.
+
+  * Ubuntu 16.04, 16.10, 17.04 
+  * CentOS 7 
+  * RHEL 7 
+
+하지만 다른 이미지의 경우 Dnsmasq가 다른 패키지에 대한 종속 항목으로 설치될 수 있습니다. 최신 운영체제 이미지를 사용하려면
+Debian, Ubuntu, CentOS, RHEL, SLES, OpenSuse 인스턴스를 업데이트하는 것이 좋습니다. CoreOS와
+컨테이너 최적화 OS는 영향을 받지 않습니다. Windows 이미지도 영향을 받지 않습니다.
+
+Debian과 Ubuntu를 실행하는 인스턴스의 경우, 인스턴스에서 다음 명령어를 실행하여 업데이트를 수행할 수 있습니다.
+
+    
+    
+    
+    sudo apt-get -y update
+    
+    
+    
+    sudo apt-get -y dist-upgrade
+
+Red Hat Enterprise Linux와 CentOS 인스턴스의 경우 다음을 실행하세요.
+
+    
+    
+    
+    sudo yum -y upgrade
+
+SLES와 OpenSUSE 이미지의 경우 다음을 실행하세요.
+
+    
+    
+    
+    sudo zypper up
+
+수동 업데이트 명령어를 실행하는 대신 해당 운영체제의 [ 이미지 계열을 사용하여 VM 인스턴스를 다시 생성
+](https://cloud.google.com/compute/docs/instances/create-start-
+instance?hl=ko#publicimage) 할 수 있습니다.
+
+|  높음  |
+
+  * [ CVE-2017-14491 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14491)
+  * [ CVE-2017-14492 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14492)
+  * [ CVE-2017-14493 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14493)
+  * [ CVE-2017-14494 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14494)
+  * [ CVE-2017-14495 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14495)
+  * [ CVE-2017-14496 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14496)
+  * [ CVE-2017-13704 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-13704)
+
+  
+  
+##  발행 일자: 2016년 10월 26일
+
+설명  |  심각도  |  참고  
+---|---|---  
+  
+####  설명
+
+CVE-2016-5195는 쓰기 권한에서 COW 상황이 발생할 때 Linux 커널의 메모리 하위 시스템이 읽기 전용 비공개 매핑의 손상을
+처리하는 방식에서 발견된 경합 상태입니다.
+
+권한이 없는 로컬 사용자는 이 결함을 사용하여 읽기 전용 메모리 매핑에 대한 쓰기 권한을 얻어 시스템에 대한 권한을 늘릴 수 있습니다.
+
+자세한 내용은 [ Dirty COW FAQ
+](https://github.com/dirtycow/dirtycow.github.io/wiki/VulnerabilityDetails) 를
+참조하세요.
+
+####  Compute Engine에 미치는 영향
+
+Compute Engine의 모든 Linux 배포판 및 버전이 영향을 받습니다. 대부분의 인스턴스는 최신 커널을 자동으로 다운로드 및
+설치합니다. 하지만 실행 중인 시스템을 패치하려면 재부팅이 필요합니다.
+
+다음 Compute Engine 이미지를 기반으로 하는 새 인스턴스 또는 다시 생성된 인스턴스에는 패치가 적용된 커널이 이미 설치되어
+있습니다.
+
+  * ` centos-6-v20161026 `
+  * ` centos-7-v20161025 `
+  * ` coreos-alpha-1192-2-0-v20161021 `
+  * ` coreos-beta-1185-2-0-v20161021 `
+  * ` coreos-stable-1122-3-0-v20161021 `
+  * ` debian-8-jessie-v20161020 `
+  * ` rhel-6-v20161026 `
+  * ` rhel-7-v20161024 `
+  * ` sles-11-sp4-v20161021 `
+  * ` sles-12-sp1-v20161021 `
+  * ` ubuntu-1204-precise-v20161020 `
+  * ` ubuntu-1404-trusty-v20161020 `
+  * ` ubuntu-1604-xenial-v20161020 `
+  * ` ubuntu-1610-yakkety-v20161020 `
+
+|  높음  |  [ CVE-2016-5195
+](https://github.com/dirtycow/dirtycow.github.io/wiki/VulnerabilityDetails)  
+  
+##  발행 일자: 2016년 2월 16일
+
+**최종 업데이트: 2016년 2월 22일**
+
+설명  |  심각도  |  참고  
+---|---|---  
+  
+####  설명
+
+CVE-2015-7547은 glibc DNS 클라이언트측 확인자가 소프트웨어를 스택 기반 버퍼 오버플로에 취약하게 만드는 취약성입니다( `
+getaddrinfo() ` 라이브러리 함수 사용 시). 공격자는 공격자 제어 도메인 이름, 공격자 제어 DNS 서버 또는 중간자 공격을
+통해 이 취약점을 악용하는 함수를 사용하여 소프트웨어를 이용할 수 있습니다.
+
+자세히 알아보려면 [ Google 온라인 보안 블로그
+](https://googleonlinesecurity.blogspot.ca/2016/02/cve-2015-7547-glibc-
+getaddrinfo-stack.html) 또는 [ Common Vulnerabilities and Exposures(CVE)
+](http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2015-7547) 데이터베이스를 참조하세요.
+
+####  Compute Engine에 미치는 영향
+
+**업데이트(2016년 2월 22일):**
+
+이제 다음과 같은 CoreOS, SLES, OpenSUSE 이미지를 사용하여 인스턴스를 다시 만들 수 있습니다.
+
+  * ` coreos-alpha-962-0-0-v20160218 `
+  * ` coreos-beta-899-7-0-v20160218 `
+  * ` coreos-stable-835-13-0-v20160218 `
+  * ` opensuse-13-2-v20160222 `
+  * ` opensuse-leap-42-1-v20160222 `
+  * ` sles-11-sp4-v20160222 `
+  * ` sles-12-sp1-v20160222 `
+
+**업데이트(2016년 2월 17일):**
+
+이제 다음 명령어를 실행하여 Ubuntu 12.04 LTS, Ubuntu 14.04 LTS, Ubuntu 15.10 인스턴스에 대한
+업데이트를 수행할 수 있습니다.
+
+  1. ` user@my-instance:~$ sudo apt-get -y update `
+  2. ` user@my-instance:~$ sudo apt-get -y dist-upgrade `
+  3. ` user@my-instance:~$ sudo reboot `
+
+수동 업데이트 명령어를 실행하는 대신 다음과 같은 새 이미지를 사용하여 인스턴스를 다시 만들 수 있습니다.
+
+  * ` backports-debian-7-wheezy-v20160216 `
+  * ` centos-6-v20160216 `
+  * ` centos-7-v20160216 `
+  * ` debian-7-wheezy-v20160216 `
+  * ` debian-8-jessie-v20160216 `
+  * ` rhel-6-v20160216 `
+  * ` rhel-7-v20160216 `
+  * ` ubuntu-1204-precise-v20160217a `
+  * ` ubuntu-1404-trusty-v20160217a `
+  * ` ubuntu-1510-wily-v20160217 `
+
+Google은 기본 glibc 구성을 갖춘 Compute Engine의 DNS 확인자를 통해 이 취약점을 악용할 수 있는 방법에 대해서는
+알지 못합니다. 하지만 최대한 빨리 가상 머신 인스턴스를 패치해야 합니다. 모든 새로운 취약점이 그러하듯 시간이 지나면서 새로운 악용 방법이
+발견될 수 있기 때문입니다. edns0(기본적으로 사용 중지됨)이 사용 설정되어 있다면 인스턴스가 패치될 때까지 사용 중지해야 합니다.
+
+**이전 게시판:**
+
+Linux 배포판은 취약할 수 있습니다. Compute Engine 고객은 Linux OS를 실행하는 경우 이 취약점을 제거하기 위해
+인스턴스의 OS 이미지를 업데이트해야 합니다.
+
+Debian을 실행하는 인스턴스의 경우, 인스턴스에서 다음 명령어를 실행하여 업데이트를 수행할 수 있습니다.
+
+  1. ` user@my-instance:~$ sudo apt-get -y update `
+  2. ` user@my-instance:~$ sudo apt-get -y dist-upgrade `
+  3. ` user@my-instance:~$ sudo reboot `
+
+또한 Debian 인스턴스에 [ UnattendedUpgrades
+](https://wiki.debian.org/UnattendedUpgrades) 를 설치하는 것이 좋습니다.
+
+Red Hat Enterprise Linux 인스턴스의 경우:
+
+  * ` user@my-instance:~$ sudo yum -y upgrade `
+  * ` user@my-instance:~$ sudo reboot `
+
+다른 운영체제 유지 관리자가 이 취약점에 대한 패치를 게시하고 Compute Engine에서 업데이트된 OS 이미지를 출시할 때 이 게시판도
+지속적으로 함께 업데이트됩니다.
+
+|  높음  |  [ CVE-2015-7547
+](https://googleonlinesecurity.blogspot.ca/2016/02/cve-2015-7547-glibc-
+getaddrinfo-stack.html)  
+  
+##  발행 일자: 2015년 3월 19일
+
+설명  |  심각도  |  참고  
+---|---|---  
+  
+####  설명
+
+CVE-2015-1427은 버전 1.3.8보다 이전 및 1.4.3보다 이전인 모든 1.4.x 버전에 해당하는 [ Elasticsearch
+](https://www.elastic.co/products/elasticsearch) 의 Groovy 스크립팅 엔진에서 원격 공격자가
+샌드박스 보호 메커니즘을 우회하고 임의의 셸 명령어를 실행할 수 있게 하는 취약점입니다.
+
+자세히 알아보려면 [ National Vulnerability Database(NVD)
+](https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1427) 또는 [ Common
+Vulnerabilities and Exposures(CVE) ](http://www.cve.mitre.org/cgi-
+bin/cvename.cgi?name=2015-1427) 데이터베이스를 참조하세요.
+
+####  Compute Engine에 미치는 영향
+
+Compute Engine 인스턴스에서 Elasticsearch를 실행 중인 경우 Elasticsearch를 버전 1.4.3 이상으로
+업그레이드해야 합니다. 이미 Elasticsearch 소프트웨어를 업그레이드했다면 이 취약점으로부터 보호됩니다.
+
+Elasticsearch 1.4.3 이상으로 업그레이드하지 않은 경우 [ 롤링 업그레이드를 수행
+](http://www.elastic.co/guide/en/elasticsearch/reference/current/rolling-
+upgrades.html) 할 수 있습니다.
+
+Elasticsearch를 배포할 때 [ Google Cloud Platform Console
+](https://cloud.google.com/solutions/elasticsearch/click-to-deploy?hl=ko) 의 [
+클릭하여 배포 ](https://console.cloud.google.com/?hl=ko) 를 사용했다면 Elasticsearch를 실행하는
+인스턴스를 삭제하기 위해 [ 배포를 삭제
+](https://console.cloud.google.com/projectselector/deployments?hl=ko) 할 수
+있습니다.
+
+Google Cloud Platform 팀은 Elasticsearch의 업데이트된 버전을 배포하기 위한 해결책을 마련하고 있습니다. 하지만
+아직 [ GCP Console ](https://console.cloud.google.com/?hl=ko) 의 클릭하여 배포 기능에 대한
+해결책은 마련되지 않았습니다.
+
+|  높음  |  [ CVE-2015-1427
+](https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1427)  
+  
+##  발행 일자: 2015년 1월 29일
+
+설명  |  심각도  |  참고  
+---|---|---  
+  
+####  설명
+
+[ CVE-2015-0235(Ghost)
+](http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-0235) 는 glibc
+라이브러리의 취약점입니다.
+
+App Engine, Cloud Storage, BigQuery, CloudSQL 고객은 조치를 취할 필요가 없습니다. Google 서버는
+업데이트되어 있으며 이 취약점으로부터 보호됩니다.
+
+Compute Engine 고객은 OS 이미지를 업데이트해야 할 수 있습니다.
+
+####  Compute Engine에 미치는 영향
+
+Linux 배포판은 취약할 수 있습니다. Debian 7, Debian 7 백포트, Ubuntu 12.04 LTS, Red Hat
+Enterprise Linux, CentOS, SUSE Linux Enterprise Server 11 SP3을 실행 중인 고객이 이
+취약점을 제거하려면 인스턴스의 OS 이미지를 업데이트해야 합니다.
+
+이 취약점은 Ubuntu 14.04 LTS, Ubuntu 14.10, SUSE Linux Enterprise Server 12에 영향을
+미치지 않습니다.
+
+Linux 배포판을 업그레이드하는 것이 좋습니다. Debian 7, Debian 7 백포트, Ubuntu 12.04 LTS를 실행하는
+인스턴스의 경우, 인스턴트에서 다음 명령어를 실행하여 업데이트를 수행할 수 있습니다.
+
+  1. ` user@my-instance:~$ sudo apt-get update `
+  2. ` user@my-instance:~$ sudo apt-get -y upgrade `
+  3. ` user@my-instance:~$ sudo reboot `
+
+Red Hat Enterprise Linux 또는 CentOS 인스턴스의 경우:
+
+  1. ` user@my-instance:~$ sudo yum -y upgrade `
+  2. ` user@my-instance:~$ sudo reboot `
+
+SUSE Linux Enterprise Server 11 SP3 인스턴스의 경우:
+
+  1. ` user@my-instance:~$ sudo zypper --non-interactive up `
+  2. ` user@my-instance:~$ sudo reboot `
+
+위의 수동 업데이트 명령어를 실행하는 대신 사용자는 다음과 같은 새 이미지를 사용하여 인스턴스를 다시 만들 수 있습니다.
+
+  * ` debian-7-wheezy-v20150127 `
+  * ` backports-debian-7-wheezy-v20150127 `
+  * ` centos-6-v20150127 `
+  * ` centos-7-v20150127 `
+  * ` rhel-6-v20150127 `
+  * ` rhel-7-v20150127 `
+  * ` sles-11-sp3-v20150127 `
+  * ` ubuntu-1204-precise-v20150127 `
+
+####  Google 관리형 VM에 미치는 영향
+
+` gcloud preview app deploy ` 를 사용하는 관리형 VM 사용자는 ` gcloud preview app setup-
+managed-vms ` 를 통해 베이스 Docker 컨테이너를 업데이트해야 하며 ` gcloud preview app deploy ` 를
+사용하여 실행 중인 각각의 앱을 다시 배포해야 합니다. ` appcfg ` 를 통해 배포한 사용자는 조치를 취하지 않아도 자동으로
+업그레이드됩니다.
+
+|  높음  |  [ CVE-2015-0235
+](http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-0235)  
+  
+##  발행 일자: 2014년 10월 15일
+
+**최종 업데이트: 2014년 10월 17일**
+
+설명  |  심각도  |  참고  
+---|---|---  
+  
+####  설명
+
+CVE-2014-3566(또는 POODLE)은 SSL 버전 3.0의 설계상의 취약점입니다. 이 취약점으로 인해 네트워크 공격자가 보안 연결의
+일반 텍스트를 계산할 수 있습니다. 자세한 내용은 취약점에 대한 [ 블로그 게시물
+](http://googleonlinesecurity.blogspot.com/2014/10/this-poodle-bites-
+exploiting-ssl-30.html) 을 참조하세요.
+
+App Engine, Cloud Storage, BigQuery, CloudSQL 고객은 조치를 취할 필요가 없습니다. Google 서버는
+업데이트되어 있으며 이 취약점으로부터 보호됩니다. Compute Engine 고객은 OS 이미지를 업데이트해야 합니다.
+
+####  Compute Engine에 미치는 영향
+
+**업데이트(2014년 10월 17일):**
+
+SSLv3을 사용하는 경우 취약할 수 있습니다. Compute Engine 고객은 이 취약점을 제거하기 위해 인스턴스의 OS 이미지를
+업데이트해야 합니다.
+
+Linux 배포판을 업그레이드하는 것이 좋습니다. Debian을 실행하는 인스턴스의 경우, 인스턴스에서 다음 명령어를 실행하여 업데이트를
+수행할 수 있습니다.
+
+    
+    
+    
+    user@my-instance:~$ sudo apt-get update
+    user@my-instance:~$ sudo apt-get -y upgrade
+    user@my-instance:~$ sudo reboot
+
+CentOS 인스턴스의 경우:
+
+    
+    
+    
+    user@my-instance:~$ sudo yum -y upgrade
+    user@my-instance:~$ sudo reboot
+
+위의 수동 업데이트 명령어를 실행하는 대신 사용자는 다음과 같은 새 이미지를 사용하여 인스턴스를 다시 만들 수 있습니다.
+
+  * ` centos-6-v20141016 `
+  * ` centos-7-v20141016 `
+  * ` debian-7-wheezy-v20141017 `
+  * ` backports-debian-7-wheezy-v20141017 `
+
+Google은 이미지가 확보되면 RHEL 및 SLES 이미지에 대한 게시판을 업데이트합니다. 그때까지 RHEL 사용자는 [ Red Hat에서
+직접 ](https://access.redhat.com/articles/1232123) 자세한 정보를 참조할 수 있습니다.
+
+**이전 게시판:**
+
+Compute Engine 고객은 이 취약점을 제거하기 위해 인스턴스의 OS 이미지를 업데이트해야 합니다. Google은 새 OS 이미지가
+확보되면 안내와 함께 이 보안 게시판을 업데이트합니다.
+
+|  보통  |  [ CVE-2014-3566
+](http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3566)  
+  
+##  발행 일자: 2014년 9월 24일
+
+**최종 업데이트: 2014년 9월 29일**
+
+설명  |  심각도  |  참고  
+---|---|---  
+  
+####  설명
+
+Bash에 공격자가 제어하는 환경 변수를 파싱하여 원격 코드를 실행할 수 있는 버그(CVE-2014-6271)가 있습니다. 악용 가능성이
+가장 큰 벡터는 웹 서버에 노출된 CGI 스크립트에 대한 악성 HTTP 요청을 통해 발생합니다. 자세한 내용은 [ 버그 설명
+](http://seclists.org/oss-sec/2014/q3/650) 을 참조하세요.
+
+2014년 9월 26일 이전의 Compute Engine 게스트 OS 이미지를 제외한 Google Cloud Platform 제품의 Bash
+버그는 완화되었습니다. Compute Engine 이미지의 버그를 완화하는 단계는 아래를 참조하세요.
+
+####  Compute Engine에 미치는 영향
+
+이 버그는 CGI 스크립트를 사용하는 거의 모든 웹사이트에 영향을 미칠 수 있습니다. 또한 이 버그는 ` popen ` , ` system
+` , ` shell_exec ` 또는 유사한 API와 같은 호출을 통해 셸 명령어를 호출하는 PHP, Perl, Python, SSI,
+자바, C++ 및 유사한 서블릿에 의존하는 웹사이트에 영향을 미칠 수 있습니다. 또한 SSH 명령어 제한이나 Bash 제한 셸과 같은
+메커니즘을 통해 제한된 사용자에게 제어된 로그인 액세스를 허용하려는 시스템에 영향을 미칠 수 있습니다.
+
+**업데이트(2014년 9월 29일):**
+
+아래의 수동 업데이트 명령어를 실행하는 대신 [ CVE-2014-7169
+](http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7169) , [
+CVE-2014-6277 ](http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6277)
+, [ CVE-2014-6278
+](http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6278) , [
+CVE-2014-7186 ](http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7186)
+, [ CVE-2014-7187
+](http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7187) 을 포함한 Bash 보안
+버그와 관련된 추가 취약점을 완화하는 이미지를 사용하여 인스턴스를 다시 만들 수 있습니다. 인스턴스를 다시 만들려면 다음과 같은 새 이미지를
+사용하세요.
+
+  * ` centos-6-v20140926 `
+  * ` centos-7-v20140926 `
+  * ` debian-7-wheezy-v20140926 `
+  * ` backports-debian-7-wheezy-v20140926 `
+  * ` rhel-6-v20140926 `
+
+**업데이트(2014년 9월 25일):**
+
+이제 사용자는 수동 업데이트를 수행하는 대신 인스턴스를 다시 만들 수 있습니다. 인스턴스를 다시 만들려면 이 보안 버그에 대한 수정 사항이
+포함된 다음과 같은 새 이미지를 사용하세요.
+
+  * ` backports-debian-7-wheezy-v20140924 `
+  * ` debian-7-wheezy-v20140924 `
+  * ` rhel-6-v20140924 `
+  * ` centos-6-v20140924 `
+  * ` centos-7-v20140924 `
+
+RHEL 및 SUSE 이미지의 경우, 인스턴스에서 다음 명령어를 실행하여 수동으로 업데이트를 수행할 수도 있습니다.
+
+    
+    
+    
+    # RHEL instances
+    user@my-instance:~$ sudo yum -y upgrade
+    
+    # SUSE instances
+    user@my-instance:~$ sudo zypper --non-interactive up
+
+**이전 게시판:**
+
+Linux 배포판을 업그레이드하는 것이 좋습니다. Debian을 실행하는 인스턴스의 경우, 인스턴스에서 다음 명령어를 실행하여 업데이트를
+수행할 수 있습니다.
+
+    
+    
+    
+    user@my-instance:~$ sudo apt-get update
+    user@my-instance:~$ sudo apt-get -y upgrade
+    
+
+CentOS 인스턴스의 경우:
+
+    
+    
+    
+    user@my-instance:~$ sudo yum -y upgrade
+
+자세한 정보는 해당 Linux 배포판에 대한 공지를 검토하세요.
+
+  * 이전 패치: [ http://ftp.gnu.org/gnu/bash/ ](http://ftp.gnu.org/gnu/bash/) (해당 버전에 대해서는 *-패치의 마지막 항목을 참조) 
+  * Debian: [ [SECURITY] [DSA 3032-1] Bash 보안 업데이트 ](https://lists.debian.org/debian-security-announce/2014/msg00220.html)
+  * RHEL: 
+    * [ RHSA-2014:1293-01 ](https://www.redhat.com/archives/rhsa-announce/2014-September/msg00048.html)
+    * [ RHSA-2014:1294-01 ](https://www.redhat.com/archives/rhsa-announce/2014-September/msg00049.html)
+  * CentOS 5: [ [CentOS-announce] CESA-2014:1293 ](http://lists.centos.org/pipermail/centos-announce/2014-September/020582.html)
+  * CentOS 6: [ [CentOS-announce] CESA-2014:1293 ](http://lists.centos.org/pipermail/centos-announce/2014-September/020585.html)
+  * CentOS 7: [ [CentOS-announce] CESA-2014:1293 ](http://lists.centos.org/pipermail/centos-announce/2014-September/020583.html)
+
+|  높음  |  [ CVE-2014-7169
+](http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7169) , [
+CVE-2014-6271 ](http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6271)
+, [ CVE-2014-6277
+](http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6277) , [
+CVE-2014-6278 ](http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6278)
+, [ CVE-2014-7186
+](http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7186) , [
+CVE-2014-7187 ](http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7187)  
+  
+##  발행 일자: 2014년 7월 25일
+
+설명  |  심각도  |  참고  
+---|---|---  
+  
+####  설명
+
+[ Elasticsearch Logstash ](http://www.elasticsearch.org/overview/logstash/) 는
+데이터의 무단 수정 및 공개를 허용할 수 있는 OS 명령어 삽입에 취약합니다. 공격자는 Logstash의 데이터 소스에 조작된 이벤트를
+전송하여 Logstash 프로세스의 허가를 받아 명령어를 실행할 수 있습니다.
+
+####  Compute Engine에 미치는 영향
+
+이 취약점은 zabbix 또는 nagios_nsca 출력이 사용 설정되고 1.4.2보다 이전 버전인 Elasticsearch
+Logstash를 실행하는 모든 Compute Engine 인스턴스에 영향을 미칩니다. 공격을 예방하는 방법은 다음과 같습니다.
+
+  * Logstash 1.4.2로 업그레이드 
+  * 1.3.x 버전용 패치 적용 
+  * ` zabbix ` 및 ` nagios_nsca ` 출력 사용 중지 
+
+자세한 내용은 [ Logstash 블로그 ](http://www.elasticsearch.org/blog/logstash-1-4-2/) 를
+참조하세요.
+
+Elasticsearch는 또한 신뢰할 수 없는 IP를 통한 원격 액세스를 차단하기 위해 [ 방화벽을 사용
+](http://www.elasticsearch.org/blog/scripting-security/) 할 것을 권장합니다.
+
+|  높음  |  [ CVE-2014-4326
+](http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-4326)  
+  
+##  발행 일자: 2014년 6월 18일
+
+설명  |  심각도  |  참고  
+---|---|---  
+  
+####  설명
+
+Google Cloud Platform에서 실행하는 Docker 컨테이너의 보안과 관련하여 고객이 제기할 수 있는 우려사항에 답변하고자
+합니다. 여기에는 Docker 컨테이너를 지원하는 Google App Engine 확장 프로그램, 컨테이너에 최적화된 가상 머신, 오픈소스
+Kubernetes 스케줄러를 사용하는 고객이 포함됩니다.
+
+Docker에서는 문제에 적극적으로 답변해 왔으며 Docker의 블로그 답변은 [ 여기
+](http://blog.docker.com/2014/06/docker-container-breakout-proof-of-concept-
+exploit/) 에서 확인할 수 있습니다. 블로그 답변에 나와 있듯 밝혀진 문제는 이전의 테스트용 버전인 Docker 0.11에만
+적용됩니다.
+
+전 세계의 사용자들이 컨테이너 보안에 대해 고민하지만, Linux 애플리케이션 컨테이너(특히 Docker 컨테이너) 기반 솔루션인
+Google Cloud Platform은 완벽한 가상 머신(Compute Engine)에서 실행된다는 점을 명심해야 합니다. Google은
+Linux 애플리케이션 컨테이너 스택을 강화하려는 Docker 커뮤니티의 노력을 지원하지만, 이 기술은 신기술이며 공격 면적이 넓은 것으로
+인식하고 있습니다. 지금은 완전한 하이퍼바이저(가상 머신)가 더 소형화되고 방어가 용이한 공격 면적을 제공한다고 생각합니다. 가상 머신은
+처음부터 악성 작업 부하를 격리하고 코드 버그의 발생 가능성과 영향을 최소화하도록 설계되었습니다.
+
+고객은 악성 코드일 수도 있는 제3자와 고객 사이에 완전한 하이퍼바이저 경계가 존재한다는 사실에 대해 안심할 수 있습니다. Google은
+Linux 애플리케이션 컨테이너 스택이 다중 테넌트 작업 부하를 지원할 수 있을 만큼 강력해졌다고 판단되면 커뮤니티에 알릴 것입니다. 현재
+Linux 애플리케이션 컨테이너는 가상 머신을 대체하지는 못하며 가상 머신을 더 효과적으로 활용하기 위한 수단에 불과합니다.
+
+|  낮음  |  [ Docker 블로그 게시물 ](http://blog.docker.com/2014/06/docker-container-
+breakout-proof-of-concept-exploit/)  
+  
+##  발행 일자: 2014년 6월 5일
+
+**최종 업데이트: 2014년 6월 9일**
+
+설명  |  심각도  |  참고  
+---|---|---  
+  
+####  설명
+
+OpenSSL에는 ` ChangeCipherSpec ` 메시지가 핸드셰이크 상태 머신에 올바르게 결합되지 않는 문제가 있습니다. 이로 인해
+메시지가 조기에 핸드셰이크에 삽입됩니다. 공격자는 정교하게 조작된 핸드셰이크를 사용하여 OpenSSL SSL/TSL 클라이언트 및 서버에서
+취약한 키 입력 장치의 사용을 강제할 수 있습니다. 이는 중간자(MITM) 공격을 받은 클라이언트와 서버로부터 오는 트래픽을 공격자가
+복호화하고 수정하는 데 악용될 수 있습니다.
+
+이 문제는 [ CVE-2014-0224 ](https://www.openssl.org/news/secadv/20140605.txt) 로
+알려져 있습니다. OpenSSL팀은 이 문제를 해결했으며 OpenSSL 커뮤니티에 OpenSSL을 업데이트하라는 알림을 보냈습니다.
+
+####  Compute Engine에 미치는 영향
+
+이 취약점은 Debian, CentOS, Red Hat Enterprise Linux, SUSE Linux Enterprise Server를
+포함하여 OpenSSL을 사용하는 모든 Compute Engine 인스턴스에 영향을 미칩니다. 새 이미지로 인스턴스를 다시 생성하거나
+인스턴스에서 패키지를 수동으로 업데이트하여 인스턴스를 업데이트할 수 있습니다.
+
+**업데이트(2014년 6월 9일):** SUSE Linux Enterprise Server를 실행하는 인스턴스를 새 이미지로 업데이트하려면
+다음 버전 이상의 이미지를 사용하여 인스턴스를 다시 생성하세요.
+
+  * ` sles-11-sp3-v20140609 `
+
+**이전 게시물:**
+
+Debiant 및 CentOS 인스턴스를 새 이미지로 업데이트하려면 다음 버전 이상의 이미지를 사용하여 인스턴스를 다시 생성하세요.
+
+  * ` debian-7-wheezy-v20140605 `
+  * ` backports-debian-7-wheezy-v20140605 `
+  * ` centos-6-v20140605 `
+  * ` rhel-6-v20140605 `
+
+인스턴스에서 OpenSSL을 수동으로 업데이트하려면 다음 명령어를 실행하여 해당 패키지를 업데이트하세요. CentOS 및 RHEL을 실행하는
+인스턴스의 경우 인스턴스에서 다음 명령어를 실행하여 OpenSSL을 업데이트할 수 있습니다.
+
+    
+    
+    
+    user@my-instance:~$ sudo yum -y update
+    user@my-instance:~$ sudo reboot
+
+Debian을 실행하는 인스턴스의 경우 인스턴스에서 다음 명령어를 실행하여 OpenSSL을 업데이트할 수 있습니다.
+
+    
+    
+    
+    user@my-instance:~$ sudo apt-get update
+    user@my-instance:~$ sudo apt-get -y upgrade
+    user@my-instance:~$ sudo reboot
+
+SUSE Linux Enterprise Server를 실행하는 인스턴스의 경우 인스턴스에서 다음 명령어를 실행하여 OpenSSL을 최신
+상태로 유지할 수 있습니다.
+
+    
+    
+    
+    user@my-instance:~$ sudo zypper --non-interactive up
+    user@my-instance:~$ sudo reboot
+
+|  보통  |  [ CVE-2014-0224
+](https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0224)  
+  
+##  발행 일자: 2014년 4월 8일
+
+설명  |  심각도  |  참고  
+---|---|---  
+  
+####  설명
+
+1.0.1g 이전의 OpenSSL 1.0.1에서 구현된 (1) TLS 및 (2) DTLS는 하트비트 확장 패킷을 제대로 처리하지 못하므로
+원격 공격자가 버퍼 오버리드를 유발하는 조작된 패킷을 통해 프로세스 메모리로부터 민감한 정보를 얻을 수 있으며 이는 ` d1_both.c `
+및 ` t1_lib.c ` 와 관련된 비공개 키를 읽는 것을 통해 입증되었습니다. 이를 Heartbleed 버그라고도 합니다.
+
+####  Compute Engine에 미치는 영향
+
+이 취약점은 최신 OpenSSL 버전을 사용하지 않는 모든 Compute Engine Debian, RHEL, CentOS 인스턴스에 영향을
+미칩니다. 인스턴스를 새 이미지로 다시 생성하거나 인스턴스에서 패키지를 수동으로 업데이트하여 인스턴스를 업데이트할 수 있습니다.
+
+새 이미지를 사용하여 인스턴스를 업데이트하려면 다음 버전 이상의 이미지를 사용하여 인스턴스를 다시 만듭니다.
+
+  * ` debian-7-wheezy-v20140408 `
+  * ` backports-debian-7-wheezy-v20140408 `
+  * ` centos-6-v20140408 `
+  * ` rhel-6-v20140408 `
+
+인스턴스에서 OpenSSL을 수동으로 업데이트하려면 다음 명령어를 실행하여 해당 패키지를 업데이트하세요. CentOS 및 RHEL을 실행하는
+인스턴스의 경우 인스턴스에서 다음 명령어를 실행하여 OpenSSL을 최신 상태로 유지할 수 있습니다.
+
+    
+    
+    
+    user@my-instance:~$ sudo yum update
+    user@my-instance:~$ sudo reboot
+
+Debian을 실행하는 인스턴스의 경우 인스턴스에서 다음 명령어를 실행하여 OpenSSL을 업데이트할 수 있습니다.
+
+    
+    
+    
+    user@my-instance:~$ sudo apt-get update
+    user@my-instance:~$ sudo apt-get upgrade
+    user@my-instance:~$ sudo reboot
+
+USE Linux를 실행하는 인스턴스는 영향을 받지 않습니다.
+
+**2014년 4월 14일에 업데이트됨:** Heartbleed 버그를 통해 키를 추출하기 위한 새로운 연구와 관련하여 Compute
+Engine은 Compute Engine 고객에게 영향을 받는 SSL 서비스에 사용할 새 키를 만들 것을 권장합니다.
+
+|  보통  |  [ CVE-2014-0160
+](https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0160)  
+  
+##  발행 일자: 2013년 6월 7일
+
+설명  |  심각도  |  참고  
+---|---|---  
+  
+####  설명
+
+**참고:** 이 취약점은 API 버전 v1부터 지원이 중단되고 삭제된 커널에만 적용됩니다.
+
+3.9.4까지의 Linux 커널 Broadcom B43 무선 드라이버에서 ` drivers/net/wireless/b43/main.c ` 의
+` b43_request_firmware ` 함수에 형식 문자열 취약점이 있습니다. 로컬 사용자는 이를 통해 루트 액세스를 활용하고 `
+fwpostfix ` modprobe 매개변수에 형식 문자열 지정자를 포함하여, 권한을 얻고 부적절한 오류 메시지를 구성할 수 있습니다.
+
+####  Compute Engine에 미치는 영향
+
+이 취약점은 ` gcg-3.3.8-201305291443 ` 보다 이전인 모든 Compute Engine 커널에 영향을 줍니다. 이에 대해
+Compute Engine은 모든 이전 커널에 대한 지원을 중단하고 사용자에게 Compute Engine 커널 ` gce-v20130603
+` 을 사용하도록 인스턴스 및 이미지를 업데이트할 것을 권장하고 있습니다. ` gce-v20130603 ` 에는 이 취약점에 대한 패치가
+적용된 ` gcg-3.3.8-201305291443 ` 커널이 포함되어 있습니다.
+
+인스턴스에서 사용 중인 커널 버전을 확인하려면 다음 안내를 따르세요.
+
+  1. 인스턴스에 ssh로 접속 
+  2. ` uname -r ` 실행 
+
+|  보통  |  [ CVE-2013-2852
+](https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2852)  
+  
+##  발행 일자: 2013년 6월 7일
+
+설명  |  심각도  |  참고  
+---|---|---  
+  
+####  설명
+
+**참고:** 이 취약점은 API 버전 v1부터 지원이 중단되고 삭제된 커널에만 적용됩니다.
+
+3.9.4까지의 Linux 커널 ` block/genhd.c ` 의 register_disk 함수에 형식 문자열 취약점이 있습니다. 로컬
+사용자는 이를 통해 루트 액세스를 활용하고 ` /sys/module/md_mod/parameters/new_array ` 에 형식 문자열
+지정자를 작성하여, 권한을 얻고 조작된 ` /dev/md ` 기기 이름을 생성할 수 있습니다.
+
+####  Compute Engine에 미치는 영향
+
+이 취약점은 ` gcg-3.3.8-201305291443 ` 보다 이전인 모든 Compute Engine 커널에 영향을 줍니다. 이에 대해
+Compute Engine은 모든 이전 커널에 대한 지원을 중단하고 사용자에게 Compute Engine 커널 ` gce-v20130603
+` 을 사용하도록 인스턴스 및 이미지를 업데이트할 것을 권장하고 있습니다. ` gce-v20130603 ` 에는 이 취약점에 대한 패치가
+적용된 ` gcg-3.3.8-201305291443 ` 커널이 포함되어 있습니다.
+
+인스턴스에서 사용 중인 커널 버전을 확인하려면 다음 안내를 따르세요.
+
+  1. 인스턴스에 ssh로 접속 
+  2. ` uname -r ` 실행 
+
+|  보통  |  [ CVE-2013-2851
+](https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2851)  
+  
+##  발행 일자: 2013년 5월 14일
+
+설명  |  심각도  |  참고  
+---|---|---  
+  
+####  설명
+
+**참고:** 이 취약점은 API 버전 v1부터 지원이 중단되고 삭제된 커널에만 적용됩니다.
+
+3.8.9 버전보다 이전인 Linux 커널의 ` kernel/events/core.c ` 에서 perf_swevent_init 함수에서
+잘못된 ` integer ` 데이터 형식을 사용합니다. 이를 활용하여 로컬 사용자는 조작된 ` perf_event_open ` 시스템 호출을
+통해 권한을 얻을 수 있습니다.
+
+####  Compute Engine에 미치는 영향
+
+이 취약점은 ` gcg-3.3.8-201305211623 ` 보다 이전인 모든 Compute Engine 커널에 영향을 줍니다. 이에 대해
+Compute Engine은 모든 이전 커널에 대한 지원을 중단하고 사용자에게 Compute Engine 커널 ` gce-v20130521
+` 사용하도록 인스턴스 및 이미지를 업데이트할 것을 권장하고 있습니다. ` gce-v20130521 ` 에는 이 취약점에 대한 패치가 적용된
+` gcg-3.3.8-201305211623 ` 커널이 포함되어 있습니다.
+
+인스턴스에서 사용 중인 커널 버전을 확인하려면 다음 안내를 따르세요.
+
+  1. 인스턴스에 ssh로 접속 
+  2. ` uname -r ` 실행 
+
+|  높음  |  [ CVE-2013-2094
+](https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2094)  
+  
+##  발행 일자: 2013년 2월 18일
+
+설명  |  심각도  |  참고  
+---|---|---  
+  
+####  설명
+
+**참고:** 이 취약점은 API 버전 v1부터 지원이 중단되고 삭제된 커널에만 적용됩니다.
+
+3.7.5 버전보다 이전인 Linux 커널의 ptrace 함수에 있는 경합 상태로 인해 로컬 사용자는 조작된 애플리케이션에서 `
+PTRACE_SETREGS ptrace ` 시스템 호출을 통해 권한을 얻을 수 있습니다.
+
+####  Compute Engine에 미치는 영향
+
+이 취약점은 Compute Engine 커널 ` 2.6.x-gcg- _ <date> _ ` 에 영향을 줍니다. 이에 대해 Compute
+Engine은 2.6.x 커널에 대한 지원을 중단하고 사용자에게 Compute Engine 커널 ` gce-v20130225 ` 를
+사용하도록 인스턴스 및 이미지를 업데이트할 것을 권장하고 있습니다. ` gce-v20130225 ` 에는 이 취약점에 대한 패치가 적용된 `
+3.3.8-gcg-201302081521 ` 커널이 포함되어 있습니다.
+
+인스턴스에서 사용 중인 커널 버전을 확인하려면 다음 안내를 따르세요.
+
+  1. 인스턴스에 ssh로 접속 
+  2. ` uname -r ` 실행 
+
+|  보통  |  [ CVE-2013-0871
+](https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0871)
+
