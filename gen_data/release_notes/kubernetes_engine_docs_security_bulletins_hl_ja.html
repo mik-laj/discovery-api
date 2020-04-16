@@ -1,0 +1,2983 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <h1 class="devsite-page-title">
+   セキュリティに関する情報
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <p>
+    このトピックでは、Google Kubernetes Engine（GKE）に関するすべてのセキュリティ情報について説明します。
+   </p>
+   <p>
+    脆弱性に関する情報は多くの場合、影響を受けた当事者が対処するまで、情報制限により非公開となります。このような場合、GKE の
+    <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=ja">
+     リリースノート
+    </a>
+    には、情報制限が解除されるまで「セキュリティ更新」が記載されます。リリースノートは情報制限が解除された時点で更新され、パッチによって対処された脆弱性の情報が反映されます。
+   </p>
+   <aside class="note">
+    <strong>
+     注:
+    </strong>
+    <span>
+     GKE でマルチテナント ワークロードを実行する場合、上記の情報には特に注意してください。これらの脆弱性の影響を受ける可能性は、マルチテナント ワークロードの方が高くなります。GKE のセキュリティ境界とそれによるワークロードへの影響に関する技術的説明については、
+     <a href="https://cloudplatform.googleblog.com/2018/05/Exploring-container-security-Isolation-at-different-layers-of-the-Kubernetes-stack.html">
+      Kubernetes スタックのさまざまなレイヤーでの隔離
+     </a>
+     をご覧ください。
+    </span>
+   </aside>
+   <p>
+    最新のセキュリティ情報を受け取るには、このページの URL を
+    <a class="external" href="https://wikipedia.org/wiki/Comparison_of_feed_aggregators">
+     フィード リーダー
+    </a>
+    に追加するか、フィード URL
+    <code dir="ltr" translate="no">
+     https://cloud.google.com/feeds/kubernetes-engine-security-bulletins.xml
+    </code>
+    を直接追加してください。
+   </p>
+   <section class="bulletins">
+    <h2 data-text="GCP-2020-002" id="gcp-2020-002">
+     GCP-2020-002
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Kubernetes は
+         <a href="https://groups.google.com/forum/?hl=ja#!topic/kubernetes-security-announce/2UOlsba2g0s">
+          サービス拒否攻撃の脆弱性を 2 件
+         </a>
+         公表しました。そのうちの 1 件は API サーバーに影響するもので、もう 1 件は Kubelet に影響するものです。詳細については Kubernetes の問題
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/89377">
+          89377
+         </a>
+         と
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/89378">
+          89378
+         </a>
+         をご覧ください。
+        </p>
+        <h4 data-text="必要な対策" id="heading">
+         必要な対策
+        </h4>
+        <p>
+         クラスタの内部ネットワーク内で信頼されていないユーザーによるリクエスト送信が許可されていない限り、すべての GKE ユーザーは CVE-2020-8551 から保護されます。
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/authorized-networks?hl=ja">
+          マスター承認済みネットワーク
+         </a>
+         を使うことで、CVE-2020-8552 の影響をさらに緩和できます。
+        </p>
+        <h4 data-text="パッチのリリース予定" id="heading_1">
+         パッチのリリース予定
+        </h4>
+        <p>
+         CVE-2020-8551 のパッチにはノードのアップグレードが必要です。この脆弱性の緩和策が組み込まれるパッチ バージョンは次のとおりです。
+        </p>
+        <ul>
+         <li>
+          1.15.10-gke.*
+         </li>
+         <li>
+          1.16.7-gke.*
+         </li>
+        </ul>
+        <aside class="note">
+         注: 1.14.x より前のバージョンはこの脆弱性の影響を受けないため、パッチを適用する必要はありません。
+        </aside>
+        <p>
+         CVE-2020-8552 用のパッチではマスターのアップグレードが必要です。この脆弱性の緩和策が組み込まれるパッチ バージョンは次のとおりです。
+        </p>
+        <ul>
+         <li>
+          1.14.10-gke.32
+         </li>
+         <li>
+          1.15.10-gke.*
+         </li>
+         <li>
+          1.16.7-gke.*
+         </li>
+        </ul>
+       </td>
+       <td>
+        <p>
+         中
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8551">
+          CVE-2020-8551
+         </a>
+         <br/>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8552">
+          CVE-2020-8552
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="2020 年 1 月 21 日、最終更新日 2020 年 1 月 24 日" id="january_21_2020">
+     2020 年 1 月 21 日、最終更新日 2020 年 1 月 24 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         <strong>
+          2020 年 1 月 24 日更新:
+         </strong>
+         パッチ適用済みバージョンを現在作成中で、2020 年 1 月 25 日までに完成する予定です。
+        </p>
+        <hr/>
+        <p>
+         Microsoft が Windows Crypto API とその楕円曲線署名の検証に脆弱性があることを公表しました。詳細については、
+         <a class="external" href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2020-0601">
+          Microsoft の開示情報
+         </a>
+         をご覧ください。
+        </p>
+        <p>
+         <strong>
+          必要な対策
+         </strong>
+        </p>
+        <p>
+         <strong>
+          ほとんどのお客様は、以後の対応は必要ありません。Windows Server を実行しているノードのみが影響を受けます。
+         </strong>
+        </p>
+        <p>
+         Windows Server ノードを使用している場合は、この脆弱性を軽減するために、ノードとそれらのノード上で実行されるコンテナ化されたワークロードの両方をパッチ適用済みバージョンに更新する必要があります。
+        </p>
+        <p>
+         <strong>
+          コンテナを更新するには:
+         </strong>
+        </p>
+        <p>
+         Microsoft の最新のベースコンテナ イメージを使用してコンテナを再ビルドします。その際、LastUpdated Time が 2020/1/14 またはそれ以降である
+         <a class="external" href="https://hub.docker.com/_/microsoft-windows-servercore">
+          servercore
+         </a>
+         または
+         <a class="external" href="https://hub.docker.com/_/microsoft-windows-nanoserver">
+          nanoserver
+         </a>
+         タグを選択してください。
+        </p>
+        <p>
+         <strong>
+          ノードを更新するには:
+         </strong>
+        </p>
+        <p>
+         パッチ適用済みバージョンを現在作成中で、2020 年 1 月 24 日までに完成する予定です。
+        </p>
+        <p>
+         パッチが完成してからパッチ適用済みの GKE バージョンにノードをアップグレードするか、任意の時点で Windows Update を使用して最新の Windows パッチを手動で適用してください。
+        </p>
+        <p>
+         この脆弱性の緩和策が組み込まれるパッチ バージョンは次のとおりです。
+        </p>
+        <ul>
+         <li>
+          1.14.7-gke.40
+         </li>
+         <li>
+          1.14.8-gke.33
+         </li>
+         <li>
+          1.14.9-gke.23
+         </li>
+         <li>
+          1.14.10-gke.17
+         </li>
+         <li>
+          1.15.7-gke.23
+         </li>
+         <li>
+          1.16.4-gke.22
+         </li>
+        </ul>
+        <p>
+         <strong>
+          このパッチで対処される脆弱性
+         </strong>
+        </p>
+        <p>
+         このパッチで緩和される脆弱性は以下のとおりです。
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-0601">
+          CVE-2020-0601
+         </a>
+         - この脆弱性は
+         <a class="external" href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2020-0601">
+          Windows Crypto API のなりすましの脆弱性
+         </a>
+         とも呼ばれます。これを悪用すると、悪意ある実行可能ファイルを信頼されたもののように見せかけることができます。また、攻撃者が中間者攻撃を行って標的ソフトウェアへの TLS 接続上で秘密情報を復号することも可能です。
+        </p>
+       </td>
+       <td>
+        <p>
+         NVD ベーススコア: 8.1（高）
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-0601">
+          CVE-2020-0601
+         </a>
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="2019 年 11 月 14 日" id="november_14_2019">
+     2019 年 11 月 14 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         kubernetes-csi の
+         <a href="https://github.com/kubernetes-csi/external-provisioner">
+          <code dir="ltr" translate="no">
+           external-provisioner
+          </code>
+         </a>
+         、
+         <a href="https://github.com/kubernetes-csi/external-snapshotter">
+          <code dir="ltr" translate="no">
+           external-snapshotter
+          </code>
+         </a>
+         、
+         <a href="https://github.com/kubernetes-csi/external-resizer">
+          <code dir="ltr" translate="no">
+           external-resizer
+          </code>
+         </a>
+         の各サイドカーに、
+         <a href="https://kubernetes-csi.github.io/docs/drivers.html">
+          Container Storage Interface（CSI）ドライバ
+         </a>
+         にバンドルされたサイドカーのほとんどのバージョンに影響を与えるセキュリティ問題があることが公表されました。詳細については、
+         <a href="https://github.com/kubernetes/kubernetes/issues/85233">
+          Kubernetes の開示情報
+         </a>
+         をご覧ください。
+        </p>
+        <p>
+         <strong>
+          必要な対策
+         </strong>
+         <br/>
+         <strong>
+          この脆弱性は、マネージド GKE コンポーネントには影響しません
+         </strong>
+         。GKE バージョン 1.12 以降を実行している
+         <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/alpha-clusters?hl=ja">
+          GKE アルファ クラスタ
+         </a>
+         でお客様自身が独自の CSI ドライバを管理している場合は、この脆弱性の影響を受ける可能性があります。これに該当する場合は、ご利用の CSI ドライバのベンダーから提供されたアップグレードの指示をご覧ください。
+        </p>
+        <p>
+         <strong>
+          このパッチで対処される脆弱性
+         </strong>
+         <br/>
+         <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11255">
+          CVE-2019-11255
+         </a>
+         : この CVE は、
+         <code dir="ltr" translate="no">
+          kubernetes-csi
+         </code>
+         の
+         <a href="https://github.com/kubernetes-csi/external-provisioner">
+          <code dir="ltr" translate="no">
+           external-provisioner
+          </code>
+         </a>
+         、
+         <a href="https://github.com/kubernetes-csi/external-snapshotter">
+          <code dir="ltr" translate="no">
+           external-snapshotter
+          </code>
+         </a>
+         、
+         <a href="https://github.com/kubernetes-csi/external-resizer">
+          <code dir="ltr" translate="no">
+           external-resizer
+          </code>
+         </a>
+         の各サイドカーでボリューム データに不正にアクセスできる、またはボリューム データをミューテーションできるという脆弱性です。これは、
+         <a href="https://kubernetes-csi.github.io/docs/drivers.html">
+          CSI ドライバ
+         </a>
+         にバンドルされたサイドカーのほとんどのバージョンに影響します。
+        </p>
+       </td>
+       <td>
+        <p>
+         中
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11255">
+          CVE-2019-11255
+         </a>
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="2019 年 11 月 12 日" id="november_12_2019">
+     2019 年 11 月 12 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Intel により、投機的実行とマイクロアーキテクチャ状態との相互作用によってデータが漏洩する可能性がある CVE が公表されました。詳細については、
+         <a href="https://blogs.intel.com/technology/2019/11/ipas-november-2019-intel-platform-update-ipu/">
+          Intel の開示情報
+         </a>
+         をご覧ください。
+        </p>
+        <p>
+         <strong>
+          Kubernetes Engine を実行するホスト インフラストラクチャは、お客様のワークロードを分離します。お客様自身が独自のマルチテナント GKE クラスタ内で信頼できないコードを実行していて、なおかつ
+          <em>
+          </em>
+          N2、M2、C2 ノードのいずれかを使用している場合を除き、特に対応する必要はありません。
+         </strong>
+         N1 ノード上の GKE インスタンスについては、新たな対策は不要です。
+        </p>
+        <p>
+         Anthos GKE On-Prem を実行している場合、漏洩の可能性があるかどうかはハードウェアによります。ご利用のインフラストラクチャを
+         <a href="https://blogs.intel.com/technology/2019/11/ipas-november-2019-intel-platform-update-ipu/">
+          Intel の開示情報
+         </a>
+         と比較してください。
+        </p>
+        <h4 data-text="必要な対策" id="heading_2">
+         必要な対策
+        </h4>
+        <p>
+         <strong>
+          影響を受けるのは、N2、M2、または C2 ノードを含むノードプールを使用していて、なおかつ
+          <em>
+          </em>
+          独自のマルチテナント GKE クラスタ内のそれらのノードで信頼できないコードを実行している場合だけです。
+         </strong>
+        </p>
+        <p>
+         <strong>
+          ノードを再起動すると、パッチが適用されます。
+         </strong>
+         ノードプール内のすべてのノードを再起動する最も簡単な方法は、
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=ja#upgrade_nodes">
+          upgrade
+         </a>
+         オペレーションを使用して対象となるすべてのノードプールを強制的に再起動することです。
+         <br/>
+        </p>
+        <aside class="note">
+         注: アップグレード中にバージョンを変更する必要はありません。
+         <code dir="ltr" translate="no">
+          cluster-version
+         </code>
+         フラグを使用して、同じノード バージョンへのアップグレードを開始できます。
+        </aside>
+        <h4 data-text="このパッチで対処される脆弱性" id="heading_3">
+         このパッチで対処される脆弱性
+        </h4>
+        <p>
+         このパッチで緩和される脆弱性は以下のとおりです。
+        </p>
+        <p>
+         <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11135">
+          CVE-2019-11135
+         </a>
+         : この CVE は TSX 非同期アボート（TAA）とも呼ばれます。TAA は、
+         <a href="https://cloud.google.com/kubernetes-engine/docs/security-bulletins?hl=ja#may-14-2019">
+          マイクロアーキテクチャ データ サンプリング（MDS）
+         </a>
+         で悪用されていたのと同じマイクロアーキテクチャ データ構造を使用したデータ引き出しを別の手口で行うことを可能にします。
+        </p>
+        <p>
+         <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12207">
+          CVE-2018-12207
+         </a>
+         : これは仮想マシンホストを対象としたサービス拒否攻撃（DoS）の脆弱性であり、悪意のあるゲストが保護されていないホストをクラッシュさせることができるというものです。この CVE は「ページサイズ変更時のマシンチェック エラー」とも呼ばれます。これは GKE に影響しません。
+        </p>
+       </td>
+       <td>
+        <p>
+         中
+        </p>
+       </td>
+       <td>
+        <p>
+         <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11135">
+          CVE-2019-11135
+         </a>
+         <br/>
+         <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12207">
+          CVE-2018-12207
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="2019 年 10 月 22 日" id="october_22_2019">
+     2019 年 10 月 22 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         先ごろ、Go プログラミング言語で
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-16276">
+          CVE-2019-16276
+         </a>
+         に記載された脆弱性が見つかりました。この脆弱性は、認証プロキシを使用した Kubernetes 構成に影響する可能性があります。詳細については、
+         <a class="external" href="https://groups.google.com/forum/?hl=ja#!topic/kubernetes-security-announce/PtsUCqFi4h4">
+          Kubernetes の開示情報
+         </a>
+         をご覧ください。
+        </p>
+        <p>
+         Kubernetes Engine では認証プロキシの構成は許可されていないため、この脆弱性の影響は受けません。
+        </p>
+       </td>
+       <td>
+        <p>
+         なし
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-16276">
+          CVE-2019-16276
+         </a>
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="2019 年 10 月 16 日" id="october_16_2019">
+     2019 年 10 月 16 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         <strong>
+          2019 年 10 月 24 日更新:
+         </strong>
+         パッチ適用済みバージョンがすべてのリージョンで入手できるようになりました。
+        </p>
+        <hr/>
+        <p>
+         先ごろ、Kubernetes で
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11253">
+          CVE-2019-11253
+         </a>
+         に記載された脆弱性が見つかりました。これは、POST リクエストの発行を許可された任意のユーザーが Kubernetes API サーバーへのリモート サービス拒否攻撃を実行できるというものです。Kubernetes 製品セキュリティ委員会（PSC）から発表されたこの脆弱性に関する追加情報を
+         <a class="external" href="https://groups.google.com/forum/?hl=ja#!topic/kubernetes-security-announce/jk8polzSUxs">
+          こちら
+         </a>
+         からご覧いただけます。
+        </p>
+        <p>
+         この脆弱性は、
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/authorized-networks?hl=ja">
+          マスター承認済みネットワーク
+         </a>
+         と
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters?hl=ja#private_master">
+          パブリック エンドポイントを持たない限定公開クラスタ
+         </a>
+         を使用した GKE クラスタでは緩和されます。
+        </p>
+        <h6 data-text="必要な対策" id="heading_4">
+         必要な対策
+        </h6>
+        <p>
+         修正を含むパッチ バージョンが公開されたら、直ちにクラスタをそのバージョンにアップグレードすることをおすすめします。このパッチ バージョンは、10 月 14 日の週にすべてのゾーンで GKE リリースとともに提供される予定です。
+        </p>
+        <p>
+         この脆弱性の緩和策が組み込まれるパッチ バージョンは次のとおりです。
+        </p>
+        <ul>
+         <li>
+          1.12.10-gke.15
+         </li>
+         <li>
+          1.13.11-gke.5
+         </li>
+         <li>
+          1.14.7-gke.10
+         </li>
+         <li>
+          1.15.4-gke.15
+         </li>
+        </ul>
+        <h6 data-text="このパッチで対処される脆弱性" id="heading_5">
+         このパッチで対処される脆弱性
+        </h6>
+        <p>
+         このパッチで緩和される脆弱性は以下のとおりです。
+        </p>
+        <p>
+         CVE-2019-11253 はサービス拒否攻撃（DoS）の脆弱性です。
+        </p>
+       </td>
+       <td>
+        <p>
+         高
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11253">
+          CVE-2019-11253
+         </a>
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="2019 年 9 月 16 日" id="september_16_2019">
+     2019 年 9 月 16 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         このセキュリティ情報は当初の発表時から更新されました。
+        </p>
+        <p>
+         先ごろ、Go プログラミング言語で新たなセキュリティ上の脆弱性
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9512">
+          CVE-2019-9512
+         </a>
+         と
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9514">
+          CVE-2019-9514
+         </a>
+         が見つかりました。これらはサービス拒否攻撃（DoS）を受ける可能性があるというものです。GKE では、悪意のあるユーザーがこの脆弱性を利用して Kubernetes API サーバーの CPU を大量に消費するリクエストを送りつけ、クラスタ コントロール プレーンの可用性を低下させるおそれがあります。詳細については、
+         <a class="external" href="https://groups.google.com/forum/?hl=ja#!topic/golang-announce/65QixT3tcmg">
+          Go プログラミング言語の開示情報
+         </a>
+         をご覧ください。
+        </p>
+        <h6 data-text="必要な対策" id="heading_6">
+         必要な対策
+        </h6>
+        <p>
+         この脆弱性の緩和策が組み込まれた最新のパッチ バージョンが公開されたら、直ちにクラスタをそのバージョンにアップグレードすることをおすすめします。このパッチ バージョンは、
+         <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=ja#september_16_2019">
+          このリリース スケジュール
+         </a>
+         に従って、すべてのゾーンで次回の GKE リリースとともに提供される予定です。
+        </p>
+        <p>
+         この脆弱性の緩和策が組み込まれるパッチ バージョンは次のとおりです。
+        </p>
+        <ul>
+         <li>
+          <strong>
+           2019 年 10 月 16 日更新:
+          </strong>
+          1.12.10-gke.15
+         </li>
+         <li>
+          1.13.10-gke.0
+         </li>
+         <li>
+          1.14.6-gke.1
+         </li>
+        </ul>
+        <h6 data-text="このパッチで対処される脆弱性" id="heading_7">
+         このパッチで対処される脆弱性
+        </h6>
+        <p>
+         このパッチで緩和される脆弱性は以下のとおりです。
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9512">
+          CVE-2019-9512
+         </a>
+         と
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9514">
+          CVE-2019-9514
+         </a>
+         はサービス拒否攻撃（DoS）の脆弱性です。
+        </p>
+       </td>
+       <td>
+        <p>
+         高
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9512">
+          CVE-2019-9512
+         </a>
+         <br/>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9514">
+          CVE-2019-9514
+         </a>
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="2019 年 9 月 5 日" id="may-31-2019-update">
+     2019 年 9 月 5 日
+    </h2>
+    <p>
+     <a href="#may-31-2019">
+      2019 年 5 月 31 日付け
+     </a>
+     のセキュリティ情報に記載された脆弱性の修正に関する情報が更新されました。
+    </p>
+    <h2 data-text="2019 年 8 月 22 日" id="august-05-2019-update2">
+     2019 年 8 月 22 日
+    </h2>
+    <p>
+     <a href="#august-05-2019">
+      2019 年 8 月 5 日付け
+     </a>
+     のセキュリティ情報が更新されました。先日のセキュリティ情報に記載された脆弱性の修正が
+     <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=ja#august_22_2019">
+      公開
+     </a>
+     されました。
+    </p>
+    <h2 data-text="2019 年 8 月 8 日" id="august-05-2019-update">
+     2019 年 8 月 8 日
+    </h2>
+    <p>
+     <a href="#august-05-2019">
+      2019 年 8 月 5 日付け
+     </a>
+     のセキュリティ情報が更新されました。このセキュリティ情報に記載された脆弱性の修正は次回の GKE リリースで提供される予定です。
+    </p>
+    <h2 data-text="2019 年 8 月 5 日" id="august-05-2019">
+     2019 年 8 月 5 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         このセキュリティ情報は当初の発表時から更新されました。
+        </p>
+        <p>
+         先ごろ、Kubernetes で脆弱性
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11247">
+          CVE-2019-11247
+         </a>
+         が見つかりました。これは、クラスタ スコープの
+         <a class="external" href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">
+          カスタム リソース
+         </a>
+         インスタンスを、あたかもすべての名前空間に存在する Namespace オブジェクトであるかのように動作させることができるというものです。つまり、名前空間レベルの RBAC 権限しか持たないユーザー アカウントまたはサービス アカウントでも、クラスタ スコープのカスタム リソースとやり取りできてしまいます。攻撃者がこの脆弱性を悪用するためには、任意の名前空間のリソースにアクセスする権限が必要です。
+        </p>
+        <h6 data-text="必要な対策" id="heading_8">
+         必要な対策
+        </h6>
+        <p>
+         この脆弱性の緩和策が組み込まれた最新のパッチ バージョンが公開されたら、直ちにクラスタをそのバージョンに
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=ja">
+          アップグレード
+         </a>
+         することをおすすめします。このパッチ バージョンは、すべてのゾーンで次回の GKE リリースとともに公開される予定です。この脆弱性の緩和策が組み込まれるパッチ バージョンは次のとおりです。
+        </p>
+        <ul>
+         <li>
+          1.11.10-gke.6
+         </li>
+         <li>
+          1.12.9-gke.13
+         </li>
+         <li>
+          1.13.7-gke.19
+         </li>
+         <li>
+          1.14.3-gke.10（
+          <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels?hl=ja">
+           Rapid チャンネル
+          </a>
+          ）
+         </li>
+        </ul>
+        <h6 data-text="このパッチで対処される脆弱性" id="heading_9">
+         このパッチで対処される脆弱性
+        </h6>
+        <p>
+         このパッチにより、次の脆弱性が緩和されます。
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11247">
+          CVE-2019-11247
+         </a>
+         。
+        </p>
+       </td>
+       <td>
+        <p>
+         中
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11247">
+          CVE-2019-11247
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="2019 年 7 月 3 日" id="july-03-2019-2">
+     2019 年 7 月 3 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         CVE-2019-11246 に対処する
+         <code dir="ltr" translate="no">
+          kubectl
+         </code>
+         のパッチ適用済みバージョンが
+         <a href="https://cloud.google.com/sdk/docs/release-notes?hl=ja#kubernetes_engine">
+          <code dir="ltr" translate="no">
+           gcloud
+          </code>
+          253.0.0
+         </a>
+         で提供されました。詳細については、
+         <a href="#june-25-2019">
+          2019 年 6 月 25 日付けのセキュリティ情報
+         </a>
+         をご覧ください。
+        </p>
+        <p>
+         <strong>
+          注:
+         </strong>
+         このパッチは
+         <code dir="ltr" translate="no">
+          kubectl
+         </code>
+         1.11.10 では提供されていません。
+        </p>
+       </td>
+       <td>
+        <p>
+         高
+        </p>
+       </td>
+       <td>
+        <p>
+         <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-15664">
+          CVE-2019-11246
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="2019 年 7 月 3 日" id="july-03-2019">
+     2019 年 7 月 3 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h6 data-text="2019 年 7 月 3 日更新" id="2019-7-3">
+         2019 年 7 月 3 日更新
+        </h6>
+        <p>
+         前回の更新の時点では、バージョン 1.11.9 と 1.11.10 のパッチはまだ公開されていませんでした。両方の 1.11 バージョンのアップグレード ターゲットとして、1.11.10-gke.5 がリリースされました。
+        </p>
+        <p>
+         現時点で、GKE マスターにはすでにパッチが適用されています。また、Kubernetes Engine を実行する Google インフラストラクチャにもパッチが適用され、この脆弱性から保護されています。
+        </p>
+        <p>
+         1.11 マスターはまもなくサポートが終了し、2019 年 7 月 8 日の週に自動的に 1.12 にアップグレードされる予定です。パッチ適用済みバージョンにノードが導入されるようにするため、次の推奨対応の中からいずれかをお選びください。
+        </p>
+        <ul>
+         <li>
+          2019 年 7 月 8 日までにノードを 1.11.10-gke.5 にアップグレードする。この日付以降、1.11 バージョンは使用可能なアップグレード ターゲットのリストから削除されます。
+         </li>
+         <li>
+          1.11 ノードで
+          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-upgrades?hl=ja">
+           自動アップグレード
+          </a>
+          を有効にし、マスターが 1.12 にアップグレードされたときにノードもアップグレードされるようにする。
+         </li>
+         <li>
+          マスターとノードの両方を修正済みの 1.12 バージョンに
+          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=ja">
+           手動でアップグレードする
+          </a>
+          。
+         </li>
+        </ul>
+        <p>
+         2019 年 6 月 24 日に公開された当初のセキュリティ情報は次のとおりです。
+        </p>
+        <hr/>
+        <h6 data-text="2019 年 6 月 24 日更新" id="2019-6-24">
+         2019 年 6 月 24 日更新
+        </h6>
+        <p>
+         2019 年 6 月 22 日 21:40 UTC の時点で、以下のパッチ適用済み Kubernetes バージョンが公開されました。1.11.0 から 1.13.6 までの Kubernetes バージョンのマスターは、パッチ適用済みバージョンに自動的にアップデートされます。現在ご利用のバージョンがこのパッチと互換性がない場合は、ノードをアップグレードする前に、互換性のあるマスター バージョン（下記のリストを参照）にアップグレードしてください。
+        </p>
+        <p>
+         <strong>
+          これらの脆弱性は重大度が高いため、ノードの自動アップグレードを有効にしているかどうかにかかわらず、できるだけ早くノードとマスターの両方をこれらのいずれかのバージョンに
+          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-container-cluster?hl=ja">
+           手動でアップグレード
+          </a>
+          することをおすすめします。
+         </strong>
+        </p>
+        <p>
+         パッチ適用済みバージョン:
+        </p>
+        <ul>
+         <li>
+          1.11.8-gke.10
+         </li>
+         <li>
+          1.12.7-gke.24
+         </li>
+         <li>
+          1.12.8-gke.10
+         </li>
+         <li>
+          1.13.6-gke.13
+         </li>
+        </ul>
+        <p>
+         2019 年 6 月 18 日に公開された当初のセキュリティ情報は次のとおりです。
+        </p>
+        <hr/>
+        <p>
+         先ごろ Netflix は、Linux カーネルにおける 3 件の TCP の脆弱性を公表しました。
+        </p>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11477">
+           CVE-2019-11477
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11478">
+           CVE-2019-11478
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11479">
+           CVE-2019-11479
+          </a>
+         </li>
+        </ul>
+        <p>
+         これらの CVE は
+         <a class="external" href="https://github.com/Netflix/security-bulletins/blob/master/advisories/third-party/2019-001.md">
+          NFLX-2019-001
+         </a>
+         と総称されます。
+        </p>
+        <p>
+         パッチが適用されていない Linux カーネルは、リモートから開始されたサービス拒否攻撃を受ける可能性があります。
+         <strong>
+          信頼されていないネットワーク トラフィックを送受信する Google Kubernetes Engine ノードは、この脆弱性の影響を受けます。そのため、以下の緩和策に従ってワークロードを保護することをおすすめします。
+         </strong>
+        </p>
+        <h6 data-text="Kubernetes マスター" id="kubernetes">
+         Kubernetes マスター
+        </h6>
+        <ul>
+         <li>
+          <p>
+           <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/authorized-networks?hl=ja">
+            承認済みネットワーク
+           </a>
+           を使用してトラフィックを信頼されているネットワークのみに制限している Kubernetes マスターは、影響を受けません。
+          </p>
+         </li>
+         <li>
+          <p>
+           Google によって管理されている GKE クラスタのマスターは、近日中に自動的にパッチが適用されます。お客様による対応は必要ありません。
+          </p>
+         </li>
+        </ul>
+        <h6 data-text="Kubernetes ノード" id="kubernetes_1">
+         Kubernetes ノード
+        </h6>
+        <p>
+         トラフィックを信頼されているネットワークのみに制限しているノードは影響を受けません。これには、次のものを含むクラスタが該当します。
+        </p>
+        <ul>
+         <li>
+          ファイアウォールによって信頼されていないネットワークから保護されているノード、またはパブリック IP を持たないノード（
+          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters?hl=ja">
+           限定公開クラスタ
+          </a>
+          ）
+         </li>
+         <li>
+          パブリックの LoadBalancer サービスを使用していないクラスタ
+         </li>
+        </ul>
+        <p>
+         Google ではこれらの脆弱性に対する恒久的な緩和策を準備しており、新しいノード バージョンで提供される予定です。恒久的な修正が公開されたら、このセキュリティ情報を更新し、GKE をご利用のすべてのお客様にメールを送信いたします。
+        </p>
+        <p>
+         恒久的な修正が公開されるまでの一時的な措置として、ホストの
+         <code dir="ltr" translate="no">
+          iptables
+         </code>
+         構成を変更することで緩和策を実装する Kubernetes DaemonSet を作成しました。
+        </p>
+        <h5 data-text="必要な対策" id="heading_10">
+         必要な対策
+        </h5>
+        <p>
+         次のコマンドを実行して、クラスタ内のすべてのノードに Kubernetes DaemonSet を適用します。これにより、この脆弱性を緩和する
+         <code dir="ltr" translate="no">
+          iptables
+         </code>
+         ルールがノードの既存の
+         <code dir="ltr" translate="no">
+          iptables
+         </code>
+         ルールに追加されます。
+         <strong>
+          このコマンドは、それぞれの Google Cloud プロジェクトでクラスタごとに 1 回ずつ実行してください。
+         </strong>
+        </p>
+        <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+kubectl apply -f \
+    https://raw.githubusercontent.com/GoogleCloudPlatform\
+    /k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
+          </pre>
+        <aside class="note">
+         <p>
+          Ipv6 は GKE でサポートされていないため、ip6tables ルールは必要ありません。
+         </p>
+        </aside>
+        <p>
+         パッチ適用済みのノード バージョンが公開され、影響を受ける可能性のあるすべてのノードのアップグレードが完了したら、次のコマンドを使用して DaemonSet を削除できます。
+         <strong>
+          このコマンドは、それぞれの Google Cloud プロジェクトのクラスタごとに 1 回ずつ実行してください。
+         </strong>
+        </p>
+        <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+kubectl delete -f \
+    https://raw.githubusercontent.com/GoogleCloudPlatform\
+    /k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
+          </pre>
+       </td>
+       <td>
+        高
+        <br/>
+        中
+        <br/>
+        中
+        <br/>
+       </td>
+       <td>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11477">
+         CVE-2019-11477
+        </a>
+        <br/>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11478">
+         CVE-2019-11478
+        </a>
+        <br/>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11479">
+         CVE-2019-11479
+        </a>
+        <br/>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="2019 年 6 月 25 日" id="june-25-2019">
+     2019 年 6 月 25 日
+    </h2>
+    <table id="june-24-2019">
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         <strong>
+          2019 年 7 月 3 日更新:
+         </strong>
+         このパッチは、
+         <code dir="ltr" translate="no">
+          kubectl
+         </code>
+         バージョン 1.12.9、1.13.6、1.14.2、およびそれ以降のリリース用の
+         <code dir="ltr" translate="no">
+          gcloud
+         </code>
+         253.0.0 に含まれています。
+        </p>
+        <p>
+         <strong>
+          注:
+         </strong>
+         このパッチは 1.11.10 では提供されていません。
+        </p>
+        <hr/>
+        <p>
+         先ごろ、Kubernetes で脆弱性
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11246">
+          CVE-2019-11246
+         </a>
+         が見つかりました。これは、
+         <code dir="ltr" translate="no">
+          kubectl cp
+         </code>
+         オペレーションの権限とコンテナ内のコード実行権限を持つ攻撃者がホスト上のファイルを変更できるというものです。攻撃者はこの脆弱性を悪用して、ホストのファイル システムにファイルを作成したり、既存のファイルを置き換えたりすることができます。詳細については、
+         <a class="external" href="https://groups.google.com/forum/?hl=ja#!topic/kubernetes-security-announce/NLs2TGbfPdo">
+          Kubernetes の開示情報
+         </a>
+         をご覧ください。
+        </p>
+        <p>
+         <strong>
+          この脆弱性は、Google Kubernetes Engine（GKE）のすべての
+          <code dir="ltr" translate="no">
+           gcloud
+          </code>
+          バージョンに影響します。
+          <code dir="ltr" translate="no">
+           gcloud
+          </code>
+          の最新のパッチ バージョンが公開されたら、そのバージョンにアップグレードすることをおすすめします。
+         </strong>
+         近日中に公開されるパッチ バージョンには、この脆弱性の緩和策が組み込まれます。
+        </p>
+        <h6 data-text="必要な対策" id="heading_11">
+         必要な対策
+        </h6>
+        <p>
+         今後の
+         <code dir="ltr" translate="no">
+          gcloud
+         </code>
+         のリリースで、
+         <code dir="ltr" translate="no">
+          kubectl
+         </code>
+         のパッチ適用済みバージョンが提供されます。ご自身で
+         <a class="external" href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">
+          <code dir="ltr" translate="no">
+           kubectl
+          </code>
+          を直接アップグレード
+         </a>
+         することもできます。
+        </p>
+        <p>
+         このパッチが公開されたかどうかについては、
+         <a href="https://cloud.google.com/sdk/docs/release-notes?hl=ja">
+          <code dir="ltr" translate="no">
+           gcloud
+          </code>
+          のリリースノート
+         </a>
+         で定期的にご確認ください。
+        </p>
+        <h6 data-text="このパッチで対処される脆弱性" id="heading_12">
+         このパッチで対処される脆弱性
+        </h6>
+        <p>
+         脆弱性
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11246">
+          CVE-2019-11246
+         </a>
+         は、
+         <code dir="ltr" translate="no">
+          kubectl cp
+         </code>
+         オペレーションへのアクセスとコンテナ内のコード実行が可能な攻撃者がホスト上のファイルを変更できるというものです。攻撃者はこの脆弱性を悪用して、ホストのファイル システムにファイルを作成したり、既存のファイルを置き換えたりすることができます。
+        </p>
+       </td>
+       <td>
+        <p>
+         高
+        </p>
+       </td>
+       <td>
+        <p>
+         <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-15664">
+          CVE-2019-11246
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="2019 年 6 月 18 日" id="june-18-2019">
+     2019 年 6 月 18 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         先ごろ、Docker で脆弱性
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-15664">
+          CVE-2018-15664
+         </a>
+         が見つかりました。これは、攻撃者がコンテナ内でコードを実行して、外部から開始された
+         <code dir="ltr" translate="no">
+          docker cp
+         </code>
+         オペレーションをハイジャックできるというものです。攻撃者はこの脆弱性を悪用して、ファイルの書き込み先をホストのファイル システム上の任意の場所に変更できます。
+        </p>
+        <p>
+         <strong>
+          この脆弱性は、Docker を実行するすべての Google Kubernetes Engine（GKE）ノードに影響します。最新のパッチ バージョンが公開されたら、そのバージョンにアップグレードすることをおすすめします。近日中に公開されるパッチ バージョンには、この脆弱性の緩和策が組み込まれます。
+         </strong>
+        </p>
+        <p>
+         <strong>
+          バージョン 1.12.7 より前の Google Kubernetes Engine（GKE）マスターはすべて Docker を実行するため、この脆弱性の影響を受けます。
+         </strong>
+         GKE のユーザーはマスター上の
+         <code dir="ltr" translate="no">
+          docker cp
+         </code>
+         に対するアクセス権がないため、GKE マスターに対するこの脆弱性のリスクは限られます。
+        </p>
+        <h5 data-text="必要な対策" id="heading_13">
+         必要な対策
+        </h5>
+        <p>
+         影響を受けるのは、Docker を実行しているノードでハイジャック可能な
+         <code dir="ltr" translate="no">
+          docker cp
+         </code>
+         コマンド（またはこれに相当する API）が発行されたときだけに限定されます。これは Kubernetes 環境ではかなりまれであると考えられます。
+         <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/using-containerd?hl=ja">
+          containerd を含む COS
+         </a>
+         を実行しているノードは影響を受けません。
+        </p>
+        <p>
+         ノードをアップグレードするには、まずマスターをパッチ適用済みバージョンに
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=ja#upgrading_the_cluster">
+          アップグレード
+         </a>
+         する必要があります。パッチが公開されたら、マスターのアップグレードを手動で開始するか、Google によって自動的にマスターがアップグレードされるのを待ちます。パッチは Docker 18.09.7 で提供されます。これは近日中に公開される GKE パッチに含まれます。
+         <strong>
+          このパッチは GKE バージョン 1.13 以降でのみ提供されます。
+         </strong>
+        </p>
+        <p>
+         クラスタ マスターは、定期的なアップグレード サイクルの一環としてパッチ適用済みバージョンに自動的にアップグレードされます。また、パッチ適用済みバージョンが公開された後、お客様自身でマスターのアップグレードを開始することもできます。
+        </p>
+        <p>
+         パッチが公開されたら、このセキュリティ情報が更新されてパッチを含むバージョンが追記されます。パッチが公開されたかどうかについては、
+         <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=ja">
+          リリースノート
+         </a>
+         で定期的にご確認ください。
+        </p>
+        <h5 data-text="このパッチで対処される脆弱性" id="heading_14">
+         このパッチで対処される脆弱性
+        </h5>
+        <p>
+         このパッチで緩和される脆弱性は以下のとおりです。
+        </p>
+        <p>
+         脆弱性
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-15664">
+          CVE-2018-15664
+         </a>
+         は、攻撃者がコンテナ内でコードを実行して、外部から開始された
+         <code dir="ltr" translate="no">
+          docker
+          cp
+         </code>
+         オペレーションをハイジャックできるというものです。攻撃者はこの脆弱性を悪用して、ファイルの書き込み先をホストのファイル システム上の任意の場所に変更できます。
+        </p>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="2019 年 5 月 31 日" id="may-31-2019">
+     2019 年 5 月 31 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         このセキュリティ情報は当初の発表時から更新されました。
+        </p>
+        <h6 data-text="2019 年 8 月 2 日更新" id="2019-8-2">
+         2019 年 8 月 2 日更新
+        </h6>
+        <p>
+         最初にセキュリティ情報を公開した時点では、影響を受けるバージョンは 1.13.6-gke.0 から 1.13.6-gke.5 までに限られていました。現時点では、回帰の影響で、すべての 1.13.6.x バージョンが影響を受けます。現在ご利用のバージョンが 1.13.6 の場合は、できるだけ早く 1.13.7 にアップグレードしてください。
+        </p>
+        <p>
+        </p>
+        <p>
+         Kubernetes プロジェクトにより、kubelet v1.13.6 と v1.14.2 で
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11245">
+          CVE-2019-11245
+         </a>
+         が公表されました。これはコンテナを UID 0（通常は
+         <code dir="ltr" translate="no">
+          root
+         </code>
+         ユーザーにマップされている）として実行できるという脆弱性であり、コンテナ イメージで別のユーザーが指定されている場合でも UID 0 として実行できてしまいます。
+         <strong>
+          コンテナを root 以外のユーザーとして実行していて、実行しているノードのバージョンが 1.13.6-gke.0～1.13.6-gke.6 である場合は、UID 0 として実行してはならないコンテナを含むクラスタ上のすべてのポッドで
+          <code dir="ltr" translate="no">
+           RunAsUser
+          </code>
+          を設定することをおすすめします。
+         </strong>
+        </p>
+        <p>
+         root 以外の
+         <code dir="ltr" translate="no">
+          USER
+         </code>
+         値が指定されている（たとえば、Dockerfile で
+         <code dir="ltr" translate="no">
+          USER
+         </code>
+         の値を設定するという方法など）場合は、予期しない動作が起こります。あるノードであるコンテナが初めて実行されるときは、指定された UID が正しく使用されます。しかし、この不具合により、2 回目以降の実行では、指定されている UID にかかわらず UID 0 としてコンテナが実行されます。これは通常、望ましくないエスカレーションされた権限であり、アプリケーションの予期しない動作につながる可能性があります。
+        </p>
+        <h5 data-text="実行中のバージョンが対象のバージョンかどうかを確認する方法" id="heading_15">
+         実行中のバージョンが対象のバージョンかどうかを確認する方法
+        </h5>
+        <p>
+         次のコマンドを実行して、すべてのノードとその kubelet バージョンの一覧を表示します。
+        </p>
+        <pre class="devsite-click-to-copy prettyprint" dir="ltr" suppresswarning="" translate="no">
+
+    kubectl get nodes -o=jsonpath='{range .items[*]}'\
+    '{.status.nodeInfo.machineID}'\
+    '{"\t"}{.status.nodeInfo.kubeletVersion}{"\n"}{end}'</pre>
+        <p>
+         出力に以下の kubelet バージョンが示された場合、そのノードはこの脆弱性の影響を受けます。
+        </p>
+        <ul>
+         <li>
+          v1.13.6
+         </li>
+         <li>
+          v1.14.2
+         </li>
+        </ul>
+        <h5 data-text="特定の構成が影響を受けるかどうかを確認する方法" id="heading_16">
+         特定の構成が影響を受けるかどうかを確認する方法
+        </h5>
+        <p>
+         コンテナを root 以外のユーザーとして実行していて、実行しているノードのバージョンが 1.13.6-gke.0～1.13.6-gke.6 である場合は、この脆弱性の影響を受けます。ただし、以下の場合は除きます。
+        </p>
+        <ul>
+         <li>
+          <code dir="ltr" translate="no">
+           runAsUser
+          </code>
+          PodSecurityContext に有効な root 以外の値が指定されているポッドは影響を受けず、引き続き正常に動作します。
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           runAsUser
+          </code>
+          の設定を強制する PodSecurityPolicy も影響を受けず、引き続き正常に動作します。
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           mustRunAsNonRoot:true
+          </code>
+          が指定されたポッドは UID 0 として起動することはありませんが、この問題の影響を受けた場合は起動できません。
+         </li>
+        </ul>
+        <h5 data-text="必要な対策" id="heading_17">
+         必要な対策
+        </h5>
+        <p>
+         UID 0 として実行してはならないクラスタ上のすべてのポッドで、
+         <a class="external" href="https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod">
+          RunAsUser セキュリティ コンテキスト
+         </a>
+         を設定します。この構成は
+         <a class="external" href="https://kubernetes.io/docs/concepts/policy/pod-security-policy/">
+          PodSecurityPolicy
+         </a>
+         を使用して適用できます。
+        </p>
+       </td>
+       <td>
+        中
+       </td>
+       <td>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11245">
+         CVE-2019-11245
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="2019 年 5 月 14 日" id="may-14-2019">
+     2019 年 5 月 14 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         <strong>
+          2019 年 6 月 11 日更新:
+         </strong>
+         2019 年 5 月 28 日の週にリリースされた 1.11.10-gke.4、1.12.8-gke.6、1.13.6-gke.5 とそれ以降のリリースでパッチが提供されました。
+        </p>
+        <p>
+         Intel が 次の CVE を公表しました。
+        </p>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12126">
+           CVE-2018-12126
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12127">
+           CVE-2018-12127
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12130">
+           CVE-2018-12130
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11091">
+           CVE-2019-11091
+          </a>
+         </li>
+        </ul>
+        <p>
+         これらの CVE はマイクロアーキテクチャ データ サンプリング（MDS）と総称されます。これらの脆弱性により、投機的実行とマイクロアーキテクチャ状態との相互作用によってデータが漏洩する可能性があります。詳細については、
+         <a class="external" href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00233.html">
+          Intel の開示情報
+         </a>
+         をご覧ください。
+        </p>
+        <p>
+         <strong>
+          Kubernetes Engine を実行するホスト インフラストラクチャは、お客様のワークロードを相互に分離します。独自のマルチテナント GKE クラスタ内で信頼できないコードを実行していない限り、これらの脆弱性の影響は受けません。
+         </strong>
+        </p>
+        <p>
+         <strong>
+          Kubernetes Engine 内の独自のマルチテナント サービスで信頼できないコードを実行している場合、これは特に重大な脆弱性となります。
+         </strong>
+         Kubernetes Engine でこれを緩和するため、ノードでハイパー スレッディングを無効にしてください。これらの脆弱性の影響を受けるのは、複数の CPU を使用している Google Kubernetes Engine（GKE）ノードのみです。n1-standard-1（GKE のデフォルト）、g1-small、f1-micro の各 VM でゲスト環境に公開される vCPU は 1 つだけなので、ハイパー スレッディングを無効にする必要はありません。
+        </p>
+        <p>
+         近日中に公開される
+         <a href="https://cloud.google.com/kubernetes-engine/release-notes?hl=ja">
+          パッチ バージョン
+         </a>
+         では、追加の保護対策としてフラッシュ機能を有効にできるようになります。マスターとノードは、定期的なアップグレード サイクルの一環として数週間以内にパッチ適用済みバージョンに自動的にアップグレードされます。
+         <strong>
+          パッチだけでは、この脆弱性の影響を緩和するのに十分ではありません。推奨される対応については、下記をご覧ください。
+         </strong>
+        </p>
+        <p>
+         GKE On-Prem を実行している場合、これらの脆弱性の影響を受けるかどうかは使用しているハードウェアによります。
+         <a class="external" href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00233.html">
+          Intel の開示情報
+         </a>
+         をご覧ください。
+        </p>
+        <h4 data-text="必要な対策" id="heading_18">
+         必要な対策
+        </h4>
+        <p>
+         <strong>
+          独自のマルチテナント GKE クラスタ内で信頼できないコードを実行していない限り、これらの脆弱性の影響は受けません。
+         </strong>
+        </p>
+        <p>
+         <strong>
+          Kubernetes Engine のノード用に、ハイパー スレッディングを無効にした新しいノードプールを作成し、ワークロードのスケジュールを新しいノードに設定し直します。
+         </strong>
+        </p>
+        <p>
+         n1-standard-1、g1-small、f1-micro の各 VM でゲスト環境に公開される vCPU は 1 つだけなので、ハイパー スレッディングを無効にする必要はありません。
+        </p>
+        <div class="warning">
+         <strong>
+          警告
+         </strong>
+         <ul>
+          <li>
+           ハイパー スレッディングを無効にすると、クラスタとアプリケーションのパフォーマンスが大幅に低下する可能性があります。本番環境クラスタにこれを実装する前に、ハイパー スレッディングを無効にしても問題ないことを確認してください。
+          </li>
+          <li>
+           ハイパー スレッディングは、DaemonSet をデプロイすることで GKE ノードプール レベルで無効にできます。ただし、この DaemonSet をデプロイすると、ノードプールに含まれるすべてのノードが同時に再起動されます。したがって、クラスタに新しいノードプールを作成し、ハイパー スレッディングを無効にする DaemonSet をそのノードプールにデプロイしてから、ワークロードを新しいノードプールに移行することをおすすめします。
+          </li>
+         </ul>
+        </div>
+        <p>
+         ハイパー スレッディングを無効にした新しいノードプールを作成するには:
+        </p>
+        <ol>
+         <li>
+          ノードラベル
+          <code dir="ltr" translate="no">
+           cloud.google.com/gke-smt-disabled=true
+          </code>
+          を使用して、クラスタに新しいノードプールを作成します。
+          <pre dir="ltr" translate="no">
+
+    gcloud container node-pools create smt-disabled --cluster=[CLUSTER_NAME] \
+        --node-labels=cloud.google.com/gke-smt-disabled=true</pre>
+         </li>
+         <li>
+          この新しいノードプールに DaemonSet をデプロイします。この DaemonSet は、
+          <code dir="ltr" translate="no">
+           cloud.google.com/gke-smt-disabled=true
+          </code>
+          ラベルが付いているノードでのみ実行されます。これにより、ハイパー スレッディングが無効化された後、ノードが再起動されます。
+          <pre dir="ltr" translate="no">
+
+    kubectl create -f \
+    https://raw.githubusercontent.com/GoogleCloudPlatform/\
+    k8s-node-tools/master/disable-smt/gke/disable-smt.yaml</pre>
+         </li>
+         <li>
+          DaemonSet ポッドが実行状態にあることを確認します。
+          <pre dir="ltr" translate="no">
+
+    kubectl get pods --selector=name=disable-smt -n kube-system</pre>
+          <p>
+           次のようなレスポンスが返されます。
+          </p>
+          <pre dir="ltr" translate="no">
+
+    NAME                READY     STATUS    RESTARTS   AGE
+
+    disable-smt-2xnnc   1/1       Running   0          6m</pre>
+         </li>
+         <li>
+          ポッドのログに「SMT has been disabled」と記録されていることを確認します。
+          <pre dir="ltr" translate="no">
+
+    kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
+         </li>
+        </ol>
+        <p>
+         この DaemonSet をノードプールで実行し続ける必要があります。これにより、プールで作成された新しいノードにも自動的に変更が適用されます。ノードの作成は、ノードの自動修復、手動アップグレード、自動アップグレード、自動スケーリングによってトリガーされます。
+        </p>
+        <p>
+         ハイパー スレッディングを再び有効にするには、用意された DaemonSet をデプロイせずにノードプールを再作成し、ワークロードを新しいノードプールに移行する必要があります。
+        </p>
+        <p>
+         また、パッチが公開された後、ノードを手動でアップグレードすることをおすすめします。アップグレードするには、まずマスターを最新バージョンに
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=ja#upgrading_the_cluster">
+          アップグレード
+         </a>
+         する必要があります。GKE マスターは、定期的なアップグレード サイクルの一環として自動的にアップグレードされます。
+        </p>
+        <p>
+         パッチが公開されたら、このセキュリティ情報が更新されてパッチを含むバージョンが追記されます。
+        </p>
+        <h4 data-text="このパッチで対処される脆弱性" id="heading_19">
+         このパッチで対処される脆弱性
+        </h4>
+        <p>
+         このパッチで緩和される脆弱性は以下のとおりです。
+        </p>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12126">
+         CVE-2018-12126
+        </a>
+        、
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12127">
+         CVE-2018-12127
+        </a>
+        、
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12130">
+         CVE-2018-12130
+        </a>
+        、
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11091">
+         CVE-2019-11091
+        </a>
+        : これらの脆弱性は投機的実行を悪用します。これらの CVE はマイクロアーキテクチャ データ サンプリングと総称されます。これらの脆弱性により、投機的実行とマイクロアーキテクチャ状態との相互作用によってデータが漏洩する可能性があります。
+       </td>
+       <td>
+        中
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12126">
+           CVE-2018-12126
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12127">
+           CVE-2018-12127
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12130">
+           CVE-2018-12130
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11091">
+           CVE-2018-11091
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="2019 年 4 月 5 日" id="april-05-2019">
+     2019 年 4 月 5 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         先ごろ、セキュリティ上の脆弱性
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9900">
+          CVE-2019-9900
+         </a>
+         と
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9901">
+          CVE-2019-9901
+         </a>
+         が
+         <a class="external" href="https://www.envoyproxy.io/">
+          Envoy
+         </a>
+         で見つかりました。
+        </p>
+        <p>
+         <a class="external" href="https://istio.io/">
+          Istio
+         </a>
+         には Envoy が組み込まれており、これらの脆弱性の影響で場合によっては Istio ポリシーがバイパスされる危険性があります。
+        </p>
+        <p>
+         Google Kubernetes Engine（GKE）で Istio を有効にしている場合、これらの脆弱性の影響を受ける可能性があります。
+         <strong>
+          できるだけ早く対象のクラスタを最新のパッチ バージョンにアップグレードすることと、Istio サイドカーをアップグレードすることをおすすめします（手順は後述します）。
+         </strong>
+        </p>
+        <h4 data-text="必要な対策" id="heading_20">
+         必要な対策
+        </h4>
+        <p>
+         <strong>
+          これらの脆弱性は重大度が高いため、ノードの自動アップグレードを有効にしているかどうかにかかわらず、以下のことを行うことをおすすめします。
+         </strong>
+        </p>
+        <ol>
+         <li>
+          <strong>
+           パッチが公開されたら直ちにクラスタを
+           <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=ja">
+            手動でアップグレード
+           </a>
+           する。
+          </strong>
+         </li>
+         <li>
+          <strong>
+           <a class="external" href="https://istio.io/docs/setup/kubernetes/upgrade/steps/#sidecar-upgrade">
+            サイドカーのアップグレードに関するドキュメント
+           </a>
+           に従って、サイドカーをアップグレードする。
+          </strong>
+         </li>
+        </ol>
+        <p>
+         パッチ適用済みバージョンは、本日午後 7:00 PDT までにすべての GKE プロジェクトに対して公開される予定です。
+        </p>
+        <p>
+         このパッチは以下の GKE バージョンで使用できます。GKE セキュリティ情報ページでパッチ適用済みバージョンが発表された後（2019 年 4 月 15 日を予定）、新しいクラスタではそのバージョンがデフォルトで使用されます。それより前に新しいクラスタを作成する場合は、パッチ適用済みバージョンを明示的に指定する必要があります。
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-upgrades?hl=ja">
+          ノードの自動アップグレード
+         </a>
+         を有効にしていて、手動でアップグレードしない場合は、次の週にノードがパッチ適用済みバージョンに自動的にアップグレードされます。
+        </p>
+        <p>
+         パッチ適用済みバージョン:
+        </p>
+        <ul>
+         <li>
+          1.10.12-gke.14
+         </li>
+         <li>
+          1.11.6-gke.16
+         </li>
+         <li>
+          1.11.7-gke.18
+         </li>
+         <li>
+          1.11.8-gke.6
+         </li>
+         <li>
+          1.12.6-gke.10
+         </li>
+         <li>
+          1.13.4-gke.10
+         </li>
+        </ul>
+        <h4 data-text="このパッチで対処される脆弱性" id="heading_21">
+         このパッチで対処される脆弱性
+        </h4>
+        <p>
+         このパッチで緩和される脆弱性は以下のとおりです。
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9900">
+          CVE-2019-9900
+         </a>
+         と
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9901">
+          CVE-2019-9901
+         </a>
+         。これらの脆弱性の詳細については、
+         <a class="external" href="https://istio.io/blog/2019/announcing-1.1.2">
+          Istio のブログ
+         </a>
+         をご覧ください。
+        </p>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9900">
+           CVE-2019-9900
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9901">
+           CVE-2019-9901.
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="2019 年 3 月 1 日" id="march-01-2019">
+     2019 年 3 月 1 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         <strong>
+          2019 年 3 月 22 日更新:
+         </strong>
+         このパッチは、Kubernetes 1.11.8-gke.4、1.13.4-gke.1、およびそれ以降のリリースで提供されています。1.12 ではまだ提供されていません。パッチが公開されたかどうかについては、
+         <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=ja#march_19_2019">
+          リリースノート
+         </a>
+         で定期的にご確認ください。
+        </p>
+        <p>
+         先ごろ、Kubernetes で新しいサービス拒否攻撃の脆弱性
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1002100">
+          CVE-2019-1002100
+         </a>
+         が見つかりました。これは、パッチ リクエストの発行を許可されたユーザーが、Kubernetes API サーバーの CPU とメモリを大量に消費する悪意ある「json-patch」リクエストを作成できるというもので、クラスタ コントロール プレーンの可用性を低下させるおそれがあります。詳細については、
+         <a href="https://groups.google.com/forum/?hl=ja#!topic/kubernetes-announce/vmUUNkYfG9g">
+          Kubernetes の開示情報
+         </a>
+         をご覧ください。
+         <strong>
+          この脆弱性の影響を受けるのは、すべての Google Kubernetes Engine（GKE）マスターです。近日中に公開されるパッチ バージョンには、この脆弱性の緩和策が組み込まれます。クラスタ マスターは、定期的なアップグレード サイクルの一環として数週間以内にパッチ適用済みバージョンに自動的にアップグレードされます。
+         </strong>
+        </p>
+        <h4 data-text="必要な対策" id="heading_22">
+         必要な対策
+        </h4>
+        <p>
+         <strong>
+          お客様による対応は必要ありません。GKE マスターは、定期的なアップグレード サイクルの一環として自動的にアップグレードされます。
+         </strong>
+         マスターをすぐにアップグレードすることをご希望の場合は、
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=ja#upgrading_the_cluster">
+          手動でマスター アップグレードを開始
+         </a>
+         することもできます。
+        </p>
+        <p>
+         パッチが公開されたら、このセキュリティ情報が更新されてパッチを含むバージョンが追記されます。パッチが提供されるのはバージョン 1.11 以降に対してのみであることにご注意ください。1.10 用のパッチは提供されません。
+        </p>
+        <h4 data-text="このパッチで対処される脆弱性" id="heading_23">
+         このパッチで対処される脆弱性
+        </h4>
+        <p>
+         このパッチで緩和される脆弱性は以下のとおりです。
+        </p>
+        <p>
+         脆弱性
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1002100">
+          CVE-2019-1002100
+         </a>
+         は、ユーザーが Kubernetes API サーバーの CPU とメモリを大量に消費する悪意ある「json-patch」型のパッチを作成できるというもので、クラスタ コントロール プレーンの可用性を低下させるおそれがあります。
+        </p>
+       </td>
+       <td>
+        中
+       </td>
+       <td>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1002100">
+         CVE-2019-1002100
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="2019 年 2 月 11 日（runc）" id="february-11-2019-runc">
+     2019 年 2 月 11 日（runc）
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         先ごろ、Open Containers Initiative（OCI）によって runc に新しいセキュリティ上の脆弱性
+         <a class="external" href="https://groups.google.com/a/opencontainers.org/forum/m/?hl=ja#!topic/dev/Tc1ELm-8oDI">
+          CVE-2019-5736
+         </a>
+         が
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5736">
+          見つかりました
+         </a>
+         。これは、コンテナがエスケープ処理によってホストノードの root 権限を奪ってしまうおそれがあるというものです。
+        </p>
+        <p>
+         <strong>
+          この脆弱性の影響を受けるのは Google Kubernetes Engine（GKE）Ubuntu ノードです。Ubuntu ノードをご利用のお客様は、できるだけ早く最新のパッチ バージョンに
+          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=ja">
+           アップグレード
+          </a>
+          することをおすすめします。詳細については、以下をご覧ください。
+         </strong>
+        </p>
+        <h4 data-text="必要な対策" id="heading_24">
+         必要な対策
+        </h4>
+        <p>
+         ご使用のノードをアップグレードするには、まずマスターを最新バージョンにアップグレードする必要があります。このパッチは、Kubernetes 1.10.12-gke.7、1.11.6-gke.11、1.11.7-gke.4、1.12.5-gke.5、およびそれ以降のリリースで提供されています。パッチの提供状況については、
+         <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=ja#february-11-2019">
+          リリースノート
+         </a>
+         をご覧ください。
+        </p>
+        <p>
+         影響を受けるのは GKE の Ubuntu ノードだけです。COS を実行しているノードは影響を受けません。
+        </p>
+        <p>
+         新しいバージョンの runc はメモリ使用量が以前より増加しているため、メモリ上限を低く（16 MB 未満に）設定している場合はコンテナに割り当てられるメモリを更新しなければならないことがあります。
+        </p>
+        <h4 data-text="このパッチで対処される脆弱性" id="heading_25">
+         このパッチで対処される脆弱性
+        </h4>
+        <p>
+         このパッチで緩和される脆弱性は以下のとおりです。
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5736">
+          CVE-2019-5736
+         </a>
+         は runc の脆弱性であり、悪意のあるコンテナが（exec 形式での最小限のユーザー インタラクションで）ホストの runc バイナリを上書きすることにより、ホストノードで root 権限のコードを実行できてしまうというものです。root として実行されていないコンテナは影響を受けません。この脆弱性の重大度評価は高です。
+        </p>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5736">
+         CVE-2019-5736
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="2019 年 2 月 11 日（Go）" id="february-11-2019-go">
+     2019 年 2 月 11 日（Go）
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         <strong>
+          2019 年 2 月 25 日更新:
+         </strong>
+         すでにお知らせしたように、1.11.7-gke.4 用のパッチはまだ提供されていません。1.11.7 をご利用のお客様は、1.11.6 にダウングレードする、1.12 にアップグレードする、または 2019 年 3 月 4 日の週に次の 1.11.7 パッチが提供されるまでお待ちください。
+        </p>
+        <p>
+         先ごろ、Go プログラミング言語に新しいセキュリティ上の脆弱性
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-6486">
+          CVE-2019-6486
+         </a>
+         が見つかりました。これは P-521 と P-384 の楕円曲線の暗号および楕円に関する実装に問題があり、サービス拒否攻撃（DoS）を受ける可能性があるというものです。Google Kubernetes Engine（GKE）では、悪意のあるユーザーがこの脆弱性を利用して Kubernetes API サーバーの CPU を大量に消費するリクエストを送りつけ、クラスタ コントロール プレーンの可用性を低下させるおそれがあります。詳細については、
+         <a href="https://groups.google.com/forum/?hl=ja#!topic/golang-announce/mVeX35iXuSw">
+          Go プログラミング言語の開示情報
+         </a>
+         をご覧ください。
+        </p>
+        <p>
+         <strong>
+          この脆弱性の影響を受けるのは、すべての Google Kubernetes Engine（GKE）マスターです。
+          <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=ja#february-11-2019">
+           最新バージョンのパッチ
+          </a>
+          には、この脆弱性の緩和策が含まれています。クラスタ マスターは、定期的なアップグレード サイクルの一環として数週間以内にパッチ適用済みバージョンに自動的にアップグレードされます。
+         </strong>
+        </p>
+        <h4 data-text="必要な対策" id="heading_26">
+         必要な対策
+        </h4>
+        <p>
+         <strong>
+          お客様による対応は必要ありません。GKE マスターは、定期的なアップグレード サイクルの一環として自動的にアップグレードされます。
+         </strong>
+         マスターをすぐにアップグレードすることをご希望の場合は、
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=ja#upgrading_the_cluster">
+          手動でマスター アップグレードを開始
+         </a>
+         することもできます。
+        </p>
+        <p>
+         このパッチは、GKE 1.10.12-gke.7、1.11.6-gke.11、1.11.7-gke.4、1.12.5-gke.5、およびそれ以降のリリースで提供されています。
+        </p>
+        <h4 data-text="このパッチで対処される脆弱性" id="heading_27">
+         このパッチで対処される脆弱性
+        </h4>
+        <p>
+         このパッチで緩和される脆弱性は以下のとおりです。
+        </p>
+        <p>
+         CVE-2019-6486 は、P-521 と P-384 の楕円曲線の暗号および楕円の実装における脆弱性です。悪意のあるユーザーがこの脆弱性を利用して、CPU を大量に消費するリクエストを送りつけることができます。
+        </p>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-6486">
+         CVE-2019-6486
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="2018 年 12 月 3 日" id="december-3-2018">
+     2018 年 12 月 3 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         先ごろ、Kubernetes にセキュリティ上の脆弱性
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1002105">
+          CVE-2018-1002105
+         </a>
+         が見つかりました。これは、比較的権限の低いユーザーが kubelet の API に対する権限付与をバイパスして、クラスタ内のポッドやノードに対して任意のオペレーションを実行できてしまうというものです。詳細については、
+         <a class="external" href="https://groups.google.com/forum/?hl=ja#!topic/kubernetes-announce/GVllWCg6L88">
+          Kubernetes の開示情報
+         </a>
+         をご覧ください。
+         <strong>
+          この脆弱性の影響を受けるのは、すべての Google Kubernetes Engine（GKE）マスターです。Google では、すでにクラスタを
+          <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=ja#november-12-2018">
+           最新のパッチ バージョン
+          </a>
+          にアップグレード済みです。お客様による対応は必要ありません。
+         </strong>
+        </p>
+        <h4 data-text="必要な対策" id="heading_28">
+         必要な対策
+        </h4>
+        <p>
+         <strong>
+          お客様による対応は必要ありません。GKE マスターはすでにアップグレード済みです。
+         </strong>
+        </p>
+        <p>
+         このパッチは、GKE 1.9.7-gke.11、1.10.6-gke.11、1.10.7-gke.11、1.10.9-gke.5、1.11.2-gke.18、およびそれ以降のリリースで提供されています。
+        </p>
+        <h4 data-text="このパッチで対処される脆弱性" id="heading_29">
+         このパッチで対処される脆弱性
+        </h4>
+        <p>
+         このパッチで緩和される脆弱性は以下のとおりです。
+        </p>
+        <p>
+         脆弱性 CVE-2018-1002105 は、比較的権限の低いユーザーが kubelet の API に対する権限付与をバイパスできてしまうというものです。これにより、ユーザーはアップグレード可能なリクエストを作成してエスカレーションし、kubelet の API を任意に呼び出すことができます。この脆弱性は、Kubernetes ではきわめて重大と評価されています。GKE の実装では未認証のエスカレーション パスを防ぐことに注意が払われているため、この脆弱性は高と評価されています。
+        </p>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1002105">
+         CVE-2018-1002105
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="2018 年 11 月 13 日" id="november-13-2018">
+     2018 年 11 月 13 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         <strong>
+          2018 年 11 月 16 日更新:
+         </strong>
+         影響を受けた可能性のあるすべてのトークンの取り消しと入れ替えが完了しました。以後の対応は特に必要ありません。
+        </p>
+        <p>
+         Calico Container Network Interface（CNI）プラグインで、特定の構成において機密情報を記録できるという問題が見つかりました。この問題は Tigera Technical Advisory
+         <a href="https://www.projectcalico.org/security-bulletins/">
+          TTA-2018-001
+         </a>
+         で追跡されています。
+        </p>
+        <ul>
+         <li>
+          Calico CNI プラグインをデバッグレベルのロギングで実行している場合、Kubernetes API クライアントの構成がログに書き込まれます。
+         </li>
+         <li>
+          CNI ネットワーク構成で「k8s_auth_token」フィールドが設定されている場合、Calico CNI は Kubernetes API トークンも情報レベルでログに書き込みます。
+         </li>
+         <li>
+          さらに、デバッグレベルのロギングで実行している場合、サービス アカウント トークンが、Calico で読み取られる Calico 構成ファイルで明示的に設定されているか、Calico で使用される環境変数として明示的に設定されていると、Calico コンポーネント（calico/node、felix、CNI）がその情報をログファイルに書き込みます。
+         </li>
+        </ul>
+        <p>
+         これらのトークンには、次の権限があります。
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <table>
+     <tbody>
+      <tr>
+       <td>
+        <pre dir="ltr" translate="no">
+
+    bgpconfigurations.crd.projectcalico.org     [create get list update watch]
+    bgppeers.crd.projectcalico.org              [create get list update watch]
+    clusterinformations.crd.projectcalico.org   [create get list update watch]
+    felixconfigurations.crd.projectcalico.org   [create get list update watch]
+    globalbgpconfigs.crd.projectcalico.org      [create get list update watch]
+    globalfelixconfigs.crd.projectcalico.org    [create get list update watch]
+    globalnetworkpolicies.crd.projectcalico.org [create get list update watch]
+    globalnetworksets.crd.projectcalico.org     [create get list update watch]
+    hostendpoints.crd.projectcalico.org         [create get list update watch]
+    ippools.crd.projectcalico.org               [create get list update watch]
+    networkpolicies.crd.projectcalico.org       [create get list update watch]
+    nodes                                       [get list update watch]
+    pods                                        [get list watch patch]
+    namespaces                                  [get list watch]
+    networkpolicies.extensions                  [get list watch]
+    endpoints                                   [get]
+    services                                    [get]
+    pods/status                                 [update]
+    networkpolicies.networking.k8s.io           [watch list]
+          </pre>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <p>
+     クラスタ ネットワーク ポリシーと Stackdriver Logging が有効になっている Google Kubernetes Engine クラスタで、Calico サービス アカウント トークンが Stackdriver に記録されることが確認されました。ネットワーク ポリシーが有効になっていないクラスタは影響を受けていません。
+    </p>
+    <p>
+     Calico CNI プラグインのロギングが警告レベルでのみ行われるよう変更し、新しいサービス アカウントを使用する修正プログラムをデプロイしました。パッチが適用された Calico コードは、今後のリリースでデプロイされる予定です。
+    </p>
+    <p>
+     影響を受けた可能性のあるトークンの取り消しを、来週中に段階的に実施していく予定です。取り消しが完了次第、こちらの情報も更新いたします。
+     <strong>
+      お客様側での対応は特に必要ありません
+     </strong>
+     （このトークン入れ替え作業は 2018 年 11 月 16 日に完了しました）。
+    </p>
+    <p>
+     これらのトークンをすぐに入れ替えたい場合は、次のコマンドを実行してください。サービス アカウントの新しいシークレットが数秒以内に自動で再作成されます。
+    </p>
+    <table>
+     <tbody>
+      <tr>
+      </tr>
+     </tbody>
+     <tbody>
+     </tbody>
+    </table>
+    <table>
+     <tbody>
+      <tr>
+       <td>
+        <pre dir="ltr" translate="no">
+
+    kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
+          </pre>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <table>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="検出" id="heading_30">
+         検出
+        </h4>
+        <p>
+         GKE は、API サーバーへのアクセスをすべて記録します。Google Cloud で想定されている IP 範囲外から Calico トークンが使用されたかどうかを判断するには、次の Stackdriver クエリを実行します。このクエリは、GCP のネットワーク外から行われた呼び出しの記録のみを返す点にご注意ください。また、必要に応じて、ご使用の環境に合わせてカスタマイズしてください。
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <table>
+     <tbody>
+      <tr>
+       <td>
+        <pre dir="ltr" translate="no">
+
+    resource.type="k8s_cluster"
+    protoPayload.authenticationInfo.principalEmail="system:serviceaccount:kube-system:calico"
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.34.208.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.192.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.200.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.59.80.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.192.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.208.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.216.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.220.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.222.0/24")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.224.0.0/13")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.216.148.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.222.176.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "173.255.112.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "192.158.28.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.192.112.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.232.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.236.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.236.48.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.251.128.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.204.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.208.0.0/13")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.167.160.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.178.192.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.2.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.4.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.8.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.16.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.32.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.64.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.0.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.128.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.192.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.240.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.8.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.16.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.32.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.64.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.128.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.154.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.196.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "208.68.108.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.184.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.188.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.202.0.0/16")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.0.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.128.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.192.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.224.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.192.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.196.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.198.0.0/16")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.0.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.128.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.200.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "2600:1900::/35")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.224.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.232.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.234.0.0/16")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.0.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.192.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.236.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.240.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.232.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.4.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.220.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.242.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.244.0.0/14")
+          </pre>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="2018 年 8 月 14 日" id="august-14-2018">
+     2018 年 8 月 14 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th width="5%">
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Intel が次の CVE を
+         <a href="https://www.intel.com/content/www/us/en/architecture-and-technology/l1tf.html">
+          公表しました
+         </a>
+         。
+        </p>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3615">
+           CVE-2018-3615
+          </a>
+          （
+          <a href="https://en.wikipedia.org/wiki/Software_Guard_Extensions">
+           SGX
+          </a>
+          関連）
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3620">
+           CVE-2018-3620
+          </a>
+          （オペレーティング システムと
+          <a href="https://en.wikipedia.org/wiki/Hyper-threading">
+           SMT
+          </a>
+          に関連）
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3646">
+           CVE-2018-3646
+          </a>
+          （仮想化関連）
+         </li>
+        </ul>
+        <p>
+         これらの CVE は「L1 Terminal Fault（L1TF）」と総称されます。
+        </p>
+        <p>
+         これらの L1TF 脆弱性は、投機的実行を悪用してプロセッサ レベルのデータ構造の構成を攻撃します。「L1」とは、レベル 1 データ キャッシュ（L1D）と呼ばれるコア内の小さなリソースで、メモリアクセスを高速化するために使用されます。
+        </p>
+        <p>
+         これらの脆弱性と Compute Engine の緩和策の詳細については、
+         <a href="https://cloud.google.com/blog/products/gcp/protecting-against-the-new-l1tf-speculative-vulnerabilities?hl=ja">
+          Google Cloud ブログの記事
+         </a>
+         をご覧ください。
+        </p>
+        <h4 data-text="Google Kubernetes Engine への影響" id="google-kubernetes-engine">
+         Google Kubernetes Engine への影響
+        </h4>
+        <p>
+         Kubernetes Engine の基盤である、お客様のクラスタとノードを相互に分離するインフラストラクチャは、既知の攻撃から保護されています。
+        </p>
+        <p>
+         Google の Container-Optimized OS（COS）イメージを使用していて、
+         <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/node-auto-upgrades?hl=ja">
+          自動アップグレード
+         </a>
+         を有効にしている場合は、COS イメージのパッチ適用済みバージョンが 2018 年 8 月 20 日の週に公開されると、Kubernetes Engine ノードプールがそのバージョンに自動的に更新されます。
+        </p>
+        <p>
+         <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/node-auto-upgrades?hl=ja">
+          自動アップグレード
+         </a>
+         を無効にしている場合は、COS イメージのパッチ適用済みバージョンが公開された後、Kubernetes Engine ノードプールを
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-container-cluster?hl=ja">
+          手動でアップグレード
+         </a>
+         する必要があります。
+        </p>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3615">
+           CVE-2018-3615
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3620">
+           CVE-2018-3620
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3646">
+           CVE-2018-3646
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="2018 年 8 月 6 日、最終更新日: 2018 年 9 月 5 日
+" id="august-6-2018">
+     2018 年 8 月 6 日、最終更新日: 2018 年 9 月 5 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th width="5%">
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="2018 年 9 月 5 日更新" id="2018-9-5">
+         2018 年 9 月 5 日更新
+        </h4>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5391">
+          CVE-2018-5391
+         </a>
+         が先ごろ公表されました。これは、
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390">
+          CVE-2018-5390
+         </a>
+         と同様にカーネルレベルのネットワーク脆弱性で、脆弱性のあるシステムがサービス拒否（DoS）攻撃を受ける可能性が高まります。主な違いは、CVE-2018-5391 は IP 接続上で悪用されることです。両方の脆弱性に対応するために、この情報を更新しました。
+        </p>
+        <h4 data-text="説明" id="heading_31">
+         説明
+        </h4>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390">
+          CVE-2018-5390
+         </a>
+         （「SegmentSmack」）はカーネルレベルのネットワーク脆弱性で、脆弱性のあるシステムが TCP 接続でサービス拒否（DoS）攻撃を受ける可能性が高まります。
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5391">
+          CVE-2018-5391
+         </a>
+         （「FragmentSmack」）はカーネルレベルのネットワーク脆弱性で、脆弱性のあるシステムが IP 接続でサービス拒否（DoS）攻撃を受ける可能性が高まります。
+        </p>
+        <h4 data-text="Google Kubernetes Engine への影響" id="google-kubernetes-engine_1">
+         Google Kubernetes Engine への影響
+        </h4>
+        <p>
+         2018 年 8 月 11 日現在、すべての Kubernetes Engine マスターが両方の脆弱性から保護されています。また、自動的にアップグレードするように構成されている Kubernetes Engine クラスタはすべて、両方の脆弱性から保護されています。Kubernetes Engine ノードプールが
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=ja">
+          自動的にアップグレード
+         </a>
+         するように構成されておらず、最後に手動でアップグレードした日付が 2018 年 8 月 11 日より前の場合は、両方の脆弱性の影響を受けます。
+        </p>
+        <h4 data-text="パッチ適用済みバージョン" id="heading_32">
+         パッチ適用済みバージョン
+        </h4>
+        <p>
+         この脆弱性は重大度が高いため、パッチが公開されたら直ちにノードを
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=ja#upgrading-nodes">
+          手動でアップグレード
+         </a>
+         することをおすすめします。
+        </p>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390">
+           CVE-2018-5390
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5391">
+           CVE-2018-5391
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="2018 年 5 月 30 日" id="may-30-2018">
+     2018 年 5 月 30 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th width="5%">
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         先ごろ Git に脆弱性が見つかりました。この脆弱性により、権限のないユーザーによる gitRepo ボリュームを使用したポッド作成が許可されている場合、Kubernetes で権限をエスカレーションできてしまうおそれがあります。この CVE のタグは
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-11235">
+          CVE-2018-11235
+         </a>
+         です。
+        </p>
+        <h4 data-text="この脆弱性の影響" id="heading_33">
+         この脆弱性の影響
+        </h4>
+        <p>
+         この脆弱性は、以下のすべてに当てはまる場合に影響します。
+        </p>
+        <ul>
+         <li>
+          信頼できないユーザーがポッドを作成できる（またはポッド作成をトリガーできる）。
+         </li>
+         <li>
+          信頼できないユーザーによって作成されたポッドに、（
+          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=ja">
+           PodSecurityPolicy
+          </a>
+          などを使用して）ホストの root アクセス権を防止する制限がある。
+         </li>
+         <li>
+          信頼できないユーザーによって作成されたポッドで、gitRepo ボリューム タイプの使用が許可されている。
+         </li>
+        </ul>
+        <p>
+         すべての Kubernetes Engine ノードに脆弱性があります。
+        </p>
+        <h4 data-text="必要な対策" id="heading_34">
+         必要な対策
+        </h4>
+        <p>
+         gitRepo ボリューム タイプの使用を禁止します。PodSecurityPolicy によって gitRepo ボリュームを禁止するには、PodSecurityPolicy の
+         <code dir="ltr" translate="no">
+          volumes
+         </code>
+         ホワイトリストから
+         <code dir="ltr" translate="no">
+          gitRepo
+         </code>
+         を除外します。
+        </p>
+        <p>
+         同等の gitRepo ボリュームの動作を実現するには、Git リポジトリを initContainer から EmptyDir ボリュームに複製します。
+        </p>
+        <pre class="notranslate" dir="ltr" translate="no">
+
+<code dir="ltr" translate="no">apiVersion: v1
+    kind: Pod
+    metadata:
+      name: git-repo-example
+    spec:
+      initContainers:
+        # This container clones the desired git repo to the EmptyDir volume.
+        - name: git-clone
+          image: alpine/git # Any image with git will do
+          args:
+            - clone
+            - --single-branch
+            - --
+            - https://github.com/kubernetes/kubernetes # Your repo
+            - /repo # Put it in the volume
+          securityContext:
+            runAsUser: 1 # Any non-root user will do. Match to the workload.
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+          volumeMounts:
+            - name: git-repo
+              mountPath: /repo
+      containers:
+        ...
+      volumes:
+        - name: git-repo
+          emptyDir: {}</code></pre>
+        <h4 data-text="この脆弱性に対処するパッチ" id="heading_35">
+         この脆弱性に対処するパッチ
+        </h4>
+        <p>
+         パッチは今後の Kubernetes Engine リリースに含まれます。詳細については、随時こちらでご確認ください。
+        </p>
+       </td>
+       <td>
+        中
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-11235">
+           CVE-2018-11235
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="2018 年 5 月 21 日" id="may-21-2018">
+     2018 年 5 月 21 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th width="5%">
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         先ごろ Linux カーネルにいくつかの脆弱性が見つかりました。こうした脆弱性により、権限のないプロセスからの権限エスカレーションや（カーネルのクラッシュによる）サービス拒否を実行できるおそれがあります。これらの CVE のタグは
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1000199">
+          CVE-2018-1000199
+         </a>
+         、
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-8897">
+          CVE-2018-8897
+         </a>
+         、
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1087">
+          CVE-2018-1087
+         </a>
+         です。これらの脆弱性はすべての Kubernetes Engine ノードに影響するため、最新のパッチ バージョンに
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-container-cluster?hl=ja">
+          アップグレード
+         </a>
+         することをおすすめします。詳細については、以下をご覧ください。
+        </p>
+        <h4 data-text="必要な対策" id="heading_36">
+         必要な対策
+        </h4>
+        <p>
+         アップグレードするには、まずマスターを最新バージョンにアップグレードする必要があります。このパッチは、Kubernetes Engine 1.8.12-gke.1、Kubernetes Engine 1.9.7-gke.1、Kubernetes Engine 1.10.2-gke.1 で提供されています。これらのリリースには、Container-Optimized OS と Ubuntu の両方のイメージのパッチが含まれています。
+        </p>
+        <p>
+         その前に新しいクラスタを作成する場合は、パッチ適用済みバージョンを明示的に指定する必要があります。
+         <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/node-auto-upgrades?hl=ja">
+          ノードの自動アップグレード
+         </a>
+         を有効にしていて、手動でアップグレードしない場合は、数週間以内にノードがパッチ適用済みバージョンにアップグレードされます。
+        </p>
+        <h4 data-text="このパッチで対処される脆弱性" id="heading_37">
+         このパッチで対処される脆弱性
+        </h4>
+        <p>
+         このパッチで緩和される脆弱性は以下のとおりです。
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1000199">
+          CVE-2018-1000199
+         </a>
+         : この脆弱性は Linux カーネルに影響を及ぼします。権限のないユーザーまたはプロセスがシステム カーネルをクラッシュできるようになり、DoS 攻撃や権限エスカレーションが発生します。脆弱性の重大度評価は高で、CVSS は 7.8 です。
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-8897">
+          CVE-2018-8897
+         </a>
+         : この脆弱性は Linux カーネルに影響を及ぼします。権限のないユーザーまたはプロセスがシステム カーネルをクラッシュできるようになり、DoS 攻撃が発生します。脆弱性の重大度評価は中で、CVSS は 6.5 です。
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1087">
+          CVE-2018-1087
+         </a>
+         : この脆弱性は Linux カーネルの KVM ハイパーバイザに影響を及ぼします。権限のないプロセスがゲストカーネルをクラッシュできるようになり、場合によっては権限を取得できてしまいます。Kubernetes Engine が実行されているインフラストラクチャにはこの脆弱性のパッチが適用されているため、Kubernetes Engine は影響を受けません。脆弱性の重大度評価は高で、CVSS スコアは 8.0 です。
+        </p>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1000199">
+           CVE-2018-1000199
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-8897">
+           CVE-2018-8897
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1087">
+           CVE-2018-1087
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="2018 年 3 月 12 日" id="march-12-2018">
+     2018 年 3 月 12 日
+    </h2>
+    <table id="20180312">
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th width="5%">
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         先ごろ、Kubernetes プロジェクトにより、新しいセキュリティ脆弱性
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2017-1002101">
+          CVE-2017-1002101
+         </a>
+         と
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2017-1002102">
+          CVE-2017-1002102
+         </a>
+         が
+         <a class="external" href="https://groups.google.com/forum/?hl=ja#!topic/kubernetes-security-announce/P7lBjbjDKd8">
+          公表されました
+         </a>
+         。これは、コンテナの外部にあるファイルにコンテナからアクセスできてしまうというものです。これらの脆弱性はすべての Kubernetes Engine ノードに影響するため、できるだけ早く最新のパッチ バージョンにアップグレードすることをおすすめします。詳細については、以下をご覧ください。
+        </p>
+        <h4 data-text="必要な対策" id="heading_38">
+         必要な対策
+        </h4>
+        <p>
+         これらの脆弱性は重大度が高いため、ノードの自動アップグレードを有効にしているかどうかにかかわらず、パッチが公開されたら直ちにノードを
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-container-cluster?hl=ja">
+          手動でアップグレード
+         </a>
+         することをおすすめします。このパッチは 3 月 16 日までにすべてのお客様に提供されますが、クラスタが属するゾーンによっては、
+         <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=ja#march-12-2018">
+          リリース スケジュール
+         </a>
+         に応じてそれより早く入手できる場合があります。
+        </p>
+        <p>
+         アップグレードするには、まずマスターを最新バージョンにアップグレードする必要があります。このパッチは、Kubernetes 1.9.4-gke.1、Kubernetes 1.8.9-gke.1、Kubernetes 1.7.14-gke.1 で提供されています。新しいクラスタでは、3 月 30 日までにパッチ適用済みバージョンがデフォルトで使用されるようになります。それより前に新しいクラスタを作成する場合は、パッチ適用済みバージョンを明示的に指定する必要があります。
+        </p>
+        <p>
+         <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/node-auto-upgrades?hl=ja">
+          ノードの自動アップグレード
+         </a>
+         を有効にしていて、手動でアップグレードしない場合は、4 月 23 日までにノードがパッチ適用済みバージョンにアップグレードされます。ただし、この脆弱性の性質上、パッチが公開されたら直ちにノードを
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-container-cluster?hl=ja">
+          手動でアップグレード
+         </a>
+         することをおすすめします。
+        </p>
+        <h4 data-text="このパッチで対処される脆弱性" id="heading_39">
+         このパッチで対処される脆弱性
+        </h4>
+        <p>
+         このパッチで緩和される脆弱性は以下の 2 つです。
+        </p>
+        <p>
+         脆弱性 CVE-2017-1002101 は、
+         <a class="external" href="https://kubernetes.io/docs/concepts/storage/volumes/#using-subpath">
+          subPath
+         </a>
+         ボリューム マウントを使用しているコンテナがボリュームの外部にあるファイルにアクセスできてしまうというものです。つまり、PodSecurityPolicy で hostPath ボリュームへのコンテナ アクセスをブロックしている場合、ポッドを更新または作成できる攻撃者が他のボリューム タイプを使用して任意の hostPath をマウントするおそれがあります。
+        </p>
+        <p>
+         脆弱性 CVE-2017-1002102 は、特定のボリューム タイプ（シークレット、構成マップ、投影ボリューム、下位 API ボリュームなど）を使用するコンテナがボリュームの外部にあるファイルを削除できてしまうというものです。つまり、これらのボリューム タイプのいずれかを使用するコンテナが不正使用された場合、または信頼できないユーザーによるポッド作成が許可されている場合、攻撃者がそのコンテナを利用してホスト上の任意のファイルを削除するおそれがあります。
+        </p>
+        <p>
+         この修正の詳細については、
+         <a class="external" href="https://kubernetes.io/blog/2018/04/04/fixing-subpath-volume-vulnerability/">
+          Kubernetes ブログの記事
+         </a>
+         をご覧ください。
+        </p>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2017-1002101">
+           CVE-2017-1002101
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2017-1002102">
+           CVE-2017-1002102
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+   </section>
+  </div>
+ </article>
+</article>
