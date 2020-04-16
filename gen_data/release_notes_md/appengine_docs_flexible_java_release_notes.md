@@ -6,6 +6,14 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/gaeflex-java-release-notes.xml
 `
 
+##  April 13, 2020
+
+**CHANGED:**
+
+Quotas for sockets have been removed. There is no longer a limit on the number
+of socket connections or the amount of data you can send and receive through a
+socket.
+
 ##  March 13, 2020
 
 **FEATURE:**
