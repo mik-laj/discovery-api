@@ -1,0 +1,2504 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <h1 class="devsite-page-title">
+   Notas da versão: SDK do Dataflow 1.x para Java
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <section class="intro">
+    <p>
+    </p>
+    <aside class="warning">
+     <strong>
+      Aviso:
+     </strong>
+     o SDK 1.x do Cloud Dataflow para Java não recebe mais suporte desde 16 de outubro de 2018. Consulte
+     <a href="https://cloud.google.com/dataflow/docs/guides/migrate-java-1-to-2?hl=pt_br">
+      Migração do SDK 1.x do Cloud Dataflow para Java
+     </a>
+     para orientações sobre migração.
+    </aside>
+    <p>
+    </p>
+    <p>
+     Nesta página, apresentamos as atualizações de produção para o SDK 1.x do Dataflow para Java. Acesse-a periodicamente para ver anúncios sobre recursos novos ou atualizados, correções de bugs, problemas conhecidos e funcionalidades obsoletas. Consulte as
+     <a href="https://cloud.google.com/dataflow/release-notes/release-notes-java-2?hl=pt_br">
+      Notas da versão do SDK 2.x do Dataflow para Java
+     </a>
+     para se informar sobre essa versão.
+    </p>
+    <p>
+     Veja na
+     <a href="https://cloud.google.com/dataflow/support?hl=pt_br#supportstatus">
+      página de suporte
+     </a>
+     mais informações sobre o status de suporte de cada versão do SDK do Dataflow.
+    </p>
+    <p>
+     Para instalar e usar o SDK do Dataflow, consulte o
+     <a href="https://cloud.google.com/dataflow/docs/installing-dataflow-sdk?hl=pt_br">
+      guia de instalação do SDK do Dataflow
+     </a>
+     .
+    </p>
+   </section>
+   <section class="xml">
+   </section>
+   <section class="releases">
+    <h2 data-text="16 de outubro de 2018" id="october_16_2018">
+     16 de outubro de 2018
+    </h2>
+    <div class="release-deprecated">
+     <strong>
+      DEPRECATED:
+     </strong>
+     <p>
+      O SDK 1.x do Cloud Dataflow para Java estará indisponível a partir de 16 de outubro de 2018. Em breve, o serviço do Cloud Dataflow rejeitará novos jobs do Cloud Dataflow baseados no SDK do Cloud Dataflow 1.x para Java. Consulte
+      <a href="https://cloud.google.com/dataflow/docs/guides/migrate-java-1-to-2?hl=pt_br">
+       Migração do SDK 1.x do Cloud Dataflow para Java
+      </a>
+      para orientações sobre migração.
+     </p>
+    </div>
+    <h2 data-text="1.9.1 (28 de agosto de 2017)" id="191_august_28_2017">
+     1.9.1 (28 de agosto de 2017)
+    </h2>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      Correção de um problema dos jobs do Dataflow na leitura de
+      <code>
+       CompressedSource
+      </code>
+      s com tipo de compactação definido como
+      <code>
+       BZIP2
+      </code>
+      , que podem estar perdendo dados durante o processamento. Para mais informações, consulte o
+      <a href="https://github.com/GoogleCloudPlatform/DataflowJavaSDK/issues/596">
+       Problema nº 596
+      </a>
+      no repositório do GitHub.
+     </p>
+    </div>
+    <h2 data-text="1.9.0 (20 de dezembro de 2016)" id="190_december_20_2016">
+     1.9.0 (20 de dezembro de 2016)
+    </h2>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       Problema identificado:
+      </b>
+      jobs do Dataflow na leitura de
+      <code>
+       CompressedSource
+      </code>
+      s com tipo de compactação definido como
+      <code>
+       BZIP2
+      </code>
+      podem estar perdendo dados durante o processamento. Para mais informações, consulte o
+      <a href="https://github.com/GoogleCloudPlatform/DataflowJavaSDK/issues/596">
+       Problema nº 596
+      </a>
+      no repositório do GitHub.
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Inclusão de suporte para usar a
+      <a href="https://cloud.google.com/dataflow/pipelines/dataflow-monitoring-intf?hl=pt_br#error-reporting">
+       Interface do Stackdriver Error Reporting
+      </a>
+      .
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Inclusão da interface
+      <code>
+       ValueProvider
+      </code>
+      para uso em opções de pipeline. Ao optar pelo tipo
+      <code>
+       ValueProvider&lt;T&gt;
+      </code>
+      em vez de
+      <code>
+       T
+      </code>
+      , o valor será fornecido no ambiente de execução em vez de no tempo de construção do pipeline e ativará os
+      <a href="https://cloud.google.com/dataflow/docs/templates/overview?hl=pt_br">
+       modelos do Cloud Dataflow
+      </a>
+      .
+  O suporte para
+      <code>
+       ValueProvider
+      </code>
+      foi incluído em
+      <code>
+       TextIO
+      </code>
+      ,
+      <code>
+       PubSubIO
+      </code>
+      e
+      <code>
+       BigQueryIO
+      </code>
+      e pode ser adicionado a PTransforms aleatórios também. Para mais detalhes, consulte a
+      <a href="https://cloud.google.com/dataflow/docs/templates/overview?hl=pt_br">
+       documentação sobre modelos do Cloud Dataflow
+      </a>
+      .
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Inclusão da capacidade de salvar automaticamente informações de perfil no Google Cloud Storage usando a opção de pipeline
+      <code>
+       --saveProfilesToGcs
+      </code>
+      . Para mais informações sobre pipelines de perfil executados pelo
+      <code>
+       DataflowPipelineRunner
+      </code>
+      , consulte o
+      <a href="https://github.com/GoogleCloudPlatform/DataflowJavaSDK/issues/72">
+       problema nº 72 do GitHub
+      </a>
+      .
+     </p>
+    </div>
+    <div class="release-deprecated">
+     <strong>
+      DEPRECATED:
+     </strong>
+     <p>
+      Suspensão do uso da opção de pipeline
+      <code>
+       --enableProfilingAgent
+      </code>
+      que salvava perfis nos discos de cada worker. Para mais informações sobre pipelines de perfil executados pelo
+      <code>
+       DataflowPipelineRunner
+      </code>
+      , consulte o
+      <a href="https://github.com/GoogleCloudPlatform/DataflowJavaSDK/issues/72">
+       problema nº 72 do GitHub
+      </a>
+      .
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Alteração de
+      <code>
+       FileBasedSource
+      </code>
+      para gerar uma exceção na leitura de um padrão de arquivo que não tenha correspondências. Agora, em vez de não lerem dados de maneira silenciosa, os pipelines falharão por tempo de execução. Essa alteração afeta
+      <code>
+       TextIO.Read
+      </code>
+      ou
+      <code>
+       AvroIO.Read
+      </code>
+      quando
+      <code>
+       withoutValidation
+      </code>
+      está configurado.
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Validação de
+      <code>
+       Coder
+      </code>
+      aprimorada no
+      <code>
+       DirectPipelineRunner
+      </code>
+      para detectar coders que não conseguem codificar e descodificar corretamente a entrada.
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Exibição aprimorada de dados em todas as transformações básicas, inclusive o processamento apropriado de matrizes em
+      <code>
+       PipelineOptions
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Desempenho aprimorado de pipelines usando
+      <code>
+       DataflowPipelineRunner
+      </code>
+      no modo de streaming.
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Escalabilidade aprimorada do
+      <code>
+       InProcessRunner
+      </code>
+      , possibilitando testes com conjuntos de dados maiores.
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Limpeza aprimorada de arquivos temporários criados por
+      <code>
+       TextIO
+      </code>
+      ,
+      <code>
+       AvroIO
+      </code>
+      e outras implementações de
+      <code>
+       FileBasedSource
+      </code>
+      .
+     </p>
+    </div>
+    <h2 data-text="1.8.1 (12 de dezembro de 2016)" id="181_december_12_2016">
+     1.8.1 (12 de dezembro de 2016)
+    </h2>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       Problema identificado:
+      </b>
+      jobs do Dataflow na leitura de
+      <code>
+       CompressedSource
+      </code>
+      s com tipo de compactação definido como
+      <code>
+       BZIP2
+      </code>
+      podem estar perdendo dados durante o processamento. Para mais informações, consulte o
+      <a href="https://github.com/GoogleCloudPlatform/DataflowJavaSDK/issues/596">
+       Problema nº 596
+      </a>
+      no repositório do GitHub.
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Desempenho aprimorado de entradas secundárias no
+      <code>
+       DataflowPipelineRunner
+      </code>
+      .
+     </p>
+    </div>
+    <h2 data-text="1.8.0 (3 de outubro de 2016)" id="180_october_3_2016">
+     1.8.0 (3 de outubro de 2016)
+    </h2>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       Problema identificado:
+      </b>
+      jobs do Dataflow na leitura de
+      <code>
+       CompressedSource
+      </code>
+      s com tipo de compactação definido como
+      <code>
+       BZIP2
+      </code>
+      podem estar perdendo dados durante o processamento. Para mais informações, consulte o
+      <a href="https://github.com/GoogleCloudPlatform/DataflowJavaSDK/issues/596">
+       Problema nº 596
+      </a>
+      no repositório do GitHub.
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Inclusão de suporte em
+      <code>
+       BigQueryIO.Read
+      </code>
+      para consultas no novo dialeto
+      <a href="https://cloud.google.com/bigquery/sql-reference/?hl=pt_br">
+       SQL padrão
+      </a>
+      do BigQuery usando
+      <code>
+       .withStandardSQL()
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Inclusão de suporte em
+      <code>
+       BigQueryIO
+      </code>
+      para novos
+      <a href="https://cloud.google.com/bigquery/sql-reference/data-types?hl=pt_br">
+       tipos
+      </a>
+      de
+      <code>
+       BYTES
+      </code>
+      ,
+      <code>
+       TIME
+      </code>
+      ,
+      <code>
+       DATE
+      </code>
+      e
+      <code>
+       DATETIME
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Inclusão de suporte em
+      <code>
+       BigtableIO.Read
+      </code>
+      para leitura de um intervalo de chaves restrito usando
+      <code>
+       .withKeyRange(ByteKeyRange)
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Divisão inicial aprimorada de arquivos grandes descompactados em
+      <code>
+       CompressedSource
+      </code>
+      , o que melhora o desempenho durante a execução de pipelines em lote que usam
+      <code>
+       TextIO.Read
+      </code>
+      no serviço do Cloud Dataflow.
+     </p>
+    </div>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      Correção da
+      <a href="https://github.com/GoogleCloudPlatform/DataflowJavaSDK/issues/451">
+       regressão de desempenho
+      </a>
+      quando
+      <code>
+       BigQueryIO.Write
+      </code>
+      é usado no modo de streaming.
+     </p>
+    </div>
+    <h2 data-text="1.7.0 (9 de setembro de 2016)" id="170_september_9_2016">
+     1.7.0 (9 de setembro de 2016)
+    </h2>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       Problema identificado:
+      </b>
+      jobs do Dataflow na leitura de
+      <code>
+       CompressedSource
+      </code>
+      s com tipo de compactação definido como
+      <code>
+       BZIP2
+      </code>
+      podem estar perdendo dados durante o processamento. Para mais informações, consulte o
+      <a href="https://github.com/GoogleCloudPlatform/DataflowJavaSDK/issues/596">
+       Problema nº 596
+      </a>
+      no repositório do GitHub.
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       Problema identificado:
+      </b>
+      encontramos uma regressão de desempenho em
+      <code>
+       BigQueryIO.Write
+      </code>
+      . Durante a execução no modo de streaming, os usuários poderão notar um pequeno aumento nas falhas de inserção, mesmo que nenhum dado seja perdido ou duplicado. Para mais informações, consulte o
+      <a href="https://github.com/GoogleCloudPlatform/DataflowJavaSDK/issues/451">
+       Problema nº 451
+      </a>
+      no repositório do GitHub.
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Inclusão de suporte na API Cloud Datastore v1 no novo
+      <code>
+       com.google.cloud.dataflow.sdk.io.datastore.DatastoreIO
+      </code>
+      . Suspensão do uso da antiga classe
+      <code>
+       DatastoreIO
+      </code>
+      que era compatível somente com a API Cloud Datastore v1beta2, atualmente obsoleta.
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <code>
+       DatastoreIO.Read
+      </code>
+      aprimorado para ficar compatível com o rebalanceamento dinâmico de trabalho. Inclusão de uma opção para controlar o número de divisões de consulta usando
+      <code>
+       withNumQuerySplits
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <code>
+       DatastoreIO.Write
+      </code>
+      aprimorado para trabalhar com uma
+      <code>
+       PCollection
+      </code>
+      ilimitada, dando suporte à gravação no Cloud Datastore quando
+      <code>
+       DataflowPipelineRunner
+      </code>
+      for usado no modo de streaming.
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Inclusão da capacidade de excluir diretamente objetos
+      <code>
+       Entity
+      </code>
+      do Cloud Datastore usando
+      <code>
+       Datastore.v1().deleteEntity
+      </code>
+      ou de excluir entidades por chave usando
+      <code>
+       Datastore.v1().deleteKey
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Inclusão de suporte para leitura de um
+      <code>
+       BoundedSource
+      </code>
+      para o
+      <code>
+       DataflowPipelineRunner
+      </code>
+      no modo de streaming. Isso permite o uso de
+      <code>
+       TextIO.Read
+      </code>
+      ,
+      <code>
+       AvroIO.Read
+      </code>
+      e outras fontes vinculadas nesses pipelines.
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Inclusão de suporte para gravação opcional de um cabeçalho e/ou rodapé em arquivos de texto produzidos com
+      <code>
+       TextIO.Write
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Inclusão da capacidade de controlar o número de fragmentos de saída produzidos com o uso de
+      <code>
+       Sink
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Inclusão de
+      <code>
+       TestStream
+      </code>
+      para possibilitar testes de acionadores com vários painéis e dados atrasados com o
+      <code>
+       InProcessPipelineRunner
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Inclusão da capacidade de controlar a taxa em que
+      <code>
+       UnboundedCountingInput
+      </code>
+      produz elementos usando
+      <code>
+       withRate(long, Duration)
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Desempenho e estabilidade aprimorados para pipelines usando
+      <code>
+       DataflowPipelineRunner
+      </code>
+      no modo de streaming.
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Para ser aceito por
+      <code>
+       TestStream
+      </code>
+      ,
+      <code>
+       DataflowAssert
+      </code>
+      foi reimplementado para usar
+      <code>
+       GroupByKey
+      </code>
+      em vez de
+      <code>
+       sideInputs
+      </code>
+      ao verificar declarações. Essa é uma alteração incompatível com atualizações no
+      <code>
+       DataflowAssert
+      </code>
+      para pipelines executados no
+      <code>
+       DataflowPipelineRunner
+      </code>
+      no modo de streaming.
+     </p>
+    </div>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      Correção de um problema em que um
+      <code>
+       FileBasedSink
+      </code>
+      não produzia arquivos ao gravar uma
+      <code>
+       PCollection
+      </code>
+      vazia.
+     </p>
+    </div>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      Correção de um problema em que
+      <code>
+       BigQueryIO.Read
+      </code>
+      não conseguia consultar tabelas em uma região sem ser
+      <code>
+       US
+      </code>
+      quando
+      <code>
+       DirectPipelineRunner
+      </code>
+      ou
+      <code>
+       InProcessPipelineRunner
+      </code>
+      era usado.
+     </p>
+    </div>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      Correção de um problema em que a combinação entre um
+      <code>
+       allowedLateness
+      </code>
+      grande e carimbos de data/hora próximos ao final da janela global provocava uma
+      <code>
+       IllegalStateException
+      </code>
+      para pipelines executados em
+      <code>
+       DirectPipelineRunner
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      Correção de uma
+      <code>
+       NullPointerException
+      </code>
+      que podia ser gerada durante o envio de pipelines ao usar um acionador
+      <code>
+       AfterWatermark
+      </code>
+      sem disparos atrasados.
+     </p>
+    </div>
+    <h2 data-text="1.6.1 (8 de agosto de 2016)" id="161_august_8_2016">
+     1.6.1 (8 de agosto de 2016)
+    </h2>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       Problema identificado:
+      </b>
+      jobs do Dataflow na leitura de
+      <code>
+       CompressedSource
+      </code>
+      s com tipo de compactação definido como
+      <code>
+       BZIP2
+      </code>
+      podem estar perdendo dados durante o processamento. Para mais informações, consulte o
+      <a href="https://github.com/GoogleCloudPlatform/DataflowJavaSDK/issues/596">
+       Problema nº 596
+      </a>
+      no repositório do GitHub.
+     </p>
+    </div>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      Correção de um problema dos jobs do Dataflow na leitura de
+      <code>
+       TextIO
+      </code>
+      com tipo de compactação definido como
+      <code>
+       GZIP
+      </code>
+      ou
+      <code>
+       BZIP2
+      </code>
+      . Para mais informações, consulte o
+      <a href="https://github.com/GoogleCloudPlatform/DataflowJavaSDK/issues/356">
+       Problema nº 356
+      </a>
+      no repositório do GitHub.
+     </p>
+    </div>
+    <h2 data-text="1.6.0 (10 de junho de 2016)" id="160_june_10_2016">
+     1.6.0 (10 de junho de 2016)
+    </h2>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       Problema identificado:
+      </b>
+      jobs do Dataflow na leitura de
+      <code>
+       CompressedSource
+      </code>
+      s com tipo de compactação definido como
+      <code>
+       BZIP2
+      </code>
+      podem estar perdendo dados durante o processamento. Para mais informações, consulte o
+      <a href="https://github.com/GoogleCloudPlatform/DataflowJavaSDK/issues/596">
+       Problema nº 596
+      </a>
+      no repositório do GitHub.
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <b>
+       Problema identificado:
+      </b>
+      jobs do Dataflow na leitura de
+      <code>
+       TextIO
+      </code>
+      com tipo de compactação definido como
+      <code>
+       GZIP
+      </code>
+      ou
+      <code>
+       BZIP2
+      </code>
+      podem estar perdendo dados durante o processamento. É aconselhável que os usuários utilizem as soluções alternativas discutidas no
+      <a href="https://github.com/GoogleCloudPlatform/DataflowJavaSDK/issues/356">
+       Problema nº 356
+      </a>
+      do repositório do GitHub.
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Inclusão da exibição de dados, permitindo a anotação de funções de usuário (
+      <code>
+       DoFn
+      </code>
+      ,
+      <code>
+       CombineFn
+      </code>
+      e
+      <code>
+       WindowFn
+      </code>
+      ), de
+      <code>
+       Source
+      </code>
+      s e de
+      <code>
+       Sink
+      </code>
+      s com metadados estáticos a serem exibidos na Interface de monitoramento do Dataflow. Esses dados foram implementados para os principais componentes e são automaticamente aplicados a todas as
+      <code>
+       PipelineOptions
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Inclusão dos métodos
+      <code>
+       getSplitPointsConsumed
+      </code>
+      e
+      <code>
+       getSplitPointsRemaining
+      </code>
+      na API
+      <code>
+       BoundedReader
+      </code>
+      para melhorar a capacidade do Dataflow de fazer o escalonamento automático de um job que faz leitura dessas fontes. Foram fornecidas implementações padrão dessas funções, mas é aconselhável que os implementadores de leitor as modifiquem para fornecer informações melhores, quando disponíveis.
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Inclusão da capacidade de gravar vários
+      <code>
+       CombineFn
+      </code>
+      s em um único
+      <code>
+       CombineFn
+      </code>
+      usando
+      <code>
+       CombineFns.compose
+      </code>
+      ou
+      <code>
+       CombineFns.composeKeyed
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Inclusão de
+      <code>
+       InProcessPipelineRunner
+      </code>
+      , um aprimoramento do
+      <code>
+       DirectPipelineRunner
+      </code>
+      que implementa melhor o modelo do Dataflow.
+      <code>
+       InProcessPipelineRunner
+      </code>
+      é executado na máquina local de um usuário e é compatível com execução multithread,
+      <code>
+       PCollections
+      </code>
+      ilimitadas e acionadores para saídas especulativas e atrasadas.
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      <code>
+       BigQueryIO
+      </code>
+      reimplementado para que as implementações de
+      <code>
+       DirectPipelineRunner
+      </code>
+      e
+      <code>
+       InProcessPipelineRunner
+      </code>
+      sejam executadas de modo semelhante ao
+      <code>
+       DataflowPipelineRunner
+      </code>
+      .
+  Agora, é preciso especificar o
+      <a href="https://cloud.google.com/dataflow/pipelines/specifying-exec-params?hl=pt_br">
+       parâmetro de execução
+      </a>
+      <code>
+       --tempLocation
+      </code>
+      ao usar
+      <code>
+       DirectPipelineRunner
+      </code>
+      ou
+      <code>
+       InProcessPipelineRunner
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      Desempenho aprimorado de entradas secundárias ao usar workers com vários núcleos.
+     </p>
+    </div>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      Eficiência aprimorada ao usar
+      <code>
+       CombineFnWithContext
+      </code>
+      .
+     </p>
+    </div>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      Correção de vários problemas relacionados à estabilidade no modo de streaming.
+     </p>
+    </div>
+    <h2 data-text="1.5.1 (15 de abril de 2016)" id="151_april_15_2016">
+     1.5.1 (15 de abril de 2016)
+    </h2>
+    <ul>
+     <li>
+      Correção de um problema que ocultava
+      <code>
+       BigtableIO.Read.withRowFilter
+      </code>
+      . Agora, as linhas do Cloud Bigtable podem ser filtradas na transformação
+      <code>
+       Read
+      </code>
+      .
+     </li>
+     <li>
+      Correção de suporte para arquivos GZip concatenados.
+     </li>
+     <li>
+      Correção de um problema que impedia
+      <code>
+       Write.to
+      </code>
+      de ser usado com janelas de mesclagem.
+     </li>
+     <li>
+      Correção de um problema que causava acionamentos excessivos com repetição de acionadores compostos.
+     </li>
+     <li>
+      Correção de um problema em janelas de mesclagem e acionadores que terminavam antes do final da janela.
+     </li>
+    </ul>
+    <h2 data-text="1.5.0 (14 de março de 2016)" id="150_march_14_2016">
+     1.5.0 (14 de março de 2016)
+    </h2>
+    <p>
+     Nesta versão, começamos a preparar o SDK do Dataflow para Java para uma possível migração para o
+     <a href="https://www.google.com/url?sa=D&amp;q=https%3A%2F%2Fcloudplatform.googleblog.com%2F2016%2F01%2FDataflow-and-open-source-proposal-to-join-the-Apache-Incubator.html&amp;hl=pt_br">
+      Apache Beam (em desenvolvimento)
+     </a>
+     .
+  Especificamente, refatoramos várias APIs internas e as removemos das classes do SDK usadas somente dentro do worker. Agora elas serão fornecidas pelo serviço do Google Cloud Dataflow durante a execução do job. Essa refatoração não afetará nenhum código de usuário.
+    </p>
+    <p>
+     Além disso, a versão 1.5.0 inclui as seguintes alterações:
+    </p>
+    <ul>
+     <li>
+      Ativação de um formato de entrada secundária indexada para pipelines em lote executados no serviço do Google Cloud Dataflow. As entradas secundárias indexadas aumentam significativamente o desempenho de
+      <code>
+       View.asList
+      </code>
+      ,
+      <code>
+       View.asMap
+      </code>
+      ,
+      <code>
+       View.asMultimap
+      </code>
+      e quaisquer
+      <code>
+       PCollectionView
+      </code>
+      s sem janelas globais.
+     </li>
+     <li>
+      Atualização para a versão
+      <code>
+       3.0.0-beta-1
+      </code>
+      do serviço Buffers de protocolo. Se você usa buffers de protocolo personalizados, recompile-os com a versão correspondente do compilador
+      <code>
+       protoc
+      </code>
+      . Você pode continuar usando as versões 2 e 3 da sintaxe do Buffers de protocolo porque não é necessário alterar nenhum código de pipeline do usuário.
+     </li>
+     <li>
+      Inclusão de
+      <code>
+       ProtoCoder
+      </code>
+      , que é um
+      <code>
+       Coder
+      </code>
+      de mensagens do Buffers de protocolo compatível com as versões 2 e 3 da sintaxe do Buffers de protocolo. Esse coder detecta quando as mensagens podem ser codificadas de maneira previsível. O uso de
+      <code>
+       Proto2Coder
+      </code>
+      está suspenso. Recomendamos que todos os usuários mudem para
+      <code>
+       ProtoCoder
+      </code>
+      .
+     </li>
+     <li>
+      Inclusão de
+      <code>
+       withoutResultFlattening
+      </code>
+      a
+      <code>
+       BigQueryIO.Read
+      </code>
+      para desativar o nivelamento dos resultados de consulta na leitura do BigQuery.
+     </li>
+     <li>
+      Inclusão de
+      <code>
+       BigtableIO
+      </code>
+      para permitir leitura e gravação no Google Cloud Bigtable.
+     </li>
+     <li>
+      <code>
+       CompressedSource
+      </code>
+      aprimorado para detectar o formato de compactação de acordo com a extensão do arquivo. Inclusão de suporte para leitura de arquivos
+      <code>
+       .gz
+      </code>
+      que são descompactados de maneira transparente pela lógica de transporte subjacente.
+     </li>
+    </ul>
+    <div style="font-size: 10pt; color: gray">
+     <em>
+      Apache Beam
+      <sup>
+       
+      </sup>
+      é uma marca registrada da The Apache Software Foundation ou afiliadas dela nos Estados Unidos e/ou em outros países.
+     </em>
+    </div>
+    <h2 data-text="1.4.0 (22 de janeiro de 2016)" id="140_january_22_2016">
+     1.4.0 (22 de janeiro de 2016)
+    </h2>
+    <ul>
+     <li>
+      Inclusão de uma série de
+      <a href="https://cloud.google.com/dataflow/examples/gaming-example?hl=pt_br">
+       exemplos de pipelines de streaming e em lote
+      </a>
+      em um domínio de jogos para dispositivos móveis que ilustra alguns tópicos avançados, como acionadores e gestão de janelas.
+     </li>
+     <li>
+      Inclusão de suporte para funções
+      <code>
+       Combine
+      </code>
+      acessarem opções de pipeline e entradas secundárias por meio de um contexto. Consulte
+      <code>
+       GlobalCombineFn
+      </code>
+      e
+      <code>
+       PerKeyCombineFn
+      </code>
+      para conferir mais detalhes.
+     </li>
+     <li>
+      Modificação de
+      <code>
+       ParDo.withSideInputs()
+      </code>
+      para que chamadas sucessivas sejam cumulativas.
+     </li>
+     <li>
+      Modificação da detecção automática de coder para mensagens do Buffer de protocolo. Agora os coders são fornecidos automaticamente para essas classes.
+     </li>
+     <li>
+      Inclusão de suporte para limitar o número de resultados retornados por
+      <code>
+       DatastoreIO.Source
+      </code>
+      .
+    No entanto, quando esse limite é definido, a operação de leitura do Cloud Datastore é realizada por um único worker, em vez de ser executada em paralelo no pool de workers.
+     </li>
+     <li>
+      Modificação da definição de
+      <code>
+       PaneInfo.{EARLY, ON_TIME, LATE}
+      </code>
+      para que painéis inteiramente compostos por dados atrasados sejam sempre
+      <code>
+       LATE
+      </code>
+      , e que painéis
+      <code>
+       ON_TIME
+      </code>
+      nunca realizem cálculos atrasados para gerar um painel
+      <code>
+       LATE
+      </code>
+      .
+     </li>
+     <li>
+      Modificação de
+      <code>
+       GroupByKey
+      </code>
+      para remover dados atrasados quando eles chegarem para uma janela que tenha expirado. Uma janela expirada é aquela cujo final ultrapassou o atraso permitido.
+     </li>
+     <li>
+      Não é preciso mais especificar
+      <code>
+       withAllowedLateness()
+      </code>
+      ao usar
+      <code>
+       GlobalWindows
+      </code>
+      porque nenhum dado é removido.
+     </li>
+     <li>
+      Inclusão de suporte para receber o código do projeto padrão da respectiva configuração produzida por versões mais recentes do utilitário
+      <code>
+       gcloud
+      </code>
+      . Se não houver uma configuração de projeto padrão, o Dataflow voltará a usar a configuração de projeto anterior gerada por versões mais antigas do utilitário
+      <code>
+       gcloud
+      </code>
+      .
+     </li>
+    </ul>
+    <h2 data-text="1.3.0 (4 de dezembro de 2015)" id="130_december_4_2015">
+     1.3.0 (4 de dezembro de 2015)
+    </h2>
+    <ul>
+     <li>
+      <code>
+       IterableLikeCoder
+      </code>
+      aprimorado para codificar valores menores com eficiência. Essa alteração é compatível com versões anteriores. No entanto, se houver um pipeline em execução que tenha sido construído com a versão 1.3.0 ou posterior do SDK, não será possível
+      <a href="https://cloud.google.com/dataflow/pipelines/updating-a-pipeline?hl=pt_br">
+       "atualizar"
+      </a>
+      esse pipeline com um substituto construído com a versão 1.2.1 ou anterior do SDK. Já a atualização de um pipeline em execução usando um pipeline construído com uma nova versão do SDK será bem-sucedida.
+     </li>
+     <li>
+      Inclusão de uma etapa de refragmentação (reprodução aleatória) imediatamente antes da etapa de gravação quando
+      <code>
+       TextIO.Write
+      </code>
+      ou
+      <code>
+       AvroIO.Write
+      </code>
+      resulta em um número fixo de arquivos. O custo dessa refragmentação geralmente é excedido pelo paralelismo adicional disponível no estágio anterior.
+     </li>
+     <li>
+      Inclusão de suporte para carimbos de data/hora RFC 3339 em
+      <code>
+       PubsubIO
+      </code>
+      . Isso permite a leitura de tópicos do Cloud Pub/Sub publicados pelo Cloud Logging sem perder informações de carimbos de data/hora.
+     </li>
+     <li>
+      Melhoria no gerenciamento de memória para impedir que pipelines no modo de execução em streaming fiquem estagnados ao serem executados com alta utilização de memória. Isso beneficia principalmente os pipelines com resultados extensos de
+      <code>
+       GroupByKey
+      </code>
+      .
+     </li>
+     <li>
+      Inclusão da capacidade de personalizar carimbos de data/hora de janelas emitidas. Antes, a marca d'água era mantida no carimbo de data/hora mais antigo de qualquer entrada armazenada em buffer. Com essa alteração, é possível escolher uma hora posterior para permitir que a marca d'água avance mais. Por exemplo, use o final da janela para impedir que sessões de longa duração retenham a saída. Consulte
+      <code>
+       Window.Bound.withOutputTime()
+      </code>
+      .
+     </li>
+     <li>
+      Inclusão de uma sintaxe simplificada para disparos antecipados e atrasados com um acionador
+      <code>
+       AfterWatermark
+      </code>
+      , como indicado a seguir:
+      <code>
+       AfterWatermark.pastEndOfWindow().withEarlyFirings(...).withLateFirings(...)
+      </code>
+      .
+     </li>
+    </ul>
+    <h2 data-text="1.2.1 (21 de outubro de 2015)" id="121_october_21_2015">
+     1.2.1 (21 de outubro de 2015)
+    </h2>
+    <ul>
+     <li>
+      Correção de uma regressão em
+      <code>
+       BigQueryIO
+      </code>
+      que imprimia desnecessariamente várias mensagens quando executada com
+      <code>
+       DirectPipelineRunner
+      </code>
+      .
+     </li>
+    </ul>
+    <h2 data-text="1.2.0 (5 de outubro de 2015)" id="120_october_5_2015">
+     1.2.0 (5 de outubro de 2015)
+    </h2>
+    <ul>
+     <li>
+      Inclusão de suporte a Java 8. Inclusão de novas transformações
+      <code>
+       MapElements
+      </code>
+      e
+      <code>
+       FlatMapElements
+      </code>
+      que aceitam lambdas em Java 8, para os casos em que a capacidade total de
+      <code>
+       ParDo
+      </code>
+      não é necessária.
+      <code>
+       Filter
+      </code>
+      e
+      <code>
+       Partition
+      </code>
+      também aceitam lambdas.
+    A funcionalidade do Java 8 é demonstrada em um novo exemplo de
+      <code>
+       MinimalWordCountJava8
+      </code>
+      .
+     </li>
+     <li>
+      Ativação de anotações de
+      <code>
+       @DefaultCoder
+      </code>
+      para tipos genéricos. Antes, a anotação de
+      <code>
+       @DefaultCoder
+      </code>
+      em um tipo genérico era ignorada, resultando na redução da funcionalidade e em mensagens de erro confusas. Agora ela funciona conforme esperado.
+     </li>
+     <li>
+      <code>
+       DatastoreIO
+      </code>
+      agora é compatível com leituras (paralelas) nos namespaces. As entidades podem ser gravadas em namespaces definindo o namespace na chave
+      <code>
+       Entity
+      </code>
+      .
+     </li>
+     <li>
+      Limitação da dependência
+      <code>
+       slf4j-jdk14
+      </code>
+      ao escopo
+      <code>
+       test
+      </code>
+      . Quando um job do Dataflow estiver em execução, as dependências
+      <code>
+       slf4j-api
+      </code>
+      ,
+      <code>
+       slf4j-jdk14
+      </code>
+      ,
+      <code>
+       jcl-over-slf4j
+      </code>
+      ,
+      <code>
+       log4j-over-slf4j
+      </code>
+      e
+      <code>
+       log4j-to-slf4j
+      </code>
+      serão fornecidas pelo sistema.
+     </li>
+    </ul>
+    <h2 data-text="1.1.0 (15 de setembro de 2015)" id="110_september_15_2015">
+     1.1.0 (15 de setembro de 2015)
+    </h2>
+    <ul>
+     <li>
+      Inclusão de um coder do tipo
+      <code>
+       Set&lt;T&gt;
+      </code>
+      ao registro de coders quando o tipo
+      <code>
+       T
+      </code>
+      tiver seu próprio coder registrado.
+     </li>
+     <li>
+      Inclusão de
+      <code>
+       NullableCoder
+      </code>
+      , que pode ser usado em conjunto com outros coders para codificar uma
+      <code>
+       PCollection
+      </code>
+      cujos elementos podem conter valores
+      <code>
+       null
+      </code>
+      .
+     </li>
+     <li>
+      Inclusão de
+      <code>
+       Filter
+      </code>
+      como um
+      <code>
+       PTransform
+      </code>
+      composto. Suspensão do uso de métodos estáticos na implementação
+      <code>
+       Filter
+      </code>
+      antiga que retorna transformações
+      <code>
+       ParDo
+      </code>
+      .
+     </li>
+     <li>
+      Inclusão de
+      <code>
+       SourceTestUtils
+      </code>
+      , que é um conjunto de infraestruturas de testes e funções auxiliares para testar a correção de implementações
+      <code>
+       Source
+      </code>
+      .
+     </li>
+    </ul>
+    <h2 data-text="1.0.0 (10 de agosto de 2015)" id="100_august_10_2015">
+     1.0.0 (10 de agosto de 2015)
+    </h2>
+    <ul>
+     <li>
+      A versão inicial de Disponibilidade geral (GA, na sigla em inglês) é aberta para todos os desenvolvedores e considerada estável e totalmente qualificada para ser usada na produção. Ela coincide com a Disponibilidade geral do serviço do Dataflow.
+     </li>
+     <li>
+      Remoção dos valores padrão de
+      <code>
+       numWorkers
+      </code>
+      ,
+      <code>
+       maxNumWorkers
+      </code>
+      e configurações semelhantes. Se não houver especificações, o serviço do Dataflow selecionará um valor apropriado.
+     </li>
+     <li>
+      Inclusão de verificações em
+      <code>
+       DirectPipelineRunner
+      </code>
+      para garantir que
+      <code>
+       DoFn
+      </code>
+      s atendam ao requisito de que entradas e saídas não sejam modificadas.
+     </li>
+     <li>
+      Inclusão de suporte em
+      <code>
+       AvroCoder
+      </code>
+      para campos
+      <code>
+       @Nullable
+      </code>
+      com codificação determinística.
+     </li>
+     <li>
+      Inclusão de um requisito para que subclasses
+      <code>
+       CustomCoder
+      </code>
+      anônimas modifiquem o método
+      <code>
+       getEncodingId
+      </code>
+      .
+     </li>
+     <li>
+      <code>
+       Source.Reader
+      </code>
+      ,
+      <code>
+       BoundedSource.BoundedReader
+      </code>
+      ,
+      <code>
+       UnboundedSource.UnboundedReader
+      </code>
+      foram alterados para serem classes abstratas, em vez de interfaces.
+      <code>
+       AbstractBoundedReader
+      </code>
+      foi mesclado com
+      <code>
+       BoundedSource.BoundedReader
+      </code>
+      .
+     </li>
+     <li>
+      <code>
+       ByteOffsetBasedSource
+      </code>
+      e
+      <code>
+       ByteOffsetBasedReader
+      </code>
+      foram renomeados como
+      <code>
+       OffsetBasedSource
+      </code>
+      e
+      <code>
+       OffsetBasedReader
+      </code>
+      , introduzindo
+      <code>
+       getBytesPerOffset
+      </code>
+      como uma camada de conversão.
+     </li>
+     <li>
+      <code>
+       OffsetBasedReader
+      </code>
+      foi alterado. Agora, a subclasse precisa modificar
+      <code>
+       startImpl
+      </code>
+      e
+      <code>
+       advanceImpl
+      </code>
+      , em vez de
+      <code>
+       start
+      </code>
+      e
+      <code>
+       advance
+      </code>
+      . A variável protegida
+      <code>
+       rangeTracker
+      </code>
+      agora está oculta e é atualizada pela classe base automaticamente. Para indicar pontos de divisão, use o método
+      <code>
+       isAtSplitPoint
+      </code>
+      .
+     </li>
+     <li>
+      Remoção de métodos para ajustar acionadores de marca d'água.
+     </li>
+     <li>
+      Remoção de um parâmetro genérico desnecessário de
+      <code>
+       TimeTrigger
+      </code>
+      .
+     </li>
+     <li>
+      Remoção da geração de painéis vazios, a menos que explicitamente solicitado.
+     </li>
+    </ul>
+    <h2 data-text="0.4.150727 (27 de julho de 2015)" id="04150727_july_27_2015">
+     0.4.150727 (27 de julho de 2015)
+    </h2>
+    <ul>
+     <li>
+      Remoção da necessidade de definir explicitamente
+      <code>
+       --project
+      </code>
+      caso o Google Cloud SDK tenha a configuração de projeto padrão definida.
+     </li>
+     <li>
+      Inclusão de suporte para criar fontes do BigQuery com base em uma consulta.
+     </li>
+     <li>
+      Inclusão de suporte para fontes desvinculadas personalizadas em
+      <code>
+       DirectPipelineRunner
+      </code>
+      e
+      <code>
+       DataflowPipelineRunner
+      </code>
+      . Consulte
+      <code>
+       UnboundedSource
+      </code>
+      para saber os detalhes.
+     </li>
+     <li>
+      Remoção do argumento
+      <code>
+       ExecutionContext
+      </code>
+      desnecessário em
+      <code>
+       BoundedSource.createReader
+      </code>
+      e outros métodos relacionados.
+     </li>
+     <li>
+      Alteração de
+      <code>
+       BoundedReader.splitAtFraction
+      </code>
+      para exigir segurança de thread (ou seja, segurança para chamadas assíncronas com
+      <code>
+       advance
+      </code>
+      ou
+      <code>
+       start
+      </code>
+      ). Inclusão de
+      <code>
+       RangeTracker
+      </code>
+      para implementar leitores thread-safe. É altamente recomendável que os usuários usem a classe em vez de implementar uma solução ad-hoc.
+     </li>
+     <li>
+      Modificação de transformações
+      <code>
+       Combine
+      </code>
+      elevando-as para
+      <code>
+       GroupByKey
+      </code>
+      (e acima) e possibilitando melhor desempenho.
+     </li>
+     <li>
+      Modificação de acionadores. Agora, após uma
+      <code>
+       GroupByKey
+      </code>
+      , o sistema muda para um "Acionador de continuação", que tenta preservar a finalidade original de lidar com acionamentos especulativos e atrasados, em vez de retornar ao acionador padrão.
+     </li>
+     <li>
+      Inclusão de
+      <code>
+       WindowFn.getOutputTimestamp
+      </code>
+      e alteração do comportamento de
+      <code>
+       GroupByKey
+      </code>
+      para que janelas de sobreposição incompletas não atrasem o progresso de janelas anteriores concluídas.
+     </li>
+     <li>
+      Alteração do comportamento de acionamento para que painéis vazios sejam produzidos se forem o primeiro painel após a marca d'água (
+      <code>
+       ON_TIME
+      </code>
+      ) ou o painel final.
+     </li>
+     <li>
+      Remoção da classe builder intermediária
+      <code>
+       Window.Trigger
+      </code>
+      .
+     </li>
+     <li>
+      Inclusão da validação de que o atraso permitido seja definido em
+      <code>
+       Window
+      </code>
+      <code>
+       PTransform
+      </code>
+      quando um acionador for especificado.
+     </li>
+     <li>
+      Reativação da verificação de uso de
+      <code>
+       GroupByKey
+      </code>
+      . A chave precisa ter especificamente um coder determinístico, e o uso de
+      <code>
+       GroupByKey
+      </code>
+      com
+      <code>
+       PCollection
+      </code>
+      não vinculado requer acionadores ou gestão de janelas.
+     </li>
+     <li>
+      Alteração de nomes de
+      <code>
+       PTransform
+      </code>
+      para que não contenham mais o caractere
+      <code>
+       '='
+      </code>
+      ou
+      <code>
+       ';'
+      </code>
+      .
+     </li>
+    </ul>
+    <h2 data-text="0.4.150710 (10 de julho de 2015)" id="04150710_july_10_2015">
+     0.4.150710 (10 de julho de 2015)
+    </h2>
+    <ul>
+     <li>
+      Inclusão de suporte no
+      <code>
+       BigQueryIO
+      </code>
+      para tabelas por janela.
+     </li>
+     <li>
+      Inclusão de suporte para uma implementação de fonte personalizada do Avro.
+    Consulte
+      <code>
+       AvroSource
+      </code>
+      para saber mais detalhes.
+     </li>
+     <li>
+      Remoção da restrição de tamanho de 250 GiB para upload de arquivo do Google Cloud Storage.
+     </li>
+     <li>
+      Correção do bug na criação de tabela
+      <code>
+       BigQueryIO.Write
+      </code>
+      no modo de streaming.
+     </li>
+     <li>
+      <code>
+       Source.createReader()
+      </code>
+      e
+      <code>
+       BoundedSource.createReader()
+      </code>
+      foram alterados para serem abstratos.
+     </li>
+     <li>
+      <code>
+       Source.splitIntoBundles()
+      </code>
+      foi movido para
+      <code>
+       BoundedSource.splitIntoBundles()
+      </code>
+      .
+     </li>
+     <li>
+      Inclusão de suporte para leitura de exibições limitadas de um stream do Pub/Sub em
+      <code>
+       PubsubIO
+      </code>
+      para
+      <code>
+       DataflowPipeline
+      </code>
+      s e
+      <code>
+       DirectPipeline
+      </code>
+      s sem streaming.
+     </li>
+     <li>
+      Inclusão de suporte para receber um
+      <code>
+       Coder
+      </code>
+      usando uma
+      <code>
+       Class
+      </code>
+      para o
+      <code>
+       CoderRegistry
+      </code>
+      .
+     </li>
+     <li>
+      Alteração de
+      <code>
+       CoderRegistry.registerCoder(Class&lt;T&gt;, Coder&lt;T&gt;)
+      </code>
+      para impor que o coder fornecido realmente codifique valores da classe fornecida. É proibido utilizá-lo com rawtypes de classes genéricas porque ele dificilmente funcionará corretamente.
+     </li>
+     <li>
+      Migração para
+      <code>
+       Create.withCoder()
+      </code>
+      e
+      <code>
+       CreateTimestamped.withCoder()
+      </code>
+      , em vez de chamar
+      <code>
+       setCoder()
+      </code>
+      na
+      <code>
+       PCollection
+      </code>
+      de saída quando a
+      <code>
+       Create
+      </code>
+      <code>
+       PTransform
+      </code>
+      estiver sendo aplicada.
+     </li>
+     <li>
+      Inclusão de três exemplos sucessivos de
+      <code>
+       WordCount
+      </code>
+      mais detalhados.
+     </li>
+     <li>
+      Remoção de
+      <code>
+       PTransform.getDefaultName()
+      </code>
+      , que era redundante com
+      <code>
+       PTransform.getKindString()
+      </code>
+      .
+     </li>
+     <li>
+      Inclusão de suporte para verificação de nome exclusivo de
+      <code>
+       PTransform
+      </code>
+      durante a criação de jobs.
+     </li>
+     <li>
+      Remoção de
+      <code>
+       PTransform.withName()
+      </code>
+      e
+      <code>
+       PTransform.setName()
+      </code>
+      . Agora, o nome de uma transformação é imutável após a construção. Transformações de biblioteca (como
+      <code>
+       Combine
+      </code>
+      ) podem fornecer métodos parecidos com builder para alterar o nome.
+    Sempre é possível modificar os nomes no local em que a transformação é aplicada usando
+      <code>
+       apply("name", transform)
+      </code>
+      .
+     </li>
+     <li>
+      Inclusão da capacidade de selecionar a rede para VMs de worker usando
+      <code>
+       DataflowPipelineWorkerPoolOptions.setNetwork(String)
+      </code>
+      .
+     </li>
+    </ul>
+    <h2 data-text="0.4.150602 (2 de junho de 2015)" id="04150602_june_2_2015">
+     0.4.150602 (2 de junho de 2015)
+    </h2>
+    <ul>
+     <li>
+      Inclusão de uma dependência na versão 2015.02.05 ou posterior do componente
+      <code>
+       <a href="https://cloud.google.com/sdk/gcloud/?hl=pt_br">
+        gcloud
+       </a>
+       core
+      </code>
+      . Atualize para a versão mais recente de
+      <code>
+       gcloud
+      </code>
+      executando
+      <code>
+       gcloud components update
+      </code>
+      . Consulte o
+      <a href="https://developers.google.com/accounts/docs/application-default-credentials?hl=pt_br">
+       Application Default Credentials
+      </a>
+      para ver mais detalhes sobre como especificar credenciais.
+     </li>
+     <li>
+      Remoção de
+      <code>
+       Flatten.create()
+      </code>
+      , cujo uso estava suspenso. Use
+      <code>
+       Flatten.pCollections()
+      </code>
+      .
+     </li>
+     <li>
+      Remoção de
+      <code>
+       Coder.isDeterministic()
+      </code>
+      , cujo uso estava suspenso. Implemente
+      <code>
+       Coder.verifyDeterministic()
+      </code>
+      .
+     </li>
+     <li>
+      Substituição de
+      <code>
+       DoFn.Context#createAggregator
+      </code>
+      por
+      <code>
+       DoFn#createAggregator
+      </code>
+      .
+     </li>
+     <li>
+      Inclusão de suporte para consultar o valor atual de um
+      <code>
+       Aggregator
+      </code>
+      . Veja
+      <code>
+       PipelineResult
+      </code>
+      para conferir mais informações.
+     </li>
+     <li>
+      Inclusão de
+      <code>
+       DoFnWithContext
+      </code>
+      experimental para simplificar o acesso a informações adicionais de um
+      <code>
+       DoFn
+      </code>
+      .
+     </li>
+     <li>
+      Remoção de
+      <code>
+       RequiresKeyedState
+      </code>
+      experimental.
+     </li>
+     <li>
+      Inclusão de
+      <code>
+       CannotProvideCoderException
+      </code>
+      para indicar incapacidade de inferir um coder, em vez de retornar
+      <code>
+       null
+      </code>
+      nesses casos.
+     </li>
+     <li>
+      Inclusão de
+      <code>
+       CoderProperties
+      </code>
+      para montar pacotes de teste para coders definidos pelo usuário.
+     </li>
+     <li>
+      Substituição de um construtor de
+      <code>
+       PDone
+      </code>
+      por um
+      <code>
+       PDone.in(Pipeline)
+      </code>
+      estático de fábrica.
+     </li>
+     <li>
+      Atualização da formatação de string dos valores
+      <code>
+       TIMESTAMP
+      </code>
+      retornados pela fonte do BigQuery ao usar
+      <code>
+       DirectPipelineRunner
+      </code>
+      ou quando os dados do BigQuery são utilizados como entrada secundária. Isso alinha a formatação ao uso de maiúsculas/minúsculas quando os dados do BigQuery são utilizados como entrada principal.
+     </li>
+     <li>
+      Inclusão do requisito para que o valor retornado por
+      <code>
+       Source.Reader.getCurrent()
+      </code>
+      seja imutável e permaneça válido indefinidamente.
+     </li>
+     <li>
+      Substituição de alguns usos de
+      <code>
+       Source
+      </code>
+      por
+      <code>
+       BoundedSource
+      </code>
+      . Por exemplo, agora a transformação
+      <code>
+       Read.from()
+      </code>
+      só pode ser aplicada a objetos
+      <code>
+       BoundedSource
+      </code>
+      .
+     </li>
+     <li>
+      O gerenciamento experimental de dados atrasados (ou seja, os dados que chegam ao pipeline de streaming depois que a marca d'água foi transmitida) foi movido de
+      <code>
+       PubSubIO
+      </code>
+      para
+      <code>
+       Window
+      </code>
+      . Por padrão, os dados atrasados serão removidos na primeira
+      <code>
+       GroupByKey
+      </code>
+      após uma operação
+      <code>
+       Read
+      </code>
+      . Para permitir dados atrasados, use
+      <code>
+       Window.Bound#withAllowedLateness
+      </code>
+      .
+     </li>
+     <li>
+      Inclusão de suporte experimental para acumular elementos em uma janela entre painéis.
+     </li>
+    </ul>
+    <h2 data-text="0.4.150414 (14 de abril de 2015)" id="04150414_april_14_2015">
+     0.4.150414 (14 de abril de 2015)
+    </h2>
+    <ul>
+     <li>
+      Versão Beta inicial do SDK do Dataflow para Java.
+     </li>
+     <li>
+      Melhor desempenho de execução em várias áreas do sistema.
+     </li>
+     <li>
+      Inclusão de suporte para estimativa de progresso e rebalanceamento dinâmico de trabalho de fontes definidas pelo usuário.
+     </li>
+     <li>
+      Inclusão de suporte para que fontes definidas pelo usuário forneçam o carimbo de data/hora dos valores lidos por meio de
+      <code>
+       Reader.getCurrentTimestamp()
+      </code>
+      .
+     </li>
+     <li>
+      Inclusão de suporte para coletores definidos pelo usuário.
+     </li>
+     <li>
+      Inclusão de suporte para tipos personalizados em
+      <code>
+       PubsubIO
+      </code>
+      .
+     </li>
+     <li>
+      Inclusão de suporte para leitura e gravação de arquivos XML. Veja
+      <code>
+       XmlSource
+      </code>
+      e
+      <code>
+       XmlSink
+      </code>
+      .
+     </li>
+     <li>
+      Renomeação de
+      <code>
+       DatastoreIO.Write.to
+      </code>
+      para
+      <code>
+       DatastoreIO.writeTo
+      </code>
+      . Além disso, as entidades gravadas no Cloud Datastore precisam ter chaves completas.
+     </li>
+     <li>
+      Renomeação da transformação
+      <code>
+       ReadSource
+      </code>
+      para
+      <code>
+       Read
+      </code>
+      .
+     </li>
+     <li>
+      Substituição de
+      <code>
+       Source.createBasicReader
+      </code>
+      por
+      <code>
+       Source.createReader
+      </code>
+      .
+     </li>
+     <li>
+      Inclusão de suporte para acionadores, o que possibilita receber resultados antecipados ou parciais de uma janela e especificar quando processar dados atrasados. Veja
+      <code>
+       Window.into.triggering
+      </code>
+      .
+     </li>
+     <li>
+      Redução da visibilidade de
+      <code>
+       getInput()
+      </code>
+      ,
+      <code>
+       getOutput()
+      </code>
+      ,
+      <code>
+       getPipeline()
+      </code>
+      e
+      <code>
+       getCoderRegistry()
+      </code>
+      da
+      <code>
+       PTransform
+      </code>
+      . Esses métodos serão excluídos em breve.
+     </li>
+     <li>
+      Renomeação de
+      <code>
+       DoFn.ProcessContext#windows
+      </code>
+      para
+      <code>
+       DoFn.ProcessContext#window
+      </code>
+      .
+    Para um
+      <code>
+       DoFn
+      </code>
+      chamar
+      <code>
+       DoFn.ProcessContext#window
+      </code>
+      , é preciso implementar
+      <code>
+       RequiresWindowAccess
+      </code>
+      .
+     </li>
+     <li>
+      Inclusão de
+      <code>
+       DoFn.ProcessContext#windowingInternals
+      </code>
+      para ativar a gestão de janelas em executores terceirizados.
+     </li>
+     <li>
+      Inclusão de suporte para entradas secundárias ao executar pipelines de streaming em
+      <code>
+       [Blocking]DataflowPipelineRunner
+      </code>
+      .
+     </li>
+     <li>
+      Alteração de
+      <code>
+       [Keyed]CombineFn.addInput()
+      </code>
+      para retornar o novo valor do acumulador. Renomeação de
+      <code>
+       Combine.perElement().withHotKeys()
+      </code>
+      para
+      <code>
+       Combine.perElement().withHotKeyFanout()
+      </code>
+      .
+     </li>
+     <li>
+      Renomeação de
+      <code>
+       First.of
+      </code>
+      para
+      <code>
+       Sample.any
+      </code>
+      e de
+      <code>
+       RateLimiting
+      </code>
+      para
+      <code>
+       IntraBundleParallelization
+      </code>
+      , para representar melhor a funcionalidade dela.
+     </li>
+    </ul>
+    <h2 data-text="0.3.150326 (26 de março de 2015)" id="03150326_march_26_2015">
+     0.3.150326 (26 de março de 2015)
+    </h2>
+    <ul>
+     <li>
+      Inclusão de suporte para acessar
+      <code>
+       PipelineOptions
+      </code>
+      no worker do Dataflow.
+     </li>
+     <li>
+      Remoção de um dos parâmetros de tipo em
+      <code>
+       PCollectionView
+      </code>
+      , o que pode exigir alterações simples no código do usuário que usa
+      <code>
+       PCollectionView
+      </code>
+      .
+     </li>
+     <li>
+      Alteração da API de entrada secundária para aplicação por janela. Agora, as chamadas a
+      <code>
+       sideInput()
+      </code>
+      retornam valores somente na janela específica que corresponde à janela do elemento de entrada principal, e não na
+      <code>
+       PCollectionView
+      </code>
+      inteira de entrada secundária. Consequentemente,
+      <code>
+       sideInput()
+      </code>
+      não pode mais ser chamada de
+      <code>
+       startBundle
+      </code>
+      e
+      <code>
+       finishBundle
+      </code>
+      de um
+      <code>
+       DoFn
+      </code>
+      .
+     </li>
+     <li>
+      Inclusão de suporte para exibir uma
+      <code>
+       PCollection
+      </code>
+      como um
+      <code>
+       Map
+      </code>
+      quando usada como entrada secundária. Veja
+      <code>
+       View.asMap()
+      </code>
+      .
+     </li>
+     <li>
+      Renomeação de API de origem personalizada para usar o termo "bundle" em lugar de "shard" em todos os nomes. Além disso, o termo "fork" foi substituído por "dynamic split".
+     </li>
+     <li>
+      Agora, o
+      <code>
+       Reader
+      </code>
+      de origem personalizada exige a implementação do novo método
+      <code>
+       start()
+      </code>
+      .
+    Para corrigir o código existente, basta adicionar esse método que apenas chama
+      <code>
+       advance()
+      </code>
+      e retorna respectivo valor dele. Além disso, o código que usa
+      <code>
+       Reader
+      </code>
+      será atualizado para utilizar
+      <code>
+       start()
+      </code>
+      e
+      <code>
+       advance()
+      </code>
+      , em vez de usar somente
+      <code>
+       advance()
+      </code>
+      .
+     </li>
+    </ul>
+    <h2 data-text="0.3.150227 (27 de fevereiro de 2015)" id="03150227_february_27_2015">
+     0.3.150227 (27 de fevereiro de 2015)
+    </h2>
+    <ul>
+     <li>
+      Versão Alpha inicial do SDK do Dataflow para Java com suporte para pipelines de streaming.
+     </li>
+     <li>
+      Inclusão do verificador determinístico em
+      <code>
+       AvroCoder
+      </code>
+      para facilitar a interoperação com
+      <code>
+       GroupByKey
+      </code>
+      .
+     </li>
+     <li>
+      Inclusão de suporte para acessar
+      <code>
+       PipelineOptions
+      </code>
+      no worker.
+     </li>
+     <li>
+      Inclusão de suporte para fontes compactadas.
+     </li>
+    </ul>
+    <h2 data-text="0.3.150211 (11 de fevereiro de 2015)" id="03150211_february_11_2015">
+     0.3.150211 (11 de fevereiro de 2015)
+    </h2>
+    <ul>
+     <li>
+      Remoção da dependência na versão 2015.02.05 ou mais recente do componente
+      <code>
+       gcloud core
+      </code>
+      .
+     </li>
+    </ul>
+    <h2 data-text="0.3.150210 (11 de fevereiro de 2015)" id="03150210_february_11_2015">
+     0.3.150210 (11 de fevereiro de 2015)
+    </h2>
+    <p>
+     <i>
+      <b>
+       Cuidado:
+      </b>
+      depende da versão 2015.02.05 ou posterior do componente
+      <code>
+       gcloud core
+      </code>
+      .
+     </i>
+    </p>
+    <ul>
+     <li>
+      Inclusão do executor de pipeline de streaming que, por enquanto, requer uma lista de permissões adicional.
+     </li>
+     <li>
+      Renomeação de várias APIs relacionadas à gestão de janelas de modo não compatível com versões anteriores.
+     </li>
+     <li>
+      Inclusão de suporte para fontes personalizadas, que você pode usar para ler nos seus próprios formatos de entrada.
+     </li>
+     <li>
+      Introdução do paralelismo de worker: uma tarefa por processador.
+     </li>
+    </ul>
+    <p>
+    </p>
+    <h2 data-text="0.3.150109 (10 de janeiro de 2015)" id="03150109_january_10_2015">
+     0.3.150109 (10 de janeiro de 2015)
+    </h2>
+    <ul>
+     <li>
+      Correção de vários problemas específicos de plataforma para o Microsoft Windows.
+     </li>
+     <li>
+      Correção de vários problemas específicos do Java 8.
+     </li>
+     <li>
+      Inclusão de alguns novos exemplos.
+     </li>
+    </ul>
+    <h2 data-text="0.3.141216 (16 de dezembro de 2014)" id="03141216_december_16_2014">
+     0.3.141216 (16 de dezembro de 2014)
+    </h2>
+    <ul>
+     <li>
+      Versão alfa inicial do SDK do Dataflow para Java.
+     </li>
+    </ul>
+   </section>
+  </div>
+ </article>
+</article>
