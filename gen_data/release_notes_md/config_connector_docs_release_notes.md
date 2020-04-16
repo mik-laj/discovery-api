@@ -10,6 +10,12 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/configconnector-release-
 notes.xml `
 
+##  April 14, 2020
+
+**CHANGED:**
+
+Added readiness probes to Config Connector pods
+
 ##  April 10, 2020
 
 **FEATURE:**
