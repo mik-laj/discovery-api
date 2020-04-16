@@ -1,0 +1,3939 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <h1 class="devsite-page-title">
+   Bollettini sulla sicurezza
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <p>
+    Potremmo pubblicare periodicamente dei bollettini sulla sicurezza relativi a Compute Engine. Di seguito vengono descritti tutti i bollettini di sicurezza per Compute Engine.
+   </p>
+   <p>
+    <a href="https://cloud.google.com/feeds/compute-engine-security-bulletins.xml?hl=it" track-metadata-position="introParagraph" track-name="xmlFeed" track-type="securityBulletins">
+     Iscriviti ai bollettini di sicurezza per Compute Engine.
+     <img alt="Iscriviti" src="https://cloud.google.com/images/feed-icon.png?hl=it"/>
+    </a>
+   </p>
+   <section class="bulletins">
+    <h2 data-text="Data di pubblicazione: 18-06-2019" id="20190618">
+     Data di pubblicazione: 18-06-2019
+    </h2>
+    <p>
+     <strong>
+      Ultimo aggiornamento: 25-06-2019 alle ore 6:30 PST
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Descrizione
+       </th>
+       <th>
+        Gravità
+       </th>
+       <th>
+        Note
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Descrizione" id="descrizione">
+         Descrizione
+        </h4>
+        <p>
+         Netflix ha recentemente divulgato tre vulnerabilità TCP nei kernel Linux:
+        </p>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11477" target="_blank">
+           CVE-2019-11477
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11478" target="_blank">
+           CVE-2019-11478
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11479" target="_blank">
+           CVE-2019-11479
+          </a>
+         </li>
+        </ul>
+        <p>
+         Questi CVE vengono denominati collettivamente
+         <a class="external" href="https://github.com/Netflix/security-bulletins/blob/master/advisories/third-party/2019-001.md" target="_blank">
+          NFLX-2019-001
+         </a>
+         .
+        </p>
+        <h4 data-text="Impatto di Compute Engine" id="20190618_impact">
+         Impatto di Compute Engine
+        </h4>
+        <p>
+         L'infrastruttura che ospita Compute Engine è protetta da questa vulnerabilità.
+        </p>
+        <p>
+         Le VM di Compute Engine che eseguono sistemi operativi Linux privi di patch e inviano/ricevono traffico di rete non attendibile sono vulnerabili a questo attacco DoS. Consigliamo di aggiornare le istanze VM appena saranno disponibili le patch per i sistemi operativi corrispondenti.
+        </p>
+        <p>
+         Ai bilanciatori del carico che terminano le connessioni TCP sono state applicate patch contro questa vulnerabilità. Le istanze di Compute Engine che ricevono traffico non attendibile solo attraverso questi bilanciatori del carico non sono vulnerabili. Ciò include i bilanciatori del carico HTTP, del proxy SSL e del proxy TCP.
+        </p>
+        <p>
+         I bilanciatori del carico di rete e i bilanciatori del carico interni non terminano le connessioni TCP. Le istanze di Compute Engine prive di patch che ricevono traffico non attendibile attraverso questi bilanciatori del carico sono vulnerabili.
+        </p>
+        <h4 data-text="Immagini con patch e risorse del fornitore" id="immagini-con-patch-e-risorse-del-fornitore">
+         Immagini con patch e risorse del fornitore
+        </h4>
+        <p>
+         Forniremo qui i link alle informazioni sulle patch di ciascun fornitore del sistema operativo appena saranno disponibili, incluso lo stato dei singoli CVE. Le versioni precedenti di queste immagini pubbliche non contengono queste patch e non sono in grado di mitigare i potenziali attacchi:
+        </p>
+        <ul>
+         <li>
+          Progetto
+          <code>
+           debian-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             debian-9-stretch-v20190618
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           centos-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             centos-6-v20190619
+            </code>
+           </li>
+           <li>
+            <code>
+             centos-7-v20190619
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           cos-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             cos-dev-77-12293-0-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-beta-76-12239-21-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-stable-75-12105-77-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-73-11647-217-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-69-10895-277-0
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           coreos-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             coreos-alpha-2163-2-1-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-beta-2135-3-1-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-stable-2079-6-0-v20190617
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           rhel-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             rhel-6-v20190618
+            </code>
+           </li>
+           <li>
+            <code>
+             rhel-7-v20190618
+            </code>
+           </li>
+           <li>
+            <code>
+             rhel-8-v20190618
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           rhel-sap-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             rhel-7-4-sap-v20190618
+            </code>
+           </li>
+           <li>
+            <code>
+             rhel-7-6-sap-v20190618
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           suse-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             sles-12-sp4-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-15-v20190617
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           suse-sap-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             sles-12-sp1-sap-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp2-sap-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp3-sap-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp4-sap-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-15-sap-v20190617
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           ubuntu-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             ubuntu-1604-xenial-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1804-bionic-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1810-cosmic-v20190618
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1904-disco-v20190619
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1604-xenial-v20190618
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1804-bionic-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1810-cosmic-v20190618
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1904-disco-v20190618
+            </code>
+           </li>
+          </ul>
+         </li>
+        </ul>
+       </td>
+       <td>
+        Media
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11477" target="_blank">
+           CVE-2019-11477
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11478" target="_blank">
+           CVE-2019-11478
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11479" target="_blank">
+           CVE-2019-11479
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Data di pubblicazione: 14-05-2019" id="20190514">
+     Data di pubblicazione: 14-05-2019
+    </h2>
+    <p>
+     <strong>
+      Ultimo aggiornamento: 20-05-2019 alle ore 17.00 PST
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Descrizione
+       </th>
+       <th>
+        Gravità
+       </th>
+       <th>
+        Note
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Descrizione" id="descrizione_1">
+         Descrizione
+        </h4>
+        <p>
+         Intel ha divulgato i seguenti CVE:
+        </p>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12126" target="_blank">
+           CVE-2018-12126
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12127" target="_blank">
+           CVE-2018-12127
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12130" target="_blank">
+           CVE-2018-12130
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11091" target="_blank">
+           CVE-2019-11091
+          </a>
+         </li>
+        </ul>
+        <p>
+         Questi CVE vengono denominati collettivamente Microarchitectural Data Sampling
+      (MDS). Queste vulnerabilità possono determinare un'esposizione dei dati attraverso
+      l'interazione dell'esecuzione speculativa con lo stato della microarchitettura.
+        </p>
+        <h4 data-text="Impatto di Compute Engine" id="20190514_impact">
+         Impatto di Compute Engine
+        </h4>
+        <p>
+         <strong>
+          L'infrastruttura host che esegue Compute Engine isola
+      i carichi di lavoro dei clienti l'uno dall'altro. A meno che tu non esegua codice non attendibile
+        all'interno delle VM, non sono necessarie altre azioni.
+         </strong>
+        </p>
+        <p>
+         I clienti che eseguono codice non attendibile nei propri servizi multi-tenant
+      all'interno delle macchine virtuali Compute Engine possono fare riferimento
+      alla mitigazione consigliata dal fornitore del sistema operativo guest, che
+      potrebbe includere l'utilizzo delle funzionalità di mitigazione del microcodice Intel. Abbiamo eseguito il deployment dell'accesso pass-through guest
+        alla nuova funzionalità di svuotamento. Di seguito è riportato un riepilogo delle procedure di mitigazione
+        per le immagini guest più comuni.
+        </p>
+        <h4 data-text="Immagini con patch e risorse del fornitore" id="immagini-con-patch-e-risorse-del-fornitore_1">
+         Immagini con patch e risorse del fornitore
+        </h4>
+        <p>
+         Forniremo qui i link alle informazioni sulle patch fornite dal fornitore di ciascun
+      sistema operativo non appena saranno disponibili, con lo stato di ciascun CVE.
+      Tali immagini possono essere utilizzate per ricreare le istanze VM. Le versioni precedenti di queste immagini pubbliche
+      non contengono queste patch e non sono in grado di mitigare i potenziali
+      attacchi:
+        </p>
+        <ul>
+         <li>
+          Progetto
+          <code>
+           centos-cloud
+          </code>
+          :
+          <a class="external" href="https://lists.centos.org/pipermail/centos-announce/2019-May/023309.html" target="_blank">
+           CESA-2019:1169
+          </a>
+          ,
+          <a class="external" href="https://lists.centos.org/pipermail/centos-announce/2019-May/023314.html" target="_blank">
+           CESA-2019:1168
+          </a>
+         </li>
+         <ul>
+          <li>
+           <code>
+            centos-6-v20190515
+           </code>
+          </li>
+          <li>
+           <code>
+            centos-7-v20190515
+           </code>
+          </li>
+         </ul>
+         <li>
+          Progetto
+          <code>
+           coreos-cloud
+          </code>
+          :
+          <a class="external" href="https://coreos.com/os/docs/latest/disabling-smt.html" target="_blank">
+           mitigazioni di MDS per CoreOS Container Linux
+          </a>
+         </li>
+         <ul>
+          <li>
+           <code>
+            coreos-stable-2079-4-0-v20190515
+           </code>
+          </li>
+          <li>
+           <code>
+            coreos-beta-2107-3-0-v20190515
+           </code>
+          </li>
+          <li>
+           <code>
+            coreos-alpha-2135-1-0-v20190515
+           </code>
+          </li>
+         </ul>
+         <li>
+          Progetto
+          <code>
+           cos-cloud
+          </code>
+         </li>
+         <ul>
+          <li>
+           <code>
+            cos-69-10895-242-0
+           </code>
+          </li>
+          <li>
+           <code>
+            cos-73-11647-182-0
+           </code>
+          </li>
+         </ul>
+         <li>
+          Progetto
+          <code>
+           debian-cloud
+          </code>
+          :
+          <a class="external" href="https://www.debian.org/security/2019/dsa-4444" target="_blank">
+           DSA-4444
+          </a>
+         </li>
+         <ul>
+          <li>
+           <code>
+            debian-9-stretch-v20190514
+           </code>
+          </li>
+         </ul>
+         <li>
+          Progetto
+          <code>
+           rhel-cloud
+          </code>
+          :
+          <a class="external" href="https://access.redhat.com/security/vulnerabilities/mds" target="_blank">
+           Articolo informativo su MDS per Red Hat
+          </a>
+         </li>
+         <ul>
+          <li>
+           <code>
+            rhel-6-v20190515
+           </code>
+          </li>
+          <li>
+           <code>
+            rhel-7-v20190517
+           </code>
+          </li>
+          <li>
+           <code>
+            rhel-8-v20190515
+           </code>
+          </li>
+         </ul>
+         <li>
+          Progetto
+          <code>
+           rhel-sap-cloud
+          </code>
+          :
+          <a class="external" href="https://access.redhat.com/security/vulnerabilities/mds" target="_blank">
+           Articolo informativo su MDS per Red Hat
+          </a>
+         </li>
+         <ul>
+          <li>
+           <code>
+            rhel-7-4-sap-v20190515
+           </code>
+          </li>
+          <li>
+           <code>
+            rhel-7-6-sap-v20190517
+           </code>
+          </li>
+         </ul>
+         <li>
+          Progetto
+          <code>
+           suse-cloud
+          </code>
+          :
+          <a class="external" href="https://www.suse.com/support/kb/doc/?id=7023736" target="_blank">
+           Knowledge base su MDS per SUSE
+          </a>
+         </li>
+         <ul>
+          <li>
+           <code>
+            sles-12-sp4-v20190520
+           </code>
+          </li>
+          <li>
+           <code>
+            sles-15-v20190520
+           </code>
+          </li>
+         </ul>
+         <li>
+          Progetto
+          <code>
+           suse-sap-cloud
+          </code>
+         </li>
+         <ul>
+          <li>
+           <code>
+            sles-12-sp4-sap-v20190520
+           </code>
+          </li>
+          <li>
+           <code>
+            sles-15-sap-v20190520
+           </code>
+          </li>
+         </ul>
+         <li>
+          Progetto
+          <code>
+           ubuntu-os-cloud
+          </code>
+          :
+          <a class="external" href="https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/MDS" target="_blank">
+           Wiki su MDS per Ubuntu
+          </a>
+         </li>
+         <ul>
+          <li>
+           <code>
+            ubuntu-1404-trusty-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-1604-xenial-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-1804-bionic-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-1810-cosmic-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-1904-disco-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-minimal-1604-xenial-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-minimal-1804-bionic-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-minimal-1810-cosmic-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-minimal-1904-disco-v20190514
+           </code>
+          </li>
+         </ul>
+         <li>
+          Progetti
+          <code>
+           windows-cloud
+          </code>
+          e
+          <code>
+           windows-sql-cloud
+          </code>
+          :
+          <a class="external" href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013" target="_blank">
+           Microsoft ADV190013
+          </a>
+         </li>
+         <ul>
+          <li>
+           Tutte le immagini pubbliche di Windows Server e SQL Server con numero di versione
+           <code>
+            v20190514
+           </code>
+           .
+          </li>
+         </ul>
+         <li>
+          Progetto
+          <code>
+           gce-uefi-images
+          </code>
+         </li>
+         <ul>
+          <li>
+           <code>
+            centos-7-v20190515
+           </code>
+          </li>
+          <li>
+           <code>
+            cos-69-10895-242-0
+           </code>
+          </li>
+          <li>
+           <code>
+            cos-73-11647-182-0
+           </code>
+          </li>
+          <li>
+           <code>
+            rhel-7-v20190517
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-1804-bionic-v20190514
+           </code>
+          </li>
+          <li>
+           Tutte le immagini pubbliche di Windows Server con numero di versione
+           <code>
+            v20190514
+           </code>
+           .
+          </li>
+         </ul>
+        </ul>
+        <h4 data-text="Container-Optimized OS" id="container-optimized-os">
+         Container-Optimized OS
+        </h4>
+        <p>
+         Se utilizzi Container Optimized OS (COS) come sistema operativo guest ed
+      esegui carichi di lavoro multi-tenant non attendibili nella tua macchina virtuale,
+      ti consigliamo di:
+        </p>
+        <ol>
+         <li>
+          Disabilitare Hyper-Threading impostando
+          <code>
+           nosmt
+          </code>
+          sulla riga di comando del kernel.
+          <br/>
+          <p>
+           Sulle VM di COS esistenti, puoi modificare
+           <code>
+            grub.cfg
+           </code>
+           come
+            segue per impostare l'opzione
+           <code>
+            nosmt
+           </code>
+           e quindi riavviare il sistema:
+          </p>
+          <pre>
+
+# Run as root:
+dir="$(mktemp -d)"
+mount /dev/sda12 "${dir}"
+sed -i -e "s|cros_efi|cros_efi nosmt|g" "${dir}/efi/boot/grub.cfg"
+umount "${dir}"
+rmdir "${dir}"
+
+reboot</pre>
+          <p>
+           Per comodità, puoi ottenere lo stesso effetto dei comandi sopra
+           anche eseguendo lo script riportato di seguito. Ti consigliamo di includere tale script
+           in cloud-config, negli script di avvio o nei modelli
+           di istanza, per assicurarti che le nuove VM utilizzino il nuovo parametro. Di seguito è riportato un esempio di cloud-config
+           che esegue tale script.
+          </p>
+          <p class="warning">
+           <strong>
+            Avviso:
+           </strong>
+           questo comando determina
+         il riavvio immediato dell'istanza, quando viene utilizzato per la prima volta.
+         Le esecuzioni successive del comando su un'istanza con Hyper-Threading
+         già disabilitato non hanno alcun effetto.
+          </p>
+          <pre>
+
+# Run as root
+/bin/bash &lt;(curl -s https://storage.googleapis.com/cos-tools/scripts/disable_smt.sh)
+</pre>
+          <p>
+           Per includere lo script in cloud-config:
+          </p>
+          <pre>
+
+#cloud-config
+
+bootcmd:
+- /bin/bash -c "/bin/bash &lt;(curl -s https://storage.googleapis.com/cos-tools/scripts/disable_smt.sh)"
+</pre>
+          <p>
+           Per verificare che l'Hyper-Threading sia disabilitato nella tua istanza,
+         osserva l'output dei file
+           <code>
+            /sys/devices/system/cpu/smt/active
+           </code>
+           e
+           <code>
+            /sys/devices/system/cpu/smt/control
+           </code>
+           . Se viene restituito
+           <code>
+            0
+           </code>
+           per
+           <code>
+            active
+           </code>
+           e
+           <code>
+            off
+           </code>
+           per
+           <code>
+            control
+           </code>
+           , l'Hyper-Threading è disabilitato:
+          </p>
+          <pre>
+
+cat /sys/devices/system/cpu/smt/active
+cat /sys/devices/system/cpu/smt/control
+</pre>
+          <p class="note">
+           <strong>
+            Nota:
+           </strong>
+           se hai abilitato la funzionalità Avvio protetto UEFI
+        nella tua istanza, dovrai ricreare l'istanza con
+        tale funzionalità disabilitata, eseguire il comando precedente con tale funzionalità
+        disabilitata e quindi abilitare Avvio protetto UEFI nella nuova istanza.
+          </p>
+         </li>
+         <li>
+          Utilizzare una nuova versione dell'immagine COS
+          <br/>
+          <p>
+           Oltre a disabilitare l'Hyper-Threading come spiegato in precedenza, devi
+        anche
+           <a href="https://cloud.google.com/compute/docs/instances/create-start-instance?hl=it#publicimage">
+            ricreare
+        le tue istanze
+           </a>
+           con le immagini aggiornate elencate sopra o con versioni più recenti
+        (se disponibili) delle immagini di Container-Optimized OS, per ottenere una protezione completa
+        dalla vulnerabilità.
+          </p>
+         </li>
+        </ol>
+       </td>
+       <td>
+        Media
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12126" target="_blank">
+           CVE-2018-12126
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12127" target="_blank">
+           CVE-2018-12127
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12130" target="_blank">
+           CVE-2018-12130
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11091" target="_blank">
+           CVE-2018-11091
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Data di pubblicazione: 14-08-2018" id="20180814">
+     Data di pubblicazione: 14-08-2018
+    </h2>
+    <p>
+     <strong>
+      Ultimo aggiornamento: 20-08-2018 alle ore 17.00 PST
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Descrizione
+       </th>
+       <th>
+        Gravità
+       </th>
+       <th>
+        Note
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Descrizione" id="20180814_description">
+         Descrizione
+        </h4>
+        <p>
+         <a href="https://www.intel.com/content/www/us/en/architecture-and-technology/l1tf.html">
+          Intel ha divulgato
+         </a>
+         i seguenti CVE:
+        </p>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3615" target="_blank">
+           CVE-2018-3615
+          </a>
+          (per
+          <a href="https://en.wikipedia.org/wiki/Software_Guard_Extensions">
+           SGX
+          </a>
+          )
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3620" target="_blank">
+           CVE-2018-3620
+          </a>
+          (per sistemi operativi e
+          <a href="https://en.wikipedia.org/wiki/Hyper-Threading">
+           SMT, Simultaneous Multi-Threading
+          </a>
+          )
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3646" target="_blank">
+           CVE-2018-3646
+          </a>
+          (per la virtualizzazione)
+         </li>
+        </ul>
+        <p>
+         Questi CVE vengono denominati collettivamente "L1 Terminal Fault (L1TF)".
+        </p>
+        <p>
+         Queste vulnerabilità L1TF sfruttano l'esecuzione speculativa attaccando la configurazione delle strutture di dati a livello di processore.
+      "L1" si riferisce alla cache dei dati di livello 1 (L1D), una piccola risorsa on-core utilizzata per accelerare l'accesso alla memoria.
+        </p>
+        <p>
+         Leggi il
+         <a href="https://cloud.google.com/blog/products/gcp/protecting-against-the-new-l1tf-speculative-vulnerabilities?hl=it">
+          post del blog di Google Cloud
+         </a>
+         per ulteriori dettagli su queste vulnerabilità e sulle mitigazioni di Compute Engine.
+        </p>
+        <h4 data-text="Impatto di Compute Engine" id="20180814_impact">
+         Impatto di Compute Engine
+        </h4>
+        <p>
+         L'infrastruttura host che esegue Compute Engine e isola i carichi di lavoro dei clienti l'uno dall'altro è protetta dagli attacchi noti.
+        </p>
+        <p>
+         I clienti di Compute Engine sono incoraggiati ad aggiornare le loro immagini per evitare il possibile sfruttamento indiretto di questa vulnerabilità all'interno dei loro ambienti guest. Ciò è particolarmente importante per i clienti che eseguono i propri servizi multi-tenant su macchine virtuali Compute Engine.
+        </p>
+        <p>
+         Per aggiornare i sistemi operativi guest sulle loro istanze, i clienti di Google Compute Engine possono:
+        </p>
+        <ul>
+         <li>
+          Utilizzare immagini pubbliche con patch per
+          <a href="https://cloud.google.com/compute/docs/instances/create-start-instance?hl=it#publicimage">
+           ricreare le istanze VM esistenti
+          </a>
+          .
+         </li>
+         <li>
+          Installare sulle istanze esistenti le patch messe a disposizione dal fornitore del sistema operativo e riavviare le istanze dopo l'applicazione delle patch.
+         </li>
+        </ul>
+        <h4 data-text="Immagini con patch e risorse del fornitore" id="20180814_patched_images">
+         Immagini con patch e risorse del fornitore
+        </h4>
+        <p>
+         Forniremo qui i link alle informazioni sulle patch di ciascun fornitore del sistema operativo non appena saranno disponibili, con lo stato di entrambi i CVE. Utilizza queste immagini per ricreare le istanze VM. Le versioni precedenti di queste immagini pubbliche non contengono queste patch e non mitigano i potenziali attacchi:
+        </p>
+        <ul>
+         <li>
+          Progetto
+          <code>
+           centos-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             centos-7-v20180815
+            </code>
+           </li>
+           <li>
+            <code>
+             centos-6-v20180815
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           coreos-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             coreos-stable-1800-7-0-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-beta-1855-2-0-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-alpha-1871-0-0-v20180816
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           cos-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             cos-stable-66-10452-110-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-stable-67-10575-66-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-beta-68-10718-81-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-dev-69-10895-23-0
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           debian-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             debian-9-stretch-v20180820
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           rhel-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             rhel-7-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             rhel-6-v20180814
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           rhel-sap-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             rhel-7-sap-apps-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             rhel-7-sap-hana-v20180814
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           suse-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             sles-15-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp3-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-11-sp4-v20180816
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           suse-sap-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             sles-15-sap-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp3-sap-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp2-sap-v20180816
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           ubuntu-os-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             ubuntu-1804-bionic-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1604-xenial-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1404-trusty-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1804-bionic-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1604-xenial-v20180814
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetti
+          <code>
+           windows-cloud
+          </code>
+          <code>
+           gce-uefi-images
+          </code>
+          e
+          <code>
+           windows-sql-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            Tutte le
+            <a class="external" href="https://cloud.google.com/compute/docs/images?hl=it#os-compute-support" target="_blank">
+             immagini pubbliche
+            </a>
+            di Windows Server e SQL Server con numero di versione
+            <code>
+             -v201800814
+            </code>
+            e successivi includono le patch.
+           </li>
+          </ul>
+         </li>
+        </ul>
+       </td>
+       <td>
+        Alta
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3615" target="_blank">
+           CVE-2018-3615
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3620" target="_blank">
+           CVE-2018-3620
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3646" target="_blank">
+           CVE-2018-3646
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Data di pubblicazione: 06-08-2018" id="20180806">
+     Data di pubblicazione: 06-08-2018
+    </h2>
+    <p>
+     <strong>
+      Ultimo aggiornamento: 05-09-2018 alle ore 17.00 PST
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Descrizione
+       </th>
+       <th>
+        Gravità
+       </th>
+       <th>
+        Note
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Aggiornamento 05-09-2018" id="20180905_update">
+         Aggiornamento 05-09-2018
+        </h4>
+        <p>
+         Il
+         <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5391">
+          CVE-2018-5391
+         </a>
+         è stato divulgato il 14-08-2018 da US-CERT. Come per il
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390" target="_blank">
+          CVE-2018-5390
+         </a>
+         , si tratta di una vulnerabilità di rete a livello di kernel che aumenta l'efficacia degli attacchi DoS (Denial of Service) contro i sistemi vulnerabili. La principale differenza è che il CVE-2018-5391 è sfruttabile sulle connessioni IP. Abbiamo aggiornato questo bollettino per coprire entrambe le vulnerabilità.
+        </p>
+        <h4 data-text="Descrizione" id="20180806_description">
+         Descrizione
+        </h4>
+        <p>
+         Il
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390" target="_blank">
+          CVE-2018-5390
+         </a>
+         ("SegmentSmack") descrive una vulnerabilità di rete a livello di kernel che aumenta l'efficacia degli attacchi DoS (Denial of Service) contro i sistemi vulnerabili tramite le connessioni TCP.
+        </p>
+        <p>
+         Il
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5391" target="_blank">
+          CVE-2018-5391
+         </a>
+         ("FragmentSmack") descrive una vulnerabilità di rete a livello di kernel che aumenta l'efficacia degli attacchi DoS (Denial of Service) contro i sistemi vulnerabili tramite le connessioni IP.
+        </p>
+        <h4 data-text="Impatto di Compute Engine" id="20180806_impact">
+         Impatto di Compute Engine
+        </h4>
+        <p>
+         L'infrastruttura host che esegue le VM di Compute Engine non è a rischio.
+      L'infrastruttura di rete che gestisce il traffico verso e dalle VM di Compute Engine è protetta da questa vulnerabilità. Le VM di Compute Engine che inviano/ricevono traffico di rete non attendibile solo tramite bilanciatori del carico
+         <a href="https://cloud.google.com/load-balancing/docs/https/?hl=it">
+          HTTP(S)
+         </a>
+         ,
+         <a href="https://cloud.google.com/load-balancing/docs/ssl/?hl=it">
+          SSL
+         </a>
+         o
+         <a href="https://cloud.google.com/load-balancing/docs/tcp/?hl=it">
+          TCP
+         </a>
+         sono protette da questa vulnerabilità.
+        </p>
+        <p>
+         Le VM di Compute Engine che eseguono sistemi operativi privi di patch che inviano/ricevono traffico di rete non attendibile direttamente o tramite
+         <a href="https://cloud.google.com/load-balancing/docs/network/?hl=it">
+          bilanciatori del carico di rete
+         </a>
+         sono vulnerabili a questo attacco DoS.
+        </p>
+        <p>
+         Valuta la possibilità di aggiornare le istanze VM non appena sono disponibili patch per i rispettivi sistemi operativi.
+        </p>
+        <p>
+         Per aggiornare i sistemi operativi guest sulle loro istanze, i clienti di Compute Engine possono:
+        </p>
+        <ul>
+         <li>
+          Utilizzare immagini pubbliche con patch per
+          <a href="https://cloud.google.com/compute/docs/instances/create-start-instance?hl=it#publicimage">
+           ricreare le istanze VM esistenti
+          </a>
+          .
+        L'elenco delle immagini pubbliche con patch è riportato di seguito.
+         </li>
+         <li>
+          Installare sulle istanze esistenti le patch messe a disposizione dal fornitore del sistema operativo e riavviare le istanze dopo l'applicazione delle patch.
+         </li>
+        </ul>
+        <h4 data-text="Immagini con patch e risorse del fornitore" id="20180806_patched_images">
+         Immagini con patch e risorse del fornitore
+        </h4>
+        <p>
+         Forniremo qui i link alle informazioni relative alle patch di ciascun fornitore del sistema operativo non appena saranno disponibili.
+        </p>
+        <ul>
+         <li>
+          Progetto
+          <code>
+           centos-cloud
+          </code>
+          (solo CVE-2018-5390):
+          <ul>
+           <li>
+            <code>
+             centos-7-v20180815
+            </code>
+           </li>
+           <li>
+            <code>
+             centos-6-v20180815
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           coreos-cloud
+          </code>
+          (CVE-2018-5390 e CVE-2018-5391):
+          <ul>
+           <li>
+            <code>
+             coreos-stable-1800-7-0-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-beta-1855-2-0-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-alpha-1871-0-0-v20180816
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           cos-cloud
+          </code>
+          (CVE-2018-5390 e CVE-2018-5391):
+          <ul>
+           <li>
+            <code>
+             cos-stable-65-10323-98-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-stable-66-10452-109-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-stable-67-10575-65-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-beta-68-10718-76-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-dev-69-10895-16-0
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           debian-cloud
+          </code>
+          (CVE-2018-5390 e CVE-2018-5391):
+          <ul>
+           <li>
+            <code>
+             debian-9-stretch-v20180814
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           rhel-cloud
+          </code>
+          (solo CVE-2018-5390):
+          <ul>
+           <li>
+            <code>
+             rhel-7-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             rhel-6-v20180814
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           suse-cloud
+          </code>
+          (CVE-2018-5390 e CVE-2018-5391):
+          <ul>
+           <li>
+            <code>
+             sles-15-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp3-v20180814
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           suse-sap-cloud
+          </code>
+          (CVE-2018-5390 e CVE-2018-5391):
+          <ul>
+           <li>
+            <code>
+             sles-15-sap-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp3-sap-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp2-sap-v20180816
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           ubuntu-os-cloud
+          </code>
+          (CVE-2018-5390 e CVE-2018-5391):
+          <ul>
+           <li>
+            <code>
+             ubuntu-1804-bionic-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1604-xenial-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1404-trusty-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1804-bionic-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1604-xenial-v20180814
+            </code>
+           </li>
+          </ul>
+         </li>
+        </ul>
+       </td>
+       <td>
+        Alta
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390" target="_blank">
+           CVE-2018-5390
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5391" target="_blank">
+           CVE-2018-5391
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Data di pubblicazione: 03-01-2018" id="20180103">
+     Data di pubblicazione: 03-01-2018
+    </h2>
+    <p>
+     <strong>
+      Ultimo aggiornamento: 21-05-2018 alle ore 15.00 PST
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Descrizione
+       </th>
+       <th>
+        Gravità
+       </th>
+       <th>
+        Note
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Aggiornamento 21-05-2018" id="20180521_update">
+         Aggiornamento 21-05-2018
+        </h4>
+        <p>
+         Il
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3640" target="_blank">
+          CVE-2018-3640
+         </a>
+         e il
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3639" target="_blank">
+          CVE-2018-3639
+         </a>
+         , rispettivamente varianti 3a e 4, sono stati
+         <a class="external" href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00115.html" target="_blank">
+          divulgati da Intel
+         </a>
+         . Come per le prime tre varianti di Spectre e Meltdown, l'infrastruttura che esegue le istanze VM di Compute Engine è protetta e le istanze VM dei clienti sono isolate e protette l'una dall'altra. Inoltre, Compute Engine prevede il deployment delle patch di microcodice Intel nella nostra infrastruttura, che consentirà ai clienti che eseguono carichi di lavoro multi-tenant o non attendibili all'interno di una singola istanza VM di attivare ulteriori mitigazioni interne alla VM quando fornite dai provider e dai fornitori di sistemi operativi. Compute Engine eseguirà il deployment delle patch di microcodice dopo che Intel le avrà certificate e dopo che Compute Engine avrà verificato e qualificato le patch per il nostro ambiente di produzione. Forniremo tempistiche e aggiornamenti più dettagliati su questa pagina non appena saranno disponibili.
+        </p>
+        <h4 data-text="Descrizione" id="20180103_description">
+         Descrizione
+        </h4>
+        <p>
+         Questi CVE sono varianti di una nuova classe di attacchi che sfruttano la tecnologia di esecuzione speculativa disponibile in molti processori.
+      Questa classe di attacchi può consentire l'accesso non autorizzato in sola lettura ai dati in memoria in varie circostanze.
+        </p>
+        <p>
+         Compute Engine ha utilizzato la tecnologia di migrazione live delle VM per eseguire aggiornamenti del sistema host e dell'hypervisor senza impatto sull'utente, senza finestre di manutenzione forzata e senza riavvii di massa. Tuttavia, a tutti i sistemi operativi guest e a tutte le versioni devono essere applicate patch di protezione da questa nuova classe di attacchi, indipendentemente dalla posizione di esecuzione di questi sistemi.
+        </p>
+        <p>
+         Per i dettagli tecnici completi su questo metodo di attacco, leggi il
+         <a class="external" href="https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html" target="_blank">
+          post del blog di Project Zero
+         </a>
+         . Per i dettagli completi sulle misure di mitigazione di Google, incluse tutte le informazioni specifiche del prodotto, leggi il
+         <a class="external" href="https://security.googleblog.com/2018/01/todays-cpu-vulnerability-what-you-need.html" target="_blank">
+          post del blog di Google Security
+         </a>
+         .
+        </p>
+        <h4 data-text="Impatto di Compute Engine" id="20180103_impact">
+         Impatto di Compute Engine
+        </h4>
+        <p>
+         L'infrastruttura che esegue Compute Engine e isola le istanze VM dei clienti l'una dall'altra è protetta dagli attacchi noti.
+      Le nostre mitigazioni impediscono l'accesso non autorizzato ai nostri sistemi host da applicazioni eseguite all'interno di istanze VM. Queste mitigazioni impediscono anche l'accesso non autorizzato tra istanze VM in esecuzione sullo stesso sistema host.
+        </p>
+        <p>
+         Per impedire l'accesso non autorizzato all'interno delle istanze di macchine virtuali, devi aggiornare i sistemi operativi guest in tali istanze utilizzando una delle seguenti opzioni:
+        </p>
+        <ul>
+         <li>
+          Utilizza immagini pubbliche con patch per
+          <a class="external" href="https://cloud.google.com/compute/docs/instances/create-start-instance?hl=it#publicimage" target="_blank">
+           ricreare le istanze VM esistenti
+          </a>
+          .
+        L'elenco delle immagini pubbliche con patch è riportato di seguito.
+         </li>
+         <li>
+          Installa sulle istanze esistenti le patch messe a disposizione dal fornitore del sistema operativo per la tua distribuzione e riavvia le istanze dopo l'applicazione delle patch. I link alle informazioni sulle patch di ciascun fornitore del sistema operativo sono riportati di seguito.
+         </li>
+        </ul>
+        <h4 data-text="Immagini con patch e risorse del fornitore" id="20180103_patched_images">
+         Immagini con patch e risorse del fornitore
+        </h4>
+        <p class="note">
+         <strong>
+          Nota:
+         </strong>
+         le immagini con patch potrebbero non includere le correzioni per tutti i CVE elencati in questo bollettino sulla sicurezza. Inoltre, immagini diverse potrebbero includere metodi diversi per impedire questi tipi di attacchi. Rivolgiti al fornitore del sistema operativo per verificare quali CVE vengono risolti dalle sue patch e quali metodi di prevenzione vengono utilizzati.
+        </p>
+        <ul>
+         <li>
+          Progetto
+          <code>
+           cos-cloud
+          </code>
+          : include patch per impedire gli attacchi inclusi nella
+            variante 2
+            (
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5715" target="_blank">
+           CVE-2017-5715
+          </a>
+          )
+            e nella variante 3
+            (
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5754" target="_blank">
+           CVE-2017-5754
+          </a>
+          ). Google ha utilizzato
+          <a class="external" href="https://support.google.com/faqs/answer/7625886?hl=it" target="_blank">
+           Retpoline
+          </a>
+          in queste immagini per mitigare gli attacchi inclusi nella variante 2.
+          <ul>
+           <li>
+            <code>
+             cos-stable-63-10032-71-0
+            </code>
+            o famiglia di immagini
+            <code>
+             cos-stable
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           centos-cloud
+          </code>
+          :
+          <a class="external" href="https://lwn.net/Alerts/CentOS/" target="_blank">
+           informazioni sulle patch per CentOS
+          </a>
+          <ul>
+           <li>
+            <code>
+             centos-7-v20180104
+            </code>
+            o famiglia di immagini
+            <code>
+             centos-7
+            </code>
+           </li>
+           <li>
+            <code>
+             centos-6-v20180104
+            </code>
+            o famiglia di immagini
+            <code>
+             centos-6
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           coreos-cloud
+          </code>
+          :
+          <a class="external" href="https://coreos.com/blog/container-linux-meltdown-patch" target="_blank">
+           informazioni sulle patch per CoreOS
+          </a>
+          <ul>
+           <li>
+            <code>
+             coreos-stable-1576-5-0-v20180105
+            </code>
+            o famiglia di immagini
+            <code>
+             coreos-stable
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-beta-1632-1-0-v20180105
+            </code>
+            o famiglia di immagini
+            <code>
+             coreos-beta
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-alpha-1649-0-0-v20180105
+            </code>
+            o famiglia di immagini
+            <code>
+             coreos-alpha
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           debian-cloud
+          </code>
+          :
+          <a class="external" href="https://www.debian.org/security/#DSAS" target="_blank">
+           informazioni sulle patch per Debian
+          </a>
+          <ul>
+           <li>
+            <code>
+             debian-9-stretch-v20180105
+            </code>
+            o famiglia di immagini
+            <code>
+             debian-9
+            </code>
+           </li>
+           <li>
+            <code>
+             debian-8-jessie-v20180109
+            </code>
+            o famiglia di immagini
+            <code>
+             debian-8
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           rhel-cloud
+          </code>
+          :
+          <a class="external" href="https://access.redhat.com/security/vulnerabilities/speculativeexecution" target="_blank">
+           informazioni sulle patch per RHEL
+          </a>
+          <ul>
+           <li>
+            <code>
+             rhel-7-v20180104
+            </code>
+            o famiglia di immagini
+            <code>
+             rhel-7
+            </code>
+           </li>
+           <li>
+            <code>
+             rhel-6-v20180104
+            </code>
+            o famiglia di immagini
+            <code>
+             rhel-6
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           suse-cloud
+          </code>
+          :
+          <a class="external" href="https://www.suse.com/c/suse-addresses-meltdown-spectre-vulnerabilities/" target="_blank">
+           informazioni sulle patch per SUSE
+          </a>
+          <ul>
+           <li>
+            <code>
+             sles-12-sp3-v20180104
+            </code>
+            o famiglia di immagini
+            <code>
+             sles-12
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-11-sp4-v20180104
+            </code>
+            o famiglia di immagini
+            <code>
+             sles-11
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           suse-sap-cloud
+          </code>
+          :
+          <a class="external" href="https://www.suse.com/c/suse-addresses-meltdown-spectre-vulnerabilities/" target="_blank">
+           informazioni sulle patch per SUSE
+          </a>
+          <ul>
+           <li>
+            <code>
+             sles-12-sp3-sap-v20180104
+            </code>
+            o famiglia di immagini
+            <code>
+             sles-12-sp3-sap
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp2-sap-v20180104
+            </code>
+            o famiglia di immagini
+            <code>
+             sles-12-sp2-sap
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetto
+          <code>
+           ubuntu-os-cloud
+          </code>
+          :
+          <a class="external" href="https://insights.ubuntu.com/2018/01/04/ubuntu-updates-for-the-meltdown-spectre-vulnerabilities/" target="_blank">
+           informazioni sulle patch per Ubuntu
+          </a>
+          <ul>
+           <li>
+            <code>
+             ubuntu-1710-artful-v20180109
+            </code>
+            o famiglia di immagini
+            <code>
+             ubuntu-1710
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1604-xenial-v20180109
+            </code>
+            o famiglia di immagini
+            <code>
+             ubuntu-1604-lts
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1404-trusty-v20180110
+            </code>
+            o famiglia di immagini
+            <code>
+             ubuntu-1404-lts
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          Progetti
+          <code>
+           windows-cloud
+          </code>
+          e
+          <code>
+           windows-sql-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            Tutte le
+            <a class="external" href="https://cloud.google.com/compute/docs/images?hl=it#os-compute-support" target="_blank">
+             immagini pubbliche
+            </a>
+            di Windows Server e SQL Server con numero di versione
+            <code>
+             -v20180109
+            </code>
+            e successivi includono le patch. Tuttavia, dovrai eseguire le azioni consigliate da Microsoft nel bollettino di assistenza relativo alle
+            <a class="external" href="https://support.microsoft.com/en-gb/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution" target="_blank">
+             linee guida per Windows Server
+            </a>
+            per attivare e verificare queste mitigazioni sia sulle istanze esistenti, sia sulle istanze appena create.
+           </li>
+          </ul>
+         </li>
+        </ul>
+        <p>
+         Utilizza queste immagini per
+         <a class="external" href="https://cloud.google.com/compute/docs/instances/create-start-instance?hl=it#publicimage" target="_blank">
+          ricreare le istanze VM
+         </a>
+         .
+      Le versioni precedenti di queste immagini pubbliche non contengono queste patch e non mitigano i potenziali attacchi.
+        </p>
+        <h4 data-text="Patch dei fornitori di hardware" id="20180103_hardware_patches">
+         Patch dei fornitori di hardware
+        </h4>
+        <p>
+         NVIDIA fornisce driver con patch per mitigare i potenziali attacchi contro i sistemi su cui è installato il software dei driver NVIDIA®. Per sapere a quali versioni dei driver sono state applicate le patch, leggi il bollettino sulla sicurezza di NVIDIA relativo agli
+         <a class="external" href="http://nvidia.custhelp.com/app/answers/detail/a_id/4611" target="_blank">
+          aggiornamenti di sicurezza per i driver video delle GPU NVIDIA
+         </a>
+         .
+        </p>
+        <h4 data-text="Cronologia delle revisioni:" id="20180103_history">
+         Cronologia delle revisioni:
+        </h4>
+        <ul>
+         <li>
+          21-05-2018 ore 14:00 PST: aggiunte informazioni sulle due nuove varianti divulgate il 21 maggio 2018.
+         </li>
+         <li>
+          10-01-2018 ore 15:00 PST: aggiunte informazioni sulle immagini pubbliche di Windows Server e SQL Server con patch.
+         </li>
+         <li>
+          10-01-2018 ore 10:15 PST: aggiunte diverse immagini Ubuntu all'elenco delle immagini pubbliche con patch.
+         </li>
+         <li>
+          10-01-2018 ore 09:50 PST: aggiunte linee guida per le patch messe a disposizione dai fornitori di hardware.
+         </li>
+         <li>
+          03-01-2018 - 09-01-2018: apportate diverse modifiche all'elenco delle immagini pubbliche con patch.
+         </li>
+        </ul>
+       </td>
+       <td>
+        Alta
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5753" target="_blank">
+           CVE-2017-5753
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5715" target="_blank">
+           CVE-2017-5715
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5754" target="_blank">
+           CVE-2017-5754
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3640" target="_blank">
+           CVE-2018-3640
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3639" target="_blank">
+           CVE-2018-3639
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Data di pubblicazione: 02-10-2017" id="20171002">
+     Data di pubblicazione: 02-10-2017
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Descrizione
+       </th>
+       <th>
+        Gravità
+       </th>
+       <th>
+        Note
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Descrizione" id="descrizione_2">
+         Descrizione
+        </h4>
+        <p>
+         <a class="external" href="http://www.thekelleys.org.uk/dnsmasq/doc.html" target="_blank">
+          Dnsmasq
+         </a>
+         fornisce la funzionalità per gestire DNS, DHCP, annunci di router e avvio di rete. Questo software è installato comunemente in sistemi di vario tipo, tra cui distribuzioni desktop Linux (come Ubuntu), router domestici e dispositivi IoT. Dnsmasq è ampiamente utilizzato sia sull'Internet pubblico sia internamente nelle reti private.
+        </p>
+        <p>
+         Google ha rilevato sette problemi diversi nel corso delle normali valutazioni della propria sicurezza interna. Dopo aver stabilito la gravità di questi problemi, abbiamo cercato di analizzarne l'impatto e la sfruttabilità, per poi generare una serie di proof of concept interni per ciascuno di essi. Abbiamo inoltre lavorato con il gestore di Dnsmasq, Simon Kelly, per produrre le patch adeguate e limitare l'impatto del problema.
+        </p>
+        <p>
+         Durante la revisione, il nostro team ha riscontrato tre possibili esecuzioni di codice remoto, una perdita di informazioni e tre vulnerabilità di tipo Denial of Service che interessano la versione più recente nel server Git di progetto al 5 settembre 2017.
+        </p>
+        <p>
+         Queste patch sono propagate a monte e sono confermate nel
+         <a class="external" href="http://thekelleys.org.uk/gitweb/?p=dnsmasq.git;a=summary" target="_blank">
+          repository Git del progetto
+         </a>
+         .
+        </p>
+        <h4 data-text="Impatto di Compute Engine" id="impatto-di-compute-engine">
+         Impatto di Compute Engine
+        </h4>
+        <p>
+         Per impostazione predefinita, Dnsmasq è installato solo nelle immagini che utilizzano
+         <a class="external" href="https://wikipedia.org/wiki/NetworkManager" target="_blank">
+          NetworkManager
+         </a>
+         e non è attivo. Dnsmasq è installato nelle seguenti immagini pubbliche di Compute Engine:
+        </p>
+        <ul>
+         <li>
+          Ubuntu 16.04, 16.10, 17.04
+         </li>
+         <li>
+          CentOS 7
+         </li>
+         <li>
+          RHEL 7
+         </li>
+        </ul>
+        <p>
+         Tuttavia, Dnsmasq potrebbe essere installato su altre immagini come dipendenza per altri pacchetti. Ti consigliamo di aggiornare le istanze Debian, Ubuntu, CentOS, RHEL, SLES e OpenSuse in modo da utilizzare l'immagine più recente del sistema operativo.
+      CoreOS e Container-Optimized OS non sono interessati, così come le immagini Windows.
+        </p>
+        <p>
+         Per le istanze che utilizzano Debian e Ubuntu puoi effettuare un aggiornamento eseguendo nell'istanza i seguenti comandi:
+        </p>
+        <pre>
+
+sudo apt-get -y update</pre>
+        <pre>
+
+sudo apt-get -y dist-upgrade</pre>
+        <p>
+         Esegui il comando seguente per le istanze Red Hat Enterprise Linux e CentOS:
+        </p>
+        <pre>
+
+sudo yum -y upgrade</pre>
+        <p>
+         Esegui il comando seguente per le immagini SLES e OpenSUSE:
+        </p>
+        <pre>
+
+sudo zypper up</pre>
+        <p>
+         In alternativa all'esecuzione dei comandi di aggiornamento manuale, puoi
+         <a href="https://cloud.google.com/compute/docs/instances/create-start-instance?hl=it#publicimage">
+          ricreare le istanze VM utilizzando le famiglie di immagini
+         </a>
+         del rispettivo sistema operativo.
+        </p>
+       </td>
+       <td>
+        Alta
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14491" target="_blank">
+           CVE-2017-14491
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14492" target="_blank">
+           CVE-2017-14492
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14493" target="_blank">
+           CVE-2017-14493
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14494" target="_blank">
+           CVE-2017-14494
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14495" target="_blank">
+           CVE-2017-14495
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14496" target="_blank">
+           CVE-2017-14496
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-13704" target="_blank">
+           CVE-2017-13704
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Data di pubblicazione: 26-10-2016" id="20161026">
+     Data di pubblicazione: 26-10-2016
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Descrizione
+       </th>
+       <th>
+        Gravità
+       </th>
+       <th>
+        Note
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Descrizione" id="descrizione_3">
+         Descrizione
+        </h4>
+        <p>
+         La vulnerabilità CVE-2016-5195 è legata a una race condition relativa alla modalità con cui il sottosistema della memoria del kernel Linux ha gestito la violazione da parte di utenti non autorizzati dei mapping privati di sola lettura sfruttando il meccanismo di copy-on-write (COW) al momento dell'accesso in scrittura.
+        </p>
+        <p>
+         Un utente locale non privilegiato potrebbe sfruttare questa falla per accedere in scrittura a mapping di memoria di sola lettura, con conseguente aumento dei propri privilegi sul sistema.
+        </p>
+        <p>
+         Per ulteriori informazioni, consulta le
+         <a class="external" href="https://github.com/dirtycow/dirtycow.github.io/wiki/VulnerabilityDetails" target="_blank">
+          domande frequenti sulla vulnerabilità Dirty COW
+         </a>
+         .
+        </p>
+        <h4 data-text="Impatto di Compute Engine" id="impatto-di-compute-engine_1">
+         Impatto di Compute Engine
+        </h4>
+        <p>
+         Sono interessate tutte le distribuzioni e le versioni di Linux su Compute Engine. La maggior parte delle istanze scarica e installa automaticamente un kernel più recente. Tuttavia, è necessario riavviare il sistema per potervi applicare una patch.
+        </p>
+        <p>
+         Nelle istanze nuove o ricreate che si basano sulle seguenti immagini Compute Engine sono già installati i kernel con patch applicata.
+        </p>
+        <ul>
+         <li>
+          <code>
+           centos-6-v20161026
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-7-v20161025
+          </code>
+         </li>
+         <li>
+          <code>
+           coreos-alpha-1192-2-0-v20161021
+          </code>
+         </li>
+         <li>
+          <code>
+           coreos-beta-1185-2-0-v20161021
+          </code>
+         </li>
+         <li>
+          <code>
+           coreos-stable-1122-3-0-v20161021
+          </code>
+         </li>
+         <li>
+          <code>
+           debian-8-jessie-v20161020
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-6-v20161026
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-7-v20161024
+          </code>
+         </li>
+         <li>
+          <code>
+           sles-11-sp4-v20161021
+          </code>
+         </li>
+         <li>
+          <code>
+           sles-12-sp1-v20161021
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1204-precise-v20161020
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1404-trusty-v20161020
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1604-xenial-v20161020
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1610-yakkety-v20161020
+          </code>
+         </li>
+        </ul>
+       </td>
+       <td>
+        Alta
+       </td>
+       <td>
+        <a class="external" href="https://github.com/dirtycow/dirtycow.github.io/wiki/VulnerabilityDetails" target="_blank">
+         CVE-2016-5195
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Data di pubblicazione: 16-02-2016" id="20160216">
+     Data di pubblicazione: 16-02-2016
+    </h2>
+    <p>
+     <strong>
+      Ultimo aggiornamento: 22-02-2016
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Descrizione
+       </th>
+       <th>
+        Gravità
+       </th>
+       <th>
+        Note
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Descrizione" id="descrizione_4">
+         Descrizione
+        </h4>
+        <p>
+         La vulnerabilità CVE-2015-7547 riguarda il resolver lato client del DNS glibc, che rende il software vulnerabile al sovraccarico del buffer basato su stack quando si utilizza la funzione di libreria
+         <code>
+          getaddrinfo()
+         </code>
+         .
+        Un utente malintenzionato potrebbe prendere il controllo del software che utilizza questa funzione per sfruttare questa vulnerabilità con nomi di dominio e server DNS opportunamente predisposti o mediante attacchi di tipo man-in-the-middle.
+        </p>
+        <p>
+         Per ulteriori dettagli, consulta il
+         <a href="https://googleonlinesecurity.blogspot.ca/2016/02/cve-2015-7547-glibc-getaddrinfo-stack.html">
+          blog sulla sicurezza online di Google
+         </a>
+         o il database delle
+         <a class="external" href="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2015-7547" target="_blank">
+          vulnerabilità ed esposizioni comuni (CVE)
+         </a>
+         .
+        </p>
+        <h4 data-text="Impatto di Compute Engine" id="impatto-di-compute-engine_2">
+         Impatto di Compute Engine
+        </h4>
+        <p>
+         <strong>
+          Aggiornamento (22-02-2016):
+         </strong>
+        </p>
+        <p>
+         Adesso puoi ricreare le istanze utilizzando le seguenti immagini CoreOS, SLES e OpenSUSE:
+        </p>
+        <ul>
+         <li>
+          <code>
+           coreos-alpha-962-0-0-v20160218
+          </code>
+         </li>
+         <li>
+          <code>
+           coreos-beta-899-7-0-v20160218
+          </code>
+         </li>
+         <li>
+          <code>
+           coreos-stable-835-13-0-v20160218
+          </code>
+         </li>
+         <li>
+          <code>
+           opensuse-13-2-v20160222
+          </code>
+         </li>
+         <li>
+          <code>
+           opensuse-leap-42-1-v20160222
+          </code>
+         </li>
+         <li>
+          <code>
+           sles-11-sp4-v20160222
+          </code>
+         </li>
+         <li>
+          <code>
+           sles-12-sp1-v20160222
+          </code>
+         </li>
+        </ul>
+        <p>
+         <strong>
+          Aggiornamento (17-02-2016):
+         </strong>
+        </p>
+        <p>
+         Adesso puoi aggiornare le istanze Ubuntu 12.04 LTS, Ubuntu 14.04 LTS e Ubuntu 15.10 eseguendo i seguenti comandi:
+        </p>
+        <ol>
+         <li>
+          <code>
+           user@my-instance:~$ sudo apt-get -y update
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo apt-get -y dist-upgrade
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo reboot
+          </code>
+         </li>
+        </ol>
+        <p>
+         In alternativa all'esecuzione dei comandi di aggiornamento manuale, adesso puoi ricreare le istanze con le nuove immagini seguenti:
+        </p>
+        <ul>
+         <li>
+          <code>
+           backports-debian-7-wheezy-v20160216
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-6-v20160216
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-7-v20160216
+          </code>
+         </li>
+         <li>
+          <code>
+           debian-7-wheezy-v20160216
+          </code>
+         </li>
+         <li>
+          <code>
+           debian-8-jessie-v20160216
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-6-v20160216
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-7-v20160216
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1204-precise-v20160217a
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1404-trusty-v20160217a
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1510-wily-v20160217
+          </code>
+         </li>
+        </ul>
+        <p>
+         Non conosciamo metodi che possono sfruttare questa vulnerabilità attraverso i resolver DNS di Compute Engine con la configurazione glibc predefinita. Conviene tuttavia applicare il prima possibile una patch alle istanze di macchine virtuali poiché, come accade con qualsiasi nuova vulnerabilità, nel corso del tempo potrebbero essere scoperti nuovi metodi di attacco.
+       Se hai abilitato edns0 (che è disabilitato per impostazione predefinita), devi disabilitarlo finché alle istanze non viene applicata la patch.
+        </p>
+        <p>
+         <strong>
+          Bollettino originale:
+         </strong>
+        </p>
+        <p>
+         La distribuzione Linux potrebbe essere vulnerabile. Per eliminare questa vulnerabilità, i clienti di Compute Engine dovranno aggiornare le immagini di sistema operativo delle proprie istanze se utilizzano un sistema operativo Linux.
+        </p>
+        <p>
+         Per le istanze che utilizzano Debian puoi effettuare un aggiornamento eseguendo nell'istanza i seguenti comandi:
+        </p>
+        <ol>
+         <li>
+          <code>
+           user@my-instance:~$ sudo apt-get -y update
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo apt-get -y dist-upgrade
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo reboot
+          </code>
+         </li>
+        </ol>
+        <p>
+         Ti consigliamo anche di installare
+         <a class="external" href="https://wiki.debian.org/UnattendedUpgrades" target="_blank">
+          UnattendedUpgrades
+         </a>
+         per le istanze Debian.
+        </p>
+        <p>
+         Per le istanze Red Hat Enterprise Linux:
+        </p>
+        <ul>
+         <li>
+          <code>
+           user@my-instance:~$ sudo yum -y upgrade
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo reboot
+          </code>
+         </li>
+        </ul>
+        <p>
+         Continueremo ad aggiornare questo bollettino man mano che altri gestori di sistema operativo pubblicano le patch per questa vulnerabilità e Compute Engine rilascia immagini aggiornate di sistema operativo.
+        </p>
+       </td>
+       <td>
+        Alta
+       </td>
+       <td>
+        <a class="external" href="https://googleonlinesecurity.blogspot.ca/2016/02/cve-2015-7547-glibc-getaddrinfo-stack.html" target="_blank">
+         CVE-2015-7547
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Data di pubblicazione: 19-03-2015" id="20150319">
+     Data di pubblicazione: 19-03-2015
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Descrizione
+       </th>
+       <th>
+        Gravità
+       </th>
+       <th>
+        Note
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Descrizione" id="descrizione_5">
+         Descrizione
+        </h4>
+        <p>
+         La vulnerabilità CVE-2015-1427 riguarda il motore di script Groovy in
+         <a class="external" href="https://www.elastic.co/products/elasticsearch" target="_blank">
+          Elasticsearch
+         </a>
+         (prima della versione 1.3.8 e qualsiasi versione 1.4.x prima della 1.4.3), che consente a utenti malintenzionati remoti di aggirare il meccanismo di protezione sandbox ed eseguire comandi di shell arbitrari.
+        </p>
+        <p>
+         Per ulteriori dettagli, consulta il
+         <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1427" target="_blank">
+          National Vulnerability Database (NVD)
+         </a>
+         o il database delle
+         <a class="external" href="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2015-1427" target="_blank">
+          vulnerabilità ed esposizioni comuni (CVE)
+         </a>
+         .
+        </p>
+        <h4 data-text="Impatto di Compute Engine" id="impatto-di-compute-engine_3">
+         Impatto di Compute Engine
+        </h4>
+        <p>
+         Se esegui Elasticsearch sulle istanze Compute Engine, ti conviene eseguire l'upgrade a Elasticsearch versione 1.4.3 o successiva. Se hai già eseguito l'upgrade del software Elasticsearch, il tuo sistema è protetto da questa vulnerabilità.
+        </p>
+        <p>
+         Se non hai effettuato l'upgrade a Elasticsearch 1.4.3 o versioni successive, puoi
+         <a class="external" href="http://www.elastic.co/guide/en/elasticsearch/reference/current/rolling-upgrades.html" target="_blank">
+          eseguire un upgrade in sequenza
+         </a>
+         .
+        </p>
+        <p>
+         Se hai eseguito il deployment di Elasticsearch mediante la funzionalità
+         <a href="https://cloud.google.com/solutions/elasticsearch/click-to-deploy?hl=it">
+          Click-to-deploy
+         </a>
+         della
+         <a href="https://console.cloud.google.com/?hl=it" target="console">
+          console di Google Cloud Platform
+         </a>
+         , puoi
+         <a href="https://console.cloud.google.com/projectselector/deployments?hl=it">
+          eliminare il deployment
+         </a>
+         per rimuovere le istanze che eseguono Elasticsearch.
+        </p>
+        <p>
+         Il team di Google Cloud Platform sta cercando una soluzione per eseguire il deployment di una versione aggiornata di Elasticsearch. Tuttavia, non è ancora disponibile una soluzione per la funzionalità Click-to-deploy della
+         <a href="https://console.cloud.google.com/?hl=it" target="console">
+          console di GCP
+         </a>
+         .
+        </p>
+       </td>
+       <td>
+        Alta
+       </td>
+       <td>
+        <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1427" target="_blank">
+         CVE-2015-1427
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Data di pubblicazione: 29-01-2015" id="20150129">
+     Data di pubblicazione: 29-01-2015
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Descrizione
+       </th>
+       <th>
+        Gravità
+       </th>
+       <th>
+        Note
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Descrizione" id="descrizione_6">
+         Descrizione
+        </h4>
+        <p>
+         La vulnerabilità
+         <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-0235" target="_blank">
+          CVE-2015-0235 (Ghost)
+         </a>
+         riguarda la libreria glibc.
+        </p>
+        <p>
+         I clienti di App Engine, Cloud Storage, BigQuery e CloudSQL non devono effettuare alcuna azione. I server di Google sono stati aggiornati e sono protetti da questa vulnerabilità.
+        </p>
+        <p>
+         I clienti di Compute Engine potrebbero dover aggiornare le proprie immagini di sistema operativo.
+        </p>
+        <h4 data-text="Impatto di Compute Engine" id="impatto-di-compute-engine_4">
+         Impatto di Compute Engine
+        </h4>
+        <p>
+         La distribuzione Linux potrebbe essere vulnerabile. Per eliminare questa vulnerabilità, i clienti di Compute Engine dovranno aggiornare le immagini di sistema operativo delle proprie istanze se eseguono Debian 7, backport di Debian 7, Ubuntu 12.04 LTS, Red Hat Enterprise Linux, CentOS o SUSE Linux Enterprise Server 11 SP3.
+        </p>
+        <p>
+         Questa vulnerabilità non interessa Ubuntu 14.04 LTS, Ubuntu 14.10 o SUSE Linux Enterprise Server 12.
+        </p>
+        <p>
+         Ti consigliamo di eseguire l'upgrade delle tue distribuzioni Linux. Per le istanze che utilizzano Debian 7, backport di Debian 7 o Ubuntu 12.04 LTS, puoi effettuare un aggiornamento eseguendo nell'istanza i seguenti comandi:
+        </p>
+        <ol>
+         <li>
+          <code>
+           user@my-instance:~$ sudo apt-get update
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo apt-get -y upgrade
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo reboot
+          </code>
+         </li>
+        </ol>
+        <p>
+         Per le istanze Red Hat Enterprise Linux o CentOS:
+        </p>
+        <ol>
+         <li>
+          <code>
+           user@my-instance:~$ sudo yum -y upgrade
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo reboot
+          </code>
+         </li>
+        </ol>
+        <p>
+         Per le istanze SUSE Linux Enterprise Server 11 SP3:
+        </p>
+        <ol>
+         <li>
+          <code>
+           user@my-instance:~$ sudo zypper --non-interactive up
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo reboot
+          </code>
+         </li>
+        </ol>
+        <p>
+         In alternativa all'esecuzione dei comandi di aggiornamento manuale riportati in precedenza, adesso gli utenti possono ricreare le istanze con le nuove immagini seguenti:
+        </p>
+        <ul>
+         <li>
+          <code>
+           debian-7-wheezy-v20150127
+          </code>
+         </li>
+         <li>
+          <code>
+           backports-debian-7-wheezy-v20150127
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-6-v20150127
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-7-v20150127
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-6-v20150127
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-7-v20150127
+          </code>
+         </li>
+         <li>
+          <code>
+           sles-11-sp3-v20150127
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1204-precise-v20150127
+          </code>
+         </li>
+        </ul>
+        <h4 data-text="Impatto sulle VM gestite di Google" id="impatto-sulle-vm-gestite-di-google">
+         Impatto sulle VM gestite di Google
+        </h4>
+        <p>
+         Gli utenti delle VM gestite che utilizzano
+         <code>
+          gcloud preview app deploy
+         </code>
+         devono aggiornare i propri container docker di base con
+         <code>
+          gcloud preview app deploy
+         </code>
+         ed eseguire nuovamente il deployment di ogni applicazione in esecuzione utilizzando
+         <code>
+          gcloud preview app setup-managed-vms
+         </code>
+         . Gli utenti che eseguono il deployment con
+         <code>
+          appcfg
+         </code>
+         non devono fare nulla e l'upgrade verrà eseguito automaticamente.
+        </p>
+       </td>
+       <td>
+        Alta
+       </td>
+       <td>
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-0235" target="_blank">
+         CVE-2015-0235
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Data di pubblicazione: 15-10-2014" id="20141015">
+     Data di pubblicazione: 15-10-2014
+    </h2>
+    <p>
+     <strong>
+      Ultimo aggiornamento: 17-10-2014
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Descrizione
+       </th>
+       <th>
+        Gravità
+       </th>
+       <th>
+        Note
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Descrizione" id="descrizione_7">
+         Descrizione
+        </h4>
+        <p>
+         La vulnerabilità CVE-2014-3566 (detta anche POODLE) riguarda la progettazione di SSL
+          versione 3.0. Questa vulnerabilità consente a un utente malintenzionato che opera in rete di calcolare il testo non crittografato delle connessioni sicure. Per i dettagli, consulta il
+          nostro
+         <a href="http://googleonlinesecurity.blogspot.com/2014/10/this-poodle-bites-exploiting-ssl-30.html">
+          post del blog
+         </a>
+         sulla vulnerabilità.
+        </p>
+        <p>
+         I clienti di App Engine, Cloud Storage, BigQuery e CloudSQL non devono effettuare alcuna azione. I server di Google sono stati aggiornati e sono protetti da questa vulnerabilità. I clienti di Compute Engine devono aggiornare le proprie immagini di sistema operativo.
+        </p>
+        <h4 data-text="Impatto di Compute Engine" id="impatto-di-compute-engine_5">
+         Impatto di Compute Engine
+        </h4>
+        <p>
+         <strong>
+          Aggiornamento (17-10-2014):
+         </strong>
+        </p>
+        <p>
+         La vulnerabilità potrebbe riguardarti se utilizzi SSLv3. Per eliminare questa vulnerabilità, i clienti di Compute Engine dovranno aggiornare le immagini di sistema operativo delle proprie istanze.
+        </p>
+        <p>
+         Ti consigliamo di eseguire l'upgrade delle tue distribuzioni Linux. Per le istanze che utilizzano Debian puoi effettuare un aggiornamento eseguendo nell'istanza i seguenti comandi:
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo apt-get update
+user@my-instance:~$ sudo apt-get -y upgrade
+user@my-instance:~$ sudo reboot</pre>
+        <p>
+         Per le istanze CentOS:
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo yum -y upgrade
+user@my-instance:~$ sudo reboot</pre>
+        <p>
+         In alternativa all'esecuzione dei comandi di aggiornamento manuale in alto, adesso gli utenti possono ricreare le istanze con le nuove immagini seguenti:
+        </p>
+        <ul>
+         <li>
+          <code>
+           centos-6-v20141016
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-7-v20141016
+          </code>
+         </li>
+         <li>
+          <code>
+           debian-7-wheezy-v20141017
+          </code>
+         </li>
+         <li>
+          <code>
+           backports-debian-7-wheezy-v20141017
+          </code>
+         </li>
+        </ul>
+        <p>
+         Aggiorneremo il bollettino per le immagini RHEL e SLES quando avremo a disposizione le immagini.
+Nel frattempo, gli utenti RHEL possono contattare
+         <a class="external" href="https://access.redhat.com/articles/1232123" target="_blank">
+          direttamente Red Hat
+         </a>
+         per ulteriori informazioni.
+        </p>
+        <p>
+         <strong>
+          Bollettino originale:
+         </strong>
+        </p>
+        <p>
+         Per eliminare questa vulnerabilità, i clienti di Compute Engine dovranno aggiornare le immagini di sistema operativo delle proprie istanze. Aggiorneremo questo bollettino di sicurezza con le istruzioni non appena saranno disponibili nuove immagini di sistema operativo.
+        </p>
+       </td>
+       <td>
+        Media
+       </td>
+       <td>
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3566" target="_blank">
+         CVE-2014-3566
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Data di pubblicazione: 24-09-2014" id="20140924">
+     Data di pubblicazione: 24-09-2014
+    </h2>
+    <p>
+     <strong>
+      Ultimo aggiornamento: 29-09-2014
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Descrizione
+       </th>
+       <th>
+        Gravità
+       </th>
+       <th>
+        Note
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Descrizione" id="descrizione_8">
+         Descrizione
+        </h4>
+        <p>
+         In Bash esiste un bug (CVE-2014-6271) che consente l'esecuzione di codice remoto sulla base dell'analisi di qualsiasi variabile di ambiente controllata da un utente malintenzionato. Il vettore più probabile di sfruttamento di questa vulnerabilità è rappresentato da richieste HTTP dannose inviate a script CGI esposti su un server web. Per ulteriori informazioni, consulta la
+         <a class="external" href="http://seclists.org/oss-sec/2014/q3/650" target="_blank">
+          descrizione del bug
+         </a>
+         .
+        </p>
+        <p>
+         I bug di Bash sono stati limitati per i prodotti Google Cloud Platform, ad eccezione delle immagini di sistema operativo guest Compute Engine precedenti al 26-09-2014. Di seguito sono riportati i passaggi per limitare i bug delle immagini di Compute Engine.
+        </p>
+        <h4 data-text="Impatto di Compute Engine" id="impatto-di-compute-engine_6">
+         Impatto di Compute Engine
+        </h4>
+        <p>
+         Questo bug potrebbe interessare praticamente tutti i siti web che utilizzano script CGI. Inoltre, è probabile che interessi quelli che utilizzano PHP, Perl, Python, SSI, Java, C++ e servlet simili che non eseguono mai comandi di shell tramite chiamate come
+         <code>
+          popen
+         </code>
+         ,
+         <code>
+          system
+         </code>
+         ,
+         <code>
+          shell_exec
+         </code>
+         o API di questo tipo.  Potrebbe interessare anche i sistemi che tentano di consentire l'accesso controllato a utenti con restrizioni mediante meccanismi come la limitazione dei comandi SSH o la shell con restrizione Bash.
+        </p>
+        <p>
+         <strong>
+          Aggiornamento (29-09-2014):
+         </strong>
+        </p>
+        <p>
+         In alternativa all'esecuzione dei comandi di aggiornamento manuale riportati di seguito, gli utenti adesso possono ricreare le proprie istanze con immagini che mitigano l'impatto di altre vulnerabilità relative al bug sulla sicurezza di Bash, tra cui:
+         <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7169" target="_blank">
+          CVE-2014-7169
+         </a>
+         ,
+         <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6277" target="_blank">
+          CVE-2014-6277
+         </a>
+         ,
+         <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6278" target="_blank">
+          CVE-2014-6278
+         </a>
+         ,
+         <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7186" target="_blank">
+          CVE-2014-7186
+         </a>
+         e
+         <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7187" target="_blank">
+          CVE-2014-7187
+         </a>
+         .
+        Utilizza le nuove immagini seguenti per ricreare le istanze:
+        </p>
+        <ul>
+         <li>
+          <code>
+           centos-6-v20140926
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-7-v20140926
+          </code>
+         </li>
+         <li>
+          <code>
+           debian-7-wheezy-v20140926
+          </code>
+         </li>
+         <li>
+          <code>
+           backports-debian-7-wheezy-v20140926
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-6-v20140926
+          </code>
+         </li>
+        </ul>
+        <p>
+         <strong>
+          Aggiornamento (25-09-2014):
+         </strong>
+        </p>
+        <p>
+         Adesso gli utenti possono scegliere di ricreare le proprie istanze invece di eseguire un aggiornamento manuale. Per ricreare le istanze, utilizza le nuove immagini seguenti che contengono le correzioni per questo bug sulla sicurezza:
+        </p>
+        <ul>
+         <li>
+          <code>
+           backports-debian-7-wheezy-v20140924
+          </code>
+         </li>
+         <li>
+          <code>
+           debian-7-wheezy-v20140924
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-6-v20140924
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-6-v20140924
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-7-v20140924
+          </code>
+         </li>
+        </ul>
+        <p>
+         Per le immagini RHEL e SUSE puoi anche effettuare manualmente gli aggiornamenti eseguendo sulle istanze i comandi seguenti:
+        </p>
+        <pre>
+
+# RHEL instances
+user@my-instance:~$ sudo yum -y upgrade
+
+# SUSE instances
+user@my-instance:~$ sudo zypper --non-interactive up</pre>
+        <p>
+         <strong>
+          Bollettino originale:
+         </strong>
+        </p>
+        <p>
+         Ti consigliamo di eseguire l'upgrade delle tue distribuzioni Linux. Per le istanze che utilizzano Debian puoi effettuare un aggiornamento eseguendo nell'istanza i comandi seguenti:
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo apt-get update
+user@my-instance:~$ sudo apt-get -y upgrade
+</pre>
+        <p>
+         Per le istanze CentOS:
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo yum -y upgrade</pre>
+        <p>
+         Per informazioni dettagliate, consulta l'annuncio per la rispettiva distribuzione Linux:
+        </p>
+        <ul>
+         <li>
+          Patch originali:
+          <a class="external" href="http://ftp.gnu.org/gnu/bash/" target="_blank">
+           http://ftp.gnu.org/gnu/bash/
+          </a>
+          (controlla l'ultima voce in *-patches per la versione appropriata)
+         </li>
+         <li>
+          Debian:
+          <a class="external" href="https://lists.debian.org/debian-security-announce/2014/msg00220.html" target="_blank">
+           [SECURITY] [DSA 3032-1] aggiornamento sulla sicurezza Bash
+          </a>
+         </li>
+         <li>
+          RHEL:
+          <ul>
+           <li>
+            <a class="external" href="https://www.redhat.com/archives/rhsa-announce/2014-September/msg00048.html" target="_blank">
+             RHSA-2014:1293-01
+            </a>
+           </li>
+           <li>
+            <a class="external" href="https://www.redhat.com/archives/rhsa-announce/2014-September/msg00049.html" target="_blank">
+             RHSA-2014:1294-01
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          CentOS 5:
+          <a class="external" href="http://lists.centos.org/pipermail/centos-announce/2014-September/020582.html" target="_blank">
+           [CentOS-announce] CESA-2014:1293
+          </a>
+         </li>
+         <li>
+          CentOS 6:
+          <a class="external" href="http://lists.centos.org/pipermail/centos-announce/2014-September/020585.html" target="_blank">
+           [CentOS-announce] CESA-2014:1293
+          </a>
+         </li>
+         <li>
+          CentOS 7:
+          <a class="external" href="http://lists.centos.org/pipermail/centos-announce/2014-September/020583.html" target="_blank">
+           [CentOS-announce] CESA-2014:1293
+          </a>
+         </li>
+        </ul>
+       </td>
+       <td>
+        Alta
+       </td>
+       <td>
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7169" target="_blank">
+         CVE-2014-7169
+        </a>
+        ,
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6271" target="_blank">
+         CVE-2014-6271
+        </a>
+        ,
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6277" target="_blank">
+         CVE-2014-6277
+        </a>
+        ,
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6278" target="_blank">
+         CVE-2014-6278
+        </a>
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7186" target="_blank">
+         CVE-2014-7186
+        </a>
+        ,
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7187" target="_blank">
+         CVE-2014-7187
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Data di pubblicazione: 25-07-2014" id="20140618">
+     Data di pubblicazione: 25-07-2014
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Descrizione
+       </th>
+       <th>
+        Gravità
+       </th>
+       <th>
+        Note
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Descrizione" id="descrizione_9">
+         Descrizione
+        </h4>
+        <p>
+         <a class="external" href="http://www.elasticsearch.org/overview/logstash/" target="_blank">
+          Elasticsearch Logstash
+         </a>
+         è vulnerabile ad attacchi di tipo command injection sul sistema operativo che possono causare modifiche non autorizzate e divulgazione dei dati. Un utente malintenzionato può inviare eventi generati appositamente a qualsiasi origine dati di Logstash in modo da eseguire comandi con le autorizzazioni del processo Logstash.
+        </p>
+        <h4 data-text="Impatto di Compute Engine" id="impatto-di-compute-engine_7">
+         Impatto di Compute Engine
+        </h4>
+        <p>
+         Questa vulnerabilità influisce su tutte le istanze Compute Engine che eseguono versioni di
+Elasticsearch Logstash precedenti alla 1.4.2 in cui sono abilitati gli output zabbix o nagios_nsca. Per impedire gli attacchi, puoi:
+        </p>
+        <ul>
+         <li>
+          Eseguire l'upgrade a Logstash 1.4.2
+         </li>
+         <li>
+          Applicare la patch per le versioni 1.3.x
+         </li>
+         <li>
+          Disabilitare gli output
+          <code>
+           zabbix
+          </code>
+          e
+          <code>
+           nagios_nsca
+          </code>
+          .
+         </li>
+        </ul>
+        <p>
+         Consulta il
+         <a class="external" href="http://www.elasticsearch.org/blog/logstash-1-4-2/" target="_blank">
+          blog di Logstash
+         </a>
+         per ulteriori informazioni.
+        </p>
+        <p>
+         Elasticsearch consiglia anche di
+         <a class="external" href="http://www.elasticsearch.org/blog/scripting-security/" target="_blank">
+          utilizzare un firewall
+         </a>
+         per impedire l'accesso remoto da IP non attendibili.
+        </p>
+       </td>
+       <td>
+        Alta
+       </td>
+       <td>
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-4326" target="_blank">
+         CVE-2014-4326
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Data di pubblicazione: 18-06-2014" id="20140618">
+     Data di pubblicazione: 18-06-2014
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Descrizione
+       </th>
+       <th>
+        Gravità
+       </th>
+       <th>
+        Note
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Descrizione" id="descrizione_10">
+         Descrizione
+        </h4>
+        <p>
+         Vogliamo dedicare qualche minuto alla risposta a eventuali dubbi da parte dei clienti circa la sicurezza dei container Docker eseguiti su Google Cloud Platform. Sono inclusi i clienti che utilizzano le nostre estensioni Google App Engine a supporto di container Docker, macchine virtuali ottimizzate per i container o scheduler di Kubernetes open source.
+        </p>
+        <p>
+         Docker ha lavorato egregiamente per risolvere il problema e puoi leggere
+         <a class="external" href="http://blog.docker.com/2014/06/docker-container-breakout-proof-of-concept-exploit/" target="_blank">
+          qui
+         </a>
+         la risposta nel suo blog. Tieni presente che, come viene detto nella risposta, il problema interessa solo Docker 0.11 e una versione precedente di pre-produzione.
+        </p>
+        <p>
+         Mentre il mondo sta pensando alla sicurezza dei container, vorremmo sottolineare che in Google Cloud Platform, le soluzioni basate su container di applicazioni Linux (in particolare i container Docker) funzionano su macchine virtuali complete (Compute Engine). Pur supportando gli sforzi della community Docker per rafforzare la protezione dello stack di container per applicazioni Linux, ci rendiamo conto che si tratta di una tecnologia nuova con una superficie di attacco molto ampia. Siamo convinti che, per ora, gli hypervisor completi (macchine virtuali) hanno una superficie di attacco più compatta e difendibile. Le macchine virtuali sono state progettate sin dall'inizio per isolare i carichi di lavoro dannosi e ridurre al minimo la probabilità e l'impatto di un bug del codice.
+        </p>
+        <p>
+         I nostri clienti possono essere sicuri che esiste la "barriera" tra di un hypervisor completo tra loro e il codice potenzialmente dannoso di terze parti. Se dovessimo giungere alla conclusione che lo stack di container per applicazioni Linux è abbastanza solido da supportare carichi di lavoro multi-tenant, lo faremo sapere alla community. Per ora, i container per applicazioni Linux non sostituiscono le macchine virtuali. È un modo per ottenere molto di più.
+        </p>
+       </td>
+       <td>
+        Bassa
+       </td>
+       <td>
+        <a class="external" href="http://blog.docker.com/2014/06/docker-container-breakout-proof-of-concept-exploit/" target="_blank">
+         Post del blog di Docker
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Data di pubblicazione: 05-06-2014" id="20140605">
+     Data di pubblicazione: 05-06-2014
+    </h2>
+    <p>
+     <strong>
+      Ultimo aggiornamento: 09-06-2014
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Descrizione
+       </th>
+       <th>
+        Gravità
+       </th>
+       <th>
+        Note
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Descrizione" id="descrizione_11">
+         Descrizione
+        </h4>
+        <p>
+         OpenSSL ha un problema per il quale i messaggi
+         <code>
+          ChangeCipherSpec
+         </code>
+         non vengono associati correttamente alla macchina per lo stato dell'handshake. Ciò ne consente l'inserimento anticipato nell'handshake. Un utente malintenzionato potrebbe sfruttare un handshake generato appositamente per forzare l'uso di materiale per le chiavi vulnerabile nei client e nei server SSL/TLS OpenSSL. Ciò potrebbe esporre il sistema ad attacchi di tipo man-in-the-middle (MITM) in cui un utente malintenzionato può decriptare e modificare il traffico proveniente dal client e dal server attaccati.
+        </p>
+        <p>
+         Questo problema è identificato come
+         <a class="external" href="https://www.openssl.org/news/secadv/20140605.txt" target="_blank">
+          CVE-2014-0224
+         </a>
+         . Il team OpenSSL ha risolto il problema e ha avvisato la community OpenSSL di aggiornare OpenSSL.
+        </p>
+        <h4 data-text="Impatto di Compute Engine" id="impatto-di-compute-engine_8">
+         Impatto di Compute Engine
+        </h4>
+        <p>
+         Questa vulnerabilità interessa tutte le istanze di Compute Engine che utilizzano
+          OpenSSL, inclusi Debian, CentOS, Red Hat Enterprise Linux e SUSE
+          Linux Enterprise Server. Puoi aggiornare le istanze ricreandole con nuove immagini oppure aggiornando manualmente i pacchetti nelle istanze.
+        </p>
+        <p>
+         <strong>
+          Aggiornamento (09-06-2014):
+         </strong>
+         per aggiornare con nuove immagini le istanze che eseguono SUSE Linux Enterprise Server, ricreale utilizzando le immagini con le versioni indicate di seguito o successive:
+        </p>
+        <ul>
+         <li>
+          <code>
+           sles-11-sp3-v20140609
+          </code>
+         </li>
+        </ul>
+        <p>
+         <strong>
+          Post originale:
+         </strong>
+        </p>
+        <p>
+         Per aggiornare le istanze Debian e CentOS mediante nuove immagini, ricreale utilizzando le immagini con le versioni indicate di seguito o successive:
+        </p>
+        <ul>
+         <li>
+          <code>
+           debian-7-wheezy-v20140605
+          </code>
+         </li>
+         <li>
+          <code>
+           backports-debian-7-wheezy-v20140605
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-6-v20140605
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-6-v20140605
+          </code>
+         </li>
+        </ul>
+        <p>
+         Per aggiornare manualmente OpenSSL sulle istanze, esegui i comandi riportati di seguito per aggiornare i pacchetti appropriati. Per le istanze che utilizzano
+          CentOS e RHEL, puoi aggiornare OpenSSL eseguendo nell'istanza i comandi seguenti:
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo yum -y update
+user@my-instance:~$ sudo reboot</pre>
+        <p>
+         Per le istanze che utilizzano
+          Debian, puoi aggiornare OpenSSL eseguendo nell'istanza i comandi seguenti:
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo apt-get update
+user@my-instance:~$ sudo apt-get -y upgrade
+user@my-instance:~$ sudo reboot</pre>
+        <p>
+         Per le istanze che utilizzano SUSE Linux Enterprise Server, puoi assicurarti che OpenSSL sia aggiornato eseguendo nell'istanza i comandi seguenti:
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo zypper --non-interactive up
+user@my-instance:~$ sudo reboot</pre>
+       </td>
+       <td>
+        Media
+       </td>
+       <td>
+        <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0224" target="_blank">
+         CVE-2014-0224
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Data di pubblicazione: 08-04-2014" id="20140408">
+     Data di pubblicazione: 08-04-2014
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Descrizione
+       </th>
+       <th>
+        Gravità
+       </th>
+       <th>
+        Note
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Descrizione" id="descrizione_12">
+         Descrizione
+        </h4>
+        <p>
+         Le implementazioni (1) TLS e (2) DTLS in OpenSSL 1.0.1 prima di
+          1.0.1g non gestiscono correttamente i pacchetti Heartbeat Extension, il che
+          consente a un utente malintenzionato di ottenere in remoto informazioni sensibili dalla
+          memoria del processo mediante pacchetti creati appositamente che attivano una sovralettura del buffer,
+          come dimostrato dalla lettura delle chiavi private, relativamente a
+         <code>
+          d1_both.c
+         </code>
+         e
+         <code>
+          t1_lib.c
+         </code>
+         (detto anche bug Heartbleed).
+        </p>
+        <h4 data-text="Impatto di Compute Engine" id="impatto-di-compute-engine_9">
+         Impatto di Compute Engine
+        </h4>
+        <p>
+         Questa vulnerabilità interessa tutte le istanze Compute Engine Debian, RHEL e CentOS in cui non è installata la versione più aggiornata di OpenSSL. Puoi aggiornare le istanze ricreandole con nuove immagini oppure aggiornando manualmente i pacchetti nelle istanze.
+        </p>
+        <p>
+         Per aggiornare le istanze mediante nuove immagini, ricreale utilizzando le immagini con le versioni indicate di seguito o successive:
+        </p>
+        <ul>
+         <li>
+          <code>
+           debian-7-wheezy-v20140408
+          </code>
+         </li>
+         <li>
+          <code>
+           backports-debian-7-wheezy-v20140408
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-6-v20140408
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-6-v20140408
+          </code>
+         </li>
+        </ul>
+        <p>
+         Per aggiornare manualmente OpenSSL sulle istanze, esegui i comandi riportati di seguito per aggiornare i pacchetti appropriati. Per le istanze che utilizzano CentOS e RHEL, puoi assicurarti che OpenSSL sia aggiornato eseguendo nell'istanza i comandi seguenti:
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo yum update
+user@my-instance:~$ sudo reboot</pre>
+        <p>
+         Per le istanze che utilizzano
+          Debian, puoi aggiornare OpenSSL eseguendo nell'istanza i comandi seguenti:
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo apt-get update
+user@my-instance:~$ sudo apt-get upgrade
+user@my-instance:~$ sudo reboot</pre>
+        <p>
+         Le istanze che utilizzano SUSE Linux non sono interessate.
+        </p>
+        <p>
+         <strong>
+          Aggiornamento del 14 aprile 2014:
+         </strong>
+         alla luce di un nuovo studio sull'estrazione delle chiavi mediante il bug Heartbleed, ai clienti di Compute Engine viene consigliato di creare nuove chiavi per tutti i servizi SSL interessati.
+        </p>
+       </td>
+       <td>
+        Media
+       </td>
+       <td>
+        <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0160" target="_blank">
+         CVE-2014-0160
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Data di pubblicazione: 07-06-2013" id="20130607">
+     Data di pubblicazione: 07-06-2013
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Descrizione
+       </th>
+       <th>
+        Gravità
+       </th>
+       <th>
+        Note
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Descrizione" id="descrizione_13">
+         Descrizione
+        </h4>
+        <p class="note">
+         <strong>
+          Nota:
+         </strong>
+         questa vulnerabilità riguarda solo i kernel, che sono stati resi obsoleti e sono stati rimossi a partire dalla versione v1 dell'API.
+        </p>
+        <p>
+         La vulnerabilità di stringa di formato nella funzione
+         <code>
+          b43_request_firmware
+         </code>
+         in
+         <code>
+          drivers/net/wireless/b43/main.c
+         </code>
+         nel driver wireless Broadcom B43 del kernel Linux fino alla versione 3.9.4 consente agli utenti locali di ottenere privilegi sfruttando l'accesso root e includendo specificatori di stringa di formato in un parametro modprobe
+         <code>
+          fwpostfix
+         </code>
+         , il che causa la generazione impropria di un messaggio di errore.
+        </p>
+        <h4 data-text="Impatto di Compute Engine" id="impatto-di-compute-engine_10">
+         Impatto di Compute Engine
+        </h4>
+        <p>
+         Questa vulnerabilità riguarda tutti i kernel Compute Engine precedenti alla versione
+         <code>
+          gcg-3.3.8-201305291443
+         </code>
+         . In risposta a questa vulnerabilità, Compute Engine ha reso obsoleti tutti i kernel precedenti e consiglia agli utenti di aggiornare le proprie istanze e immagini in modo da utilizzare il kernel
+         <code>
+          gce-v20130603
+         </code>
+         di Compute Engine.
+         <code>
+          gce-v20130603
+         </code>
+         contiene il kernel
+         <code>
+          gcg-3.3.8-201305291443
+         </code>
+         , al quale è applicata la patch per questa vulnerabilità.
+        </p>
+        <p>
+         Per sapere quale versione kernel è utilizzata dall'istanza:
+        </p>
+        <ol>
+         <li>
+          Utilizza SSH per accedere all'istanza
+         </li>
+         <li>
+          Esegui
+          <code>
+           uname -r
+          </code>
+         </li>
+        </ol>
+       </td>
+       <td>
+        Media
+       </td>
+       <td>
+        <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2852" target="_blank">
+         CVE-2013-2852
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Data di pubblicazione: 07-06-2013" id="20130607">
+     Data di pubblicazione: 07-06-2013
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Descrizione
+       </th>
+       <th>
+        Gravità
+       </th>
+       <th>
+        Note
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Descrizione" id="descrizione_14">
+         Descrizione
+        </h4>
+        <p class="note">
+         <strong>
+          Nota:
+         </strong>
+         questa vulnerabilità riguarda solo i kernel, che sono stati resi obsoleti e sono stati rimossi a partire dalla versione v1 dell'API.
+        </p>
+        <p>
+         La vulnerabilità di stringa di formato nella funzione register_disk in
+         <code>
+          block/genhd.c
+         </code>
+         del kernel Linux fino alla versione 3.9.4 consente agli utenti locali di ottenere privilegi sfruttando l'accesso root e scrivendo specificatori di stringa di formato in
+         <code>
+          /sys/module/md_mod/parameters/new_array
+         </code>
+         per creare un nome di dispositivo
+         <code>
+          /dev/md
+         </code>
+         generato appositamente.
+        </p>
+        <h4 data-text="Impatto di Compute Engine" id="impatto-di-compute-engine_11">
+         Impatto di Compute Engine
+        </h4>
+        <p>
+         Questa vulnerabilità riguarda tutti i kernel Compute Engine precedenti alla versione
+         <code>
+          gcg-3.3.8-201305291443
+         </code>
+         . In risposta a questa vulnerabilità, Compute Engine ha reso obsoleti tutti i kernel precedenti e consiglia agli utenti di aggiornare le proprie istanze e immagini in modo da utilizzare il kernel
+         <code>
+          gce-v20130603
+         </code>
+         di Compute Engine.
+         <code>
+          gce-v20130603
+         </code>
+         contiene il kernel
+         <code>
+          gcg-3.3.8-201305291443
+         </code>
+         , al quale è applicata la patch per questa vulnerabilità.
+        </p>
+        <p>
+         Per sapere quale versione kernel è utilizzata dall'istanza:
+        </p>
+        <ol>
+         <li>
+          Utilizza SSH per accedere all'istanza
+         </li>
+         <li>
+          Esegui
+          <code>
+           uname -r
+          </code>
+         </li>
+        </ol>
+       </td>
+       <td>
+        Media
+       </td>
+       <td>
+        <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2851" target="_blank">
+         CVE-2013-2851
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Data di pubblicazione: 14-05-2013" id="20130514">
+     Data di pubblicazione: 14-05-2013
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Descrizione
+       </th>
+       <th>
+        Gravità
+       </th>
+       <th>
+        Note
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Descrizione" id="descrizione_15">
+         Descrizione
+        </h4>
+        <p class="note">
+         <strong>
+          Nota:
+         </strong>
+         questa vulnerabilità riguarda solo i kernel, che sono stati resi obsoleti e sono stati rimossi a partire dalla versione v1 dell'API.
+        </p>
+        <p>
+         La funzione perf_swevent_init in
+         <code>
+          kernel/events/core.c
+         </code>
+         del kernel Linux prima della versione 3.8.9 utilizza un
+          tipo di dati
+         <code>
+          integer
+         </code>
+         errato, il che consente agli utenti locali di ottenere
+          privilegi mediante una chiamata di sistema
+         <code>
+          perf_event_open
+         </code>
+         creata appositamente.
+        </p>
+        <h4 data-text="Impatto di Compute Engine" id="impatto-di-compute-engine_12">
+         Impatto di Compute Engine
+        </h4>
+        <p>
+         Questa vulnerabilità riguarda tutti i kernel Compute Engine precedenti alla versione
+         <code>
+          gcg-3.3.8-201305211623
+         </code>
+         . In risposta a questa vulnerabilità, Compute Engine ha reso obsoleti tutti i kernel precedenti e consiglia agli utenti di aggiornare le proprie istanze e immagini in modo da utilizzare il kernel
+         <code>
+          gce-v20130521
+         </code>
+         di Compute Engine.
+         <code>
+          gce-v20130521
+         </code>
+         contiene il kernel
+         <code>
+          gcg-3.3.8-201305211623
+         </code>
+         , al quale è applicata la patch per questa vulnerabilità.
+        </p>
+        <p>
+         Per sapere quale versione kernel è utilizzata dall'istanza:
+        </p>
+        <ol>
+         <li>
+          Utilizza SSH per accedere all'istanza
+         </li>
+         <li>
+          Esegui
+          <code>
+           uname -r
+          </code>
+         </li>
+        </ol>
+       </td>
+       <td>
+        Alta
+       </td>
+       <td>
+        <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2094" target="_blank">
+         CVE-2013-2094
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Data di pubblicazione: 18-02-2013" id="20130218">
+     Data di pubblicazione: 18-02-2013
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Descrizione
+       </th>
+       <th>
+        Gravità
+       </th>
+       <th>
+        Note
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Descrizione" id="descrizione_16">
+         Descrizione
+        </h4>
+        <p class="note">
+         <strong>
+          Nota:
+         </strong>
+         questa vulnerabilità riguarda solo i kernel, che sono stati resi obsoleti e sono stati rimossi a partire dalla versione v1 dell'API.
+        </p>
+        <p>
+         La race condition nella funzionalità ptrace del kernel Linux prima della versione
+          3.7.5 consente agli utenti locali di ottenere privilegi mediante una chiamata di sistema
+         <code>
+          PTRACE_SETREGS
+          ptrace
+         </code>
+         in un'applicazione creata appositamente.
+        </p>
+        <h4 data-text="Impatto di Compute Engine" id="impatto-di-compute-engine_13">
+         Impatto di Compute Engine
+        </h4>
+        <p>
+         Questa vulnerabilità riguarda tutti i kernel Compute Engine
+         <code>
+          2.6.x-gcg-
+          <em>
+           &lt;date&gt;
+          </em>
+         </code>
+         . In risposta a questa vulnerabilità, Compute Engine ha reso obsoleti tutti i kernel 2.6.x e consiglia agli utenti di aggiornare le proprie istanze e immagini in modo da utilizzare il kernel
+         <code>
+          gce-v20130225
+         </code>
+         di Compute Engine.
+         <code>
+          gce-v20130225
+         </code>
+         contiene il kernel
+         <code>
+          3.3.8-gcg-201302081521
+         </code>
+         , al quale è applicata la patch per questa vulnerabilità.
+        </p>
+        <p>
+         Per sapere quale versione kernel è utilizzata dall'istanza:
+        </p>
+        <ol>
+         <li>
+          Utilizza SSH per accedere all'istanza
+         </li>
+         <li>
+          Esegui
+          <code>
+           uname -r
+          </code>
+         </li>
+        </ol>
+       </td>
+       <td>
+        Media
+       </td>
+       <td>
+        <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0871" target="_blank">
+         CVE-2013-0871
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+   </section>
+  </div>
+ </article>
+</article>
