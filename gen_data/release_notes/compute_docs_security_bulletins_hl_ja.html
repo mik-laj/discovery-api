@@ -1,0 +1,3871 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <h1 class="devsite-page-title">
+   セキュリティに関する情報
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <p>
+    Compute Engine に関連するセキュリティ情報は随時リリースされます。ここには、Compute Engine に関するすべてのセキュリティ情報が記載されています。
+   </p>
+   <p>
+    <a href="https://cloud.google.com/feeds/compute-engine-security-bulletins.xml?hl=ja" track-metadata-position="introParagraph" track-name="xmlFeed" track-type="securityBulletins">
+     Compute Engine のセキュリティ情報に登録する。
+     <img alt="登録" src="https://cloud.google.com/images/feed-icon.png?hl=ja"/>
+    </a>
+   </p>
+   <section class="bulletins">
+    <h2 data-text="公開日: 2019 年 6 月 18 日" id="20190618">
+     公開日: 2019 年 6 月 18 日
+    </h2>
+    <p>
+     <strong>
+      最終更新日時: 2019 年 6 月 25 日 6:30（太平洋標準時間）
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="説明" id="heading">
+         説明
+        </h4>
+        <p>
+         先ごろ Netflix は、Linux カーネルにおける 3 件の TCP の脆弱性を公表しました。
+        </p>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11477" target="_blank">
+           CVE-2019-11477
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11478" target="_blank">
+           CVE-2019-11478
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11479" target="_blank">
+           CVE-2019-11479
+          </a>
+         </li>
+        </ul>
+        <p>
+         これらの CVE は
+         <a class="external" href="https://github.com/Netflix/security-bulletins/blob/master/advisories/third-party/2019-001.md" target="_blank">
+          NFLX-2019-001
+         </a>
+         と総称されます。
+        </p>
+        <h4 data-text="Compute Engine への影響" id="20190618_impact">
+         Compute Engine への影響
+        </h4>
+        <p>
+         Compute Engine をホストするインフラストラクチャは、この脆弱性から保護されています。
+        </p>
+        <p>
+         Compute Engine VM が、パッチを適用していない Linux オペレーティング システムを実行しており、信頼されていないネットワーク トラフィックを送受信する場合は、この DoS 攻撃に対する脆弱性が存在します。お使いのオペレーティング システム用のパッチが利用可能になったら、すぐに VM インスタンスを更新してください。
+        </p>
+        <p>
+         TCP 接続を終端するロードバランサには、この脆弱性に対するパッチが適用されています。信頼されていないトラフィックでも、このようなロードバランサ経由でのみ受信する Compute Engine インスタンスは脆弱ではありません。そのようなインスタンスとしては、HTTP ロードバランサ、SSL プロキシ ロードバランサ、TCP プロキシ ロードバランサなどが挙げられます。
+        </p>
+        <p>
+         ネットワーク ロードバランサと内部ロードバランサでは、TCP 接続を終端しません。パッチを適用していない Compute Engine インスタンスのうち、これらのロードバランサ経由で信頼されていないトラフィックを受信するインスタンスは脆弱です。
+        </p>
+        <h4 data-text="パッチ適用済みイメージとベンダーのリソース" id="heading_1">
+         パッチ適用済みイメージとベンダーのリソース
+        </h4>
+        <p>
+         各オペレーティング システム ベンダーからパッチが入手可能になると、ここにパッチ情報へのリンクが表示されます。これには各 CVE に関するステータスが含まれます。これらの公開イメージの旧バージョンにはこうしたパッチが含まれないため、攻撃される可能性を軽減できません。
+        </p>
+        <ul>
+         <li>
+          プロジェクト
+          <code>
+           debian-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             debian-9-stretch-v20190618
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           centos-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             centos-6-v20190619
+            </code>
+           </li>
+           <li>
+            <code>
+             centos-7-v20190619
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           cos-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             cos-dev-77-12293-0-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-beta-76-12239-21-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-stable-75-12105-77-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-73-11647-217-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-69-10895-277-0
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           coreos-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             coreos-alpha-2163-2-1-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-beta-2135-3-1-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-stable-2079-6-0-v20190617
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           rhel-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             rhel-6-v20190618
+            </code>
+           </li>
+           <li>
+            <code>
+             rhel-7-v20190618
+            </code>
+           </li>
+           <li>
+            <code>
+             rhel-8-v20190618
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           rhel-sap-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             rhel-7-4-sap-v20190618
+            </code>
+           </li>
+           <li>
+            <code>
+             rhel-7-6-sap-v20190618
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           suse-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             sles-12-sp4-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-15-v20190617
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           suse-sap-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             sles-12-sp1-sap-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp2-sap-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp3-sap-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp4-sap-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-15-sap-v20190617
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           ubuntu-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             ubuntu-1604-xenial-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1804-bionic-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1810-cosmic-v20190618
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1904-disco-v20190619
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1604-xenial-v20190618
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1804-bionic-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1810-cosmic-v20190618
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1904-disco-v20190618
+            </code>
+           </li>
+          </ul>
+         </li>
+        </ul>
+       </td>
+       <td>
+        中
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11477" target="_blank">
+           CVE-2019-11477
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11478" target="_blank">
+           CVE-2019-11478
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11479" target="_blank">
+           CVE-2019-11479
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="公開日: 2019 年 5 月 14 日" id="20190514">
+     公開日: 2019 年 5 月 14 日
+    </h2>
+    <p>
+     <strong>
+      最終更新日時: 2019 年 5 月 20 日 17:00（太平洋標準時間）
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="説明" id="heading_2">
+         説明
+        </h4>
+        <p>
+         次の CVE が Intel により開示されました。
+        </p>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12126" target="_blank">
+           CVE-2018-12126
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12127" target="_blank">
+           CVE-2018-12127
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12130" target="_blank">
+           CVE-2018-12130
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11091" target="_blank">
+           CVE-2019-11091
+          </a>
+         </li>
+        </ul>
+        <p>
+         これらの CVE は Microarchitectural Data Sampling（MDS）と総称されます。これらの脆弱性により、マイクロアーキテクチャ状態での投機的実行の操作を通じてデータが公開されてしまう可能性があります。
+        </p>
+        <h4 data-text="Compute Engine への影響" id="20190514_impact">
+         Compute Engine への影響
+        </h4>
+        <p>
+         <strong>
+          Compute Engine を実行するホスト インフラストラクチャは、お客様のワークロードを相互に分離します。信頼できないコードを VM 内で実行していない限り、以後の対応は特に必要ありません。
+         </strong>
+        </p>
+        <p>
+         Compute Engine 仮想マシン内の独自のマルチテナント サービスで信頼できないコードを実行しているお客様は、お使いのゲスト OS ベンダーが提示する緩和策（Intel が提供するマイクロコード緩和機能の使用を含む）を参照してください。Google では、新しいフラッシュ機能に対するゲストのパススルー アクセスをデプロイ済みです。次に示すのは、一般的なゲストイメージで実施できる緩和策の手順の概要です。
+        </p>
+        <h4 data-text="パッチ適用済みイメージとベンダーのリソース" id="heading_3">
+         パッチ適用済みイメージとベンダーのリソース
+        </h4>
+        <p>
+         各オペレーティング システム ベンダーからパッチが入手可能になると、ここにパッチ情報へのリンクが表示されます。これには各 CVE に関するステータスが含まれます。これらのイメージを使用して、VM インスタンスを作成してください。これらの公開イメージの旧バージョンにはこうしたパッチが含まれないため、攻撃される可能性を軽減できません。
+        </p>
+        <ul>
+         <li>
+          プロジェクト
+          <code>
+           centos-cloud
+          </code>
+          :
+          <a class="external" href="https://lists.centos.org/pipermail/centos-announce/2019-May/023309.html" target="_blank">
+           CESA-2019:1169
+          </a>
+          、
+          <a class="external" href="https://lists.centos.org/pipermail/centos-announce/2019-May/023314.html" target="_blank">
+           CESA-2019:1168
+          </a>
+         </li>
+         <ul>
+          <li>
+           <code>
+            centos-6-v20190515
+           </code>
+          </li>
+          <li>
+           <code>
+            centos-7-v20190515
+           </code>
+          </li>
+         </ul>
+         <li>
+          プロジェクト
+          <code>
+           coreos-cloud
+          </code>
+          :
+          <a class="external" href="https://coreos.com/os/docs/latest/disabling-smt.html" target="_blank">
+           CoreOS Container Linux に対応した MDS 緩和策
+          </a>
+         </li>
+         <ul>
+          <li>
+           <code>
+            coreos-stable-2079-4-0-v20190515
+           </code>
+          </li>
+          <li>
+           <code>
+            coreos-beta-2107-3-0-v20190515
+           </code>
+          </li>
+          <li>
+           <code>
+            coreos-alpha-2135-1-0-v20190515
+           </code>
+          </li>
+         </ul>
+         <li>
+          プロジェクト
+          <code>
+           cos-cloud
+          </code>
+         </li>
+         <ul>
+          <li>
+           <code>
+            cos-69-10895-242-0
+           </code>
+          </li>
+          <li>
+           <code>
+            cos-73-11647-182-0
+           </code>
+          </li>
+         </ul>
+         <li>
+          プロジェクト
+          <code>
+           debian-cloud
+          </code>
+          :
+          <a class="external" href="https://www.debian.org/security/2019/dsa-4444" target="_blank">
+           DSA-4444
+          </a>
+         </li>
+         <ul>
+          <li>
+           <code>
+            debian-9-stretch-v20190514
+           </code>
+          </li>
+         </ul>
+         <li>
+          プロジェクト
+          <code>
+           rhel-cloud
+          </code>
+          :
+          <a class="external" href="https://access.redhat.com/security/vulnerabilities/mds" target="_blank">
+           Red Hat MDS ナレッジ記事
+          </a>
+         </li>
+         <ul>
+          <li>
+           <code>
+            rhel-6-v20190515
+           </code>
+          </li>
+          <li>
+           <code>
+            rhel-7-v20190517
+           </code>
+          </li>
+          <li>
+           <code>
+            rhel-8-v20190515
+           </code>
+          </li>
+         </ul>
+         <li>
+          プロジェクト
+          <code>
+           rhel-sap-cloud
+          </code>
+          :
+          <a class="external" href="https://access.redhat.com/security/vulnerabilities/mds" target="_blank">
+           Red Hat MDS ナレッジ記事
+          </a>
+         </li>
+         <ul>
+          <li>
+           <code>
+            rhel-7-4-sap-v20190515
+           </code>
+          </li>
+          <li>
+           <code>
+            rhel-7-6-sap-v20190517
+           </code>
+          </li>
+         </ul>
+         <li>
+          プロジェクト
+          <code>
+           suse-cloud
+          </code>
+          :
+          <a class="external" href="https://www.suse.com/support/kb/doc/?id=7023736" target="_blank">
+           SUSE MDS KB
+          </a>
+         </li>
+         <ul>
+          <li>
+           <code>
+            sles-12-sp4-v20190520
+           </code>
+          </li>
+          <li>
+           <code>
+            sles-15-v20190520
+           </code>
+          </li>
+         </ul>
+         <li>
+          プロジェクト
+          <code>
+           suse-sap-cloud
+          </code>
+         </li>
+         <ul>
+          <li>
+           <code>
+            sles-12-sp4-sap-v20190520
+           </code>
+          </li>
+          <li>
+           <code>
+            sles-15-sap-v20190520
+           </code>
+          </li>
+         </ul>
+         <li>
+          プロジェクト
+          <code>
+           ubuntu-os-cloud
+          </code>
+          :
+          <a class="external" href="https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/MDS" target="_blank">
+           Ubuntu MDS Wiki
+          </a>
+         </li>
+         <ul>
+          <li>
+           <code>
+            ubuntu-1404-trusty-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-1604-xenial-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-1804-bionic-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-1810-cosmic-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-1904-disco-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-minimal-1604-xenial-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-minimal-1804-bionic-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-minimal-1810-cosmic-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-minimal-1904-disco-v20190514
+           </code>
+          </li>
+         </ul>
+         <li>
+          プロジェクト
+          <code>
+           windows-cloud
+          </code>
+          および
+          <code>
+           windows-sql-cloud
+          </code>
+          :
+          <a class="external" href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013" target="_blank">
+           Microsoft ADV190013
+          </a>
+         </li>
+         <ul>
+          <li>
+           バージョン番号
+           <code>
+            v20190514
+           </code>
+           を持つすべての Windows Server および SQL Server の公開イメージ。
+          </li>
+         </ul>
+         <li>
+          プロジェクト
+          <code>
+           gce-uefi-images
+          </code>
+         </li>
+         <ul>
+          <li>
+           <code>
+            centos-7-v20190515
+           </code>
+          </li>
+          <li>
+           <code>
+            cos-69-10895-242-0
+           </code>
+          </li>
+          <li>
+           <code>
+            cos-73-11647-182-0
+           </code>
+          </li>
+          <li>
+           <code>
+            rhel-7-v20190517
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-1804-bionic-v20190514
+           </code>
+          </li>
+          <li>
+           バージョン番号
+           <code>
+            v20190514
+           </code>
+           を持つすべての Windows Server 公開イメージ。
+          </li>
+         </ul>
+        </ul>
+        <h4 data-text="Container-Optimized OS" id="container-optimized-os">
+         Container-Optimized OS
+        </h4>
+        <p>
+         ゲスト OS として Container Optimized OS（COS）を使用し、仮想マシン内で信頼できないマルチテナント ワークロードを実行している場合は、次の手順を行うことをおすすめします。
+        </p>
+        <ol>
+         <li>
+          カーネル コマンドラインで
+          <code>
+           nosmt
+          </code>
+          を設定して、ハイパースレッディングを無効にします。
+          <br/>
+          <p>
+           既存の COS VM については、次のように
+           <code>
+            grub.cfg
+           </code>
+           を修正することで
+           <code>
+            nosmt
+           </code>
+           オプションを設定できます。設定したら、システムを再起動します。
+          </p>
+          <pre>
+
+# Run as root:
+dir="$(mktemp -d)"
+mount /dev/sda12 "${dir}"
+sed -i -e "s|cros_efi|cros_efi nosmt|g" "${dir}/efi/boot/grub.cfg"
+umount "${dir}"
+rmdir "${dir}"
+
+reboot</pre>
+          <p>
+           便宜上、以下のスクリプトを実行して、上記のコマンドを実行した場合と同じ結果を得ることができます。このスクリプトは、cloud-config の一部とするか、起動スクリプトまたはインスタンス テンプレートとして作成し、新しい VM では必ず新しいパラメータが使用されるようにします。このスクリプトを実行する cloud-config の例は、以下に示すとおりです。
+          </p>
+          <p class="warning">
+           <strong>
+            警告:
+           </strong>
+           このコマンドの初回実行時は、インスタンスが直ちに再起動されます。その後、ハイパースレッディングが無効になっているインスタンスで実行しても、何も起こりません。
+          </p>
+          <pre>
+
+# Run as root
+/bin/bash &lt;(curl -s https://storage.googleapis.com/cos-tools/scripts/disable_smt.sh)
+</pre>
+          <p>
+           このスクリプトを cloud-config の一部として含めるには:
+          </p>
+          <pre>
+
+#cloud-config
+
+bootcmd:
+- /bin/bash -c "/bin/bash &lt;(curl -s https://storage.googleapis.com/cos-tools/scripts/disable_smt.sh)"
+</pre>
+          <p>
+           インスタンスでハイパースレッディングが無効になっているか確認するには、
+           <code>
+            /sys/devices/system/cpu/smt/active
+           </code>
+           ファイルおよび
+           <code>
+            /sys/devices/system/cpu/smt/control
+           </code>
+           ファイルの出力を確認します。
+           <code>
+            active
+           </code>
+           に対して
+           <code>
+            0
+           </code>
+           、
+           <code>
+            control
+           </code>
+           に対して
+           <code>
+            off
+           </code>
+           が返されている場合、ハイパースレッディングは無効になっています。
+          </p>
+          <pre>
+
+cat /sys/devices/system/cpu/smt/active
+cat /sys/devices/system/cpu/smt/control
+</pre>
+          <p class="note">
+           <strong>
+            注:
+           </strong>
+           インスタンスで UEFI セキュアブートを有効にしている場合は、UEFI セキュアブートを無効にした状態でインスタンスを再作成し、UEFI セキュアブートを無効にした状態で上記のコマンドを実行してから、新しいインスタンスで UEFI セキュアブートを有効にする必要があります。
+          </p>
+         </li>
+         <li>
+          新しいバージョンの COS イメージを使用します。
+          <br/>
+          <p>
+           上記のようにハイパースレッディングを無効にすることに加え、上述の更新済みイメージか、さらに新しいバージョン（使用できる場合）の Container-Optimized OS イメージを使用して
+           <a href="https://cloud.google.com/compute/docs/instances/create-start-instance?hl=ja#publicimage">
+            インスタンスを再作成
+           </a>
+           し、脆弱性から完全に保護する必要があります。
+          </p>
+         </li>
+        </ol>
+       </td>
+       <td>
+        中
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12126" target="_blank">
+           CVE-2018-12126
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12127" target="_blank">
+           CVE-2018-12127
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12130" target="_blank">
+           CVE-2018-12130
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11091" target="_blank">
+           CVE-2018-11091
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="公開日: 2018 年 8 月 14 日" id="20180814">
+     公開日: 2018 年 8 月 14 日
+    </h2>
+    <p>
+     <strong>
+      最終更新日時: 2018 年 8 月 20 日 17:00（太平洋標準時間）
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="説明" id="20180814_description">
+         説明
+        </h4>
+        <p>
+         次の CVE が
+         <a href="https://www.intel.com/content/www/us/en/architecture-and-technology/l1tf.html">
+          Intel により開示されました
+         </a>
+         。
+        </p>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3615" target="_blank">
+           CVE-2018-3615
+          </a>
+          （
+          <a href="https://en.wikipedia.org/wiki/Software_Guard_Extensions">
+           SGX
+          </a>
+          関連）
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3620" target="_blank">
+           CVE-2018-3620
+          </a>
+          （オペレーティング システムと
+          <a href="https://en.wikipedia.org/wiki/Hyper-Threading">
+           SMT
+          </a>
+          関連）
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3646" target="_blank">
+           CVE-2018-3646
+          </a>
+          （仮想化関連）
+         </li>
+        </ul>
+        <p>
+         これらの CVE は「L1 Terminal Fault（L1TF）」と総称されます。
+        </p>
+        <p>
+         これらの L1TF 脆弱性は、投機的実行を悪用してプロセッサ レベルのデータ構造の構成を攻撃します。「L1」とは、レベル 1 データ キャッシュ（L1D）と呼ばれるコア内の小さなリソースで、メモリアクセスを高速化するために使用されます。
+        </p>
+        <p>
+         これらの脆弱性と Compute Engine の緩和策の詳細については、
+         <a href="https://cloud.google.com/blog/products/gcp/protecting-against-the-new-l1tf-speculative-vulnerabilities?hl=ja">
+          Google クラウドのブログ投稿
+         </a>
+         をご覧ください。
+        </p>
+        <h4 data-text="Compute Engine への影響" id="20180814_impact">
+         Compute Engine への影響
+        </h4>
+        <p>
+         Compute Engine を実行しお客様のワークロードを相互に分離するホスト インフラストラクチャは、既知の攻撃から保護されています。
+        </p>
+        <p>
+         Compute Engine をご利用のお客様は、ゲスト環境内で間接的に悪用される可能性を防ぐために、イメージを更新することをおすすめします。これは、Compute Engine 仮想マシンで独自のマルチテナント サービスを実行している場合には特に重要です。
+        </p>
+        <p>
+         Google Compute Engine をお使いのお客様がご自分のインスタンスでゲスト オペレーティング システムを更新する場合は、次のいずれかの方法をお使いください。
+        </p>
+        <ul>
+         <li>
+          パッチ適用済みの公開イメージを使用して、
+          <a href="https://cloud.google.com/compute/docs/instances/create-start-instance?hl=ja#publicimage">
+           既存の VM インスタンスを再作成する
+          </a>
+          。
+         </li>
+         <li>
+          オペレーティング システム ベンダーからパッチを入手して既存のインスタンスにインストールし、パッチ適用済みのインスタンスを再起動する。
+         </li>
+        </ul>
+        <h4 data-text="パッチ適用済みイメージとベンダーのリソース" id="20180814_patched_images">
+         パッチ適用済みイメージとベンダーのリソース
+        </h4>
+        <p>
+         各オペレーティング システム ベンダーからパッチが入手可能になると、ここにパッチ情報へのリンクが表示されます。これには各 CVE に関するステータスが含まれます。これらのイメージを使用して、VM インスタンスを作成してください。これらの公開イメージの旧バージョンにはこうしたパッチが含まれないため、攻撃される可能性を軽減できません。
+        </p>
+        <ul>
+         <li>
+          プロジェクト
+          <code>
+           centos-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             centos-7-v20180815
+            </code>
+           </li>
+           <li>
+            <code>
+             centos-6-v20180815
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           coreos-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             coreos-stable-1800-7-0-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-beta-1855-2-0-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-alpha-1871-0-0-v20180816
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           cos-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             cos-stable-66-10452-110-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-stable-67-10575-66-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-beta-68-10718-81-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-dev-69-10895-23-0
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           debian-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             debian-9-stretch-v20180820
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           rhel-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             rhel-7-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             rhel-6-v20180814
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           rhel-sap-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             rhel-7-sap-apps-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             rhel-7-sap-hana-v20180814
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           suse-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             sles-15-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp3-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-11-sp4-v20180816
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           suse-sap-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             sles-15-sap-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp3-sap-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp2-sap-v20180816
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           ubuntu-os-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            <code>
+             ubuntu-1804-bionic-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1604-xenial-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1404-trusty-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1804-bionic-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1604-xenial-v20180814
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           windows-cloud
+          </code>
+          <code>
+           gce-uefi-images
+          </code>
+          および
+          <code>
+           windows-sql-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            バージョン番号
+            <code>
+             -v201800814
+            </code>
+            以降のすべての Windows Server と SQL Server の
+            <a class="external" href="https://cloud.google.com/compute/docs/images?hl=ja#os-compute-support" target="_blank">
+             公開イメージ
+            </a>
+            にパッチが含まれています。
+           </li>
+          </ul>
+         </li>
+        </ul>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3615" target="_blank">
+           CVE-2018-3615
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3620" target="_blank">
+           CVE-2018-3620
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3646" target="_blank">
+           CVE-2018-3646
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="公開日: 2018 年 8 月 6 日" id="20180806">
+     公開日: 2018 年 8 月 6 日
+    </h2>
+    <p>
+     <strong>
+      最終更新日時: 2018 年 9 月 5 日 17:00（太平洋標準時間）
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="2018 年 9 月 5 日更新" id="20180905_update">
+         2018 年 9 月 5 日更新
+        </h4>
+        <p>
+         <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5391">
+          CVE-2018-5391
+         </a>
+         は US-CERT によって 2018 年 8 月 14 日に開示されました。
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390" target="_blank">
+          CVE-2018-5390
+         </a>
+         と同様に、これはカーネルレベルのネットワーク脆弱性で、脆弱性のあるシステムがサービス拒否（DoS）攻撃を受ける可能性が高まります。主な違いは、CVE-2018-5391 は IP 接続上で悪用されることです。両方の脆弱性が対象となるように、この情報を更新しました。
+        </p>
+        <h4 data-text="説明" id="20180806_description">
+         説明
+        </h4>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390" target="_blank">
+          CVE-2018-5390
+         </a>
+         （「SegmentSmack」）はカーネルレベルのネットワーク脆弱性で、脆弱性のあるシステムが TCP 接続でサービス拒否（DoS）攻撃を受ける可能性が高まります。
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5391" target="_blank">
+          CVE-2018-5391
+         </a>
+         （「FragmentSmack」）はカーネルレベルのネットワーク脆弱性で、脆弱性のあるシステムが IP 接続でサービス拒否（DoS）攻撃を受ける可能性が高まります。
+        </p>
+        <h4 data-text="Compute Engine への影響" id="20180806_impact">
+         Compute Engine への影響
+        </h4>
+        <p>
+         Compute Engine VM を実行するホスト インフラストラクチャには影響はありません。Compute Engine VM との間のトラフィックを処理するネットワーク インフラストラクチャは、この脆弱性から保護されています。信頼されていないネットワーク トラフィックでも、Compute Engine VM が
+         <a href="https://cloud.google.com/load-balancing/docs/https/?hl=ja">
+          HTTP(S)
+         </a>
+         、
+         <a href="https://cloud.google.com/load-balancing/docs/ssl/?hl=ja">
+          SSL
+         </a>
+         、
+         <a href="https://cloud.google.com/load-balancing/docs/tcp/?hl=ja">
+          TCP ロードバランサ
+         </a>
+         経由でのみ送受信する場合は、この脆弱性から保護されています。
+        </p>
+        <p>
+         Compute Engine VM が、パッチを適用していないオペレーティング システムを実行しており、信頼されていないネットワーク トラフィックを直接または
+         <a href="https://cloud.google.com/load-balancing/docs/network/?hl=ja">
+          ネットワーク ロードバランサ
+         </a>
+         経由で送受信する場合は、この DoS 攻撃に対する脆弱性が存在します。
+        </p>
+        <p>
+         お使いのオペレーティング システム用のパッチが利用可能になったら、すぐに VM インスタンスを更新してください。
+        </p>
+        <p>
+         Compute Engine をお使いのお客様は、次のいずれかのオプションを使用して、インスタンスのゲスト オペレーティング システムを更新できます。
+        </p>
+        <ul>
+         <li>
+          パッチ適用済みの公開イメージを使用して、
+          <a href="https://cloud.google.com/compute/docs/instances/create-start-instance?hl=ja#publicimage">
+           既存の VM インスタンスを再作成する
+          </a>
+          。パッチ適用済みの公開イメージは下のリストでご確認ください。
+         </li>
+         <li>
+          オペレーティング システム ベンダーからパッチを入手して既存のインスタンスにインストールし、パッチ適用済みのインスタンスを再起動する。
+         </li>
+        </ul>
+        <h4 data-text="パッチ適用済みイメージとベンダーのリソース" id="20180806_patched_images">
+         パッチ適用済みイメージとベンダーのリソース
+        </h4>
+        <p>
+         各オペレーティング システム ベンダーからパッチが入手可能になると、ここにパッチ情報へのリンクが表示されます。
+        </p>
+        <ul>
+         <li>
+          プロジェクト
+          <code>
+           centos-cloud
+          </code>
+          （CVE-2018-5390 のみ）:
+          <ul>
+           <li>
+            <code>
+             centos-7-v20180815
+            </code>
+           </li>
+           <li>
+            <code>
+             centos-6-v20180815
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           coreos-cloud
+          </code>
+          （CVE-2018-5390 と CVE-2018-5391）:
+          <ul>
+           <li>
+            <code>
+             coreos-stable-1800-7-0-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-beta-1855-2-0-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-alpha-1871-0-0-v20180816
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           cos-cloud
+          </code>
+          （CVE-2018-5390 と CVE-2018-5391）:
+          <ul>
+           <li>
+            <code>
+             cos-stable-65-10323-98-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-stable-66-10452-109-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-stable-67-10575-65-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-beta-68-10718-76-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-dev-69-10895-16-0
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           debian-cloud
+          </code>
+          （CVE-2018-5390 と CVE-2018-5391）:
+          <ul>
+           <li>
+            <code>
+             debian-9-stretch-v20180814
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           rhel-cloud
+          </code>
+          （CVE-2018-5390 のみ）:
+          <ul>
+           <li>
+            <code>
+             rhel-7-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             rhel-6-v20180814
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           suse-cloud
+          </code>
+          （CVE-2018-5390 と CVE-2018-5391）:
+          <ul>
+           <li>
+            <code>
+             sles-15-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp3-v20180814
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           suse-sap-cloud
+          </code>
+          （CVE-2018-5390 と CVE-2018-5391）:
+          <ul>
+           <li>
+            <code>
+             sles-15-sap-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp3-sap-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp2-sap-v20180816
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           ubuntu-os-cloud
+          </code>
+          （CVE-2018-5390 と CVE-2018-5391）:
+          <ul>
+           <li>
+            <code>
+             ubuntu-1804-bionic-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1604-xenial-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1404-trusty-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1804-bionic-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1604-xenial-v20180814
+            </code>
+           </li>
+          </ul>
+         </li>
+        </ul>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390" target="_blank">
+           CVE-2018-5390
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5391" target="_blank">
+           CVE-2018-5391
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="公開日: 2018 年 1 月 3 日" id="20180103">
+     公開日: 2018 年 1 月 3 日
+    </h2>
+    <p>
+     <strong>
+      最終更新日時: 2018 年 5 月 21 日 15:00（太平洋標準時間）
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="2018 年 5 月 21 日更新" id="20180521_update">
+         2018 年 5 月 21 日更新
+        </h4>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3640" target="_blank">
+          CVE-2018-3640
+         </a>
+         と
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3639" target="_blank">
+          CVE-2018-3639
+         </a>
+         （それぞれバリアント 3a と 4）は、
+         <a class="external" href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00115.html" target="_blank">
+          Intel によって開示
+         </a>
+         されました。Spectre と Meltdown の最初の 3 つのバリアントと同様に、Compute Engine VM インスタンスを実行するインフラストラクチャは保護されており、お客様の VM インスタンスは相互に分離されて保護されています。さらに、Compute Engine では、Intel のマイクロコード パッチをインフラストラクチャにデプロイする予定であり、これにより、単一の VM インスタンス内で信頼できないワークロードまたはマルチテナント ワークロードを実行するお客様は、オペレーティング システムのベンダーやプロバイダによって提供される VM 内追加対策を有効にできます。マイクロコード パッチは、Intel によって認定され、Compute Engine で本番環境に対してテストおよび認定された後、Compute Engine にデプロイされます。パッチが使用可能になった際には、このページでより詳細なタイムラインと更新情報が提供されます。
+        </p>
+        <h4 data-text="説明" id="20180103_description">
+         説明
+        </h4>
+        <p>
+         これらの CVE は、多くのプロセッサに搭載されている投機的実行テクノロジーを悪用する新しいクラスの攻撃のバリアントです。このクラスの攻撃を受けると、さまざまな状況下でメモリデータへの不正な読み取り専用アクセスが可能になるおそれがあります。
+        </p>
+        <p>
+         Compute Engine では、VM Live Migration テクノロジーを使用してホストシステムとハイパーバイザを更新しました。これによるユーザーへの影響はなく、メンテナンスの時間枠を確保する必要も、大量の再起動も必要ありませんでした。ただし、この新しいクラスの攻撃からシステムを保護するには、その実行場所に関係なく、すべてのゲスト オペレーティング システムとバージョンにパッチを適用する必要があります。
+        </p>
+        <p>
+         この攻撃の手法に関する詳しい技術情報については、
+         <a class="external" href="https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html" target="_blank">
+          Project Zero のブログ記事
+         </a>
+         をご覧ください。Google が実施している対策の詳しい内容とすべてのサービス固有の情報は、
+         <a class="external" href="https://security.googleblog.com/2018/01/todays-cpu-vulnerability-what-you-need.html" target="_blank">
+          Google のセキュリティ ブログの記事
+         </a>
+         にまとめられています。
+        </p>
+        <h4 data-text="Compute Engine への影響" id="20180103_impact">
+         Compute Engine への影響
+        </h4>
+        <p>
+         Compute Engine を実行しお客様の VM インスタンスを相互に分離するインフラストラクチャは、既知の攻撃から保護されています。Google は、VM インスタンス内で実行されているアプリケーションから Google のホストシステムへの不正アクセスを防止する対策を講じました。この対策により、同じホストシステム上で実行されている VM インスタンス間の不正アクセスも防止されます。
+        </p>
+        <p>
+         仮想マシン インスタンス内での不正アクセスを防止するには、次のいずれかの方法で VM インスタンスのゲスト オペレーティング システムを更新する必要があります。
+        </p>
+        <ul>
+         <li>
+          パッチ適用済みの公開イメージを使用して、
+          <a class="external" href="https://cloud.google.com/compute/docs/instances/create-start-instance?hl=ja#publicimage" target="_blank">
+           既存の VM インスタンスを再作成する
+          </a>
+          。パッチ適用済みの公開イメージは下のリストでご確認ください。
+         </li>
+         <li>
+          使用しているディストリビューションのパッチをオペレーティング システム ベンダーから入手して既存のインスタンスにインストールし、パッチ適用済みのインスタンスを再起動する。各オペレーティング システム ベンダーのパッチに関する情報は、下のリンクからご覧ください。
+         </li>
+        </ul>
+        <h4 data-text="パッチ適用済みイメージとベンダーのリソース" id="20180103_patched_images">
+         パッチ適用済みイメージとベンダーのリソース
+        </h4>
+        <p class="note">
+         <strong>
+          注:
+         </strong>
+         パッチ適用済みであっても、このセキュリティ情報に記載されているすべての CVE の修正が含まれていない場合があります。また、この種の攻撃への防御策として、イメージごとに異なる手法が使用されている場合があります。パッチが対応している CVE と使用されている防御策については、オペレーティング システムのベンダーに問い合わせて確認してください。
+        </p>
+        <ul>
+         <li>
+          プロジェクト
+          <code>
+           cos-cloud
+          </code>
+          : バリアント 2（
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5715" target="_blank">
+           CVE-2017-5715
+          </a>
+          ）とバリアント 3（
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5754" target="_blank">
+           CVE-2017-5754
+          </a>
+          ）の攻撃を防止するパッチが含まれています。これらのイメージでは、バリアント 2 の攻撃対策として
+          <a class="external" href="https://support.google.com/faqs/answer/7625886?hl=ja" target="_blank">
+           Retpoline
+          </a>
+          が使用されています。
+          <ul>
+           <li>
+            <code>
+             cos-stable-63-10032-71-0
+            </code>
+            またはイメージ ファミリー
+            <code>
+             cos-stable
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           centos-cloud
+          </code>
+          :
+          <a class="external" href="https://lwn.net/Alerts/CentOS/" target="_blank">
+           CentOS のパッチ情報
+          </a>
+          <ul>
+           <li>
+            <code>
+             centos-7-v20180104
+            </code>
+            またはイメージ ファミリー
+            <code>
+             centos-7
+            </code>
+           </li>
+           <li>
+            <code>
+             centos-6-v20180104
+            </code>
+            またはイメージ ファミリー
+            <code>
+             centos-6
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           coreos-cloud
+          </code>
+          :
+          <a class="external" href="https://coreos.com/blog/container-linux-meltdown-patch" target="_blank">
+           CoreOS のパッチ情報
+          </a>
+          <ul>
+           <li>
+            <code>
+             coreos-stable-1576-5-0-v20180105
+            </code>
+            またはイメージ ファミリー
+            <code>
+             coreos-stable
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-beta-1632-1-0-v20180105
+            </code>
+            またはイメージ ファミリー
+            <code>
+             coreos-beta
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-alpha-1649-0-0-v20180105
+            </code>
+            またはイメージ ファミリー
+            <code>
+             coreos-alpha
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           debian-cloud
+          </code>
+          :
+          <a class="external" href="https://www.debian.org/security/#DSAS" target="_blank">
+           Debian のパッチ情報
+          </a>
+          <ul>
+           <li>
+            <code>
+             debian-9-stretch-v20180105
+            </code>
+            またはイメージ ファミリー
+            <code>
+             debian-9
+            </code>
+           </li>
+           <li>
+            <code>
+             debian-8-jessie-v20180109
+            </code>
+            またはイメージ ファミリー
+            <code>
+             debian-8
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           rhel-cloud
+          </code>
+          :
+          <a class="external" href="https://access.redhat.com/security/vulnerabilities/speculativeexecution" target="_blank">
+           RHEL のパッチ情報
+          </a>
+          <ul>
+           <li>
+            <code>
+             rhel-7-v20180104
+            </code>
+            またはイメージ ファミリー
+            <code>
+             rhel-7
+            </code>
+           </li>
+           <li>
+            <code>
+             rhel-6-v20180104
+            </code>
+            またはイメージ ファミリー
+            <code>
+             rhel-6
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           suse-cloud
+          </code>
+          :
+          <a class="external" href="https://www.suse.com/c/suse-addresses-meltdown-spectre-vulnerabilities/" target="_blank">
+           SUSE のパッチ情報
+          </a>
+          <ul>
+           <li>
+            <code>
+             sles-12-sp3-v20180104
+            </code>
+            またはイメージ ファミリー
+            <code>
+             sles-12
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-11-sp4-v20180104
+            </code>
+            またはイメージ ファミリー
+            <code>
+             sles-11
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           suse-sap-cloud
+          </code>
+          :
+          <a class="external" href="https://www.suse.com/c/suse-addresses-meltdown-spectre-vulnerabilities/" target="_blank">
+           SUSE のパッチ情報
+          </a>
+          <ul>
+           <li>
+            <code>
+             sles-12-sp3-sap-v20180104
+            </code>
+            またはイメージ ファミリー
+            <code>
+             sles-12-sp3-sap
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp2-sap-v20180104
+            </code>
+            またはイメージ ファミリー
+            <code>
+             sles-12-sp2-sap
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           ubuntu-os-cloud
+          </code>
+          :
+          <a class="external" href="https://insights.ubuntu.com/2018/01/04/ubuntu-updates-for-the-meltdown-spectre-vulnerabilities/" target="_blank">
+           Ubuntu のパッチ情報
+          </a>
+          <ul>
+           <li>
+            <code>
+             ubuntu-1710-artful-v20180109
+            </code>
+            またはイメージ ファミリー
+            <code>
+             ubuntu-1710
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1604-xenial-v20180109
+            </code>
+            またはイメージ ファミリー
+            <code>
+             ubuntu-1604-lts
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1404-trusty-v20180110
+            </code>
+            またはイメージ ファミリー
+            <code>
+             ubuntu-1404-lts
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          プロジェクト
+          <code>
+           windows-cloud
+          </code>
+          および
+          <code>
+           windows-sql-cloud
+          </code>
+          :
+          <ul>
+           <li>
+            バージョン番号
+            <code>
+             -v20180109
+            </code>
+            以降のすべての Windows Server と SQL Server の
+            <a class="external" href="https://cloud.google.com/compute/docs/images?hl=ja#os-compute-support" target="_blank">
+             公開イメージ
+            </a>
+            にパッチが含まれています。ただし、Microsoft サポートページの
+            <a class="external" href="https://support.microsoft.com/en-gb/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution" target="_blank">
+             Windows Server に関するガイダンス
+            </a>
+            に掲載されている「推奨される操作」を行い、既存のインスタンスと新たに作成したインスタンスの両方でこれらの対策を有効にして検証する必要があります。
+           </li>
+          </ul>
+         </li>
+        </ul>
+        <p>
+         これらのイメージを使用して、
+         <a class="external" href="https://cloud.google.com/compute/docs/instances/create-start-instance?hl=ja#publicimage" target="_blank">
+          VM インスタンスを再作成してください。
+         </a>
+         これらの公開イメージの旧バージョンにはこうしたパッチが含まれないため、攻撃される可能性を軽減できません。
+        </p>
+        <h4 data-text="ハードウェア ベンダーが提供するパッチ" id="20180103_hardware_patches">
+         ハードウェア ベンダーが提供するパッチ
+        </h4>
+        <p>
+         NVIDIA は、NVIDIA® ドライバ ソフトウェアがインストールされているシステムが攻撃される可能性を軽減するパッチを適用したドライバを提供しています。パッチ適用済みのドライバ バージョンについては、NVIDIA が提供しているセキュリティ情報、
+         <a class="external" href="http://nvidia.custhelp.com/app/answers/detail/a_id/4611" target="_blank">
+          NVIDIA GPU ディスプレイ ドライバのセキュリティ更新
+         </a>
+         でご確認ください。
+        </p>
+        <h4 data-text="変更履歴:" id="20180103_history">
+         変更履歴:
+        </h4>
+        <ul>
+         <li>
+          2018 年 5 月 21 日 T 14:00（太平洋標準時間）: 2018 年 5 月 21 日に開示された 2 つの新しいバリアントに関する情報を追加しました。
+         </li>
+         <li>
+          2018 年 1 月 10 日 T 15:00（太平洋標準時間）: Windows Server および SQL Server のパッチ適用済みの公開イメージに関する情報を追加しました。
+         </li>
+         <li>
+          2018 年 1 月 10 日 T 10:15（太平洋標準時間）: パッチ適用済みの公開イメージのリストに複数の Ubuntu イメージを追加しました。
+         </li>
+         <li>
+          2018 年 1 月 10 日 T 09:50（太平洋標準時間）: ハードウェア ベンダーが提供するパッチに関するガイダンスを追加しました。
+         </li>
+         <li>
+          2018 年 1 月 3 日〜2018 年 1 月 9 日: パッチ適用済みの公開イメージのリストに複数の変更を加えました。
+         </li>
+        </ul>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5753" target="_blank">
+           CVE-2017-5753
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5715" target="_blank">
+           CVE-2017-5715
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5754" target="_blank">
+           CVE-2017-5754
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3640" target="_blank">
+           CVE-2018-3640
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3639" target="_blank">
+           CVE-2018-3639
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="公開日: 2017 年 10 月 2 日" id="20171002">
+     公開日: 2017 年 10 月 2 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="説明" id="heading_4">
+         説明
+        </h4>
+        <p>
+         <a class="external" href="http://www.thekelleys.org.uk/dnsmasq/doc.html" target="_blank">
+          Dnsmasq
+         </a>
+         は DNS、DHCP、ルーター アドバタイズメント、ネットワーク ブートの機能を提供します。通常、このソフトウェアはデスクトップ Linux ディストリビューション（Ubuntu など）、家庭用ルーター、IoT 端末など、さまざまなシステムにインストールされます。Dnsmasq は、オープン インターネットとプライベート ネットワークの両方で広く使われています。
+        </p>
+        <p>
+         Google は、定期的な社内セキュリティ評価の過程で 7 個の問題を発見しました。こうした問題の重大性を判断したうえで、その影響と悪用される可能性について調査し、それぞれについて Google 内部で概念実証を作成しました。また、Dnsmasq の管理者である Simon Kelly と協力して、適切なパッチを作成し、問題を緩和しました。
+        </p>
+        <p>
+         評価の際に、2017 年 9 月 5 日現在のプロジェクト git サーバーで、最新バージョンに影響を及ぼす 3 つの潜在的なリモートコード実行、1 つの情報漏洩、3 つのサービス拒否の脆弱性を発見しました。
+        </p>
+        <p>
+         これらのパッチはアップストリームされ、
+         <a class="external" href="http://thekelleys.org.uk/gitweb/?p=dnsmasq.git;a=summary" target="_blank">
+          プロジェクトの Git リポジトリ
+         </a>
+         に commit されています。
+        </p>
+        <h4 data-text="Compute Engine への影響" id="compute-engine">
+         Compute Engine への影響
+        </h4>
+        <p>
+         デフォルトで、Dnsmasq は
+         <a class="external" href="https://wikipedia.org/wiki/NetworkManager" target="_blank">
+          NetworkManager
+         </a>
+         を使用するイメージのみにインストールされて非アクティブになっています。次の Compute Engine 公開イメージには、Dnsmasq がインストールされています。
+        </p>
+        <ul>
+         <li>
+          Ubuntu 16.04、16.10、17.04
+         </li>
+         <li>
+          CentOS 7
+         </li>
+         <li>
+          RHEL 7
+         </li>
+        </ul>
+        <p>
+         ただし、他のイメージでも、他のパッケージの依存関係として Dnsmasq がインストールされていることがあります。Debian、Ubuntu、CentOS、RHEL、SLES、OpenSUSE のインスタンスを、最新のオペレーティング システム イメージを使用するように更新することをおすすめします。CoreOS と Container-Optimized OS は影響を受けません。Windows イメージにも影響はありません。
+        </p>
+        <p>
+         Debian と Ubuntu を実行するインスタンスの場合、インスタンスで次のコマンドを実行して、更新を行えます。
+        </p>
+        <pre>
+
+sudo apt-get -y update</pre>
+        <pre>
+
+sudo apt-get -y dist-upgrade</pre>
+        <p>
+         Red Hat Enterprise Linux と CentOS インスタンスの場合、次のコマンドを実行します。
+        </p>
+        <pre>
+
+sudo yum -y upgrade</pre>
+        <p>
+         SLES と OpenSUSE イメージの場合、次のコマンドを実行します。
+        </p>
+        <pre>
+
+sudo zypper up</pre>
+        <p>
+         手動の更新コマンドを実行する代わりに、それぞれのオペレーティング システムの
+         <a href="https://cloud.google.com/compute/docs/instances/create-start-instance?hl=ja#publicimage">
+          イメージ ファミリーを使用して VM インスタンスを再作成
+         </a>
+         できます。
+        </p>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14491" target="_blank">
+           CVE-2017-14491
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14492" target="_blank">
+           CVE-2017-14492
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14493" target="_blank">
+           CVE-2017-14493
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14494" target="_blank">
+           CVE-2017-14494
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14495" target="_blank">
+           CVE-2017-14495
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14496" target="_blank">
+           CVE-2017-14496
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-13704" target="_blank">
+           CVE-2017-13704
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="公開日: 2016 年 10 月 26 日" id="20161026">
+     公開日: 2016 年 10 月 26 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="説明" id="heading_5">
+         説明
+        </h4>
+        <p>
+         CVE-2016-5195 は、プライベートな読み取り専用メモリ マッピングにおける COW の破壊を Linux カーネルのメモリ サブシステムが対処する過程で発生する競合状態です。
+        </p>
+        <p>
+         権限のないローカル ユーザーがこの不具合を悪用すると、本来は読み取り専用であるメモリ マッピングへの書き込み権限を取得できるため、システム上で権限が昇格される可能性があります。
+        </p>
+        <p>
+         詳細は
+         <a class="external" href="https://github.com/dirtycow/dirtycow.github.io/wiki/VulnerabilityDetails" target="_blank">
+          Dirty COW FAQ
+         </a>
+         をご覧ください。
+        </p>
+        <h4 data-text="Compute Engine への影響" id="compute-engine_1">
+         Compute Engine への影響
+        </h4>
+        <p>
+         Compute Engine 上のすべての Linux のディストリビューションとバージョンが影響を受けます。ほとんどのインスタンスは新しいカーネルを自動的にダウンロードしてインストールします。ただし、実行中のシステムにパッチを適用するには再起動する必要があります。
+        </p>
+        <p>
+         次の Compute Engine イメージに基づく新しいインスタンスまたは再作成されたインスタンスには、パッチを適用したカーネルがすでにインストールされています。
+        </p>
+        <ul>
+         <li>
+          <code>
+           centos-6-v20161026
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-7-v20161025
+          </code>
+         </li>
+         <li>
+          <code>
+           coreos-alpha-1192-2-0-v20161021
+          </code>
+         </li>
+         <li>
+          <code>
+           coreos-beta-1185-2-0-v20161021
+          </code>
+         </li>
+         <li>
+          <code>
+           coreos-stable-1122-3-0-v20161021
+          </code>
+         </li>
+         <li>
+          <code>
+           debian-8-jessie-v20161020
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-6-v20161026
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-7-v20161024
+          </code>
+         </li>
+         <li>
+          <code>
+           sles-11-sp4-v20161021
+          </code>
+         </li>
+         <li>
+          <code>
+           sles-12-sp1-v20161021
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1204-precise-v20161020
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1404-trusty-v20161020
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1604-xenial-v20161020
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1610-yakkety-v20161020
+          </code>
+         </li>
+        </ul>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <a class="external" href="https://github.com/dirtycow/dirtycow.github.io/wiki/VulnerabilityDetails" target="_blank">
+         CVE-2016-5195
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="公開日: 2016 年 2 月 16 日" id="20160216">
+     公開日: 2016 年 2 月 16 日
+    </h2>
+    <p>
+     <strong>
+      最終更新日: 2016 年 2 月 22 日
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="説明" id="heading_6">
+         説明
+        </h4>
+        <p>
+         CVE-2015-7547 は、
+         <code>
+          getaddrinfo()
+         </code>
+         ライブラリ関数の使用時に glibc DNS クライアント側のリゾルバによってスタックベースのバッファ オーバーフローに対してソフトウェアが脆弱になるという脆弱性です。攻撃者は、この関数を使用してソフトウェアを利用し、攻撃者が制御するドメイン名、攻撃者が制御する DNS サーバー、中間者攻撃によってこの脆弱性を悪用できます。
+        </p>
+        <p>
+         詳細については、
+         <a href="https://googleonlinesecurity.blogspot.ca/2016/02/cve-2015-7547-glibc-getaddrinfo-stack.html">
+          Google オンライン セキュリティ ブログ
+         </a>
+         または
+         <a class="external" href="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2015-7547" target="_blank">
+          CVE（共通脆弱性識別子）
+         </a>
+         データベースをご覧ください。
+        </p>
+        <h4 data-text="Compute Engine への影響" id="compute-engine_2">
+         Compute Engine への影響
+        </h4>
+        <p>
+         <strong>
+          更新（2016 年 2 月 22 日）:
+         </strong>
+        </p>
+        <p>
+         次の CoreOS、SLES、OpenSUSE イメージを使用して、インスタンスを再作成できます。
+        </p>
+        <ul>
+         <li>
+          <code>
+           coreos-alpha-962-0-0-v20160218
+          </code>
+         </li>
+         <li>
+          <code>
+           coreos-beta-899-7-0-v20160218
+          </code>
+         </li>
+         <li>
+          <code>
+           coreos-stable-835-13-0-v20160218
+          </code>
+         </li>
+         <li>
+          <code>
+           opensuse-13-2-v20160222
+          </code>
+         </li>
+         <li>
+          <code>
+           opensuse-leap-42-1-v20160222
+          </code>
+         </li>
+         <li>
+          <code>
+           sles-11-sp4-v20160222
+          </code>
+         </li>
+         <li>
+          <code>
+           sles-12-sp1-v20160222
+          </code>
+         </li>
+        </ul>
+        <p>
+         <strong>
+          更新（2016 年 2 月 17 日）:
+         </strong>
+        </p>
+        <p>
+         次のコマンドを実行して、Ubuntu 12.04 LTS、Ubuntu 14.04 LTS、Ubuntu 15.10 インスタンスに対する更新を実行できます。
+        </p>
+        <ol>
+         <li>
+          <code>
+           user@my-instance:~$ sudo apt-get -y update
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo apt-get -y dist-upgrade
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo reboot
+          </code>
+         </li>
+        </ol>
+        <p>
+         手動更新コマンドを実行する代わりに、次の新しいイメージを使用してインスタンスを再作成することもできます。
+        </p>
+        <ul>
+         <li>
+          <code>
+           backports-debian-7-wheezy-v20160216
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-6-v20160216
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-7-v20160216
+          </code>
+         </li>
+         <li>
+          <code>
+           debian-7-wheezy-v20160216
+          </code>
+         </li>
+         <li>
+          <code>
+           debian-8-jessie-v20160216
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-6-v20160216
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-7-v20160216
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1204-precise-v20160217a
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1404-trusty-v20160217a
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1510-wily-v20160217
+          </code>
+         </li>
+        </ul>
+        <p>
+         デフォルトの glibc 構成を使用した Compute Engine の DNS リゾルバを介してこの脆弱性を悪用できる方法は確認されていません。ただし、他の新しい脆弱性のように、新たな悪用方法が今後発見される可能性もあるため、できる限り早く仮想マシン インスタンスにパッチを適用する必要があります。edns0 を有効にしている場合は（デフォルトでは無効）、無効にしてからインスタンスにパッチを適用する必要があります。
+        </p>
+        <p>
+         <strong>
+          元の情報:
+         </strong>
+        </p>
+        <p>
+         お使いの Linux ディストリビューションは脆弱である可能性があります。Compute Engine ユーザーは、Linux OS を実行している場合、インスタンスの OS イメージを更新して、この脆弱性を除去する必要があります。
+        </p>
+        <p>
+         Debian を実行するインスタンスの場合、インスタンスで次のコマンドを実行して更新できます。
+        </p>
+        <ol>
+         <li>
+          <code>
+           user@my-instance:~$ sudo apt-get -y update
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo apt-get -y dist-upgrade
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo reboot
+          </code>
+         </li>
+        </ol>
+        <p>
+         また、Debian インスタンスに対して
+         <a class="external" href="https://wiki.debian.org/UnattendedUpgrades" target="_blank">
+          UnattendedUpgrades
+         </a>
+         をインストールすることもおすすめします。
+        </p>
+        <p>
+         Red Hat Enterprise Linux インスタンスの場合:
+        </p>
+        <ul>
+         <li>
+          <code>
+           user@my-instance:~$ sudo yum -y upgrade
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo reboot
+          </code>
+         </li>
+        </ul>
+        <p>
+         他のオペレーティング システム管理者によるこの脆弱性に対するパッチの公開、また Compute Engine での更新版 OS イメージのリリースに伴い、この情報を引き続き更新します。
+        </p>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <a class="external" href="https://googleonlinesecurity.blogspot.ca/2016/02/cve-2015-7547-glibc-getaddrinfo-stack.html" target="_blank">
+         CVE-2015-7547
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="公開日: 2015 年 3 月 19 日" id="20150319">
+     公開日: 2015 年 3 月 19 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="説明" id="heading_7">
+         説明
+        </h4>
+        <p>
+         CVE-2015-1427 は、バージョン 1.3.8 よりも前のバージョンと 1.4.3 よりも前のすべての 1.4.x バージョンの
+         <a class="external" href="https://www.elastic.co/products/elasticsearch" target="_blank">
+          Elasticsearch
+         </a>
+         の Groovy スクリプト エンジンではリモートの攻撃者がサンドボックス保護メカニズムをバイパスして任意のシェルコマンドを実行できるという脆弱性です。
+        </p>
+        <p>
+         詳細については、
+         <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1427" target="_blank">
+          NVD（脆弱性データベース）
+         </a>
+         または
+         <a class="external" href="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2015-1427" target="_blank">
+          CVE（共通脆弱性識別子）
+         </a>
+         データベースをご覧ください。
+        </p>
+        <h4 data-text="Compute Engine への影響" id="compute-engine_3">
+         Compute Engine への影響
+        </h4>
+        <p>
+         Compute Engine インスタンスで Elasticsearch を実行している場合は、Elasticsearch のバージョンを 1.4.3 以上にアップグレードする必要があります。Elasticsearch ソフトウェアをすでにアップグレードしている場合は、この脆弱性から保護されています。
+        </p>
+        <p>
+         Elasticsearch 1.4.3 以上にアップグレードしていない場合は、
+         <a class="external" href="http://www.elastic.co/guide/en/elasticsearch/reference/current/rolling-upgrades.html" target="_blank">
+          ローリング アップグレード
+         </a>
+         を実行できます。
+        </p>
+        <p>
+         <a href="https://cloud.google.com/solutions/elasticsearch/click-to-deploy?hl=ja">
+          Google Cloud Platform Console
+         </a>
+         で
+         <a href="https://console.cloud.google.com/?hl=ja" target="console">
+          クリック デプロイ
+         </a>
+         を使用して Elasticsearch をデプロイした場合、
+         <a href="https://console.cloud.google.com/projectselector/deployments?hl=ja">
+          デプロイを削除
+         </a>
+         し、Elasticsearch を実行しているインスタンスを削除できます。
+        </p>
+        <p>
+         Google Cloud Platform チームは、Elasticsearch の更新バージョンをデプロイするために、修正に取り組んでいます。ただし、
+         <a href="https://console.cloud.google.com/?hl=ja" target="console">
+          GCP Console
+         </a>
+         のクリック デプロイ機能用の修正プログラムはまだ提供されていません。
+        </p>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1427" target="_blank">
+         CVE-2015-1427
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="公開日: 2015 年 1 月 29 日" id="20150129">
+     公開日: 2015 年 1 月 29 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="説明" id="heading_8">
+         説明
+        </h4>
+        <p>
+         <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-0235" target="_blank">
+          CVE-2015-0235（Ghost）
+         </a>
+         は glibc ライブラリの脆弱性です。
+        </p>
+        <p>
+         App Engine、Cloud Storage、BigQuery、CloudSQL のユーザーは措置を講じる必要はありません。Google のサーバーは更新されており、この脆弱性から保護されています。
+        </p>
+        <p>
+         Compute Engine のユーザーは OS イメージの更新が必要な場合があります。
+        </p>
+        <h4 data-text="Compute Engine への影響" id="compute-engine_4">
+         Compute Engine への影響
+        </h4>
+        <p>
+         お使いの Linux ディストリビューションは脆弱である可能性があります。Compute Engine ユーザーは、Debian 7、Debian 7 バックポート、Ubuntu 12.04 LTS、Red Hat Enterprise Linux、CentOS、SUSE Linux Enterprise Server 11 SP3 を実行している場合、インスタンスの OS イメージを更新して、この脆弱性を除去する必要があります。
+        </p>
+        <p>
+         この脆弱性は、Ubuntu 14.04 LTS、Ubuntu 14.10、SUSE Linux Enterprise Server 12 には影響を及ぼしません。
+        </p>
+        <p>
+         Linux ディストリビューションをアップグレードすることをおすすめします。Debian 7、Debian 7 バックポート、Ubuntu 12.04 LTS を実行しているインスタンスの場合、インスタンスで次のコマンドを実行して更新できます。
+        </p>
+        <ol>
+         <li>
+          <code>
+           user@my-instance:~$ sudo apt-get update
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo apt-get -y upgrade
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo reboot
+          </code>
+         </li>
+        </ol>
+        <p>
+         Red Hat Enterprise Linux または CentOS インスタンスの場合:
+        </p>
+        <ol>
+         <li>
+          <code>
+           user@my-instance:~$ sudo yum -y upgrade
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo reboot
+          </code>
+         </li>
+        </ol>
+        <p>
+         SUSE Linux Enterprise Server 11 SP3 インスタンスの場合:
+        </p>
+        <ol>
+         <li>
+          <code>
+           user@my-instance:~$ sudo zypper --non-interactive up
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo reboot
+          </code>
+         </li>
+        </ol>
+        <p>
+         上のコマンドを実行して更新を行う代わりに、次の新しいイメージを使用してインスタンスを再作成することもできます。
+        </p>
+        <ul>
+         <li>
+          <code>
+           debian-7-wheezy-v20150127
+          </code>
+         </li>
+         <li>
+          <code>
+           backports-debian-7-wheezy-v20150127
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-6-v20150127
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-7-v20150127
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-6-v20150127
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-7-v20150127
+          </code>
+         </li>
+         <li>
+          <code>
+           sles-11-sp3-v20150127
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1204-precise-v20150127
+          </code>
+         </li>
+        </ul>
+        <h4 data-text="Google マネージド VM への影響" id="google-vm">
+         Google マネージド VM への影響
+        </h4>
+        <p>
+         <code>
+          gcloud preview app deploy
+         </code>
+         を使用しているマネージド VM ユーザーは、
+         <code>
+          gcloud preview app setup-managed-vms
+         </code>
+         でベース Docker コンテナを更新し、
+         <code>
+          gcloud preview app deploy
+         </code>
+         を使用して実行中の各アプリを再デプロイする必要があります。
+         <code>
+          appcfg
+         </code>
+         でデプロイしているユーザーは何もする必要はなく、自動的にアップグレードされます。
+        </p>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-0235" target="_blank">
+         CVE-2015-0235
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="公開日: 2014 年 10 月 15 日" id="20141015">
+     公開日: 2014 年 10 月 15 日
+    </h2>
+    <p>
+     <strong>
+      最終更新日: 2014 年 10 月 17 日
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="説明" id="heading_9">
+         説明
+        </h4>
+        <p>
+         CVE-2014-3566（別名 POODLE）は、SSL バージョン 3.0 の設計上の脆弱性です。この脆弱性により、ネットワーク攻撃者はセキュアな接続のプレーンテキストを計算できます。詳細については、この脆弱性に関する
+         <a href="http://googleonlinesecurity.blogspot.com/2014/10/this-poodle-bites-exploiting-ssl-30.html">
+          ブログ投稿
+         </a>
+         をご覧ください。
+        </p>
+        <p>
+         App Engine、Cloud Storage、BigQuery、CloudSQL のユーザーは措置を講じる必要はありません。Google のサーバーは更新されており、この脆弱性から保護されています。Compute Engine のユーザーは OS イメージを更新する必要があります。
+        </p>
+        <h4 data-text="Compute Engine への影響" id="compute-engine_5">
+         Compute Engine への影響
+        </h4>
+        <p>
+         <strong>
+          更新（2014 年 10 月 17 日）:
+         </strong>
+        </p>
+        <p>
+         SSLv3 を使用している場合、脆弱である可能性があります。Compute Engine ユーザーは、インスタンスの OS イメージを更新して、この脆弱性を除去する必要があります。
+        </p>
+        <p>
+         Linux ディストリビューションをアップグレードすることをおすすめします。Debian を実行するインスタンスの場合、インスタンスで次のコマンドを実行して更新できます。
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo apt-get update
+user@my-instance:~$ sudo apt-get -y upgrade
+user@my-instance:~$ sudo reboot</pre>
+        <p>
+         CentOS インスタンスの場合:
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo yum -y upgrade
+user@my-instance:~$ sudo reboot</pre>
+        <p>
+         上のコマンドを実行して更新を行う代わりに、次の新しいイメージを使用してインスタンスを再作成することもできます。
+        </p>
+        <ul>
+         <li>
+          <code>
+           centos-6-v20141016
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-7-v20141016
+          </code>
+         </li>
+         <li>
+          <code>
+           debian-7-wheezy-v20141017
+          </code>
+         </li>
+         <li>
+          <code>
+           backports-debian-7-wheezy-v20141017
+          </code>
+         </li>
+        </ul>
+        <p>
+         RHEL と SLES イメージについては、イメージを用意でき次第、情報を更新します。その間、RHEL ユーザーは、詳細については
+         <a class="external" href="https://access.redhat.com/articles/1232123" target="_blank">
+          Red Hat に直接
+         </a>
+         お問い合わせください。
+        </p>
+        <p>
+         <strong>
+          元の情報:
+         </strong>
+        </p>
+        <p>
+         Compute Engine ユーザーは、インスタンスの OS イメージを更新して、この脆弱性を除去する必要があります。新しい OS イメージを用意でき次第、手順を含むこのセキュリティ情報を更新します。
+        </p>
+       </td>
+       <td>
+        中
+       </td>
+       <td>
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3566" target="_blank">
+         CVE-2014-3566
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="公開日: 2014 年 9 月 24 日" id="20140924">
+     公開日: 2014 年 9 月 24 日
+    </h2>
+    <p>
+     <strong>
+      最終更新日: 2014 年 9 月 29 日
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="説明" id="heading_10">
+         説明
+        </h4>
+        <p>
+         攻撃者が制御する環境変数の解析に基づくリモートコード実行が可能となる bash のバグ（CVE-2014-6271）があります。悪用の手口として最も考えられるのは、ウェブサーバーで公開されている CGI スクリプトに対して行われる悪意のある HTTP リクエストを介する方法です。詳細については、
+         <a class="external" href="http://seclists.org/oss-sec/2014/q3/650" target="_blank">
+          バグに関する説明
+         </a>
+         をご覧ください。
+        </p>
+        <p>
+         この bash のバグは、20140926 よりも前の日付の Compute Engine ゲスト OS イメージを除く、Google Cloud Platform プロダクトに対しては緩和されています。お使いの Compute Engine イメージのバグを緩和するための手順については、以下をご覧ください。
+        </p>
+        <h4 data-text="Compute Engine への影響" id="compute-engine_6">
+         Compute Engine への影響
+        </h4>
+        <p>
+         このバグは、CGI スクリプトを使用する実質的にすべてのウェブサイトに影響を及ぼす可能性があります。また、PHP、Perl、Python、SSI、Java、C++ に依存するウェブサイトに加え、
+         <code>
+          popen
+         </code>
+         、
+         <code>
+          system
+         </code>
+         、
+         <code>
+          shell_exec
+         </code>
+         、同様の API など、呼び出しを介してシェルコマンドを実行する同様のサーブレットに依存するウェブサイトに影響を及ぼすと考えられます。さらに、SSH コマンド制限や bash 制限付きシェルなどのメカニズムによって、制限されたユーザーに対して制御されたログイン アクセスを許可するシステムに影響を及ぼす可能性もあります。
+        </p>
+        <p>
+         <strong>
+          更新（2014 年 9 月 29 日）:
+         </strong>
+        </p>
+        <p>
+         下記の手動更新コマンドを実行する代わりに、bash のセキュリティ上のバグに関連する追加の脆弱性（
+         <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7169" target="_blank">
+          CVE-2014-7169
+         </a>
+         、
+         <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6277" target="_blank">
+          CVE-2014-6277
+         </a>
+         、
+         <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6278" target="_blank">
+          CVE-2014-6278
+         </a>
+         、
+         <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7186" target="_blank">
+          CVE-2014-7186
+         </a>
+         、
+         <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7187" target="_blank">
+          CVE-2014-7187
+         </a>
+         ）を緩和するイメージを使用して、インスタンスを再作成することもできます。次の新しいイメージを使用して、インスタンスを再作成してください。
+        </p>
+        <ul>
+         <li>
+          <code>
+           centos-6-v20140926
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-7-v20140926
+          </code>
+         </li>
+         <li>
+          <code>
+           debian-7-wheezy-v20140926
+          </code>
+         </li>
+         <li>
+          <code>
+           backports-debian-7-wheezy-v20140926
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-6-v20140926
+          </code>
+         </li>
+        </ul>
+        <p>
+         <strong>
+          更新（2014 年 9 月 25 日）:
+         </strong>
+        </p>
+        <p>
+         ユーザーは、手動更新を実行する代わりに、インスタンスを再作成することを選択できます。インスタンスを再作成するには、このセキュリティ バグに対する修正を含む次の新しいイメージを使用します。
+        </p>
+        <ul>
+         <li>
+          <code>
+           backports-debian-7-wheezy-v20140924
+          </code>
+         </li>
+         <li>
+          <code>
+           debian-7-wheezy-v20140924
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-6-v20140924
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-6-v20140924
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-7-v20140924
+          </code>
+         </li>
+        </ul>
+        <p>
+         RHEL と SUSE イメージについては、インスタンスで次のコマンドを実行して、更新を手動で行うこともできます。
+        </p>
+        <pre>
+
+# RHEL instances
+user@my-instance:~$ sudo yum -y upgrade
+
+# SUSE instances
+user@my-instance:~$ sudo zypper --non-interactive up</pre>
+        <p>
+         <strong>
+          元の情報:
+         </strong>
+        </p>
+        <p>
+         Linux ディストリビューションをアップグレードすることをおすすめします。Debian を実行するインスタンスの場合、インスタンスで次のコマンドを実行して更新できます。
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo apt-get update
+user@my-instance:~$ sudo apt-get -y upgrade
+</pre>
+        <p>
+         CentOS インスタンスの場合:
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo yum -y upgrade</pre>
+        <p>
+         詳細については、各 Linux ディストリビューションに関する告知を確認してください。
+        </p>
+        <ul>
+         <li>
+          元のパッチ:
+          <a class="external" href="http://ftp.gnu.org/gnu/bash/" target="_blank">
+           http://ftp.gnu.org/gnu/bash/
+          </a>
+          （適切なバージョンについては、*-patches の最後のエントリを参照してください）
+         </li>
+         <li>
+          Debian:
+          <a class="external" href="https://lists.debian.org/debian-security-announce/2014/msg00220.html" target="_blank">
+           [SECURITY] [DSA 3032-1] bash セキュリティ更新プログラム
+          </a>
+         </li>
+         <li>
+          RHEL:
+          <ul>
+           <li>
+            <a class="external" href="https://www.redhat.com/archives/rhsa-announce/2014-September/msg00048.html" target="_blank">
+             RHSA-2014:1293-01
+            </a>
+           </li>
+           <li>
+            <a class="external" href="https://www.redhat.com/archives/rhsa-announce/2014-September/msg00049.html" target="_blank">
+             RHSA-2014:1294-01
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          CentOS 5:
+          <a class="external" href="http://lists.centos.org/pipermail/centos-announce/2014-September/020582.html" target="_blank">
+           [CentOS-announce] CESA-2014:1293
+          </a>
+         </li>
+         <li>
+          CentOS 6:
+          <a class="external" href="http://lists.centos.org/pipermail/centos-announce/2014-September/020585.html" target="_blank">
+           [CentOS-announce] CESA-2014:1293
+          </a>
+         </li>
+         <li>
+          CentOS 7:
+          <a class="external" href="http://lists.centos.org/pipermail/centos-announce/2014-September/020583.html" target="_blank">
+           [CentOS-announce] CESA-2014:1293
+          </a>
+         </li>
+        </ul>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7169" target="_blank">
+         CVE-2014-7169
+        </a>
+        、
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6271" target="_blank">
+         CVE-2014-6271
+        </a>
+        、
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6277" target="_blank">
+         CVE-2014-6277
+        </a>
+        、
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6278" target="_blank">
+         CVE-2014-6278
+        </a>
+        、
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7186" target="_blank">
+         CVE-2014-7186
+        </a>
+        、
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7187" target="_blank">
+         CVE-2014-7187
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="公開日: 2014 年 7 月 25 日" id="20140618">
+     公開日: 2014 年 7 月 25 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="説明" id="heading_11">
+         説明
+        </h4>
+        <p>
+         <a class="external" href="http://www.elasticsearch.org/overview/logstash/" target="_blank">
+          Elasticsearch Logstash
+         </a>
+         は、不正な変更やデータの開示を可能にする可能性がある OS コマンド インジェクションの脆弱性です。攻撃者は、細工したイベントを Logstash のデータソースに送信して、Logstash プロセスの権限でコマンドを実行できます。
+        </p>
+        <h4 data-text="Compute Engine への影響" id="compute-engine_7">
+         Compute Engine への影響
+        </h4>
+        <p>
+         この脆弱性は、zabbix または nagios_nsca の出力が有効になった 1.4.2 よりも前の Elasticsearch Logstash のバージョンを実行しているすべての Compute Engine インスタンスに影響を及ぼします。攻撃を防ぐために、次のいずれかを実行できます。
+        </p>
+        <ul>
+         <li>
+          Logstash 1.4.2 にアップグレードする
+         </li>
+         <li>
+          バージョン 1.3.x のパッチを適用する
+         </li>
+         <li>
+          <code>
+           zabbix
+          </code>
+          と
+          <code>
+           nagios_nsca
+          </code>
+          の出力を無効にする
+         </li>
+        </ul>
+        <p>
+         詳細については、
+         <a class="external" href="http://www.elasticsearch.org/blog/logstash-1-4-2/" target="_blank">
+          Logstash ブログ
+         </a>
+         をご覧ください。
+        </p>
+        <p>
+         Elasticsearch では、
+         <a class="external" href="http://www.elasticsearch.org/blog/scripting-security/" target="_blank">
+          ファイアウォールを使用
+         </a>
+         して信頼できない IP によるリモート アクセスを防ぐことも推奨しています。
+        </p>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-4326" target="_blank">
+         CVE-2014-4326
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="公開日: 2014 年 6 月 18 日" id="20140618">
+     公開日: 2014 年 6 月 18 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="説明" id="heading_12">
+         説明
+        </h4>
+        <p>
+         Google Cloud Platform 上での実行時における Docker コンテナのセキュリティに関するユーザーのあらゆる懸念に対応できるよう、現在取り組み中です。これには、Docker コンテナ、コンテナに最適化された仮想マシン、オープンソースの Kubernetes スケジューラをサポートする Google App Engine の拡張機能を使用するユーザーが含まれます。
+        </p>
+        <p>
+         Docker はこの問題に適切に対応しており、それに関するブログ記事を
+         <a class="external" href="http://blog.docker.com/2014/06/docker-container-breakout-proof-of-concept-exploit/" target="_blank">
+          ここ
+         </a>
+         で確認できます。記事で説明されているように、明らかになった問題は本番環境版前の古いバージョンである Docker 0.11 にのみ該当することに注意してください。
+        </p>
+        <p>
+         コンテナのセキュリティについて世界中で検討されていますが、Google Cloud Platform 上では、Linux アプリケーション コンテナベースのソリューション（特に Docker コンテナ）は完全な仮想マシン（Compute Engine）で実行されることにご注意ください。Google では、Linux アプリケーション コンテナ スタックを強化する Docker コミュニティの努力を支持していますが、このテクノロジーは新しく、境界面が大きいことを認識しています。現時点では、完全なハイパーバイザ（仮想マシン）はよりコンパクトで防御しやすい境界面を提供すると Google は考えています。仮想マシンは、もともと、悪意のあるワークロードを分離し、コードバグの可能性と影響を最小限に抑えるように設計されています。
+        </p>
+        <p>
+         Google のお客様は、第三者、そして潜在的に悪意のあるコードとの間に完全なハイパーバイザ境界が存在することを確実に確保できます。Linux アプリケーション コンテナ スタックが十分に堅牢でマルチテナント ワークロードをサポートできると考えられる段階になった場合には、Google はコミュニティに報告します。現時点では、Linux アプリケーション コンテナは仮想マシンに代わるものではありません。あくまでも機能を拡張する方法です。
+        </p>
+       </td>
+       <td>
+        低
+       </td>
+       <td>
+        <a class="external" href="http://blog.docker.com/2014/06/docker-container-breakout-proof-of-concept-exploit/" target="_blank">
+         Docker ブログの投稿
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="公開日: 2014 年 6 月 5 日" id="20140605">
+     公開日: 2014 年 6 月 5 日
+    </h2>
+    <p>
+     <strong>
+      最終更新日: 2014 年 6 月 9 日
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="説明" id="heading_13">
+         説明
+        </h4>
+        <p>
+         OpenSSL には、
+         <code>
+          ChangeCipherSpec
+         </code>
+         メッセージが handshake ステートマシンに正しくバインドされないという問題があります。これにより、handshake への早期の注入が可能となります。攻撃者は、巧妙に細工した handshake を使用して、OpenSSL SSL/TLS クライアントとサーバーで弱いキーイング マテリアルの使用を強制できます。これは中間者（MITM）攻撃によって悪用される可能性があり、攻撃者は攻撃対象のクライアントとサーバーからのトラフィックを復号して変更できます。
+        </p>
+        <p>
+         この問題は
+         <a class="external" href="https://www.openssl.org/news/secadv/20140605.txt" target="_blank">
+          CVE-2014-0224
+         </a>
+         として識別されています。OpenSSL チームは、この問題を修正済みであり、OpenSSL を更新するよう OpenSSL コミュニティに注意を喚起しています。
+        </p>
+        <h4 data-text="Compute Engine への影響" id="compute-engine_8">
+         Compute Engine への影響
+        </h4>
+        <p>
+         この脆弱性は、Debian、CentOS、Red Hat Enterprise Linux、SUSE Linux Enterprise Server など、OpenSSL を使用するすべての Compute Engine インスタンスに影響を及ぼします。新しいイメージでインスタンスを再作成するか、インスタンスのパッケージを手動で更新することで、インスタンスを更新できます。
+        </p>
+        <p>
+         <strong>
+          更新（2014 年 6 月 9 日）
+         </strong>
+         : 新しいイメージで SUSE Linux Enterprise Server を実行しているインスタンスを更新するには、次のバージョン以上のイメージを使用して、インスタンスを再作成します。
+        </p>
+        <ul>
+         <li>
+          <code>
+           sles-11-sp3-v20140609
+          </code>
+         </li>
+        </ul>
+        <p>
+         <strong>
+          元の投稿:
+         </strong>
+        </p>
+        <p>
+         新しいイメージを使用して Debian インスタンスと CentOS インスタンスを更新するには、次のバージョン以上のいずれかのイメージを使用してインスタンスを再作成します。
+        </p>
+        <ul>
+         <li>
+          <code>
+           debian-7-wheezy-v20140605
+          </code>
+         </li>
+         <li>
+          <code>
+           backports-debian-7-wheezy-v20140605
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-6-v20140605
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-6-v20140605
+          </code>
+         </li>
+        </ul>
+        <p>
+         インスタンス上の OpenSSL を手動で更新するには、次のコマンドを実行して適切なパッケージを更新します。CentOS と RHEL を実行するインスタンスの場合、インスタンスでこれらのコマンドを実行して、OpenSSL を更新できます。
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo yum -y update
+user@my-instance:~$ sudo reboot</pre>
+        <p>
+         Debian を実行するインスタンスの場合、インスタンスで次のコマンドを実行して、OpenSSL を更新できます。
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo apt-get update
+user@my-instance:~$ sudo apt-get -y upgrade
+user@my-instance:~$ sudo reboot</pre>
+        <p>
+         SUSE Linux Enterprise Server を実行するインスタンスの場合、インスタンスでこれらのコマンドを実行して、OpenSSL を最新の状態できます。
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo zypper --non-interactive up
+user@my-instance:~$ sudo reboot</pre>
+       </td>
+       <td>
+        中
+       </td>
+       <td>
+        <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0224" target="_blank">
+         CVE-2014-0224
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="公開日: 2014 年 4 月 8 日" id="20140408">
+     公開日: 2014 年 4 月 8 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="説明" id="heading_14">
+         説明
+        </h4>
+        <p>
+         1.0.1g よりも前の OpenSSL 1.0.1 での（1）TLS と（2）DTLS の実装では、Heartbeat Extension パケットが適切に処理されません。これは Heartbleed バグとも呼ばれる脆弱性で、
+         <code>
+          d1_both.c
+         </code>
+         と
+         <code>
+          t1_lib.c
+         </code>
+         に関連する秘密鍵を読み取ることで実証されているように、バッファ オーバーリードを誘発する細工したパケットを介してリモートの攻撃者がプロセスメモリから機密情報を入手できます。
+        </p>
+        <h4 data-text="Compute Engine への影響" id="compute-engine_9">
+         Compute Engine への影響
+        </h4>
+        <p>
+         この脆弱性は、OpenSSL の最新バージョンを使用していないすべての Compute Engine Debian、RHEL、CentOS インスタンスに影響を及ぼします。新しいイメージでインスタンスを再作成するか、インスタンスのパッケージを手動で更新することで、インスタンスを更新できます。
+        </p>
+        <p>
+         新しいイメージを使用してインスタンスを更新するには、次のバージョン以上のいずれかのイメージを使用してインスタンスを再作成します。
+        </p>
+        <ul>
+         <li>
+          <code>
+           debian-7-wheezy-v20140408
+          </code>
+         </li>
+         <li>
+          <code>
+           backports-debian-7-wheezy-v20140408
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-6-v20140408
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-6-v20140408
+          </code>
+         </li>
+        </ul>
+        <p>
+         インスタンス上の OpenSSL を手動で更新するには、次のコマンドを実行して適切なパッケージを更新します。CentOS と RHEL を実行するインスタンスの場合、インスタンスでこれらのコマンドを実行して、OpenSSL を最新の状態にできます。
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo yum update
+user@my-instance:~$ sudo reboot</pre>
+        <p>
+         Debian を実行するインスタンスの場合、インスタンスで次のコマンドを実行して、OpenSSL を更新できます。
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo apt-get update
+user@my-instance:~$ sudo apt-get upgrade
+user@my-instance:~$ sudo reboot</pre>
+        <p>
+         SUSE Linux を実行しているインスタンスは影響を受けません。
+        </p>
+        <p>
+         <strong>
+          2014 年 4 月 14 日更新
+         </strong>
+         : Heartbleed バグを利用した鍵の抽出に関する新たな調査に基づいて、Compute Engine では、影響を受けるすべての SSL サービスについて新しい鍵を作成するよう Compute Engine ユーザーに推奨しています。
+        </p>
+       </td>
+       <td>
+        中
+       </td>
+       <td>
+        <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0160" target="_blank">
+         CVE-2014-0160
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="公開日: 2013 年 6 月 7 日" id="20130607">
+     公開日: 2013 年 6 月 7 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="説明" id="heading_15">
+         説明
+        </h4>
+        <p class="note">
+         <strong>
+          注:
+         </strong>
+         この脆弱性が該当するのは、API バージョン v1 以降では非推奨となり削除されているカーネルのみです。
+        </p>
+        <p>
+         3.9.4 までの Linux カーネルの Broadcom B43 ワイヤレス ドライバの
+         <code>
+          drivers/net/wireless/b43/main.c
+         </code>
+         の
+         <code>
+          b43_request_firmware
+         </code>
+         関数にある書式文字列の脆弱性により、ルートアクセス権を利用し、書式文字列指定子を
+         <code>
+          fwpostfix
+         </code>
+         modprobe パラメータに含めてエラー メッセージの不適切な作成を発生させることで、ローカル ユーザーが権限を取得できます。
+        </p>
+        <h4 data-text="Compute Engine への影響" id="compute-engine_10">
+         Compute Engine への影響
+        </h4>
+        <p>
+         この脆弱性は、
+         <code>
+          gcg-3.3.8-201305291443
+         </code>
+         よりも前のすべての Compute Engine カーネルに影響を及ぼします。対応として、Compute Engine ではすべての以前のカーネルを非推奨とし、インスタンスとイメージを更新して Compute Engine カーネル
+         <code>
+          gce-v20130603
+         </code>
+         を使用するようユーザーに推奨しています。カーネル
+         <code>
+          gce-v20130603
+         </code>
+         には、この脆弱性に対するパッチを備えるカーネル
+         <code>
+          gcg-3.3.8-201305291443
+         </code>
+         が含まれています。
+        </p>
+        <p>
+         自分のインスタンスが使用しているカーネルのバージョンを確認するには:
+        </p>
+        <ol>
+         <li>
+          インスタンスに SSH 接続します。
+         </li>
+         <li>
+          <code>
+           uname -r
+          </code>
+          を実行します。
+         </li>
+        </ol>
+       </td>
+       <td>
+        中
+       </td>
+       <td>
+        <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2852" target="_blank">
+         CVE-2013-2852
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="公開日: 2013 年 6 月 7 日" id="20130607">
+     公開日: 2013 年 6 月 7 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="説明" id="heading_16">
+         説明
+        </h4>
+        <p class="note">
+         <strong>
+          注:
+         </strong>
+         この脆弱性が該当するのは、API バージョン v1 以降では非推奨となり削除されているカーネルのみです。
+        </p>
+        <p>
+         3.9.4 までの Linux カーネルの
+         <code>
+          block/genhd.c
+         </code>
+         の register_disk 関数にある書式文字列の脆弱性により、ルートアクセス権を利用し、書式文字列指定子を
+         <code>
+          /sys/module/md_mod/parameters/new_array
+         </code>
+         に書き込んで細工された
+         <code>
+          /dev/md
+         </code>
+         デバイス名を作成することで、ローカル ユーザーが権限を取得できます。
+        </p>
+        <h4 data-text="Compute Engine への影響" id="compute-engine_11">
+         Compute Engine への影響
+        </h4>
+        <p>
+         この脆弱性は、
+         <code>
+          gcg-3.3.8-201305291443
+         </code>
+         よりも前のすべての Compute Engine カーネルに影響を及ぼします。対応として、Compute Engine ではすべての以前のカーネルを非推奨とし、インスタンスとイメージを更新して Compute Engine カーネル
+         <code>
+          gce-v20130603
+         </code>
+         を使用するようユーザーに推奨しています。カーネル
+         <code>
+          gce-v20130603
+         </code>
+         には、この脆弱性に対するパッチを備えるカーネル
+         <code>
+          gcg-3.3.8-201305291443
+         </code>
+         が含まれています。
+        </p>
+        <p>
+         自分のインスタンスが使用しているカーネルのバージョンを確認するには:
+        </p>
+        <ol>
+         <li>
+          インスタンスに SSH 接続します。
+         </li>
+         <li>
+          <code>
+           uname -r
+          </code>
+          を実行します。
+         </li>
+        </ol>
+       </td>
+       <td>
+        中
+       </td>
+       <td>
+        <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2851" target="_blank">
+         CVE-2013-2851
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="公開日: 2013 年 5 月 14 日" id="20130514">
+     公開日: 2013 年 5 月 14 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="説明" id="heading_17">
+         説明
+        </h4>
+        <p class="note">
+         <strong>
+          注:
+         </strong>
+         この脆弱性が該当するのは、API バージョン v1 以降では非推奨となり削除されているカーネルのみです。
+        </p>
+        <p>
+         3.8.9 よりも前の Linux カーネルの
+         <code>
+          kernel/events/core.c
+         </code>
+         の perf_swevent_init 関数では、不適切な
+         <code>
+          integer
+         </code>
+         データ型を使用しており、細工した
+         <code>
+          perf_event_open
+         </code>
+         システム呼び出しを介してローカル ユーザーが権限を取得できます。
+        </p>
+        <h4 data-text="Compute Engine への影響" id="compute-engine_12">
+         Compute Engine への影響
+        </h4>
+        <p>
+         この脆弱性は、
+         <code>
+          gcg-3.3.8-201305211623
+         </code>
+         よりも前のすべての Compute Engine カーネルに影響を及ぼします。対応として、Compute Engine ではすべての以前のカーネルを非推奨とし、インスタンスとイメージを更新して Compute Engine カーネル
+         <code>
+          gce-v20130521
+         </code>
+         を使用するようユーザーに推奨しています。カーネル
+         <code>
+          gce-v20130521
+         </code>
+         には、この脆弱性に対するパッチを備えるカーネル
+         <code>
+          gcg-3.3.8-201305211623
+         </code>
+         が含まれています。
+        </p>
+        <p>
+         自分のインスタンスが使用しているカーネルのバージョンを確認するには:
+        </p>
+        <ol>
+         <li>
+          インスタンスに SSH 接続します。
+         </li>
+         <li>
+          <code>
+           uname -r
+          </code>
+          を実行します。
+         </li>
+        </ol>
+       </td>
+       <td>
+        高
+       </td>
+       <td>
+        <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2094" target="_blank">
+         CVE-2013-2094
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="公開日: 2013 年 2 月 18 日" id="20130218">
+     公開日: 2013 年 2 月 18 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="説明" id="heading_18">
+         説明
+        </h4>
+        <p class="note">
+         <strong>
+          注:
+         </strong>
+         この脆弱性が該当するのは、API バージョン v1 以降では非推奨となり削除されているカーネルのみです。
+        </p>
+        <p>
+         3.7.5 よりも前の Linux カーネルの ptrace 機能の競合状態により、細工したアプリケーションでの
+         <code>
+          PTRACE_SETREGS
+          ptrace
+         </code>
+         システム呼び出しを介してローカル ユーザーが権限を取得できます。
+        </p>
+        <h4 data-text="Compute Engine への影響" id="compute-engine_13">
+         Compute Engine への影響
+        </h4>
+        <p>
+         この脆弱性は、Compute Engine カーネル
+         <code>
+          2.6.x-gcg-
+          <em>
+           &lt;date&gt;
+          </em>
+         </code>
+         に影響を及ぼします。対応として、Compute Engine では 2.6.x カーネルを非推奨とし、インスタンスとイメージを更新して Compute Engine カーネル
+         <code>
+          gce-v20130225
+         </code>
+         を使用するようユーザーに推奨しています。カーネル
+         <code>
+          gce-v20130225
+         </code>
+         には、この脆弱性に対するパッチを備えるカーネル
+         <code>
+          3.3.8-gcg-201302081521
+         </code>
+         が含まれています。
+        </p>
+        <p>
+         自分のインスタンスが使用しているカーネルのバージョンを確認するには:
+        </p>
+        <ol>
+         <li>
+          インスタンスに SSH 接続します。
+         </li>
+         <li>
+          <code>
+           uname -r
+          </code>
+          を実行します。
+         </li>
+        </ol>
+       </td>
+       <td>
+        中
+       </td>
+       <td>
+        <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0871" target="_blank">
+         CVE-2013-0871
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+   </section>
+  </div>
+ </article>
+</article>
