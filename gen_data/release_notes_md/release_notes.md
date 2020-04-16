@@ -1,4 +1,4 @@
-#  Google Cloud Platform release notes
+#  Google Cloud release notes
 
 The following release notes cover the most recent changes over the last 30
 days. For a comprehensive list, see the [ individual product release note
