@@ -1,0 +1,102 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <h1 class="devsite-page-title">
+   リリースノート
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <section class="intro">
+    このページには、Config Sync に関する更新内容が記載されています。このページをチェックして、新機能や更新された機能、バグ修正、既知の問題、非推奨となった機能に関するお知らせを確認してください。
+   </section>
+   <section class="xml">
+    <p>
+     プロダクトのアップデートに関する最新情報を受け取るには、このページの URL を
+     <a class="external" href="https://wikipedia.org/wiki/Comparison_of_feed_aggregators">
+      フィード リーダー
+     </a>
+     に追加するか、またはフィード URL ディレクトリ
+     <code dir="ltr" translate="no">
+      https://cloud.google.com/feeds/kubernetes-engine-add-on-config-sync-release-notes.xml
+     </code>
+     を直接追加します。
+    </p>
+   </section>
+   <section class="releases">
+    <h2 data-text="1.2.0" id="120">
+     1.2.0
+    </h2>
+    <p>
+     Config Sync v1.2.0 は一般提供され、本番環境で使用できます。これは、プロダクトの最初のバージョンです。
+    </p>
+    <h3 data-text="既知の問題" id="known_issues">
+     既知の問題
+    </h3>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      リポジトリに
+      <a class="external" href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension">
+       APIService
+      </a>
+      を追加すると、Config Sync の状態に問題が発生し、「[KNV2002](/kubernetes-engine/docs/add-on/config-sync/reference/errors#knv2002): failed to get server resources: unable to retrieve the complete list of server APIs.」というエラー メッセージが表示されます。この問題は、このリポジトリから同期する新規クラスタと既存クラスタの両方に影響します。問題を解決するには:
+     </p>
+     <li>
+      <code dir="ltr" translate="no">
+       kubectl get pods -n config-management-system
+      </code>
+      を使用して、
+      <code dir="ltr" translate="no">
+       git-importer
+      </code>
+      ポッドと
+      <code dir="ltr" translate="no">
+       syncer
+      </code>
+      ポッドの名前を検索します。
+     </li>
+     <li>
+      これらの名前をコピーして、
+      <code dir="ltr" translate="no">
+       kubectl delete -n config-management-system pods git-importer-xxxx-xxxx syncer-xxxx-xxxx
+      </code>
+      でポッドを再起動します。
+     </li>
+     <li>
+      この手順は、クラスタごとに 1 回行う必要があります。
+     </li>
+     クラスタのポッドを再起動すると、同期が正常な状態に戻ります。
+     <p>
+     </p>
+    </div>
+    <div class="release-issue" id="known_issue_nomos_view">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      CRD（カスタム リソース定義）がリポジトリのローカル クローンに存在しても、クラスタと同期されていないと、
+      <code dir="ltr" translate="no">
+       nomos view
+      </code>
+      が CRD の解析に失敗する場合があります。
+     </p>
+     <p>
+      この問題を回避するには、
+      <code dir="ltr" translate="no">
+       nomos view
+      </code>
+      ではなく
+      <a href="https://cloud.google.com/kubernetes-engine/docs/add-on/config-sync/how-to/nomos-command?hl=ja#hydrate">
+       <code dir="ltr" translate="no">
+        nomos hydrate
+       </code>
+      </a>
+      を使用します。
+     </p>
+    </div>
+   </section>
+  </div>
+ </article>
+</article>
