@@ -1,0 +1,3835 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <h1 class="devsite-page-title">
+   Güvenlik Bültenleri
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <p>
+    Zaman zaman Compute Engine ile ilgili güvenlik bültenleri yayınlanabilir. Compute Engine ile ilgili tüm güvenlik bültenleri burada yer almaktadır.
+   </p>
+   <p>
+    <a href="https://cloud.google.com/feeds/compute-engine-security-bulletins.xml?hl=tr" track-metadata-position="introParagraph" track-name="xmlFeed" track-type="securityBulletins">
+     Compute Engine güvenlik bültenlerine abone olun.
+     <img alt="Abone ol" src="https://cloud.google.com/images/feed-icon.png?hl=tr"/>
+    </a>
+   </p>
+   <section class="bulletins">
+    <h2 data-text="Yayınlanma tarihi: 18.06.2019" id="20190618">
+     Yayınlanma tarihi: 18.06.2019
+    </h2>
+    <p>
+     <strong>
+      son güncelleme tarihi: 25.06.2019 Saat 06:30 PST
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Açıklama" id="acklama">
+         Açıklama
+        </h4>
+        <p>
+         Linux çekirdeklerindeki üç TCP güvenlik açığı yakın zamanda Netflix tarafından açıklanmıştır:
+        </p>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11477" target="_blank">
+           CVE-2019-11477
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11478" target="_blank">
+           CVE-2019-11478
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11479" target="_blank">
+           CVE-2019-11479
+          </a>
+         </li>
+        </ul>
+        <p>
+         Bu CVE'lerin tamamına
+         <a class="external" href="https://github.com/Netflix/security-bulletins/blob/master/advisories/third-party/2019-001.md" target="_blank">
+          NFLX-2019-001
+         </a>
+         adı verilir.
+        </p>
+        <h4 data-text="Compute Engine'e etkisi" id="20190618_impact">
+         Compute Engine'e etkisi
+        </h4>
+        <p>
+         Compute Engine'i barındıran altyapı bu güvenlik açığına karşı korunmaktadır.
+        </p>
+        <p>
+         Güvenilmeyen ağ trafiği alan/gönderen yama uygulanmamış Linux işletim sistemleri çalıştıran Compute Engine sanal makineleri, bu DoS saldırısına karşı savunmasızdır. İşletim sistemleri için yamalar kullanılabilir olur olmaz bu sanal makine örneklerini güncellemenizi öneririz.
+        </p>
+        <p>
+         TCP bağlantılarını sonlandıran yük dengeleyiciler, bu güvenlik açığına karşı korunmak için yamalanmıştır. Bu yük dengeleyicilerden yalnızca güvenilmeyen trafik alan Compute Engine örnekleri savunmasız değildir. HTTP Yük Dengeleyicileri, SSL Proxy Yük Dengeleyicileri ve TCP Proxy Yük Dengeleyicileri de bu kapsamdadır.
+        </p>
+        <p>
+         Ağ yükü dengeleyicileri ve dahili yük dengeleyicileri, TCP bağlantılarını sonlandırmaz. Bu yük dengeleyicilerden güvenilmeyen trafik alan, yama uygulanmamış Compute Engine örnekleri savunmasızdır.
+        </p>
+        <h4 data-text="Yama uygulanmış görüntüler ve tedarikçi kaynakları" id="yama-uygulanms-goruntuler-ve-tedarikci-kaynaklar">
+         Yama uygulanmış görüntüler ve tedarikçi kaynakları
+        </h4>
+        <p>
+         Kullanılabilir olduğunda, iki CVE'nin durumu da dahil, her bir işletim sistemi tedarikçisinden gelen yama bilgileri için bağlantılar sağlayacağız. Bu genel görüntülerin erken sürümleri bu yamaları içermez ve potansiyel saldırıları hafifletmez:
+        </p>
+        <ul>
+         <li>
+          <code>
+           debian-cloud
+          </code>
+          projesi:
+          <ul>
+           <li>
+            <code>
+             debian-9-stretch-v20190618
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           centos-cloud
+          </code>
+          projesi:
+          <ul>
+           <li>
+            <code>
+             centos-6-v20190619
+            </code>
+           </li>
+           <li>
+            <code>
+             centos-7-v20190619
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           cos-cloud
+          </code>
+          projesi:
+          <ul>
+           <li>
+            <code>
+             cos-dev-77-12293-0-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-beta-76-12239-21-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-stable-75-12105-77-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-73-11647-217-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-69-10895-277-0
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           coreos-cloud
+          </code>
+          projesi:
+          <ul>
+           <li>
+            <code>
+             coreos-alpha-2163-2-1-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-beta-2135-3-1-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-stable-2079-6-0-v20190617
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           rhel-cloud
+          </code>
+          projesi:
+          <ul>
+           <li>
+            <code>
+             rhel-6-v20190618
+            </code>
+           </li>
+           <li>
+            <code>
+             rhel-7-v20190618
+            </code>
+           </li>
+           <li>
+            <code>
+             rhel-8-v20190618
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           rhel-sap-cloud
+          </code>
+          projesi:
+          <ul>
+           <li>
+            <code>
+             rhel-7-4-sap-v20190618
+            </code>
+           </li>
+           <li>
+            <code>
+             rhel-7-6-sap-v20190618
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           suse-cloud
+          </code>
+          projesi:
+          <ul>
+           <li>
+            <code>
+             sles-12-sp4-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-15-v20190617
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           suse-sap-cloud
+          </code>
+          projesi:
+          <ul>
+           <li>
+            <code>
+             sles-12-sp1-sap-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp2-sap-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp3-sap-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp4-sap-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-15-sap-v20190617
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           ubuntu-cloud
+          </code>
+          projesi:
+          <ul>
+           <li>
+            <code>
+             ubuntu-1604-xenial-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1804-bionic-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1810-cosmic-v20190618
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1904-disco-v20190619
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1604-xenial-v20190618
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1804-bionic-v20190617
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1810-cosmic-v20190618
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1904-disco-v20190618
+            </code>
+           </li>
+          </ul>
+         </li>
+        </ul>
+       </td>
+       <td>
+        Orta
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11477" target="_blank">
+           CVE-2019-11477
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11478" target="_blank">
+           CVE-2019-11478
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11479" target="_blank">
+           CVE-2019-11479
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Yayınlanma tarihi: 14.05.2019" id="20190514">
+     Yayınlanma tarihi: 14.05.2019
+    </h2>
+    <p>
+     <strong>
+      son güncelleme tarihi: 20.05.2019 Saat 17:00 PST
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Açıklama" id="acklama_1">
+         Açıklama
+        </h4>
+        <p>
+         Aşağıdaki CVE'ler Intel tarafından açıklanmıştır:
+        </p>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12126" target="_blank">
+           CVE-2018-12126
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12127" target="_blank">
+           CVE-2018-12127
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12130" target="_blank">
+           CVE-2018-12130
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11091" target="_blank">
+           CVE-2019-11091
+          </a>
+         </li>
+        </ul>
+        <p>
+         Bu CVE'lerin tamamına Mikromimari Veri Örnekleme (MDS) adı verilir. Bu güvenlik açıkları, mikromimari durumu ile kurgusal yürütme etkileşimi üzerinden verilerin savunmasız hale gelmesine neden olabilir.
+        </p>
+        <h4 data-text="Compute Engine'e etkisi" id="20190514_impact">
+         Compute Engine'e etkisi
+        </h4>
+        <p>
+         <strong>
+          Compute Engine'i çalıştıran ana makine altyapısı, müşteri iş yüklerini birbirinden ayırır. Sanal makinelerinizde güvenilmeyen kod çalıştırmadığınız takdirde başka bir işlem yapmanız gerekmez.
+         </strong>
+        </p>
+        <p>
+         Compute Engine sanal makineleri içinde kendi çok kiracılı hizmetlerinde güvenilmeyen kod çalıştıran müşteriler, konuk işletim sistemi sağlayıcısının önerdiği etki azaltma bilgilerine başvurmalıdır. Bu bilgiler, Intel'in mikrokod etki azaltma özelliklerini içerebilir. Konuklar için yeni boşaltma işlevine doğrudan geçiş erişimi dağıttık. Aşağıda, sık kullanılan konuk görüntüleri için kullanılabilecek etki azaltma adımlarının bir özeti verilmiştir.
+        </p>
+        <h4 data-text="Yama uygulanmış görüntüler ve tedarikçi kaynakları" id="yama-uygulanms-goruntuler-ve-tedarikci-kaynaklar_1">
+         Yama uygulanmış görüntüler ve tedarikçi kaynakları
+        </h4>
+        <p>
+         Kullanılabilir olduğunda, iki CVE'nin durumu da dahil, her bir işletim sistemi tedarikçisinden gelen yama bilgileri için bağlantılar sağlayacağız. Sanal makine örneklerini yeniden oluşturmak için bu görüntüleri kullanın. Bu genel görüntülerin erken sürümleri bu yamaları içermez ve potansiyel saldırıları hafifletmez:
+        </p>
+        <ul>
+         <li>
+          <code>
+           centos-cloud
+          </code>
+          projesi:
+          <a class="external" href="https://lists.centos.org/pipermail/centos-announce/2019-May/023309.html" target="_blank">
+           CESA-2019:1169
+          </a>
+          ,
+          <a class="external" href="https://lists.centos.org/pipermail/centos-announce/2019-May/023314.html" target="_blank">
+           CESA-2019:1168
+          </a>
+         </li>
+         <ul>
+          <li>
+           <code>
+            centos-6-v20190515
+           </code>
+          </li>
+          <li>
+           <code>
+            centos-7-v20190515
+           </code>
+          </li>
+         </ul>
+         <li>
+          <code>
+           coreos-cloud
+          </code>
+          projesi:
+          <a class="external" href="https://coreos.com/os/docs/latest/disabling-smt.html" target="_blank">
+           CoreOS Container Linux için MDS hafifletme işlemleri
+          </a>
+         </li>
+         <ul>
+          <li>
+           <code>
+            coreos-stable-2079-4-0-v20190515
+           </code>
+          </li>
+          <li>
+           <code>
+            coreos-beta-2107-3-0-v20190515
+           </code>
+          </li>
+          <li>
+           <code>
+            coreos-alpha-2135-1-0-v20190515
+           </code>
+          </li>
+         </ul>
+         <li>
+          <code>
+           cos-cloud
+          </code>
+          projesi
+         </li>
+         <ul>
+          <li>
+           <code>
+            cos-69-10895-242-0
+           </code>
+          </li>
+          <li>
+           <code>
+            cos-73-11647-182-0
+           </code>
+          </li>
+         </ul>
+         <li>
+          <code>
+           debian-cloud
+          </code>
+          projesi:
+          <a class="external" href="https://www.debian.org/security/2019/dsa-4444" target="_blank">
+           DSA-4444
+          </a>
+         </li>
+         <ul>
+          <li>
+           <code>
+            debian-9-stretch-v20190514
+           </code>
+          </li>
+         </ul>
+         <li>
+          <code>
+           rhel-cloud
+          </code>
+          projesi:
+          <a class="external" href="https://access.redhat.com/security/vulnerabilities/mds" target="_blank">
+           Red Hat MDS Bilgi Makalesi
+          </a>
+         </li>
+         <ul>
+          <li>
+           <code>
+            rhel-6-v20190515
+           </code>
+          </li>
+          <li>
+           <code>
+            rhel-7-v20190517
+           </code>
+          </li>
+          <li>
+           <code>
+            rhel-8-v20190515
+           </code>
+          </li>
+         </ul>
+         <li>
+          <code>
+           rhel-sap-cloud
+          </code>
+          projesi:
+          <a class="external" href="https://access.redhat.com/security/vulnerabilities/mds" target="_blank">
+           Red Hat MDS Bilgi Makalesi
+          </a>
+         </li>
+         <ul>
+          <li>
+           <code>
+            rhel-7-4-sap-v20190515
+           </code>
+          </li>
+          <li>
+           <code>
+            rhel-7-6-sap-v20190517
+           </code>
+          </li>
+         </ul>
+         <li>
+          <code>
+           suse-cloud
+          </code>
+          projesi:
+          <a class="external" href="https://www.suse.com/support/kb/doc/?id=7023736" target="_blank">
+           SUSE MDS Bilgi Tabanı
+          </a>
+         </li>
+         <ul>
+          <li>
+           <code>
+            sles-12-sp4-v20190520
+           </code>
+          </li>
+          <li>
+           <code>
+            sles-15-v20190520
+           </code>
+          </li>
+         </ul>
+         <li>
+          <code>
+           suse-sap-cloud
+          </code>
+          projesi
+         </li>
+         <ul>
+          <li>
+           <code>
+            sles-12-sp4-sap-v20190520
+           </code>
+          </li>
+          <li>
+           <code>
+            sles-15-sap-v20190520
+           </code>
+          </li>
+         </ul>
+         <li>
+          <code>
+           ubuntu-os-cloud
+          </code>
+          projesi:
+          <a class="external" href="https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/MDS" target="_blank">
+           Ubuntu MDS Wiki
+          </a>
+         </li>
+         <ul>
+          <li>
+           <code>
+            ubuntu-1404-trusty-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-1604-xenial-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-1804-bionic-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-1810-cosmic-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-1904-disco-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-minimal-1604-xenial-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-minimal-1804-bionic-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-minimal-1810-cosmic-v20190514
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-minimal-1904-disco-v20190514
+           </code>
+          </li>
+         </ul>
+         <li>
+          <code>
+           windows-cloud
+          </code>
+          ve
+          <code>
+           windows-sql-cloud
+          </code>
+          projesi:
+          <a class="external" href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013" target="_blank">
+           Microsoft ADV190013
+          </a>
+         </li>
+         <ul>
+          <li>
+           Sürüm numarası
+           <code>
+            v20190514
+           </code>
+           olan tüm Windows Server ve SQL Server genel görüntüleri.
+          </li>
+         </ul>
+         <li>
+          <code>
+           gce-uefi-images
+          </code>
+          projesi
+         </li>
+         <ul>
+          <li>
+           <code>
+            centos-7-v20190515
+           </code>
+          </li>
+          <li>
+           <code>
+            cos-69-10895-242-0
+           </code>
+          </li>
+          <li>
+           <code>
+            cos-73-11647-182-0
+           </code>
+          </li>
+          <li>
+           <code>
+            rhel-7-v20190517
+           </code>
+          </li>
+          <li>
+           <code>
+            ubuntu-1804-bionic-v20190514
+           </code>
+          </li>
+          <li>
+           Sürüm numarası
+           <code>
+            v20190514
+           </code>
+           olan tüm Windows Server genel görüntüleri.
+          </li>
+         </ul>
+        </ul>
+        <h4 data-text="Container İçin Optimize Edilmiş İşletim Sistemi" id="container-icin-optimize-edilmis-isletim-sistemi">
+         Container İçin Optimize Edilmiş İşletim Sistemi
+        </h4>
+        <p>
+         Konuk işletim sisteminiz olarak Container için Optimize Edilmiş İşletim Sistemi (COS) kullanıyor ve sanal makinenizde güvenilmeyen, çok kiracılı iş yükleri çalıştırıyorsanız şunları yapmanızı öneririz:
+        </p>
+        <ol>
+         <li>
+          Çekirdek komut satırında
+          <code>
+           nosmt
+          </code>
+          ifadesini ayarlayarak Hyper-Threading'i devre dışı bırakın.
+          <br/>
+          <p>
+           Mevcut COS sanal makinelerde
+           <code>
+            nosmt
+           </code>
+           seçeneğini ayarlamak için aşağıdaki işlemleri yaparak
+           <code>
+            grub.cfg
+           </code>
+           ifadesini değiştirebilir, ardından sistemi yeniden başlatabilirsiniz:
+          </p>
+          <pre>
+
+# Run as root:
+dir="$(mktemp -d)"
+mount /dev/sda12 "${dir}"
+sed -i -e "s|cros_efi|cros_efi nosmt|g" "${dir}/efi/boot/grub.cfg"
+umount "${dir}"
+rmdir "${dir}"
+
+reboot</pre>
+          <p>
+           İşlemi daha kolay gerçekleştirmek amacıyla yukarıdaki komutları çalıştırdığınızda elde edeceğiniz aynı sonuca ulaşmak için aşağıdaki komut dosyasını çalıştırabilirsiniz. Yeni sanal makinelerin bu yeni parametreyi kullandığından emin olmak için bu komut dosyasını; bulut yapılandırmanızın, başlangıç komut dosyalarınızın veya örnek şablonlarınızın bir parçası haline getirmenizi öneririz. Bu komut dosyasını çalıştıran bir bulut yapılandırması örneği aşağıda verilmiştir.
+          </p>
+          <p class="warning">
+           <strong>
+            Uyarı:
+           </strong>
+           Bu komut, ilk kez çalıştırıldığında örneğin anında yeninden başlatılmasını sağlar.
+         Hyper-Threading'in zaten devre dışı bırakıldığı bir örnekte bu komut daha sonra çalıştırıldığında herhangi bir etkisi olmayacaktır.
+          </p>
+          <pre>
+
+# Run as root
+/bin/bash &lt;(curl -s https://storage.googleapis.com/cos-tools/scripts/disable_smt.sh)
+</pre>
+          <p>
+           Bu komut dosyasını bulut yapılandırmanızın bir parçası olarak eklemek için:
+          </p>
+          <pre>
+
+#cloud-config
+
+bootcmd:
+- /bin/bash -c "/bin/bash &lt;(curl -s https://storage.googleapis.com/cos-tools/scripts/disable_smt.sh)"
+</pre>
+          <p>
+           Örneğinizde Hyper-Threading'in devre dışı olduğunu doğrulamak için
+           <code>
+            /sys/devices/system/cpu/smt/active
+           </code>
+           ve
+           <code>
+            /sys/devices/system/cpu/smt/control
+           </code>
+           dosyalarının çıktısını inceleyin.
+           <code>
+            active
+           </code>
+           için
+           <code>
+            0
+           </code>
+           sonucunu,
+           <code>
+            control
+           </code>
+           için
+           <code>
+            off
+           </code>
+           sonucunu döndürüyorsa Hyper-Threading devre dışıdır:
+          </p>
+          <pre>
+
+cat /sys/devices/system/cpu/smt/active
+cat /sys/devices/system/cpu/smt/control
+</pre>
+          <p class="note">
+           <strong>
+            Not:
+           </strong>
+           Örneğinizde UEFI Güvenli Başlatma'yı etkinleştirdiyseniz örneğinizi UEFI Güvenli Başlatma devre dışı bırakılmış şekilde yeniden oluşturmanız gerekecektir. UEFI Güvenli Başlatma devre dışı haldeyken yukarıdaki komutu çalıştırın, ardından yeni örneğinizde UEFI Güvenli Başlatma'yı etkinleştirin.
+          </p>
+         </li>
+         <li>
+          COS görüntüsünün yeni sürümünü kullanma
+          <br/>
+          <p>
+           Hyper-Threading'i yukarıda açıklanan şekilde devre dışı bırakmanın yanı sıra güvenlik açığından tamamen korunmak için yukarıda belirtilen güncellenmiş görüntülerle veya Container için Optimize Edilmiş İşletim Sistemi görüntüleriyle
+           <a href="https://cloud.google.com/compute/docs/instances/create-start-instance?hl=tr#publicimage">
+            örneklerinizi yeniden oluşturmanız
+           </a>
+           da gerekir.
+          </p>
+         </li>
+        </ol>
+       </td>
+       <td>
+        Orta
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12126" target="_blank">
+           CVE-2018-12126
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12127" target="_blank">
+           CVE-2018-12127
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12130" target="_blank">
+           CVE-2018-12130
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11091" target="_blank">
+           CVE-2018-11091
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Yayınlanma tarihi: 14.08.2018" id="20180814">
+     Yayınlanma tarihi: 14.08.2018
+    </h2>
+    <p>
+     <strong>
+      son güncelleme tarihi: 20.08.2018 Saat 17:00 PST
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Açıklama" id="20180814_description">
+         Açıklama
+        </h4>
+        <p>
+         Aşağıdaki CVE'ler
+         <a href="https://www.intel.com/content/www/us/en/architecture-and-technology/l1tf.html">
+          Intel tarafından açıklanmıştır
+         </a>
+         :
+        </p>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3615" target="_blank">
+           CVE-2018-3615
+          </a>
+          (
+          <a href="https://en.wikipedia.org/wiki/Software_Guard_Extensions">
+           SGX
+          </a>
+          için)
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3620" target="_blank">
+           CVE-2018-3620
+          </a>
+          (işletim sistemleri ve
+          <a href="https://en.wikipedia.org/wiki/Hyper-Threading">
+           SMT
+          </a>
+          için)
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3646" target="_blank">
+           CVE-2018-3646
+          </a>
+          (sanallaştırma için)
+         </li>
+        </ul>
+        <p>
+         Bu CVE'lerin tamamına "L1 Terminal Fault (L1TF)" adı verilir.
+        </p>
+        <p>
+         Bu L1TF güvenlik açıkları, işlemci düzeyinde veri yapılarının yapılandırmasına saldırarak kurgusal yürütmeyi kötüye kullanır.
+      "L1", bellek erişimini hızlandırmak için kullanılan küçük bir çekirdek içi kaynak olan 1. Düzey Veri önbelleğini (L1D) temsil eder.
+        </p>
+        <p>
+         Bu güvenlik açıkları ve Compute Engine'in çözümleri ile ilgili daha fazla ayrıntı için
+         <a href="https://cloud.google.com/blog/products/gcp/protecting-against-the-new-l1tf-speculative-vulnerabilities?hl=tr">
+          Google Cloud blog yayınını
+         </a>
+         okuyun.
+        </p>
+        <h4 data-text="Compute Engine'e etkisi" id="20180814_impact">
+         Compute Engine'e etkisi
+        </h4>
+        <p>
+         Compute Engine'i çalıştıran ve müşteri iş yüklerini birbirinden ayıran ana makine altyapısı, bilinen saldırılara karşı korunur.
+        </p>
+        <p>
+         Compute Engine müşterileri, konuk ortamı içinde dolaylı kötüye kullanım olasılığını ortadan kaldırmak için görüntülerini güncellemeye teşvik edilir. Bu özellikle kendi çok kiracılı hizmetlerini Compute Engine sanal makinelerinde çalıştıran müşteriler için önemlidir.
+        </p>
+        <p>
+         Google Compute Engine müşterileri, örnekleri üzerindeki konuk işletim sistemlerini aşağıdaki seçeneklerden birini kullanarak güncelleyebilir:
+        </p>
+        <ul>
+         <li>
+          <a href="https://cloud.google.com/compute/docs/instances/create-start-instance?hl=tr#publicimage">
+           Mevcut sanal makine örneklerini yeniden oluşturmak
+          </a>
+          için yama uygulanmış genel görüntüler kullanma.
+         </li>
+         <li>
+          Mevcut örnekler üzerinde, işletim sistemi tedarikçisi tarafından sağlanan yamalar uygulama ve yama uygulanmış örnekleri yeniden başlatma.
+         </li>
+        </ul>
+        <h4 data-text="Yama uygulanmış görüntüler ve tedarikçi kaynakları" id="20180814_patched_images">
+         Yama uygulanmış görüntüler ve tedarikçi kaynakları
+        </h4>
+        <p>
+         Kullanılabilir olduğunda, her iki CVE için durum da dahil, her bir işletim sistemi tedarikçisinden gelen yama bilgileri için bağlantılar sağlayacağız. Sanal makine örneklerini yeniden oluşturmak için bu görüntüleri kullanın. Bu genel görüntülerin erken sürümleri bu yamaları içermez ve potansiyel saldırıları hafifletmez.
+        </p>
+        <ul>
+         <li>
+          <code>
+           centos-cloud
+          </code>
+          projesi:
+          <ul>
+           <li>
+            <code>
+             centos-7-v20180815
+            </code>
+           </li>
+           <li>
+            <code>
+             centos-6-v20180815
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           coreos-cloud
+          </code>
+          projesi:
+          <ul>
+           <li>
+            <code>
+             coreos-stable-1800-7-0-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-beta-1855-2-0-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-alpha-1871-0-0-v20180816
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           cos-cloud
+          </code>
+          projesi:
+          <ul>
+           <li>
+            <code>
+             cos-stable-66-10452-110-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-stable-67-10575-66-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-beta-68-10718-81-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-dev-69-10895-23-0
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           debian-cloud
+          </code>
+          projesi:
+          <ul>
+           <li>
+            <code>
+             debian-9-stretch-v20180820
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           rhel-cloud
+          </code>
+          projesi:
+          <ul>
+           <li>
+            <code>
+             rhel-7-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             rhel-6-v20180814
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           rhel-sap-cloud
+          </code>
+          projesi:
+          <ul>
+           <li>
+            <code>
+             rhel-7-sap-apps-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             rhel-7-sap-hana-v20180814
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           suse-cloud
+          </code>
+          projesi:
+          <ul>
+           <li>
+            <code>
+             sles-15-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp3-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-11-sp4-v20180816
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           suse-sap-cloud
+          </code>
+          projesi:
+          <ul>
+           <li>
+            <code>
+             sles-15-sap-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp3-sap-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp2-sap-v20180816
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           ubuntu-os-cloud
+          </code>
+          projesi:
+          <ul>
+           <li>
+            <code>
+             ubuntu-1804-bionic-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1604-xenial-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1404-trusty-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1804-bionic-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1604-xenial-v20180814
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           windows-cloud
+          </code>
+          <code>
+           gce-uefi-images
+          </code>
+          ve
+          <code>
+           windows-sql-cloud
+          </code>
+          projeleri:
+          <ul>
+           <li>
+            Sürüm numarası
+            <code>
+             -v201800814
+            </code>
+            ve üzeri olan tüm Windows Server ve SQL Server
+            <a class="external" href="https://cloud.google.com/compute/docs/images?hl=tr#os-compute-support" target="_blank">
+             herkese açık görüntüleri
+            </a>
+            yama içerir.
+           </li>
+          </ul>
+         </li>
+        </ul>
+       </td>
+       <td>
+        Yüksek
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3615" target="_blank">
+           CVE-2018-3615
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3620" target="_blank">
+           CVE-2018-3620
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3646" target="_blank">
+           CVE-2018-3646
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Yayınlanma tarihi: 06.08.2018" id="20180806">
+     Yayınlanma tarihi: 06.08.2018
+    </h2>
+    <p>
+     <strong>
+      son güncelleme tarihi: 05.09.2018 Saat 17:00 PST
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="05.09.2018 Tarihli Güncelleme" id="20180905_update">
+         05.09.2018 Tarihli Güncelleme
+        </h4>
+        <p>
+         <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5391">
+          CVE-2018-5391
+         </a>
+         , 14/08/2018 tarihinde US-CERT tarafından yayınlanmıştır. Tıpkı
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390" target="_blank">
+          CVE-2018-5390
+         </a>
+         gibi savunmasız sistemlerde hizmet reddi (DoS) saldırılarının etkisini artıran çekirdek düzeyinde bir ağ iletişimi güvenlik açığıdır. Aralarındaki temel fark, CVE-2018-5391 açığının IP bağlantıları üzerinde kötüye kullanılma riski olmasıdır. Bu bülteni, bu güvenlik açıklarının her ikisini de kapsayacak şekilde güncelledik.
+        </p>
+        <h4 data-text="Açıklama" id="20180806_description">
+         Açıklama
+        </h4>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390" target="_blank">
+          CVE-2018-5390
+         </a>
+         ("SegmentSmack"), TCP bağlantıları üzerindeki savunmasız sistemlerde hizmet reddi (DoS) saldırılarının etkisini artıran çekirdek düzeyinde bir ağ iletişimi güvenlik açığını tanımlar.
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5391" target="_blank">
+          CVE-2018-5391
+         </a>
+         ("FragmentSmack"), IP bağlantıları üzerindeki savunmasız sistemlerde hizmet reddi (DoS) saldırılarının etkisini artıran çekirdek düzeyinde bir ağ iletişimi güvenlik açığını tanımlar.
+        </p>
+        <h4 data-text="Compute Engine'e etkisi" id="20180806_impact">
+         Compute Engine'e etkisi
+        </h4>
+        <p>
+         Compute Engine sanal makinelerini çalıştıran ana makine altyapısı risk altında değildir.
+      Compute Engine sanal makineleri giriş ve çıkış trafiğini yöneten ağ altyapısı, bu güvenlik açığına karşı korumalıdır. Yalnızca
+         <a href="https://cloud.google.com/load-balancing/docs/https/?hl=tr">
+          HTTP(S)
+         </a>
+         ,
+         <a href="https://cloud.google.com/load-balancing/docs/ssl/?hl=tr">
+          SSL
+         </a>
+         veya
+         <a href="https://cloud.google.com/load-balancing/docs/tcp/?hl=tr">
+          TCP Yük Dengeleyicileri
+         </a>
+         üzerinden güvenilmeyen ağ trafiği alan/gönderen Compute Engine sanal makineleri bu güvenlik açığına karşı korumalıdır.
+        </p>
+        <p>
+         Güvenilmeyen ağ trafiğini doğrudan veya
+         <a href="https://cloud.google.com/load-balancing/docs/network/?hl=tr">
+          Ağ Yük Dengeleyicileri
+         </a>
+         üzerinden alan/gönderen yama uygulanmamış işletim sistemleri çalıştıran Compute Engine sanal makineleri bu DoS saldırısına karşı savunmasızdır.
+        </p>
+        <p>
+         İşletim sistemleri için yamalar kullanılabilir olur olmaz sanal makine örneklerinizi güncellemenizi öneririz.
+        </p>
+        <p>
+         Compute Engine müşterileri, örnekleri üzerindeki konuk işletim sistemlerini aşağıdaki seçeneklerden birini kullanarak güncelleyebilir:
+        </p>
+        <ul>
+         <li>
+          <a href="https://cloud.google.com/compute/docs/instances/create-start-instance?hl=tr#publicimage">
+           Mevcut sanal makine örneklerini yeniden oluşturmak
+          </a>
+          için yama uygulanmış genel görüntüler kullanma.
+        Aşağıdan, yama uygulanmış genel görüntüler listesine bakın.
+         </li>
+         <li>
+          Mevcut örnekler üzerinde, işletim sistemi tedarikçisi tarafından sağlanan yamalar uygulama ve yama uygulanmış örnekleri yeniden başlatma.
+         </li>
+        </ul>
+        <h4 data-text="Yama uygulanmış görüntüler ve tedarikçi kaynakları" id="20180806_patched_images">
+         Yama uygulanmış görüntüler ve tedarikçi kaynakları
+        </h4>
+        <p>
+         Kullanılabilir olduğunda, her bir işletim sistemi tedarikçisinden gelen yama bilgileri için bağlantılar sağlayacağız.
+        </p>
+        <ul>
+         <li>
+          <code>
+           centos-cloud
+          </code>
+          projesi (yalnızca CVE-2018-5390):
+          <ul>
+           <li>
+            <code>
+             centos-7-v20180815
+            </code>
+           </li>
+           <li>
+            <code>
+             centos-6-v20180815
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           coreos-cloud
+          </code>
+          projesi (CVE-2018-5390 ve CVE-2018-5391):
+          <ul>
+           <li>
+            <code>
+             coreos-stable-1800-7-0-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-beta-1855-2-0-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-alpha-1871-0-0-v20180816
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           cos-cloud
+          </code>
+          projesi (CVE-2018-5390 ve CVE-2018-5391):
+          <ul>
+           <li>
+            <code>
+             cos-stable-65-10323-98-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-stable-66-10452-109-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-stable-67-10575-65-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-beta-68-10718-76-0
+            </code>
+           </li>
+           <li>
+            <code>
+             cos-dev-69-10895-16-0
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           debian-cloud
+          </code>
+          projesi (CVE-2018-5390 ve CVE-2018-5391):
+          <ul>
+           <li>
+            <code>
+             debian-9-stretch-v20180814
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           rhel-cloud
+          </code>
+          projesi (yalnızca CVE-2018-5390):
+          <ul>
+           <li>
+            <code>
+             rhel-7-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             rhel-6-v20180814
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           suse-cloud
+          </code>
+          projesi (CVE-2018-5390 ve CVE-2018-5391):
+          <ul>
+           <li>
+            <code>
+             sles-15-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp3-v20180814
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           suse-sap-cloud
+          </code>
+          projesi (CVE-2018-5390 ve CVE-2018-5391):
+          <ul>
+           <li>
+            <code>
+             sles-15-sap-v20180816
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp3-sap-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp2-sap-v20180816
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           ubuntu-os-cloud
+          </code>
+          projesi (CVE-2018-5390 ve CVE-2018-5391):
+          <ul>
+           <li>
+            <code>
+             ubuntu-1804-bionic-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1604-xenial-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1404-trusty-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1804-bionic-v20180814
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-minimal-1604-xenial-v20180814
+            </code>
+           </li>
+          </ul>
+         </li>
+        </ul>
+       </td>
+       <td>
+        Yüksek
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390" target="_blank">
+           CVE-2018-5390
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5391" target="_blank">
+           CVE-2018-5391
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Yayınlanma tarihi: 03.01.2018" id="20180103">
+     Yayınlanma tarihi: 03.01.2018
+    </h2>
+    <p>
+     <strong>
+      son güncelleme tarihi: 21.05.2018 Saat 15:00 PST
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="21.05.2018 Güncellemesi" id="20180521_update">
+         21.05.2018 Güncellemesi
+        </h4>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3640" target="_blank">
+          CVE-2018-3640
+         </a>
+         ve
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3639" target="_blank">
+          CVE-2018-3639
+         </a>
+         , yani sırasıyla Değişken 3a ve 4,
+         <a class="external" href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00115.html" target="_blank">
+          Intel tarafından açıklanmıştır
+         </a>
+         . Spectre ve Meltdown'ın ilk üç varyantında, Compute Engine sanal makine örneklerini çalıştıran altyapı korunmaktadır ve müşteri sanal makine örnekleri izoledir ve birbirinden korunur. Ek olarak Compute Engine, Intel'in mikrokod yamalarını altyapımıza dağıtmayı planlamaktadır. Bu sayede, tek bir sanal makine örneği içinde güvenilmeyen veya çok kiracılı iş yükleri çalıştıran müşteriler, işletim sistemi tedarikçileri ve sağlayıcıları tarafından sunulduğunda sanal makineler arası ek hafifletmeleri etkinleştirebilecektir. Compute Engine, mikrokod yamaları Intel tarafından onaylandıktan ve üretim ortamımız için yamaları test edip onayladıktan sonra yamaları dağıtacaktır. Kullanıma sunulduğunda bu sayfada daha ayrıntılı zaman çizelgeleri ve güncellemeler sunacağız.
+        </p>
+        <h4 data-text="Açıklama" id="20180103_description">
+         Açıklama
+        </h4>
+        <p>
+         Bu CVE'ler, birçok işlemcide mevcut olan kurgusal yürütme teknolojisini kötüye kullanan yeni bir tür saldırı sınıfı varyantlarıdır.
+      Bu saldırı sınıfı, çeşitli koşullar altında bellek verilerine yetkisiz salt okuma erişimi sağlayabilir.
+        </p>
+        <p>
+         Compute Engine; kullanıcılara etkisi olmadan, zorunlu bakım dönemleri olmadan ve toplu yeniden başlatma gerekmeden ana makine sistemi ve hipervizör güncellemeleri yürütmek için Sanal Makine Canlı Geçiş teknolojisini kullanmıştır. Ancak tüm konuk işletim sistemleri ve sürümlerine, bu sistemlerin nerede çalıştığından bağımsız şekilde bu yeni saldırı sınıfına karşı yama uygulanmalıdır.
+        </p>
+        <p>
+         Bu saldırı yöntemi ile ilgili tüm teknik ayrıntılar için
+         <a class="external" href="https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html" target="_blank">
+          Project Zero blog yayınını
+         </a>
+         okuyun. Tüm ürüne özel bilgiler dahil olmak üzere Google'ın hafifletmelerine dair tüm ayrıntılar için
+         <a class="external" href="https://security.googleblog.com/2018/01/todays-cpu-vulnerability-what-you-need.html" target="_blank">
+          Google Güvenlik blogu yayınını
+         </a>
+         okuyun.
+        </p>
+        <h4 data-text="Compute Engine'e etkisi" id="20180103_impact">
+         Compute Engine'e etkisi
+        </h4>
+        <p>
+         Compute Engine'i çalıştıran ve müşteri sanal makine örneklerini birbirinden ayıran altyapı, bilinen saldırılara karşı korunur.
+      Hafifletmelerimiz, ana makine sistemlerimize sanal makine örnekleri içinde çalışan uygulamalardan yetkisiz erişimi önlemektedir. Bu hafifletmeler, aynı ana makine sistemi üzerinde çalışan sanal makine örnekleri arasındaki yetkisiz erişimi de önler.
+        </p>
+        <p>
+         Sanal makine örnekleriniz içinde yetkisiz erişimi önlemek için bu örnekler üzerindeki konuk işletim sistemlerini aşağıdaki seçeneklerden birini kullanarak güncellemeniz gerekir:
+        </p>
+        <ul>
+         <li>
+          <a class="external" href="https://cloud.google.com/compute/docs/instances/create-start-instance?hl=tr#publicimage" target="_blank">
+           Mevcut sanal makine örneklerinizi yeniden oluşturmak
+          </a>
+          için yama uygulanmış genel görüntüler kullanma.
+        Aşağıdan, yama uygulanmış genel görüntüler listesine bakın.
+         </li>
+         <li>
+          Mevcut örnekleriniz üzerinde, dağıtımınız için işletim sistemi tedarikçisi tarafından sağlanan yamalar uygulama ve yama uygulanmış örnekleri yeniden başlatma. Her bir işletim sistemi tedarikçisinden gelen yama bilgileri için bağlantıları aşağıda görebilirsiniz.
+         </li>
+        </ul>
+        <h4 data-text="Yama uygulanmış görüntüler ve tedarikçi kaynakları" id="20180103_patched_images">
+         Yama uygulanmış görüntüler ve tedarikçi kaynakları
+        </h4>
+        <p class="note">
+         <strong>
+          Not:
+         </strong>
+         Yama uygulanan görüntüler, bu güvenlik bülteninde listelenen tüm CVE'ler için çözümler içermeyebilir. Ayrıca, farklı görüntüler bu tür saldırıları önlemek için farklı yöntemler içerebilir. İşletim sistemi tedarikçinizle görüşerek yamalarında ele aldıkları CVE'leri ve kullandıkları önleme yöntemlerini doğrulayın.
+        </p>
+        <ul>
+         <li>
+          <code>
+           cos-cloud
+          </code>
+          projesi: Değişken 2 (
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5715" target="_blank">
+           CVE-2017-5715
+          </a>
+          ) ve Değişken 3 (
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5754" target="_blank">
+           CVE-2017-5754
+          </a>
+          ) saldırılarını önleyen yamalar içerir. Google, Varyant 2 saldırılarını hafifletmek için bu görüntülerde
+          <a class="external" href="https://support.google.com/faqs/answer/7625886?hl=tr" target="_blank">
+           Retpoline
+          </a>
+          kullandı.
+          <ul>
+           <li>
+            <code>
+             cos-stable-63-10032-71-0
+            </code>
+            veya görüntü ailesi
+            <code>
+             cos-stable
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           centos-cloud
+          </code>
+          projesi:
+          <a class="external" href="https://lwn.net/Alerts/CentOS/" target="_blank">
+           CentOS yama bilgileri
+          </a>
+          <ul>
+           <li>
+            <code>
+             centos-7-v20180104
+            </code>
+            veya görüntü ailesi
+            <code>
+             centos-7
+            </code>
+           </li>
+           <li>
+            <code>
+             centos-6-v20180104
+            </code>
+            veya görüntü ailesi
+            <code>
+             centos-6
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           coreos-cloud
+          </code>
+          projesi:
+          <a class="external" href="https://coreos.com/blog/container-linux-meltdown-patch" target="_blank">
+           CoreOS yama bilgileri
+          </a>
+          <ul>
+           <li>
+            <code>
+             coreos-stable-1576-5-0-v20180105
+            </code>
+            veya görüntü ailesi
+            <code>
+             coreos-stable
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-beta-1632-1-0-v20180105
+            </code>
+            veya görüntü ailesi
+            <code>
+             coreos-beta
+            </code>
+           </li>
+           <li>
+            <code>
+             coreos-alpha-1649-0-0-v20180105
+            </code>
+            veya görüntü ailesi
+            <code>
+             coreos-alpha
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           debian-cloud
+          </code>
+          projesi:
+          <a class="external" href="https://www.debian.org/security/#DSAS" target="_blank">
+           Debian yama bilgileri
+          </a>
+          <ul>
+           <li>
+            <code>
+             debian-9-stretch-v20180105
+            </code>
+            veya görüntü ailesi
+            <code>
+             debian-9
+            </code>
+           </li>
+           <li>
+            <code>
+             debian-8-jessie-v20180109
+            </code>
+            veya görüntü ailesi
+            <code>
+             debian-8
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           rhel-cloud
+          </code>
+          projesi:
+          <a class="external" href="https://access.redhat.com/security/vulnerabilities/speculativeexecution" target="_blank">
+           RHEL yama bilgileri
+          </a>
+          <ul>
+           <li>
+            <code>
+             rhel-7-v20180104
+            </code>
+            veya görüntü ailesi
+            <code>
+             rhel-7
+            </code>
+           </li>
+           <li>
+            <code>
+             rhel-6-v20180104
+            </code>
+            veya görüntü ailesi
+            <code>
+             rhel-6
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           suse-cloud
+          </code>
+          projesi:
+          <a class="external" href="https://www.suse.com/c/suse-addresses-meltdown-spectre-vulnerabilities/" target="_blank">
+           SUSE yama bilgileri
+          </a>
+          <ul>
+           <li>
+            <code>
+             sles-12-sp3-v20180104
+            </code>
+            veya görüntü ailesi
+            <code>
+             sles-12
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-11-sp4-v20180104
+            </code>
+            veya görüntü ailesi
+            <code>
+             sles-11
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           suse-sap-cloud
+          </code>
+          projesi:
+          <a class="external" href="https://www.suse.com/c/suse-addresses-meltdown-spectre-vulnerabilities/" target="_blank">
+           SUSE yama bilgileri
+          </a>
+          <ul>
+           <li>
+            <code>
+             sles-12-sp3-sap-v20180104
+            </code>
+            veya görüntü ailesi
+            <code>
+             sles-12-sp3-sap
+            </code>
+           </li>
+           <li>
+            <code>
+             sles-12-sp2-sap-v20180104
+            </code>
+            veya görüntü ailesi
+            <code>
+             sles-12-sp2-sap
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           ubuntu-os-cloud
+          </code>
+          projesi:
+          <a class="external" href="https://insights.ubuntu.com/2018/01/04/ubuntu-updates-for-the-meltdown-spectre-vulnerabilities/" target="_blank">
+           Ubuntu yama bilgileri
+          </a>
+          <ul>
+           <li>
+            <code>
+             ubuntu-1710-artful-v20180109
+            </code>
+            veya görüntü ailesi
+            <code>
+             ubuntu-1710
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1604-xenial-v20180109
+            </code>
+            veya görüntü ailesi
+            <code>
+             ubuntu-1604-lts
+            </code>
+           </li>
+           <li>
+            <code>
+             ubuntu-1404-trusty-v20180110
+            </code>
+            veya görüntü ailesi
+            <code>
+             ubuntu-1404-lts
+            </code>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <code>
+           windows-cloud
+          </code>
+          ve
+          <code>
+           windows-sql-cloud
+          </code>
+          projeleri:
+          <ul>
+           <li>
+            Sürüm numarası
+            <code>
+             -v20180109
+            </code>
+            ve üzeri olan tüm Windows Server ve SQL Server
+            <a class="external" href="https://cloud.google.com/compute/docs/images?hl=tr#os-compute-support" target="_blank">
+             herkese açık görüntüleri
+            </a>
+            yama içerir. Ancak hem mevcut örneklerinizde hem de yeni oluşturulan örneklerde bu hafifletmeleri etkinleştirmek ve doğrulamak için Microsoft tarafından
+            <a class="external" href="https://support.microsoft.com/en-gb/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution" target="_blank">
+             Windows Server
+            </a>
+            destek bülteni ile sağlanan önerilen işlemleri izlemeniz gerekir.
+           </li>
+          </ul>
+         </li>
+        </ul>
+        <p>
+         <a class="external" href="https://cloud.google.com/compute/docs/instances/create-start-instance?hl=tr#publicimage" target="_blank">
+          Sanal makine örneklerinizi yeniden oluşturmak
+         </a>
+         için bu görüntüleri kullanın.
+      Bu genel görüntülerin erken sürümleri bu yamaları içermez ve potansiyel saldırıları hafifletmez.
+        </p>
+        <h4 data-text="Donanım tedarikçilerinin yamaları" id="20180103_hardware_patches">
+         Donanım tedarikçilerinin yamaları
+        </h4>
+        <p>
+         NVIDIA, NVIDIA® sürücü yazılımı yüklü olan sistemlere karşı potansiyel saldırıları hafifletmek için yama uygulanmış sürücüler sağlamaktadır. Hangi sürücü versiyonlarına yama uygulandığını öğrenmek için
+         <a class="external" href="http://nvidia.custhelp.com/app/answers/detail/a_id/4611" target="_blank">
+          NVIDIA GPU Görüntü Birimi Sürücüsü Güvenlik Güncellemeleri
+         </a>
+         güvenlik bültenini okuyun.
+        </p>
+        <h4 data-text="Düzeltme geçmişi:" id="20180103_history">
+         Düzeltme geçmişi:
+        </h4>
+        <ul>
+         <li>
+          21.05.2018, 14:00 PST: 21 Mayıs 2018'de açıklanan iki yeni varyant ile ilgili bilgi eklendi.
+         </li>
+         <li>
+          10.01.2018, 15:00 PST: Yama uygulanmış Windows Server ve SQL Server genel görüntüleri ile ilgili bilgi eklendi.
+         </li>
+         <li>
+          10.01.2018, 10:15 PST: Yama uygulanmış genel görüntüler listesine bazı Ubuntu görüntüleri eklendi.
+         </li>
+         <li>
+          10.01.2018, 09:50 PST: Donanım tedarikçilerine ait yamalar için talimatlar eklendi.
+         </li>
+         <li>
+          03.01.2018-09.01.2018: Yama uygulanmış genel görüntüler listesinde bazı düzeltmeler yapıldı.
+         </li>
+        </ul>
+       </td>
+       <td>
+        Yüksek
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5753" target="_blank">
+           CVE-2017-5753
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5715" target="_blank">
+           CVE-2017-5715
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5754" target="_blank">
+           CVE-2017-5754
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3640" target="_blank">
+           CVE-2018-3640
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3639" target="_blank">
+           CVE-2018-3639
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Yayınlanma tarihi: 02.10.2017" id="20171002">
+     Yayınlanma tarihi: 02.10.2017
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Açıklama" id="acklama_2">
+         Açıklama
+        </h4>
+        <p>
+         <a class="external" href="http://www.thekelleys.org.uk/dnsmasq/doc.html" target="_blank">
+          Dnsmasq
+         </a>
+         ; DNS, DHCP, yönlendirici reklamları ve ağ önyüklemesi sunma işlevine sahiptir. Bu yazılım, genellikle masaüstü Linux dağıtımları (ör. Ubuntu), evde kullanılan yönlendiriciler ve IoT cihazları gibi çeşitli sistemlerde kuruludur. Dnsmasq hem açık internette hem de özel ağlarda dahili olarak yaygın biçimde kullanılmaktadır.
+        </p>
+        <p>
+         Düzenli dahili güvenlik değerlendirmeleri sırasında Google, yedi farklı sorun keşfetmiştir. Sorunların ciddiyetini belirlemenin ardından, etkileri ve kötüye kullanım potansiyelini saptamak amacıyla çalışmalar yürütülmüştür. Ardından, şirket dahilinde bu sorunların her birinden kaynaklanabilecek sonuçlar gösterilmiştir. Dnsmasq'ın geliştiricisi Simon Kelly ile uygun yamalar üretmek ve sorundan doğacak zararları hafifletmek için bazı çalışmalar da yapılmıştır.
+        </p>
+        <p>
+         İnceleme sırasında ekip, 5 Eylül 2017 itibarıyla projenin git sunucusunun son sürümünü etkileyen üç adet potansiyel uzaktan kod yürütme, bir bilgi sızıntısı ve üç hizmet reddi güvenlik açığı saptamıştır.
+        </p>
+        <p>
+         Bu yamalar yukarı akışlı olup
+         <a class="external" href="http://thekelleys.org.uk/gitweb/?p=dnsmasq.git;a=summary" target="_blank">
+          projenin Git kod deposuna
+         </a>
+         bağlıdır.
+        </p>
+        <h4 data-text="Compute Engine'e etkisi" id="compute-enginee-etkisi">
+         Compute Engine'e etkisi
+        </h4>
+        <p>
+         Varsayılan olarak Dnsmasq, yalnızca
+         <a class="external" href="https://wikipedia.org/wiki/NetworkManager" target="_blank">
+          NetworkManager
+         </a>
+         kullanan ve etkin olmayan (varsayılan olarak) görüntülere yüklenir. Aşağıdaki herkese açık Compute Engine görüntülerine Dnsmasq yüklüdür:
+        </p>
+        <ul>
+         <li>
+          Ubuntu 16.04, 16.10, 17.04
+         </li>
+         <li>
+          CentOS 7
+         </li>
+         <li>
+          RHEL 7
+         </li>
+        </ul>
+        <p>
+         Ancak diğer görüntülerde, diğer paketlere bağımlılık özelliğiyle Dnsmasq yüklenmiş olabilir. En yeni işletim sistemi görüntüsünü kullanmak için Debian, Ubuntu, CentOS, RHEL, SLES ve OpenSuse örneklerini güncellemenizi öneririz.
+      CoreOS ve Container İçin Optimize Edilmiş İşletim Sistemi, durumdan etkilenmemektedir. Windows görüntüleri de durumdan etkilenmemektedir.
+        </p>
+        <p>
+         Debian ve Ubuntu'yu çalıştıran örnekler için, örneğinizde aşağıdaki komutları çalıştırarak güncelleme yapabilirsiniz:
+        </p>
+        <pre>
+
+sudo apt-get -y update</pre>
+        <pre>
+
+sudo apt-get -y dist-upgrade</pre>
+        <p>
+         Red Hat Enterprise Linux ve CentOS örneklerinde şu kodu çalıştırın:
+        </p>
+        <pre>
+
+sudo yum -y upgrade</pre>
+        <p>
+         SLES ve OpenSUSE görüntülerinde aşağıdaki komutu çalıştırın:
+        </p>
+        <pre>
+
+sudo zypper up</pre>
+        <p>
+         Manuel güncelleme komutlarının çalıştırılmasına alternatif olarak, ilgili işletim sisteminin
+         <a href="https://cloud.google.com/compute/docs/instances/create-start-instance?hl=tr#publicimage">
+          görüntü ailelerini kullanarak sanal makine örneklerini yeniden oluşturabilirsiniz
+         </a>
+         .
+        </p>
+       </td>
+       <td>
+        Yüksek
+       </td>
+       <td>
+        <ul>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14491" target="_blank">
+           CVE-2017-14491
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14492" target="_blank">
+           CVE-2017-14492
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14493" target="_blank">
+           CVE-2017-14493
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14494" target="_blank">
+           CVE-2017-14494
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14495" target="_blank">
+           CVE-2017-14495
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-14496" target="_blank">
+           CVE-2017-14496
+          </a>
+         </li>
+         <li>
+          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-13704" target="_blank">
+           CVE-2017-13704
+          </a>
+         </li>
+        </ul>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Yayınlanma tarihi: 26.10.2016" id="20161026">
+     Yayınlanma tarihi: 26.10.2016
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Açıklama" id="acklama_3">
+         Açıklama
+        </h4>
+        <p>
+         CVE-2016-5195; Linux çekirdeğinin bellek alt sistemi tarafından, yazma erişimi üzerindeki salt okunur özel eşleme COW durumunun kesilmesi şeklindeki yarış durumunu temsil eder.
+        </p>
+        <p>
+         Ayrıcalığı olmayan yerel kullanıcılar, bu açığı normalde salt okunur olan bellek eşlemelerine yazma erişimi elde etmek ve bu sayede sistem üzerindeki ayrıcalıklarını artırmak için kullanabilir.
+        </p>
+        <p>
+         Daha fazla bilgi edinmek için
+         <a class="external" href="https://github.com/dirtycow/dirtycow.github.io/wiki/VulnerabilityDetails" target="_blank">
+          Dirty COW Hakkında SSS
+         </a>
+         bölümünü inceleyin.
+        </p>
+        <h4 data-text="Compute Engine'e etkisi" id="compute-enginee-etkisi_1">
+         Compute Engine'e etkisi
+        </h4>
+        <p>
+         Compute Engine'deki tüm Linux dağıtımları ve sürümleri, bu sorundan etkilenir. Örneklerin çoğu, yeni çekirdeği otomatik olarak indirir ve yükler. Ancak çalışan sisteminize yama uygulamak için sistemi yeniden başlatmanız gerekir.
+        </p>
+        <p>
+         Aşağıdaki Compute Engine görüntülerini temel alan yeni veya yeniden oluşturulan örneklerde zaten yama uygulanmış çekirdekler bulunmaktadır.
+        </p>
+        <ul>
+         <li>
+          <code>
+           centos-6-v20161026
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-7-v20161025
+          </code>
+         </li>
+         <li>
+          <code>
+           coreos-alpha-1192-2-0-v20161021
+          </code>
+         </li>
+         <li>
+          <code>
+           coreos-beta-1185-2-0-v20161021
+          </code>
+         </li>
+         <li>
+          <code>
+           coreos-stable-1122-3-0-v20161021
+          </code>
+         </li>
+         <li>
+          <code>
+           debian-8-jessie-v20161020
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-6-v20161026
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-7-v20161024
+          </code>
+         </li>
+         <li>
+          <code>
+           sles-11-sp4-v20161021
+          </code>
+         </li>
+         <li>
+          <code>
+           sles-12-sp1-v20161021
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1204-precise-v20161020
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1404-trusty-v20161020
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1604-xenial-v20161020
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1610-yakkety-v20161020
+          </code>
+         </li>
+        </ul>
+       </td>
+       <td>
+        Yüksek
+       </td>
+       <td>
+        <a class="external" href="https://github.com/dirtycow/dirtycow.github.io/wiki/VulnerabilityDetails" target="_blank">
+         CVE-2016-5195
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Yayınlanma tarihi: 16.02.2016" id="20160216">
+     Yayınlanma tarihi: 16.02.2016
+    </h2>
+    <p>
+     <strong>
+      Son güncelleme tarihi: 22.02.2016
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Açıklama" id="acklama_4">
+         Açıklama
+        </h4>
+        <p>
+         CVE-2015-7547; glibc DNS istemci tarafı çözümleyicisinin,
+         <code>
+          getaddrinfo()
+         </code>
+         kitaplık işlevini kullanırken yazılımı yığın tabanlı arabellek taşmasına karşı savunmasız hale getirdiği bir güvenlik açığıdır.
+        Saldırganlar; bu güvenlik açığını istismar etmek amacıyla saldırgan denetimindeki alan adları, saldırgan tarafından denetlenen DNS sunucuları veya bağlantıyı izinsiz izleme saldırısıyla bu işlevi kullanarak yazılımdan faydalanabilir.
+        </p>
+        <p>
+         Daha fazla bilgi edinmek için
+         <a href="https://googleonlinesecurity.blogspot.ca/2016/02/cve-2015-7547-glibc-getaddrinfo-stack.html">
+          Google Dijital Güvenlik Blogu
+         </a>
+         veya
+         <a class="external" href="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2015-7547" target="_blank">
+          Common Vulnerabilities and Exposures (CVE)
+         </a>
+         veritabanını inceleyin.
+        </p>
+        <h4 data-text="Compute Engine'e etkisi" id="compute-enginee-etkisi_2">
+         Compute Engine'e etkisi
+        </h4>
+        <p>
+         <strong>
+          Güncelleme (22/02/2016):
+         </strong>
+        </p>
+        <p>
+         Artık aşağıdaki CoreOS, SLES ve OpenSUSE görüntülerini kullanarak örneklerinizi yeniden oluşturabilirsiniz:
+        </p>
+        <ul>
+         <li>
+          <code>
+           coreos-alpha-962-0-0-v20160218
+          </code>
+         </li>
+         <li>
+          <code>
+           coreos-beta-899-7-0-v20160218
+          </code>
+         </li>
+         <li>
+          <code>
+           coreos-stable-835-13-0-v20160218
+          </code>
+         </li>
+         <li>
+          <code>
+           opensuse-13-2-v20160222
+          </code>
+         </li>
+         <li>
+          <code>
+           opensuse-leap-42-1-v20160222
+          </code>
+         </li>
+         <li>
+          <code>
+           sles-11-sp4-v20160222
+          </code>
+         </li>
+         <li>
+          <code>
+           sles-12-sp1-v20160222
+          </code>
+         </li>
+        </ul>
+        <p>
+         <strong>
+          Güncelleme (17.02.2016):
+         </strong>
+        </p>
+        <p>
+         Artık aşağıdaki komutları çalıştırarak Ubuntu 12.04 LTS, Ubuntu 14.04 LTS ve Ubuntu 15.10 örneklerinde güncelleme yapabilirsiniz:
+        </p>
+        <ol>
+         <li>
+          <code>
+           user@my-instance:~$ sudo apt-get -y update
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo apt-get -y dist-upgrade
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo reboot
+          </code>
+         </li>
+        </ol>
+        <p>
+         Manuel güncelleme komutlarını çalıştırmaya alternatif olarak, artık örnekleri aşağıdaki yeni görüntülerle yeniden oluşturabilirsiniz:
+        </p>
+        <ul>
+         <li>
+          <code>
+           backports-debian-7-wheezy-v20160216
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-6-v20160216
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-7-v20160216
+          </code>
+         </li>
+         <li>
+          <code>
+           debian-7-wheezy-v20160216
+          </code>
+         </li>
+         <li>
+          <code>
+           debian-8-jessie-v20160216
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-6-v20160216
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-7-v20160216
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1204-precise-v20160217a
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1404-trusty-v20160217a
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1510-wily-v20160217
+          </code>
+         </li>
+        </ul>
+        <p>
+         Bilgimiz dahilinde, varsayılan glibc yapılandırmasıyla Compute Engine'in DNS çözümleyicilerini kullanarak bu güvenlik açığını kötüye kullanabilecek herhangi bir yöntem bulunmamaktadır. Ancak zaman içinde, tüm yeni güvenlik açıkları için yeni istismar yöntemleri keşfedilebilir. Bu nedenle yamaları sanal makine örneklerine olabildiğince çabuk uygulamanız gerekir.
+       edns0'ı etkinleştirdiyseniz (varsayılan olarak devre dışıdır) örneklerinize yama uygulanana kadar devre dışı bırakmanız gerekir.
+        </p>
+        <p>
+         <strong>
+          Orijinal bülten:
+         </strong>
+        </p>
+        <p>
+         Linux dağıtımınızda güvenlik açığı olabilir. Linux OS çalıştıran Compute Engine müşterilerinin, bu güvenlik açığından etkilenmemek için örneklerinin işletim sistemi görüntülerini güncellemesi gerekir.
+        </p>
+        <p>
+         Debian'ı çalıştıran örneklerde, güncellemeyi örneğinizde aşağıdaki komutları çalıştırarak yapabilirsiniz:
+        </p>
+        <ol>
+         <li>
+          <code>
+           user@my-instance:~$ sudo apt-get -y update
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo apt-get -y dist-upgrade
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo reboot
+          </code>
+         </li>
+        </ol>
+        <p>
+         Ayrıca Debian örnekleriniz için
+         <a class="external" href="https://wiki.debian.org/UnattendedUpgrades" target="_blank">
+          UnattendedUpgrades
+         </a>
+         'i yüklemenizi öneririz.
+        </p>
+        <p>
+         Red Hat Enterprise Linux örnekleri için:
+        </p>
+        <ul>
+         <li>
+          <code>
+           user@my-instance:~$ sudo yum -y upgrade
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo reboot
+          </code>
+         </li>
+        </ul>
+        <p>
+         Bu bülten, diğer işletim sistemi geliştiricileri bu güvenlik açığı için yamalar yayınlandığı ve Compute Engine güncellenmiş işletim sistemi görüntülerini kullanıma sunduğu sürece güncellenmeye devam edecektir.
+        </p>
+       </td>
+       <td>
+        Yüksek
+       </td>
+       <td>
+        <a class="external" href="https://googleonlinesecurity.blogspot.ca/2016/02/cve-2015-7547-glibc-getaddrinfo-stack.html" target="_blank">
+         CVE-2015-7547
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Yayınlanma tarihi: 19.03.2015" id="20150319">
+     Yayınlanma tarihi: 19.03.2015
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Açıklama" id="acklama_5">
+         Açıklama
+        </h4>
+        <p>
+         CVE-2015-1427;
+         <a class="external" href="https://www.elastic.co/products/elasticsearch" target="_blank">
+          Elasticsearch
+         </a>
+         'ün 1.3.8'den önceki sürümlerinde ve 1.4.3'ten önceki herhangi bir 1.4.x sürümünde Groovy komut dosyası motorunun, uzaktaki saldırganların korumalı alan mekanizmasını aşarak rastgele kabuk komutları yürütebildiği bir güvenlik açığıdır.
+        </p>
+        <p>
+         Daha fazla bilgi için
+         <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1427" target="_blank">
+          National Vulnerability Database (NVD)
+         </a>
+         veya
+         <a class="external" href="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2015-1427" target="_blank">
+          Common Vulnerabilities and Exposures (CVE)
+         </a>
+         veritabanını inceleyin.
+        </p>
+        <h4 data-text="Compute Engine'e etkisi" id="compute-enginee-etkisi_3">
+         Compute Engine'e etkisi
+        </h4>
+        <p>
+         Compute Engine örneklerinde Elasticsearch kullanıyorsanız Elasticsearch'ü 1.4.3 veya daha yeni bir sürüme yükseltmeniz gerekir. Elasticsearch yazılımınızın sürümünü zaten yükselttiyseniz bu güvenlik açığından korunmaktasınız.
+        </p>
+        <p>
+         Elasticsearch'ü 1.4.3 veya daha yeni bir sürüme yükseltmediyseniz
+         <a class="external" href="http://www.elastic.co/guide/en/elasticsearch/reference/current/rolling-upgrades.html" target="_blank">
+          sıralı yükseltme yapabilirsiniz
+         </a>
+         .
+        </p>
+        <p>
+         Elasticsearch'ü
+         <a href="https://console.cloud.google.com/?hl=tr" target="console">
+          Google Cloud Platform Console
+         </a>
+         'da
+         <a href="https://cloud.google.com/solutions/elasticsearch/click-to-deploy?hl=tr">
+          Click-to-deploy
+         </a>
+         işlemini kullanarak dağıttıysanız Elasticsearch'ü çalıştıran örnekleri kaldırmak için
+         <a href="https://console.cloud.google.com/projectselector/deployments?hl=tr">
+          dağıtımı silebilirsiniz
+         </a>
+         .
+        </p>
+        <p>
+         Google Cloud Platform ekibi, Elasticsearch'ün güncellenmiş sürümünün dağıtılabilmesini sağlayacak bir düzeltme üzerinde çalışmaktadır. Ancak düzeltme,
+         <a href="https://console.cloud.google.com/?hl=tr" target="console">
+          GCP Console
+         </a>
+         'daki Click-to-deploy özelliğinde henüz kullanılamamaktadır.
+        </p>
+       </td>
+       <td>
+        Yüksek
+       </td>
+       <td>
+        <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1427" target="_blank">
+         CVE-2015-1427
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Yayınlanma tarihi: 29.01.2015" id="20150129">
+     Yayınlanma tarihi: 29.01.2015
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Açıklama" id="acklama_6">
+         Açıklama
+        </h4>
+        <p>
+         <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-0235" target="_blank">
+          CVE-2015-0235 (Hayalet)
+         </a>
+         , glibc kitaplığındaki bir güvenlik açığıdır.
+        </p>
+        <p>
+         App Engine, Cloud Storage, BigQuery ve CloudSQL müşterilerinin herhangi bir işlem yapması gerekmez. Google sunucuları güncellenmiştir ve bu güvenlik açığına karşı korunmaktadır.
+        </p>
+        <p>
+         Compute Engine müşterilerinin işletim sistemi görüntülerini güncellemesi gerekebilir.
+        </p>
+        <h4 data-text="Compute Engine'e etkisi" id="compute-enginee-etkisi_4">
+         Compute Engine'e etkisi
+        </h4>
+        <p>
+         Linux dağıtımınızda güvenlik açığı olabilir. Debian 7, Debian 7 backport'ları, Ubuntu 12.04 LTS, Red Hat Enterprise Linux, CentOS veya SUSE Linux Enterprise Server 11 SP3 çalıştıran Compute Engine müşterilerinin, bu güvenlik açığından etkilenmemek için örneklerinin işletim sistemi görüntülerini güncellemesi gerekir.
+        </p>
+        <p>
+         Bu güvenlik açığı Ubuntu 14.04 LTS, Ubuntu 14.10 veya SUSE Linux Enterprise Server 12'yi etkilemez.
+        </p>
+        <p>
+         Linux dağıtımlarınızı yükseltmenizi öneririz. Debian 7, Debian 7 backport'ları veya Ubuntu 12.04 LTS'yi çalıştıran örneklerde aşağıdaki komutları kullanarak güncelleme yapabilirsiniz:
+        </p>
+        <ol>
+         <li>
+          <code>
+           user@my-instance:~$ sudo apt-get update
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo apt-get -y upgrade
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo reboot
+          </code>
+         </li>
+        </ol>
+        <p>
+         Red Hat Enterprise Linux veya CentOS örnekleri için:
+        </p>
+        <ol>
+         <li>
+          <code>
+           user@my-instance:~$ sudo yum -y upgrade
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo reboot
+          </code>
+         </li>
+        </ol>
+        <p>
+         SUSE Linux Enterprise Server 11 SP3 örnekleri için:
+        </p>
+        <ol>
+         <li>
+          <code>
+           user@my-instance:~$ sudo zypper --non-interactive up
+          </code>
+         </li>
+         <li>
+          <code>
+           user@my-instance:~$ sudo reboot
+          </code>
+         </li>
+        </ol>
+        <p>
+         Yukarıda belirtilen manuel güncelleme komutlarını çalıştırmaya alternatif olarak, kullanıcılar artık örnekleri aşağıdaki yeni görüntülerle yeniden oluşturabilir:
+        </p>
+        <ul>
+         <li>
+          <code>
+           debian-7-wheezy-v20150127
+          </code>
+         </li>
+         <li>
+          <code>
+           backports-debian-7-wheezy-v20150127
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-6-v20150127
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-7-v20150127
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-6-v20150127
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-7-v20150127
+          </code>
+         </li>
+         <li>
+          <code>
+           sles-11-sp3-v20150127
+          </code>
+         </li>
+         <li>
+          <code>
+           ubuntu-1204-precise-v20150127
+          </code>
+         </li>
+        </ul>
+        <h4 data-text="Google Tarafından Yönetilen Sanal Makinelere etkisi" id="google-tarafndan-yonetilen-sanal-makinelere-etkisi">
+         Google Tarafından Yönetilen Sanal Makinelere etkisi
+        </h4>
+        <p>
+         <code>
+          gcloud preview app deploy
+         </code>
+         kullanan, yönetilen sanal makine kullanıcılarının; temel docker container'larını,
+         <code>
+          gcloud preview app setup-managed-vms
+         </code>
+         ile güncellemesi ve çalışan uygulamalarından her birini,
+         <code>
+          gcloud preview app deploy
+         </code>
+         ile yeniden dağıtması gerekir.
+         <code>
+          appcfg
+         </code>
+         ile dağıtım yapan kullanıcıların herhangi bir işlem yapması gerekmez ve bu kullanıcılar, otomatik olarak yeni sürüme geçirilir.
+        </p>
+       </td>
+       <td>
+        Yüksek
+       </td>
+       <td>
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-0235" target="_blank">
+         CVE-2015-0235
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Yayınlanma tarihi: 15.10.2014" id="20141015">
+     Yayınlanma tarihi: 15.10.2014
+    </h2>
+    <p>
+     <strong>
+      Son güncelleme tarihi: 17.10.2014
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Açıklama" id="acklama_7">
+         Açıklama
+        </h4>
+        <p>
+         CVE-2014-3566 (diğer adıyla POODLE), SSL 3.0 sürümü tasarımındaki bir güvenlik açığıdır. Bu güvenlik açığı, ağ saldırganlarının güvenli bağlantılardaki düz metinleri hesaplayabilmesini sağlar. Ayrıntılı bilgi için güvenlik açıkları hakkında yayınlanan
+         <a href="http://googleonlinesecurity.blogspot.com/2014/10/this-poodle-bites-exploiting-ssl-30.html">
+          blog yayınlarımızı
+         </a>
+         inceleyin.
+        </p>
+        <p>
+         App Engine, Cloud Storage, BigQuery ve CloudSQL müşterilerinin herhangi bir işlem yapması gerekmez. Google sunucuları güncellenmiştir ve bu güvenlik açığına karşı korunmaktadır. Compute Engine müşterilerinin, işletim sistemi görüntülerini güncellemesi gerekir.
+        </p>
+        <h4 data-text="Compute Engine'e etkisi" id="compute-enginee-etkisi_5">
+         Compute Engine'e etkisi
+        </h4>
+        <p>
+         <strong>
+          Güncelleme (17/10/2014):
+         </strong>
+        </p>
+        <p>
+         SSLv3 kullanıyorsanız güvenlik açığından etkilenebilirsiniz. Compute Engine müşterilerinin, bu güvenlik açığından etkilenmemek için örneklerinin işletim sistemi görüntülerini güncellemesi gerekir.
+        </p>
+        <p>
+         Linux dağıtımlarınızı yükseltmenizi öneririz. Debian'ı çalıştıran örneklerinizde aşağıdaki komutları kullanarak güncelleme yapabilirsiniz:
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo apt-get update
+user@my-instance:~$ sudo apt-get -y upgrade
+user@my-instance:~$ sudo reboot</pre>
+        <p>
+         CentOS örnekleri için:
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo yum -y upgrade
+user@my-instance:~$ sudo reboot</pre>
+        <p>
+         Yukarıda belirtilen manuel güncelleme komutlarını çalıştırmaya alternatif olarak, kullanıcılar artık örnekleri aşağıdaki yeni görüntülerle yeniden oluşturabilir:
+        </p>
+        <ul>
+         <li>
+          <code>
+           centos-6-v20141016
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-7-v20141016
+          </code>
+         </li>
+         <li>
+          <code>
+           debian-7-wheezy-v20141017
+          </code>
+         </li>
+         <li>
+          <code>
+           backports-debian-7-wheezy-v20141017
+          </code>
+         </li>
+        </ul>
+        <p>
+         Görüntüler elde edildikten sonra RHEL ve SLES görüntüleriyle ilgili bültenler güncellenecektir.
+Bu sırada RHEL kullanıcıları, daha fazla bilgi için
+         <a class="external" href="https://access.redhat.com/articles/1232123" target="_blank">
+          doğrudan Red Hat
+         </a>
+         'e danışabilir.
+        </p>
+        <p>
+         <strong>
+          Orijinal bülten:
+         </strong>
+        </p>
+        <p>
+         Compute Engine müşterilerinin, bu güvenlik açığından etkilenmemek için örneklerinin işletim sistemi görüntülerini güncellemesi gerekir. Yeni işletim sistemi görüntüleri elde edildikten sonra bu güvenlik bülteni, talimatlarla güncellenecektir.
+        </p>
+       </td>
+       <td>
+        Orta
+       </td>
+       <td>
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3566" target="_blank">
+         CVE-2014-3566
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Yayınlanma tarihi: 24.09.2014" id="20140924">
+     Yayınlanma tarihi: 24.09.2014
+    </h2>
+    <p>
+     <strong>
+      son güncelleme tarihi: 29.09.2014
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Açıklama" id="acklama_8">
+         Açıklama
+        </h4>
+        <p>
+         Bash'te (CVE-2014-6271) saldırgan tarafından kontrol edilen herhangi bir ortam değişkeni ayrıştırmasına dayalı olarak kodun uzaktan yürütülmesine izin veren bir hata bulunmaktadır. En sık karşılaşılan istismar vektörü, web sunucusunda sunulan CGI komut dosyalarına yapılan kötü amaçlı HTTP istekleri yoluyla gerçekleştirilir. Daha fazla bilgi için
+         <a class="external" href="http://seclists.org/oss-sec/2014/q3/650" target="_blank">
+          hata açıklaması
+         </a>
+         bölümünü inceleyin.
+        </p>
+        <p>
+         26.09.2014 tarihinden önceki Compute Engine konuk işletim sistemi görüntüleri haricindeki bash hatalarının taşıdığı risk oranı, Google Cloud Platform Ürünleri için azaltılmıştır. Compute Engine görüntülerinizdeki hata riskini azaltmak için gerekli olan adımlara aşağıdan ulaşabilirsiniz.
+        </p>
+        <h4 data-text="Compute Engine'e etkisi" id="compute-enginee-etkisi_6">
+         Compute Engine'e etkisi
+        </h4>
+        <p>
+         Bu hata, CGI komut dosyalarının kullanıldığı neredeyse tüm web sitelerini etkileyebilir. Ayrıca PHP, Perl, Python, SSI, Java, C++ ve benzeri servlet'ler üzerinden çalışan ve
+         <code>
+          popen
+         </code>
+         ,
+         <code>
+          system
+         </code>
+         ,
+         <code>
+          shell_exec
+         </code>
+         veya benzeri API'ler gibi çağrılar aracılığıyla kabuk komutlarını çağıran web sitelerini de etkileyebilir.  Bu durum, erişimi sınırlı olan kullanıcılara SSH komut sınırlaması veya bash sınırlı kabuk gibi mekanizmalar yoluyla kontrollü oturum açma erişimine izin vermeye çalışan sistemleri de etkileyebilir.
+        </p>
+        <p>
+         <strong>
+          Güncelleme (29.09.2014):
+         </strong>
+        </p>
+        <p>
+         Aşağıda belirtilen manuel güncelleme komutlarını çalıştırmaya alternatif olarak kullanıcılar, artık örneklerini bash güvenlik hatalarıyla (
+         <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7169" target="_blank">
+          CVE-2014-7169
+         </a>
+         ,
+         <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6277" target="_blank">
+          CVE-2014-6277
+         </a>
+         ,
+         <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6278" target="_blank">
+          CVE-2014-6278
+         </a>
+         ,
+         <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7186" target="_blank">
+          CVE-2014-7186
+         </a>
+         ve
+         <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7187" target="_blank">
+          CVE-2014-7187
+         </a>
+         dahil) alakalı ek güvenlik açığı riskini azaltan görüntülerle yeniden oluşturabilir.
+        Örneklerinizi tekrar oluşturmak için aşağıdaki yeni görüntüleri kullanın:
+        </p>
+        <ul>
+         <li>
+          <code>
+           centos-6-v20140926
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-7-v20140926
+          </code>
+         </li>
+         <li>
+          <code>
+           debian-7-wheezy-v20140926
+          </code>
+         </li>
+         <li>
+          <code>
+           backports-debian-7-wheezy-v20140926
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-6-v20140926
+          </code>
+         </li>
+        </ul>
+        <p>
+         <strong>
+          Güncelleme (25.09.2014):
+         </strong>
+        </p>
+        <p>
+         Kullanıcılar artık manuel güncelleme yapmak yerine örneklerini yeniden oluşturabilir. Örneklerinizi yeniden oluşturmak için bu güvenlik hatasına yönelik düzeltmeleri içeren aşağıdaki yeni görüntüleri kullanın:
+        </p>
+        <ul>
+         <li>
+          <code>
+           backports-debian-7-wheezy-v20140924
+          </code>
+         </li>
+         <li>
+          <code>
+           debian-7-wheezy-v20140924
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-6-v20140924
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-6-v20140924
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-7-v20140924
+          </code>
+         </li>
+        </ul>
+        <p>
+         RHEL ve SUSE görüntüleri için, örnekleriniz üzerinde aşağıdaki komutları çalıştırıp güncellemeleri manuel olarak yapabilirsiniz:
+        </p>
+        <pre>
+
+# RHEL instances
+user@my-instance:~$ sudo yum -y upgrade
+
+# SUSE instances
+user@my-instance:~$ sudo zypper --non-interactive up</pre>
+        <p>
+         <strong>
+          Orijinal bülten:
+         </strong>
+        </p>
+        <p>
+         Linux dağıtımlarınızı yükseltmenizi öneririz. Debian'ı çalıştıran örneklerinizde aşağıdaki komutları çalıştırarak güncelleme yapabilirsiniz:
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo apt-get update
+user@my-instance:~$ sudo apt-get -y upgrade
+</pre>
+        <p>
+         CentOS örnekleri için:
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo yum -y upgrade</pre>
+        <p>
+         Ayrıntılı bilgi için ilgili Linux dağıtımıyla alakalı duyuruyu inceleyin:
+        </p>
+        <ul>
+         <li>
+          Orijinal yamalar:
+          <a class="external" href="http://ftp.gnu.org/gnu/bash/" target="_blank">
+           http://ftp.gnu.org/gnu/bash/
+          </a>
+          (kullandığınız sürüm için *-patches dosyalarındaki son girişi inceleyin)
+         </li>
+         <li>
+          Debian:
+          <a class="external" href="https://lists.debian.org/debian-security-announce/2014/msg00220.html" target="_blank">
+           [SECURITY] [DSA 3032-1] bash security update
+          </a>
+         </li>
+         <li>
+          RHEL:
+          <ul>
+           <li>
+            <a class="external" href="https://www.redhat.com/archives/rhsa-announce/2014-September/msg00048.html" target="_blank">
+             RHSA-2014:1293-01
+            </a>
+           </li>
+           <li>
+            <a class="external" href="https://www.redhat.com/archives/rhsa-announce/2014-September/msg00049.html" target="_blank">
+             RHSA-2014:1294-01
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          CentOS 5:
+          <a class="external" href="http://lists.centos.org/pipermail/centos-announce/2014-September/020582.html" target="_blank">
+           [CentOS-announce] CESA-2014:1293
+          </a>
+         </li>
+         <li>
+          CentOS 6:
+          <a class="external" href="http://lists.centos.org/pipermail/centos-announce/2014-September/020585.html" target="_blank">
+           [CentOS-announce] CESA-2014:1293
+          </a>
+         </li>
+         <li>
+          CentOS 7:
+          <a class="external" href="http://lists.centos.org/pipermail/centos-announce/2014-September/020583.html" target="_blank">
+           [CentOS-announce] CESA-2014:1293
+          </a>
+         </li>
+        </ul>
+       </td>
+       <td>
+        Yüksek
+       </td>
+       <td>
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7169" target="_blank">
+         CVE-2014-7169
+        </a>
+        ,
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6271" target="_blank">
+         CVE-2014-6271
+        </a>
+        ,
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6277" target="_blank">
+         CVE-2014-6277
+        </a>
+        ,
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6278" target="_blank">
+         CVE-2014-6278
+        </a>
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7186" target="_blank">
+         CVE-2014-7186
+        </a>
+        ,
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7187" target="_blank">
+         CVE-2014-7187
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Yayınlanma tarihi: 25.07.2014" id="20140618">
+     Yayınlanma tarihi: 25.07.2014
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Açıklama" id="acklama_9">
+         Açıklama
+        </h4>
+        <p>
+         <a class="external" href="http://www.elasticsearch.org/overview/logstash/" target="_blank">
+          Elasticsearch Logstash
+         </a>
+         , verilerin yetkisiz olarak değiştirilmesi ve ifşa edilmesine izin verebilen işletim sistemi komutlarının eklenmesine karşı savunmasızdır. Saldırgan, hazırlanan olayları Logstash'in herhangi bir veri kaynağına gönderebilir. Böylece Logstash işleminin iznini alarak komutları yürütebilir.
+        </p>
+        <h4 data-text="Compute Engine'e etkisi" id="compute-enginee-etkisi_7">
+         Compute Engine'e etkisi
+        </h4>
+        <p>
+         Bu güvenlik açığı, zabbix veya nagios_nsca çıkışlarının etkinleştirildiği ve Elasticsearch Logstash'in 1.4.2'den önceki sürümlerini çalıştıran tüm Compute Engine örneklerini etkiler. Saldırıyı önlemek için aşağıdakilerden birini yapabilirsiniz:
+        </p>
+        <ul>
+         <li>
+          Logstash 1.4.2 sürümüne geçme
+         </li>
+         <li>
+          1.3.x sürümleri için yamayı uygulama
+         </li>
+         <li>
+          <code>
+           zabbix
+          </code>
+          ve
+          <code>
+           nagios_nsca
+          </code>
+          çıkışlarını devre dışı bırakma.
+         </li>
+        </ul>
+        <p>
+         <a class="external" href="http://www.elasticsearch.org/blog/logstash-1-4-2/" target="_blank">
+          Logstash blogundan
+         </a>
+         daha fazla bilgi edinebilirsiniz.
+        </p>
+        <p>
+         Ayrıca Elasticsearch, güvenilir olmayan IP'lerin uzaktan erişimini önlemek için
+         <a class="external" href="http://www.elasticsearch.org/blog/scripting-security/" target="_blank">
+          güvenlik duvarı kullanmanızı
+         </a>
+         önerir.
+        </p>
+       </td>
+       <td>
+        Yüksek
+       </td>
+       <td>
+        <a class="external" href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-4326" target="_blank">
+         CVE-2014-4326
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Yayınlanma tarihi: 18.06.2014" id="20140618">
+     Yayınlanma tarihi: 18.06.2014
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Açıklama" id="acklama_10">
+         Açıklama
+        </h4>
+        <p>
+         Müşterilerin, Google Cloud Platform'da çalışırken Docker container'larının güvenliği hakkında doğabilecek endişelerine değinmek istiyoruz. Bu durum, Docker Container'larını, container için optimize edilmiş sanal makineleri veya Açık Kaynaklı Kubernetes zamanlayıcısını destekleyen Google App Engine uzantılarını kullanan müşterileri ilgilendirmektedir.
+        </p>
+        <p>
+         Docker, konuyu ustaca ele almıştır. İlgili blog yazısına
+         <a class="external" href="http://blog.docker.com/2014/06/docker-container-breakout-proof-of-concept-exploit/" target="_blank">
+          buradan
+         </a>
+         ulaşabilirsiniz. Yazılarında da belirtildiği gibi, açıklanan sorunun yalnızca daha eski, üretim öncesi bir sürüm olan Docker 0.11 için geçerli olduğunu hatırlatmak isteriz.
+        </p>
+        <p>
+         Container güvenliği tüm dünyada üzerine düşünülen bir konu. Google Cloud Platform'da, Linux uygulama container'ına dayalı çözümlerin (özellikle Docker container'ları) tamamen sanal makinelerde (Compute Engine) çalıştığını belirtmek isteriz. Docker topluluğunun Linux uygulama container yığınını daha güvenli hale getirme çabalarına destek vermekteyiz. Ancak teknolojinin yeni, yüzey alanının ise geniş olduğunun farkındayız. Şimdilik, tam hipervizörlerin (sanal makineler) daha kompakt ve savunulabilir bir yüzey alanına sahip olduğu kanaatindeyiz. Sanal makineler, kötü amaçlı iş yüklerini ayırmak ve kod hatalarının görülme ihtimaliyle etkisini en aza indirmek için baştan tasarlanmıştır.
+        </p>
+        <p>
+         Müşterilerimiz, üçüncü taraf kötü amaçlı olabilecek kodlarla kendileri arasında tam hipervizörlerin yer aldığından emin olabilir. Linux uygulama container yığınının, çok kiracılı iş yüklerini destekleyecek kadar sağlam olduğuna karar verilirse topluluk, bu durumdan haberdar edilecektir. Şimdilik Linux uygulama container'ı, sanal makinenin yerini alamamaktadır. Container, sanal makineden daha fazla yararlanabilmenizi sağlar.
+        </p>
+       </td>
+       <td>
+        Düşük
+       </td>
+       <td>
+        <a class="external" href="http://blog.docker.com/2014/06/docker-container-breakout-proof-of-concept-exploit/" target="_blank">
+         Docker blog yayını
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Yayınlanma tarihi: 05.06.2014" id="20140605">
+     Yayınlanma tarihi: 05.06.2014
+    </h2>
+    <p>
+     <strong>
+      Son güncelleme tarihi: 09.06.2014
+     </strong>
+    </p>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Açıklama" id="acklama_11">
+         Açıklama
+        </h4>
+        <p>
+         OpenSSL'de,
+         <code>
+          ChangeCipherSpec
+         </code>
+         mesajlarının el sıkışma durumu makinesine doğru şekilde bağlanmama sorunu görülmektedir. Bu hata, mesajların el sıkışmaya erkenden eklenmesine neden olur. Dikkatlice hazırlanmış bir el sıkışma kullanan saldırganlar, OpenSSL SSL/TLS istemci ve sunucularında zorla zayıf anahtarlama malzemesi kullanılmasına neden olabilir. Bu durum, saldırganın saldırıya uğrayan istemci ve sunucu trafiğini çözüp değiştirdiği, bağlantıyı izinsiz izleme (MITM) saldırısı tarafından istismar edilebilir.
+        </p>
+        <p>
+         Bu sorun
+         <a class="external" href="https://www.openssl.org/news/secadv/20140605.txt" target="_blank">
+          CVE-2014-0224
+         </a>
+         koduyla tanımlanmıştır. OpenSSL ekibi sorunu çözmüş, OpenSSL topluluğunu OpenSSL'yi güncelleme konusunda uyarmıştır.
+        </p>
+        <h4 data-text="Compute Engine'e etkisi" id="compute-enginee-etkisi_8">
+         Compute Engine'e etkisi
+        </h4>
+        <p>
+         Bu güvenlik açığı; Debian, CentOS, Red Hat Enterprise Linux ve SUSE Linux Enterprise Server da dahil olmak üzere OpenSSL kullanan tüm Compute Engine örneklerini etkiler. Örneklerinizi yeni görüntülerle yeniden oluşturarak güncelleyebilirsiniz. Örneklerinizdeki paketleri manuel olarak güncelleme yönteminden de yararlanabilirsiniz.
+        </p>
+        <p>
+         <strong>
+          Güncelleme (09.06.2014):
+         </strong>
+         SUSE Linux Enterprise Server çalıştıran örneklerinizi yeni görüntülerle güncellemek için aşağıdaki görüntü sürümlerini veya daha yenilerini kullanarak örneklerinizi yeniden oluşturun:
+        </p>
+        <ul>
+         <li>
+          <code>
+           sles-11-sp3-v20140609
+          </code>
+         </li>
+        </ul>
+        <p>
+         <strong>
+          Orijinal yayın:
+         </strong>
+        </p>
+        <p>
+         Yeni görüntüler kullanarak Debian ve CentOS örneklerini güncellemek için aşağıdaki görüntü sürümlerini veya daha yenilerini kullanarak örneklerinizi yeniden oluşturun:
+        </p>
+        <ul>
+         <li>
+          <code>
+           debian-7-wheezy-v20140605
+          </code>
+         </li>
+         <li>
+          <code>
+           backports-debian-7-wheezy-v20140605
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-6-v20140605
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-6-v20140605
+          </code>
+         </li>
+        </ul>
+        <p>
+         Örneklerinizde OpenSSL'yi manuel olarak güncellemek için aşağıdaki komutları çalıştırarak uygun paketleri güncelleyin. CentOS ve RHEL'yi çalıştıran örneklerde, bu komutları kendi örneğinizde çalıştırarak OpenSSL'yi güncelleyebilirsiniz:
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo yum -y update
+user@my-instance:~$ sudo reboot</pre>
+        <p>
+         Debian'ı çalıştıran örneklerinizde aşağıdaki komutları çalıştırarak OpenSSL'yi güncelleyebilirsiniz:
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo apt-get update
+user@my-instance:~$ sudo apt-get -y upgrade
+user@my-instance:~$ sudo reboot</pre>
+        <p>
+         SUSE Linux Enterprise Server'ı çalıştıran örneklerinizde aşağıdaki komutları çalıştırarak OpenSSL'nin güncel olmasını sağlayabilirsiniz:
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo zypper --non-interactive up
+user@my-instance:~$ sudo reboot</pre>
+       </td>
+       <td>
+        Orta
+       </td>
+       <td>
+        <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0224" target="_blank">
+         CVE-2014-0224
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Yayınlanma tarihi: 08.04.2014" id="20140408">
+     Yayınlanma tarihi: 08.04.2014
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Açıklama" id="acklama_12">
+         Açıklama
+        </h4>
+        <p>
+         1.0.1g'den önceki OpenSSL 1.0.1'de bulunan (1) TLS ve (2) DTLS uygulamaları, Heartbeat Uzantı paketlerini düzgün bir şekilde çalıştıramamaktadır. Bu, uzaktaki saldırganların, arabelleğin fazla okunmasını tetikleyen hazırlanmış paketler yoluyla hassas bilgiler edinmesine yol açar. Bu durum, Heartbleed hatası olarak da bilinen
+         <code>
+          d1_both.c
+         </code>
+         ve
+         <code>
+          t1_lib.c
+         </code>
+         ile ilgili gizli anahtarların okunmasıyla da gösterilmiştir.
+        </p>
+        <h4 data-text="Compute Engine'e etkisi" id="compute-enginee-etkisi_9">
+         Compute Engine'e etkisi
+        </h4>
+        <p>
+         Bu güvenlik açığı, OpenSSL'nin en güncel sürüme sahip olmayan Compute Engine Debian, RHEL ve CentOS örneklerini etkiler. Örneklerinizi yeni görüntülerle yeniden oluşturarak güncelleyebilirsiniz. Örneklerinizdeki paketleri manuel olarak güncelleme yönteminden de yararlanabilirsiniz.
+        </p>
+        <p>
+         Yeni görüntüler kullanarak örneklerinizi güncellemek için aşağıdaki görüntü sürümlerini veya daha yenilerini kullanarak örneklerinizi yeniden oluşturun:
+        </p>
+        <ul>
+         <li>
+          <code>
+           debian-7-wheezy-v20140408
+          </code>
+         </li>
+         <li>
+          <code>
+           backports-debian-7-wheezy-v20140408
+          </code>
+         </li>
+         <li>
+          <code>
+           centos-6-v20140408
+          </code>
+         </li>
+         <li>
+          <code>
+           rhel-6-v20140408
+          </code>
+         </li>
+        </ul>
+        <p>
+         Örneklerinizde OpenSSL'yi manuel olarak güncellemek için aşağıdaki komutları çalıştırarak uygun paketleri güncelleyin. CentOS ve RHEL'yi çalıştıran örneklerde, bu komutları kendi örneğinizde çalıştırarak OpenSSL'nin güncel olmasını sağlayabilirsiniz:
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo yum update
+user@my-instance:~$ sudo reboot</pre>
+        <p>
+         Debian'ı çalıştıran örneklerinizde aşağıdaki komutları çalıştırarak OpenSSL'yi güncelleyebilirsiniz:
+        </p>
+        <pre>
+
+user@my-instance:~$ sudo apt-get update
+user@my-instance:~$ sudo apt-get upgrade
+user@my-instance:~$ sudo reboot</pre>
+        <p>
+         SUSE Linux çalıştıran örnekler, bu durumdan etkilenmez.
+        </p>
+        <p>
+         <strong>
+          14 Nisan 2014 tarihli güncelleme:
+         </strong>
+         Compute Engine; Heartbleed hatalarını kullanarak anahtarları ayıklama üzerine yapılan yeni araştırmaların sonucunda, Compute Engine müşterilerinin etkilenen tüm SSL hizmetleri için yeni anahtarlar oluşturmasını önermektedir.
+        </p>
+       </td>
+       <td>
+        Orta
+       </td>
+       <td>
+        <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0160" target="_blank">
+         CVE-2014-0160
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Yayınlanma tarihi: 07.06.2013" id="20130607">
+     Yayınlanma tarihi: 07.06.2013
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Açıklama" id="acklama_13">
+         Açıklama
+        </h4>
+        <p class="note">
+         <strong>
+          Not:
+         </strong>
+         Bu güvenlik açığı, yalnızca API v1 sürümünden itibaren silinen ve kullanımdan kaldırılan çekirdekler için geçerlidir.
+        </p>
+        <p>
+         3.9.4 ve öncesi sürümlere sahip olan Linux çekirdeğindeki Broadcom B43 kablosuz sürücüsünün
+         <code>
+          drivers/net/wireless/b43/main.c
+         </code>
+         üzerindeki
+         <code>
+          b43_request_firmware
+         </code>
+         işlevinde yer alan biçim dizesi güvenlik açığı, yerel kullanıcıların kök erişiminden yararlanarak ve
+         <code>
+          fwpostfix
+         </code>
+         modprobe parametresindeki biçim dizesi belirteçlerini dahil ederek ayrıcalık kazanmasına yol açar. Bu da, hata mesajının yanlış biçimde oluşturulmasına neden olur.
+        </p>
+        <h4 data-text="Compute Engine'e etkisi" id="compute-enginee-etkisi_10">
+         Compute Engine'e etkisi
+        </h4>
+        <p>
+         Bu güvenlik açığı,
+         <code>
+          gcg-3.3.8-201305291443
+         </code>
+         ve daha eski tüm Compute Engine çekirdeklerini etkiler. Compute Engine, çözüm olarak önceki tüm çekirdekleri kullanımdan kaldırmış ve kullanıcılarına, örnek ve görüntülerini Compute Engine
+         <code>
+          gce-v20130603
+         </code>
+         çekirdeğini kullanacak şekilde güncellemelerini önermiştir.
+         <code>
+          gce-v20130603
+         </code>
+         , bu güvenlik açığı için yamaya sahip
+         <code>
+          gcg-3.3.8-201305291443
+         </code>
+         çekirdeğini içerir.
+        </p>
+        <p>
+         Örneğinizin hangi çekirdek sürümünü kullandığını öğrenmek için:
+        </p>
+        <ol>
+         <li>
+          Örneğinize ssh uygulayın
+         </li>
+         <li>
+          <code>
+           uname -r
+          </code>
+          komutunu çalıştırın
+         </li>
+        </ol>
+       </td>
+       <td>
+        Orta
+       </td>
+       <td>
+        <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2852" target="_blank">
+         CVE-2013-2852
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Yayınlanma tarihi: 07.06.2013" id="20130607">
+     Yayınlanma tarihi: 07.06.2013
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Açıklama" id="acklama_14">
+         Açıklama
+        </h4>
+        <p class="note">
+         <strong>
+          Not:
+         </strong>
+         Bu güvenlik açığı, yalnızca API v1 sürümünden itibaren silinen ve kullanımdan kaldırılan çekirdekler için geçerlidir.
+        </p>
+        <p>
+         3.9.4 ve öncesi sürümlere sahip olan Linux çekirdeğinde,
+         <code>
+          block/genhd.c
+         </code>
+         üzerindeki register_disk işlevinde yer alan biçim dizesi güvenlik açığı, yerel kullanıcıların hazırlanmış
+         <code>
+          /dev/md
+         </code>
+         cihaz adı oluşturmak için kök erişiminden yararlanmalarına ve
+         <code>
+          /sys/module/md_mod/parameters/new_array
+         </code>
+         için biçim dizesi tanımlayıcılarını yazmalarına izin verir.
+        </p>
+        <h4 data-text="Compute Engine'e etkisi" id="compute-enginee-etkisi_11">
+         Compute Engine'e etkisi
+        </h4>
+        <p>
+         Bu güvenlik açığı,
+         <code>
+          gcg-3.3.8-201305291443
+         </code>
+         ve daha eski tüm Compute Engine çekirdeklerini etkiler. Compute Engine, çözüm olarak önceki tüm çekirdekleri kullanımdan kaldırmış ve kullanıcılarına, örnek ve görüntülerini Compute Engine
+         <code>
+          gce-v20130603
+         </code>
+         çekirdeğini kullanacak şekilde güncellemelerini önermiştir.
+         <code>
+          gce-v20130603
+         </code>
+         , bu güvenlik açığı için yamaya sahip
+         <code>
+          gcg-3.3.8-201305291443
+         </code>
+         çekirdeğini içerir.
+        </p>
+        <p>
+         Örneğinizin hangi çekirdek sürümünü kullandığını öğrenmek için:
+        </p>
+        <ol>
+         <li>
+          Örneğinize ssh uygulayın
+         </li>
+         <li>
+          <code>
+           uname -r
+          </code>
+          komutunu çalıştırın
+         </li>
+        </ol>
+       </td>
+       <td>
+        Orta
+       </td>
+       <td>
+        <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2851" target="_blank">
+         CVE-2013-2851
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Yayınlanma tarihi: 14.05.2013" id="20130514">
+     Yayınlanma tarihi: 14.05.2013
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Açıklama" id="acklama_15">
+         Açıklama
+        </h4>
+        <p class="note">
+         <strong>
+          Not:
+         </strong>
+         Bu güvenlik açığı, yalnızca API v1 sürümünden itibaren silinen ve kullanımdan kaldırılan çekirdekler için geçerlidir.
+        </p>
+        <p>
+         3.8.9 öncesi sürümlere sahip Linux çekirdeğinde yer alan
+         <code>
+          kernel/events/core.c
+         </code>
+         üzerindeki perf_swevent_init işlevi, yanlış
+         <code>
+          integer
+         </code>
+         veri türünü kullanır. Bu da, yerel kullanıcıların hazırlanmış bir
+         <code>
+          perf_event_open
+         </code>
+         sistem çağrısı üzerinden ayrıcalık kazanabilmesine neden olur.
+        </p>
+        <h4 data-text="Compute Engine'e etkisi" id="compute-enginee-etkisi_12">
+         Compute Engine'e etkisi
+        </h4>
+        <p>
+         Bu güvenlik açığı,
+         <code>
+          gcg-3.3.8-201305211623
+         </code>
+         ve daha eski tüm Compute Engine çekirdeklerini etkiler. Compute Engine, çözüm olarak önceki tüm çekirdekleri kullanımdan kaldırmış ve kullanıcılarına, örnek ve görüntülerini Compute Engine
+         <code>
+          gce-v20130521
+         </code>
+         çekirdeğini kullanacak şekilde güncellemelerini önermiştir.
+         <code>
+          gce-v20130521
+         </code>
+         , bu güvenlik açığı için yamaya sahip
+         <code>
+          gcg-3.3.8-201305211623
+         </code>
+         çekirdeğini içerir.
+        </p>
+        <p>
+         Örneğinizin hangi çekirdek sürümünü kullandığını öğrenmek için:
+        </p>
+        <ol>
+         <li>
+          Örneğinize ssh uygulayın
+         </li>
+         <li>
+          <code>
+           uname -r
+          </code>
+          komutunu çalıştırın
+         </li>
+        </ol>
+       </td>
+       <td>
+        Yüksek
+       </td>
+       <td>
+        <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2094" target="_blank">
+         CVE-2013-2094
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="Yayınlanma tarihi: 18.02.2013" id="20130218">
+     Yayınlanma tarihi: 18.02.2013
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th>
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <h4 data-text="Açıklama" id="acklama_16">
+         Açıklama
+        </h4>
+        <p class="note">
+         <strong>
+          Not:
+         </strong>
+         Bu güvenlik açığı, yalnızca API v1 sürümünden itibaren silinen ve kullanımdan kaldırılan çekirdekler için geçerlidir.
+        </p>
+        <p>
+         3.7.5 öncesi sürümlere sahip olan Linux çekirdeğinin ptrace işlevindeki yarış durumu, yerel kullanıcıların hazırlanmış bir uygulamadaki
+         <code>
+          PTRACE_SETREGS
+          ptrace
+         </code>
+         sistem çağrısı yoluyla ayrıcalık kazanabilmesine neden olur.
+        </p>
+        <h4 data-text="Compute Engine'e etkisi" id="compute-enginee-etkisi_13">
+         Compute Engine'e etkisi
+        </h4>
+        <p>
+         Bu güvenlik açığı, Compute Engine'in
+         <code>
+          2.6.x-gcg-
+          <em>
+           &lt;date&gt;
+          </em>
+         </code>
+         çekirdeklerini etkiler. Compute Engine, çözüm olarak 2.6.x sürümüne sahip çekirdekleri kullanımdan kaldırmış ve kullanıcılarına, örnek ve görüntülerini Compute Engine
+         <code>
+          gce-v20130225
+         </code>
+         çekirdeğini kullanacak şekilde güncellemelerini önermiştir.
+         <code>
+          gce-v20130225
+         </code>
+         , bu güvenlik açığı için yamaya sahip
+         <code>
+          3.3.8-gcg-201302081521
+         </code>
+         çekirdeğini içerir.
+        </p>
+        <p>
+         Örneğinizin hangi çekirdek sürümünü kullandığını öğrenmek için:
+        </p>
+        <ol>
+         <li>
+          Örneğinize ssh uygulayın
+         </li>
+         <li>
+          <code>
+           uname -r
+          </code>
+          komutunu çalıştırın
+         </li>
+        </ol>
+       </td>
+       <td>
+        Orta
+       </td>
+       <td>
+        <a class="external" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0871" target="_blank">
+         CVE-2013-0871
+        </a>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+   </section>
+  </div>
+ </article>
+</article>
