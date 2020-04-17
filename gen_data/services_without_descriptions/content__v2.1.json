@@ -2818,6 +2818,123 @@
                 }
             }
         },
+        "settlementreports": {
+            "methods": {
+                "get": {
+                    "httpMethod": "GET",
+                    "id": "content.settlementreports.get",
+                    "parameterOrder": [
+                        "merchantId",
+                        "settlementId"
+                    ],
+                    "parameters": {
+                        "merchantId": {
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "settlementId": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/settlementreports/{settlementId}",
+                    "response": {
+                        "$ref": "SettlementReport"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "list": {
+                    "httpMethod": "GET",
+                    "id": "content.settlementreports.list",
+                    "parameterOrder": [
+                        "merchantId"
+                    ],
+                    "parameters": {
+                        "maxResults": {
+                            "format": "uint32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "merchantId": {
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "transferEndDate": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "transferStartDate": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/settlementreports",
+                    "response": {
+                        "$ref": "SettlementreportsListResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                }
+            }
+        },
+        "settlementtransactions": {
+            "methods": {
+                "list": {
+                    "httpMethod": "GET",
+                    "id": "content.settlementtransactions.list",
+                    "parameterOrder": [
+                        "merchantId",
+                        "settlementId"
+                    ],
+                    "parameters": {
+                        "maxResults": {
+                            "format": "uint32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "merchantId": {
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "settlementId": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "transactionIds": {
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/settlementreports/{settlementId}/transactions",
+                    "response": {
+                        "$ref": "SettlementtransactionsListResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                }
+            }
+        },
         "shippingsettings": {
             "methods": {
                 "custombatch": {
@@ -5005,6 +5122,33 @@
                 },
                 "state": {
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "MinimumOrderValueTable": {
+            "id": "MinimumOrderValueTable",
+            "properties": {
+                "storeCodeSetWithMovs": {
+                    "items": {
+                        "$ref": "MinimumOrderValueTableStoreCodeSetWithMov"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "MinimumOrderValueTableStoreCodeSetWithMov": {
+            "id": "MinimumOrderValueTableStoreCodeSetWithMov",
+            "properties": {
+                "storeCodes": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "value": {
+                    "$ref": "Price"
                 }
             },
             "type": "object"
@@ -8377,6 +8521,9 @@
                 "minimumOrderValue": {
                     "$ref": "Price"
                 },
+                "minimumOrderValueTable": {
+                    "$ref": "MinimumOrderValueTable"
+                },
                 "name": {
                     "type": "string"
                 },
@@ -8391,6 +8538,160 @@
                 },
                 "shipmentType": {
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SettlementReport": {
+            "id": "SettlementReport",
+            "properties": {
+                "endDate": {
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "content#settlementReport",
+                    "type": "string"
+                },
+                "previousBalance": {
+                    "$ref": "Price"
+                },
+                "settlementId": {
+                    "type": "string"
+                },
+                "startDate": {
+                    "type": "string"
+                },
+                "transferAmount": {
+                    "$ref": "Price"
+                },
+                "transferDate": {
+                    "type": "string"
+                },
+                "transferIds": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SettlementTransaction": {
+            "id": "SettlementTransaction",
+            "properties": {
+                "amount": {
+                    "$ref": "SettlementTransactionAmount"
+                },
+                "identifiers": {
+                    "$ref": "SettlementTransactionIdentifiers"
+                },
+                "kind": {
+                    "default": "content#settlementTransaction",
+                    "type": "string"
+                },
+                "transaction": {
+                    "$ref": "SettlementTransactionTransaction"
+                }
+            },
+            "type": "object"
+        },
+        "SettlementTransactionAmount": {
+            "id": "SettlementTransactionAmount",
+            "properties": {
+                "commission": {
+                    "$ref": "SettlementTransactionAmountCommission"
+                },
+                "transactionAmount": {
+                    "$ref": "Price"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SettlementTransactionAmountCommission": {
+            "id": "SettlementTransactionAmountCommission",
+            "properties": {
+                "category": {
+                    "type": "string"
+                },
+                "rate": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SettlementTransactionIdentifiers": {
+            "id": "SettlementTransactionIdentifiers",
+            "properties": {
+                "adjustmentId": {
+                    "type": "string"
+                },
+                "merchantOrderId": {
+                    "type": "string"
+                },
+                "settlementEntryId": {
+                    "type": "string"
+                },
+                "shipmentIds": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "transactionId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SettlementTransactionTransaction": {
+            "id": "SettlementTransactionTransaction",
+            "properties": {
+                "postDate": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SettlementreportsListResponse": {
+            "id": "SettlementreportsListResponse",
+            "properties": {
+                "kind": {
+                    "default": "content#settlementreportsListResponse",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "resources": {
+                    "items": {
+                        "$ref": "SettlementReport"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SettlementtransactionsListResponse": {
+            "id": "SettlementtransactionsListResponse",
+            "properties": {
+                "kind": {
+                    "default": "content#settlementtransactionsListResponse",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "resources": {
+                    "items": {
+                        "$ref": "SettlementTransaction"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
