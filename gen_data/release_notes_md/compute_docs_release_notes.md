@@ -12,6 +12,10 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/compute-engine-release-
 notes.xml `
 
+##  April 16, 2020
+
+  * Committed use discount shared billing is now available in **beta** . You can share committed use discounts among all your projects that fall under the same billing account. For more information, see [ Signing up committed use discounts ](/compute/docs/instances/signing-up-committed-use-discounts) . 
+
 ##  April 15, 2020
 
   * You can identify VM instances that are not being used with [ idle VM recommendations ](/compute/docs/instances/viewing-and-applying-idle-vm-recommendations) . Use these recommendations to reduce unused resources and reduce your compute bill. This feature is **Generally available** . 
