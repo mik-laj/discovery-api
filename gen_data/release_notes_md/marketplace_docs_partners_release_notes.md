@@ -9,6 +9,16 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/gcp-marketplace-partners-
 release-notes.xml `
 
+##  April 16, 2020
+
+**FEATURE:**
+
+You can now create private quotes for VM solutions ( [ alpha
+](https://cloud.google.com/products/?hl=EN#product-launch-stages) ).
+
+[ Learn about creating quotes for specific customers
+](https://cloud.google.com/marketplace/docs/partners/create-quotes) .
+
 ##  April 01, 2020
 
 **FEATURE:**
