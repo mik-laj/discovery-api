@@ -9,20 +9,398 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
-##  April 10, 2020
+##  April 15, 2020
 
-**BigQuery**
+**Cloud CDN**
 
 **FEATURE:**
 
-[ BigQuery Reservations ](https://cloud.google.com/bigquery/docs/reservations-
-intro) is now [ Generally Available (GA)
-](https://cloud.google.com/products/?hl=EN#product-launch-stages) . BigQuery
-Reservations allows you to purchase BigQuery [ slots
-](https://cloud.google.com/bigquery/docs/slots) to take advantage of BigQuery
-[ flat-rate pricing
-](https://cloud.google.com/bigquery/pricing#flat_rate_pricing) and allocate
-slots for workload management.
+[ Signed Cookies ](https://cloud.google.com/cdn/docs/using-signed-cookies) are
+available in **General Availability** . Signed Cookies complement our existing
+[ Signed URLs ](https://cloud.google.com/cdn/docs/using-signed-urls)
+functionality by allowing you to sign a URL prefix and issue a cookie to a
+client, avoiding the need to sign content on a per-URL basis when protecting
+media or other content cached by Cloud CDN. Support for authorizing a URL
+prefix is extended to Signed URLs as an alternative signing scheme.
+
+**Cloud Deployment Manager**
+
+**FEATURE:**
+
+Added support for [ Cloud Scheduler ](https://cloud.google.com/scheduler)
+through ` gcp-types/cloudscheduler-v1:projects.locations.jobs ` .
+
+**CHANGED:**
+
+You can now apply granular [ IAM Permissions
+](https://cloud.google.com/iam/docs/permissions-reference) to the [ Google
+APIs service account used by Deployment Manager
+](https://cloud.google.com/deployment-manager/docs/access-
+control#access_control_for) , as we've removed the requirement for `
+roles/editor ` being assigned to the service account.
+
+**CHANGED:**
+
+Updates on [ Cloud Functions ](https://cloud.google.com/functions) resources
+using ` gcp-types/cloudfunctions-v1 ` now retry on 429 errors.
+
+**CHANGED:**
+
+GKE clusters and node pools will wait for maintenance to complete before
+attempting to apply any updates. Affected collections:
+
+  * ` gcp-types/container-v1:projects.zones.clusters `
+  * ` gcp-types/container-v1:projects.locations.clusters `
+  * ` gcp-types/container-v1:projects.zones.clusters.nodePools `
+  * ` gcp-types/container-v1:projects.locations.clusters.nodePools `
+  * ` gcp-types/container-v1beta1:projects.zones.clusters `
+  * ` gcp-types/container-v1beta1:projects.locations.clusters `
+  * ` gcp-types/container-v1beta1:projects.zones.clusters.nodePools `
+  * ` gcp-types/container-v1beta1:projects.locations.clusters.nodePools `
+
+**FIXED:**
+
+Deployment Manager now acquires existing GKE cluster resources of type ` gcp-
+types/container-v1:projects.locations.clusters ` .
+
+**CHANGED:**
+
+Added support for updating the following properties on ` gcp-
+types/container-v1:projects.zones.clusters ` and ` gcp-
+types/container-v1:projects.locations.clusters ` :
+
+  * binaryAuthorization 
+  * databaseEncryption 
+  * masterAuthorizedNetworksConfig 
+  * autoscaling 
+  * resourceUsageExportConfig 
+  * verticalPodAutoscaling 
+
+Additionally, for ` gcp-types/container-v1beta1:projects.zones.clusters ` and
+` gcp-types/container-v1beta1:projects.locations.clusters ` the following
+fields can also be updated:
+
+  * podSecurityPolicyConfig 
+  * privateClusterConfig 
+  * shieldedNodes 
+  * workloadIdentityConfig 
+
+**FIXED:**
+
+Deployment Manager now correctly updates autoscaling properties for resources
+of type ` gcp-types/container-v1:projects.locations.clusters.nodePools ` and `
+gcp-types/container-v1beta1:projects.locations.clusters.nodePools ` .
+
+**FIXED:**
+
+Deployment Manager now correctly acquires [ Access Context Manager
+](https://cloud.google.com/access-context-manager/docs) resources of type `
+gcp-types/accesscontextmanager-v1:accessPolicies.accessLevels ` and ` gcp-
+types/accesscontextmanager-v1beta:accessPolicies.accessLevels ` if the
+resources already exist.
+
+**CHANGED:**
+
+Added support for updating [ Cloud Pub/Sub ](https://cloud.google.com/pubsub)
+subscriptions using ` gcp-types/pubsub-v1:projects.subscriptions ` .
+
+**FIXED:**
+
+Deployment Manager now correctly deletes [ Compute Engine
+](https://cloud.google.com/compute/docs) forwarding rules of type `
+compute.v1.forwardingRule ` , ` compute.beta.forwardingRule ` , ` gcp-
+types/compute-v1:forwardingRules ` and ` gcp-types/compute-
+beta:forwardingRules ` when the resource name does not match the forwarding
+rule name.
+
+**CHANGED:**
+
+Performance improvements when handling large Swagger / OpenAPI specs when [
+adding an API as a type provider ](https://cloud.google.com/deployment-
+manager/docs/configuration/type-providers/creating-type-provider) .
+
+**Cloud Key Management Service**
+
+**FEATURE:**
+
+[ Cloud External Key Manager (Cloud EKM)
+](https://cloud.google.com/kms/docs/ekm) is generally available.
+
+**Dataflow**
+
+**FEATURE:**
+
+[ Cloud Dataflow SQL
+](https://cloud.google.com/dataflow/docs/guides/sql/dataflow-sql-intro) is now
+generally available. You can now run parameterized queries from the Dataflow
+SQL UI.
+
+**Dataproc**
+
+**FEATURE:**
+
+**Image 1.5**
+
+[ Jupyter on Dataproc
+](https://cloud.google.com/dataproc/docs/concepts/components/jupyter) now
+supports exporting notebooks as PDFs.
+
+**FEATURE:**
+
+**Image 1.5**
+
+[ Presto ](https://cloud.google.com/dataproc/docs/concepts/components/presto)
+now includes two default connectors: * ` bigquery ` pointing to the datasets
+of the cluster's project * ` bigquery_public_data ` pointing to the public
+datasets
+
+**FEATURE:**
+
+**Image 1.3, 1.4 and 1.5**
+
+Added [ Component Gateway
+](https://cloud.google.com/dataproc/docs/concepts/accessing/dataproc-gateways)
+support for Datarpoc clusters secured with Kerberos.
+
+**CHANGED:**
+
+New [ sub-minor
+](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-
+versions#supported_cloud_dataproc_versions) versions of Dataproc images:
+1.2.95-debian9, 1.3.55-debian9, 1.4.26-debian9, 1.3.55-debian10,
+1.4.26-debian10, 1.5.1-debian10, 1.3.55-ubuntu18, 1.4.26-ubuntu18,
+1.5.1-ubuntu18.
+
+**CHANGED:**
+
+**Image 1.5**
+
+Updated Presto to [ version 331
+](https://prestosql.io/docs/current/release/release-331.html) .
+
+**CHANGED:**
+
+Created ` cloud-sql-proxy ` log file for the Cloud SQL Proxy initialization
+action and for Dataproc clusters with Ranger that use Cloud SQL Proxy.
+
+**CHANGED:**
+
+**Image 1.3 and 1.4**
+
+Debian 10 images will become default images for 1.3 and 1.4 image tracks and
+Debian 9 images will not be released for these tracks anymore after June 30,
+2020.
+
+**FIXED:**
+
+**Images 1.4 and 1.5**
+
+[ SPARK-29080 ](https://issues.apache.org/jira/browse/SPARK-29080) : Support R
+file extension case-insensitively when submitting Spark R jobs.
+
+**FIXED:**
+
+**Image 1.3, 1.4 and 1.5**
+
+Fixed a bug where Jupyter was unable to read and write notebooks stored in
+Cloud Storage buckets with CMEK enabled.
+
+**FIXED:**
+
+**Image 1.3, 1.4 and 1.5**
+
+[ HIVE-17275 ](https://issues.apache.org/jira/browse/HIVE-17275) : Auto-merge
+fails on writes of ` UNION ALL ` output to ORC file with dynamic partitioning.
+
+**Traffic Director**
+
+**CHANGED:**
+
+A new document, [ Traffic Director features
+](https://cloud.google.com/traffic-director/docs/features) , is published.
+
+##  April 14, 2020
+
+**BigQuery Data Transfer Service**
+
+**FEATURE:**
+
+BigQuery Data Transfer Service now supports [ Google Merchant Center data
+transfers for best sellers data
+](https://cloud.google.com/bigquery/docs/merchant-center-
+transfer#supported_reports) .
+
+**Cloud Load Balancing**
+
+**FEATURE:**
+
+External HTTP(S) load balancers now support [ URL rewrites and redirects
+](https://cloud.google.com/load-balancing/docs/https/traffic-management) .
+
+URL rewrites allow you to decouple the URLs that your external users use from
+those that your services use.
+
+With URL redirects, you can redirect client requests from one URL to another
+URL.
+
+These features are available in **General Availability** .
+
+**Config Connector**
+
+**CHANGED:**
+
+Added readiness probes to Config Connector pods
+
+**Document AI**
+
+**FEATURE:**
+
+**Document AI Beta released**
+
+The following beta features are available in API version **v1beta2** :
+
+  * **Document processing** : You can use the API to [ parse forms ](https://cloud.google.com/solutions/document-ai/docs/process-forms) or [ tables ](https://cloud.google.com/solutions/document-ai/docs/process-tables) from PDF, TIFF, or GIF documents. 
+  * **Regional support** : The API now offers multi-regional support ( ` us ` and ` eu ` ) for all features. [ Using a multi-region endpoint ](https://cloud.google.com/solutions/document-ai/docs/regions) enables you to configure the API to store and process your data in the United States or European Union. 
+
+**FEATURE:**
+
+**Invoice processing Beta**
+
+  * Invoice processing is now available as a restricted feature. See [ Parsing invoices ](https://cloud.google.com/solutions/document-ai/docs/process-invoices) for more information. 
+
+**Network Intelligence Center**
+
+**FEATURE:**
+
+[ Firewall Insights ](https://cloud.google.com/network-intelligence-
+center/docs/firewall-insights/concepts/overview) is now in Beta.
+
+##  April 13, 2020
+
+**AI Platform Prediction**
+
+**CHANGED:**
+
+The pricing of Compute Engine (N1) machine types for online prediction in the
+us-central1 region has changed. vCPU resources now cost $0.031613 per vCPU
+hour and RAM now costs $0.004242 per GB hour.
+
+[ Read more details about pricing. ](https://cloud.google.com/ai-
+platform/prediction/pricing)
+
+**App Engine flexible environment .NET**
+
+**CHANGED:**
+
+Quotas for sockets have been removed. There is no longer a limit on the number
+of socket connections or the amount of data you can send and receive through a
+socket.
+
+**App Engine flexible environment Go**
+
+**CHANGED:**
+
+Quotas for sockets have been removed. There is no longer a limit on the number
+of socket connections or the amount of data you can send and receive through a
+socket.
+
+**App Engine flexible environment Java**
+
+**CHANGED:**
+
+Quotas for sockets have been removed. There is no longer a limit on the number
+of socket connections or the amount of data you can send and receive through a
+socket.
+
+**App Engine flexible environment Node.js**
+
+**CHANGED:**
+
+Quotas for sockets have been removed. There is no longer a limit on the number
+of socket connections or the amount of data you can send and receive through a
+socket.
+
+**App Engine flexible environment Ruby**
+
+**CHANGED:**
+
+Quotas for sockets have been removed. There is no longer a limit on the number
+of socket connections or the amount of data you can send and receive through a
+socket.
+
+**App Engine flexible environment custom runtimes**
+
+**CHANGED:**
+
+Quotas for sockets have been removed. There is no longer a limit on the number
+of socket connections or the amount of data you can send and receive through a
+socket.
+
+**App Engine standard environment Java**
+
+**CHANGED:**
+
+Quotas for sockets have been removed. There is no longer a limit on the number
+of socket connections or the amount of data your Java 8 app can send and
+receive through a socket.
+
+**App Engine standard environment PHP**
+
+**CHANGED:**
+
+Quotas for sockets have been removed. There is no longer a limit on the number
+of socket connections or the amount of data your PHP 5 app can send and
+receive through a socket.
+
+**App Engine standard environment Python**
+
+**CHANGED:**
+
+Quotas for sockets have been removed. There is no longer a limit on the number
+of socket connections or the amount of data your Python 2 app can send and
+receive through a socket.
+
+**Cloud Data Loss Prevention**
+
+**FEATURE:**
+
+Added additional [ infoType detectors
+](https://cloud.google.com/dlp/docs/infotypes-reference) :
+
+  * IRELAND_PPSN 
+  * IRELAND_PASSPORT 
+
+**Event Threat Detection**
+
+**FEATURE:**
+
+Event Threat Detection is now in general availability.
+
+  * Learn [ how Event Threat Detection works ](https://cloud.google.com/event-threat-detection/docs/concepts-overview) . 
+  * [ Get started using Event Threat Detection ](https://cloud.google.com/event-threat-detection/docs/quickstart-etd-console) . 
+
+**Google Cloud Armor**
+
+**CHANGED:**
+
+Update to rules language syntax. Adds support for the CEL 'has' macro so that
+Google Cloud Armor check for absence of a header in the 'request.headers' map.
+
+##  April 11, 2020
+
+**Cloud Vision**
+
+**FEATURE:**
+
+**CMEK compliance**
+
+Vision API is now compliant with customer-managed encryption keys (CMEK). To
+learn more, vist the [ CMEK compliance page
+](https://cloud.google.com/vision/docs/cmek) . Please note that [ Product
+Search ](https://cloud.google.com/vision/product-search/docs/) is _not_ CMEK
+compliant at this time.
+
+##  April 10, 2020
 
 **Cloud Composer**
 
@@ -167,7 +545,54 @@ Dataflow now provides beta support for [ Flex Templates
 ](https://cloud.google.com/dataflow/docs/guides/templates/using-flex-
 templates) .
 
+**FEATURE:**
+
+Dataflow now provides beta support for [ Interactive Notebooks
+](https://cloud.google.com/dataflow/docs/guides/interactive-pipeline-
+development) .
+
+**VPC Service Controls**
+
+**FEATURE:**
+
+The beta version of the VPC accessible services feature is now available.
+
+The [ VPC accessible services ](https://cloud.google.com/vpc-service-
+controls/docs/vpc-accessible-services) feature introduces the ability to limit
+the access of network endpoints inside your service perimeter to an explicit
+set of services.
+
+To learn how to configure VPC accessible services for your perimeter, read
+about [ limiting access to services inside a perimeter
+](https://cloud.google.com/vpc-service-controls/docs/manage-service-
+perimeters#accessible-services) .
+
+**FEATURE:**
+
+The beta version of dry run mode for service perimeters is now available.
+
+This release introduces a new method of configuring service perimeters: dry
+run mode. For more information, [ read about dry run mode
+](https://cloud.google.com/vpc-service-controls/docs/dry-run-mode) .
+
 ##  April 08, 2020
+
+**AI Platform Optimizer**
+
+**FEATURE:**
+
+AI Platform Optimizer is now available in [ beta
+](https://cloud.google.com/products#product-launch-stages) .
+
+AI Platform Optimizer is a black-box optimization service that helps you tune
+hyperparameters in complex machine learning models.
+
+Visit the [ AI Platform Optimizer overview ](https://cloud.google.com/ai-
+platform/optimizer/docs/overview) to learn more about how it works. To get
+started, try using AI Platform Optimizer to [ optimize a machine learning
+model ](https://cloud.google.com/ai-platform/optimizer/docs/optimizing-ml-
+model) or to [ optimize two functions at once ](https://cloud.google.com/ai-
+platform/optimizer/docs/optimizing-multiple-objectives) .
 
 **App Engine standard environment Python**
 
@@ -183,6 +608,15 @@ BigQuery materialized views are now available as a [ beta
 ](https://cloud.google.com/products#product-launch-stages) release. For more
 information, see [ Introduction to materialized views
 ](https://cloud.google.com/bigquery/docs/materialized-views-intro) .
+
+**Cloud Data Loss Prevention**
+
+**FEATURE:**
+
+Added additional infoType detectors:
+
+  * ` AZURE_AUTH_TOKEN `
+  * ` GCP_API_KEY `
 
 ##  April 07, 2020
 
@@ -1513,246 +1947,4 @@ The following flag to ` gcloud dataproc clusters update ` has been deprecated:
 
 See the related change, above, for the new flag to use in place of this
 deprecated flag.
-
-##  March 17, 2020
-
-**AI Platform Training**
-
-**DEPRECATED:**
-
-[ Runtime versions 1.2 through 1.9 ](https://cloud.google.com/ai-
-platform/training/docs/runtime-version-list) are no longer available for
-training. We recommend that you use runtime version 1.14 or later for your
-training jobs.
-
-Read more about the [ AI Platform Training policy for supporting older runtime
-versions ](https://cloud.google.com/ai-platform/training/docs/runtime-version-
-list#runtime-version-support) . This policy is being retroactively implemented
-in several stages for runtime versions 1.13 and earlier.
-
-**Cloud Identity and Access Management**
-
-**CHANGED:**
-
-[ Forwarding rule attributes ](https://cloud.google.com/iam/docs/conditions-
-attribute-reference#forwarding-rule) for Cloud IAM Conditions are now [
-generally available ](https://cloud.google.com/products/#product-launch-
-stages) . You can use these attributes to specify the types of [ forwarding
-rules ](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts)
-that a member can create.
-
-**Cloud Logging**
-
-**CHANGED:**
-
-Incoming log entries must have timestamps that don't exceed the [ logs
-retention periods
-](https://cloud.google.com/logging/quotas#logs_retention_periods) in the past,
-and that don't exceed 24 hours in the future. Log entries outside those time
-boundaries aren't ingested by Cloud Logging.
-
-**Dataproc**
-
-**FEATURE:**
-
-Added a ` dataproc:job.history.to-gcs.enabled ` [ cluster property
-](https://cloud.google.com/dataproc/docs/concepts/configuring-
-clusters/cluster-properties#service_properties) that allows persisting
-MapReduce and Spark history files to the Dataproc temp bucket (default: ` true
-` for image versions 1.5+). bucket. This property defaults to ` true ` for
-image versions 1.5 and up. Users can overwrite the locations of job history
-file persistence through the following properties:
-
-  * ` mapreduce.jobhistory.done-dir `
-  * ` mapreduce.jobhistory.intermediate-done-dir ` * ` spark.eventLog.dir `
-  * ` spark.history.fs.logDirectory `
-
-**FEATURE:**
-
-Added support for ` n2- ` , ` c2- ` , ` e2- ` , ` n2d- ` , and ` m2- ` machine
-types when using [ Auto Zone Placement
-](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-
-zone) . Previously, users could only specify ` n1- ` or ` custom- ` machine
-types when using Auto Zone Placement.
-
-**FEATURE:**
-
-Added a ` mapreduce.jobhistory.always-scan-user-dir ` cluster property that
-enables the MapReduce job history server to read the history files
-(recommended when writing history files to Cloud Storage). The default is `
-true ` .
-
-**FEATURE:**
-
-Customers can now enable the [ Cloud Profiler
-](https://cloud.google.com/dataproc/docs/guides/profiling) when submitting a
-Dataproc job by setting the ` cloud.profiler.enable ` property. To use
-profiling, customers must enable the Cloud Profiler API for their project and
-create the cluster with ` --scopes=cloud-platform ` . The following profiling
-properties can also be set when submitting a Dataproc job:
-
-  1. ` cloud.profiler.name ` : to collect profiler data under the specified name. If not specified, it defaults to the job UUID. 
-
-  2. ` cloud.profiler.service.version ` : to compare profiler information from different job runs. If not specified, defaults to the job UUID. 
-
-**CHANGED:**
-
-New [ sub-minor versions
-](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-
-versions#supported_cloud_dataproc_versions) of Dataproc images:
-1.2.93-debian9, 1.3.53-debian9, 1.4.24-debian9, 1.5.0-RC9-debian10,
-1.3.53-ubuntu18, 1.4.24-ubuntu18, and 1.5.0-RC9-ubuntu18
-
-**CHANGED:**
-
-**Image 1.2, 1.3, 1.4**
-
-Upgraded HBase to 1.3.6
-
-**CHANGED:**
-
-**Image 1.4, 1.5 preview**
-
-Added ` ARROW_PRE_0_15_IPC_FORMAT=1 ` for spark-env for pyarrow upgrade from
-0.13 to 0.15.
-
-**CHANGED:**
-
-**Image 1.5 preview**
-
-  * Preinstalled additional Python packages and Jupyter[Lab] extensions to align Jupyter notebook environment with AI Platforms Notebooks when Jupyter optional component is enabled. 
-
-  * Upgraded Druid version to 0.17.0 
-
-**CHANGED:**
-
-Normalized custom image URLs to a full URL, for example: `
-https://www.googleapis.com/compute/v1/projects/foo-project/global/images/foo-
-image ` . The cluster creation API will continue to accept relative names,
-such as ` projects/foo-project/global/images/foo-image ` or ` foo-image ` (see
-[ Dataproc API doesn't return imageUri in a consistent format
-](https://issuetracker.google.com/issues/139762442) ).
-
-**CHANGED:**
-
-Cluster list methods now return results in lexical order.
-
-**FIXED:**
-
-**Image 1.3, 1.4, 1.5 preview**
-
-Fixed YARN container log links in Component Gateway
-
-**Google Cloud Armor**
-
-**FEATURE:**
-
-Custom rules language, pre-configured WAF rules, and geography-based access
-controls are now in **General Availability** .
-
-##  March 16, 2020
-
-**Artifact Registry**
-
-**FEATURE:**
-
-Artifact Registry is now in beta.
-
-Artifact Registry is the evolution of Container Registry, with support for
-Docker as well as Maven and npm package formats.
-
-If you currently use Container Registry, see [ Migration and upgrade from
-Container Registry ](https://cloud.google.com/artifacts/docs/upgrade) for more
-information.
-
-**Cloud Data Loss Prevention**
-
-**FEATURE:**
-
-Added support for streaming data from external sources for inspection using
-hybrid jobs and job triggers. Hybrid jobs and job triggers in Cloud DLP enable
-you to stream data from virtually any source, whether on- or off-cloud,
-inspect it using Cloud DLP, and then save the results of the inspection scan
-as part of a job resource within Cloud DLP or to BigQuery.
-
-**Cloud Run**
-
-**FEATURE:**
-
-Cloud Run (fully managed) now supports deploying container images from [ Cloud
-Artifact Registry ](https://cloud.google.com/artifacts/docs/overview)
-
-**Cloud SQL for MySQL**
-
-**FEATURE:**
-
-Cloud SQL now supports read replicas in a different region than that of the
-primary instance, providing additional protection against regional outages and
-improving read performance by making replicas available closer to your
-application. To get started, see [ Cross-region replicas
-](https://cloud.google.com/sql/docs/mysql/replication/cross-region-replicas) .
-
-Cloud SQL instances using [ private IP
-](https://cloud.google.com/sql/docs/mysql/private-ip) are now accessible
-across regions, at the regular cross-region network egress cost.
-
-**Cloud SQL for PostgreSQL**
-
-**FEATURE:**
-
-Cloud SQL now supports read replicas in a different region than that of the
-primary instance, providing additional protection against regional outages and
-improving read performance by making replicas available closer to your
-application. To get started, see [ Cross-region replicas
-](https://cloud.google.com/sql/docs/postgres/replication/cross-region-
-replicas) .
-
-Cloud SQL instances using [ private IP
-](https://cloud.google.com/sql/docs/postgres/private-ip) are now accessible
-across regions, at the regular cross-region network egress cost.
-
-**Cloud SQL for SQL Server**
-
-**FEATURE:**
-
-Cloud SQL instances using [ private IP
-](https://cloud.google.com/sql/docs/sqlserver/private-ip) are now accessible
-across regions, at the regular cross-region network egress cost.
-
-**Container Registry**
-
-**FEATURE:**
-
-Artifact Registry, the evolution of Container Registry, is now available in
-beta. It includes support for Docker as well as Maven and npm package formats.
-
-If you currently use Container Registry, see [ Planning for the upgrade from
-Container Registry ](https://cloud.google.com/artifacts/docs/upgrade) for more
-information.
-
-**Dataproc**
-
-**FEATURE:**
-
-Announcing the [ General Availability (GA)
-](https://cloud.google.com/terms/launch-stages#launch-stages) release of
-Dataproc [ minimum CPU platform
-](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu) .
-
-**Memorystore for Redis**
-
-**FEATURE:**
-
-Added new Memorystore for Redis [ region
-](https://cloud.google.com/memorystore/docs/redis/regions) : Salt Lake City (
-` us-west3 ` ).
-
-**Storage Transfer Service**
-
-**FEATURE:**
-
-Storage Transfer Service now allows you to specify files to transfer based on
-their [ last modification times ](https://cloud.google.com/storage-
-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions.FIELDS.last_modified_since)
-.
 
