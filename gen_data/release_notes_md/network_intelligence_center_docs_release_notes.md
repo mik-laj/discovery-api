@@ -9,6 +9,14 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/networkintelligence-release-
 notes.xml `
 
+##  April 16, 2020
+
+**FEATURE:**
+
+[ Performance Dashboard ](https://cloud.google.com/network-intelligence-
+center/docs/performance-dashboard/concepts/overview) is now available in
+**General Availability** .
+
 ##  April 14, 2020
 
 **FEATURE:**
