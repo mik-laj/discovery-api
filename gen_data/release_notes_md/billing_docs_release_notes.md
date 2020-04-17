@@ -9,6 +9,33 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/billing-release-notes.xml `
 
+##  April 16, 2020
+
+**FEATURE:**
+
+Discount sharing for committed use discounts is now available in **beta** .
+With discount sharing enabled, you can apply your purchased commitments across
+multiple projects within a single Cloud Billing account. Discount sharing
+helps you minimize the overhead of managing each of your commitments
+individually and provides increased flexibility so that you can use the
+compute options that best suit your needs, while also increasing cost
+predictability.
+
+  * For more information about enabling committed use discount sharing, see [ Turning on committed use discount sharing ](https://cloud.google.com/compute/docs/instances/signing-up-committed-use-discounts#turning_on_committed_use_discount_sharing) . 
+  * For more information on the possible cost savings using committed use discount sharing, see [ Understanding discount sharing ](https://cloud.google.com/billing/docs/how-to/cud-analysis#understanding_discount_sharing) . 
+
+**FEATURE:**
+
+Cloud Billing console now has a Pricing report, providing a tabular view of
+the prices of Google’s cloud services SKUs, including Google Cloud, Google
+Maps Platform, and G Suite. You can select to view the SKUs with historical
+usage on the billing account or all Google Cloud SKUs. If you have a
+negotiated contract, the pricing table will include the list price, the
+contract price and the effective discount. You can also download the table to
+CSV for offline analysis. See the [ documentation
+](https://cloud.google.com/billing/docs/how-to/pricing-table) for more
+details.
+
 ##  March 23, 2020
 
 **FEATURE:**
