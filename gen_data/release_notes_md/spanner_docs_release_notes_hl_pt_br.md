@@ -10,6 +10,24 @@ página ao [ leitor de feeds
 do feed diretamente: ` https://cloud.google.com/feeds/cloud-spanner-release-
 notes.xml `
 
+##  April 17, 2020
+
+**FEATURE:**
+
+Cloud Spanner Backup and Restore is now [ generally available
+](https://cloud.google.com/products?hl=pt_br#product-launch-stages) , enabling
+you to create backups of Cloud Spanner databases on demand, and restore them.
+For more information, see [ Backup and Restore
+](https://cloud.google.com/spanner/docs/backup?hl=pt_br) .
+
+**FEATURE:**
+
+Query Optimizer Versioning is now [ generally available
+](https://cloud.google.com/products?hl=pt_br#product-launch-stages) , enabling
+you to select which version of the optimizer to use for your database,
+application or query. For more information, see [ Query optimizer
+](https://cloud.google.com/spanner/docs/query-optimizer/overview?hl=pt_br) .
+
 ##  April 01, 2020
 
 **FEATURE:**
