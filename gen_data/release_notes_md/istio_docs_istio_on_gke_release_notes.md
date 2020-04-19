@@ -9,6 +9,26 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/istio-release-notes.xml `
 
+##  March 27, 2020
+
+1.4.x
+
+**FEATURE:**
+
+**Istio 1.4.6-gke.0** \- This is the initial release of Istio 1.4 to Istio on
+GKE
+
+##  March 13, 2020
+
+1.2.x
+
+**FIXED:**
+
+**Istio 1.2.10-gke.3** \- Fixes known security issues with the same fixes as [
+OSS Istio 1.4.6 ](https://istio.io/news/releases/1.4.x/announcing-1.4.6/) :
+
+  * CVE-2020-8659, CVE-2020-8661, CVE-2020-8664, CVE-2020-8660: [ ISTIO-SECURITY-2020-003 ](https://istio.io/news/security/istio-security-2020-003/)
+
 ##  February 19, 2020
 
 1.2.x
