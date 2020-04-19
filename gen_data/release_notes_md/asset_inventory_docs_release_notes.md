@@ -11,6 +11,25 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/asset-release-notes.xml `
 
+##  April 03, 2020
+
+**FEATURE:**
+
+BigQuery export for org policies and access policies
+
+You can now export org policies and access policies to BigQuery tables. See [
+Exporting assets to BigQuery ](https://cloud.google.com/asset-
+inventory/docs/exporting-to-bigquery) for more information.
+
+**FEATURE:**
+
+Real-time asset monitoring for org policies and access policies
+
+You can now subscribe to real-time notifications for changes to org policies
+and access policies. See [ Monitoring asset changes
+](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes) for
+more information.
+
 ##  February 27, 2020
 
 **FEATURE:**
