@@ -14,6 +14,15 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/dlp-release-notes.xml `
 
+##  April 16, 2020
+
+**FEATURE:**
+
+Add ` PDF ` and ` WORD ` [ FileTypes
+](http://cloud/dlp/docs/reference/rpc/google.privacy.dlp.v2#filetype) and `
+PDF ` and ` WORD_DOCUMENT ` [ BytesTypes
+](http://cloud/dlp/docs/reference/rpc/google.privacy.dlp.v2#bytestype) .
+
 ##  April 13, 2020
 
 **FEATURE:**
