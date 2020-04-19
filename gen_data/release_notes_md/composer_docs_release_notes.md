@@ -9,6 +9,16 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/composer-release-notes.xml `
 
+##  April 17, 2020
+
+**BREAKING:**
+
+Composer version 1.10.1 has been rolled back. If you created an environment
+with ` composer-1.10.1-airflow-* ` , you can retrieve and delete the
+environment, but not update it. We recommend that you delete the environment
+and create a new environment with the latest image version. Refer to the March
+20, 2020 release notes for default version.
+
 ##  April 10, 2020
 
 **FEATURE:**
