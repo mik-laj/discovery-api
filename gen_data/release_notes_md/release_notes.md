@@ -9,6 +9,42 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  April 17, 2020
+
+**Cloud Spanner**
+
+**FEATURE:**
+
+Cloud Spanner Backup and Restore is now [ generally available
+](https://cloud.google.com/products#product-launch-stages) , enabling you to
+create backups of Cloud Spanner databases on demand, and restore them. For
+more information, see [ Backup and Restore
+](https://cloud.google.com/spanner/docs/backup) .
+
+**FEATURE:**
+
+Query Optimizer Versioning is now [ generally available
+](https://cloud.google.com/products#product-launch-stages) , enabling you to
+select which version of the optimizer to use for your database, application or
+query. For more information, see [ Query optimizer
+](https://cloud.google.com/spanner/docs/query-optimizer/overview) .
+
+##  April 16, 2020
+
+**Dataprep by Trifacta**
+
+**FIXED:**
+
+TD-47149: Cannot edit settings when importing Google Sheets.
+
+**Network Intelligence Center**
+
+**FEATURE:**
+
+[ Performance Dashboard ](https://cloud.google.com/network-intelligence-
+center/docs/performance-dashboard/concepts/overview) is now available in
+**General Availability** .
+
 ##  April 15, 2020
 
 **Cloud CDN**
@@ -212,6 +248,13 @@ Cloud Storage buckets with CMEK enabled.
 [ HIVE-17275 ](https://issues.apache.org/jira/browse/HIVE-17275) : Auto-merge
 fails on writes of ` UNION ALL ` output to ORC file with dynamic partitioning.
 
+**Google Cloud Armor**
+
+**FEATURE:**
+
+Google Cloud Armor support for CDN origins and hybrid origins is now available
+in **General Availability** .
+
 **Traffic Director**
 
 **CHANGED:**
@@ -313,6 +356,14 @@ of socket connections or the amount of data you can send and receive through a
 socket.
 
 **App Engine flexible environment Node.js**
+
+**CHANGED:**
+
+Quotas for sockets have been removed. There is no longer a limit on the number
+of socket connections or the amount of data you can send and receive through a
+socket.
+
+**App Engine flexible environment PHP**
 
 **CHANGED:**
 
@@ -1784,167 +1835,4 @@ information, see [ Transfer Service for on-premises data Overview
 
 Storage Transfer Service now offers Beta support for transfers from Microsoft
 Azure Blob Storage.
-
-##  March 20, 2020
-
-**App Engine standard environment Java**
-
-**CHANGED:**
-
-  * Updated Java SDK to version 1.9.79. 
-  * Updated Jetty to version 9.4.27. 
-
-**AutoML Natural Language**
-
-**CHANGED:**
-
-AutoML Natural Language now supports TIFF files as training data and input for
-predictions.
-
-**CHANGED:**
-
-AutoML Natural Language now supports classification and sentiment analysis in
-[ 20 languages ](https://cloud.google.com/natural-
-language/automl/docs/languages#classification) .
-
-**Cloud Composer**
-
-**CHANGED:**
-
-  * [ New versions ](https://cloud.google.com/composer/docs/concepts/versioning/composer-versions) of Cloud Composer images: ` composer-1.10.0-airflow-1.10.2 ` , ` composer-1.10.0-airflow-1.10.3 ` and ` composer-1.10.0-airflow-1.10.6 ` . The default is ` composer-1.10.0-airflow-1.10.2 ` . Upgrade your Cloud SDK to use features in this release. 
-
-**FEATURE:**
-
-  * Improved Composer logs: Composer Agent adds more detailed logs in Cloud Monitoring to describe the current stage of environment creation and provide better error messages if an operation fails. 
-  * MySQL passwords are now stored in Kubernetes Secrets instead of the config map. 
-  * You can now set the ` core.store_serialized_dags ` property to ` False ` after setting it to ` True ` . (Previously it was not possible to switch back.) 
-  * Composer now uses Pip version 19.0.2 for both Python 2 and Python 3 Airflow environments. 
-  * Added the Airflow property ` core.store_dag_code ` , which lets you see DAG code in the web UI while VPC-SC is enabled. 
-  * New metrics have been added to the monitoring API. [ See the full list here ](https://cloud.google.com/monitoring/api/metrics_gcp#gcp-composer) . 
-
-**FIXED:**
-
-  * Fixed an issue where Airflow database connection errors did not propagate correctly. 
-  * Logs from the Composer Agent will now show the correct severity level in Cloud Monitoring. 
-  * Fixed an issue where network tags added to environments did not propagate to the node pools created during the in-cluster image building. 
-  * The Composer Agent will now wait for ` env_vars ` to be sent before starting the web server. 
-  * Backported a fix for SQL proxy, which improves the stability of SQL connections inside workers. 
-  * Added new scripts to handle synchronization of files from Customer Project buckets with tenant project buckets in DRS mode, so that DAG synchronization is not affected by long-running logs synchronization. 
-  * Fixed an issue that prevented the creation of environments in the same VPC but different regions. 
-  * Fixed an issue with updating the node count for Composer environments running versions 1.6.0 to 1.8.2. 
-  * Installing PyPI packages from private repositories in the public Internet (specified in the pip.conf file) now works in private IP Composer environments without having to configure Cloud NAT. 
-
-**Cloud Load Balancing**
-
-**CHANGED:**
-
-To help you get started quickly, added two new examples for external HTTP(S)
-Load Balancing:
-
-  * [ Setting up a simple external HTTP load balancer ](https://cloud.google.com/load-balancing/docs/https/ext-http-lb-simple)
-  * [ Setting up a simple external HTTPS load balancer ](https://cloud.google.com/load-balancing/docs/https/ext-https-lb-simple)
-
-**FEATURE:**
-
-[ Health check logging ](https://cloud.google.com/load-balancing/docs/health-
-check-logging) is now available in **Beta** .
-
-**Cloud Natural Language API**
-
-**CHANGED:**
-
-The Natural Language API now supports [ additional languages
-](https://cloud.google.com/natural-language/docs/languages#sentiment_analysis)
-for sentiment analysis.
-
-**Network Intelligence Center**
-
-**FEATURE:**
-
-[ Connectivity Tests ](https://cloud.google.com/network-intelligence-
-center/docs/connectivity-tests/concepts/overview) and the [ Network Management
-API ](https://cloud.google.com/network-intelligence-center/docs/connectivity-
-tests/apis) are now Generally Available.
-
-**Storage Transfer Service**
-
-**FEATURE:**
-
-Storage Transfer Service supports [ Pub/Sub notifications for transfer jobs
-](https://cloud.google.com/storage-transfer/docs/pub-sub-transfer) for
-external cloud provider to Cloud Storage transfers.
-
-##  March 19, 2020
-
-**Cloud Bigtable**
-
-**FEATURE:**
-
-You can now create a production [ Cloud Bigtable instance
-](https://cloud.google.com/bigtable/docs/creating-instance) that has one or
-two nodes per cluster. Prior to this change, production instances had a
-minimum of three nodes per cluster, and the only way to create smaller
-clusters was in a development instance.
-
-**CHANGED:**
-
-The [ Cloud Bigtable Service Level Agreement (SLA)
-](https://cloud.google.com/bigtable/sla) has been updated.
-
-**Cloud Spanner**
-
-**FEATURE:**
-
-The open-source [ C++ client library for Cloud Spanner
-](https://github.com/googleapis/google-cloud-cpp-spanner) is now available. To
-get started using C++ with Cloud Spanner, [ see this tutorial
-](https://cloud.google.com/spanner/docs/getting-started/cpp) .
-
-##  March 18, 2020
-
-**Cloud Key Management Service**
-
-**FEATURE:**
-
-[ Importing keys ](https://cloud.google.com/kms/docs/importing-a-key) into
-Cloud KMS software keys is generally available (GA).
-
-**Cloud Load Balancing**
-
-**FEATURE:**
-
-Internal HTTP(S) Load Balancing now supports [ configurable idle timeouts
-](https://cloud.google.com/load-
-balancing/docs/l7-internal#timeouts_and_retries) .
-
-**FEATURE:**
-
-Cloud IAM Conditions now supports [ forwarding rule attributes
-](https://www.cloud.google.com/load-balancing/docs/access-control/iam-
-conditions) . You can use these attributes to specify the types of forwarding
-rules that a member can create. This feature is available in **General
-Availability** .
-
-**Config Connector**
-
-**CHANGED:**
-
-miscellaneous bug fixes and improvements
-
-**Dataproc**
-
-**CHANGED:**
-
-Added the following flag to the ` gcloud dataproc clusters update ` command:
-
-  * ` --num-secondary-workers `
-
-**DEPRECATED:**
-
-The following flag to ` gcloud dataproc clusters update ` has been deprecated:
-
-  * ` --num-preemptible-workers `
-
-See the related change, above, for the new flag to use in place of this
-deprecated flag.
 
