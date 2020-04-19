@@ -117,6 +117,10 @@
                                         "debuggeeId"
                                     ],
                                     "parameters": {
+                                        "agentId": {
+                                            "location": "query",
+                                            "type": "string"
+                                        },
                                         "debuggeeId": {
                                             "location": "path",
                                             "required": true,
@@ -339,6 +343,15 @@
                                         "debuggeeId"
                                     ],
                                     "parameters": {
+                                        "canaryOption": {
+                                            "enum": [
+                                                "CANARY_OPTION_UNSPECIFIED",
+                                                "CANARY_OPTION_TRY_ENABLE",
+                                                "CANARY_OPTION_TRY_DISABLE"
+                                            ],
+                                            "location": "query",
+                                            "type": "string"
+                                        },
                                         "clientVersion": {
                                             "location": "query",
                                             "type": "string"
@@ -398,6 +411,10 @@
                     ],
                     "type": "string"
                 },
+                "canaryExpireTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                },
                 "condition": {
                     "type": "string"
                 },
@@ -452,6 +469,16 @@
                         "$ref": "StackFrame"
                     },
                     "type": "array"
+                },
+                "state": {
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "STATE_CANARY_PENDING_AGENTS",
+                        "STATE_CANARY_ACTIVE",
+                        "STATE_ROLLING_TO_ALL",
+                        "STATE_IS_FINAL"
+                    ],
+                    "type": "string"
                 },
                 "status": {
                     "$ref": "StatusMessage"
@@ -514,6 +541,16 @@
             "id": "Debuggee",
             "properties": {
                 "agentVersion": {
+                    "type": "string"
+                },
+                "canaryMode": {
+                    "enum": [
+                        "CANARY_MODE_UNSPECIFIED",
+                        "CANARY_MODE_ALWAYS_ENABLED",
+                        "CANARY_MODE_ALWAYS_DISABLED",
+                        "CANARY_MODE_DEFAULT_ENABLED",
+                        "CANARY_MODE_DEFAULT_DISABLED"
+                    ],
                     "type": "string"
                 },
                 "extSourceContexts": {
@@ -701,6 +738,9 @@
         "RegisterDebuggeeResponse": {
             "id": "RegisterDebuggeeResponse",
             "properties": {
+                "agentId": {
+                    "type": "string"
+                },
                 "debuggee": {
                     "$ref": "Debuggee"
                 }
@@ -800,6 +840,7 @@
                         "BREAKPOINT_CONDITION",
                         "BREAKPOINT_EXPRESSION",
                         "BREAKPOINT_AGE",
+                        "BREAKPOINT_CANARY_FAILED",
                         "VARIABLE_NAME",
                         "VARIABLE_VALUE"
                     ],
