@@ -15,6 +15,15 @@ notes.pdf?hl=ja) も閲覧できます。
 URL ディレクトリ ` https://cloud.google.com/feeds/dialogflow-release-notes.xml `
 を直接追加します。
 
+##  April 20, 2020
+
+**FEATURE:**
+
+Beta launch of one-click integrations with two telephony partners:
+
+  * [ AudioCodes ](https://cloud.google.com/dialogflow/docs/integrations/audiocodes?hl=ja)
+  * [ SignalWire ](https://cloud.google.com/dialogflow/docs/integrations/signalwire?hl=ja)
+
 ##  March 31, 2020
 
 **CHANGED:**
