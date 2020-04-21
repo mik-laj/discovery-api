@@ -17,6 +17,15 @@ Feedreader ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
 einfügen oder die Feed-URL direkt hinzufügen: `
 https://cloud.google.com/feeds/dialogflow-release-notes.xml `
 
+##  April 20, 2020
+
+**FEATURE:**
+
+Beta launch of one-click integrations with two telephony partners:
+
+  * [ AudioCodes ](https://cloud.google.com/dialogflow/docs/integrations/audiocodes?hl=de)
+  * [ SignalWire ](https://cloud.google.com/dialogflow/docs/integrations/signalwire?hl=de)
+
 ##  March 31, 2020
 
 **CHANGED:**
