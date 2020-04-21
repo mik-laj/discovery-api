@@ -5,6 +5,12 @@
 URL ディレクトリ ` https://cloud.google.com/feeds/gaestd-node-release-notes.xml `
 を直接追加します。
 
+##  April 20, 2020
+
+**FEATURE:**
+
+App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
+
 ##  March 13, 2020
 
 **FEATURE:**
