@@ -18,6 +18,15 @@ página ao [ leitor de feeds
 adicione o URL do feed diretamente: `
 https://cloud.google.com/feeds/dialogflow-release-notes.xml `
 
+##  April 20, 2020
+
+**FEATURE:**
+
+Beta launch of one-click integrations with two telephony partners:
+
+  * [ AudioCodes ](https://cloud.google.com/dialogflow/docs/integrations/audiocodes?hl=pt_br)
+  * [ SignalWire ](https://cloud.google.com/dialogflow/docs/integrations/signalwire?hl=pt_br)
+
 ##  March 31, 2020
 
 **CHANGED:**
