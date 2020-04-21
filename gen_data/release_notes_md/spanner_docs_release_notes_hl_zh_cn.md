@@ -6,6 +6,14 @@
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/cloud-spanner-release-notes.xml `
 
+##  April 20, 2020
+
+**FEATURE:**
+
+Cloud Spanner [ regional instances
+](https://cloud.google.com/spanner/docs/instances?hl=zh_cn#available-
+configurations-regional) can now be created in Las Vegas (us-west4).
+
 ##  April 17, 2020
 
 **FEATURE:**
