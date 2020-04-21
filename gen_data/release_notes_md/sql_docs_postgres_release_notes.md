@@ -10,6 +10,13 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloud-sql-postgres-release-
 notes.xml `
 
+##  April 20, 2020
+
+**FEATURE:**
+
+Support for [ us-west4 ](https://cloud.google.com/sql/docs/postgres/locations)
+region (Las Vegas).
+
 ##  March 27, 2020
 
 **FEATURE:**
