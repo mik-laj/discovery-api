@@ -9,6 +9,14 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/memorystore-release-notes.xml `
 
+##  April 20, 2020
+
+**FEATURE:**
+
+Added new Memorystore for Redis [ region
+](https://cloud.google.com/memorystore/docs/redis/regions) : Las Vegas ( ` us-
+west4 ` ).
+
 ##  March 24, 2020
 
 **FEATURE:**
