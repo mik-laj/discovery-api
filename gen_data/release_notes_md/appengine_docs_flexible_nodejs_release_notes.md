@@ -6,6 +6,12 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/gaeflex-node-release-notes.xml
 `
 
+##  April 20, 2020
+
+**FEATURE:**
+
+App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
+
 ##  April 13, 2020
 
 **CHANGED:**
