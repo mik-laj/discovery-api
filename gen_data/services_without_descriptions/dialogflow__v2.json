@@ -698,6 +698,41 @@
                             }
                         },
                         "environments": {
+                            "methods": {
+                                "list": {
+                                    "flatPath": "v2/projects/{projectsId}/agent/environments",
+                                    "httpMethod": "GET",
+                                    "id": "dialogflow.projects.agent.environments.list",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "pageSize": {
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "pageToken": {
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "parent": {
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/agent$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+parent}/environments",
+                                    "response": {
+                                        "$ref": "GoogleCloudDialogflowV2ListEnvironmentsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/dialogflow"
+                                    ]
+                                }
+                            },
                             "resources": {
                                 "users": {
                                     "resources": {
@@ -2201,6 +2236,31 @@
             },
             "type": "object"
         },
+        "GoogleCloudDialogflowV2Environment": {
+            "id": "GoogleCloudDialogflowV2Environment",
+            "properties": {
+                "agentVersion": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "state": {
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "STOPPED",
+                        "LOADING",
+                        "RUNNING"
+                    ],
+                    "type": "string"
+                },
+                "updateTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudDialogflowV2EventInput": {
             "id": "GoogleCloudDialogflowV2EventInput",
             "properties": {
@@ -3083,6 +3143,21 @@
                 "entityTypes": {
                     "items": {
                         "$ref": "GoogleCloudDialogflowV2EntityType"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDialogflowV2ListEnvironmentsResponse": {
+            "id": "GoogleCloudDialogflowV2ListEnvironmentsResponse",
+            "properties": {
+                "environments": {
+                    "items": {
+                        "$ref": "GoogleCloudDialogflowV2Environment"
                     },
                     "type": "array"
                 },
