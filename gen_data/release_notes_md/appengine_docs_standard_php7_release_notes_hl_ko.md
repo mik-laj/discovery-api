@@ -5,6 +5,12 @@
 추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/gaestd-php-
 release-notes.xml `
 
+##  April 20, 2020
+
+**FEATURE:**
+
+App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
+
 ##  March 13, 2020
 
 **FEATURE:**
