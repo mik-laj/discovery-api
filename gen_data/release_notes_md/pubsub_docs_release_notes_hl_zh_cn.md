@@ -15,6 +15,19 @@ ruby/releases) 。
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/cloud-pub-sub-release-notes.xml `
 
+##  April 20, 2020
+
+**FEATURE:**
+
+Pub/Sub is now available in the ` us-west4 ` region (Las Vegas).
+
+**FEATURE:**
+
+[ Dead-letter topics ](https://cloud.google.com/pubsub/docs/dead-letter-
+topics?hl=zh_cn) for Pub/Sub are now available at the [ General Availability
+release level ](https://cloud.google.com/products/?hl=zh_cn#product-launch-
+stages) .
+
 ##  February 24, 2020
 
 **FEATURE:**
