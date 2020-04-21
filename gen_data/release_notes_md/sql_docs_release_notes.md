@@ -5,6 +5,29 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/cloud-sql-release-notes.xml `
 
+##  April 20, 2020
+
+**Cloud SQL for MySQL**
+
+**FEATURE:**
+
+Support for [ us-west4 ](https://cloud.google.com/sql/docs/mysql/locations)
+region (Las Vegas).
+
+**Cloud SQL for PostgreSQL**
+
+**FEATURE:**
+
+Support for [ us-west4 ](https://cloud.google.com/sql/docs/postgres/locations)
+region (Las Vegas).
+
+**Cloud SQL for SQL Server**
+
+**FEATURE:**
+
+Support for [ us-west4
+](https://cloud.google.com/sql/docs/sqlserver/locations) region (Las Vegas).
+
 ##  March 27, 2020
 
 **Cloud SQL for PostgreSQL**
