@@ -19,6 +19,19 @@ página a tu [ lector de feeds
 directamente la URL del feed: ` https://cloud.google.com/feeds/cloud-pub-sub-
 release-notes.xml `
 
+##  April 20, 2020
+
+**FEATURE:**
+
+Pub/Sub is now available in the ` us-west4 ` region (Las Vegas).
+
+**FEATURE:**
+
+[ Dead-letter topics ](https://cloud.google.com/pubsub/docs/dead-letter-
+topics?hl=es_419) for Pub/Sub are now available at the [ General Availability
+release level ](https://cloud.google.com/products/?hl=es_419#product-launch-
+stages) .
+
 ##  February 24, 2020
 
 **FEATURE:**
