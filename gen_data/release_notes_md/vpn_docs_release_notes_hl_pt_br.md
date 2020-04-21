@@ -9,6 +9,17 @@ página ao [ leitor de feeds
 adicione o URL do feed diretamente: ` https://cloud.google.com/feeds/cloudvpn-
 release-notes.xml `
 
+##  April 20, 2020
+
+**FEATURE:**
+
+Cloud VPN is now available in [ region
+](https://cloud.google.com/compute/docs/regions-zones/?hl=pt_br#available) us-
+west4 (Las Vegas, Nevada, USA).
+
+Pricing is available on the [ Cloud VPN pricing page
+](https://cloud.google.com/vpn/pricing?hl=pt_br) .
+
 ##  February 24, 2020
 
 **FEATURE:**
