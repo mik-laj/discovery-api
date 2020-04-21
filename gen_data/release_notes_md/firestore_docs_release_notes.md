@@ -9,6 +9,13 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/fs-release-notes.xml `
 
+##  April 20, 2020
+
+**FEATURE:**
+
+Support for [ ` us-west4 ` region (Las Vegas)
+](https://cloud.google.com/firestore/docs/locations) .
+
 ##  March 11, 2020
 
 **FEATURE:**
