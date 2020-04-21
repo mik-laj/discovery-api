@@ -7,6 +7,17 @@
 URL ディレクトリ ` https://cloud.google.com/feeds/cloudvpn-release-notes.xml `
 を直接追加します。
 
+##  April 20, 2020
+
+**FEATURE:**
+
+Cloud VPN is now available in [ region
+](https://cloud.google.com/compute/docs/regions-zones/?hl=ja#available) us-
+west4 (Las Vegas, Nevada, USA).
+
+Pricing is available on the [ Cloud VPN pricing page
+](https://cloud.google.com/vpn/pricing?hl=ja) .
+
 ##  February 24, 2020
 
 **FEATURE:**
