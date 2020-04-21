@@ -5,6 +5,18 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gaestd-java-release-notes.xml `
 
+##  April 20, 2020
+
+**FEATURE:**
+
+App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
+
+**CHANGED:**
+
+  * Updated Java SDK to Version 1.9.80 
+  * Fixed deployment of cron.yaml file with retry_parameters configured 
+  * Fixed class LocalTaskQueueTestConfig to support custom paths for queue.yaml files ( [ public issue 138528920 ](https://issuetracker.google.com/138528920) ) 
+
 ##  April 13, 2020
 
 **CHANGED:**
