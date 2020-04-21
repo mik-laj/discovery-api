@@ -16,6 +16,19 @@ ruby/releases) .
 추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/cloud-pub-sub-
 release-notes.xml `
 
+##  April 20, 2020
+
+**FEATURE:**
+
+Pub/Sub is now available in the ` us-west4 ` region (Las Vegas).
+
+**FEATURE:**
+
+[ Dead-letter topics ](https://cloud.google.com/pubsub/docs/dead-letter-
+topics?hl=ko) for Pub/Sub are now available at the [ General Availability
+release level ](https://cloud.google.com/products/?hl=ko#product-launch-
+stages) .
+
 ##  February 24, 2020
 
 **FEATURE:**
