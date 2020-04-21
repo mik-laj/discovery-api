@@ -5,6 +5,12 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gaestd-ruby-release-notes.xml `
 
+##  April 20, 2020
+
+**FEATURE:**
+
+App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
+
 ##  March 13, 2020
 
 **FEATURE:**
