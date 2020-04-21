@@ -8,6 +8,28 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/vpc-release-notes.xml `
 
+##  April 20, 2020
+
+**FEATURE:**
+
+For auto mode VPC networks, added a new subnet ` 10.182.0.0/20 ` for the Las
+Vegas ` us-west4 ` region. For more information, see [ Auto mode IP ranges
+](https://cloud.google.com/vpc/docs/vpc#ip-ranges) .
+
+**CHANGED:**
+
+[ Packet Mirroring pricing ](https://cloud.google.com/compute/network-
+pricing#packet-mirroring) will come into effect from June 20, 2020. There is
+no charge for Packet Mirroring until that time.
+
+##  April 06, 2020
+
+**FEATURE:**
+
+You can now configure [ Firewall Rules Logging
+](https://cloud.google.com/vpc/docs/firewall-rules-logging) to include or omit
+metadata fields. This feature is in **Beta** .
+
 ##  March 03, 2020
 
 **FEATURE:**
