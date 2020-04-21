@@ -9,6 +9,14 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/spanner-release-notes.xml `
 
+##  April 20, 2020
+
+**FEATURE:**
+
+Cloud Spanner [ regional instances
+](https://cloud.google.com/spanner/docs/instances#available-configurations-
+regional) can now be created in Las Vegas (us-west4).
+
 ##  April 17, 2020
 
 **FEATURE:**
