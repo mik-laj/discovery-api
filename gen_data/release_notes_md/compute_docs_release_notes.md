@@ -12,6 +12,10 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/compute-engine-release-
 notes.xml `
 
+##  April 20, 2020
+
+  * The ` us-west4 ` Las Vegas, Nevada region is now available to all projects and users. The zones in the ` us-west4 ` region have [ N1 and E2 machine types ](/compute/docs/machine-types) . See [ Regions and zones ](/compute/docs/regions-zones) for more information. 
+
 ##  April 16, 2020
 
   * Committed use discount shared billing is now available in **beta** . You can share committed use discounts among all your projects that fall under the same billing account. For more information, see [ Signing up committed use discounts ](/compute/docs/instances/signing-up-committed-use-discounts) . 
