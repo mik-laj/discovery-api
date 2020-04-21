@@ -8,6 +8,14 @@
 URL ディレクトリ ` https://cloud.google.com/feeds/cloud-spanner-release-notes.xml `
 を直接追加します。
 
+##  April 20, 2020
+
+**FEATURE:**
+
+Cloud Spanner [ regional instances
+](https://cloud.google.com/spanner/docs/instances?hl=ja#available-
+configurations-regional) can now be created in Las Vegas (us-west4).
+
 ##  April 17, 2020
 
 **FEATURE:**
