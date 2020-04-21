@@ -9,6 +9,25 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/stackdriver-release-notes.xml `
 
+##  April 20, 2020
+
+**CHANGED:**
+
+The Cloud Profiler Node.js agent is now generally available. See [ Profiling
+Node.js applications ](https://cloud.google.com/profiler/docs/profiling-
+nodejs) for information on configuring your Node.js application.
+
+**FEATURE:**
+
+The Cloud Profiler Node.js agent now supports release 12 of Node.js. See [
+Profiling Node.js applications
+](https://cloud.google.com/profiler/docs/profiling-nodejs) for information on
+configuring your Node.js application.
+
+**CHANGED:**
+
+The Cloud Profiler Node.js agent no longer supports release 8 of Node.js.
+
 ##  March 24, 2020
 
 **CHANGED:**
