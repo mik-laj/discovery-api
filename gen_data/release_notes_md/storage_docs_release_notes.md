@@ -9,6 +9,14 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/storage-release-notes.xml `
 
+##  April 20, 2020
+
+**FEATURE:**
+
+Las Vegas region ( ` us-west4 ` ) launched.
+
+  * New [ location ](https://cloud.google.com/storage/docs/locations) for storing your data. 
+
 ##  February 28, 2020
 
 **CHANGED:**
