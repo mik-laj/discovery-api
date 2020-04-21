@@ -15,6 +15,19 @@
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) に追加するか、フィード URL `
 https://cloud.google.com/feeds/cloud-pub-sub-release-notes.xml ` を直接追加してください。
 
+##  April 20, 2020
+
+**FEATURE:**
+
+Pub/Sub is now available in the ` us-west4 ` region (Las Vegas).
+
+**FEATURE:**
+
+[ Dead-letter topics ](https://cloud.google.com/pubsub/docs/dead-letter-
+topics?hl=ja) for Pub/Sub are now available at the [ General Availability
+release level ](https://cloud.google.com/products/?hl=ja#product-launch-
+stages) .
+
 ##  February 24, 2020
 
 **FEATURE:**
