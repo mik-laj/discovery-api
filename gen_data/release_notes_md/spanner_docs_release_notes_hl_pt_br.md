@@ -10,6 +10,14 @@ página ao [ leitor de feeds
 do feed diretamente: ` https://cloud.google.com/feeds/cloud-spanner-release-
 notes.xml `
 
+##  April 20, 2020
+
+**FEATURE:**
+
+Cloud Spanner [ regional instances
+](https://cloud.google.com/spanner/docs/instances?hl=pt_br#available-
+configurations-regional) can now be created in Las Vegas (us-west4).
+
 ##  April 17, 2020
 
 **FEATURE:**
