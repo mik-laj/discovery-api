@@ -206,10 +206,11 @@ resource.
 
 Adding an [ APIService ](https://kubernetes.io/docs/concepts/extend-
 kubernetes/api-extension) to the repo will leave Anthos Config Management in a
-bad state, with the error message [ KNV2002 ](/release-notes/anthos-config-
-management/docs/reference/errors#knv2002) : failed to get server resources:
-unable to retrieve the complete list of server APIs." This issue will affect
-both new and existing clusters syncing from this repo. To correct the issue:
+bad state, with the error message [ KNV2002 ](https://cloud.google.com/anthos-
+config-management/docs/reference/errors#knv2002) : failed to get server
+resources: unable to retrieve the complete list of server APIs." This issue
+will affect both new and existing clusters syncing from this repo. To correct
+the issue:
 
   * find the name of the ` git-importer ` and ` syncer ` pods using ` kubectl get pods -n config-management-system `
   * copy those names and restart the pods with ` kubectl delete -n config-management-system pods git-importer-xxxx-xxxx syncer-xxxx-xxxx `
@@ -482,6 +483,5 @@ Config Management effectively reverts those changes as soon as it notices a
 difference between the config in the repo and the object in the cluster.
 
 For more information, see [ Managing and unmanaging objects
-](https://cloud.google.com/anthos-config-management/docs/managing-
-objects/anthos-config-management/docs/managing-objects) .
+](https://cloud.google.com/anthos-config-management/docs/how-to/configs) .
 
