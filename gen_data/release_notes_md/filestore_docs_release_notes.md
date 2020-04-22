@@ -9,12 +9,19 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/filestore-release-notes.xml `
 
+##  April 20, 2020
+
+**FEATURE:**
+
+Filestore is available in the ` us-west4 ` (Las Vegas) region. See [ Regions
+and zones ](https://cloud.google.com/filestore/docs/regions) .
+
 ##  January 24, 2020
 
 **FEATURE:**
 
-Cloud Filestore is now available in the Seoul ( ` asia-northeast-3 ` ) [
-region ](https://cloud.google.com/filestore/docs/regions) .
+Cloud Filestore is now available in the Seoul ( ` asia-northeast3 ` ) [ region
+](https://cloud.google.com/filestore/docs/regions) .
 
 ##  April 08, 2019
 
