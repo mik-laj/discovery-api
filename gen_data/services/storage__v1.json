@@ -3403,6 +3403,16 @@
                                                 "format": "date",
                                                 "type": "string"
                                             },
+                                            "customTimeBefore": {
+                                                "description": "A timestamp in RFC 3339 format. This condition is satisfied when the custom time on an object is before this timestamp.",
+                                                "format": "date-time",
+                                                "type": "string"
+                                            },
+                                            "daysSinceCustomTime": {
+                                                "description": "Number of days elapsed since the user-specified timestamp set on an object. The condition is satisfied if the days elapsed is at least this number. If no custom timestamp is specified on an object, the condition does not apply.",
+                                                "format": "int32",
+                                                "type": "integer"
+                                            },
                                             "isLive": {
                                                 "description": "Relevant only for versioned objects. If the value is true, this condition matches live objects; if the value is false, it matches archived objects.",
                                                 "type": "boolean"
@@ -4030,6 +4040,11 @@
                 },
                 "crc32c": {
                     "description": "CRC32c checksum, as described in RFC 4960, Appendix B; encoded using base64 in big-endian byte order. For more information about using the CRC32c checksum, see Hashes and ETags: Best Practices.",
+                    "type": "string"
+                },
+                "customTime": {
+                    "description": "A timestamp in RFC 3339 format specified by the user for an object.",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "customerEncryption": {
