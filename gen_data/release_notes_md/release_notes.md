@@ -9,6 +9,16 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  April 20, 2020
+
+**Dataproc**
+
+**CHANGED:**
+
+Dataproc is now available in the ` us-west4 ` [ region
+](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available)
+(Las Vegas).
+
 ##  April 17, 2020
 
 **Cloud Spanner**
@@ -28,6 +38,16 @@ Query Optimizer Versioning is now [ generally available
 select which version of the optimizer to use for your database, application or
 query. For more information, see [ Query optimizer
 ](https://cloud.google.com/spanner/docs/query-optimizer/overview) .
+
+**Dataproc**
+
+**FEATURE:**
+
+Announcing the [ Beta ](https://cloud.google.com/products#product-launch-
+stages) release of [ Dataproc on Google Kubernetes Engine
+](https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke) .
+Customers can now create Dataproc on GKE clusters to run Spark jobs on
+Kubernetes via the Dataproc jobs API.
 
 ##  April 16, 2020
 
@@ -186,9 +206,11 @@ supports exporting notebooks as PDFs.
 **Image 1.5**
 
 [ Presto ](https://cloud.google.com/dataproc/docs/concepts/components/presto)
-now includes two default connectors: * ` bigquery ` pointing to the datasets
-of the cluster's project * ` bigquery_public_data ` pointing to the public
-datasets
+now includes two default connectors:
+
+  * ` bigquery ` pointing to the datasets of the cluster's project 
+
+  * ` bigquery_public_data ` pointing to the public datasets 
 
 **FEATURE:**
 
