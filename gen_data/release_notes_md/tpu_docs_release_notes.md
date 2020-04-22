@@ -9,6 +9,21 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/tpu-release-notes.xml `
 
+##  April 21, 2020
+
+**FEATURE:**
+
+Cloud TPUs and Cloud TPU Pods now support PyTorch 1.5 via the PyTorch/XLA
+integration. This integration makes it possible for PyTorch users to do
+everything they can do on GPUs on Cloud TPUs, while minimizing changes to the
+user experience. You can try out PyTorch on an 8-core Cloud TPU device for
+free via Google Colab, and you can use PyTorch on Cloud TPUs at a much larger
+scale on Google Cloud (all the way up to full Cloud TPU Pods).
+
+See the ⁠ [ PyTorch/XLA 1.5 Release Notes
+](https://github.com/pytorch/xla/releases/tag/v1.5.0) for a complete list of
+features included in this release.
+
 ##  January 09, 2020
 
 **FEATURE:**
