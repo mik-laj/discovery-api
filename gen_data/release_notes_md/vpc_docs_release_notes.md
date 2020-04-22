@@ -22,14 +22,6 @@ Vegas ` us-west4 ` region. For more information, see [ Auto mode IP ranges
 pricing#packet-mirroring) will come into effect from June 20, 2020. There is
 no charge for Packet Mirroring until that time.
 
-##  April 06, 2020
-
-**FEATURE:**
-
-You can now configure [ Firewall Rules Logging
-](https://cloud.google.com/vpc/docs/firewall-rules-logging) to include or omit
-metadata fields. This feature is in **Beta** .
-
 ##  March 03, 2020
 
 **FEATURE:**
