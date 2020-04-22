@@ -141,7 +141,7 @@
         "organizations": {
             "methods": {
                 "create": {
-                    "description": "Creates an Apigee organization. See\n[Create an\norganization](https://docs.apigee.com/hybrid/latest/precog-provision).",
+                    "description": "Creates an Apigee organization. See\n[Create an organization](/hybrid/precog-provision).",
                     "flatPath": "v1/organizations",
                     "httpMethod": "POST",
                     "id": "apigee.organizations.create",
@@ -165,7 +165,7 @@
                     ]
                 },
                 "get": {
-                    "description": "Gets the profile for an Apigee organization.\nSee\n[Organizations](https://docs.apigee.com/hybrid/latest/terminology#organizations).",
+                    "description": "Gets the profile for an Apigee organization.\nSee [Organizations](/hybrid/terminology#organizations).",
                     "flatPath": "v1/organizations/{organizationsId}",
                     "httpMethod": "GET",
                     "id": "apigee.organizations.get",
@@ -248,7 +248,7 @@
                     ]
                 },
                 "getSyncAuthorization": {
-                    "description": "Lists the service accounts with the permissions required to allow\nthe Synchronizer to download environment data from the control plane.\n\nAn ETag is returned in the response to `getSyncAuthorization`.\nPass that ETag when calling [setSyncAuthorization](setSyncAuthorization)\nto ensure that you are updating the correct version. If you don't pass the\nETag in the call to `setSyncAuthorization`, then the existing authorization\nis overwritten indiscriminately.\n\nFor more information, see\n[Enable Synchronizer\naccess](https://docs.apigee.com/hybrid/latest/synchronizer-access#enable-synchronizer-access).\n\n**Note**: Available to Apigee hybrid only.",
+                    "description": "Lists the service accounts with the permissions required to allow\nthe Synchronizer to download environment data from the control plane.\n\nAn ETag is returned in the response to `getSyncAuthorization`.\nPass that ETag when calling [setSyncAuthorization](setSyncAuthorization)\nto ensure that you are updating the correct version. If you don't pass the\nETag in the call to `setSyncAuthorization`, then the existing authorization\nis overwritten indiscriminately.\n\nFor more information, see\n[Enable Synchronizer access](/hybrid/install-sa-keys).",
                     "flatPath": "v1/organizations/{organizationsId}:getSyncAuthorization",
                     "httpMethod": "POST",
                     "id": "apigee.organizations.getSyncAuthorization",
@@ -301,7 +301,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Lists the Apigee organizations and associated GCP projects that you have\npermission to access. See\n[Organizations](https://docs.apigee.com/hybrid/latest/terminology#organizations).",
+                    "description": "Lists the Apigee organizations and associated GCP projects that you have\npermission to access. See\n[Organizations](/hybrid/terminology#organizations).",
                     "flatPath": "v1/organizations",
                     "httpMethod": "GET",
                     "id": "apigee.organizations.list",
@@ -310,7 +310,7 @@
                     ],
                     "parameters": {
                         "parent": {
-                            "description": "Required. Use the following structure in your request:\n  `organizations`",
+                            "description": "Required. Apigee organization name in the following format:\n  `organizations/{org}`",
                             "location": "path",
                             "pattern": "^organizations$",
                             "required": true,
@@ -326,7 +326,7 @@
                     ]
                 },
                 "setSyncAuthorization": {
-                    "description": "Sets the permissions required to allow the Synchronizer to download\nenvironment data from the control plane. You must call this API to enable\nproper functioning of hybrid.\n\nPass the ETag when calling `setSyncAuthorization` to ensure that\nyou are updating the correct version. To get an ETag,\ncall [getSyncAuthorization](getSyncAuthorization).\nIf you don't pass the ETag in the call to `setSyncAuthorization`, then the\nexisting authorization is overwritten indiscriminately.\n\nFor more information, see\n[Enable Synchronizer\naccess](https://docs.apigee.com/hybrid/latest/synchronizer-access#enable-synchronizer-access).\n\n**Note**: Available to Apigee hybrid only.",
+                    "description": "Sets the permissions required to allow the Synchronizer to download\nenvironment data from the control plane. You must call this API to enable\nproper functioning of hybrid.\n\nPass the ETag when calling `setSyncAuthorization` to ensure that\nyou are updating the correct version. To get an ETag,\ncall [getSyncAuthorization](getSyncAuthorization).\nIf you don't pass the ETag in the call to `setSyncAuthorization`, then the\nexisting authorization is overwritten indiscriminately.\n\nFor more information, see\n[Enable Synchronizer access](/hybrid/install-sa-keys).",
                     "flatPath": "v1/organizations/{organizationsId}:setSyncAuthorization",
                     "httpMethod": "POST",
                     "id": "apigee.organizations.setSyncAuthorization",
@@ -896,6 +896,34 @@
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
+                                },
+                                "list": {
+                                    "description": "List key value maps in an api proxy.",
+                                    "flatPath": "v1/organizations/{organizationsId}/apis/{apisId}/keyvaluemaps",
+                                    "httpMethod": "GET",
+                                    "id": "apigee.organizations.apis.keyvaluemaps.list",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Required. The name of the environment in which to list key value maps.\nMust be of the form\n`organizations/{organization}/apis/{api}`.",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/apis/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/keyvaluemaps",
+                                    "response": {
+                                        "items": {
+                                            "type": "any"
+                                        },
+                                        "type": "array"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
                                 }
                             }
                         },
@@ -951,6 +979,34 @@
                                     "path": "v1/{+name}",
                                     "response": {
                                         "$ref": "GoogleApiHttpBody"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "list": {
+                                    "description": "Lists all revisions for an API proxy.",
+                                    "flatPath": "v1/organizations/{organizationsId}/apis/{apisId}/revisions",
+                                    "httpMethod": "GET",
+                                    "id": "apigee.organizations.apis.revisions.list",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Required. Name of the API proxy in the following format:\n  `organizations/{org}/apis/{api}`",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/apis/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/revisions",
+                                    "response": {
+                                        "items": {
+                                            "type": "any"
+                                        },
+                                        "type": "array"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -1817,7 +1873,7 @@
                                 "keys": {
                                     "methods": {
                                         "approveRevokeConsumerAppKey": {
-                                            "description": "Approves or revokes an API key for an app.",
+                                            "description": "Approves or revokes an API key for an app.\nNot a recognized rest pattern",
                                             "flatPath": "v1/organizations/{organizationsId}/consumers/apps/{appsId}/keys/{keysId}",
                                             "httpMethod": "POST",
                                             "id": "apigee.organizations.consumers.apps.keys.approveRevokeConsumerAppKey",
@@ -2831,7 +2887,7 @@
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "Required. Name of the organization in which the environment will\nbe created. Use the following structure in your request:\n `organizations/{org}`",
+                                    "description": "Required. Name of the organization in which the environment will\nbe created in the following format:\n `organizations/{org}`",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+$",
                                     "required": true,
@@ -2850,7 +2906,7 @@
                             ]
                         },
                         "delete": {
-                            "description": "Deletes an environment from an organization.",
+                            "description": "Deletes an environment from an organization. Returns the deleted\nenvironment resource.",
                             "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}",
                             "httpMethod": "DELETE",
                             "id": "apigee.organizations.environments.delete",
@@ -2859,7 +2915,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. Name of the environment. Use the following structure in your\nrequest:\n `organizations/{org}/environments/{env}`",
+                                    "description": "Required. Name of the environment to delete in the following format:\n `organizations/{org}/environments/{env}`",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+/environments/[^/]+$",
                                     "required": true,
@@ -2884,7 +2940,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. Name of the environment. Use the following structure in your request:\n `organizations/{org}/environments/{env}`",
+                                    "description": "Required. Name of the environment in the following format:\n `organizations/{org}/environments/{env}`",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+/environments/[^/]+$",
                                     "required": true,
@@ -2945,7 +3001,7 @@
                             ]
                         },
                         "getDebugmask": {
-                            "description": "Gets the debug mask singleton resource for an environment.",
+                            "description": "Gets the debug mask singleton resource for an Environment.",
                             "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/debugmask",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.environments.getDebugmask",
@@ -2954,7 +3010,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. Name of the debug mask. Use the following structure in your request:\n  `organizations/{org}/environments/{env}/debugmask`.",
+                                    "description": "Required. The name of the Environment debug mask to get. Must be of the\nform `organizations/{org}/environments/{env}/debugmask`.",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+/environments/[^/]+/debugmask$",
                                     "required": true,
@@ -2979,7 +3035,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. Name of the environment deployed configuration resource. Use the following\nstructure in your request:\n `organizations/{org}/environments/{env}/deployedConfig`",
+                                    "description": "Required. Name of the environment deployed configuration resource\nin the following format:\n `organizations/{org}/environments/{env}/deployedConfig`",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+/environments/[^/]+/deployedConfig$",
                                     "required": true,
@@ -2995,7 +3051,7 @@
                             ]
                         },
                         "getIamPolicy": {
-                            "description": "Gets the IAM policy on an environment. For more information, see\n[Manage users, roles, and permissions\nusing the API](https://docs.apigee.com/hybrid/latest/manage-users-roles).\n\nYou must have the `apigee.environments.getIamPolicy` permission to call\nthis API.",
+                            "description": "Gets the IAM policy on an environment. For more information, see\n[Manage users, roles, and permissions\nusing the API](/hybrid/manage-users-roles).\n\nYou must have the `apigee.environments.getIamPolicy` permission to call\nthis API.",
                             "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}:getIamPolicy",
                             "httpMethod": "GET",
                             "id": "apigee.organizations.environments.getIamPolicy",
@@ -3025,8 +3081,36 @@
                                 "https://www.googleapis.com/auth/cloud-platform"
                             ]
                         },
+                        "list": {
+                            "description": "Lists all environments in an organization.",
+                            "flatPath": "v1/organizations/{organizationsId}/environments",
+                            "httpMethod": "GET",
+                            "id": "apigee.organizations.environments.list",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "parent": {
+                                    "description": "Required. Name of the organization in the following format:\n  `organizations/{org}`",
+                                    "location": "path",
+                                    "pattern": "^organizations/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+parent}/environments",
+                            "response": {
+                                "items": {
+                                    "type": "any"
+                                },
+                                "type": "array"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
                         "setIamPolicy": {
-                            "description": "Sets the IAM policy on an environment, if the policy already\nexists it will be replaced. For more information, see\n[Manage users, roles, and permissions\nusing the API](https://docs.apigee.com/hybrid/latest/manage-users-roles).\n\nYou must have the `apigee.environments.setIamPolicy` permission to\ncall this API.",
+                            "description": "Sets the IAM policy on an environment, if the policy already\nexists it will be replaced. For more information, see\n[Manage users, roles, and permissions\nusing the API](/hybrid/manage-users-roles).\n\nYou must have the `apigee.environments.setIamPolicy` permission to\ncall this API.",
                             "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}:setIamPolicy",
                             "httpMethod": "POST",
                             "id": "apigee.organizations.environments.setIamPolicy",
@@ -3063,7 +3147,7 @@
                             ],
                             "parameters": {
                                 "parent": {
-                                    "description": "Required. Name of the environment. Use the following structure in your request:\n `organizations/{org}/environments/{env}`",
+                                    "description": "Required. Name of the environment to subscribe in the following format:\n `organizations/{org}/environments/{env}`",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+/environments/[^/]+$",
                                     "required": true,
@@ -3116,7 +3200,7 @@
                             ],
                             "parameters": {
                                 "parent": {
-                                    "description": "Required. Name of the environment. Use the following structure in your request:\n `organizations/{org}/environments/{env}`",
+                                    "description": "Required. Name of the environment to subscribe in the following format:\n `organizations/{org}/environments/{env}`",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+/environments/[^/]+$",
                                     "required": true,
@@ -3144,7 +3228,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. Name of the environment. Use the following structure in your request:\n `organizations/{org}/environments/{env}`",
+                                    "description": "Required. Name of the environment to update in the following format:\n `organizations/{org}/environments/{env}`",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+/environments/[^/]+$",
                                     "required": true,
@@ -3172,19 +3256,19 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Name of the debug mask.",
+                                    "description": "The DebugMask resource name.",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+/environments/[^/]+/debugmask$",
                                     "required": true,
                                     "type": "string"
                                 },
                                 "replaceRepeatedFields": {
-                                    "description": "Boolean flag that specifies whether to replace existing values in the debug\nmask when doing an update. Set to true to replace existing values.\nThe default behavior is to append the values (false).",
+                                    "description": "If true, repeated fields covered by the update_mask will replace\nthe existing values. The default behavior is to append.",
                                     "location": "query",
                                     "type": "boolean"
                                 },
                                 "updateMask": {
-                                    "description": "Field debug mask to support partial updates.",
+                                    "description": "Field mask to support partial updates.",
                                     "format": "google-fieldmask",
                                     "location": "query",
                                     "type": "string"
@@ -3211,7 +3295,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. Name of the environment. Use the following structure in your request:\n `organizations/{org}/environments/{env}`",
+                                    "description": "Required. Name of the environment to update in the following format:\n `organizations/{org}/environments/{env}`",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+/environments/[^/]+$",
                                     "required": true,
@@ -3468,6 +3552,40 @@
                                                             "scopes": [
                                                                 "https://www.googleapis.com/auth/cloud-platform"
                                                             ]
+                                                        },
+                                                        "list": {
+                                                            "description": "Lists the transaction IDs from a debug session.",
+                                                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/apis/{apisId}/revisions/{revisionsId}/debugsessions/{debugsessionsId}/data",
+                                                            "httpMethod": "GET",
+                                                            "id": "apigee.organizations.environments.apis.revisions.debugsessions.data.list",
+                                                            "parameterOrder": [
+                                                                "parent"
+                                                            ],
+                                                            "parameters": {
+                                                                "limit": {
+                                                                    "description": "Optional. A http query parameter that can control the maximum number of\ndebug session transactions that can be returned by UAP.",
+                                                                    "format": "int32",
+                                                                    "location": "query",
+                                                                    "type": "integer"
+                                                                },
+                                                                "parent": {
+                                                                    "description": "Required. The name of the debug sessions for which to list transactions.\nMust be of the form:\n `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}/debugsessions/{session}`.",
+                                                                    "location": "path",
+                                                                    "pattern": "^organizations/[^/]+/environments/[^/]+/apis/[^/]+/revisions/[^/]+/debugsessions/[^/]+$",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "path": "v1/{+parent}/data",
+                                                            "response": {
+                                                                "items": {
+                                                                    "type": "any"
+                                                                },
+                                                                "type": "array"
+                                                            },
+                                                            "scopes": [
+                                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                            ]
                                                         }
                                                     }
                                                 }
@@ -3499,6 +3617,34 @@
                                     "path": "v1/{+name}",
                                     "response": {
                                         "$ref": "GoogleProtobufEmpty"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "list": {
+                                    "description": "Lists all caches in an environment.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/caches",
+                                    "httpMethod": "GET",
+                                    "id": "apigee.organizations.environments.caches.list",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Required. The name of the parent environment under which to get caches.\nMust be of the form:\n    `organizations/{organization_id}/environments/{environment_id}`",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/environments/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/caches",
+                                    "response": {
+                                        "items": {
+                                            "type": "any"
+                                        },
+                                        "type": "array"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -3619,6 +3765,34 @@
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
+                                },
+                                "list": {
+                                    "description": "Lists the flow hooks attached to an environment. This API always\nreturns: `[\"PreProxyFlowHook\", \"PostProxyFlowHook\", \"PreTargetFlowHook\",\n\"PostTargetFlowHook\"]`",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/flowhooks",
+                                    "httpMethod": "GET",
+                                    "id": "apigee.organizations.environments.flowhooks.list",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Required. Name of the environment for which to display flow hooks in the following\nformat:\n  `organizations/{org}/environments/{env}`",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/environments/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/flowhooks",
+                                    "response": {
+                                        "items": {
+                                            "type": "any"
+                                        },
+                                        "type": "array"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
                                 }
                             }
                         },
@@ -3702,6 +3876,34 @@
                                     "path": "v1/{+name}",
                                     "response": {
                                         "$ref": "GoogleCloudApigeeV1Keystore"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "list": {
+                                    "description": "Lists all keystores and truststores.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/keystores",
+                                    "httpMethod": "GET",
+                                    "id": "apigee.organizations.environments.keystores.list",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Required. The name of the environment in which list keystores.\nMust be of the form\n`organizations/{organization}/environments/{environment}`.",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/environments/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/keystores",
+                                    "response": {
+                                        "items": {
+                                            "type": "any"
+                                        },
+                                        "type": "array"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -3864,6 +4066,34 @@
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
+                                        "list": {
+                                            "description": "Lists all aliases.",
+                                            "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/keystores/{keystoresId}/aliases",
+                                            "httpMethod": "GET",
+                                            "id": "apigee.organizations.environments.keystores.aliases.list",
+                                            "parameterOrder": [
+                                                "parent"
+                                            ],
+                                            "parameters": {
+                                                "parent": {
+                                                    "description": "Required. The name of the keystore. Must be of the form\n`organizations/{organization}/environments/{environment}/keystores/{keystore}`.",
+                                                    "location": "path",
+                                                    "pattern": "^organizations/[^/]+/environments/[^/]+/keystores/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+parent}/aliases",
+                                            "response": {
+                                                "items": {
+                                                    "type": "any"
+                                                },
+                                                "type": "array"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
                                         "update": {
                                             "description": "Updates the certificate in an alias.",
                                             "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/keystores/{keystoresId}/aliases/{aliasesId}",
@@ -3956,6 +4186,34 @@
                                     "path": "v1/{+name}",
                                     "response": {
                                         "$ref": "GoogleCloudApigeeV1KeyValueMap"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "list": {
+                                    "description": "List key value maps in an environment.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/keyvaluemaps",
+                                    "httpMethod": "GET",
+                                    "id": "apigee.organizations.environments.keyvaluemaps.list",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Required. The name of the environment in which to list key value maps.\nMust be of the form\n`organizations/{organization}/environments/{environment}`.",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/environments/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/keyvaluemaps",
+                                    "response": {
+                                        "items": {
+                                            "type": "any"
+                                        },
+                                        "type": "array"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -4304,6 +4562,34 @@
                                     "path": "v1/{+name}",
                                     "response": {
                                         "$ref": "GoogleCloudApigeeV1Reference"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "list": {
+                                    "description": "Lists all References in an environment as a JSON array.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/references",
+                                    "httpMethod": "GET",
+                                    "id": "apigee.organizations.environments.references.list",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Required. The parent environment name. Must be of the form\n`organizations/{org}/environments/{env}`.",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/environments/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/references",
+                                    "response": {
+                                        "items": {
+                                            "type": "any"
+                                        },
+                                        "type": "array"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -4839,6 +5125,34 @@
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
+                                "list": {
+                                    "description": "Lists all TargetServers in an environment as a JSON array.",
+                                    "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/targetservers",
+                                    "httpMethod": "GET",
+                                    "id": "apigee.organizations.environments.targetservers.list",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Required. The parent environment name. Must be of the form\n`organizations/{org}/environments/{env}`.",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/environments/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/targetservers",
+                                    "response": {
+                                        "items": {
+                                            "type": "any"
+                                        },
+                                        "type": "array"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
                                 "update": {
                                     "description": "Updates an existing TargetServer. Note that this operation has PUT\nsemantics; it will replace the entirety of the existing TargetServer with\nthe resource in the request body.",
                                     "flatPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/targetservers/{targetserversId}",
@@ -4921,6 +5235,34 @@
                             "path": "v1/{+name}",
                             "response": {
                                 "$ref": "GoogleCloudApigeeV1KeyValueMap"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "list": {
+                            "description": "List key value maps in an organization.",
+                            "flatPath": "v1/organizations/{organizationsId}/keyvaluemaps",
+                            "httpMethod": "GET",
+                            "id": "apigee.organizations.keyvaluemaps.list",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "parent": {
+                                    "description": "Required. The name of the organization in which to list key value maps.\nMust be of the form\n`organizations/{organization}`.",
+                                    "location": "path",
+                                    "pattern": "^organizations/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+parent}/keyvaluemaps",
+                            "response": {
+                                "items": {
+                                    "type": "any"
+                                },
+                                "type": "array"
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform"
@@ -5030,7 +5372,7 @@
                 "providers": {
                     "methods": {
                         "clearScope": {
-                            "description": "Clears the scope of an identity provider.",
+                            "description": "Clears the scope of an identity provider.\nNot a recognized rest pattern",
                             "flatPath": "v1/organizations/{organizationsId}/providers/{providersId}",
                             "httpMethod": "DELETE",
                             "id": "apigee.organizations.providers.clearScope",
@@ -5059,7 +5401,7 @@
                         "resources": {
                             "methods": {
                                 "createResource": {
-                                    "description": "Creates a resource ID for the resource path.",
+                                    "description": "Creates a resource ID for the resource path.\nNot a recognized rest pattern",
                                     "flatPath": "v1/organizations/{organizationsId}/providers/{providersId}/resources/{resourcesId}",
                                     "httpMethod": "POST",
                                     "id": "apigee.organizations.providers.resources.createResource",
@@ -5138,7 +5480,7 @@
                                     ]
                                 },
                                 "get": {
-                                    "description": "Gets a user.",
+                                    "description": "Retrieves a user.",
                                     "flatPath": "v1/organizations/{organizationsId}/providers/{providersId}/users/{usersId}",
                                     "httpMethod": "GET",
                                     "id": "apigee.organizations.providers.users.get",
@@ -5597,6 +5939,34 @@
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
+                                "list": {
+                                    "description": "Lists all revisions for a shared flow.",
+                                    "flatPath": "v1/organizations/{organizationsId}/sharedflows/{sharedflowsId}/revisions",
+                                    "httpMethod": "GET",
+                                    "id": "apigee.organizations.sharedflows.revisions.list",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Required. The name of the parent API proxy under which to get API proxy\nrevisions. Must be of the form:\n  `organizations/{organization_id}/sharedflows/{shared_flow_id}`",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/sharedflows/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/revisions",
+                                    "response": {
+                                        "items": {
+                                            "type": "any"
+                                        },
+                                        "type": "array"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
                                 "updateSharedFlowRevision": {
                                     "description": "Updates a shared flow revision. This operation is only allowed on revisions\nwhich have never been deployed. After deployment a revision becomes\nimmutable, even if it becomes undeployed.\n\nThe payload is a ZIP-formatted shared flow.  Content type must be either\nmultipart/form-data or application/octet-stream.",
                                     "flatPath": "v1/organizations/{organizationsId}/sharedflows/{sharedflowsId}/revisions/{revisionsId}",
@@ -5690,6 +6060,31 @@
                             },
                             "response": {
                                 "$ref": "GoogleCloudApigeeV1Site"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "getAudiencesenabled": {
+                            "description": "Retrieves the audience feature flag setting for a portal.",
+                            "flatPath": "v1/organizations/{organizationsId}/sites/{sitesId}/audiencesenabled",
+                            "httpMethod": "GET",
+                            "id": "apigee.organizations.sites.getAudiencesenabled",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "parent": {
+                                    "description": "Required. Name of the portal. Use the following structure in your request:\n  `organizations/{org}/sites/{site}`",
+                                    "location": "path",
+                                    "pattern": "^organizations/[^/]+/sites/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+parent}/audiencesenabled",
+                            "response": {
+                                "$ref": "GoogleCloudApigeeV1ZoneAudienceEnabledResponse"
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform"
@@ -6710,6 +7105,42 @@
                                 }
                             },
                             "resources": {
+                                "save": {
+                                    "methods": {
+                                        "updatePriorities": {
+                                            "description": "Rearranges the order of menu items.",
+                                            "flatPath": "v1/organizations/{organizationsId}/sites/{sitesId}/menuitems/save/priorities",
+                                            "httpMethod": "PUT",
+                                            "id": "apigee.organizations.sites.menuitems.save.updatePriorities",
+                                            "parameterOrder": [
+                                                "parent"
+                                            ],
+                                            "parameters": {
+                                                "parent": {
+                                                    "description": "Required. Use the following structure in your request:\n  `organizations/{org}/sites/{site}/menuitems`",
+                                                    "location": "path",
+                                                    "pattern": "^organizations/[^/]+/sites/[^/]+/menuitems$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+parent}/save/priorities",
+                                            "request": {
+                                                "additionalProperties": {
+                                                    "description": "Properties of the object.",
+                                                    "type": "any"
+                                                },
+                                                "type": "object"
+                                            },
+                                            "response": {
+                                                "$ref": "GoogleCloudApigeeV1ApiResponseWrapper"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        }
+                                    }
+                                },
                                 "toggle": {
                                     "methods": {
                                         "nested": {
@@ -7070,6 +7501,63 @@
                                 }
                             }
                         },
+                        "resource-entitlements": {
+                            "methods": {
+                                "get": {
+                                    "description": "Lists the resource audience entitlements.",
+                                    "flatPath": "v1/organizations/{organizationsId}/sites/{sitesId}/resource-entitlements/{resource-entitlementsId}/{resource-entitlementsId1}",
+                                    "httpMethod": "GET",
+                                    "id": "apigee.organizations.sites.resource-entitlements.get",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. Name of the resource. Use the following structure in your request:\n  `organizations/{org}/sites/{site}/resource-entitlements/{resourceType}/{resource}`",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/sites/[^/]+/resource-entitlements/[^/]+/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "response": {
+                                        "$ref": "GoogleCloudApigeeV1ResourceEntitlement"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "updateResourceEntitlement": {
+                                    "description": "Updates audience entitlements for a resource.\nNot a recognized rest pattern",
+                                    "flatPath": "v1/organizations/{organizationsId}/sites/{sitesId}/resource-entitlements/{resource-entitlementsId}/{resource-entitlementsId1}",
+                                    "httpMethod": "POST",
+                                    "id": "apigee.organizations.sites.resource-entitlements.updateResourceEntitlement",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. Name of the resource. Use the following structure in your request:\n  `organizations/{org}/sites/{site}/resource-entitlements/{resourceType}/{resource}`",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/sites/[^/]+/resource-entitlements/[^/]+/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "request": {
+                                        "$ref": "GoogleCloudApigeeV1ResourceEntitlementData"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleCloudApigeeV1ResourceEntitlement"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                }
+                            }
+                        },
                         "site": {
                             "methods": {
                                 "analytics": {
@@ -7184,6 +7672,34 @@
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
+                                "domains": {
+                                    "description": "Enables or updates the custom domain for a portal.",
+                                    "flatPath": "v1/organizations/{organizationsId}/sites/{sitesId}/site/domains",
+                                    "httpMethod": "POST",
+                                    "id": "apigee.organizations.sites.site.domains",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Required. Name of the portal. Use the following structure in your request:\n  `organizations/{org}/sites/{site}`",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/sites/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/site/domains",
+                                    "request": {
+                                        "$ref": "GoogleCloudApigeeV1CustomDomainConfigData"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleCloudApigeeV1CustomDomainConfig"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
                                 "getDefaultanonallowed": {
                                     "description": "Gets the `defaultAnonAllowed` flag setting for a portal. This flag\ndefines the default visibility for pages and API products that are\npublished on the portal.",
                                     "flatPath": "v1/organizations/{organizationsId}/sites/{sitesId}/site/defaultanonallowed",
@@ -7204,6 +7720,31 @@
                                     "path": "v1/{+parent}/site/defaultanonallowed",
                                     "response": {
                                         "$ref": "GoogleCloudApigeeV1StringResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "getDomains": {
+                                    "description": "Gets the custom domain configuration for a portal.",
+                                    "flatPath": "v1/organizations/{organizationsId}/sites/{sitesId}/site/domains",
+                                    "httpMethod": "GET",
+                                    "id": "apigee.organizations.sites.site.getDomains",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Required. Name of the portal. Use the following structure in your request:\n  `organizations/{org}/sites/{site}`",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/sites/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/site/domains",
+                                    "response": {
+                                        "$ref": "GoogleCloudApigeeV1CustomDomainConfig"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -7354,6 +7895,120 @@
                         }
                     }
                 },
+                "teams": {
+                    "methods": {
+                        "list": {
+                            "description": "Lists all teams a user can access.",
+                            "flatPath": "v1/organizations/{organizationsId}/teams",
+                            "httpMethod": "GET",
+                            "id": "apigee.organizations.teams.list",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "parent": {
+                                    "description": "Required. Name of the Apigee organization. Use the following structure in\nyour request:\n  `organizations/{org}`",
+                                    "location": "path",
+                                    "pattern": "^organizations/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+parent}/teams",
+                            "response": {
+                                "$ref": "GoogleCloudApigeeV1ListEdgeTeamsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        }
+                    }
+                },
+                "zone": {
+                    "methods": {
+                        "enableaudiences": {
+                            "description": "Enables the audience feature in a zone.",
+                            "flatPath": "v1/organizations/{organizationsId}/zone/{zoneId}/enableaudiences",
+                            "httpMethod": "POST",
+                            "id": "apigee.organizations.zone.enableaudiences",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "parent": {
+                                    "description": "Required. Name of the zone. Use the following structure in your request:\n  `organizations/{org}/zones/{zone}`",
+                                    "location": "path",
+                                    "pattern": "^organizations/[^/]+/zone/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+parent}/enableaudiences",
+                            "response": {
+                                "$ref": "GoogleCloudApigeeV1ApiResponseWrapper"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "getAudiencesenabled": {
+                            "description": "Retrieves the audience feature flag setting for a zone.",
+                            "flatPath": "v1/organizations/{organizationsId}/zone/{zoneId}/audiencesenabled",
+                            "httpMethod": "GET",
+                            "id": "apigee.organizations.zone.getAudiencesenabled",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "parent": {
+                                    "description": "Required. Name of the zone. Use the following structure in your request:\n  `organizations/{org}/zones/{zone}`",
+                                    "location": "path",
+                                    "pattern": "^organizations/[^/]+/zone/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+parent}/audiencesenabled",
+                            "response": {
+                                "$ref": "GoogleCloudApigeeV1ZoneAudienceEnabledResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        }
+                    },
+                    "resources": {
+                        "audiencesenabled": {
+                            "methods": {
+                                "list": {
+                                    "description": "Lists all zones in an Apigee organization with the audience feature\nenabled.",
+                                    "flatPath": "v1/organizations/{organizationsId}/zone/audiencesenabled",
+                                    "httpMethod": "GET",
+                                    "id": "apigee.organizations.zone.audiencesenabled.list",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Required. Name of Apigee organization. Use the following structure in your\nrequest:\n  `organizations/{org}`",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/zone/audiencesenabled",
+                                    "response": {
+                                        "$ref": "GoogleCloudApigeeV1ListAudiencesEnabledForZonesInOrgResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
                 "zones": {
                     "methods": {
                         "certificate": {
@@ -7429,6 +8084,34 @@
                             "path": "v1/{+parent}/zones",
                             "response": {
                                 "$ref": "GoogleCloudApigeeV1ListZonesResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "testemail": {
+                            "description": "** Note**: This feature is not available to Apigee hybrid at this time.\n\nSends a test email to verify the SMTP settings for an identity provider.\nSends the email to the requester's email using the token.",
+                            "flatPath": "v1/organizations/{organizationsId}/zones/{zonesId}/testemail",
+                            "httpMethod": "POST",
+                            "id": "apigee.organizations.zones.testemail",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "parent": {
+                                    "description": "Required. Name of the zone. Use the following structure in your request:\n  `organizations/{org}/zones/{zone}`",
+                                    "location": "path",
+                                    "pattern": "^organizations/[^/]+/zones/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+parent}/testemail",
+                            "request": {
+                                "$ref": "GoogleCloudApigeeV1TestEmail"
+                            },
+                            "response": {
+                                "$ref": "GoogleCloudApigeeV1ApiResponseWrapper"
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform"
@@ -8448,6 +9131,76 @@
             },
             "type": "object"
         },
+        "GoogleCloudApigeeV1Audience": {
+            "id": "GoogleCloudApigeeV1Audience",
+            "properties": {
+                "created": {
+                    "description": "Time the audience was created in milliseconds since epoch.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Description of the audience.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "ID of the audience.",
+                    "type": "string"
+                },
+                "membershipType": {
+                    "description": "Type of membership.",
+                    "enum": [
+                        "explicit",
+                        "all_authenticated"
+                    ],
+                    "enumDescriptions": [
+                        "Explicit audience entitlement.",
+                        "Accessible to all registered users."
+                    ],
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name of audience.",
+                    "type": "string"
+                },
+                "resources": {
+                    "description": "List of resources assigned to the audience.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "teams": {
+                    "description": "List of teams assigned to the audience.",
+                    "items": {
+                        "$ref": "GoogleCloudApigeeV1ConsumerTeam"
+                    },
+                    "type": "array"
+                },
+                "users": {
+                    "description": "List of users assigned to the audience.",
+                    "items": {
+                        "$ref": "GoogleCloudApigeeV1UserData"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1AudienceEntitlement": {
+            "id": "GoogleCloudApigeeV1AudienceEntitlement",
+            "properties": {
+                "audience": {
+                    "$ref": "GoogleCloudApigeeV1Audience",
+                    "description": "Details of the audience."
+                },
+                "entitled": {
+                    "description": "Boolean flag that specifies whether the audience is entitled.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudApigeeV1CapiServerStatus": {
             "id": "GoogleCloudApigeeV1CapiServerStatus",
             "properties": {
@@ -8560,11 +9313,9 @@
                 "action": {
                     "description": "Type of access requested for the provided resource path.",
                     "enum": [
-                        "ACTION_UNSPECIFIED",
                         "view"
                     ],
                     "enumDescriptions": [
-                        "",
                         ""
                     ],
                     "type": "string"
@@ -8624,11 +9375,9 @@
                 "action": {
                     "description": "Access that was attempted",
                     "enum": [
-                        "ACTION_UNSPECIFIED",
                         "view"
                     ],
                     "enumDescriptions": [
-                        "",
                         ""
                     ],
                     "type": "string"
@@ -8640,13 +9389,11 @@
                 "verdict": {
                     "description": "Results of the check access request.\n\"unknown\" is returned if the resource path is not found",
                     "enum": [
-                        "VERDICT_UNSPECIFIED",
                         "unknown",
                         "allowed",
                         "denied"
                     ],
                     "enumDescriptions": [
-                        "When a Verdict has not been specified.",
                         "Resource path not found.",
                         "Access is allowed.",
                         "Access is denied."
@@ -8947,6 +9694,66 @@
                 "userName": {
                     "description": "Username.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1ConsumerTeam": {
+            "id": "GoogleCloudApigeeV1ConsumerTeam",
+            "properties": {
+                "apps": {
+                    "description": "List of apps associated with the team.",
+                    "items": {
+                        "$ref": "GoogleCloudApigeeV1PortalApp"
+                    },
+                    "type": "array"
+                },
+                "audiences": {
+                    "description": "Audiences to which the team is assigned.",
+                    "items": {
+                        "$ref": "GoogleCloudApigeeV1Audience"
+                    },
+                    "type": "array"
+                },
+                "created": {
+                    "description": "Time the team was created in milliseconds since epoch.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Description of the team.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "ID of the team.",
+                    "type": "string"
+                },
+                "memberCount": {
+                    "description": "Number of members on the team.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "memberships": {
+                    "description": "List of team members.",
+                    "items": {
+                        "$ref": "GoogleCloudApigeeV1ConsumerTeamMembership"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "description": "Name of the team.",
+                    "type": "string"
+                },
+                "pointOfContact": {
+                    "description": "Point of contact for the team.",
+                    "type": "string"
+                },
+                "users": {
+                    "description": "List of users that are members of the team.",
+                    "items": {
+                        "$ref": "GoogleCloudApigeeV1UserData"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -9449,6 +10256,71 @@
             },
             "type": "object"
         },
+        "GoogleCloudApigeeV1CustomDomainConfig": {
+            "id": "GoogleCloudApigeeV1CustomDomainConfig",
+            "properties": {
+                "data": {
+                    "$ref": "GoogleCloudApigeeV1CustomDomainConfigData",
+                    "description": "Details for the custom domain configuration."
+                },
+                "errorCode": {
+                    "description": "ID that can be used to find errors in the log files.",
+                    "type": "string"
+                },
+                "message": {
+                    "description": "Description of the operation.",
+                    "type": "string"
+                },
+                "requestId": {
+                    "description": "ID that can be used to find request details in the log files.",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "Status of the operation.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1CustomDomainConfigData": {
+            "id": "GoogleCloudApigeeV1CustomDomainConfigData",
+            "properties": {
+                "domain": {
+                    "description": "Name of the custom domain.",
+                    "type": "string"
+                },
+                "force": {
+                    "description": "Boolean flag that specifies whether to force the update.",
+                    "type": "boolean"
+                },
+                "id": {
+                    "description": "ID of the custom domain configuration.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "redirectHttps": {
+                    "description": "Boolean flag that specifies whether to redirect to HTTPS.",
+                    "type": "boolean"
+                },
+                "siteId": {
+                    "description": "Name of the portal.",
+                    "type": "string"
+                },
+                "subdomain": {
+                    "description": "Name of the subdomain.",
+                    "type": "string"
+                },
+                "tlsAlias": {
+                    "description": "Name of the TLS keystore alias.",
+                    "type": "string"
+                },
+                "tlsKeystore": {
+                    "description": "Name of the TLS keystore.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudApigeeV1CustomFieldValue": {
             "id": "GoogleCloudApigeeV1CustomFieldValue",
             "properties": {
@@ -9691,60 +10563,60 @@
             "id": "GoogleCloudApigeeV1DebugMask",
             "properties": {
                 "faultJSONPaths": {
-                    "description": "List of JSON paths that specify the JSON elements to be filtered from JSON\npayloads in error flows.",
+                    "description": "List of JSON paths that specify JSON elements to be filtered from JSON\npayloads in error flows.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "faultXPaths": {
-                    "description": "List of XPaths that specify the XML elements to be filtered from XML\npayloads in error flows.",
+                    "description": "List of XPaths that specify XML elements to be filtered from XML payloads\nin error flows.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "name": {
-                    "description": "Name of the debug mask.",
+                    "description": "The DebugMask resource name.",
                     "type": "string"
                 },
                 "namespaces": {
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Map of namespaces to URIs.",
+                    "description": "Map of namespaces to uris.",
                     "type": "object"
                 },
                 "requestJSONPaths": {
-                    "description": "List of JSON paths that specify the JSON elements to be filtered from JSON\nrequest message payloads.",
+                    "description": "List of JSON paths that specify JSON elements to be filtered from JSON\nrequest message payloads.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "requestXPaths": {
-                    "description": "List of XPaths that specify the XML elements to be filtered from XML\nrequest message payloads.",
+                    "description": "List of XPaths that specify XML elements to be filtered from XML request\nmessage payloads.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "responseJSONPaths": {
-                    "description": "List of JSON paths that specify the JSON elements to be filtered from JSON\nresponse message payloads.",
+                    "description": "List of JSON paths that specify JSON elements to be filtered from JSON\nresponse message payloads.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "responseXPaths": {
-                    "description": "List of XPaths that specify the XML elements to be filtered from XML\nresponse message payloads.",
+                    "description": "List of XPaths that specify XML elements to be filtered from XML response\nmessage payloads.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "variables": {
-                    "description": "List of variables that should be masked from the debug output.",
+                    "description": "List of variables that should be masked from debug output.",
                     "items": {
                         "type": "string"
                     },
@@ -10142,6 +11014,46 @@
                 },
                 "status": {
                     "description": "Status of the operation.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1EdgeTeam": {
+            "id": "GoogleCloudApigeeV1EdgeTeam",
+            "properties": {
+                "createdBy": {
+                    "description": "Not used by Apigee hybrid.",
+                    "type": "string"
+                },
+                "created_at": {
+                    "description": "Time the team was created in milliseconds since epoch.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "displayName": {
+                    "description": "User-friendly display name.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "ID of the team.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name of the team.",
+                    "type": "string"
+                },
+                "organization": {
+                    "description": "Name of the Apigee organization.",
+                    "type": "string"
+                },
+                "updatedBy": {
+                    "description": "Not used by Apigee hybrid.",
+                    "type": "string"
+                },
+                "updated_at": {
+                    "description": "Time the team was last modified in milliseconds since epoch.",
+                    "format": "int64",
                     "type": "string"
                 }
             },
@@ -10678,12 +11590,10 @@
                 "action": {
                     "description": "Approve or revoke API key.",
                     "enum": [
-                        "ACTION_UNSPECIFIED",
                         "approve",
                         "revoke"
                     ],
                     "enumDescriptions": [
-                        "When no Action has been specified.",
                         "Approve API key.",
                         "Revoke API key."
                     ],
@@ -10877,6 +11787,35 @@
             },
             "type": "object"
         },
+        "GoogleCloudApigeeV1ListAudiencesEnabledForZonesInOrgResponse": {
+            "id": "GoogleCloudApigeeV1ListAudiencesEnabledForZonesInOrgResponse",
+            "properties": {
+                "data": {
+                    "description": "Audience feature flag setting for each zone.",
+                    "items": {
+                        "$ref": "GoogleCloudApigeeV1ZoneAudienceEnabled"
+                    },
+                    "type": "array"
+                },
+                "errorCode": {
+                    "description": "ID that can be used to find errors in the log files.",
+                    "type": "string"
+                },
+                "message": {
+                    "description": "Description of the operation.",
+                    "type": "string"
+                },
+                "requestId": {
+                    "description": "ID that can be used to find request details in the log files.",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "Status of the operation.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudApigeeV1ListCompaniesResponse": {
             "id": "GoogleCloudApigeeV1ListCompaniesResponse",
             "properties": {
@@ -10980,6 +11919,35 @@
                         "$ref": "GoogleCloudApigeeV1DeveloperApp"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1ListEdgeTeamsResponse": {
+            "id": "GoogleCloudApigeeV1ListEdgeTeamsResponse",
+            "properties": {
+                "data": {
+                    "description": "Details of the team.",
+                    "items": {
+                        "$ref": "GoogleCloudApigeeV1EdgeTeam"
+                    },
+                    "type": "array"
+                },
+                "errorCode": {
+                    "description": "ID that can be used to find errors in the log files.",
+                    "type": "string"
+                },
+                "message": {
+                    "description": "Description of the operation.",
+                    "type": "string"
+                },
+                "requestId": {
+                    "description": "ID that can be used to find request details in the log files.",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "Status of the operation.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -11618,11 +12586,11 @@
             "id": "GoogleCloudApigeeV1Organization",
             "properties": {
                 "analyticsRegion": {
-                    "description": "Required. Primary GCP region for analytics data storage. For valid values, see\n[Create an\norganization](https://docs.apigee.com/hybrid/latest/precog-provision).",
+                    "description": "Required. Primary GCP region for analytics data storage. For valid values, see\n[Create an organization](/hybrid/precog-provision).",
                     "type": "string"
                 },
                 "attributes": {
-                    "description": "Not used by Apigee.",
+                    "description": "Not used by Apigee hybrid.",
                     "items": {
                         "type": "string"
                     },
@@ -11634,7 +12602,7 @@
                     "type": "string"
                 },
                 "customerName": {
-                    "description": "Not used by Apigee.",
+                    "description": "Not used by Apigee hybrid.",
                     "type": "string"
                 },
                 "description": {
@@ -11673,7 +12641,7 @@
                     ],
                     "enumDescriptions": [
                         "",
-                        "Google-managed Apigee runtime.",
+                        "Google-managed Apigee hybrid runtime.",
                         "User-managed Apigee hybrid runtime."
                     ],
                     "type": "string"
@@ -11693,7 +12661,7 @@
                     "type": "string"
                 },
                 "type": {
-                    "description": "Not used by Apigee.",
+                    "description": "Not used by Apigee hybrid.",
                     "enum": [
                         "TYPE_UNSPECIFIED",
                         "TYPE_TRIAL",
@@ -12550,6 +13518,53 @@
             },
             "type": "object"
         },
+        "GoogleCloudApigeeV1ResourceEntitlement": {
+            "id": "GoogleCloudApigeeV1ResourceEntitlement",
+            "properties": {
+                "data": {
+                    "$ref": "GoogleCloudApigeeV1ResourceEntitlementData",
+                    "description": "Details of the entitlement."
+                },
+                "errorCode": {
+                    "description": "ID that can be used to find errors in the log files.",
+                    "type": "string"
+                },
+                "message": {
+                    "description": "Description of the operation.",
+                    "type": "string"
+                },
+                "requestId": {
+                    "description": "ID that can be used to find request details in the log files.",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "Status of the operation.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1ResourceEntitlementData": {
+            "id": "GoogleCloudApigeeV1ResourceEntitlementData",
+            "properties": {
+                "authEntitled": {
+                    "description": "Boolean flag that specifies whether the resource is available to all\nregistered users.",
+                    "type": "boolean"
+                },
+                "explicitAudiences": {
+                    "description": "List of explicit audience entitlements.",
+                    "items": {
+                        "$ref": "GoogleCloudApigeeV1AudienceEntitlement"
+                    },
+                    "type": "array"
+                },
+                "isPublic": {
+                    "description": "Boolean flag that specifies whether the resource is public.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudApigeeV1ResourceFile": {
             "description": "Metadata about a resource file.",
             "id": "GoogleCloudApigeeV1ResourceFile",
@@ -13343,7 +14358,7 @@
             "id": "GoogleCloudApigeeV1Subscription",
             "properties": {
                 "name": {
-                    "description": "Full name of the Pub/Sub subcription. Use the following structure in your\nrequest:\n  `subscription \"projects/foo/subscription/bar\"`",
+                    "description": "Full name of the Pub/Sub subcription in the following format:\n `subscription \"projects/foo/subscription/bar\"`",
                     "type": "string"
                 }
             },
@@ -13358,7 +14373,7 @@
                     "type": "string"
                 },
                 "identities": {
-                    "description": "Required. Array of service accounts to grant access to control plane\nresources, each specified using the following\nformat: `serviceAccount:`<var>service-account-name</var>.\n\nThe <var>service-account-name</var> is formatted like an email address. For\nexample:\n`my-synchronizer-manager-service_account@my_project_id.iam.gserviceaccount.com`\n\nYou might specify multiple service accounts, for example, if you have\nmultiple environments and wish to assign a unique service account to each\none.\n\nThe service accounts must have **Apigee Synchronizer Manager** role.\nSee also [Create service\naccounts](https://docs.apigee.com/hybrid/latest/sa-about#create-the-service-accounts).",
+                    "description": "Required. Array of service accounts to grant access to control plane\nresources, each specified using the following\nformat: `serviceAccount:`<var>service-account-name</var>.\n\nThe <var>service-account-name</var> is formatted like an email address. For\nexample:\n`my-synchronizer-manager-service_account@my_project_id.iam.gserviceaccount.com`\n\nYou might specify multiple service accounts, for example, if you have\nmultiple environments and wish to assign a unique service account to each\none.\n\nThe service accounts must have **Apigee Synchronizer Manager** role.\nSee also [Add service accounts](/hybrid/precog-serviceaccounts).",
                     "items": {
                         "type": "string"
                     },
@@ -13482,6 +14497,20 @@
                 "tlsInfo": {
                     "$ref": "GoogleCloudApigeeV1TlsInfoConfig",
                     "description": "TLS settings for the target."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1TestEmail": {
+            "id": "GoogleCloudApigeeV1TestEmail",
+            "properties": {
+                "body": {
+                    "description": "Body of the test email.",
+                    "type": "string"
+                },
+                "subject": {
+                    "description": "Subject of the test email.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -13779,6 +14808,54 @@
             },
             "type": "object"
         },
+        "GoogleCloudApigeeV1UserData": {
+            "id": "GoogleCloudApigeeV1UserData",
+            "properties": {
+                "customFieldValues": {
+                    "description": "List of custom fields and values.",
+                    "items": {
+                        "$ref": "GoogleCloudApigeeV1CustomFieldValue"
+                    },
+                    "type": "array"
+                },
+                "email": {
+                    "description": "Email address for user.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "ID of user.",
+                    "type": "string"
+                },
+                "isActive": {
+                    "description": "Flag that specifies whether user is active.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "lastLogonTime": {
+                    "description": "Time the user last signed in to the portal in milliseconds since epoch.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "lastModified": {
+                    "description": "Time the user was last modified in milliseconds since epoch.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name of user.",
+                    "type": "string"
+                },
+                "password": {
+                    "description": "Password for user.",
+                    "type": "string"
+                },
+                "verified": {
+                    "description": "Boolean flag that specifies whether the user account was verified.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudApigeeV1VerifyCertificateRequest": {
             "description": "Request message for the VerifyCertificate RPC.",
             "id": "GoogleCloudApigeeV1VerifyCertificateRequest",
@@ -13960,6 +15037,46 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1ZoneAudienceEnabled": {
+            "id": "GoogleCloudApigeeV1ZoneAudienceEnabled",
+            "properties": {
+                "audiencesEnabled": {
+                    "description": "Boolean flag that specifies whether the audience feature is enabled.",
+                    "type": "boolean"
+                },
+                "zmsId": {
+                    "description": "ID of the zone.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudApigeeV1ZoneAudienceEnabledResponse": {
+            "id": "GoogleCloudApigeeV1ZoneAudienceEnabledResponse",
+            "properties": {
+                "data": {
+                    "$ref": "GoogleCloudApigeeV1ZoneAudienceEnabled",
+                    "description": "Audience feature flag setting for the zone."
+                },
+                "errorCode": {
+                    "description": "ID that can be used to find errors in the log files.",
+                    "type": "string"
+                },
+                "message": {
+                    "description": "Description of the operation.",
+                    "type": "string"
+                },
+                "requestId": {
+                    "description": "ID that can be used to find request details in the log files.",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "Status of the operation.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -14227,7 +15344,7 @@
                     "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."
                 },
                 "updateMask": {
-                    "description": "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only\nthe fields in the mask will be modified. If no mask is provided, the\nfollowing default mask is used:\n\n`paths: \"bindings, etag\"`",
+                    "description": "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only\nthe fields in the mask will be modified. If no mask is provided, the\nfollowing default mask is used:\npaths: \"bindings, etag\"\nThis field is only used by Cloud IAM.",
                     "format": "google-fieldmask",
                     "type": "string"
                 }
