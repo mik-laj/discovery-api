@@ -18,9 +18,9 @@ URL directly: ` https://cloud.google.com/feeds/dlp-release-notes.xml `
 
 **FEATURE:**
 
-Add ` PDF ` and ` WORD ` [ FileTypes
+Added support for ` PDF ` and ` WORD ` [ ` FileTypes `
 ](http://cloud/dlp/docs/reference/rpc/google.privacy.dlp.v2#filetype) and `
-PDF ` and ` WORD_DOCUMENT ` [ BytesTypes
+PDF ` and ` WORD_DOCUMENT ` [ ` BytesTypes `
 ](http://cloud/dlp/docs/reference/rpc/google.privacy.dlp.v2#bytestype) .
 
 ##  April 13, 2020
