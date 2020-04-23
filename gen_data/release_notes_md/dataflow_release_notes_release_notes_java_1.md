@@ -17,6 +17,9 @@ about the support status of each release of the Dataflow SDK.
 To install and use the Dataflow SDK, see the [ Dataflow SDK installation guide
 ](/dataflow/docs/installing-dataflow-sdk) .
 
+You can see the latest product updates for all of Google Cloud on the [ Google
+Cloud release notes ](/release-notes) page.
+
 ##  October 16, 2018
 
 **DEPRECATED:**
