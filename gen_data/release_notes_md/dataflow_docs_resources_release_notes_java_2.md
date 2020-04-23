@@ -50,6 +50,9 @@ of the Dataflow SDK.
 To install and use the Dataflow SDK, see the [ Dataflow SDK installation guide
 ](/dataflow/docs/installing-dataflow-sdk) .
 
+You can see the latest product updates for all of Google Cloud on the [ Google
+Cloud release notes ](/release-notes) page.
+
 **Warning for users upgrading from Dataflow SDK for Java 1.x:**  
 This is a new major version, and therefore comes with the following caveats.  
 * **Breaking Changes:** The Dataflow SDK 2.x for Java has a number of breaking changes from the 1.x series of releases. Please see below for details.   
