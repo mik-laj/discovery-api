@@ -4,6 +4,9 @@ This page documents production updates to Vision Product Search. We recommend
 that Vision Product Search developers periodically check this list for any new
 announcements.
 
+You can see the latest product updates for all of Google Cloud on the [ Google
+Cloud release notes ](/release-notes) page.
+
 To get the latest product updates delivered to you, add the URL of this page
 to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
