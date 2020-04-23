@@ -1,5 +1,8 @@
 #  Archived release notes
 
+You can see the latest product updates for all of Google Cloud on the [ Google
+Cloud release notes ](/release-notes) page.
+
 On April 10, 2019, Cloud Machine Learning Engine became [ AI Platform Training
 ](/ai-platform/training) and [ AI Platform Prediction ](/ai-
 platform/prediction) . This page documents historical updates to Cloud ML
