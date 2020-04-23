@@ -42,6 +42,9 @@ of the Dataflow SDK.
 To install and use the Dataflow SDK, see the [ Dataflow SDK installation guide
 ](/dataflow/docs/installing-dataflow-sdk) .
 
+You can see the latest product updates for all of Google Cloud on the [ Google
+Cloud release notes ](/release-notes) page.
+
 ##  Cloud Dataflow SDK distribution contents
 
 The Dataflow SDK distribution contains a subset of the Apache Beam ecosystem.
