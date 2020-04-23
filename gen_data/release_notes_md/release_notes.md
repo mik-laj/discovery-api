@@ -4,12 +4,235 @@ The following release notes cover the most recent changes over the last 30
 days. For a comprehensive list, see the [ individual product release note
 pages ](/release-notes/all) .
 
+You can see the latest product updates for all of Google Cloud on the [ Google
+Cloud release notes ](/release-notes) page.
+
 To get the latest product updates delivered to you, add the URL of this page
 to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  April 21, 2020
+
+**Cloud TPU**
+
+**FEATURE:**
+
+Cloud TPUs and Cloud TPU Pods now support PyTorch 1.5 via the PyTorch/XLA
+integration. This integration makes it possible for PyTorch users to do
+everything they can do on GPUs on Cloud TPUs, while minimizing changes to the
+user experience. You can try out PyTorch on an 8-core Cloud TPU device for
+free via Google Colab, and you can use PyTorch on Cloud TPUs at a much larger
+scale on Google Cloud (all the way up to full Cloud TPU Pods).
+
+See the ⁠ [ PyTorch/XLA 1.5 Release Notes
+](https://github.com/pytorch/xla/releases/tag/v1.5.0) for a complete list of
+features included in this release.
+
 ##  April 20, 2020
+
+**App Engine flexible environment .NET**
+
+**FEATURE:**
+
+App Engine is now available in the ` us-west4 ` region (Las Vegas, NV)
+
+**App Engine flexible environment Go**
+
+**FEATURE:**
+
+App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
+
+**App Engine flexible environment Java**
+
+**FEATURE:**
+
+App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
+
+**App Engine flexible environment Node.js**
+
+**FEATURE:**
+
+App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
+
+**App Engine flexible environment PHP**
+
+**FEATURE:**
+
+App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
+
+**App Engine flexible environment Ruby**
+
+**FEATURE:**
+
+App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
+
+**App Engine flexible environment custom runtimes**
+
+**FEATURE:**
+
+App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
+
+**App Engine standard environment Go**
+
+**FEATURE:**
+
+App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
+
+**FEATURE:**
+
+App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
+
+**App Engine standard environment Java**
+
+**FEATURE:**
+
+App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
+
+**CHANGED:**
+
+  * Updated Java SDK to Version 1.9.80 
+  * Fixed deployment of cron.yaml file with retry_parameters configured 
+  * Fixed class LocalTaskQueueTestConfig to support custom paths for queue.yaml files ( [ public issue 138528920 ](https://issuetracker.google.com/138528920) ) 
+
+**FEATURE:**
+
+App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
+
+**App Engine standard environment Node.js**
+
+**FEATURE:**
+
+App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
+
+**App Engine standard environment PHP**
+
+**FEATURE:**
+
+App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
+
+**FEATURE:**
+
+App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
+
+**App Engine standard environment Python**
+
+**FEATURE:**
+
+App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
+
+**FEATURE:**
+
+App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
+
+**App Engine standard environment Ruby**
+
+**FEATURE:**
+
+App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
+
+**Cloud Bigtable**
+
+**FEATURE:**
+
+Cloud Bigtable is now available in the [ ` us-west4 ` (Las Vegas) region
+](https://cloud.google.com/bigtable/docs/locations) .
+
+**Cloud Key Management Service**
+
+**FEATURE:**
+
+Cloud KMS and Cloud EKM resources are available in the ` us-west4 ` region.
+Cloud HSM resources are **not** available in this region.
+
+Cloud HSM resources are available in the ` global ` multi-regional location.
+
+For information about which [ Cloud Locations
+](https://cloud.google.com/about/locations/) are supported by Cloud KMS, Cloud
+HSM, and Cloud EKM, see the [ Cloud KMS regional locations
+](https://cloud.google.com/kms/docs/locations#regional) .
+
+**Cloud Load Balancing**
+
+**FEATURE:**
+
+[ Internal TCP/UDP Load Balancing with failover groups
+](https://cloud.google.com/load-balancing/docs/internal/failover-overview) is
+available in **General Availability** .
+
+**Cloud Profiler**
+
+**CHANGED:**
+
+The Cloud Profiler Node.js agent is now generally available. See [ Profiling
+Node.js applications ](https://cloud.google.com/profiler/docs/profiling-
+nodejs) for information on configuring your Node.js application.
+
+**FEATURE:**
+
+The Cloud Profiler Node.js agent now supports release 12 of Node.js. See [
+Profiling Node.js applications
+](https://cloud.google.com/profiler/docs/profiling-nodejs) for information on
+configuring your Node.js application.
+
+**CHANGED:**
+
+The Cloud Profiler Node.js agent no longer supports release 8 of Node.js.
+
+**Cloud SQL for MySQL**
+
+**FEATURE:**
+
+Support for [ us-west4 ](https://cloud.google.com/sql/docs/mysql/locations)
+region (Las Vegas).
+
+**Cloud SQL for PostgreSQL**
+
+**FEATURE:**
+
+Support for [ us-west4 ](https://cloud.google.com/sql/docs/postgres/locations)
+region (Las Vegas).
+
+**Cloud SQL for SQL Server**
+
+**FEATURE:**
+
+Support for [ us-west4
+](https://cloud.google.com/sql/docs/sqlserver/locations) region (Las Vegas).
+
+**Cloud Spanner**
+
+**FEATURE:**
+
+Cloud Spanner [ regional instances
+](https://cloud.google.com/spanner/docs/instances#available-configurations-
+regional) can now be created in Las Vegas (us-west4).
+
+**Cloud Storage**
+
+**FEATURE:**
+
+Las Vegas region ( ` us-west4 ` ) launched.
+
+  * New [ location ](https://cloud.google.com/storage/docs/locations) for storing your data. 
+
+**Cloud VPN**
+
+**FEATURE:**
+
+Cloud VPN is now available in [ region
+](https://cloud.google.com/compute/docs/regions-zones/#available) us-west4
+(Las Vegas, Nevada, USA).
+
+Pricing is available on the [ Cloud VPN pricing page
+](https://cloud.google.com/vpn/pricing) .
+
+**Dataflow**
+
+**FEATURE:**
+
+Dataflow is now able to use workers in zones in the ` us-west4 ` region (Las
+Vegas).
 
 **Dataproc**
 
@@ -19,7 +242,93 @@ Dataproc is now available in the ` us-west4 ` [ region
 ](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available)
 (Las Vegas).
 
+**Datastore**
+
+**FEATURE:**
+
+Support for [ ` us-west4 ` region (Las Vegas)
+](https://cloud.google.com/datastore/docs/locations) .
+
+**Dialogflow**
+
+**FEATURE:**
+
+Beta launch of one-click integrations with two telephony partners:
+
+  * [ AudioCodes ](https://cloud.google.com/dialogflow/docs/integrations/audiocodes)
+  * [ SignalWire ](https://cloud.google.com/dialogflow/docs/integrations/signalwire)
+
+**Filestore**
+
+**FEATURE:**
+
+Filestore is available in the ` us-west4 ` (Las Vegas) region. See [ Regions
+and zones ](https://cloud.google.com/filestore/docs/regions) .
+
+**Firestore**
+
+**FEATURE:**
+
+Support for [ ` us-west4 ` region (Las Vegas)
+](https://cloud.google.com/firestore/docs/locations) .
+
+**Memorystore for Redis**
+
+**FEATURE:**
+
+Added new Memorystore for Redis [ region
+](https://cloud.google.com/memorystore/docs/redis/regions) : Las Vegas ( ` us-
+west4 ` ).
+
+**Virtual Private Cloud**
+
+**FEATURE:**
+
+For auto mode VPC networks, added a new subnet ` 10.182.0.0/20 ` for the Las
+Vegas ` us-west4 ` region. For more information, see [ Auto mode IP ranges
+](https://cloud.google.com/vpc/docs/vpc#ip-ranges) .
+
+**CHANGED:**
+
+[ Packet Mirroring pricing ](https://cloud.google.com/compute/network-
+pricing#packet-mirroring) will come into effect from June 20, 2020. There is
+no charge for Packet Mirroring until that time.
+
 ##  April 17, 2020
+
+**BigQuery ML**
+
+**FEATURE:**
+
+BigQuery ML now supports Matrix Factorization models for recommendations, as a
+[ beta ](http://cloud/products#product-launch-stages) release. For more
+information, see [ The CREATE MODEL statement for Matrix Factorization
+](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-
+syntax-create-matrix-factorization) .
+
+**Cloud CDN**
+
+**FEATURE:**
+
+Cloud CDN [ request logs ](https://cloud.google.com/cdn/docs/logging) now
+include a ` cacheId ` field, which captures the location and cache node the
+client connected to. A ` cacheId ` of ` LHR-1209ea83 ` indicates a client
+connected to an edge cache near London, with ` 1209ea83 ` representing the
+opaque ID of the cache instance their response was served from.
+
+Location codes map to ⁠ [ IATA codes
+](https://en.wikipedia.org/wiki/IATA_airport_code) . The ` cacheId ` field can
+be found within the ` jsonPayload ` object in each log entry.
+
+**Cloud Composer**
+
+**BREAKING:**
+
+Composer version 1.10.1 has been rolled back. If you created an environment
+with ` composer-1.10.1-airflow-* ` , you can retrieve and delete the
+environment, but not update it. We recommend that you delete the environment
+and create a new environment with the latest image version. Refer to the March
+20, 2020 release notes for default version.
 
 **Cloud Spanner**
 
@@ -51,11 +360,83 @@ Kubernetes via the Dataproc jobs API.
 
 ##  April 16, 2020
 
+**BigQuery**
+
+**FEATURE:**
+
+[ BigQuery Reservations ](https://cloud.google.com/bigquery/docs/reservations-
+intro) is now [ Generally Available (GA)
+](https://cloud.google.com/products/?hl=EN#product-launch-stages) . BigQuery
+Reservations allows you to purchase BigQuery [ slots
+](https://cloud.google.com/bigquery/docs/slots) to take advantage of BigQuery
+[ flat-rate pricing
+](https://cloud.google.com/bigquery/pricing#flat_rate_pricing) and allocate
+slots for workload management.
+
+**CHANGED:**
+
+Around the end of April 2020, [ ` INFORMATION_SCHEMA ` (Beta) views for
+dataset metadata ](https://cloud.google.com/bigquery/docs/information-schema-
+datasets) will return metadata about all datasets in a region. Currently,
+these views return metadata about all datasets in the project across all
+regions. This upcoming change will also provide support for querying a
+specific region's metadata (for example, ` region-
+us.INFORMATION_SCHEMA.SCHEMATA ` instead of ` INFORMATION_SCHEMA.SCHEMATA ` ).
+
+You can replicate this future behavior now by filtering on the ` SCHEMATA `
+view's ` LOCATION ` column (for example, ` LOCATION = 'US' ` ).
+
+**Cloud Billing**
+
+**FEATURE:**
+
+Discount sharing for committed use discounts is now available in **beta** .
+With discount sharing enabled, you can apply your purchased commitments across
+multiple projects within a single Cloud Billing account. Discount sharing
+helps you minimize the overhead of managing each of your commitments
+individually and provides increased flexibility so that you can use the
+compute options that best suit your needs, while also increasing cost
+predictability.
+
+  * For more information about enabling committed use discount sharing, see [ Turning on committed use discount sharing ](https://cloud.google.com/compute/docs/instances/signing-up-committed-use-discounts#turning_on_committed_use_discount_sharing) . 
+  * For more information on the possible cost savings using committed use discount sharing, see [ Understanding discount sharing ](https://cloud.google.com/billing/docs/how-to/cud-analysis#understanding_discount_sharing) . 
+
+**FEATURE:**
+
+Cloud Billing console now has a Pricing report, providing a tabular view of
+the prices of Google’s cloud services SKUs, including Google Cloud, Google
+Maps Platform, and G Suite. You can select to view the SKUs with historical
+usage on the billing account or all Google Cloud SKUs. If you have a
+negotiated contract, the pricing table will include the list price, the
+contract price and the effective discount. You can also download the table to
+CSV for offline analysis. See the [ documentation
+](https://cloud.google.com/billing/docs/how-to/pricing-table) for more
+details.
+
+**Cloud Data Loss Prevention**
+
+**FEATURE:**
+
+Added support for ` PDF ` and ` WORD ` [ ` FileTypes `
+](http://cloud/dlp/docs/reference/rpc/google.privacy.dlp.v2#filetype) and `
+PDF ` and ` WORD_DOCUMENT ` [ ` BytesTypes `
+](http://cloud/dlp/docs/reference/rpc/google.privacy.dlp.v2#bytestype) .
+
 **Dataprep by Trifacta**
 
 **FIXED:**
 
 TD-47149: Cannot edit settings when importing Google Sheets.
+
+**Google Cloud Marketplace Partners**
+
+**FEATURE:**
+
+You can now create private quotes for VM solutions ( [ alpha
+](https://cloud.google.com/products/?hl=EN#product-launch-stages) ).
+
+[ Learn about creating quotes for specific customers
+](https://cloud.google.com/marketplace/docs/partners/create-quotes) .
 
 **Network Intelligence Center**
 
@@ -206,7 +587,7 @@ supports exporting notebooks as PDFs.
 **Image 1.5**
 
 [ Presto ](https://cloud.google.com/dataproc/docs/concepts/components/presto)
-now includes two default connectors:
+now includes two default catalogs:
 
   * ` bigquery ` pointing to the datasets of the cluster's project 
 
@@ -801,6 +1182,25 @@ Integration with [ VPC Service Controls ](https://cloud.google.com/vpc-
 service-controls/docs/overview) is now in [ beta stage
 ](https://cloud.google.com/products/#product-launch-stages) .
 
+**Cloud Asset Inventory**
+
+**FEATURE:**
+
+BigQuery export for org policies and access policies
+
+You can now export org policies and access policies to BigQuery tables. See [
+Exporting assets to BigQuery ](https://cloud.google.com/asset-
+inventory/docs/exporting-to-bigquery) for more information.
+
+**FEATURE:**
+
+Real-time asset monitoring for org policies and access policies
+
+You can now subscribe to real-time notifications for changes to org policies
+and access policies. See [ Monitoring asset changes
+](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes) for
+more information.
+
 **Cloud Talent Solution Job Search**
 
 **DEPRECATED:**
@@ -912,6 +1312,16 @@ A [ beta ](https://cloud.google.com/products/#product-launch-stages) version
 of the Cloud Spanner emulator is now available, enabling you to develop and
 test Cloud Spanner applications locally. For more information, see [ Using the
 Cloud Spanner Emulator ](https://cloud.google.com/spanner/docs/emulator) .
+
+**Cloud TPU**
+
+**CHANGED:**
+
+Cloud TPU now supports TensorFlow version 1.15.2 [ Release Notes
+](https://github.com/tensorflow/tensorflow/releases/tag/v1.15.2) . No changes
+to the API or the [ official Cloud TPU supported models list
+](https://cloud.google.com/tpu/docs/tutorials/support-matrix) has been
+introduced with this release.
 
 **Dataproc**
 
@@ -1386,6 +1796,13 @@ The shutdown of the V1 API [ announced in November
 ](https://cloud.google.com/dialogflow/docs/release-notes#November_14_2019) has
 been extended to May 31, 2020,
 
+**Istio on Google Kubernetes Engine**
+
+**FEATURE:**
+
+**Istio 1.4.6-gke.0** \- This is the initial release of Istio 1.4 to Istio on
+GKE
+
 ##  March 26, 2020
 
 **Memorystore for Memcached**
@@ -1516,345 +1933,4 @@ responsiveness when listing directories.
 The shutdown of 7 integrations [ announced in January
 ](https://cloud.google.com/dialogflow/docs/release-notes#January_06_2020) is
 now extended to May 6th, 2020.
-
-##  March 24, 2020
-
-**Anthos Config Management**
-
-**CHANGED:**
-
-Anthos Policy Controller is now Generally Available
-
-**CHANGED:**
-
-Anthos Config Management now includes the generally-available version of
-Config Connector.
-
-**CHANGED:**
-
-Anthos Config Management now supports the use of a [ Personal Access Tokens
-](https://help.github.com/en/github/authenticating-to-github/creating-a-
-personal-access-token-for-the-command-line) for authentication against
-supported Git providers. More information can be found in [ Installing Anthos
-Config Management ](https://cloud.google.com/anthos-config-
-management/docs/how-to/installing) .
-
-**CHANGED:**
-
-Anthos Config Management now supports the use of an HTTP or HTTPS proxy to
-connect with your Git host. More information can be found at [ Installing
-Anthos Config Management ](https://cloud.google.com/anthos-config-
-management/docs/how-to/installing) .
-
-**BigQuery Data Transfer Service**
-
-**CHANGED:**
-
-BigQuery Data Transfer Service is now available in the [ Northern Virginia
-(us-east4) region and the Salt Lake City (us-west3) region
-](https://cloud.google.com/bigquery-transfer/docs/locations#locations) .
-
-**Cloud Functions**
-
-**CHANGED:**
-
-Cloud Functions now supports [ network settings
-](https://cloud.google.com/functions/docs/networking/network-settings) at the
-[ General Availability release level
-](https://cloud.google.com/products/#product-launch-stages) .
-
-**CHANGED:**
-
-Cloud Functions now supports [ VPC Service Controls
-](https://cloud.google.com/functions/docs/securing/using-vpc-service-controls)
-at the [ General Availability release level
-](https://cloud.google.com/products/#product-launch-stages) .
-
-**Cloud Profiler**
-
-**CHANGED:**
-
-Integration of Stackdriver Profiler with Virtual Private Cloud Service
-Controls is now Generally Available. For more information, see [ VPC Service
-Controls documentation ](https://cloud.google.com/vpc-service-controls/docs/)
-.
-
-**Cloud SQL for MySQL**
-
-**FEATURE:**
-
-Cloud SQL now supports 96-core machine types for MySQL, Postgres, and SQL
-Server instances. For pricing-related information, see the [ Pricing page
-](https://cloud.google.com/sql/pricing) .
-
-**Cloud SQL for PostgreSQL**
-
-**FEATURE:**
-
-Cloud SQL now supports 96-core machine types for MySQL, Postgres, and SQL
-Server instances. For pricing-related information, see the [ Pricing page
-](https://cloud.google.com/sql/pricing) .
-
-**Cloud SQL for SQL Server**
-
-**FEATURE:**
-
-Cloud SQL now supports 96-core machine types for MySQL, Postgres, and SQL
-Server instances. For pricing-related information, see the [ Pricing page
-](https://cloud.google.com/sql/pricing) .
-
-**Memorystore for Redis**
-
-**FEATURE:**
-
-Released support for Redis version 5.0 (beta) on Memorystore for Redis. For
-more details, see [ Supported versions
-](https://cloud.google.com/memorystore/docs/redis/supported-versions) .
-
-**VPC Service Controls**
-
-**FEATURE:**
-
-General availability for the following integration:
-
-  * [ Cloud Functions ](https://cloud.google.com/vpc-service-controls/docs/supported-products#table_functions)
-
-##  March 23, 2020
-
-**Anthos**
-
-**FEATURE:**
-
-[ Anthos ](https://cloud.google.com/anthos) 1.3.0 is now available.
-
-**Updated components:**
-
-  * [ Anthos GKE on-prem release notes ](https://cloud.google.com/anthos/gke/docs/on-prem/release-notes)
-  * [ Anthos Config Management release notes ](https://cloud.google.com/anthos-config-management/docs/release-notes)
-
-**Anthos GKE on-prem**
-
-**FEATURE:**
-
-Anthos GKE on-prem 1.3.0-gke.16 is now available. To upgrade, see [ Upgrading
-GKE on-prem ](https://cloud.google.com/anthos/gke/docs/on-prem/how-
-to/upgrading) .
-
-GKE on-prem 1.3.0-gke.16 clusters run on Kubernetes 1.15.7-gke.32.
-
-**FEATURE:**
-
-A new installer helps you [ create and prepare the admin workstation
-](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/admin-workstation) .
-
-**FEATURE:**
-
-Support for [ vSAN ](https://docs.vmware.com/en/VMware-vSAN/index.html)
-datastore on your admin and user clusters.
-
-**FEATURE:**
-
-In bundled load balancing mode, GKE on-prem provides and manages the [ Seesaw
-load balancer ](https://github.com/google/seesaw) .
-
-**FEATURE:**
-
-The [ Authentication Plugin for Anthos
-](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/oidc) has been
-integrated into and replaced with the Google Cloud command-line interface,
-which improves the authentication process and provides the user consent flow
-through ` gcloud ` commands.
-
-**FEATURE:**
-
-Added support for up to [ 100 nodes per user cluster
-](https://cloud.google.com/anthos/gke/docs/on-prem/quotas) .
-
-**FEATURE:**
-
-The Cluster CA now signs the TLS certificates that the Kubelet API serves, and
-the TLS certificates are auto-rotated.
-
-**FEATURE:**
-
-vSphere credential rotation is enabled. Users can now use Solution User
-Certificates to authenticate to GKE deployed on-prem.
-
-**FEATURE:**
-
-` gkectl ` automatically uses the proxy URL from ` config.yaml ` to configure
-the proxy on the admin workstation.
-
-**FEATURE:**
-
-Preview Feature: Introducing User cluster Nodepools. A _node pool_ is a group
-of nodes within a cluster that all have the same configuration. In GKE on-prem
-1.3.0, node pools are a preview feature in the user clusters. This feature
-lets users create multiple node pools in a cluster, and update them as needed.
-
-**CHANGED:**
-
-The metric ` kubelet_containers_per_pod_count ` is changed to a [ histogram
-metric ](https://prometheus.io/docs/concepts/metric_types/#histogram) .
-
-**FIXED:**
-
-Fixed an issue in the vSphere storage plugin that prevented vSphere storage
-policies from working. [ This is an example
-](https://github.com/kubernetes/examples/blob/master/staging/volumes/vsphere/vsphere-
-volume-spbm-policy.yaml) of how you might use this feature.
-
-**ISSUE:**
-
-Prometheus + Grafana: two graphs on the **Machine** dashboard don't work
-because of missing metrics: **Disk Usage** and **Disk Available** .
-
-**ISSUE:**
-
-All OOM events for containers trigger a SystemOOM event, even if they are
-container/pod OOM events. To check whether an OOM is actually a SystemOOM,
-check the kernel log for a message ` oom-kill:… ` . If ` oom_memcg=/ `
-(instead of ` oom_memcg=/kubepods/… ` ), then it's a SystemOOM. If it's not a
-SystemOOM, it's safe to ignore.
-
-**ISSUE:**
-
-**Affected versions: 1.3.0-gke.16**
-
-If you configured a proxy in the ` config.yaml ` and also used a bundle other
-than the full bundle ( [ static IP
-](http://cloud.google.com/anthos/gke/docs/on-prem/how-to/install-static-
-ips#bundlepath) | [ DHCP ](http://cloud.google.com/anthos/gke/docs/on-
-prem/how-to/install-dhcp#bundlepath) ), you must append the ` --fast ` flag to
-run ` gkectl check-config ` . For example: ` gkectl check-config --config
-config.yaml --fast ` .
-
-**ISSUE:**
-
-Running the 1.3 version of the [ ` gkectl diagnose `
-](http://cloud.google.com/anthos/gke/docs/on-prem/reference/gkectl/diagnose)
-command might fail if your clusters:
-
-  * Are older than Anthos GKE on-prem version 1.3. 
-  * Include manually installed add-ons in the ` kube-system ` namespace. 
-
-**BigQuery Data Transfer Service**
-
-**FEATURE:**
-
-BigQuery Data Transfer Service now supports [ Google Merchant Center data
-transfers for pricing competitiveness
-](https://cloud.google.com/bigquery/docs/merchant-center-
-transfer#supported_reports) .
-
-**Cloud Billing**
-
-**FEATURE:**
-
-**Billing health checks** is now available on your **Cloud Billing** account
-**Overview** page in the **Cloud Console** . This feature automatically
-analyzes the health of your **Cloud Billing** account, then displays the
-results in a Billing health checks informational card, helping you avoid
-common billing-related issues and to adopt our [ best-practice recommendations
-](https://cloud.google.com/billing/docs/onboarding-checklist#checklist_3) . In
-the info card, click **_View all health checks_ ** to view a page with
-detailed recommendations, explanations, and action items to remedy issues that
-could jeopardize the safety or condition of your Cloud Billing account.
-
-To see the **Billing health checks** card, go to the [ Manage billing accounts
-page ](https://console.cloud.google.com/billing) in the Cloud Console and sign
-in, then select the name of the billing account you want to view. The Billing
-Overview page is displayed with the **BILLING ACCOUNT OVERVIEW** tab selected.
-Look for the card titled **Billing health checks** .
-
-**Cloud Composer**
-
-**FEATURE:**
-
-Cloud Composer is now available in Sao Paulo ( ` southamerica-east1 ` ).
-
-**Cloud Run**
-
-**FIXED:**
-
-You can now restrict which regions are available to deploy Cloud Run (fully
-managed) services using an organization policy with a [ resource locations
-constraint ](https://cloud.google.com/resource-manager/docs/organization-
-policy/defining-locations) .
-
-**Cloud Translation**
-
-**CHANGED:**
-
-The Cloud Translation Advanced API is migrating to a [ new quota system
-](https://cloud.google.com/translate/quotas) that eliminates the distinction
-between default and maximum limits.
-
-This change will roll out gradually, starting on **March 30, 2020 and
-continuing through April 30, 2020** . Since quotas define the usage limits for
-a project or a user, the change could impact your billing.
-
-**Config Connector**
-
-**FIXED:**
-
-Fixed label update issue on ContainerCluster
-(https://github.com/GoogleCloudPlatform/k8s-config-connector/issues/110)
-
-**CHANGED:**
-
-Bumped memory request and limit for the manager pod as resource usage has gone
-up and the original limit of 256 Mi was found to not be sufficient for large
-customers
-
-**CHANGED:**
-
-Changed admission webhooks to return non-200 error codes when denying
-admission
-
-**Game Servers**
-
-**FEATURE:**
-
-**Public beta release** Game Servers provides a fully managed offering of the
-open source Agones project that runs on Kubernetes.
-
-**Managed Service for Microsoft Active Directory**
-
-**CHANGED:**
-
-**GA pricing now in effect**
-
-New pricing for Managed Microsoft AD is now in effect. Learn more about
-standard [ Managed AD pricing ](https://cloud.google.com/managed-microsoft-
-ad/pricing) and view [ pricing examples ](https://cloud.google.com/managed-
-microsoft-ad/pricing#pricing_examples) .
-
-**Security Command Center**
-
-**FEATURE:**
-
-The Notifications API is now in general availability. [ Get started with the
-notifications API ](https://cloud.google.com/security-command-center/docs/how-
-to-notifications) .
-
-**CHANGED:**
-
-The ` eventType ` field was removed from `
-organizations.notificationConfigs.create ` in the v1 API. Learn more about [
-creating a ` NotificationConfig ` ](https://cloud.google.com/security-command-
-center/docs/how-to-api-manage-notifications#create-config) .
-
-**Storage Transfer Service**
-
-**FEATURE:**
-
-Transfer Service for on-premises data is now generally available. For more
-information, see [ Transfer Service for on-premises data Overview
-](https://cloud.google.com/storage-transfer/docs/on-prem-overview) .
-
-**FEATURE:**
-
-Storage Transfer Service now offers Beta support for transfers from Microsoft
-Azure Blob Storage.
 
