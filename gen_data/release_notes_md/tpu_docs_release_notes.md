@@ -4,6 +4,9 @@ This page documents production updates to Cloud TPU. You can periodically
 check this page for announcements about new or updated features, bug fixes,
 known issues, and deprecated functionality.
 
+You can see the latest product updates for all of Google Cloud on the [ Google
+Cloud release notes ](/release-notes) page.
+
 To get the latest product updates delivered to you, add the URL of this page
 to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
@@ -23,6 +26,16 @@ scale on Google Cloud (all the way up to full Cloud TPU Pods).
 See the ⁠ [ PyTorch/XLA 1.5 Release Notes
 ](https://github.com/pytorch/xla/releases/tag/v1.5.0) for a complete list of
 features included in this release.
+
+##  April 01, 2020
+
+**CHANGED:**
+
+Cloud TPU now supports TensorFlow version 1.15.2 [ Release Notes
+](https://github.com/tensorflow/tensorflow/releases/tag/v1.15.2) . No changes
+to the API or the [ official Cloud TPU supported models list
+](https://cloud.google.com/tpu/docs/tutorials/support-matrix) has been
+introduced with this release.
 
 ##  January 09, 2020
 
