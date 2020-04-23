@@ -4,6 +4,9 @@ This page documents production updates to Logging. You can periodically check
 this page for announcements about new or updated features, bug fixes, known
 issues, and deprecated functionality.
 
+You can see the latest product updates for all of Google Cloud on the [ Google
+Cloud release notes ](/release-notes) page.
+
 To get the latest product updates delivered to you, add the URL of this page
 to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
@@ -177,12 +180,13 @@ at the end of their lifecycle, as well as some [ third-party agent plugins
 
 **CHANGED:**
 
-You now have two choices for the access control model when creating a cloud
-Stroage bucket: bucket-only (new) and object-level. Select **Set object-level
+You now have two choices for the access control model when creating a Cloud
+Storage bucket: bucket-only (new) and object-level. Select **Set object-level
 and bucket-level permissions** as the access control model during bucket
 creation if you intend to use the bucket as a sink destination. See [ Errors
 exporting to Cloud Storage
 ](https://cloud.google.com/logging/docs/export/configure_export_v2#errors_exporting_to_cloud_storage)
+for details.
 
 ##  January 22, 2019
 
