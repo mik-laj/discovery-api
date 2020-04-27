@@ -6,6 +6,12 @@ Subscribe to these release notes at [
 https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
 ](https://groups.google.com/forum/#!forum/google-cloud-sdk-announce) .
 
+##  290.0.1 (2020-04-27)
+
+###  Compute Engine
+
+  * Promoted ` --domains ` flag of ` gcloud compute ssl-certificates create ` to GA. 
+
 ##  290.0.0 (2020-04-21)
 
 ###  Cloud Dataflow
@@ -34,10 +40,6 @@ https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
   * Promoted the GKE ` ConfigConnector ` add-on of ` gcloud container clusters create ` and ` gcloud container clusters update ` to beta. This add-on is disabled by default. 
     * Use ` --addons=ConfigConnector ` to enable the add-on during cluster creation. 
     * Use ` --update-addons=ConfigConnector=ENABLED|DISABLED ` to enable/disable the add-on for existing GKE clusters. 
-
-Subscribe to these release notes at [
-https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
-](https://groups.google.com/forum/#!forum/google-cloud-sdk-announce) .
 
 ##  289.0.0 (2020-04-14)
 
