@@ -26,6 +26,107 @@ Sie die Feed-URL direkt hinzu, um die neuesten Sicherheitsbulletins zu
 erhalten: ` https://cloud.google.com/feeds/kubernetes-engine-security-
 bulletins.xml `
 
+##  GCP-2020-003
+
+Beschreibung  |  Schweregrad  |  Hinweise  
+---|---|---  
+  
+In Kubernetes wurde kürzlich eine in [ CVE-2019-11254
+](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11254) beschriebene
+Sicherheitslücke festgestellt. Sie erlaubt Nutzern, die POST-Anfragen stellen
+dürfen, DoS-Remoteangriffe auf Kubernetes API-Server. Das Kubernetes Product
+Security Committee (PSC) hat [ zusätzliche Informationen
+](https://groups.google.com/g/kubernetes-security-
+announce/c/wuwEwZigXBc?hl=de) zu dieser Sicherheitslücke veröffentlicht.
+
+In GKE-Clustern, die [ autorisierte Masternetzwerke
+](https://cloud.google.com/kubernetes-engine/docs/how-to/authorized-
+networks?hl=de) verwenden, und [ privaten Clustern ohne öffentlichen Endpunkt
+](https://cloud.google.com/kubernetes-engine/docs/how-to/private-
+clusters?hl=de#private_master) tritt diese Sicherheitslücke seltener auf.
+
+####  Was soll ich tun?
+
+Wir empfehlen ein Upgrade Ihres Clusters auf eine Patchversion, mit der diese
+Sicherheitslücke behoben wird.
+
+Die Patchversionen, mit denen die Sicherheitslücke behoben wird, sind unten
+aufgeführt:
+
+  * 1.13.12-gke.29 
+  * 1.14.9-gke.27 
+  * 1.14.10-gke.24 
+  * 1.15.9-gke.20 
+  * 1.16.6-gke.1 
+
+####  Welche Sicherheitslücken werden mit diesem Patch behoben?
+
+Mit dem Patch wird die folgende DoS-Sicherheitslücke (Denial of Service)
+behoben:
+
+[ CVE-2019-11254 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2019-11254)
+
+|
+
+Mittel
+
+|
+
+[ CVE-2019-11254 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2019-11254)  
+  
+##  GCP-2020-002
+
+Beschreibung  |  Schweregrad  |  Hinweise  
+---|---|---  
+  
+Es wurden [ zwei DoS-Sicherheitslücken
+](https://groups.google.com/forum/?hl=de#!topic/kubernetes-security-
+announce/2UOlsba2g0s) in Kubernetes offengelegt. Die eine betrifft den API-
+Server, die andere Kubelets. Weitere Einzelheiten finden Sie in den
+Kubernetes-Problemen [ 89377
+](https://github.com/kubernetes/kubernetes/issues/89377) und [ 89378
+](https://github.com/kubernetes/kubernetes/issues/89378) .
+
+####  Was soll ich tun?
+
+GKE-Nutzer sind vor CVE-2020-8551 geschützt, sofern nur vertrauenswürdige
+Nutzer Anfragen innerhalb des internen Netzwerks des Clusters senden dürfen.
+Bei Verwendung [ autorisierter Masternetzwerke
+](https://cloud.google.com/kubernetes-engine/docs/how-to/authorized-
+networks?hl=de) tritt CVE-2020-8552 außerdem seltener auf.
+
+####  Wann gibt es einen Patch?
+
+Patches für CVE-2020-8551 erfordern ein Upgrade des Knotens. Die
+Patchversionen, mit denen die Sicherheitslücke entschärft wird, sind unten
+aufgeführt:
+
+  * 1.15.10-gke.* 
+  * 1.16.7-gke.* 
+
+Hinweis: Version 1.14.x und früher sind von der Sicherheitslücke nicht
+betroffen und benötigen keine Patches.
+
+Patches für CVE-2020-8552 erfordern ein Masterupgrade. Die Patchversionen, mit
+denen die Sicherheitslücke entschärft wird, sind unten aufgeführt:
+
+  * 1.14.10-gke.32 
+  * 1.15.10-gke.* 
+  * 1.16.7-gke.* 
+
+|
+
+Mittel
+
+|
+
+[ CVE-2020-8551 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8551)  
+[ CVE-2020-8552 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8552)  
+  
 ##  21\. Januar 2020; zuletzt aktualisiert am 24. Januar 2020
 
 Beschreibung  |  Schweregrad  |  Hinweise  
@@ -238,7 +339,7 @@ zulässt, ist es nicht von dieser Sicherheitslücke betroffen.
 bin/cvename.cgi?name=CVE-2019-16276)  
   
   
-##  16\. Oktober 2018
+##  16\. Oktober 2019
 
 Beschreibung  |  Schweregrad  |  Hinweise  
 ---|---|---  
@@ -316,10 +417,9 @@ announce/65QixT3tcmg) .
 
 Wir empfehlen ein Upgrade Ihres Clusters auf die neueste Patchversion, mit der
 diese Sicherheitslücke entschärft wird, sobald die Version verfügbar ist. Laut
-[ Veröffentlichungszeitplan ](https://cloud.google.com/kubernetes-
-engine/docs/release-notes?hl=de#september_16_2019) sollten die neuen
-Patchversionen in allen Zonen mit dem nächsten GKE-Release bereitgestellt
-werden.
+[ Releasezeitplan ](https://cloud.google.com/kubernetes-engine/docs/release-
+notes?hl=de#september_16_2019) sollten die neuen Patchversionen in allen Zonen
+mit dem nächsten GKE-Release bereitgestellt werden.
 
 Die Patchversionen, mit denen die Sicherheitslücke entschärft wird, sind unten
 aufgeführt.
@@ -392,8 +492,8 @@ Wir empfehlen ein [ Upgrade ](https://cloud.google.com/kubernetes-
 engine/docs/how-to/upgrading-a-cluster?hl=de) Ihres Clusters auf die neuste
 Patchversion, mit der diese Sicherheitslücke entschärft wird, sobald die
 Version verfügbar ist. Die Patchversionen werden voraussichtlich mit dem
-nächsten GCK-Release in allen Zonen bereitgestellt. Die Sicherheitslücke wurde
-in folgenden Patchversionen entschärft:
+nächsten GKE-Release in allen Zonen bereitgestellt. Die Patchversionen, mit
+denen die Sicherheitslücke entschärft wird, sind unten aufgeführt.
 
   * 1.11.10-gke.6 
   * 1.12.9-gke.13 
@@ -472,7 +572,7 @@ mit diesem Patch kompatible Version ausführen, führen Sie vor dem Upgrade
 Ihrer Knoten ein Upgrade auf eine der unten aufgeführten kompatiblen
 Masterversionen durch.
 
-**Aufgrund der Schwere dieser Sicherheitslücken empfehlen wir ungeachtet
+**Aufgrund des Schweregrads dieser Sicherheitslücken empfehlen wir ungeachtet
 dessen, ob Sie automatische Knotenupgrades aktiviert haben, möglichst umgehend
 ein[ manuelles Upgrade ](https://cloud.google.com/kubernetes-engine/docs/how-
 to/upgrading-a-container-cluster?hl=de) Ihrer Knoten und Master auf eine
@@ -506,7 +606,7 @@ nicht vertrauenswürdigen Netzwerktraffic senden oder empfangen, sind
 betroffen. Zum Schutz Ihrer Arbeitslasten empfehlen wir zur Entschärfung die
 folgenden Schritte.**
 
-######  Kubernetes--Master
+######  Kubernetes-Master
 
   * Kubernetes-Master, die den Traffic mithilfe von [ autorisierten Netzwerken ](https://cloud.google.com/kubernetes-engine/docs/how-to/authorized-networks?hl=de) auf vertrauenswürdige Netzwerke begrenzen, sind nicht betroffen. 
 
@@ -953,7 +1053,7 @@ Dieser Patch dient zur Entschärfung der folgenden Sicherheitslücken:
 [ CVE-2019-9900 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2019-9900) und [ CVE-2019-9901.
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9901) Mehr darüber
-können Sie im [ Blog zu Istio ](https://istio.io/blog/2019/announcing-1.1.2)
+können Sie im [ Istio-Blog ](https://istio.io/blog/2019/announcing-1.1.2)
 lesen.
 
 |  Hoch  |
@@ -1136,7 +1236,7 @@ Maßnahmen erforderlich. **
 aktualisiert.**
 
 Dieser Patch ist verfügbar in GKE 1.9.7-gke.11, 1.10.6-gke.11, 1.10.7-gke.11,
-1.10.9-gke.5 und 1.11.2-gke.18 sowie neueren Versionen.
+1.10.9-gke.5 und 1.11.2-gke.18 sowie neueren Releases.
 
 ####  Welche Sicherheitslücke wird mit diesem Patch behoben?
 
@@ -1345,8 +1445,8 @@ Kubernetes Engine-Knotenpools, die das Container-Optimized OS-Image (COS) von
 Google verwenden und für die [ automatische Upgrades
 ](https://cloud.google.com/kubernetes-engine/docs/concepts/node-auto-
 upgrades?hl=de) aktiviert sind, werden automatisch auf die Patchversionen
-unseres COS-Images aktualisiert, sobald sie verfügbar sind. Das gilt seit
-20.08.2018.
+unseres COS-Images aktualisiert, sobald sie verfügbar sind. Dies gilt ab der
+Woche des 20.08.2018.
 
 Bei Kubernetes Engine-Knotenpools, für die keine [ automatischen Upgrades
 ](https://cloud.google.com/kubernetes-engine/docs/concepts/node-auto-
@@ -1407,7 +1507,7 @@ aktualisiert wurden, sind von beiden Sicherheitslücken betroffen.
 
 Aufgrund des Schweregrads dieser Sicherheitslücke empfehlen wir die
 Durchführung eines [ manuellen Upgrades ](https://cloud.google.com/kubernetes-
-engine/docs/how-to/upgrading-a-cluster?hl=de#upgrading_nodes) der Knoten,
+engine/docs/how-to/upgrading-a-cluster?hl=de#upgrading-nodes) der Knoten,
 sobald die Patches verfügbar sind.
 
 |  Hoch  |
@@ -1442,8 +1542,8 @@ Alle Kubernetes Engine-Knoten sind gefährdet.
 ####  Was soll ich tun?
 
 Verhindern Sie die Verwendung des Volume-Typs "gitRepo". Wenn Sie Volumes vom
-Typ gitRepo mit der PodSecurityPolicy verbieten möchten, lassen Sie ` gitRepo
-` in der Whitelist ` volumes ` Ihrer PodSecurityPolicy weg.
+Typ "gitRepo" mit der PodSecurityPolicy verbieten möchten, lassen Sie `
+gitRepo ` in der weißen Liste ` volumes ` Ihrer PodSecurityPolicy weg.
 
 Ein vergleichbares gitRepo-Volume-Verhalten erzielen Sie, wenn Sie ein Git-
 Repository von einem initContainer in ein EmptyDir-Volume klonen:
@@ -1539,8 +1639,8 @@ etwa "Allgemeines Verwundbarkeitsbewertungssystem") von 7,8.
 bin/cvename.cgi?name=CVE-2018-8897) : Diese Sicherheitslücke betrifft den
 Linux-Kernel. Nicht privilegierte Nutzer oder Prozesse können einen Absturz
 des System-Kernels auslösen und damit einen DoS-Angriff verursachen. Diese
-Sicherheitslücke wird mit dem Schweregrad "Mittel" bewertet, mit einem CVSS
-von 6,5.
+Sicherheitslücke wird mit dem Schweregrad "Mittel" bewertet, mit einem CVSS-
+Wert von 6,5.
 
 [ CVE-2018-1087 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2018-1087) : Diese Sicherheitslücke betrifft den KVM-
@@ -1548,8 +1648,8 @@ Hypervisor des Linux-Kernels. Nicht privilegierte Prozesse können einen
 Absturz des Guest-Kernels auslösen oder erweiterte Berechtigungen erlangen.
 Diese Sicherheitslücke wurde in der Infrastruktur behoben, in der Kubernetes
 Engine ausgeführt wird. Kubernetes Engine ist somit nicht betroffen. Diese
-Sicherheitslücke wurde mit dem Schweregrad "Hoch" bewertet, mit einer CVSS-
-Punktzahl von 8,0.
+Sicherheitslücke wurde mit dem Schweregrad "Hoch" bewertet, mit einem CVSS-
+Wert von 8,0.
 
 |  Hoch  |
 
