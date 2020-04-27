@@ -13,6 +13,41 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/clouddatafusion-release-
 notes.xml `
 
+##  April 22, 2020
+
+**FEATURE:**
+
+Cloud Data Fusion version 6.1.2 is now available. This version includes
+several stability and performance improvements and new features.
+
+  * Added support for [ Field Level Lineage ](https://cloud.google.com/data-fusion/docs/tutorials/lineage) for Spark plugins and Streaming pipelines 
+  * Added support for Spark 2.4 
+  * Added an option to skip header in the files in delimited, CSV, TSV, and text formats 
+  * Added an option for database source to replace the characters in the field names 
+
+**FIXED:**
+
+Reduced preview startup by 60%. Also added limit to max concurrent preview
+runs (10 by default).
+
+**FIXED:**
+
+Fixed a bug that caused errors when Wrangler's parse-as-csv with header was
+used when reading multiple small files.
+
+**FIXED:**
+
+Fixed a bug that caused zombie processes when using the Remote Hadoop
+Provisioner.
+
+**FIXED:**
+
+Fixed a bug that caused DBSource plugin to fail in preview mode.
+
+**FIXED:**
+
+Fixed a race condition that caused a failure when running a Spark program.
+
 ##  January 10, 2020
 
 **FEATURE:**
