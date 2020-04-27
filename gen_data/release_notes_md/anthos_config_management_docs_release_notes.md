@@ -13,6 +13,60 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/anthos-config-management-
 release-notes.xml `
 
+##  April 23, 2020
+
+1.3.1
+
+**CHANGED:**
+
+Anthos Config Management images are now included in the Google-provided system
+images for [ Binary Authorization ](https://cloud.google.com/binary-
+authorization) .
+
+**FEATURE:**
+
+Policy Agent now allows configuration of namespaces that will bypass the
+admission controller. For more information, please see [ Excluding Namespaces
+from Policy Controller ](https://cloud.google.com/anthos-config-
+management/docs/how-to/policy-controller-exclude-namespaces)
+
+**CHANGED:**
+
+You can now [ exempt Namespaces ](https://cloud.google.com/anthos-config-
+management/docs/how-to/policy-controller-exclude-namespaces) from Policy
+Controller enforcement
+
+**FIXED:**
+
+Earlier versions of Anthos Config Management relied on APIs that have been [
+deprecated in Kubernetes v1.16 ](https://cloud.google.com/kubernetes-
+engine/docs/deprecations/apis-1-16) . Anthos Config Management v1.3.1 is
+required to run on Kubernetes v1.16 and higher.
+
+**FIXED:**
+
+The Anthos Config Management Syncer pod now reports when it detects that it is
+fighting with another process over a resource.
+
+**FIXED:**
+
+Anthos Config Management no longer allows managing resources in unmanaged
+Namespaces.
+
+**ISSUE:**
+
+If you define a CRD with an integer field that has min/max values, Anthos
+Config Management will be unable to update the CRD.
+
+**FIXED:**
+
+Anthos Config Management no longer overwrites undeclared labels and
+annotations on Namespaces.
+
+**FIXED:**
+
+This release includes several performance and memory improvements.
+
 ##  March 24, 2020
 
 1.3.0
