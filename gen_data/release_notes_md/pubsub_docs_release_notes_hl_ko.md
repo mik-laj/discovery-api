@@ -4,16 +4,15 @@
 ](https://cloud.google.com/pubsub/docs/reference/libraries?hl=ko) 릴리스에 대한 언어별
 업데이트는 다음 링크를 참조하세요. [ C# ](https://github.com/googleapis/google-cloud-
 dotnet/releases) , [ Go ](https://github.com/googleapis/google-cloud-
-go/releases) , [ 자바 ](https://github.com/googleapis/google-cloud-
-java/releases) , [ Node.js ](https://github.com/googleapis/nodejs-
-pubsub/releases) , [ PHP ](https://github.com/googleapis/google-cloud-
-php/releases) , [ Python ](https://github.com/googleapis/google-cloud-
-python/releases) 및 [ Ruby ](https://github.com/googleapis/google-cloud-
-ruby/releases) .
+go/releases) , [ 자바 ](https://github.com/googleapis/java-pubsub/releases) , [
+Node.js ](https://github.com/googleapis/nodejs-pubsub/releases) , [ PHP
+](https://github.com/googleapis/google-cloud-php/releases) , [ Python
+](https://github.com/googleapis/python-pubsub/releases) , [ Ruby
+](https://github.com/googleapis/google-cloud-ruby/releases) .
 
 최신 제품 업데이트를 받으려면 [ 피드 리더
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) 에 이 페이지의 URL을
-추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/cloud-pub-sub-
+추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/pubsub-
 release-notes.xml `
 
 ##  April 20, 2020
