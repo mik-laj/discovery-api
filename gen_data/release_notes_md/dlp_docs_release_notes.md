@@ -22,9 +22,10 @@ URL directly: ` https://cloud.google.com/feeds/dlp-release-notes.xml `
 **FEATURE:**
 
 Added support for ` PDF ` and ` WORD ` [ ` FileTypes `
-](http://cloud/dlp/docs/reference/rpc/google.privacy.dlp.v2#filetype) and `
-PDF ` and ` WORD_DOCUMENT ` [ ` BytesTypes `
-](http://cloud/dlp/docs/reference/rpc/google.privacy.dlp.v2#bytestype) .
+](http://cloud.google.com/dlp/docs/reference/rpc/google.privacy.dlp.v2#filetype)
+and ` PDF ` and ` WORD_DOCUMENT ` [ ` BytesTypes `
+](http://cloud.google.com/dlp/docs/reference/rpc/google.privacy.dlp.v2#bytestype)
+.
 
 ##  April 13, 2020
 
@@ -59,13 +60,12 @@ as part of a job resource within Cloud DLP or to BigQuery.
 
 **FEATURE:**
 
-[ ` Regex `
-](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#regex) , [
-` WordList `
-](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#wordlist)
-, and small [ ` Dictionary `
-](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#dictionary)
-objects can now be loaded from metadata stored in Cloud Spanner using [ `
+[ ` Regex ` ](https://cloud.google.com/dlp/docs/reference/rest/v2/Regex) , [ `
+WordList `
+](https://cloud.google.com/dlp/docs/reference/rest/v2/Dictionary#wordlist) ,
+and small [ ` Dictionary `
+](https://cloud.google.com/dlp/docs/reference/rest/v2/Dictionary) objects can
+now be loaded from metadata stored in Cloud Spanner using [ `
 CustomInfoType.Regex `
 ](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#regex) or
 [ ` CustomInfoType.Dictionary `
