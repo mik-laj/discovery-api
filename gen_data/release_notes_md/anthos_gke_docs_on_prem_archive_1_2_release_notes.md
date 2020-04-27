@@ -18,6 +18,116 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gkeonprem-release-notes.xml `
 
+##  April 23, 2020
+
+**CHANGED:**
+
+Preflight check in ` gkeadm ` for access to the Cloud Storage bucket that
+holds the admin workstation OVA.
+
+**CHANGED:**
+
+Preflight check for internet access includes additional URL `
+www.googleapis.com ` .
+
+**CHANGED:**
+
+Preflight check for test VM DNS availability.
+
+**CHANGED:**
+
+Preflight check for test VM NTP availability.
+
+**CHANGED:**
+
+Preflight check for test VM F5 access.
+
+**CHANGED:**
+
+Before downloading and creating VM templates from OVAs, GKE on-prem checks if
+the VM template already exists in vCenter.
+
+**CHANGED:**
+
+Rename ` gkeadm ` ’s automatically created service accounts.
+
+**CHANGED:**
+
+OVA download displays download progress.
+
+**CHANGED:**
+
+` gkeadm ` prepopulates ` bundlepath ` in the seed config on the admin
+workstation.
+
+**CHANGED:**
+
+Fix for Docker failed DNS resolution on admin workstation at startup.
+
+**CHANGED:**
+
+Admin workstation provisioned by ` gkeadm ` uses thin disk provisioning.
+
+**CHANGED:**
+
+Improved user cluster Istio ingress gateway reliability.
+
+**CHANGED:**
+
+Ubuntu image is upgraded to include newest packages.
+
+**CHANGED:**
+
+Update the vCenter credentials for your clusters using the preview command [ `
+gkectl update credentials vsphere `
+](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/updating-cluster-
+credentials) .
+
+**FIXED:**
+
+The ` gkeadm ` configuration file, ` admin-ws-config.yaml ` , accepts paths
+that are prefixed with ` ~/ ` for the Certificate Authority (CA) certificate.
+
+**FIXED:**
+
+Test VMs wait until the network is ready before starting preflight checks.
+
+**FIXED:**
+
+Improve the error message in preflight check failure for F5 BIG-IP.
+
+**FIXED:**
+
+Skip VIP check in preflight check in manual load balancing mode.
+
+**FIXED:**
+
+Upgraded Calico to version 3.8.8 to fix several security vulnerabilities.
+
+**FIXED:**
+
+Upgraded F5 BIG-IP Controller Docker image to version 1.14.0 to fix a security
+vulnerability.
+
+**FIXED:**
+
+Fixed ` gkeadm ` admin workstation ` gcloud ` proxy username and password
+configuration.
+
+**FIXED:**
+
+Fixed the bug that was preventing ` gkectl check-config ` from automatically
+using the proxy that you set in your configuration file when running the full
+set of [ preflight validation checks
+](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/preflight-checks)
+with any GKE on-prem [ download image
+](https://cloud.google.com/anthos/gke/docs/on-prem/downloads#bundle-latest) .
+
+**FIXED:**
+
+Fixed an admin workstation upgrade failure when the upgrade process was unable
+to retrieve SSH keys, which would cause a Golang segmentation fault.
+
 ##  April 01, 2020
 
 **ISSUE:**
