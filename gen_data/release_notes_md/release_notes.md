@@ -12,6 +12,311 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  April 25, 2020
+
+**Dialogflow**
+
+**CHANGED:**
+
+In May 2020, the [ Facebook Messenger
+](https://cloud.google.com/dialogflow/docs/integrations/facebook) integration
+will be updated, and you may notice slight changes related to fulfillment.
+
+To make sure that your Facebook Messenger bot keeps functioning normally,
+observe the following recommendations:
+
+  1. To get the Facebook ` sender.id ` value, use the ` originalDetectIntentRequest.payload.data.sender ` field from the Dialogflow ` WebhookRequest ` message. 
+  2. To get the ` source ` field value, use the ` originalDetectIntentRequest.source ` field from the Dialogflow ` WebhookRequest ` message. 
+  3. To send rich response messages from your webhook to the Facebook Messenger integration, use the ` WebhookResponse.fulfillment_mesages[].payload ` field. 
+  4. In your webhook logic, don’t rely on the fields that are not documented in the official [ Facebook Messenger API ](https://developers.facebook.com/docs/messenger-platform/reference/) . 
+
+If you have any questions, reach out to your primary [ support channel
+](https://cloud.google.com/dialogflow/docs/support/getting-support#one-on-one)
+.
+
+##  April 24, 2020
+
+**AI Platform Prediction**
+
+**FEATURE:**
+
+Visualization settings for AI Explanations are now available. You can
+customize how feature attributions are displayed for image data.
+
+Learn more about [ visualizing explanations ](https://cloud.google.com/ai-
+platform/prediction/docs/ai-explanations/visualizing-explanations) .
+
+**Virtual Private Cloud**
+
+**FEATURE:**
+
+[ Private Google Access for on-premises hosts
+](https://cloud.google.com/vpc/docs/private-access-options#pga-onprem) permits
+on-premises hosts to send traffic from any internal IP addresses, not just RFC
+1918 addresses. This feature is now **Generally Available** .
+
+##  April 23, 2020
+
+**Anthos**
+
+**FEATURE:**
+
+[ Anthos ](https://cloud.google.com/anthos) 1.3.1 is now available.
+
+**Updated components:**
+
+  * [ Anthos GKE on-prem release notes ](https://cloud.google.com/anthos/gke/docs/on-prem/release-notes)
+
+**Anthos Config Management**
+
+**CHANGED:**
+
+Anthos Config Management images are now included in the Google-provided system
+images for [ Binary Authorization ](https://cloud.google.com/binary-
+authorization) .
+
+**FEATURE:**
+
+Policy Agent now allows configuration of namespaces that will bypass the
+admission controller. For more information, please see [ Excluding Namespaces
+from Policy Controller ](https://cloud.google.com/anthos-config-
+management/docs/how-to/policy-controller-exclude-namespaces)
+
+**CHANGED:**
+
+You can now [ exempt Namespaces ](https://cloud.google.com/anthos-config-
+management/docs/how-to/policy-controller-exclude-namespaces) from Policy
+Controller enforcement
+
+**FIXED:**
+
+Earlier versions of Anthos Config Management relied on APIs that have been [
+deprecated in Kubernetes v1.16 ](https://cloud.google.com/kubernetes-
+engine/docs/deprecations/apis-1-16) . Anthos Config Management v1.3.1 is
+required to run on Kubernetes v1.16 and higher.
+
+**FIXED:**
+
+The Anthos Config Management Syncer pod now reports when it detects that it is
+fighting with another process over a resource.
+
+**FIXED:**
+
+Anthos Config Management no longer allows managing resources in unmanaged
+Namespaces.
+
+**ISSUE:**
+
+If you define a CRD with an integer field that has min/max values, Anthos
+Config Management will be unable to update the CRD.
+
+**FIXED:**
+
+Anthos Config Management no longer overwrites undeclared labels and
+annotations on Namespaces.
+
+**FIXED:**
+
+This release includes several performance and memory improvements.
+
+**Anthos GKE on-prem**
+
+**CHANGED:**
+
+Preflight check in ` gkeadm ` for access to the Cloud Storage bucket that
+holds the admin workstation OVA.
+
+**CHANGED:**
+
+Preflight check for internet access includes additional URL `
+www.googleapis.com ` .
+
+**CHANGED:**
+
+Preflight check for test VM DNS availability.
+
+**CHANGED:**
+
+Preflight check for test VM NTP availability.
+
+**CHANGED:**
+
+Preflight check for test VM F5 access.
+
+**CHANGED:**
+
+Before downloading and creating VM templates from OVAs, GKE on-prem checks if
+the VM template already exists in vCenter.
+
+**CHANGED:**
+
+Rename ` gkeadm ` ’s automatically created service accounts.
+
+**CHANGED:**
+
+OVA download displays download progress.
+
+**CHANGED:**
+
+` gkeadm ` prepopulates ` bundlepath ` in the seed config on the admin
+workstation.
+
+**CHANGED:**
+
+Fix for Docker failed DNS resolution on admin workstation at startup.
+
+**CHANGED:**
+
+Admin workstation provisioned by ` gkeadm ` uses thin disk provisioning.
+
+**CHANGED:**
+
+Improved user cluster Istio ingress gateway reliability.
+
+**CHANGED:**
+
+Ubuntu image is upgraded to include newest packages.
+
+**CHANGED:**
+
+Update the vCenter credentials for your clusters using the preview command [ `
+gkectl update credentials vsphere `
+](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/updating-cluster-
+credentials) .
+
+**FIXED:**
+
+The ` gkeadm ` configuration file, ` admin-ws-config.yaml ` , accepts paths
+that are prefixed with ` ~/ ` for the Certificate Authority (CA) certificate.
+
+**FIXED:**
+
+Test VMs wait until the network is ready before starting preflight checks.
+
+**FIXED:**
+
+Improve the error message in preflight check failure for F5 BIG-IP.
+
+**FIXED:**
+
+Skip VIP check in preflight check in manual load balancing mode.
+
+**FIXED:**
+
+Upgraded Calico to version 3.8.8 to fix several security vulnerabilities.
+
+**FIXED:**
+
+Upgraded F5 BIG-IP Controller Docker image to version 1.14.0 to fix a security
+vulnerability.
+
+**FIXED:**
+
+Fixed ` gkeadm ` admin workstation ` gcloud ` proxy username and password
+configuration.
+
+**FIXED:**
+
+Fixed the bug that was preventing ` gkectl check-config ` from automatically
+using the proxy that you set in your configuration file when running the full
+set of [ preflight validation checks
+](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/preflight-checks)
+with any GKE on-prem [ download image
+](https://cloud.google.com/anthos/gke/docs/on-prem/downloads#bundle-latest) .
+
+**FIXED:**
+
+Fixed an admin workstation upgrade failure when the upgrade process was unable
+to retrieve SSH keys, which would cause a Golang segmentation fault.
+
+**Cloud Billing**
+
+**FEATURE:**
+
+For customers with [ self-serve/online
+](https://cloud.google.com/billing/docs/concepts#billing_account_types) Cloud
+Billing accounts, you can now find your Cloud Billing documents in the
+**Documents** page of the Cloud Billing console. In the Documents page, you
+can find your monthly invoices or statements, as well as tax documents, if
+applicable to your account. Before this launch, the Documents page was only
+available to customers viewing [ invoiced
+](https://cloud.google.com/billing/docs/concepts#billing_account_types) Cloud
+Billing accounts, while self-serve/online accounts were limited to finding
+their Cloud Billing documents in the Transactions page. See the [
+⁠documentation ](https://cloud.google.com/billing/docs/how-to/get-invoice) for
+more details.
+
+**Cloud Load Balancing**
+
+**FEATURE:**
+
+External HTTP(S) load balancers now support [ header-based routing
+](https://cloud.google.com/load-balancing/docs/https/setting-up-traffic-
+management#http-header-based-routing) and [ query parameter-based routing
+](https://cloud.google.com/load-balancing/docs/https/setting-up-traffic-
+management#query-parameter-routing) .
+
+These features are available in **General Availability** .
+
+##  April 22, 2020
+
+**BigQuery ML**
+
+**FEATURE:**
+
+BigQuery ML now supports exporting BigQuery ML models to Cloud Storage and
+using them for online prediction. This feature is in [ beta
+](https://cloud.google.com/products#product-launch-stages) . For more
+information, see [ Exporting models ](https://cloud.google.com/bigquery-
+ml/docs/exporting-models) .
+
+**Cloud Billing**
+
+**FEATURE:**
+
+Budget alerts: new budget filters are now available. In addition to project
+and product filters, you can now scope your budgets and alerts for groups of
+subaccounts and resource labels. Budget alerts help you stay informed of how
+your spend is tracking against your budget so you can avoid billing surprises.
+(Note that these filters are not available in the Budgets API in this
+release.) See the [ ⁠documentation
+](https://cloud.google.com/billing/docs/how-to/budgets) for more details.
+
+**Cloud Data Fusion**
+
+**FEATURE:**
+
+Cloud Data Fusion version 6.1.2 is now available. This version includes
+several stability and performance improvements and new features.
+
+  * Added support for [ Field Level Lineage ](https://cloud.google.com/data-fusion/docs/tutorials/lineage) for Spark plugins and Streaming pipelines 
+  * Added support for Spark 2.4 
+  * Added an option to skip header in the files in delimited, CSV, TSV, and text formats 
+  * Added an option for database source to replace the characters in the field names 
+
+**FIXED:**
+
+Reduced preview startup by 60%. Also added limit to max concurrent preview
+runs (10 by default).
+
+**FIXED:**
+
+Fixed a bug that caused errors when Wrangler's parse-as-csv with header was
+used when reading multiple small files.
+
+**FIXED:**
+
+Fixed a bug that caused zombie processes when using the Remote Hadoop
+Provisioner.
+
+**FIXED:**
+
+Fixed a bug that caused DBSource plugin to fail in preview mode.
+
+**FIXED:**
+
+Fixed a race condition that caused a failure when running a Spark program.
+
 ##  April 21, 2020
 
 **Cloud TPU**
@@ -301,8 +606,8 @@ no charge for Packet Mirroring until that time.
 **FEATURE:**
 
 BigQuery ML now supports Matrix Factorization models for recommendations, as a
-[ beta ](http://cloud/products#product-launch-stages) release. For more
-information, see [ The CREATE MODEL statement for Matrix Factorization
+[ beta ](https://cloud.google.com/products#product-launch-stages) release. For
+more information, see [ The CREATE MODEL statement for Matrix Factorization
 ](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-
 syntax-create-matrix-factorization) .
 
@@ -1685,252 +1990,4 @@ available in **Beta** .
 [ Performance Dashboard ](https://cloud.google.com/network-intelligence-
 center/docs/performance-dashboard/concepts/overview) is now available in
 **Beta** .
-
-##  March 27, 2020
-
-**AI Platform Prediction**
-
-**FEATURE:**
-
-[ AI Explanations ](https://cloud.google.com/ai-platform/prediction/docs/ai-
-explanations/overview) now supports [ XRAI ](https://arxiv.org/abs/1906.02825)
-, a new feature attribution method for image data.
-
-The [ image tutorial
-](https://colab.sandbox.google.com/github/GoogleCloudPlatform/ml-on-
-gcp/blob/master/tutorials/explanations/ai-explanations-image.ipynb) has been
-updated to include XRAI. In the tutorial, you can deploy an image
-classification model using both integrated gradients and XRAI, and compare the
-results.
-
-**FEATURE:**
-
-[ AI Explanations ](https://cloud.google.com/ai-platform/prediction/docs/ai-
-explanations/overview) provides an [ approximation error
-](https://cloud.google.com/ai-platform/prediction/docs/ai-explanations/using-
-feature-attributions#using-approx-error) with your explanations results.
-
-Learn more about the [ approximation error ](https://cloud.google.com/ai-
-platform/prediction/docs/ai-explanations/using-feature-attributions#using-
-approx-error) and how to improve your explanations results.
-
-**FEATURE:**
-
-AI Platform Prediction now supports the following regions for [ batch
-prediction ](https://cloud.google.com/ai-platform/prediction/docs/batch-
-predict) , in addition to those that were already supported:
-
-  * ` us-west3 ` (Salt Lake City) 
-  * ` europe-west2 ` (London) 
-  * ` europe-west3 ` (Frankfurt) 
-  * ` europe-west6 ` (Zurich) 
-  * ` asia-south1 ` (Mumbai) 
-  * ` asia-east2 ` (Hong Kong) 
-  * ` asia-northeast1 ` (Tokyo) 
-  * ` asia-northeast2 ` (Osaka) 
-  * ` asia-northeast3 ` (Seoul) 
-
-Note that ` asia-northeast1 ` was already available for online prediction.
-
-See the [ full list of available regions ](https://cloud.google.com/ai-
-platform/prediction/docs/regions) and read about [ pricing for each region
-](https://cloud.google.com/ai-platform/prediction/pricing) .
-
-**AI Platform Training**
-
-**FEATURE:**
-
-AI Platform Training now supports the following regions, in addition to those
-that were already supported:
-
-  * ` us-west3 ` (Salt Lake City) 
-  * ` europe-west2 ` (London) 
-  * ` europe-west3 ` (Frankfurt) 
-  * ` europe-west6 ` (Zurich) 
-  * ` asia-south1 ` (Mumbai) 
-  * ` asia-east2 ` (Hong Kong) 
-  * ` asia-northeast1 ` (Tokyo) 
-  * ` asia-northeast2 ` (Osaka) 
-  * ` asia-northeast3 ` (Seoul) 
-
-Out of these regions, the following support [ training with NVIDIA Tesla T4
-GPUs ](https://cloud.google.com/ai-platform/training/docs/using-gpus) :
-
-  * ` europe-west2 `
-  * ` asia-south1 `
-  * ` aisa-northeast1 `
-  * ` asia-northeast3 `
-
-See the [ full list of available regions ](https://cloud.google.com/ai-
-platform/training/docs/regions) and read about [ pricing for each region
-](https://cloud.google.com/ai-platform/training/pricing) .
-
-**BigQuery**
-
-**FEATURE:**
-
-BigQuery Column-level security is now available as a [ beta
-](https://cloud.google.com/products#product-launch-stages) release. For more
-information, see [ Introduction to BigQuery Column-level security
-](https://cloud.google.com/bigquery/docs/column-level-security-intro) .
-
-**Cloud SQL for PostgreSQL**
-
-**FEATURE:**
-
-PostgreSQL version 12 is now Beta. To start using PostgreSQL 12, see [
-Creating instances ](https://cloud.google.com/sql/docs/postgres/create-
-instance) .
-
-**FEATURE:**
-
-PostgreSQL version 10 is now generally available. To start using PostgreSQL
-10, see [ Creating instances
-](https://cloud.google.com/sql/docs/postgres/create-instance) .
-
-**Dialogflow**
-
-**CHANGED:**
-
-The shutdown of the V1 API [ announced in November
-](https://cloud.google.com/dialogflow/docs/release-notes#November_14_2019) has
-been extended to May 31, 2020,
-
-**Istio on Google Kubernetes Engine**
-
-**FEATURE:**
-
-**Istio 1.4.6-gke.0** \- This is the initial release of Istio 1.4 to Istio on
-GKE
-
-##  March 26, 2020
-
-**Memorystore for Memcached**
-
-**FEATURE:**
-
-Beta release of Memorystore for Memcached.
-
-##  March 25, 2020
-
-**App Engine standard environment Python**
-
-**CHANGED:**
-
-Updated Python SDK to version 1.9.89.
-
-**Cloud CDN**
-
-**FEATURE:**
-
-Cloud CDN [ custom origins ](https://cloud.google.com/cdn/docs/custom-origins-
-overview) is available in **General Availability** . You can now use Cloud
-CDN's distributed edge caching infrastructure to connect to an origin hosted
-outside of GCP, such as on-premises or in another cloud.
-
-**Config Connector**
-
-**FEATURE:**
-
-Add "Deletion Defender" workload -- a pod whose job is to ensure that only
-resources meant to trigger a delete on the underlying API do so. If this
-workload goes down for whatever reason, the controller is prevented from
-performing deletions, thus protecting against accidental deletions in the case
-of cascading deletions prompted by uninstalling CRDs.
-
-**FEATURE:**
-
-Add support for structured metadata list for ComputeInstance and
-ComputeInstanceTemplate in the form of a spec.metadata field.
-
-**Dataproc**
-
-**FEATURE:**
-
-Added pagination support to Clusters List methods to provide functionality to
-the ` pageSize ` parameter, which is a part of the API. This feature allows
-users to specify a page size to receive paginated data in the response. The
-default page size is 200 and the max page size is 1000.
-
-**FEATURE:**
-
-Added alphabetical sort order to Workflow Templates List methods.
-
-**FEATURE:**
-
-Dataproc clusters can now be created on the GKE platform by setting the [ `
-GkeClusterConfig `
-](https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/ClusterConfig#GkeClusterConfig)
-instead of the [ ` GceClusterConfig `
-](https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/ClusterConfig#GceClusterConfig)
-via the Beta API. This feature allows jobs to be submitted that will run on
-the Kubernetes cluster.
-
-**FEATURE:**
-
-Announcing the [ Beta ](https://cloud.google.com/terms/launch-stages#launch-
-stages) release of [ Dataproc - Ranger Top-Level Component
-](https://cloud.google.com/dataproc/docs/concepts/components/ranger) and [
-Dataproc - Solr Top-Level Component
-](https://cloud.google.com/dataproc/docs/concepts/components/solr) .
-
-**FEATURE:**
-
-Announcing the [ General Availability (GA)
-](https://cloud.google.com/terms/launch-stages#launch-stages) release of [
-Dataproc - Presto Top-Level Component
-](https://cloud.google.com/dataproc/docs/concepts/components/presto) .
-
-**FEATURE:**
-
-Announcing the [ General Availability (GA)
-](https://cloud.google.com/terms/launch-stages#launch-stages) release of
-Dataproc [ 1.5 images
-](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-
-versions#supported_cloud_dataproc_versions) .
-
-**CHANGED:**
-
-New [ sub-minor versions
-](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-
-versions#supported_cloud_dataproc_versions) of Dataproc images:
-1.2.94-debian9, 1.3.54-debian9, 1.4.25-debian9, 1.5.0-debian10,
-1.3.54-ubuntu18, 1.4.25-ubuntu18, and 1.5.0-ubuntu18
-
-**CHANGED:**
-
-**Image 1.5**  
-Upgraded the Cloud Storage connector to version [ 2.1.1
-](https://github.com/GoogleCloudDataproc/hadoop-
-connectors/releases/tag/v2.1.1) .
-
-**CHANGED:**
-
-**Images 1.2 and 1.4**
-
-Dataproc 1.4 will be the default image version after April 31, 2020.
-
-Dataproc 1.2 will have no further releases after June 30, 2020.
-
-**FIXED:**
-
-**Images 1.3, 1.4, and 1.5**  
-Fixed HDFS UI in the [ Component Gateway
-](https://cloud.google.com/dataproc/docs/concepts/accessing/dataproc-gateways)
-on HA clusters
-
-**FIXED:**
-
-Fixed issue where [ Jupyter
-](https://cloud.google.com/dataproc/docs/concepts/components/jupyter) hangs
-when loading a directory containing many large files. This also improves
-responsiveness when listing directories.
-
-**Dialogflow**
-
-**CHANGED:**
-
-The shutdown of 7 integrations [ announced in January
-](https://cloud.google.com/dialogflow/docs/release-notes#January_06_2020) is
-now extended to May 6th, 2020.
 
