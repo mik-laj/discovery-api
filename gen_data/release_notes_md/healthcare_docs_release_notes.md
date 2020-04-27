@@ -13,6 +13,13 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloud-healthcare-release-
 notes.xml `
 
+##  April 23, 2020
+
+**FEATURE:**
+
+Code samples are available for the Cloud Healthcare API v1 in Go, Java,
+Node.js, and Python.
+
 ##  April 07, 2020
 
 **FEATURE:**
