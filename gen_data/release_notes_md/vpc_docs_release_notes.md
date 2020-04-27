@@ -11,6 +11,15 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/vpc-release-notes.xml `
 
+##  April 24, 2020
+
+**FEATURE:**
+
+[ Private Google Access for on-premises hosts
+](https://cloud.google.com/vpc/docs/private-access-options#pga-onprem) permits
+on-premises hosts to send traffic from any internal IP addresses, not just RFC
+1918 addresses. This feature is now **Generally Available** .
+
 ##  April 20, 2020
 
 **FEATURE:**
