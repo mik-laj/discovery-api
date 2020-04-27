@@ -15,6 +15,18 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/aiplatform-release-notes.xml `
 
+##  April 24, 2020
+
+**AI Platform Prediction**
+
+**FEATURE:**
+
+Visualization settings for AI Explanations are now available. You can
+customize how feature attributions are displayed for image data.
+
+Learn more about [ visualizing explanations ](https://cloud.google.com/ai-
+platform/prediction/docs/ai-explanations/visualizing-explanations) .
+
 ##  April 13, 2020
 
 **AI Platform Prediction**
