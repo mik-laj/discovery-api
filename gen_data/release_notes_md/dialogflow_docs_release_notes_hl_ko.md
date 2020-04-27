@@ -15,6 +15,27 @@ notes.pdf?hl=ko) 도 읽을 수 있습니다.
 추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/dialogflow-
 release-notes.xml `
 
+##  April 25, 2020
+
+**CHANGED:**
+
+In May 2020, the [ Facebook Messenger
+](https://cloud.google.com/dialogflow/docs/integrations/facebook?hl=ko)
+integration will be updated, and you may notice slight changes related to
+fulfillment.
+
+To make sure that your Facebook Messenger bot keeps functioning normally,
+observe the following recommendations:
+
+  1. To get the Facebook ` sender.id ` value, use the ` originalDetectIntentRequest.payload.data.sender ` field from the Dialogflow ` WebhookRequest ` message. 
+  2. To get the ` source ` field value, use the ` originalDetectIntentRequest.source ` field from the Dialogflow ` WebhookRequest ` message. 
+  3. To send rich response messages from your webhook to the Facebook Messenger integration, use the ` WebhookResponse.fulfillment_mesages[].payload ` field. 
+  4. In your webhook logic, don’t rely on the fields that are not documented in the official [ Facebook Messenger API ](https://developers.facebook.com/docs/messenger-platform/reference/) . 
+
+If you have any questions, reach out to your primary [ support channel
+](https://cloud.google.com/dialogflow/docs/support/getting-support?hl=ko#one-
+on-one) .
+
 ##  April 20, 2020
 
 **FEATURE:**
