@@ -30153,7 +30153,13 @@
                 "exportCustomRoutes": {
                     "type": "boolean"
                 },
+                "exportSubnetRoutesWithPublicIp": {
+                    "type": "boolean"
+                },
                 "importCustomRoutes": {
+                    "type": "boolean"
+                },
+                "importSubnetRoutesWithPublicIp": {
                     "type": "boolean"
                 },
                 "name": {
@@ -34112,7 +34118,8 @@
                 "network": {
                     "annotations": {
                         "required": [
-                            "compute.routers.insert"
+                            "compute.routers.insert",
+                            "compute.routers.update"
                         ]
                     },
                     "type": "string"
@@ -35358,6 +35365,9 @@
                 "creationTimestamp": {
                     "type": "string"
                 },
+                "expireTime": {
+                    "type": "string"
+                },
                 "id": {
                     "format": "uint64",
                     "type": "string"
@@ -35365,6 +35375,9 @@
                 "kind": {
                     "default": "compute#sslCertificate",
                     "type": "string"
+                },
+                "managed": {
+                    "$ref": "SslCertificateManagedSslCertificate"
                 },
                 "name": {
                     "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
@@ -35377,6 +35390,23 @@
                     "type": "string"
                 },
                 "selfLink": {
+                    "type": "string"
+                },
+                "selfManaged": {
+                    "$ref": "SslCertificateSelfManagedSslCertificate"
+                },
+                "subjectAlternativeNames": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "type": {
+                    "enum": [
+                        "MANAGED",
+                        "SELF_MANAGED",
+                        "TYPE_UNSPECIFIED"
+                    ],
                     "type": "string"
                 }
             },
@@ -35528,6 +35558,56 @@
                         }
                     },
                     "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "SslCertificateManagedSslCertificate": {
+            "id": "SslCertificateManagedSslCertificate",
+            "properties": {
+                "domainStatus": {
+                    "additionalProperties": {
+                        "enum": [
+                            "ACTIVE",
+                            "DOMAIN_STATUS_UNSPECIFIED",
+                            "FAILED_CAA_CHECKING",
+                            "FAILED_CAA_FORBIDDEN",
+                            "FAILED_NOT_VISIBLE",
+                            "FAILED_RATE_LIMITED",
+                            "PROVISIONING"
+                        ],
+                        "type": "string"
+                    },
+                    "type": "object"
+                },
+                "domains": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "status": {
+                    "enum": [
+                        "ACTIVE",
+                        "MANAGED_CERTIFICATE_STATUS_UNSPECIFIED",
+                        "PROVISIONING",
+                        "PROVISIONING_FAILED",
+                        "PROVISIONING_FAILED_PERMANENTLY",
+                        "RENEWAL_FAILED"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SslCertificateSelfManagedSslCertificate": {
+            "id": "SslCertificateSelfManagedSslCertificate",
+            "properties": {
+                "certificate": {
+                    "type": "string"
+                },
+                "privateKey": {
+                    "type": "string"
                 }
             },
             "type": "object"
