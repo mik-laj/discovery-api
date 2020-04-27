@@ -15,6 +15,94 @@ Isolation-at-different-layers-of-the-Kubernetes-stack.html) 一文。
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接新增以下動態消息網址： `
 https://cloud.google.com/feeds/kubernetes-engine-security-bulletins.xml `
 
+##  GCP-2020-003
+
+說明  |  嚴重性  |  附註  
+---|---|---  
+  
+最近在 Kubernetes 中發現一個安全漏洞 (請參考 [ CVE-2019-11254 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2019-11254) 中的說明)，這個漏洞允許任何經授權可進行 POST 要求的使用者在
+Kubernetes API 伺服器上執行遠端阻斷服務攻擊。您可以在 [ 這裡
+](https://groups.google.com/g/kubernetes-security-
+announce/c/wuwEwZigXBc?hl=zh_tw) 找到 Kubernetes Product Security Committee
+(PSC) 發布的相關安全漏洞資訊。
+
+無論是使用 [ 主要授權網路 ](https://cloud.google.com/kubernetes-engine/docs/how-
+to/authorized-networks?hl=zh_tw) 的 GKE 叢集或是 [ 無公開端點的私人叢集
+](https://cloud.google.com/kubernetes-engine/docs/how-to/private-
+clusters?hl=zh_tw#private_master) ，都可以有效降低這個安全漏洞的風險。
+
+####  我該怎麼做？
+
+建議您將叢集升級至包含這個安全漏洞修正措施的修補程式版本。
+
+下列為包含修正措施的修補程式版本：
+
+  * 1.13.12-gke.29 
+  * 1.14.9-gke.27 
+  * 1.14.10-gke.24 
+  * 1.15.9-gke.20 
+  * 1.16.6-gke.1 
+
+####  這個修補程式修正了哪些安全漏洞？
+
+它可修正下列阻斷服務 (DoS) 安全漏洞：
+
+[ CVE-2019-11254 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2019-11254) 。
+
+|
+
+中
+
+|
+
+[ CVE-2019-11254 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2019-11254)  
+  
+##  GCP-2020-002
+
+說明  |  嚴重性  |  附註  
+---|---|---  
+  
+Kubernetes 已揭露 [ 兩個阻斷服務安全漏洞
+](https://groups.google.com/forum/?hl=zh_tw#!topic/kubernetes-security-
+announce/2UOlsba2g0s) ，其中一個會影響 API 伺服器，另一個會影響 Kubelet。詳情請參閱 Kubernetes 問題： [
+89377 ](https://github.com/kubernetes/kubernetes/issues/89377) 和 [ 89378
+](https://github.com/kubernetes/kubernetes/issues/89378) 。
+
+####  我該怎麼做？
+
+所有 GKE 使用者都不會受到 CVE-2020-8551 的影響，除非未受信任的使用者可以在叢集內部網路傳送要求。使用 [ 主要授權網路
+](https://cloud.google.com/kubernetes-engine/docs/how-to/authorized-
+networks?hl=zh_tw) 也能有效降低 CVE-2020-8552 的安全風險。
+
+####  這些安全漏洞何時可以得到修補？
+
+要修補 CVE-2020-8551 安全漏洞，您必須進行節點升級。以下是包含暫時解決措施的修補程式版本：
+
+  * 1.15.10-gke.* 
+  * 1.16.7-gke.* 
+
+注意：1.14.x 以下版本不會受到這個安全漏洞的影響，因此不需要修補程式。
+
+要修補 CVE-2020-8552 安全漏洞，您必須進行主要執行個體升級。以下是包含暫時解決措施的修補程式版本：
+
+  * 1.14.10-gke.32 
+  * 1.15.10-gke.* 
+  * 1.16.7-gke.* 
+
+|
+
+中
+
+|
+
+[ CVE-2020-8551 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8551)  
+[ CVE-2020-8552 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8552)  
+  
 ##  2020 年 1 月 21 日；上次更新日期：2020 年 1 月 24 日
 
 說明  |  嚴重性  |  附註  
@@ -32,7 +120,7 @@ guidance/advisory/CVE-2020-0601) 。
 
 **大多數的客戶無須採取進一步行動，只有執行 Windows Server 的節點受到影響。**
 
-使用 Windows Server 節點的客戶，節點及執行於這些節點的容器化工作負載都必須更新到修補版本，以緩解這項安全漏洞。
+使用 Windows Server 節點的客戶，不論是節點本身，或是這些節點所處理的容器化工作負載，都必須更新到已修補的版本，才能降低這項安全漏洞的風險。
 
 **如何更新容器：**
 
@@ -46,7 +134,7 @@ guidance/advisory/CVE-2020-0601) 。
 
 您可以選擇屆時再將節點升級為修補 GKE 版本，也可以隨時使用 Windows Update 手動部署最新的 Windows 修補程式。
 
-下列修補程式版本將包含緩解方法：
+下列修補程式版本將包含暫時解決措施：
 
   * 1.14.7-gke.40 
   * 1.14.8-gke.33 
@@ -202,16 +290,16 @@ API 伺服器上執行遠端阻斷服務攻擊。您可以在 [ 這裡
 announce/jk8polzSUxs) 找到 Kubernetes Product Security Committee (PSC)
 發布的相關安全漏洞資訊。
 
-GKE 叢集若使用 [ 主要執行個體授權網路 ](https://cloud.google.com/kubernetes-engine/docs/how-
-to/authorized-networks?hl=zh_tw) 和 [ 無公開端點的私人叢集
+無論是使用 [ 主要授權網路 ](https://cloud.google.com/kubernetes-engine/docs/how-
+to/authorized-networks?hl=zh_tw) 的 GKE 叢集或是 [ 無公開端點的私人叢集
 ](https://cloud.google.com/kubernetes-engine/docs/how-to/private-
-clusters?hl=zh_tw#private_master) ，可以緩解這項安全漏洞。
+clusters?hl=zh_tw#private_master) ，都可以有效降低這個安全漏洞的風險。
 
 ######  我該怎麼做？
 
 含有相關修正的修補程式版本發布後，建議您盡快升級叢集。排定於 10 月 14 日當週發布的 GKE 版本，預期將在所有區域隨附這類修補程式版本。
 
-下列修補程式版本將包含緩解方法：
+下列修補程式版本將包含暫時解決措施：
 
   * 1.12.10-gke.15 
   * 1.13.11-gke.5 
@@ -251,11 +339,11 @@ announce/65QixT3tcmg) 。
 
 ######  我該怎麼做？
 
-能緩解此安全漏洞的最新修補程式版本發布後，建議您盡快升級叢集。根據 [ 發布時間表
+一旦發布了最新修補程式版本，能有效降低此安全漏洞的風險之後，建議您盡快升級叢集。根據 [ 發布時間表
 ](https://cloud.google.com/kubernetes-engine/docs/release-
 notes?hl=zh_tw#september_16_2019) ，我們預計這類修補程式會在下次推出 GKE 時於所有區域提供。
 
-下列修補程式版本將包含緩解方法：
+下列修補程式版本將包含暫時解決措施：
 
   * **2019 年 10 月 16 日更新：** 1.12.10-gke.15 
   * 1.13.10-gke.0 
@@ -311,9 +399,9 @@ resources/) 執行個體，當做所有命名空間中存在的命名空間物�
 
 ######  我該怎麼做？
 
-能緩解此安全漏洞的最新修補程式版本發布後，建議您盡快 [ 升級 ](https://cloud.google.com/kubernetes-
-engine/docs/how-to/upgrading-a-cluster?hl=zh_tw) 叢集。我們預計這類修補程式會在下次推出 GKE
-時於所有區域提供。下列修補程式版本將包含緩解方法：
+一旦發布了最新修補程式版本，能有效降低此安全漏洞的風險之後，建議您盡快 [ 升級
+](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
+cluster?hl=zh_tw) 叢集。我們預計這類修補程式會在下次推出 GKE 時於所有區域提供。下列修補程式版本將包含暫時解決措施：
 
   * 1.11.10-gke.6 
   * 1.12.9-gke.13 
@@ -405,7 +493,7 @@ Netflix 最近揭露了 Linux 核心的三個 TCP 安全漏洞：
 bulletins/blob/master/advisories/third-party/2019-001.md) 。
 
 未經修補的 Linux 核心可能會受到遠端觸發的阻斷服務攻擊。 **Google Kubernetes Engine
-節點傳送或接收不受信任的網路流量時，會受到這個安全漏洞影響。我們建議您依循以下這些緩解步驟來保護自己的工作負載。**
+節點傳送或接收不受信任的網路流量時，會受到這個安全漏洞影響。我們建議您依循以下這些因應步驟來保護自己的工作負載。**
 
 ######  Kubernetes 主要執行個體
 
@@ -415,21 +503,21 @@ bulletins/blob/master/advisories/third-party/2019-001.md) 。
 
 ######  Kubernetes 節點
 
-節點如果將流量限制在只使用受信任網路，不會受到影響。這樣處理的叢集具有下列特性：
+流量限縮在受信任網路的節點並不會受到影響。這樣處理的叢集具有下列特性：
 
   * 節點以防火牆隔離不受信任的網路，或沒有公開 IP ( [ 私人叢集 ](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters?hl=zh_tw) ) 
   * 叢集沒有公開的 LoadBalancer 服務 
 
-為了緩解這些安全漏洞，Google 正在研議永久性的對策，準備推出全新的節點版本。永久性修正方案就緒後，我們就會更新這項公告，並傳送電子郵件通知所有 GKE
-客戶。
+為了有效降低這些安全漏洞的風險，Google
+正在研議永久性的對策，準備推出全新的節點版本。永久性修正方案就緒後，我們就會更新這項公告，並傳送電子郵件通知所有 GKE 客戶。
 
 我們另外準備了 Kubernetes DaemonSet，在永久性修正方案尚未出爐前，使用者也可以修改主機的 ` iptables `
-設定，做為緩解漏洞的因應措施。
+設定，做為降低漏洞風險的因應措施。
 
 #####  我該怎麼做？
 
 執行下列指令，將 Kubernetes DaemonSet 套用到叢集中的所有節點。這會將 ` iptables ` 規則新增至節點上現有的 `
-iptables ` 規則，以緩解安全漏洞。 **請為每個 Google Cloud 專案的每個叢集都執行這個指令一次。**
+iptables ` 規則，以降低這個安全漏洞的風險。 **請為每個 Google Cloud 專案的每個叢集都執行這個指令一次。**
 
     
     
@@ -482,7 +570,7 @@ bin/cvename.cgi?name=CVE-2019-11246) ，允許有權執行容器內 ` kubectl cp
 announce/NLs2TGbfPdo) 。
 
 **所有 Google Kubernetes Engine (GKE)` gcloud ` 版本都會受到此安全漏洞的影響，我們建議您在最新的 `
-gcloud ` 修補程式版本發布時進行升級。 ** 即將提供的修補程式版本會包含此安全漏洞的緩解方法。
+gcloud ` 修補程式版本發布時進行升級。 ** 即將提供的修補程式版本會包含此安全漏洞的因應措施。
 
 ######  我該怎麼做？
 
@@ -517,7 +605,7 @@ bin/cvename.cgi?name=CVE-2018-15664) ，允許可在容器內執行程式碼的�
 作業。攻擊者可能藉此將檔案寫入的位置，變更到主機檔案系統的任何地方。
 
 **所有執行 Docker 的 Google Kubernetes Engine (GKE)
-節點都會受到此安全漏洞的影響，建議您在最新修補程式版本發布後立即升級。即將提供的修補程式版本會包含此安全漏洞的緩解方法。**
+節點都會受到此安全漏洞的影響，建議您在最新修補程式版本發布後立即升級。即將提供的修補程式版本會包含此安全漏洞的因應措施。**
 
 **所有 Google Kubernetes Engine (GKE) 主要執行個體在 1.12.7 版本之前，都是執行
 Docker，因此都會受到這個安全漏洞的影響。** 在 GKE，使用者無法存取主要執行個體上的 ` docker cp ` ，因此這個安全漏洞對 GKE
@@ -629,14 +717,14 @@ sa-00233.html) 。
 叢集中執行不受信任的程式碼，否則就不會受到影響。**
 
 **如果客戶在 Kubernetes Engine 內自己的多用戶群服務中執行不受信任的程式碼，這就會變成特別嚴重的安全漏洞。** 如要在
-Kubernetes Engine 中緩解這個問題，請在您的節點停用超執行緒功能。只有使用多個 CPU 的 Google Kubernetes Engine
-(GKE) 節點會受到這些安全漏洞的影響。請注意，n1-standard-1 (GKE 預設值)、g1-small 及 f1-micro VM
+Kubernetes Engine 中降低這個問題的影響程度，請在您的節點停用超執行緒功能。只有使用多個 CPU 的 Google Kubernetes
+Engine (GKE) 節點會受到這些安全漏洞的影響。請注意，n1-standard-1 (GKE 預設值)、g1-small 及 f1-micro VM
 僅對訪客環境公開 1 個 vCPU，因此不需要停用超執行緒功能。
 
 下一個 [ 修補程式版本 ](https://cloud.google.com/kubernetes-engine/release-
 notes?hl=zh_tw)
 會納入啟用清除功能的其他防護機制。我們會透過自動升級功能，依一般升級節奏，在未來幾週內自動將主要執行個體和節點升級至修補的版本。
-**然而，僅靠修補程式不足以緩解此安全漏洞的風險。請參閱以下的建議做法。**
+**然而，僅靠修補程式不足以降低此安全漏洞的風險。請參閱以下的建議做法。**
 
 如果您執行的是 GKE On-Prem，依使用硬體而定，可能會受影響。請參閱 [ Intel 公告事項
 ](https://www.intel.com/content/www/us/en/security-center/advisory/intel-
@@ -787,7 +875,7 @@ bin/cvename.cgi?name=CVE-2019-1002100) ，允許授權可進行修補要求的�
 patch」要求，以過度耗用 Kubernetes API 伺服器中的 CPU 和記憶體，而這可能降低叢集控制層的可用性。詳情請參閱 [
 Kubernetes 公告事項 ](https://groups.google.com/forum/?hl=zh_tw#!topic/kubernetes-
 announce/vmUUNkYfG9g) 。 **所有 Google Kubernetes Engine (GKE)
-主要執行個體都受到這些安全漏洞的影響。即將提供的修補程式版本會包含此安全漏洞的緩解方法。我們會依一般升級節奏，在未來幾週內自動將叢集主要執行個體升級至修補的版本。**
+主要執行個體都受到這些安全漏洞的影響。即將提供的修補程式版本會包含此安全漏洞的因應措施。我們會依一般升級節奏，在未來幾週內自動將叢集主要執行個體升級至修補的版本。**
 
 ####  我該怎麼做？
 
@@ -863,7 +951,7 @@ announce/mVeX35iXuSw) 。
 **所有 Google Kubernetes Engine (GKE) 主要執行個體都受到這些安全漏洞的影響。[ 最新的修補程式版本
 ](https://cloud.google.com/kubernetes-engine/docs/release-
 notes?hl=zh_tw#february-11-2019)
-含有此安全漏洞的緩解方法。我們會依一般升級節奏，在未來幾週內自動將叢集主要執行個體升級至修補的版本。 **
+含有此安全漏洞的因應措施。我們會依一般升級節奏，在未來幾週內自動將叢集主要執行個體升級至修補的版本。 **
 
 ####  我該怎麼做？
 
@@ -1074,7 +1162,7 @@ technology/l1tf.html) 下列 CVE：
 
 歡迎參閱 [ Google Cloud 網誌文章
 ](https://cloud.google.com/blog/products/gcp/protecting-against-the-new-l1tf-
-speculative-vulnerabilities?hl=zh_tw) ，進一步瞭解這些安全漏洞和 Compute Engine 的緩解方式。
+speculative-vulnerabilities?hl=zh_tw) ，進一步瞭解這些安全漏洞和 Compute Engine 的因應措施。
 
 ####  對 Google Kubernetes Engine 的影響
 
