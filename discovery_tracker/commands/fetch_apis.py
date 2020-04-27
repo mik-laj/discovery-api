@@ -60,7 +60,7 @@ def cmd_fetch_apis(args):
                 output_dir=args.output
             )
         except HttpError as e:
-            if e.resp['status'] == '404':
+            if e.resp['status'] == '404' or e.resp['status'] == '403':
                 print(e)
             else:
                 raise
