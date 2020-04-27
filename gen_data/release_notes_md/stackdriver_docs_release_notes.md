@@ -23,6 +23,16 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/stackdriver-release-notes.xml `
 
+##  April 27, 2020
+
+**Cloud Logging**
+
+**CHANGED:**
+
+The Logs Viewer (Preview) is now GA. To learn more, go to the [ Logs Viewer
+(Preview) Overview page ](https://cloud.google.com/logging/docs/view/logs-
+viewer-preview) .
+
 ##  April 20, 2020
 
 **Cloud Profiler**
