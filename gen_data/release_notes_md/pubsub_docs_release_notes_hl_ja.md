@@ -5,15 +5,16 @@
 のリリースに関する言語固有の更新については、次のリンクを使用してください。 [ C#
 ](https://github.com/googleapis/google-cloud-dotnet/releases) 、 [ Go
 ](https://github.com/googleapis/google-cloud-go/releases) 、 [ Java
-](https://github.com/googleapis/google-cloud-java/releases) 、 [ Node.js
+](https://github.com/googleapis/java-pubsub/releases) 、 [ Node.js
 ](https://github.com/googleapis/nodejs-pubsub/releases) 、 [ PHP
 ](https://github.com/googleapis/google-cloud-php/releases) 、 [ Python
-](https://github.com/googleapis/google-cloud-python/releases) 、 [ Ruby
+](https://github.com/googleapis/python-pubsub/releases) 、 [ Ruby
 ](https://github.com/googleapis/google-cloud-ruby/releases) 。
 
 プロダクトのアップデートに関する最新情報を受け取るには、このページの URL を [ フィード リーダー
-](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) に追加するか、フィード URL `
-https://cloud.google.com/feeds/cloud-pub-sub-release-notes.xml ` を直接追加してください。
+](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) に追加するか、またはフィード
+URL ディレクトリ ` https://cloud.google.com/feeds/pubsub-release-notes.xml `
+を直接追加します。
 
 ##  April 20, 2020
 
