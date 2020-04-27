@@ -1375,8 +1375,29 @@
                 "arimaFittingMetrics": {
                     "$ref": "ArimaFittingMetrics"
                 },
+                "hasDrift": {
+                    "type": "boolean"
+                },
                 "nonSeasonalOrder": {
                     "$ref": "ArimaOrder"
+                },
+                "seasonalPeriods": {
+                    "items": {
+                        "enum": [
+                            "SEASONAL_PERIOD_TYPE_UNSPECIFIED",
+                            "NO_SEASONALITY",
+                            "DAILY",
+                            "WEEKLY",
+                            "MONTHLY",
+                            "QUARTERLY",
+                            "YEARLY"
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "timeSeriesId": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1760,6 +1781,18 @@
                         "$ref": "Row"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ConnectionProperty": {
+            "id": "ConnectionProperty",
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2191,9 +2224,6 @@
                 "googleSheetsOptions": {
                     "$ref": "GoogleSheetsOptions"
                 },
-                "hivePartitioningMode": {
-                    "type": "string"
-                },
                 "hivePartitioningOptions": {
                     "$ref": "HivePartitioningOptions"
                 },
@@ -2511,9 +2541,6 @@
                 "fieldDelimiter": {
                     "type": "string"
                 },
-                "hivePartitioningMode": {
-                    "type": "string"
-                },
                 "hivePartitioningOptions": {
                     "$ref": "HivePartitioningOptions"
                 },
@@ -2593,7 +2620,7 @@
                 },
                 "connectionProperties": {
                     "items": {
-                        "type": "any"
+                        "$ref": "ConnectionProperty"
                     },
                     "type": "array"
                 },
@@ -3361,7 +3388,7 @@
             "properties": {
                 "connectionProperties": {
                     "items": {
-                        "type": "any"
+                        "$ref": "ConnectionProperty"
                     },
                     "type": "array"
                 },
