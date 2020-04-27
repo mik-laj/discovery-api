@@ -12,6 +12,13 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/biengine-release-notes.xml `
 
+##  April 27, 2020
+
+**CHANGED:**
+
+BigQuery BI Engine is now available in the [ Las Vegas (us-west4) region
+](https://cloud.google.com/bi-engine/docs/locations#supported_regions) .
+
 ##  February 24, 2020
 
 **CHANGED:**
