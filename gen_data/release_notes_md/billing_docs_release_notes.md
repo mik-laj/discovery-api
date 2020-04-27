@@ -12,6 +12,35 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/billing-release-notes.xml `
 
+##  April 23, 2020
+
+**FEATURE:**
+
+For customers with [ self-serve/online
+](https://cloud.google.com/billing/docs/concepts#billing_account_types) Cloud
+Billing accounts, you can now find your Cloud Billing documents in the
+**Documents** page of the Cloud Billing console. In the Documents page, you
+can find your monthly invoices or statements, as well as tax documents, if
+applicable to your account. Before this launch, the Documents page was only
+available to customers viewing [ invoiced
+](https://cloud.google.com/billing/docs/concepts#billing_account_types) Cloud
+Billing accounts, while self-serve/online accounts were limited to finding
+their Cloud Billing documents in the Transactions page. See the [
+⁠documentation ](https://cloud.google.com/billing/docs/how-to/get-invoice) for
+more details.
+
+##  April 22, 2020
+
+**FEATURE:**
+
+Budget alerts: new budget filters are now available. In addition to project
+and product filters, you can now scope your budgets and alerts for groups of
+subaccounts and resource labels. Budget alerts help you stay informed of how
+your spend is tracking against your budget so you can avoid billing surprises.
+(Note that these filters are not available in the Budgets API in this
+release.) See the [ ⁠documentation
+](https://cloud.google.com/billing/docs/how-to/budgets) for more details.
+
 ##  April 16, 2020
 
 **FEATURE:**
