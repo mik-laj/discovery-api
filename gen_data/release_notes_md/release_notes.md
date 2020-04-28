@@ -12,6 +12,35 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  April 27, 2020
+
+**Cloud Composer**
+
+**CHANGED:**
+
+  * [ New versions ](https://cloud.google.com/composer/docs/concepts/versioning/composer-versions) of Cloud Composer images: ` composer-1.10.2-airflow-1.10.2 ` , ` composer-1.10.2-airflow-1.10.3 ` and ` composer-1.10.2-airflow-1.10.6 ` . The default is ` composer-1.10.2-airflow-1.10.3 ` . Upgrade your Cloud SDK to use features in this release. 
+
+**FIXED:**
+
+  * Fixed an issue with the CloudSQL Proxy HealthCheck that caused the Proxy Pod to restart repeatedly. 
+  * The fluentd spec for in-cluster build log exporting now correctly points to the production fluentd image from ` cloud-airflow-releaser ` . This fix is required for Composer to correctly perform in-cluster builds for VPC SC configuration. 
+  * Adjusted ImageBuilder to fix PyPI package installation issues when using VPC SC. 
+  * Fixed intermittent issues with ` airflow-monitoring ` during the initialization phase. 
+  * Fixed an issue that caused the Airflow scheduler and worker pods to take ~10 minutes to terminate. 
+  * Fixed an issue with upgrading the image version and improved error handling during Composer environment upgrades. 
+
+**DEPRECATED:**
+
+  * The oldest supported version of Composer is now ` composer-1.6.0-airflow-x.x.x `
+
+**Cloud Logging**
+
+**CHANGED:**
+
+The Logs Viewer (Preview) is now GA. To learn more, go to the [ Logs Viewer
+(Preview) Overview page ](https://cloud.google.com/logging/docs/view/logs-
+viewer-preview) .
+
 ##  April 25, 2020
 
 **Dialogflow**
@@ -723,9 +752,10 @@ details.
 **FEATURE:**
 
 Added support for ` PDF ` and ` WORD ` [ ` FileTypes `
-](http://cloud/dlp/docs/reference/rpc/google.privacy.dlp.v2#filetype) and `
-PDF ` and ` WORD_DOCUMENT ` [ ` BytesTypes `
-](http://cloud/dlp/docs/reference/rpc/google.privacy.dlp.v2#bytestype) .
+](http://cloud.google.com/dlp/docs/reference/rpc/google.privacy.dlp.v2#filetype)
+and ` PDF ` and ` WORD_DOCUMENT ` [ ` BytesTypes `
+](http://cloud.google.com/dlp/docs/reference/rpc/google.privacy.dlp.v2#bytestype)
+.
 
 **Dataprep by Trifacta**
 
