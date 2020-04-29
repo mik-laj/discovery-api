@@ -1,12 +1,12 @@
 #  リリースノート
 
-このページには、Vision API に関する更新内容が記載されています。Vision API
+このページには、Vision API に関する更新内容が記載されています。Vision
 デベロッパーの方には、ここにリストされる発表内容を定期的に確認されることをおすすめします。
 
 プロダクトのアップデートに関する最新情報を受け取るには、このページの URL を [ フィード リーダー
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) に追加するか、またはフィード
-URL ディレクトリ ` https://cloud.google.com/feeds/cloud-vision-api-release-notes.xml
-` を直接追加します。
+URL ディレクトリ ` https://cloud.google.com/feeds/vision-release-notes.xml `
+を直接追加します。
 
 ##  April 11, 2020
 
