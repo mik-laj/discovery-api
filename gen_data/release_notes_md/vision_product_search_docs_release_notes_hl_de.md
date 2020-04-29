@@ -58,7 +58,7 @@ your pipeline's resources and services. To learn more about VPC Service
 Controls, see the [ VPC Service Controls overview
 ](https://cloud.google.com/vpc-service-controls/docs/overview?hl=de) .
 
-To learn about the limitations in using Vision Product Search with VPC Service
+To learn about the limitations of using Vision Product Search with VPC Service
 Controls, see the [ supported products and limitations
 ](https://cloud.google.com/vpc-service-controls/docs/supported-products?hl=de)
 .
