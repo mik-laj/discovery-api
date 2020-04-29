@@ -1,3 +1,8 @@
+PHP バージョン 5.5 は [ コミュニティでサポートを終了した ](https://www.php.net/supported-
+versions.php) ため、新しいアプリでは [ PHP 7 ランタイム
+](https://cloud.google.com/appengine/docs/standard/php7?hl=ja)
+を使用することを強くおすすめします。
+
 #  PHP 5.5 リリースノート
 
 プロダクトのアップデートに関する最新情報を受け取るには、このページの URL を [ フィード リーダー
