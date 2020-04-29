@@ -1,633 +1,1162 @@
 #  Java リリースノート
 
-Python [ 2.7
-](https://cloud.google.com/appengine/docs/standard/python/release-notes?hl=ja
-"Python 2.7 ランタイムに関するこのページを見る") / [ 3.7
-](https://cloud.google.com/appengine/docs/standard/python3/
-
-    release-notes?hl=ja "Python 3.7 ランタイムに関するこのページを見る") |  Java  8  / [ 11 ](https://cloud.google.com/appengine/docs/standard/java11/
-    release-notes?hl=ja "Java 11 ランタイムに関するこのページを見る") |  PHP [ 5 ](https://cloud.google.com/appengine/docs/standard/php/release-notes?hl=ja "PHP 5 ランタイムに関するこのページを見る") / [ 7 ](https://cloud.google.com/appengine/docs/standard/php7/
-    release-notes?hl=ja "PHP 7 ランタイムに関するこのページを見る") |  [ Ruby ](https://cloud.google.com/appengine/docs/standard/ruby/
-    release-notes?hl=ja "Ruby ランタイムに関するこのページを見る") |  Go [ 1.11 ](https://cloud.google.com/appengine/docs/standard/go111/
-    release-notes?hl=ja "Go 1.11 ランタイムに関するこのページを見る") / [ 1.12+ ](https://cloud.google.com/appengine/docs/standard/go/
-    release-notes?hl=ja "Go 1.12 および最新のランタイムに関するこのページを見る") |  [ Node.js ](https://cloud.google.com/appengine/docs/standard/nodejs/
-    release-notes?hl=ja "Node.js ランタイムに関するこのページを見る")
-
-以下のリリースノート以外にも、 [ 公開バグトラッカー
-](https://issuetracker.google.com/issues?q=componentid%3A187191%2B&hl=ja)
-で既知の問題を追跡できます。
-
 プロダクトのアップデートに関する最新情報を受け取るには、このページの URL を [ フィード リーダー
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) に追加するか、またはフィード
-URL ディレクトリ ` https://cloud.google.com/feeds/app-engine-standard-environment-
-java-runtimes-release-notes.xml ` を直接追加します。
+URL ディレクトリ ` https://cloud.google.com/feeds/gaestd-java-release-notes.xml `
+を直接追加します。
 
-##  2020 年 2 月 11 日
+##  April 20, 2020
 
-App Engine は、アプリへのリクエストの送信に使用する URL を変更します。URL に [ リージョン ID を含める
-](https://cloud.google.com/appengine/docs/standard/java/how-requests-are-
-routed?hl=ja#region-id) ことが可能となり、Google
-でお客様のリクエストをより効率良く確実に転送できるようになります。たとえば、アプリは ` https://  PROJECT_ID  .
-REGION_ID  .r.appspot.com ` でリクエストを受け取ることができます。この新しい URL
-は、既存のアプリでは省略可能でしたが、新しいアプリではまもなく必須になります。
+**FEATURE:**
 
-移行がスムーズに行われるように、リージョン ID を使用するよう App Engine を徐々に更新しています。Google Cloud
-プロジェクトがまだ更新されていない場合、アプリにリージョン ID が表示されません。ID は既存のアプリでは省略可能なため、リージョン ID
-が既存のアプリで使用可能になったときに、URL を更新したり、他の変更を行ったりする必要はありません。
+App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
 
-##  2020 年 2 月 6 日
+**CHANGED:**
 
-  * プロジェクトに新たな使用量上限を適用することはできません。既存の使用量上限は引き続き有効です。アプリの費用を制限する方法の詳細については、 [ 費用の制限 ](https://cloud.google.com/appengine/docs/managing-costs?hl=ja) をご覧ください。 
+  * Updated Java SDK to Version 1.9.80 
+  * Fixed deployment of cron.yaml file with retry_parameters configured 
+  * Fixed class LocalTaskQueueTestConfig to support custom paths for queue.yaml files ( [ public issue 138528920 ](https://issuetracker.google.com/138528920?hl=ja) ) 
 
-##  2019 年 1 月 21 日
+##  April 13, 2020
 
-  * Java SDK がバージョン 1.9.78 に更新されました。 
+**CHANGED:**
 
-##  2019 年 12 月 11 日
+Quotas for sockets have been removed. There is no longer a limit on the number
+of socket connections or the amount of data your Java 8 app can send and
+receive through a socket.
 
-  * [ サーバーレス VPC アクセス ](https://cloud.google.com/appengine/docs/standard/java/connecting-vpc?hl=ja) の一般提供を開始しました。 
+##  March 20, 2020
 
-##  2019 年 11 月 7 日
+**CHANGED:**
 
-  * Java SDK がバージョン 1.9.77 に更新されました。 
-  * Jarkata Jasper JSP コンパイラがバージョン 9.0.24 にアップグレードされます。 
+  * Updated Java SDK to version 1.9.79. 
+  * Updated Jetty to version 9.4.27. 
 
-##  2019 年 10 月 17 日
+##  March 13, 2020
 
-  * App Engine スタンダード環境の [ Java 11 ランタイム ](https://cloud.google.com/appengine/docs/standard/java11/runtime?hl=ja) が 一般提供を開始しました。 
+**FEATURE:**
 
-##  2019 年 7 月 30 日
+App Engine is now available in the ` asia-northeast3 ` region (Seoul).
 
-  * ` GoogleAppEngineLauncher.dmg ` 、 ` GoogleAppEngine.msi ` 、 ` google_appengine.zip ` ファイルを通じて提供される AppCfg ツールおよび従来のスタンドアロンの App Engine SDK は、非推奨になります。2020 年 7 月 30 日をもって、Google はサポートを終了します。 
-  * App Engine SDK の機能は、 [ Cloud SDK ](https://cloud.google.com/sdk/docs?hl=ja) を通じてのみ提供されます。詳細については、 [ Cloud SDK への移行 ](https://cloud.google.com/appengine/docs/standard/java/sdk-gcloud-migration?hl=ja) をご覧ください。 
+##  March 06, 2020
 
-##  2019 年 6 月 24 日
+**FEATURE:**
 
-  * Java SDK がバージョン 1.9.76 に更新されました。 
+App Engine is now available in the ` us-west3 region ` (Salt Lake City, Utah).
 
-##  2019 年 6 月 5 日
+##  February 06, 2020
 
-  * App Engine スタンダード環境の [ Java 11 ランタイム ](https://cloud.google.com/appengine/docs/standard/java11/runtime?hl=ja) がベータ版になりました。 
+**DEPRECATED:**
 
-##  2019 年 6 月 3 日
+  * You can no longer apply new spending limits to projects. Existing spending limits will continue to work. For more information on how you can limit app costs, see [ Limiting Costs ](https://cloud.google.com/appengine/docs/managing-costs?hl=ja) . 
 
-  * Java SDK がバージョン 1.9.75 に更新されました。 
-  * Google App Engine API JAR は、Java 8 ターゲットとしてコンパイルされました。 
-  * Memcache からの大規模なバッチ GET のパフォーマンスの問題を修正しました。 
+##  December 11, 2019
 
-##  2019 年 4 月 30 日
+**FEATURE:**
 
-  * Java SDK がバージョン 1.9.74 に更新されました。 
+  * [ Serverless VPC Access ](https://cloud.google.com/appengine/docs/standard/java/connecting-vpc?hl=ja) is now GA. 
 
-##  2019 年 4 月 18 日
+##  December 07, 2019
 
-  * App Engine が ` asia-northeast2 ` リージョン（大阪、日本）で利用できるようになりました。 
+**FEATURE:**
 
-##  2019 年 4 月 15 日
+  * Updated Java SDK to version 1.9.77. 
 
-  * App Engine が ` europe-west6 ` リージョン（スイス、チューリッヒ）でご利用いただけるようになりました。 
+**FEATURE:**
 
-##  2019 年 4 月 9 日
+  * Upgrade Jarkata Jasper JSP compiler to version 9.0.24. 
 
-  * [ サーバーレス VPC アクセス ](https://cloud.google.com/appengine/docs/standard/java/connecting-vpc?hl=ja) のベータ版が利用可能になりました。サーバーレス VPC アクセスを使用すると、VPC ネットワーク内の Compute Engine VM インスタンス、Memorystore インスタンスなどの内部リソースにアプリを接続できます。 
+##  October 17, 2019
 
-##  2019 年 3 月 26 日
+**FEATURE:**
 
-  * Java SDK がバージョン 1.9.73 に更新されました。 
+  * The [ Java 11 runtime ](https://cloud.google.com/appengine/docs/standard/java11/runtime?hl=ja) for the App Engine standard environment is now GA. 
 
-##  2019 年 2 月 13 日
+##  July 30, 2019
 
-  * Java SDK がバージョン 1.9.72 に更新されました。 
-  * Java 7 アプリはビルドできなくなりました。1 月 25 日に Java 7 アプリのデプロイがブロックされました。 
+**DEPRECATED:**
 
-##  2019 年 1 月 25 日
+  * The AppCfg tooling and the legacy standalone App Engine SDK, delivered through the ` GoogleAppEngineLauncher.dmg ` , ` GoogleAppEngine.msi ` , and ` google_appengine.zip ` files, are now deprecated. Google will shut down and remove support on July 30, 2020. 
 
-  * Java 7 ランタイムでのアプリのデプロイがブロックされるようになりました。アプリが現在 Java 7 ランタイムを使用している場合は、自動的に [ Java 8 ランタイム ](https://cloud.google.com/appengine/docs/standard/java/runtime?hl=ja) に移行されます。 
+**FEATURE:**
 
-##  2018 年 12 月 19 日
+  * The functionalities of the App Engine SDK is delivered exclusively through [ Cloud SDK ](https://cloud.google.com/sdk/docs?hl=ja) . For more information, see [ Migrating to Cloud SDK ](https://cloud.google.com/appengine/docs/standard/java/sdk-gcloud-migration?hl=ja) . 
 
-  * Java SDK がバージョン 1.9.71 に更新されました。 
-  * ` com.google.appengine.api.search.Index ` 内の [ ` DeleteSchema ` メソッド ](https://cloud.google.com/appengine/docs/standard/java/javadoc/com/google/appengine/api/search?hl=ja#deleteSchema--) がサポートされるようになりました。インデックスを完全に削除するには、インデックスのドキュメントとスキーマを削除する必要があります。 
+##  June 24, 2019
 
-##  2018 年 12 月 6 日
+**FEATURE:**
 
-  * Java SDK がバージョン 1.9.70 に更新されました。 
-  * Jetty をバージョン 9.4.14.v20181114 に更新しました。 
+  * Updated Java SDK to version 1.9.76. 
 
-##  2018 年 11 月 28 日
+##  June 05, 2019
 
-  * Java SDK がバージョン 1.9.69 に更新されました。 
-  * ASM ライブラリがアップグレードされ、Java 11 バイトコードの処理が改善されます。 
-  * JSP コンパイル クラスパスで ECJ（Eclipse コンパイラ）をバンドルしないようにします。 
+**FEATURE:**
 
-##  2018 年 10 月 25 日
+  * The [ Java 11 runtime ](https://cloud.google.com/appengine/docs/standard/java11/runtime?hl=ja) for the App Engine standard environment is now Beta. 
 
-  * Java SDK がバージョン 1.9.68 に更新されました。 
-  * 細かいバグを修正しました。 
+##  June 03, 2019
 
-##  2018 年 10 月 22 日
+**FEATURE:**
 
-  * App Engine が ` asia-east2 ` リージョン（香港）でご利用いただけるようになりました。 
+  * Updated Java SDK to version 1.9.75. 
 
-##  2018 年 10 月 18 日
+**FEATURE:**
 
-  * Java SDK がバージョン 1.9.67 に更新されました。 
-  * ` AppEngineSession.setAttribute ` で null 値がサポートされるようになり、以前は null ポインタ例外がスローされていた [ バグが修正 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/2283) されます。 
+  * The Google App Engine API jar is now compiled as a Java 8 target. 
 
-##  2018 年 10 月 3 日
+**FIXED:**
 
-  * Java SDK がバージョン 1.9.66 に更新されました。 
-  * Jetty をバージョン 9.4.12.v20180830 に更新しました。 
+  * Fixed performance issue for large batch GETs from Memcache. 
 
-##  2018 年 9 月 19 日
+##  April 30, 2019
 
-**Java ランタイムに関する注意事項**
+**FEATURE:**
 
-  * Java SDK がバージョン 1.9.65 に更新されました。 
-  * 例外が発生すると、 ` enhance_jdos ` が失敗します。 
-  * ` DatastoreType ` によって、常に高レプリケーションが返されます。 
-  * ステージング オプションのデフォルトのヘルプで文法が修正されました。 
-  * LocalMailService javadoc を修正しました。 
-  * ` min-instances ` を ` appengine-web.xml ` で 0 に設定できます。 
-  * Java 11 を使用して Java 8 ランタイムでアプリを開発およびデプロイするためのサポートが改善されました。 
+  * Updated Java SDK to version 1.9.74. 
 
-##  2018 年 8 月 24 日
+##  April 18, 2019
 
-**Cloud Endpoints Frameworks v1 のシャットダウンが近づいています**
+**FEATURE:**
 
-App Engine スタンダード環境用 Cloud Endpoints Frameworks v1 は、2017 年 8 月 2
-日に非推奨になりました。このサービスは 2018 年 9 月 3 日に [ シャットダウンされる予定
-](https://cloud.google.com/appengine/docs/deprecations/endpoints-v1?hl=ja)
-であり、ドキュメントは削除されます。停止を回避するには、v1 アプリケーションを移行する必要があります。Endpoints Frameworks v2
-へのアプリケーションの移行については、次のガイドを参照してください。
+  * App Engine is now available in the ` asia-northeast2 ` region (Osaka, Japan). 
 
-  * [ Java 移行ガイド ](https://cloud.google.com/endpoints/docs/frameworks/java/migrating?hl=ja)
-  * [ Android プロジェクトの移行 ](https://cloud.google.com/endpoints/docs/frameworks/java/migrating-android?hl=ja)
+##  April 15, 2019
 
-##  2018 年 7 月 10 日
+**FEATURE:**
 
-  * App Engine が ` us-west2 ` リージョン（ロサンゼルス）で利用できるようになりました。 
+  * App Engine is now available in the ` europe-west6 ` region (Zürich, Switzerland). 
 
-##  2018 年 7 月 2 日
+##  April 09, 2019
 
-` max-instances ` 設定が使用されたときに App Engine が積極的にインスタンスをシャットダウンしていた [ 自動スケーリング構成
+**FEATURE:**
+
+  * [ Serverless VPC Access ](https://cloud.google.com/appengine/docs/standard/java/connecting-vpc?hl=ja) is now in beta. Serverless VPC Access enables your app to connect to internal resources in your VPC network, such as Compute Engine VM instances, Memorystore instances, and more. 
+
+##  March 26, 2019
+
+**FEATURE:**
+
+  * Updated Java SDK to version 1.9.73. 
+
+##  February 13, 2019
+
+**FEATURE:**
+
+  * Updated Java SDK to version 1.9.72. 
+
+**DEPRECATED:**
+
+  * You can no longer build Java 7 apps. Java 7 app deployment was blocked on January 25. 
+
+##  January 25, 2019
+
+**DEPRECATED:**
+
+  * App deployments on the Java 7 runtime are now blocked. If your app is currently using the Java 7 runtime, it will be automatically migrated to the [ Java 8 runtime ](https://cloud.google.com/appengine/docs/standard/java/runtime?hl=ja) . 
+
+##  January 21, 2019
+
+**FEATURE:**
+
+  * Updated Java SDK to version 1.9.78. 
+
+##  December 28, 2018
+
+**FEATURE:**
+
+  * Updated Java SDK to version 1.9.69. 
+
+**FEATURE:**
+
+  * Upgrade the ASM library to improve handling of Java 11 bytecode. 
+
+**FEATURE:**
+
+  * Stop bundling the ECJ (Eclipse compiler) in the JSP compilation classpath. 
+
+##  December 19, 2018
+
+**FEATURE:**
+
+  * Updated Java SDK to version 1.9.71. 
+
+**FEATURE:**
+
+  * [ ` DeleteSchema ` method ](https://cloud.google.com/appengine/docs/standard/java/javadoc/com/google/appengine/api/search/Index.html?hl=ja#deleteSchema--) in ` com.google.appengine.api.search.Index ` is now supported. To completely delete an index, you need to delete the index's documents and schema. 
+
+##  December 06, 2018
+
+**FEATURE:**
+
+  * Updated Java SDK to version 1.9.70. 
+
+**FEATURE:**
+
+  * Updated Jetty to version 9.4.14.v20181114. 
+
+##  October 25, 2018
+
+**FEATURE:**
+
+  * Updated Java SDK to version 1.9.68. 
+
+**FIXED:**
+
+  * Minor bug fixes. 
+
+##  October 22, 2018
+
+**FEATURE:**
+
+  * App Engine is now available in the ` asia-east2 ` region (Hong Kong). 
+
+##  October 18, 2018
+
+**FEATURE:**
+
+  * Updated Java SDK to version 1.9.67. 
+
+**FIXED:**
+
+  * ` AppEngineSession.setAttribute ` supports null values, [ fixing a bug ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/2283) that would previously throw null pointer exceptions. 
+
+##  October 03, 2018
+
+**FEATURE:**
+
+  * Updated Java SDK to version 1.9.66. 
+
+**FEATURE:**
+
+  * Updated Jetty to version 9.4.12.v20180830. 
+
+##  September 19, 2018
+
+**FEATURE:**
+
+**Java runtime notes**
+
+**FEATURE:**
+
+  * Updated Java SDK to version 1.9.65. 
+
+**FEATURE:**
+
+  * ` enhance_jdos ` will fail if it raises an exception. 
+
+**FEATURE:**
+
+  * ` DatastoreType ` always returns high replication. 
+
+**FIXED:**
+
+  * Fixed grammar in staging option defaults help. 
+
+**FIXED:**
+
+  * Fixed LocalMailService javadoc. 
+
+**FEATURE:**
+
+  * ` min-instances ` can be set to 0 in ` appengine-web.xml ` . 
+
+**FEATURE:**
+
+  * Improved support for using Java 11 to develop and deploy apps on the Java 8 runtime. 
+
+##  August 24, 2018
+
+**DEPRECATED:**
+
+**Shutdown of Cloud Endpoints Frameworks v1 is approaching**
+
+Cloud Endpoints Frameworks v1 for the App Engine standard environment was
+deprecated on August 2, 2017. The [ service is scheduled to be shutdown
+](https://cloud.google.com/appengine/docs/deprecations/endpoints-v1?hl=ja) on
+September 3, 2018, and the documentation will be removed. To avoid an outage,
+you must migrate your v1 application. For information on migrating your
+application to Endpoints Frameworks v2, see the following:
+
+  * [ Java Migration Guide ](https://cloud.google.com/endpoints/docs/frameworks/java/migrating?hl=ja)
+  * [ Migrating Android Projects ](https://cloud.google.com/endpoints/docs/frameworks/java/migrating-android?hl=ja)
+
+##  July 10, 2018
+
+**FEATURE:**
+
+  * App Engine is now available in the ` us-west2 ` region (Los Angeles). 
+
+##  July 02, 2018
+
+**FIXED:**
+
+Fixed a bug in [ auto scaling configuration
 ](https://cloud.google.com/appengine/docs/standard/java/config/appref?hl=ja#scaling_elements)
-におけるバグを修正しました。
+where App Engine was aggressively shutting down instances when the ` max-
+instances ` setting was used.
 
-##  2018 年 5 月 31 日
+##  May 31, 2018
 
-**Java ランタイムに関する注意事項**
+**FEATURE:**
 
-  * Java SDK がバージョン 1.9.64 に更新されました。 
-  * [ Java ランタイムで ` <min-instances>0</min-instances> ` がサポートされていない ](https://issuetracker.google.com/80273043?hl=ja) 問題が修正されます。 
-  * \--application フラグが ` dev_appserver.py ` に追加されます。 
-  * 改行を含むファイル名でのデプロイが防止されます。 
-  * ` appengine-web.xml ` ファイルに設定されている環境変数がステージング プロセスに渡されず、アプリで使用できない問題が修正されます。 
+**Java runtime notes**
 
-##  2018 年 5 月 15 日
+**FEATURE:**
 
-  * 自動スケーリング システムへのアップグレードの段階的ロールアウトが完了しました。 
-    * 効率性が向上することで、全般的にインスタンス費用が削減され（多くのユーザーで最大 6% の削減）、新しいインスタンスへの最初のリクエストである __ 読み込みリクエストが最大 30% 削減されます。 
-    * 新しい最大インスタンス数の設定により、スケジュールするインスタンス総数の上限を設定できるようになりました。 
-    * 新しい最小インスタンス数の設定により、各アプリで実行し続けるインスタンスの最小数を指定できるようになりました。 
-    * 新しいターゲット CPU 使用率設定により、レイテンシとコストのバランスを最適化できるようになりました。 
-    * 新しいターゲット スループット使用率の設定により、新しいインスタンスの起動時の同時リクエスト数を最適化できるようになりました。 
-    * 自動スケーリングの常駐インスタンスが廃止されました。以前は、 ` min_idle_instances ` 設定を使用すると、Cloud Console で最小アイドル状態のインスタンスが [常駐] __ としてラベル付けされ、残りのインスタンスは [ダイナミック] __ としてラベル付けされていました。新しいスケジューラでは、自動スケーリングによりすべてのインスタンスは [ダイナミック] としてラベル付けされます。 __ ただし、基本的な動作は以前の動作と同様です。 ` min_idle_instances ` を使用してウォームアップ リクエストを有効にすると、トラフィックが発生していない期間でも、少なくともその数の動的インスタンスが実行されていることがわかります。 
-    * 詳細については、 [ 自動スケーリングのドキュメント ](https://cloud.google.com/appengine/docs/standard/java/config/appref?hl=ja#scaling_elements) をご覧ください。 
+  * Updated Java SDK to version 1.9.64. 
 
-##  2018 年 2 月 27 日
+**FIXED:**
 
-**Java ランタイムに関する注意事項**
+  * Fixes issues where the [ Java runtime does not support ` <min-instances>0</min-instances> ` ](https://issuetracker.google.com/80273043?hl=ja) . 
 
-  * Java SDK がバージョン 1.9.63 に更新されました。 
+**FEATURE:**
 
-##  2018 年 2 月 7 日
+  * Adds --application flag to ` dev_appserver.py ` . 
 
-**Java ランタイムに関する注意事項**
+**FEATURE:**
 
-  * Java SDK がバージョン 1.9.62 に更新されました。 
-  * デプロイ時に Java 8 Servlet 3.1 のクイックスタート処理が失敗していた [ Cloud SDK の問題 ](https://issuetracker.google.com/issues/72808542?hl=ja) を修正しました。 
+  * Prevent deployment with filenames containing carriage returns. 
 
-##  2018 年 1 月 22 日
+**FIXED:**
 
-**Java ランタイムに関する注意事項**
+  * Fixes a problem where environment variables set in the ` appengine-web.xml ` file were not passed through the staging process and available to the app. 
 
-  * Java SDK バージョン 1.9.61 のパッチが公開されました。以前にこのバージョンをインストールしていた場合は、SDK を [ ダウンロード ](https://cloud.google.com/appengine/docs/standard/java/download?hl=ja) して再インストールしてください。 
+##  May 15, 2018
 
-##  2018 年 1 月 18 日
+**FEATURE:**
 
-**Java ランタイムに関する注意事項**
+  * Completed a gradual rollout of an upgrade to the automatic scaling system: 
+    * Improved efficiency resulting generally in lower instance cost (up to 6% reduction for many users) and up to 30% reduction for _loading requests_ , which are the first request to a new instance. 
+    * New max instances setting allows you to cap the total number of instances to be scheduled. 
+    * New min instances setting allows you to specify a minimum number of instance to keep running for your app. 
+    * New target CPU utilization setting lets you optimize between latency and cost. 
+    * New target throughput utilization setting lets you optimize for the number of concurrent requests at which new instances are started. 
+    * No more resident instances in auto scaling. Previously, if you used the ` min_idle_instances ` setting, the minimum idle instances were labelled as _Resident_ in the Cloud Console, with the remainder of the instances labelled as _Dynamic_ . The new scheduler simply labels all instances as _Dynamic_ with auto scaling. However, the underlying behavior remains similar to previous behavior. If you use ` min_idle_instances ` and enable warmup requests, you will see at least that many dynamic instances running even during periods with no traffic. 
+    * For more details, see the [ auto scaling documentation ](https://cloud.google.com/appengine/docs/standard/java/config/appref?hl=ja#scaling_elements) . 
 
-  * Java SDK がバージョン 1.9.61 に更新されました。 
+##  February 27, 2018
 
-##  2017 年 12 月 20 日
+**FEATURE:**
 
-**Java ランタイムに関する注意事項**
+**Java runtime notes**
 
-  * Java SDK がバージョン 1.9.60 に更新されました。 
-  * Java 7 アプリケーションのデプロイ時またはローカル実行時に非推奨警告を追加しました。 
-  * appcfg のフラグ use_google_application_default_credentials を使用したときに Google Compute Engine VM で正しく動作しなかったバグを修正しました。 
-  * ` appcfg ` コマンドに ` enable_new_staging_defaults ` という新しいフラグを追加しました。これは、Java アプリケーションのデプロイフラグでより適切なデフォルト値を指定できるようにして、将来の Cloud SDK 統合に備えるためのフラグです。 
-  * ランタイムが Java 8 の場合に、ローカル開発サーバーでデフォルトの文字エンコードを ` UTF-8 ` に変更しました。また、 ` appengine.file.encoding ` システム プロパティを使用して、文字エンコードを明示的に設定できるようになります。これらの変更によって、本番環境で起こることを模倣できます。 
-  * [ Windows 上で実行されている開発サーバーのフィルタが一部のサーブレット URL を解析できない ](https://issuetracker.google.com/63595917?hl=ja) という問題を修正しました。 
+  * Updated Java SDK to version 1.9.63. 
 
-##  2017 年 12 月 14 日
+##  February 07, 2018
 
-  * IAM の役割とサービス アカウントを使用したアプリのデプロイに関するアクセス制御のドキュメントで、次の項目を改善しました。 
+**FEATURE:**
 
-    * [ App Engine の事前定義された役割 ](https://cloud.google.com/appengine/docs/standard/java/access-control?hl=ja#predefined_app_engine_roles)
-    * [ IAM の役割を使用したデプロイ ](https://cloud.google.com/appengine/docs/standard/java/granting-project-access?hl=ja#deploying_using_iam_roles)
-    * [ 権限の要求 ](https://cloud.google.com/appengine/docs/admin-api/access-control?hl=ja#required_permissions)
+**Java runtime notes**
 
-**Java ランタイムに関する注意事項**
+**FEATURE:**
 
-  * Java SDK がバージョン 1.9.59 に更新されました。 
-  * ローカル開発サーバーを更新して、 ` url-stream-handler ` 構成パラメータがデフォルトで ` native ` に設定されるようになりました。この変更は、本番環境での Java 8 ランタイムの動作を反映しています。 ` url-stream-handler ` の詳細については、 [ ` appengine-web.xml ` ](https://cloud.google.com/appengine/docs/standard/java/config/appref?hl=ja#url-stream-handler) のリファレンスをご覧ください。 
-  * ローカル開発サーバーで Java 8 ランタイムと Endpoints Framework Gradle Plugin を使用している場合に発生する [ ` NoClassDefFoundError ` ](https://github.com/GoogleCloudPlatform/endpoints-framework-gradle-plugin/issues/53) エラーを修正しました。 
-  * コロン文字が含まれているサーブレット URL での問題を解決するように、 [ ローカル開発サーバーのバグ ](https://issuetracker.google.com/63595917?hl=ja) を修正しました。 
+  * Updated Java SDK to version 1.9.62. 
 
-##  2017 年 10 月 31 日
+**FIXED:**
 
-  * App Engine が、 ` asia-south1 ` リージョン（インドのムンバイ）で使用できるようになりました。 
+  * Fixed a [ Cloud SDK issue ](https://issuetracker.google.com/issues/72808542?hl=ja) where the Java 8 Servlet 3.1 quickstart processing failed during deployment. 
 
-##  2017 年 10 月 11 日
+##  January 22, 2018
 
-  * [ App Engine ファイアウォール ](https://cloud.google.com/appengine/docs/standard/java/creating-firewalls?hl=ja) の一般提供を発表しました。 
+**FEATURE:**
 
-**Java ランタイムに関する注意事項**
+**Java runtime notes**
 
-  * Java SDK がバージョン 1.9.58 に更新されました。 
-  * App Engine フレキシブル環境でのアノテーションの [ Jetty クイックスタート モジュール ](https://webtide.com/jetty-9-quick-start/) を修正しました。 
-  * 特定の文字によって URL 解析で問題が発生していた、 [ ローカル開発サーバーのバグ ](https://issuetracker.google.com/63595917?hl=ja) を修正しました。 
-  * JDK 9 を使用している場合は、Jetty 9 JSP コンパイラで 1.8 ターゲットを使用します。 
+  * Java SDK version 1.9.61 was patched. If you have previously installed this version, [ download ](https://cloud.google.com/appengine/docs/standard/java/download?hl=ja) and reinstall the SDK. 
 
-##  2017 年 9 月 25 日
+##  January 18, 2018
 
-**Java ランタイムに関する注意事項**
+**FEATURE:**
 
-  * [ Java 8 ランタイムが一般提供されるようになりました ](https://cloudplatform.googleblog.com/2017/09/Java-8-on-App-Engine-Standard-environment-is-now-generally-available.html) 。 
-  * Java SDK がバージョン 1.9.57 に更新されました。 
-  * ローカル開発サーバーで、パスでの ` -Xbootclasspath/p ` と ` google_sql.jar ` がサポートされなくなります。 
-  * Java 8 ランタイムで、 ` module-info.class ` が含まれている JDK9 JAR がサポートされなくなりました。 
-  * Cloud Endpoints v1 が Java 8 ランタイムでサポートされなくなりました。 
-  * Java 8 ランタイムで Cloud Endpoints v2 を使用している場合、ローカル開発サーバーでの ` NoClassDefFoundError ` 例外が修正されました。 
+**Java runtime notes**
 
-##  2017 年 9 月 18 日
+  * Updated Java SDK to version 1.9.61. 
 
-**Java ランタイムに関する注意事項**
+##  December 20, 2017
 
-  * ` com.google.cloud.tools:appengine-gradle-plugin ` のリリース 1.3.3 
-  * ローカル開発サーバーはログを ` dev_appserver.out ` に出力するようになりました。（ [ #156 ](https://github.com/GoogleCloudPlatform/app-gradle-plugin/pull/156) ） 
-  * クリーンでない再ビルドで ` datastore-indexes-auto.xml ` が削除されなくなりました。（ [ #165 ](https://github.com/GoogleCloudPlatform/app-gradle-plugin/issues/165) ） 
-  * explodeWar タスクで copy ではなく sync を使用するように切り替えました。（ [ #162 ](https://github.com/GoogleCloudPlatform/app-gradle-plugin/pull/162) ） 
+**FEATURE:**
 
-##  2017 年 9 月 13 日
+**Java runtime notes**
 
-  * マネージド証明書を使用して、カスタム ドメインに SSL を追加できるようになりました。アプリケーションにカスタム ドメインをマッピングすると、App Engine によって SSL 証明書が自動的にプロビジョニングされ、証明書の期限が切れる前に更新処理が行われます。また、カスタム ドメインを削除すると、証明書が取り消されます。マネージド証明書はベータ版です。詳細については、 [ SSL によるカスタム ドメインの保護 ](https://cloud.google.com/appengine/docs/standard/java/securing-custom-domains-with-ssl?hl=ja) をご覧ください。 
+**FEATURE:**
 
-  * 既存のドメイン マッピングと SSL 証明書がある場合、変わることなく想定どおりに機能します。 [ マネージド SSL 証明書にアップグレード ](https://cloud.google.com/appengine/docs/standard/java/securing-custom-domains-with-ssl?hl=ja#updating_to_managed_ssl_certificates) することもできます。 
+  * Updated Java SDK to version 1.9.60. 
 
-  * [ カスタム ドメインのマッピング ](https://cloud.google.com/appengine/docs/standard/java/mapping-custom-domains?hl=ja) に使用する ` gcloud ` コマンドと Admin API メソッドが一般提供されるようになりました。対象のレポートには、 [ ` gcloud domains verify ` ](https://cloud.google.com/sdk/gcloud/reference/domains?hl=ja) および [ ` apps.authorizedDomains.list ` ](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.authorizedDomains/list?hl=ja) が含まれます。ただし、マネージド SSL 証明書を使用する場合は、 [ SSL によるカスタム ドメインの保護 ](https://cloud.google.com/appengine/docs/standard/java/securing-custom-domains-with-ssl?hl=ja) で指定されているベータ版のコマンドとメソッドを使用してください。 
+**FEATURE:**
 
-##  2017 年 9 月 11 日
+  * Added a deprecation warning when deploying or locally running a Java 7 application. 
 
-**Java ランタイムに関する注意事項**
+**FIXED:**
 
-  * Java SDK がバージョン 1.9.56 に更新されました。 
+  * Fixed a bug when using the appcfg flag 'use_google_application_default_credentials' did not work correctly on Google Compute Engine VMs. 
 
-  * App Engine スタンダード環境 API と互換性を持つフレキシブル ランタイム（ ` compat ` ランタイム）の場合、この SDK バージョンには ` appengine-web.xml ` ファイル構成への更新が含まれており、 ` subnetwork_name ` 、 ` session_affinity ` 、および更新された実行状況および準備状況のヘルスチェックに関するサポートが追加されています。 
+**FEATURE:**
 
-  * Google App Engine SDK での環境変数 ` GAE_RUNTIME ` （ ` java 7 ` または ` java 8 ` ）および GAE_ENV（ ` standard ` ）に対するサポートが追加されました。 
+  * Added a new flag to the ` appcfg ` command called ` enable_new_staging_defaults ` to prepare for future Cloud SDK integration to provide better default values for Java application deployment flags. 
 
-##  2017 年 9 月 5 日
+**FEATURE:**
 
-  * App Engine が ` southamerica-east1 ` リージョン（ブラジルのサンパウロ）で使用できるようになりました。 
+  * Changed the default character encoding to ` UTF-8 ` in the local development server when the runtime is Java 8. Also, allow the character encoding to be set explicitly using the ` appengine.file.encoding ` system property. These changes mimic what happens in production. 
 
-  * Java SDK がバージョン 1.9.55 に更新されました。 
+**FIXED:**
 
-  * アプリが Java 8 / Jetty 9 を使用していても、SDK に対してセキュリティ マネージャーが使用されていたバグを修正しました。 
+  * Fixed issue where the [ Development server filter running on Windows fails to parse some servlet URL ](https://issuetracker.google.com/63595917?hl=ja) . 
 
-  * Java 8 で [ appstats ](https://cloud.google.com/appengine/docs/standard/java/tools/appstats?hl=ja) フィルタを使用すると、エラー メッセージが出力されます。 
+##  December 14, 2017
 
-  * [ 問題 63123716: Google Java HTTP クライアントを使用した URL 取得が開発サーバーで機能しない ](https://issuetracker.google.com/issues/63123716?hl=ja) を修正しました。 
+**FEATURE:**
 
-##  2017 年 8 月 1 日
+  * Improved access control documentation around deploying apps with IAM roles and service accounts: 
 
-  * App Engine が ` europe-west3 ` リージョン（ドイツのフランクフルト）で使用できるようになりました。 
+    * [ Predefined App Engine roles ](https://cloud.google.com/appengine/docs/standard/java/access-control?hl=ja#predefined_app_engine_roles)
+    * [ Deploying using IAM roles ](https://cloud.google.com/appengine/docs/standard/java/granting-project-access?hl=ja#deploying_using_iam_roles)
+    * [ Require permissions ](https://cloud.google.com/appengine/docs/admin-api/access-control?hl=ja#required_permissions)
 
-##  2017 年 7 月 18 日
+**FEATURE:**
 
-  * App Engine が、 ` australia-southeast1 ` リージョン（オーストラリアのシドニー）で使用できるようになりました。 
+**Java runtime notes**
 
-##  2017 年 6 月 28 日
+**FEATURE:**
 
-**新機能**
+  * Updated Java SDK to version 1.9.59. 
 
-  * [ App Engine スタンダード環境用の Java 8 ランタイム ](https://cloud.google.com/appengine/docs/standard/java/runtime-java8?hl=ja) はベータ版です。 
-  * ` <runtime>java8</runtime> ` が ` appengine-web.xml ` ファイルに追加されます。 
-  * OpenJDK 8、Servlet 3.1、Jetty 9.3 に基づいています。 
-  * App Engine 上の Java 7 および組み込み App Engine API との機能互換性があります。 
-  * [ Java 用 Google Cloud クライアント ライブラリ ](https://googleapis.github.io/google-cloud-java/google-cloud-clients/) からアクセス可能な Google Cloud ベースの API をすべてサポートします。 
-  * 公開 Java 8 API がすべて使用可能であり、 [ クラスのホワイトリスト ](https://cloud.google.com/appengine/docs/standard/java/jrewhitelist?hl=ja) が削除されました。 
-  * [ Java セキュリティ マネージャー ](https://docs.oracle.com/javase/7/docs/api/java/lang/SecurityManager.html) が、Java 8 ランタイムで削除されました。 
-  * 読み取り専用の [ GCP メタデータ サーバー ](https://cloud.google.com/compute/docs/storing-retrieving-metadata?hl=ja) プロジェクトとサービス アカウントの値をサポートしています。 
-  * Java SDK 1.9.54 では Java 8 ランタイムがサポートされています。 
+**FEATURE:**
 
-**Java 8 ランタイムの既知の制限事項**
+  * Updated the local development server to set the ` url-stream-handler ` configuration parameter to ` native ` by default. This change reflects the behavior of the Java 8 runtime in production. For more information on ` url-stream-handler ` , see the [ ` appengine-web.xml ` ](https://cloud.google.com/appengine/docs/standard/java/config/appref?hl=ja#url-stream-handler) reference. 
 
-  * ` /tmp ` ディレクトリは書き込み可能です。 ` /tmp ` 内のファイルは、インスタンスに割り当てられているメモリを消費します。 
-  * Async Servlet 3.1 はサポートされていません。 
-  * WebSocket はサポートされていません。 
-  * Jetty 9 の構成は変更できません。 
-  * App Engine API は、ウェブ リクエストを処理するスレッド、または [ ThreadManager ](https://cloud.google.com/appengine/docs/standard/java/javadoc/com/google/appengine/api/ThreadManager?hl=ja) を使用して作成されたスレッドからのみ呼び出すことができます。 
-  * ` WEB-INF/appengine-web.xml ` を構成に使用する必要があります。現在、 ` app.yaml ` はサポートされていません。 
-  * デプロイには、Maven、Gradle、または IDE のプラグインを使用する必要があります。 
-  * たとえば、 ` ExecutorService pool = Executors.newCachedThreadPool(ThreadManager.currentRequestThreadFactory()) ` などを使用してスレッドプールを作成し、現在のリクエストが終了する前に ` pool.shutdown() ` を使用してそれを明示的にシャットダウンする必要があるとします。 
-  * 以前は、単に ` org.joda.Instant ` が意図されていた場合に、 ` com.google.appengine.repackaged.org.joda.Instant ` のようなサードパーティのクラスを不注意で参照する可能性がありました。vendoring スキームが変更されたため、そのようなコードは動作しなくなりました。 
-  * ネイティブ ネットワーク API（ ` HttpURLConnection ` など）を課金アプリケーションに対して有効化できます。ただし、無料のアプリケーションで使用すると例外（ ` java.net.SocketTimeoutException ` または ` java.io.IOException ` ）が返されます。無料のアプリケーションは ` *.googleapis.com ` と ` accounts.google.com ` にアクセスでき、URLFetch サービスを使用するように [ 構成する ](https://cloud.google.com/appengine/docs/standard/java/config/appref?hl=ja#url-stream-handler) こともできます。 
-  * ` executor ` では ` google-cloud-java ` API をラップする必要があります。 [ Pub/Sub パブリッシャーが Executor 経由で送信されない場合にハングする ](https://github.com/googleapis/google-cloud-java/issues/2150) をご覧ください。 
-  * Cloud Endpoints は v1 から v2 に [ 移行 ](https://cloud.google.com/endpoints/docs/frameworks/legacy/v1/java/migrating?hl=ja) する必要があります。 
-  * Channels API および XMPP API はサポートされていません。 
-  * ` appengine-labs-api.jar ` API はサポートされていないため、 [ Java 用 Appstats ](https://cloud.google.com/appengine/docs/standard/java/tools/appstats?hl=ja) はサポートされません。 
-  * Java 7 ランタイムの場合と同様に、Java 8 ランタイムのデフォルトでは、URL 取得トランスポートではなく、ネイティブ Java HTTP(S) トランスポートが使用されます。詳細については、 [ url-stream-handler ](https://cloud.google.com/appengine/docs/standard/java/config/appref?hl=ja#url-stream-handler) をご覧ください。 
+**FIXED:**
 
-##  2017 年 6 月 15 日
+  * Fixed the [ ` NoClassDefFoundError ` ](https://github.com/GoogleCloudPlatform/endpoints-framework-gradle-plugin/issues/53) error that occurs when using the local development server with the Java 8 runtime and Endpoints Framework Gradle Plugin. 
 
-  * Java SDK がバージョン 1.9.54 に更新されました。 
+**FIXED:**
 
-##  2017 年 6 月 6 日
+  * Fixed a [ local development server bug ](https://issuetracker.google.com/63595917?hl=ja) to resolve issues with servlet URLs that contain the colon character. 
 
-  * App Engine が ` europe-west2 ` リージョン（ロンドン）で使用できるようになりました。 
-  * Admin API と ` gcloud ` コマンドライン ツールのベータ版レベルの機能を使用して、 [ カスタム ドメインと SSL 証明書の作成と管理 ](https://cloud.google.com/appengine/docs/standard/java/mapping-custom-domains?hl=ja) ができるようになりました。 
+##  October 31, 2017
 
-##  2017 年 5 月 9 日
+**FEATURE:**
 
-  * App Engine が ` us-east4 ` リージョン（北バージニア）で使用できるようになりました。 
-  * Java SDK がバージョン 1.9.53 に更新されました。 
-  * JSP タグライブラリの使用量が Java 8 SpringBoot アプリケーションで機能しなかった Java SDK の問題を修正しました。 
+  * App Engine is now available in the ` asia-south1 ` region (Mumbai, India). 
 
-##  2017 年 5 月 8 日
+##  October 11, 2017
 
-  * ` com.google.cloud.tools:appengine-(gradle/maven)-plugin ` のリリース 1.3.1 
-  * 開発サーバー上でローカルに実行すると、 ` appengine-web.xml ` 構成ファイルから環境変数が読み込まれ、インクルードされるようになりました。 
-  * Maven / Gradle の構成ファイルを使用して追加の環境変数をインクルードするための ` environment ` パラメータを公開しました。 
+**FEATURE:**
 
-##  2017 年 5 月 2 日
+  * Announced general availability of [ App Engine firewall ](https://cloud.google.com/appengine/docs/standard/java/creating-firewalls?hl=ja) . 
 
-  * ` com.google.cloud.tools.appengine-(gradle/maven)-plugin ` のリリース 1.3.0 
-  * デフォルトの開発サーバーは Dev App Server v1（Java モジュールのみ） 
-  * 構成デプロイのための新しい Gradle タスク: ` appengineDeployCron ` 、 ` appengineDeployDispatch ` 、 ` appengineDeployDos ` 、 ` appengineDeployIndex ` 、 ` appengineDeployQueue `
-  * 構成デプロイのための新しい Maven ゴール: ` appengine:deployCron ` 、 ` appengine:deployDispatch ` 、 ` appengine:deployDos ` 、 ` appengine:deployIndex ` 、 ` appengine:deployQueue `
-  * Maven/Gradle によるフレキシブル アプリのステージングでは、 ` app.yaml ` のみがビルド / ターゲット ディレクトリにコピーされます。構成ファイルのデプロイには ` src/main/appengine ` を使用します。 
-  * Gradle の exploded アプリのデフォルト ディレクトリが ` build/exploded-app ` から ` build/exploded-<module-name> ` に変更されました。 
+**FEATURE:**
 
-##  2017 年 4 月 19 日
+**Java runtime notes**
 
-  * Java SDK がバージョン 1.9.52 に更新されました。 
-  * Java 8 スタンダード環境のアルファ版ランタイムのサポートを改善しました。 
-  * [ Java 8 ](https://docs.google.com/a/google.com/forms/d/1MDzykTWp77YzRgFs5R6ONOuKWYnKEhfy5VhSJYbDvmo/viewform?hl=ja) アルファ版スタンダード環境のランタイムで Jetty 9.3.18 にアップグレードしました。 
-  * 最新の Jetty 機能を使用して Java 8 SpringBoot アプリケーションがより適切にサポートされるように、 ` quickstart-web.xml ` 処理が更新されます。 
-  * 同じ名前で終わるディレクトリ名に置かれている複数のサービスのローカル実行を修正しました。 
-  * SpringBoot アプリケーションの起動時に発生していた SDK エラーを修正しました。 
+**FEATURE:**
 
-##  2017 年 3 月 29 日
+  * Updated Java SDK to version 1.9.58 
 
-  * Java SDK がバージョン 1.9.51 に更新されました。 
+**FIXED:**
 
-  * ` web.xml ` ファイルが含まれていない [ Java 8 アルファ版 ](https://docs.google.com/a/google.com/forms/d/1MDzykTWp77YzRgFs5R6ONOuKWYnKEhfy5VhSJYbDvmo/viewform?hl=ja) アプリケーションを [ ローカル開発サーバー ](https://cloud.google.com/appengine/docs/standard/java/tools/using-local-server?hl=ja) で実行できるようになりました。 
+  * Fix the [ Jetty quickstart module for annotations ](https://webtide.com/jetty-9-quick-start/) in the App Engine flexible environment. 
 
-##  2017 年 3 月 21 日
+**FIXED:**
 
-  * ` com.google.cloud.tools:appengine-gradle-plugin ` が 1.1.1 に更新されました。 
-  * マルチ モジュールの Gradle プロジェクトでフレキシブル環境のデプロイが失敗していた [ 問題 108 ](https://github.com/GoogleCloudPlatform/app-gradle-plugin/issues/108) を修正しました。 
+  * Fixed [ local development server bug ](https://issuetracker.google.com/63595917?hl=ja) where certain characters caused problems with URL parsing. 
 
-##  2017 年 3 月 6 日
+**FEATURE:**
 
-  * ` com.google.cloud.tools:appengine-maven-plugin ` が 1.2.1 に更新されました。 
-  * カスタム デプロイ可能なパラメータが余分なディレクトリに誤って追加されていた [ 問題 144 ](https://github.com/GoogleCloudPlatform/app-maven-plugin/issues/144) を修正しました。 
+  * Use 1.8 target for the Jetty 9 JSP compiler when using JDK 9. 
 
-##  2017 年 3 月 1 日
+##  September 25, 2017
 
-  * Java SDK がバージョン 1.9.50 に更新されました。 
+**FEATURE:**
 
-  * ローカル開発サーバーで複数のサービスをテストするためのサポートが追加されました。 
+**Java runtime notes**
 
-  * Java 7 ランタイムを使用していて、サーブレット 3.1 スキーマを指定している ` web.xml ` をインクルードしているアプリに対して web.xml ファイルを生成しなくなりました。 
+**FEATURE:**
 
-  * アプリケーションに JSP がない場合でも、Java クラスファイルを .zip ファイルにパッケージ化するようになりました。 
+  * [ The Java 8 runtime is now generally available ](https://cloudplatform.googleblog.com/2017/09/Java-8-on-App-Engine-Standard-environment-is-now-generally-available.html) . 
 
-##  2017 年 2 月 17 日
+**FEATURE:**
 
-App Engine 用の ` com.google.cloud.tools ` [ Maven
+  * Updated Java SDK to version 1.9.57 
+
+**DEPRECATED:**
+
+  * The local development server no longer supports ` -Xbootclasspath/p ` and ` google_sql.jar ` in the path. 
+
+**DEPRECATED:**
+
+  * The Java 8 runtime no longer supports JDK9 JARs that contain ` module-info.class ` . 
+
+**DEPRECATED:**
+
+  * Cloud Endpoints v1 is no longer supported on the Java 8 runtime. 
+
+**FIXED:**
+
+  * Fixed ` NoClassDefFoundError ` exception on the local development server when using Cloud Endpoints v2 on the Java 8 runtime. 
+
+##  September 18, 2017
+
+**FEATURE:**
+
+**Java runtime notes**
+
+**FEATURE:**
+
+  * Release 1.3.3 for ` com.google.cloud.tools:appengine-gradle-plugin `
+
+**FEATURE:**
+
+  * The local development server now logs output to ` dev_appserver.out ` . ( [ #156 ](https://github.com/GoogleCloudPlatform/app-gradle-plugin/pull/156) ) 
+
+**FEATURE:**
+
+  * ` datastore-indexes-auto.xml ` is no longer removed during non-clean rebuilds. ( [ #165 ](https://github.com/GoogleCloudPlatform/app-gradle-plugin/issues/165) ) 
+
+**FEATURE:**
+
+  * Switched to use sync instead of copy on the explodeWar task. ( [ #162 ](https://github.com/GoogleCloudPlatform/app-gradle-plugin/pull/162) ) 
+
+##  September 13, 2017
+
+**FEATURE:**
+
+  * You can now use managed certificates to add SSL to your custom domain. Once you map your custom domain to your application, App Engine provisions an SSL certificate automatically and handles renewing the certificate before it expires and revoking it if you remove the custom domain. Managed certificates are in beta. For more information, see [ Securing Custom Domains with SSL ](https://cloud.google.com/appengine/docs/standard/java/securing-custom-domains-with-ssl?hl=ja) . 
+
+**FEATURE:**
+
+  * If you have an existing domain mapping and SSL certificate, then it continues to function as expected. You can also [ upgrade to managed SSL certificates ](https://cloud.google.com/appengine/docs/standard/java/securing-custom-domains-with-ssl?hl=ja#updating_to_managed_ssl_certificates) . 
+
+**FEATURE:**
+
+  * The ` gcloud ` commands and Admin API methods used to [ map custom domains ](https://cloud.google.com/appengine/docs/standard/java/mapping-custom-domains?hl=ja) are now generally available. This includes [ ` gcloud domains verify ` ](https://cloud.google.com/sdk/gcloud/reference/domains/?hl=ja) and [ ` apps.authorizedDomains.list ` ](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.authorizedDomains/list?hl=ja) . However, if you want to use managed SSL certificates, use the beta commands and methods that are specified in [ Securing Custom Domains with SSL ](https://cloud.google.com/appengine/docs/standard/java/securing-custom-domains-with-ssl?hl=ja) . 
+
+##  September 11, 2017
+
+**FEATURE:**
+
+**Java runtime notes**
+
+**FEATURE:**
+
+  * Updated Java SDK to version 1.9.56 
+
+**FEATURE:**
+
+  * For flexible runtimes compatible with the App Engine standard environment APIs ( ` compat ` runtimes), this SDK version includes updates to the ` appengine-web.xml ` file configuration to add support for ` subnetwork_name ` , ` session_affinity ` , and updated liveness and readiness health checks. 
+
+**FEATURE:**
+
+  * Added support for the environment variables ` GAE_RUNTIME ` ( ` java 7 ` or ` java 8 ` ) and GAE_ENV ( ` standard ` ) in the Google App Engine SDK. 
+
+##  September 05, 2017
+
+**FEATURE:**
+
+  * App Engine is now available in the ` southamerica-east1 ` region (São Paulo, Brazil). 
+
+**FEATURE:**
+
+  * Updated Java SDK to version 1.9.55 
+
+**FIXED:**
+
+  * Fixed bug where security manager was being used for the SDK even when the app was using Java 8/Jetty 9. 
+
+**FEATURE:**
+
+  * Emit error message when using the [ appstats ](https://cloud.google.com/appengine/docs/standard/java/tools/appstats?hl=ja) filter with Java8. 
+
+**FIXED:**
+
+  * Fixed [ Issue 63123716: Url fetching with Google Java HTTP Client not working on dev-server ](https://issuetracker.google.com/issues/63123716?hl=ja)
+
+##  August 01, 2017
+
+**FEATURE:**
+
+  * App Engine is now available in the ` europe-west3 ` region (Frankfurt, Germany). 
+
+##  July 18, 2017
+
+**FEATURE:**
+
+  * App Engine is now available in the ` australia-southeast1 ` region (Sydney, Australia). 
+
+##  June 28, 2017
+
+**FEATURE:**
+
+**What's New**
+
+  * [ Java 8 runtime for App Engine standard environment ](https://cloud.google.com/appengine/docs/standard/java/runtime-java8?hl=ja) is in Beta. 
+  * Just add ` <runtime>java8</runtime> ` in the ` appengine-web.xml ` file. 
+  * Based on OpenJDK 8, Servlet 3.1 and Jetty 9.3. 
+  * Feature compatibility with Java 7 on App Engine and the built-in App Engine APIs. 
+  * Supports all Google Cloud-based APIs accessible from the [ Google Cloud Client Library for Java ](https://googleapis.github.io/google-cloud-java/google-cloud-clients/) . 
+  * All public Java 8 APIs are available, [ class whitelisting ](https://cloud.google.com/appengine/docs/standard/java/jrewhitelist?hl=ja) has been removed. 
+  * The [ Java security manager ](https://docs.oracle.com/javase/7/docs/api/java/lang/SecurityManager.html) is removed for the Java 8 runtime. 
+  * Support for read only [ GCP Metadata server ](https://cloud.google.com/compute/docs/storing-retrieving-metadata?hl=ja) project and service accounts values. 
+  * Java SDK 1.9.54 supports the Java 8 runtime. 
+
+**BREAKING:**
+
+**Known Java 8 Runtime Limitations**
+
+  * The ` /tmp ` directory is writable. Files in ` /tmp ` will consume memory allocated to your instance. 
+  * Async Servlet 3.1 is not supported. 
+  * WebSocket is not supported. 
+  * The Jetty 9 configuration cannot be modified. 
+  * App Engine APIs can only be called from the thread that handles a web request or from threads created using [ ThreadManager ](https://cloud.google.com/appengine/docs/standard/java/javadoc/com/google/appengine/api/ThreadManager?hl=ja)
+  * ` WEB-INF/appengine-web.xml ` must be used for configuration, ` app.yaml ` is not currently supported. 
+  * Deployment must be done through the Maven, Gradle, or IDE plugins. 
+  * If you create a thread pool using for example ` ExecutorService pool = Executors.newCachedThreadPool(ThreadManager.currentRequestThreadFactory()) ` then it must be shutdown down explicitly using ` pool.shutdown() ` before the current request terminates. 
+  * Previously it was possible to reference vendored classes like ` com.google.appengine.repackaged.org.joda.Instant ` inadvertently when just ` org.joda.Instant ` was intended. The vendoring scheme has changed so code that did that no longer works. 
+  * Native network APIs (for example ` HttpURLConnection ` ) are enabled for billed applications, but will return an exception ( ` java.net.SocketTimeoutException ` or ` java.io.IOException ` ) when used in free applications. Free applications can access ` *.googleapis.com ` and ` accounts.google.com ` , and they can also be [ configured ](https://cloud.google.com/appengine/docs/standard/java/config/appref?hl=ja#url-stream-handler) to use the URLFetch service. 
+  * The ` google-cloud-java ` APIs need to be wrapped in an ` executor ` . See [ Pub/Sub Publisher hangs unless submitted through an executor ](https://github.com/googleapis/google-cloud-java/issues/2150) . 
+  * Cloud Endpoints must be [ migrated ](https://cloud.google.com/endpoints/docs/frameworks/legacy/v1/java/migrating?hl=ja) from v1 to v2. 
+  * Channels and XMPP APIs are not supported. 
+  * ` appengine-labs-api.jar ` APIs are not supported resulting in [ Appstats for Java ](https://cloud.google.com/appengine/docs/standard/java/tools/appstats?hl=ja) not being supported. 
+  * The Java 8 runtime default is to use the native Java HTTP(S) transport, not the URL Fetch transport, as is the case for Java 7 runtime. For more information, see [ url-stream-handler ](https://cloud.google.com/appengine/docs/standard/java/config/appref?hl=ja#url-stream-handler) . 
+
+##  June 15, 2017
+
+**FEATURE:**
+
+  * Updated Java SDK to version 1.9.54. 
+
+##  June 06, 2017
+
+**FEATURE:**
+
+  * App Engine is now available in the ` europe-west2 ` region (London). 
+
+**FEATURE:**
+
+  * You can now use the beta-level features in the Admin API and ` gcloud ` command-line tool to [ create and manage your custom domains and SSL certificates ](https://cloud.google.com/appengine/docs/standard/java/mapping-custom-domains?hl=ja) . 
+
+##  May 09, 2017
+
+**FEATURE:**
+
+  * App Engine is now available in the ` us-east4 ` region (North Virginia). 
+
+**FEATURE:**
+
+  * Updated Java SDK to version 1.9.53. 
+
+**FIXED:**
+
+  * Fixed a Java SDK issue where JSP tag library usage would not work with a Java 8 SpringBoot application. 
+
+##  May 08, 2017
+
+**FEATURE:**
+
+  * Release 1.3.1 for ` com.google.cloud.tools:appengine-(gradle/maven)-plugin `
+
+**FEATURE:**
+
+  * Running locally on development server will read and include environment variables from the ` appengine-web.xml ` configuration file. 
+
+**FEATURE:**
+
+  * Expose ` environment ` parameter for including additional environment variables through the maven/gradle configuration. 
+
+##  May 02, 2017
+
+**FEATURE:**
+
+  * Release 1.3.0 for ` com.google.cloud.tools.appengine-(gradle/maven)-plugin `
+
+**CHANGED:**
+
+  * Default development server is Dev App Server v1 (only java modules) 
+
+**FEATURE:**
+
+  * New gradle tasks for configuration deployment : ` appengineDeployCron ` , ` appengineDeployDispatch ` , ` appengineDeployDos ` , ` appengineDeployIndex ` , ` appengineDeployQueue `
+
+**FEATURE:**
+
+  * New maven goals for configuration deployment : ` appengine:deployCron ` , ` appengine:deployDispatch ` , ` appengine:deployDos ` , ` appengine:deployIndex ` , ` appengine:deployQueue `
+
+**FEATURE:**
+
+  * Staging flexible apps with maven/gradle only copies ` app.yaml ` into build/target directory. For deployment of configuration files, use ` src/main/appengine ` . 
+
+**CHANGED:**
+
+  * Gradle exploded app directory default changed from ` build/exploded-app ` to ` build/exploded-<module-name> `
+
+##  April 19, 2017
+
+**FEATURE:**
+
+  * Updated Java SDK to version 1.9.52. 
+
+**FEATURE:**
+
+  * Better support for Java 8 standard environment alpha runtime. 
+
+**FEATURE:**
+
+  * Upgrade to Jetty 9.3.18 for the [ Java 8 alpha ](https://docs.google.com/a/google.com/forms/d/1MDzykTWp77YzRgFs5R6ONOuKWYnKEhfy5VhSJYbDvmo/viewform?hl=ja) standard environment runtime. 
+
+**FEATURE:**
+
+  * Update the ` quickstart-web.xml ` processing to use the latest Jetty capabilities to better support Java 8 SpringBoot applications. 
+
+**FIXED:**
+
+  * Fix local execution of multiple services located in directories ending with the same name. 
+
+**FIXED:**
+
+  * Fix SDK error when booting a SpringBoot application. 
+
+##  March 29, 2017
+
+**FEATURE:**
+
+  * Updated Java SDK to version 1.9.51. 
+
+**FEATURE:**
+
+  * [ Java 8 alpha ](https://docs.google.com/a/google.com/forms/d/1MDzykTWp77YzRgFs5R6ONOuKWYnKEhfy5VhSJYbDvmo/viewform?hl=ja) applications without a ` web.xml ` file can now run in the [ local development server ](https://cloud.google.com/appengine/docs/standard/java/tools/using-local-server?hl=ja) . 
+
+##  March 21, 2017
+
+**FEATURE:**
+
+  * Updated the ` com.google.cloud.tools:appengine-gradle-plugin ` to 1.1.1. 
+
+**FIXED:**
+
+  * Fixed [ issue 108 ](https://github.com/GoogleCloudPlatform/app-gradle-plugin/issues/108) with flexible environment deployments in multi-module Gradle projects failing. 
+
+##  March 06, 2017
+
+**FEATURE:**
+
+  * Updated the ` com.google.cloud.tools:appengine-maven-plugin ` to 1.2.1. 
+
+**FIXED:**
+
+  * Fixed [ issue 144 ](https://github.com/GoogleCloudPlatform/app-maven-plugin/issues/144) with custom deployable parameters incorrectly adding in extra directory. 
+
+##  March 01, 2017
+
+**FEATURE:**
+
+  * Updated Java SDK to version 1.9.50. 
+
+**FEATURE:**
+
+  * Added support for testing multiple services with the local development server. 
+
+**FEATURE:**
+
+  * Stop generating a web.xml file for apps that use the Java 7 runtime and include a ` web.xml ` that specifies the servlet 3.1 schema. 
+
+**FEATURE:**
+
+  * Package Java class files in the .zip files even if the application does not have JSPs. 
+
+##  February 17, 2017
+
+**FEATURE:**
+
+Updated the ` com.google.cloud.tools ` [ maven
 ](https://cloud.google.com/appengine/docs/java/tools/maven-reference?hl=ja)
-（1.2.0）プラグインと [ Gradle
+(1.2.0) and [ gradle
 ](https://cloud.google.com/appengine/docs/java/tools/gradle-reference?hl=ja)
-（1.1.0）プラグインが更新されました。
+(1.1.0) plugins for App Engine:
 
-  * 起動時にローカル データストアをクリアするための ` clearDatastore ` フラグを追加しました。 
-  * ソース コンテキスト タスク / 目標を追加しました。 
+  * Added ` clearDatastore ` flag for clearing the local datastore upon startup. 
+  * Added source-context tasks/goals. 
 
-##  2017 年 1 月 30 日
+##  January 30, 2017
 
-  * Java SDK がバージョン 1.9.49 に更新されました。 
+**FEATURE:**
 
-##  2016 年 12 月 1 日
+  * Updated Java SDK to version 1.9.49. 
 
-  * Java SDK がバージョン 1.9.48 に更新されました。 
+##  December 01, 2016
 
-##  2016 年 11 月 3 日
+**FEATURE:**
 
-  * バージョン 1.9.45 はスキップされました。 
+  * Updated Java SDK to version 1.9.48. 
 
-  * Java Runtime と SDK がバージョン 1.9.46 に更新されました。 
+##  November 03, 2016
 
-##  2016 年 10 月 27 日
+**CHANGED:**
 
-  * Channel サービスと XMPP サービスが [ 非推奨 ](https://cloud.google.com/appengine/docs/deprecations?hl=ja) になりました。これらのサービスは 2017 年 10 月 31 日に廃止されます。 
+  * Version 1.9.45 was skipped. 
 
-##  2016 年 10 月 17 日
+**FEATURE:**
 
-  * Java Runtime と SDK がバージョン 1.9.44 に更新されました。 
+  * Updated Java Runtime and SDK to version 1.9.46. 
 
-  * Blobstore の blob が Cloud Storage バケットに保存されるときに設定される新しい BlobInfo プロパティが追加されました。 
+##  October 27, 2016
 
-##  2016 年 8 月 1 日
+**DEPRECATED:**
 
-**Admin API に関する注意事項**
+  * The Channel and XMPP services are now [ deprecated ](https://cloud.google.com/appengine/docs/deprecations/?hl=ja) . These services will be turned down on October 31, 2017. 
 
-  * [ Admin API ](https://cloud.google.com/appengine/docs/admin-api?hl=ja) のバージョン 1 の正式版がリリースされました。 
+##  October 17, 2016
 
-##  2016 年 8 月 1 日 - バージョン 1.9.42
+**FEATURE:**
 
-  * バージョン 1.9.41 はスキップされました。 
+  * Updated Java Runtime and SDK to version 1.9.44. 
 
-  * バージョン 1.9.42 には全般的なバグの修正と改善が含まれています。 
+**FEATURE:**
 
-##  2016 年 7 月 21 日
+  * Add new BlobInfo property, which is set when a Blobstore blob is stored in a Cloud Storage bucket. 
 
-**Java 8 ランタイムに関する注意事項**
+##  August 01, 2016
 
-  * App Engine ダッシュボードで誤って報告された可能性のあるメモリ使用量（インスタンス「平均メモリ」と「メモリ使用量」のグラフの下の値）を修正しました。この問題は請求には影響しません。 
+**FEATURE:**
 
-##  2016 年 7 月 18 日 - バージョン 1.9.40
+**Admin API notes**
 
-  * バージョン 1.9.39 はスキップされました。 
+  * Version 1 of the [ Admin API ](https://cloud.google.com/appengine/docs/admin-api/?hl=ja) is now generally available. 
 
-  * LeaseTasksByTag のリクエストは 1 秒間に 25 個のリクエストに制限されます。 
+**FEATURE:**
 
-  * App Engine ダッシュボードに表示されるサーバーエラーとクライアント エラーに、URL ごとのステータス エラーがより正確に反映されるようになりました。 
+Version 1.9.42
 
-  * Cloud Console の [ App Engine チュートリアル ](https://console.cloud.google.com/start/appengine?hl=ja) が新しくなりました。使用する言語を選択して、コンソール内で直接インタラクティブなチュートリアルを起動できます。 
+**CHANGED:**
 
-  * cron タスクの最大制限が 250 に増えました。 
+  * Version 1.9.41 was skipped. 
 
-**Java ランタイムに関する注意事項**
+**FIXED:**
 
-  * すべての Java アプリケーションが 64 ビット版の Java ランタイムを使用するように、自動的にアップグレードされます。このローリング アップグレードは 2016 年 7 月 20 日に開始されます。 
+  * Version 1.9.42 includes general bug fixes and improvements. 
 
-##  2016 年 7 月 1 日
+##  July 21, 2016
+
+**FIXED:**
+
+**Java 8 runtime notes**
+
+  * Fixes potentially incorrect reported memory usage in the App Engine dashboard (the values under Instance "Average Memory" and the "Memory Usage" graph). This issue does not affect billing. 
+
+##  July 18, 2016
+
+**FEATURE:**
+
+Version 1.9.40
+
+**CHANGED:**
+
+  * Version 1.9.39 was skipped. 
+
+**FEATURE:**
+
+  * LeaseTasksByTag requests will be limited to 25 requests per second. 
+
+**FEATURE:**
+
+  * Server Errors and Client Errors now more accurately reflect per-URL status errors in the App Engine dashboard. 
+
+**FEATURE:**
+
+  * New [ App Engine guided walkthrough ](https://console.cloud.google.com/start/appengine?hl=ja) in the Cloud Console. Pick your preferred language and launch an interactive tutorial directly in the console. 
+
+**FEATURE:**
+
+  * Increases the maximum cron tasks limit to 250. 
+
+**FEATURE:**
+
+**Java runtime notes**
+
+  * All Java applications will be automatically upgraded to use the 64-bit version of the Java runtime. This rolling upgrade will start on July 20, 2016. 
+
+##  July 01, 2016
+
+**FEATURE:**
 
 **Cloud Datastore**
 
-  * 新しい [ Cloud Datastore の料金 ](https://cloud.google.com/appengine/pricing?hl=ja#costs-for-datastore-calls) が有効になりました。 
+  * New [ Cloud Datastore Pricing ](https://cloud.google.com/appengine/pricing?hl=ja#costs-for-datastore-calls) is now in effect. 
 
-##  2016 年 5 月 25 日 - バージョン 1.9.38
+##  May 25, 2016
 
-  * ドキュメントに記載されているように、許可範囲（80～90、440～450、1024～65535）外のポートへのリクエストに対して URL 取得によって返されるエラーで、常に ` INVALID_URL ` を返すようになりました。 
+**FEATURE:**
+
+Version 1.9.38
+
+**FEATURE:**
+
+  * The error returned by URL Fetch for a request to a port outside of the permitted ranges (80-90, 440-450, 1024-65535) will now always return ` INVALID_URL ` as documented. 
+
+**FEATURE:**
 
 **Cloud Datastore**
 
-  * クロスグループ トランザクションを commit する場合、新しいエンティティまたは更新されたエンティティに対して返されるバージョン番号がすべて同じになりました。以前の動作では、クロスグループ トランザクションの一部として commit された同じグループ内のエンティティには同じバージョン番号が返されましたが、別のグループ内のエンティティには別のバージョン番号が返されることがありました。今回の変更によって、クロスグループ トランザクションの一部として commit されたすべての新しいエンティティと更新されたエンティティは、エンティティ グループに関係なく同じバージョン番号を持つことになります。以前と同様、更新されないエンティティには、新しいバージョン番号は付与されません。 
+  * When committing a cross-group transaction, version numbers returned for new or updated entities are all the same. With the previous behavior, entities within the same group committed as part of a cross-group transaction, had the same version number, but entities in different groups might have had different version numbers. This change ensures all new and updated entities have an identical version number, regardless of their entity group, when committed as part of a cross-group transaction. As before, entities that are not updated will not have a new version number. 
 
-##  2016 年 5 月 4 日 - バージョン 1.9.37
+##  May 04, 2016
 
-全般的なバグの修正と改善が含まれています。
+**FEATURE:**
 
-##  2016 年 5 月 2 日
+Version 1.9.37
 
-**App Engine フレキシブル環境**
+**FIXED:**
 
-  * App Engine フレキシブル環境で [ Ruby ランタイム ](https://cloud.google.com/appengine/docs/flexible/ruby?hl=ja) が使用できるようになりました。 
+Includes general bug fixes and improvements.
 
-##  2016 年 4 月 18 日 - バージョン 1.9.36
+##  May 02, 2016
 
-ユーザーのリクエストにお応えして、IAM の役割とグループ展開のサポートにおいて、App Engine に App Engine Users API
-が加わりました。これは、プロジェクトのオーナー、編集者、または閲覧者、あるいは App Engine
-の管理者であるユーザーが役割を直接またはグループのメンバーによって与えられているかどうかに関係なく、Users API
-によって「管理者」とみなされることを意味します。このリリースでは、「OverQuota」例外タイプに関連するエラー
-メッセージに、可能であればエラーの詳細が含まれるようになりました。
+**FEATURE:**
 
-**Java ランタイムに関する注意事項**
+**App Engine flexible environment**
 
-  * Google はメールサービスの割り当ての増加リクエストを受け入れなくなりました。代わりに、 [ Sendgrid ](https://cloud.google.com/appengine/docs/standard/java/mail/sendgrid?hl=ja) を使用してください。 
+  * The [ Ruby runtime ](https://cloud.google.com/appengine/docs/flexible/ruby/?hl=ja) is now available for the App Engine flexible environment. 
 
-##  2016 年 3 月 24 日 - バージョン 1.9.35
+##  April 18, 2016
 
-  * App Engine マネージド VM の名前が [ App Engine フレキシブル環境 ](https://cloud.google.com/appengine/docs/flexible?hl=ja) に変更されました。 
-  * トレースのタイムスタンプをログのタイムスタンプに合わせて修正しました。 
+**FEATURE:**
 
-**Java ランタイムに関する注意事項**
+Version 1.9.36
 
-  * このリリースには、新しい Java SDK が含まれていません。Java ユーザーは引き続き 1.9.34 SDK を使用する必要があります。 
+**FEATURE:**
 
-##  2016 年 3 月 16 日
+In response to your requests, the App Engine Users API joins the rest of App
+Engine in supporting IAM roles and group expansion. This means that any user
+who is a project Owner, Editor or Viewer or an App Engine Admin is considered
+an "admin" by the Users API, regardless of whether the user was granted the
+role directly or by membership in a group. * This release populates error
+details, when available, in error messages associated with the "OverQuota"
+exception type.
 
-**Java ランタイムに関する注意事項**
+**DEPRECATED:**
 
-  * Java SDK のバージョン 1.9.34 を使用できるようになりました。 
+**Java runtime notes**
 
-##  2016 年 3 月 4 日 - バージョン 1.9.34
+  * Google no longer accepts quota increase requests for the mail service. Customers should use [ Sendgrid ](https://cloud.google.com/appengine/docs/standard/java/mail/sendgrid?hl=ja) instead. 
 
-  * 有料アプリケーションの URL 取得のデフォルトの割り当てが増えました。詳細については、 [ 割り当てページ ](https://cloud.google.com/appengine/docs/quotas?hl=ja#UrlFetch) をご覧ください。 
+##  March 24, 2016
 
-**Java ランタイムに関する注意事項**
+**CHANGED:**
 
-  * このリリースには、新しい Java SDK が含まれていません。Java ユーザーは引き続き 1.9.32 SDK を使用する必要があります。 
+Version 1.9.35
 
-##  2016 年 2 月 17 日 - バージョン 1.9.33
+  * App Engine Managed VMs is renamed to [ App Engine flexible environment ](https://cloud.google.com/appengine/docs/flexible/?hl=ja) . 
 
-  * URL パス /form が使用可能になり、アプリケーションに転送できるようになりました。以前は、このパスはブロックされていました。 
+**FIXED:**
 
-**Java ランタイムに関する注意事項**
+  * Fixes trace timestamps to match log timestamps. 
 
-  * このリリースには、新しい Java SDK が含まれていません。Java ユーザーは引き続き 1.9.32 SDK を使用する必要があります。 
+**CHANGED:**
 
-##  2016 年 2 月 3 日 - バージョン 1.9.32
+**Java runtime notes**
 
-  * マネージド VM のコンテナ作成の選択肢 
+  * This release does not include a new Java SDK. Java users should continue to use the 1.9.34 SDK. 
 
-` gcloud preview app deploy ` （および ` mvn gcloud:deploy `
-）コマンドは、アーティファクトをサーバーにアップロードし、アプリをマネージド VM 環境にデプロイするためのコンテナを構築します。
+##  March 16, 2016
 
-コンテナ イメージをリモートで作成するための 2 つのメカニズムがあります。 デフォルトの動作では、Docker がインストールされている一時的な
-Compute Engine 仮想マシンにコンテナを作成します。また、 [ Cloud Build
-](https://cloud.google.com/cloud-build/docs?hl=ja) サービスを使用することもできます。Cloud
-Build サービスを使用するには、次の手順を行います。
+**FEATURE:**
 
-    1. プロジェクトの [ Cloud Build API を有効化 ](https://support.google.com/cloud/answer/6158841?hl=ja) します。 
-    2. ` gcloud config set app/use_cloud_build True ` コマンドを使用します。これにより、 ` gcloud preview app deploy ` のすべての呼び出しでサービスが使用されるようになります。デフォルトの動作に戻すには、コマンド ` gcloud config set app/use_cloud_build False ` を使用します。 
+**Java runtime notes**
 
-**Java ランタイムに関する注意事項**
+  * Version 1.9.34 of the Java SDK is available. 
 
-  * Datastore に対する低レベル API ` Transaction.rollback() ` の例外処理が向上しました。トランザクションに関連付けられたオペレーションが失敗した場合に、例外の代わりに、 ` INFO ` ログメッセージが生成されます。 
+##  March 04, 2016
 
-##  2016 年 1 月 14 日 - バージョン 1.9.31
+**FEATURE:**
 
-App Engine で Google グループがサポートされるようになりました。Google
-グループをプロジェクトのメンバーとして追加すると、グループのメンバーが App Engine へのアクセスを許可されます。たとえば、Google
-グループがプロジェクトの編集者である場合、グループのすべてのメンバーに App Engine
-アプリケーションへの編集者アクセス権限が付与されるようになりました。
+Version 1.9.34
 
-##  2015 年 11 月 30 日 - バージョン 1.9.30
+  * Increases default quota for URL fetch for billed apps. Refer to the [ Quotas page ](https://cloud.google.com/appengine/docs/quotas?hl=ja#UrlFetch) for details. 
 
-ペイロードがないタスクキュー タスクに対する push キュー リクエストのヘッダーに、0 に設定された Content-Length
-エントリが含まれるようになりました。以前はこのようなリクエストのヘッダーに Content-Length エントリが含まれていませんでした。
+**FEATURE:**
 
-##  2015 年 11 月 30 日 - バージョン 1.9.29
+**Java runtime notes**
 
-  * 存在していないクエリ、削除とマークされたキュー、クエリテーブルが停止した場合のキューの深さの計算と保存が停止されます。 
-  * [ Endpoints API ](https://cloud.google.com/appengine/docs/standard/python/endpoints/create_api?hl=ja#defining_the_api_endpointsapi) を使用する開発者向けに、@Api アノテーションへの検出可能な boolean パラメータが追加され、ユーザーが API 検出を無効にできるようになりました。この機能を使用すると、検出に依存するクライアント ライブラリ（JavaScript など）や API Explorer の動作が妨げられます。 
+  * This release does not include a new Java SDK. Java users should continue to use the 1.9.32 SDK. 
 
-##  2015 年 10 月 29 日 - バージョン 1.9.28
+##  February 17, 2016
 
-2015 年 7 月 14 日に非推奨になった Prospective Search API が既存のユーザーだけに制限されるようになりました。これは
-2015 年 12 月 1 日に完全に停止されます。* 検索クエリでの Geo フィルタリングの精度が向上しました。
+**FEATURE:**
 
-**Java ランタイムに関する注意事項**
+Version 1.9.33
 
-  * Java DevAppServer の Files API が無効になりました。 
+  * The URL path "/form" is now allowed and will be forwarded to applications. Previously, this path was blocked. 
 
-##  2015 年 9 月 25 日 - バージョン 1.9.27
+**CHANGED:**
 
-新しく課金が有効にされたアプリケーションはデフォルトで 1 日の予算が無制限になり、それまでデフォルトだった $0 の 1
-日の最大予算がなくなりました。これによって、予算不足による望まない停止が回避されます。アプリケーションの 1
-日のコストの上限を設定するには、課金を有効にした後で、 [ App Engine の設定
-](https://console.cloud.google.com/project/_/appengine/settings?hl=ja)
-で予算を設定します。詳しくは、 [ 1 日の予算の設定
+**Java runtime notes**
+
+  * This release does not include a new Java SDK. Java users should continue to use the 1.9.32 SDK. 
+
+##  February 03, 2016
+
+**FEATURE:**
+
+Version 1.9.32
+
+  * Container construction choices for Managed VMs 
+
+The ` gcloud preview app deploy ` (and ` mvn gcloud:deploy ` ) commands upload
+your artifacts to our servers and build a container to deploy your app to the
+Managed VM environment.
+
+There are two mechanisms for building the container image remotely. The
+default behavior is to build the container on a transient Compute Engine
+Virtual Machine which has Docker installed. Alternatively, you can use the [
+Cloud Build ](https://cloud.google.com/cloud-build/docs/?hl=ja) service. To
+use the Cloud Build service, follow these steps:
+
+    1. [ Activate the Cloud Build API ](https://support.google.com/cloud/answer/6158841?hl=ja) for your project. 
+    2. Use the command ` gcloud config set app/use_cloud_build True ` . This will cause all invocations of ` gcloud preview app deploy ` to use the service. (To return to the default behavior, use the command ` gcloud config set app/use_cloud_build False ` . 
+
+**FEATURE:**
+
+**Java runtime notes**
+
+  * Improved exception handling for the low-level API for Datastore, ` Transaction.rollback() ` . Instead of an exception, it generates an ` INFO ` log message when an operation associated with the transaction has failed. 
+
+##  January 14, 2016
+
+**FEATURE:**
+
+Version 1.9.31
+
+**FEATURE:**
+
+App Engine now supports Google Groups: Adding a Google Group as a member of a
+project grants the members of the group access to App Engine. For example, if
+a Google Group is an Editor on a project, all members of the group now have
+Editor access to the App Engine application.
+
+##  December 30, 2015
+
+**FEATURE:**
+
+Version 1.9.30
+
+**FEATURE:**
+
+Headers for push queue requests made for Task Queue tasks with no payload will
+now contain a Content-Length entry set to '0'. Previously headers for such
+requests contained no Content-Length entry.
+
+**FEATURE:**
+
+Version 1.9.29
+
+**FEATURE:**
+
+  * Stop calculating and storing queue depth for non-existent queues, queues marked for deletion, and in the case of queue table outages. 
+
+**FEATURE:**
+
+  * For developers using the [ endpoints API ](https://cloud.google.com/appengine/docs/standard/python/endpoints/create_api?hl=ja#defining_the_api_endpointsapi) , added a discoverable boolean parameter to the @Api annotation to allow users to disable API discovery. Using this feature will prevent some client libraries (e.g. JavaScript) and the API Explorer from working, as they depend on discovery. 
+
+##  October 29, 2015
+
+**FEATURE:**
+
+Version 1.9.28
+
+**BREAKING:**
+
+The Prospective Search API, which was deprecated on July 14, 2015, is now
+restricted to existing users. It will fully shutdown on December 1, 2015.
+
+**FEATURE:**
+
+Improved accuracy of Geo filtering in Search queries.
+
+**FEATURE:**
+
+**Java runtime notes**
+
+  * Disabled Files API in the Java DevAppServer. 
+
+##  September 25, 2015
+
+**FEATURE:**
+
+Version 1.9.27
+
+**FEATURE:**
+
+Applications that are newly enabled for billing now default to an unlimited
+daily budget, and no longer default to a maximum daily budget of $0. This
+prevents unwanted outages due to running out of budget. To set a ceiling on
+your application's daily cost, after you enable billing, set a budget in the [
+app engine settings
+](https://console.cloud.google.com/project/_/appengine/settings?hl=ja) . For
+more information, see [ Setting a daily budget
 ](https://cloud.google.com/appengine/docs/developers-
-console?hl=ja#setting_a_daily_budget) をご覧ください。
+console/?hl=ja#setting_a_daily_budget) .
 
-データストア
+**FEATURE:**
 
-  * バグの修正: 繰り返される数値ファセットを使用できるようになりました。 
-  * ファセット検索の一般提供を開始しました。 
+Datastore
 
-##  2015 年 8 月 27 日 - バージョン 1.9.26
+**FIXED:**
 
-  * oauth2client ライブラリがバージョン [ 1.4.2 ](https://github.com/google/oauth2client/blob/master/CHANGELOG.md) にアップグレードされました。 
-  * thread_id または request_id がログエントリのフィールドとして含まれる MVM アプリケーションログに [前後のログを表示] メニューが追加されました。これによって、いずれかのフィールドに基づいてアプリケーションのログを並べ換えられるようになりました。 
-  * 現在の負荷に対してアプリケーションをプロビジョニングし、VM とアプリケーション レベルの両方の指標に基づいた柔軟なプロビジョニングを構成できるようになりました。 
-  * https://developers.google.com/identity/protocols/application-default-credentials を使用する OAuth2 認証情報を使用して、リモート API にアクセスできるようになりました。 
-  * ペイロードが大きすぎる URLFetch リクエストに対して RequestPayloadTooLargeException を使用します。 
+  * Bugfix: Repeated numeric facets are now allowed. 
 
-**Java ランタイムに関する注意事項**
+**FEATURE:**
 
-  * Java の URLFetch API はデフォルトの取得期限を指定するプロパティを取得します。 ` appengine.api.urlfetch.defaultDeadline ` は、appengine-web.xml で Java のデフォルトの URLFetch タイムアウトを指定するために使用できる秒単位の浮動小数点数です。 
+  * Faceted Search is now GA. 
 
-##  2015 年 8 月 14 日 - バージョン 1.9.25
+##  August 27, 2015
 
-  * PyAMF バージョン 0.7.2（ベータ版）が追加されました。 
-  * 管理コンソールのメニューが Cloud Console にリダイレクトされるようになりました。管理ログなどの一部のサービスは、引き続き管理コンソールで使用できます。 
-  * データストアで、プロパティが空白のリストを表現できるようになりました。 
-  * retry_limit がゼロに構成されたキュー内の失敗したタスクは再試行されません。 
+**FEATURE:**
+
+Version 1.9.26
+
+**FEATURE:**
+
+  * oauth2client library upgraded to version [ 1.4.2 ](https://github.com/google/oauth2client/blob/master/CHANGELOG.md)
+
+**FEATURE:**
+
+  * Adds "show in context" menu for MVM application logs that have thread_id or request_id as a field in their log entry. This allows sorting app logs based on either field. 
+
+**FEATURE:**
+
+  * Capability to provision applications for current load and configure elastic provisioning based on both VM and application level metrics. 
+
+**FEATURE:**
+
+  * Remote API can now be accessed using OAuth2 credentials using https://developers.google.com/identity/protocols/application-default-credentials 
+
+**FEATURE:**
+
+  * Use RequestPayloadTooLargeException for URLFetch requests with payloads that are too large. 
+
+**FEATURE:**
+
+**Java runtime notes**
+
+  * Java's URLFetch API gains a property to specify default fetch deadline. ` appengine.api.urlfetch.defaultDeadline ` is a floating point number in seconds that can be used to specify a default URLFetch timeout for Java in appengine-web.xml. 
+
+##  August 14, 2015
+
+**FEATURE:**
+
+Version 1.9.25
+
+**FEATURE:**
+
+  * Added PyAMF version 0.7.2 (Beta). 
+
+**FEATURE:**
+
+  * Admin Console menus start redirecting to Cloud Console. Select services such as the Admin Logs will continue to be available in the Admin Console. 
+
+**FEATURE:**
+
+  * Datastore now allows properties to represent the empty list. 
+
+**FEATURE:**
+
+  * Failed tasks in queues configured with a ` retry_limit ` of zero will no longer be retried. 
 
