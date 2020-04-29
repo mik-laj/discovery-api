@@ -12,7 +12,47 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  April 28, 2020
+
+**Anthos Service Mesh**
+
+**FEATURE:**
+
+The Anthos Service Mesh dashboard in the Google Cloud Console is generally
+available for Anthos Service Mesh installations on Google Kubernetes Engine
+clusters. For more information, see the [ Observability overview
+](https://cloud.google.com/service-mesh/docs/observability-overview) .
+
 ##  April 27, 2020
+
+**BigQuery**
+
+**CHANGED:**
+
+BigQuery is now available in the [ Las Vegas (us-west4) region
+](https://cloud.google.com/bigquery/docs/locations#supported_regions) .
+
+**BigQuery BI Engine**
+
+**CHANGED:**
+
+BigQuery BI Engine is now available in the [ Las Vegas (us-west4) region
+](https://cloud.google.com/bi-engine/docs/locations#supported_regions) .
+
+**BigQuery Data Transfer Service**
+
+**CHANGED:**
+
+BigQuery Data Transfer Service is now available in the [ Las Vegas (us-west4)
+region ](https://cloud.google.com/bigquery-
+transfer/docs/locations#supported_regions) .
+
+**BigQuery ML**
+
+**CHANGED:**
+
+BigQuery ML is now available in the [ Las Vegas (us-west4) region
+](https://cloud.google.com/bigquery-ml/docs/locations#supported_regions) .
 
 **Cloud Composer**
 
@@ -33,6 +73,14 @@ URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
   * The oldest supported version of Composer is now ` composer-1.6.0-airflow-x.x.x `
 
+**Cloud Load Balancing**
+
+**FEATURE:**
+
+[ Google-managed SSL certificates ](https://cloud.google.com/load-
+balancing/docs/ssl-certificates/google-managed-certs) are available in
+**General Availability** .
+
 **Cloud Logging**
 
 **CHANGED:**
@@ -40,6 +88,12 @@ URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 The Logs Viewer (Preview) is now GA. To learn more, go to the [ Logs Viewer
 (Preview) Overview page ](https://cloud.google.com/logging/docs/view/logs-
 viewer-preview) .
+
+**Dataproc**
+
+**FEATURE:**
+
+Dataproc on GKE version ` 1.4.27-beta ` is available with minor fixes.
 
 ##  April 25, 2020
 
@@ -363,6 +417,12 @@ See the ⁠ [ PyTorch/XLA 1.5 Release Notes
 ](https://github.com/pytorch/xla/releases/tag/v1.5.0) for a complete list of
 features included in this release.
 
+**Config Connector**
+
+**CHANGED:**
+
+Miscellaneous bug fixes and improvements
+
 ##  April 20, 2020
 
 **App Engine flexible environment .NET**
@@ -561,6 +621,12 @@ Cloud VPN is now available in [ region
 Pricing is available on the [ Cloud VPN pricing page
 ](https://cloud.google.com/vpn/pricing) .
 
+**Compute Engine**
+
+**FEATURE:**
+
+  * The ` us-west4 ` Las Vegas, Nevada region is now available to all projects and users. The zones in the ` us-west4 ` region have [ N1 and E2 machine types ](https://cloud.google.com/compute/docs/machine-types) . See [ Regions and zones ](https://cloud.google.com/compute/docs/regions-zones) for more information. 
+
 **Dataflow**
 
 **FEATURE:**
@@ -757,6 +823,12 @@ and ` PDF ` and ` WORD_DOCUMENT ` [ ` BytesTypes `
 ](http://cloud.google.com/dlp/docs/reference/rpc/google.privacy.dlp.v2#bytestype)
 .
 
+**Compute Engine**
+
+**FEATURE:**
+
+  * Committed use discount shared billing is now available in **beta** . You can share committed use discounts among all your projects that fall under the same billing account. For more information, see [ Signing up committed use discounts ](https://cloud.google.com/compute/docs/instances/signing-up-committed-use-discounts) . 
+
 **Dataprep by Trifacta**
 
 **FIXED:**
@@ -897,6 +969,31 @@ manager/docs/configuration/type-providers/creating-type-provider) .
 
 [ Cloud External Key Manager (Cloud EKM)
 ](https://cloud.google.com/kms/docs/ekm) is generally available.
+
+**Compute Engine**
+
+**FEATURE:**
+
+You can identify VM instances that are not being used with [ idle VM
+recommendations ](https://cloud.google.com/compute/docs/instances/viewing-and-
+applying-idle-vm-recommendations) . Use these recommendations to reduce unused
+resources and reduce your compute bill. This feature is **Generally
+available** .
+
+**FEATURE:**
+
+You can manage, maintain, and view patch compliance for your VM instances
+using the OS patch management feature. For more information, see [ OS patch
+management ](https://cloud.google.com/compute/docs/os-patch-management) . This
+feature is now **Generally available** .
+
+**FEATURE:**
+
+The latest stable version of the OS Config agent is [ ` 20200402.01 `
+](https://github.com/GoogleCloudPlatform/osconfig/releases/tag/20200402.01) .
+If you were using OS patch management in Beta, you can update the agent on
+your existing VMs, see [ Updating the OS Config agent
+](https://cloud.google.com/compute/docs/manage-os#update-agent) .
 
 **Dataflow**
 
@@ -1326,6 +1423,12 @@ Clients that support TLS v1.3 include Chrome, Chromium-based browsers, and
 Android. These clients automatically negotiate TLS v1.3 without requiring any
 changes. Clients that do not support TLS v1.3 are unaffected.
 
+**Compute Engine**
+
+**FEATURE:**
+
+  * **GA:** [ Compute Engine enables Shielded VM features by default ](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm) . 
+
 **Dataflow**
 
 **FEATURE:**
@@ -1407,6 +1510,12 @@ Added additional infoType detectors:
   * ` AZURE_AUTH_TOKEN `
   * ` GCP_API_KEY `
 
+**Compute Engine**
+
+**FEATURE:**
+
+  * You can identify idle persistent disk resources by using [ idle persistent disk recommendations ](https://cloud.google.com/compute/docs/disks/viewing-and-applying-idle-pd-recommendations) . Following these recommendations will help reduce unused resources and reduce your compute bill. This feature is in **Beta** . 
+
 ##  April 07, 2020
 
 **Dataflow**
@@ -1444,6 +1553,26 @@ been added:
   * You can now specify the start and end time for a scan. 
   * Performance data is now more recent. 
   * Your performance data is retained for 14 days. 
+
+**Compute Engine**
+
+**FEATURE:**
+
+  * C2 machine types are now available in the following [ regions and zones ](https://cloud.google.com/compute/docs/regions-zones#available) : 
+
+    * Ashburn, Northern Virginia, USA ` us-east4-b,c `
+
+**FEATURE:**
+
+  * N2 machine types are now available in the following [ regions and zones ](https://cloud.google.com/compute/docs/regions-zones#available) : 
+
+    * The Dalles, Oregon, USA ` us-west1-b `
+    * Ashburn, Northern Virginia, USA ` us-east4-a `
+    * St. Ghislain, Belgium ` europe-west1-d `
+
+**FEATURE:**
+
+  * [ N2D machine types ](https://cloud.google.com/compute/docs/machine-types#n2d_machine_types) are now **Generally Available** . 
 
 ##  April 05, 2020
 
@@ -1658,6 +1787,21 @@ to the API or the [ official Cloud TPU supported models list
 ](https://cloud.google.com/tpu/docs/tutorials/support-matrix) has been
 introduced with this release.
 
+**Compute Engine**
+
+**FEATURE:**
+
+  * You can now define where your VM instances are located relative to each other on the underlying host systems in a Google datacenter. Create a placement policy to locate VM instances close to each other for low latency, or create a policy to spread VM instances out so that they do not share the same infrastructure. See [ Defining instance location within a zone ](https://cloud.google.com/compute/docs/instances/define-instance-placement) to learn more. 
+
+**FEATURE:**
+
+  * NVIDIA® Tesla® T4 GPUs are now available in the following additional regions and zones: 
+
+    * Frankfurt, Germany: ` europe-west3-b `
+
+For information about using T4 GPUs on Compute Engine, see [ GPUs on Compute
+Engine ](https://cloud.google.com/compute/docs/gpus) .
+
 **Dataproc**
 
 **FEATURE:**
@@ -1738,6 +1882,44 @@ launch-stages) .
 
   * The Beta release introduced improved security when accessing Cloud SQL from functions via the ` /cloudsql ` filesystem path. Most functions have been automatically upgraded. In some cases, you may see warning messages in Stackdriver logging to help you complete the required upgrade steps. 
 
+**Compute Engine**
+
+**FEATURE:**
+
+  * **Beta:** [ Collect diagnostic information from Windows VMs ](https://cloud.google.com/compute/docs/instances/collecting-diagnostic-information) . 
+
+**FEATURE:**
+
+  * C2 machine types are now available in the following [ regions and zones ](https://cloud.google.com/compute/docs/regions-zones#available) : 
+
+    * Frankfurt, Germany ` europe-west3-a,b `
+    * Ashburn, Northern Virginia, USA ` us-east4-a `
+
+**FEATURE:**
+
+  * N2 machine types are now available in the following [ regions and zones ](https://cloud.google.com/compute/docs/regions-zones#available) : 
+
+    * The Dalles, Oregon, USA ` us-west1-a `
+    * Changua County, Taiwan ` asia-east1-c `
+
+**FEATURE:**
+
+  * M1 megamem machine types are now available in the following [ regions and zones ](https://cloud.google.com/compute/docs/regions-zones#available) : 
+
+    * Eemshaven, Netherlands ` europe-west4-b `
+
+**FEATURE:**
+
+  * M1 ultramem machine types are now available in the following [ regions and zones ](https://cloud.google.com/compute/docs/regions-zones#available) : 
+
+    * Ashburn, Northern Virginia, USA ` us-east4-a `
+
+**FEATURE:**
+
+  * M2 ultramem machine types are now available in the following [ regions and zones ](https://cloud.google.com/compute/docs/regions-zones#available) : 
+
+    * Los Angeles, California, USA ` us-west2-a,c `
+
 **Dialogflow**
 
 **CHANGED:**
@@ -1799,225 +1981,4 @@ v1:
 **Logo recognition** : Detect, track, and recognize the presence of over
 100,000 brands and logos in video content. [ Learn more
 ](https://cloud.google.com/video-intelligence/docs/logo-recognition)
-
-##  March 30, 2020
-
-**BigQuery**
-
-**FEATURE:**
-
-[ Scripting ](https://cloud.google.com/bigquery/docs/reference/standard-
-sql/scripting) and [ stored procedures
-](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-
-definition-language#create_procedure) are now [ Generally Available
-](https://cloud.google.com/products/#product-launch-stages) .
-
-**Cloud Deployment Manager**
-
-**CHANGED:**
-
-If your Python templates use features that are only for Python 2.x, your
-templates will now continue to work until **June 2020** .
-
-Learn about [ migrating your templates to Python 3
-](https://cloud.google.com/deployment-manager/docs/migrate-to-python3) .
-
-**Cloud Monitoring**
-
-**FEATURE:**
-
-You can now write time-series data for custom and Prometheus metrics at the
-rate of 1 data point every 10 seconds. This was previously limited to 1 point
-every minute.
-
-**CHANGED:**
-
-Data for custom and Prometheus metrics is now retained for 24 months.
-Previously, the retention period was 6 weeks.
-
-**Cloud NAT**
-
-**FEATURE:**
-
-[ Cloud NAT monitoring
-](https://cloud.google.com/nat/docs/monitoring#monitoring) is available in
-**General Availability** .
-
-**Cloud Run**
-
-**FEATURE:**
-
-The Cloud Run revision details panel now surfaces build information if the [
-Container Analysis API ](https://cloud.google.com/container-
-registry/docs/container-analysis) has been enabled and the container has been
-built with [ Cloud Build ](https://cloud.google.com/cloud-build) , as well as
-source repository information if the container has been built by a [ Cloud
-Build Trigger ](https://cloud.google.com/cloud-build/docs/running-
-builds/create-manage-triggers) .
-
-**Cloud Trace**
-
-**FEATURE:**
-
-You can now use [ OpenTelemetry ](https://opentelemetry.io/) with [ Go
-](https://cloud.google.com/trace/docs/setup/go-ot) and [ Node.js
-](https://cloud.google.com/trace/docs/setup/nodejs-ot) to instrument your
-applications running on GKE and Compute Engine.
-
-**Google Cloud Armor**
-
-**CHANGED:**
-
-[ Google Cloud Armor ](https://cloud.google.com/armor/sla) [ Service Level
-Agreement ](https://cloud.google.com/armor/sla) is released.
-
-**Migrate for Anthos**
-
-**FEATURE:**
-
-New ` migctl ` CLI for deploying Migrate for Anthos, creating and operating
-migrations using a structured workflow and a migration processing cluster.
-
-**FEATURE:**
-
-Introducing a unified migration workflow across all supported VM sources --
-VMware, AWS EC2, Azure VMs and Compute Engine VMs.
-
-**FEATURE:**
-
-Migrations are defined and operated using a Kubernetes CRD.
-
-**FEATURE:**
-
-Automated generation of a suggested migration plan (specified in a CRD), CI/CD
-artifacts and deployment specs. The migration process now results in
-extracting and generating container and deployment artifacts, including a
-container image and a Dockerfile, extracted data in a persistent volume,
-deployment/statefulSet, PVC and PV specs in an auto-generated YAML file for
-easy workload deployment.
-
-**FEATURE:**
-
-The Migrate for Anthos software runtime layer now offers a compatibility
-feature for older Java versions that are not container aware by reflecting the
-correct resource allocations in the container's ` /proc ` file system.
-
-**FEATURE:**
-
-Migrate for Anthos v1.0 Marketplace deployment is now removed. Migrate for
-Anthos v1.3 allows installation in v1.0 compatibility mode where needed.
-
-**FEATURE:**
-
-Preview features -- contact your Google Sales representative to enroll.
-
-  * Migrating Windows VMs with IIS ASP.NET web applications to Windows 2019 containers on GKE. 
-  * Processing migrations in Anthos on-prem. 
-
-**ISSUE:**
-
-**151505531, 150052607:** In some cases, migration can be stuck with no
-progress. When running ` migctl migration status migration-name --verbose ` ,
-you might see an event such as this:
-
-    
-    
-    could not find attached GCE PD
-    
-
-**Workaround:** Delete the migration using ` migctl migration delete ` and re-
-create it.
-
-**ISSUE:**
-
-**147211918:** In some cases, migration from AWS or Azure as a source can be
-stuck with no progress. If this happens, run ` kubectl describe storageclass `
-to view related events. You can also check the status of the matching Cloud
-Details in Migrate for Compute Engine.
-
-**ISSUE:**
-
-**146699220:** When the source VM has a systemd service with a ` NICE ` config
-property, the service might not start when running in a container.
-
-**Workaround:** Remove the ` NICE ` property in the source VM before the
-migration.
-
-**ISSUE:**
-
-**144896313:** Migration of Security-Enhanced Linux (SELinux) is not
-supported.
-
-**ISSUE:**
-
-**149900626:** Some file systems not listed in [ Compatible VM operating
-systems ](/release-notes/compatible-os-versions) may fail to migrate. When
-running ` migctl migration logs migration-name ` , the logs in Cloud Logging
-may show a message such as:
-
-    
-    
-    failed to mount - exit status 32 - mount: /tmp/bootdir: unknown filesystem type 'LVM2\_member'.
-    
-
-**ISSUE:**
-
-**152194161:** Your migrated workload container fails when running a cluster
-with GKE nodes of type "COS". When you run the command ` kubectl logs
-[podname] ` , you might see the following:
-
-    
-    
-    apparmor.go:385] Couldn't set label to lxc-container-default - write /proc/1/attr/current: no such file or directory
-    
-
-This is an indication that the required AppArmor profiles are not installed on
-the GKE nodes. To solve this, run ` migctl setup install --cos-runtime ` .
-
-**ISSUE:**
-
-**148334068:** When Migrating a physical VM from on-premises connected via
-Migrate for Compute Engine, Migrate for Anthos attempts to optimize network
-utilization and discards (rather than stream) blocks that are not in use on
-the source VM file system. In some cases, this might cause VMware storage
-sessions to time out. For assistance, please contact support.
-
-**ISSUE:**
-
-**GKE on-prem preview:** If a source was created with ` migctl source create `
-using the wrong credentials, migrations will fail. Attempts to delete the
-migration with ` migctl migration delete ` may hang in a "Terminating" state,
-as in the following example:
-
-    
-    
-    ubuntu@gke-on-prem-admin-appliance-1:~/$ ./migctl migration list
-    NAME       PROCESS              STATE                   STATUS        PROGRESS   AGE
-    my-vm-01   generate-artifacts   createSourceSnapshots   TERMINATING   [2/13]     
-    
-
-**Recommender**
-
-**FEATURE:**
-
-Insights is now available in beta. See the [ documentation
-](https://cloud.google.com/recommender/docs/insights/using-insights) for
-details.
-
-**Service Directory**
-
-**FEATURE:**
-
-[ Service Directory ](https://cloud.google.com/service-directory/docs/) is
-available in **Beta** .
-
-##  March 29, 2020
-
-**Network Intelligence Center**
-
-**FEATURE:**
-
-[ Performance Dashboard ](https://cloud.google.com/network-intelligence-
-center/docs/performance-dashboard/concepts/overview) is now available in
-**Beta** .
 
