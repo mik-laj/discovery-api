@@ -61,6 +61,14 @@ Cloud Run is now available in the following regions:
   * us-east4 (Northern Virginia) 
   * us-west1 (Oregon) 
 
+##  January 27, 2020
+
+**DEPRECATED:**
+
+The Cloud Run v1alpha1 API is deprecated and will be turned down. It is
+replaced by the [ Cloud Run v1 API
+](https://cloud.google.com/run/docs/reference/rest/)
+
 ##  January 24, 2020
 
 **FEATURE:**
