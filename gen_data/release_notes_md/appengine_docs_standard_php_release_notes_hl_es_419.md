@@ -1,3 +1,8 @@
+Dado que la versión 5.5 de PHP [ ya no es compatible con la comunidad
+](https://www.php.net/supported-versions.php) , recomendamos que las apps
+nuevas usen el [ entorno de ejecución de PHP 7
+](https://cloud.google.com/appengine/docs/standard/php7?hl=es-419) .
+
 #  Notas de la versión de PHP 5.5
 
 Para recibir las últimas actualizaciones de productos, agrega la URL de esta
