@@ -1,312 +1,541 @@
 #  Python 3 – Versionshinweise
 
-Python [ 2.7
-](https://cloud.google.com/appengine/docs/standard/python/release-notes?hl=de
-"Diese Seite in der Python 2.7-Laufzeit ansehen") /  3.7  |  Java [ 8
-](https://cloud.google.com/appengine/docs/standard/java/release-notes?hl=de
-"Diese Seite in der Java 8-Laufzeit ansehen") / [ 11
-](https://cloud.google.com/appengine/docs/standard/java11/
+Für neueste Produktaktualisierungen können Sie die URL dieser Seite in einen [
+Feedreader ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
+einfügen oder die Feed-URL direkt hinzufügen: `
+https://cloud.google.com/feeds/gaestd-py-release-notes.xml `
 
-release-notes?hl=de "Diese Seite in der Java 11-Laufzeit ansehen") |  PHP [ 5
-](https://cloud.google.com/appengine/docs/standard/php/release-notes?hl=de
-"Diese Seite in der PHP 5-Laufzeit ansehen") / [ 7
-](https://cloud.google.com/appengine/docs/standard/php7/
+##  April 20, 2020
 
-release-notes?hl=de "Diese Seite in der PHP 7-Laufzeit ansehen") |  [ Ruby
-](https://cloud.google.com/appengine/docs/standard/ruby/
+**FEATURE:**
 
-release-notes?hl=de "Diese Seite in der Ruby-Laufzeit ansehen") |  Go [ 1.9
-](https://cloud.google.com/appengine/docs/standard/go/release-notes?hl=de
-"Diese Seite in der Go 1.9-Laufzeit ansehen") / [ 1.11
-](https://cloud.google.com/appengine/docs/standard/go111/
+App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
 
-release-notes?hl=de "Diese Seite in der Go 1.11-Laufzeit ansehen") / [ 1.12
-](https://cloud.google.com/appengine/docs/standard/go112/
+##  March 13, 2020
 
-release-notes?hl=de "Diese Seite in der Go 1.12-Laufzeit ansehen") |  [
-Node.js ](https://cloud.google.com/appengine/docs/standard/nodejs/
+**FEATURE:**
 
-release-notes?hl=de "Diese Seite in der Node.js-Laufzeit ansehen")
+App Engine is now available in the ` asia-northeast3 ` region (Seoul).
 
-Zusätzlich zu den nachfolgenden Versionshinweisen finden Sie Informationen zu
-bekannten Problemen auch in der [ Problemverfolgung
-](https://issuetracker.google.com/issues?q=componentid%3A187191%2B&hl=de) .
+##  March 06, 2020
 
-Fügen Sie die URL dieser Seite Ihrem [ Feedreader
-](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) hinzu, um die
-neuesten Produktaktualisierungen zu erhalten.
+**FEATURE:**
 
-##  30\. Juli 2019
+App Engine is now available in the ` us-west3 region ` (Salt Lake City, Utah).
 
-  * Das Tool AppCfg und das ältere eigenständige App Engine SDK, die über die Dateien ` GoogleAppEngineLauncher.dmg ` , ` GoogleAppEngine.msi ` und ` google_appengine.zip ` bereitgestellt werden, sind jetzt veraltet. Google wird den Support am 30. Juli 2020 beenden. 
-  * Die Funktionen des App Engine SDK werden ausschließlich über das [ Cloud SDK ](https://cloud.google.com/sdk/docs?hl=de) bereitgestellt. Weitere Informationen finden Sie unter [ Zum Cloud SDK migrieren ](https://cloud.google.com/appengine/docs/standard/java/sdk-gcloud-migration?hl=de) . 
+##  February 11, 2020
 
-##  18\. April 2019
+**FEATURE:**
 
-  * App Engine ist jetzt in der Region ` asia-northeast2 ` (Osaka, Japan) verfügbar. 
+App Engine is changing the URLs that you use to send requests to your apps.
+You can now [ include a region ID
+](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-
+routed?hl=de#region-id) to help Google route your requests more efficiently
+and reliably. For example, an app can receive requests at `
+https://<var>PROJECT_ID</var>.<var>REGION_ID</var>.r.appspot.com ` . This new
+URL is optional for existing apps, and will soon be required for all new apps.
 
-##  15\. April 2019
+To ensure a smooth transition, we are slowly updating App Engine to use region
+IDs. If we haven't updated your Google Cloud project yet, you won't see a
+region ID for your app. Since the ID is optional for existing apps, you don't
+need to update URLs or make other changes once the region ID is available for
+your existing apps.
 
-  * App Engine ist jetzt in der Region ` europe-west6 ` (Zürich, Schweiz) verfügbar. 
+##  February 06, 2020
 
-##  9\. April 2019
+**DEPRECATED:**
 
-  * [ Cloud Tasks ](https://cloud.google.com/tasks/docs?hl=de) ist jetzt allgemein verfügbar und kann verwendet werden, um Aufgaben einzurichten, die außerhalb von Nutzeranfragen asynchron ausgeführt werden sollen. 
+  * You can no longer apply new spending limits to projects. Existing spending limits will continue to work. For more information on how you can limit app costs, see [ Limiting Costs ](https://cloud.google.com/appengine/docs/managing-costs?hl=de) . 
 
-  * [ Serverloser VPC-Zugriff ](https://cloud.google.com/appengine/docs/standard/python3/connecting-vpc?hl=de) ist jetzt in der Betaversion verfügbar. Der serverlose VPC-Zugriff ermöglicht Ihrer Anwendung, eine Verbindung zu internen Ressourcen in Ihrem VPC-Netzwerk herzustellen, z. B. Compute Engine-VM-Instanzen, Cloud Memorystore-Instanzen und mehr. 
+##  December 11, 2019
 
-##  4\. April 2019
+**FEATURE:**
 
-  * Die Python 3-Laufzeit wurde auf Version 3.7.3 aktualisiert. 
+  * [ Serverless VPC Access ](https://cloud.google.com/appengine/docs/standard/python3/connecting-vpc?hl=de) is now GA. 
 
-##  11\. Januar 2019
+##  July 30, 2019
 
-  * Die Python 3-Laufzeit wurde auf Version 3.7.2 aktualisiert. 
+**DEPRECATED:**
 
-##  14\. Dezember 2018
+  * The AppCfg tooling and the legacy standalone App Engine SDK, delivered through the ` GoogleAppEngineLauncher.dmg ` , ` GoogleAppEngine.msi ` , and ` google_appengine.zip ` files, are now deprecated. Google will shut down and remove support on July 30, 2020. 
 
-  * Die [ Python 3.7-Laufzeit ](https://cloud.google.com/appengine/docs/standard/python3?hl=de) für die App Engine-Standardumgebung ist jetzt allgemein verfügbar. 
+**FEATURE:**
 
-##  12\. Dezember 2018
+  * The functionalities of the App Engine SDK is delivered exclusively through [ Cloud SDK ](https://cloud.google.com/sdk/docs?hl=de) . For more information, see [ Migrating to Cloud SDK ](https://cloud.google.com/appengine/docs/standard/java/sdk-gcloud-migration?hl=de) . 
 
-  * Das Python SDK wurde auf Version 1.9.81 aktualisiert. 
-  * Alle Anwendungen wurden auf BSD-Netzwerk-Sockets umgestellt. Anwendungen müssen nicht angepasst werden. 
-  * Die [ Sockets API ](https://cloud.google.com/appengine/docs/standard/python/sockets?hl=de) ist jetzt allgemein verfügbar. 
+##  April 18, 2019
 
-##  16\. November 2018
+**FEATURE:**
 
-  * nginx ist jetzt der Standardwebserver. Anwendungen müssen nicht angepasst werden. 
+  * App Engine is now available in the ` asia-northeast2 ` region (Osaka, Japan). 
 
-##  31\. Oktober 2018
+##  April 15, 2019
 
-  * Die Python 3-Laufzeit wurde auf Python Version 3.7.1 aktualisiert. 
-  * Die Python 3-Laufzeit unterstützt rekursive Einträge in der Datei ` requirements.txt ` . 
+**FEATURE:**
 
-##  22\. Oktober 2018
+  * App Engine is now available in the ` europe-west6 ` region (Zürich, Switzerland). 
 
-  * App Engine ist jetzt in der Region ` asia-east2 ` (Hongkong) verfügbar. 
+##  April 09, 2019
 
-##  8\. August 2018
+**FEATURE:**
 
-  * Die [ Python 3.7-Laufzeit ](https://cloud.google.com/appengine/docs/standard/python3?hl=de) für die App Engine-Standardumgebung befindet sich jetzt in der Betaphase. 
-  * Eine Liste der [ Unterschiede zwischen Python 2.7- und Python 3.7-Laufzeiten ](https://cloud.google.com/appengine/docs/standard/python3/python-differences?hl=de) ist verfügbar. 
+  * [ Cloud Tasks ](https://cloud.google.com/tasks/docs?hl=de) is now GA and can be used to set up tasks to be performed asychronously, outside of user requests. 
 
-##  10\. Juli 2018
+**FEATURE:**
 
-  * App Engine ist jetzt in der Region ` us-west2 ` (Los Angeles) verfügbar. 
+  * [ Serverless VPC Access ](https://cloud.google.com/appengine/docs/standard/python3/connecting-vpc?hl=de) is now in beta. Serverless VPC Access enables your app to connect to internal resources in your VPC network, such as Compute Engine VM instances, Memorystore instances, and more. 
 
-##  2\. Juli 2018
+##  April 04, 2019
 
-In der [ Konfiguration der automatischen Skalierung
+**FEATURE:**
+
+  * The Python 3 runtime has been updated to version 3.7.3. 
+
+##  January 11, 2019
+
+**FEATURE:**
+
+  * The Python 3 runtime has been updated to version 3.7.2. 
+
+##  December 14, 2018
+
+**FEATURE:**
+
+  * The [ Python 3.7 runtime ](https://cloud.google.com/appengine/docs/standard/python3/?hl=de) for the App Engine standard environment is now GA. 
+
+##  December 12, 2018
+
+**FEATURE:**
+
+  * Updated Python SDK to version 1.9.81. 
+
+**FEATURE:**
+
+  * All apps have been switched to BSD network sockets. No changes to apps are required. 
+
+**FEATURE:**
+
+  * The [ Sockets API ](https://cloud.google.com/appengine/docs/standard/python/sockets/?hl=de) is now GA. 
+
+##  November 16, 2018
+
+**FEATURE:**
+
+  * nginx is now the default web server. No changes to apps are required. 
+
+##  October 31, 2018
+
+**FEATURE:**
+
+  * The Python 3 runtime has been updated to Python version 3.7.1. 
+
+**FEATURE:**
+
+  * The Python 3 runtime supports recursive entries in the ` requirements.txt ` file. 
+
+##  October 22, 2018
+
+**FEATURE:**
+
+  * App Engine is now available in the ` asia-east2 ` region (Hong Kong). 
+
+##  August 08, 2018
+
+**FEATURE:**
+
+  * The [ Python 3.7 runtime ](https://cloud.google.com/appengine/docs/standard/python3/?hl=de) for the App Engine standard environment is now in beta. 
+
+**FEATURE:**
+
+  * A list of [ differences between Python 2.7 and Python 3.7 runtimes ](https://cloud.google.com/appengine/docs/standard/python3/python-differences?hl=de) is available. 
+
+##  July 10, 2018
+
+**FEATURE:**
+
+  * App Engine is now available in the ` us-west2 ` region (Los Angeles). 
+
+##  July 02, 2018
+
+**FIXED:**
+
+Fixed a bug in [ auto scaling configuration
 ](https://cloud.google.com/appengine/docs/standard/python3/config/appref?hl=de#scaling_elements)
-wurde ein Fehler behoben, bei dem App Engine wahllos Instanzen herunterfuhr,
-wenn die Einstellung ` max_instances ` verwendet wurde.
+where App Engine was aggressively shutting down instances when the `
+max_instances ` setting was used.
 
-##  15\. Mai 2018
+##  May 15, 2018
 
-  * Schrittweise Einführung eines Upgrades auf das automatische Skalierungssystem abgeschlossen: 
-    * Verbesserte Effizienz, die generell dazu führt, dass die Instanzkosten für viele Nutzer bis zu 6 % und die _Ladeanfragen_ bis zu 30 % sinken. Ladeanfragen sind die erste Anfrage an eine neue Instanz. 
-    * Mit der neuen Einstellung für die maximale Instanzzahl können Sie die Gesamtzahl der zu planenden Instanzen begrenzen. 
-    * Mit der neuen Einstellung für die Mindestanzahl der Instanzen können Sie angeben, wie viele Instanzen für die Anwendung mindestens weiterhin ausgeführt werden sollen. 
-    * Mit der neuen Einstellung für die CPU-Zielauslastung können Sie das Verhältnis zwischen Latenz und Kosten optimieren. 
-    * Mit der neuen Einstellung für den Zieldurchsatz können Sie optimieren, ab welcher Anzahl gleichzeitiger Anfragen neue Instanzen gestartet werden. 
-    * Keine residenten Instanzen bei der automatischen Skalierung mehr. Wenn Sie zuvor die Einstellung ` min_idle_instances ` verwendet haben, wurden die Mindestzahl der inaktiven Instanzen in der Cloud Console früher als _Resident_ und die verbleibenden Instanzen als _Dynamisch_ gekennzeichnet. Im neuen Planer sind alle Instanzen für die automatische Skalierung als _Dynamisch_ kennzeichnet. Das grundlegende Verhalten ähnelt jedoch weiterhin dem bisherigen Verhalten. Wenn Sie ` min_idle_instances ` verwenden und Aufwärmanfragen aktivieren, wird auch in Zeiten ohne Traffic mindestens die festgelegte Anzahl dynamischer Instanzen ausgeführt. 
-    * Weitere Informationen finden Sie in der [ Dokumentation zur automatischen Skalierung ](https://cloud.google.com/appengine/docs/standard/python3/config/appref?hl=de#scaling_elements) . 
+**FEATURE:**
 
-##  14\. Dezember 2017
+  * Completed a gradual rollout of an upgrade to the automatic scaling system: 
+    * Improved efficiency resulting generally in lower instance cost (up to 6% reduction for many users) and up to 30% reduction for _loading requests_ , which are the first request to a new instance. 
+    * New max instances setting allows you to cap the total number of instances to be scheduled. 
+    * New min instances setting allows you to specify a minimum number of instance to keep running for your app. 
+    * New target CPU utilization setting lets you optimize between latency and cost. 
+    * New target throughput utilization setting lets you optimize for the number of concurrent requests at which new instances are started. 
+    * No more resident instances in auto scaling. Previously, if you used the ` min_idle_instances ` setting, the minimum idle instances were labelled as _Resident_ in the Cloud Console, with the remainder of the instances labelled as _Dynamic_ . The new scheduler simply labels all instances as _Dynamic_ with auto scaling. However, the underlying behavior remains similar to previous behavior. If you use ` min_idle_instances ` and enable warmup requests, you will see at least that many dynamic instances running even during periods with no traffic. 
+    * For more details, see the [ auto scaling documentation ](https://cloud.google.com/appengine/docs/standard/python3/config/appref?hl=de#scaling_elements) . 
 
-  * Verbesserte Dokumentation der Zugriffssteuerung zum Bereitstellen von Anwendungen mit IAM-Rollen und Dienstkonten: 
+##  December 14, 2017
 
-    * [ Vordefinierte App Engine-Rollen ](https://cloud.google.com/appengine/docs/standard/python3/access-control?hl=de#predefined_app_engine_roles)
-    * [ Bereitstellung mit IAM-Rollen ](https://cloud.google.com/appengine/docs/standard/python3/granting-project-access?hl=de#deploying_using_iam_roles)
-    * [ Erforderliche Berechtigungen ](https://cloud.google.com/appengine/docs/admin-api/access-control?hl=de#required_permissions)
+**FEATURE:**
 
-##  31\. Oktober 2017
+  * Improved access control documentation around deploying apps with IAM roles and service accounts: 
 
-  * App Engine ist jetzt in der Region ` asia-south1 ` (Mumbai, Indien) verfügbar. 
+    * [ Predefined App Engine roles ](https://cloud.google.com/appengine/docs/standard/python3/access-control?hl=de#predefined_app_engine_roles)
+    * [ Deploying using IAM roles ](https://cloud.google.com/appengine/docs/standard/python3/granting-project-access?hl=de#deploying_using_iam_roles)
+    * [ Require permissions ](https://cloud.google.com/appengine/docs/admin-api/access-control?hl=de#required_permissions)
 
-##  11\. Oktober 2017
+##  October 31, 2017
 
-  * Ankündigung der allgemeinen Verfügbarkeit der [ App Engine-Firewall ](https://cloud.google.com/appengine/docs/standard/python3/creating-firewalls?hl=de)
+**FEATURE:**
 
-##  13\. September 2017
+  * App Engine is now available in the ` asia-south1 ` region (Mumbai, India). 
 
-  * Sie können jetzt verwaltete Zertifikate verwenden, um SSL zu Ihrer benutzerdefinierten Domain hinzuzufügen. Sobald Sie Ihrer Anwendung die benutzerdefinierte Domain zugeordnet haben, stellt App Engine automatisch ein SSL-Zertifikat bereit, verwaltet die Aktualisierung, bevor es abläuft, und widerruft es, wenn Sie die benutzerdefinierte Domain entfernen. Verwaltete Zertifikate befinden sich in der Betaphase. Weitere Informationen finden Sie unter [ Benutzerdefinierte Domains mit SSL sichern ](https://cloud.google.com/appengine/docs/standard/python3/securing-custom-domains-with-ssl?hl=de) . 
+##  October 11, 2017
 
-  * Wenn Sie eine vorhandene Domainzuordnung und ein SSL-Zertifikat haben, funktioniert die Domain weiterhin wie erwartet. Sie können auch ein [ Upgrade auf verwaltete SSL-Zertifikate ](https://cloud.google.com/appengine/docs/standard/python3/securing-custom-domains-with-ssl?hl=de#updating_to_managed_ssl_certificates) durchführen. 
+**FEATURE:**
 
-  * Die ` gcloud ` -Befehle und die Admin API-Methoden zum [ Zuordnen benutzerdefinierter Domains ](https://cloud.google.com/appengine/docs/standard/python3/mapping-custom-domains?hl=de) sind jetzt allgemein verfügbar. Dazu gehören [ ` gcloud domains verify ` ](https://cloud.google.com/sdk/gcloud/reference/domains?hl=de) und [ ` apps.authorizedDomains.list ` ](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.authorizedDomains/list?hl=de) . Wenn Sie jedoch verwaltete SSL-Zertifikate einsetzen möchten, verwenden Sie die Betabefehle und -methoden, die unter [ Benutzerdefinierte Domains mit SSL sichern ](https://cloud.google.com/appengine/docs/standard/python3/securing-custom-domains-with-ssl?hl=de) aufgeführt sind. 
+  * Announced general availability of [ App Engine firewall ](https://cloud.google.com/appengine/docs/standard/python3/creating-firewalls?hl=de) . 
 
-##  5\. September 2017
+##  September 13, 2017
 
-  * App Engine ist jetzt in der Region ` southamerica-east1 ` (São Paulo, Brasilien) verfügbar 
+**FEATURE:**
 
-##  1\. August 2017
+  * You can now use managed certificates to add SSL to your custom domain. Once you map your custom domain to your application, App Engine provisions an SSL certificate automatically and handles renewing the certificate before it expires and revoking it if you remove the custom domain. Managed certificates are in beta. For more information, see [ Securing Custom Domains with SSL ](https://cloud.google.com/appengine/docs/standard/python3/securing-custom-domains-with-ssl?hl=de) . 
 
-  * App Engine ist jetzt in der Region ` europe-west3 ` (Frankfurt, Deutschland) verfügbar. 
+**FEATURE:**
 
-##  18\. Juli 2017
+  * If you have an existing domain mapping and SSL certificate, then it continues to function as expected. You can also [ upgrade to managed SSL certificates ](https://cloud.google.com/appengine/docs/standard/python3/securing-custom-domains-with-ssl?hl=de#updating_to_managed_ssl_certificates) . 
 
-  * App Engine ist jetzt in der Region ` australia-southeast1 ` (Sydney, Australien) verfügbar 
+**FEATURE:**
 
-##  6\. Juni 2017
+  * The ` gcloud ` commands and Admin API methods used to [ map custom domains ](https://cloud.google.com/appengine/docs/standard/python3/mapping-custom-domains?hl=de) are now generally available. This includes [ ` gcloud domains verify ` ](https://cloud.google.com/sdk/gcloud/reference/domains/?hl=de) and [ ` apps.authorizedDomains.list ` ](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.authorizedDomains/list?hl=de) . However, if you want to use managed SSL certificates, use the beta commands and methods that are specified in [ Securing Custom Domains with SSL ](https://cloud.google.com/appengine/docs/standard/python3/securing-custom-domains-with-ssl?hl=de) . 
 
-  * App Engine ist jetzt in der Region ` europe-west2 ` (London) verfügbar. 
-  * Sie können jetzt mit den Betafunktionen in der Admin API und im ` gcloud ` -Befehlszeilentool [ benutzerdefinierte Domains und SSL-Zertifikate erstellen und verwalten ](https://cloud.google.com/appengine/docs/standard/python3/mapping-custom-domains?hl=de) . 
+##  September 05, 2017
 
-##  9\. Mai 2017
+**FEATURE:**
 
-  * App Engine ist jetzt in der Region ` us-east4 ` (North Virginia, USA) verfügbar 
+  * App Engine is now available in the ` southamerica-east1 ` region (São Paulo, Brazil). 
 
-##  27\. Oktober 2016
+##  August 01, 2017
 
-  * Die Channel- und XMPP-Dienste sind [ veraltet ](https://cloud.google.com/appengine/docs/deprecations?hl=de) . Diese Dienste werden am 31. Oktober 2017 eingestellt. 
+**FEATURE:**
 
-##  1\. August 2016
+  * App Engine is now available in the ` europe-west3 ` region (Frankfurt, Germany). 
 
-**Hinweise zur Admin API**
+##  July 18, 2017
 
-  * Version 1 der [ Admin API ](https://cloud.google.com/appengine/docs/admin-api?hl=de) ist jetzt allgemein verfügbar. 
+**FEATURE:**
 
-##  1\. August 2016 – Version 1.9.42
+  * App Engine is now available in the ` australia-southeast1 ` region (Sydney, Australia). 
 
-**Hinweise zur Python 3.7-Laufzeit**
+##  June 06, 2017
 
-  * Dieser Release enthält kein neues Python 3.7 SDK. Python 3.7-Nutzer sollten weiterhin das SDK 1.9.40 verwenden. 
+**FEATURE:**
 
-##  18\. Juli 2016 – Version 1.9.40
+  * App Engine is now available in the ` europe-west2 ` region (London). 
 
-  * Version 1.9.39 wurde übersprungen. 
+**FEATURE:**
 
-  * LeaseTasksByTag-Anfragen sind auf 25 Anfragen pro Sekunde beschränkt 
+  * You can now use the beta-level features in the Admin API and ` gcloud ` command-line tool to [ create and manage your custom domains and SSL certificates ](https://cloud.google.com/appengine/docs/standard/python3/mapping-custom-domains?hl=de) . 
 
-  * Für Server- und Clientfehler zeigt das App Engine-Dashboard nun die Statusfehler pro URL genauer an. 
+##  May 09, 2017
 
-  * In der GCP Console gibt es eine neue [ App Engine-Anleitung ](https://console.cloud.google.com/start/appengine?hl=de) . Wählen Sie die gewünschte Sprache aus und starten Sie die interaktive Anleitung direkt in der Console. 
+**FEATURE:**
 
-  * Das Limit für Cronjobs wurde auf 250 erhöht 
+  * App Engine is now available in the ` us-east4 ` region (North Virginia). 
 
-##  1\. Juli 2016
+##  October 27, 2016
+
+**DEPRECATED:**
+
+  * The Channel and XMPP services are now [ deprecated ](https://cloud.google.com/appengine/docs/deprecations/?hl=de) . These services will be turned down on October 31, 2017. 
+
+##  August 01, 2016
+
+**FEATURE:**
+
+**Admin API notes**
+
+  * Version 1 of the [ Admin API ](https://cloud.google.com/appengine/docs/admin-api/?hl=de) is now generally available. 
+
+**FEATURE:**
+
+Version 1.9.42
+
+**FEATURE:**
+
+**Python 3.7 runtime notes**
+
+  * This release does not include a new Python 3.7 SDK. Python 3.7 users should continue to use the 1.9.40 SDK. 
+
+##  July 18, 2016
+
+**FEATURE:**
+
+Version 1.9.40
+
+**CHANGED:**
+
+  * Version 1.9.39 was skipped. 
+
+**FEATURE:**
+
+  * LeaseTasksByTag requests will be limited to 25 requests per second. 
+
+**FEATURE:**
+
+  * Server Errors and Client Errors now more accurately reflect per-URL status errors in the App Engine dashboard. 
+
+**FEATURE:**
+
+  * New [ App Engine guided walkthrough ](https://console.cloud.google.com/start/appengine?hl=de) in the Cloud Console. Pick your preferred language and launch an interactive tutorial directly in the console. 
+
+**FEATURE:**
+
+  * Increases the maximum cron tasks limit to 250. 
+
+##  July 01, 2016
+
+**FEATURE:**
 
 **Cloud Datastore**
 
-  * Die neuen [ Cloud Datastore-Preise ](https://cloud.google.com/appengine/pricing?hl=de#costs-for-datastore-calls) gelten ab jetzt. 
+  * New [ Cloud Datastore Pricing ](https://cloud.google.com/appengine/pricing?hl=de#costs-for-datastore-calls) is now in effect. 
 
-##  25\. Mai 2016 – Version 1.9.38
+##  May 25, 2016
 
-  * Für den Fehler, der von URL Fetch für eine Anfrage an einen Port außerhalb der zulässigen Bereiche (80–90, 440–450, 1024–65535) zurückgegeben wird, wird jetzt immer wie dokumentiert ` INVALID_URL ` angezeigt. 
+**FEATURE:**
+
+Version 1.9.38
+
+**FEATURE:**
+
+  * The error returned by URL Fetch for a request to a port outside of the permitted ranges (80-90, 440-450, 1024-65535) will now always return ` INVALID_URL ` as documented. 
+
+**FEATURE:**
 
 **Cloud Datastore**
 
-  * Beim Durchführen eines Commits für eine gruppenübergreifende Transaktion sind die für neue oder aktualisierte Entitäten zurückgegebenen Versionsnummern identisch. Bisher hatten Entitäten in einer Gruppe, für die ein Commit als Teil einer gruppenübergreifenden Transaktion durchgeführt wurde, die gleiche Versionsnummer, Entitäten in verschiedenen Gruppen aber möglicherweise unterschiedliche Versionsnummern. Mit dieser Änderung wird gewährleistet, dass alle neuen und aktualisierten Entitäten unabhängig von ihrer Entitätengruppe eine identische Versionsnummer haben, wenn für sie als Teil einer gruppenübergreifenden Transaktion ein Commit durchgeführt wird. Wie bisher erhalten Entitäten, die nicht aktualisiert werden, keine neue Versionsnummer. 
+  * When committing a cross-group transaction, version numbers returned for new or updated entities are all the same. With the previous behavior, entities within the same group committed as part of a cross-group transaction, had the same version number, but entities in different groups might have had different version numbers. This change ensures all new and updated entities have an identical version number, regardless of their entity group, when committed as part of a cross-group transaction. As before, entities that are not updated will not have a new version number. 
 
-##  4\. Mai 2016 – Version 1.9.37
+##  May 04, 2016
 
-Enthält allgemeine Fehlerbehebungen und Verbesserungen.
+**FEATURE:**
 
-##  2\. Mai 2016
+Version 1.9.37
 
-**Flexible App Engine-Umgebung**
+**FIXED:**
 
-  * Die [ Ruby-Laufzeit ](https://cloud.google.com/appengine/docs/flexible/ruby?hl=de) ist jetzt für die flexible App Engine-Umgebung verfügbar. 
+Includes general bug fixes and improvements.
 
-##  18\. April 2016 – Version 1.9.36
+##  May 02, 2016
 
-Als Reaktion auf Nutzeranfragen unterstützt die App Engine Users API jetzt wie
-die anderen App Engine-Module IAM-Rollen und Gruppenerweiterungen. Dadurch
-gilt jeder Projektinhaber, -bearbeiter oder -betrachter bzw. App Engine-
-Administrator für die Users API als "Admin", unabhängig davon, ob dem Nutzer
-die Rolle direkt oder über die Mitgliedschaft in einer Gruppe zugewiesen
-wurde. *In diesem Release werden, falls vorhanden, Fehlerdetails in den
-Fehlermeldungen für den Ausnahmetyp "OverQuota" dokumentiert.
+**FEATURE:**
 
-##  24\. März 2016 – Version 1.9.35
+**App Engine flexible environment**
 
-  * Die verwalteten VMs von App Engine wurden in [ flexible App Engine-Umgebung ](https://cloud.google.com/appengine/docs/flexible?hl=de) umbenannt. 
-  * Nachverfolgungszeitstempel stimmen jetzt mit Logzeitstempeln überein. 
+  * The [ Ruby runtime ](https://cloud.google.com/appengine/docs/flexible/ruby/?hl=de) is now available for the App Engine flexible environment. 
 
-##  4\. März 2016 – Version 1.9.34
+##  April 18, 2016
 
-  * Das Standardkontingent für das Abrufen von URLs für abgerechnete Anwendungen wurde erhöht. Ausführliche Informationen finden Sie auf der [ Seite "Kontingente" ](https://cloud.google.com/appengine/docs/quotas?hl=de#UrlFetch) . 
+**FEATURE:**
 
-##  17\. Februar 2016 – Version 1.9.33
+Version 1.9.36
 
-  * Der URL-Pfad "/form" ist nun zulässig und wird an Anwendungen weitergeleitet. Bisher wurde dieser Pfad blockiert. 
+**FEATURE:**
 
-##  3\. Februar 2016 – Version 1.9.32
+In response to your requests, the App Engine Users API joins the rest of App
+Engine in supporting IAM roles and group expansion. This means that any user
+who is a project Owner, Editor or Viewer or an App Engine Admin is considered
+an "admin" by the Users API, regardless of whether the user was granted the
+role directly or by membership in a group. * This release populates error
+details, when available, in error messages associated with the "OverQuota"
+exception type.
 
-  * Auswahlmöglichkeiten zum Erstellen von Containern für verwaltete VMs 
+##  March 24, 2016
 
-Mit den Befehlen ` gcloud preview app deploy ` (und ` mvn gcloud:deploy ` )
-können Sie Ihre Artefakte auf unsere Server hochladen und einen Container zur
-Bereitstellung Ihrer Anwendung in der verwalteten VM-Umgebung erstellen.
+**FEATURE:**
 
-Für das Erstellen des Container-Image per Fernzugriff gibt es zwei
-Möglichkeiten. Standardmäßig wird der Container auf einer temporären
-virtuellen Compute Engine-Maschine erstellt, auf der Docker installiert ist.
-Alternativ können Sie den Dienst [ Cloud Build
-](https://cloud.google.com/cloud-build/docs?hl=de) verwenden. Führen Sie dazu
-diese Schritte aus:
+Version 1.9.35
 
-    1. [ Aktivieren Sie die Cloud Build API ](https://support.google.com/cloud/answer/6158841?hl=de) für Ihr Projekt. 
-    2. Rufen Sie den Befehl ` gcloud config set app/use_cloud_build True ` auf. Dadurch wird beim Aufruf von ` gcloud preview app deploy ` immer der Dienst verwendet. Mit dem Befehl ` gcloud config set app/use_cloud_build False ` können Sie zum Standardverhalten zurückzukehren. 
+**CHANGED:**
 
-##  14\. Januar 2016 – Version 1.9.31
+  * App Engine Managed VMs is renamed to [ App Engine flexible environment ](https://cloud.google.com/appengine/docs/flexible/?hl=de) . 
 
-App Engine unterstützt jetzt Google Groups: Wenn eine Google Group einem
-Projekt als Mitglied hinzugefügt wird, erhalten die anderen Gruppenmitglieder
-Zugriff auf App Engine. Wenn eine Google Group z. B. ein Mitbearbeiter bei
-einem Projekt ist, haben jetzt alle Gruppenmitglieder Mitbearbeiterzugriff auf
-die App Engine-Anwendung.
+**FEATURE:**
 
-##  30\. November 2015 – Version 1.9.30
+  * Fixes trace timestamps to match log timestamps. 
 
-Header für Requests in Push-Warteschlangen, die für Aufgaben von
-Aufgabenwarteschlangen ohne Nutzlast erstellt wurden, enthalten jetzt einen
-Content-Length-Eintrag "0". Bisherige Headers für derartige Requests
-enthielten keinen Content-Length-Eintrag.
+##  March 04, 2016
 
-##  30\. November 2015 – Version 1.9.29
+**FEATURE:**
 
-  * Die Tiefe der Warteschlange wird für nicht vorhandene Warteschlangen, für zum Löschen markierte Warteschlangen und beim Ausfall von Warteschlangentabellen nicht mehr berechnet und gespeichert. 
-  * Für Entwickler, die die [ Endpoints API ](https://cloud.google.com/appengine/docs/standard/python/endpoints/create_api?hl=de#defining_the_api_endpointsapi) verwenden, wurde zum @Api-Hinweis ein identifizierbarer boolescher Parameter hinzugefügt, mit dem Nutzer die API-Erkennung deaktivieren können. Bei Verwendung dieser Funktion können einige Clientbibliotheken (z. B. JavaScript) und API Explorer nicht mehr verwendet werden, da sie auf der Erkennung basieren. 
+Version 1.9.34
 
-##  29\. Oktober 2015 – Version 1.9.28
+**FEATURE:**
 
-Die Prospective Search API, die am 14. Juli 2015 eingestellt wurde, ist jetzt
-auf vorhandene Nutzer beschränkt. Sie wird am 1. Dezember 2015 vollständig
-abgeschaltet. *Verbesserte Genauigkeit von Geo-Filtern in Suchabfragen.
+  * Increases default quota for URL fetch for billed apps. Refer to the [ Quotas page ](https://cloud.google.com/appengine/docs/quotas?hl=de#UrlFetch) for details. 
 
-##  25\. September 2015 – Version 1.9.27
+##  February 17, 2016
 
-Anwendungen, die neu für die Abrechnung aktiviert werden, haben jetzt
-standardmäßig ein unbegrenztes Tagesbudget statt eines maximalen Tagesbudgets
-von 0 $. Dies verhindert unerwünschte Ausfälle aufgrund von
-Budgetüberschreitungen. Zur Festlegung einer Obergrenze für die täglichen
-Kosten Ihrer Anwendung geben Sie nach der Aktivierung der Abrechnung ein
-Budget in den [ App Engine-Einstellungen
-](https://console.cloud.google.com/project/_/appengine/settings?hl=de) an.
-Weitere Informationen finden Sie unter [ Tagesbudget festlegen
+**FEATURE:**
+
+Version 1.9.33
+
+**FEATURE:**
+
+  * The URL path "/form" is now allowed and will be forwarded to applications. Previously, this path was blocked. 
+
+##  February 03, 2016
+
+**FEATURE:**
+
+Version 1.9.32
+
+**FEATURE:**
+
+  * Container construction choices for Managed VMs 
+
+The ` gcloud preview app deploy ` (and ` mvn gcloud:deploy ` ) commands upload
+your artifacts to our servers and build a container to deploy your app to the
+Managed VM environment.
+
+There are two mechanisms for building the container image remotely. The
+default behavior is to build the container on a transient Compute Engine
+Virtual Machine which has Docker installed. Alternatively, you can use the [
+Cloud Build ](https://cloud.google.com/cloud-build/docs/?hl=de) service. To
+use the Cloud Build service, follow these steps:
+
+    1. [ Activate the Cloud Build API ](https://support.google.com/cloud/answer/6158841?hl=de) for your project. 
+    2. Use the command ` gcloud config set app/use_cloud_build True ` . This will cause all invocations of ` gcloud preview app deploy ` to use the service. (To return to the default behavior, use the command ` gcloud config set app/use_cloud_build False ` . 
+
+##  January 14, 2016
+
+**FEATURE:**
+
+Version 1.9.31
+
+**FEATURE:**
+
+App Engine now supports Google Groups: Adding a Google Group as a member of a
+project grants the members of the group access to App Engine. For example, if
+a Google Group is an Editor on a project, all members of the group now have
+Editor access to the App Engine application.
+
+##  November 30, 2015
+
+**FEATURE:**
+
+Version 1.9.30
+
+**FEATURE:**
+
+Headers for push queue requests made for Task Queue tasks with no payload will
+now contain a Content-Length entry set to '0'. Previously headers for such
+requests contained no Content-Length entry.
+
+**FEATURE:**
+
+Version 1.9.29
+
+**FEATURE:**
+
+  * Stop calculating and storing queue depth for non-existent queues, queues marked for deletion, and in the case of queue table outages. 
+
+**FEATURE:**
+
+  * For developers using the [ endpoints API ](https://cloud.google.com/appengine/docs/standard/python/endpoints/create_api?hl=de#defining_the_api_endpointsapi) , added a discoverable boolean parameter to the @Api annotation to allow users to disable API discovery. Using this feature will prevent some client libraries (e.g. JavaScript) and the API Explorer from working, as they depend on discovery. 
+
+##  October 29, 2015
+
+**FEATURE:**
+
+Version 1.9.28
+
+**BREAKING:**
+
+The Prospective Search API, which was deprecated on July 14, 2015, is now
+restricted to existing users. It will fully shutdown on December 1, 2015. *
+Improved accuracy of Geo filtering in Search queries.
+
+##  September 25, 2015
+
+**FEATURE:**
+
+Version 1.9.27
+
+**FEATURE:**
+
+Applications that are newly enabled for billing now default to an unlimited
+daily budget, and no longer default to a maximum daily budget of $0. This
+prevents unwanted outages due to running out of budget. To set a ceiling on
+your application's daily cost, after you enable billing, set a budget in the [
+app engine settings
+](https://console.cloud.google.com/project/_/appengine/settings?hl=de) . For
+more information, see [ Setting a daily budget
 ](https://cloud.google.com/appengine/docs/developers-
-console?hl=de#setting_a_daily_budget) .
+console/?hl=de#setting_a_daily_budget) .
+
+**FEATURE:**
 
 Datastore
 
-  * Fehlerkorrektur: Wiederholte numerische Facetten sind jetzt erlaubt. 
-  * Die Facettensuche ist jetzt eine GA-Funktion. 
+**FIXED:**
 
-##  27\. August 2015 – Version 1.9.26
+  * Bugfix: Repeated numeric facets are now allowed. 
 
-  * oauth2client-Bibliothek wurde auf Version [ 1.4.2 ](https://github.com/google/oauth2client/blob/master/CHANGELOG.md) aktualisiert. 
-  * Das Menü "Mit Kontext anzeigen" wurde MVM-Anwendungslogs mit "thread_id" oder "request_id" als Feld im Logeintrag hinzugefügt. Dadurch können Sie Anwendungslogs auf der Basis dieser Felder sortieren. 
-  * Anwendungen können für die aktuelle Arbeitslast bereitgestellt werden. Es lässt sich auch eine elastische Bereitstellung auf Basis von VM- und Anwendungsmesswerten konfigurieren. 
-  * Auf die Remote-API kann jetzt mithilfe von OAuth2-Anmeldedaten unter https://developers.google.com/identity/protocols/application-default-credentials zugegriffen werden. 
-  * Sie können RequestPayloadTooLargeException für URLFetch-Requests mit zu großen Nutzlasten verwenden. 
+**FEATURE:**
 
-##  14\. August 2015 – Version 1.9.25
+  * Faceted Search is now GA. 
 
-  * PyAMF Version 0.7.2 (Beta) wurde hinzugefügt. 
-  * Menüs in der Admin-Konsole leiten an die GCP Console weiter. Ausgewählte Dienste wie die Admin-Logs sind weiterhin in der Admin-Konsole verfügbar. 
-  * Datastore lässt jetzt Eigenschaften zur Darstellung einer leeren Liste zu. 
-  * Fehlgeschlagene Aufgaben in Warteschlangen, die mit einem "retry_limit" von Null konfiguriert sind, werden nicht mehr wiederholt. 
+##  August 27, 2015
+
+**FEATURE:**
+
+Version 1.9.26
+
+**FEATURE:**
+
+  * oauth2client library upgraded to version [ 1.4.2 ](https://github.com/google/oauth2client/blob/master/CHANGELOG.md)
+
+**FEATURE:**
+
+  * Adds "show in context" menu for MVM application logs that have thread_id or request_id as a field in their log entry. This allows sorting app logs based on either field. 
+
+**FEATURE:**
+
+  * Capability to provision applications for current load and configure elastic provisioning based on both VM and application level metrics. 
+
+**FEATURE:**
+
+  * Remote API can now be accessed using OAuth2 credentials using https://developers.google.com/identity/protocols/application-default-credentials 
+
+**FEATURE:**
+
+  * Use RequestPayloadTooLargeException for URLFetch requests with payloads that are too large. 
+
+##  August 14, 2015
+
+**FEATURE:**
+
+Version 1.9.25
+
+**FEATURE:**
+
+  * Added PyAMF version 0.7.2 (Beta). 
+
+**FEATURE:**
+
+  * Admin Console menus start redirecting to Cloud Console. Select services such as the Admin Logs will continue to be available in the Admin Console. 
+
+**FEATURE:**
+
+  * Datastore now allows properties to represent the empty list. 
+
+**FEATURE:**
+
+  * Failed tasks in queues configured with a ` retry_limit ` of zero will no longer be retried. 
 
