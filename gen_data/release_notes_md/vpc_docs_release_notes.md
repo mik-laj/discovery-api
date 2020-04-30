@@ -11,6 +11,16 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/vpc-release-notes.xml `
 
+##  April 29, 2020
+
+**CHANGED:**
+
+Google Cloud now encrypts VPC traffic within the boundaries of the data
+centers in _asia-east2_ . We will roll out this feature gradually to other
+regions. Google Cloud already encrypts VPC traffic _between all data centers_
+as described in [ Encryption in Transit in Google Cloud
+](https://cloud.google.com/security/encryption-in-transit#virtual-network) .
+
 ##  April 24, 2020
 
 **FEATURE:**
