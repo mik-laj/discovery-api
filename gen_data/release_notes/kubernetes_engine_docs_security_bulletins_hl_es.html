@@ -37,20 +37,210 @@
     </span>
    </aside>
    <p>
-    Si quieres recibir los últimos boletines de seguridad que tienes a tu disposición,
-    añade la URL de esta página a tu
+    Si quieres recibir los últimos boletines de seguridad que tienes a tu disposición, añade la URL de esta página a tu
     <a class="external" href="https://wikipedia.org/wiki/Comparison_of_feed_aggregators">
      lector de feeds
     </a>
-    o
-    añade la URL del feed directamente:
+    o añade la URL del feed directamente:
     <code dir="ltr" translate="no">
      https://cloud.google.com/feeds/kubernetes-engine-security-bulletins.xml
     </code>
     .
    </p>
    <section class="bulletins">
-    <h2 data-text="21 de enero del 2020; última actualización: 24 de enero del 2020" id="january_21_2020" tabindex="0">
+    <h2 data-text="GCP-2020-003" id="gcp-2020-003" tabindex="0">
+     GCP-2020-003
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Descripción
+       </th>
+       <th>
+        Gravedad
+       </th>
+       <th>
+        Notas
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Hace poco se ha descubierto una vulnerabilidad en Kubernetes, descrita en la
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11254">
+          CVE-2019-11254
+         </a>
+         , que permite que cualquier usuario autorizado envíe solicitudes POST para ejecutar un ataque remoto de denegación de servicio en un servidor de API de Kubernetes. El Comité de Seguridad de Producto (PSC) de Kubernetes ha publicado
+         <a href="https://groups.google.com/g/kubernetes-security-announce/c/wuwEwZigXBc?hl=es">
+          información adicional sobre esta vulnerabilidad
+         </a>
+         .
+        </p>
+        <p>
+         Los clústeres de GKE que usan
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/authorized-networks?hl=es">
+          redes maestras autorizadas
+         </a>
+         y
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters?hl=es#private_master">
+          clústeres privados sin punto de conexión público
+         </a>
+         mitigan esta vulnerabilidad.
+        </p>
+        <h4 data-text="What should I do?" id="what-should-i-do" tabindex="0">
+         ¿Qué debo hacer?
+        </h4>
+        <p>
+         Te recomendamos que actualices tu clúster a una versión del parche que contenga la mitigación a esta vulnerabilidad.
+        </p>
+        <p>
+         A continuación, se indican las versiones de parches que contienen la mitigación:
+        </p>
+        <ul>
+         <li>
+          1.13.12-gke.29
+         </li>
+         <li>
+          1.14.9-gke.27
+         </li>
+         <li>
+          1.14.10-gke.24
+         </li>
+         <li>
+          1.15.9-gke.20
+         </li>
+         <li>
+          1.16.6-gke.1
+         </li>
+        </ul>
+        <h4 data-text="What vulnerabilities are addressed by this patch?" id="what-vulnerabilities-are-addressed-by-this-patch" tabindex="0">
+         ¿Qué vulnerabilidades mitiga este parche?
+        </h4>
+        <p>
+         El parche mitiga una vulnerabilidad de denegación de servicio (DoS):
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11254">
+          CVE-2019-11254
+         </a>
+        </p>
+       </td>
+       <td>
+        <p>
+         Media
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11254">
+          CVE-2019-11254
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-002" id="gcp-2020-002" tabindex="0">
+     GCP-2020-002
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Descripción
+       </th>
+       <th>
+        Gravedad
+       </th>
+       <th>
+        Notas
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Kubernetes ha divulgado
+         <a href="https://groups.google.com/forum/?hl=es#!topic/kubernetes-security-announce/2UOlsba2g0s">
+          dos vulnerabilidades de denegación de servicio
+         </a>
+         : una afecta al servidor de APIs y la otra a los kubelets. Si quieres obtener más información al respecto, consulta los siguientes problemas de Kubernetes:
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/89377">
+          89377
+         </a>
+         y
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/89378">
+          89378
+         </a>
+         .
+        </p>
+        <h4 data-text="What should I do?" id="what-should-i-do_1" tabindex="0">
+         ¿Qué debo hacer?
+        </h4>
+        <p>
+         En GKE, todos los usuarios están protegidos ante la vulnerabilidad CVE-2020-8551, a menos que los usuarios que no son de confianza puedan enviar solicitudes en la red interna del clúster.
+            Si se utilizan
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/authorized-networks?hl=es">
+          redes maestras autorizadas
+         </a>
+         , también se mitiga la vulnerabilidad CVE-2020-8552.
+        </p>
+        <h4 data-text="When will these be patched?" id="when-will-these-be-patched" tabindex="0">
+         ¿Cuándo se les aplicarán parches a estas vulnerabilidades?
+        </h4>
+        <p>
+         Los parches para la CVE-2020-8551 requieren una actualización de nodos. A continuación, se indican las versiones de parches que contendrán la mitigación:
+        </p>
+        <ul>
+         <li>
+          1.15.10-gke.*
+         </li>
+         <li>
+          1.16.7-gke.*
+         </li>
+        </ul>
+        <aside class="note">
+         Nota: Las versiones 1.14.x y todas las anteriores no se ven afectadas por esta vulnerabilidad, por lo que no requieren parches.
+        </aside>
+        <p>
+         Los parches para la CVE-2020-8552 requieren una actualización maestra. A continuación, se indican las versiones de parches que contendrán la mitigación:
+        </p>
+        <ul>
+         <li>
+          1.14.10-gke.32
+         </li>
+         <li>
+          1.15.10-gke.*
+         </li>
+         <li>
+          1.16.7-gke.*
+         </li>
+        </ul>
+       </td>
+       <td>
+        <p>
+         Media
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8551">
+          CVE-2020-8551
+         </a>
+         <br/>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8552">
+          CVE-2020-8552
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="January 21, 2020; last updated January 24, 2020" id="january_21_2020" tabindex="0">
      21 de enero del 2020; última actualización: 24 de enero del 2020
     </h2>
     <table>
@@ -197,7 +387,7 @@
       </tr>
      </tbody>
     </table>
-    <h2 data-text="14 de noviembre del 2019" id="november_14_2019" tabindex="0">
+    <h2 data-text="November 14, 2019" id="november_14_2019" tabindex="0">
      14 de noviembre del 2019
     </h2>
     <table>
@@ -326,7 +516,7 @@
       </tr>
      </tbody>
     </table>
-    <h2 data-text="12 de noviembre del 2019" id="november_12_2019" tabindex="0">
+    <h2 data-text="November 12, 2019" id="november_12_2019" tabindex="0">
      12 de noviembre del 2019
     </h2>
     <table>
@@ -374,15 +564,14 @@
          </a>
          .
         </p>
-        <h4 data-text="¿Qué debo hacer?" id="¿qué-debo-hacer" tabindex="0">
+        <h4 data-text="What should I do?" id="what-should-i-do_2" tabindex="0">
          ¿Qué debo hacer?
         </h4>
         <p>
          <strong>
           Esta situación te afectará únicamente si usas grupos
-            de nodos N2, M2 o C2
+            de nodos N2, M2 o C2 y
           <em>
-           y
           </em>
           estos ejecutan código no fiable dentro de tus propios clústeres de varios propietarios de GKE.
          </strong>
@@ -409,7 +598,7 @@
          </code>
          .
         </aside>
-        <h4 data-text="¿Qué vulnerabilidades mitiga este parche?" id="¿qué-vulnerabilidades-mitiga-este-parche" tabindex="0">
+        <h4 data-text="What vulnerabilities are addressed by this patch?" id="what-vulnerabilities-are-addressed-by-this-patch_1" tabindex="0">
          ¿Qué vulnerabilidades mitiga este parche?
         </h4>
         <p>
@@ -459,7 +648,7 @@
       </tr>
      </tbody>
     </table>
-    <h2 data-text="22 de octubre del 2019" id="october_22_2019" tabindex="0">
+    <h2 data-text="October 22, 2019" id="october_22_2019" tabindex="0">
      22 de octubre del 2019
     </h2>
     <table>
@@ -514,7 +703,7 @@
       </tr>
      </tbody>
     </table>
-    <h2 data-text="16 de octubre del 2019" id="october_16_2019" tabindex="0">
+    <h2 data-text="October 16, 2019" id="october_16_2019" tabindex="0">
      16 de octubre del 2019
     </h2>
     <table>
@@ -568,12 +757,12 @@
          </a>
          mitigan esta vulnerabilidad.
         </p>
-        <h6 data-text="¿Qué debo hacer?" id="¿qué-debo-hacer_1" tabindex="0">
+        <h6 data-text="What should I do?" id="what-should-i-do_3" tabindex="0">
          ¿Qué debo hacer?
         </h6>
         <p>
          Te recomendamos que actualices tu clúster en cuanto haya disponible una versión
-            del parche que contenga la corrección Está previsto
+            del parche que contenga la corrección. Está previsto
             que el parche esté disponible en todas las zonas con el lanzamiento de la versión de GKE programado para la semana del 14 de octubre.
         </p>
         <p>
@@ -593,7 +782,7 @@
           1.15.4-gke.15
          </li>
         </ul>
-        <h6 data-text="¿Qué vulnerabilidades mitiga este parche?" id="¿qué-vulnerabilidades-mitiga-este-parche_1" tabindex="0">
+        <h6 data-text="What vulnerabilities are addressed by this patch?" id="what-vulnerabilities-are-addressed-by-this-patch_2" tabindex="0">
          ¿Qué vulnerabilidades mitiga este parche?
         </h6>
         <p>
@@ -619,7 +808,7 @@
       </tr>
      </tbody>
     </table>
-    <h2 data-text="16 de septiembre del 2019" id="september_16_2019" tabindex="0">
+    <h2 data-text="September 16, 2019" id="september_16_2019" tabindex="0">
      16 de septiembre del 2019
     </h2>
     <table>
@@ -665,7 +854,7 @@
          del lenguaje de
             programación Go que se ha publicado al respecto.
         </p>
-        <h6 data-text="¿Qué debo hacer?" id="¿qué-debo-hacer_2" tabindex="0">
+        <h6 data-text="What should I do?" id="what-should-i-do_4" tabindex="0">
          ¿Qué debo hacer?
         </h6>
         <p>
@@ -696,7 +885,7 @@
           1.14.6-gke.1
          </li>
         </ul>
-        <h6 data-text="¿Qué vulnerabilidad trata este parche?" id="¿qué-vulnerabilidad-trata-este-parche" tabindex="0">
+        <h6 data-text="What vulnerability is addressed by this patch?" id="what-vulnerability-is-addressed-by-this-patch" tabindex="0">
          ¿Qué vulnerabilidad trata este parche?
         </h6>
         <p>
@@ -735,7 +924,7 @@
       </tr>
      </tbody>
     </table>
-    <h2 data-text="5 de septiembre del 2019" id="may-31-2019-update" tabindex="0">
+    <h2 data-text="September 5, 2019" id="may-31-2019-update" tabindex="0">
      5 de septiembre del 2019
     </h2>
     <p>
@@ -746,7 +935,7 @@
      </a>
      .
     </p>
-    <h2 data-text="22 de agosto del 2019" id="august-05-2019-update2" tabindex="0">
+    <h2 data-text="August 22, 2019" id="august-05-2019-update2" tabindex="0">
      22 de agosto del 2019
     </h2>
     <p>
@@ -761,7 +950,7 @@
      </a>
      .
     </p>
-    <h2 data-text="8 de agosto del 2019" id="august-05-2019-update" tabindex="0">
+    <h2 data-text="August 8, 2019" id="august-05-2019-update" tabindex="0">
      8 de agosto del 2019
     </h2>
     <p>
@@ -773,7 +962,7 @@
     Está previsto que la corrección de la vulnerabilidad incluida
     en dicho boletín esté disponible en la próxima versión de GKE.
     </p>
-    <h2 data-text="5 de agosto del 2019" id="august-05-2019" tabindex="0">
+    <h2 data-text="August 5, 2019" id="august-05-2019" tabindex="0">
      5 de agosto del 2019
     </h2>
     <table>
@@ -814,7 +1003,7 @@
           roles a nivel de espacio de nombres pueden interactuar con recursos personalizados que tengan permiso de clúster. Para que el atacante pueda
           aprovechar esta vulnerabilidad, es necesario que cuente con privilegios para acceder al recurso en cualquier espacio de nombres.
         </p>
-        <h6 data-text="¿Qué debo hacer?" id="¿qué-debo-hacer_3" tabindex="0">
+        <h6 data-text="What should I do?" id="what-should-i-do_5" tabindex="0">
          ¿Qué debo hacer?
         </h6>
         <p>
@@ -845,7 +1034,7 @@
           )
          </li>
         </ul>
-        <h6 data-text="¿Qué vulnerabilidad trata este parche?" id="¿qué-vulnerabilidad-trata-este-parche_1" tabindex="0">
+        <h6 data-text="What vulnerability is addressed by this patch?" id="what-vulnerability-is-addressed-by-this-patch_1" tabindex="0">
          ¿Qué vulnerabilidad trata este parche?
         </h6>
         <p>
@@ -871,7 +1060,7 @@
       </tr>
      </tbody>
     </table>
-    <h2 data-text="3 de julio del 2019" id="july-03-2019-2" tabindex="0">
+    <h2 data-text="July 3, 2019" id="july-03-2019-2" tabindex="0">
      3 de julio del 2019
     </h2>
     <table>
@@ -937,7 +1126,7 @@
       </tr>
      </tbody>
     </table>
-    <h2 data-text="3 de julio del 2019" id="july-03-2019" tabindex="0">
+    <h2 data-text="July 3, 2019" id="july-03-2019" tabindex="0">
      3 de julio del 2019
     </h2>
     <table>
@@ -957,7 +1146,7 @@
      <tbody>
       <tr>
        <td>
-        <h6 data-text="Actualización del 3 de julio del 2019" id="actualización-del-3-de-julio-del-2019" tabindex="0">
+        <h6 data-text="July 3, 2019 Update" id="july-3-2019-update" tabindex="0">
          Actualización del 3 de julio del 2019
         </h6>
         <p>
@@ -1000,7 +1189,7 @@
          El boletín original del 24 de junio del 2019 es el siguiente:
         </p>
         <hr/>
-        <h6 data-text="Actualización del 24 de junio del 2019" id="actualización-del-24-de-junio-del-2019" tabindex="0">
+        <h6 data-text="June 24, 2019 Update" id="june-24-2019-update" tabindex="0">
          Actualización del 24 de junio del 2019
         </h6>
         <p>
@@ -1079,7 +1268,7 @@
           pasos de mitigación para proteger tus cargas de trabajo.
          </strong>
         </p>
-        <h6 data-text="Instancias maestras de Kubernetes" id="instancias-maestras-de-kubernetes" tabindex="0">
+        <h6 data-text="Kubernetes masters" id="kubernetes-masters" tabindex="0">
          Instancias maestras de Kubernetes
         </h6>
         <ul>
@@ -1100,7 +1289,7 @@
           </p>
          </li>
         </ul>
-        <h6 data-text="Nodos de Kubernetes" id="nodos-de-kubernetes" tabindex="0">
+        <h6 data-text="Kubernetes nodes" id="kubernetes-nodes" tabindex="0">
          Nodos de Kubernetes
         </h6>
         <p>
@@ -1135,7 +1324,7 @@
          del host para
           implementar las mitigaciones.
         </p>
-        <h5 data-text="¿Qué debo hacer?" id="¿qué-debo-hacer_4" tabindex="0">
+        <h5 data-text="What should I do?" id="what-should-i-do_6" tabindex="0">
          ¿Qué debo hacer?
         </h5>
         <p>
@@ -1207,7 +1396,7 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="25 de junio del 2019" id="june-25-2019" tabindex="0">
+    <h2 data-text="June 25, 2019" id="june-25-2019" tabindex="0">
      25 de junio del 2019
     </h2>
     <table id="june-24-2019">
@@ -1250,7 +1439,7 @@ kubectl delete -f \
         </p>
         <hr/>
         <p>
-         Hace poco Kubernetes descubrió la vulnerabilidad
+         Hace poco, Kubernetes descubrió la vulnerabilidad
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11246">
           CVE-2019-11246
          </a>
@@ -1286,7 +1475,7 @@ kubectl delete -f \
          Próximamente habrá una versión del
           parche que incluya una mitigación de esta vulnerabilidad.
         </p>
-        <h6 data-text="¿Qué debo hacer?" id="¿qué-debo-hacer_5" tabindex="0">
+        <h6 data-text="What should I do?" id="what-should-i-do_7" tabindex="0">
          ¿Qué debo hacer?
         </h6>
         <p>
@@ -1318,7 +1507,7 @@ kubectl delete -f \
          </a>
          .
         </p>
-        <h6 data-text="¿Qué vulnerabilidad trata este parche?" id="¿qué-vulnerabilidad-trata-este-parche_2" tabindex="0">
+        <h6 data-text="What vulnerability is addressed by this patch?" id="what-vulnerability-is-addressed-by-this-patch_2" tabindex="0">
          ¿Qué vulnerabilidad trata este parche?
         </h6>
         <p>
@@ -1348,7 +1537,7 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="18 de junio del 2019" id="june-18-2019" tabindex="0">
+    <h2 data-text="June 18, 2019" id="june-18-2019" tabindex="0">
      18 de junio del 2019
     </h2>
     <table>
@@ -1402,7 +1591,7 @@ kubectl delete -f \
          en la instancia
           maestra, por lo que el riesgo de esta vulnerabilidad se ve limitado en las instancias maestras de este entorno.
         </p>
-        <h5 data-text="¿Qué debo hacer?" id="¿qué-debo-hacer_6" tabindex="0">
+        <h5 data-text="What should I do?" id="what-should-i-do_8" tabindex="0">
          ¿Qué debo hacer?
         </h5>
         <p>
@@ -1447,7 +1636,7 @@ kubectl delete -f \
          </a>
          .
         </p>
-        <h5 data-text="¿Qué vulnerabilidad trata este parche?" id="¿qué-vulnerabilidad-trata-este-parche_3" tabindex="0">
+        <h5 data-text="What vulnerability is addressed by this patch?" id="what-vulnerability-is-addressed-by-this-patch_3" tabindex="0">
          ¿Qué vulnerabilidad trata este parche?
         </h5>
         <p>
@@ -1477,7 +1666,7 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="31 de mayo del 2019" id="may-31-2019" tabindex="0">
+    <h2 data-text="May 31, 2019" id="may-31-2019" tabindex="0">
      31 de mayo del 2019
     </h2>
     <table>
@@ -1500,7 +1689,7 @@ kubectl delete -f \
         <p>
          Este boletín se ha actualizado desde su publicación original.
         </p>
-        <h6 data-text="Actualización del 2 de agosto del 2019" id="actualización-del-2-de-agosto-del-2019" tabindex="0">
+        <h6 data-text="August 2, 2019 Update" id="august-2-2019-update" tabindex="0">
          Actualización del 2 de agosto del 2019
         </h6>
         <p>
@@ -1550,7 +1739,7 @@ kubectl delete -f \
           UID 0 independientemente del UID especificado. Se trata normalmente de un privilegio de
           mayor prioridad no deseado, y puede conllevar un comportamiento inesperado de la aplicación.
         </p>
-        <h5 data-text="¿Cómo puedo saber si estoy utilizando una versión afectada?" id="¿cómo-puedo-saber-si-estoy-utilizando-una-versión-afectada" tabindex="0">
+        <h5 data-text="How do I know if I'm running an impacted version?" id="how-do-i-know-if-im-running-an-impacted-version" tabindex="0">
          ¿Cómo puedo saber si estoy utilizando una versión afectada?
         </h5>
         <p>
@@ -1572,7 +1761,7 @@ kubectl delete -f \
           v1.14.2
          </li>
         </ul>
-        <h5 data-text="¿Cómo puedo saber si mi configuración específica se ve afectada?" id="¿cómo-puedo-saber-si-mi-configuración-específica-se-ve-afectada" tabindex="0">
+        <h5 data-text="How do I know if my specific configuration is affected?" id="how-do-i-know-if-my-specific-configuration-is-affected" tabindex="0">
          ¿Cómo puedo saber si mi configuración específica se ve afectada?
         </h5>
         <p>
@@ -1605,7 +1794,7 @@ kubectl delete -f \
             UID 0, pero no se podrán iniciar cuando se vean afectados por este problema.
          </li>
         </ul>
-        <h5 data-text="¿Qué debo hacer?" id="¿qué-debo-hacer_7" tabindex="0">
+        <h5 data-text="What should I do?" id="what-should-i-do_9" tabindex="0">
          ¿Qué debo hacer?
         </h5>
         <p>
@@ -1632,7 +1821,7 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="14 de mayo del 2019" id="may-14-2019" tabindex="0">
+    <h2 data-text="May 14, 2019" id="may-14-2019" tabindex="0">
      14 de mayo del 2019
     </h2>
     <table>
@@ -1737,7 +1926,7 @@ kubectl delete -f \
          </a>
          que ha publicado Intel al respecto.
         </p>
-        <h4 data-text="¿Qué debo hacer?" id="¿qué-debo-hacer_8" tabindex="0">
+        <h4 data-text="What should I do?" id="what-should-i-do_10" tabindex="0">
          ¿Qué debo hacer?
         </h4>
         <p>
@@ -1852,7 +2041,7 @@ kubectl delete -f \
         <p>
          Actualizaremos este boletín con las versiones que contienen un parche en cuanto estén disponibles.
         </p>
-        <h4 data-text="¿Qué vulnerabilidad trata este parche?" id="¿qué-vulnerabilidad-trata-este-parche_4" tabindex="0">
+        <h4 data-text="What vulnerability is addressed by this patch?" id="what-vulnerability-is-addressed-by-this-patch_4" tabindex="0">
          ¿Qué vulnerabilidad trata este parche?
         </h4>
         <p>
@@ -1912,7 +2101,7 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="5 de abril del 2019" id="april-05-2019" tabindex="0">
+    <h2 data-text="April 5, 2019" id="april-05-2019" tabindex="0">
      5 de abril del 2019
     </h2>
     <table>
@@ -1964,7 +2153,7 @@ kubectl delete -f \
             como tus contenedores adicionales de Istio (las instrucciones se indican más abajo).
          </strong>
         </p>
-        <h4 data-text="¿Qué debo hacer?" id="¿qué-debo-hacer_9" tabindex="0">
+        <h4 data-text="What should I do?" id="what-should-i-do_11" tabindex="0">
          ¿Qué debo hacer?
         </h4>
         <p>
@@ -2031,7 +2220,7 @@ kubectl delete -f \
           1.13.4-gke.10
          </li>
         </ul>
-        <h4 data-text="¿Qué vulnerabilidad trata este parche?" id="¿qué-vulnerabilidad-trata-este-parche_5" tabindex="0">
+        <h4 data-text="What vulnerability is addressed by this patch?" id="what-vulnerability-is-addressed-by-this-patch_5" tabindex="0">
          ¿Qué vulnerabilidad trata este parche?
         </h4>
         <p>
@@ -2074,7 +2263,7 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="1 de marzo del 2019" id="march-01-2019" tabindex="0">
+    <h2 data-text="March 1, 2019" id="march-01-2019" tabindex="0">
      1 de marzo del 2019
     </h2>
     <table>
@@ -2129,7 +2318,7 @@ kubectl delete -f \
             automáticamente las instancias maestras del clúster a la versión con parche según la programación habitual.
          </strong>
         </p>
-        <h4 data-text="¿Qué debo hacer?" id="¿qué-debo-hacer_10" tabindex="0">
+        <h4 data-text="What should I do?" id="what-should-i-do_12" tabindex="0">
          ¿Qué debo hacer?
         </h4>
         <p>
@@ -2148,7 +2337,7 @@ kubectl delete -f \
             que el parche solo estará
             disponible en las versiones 1.11+, pero no en las versiones 1.10.
         </p>
-        <h4 data-text="¿Qué vulnerabilidad trata este parche?" id="¿qué-vulnerabilidad-trata-este-parche_6" tabindex="0">
+        <h4 data-text="What vulnerability is addressed by this patch?" id="what-vulnerability-is-addressed-by-this-patch_6" tabindex="0">
          ¿Qué vulnerabilidad trata este parche?
         </h4>
         <p>
@@ -2175,7 +2364,7 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="11 de febrero del 2019 (runc)" id="february-11-2019-runc" tabindex="0">
+    <h2 data-text="February 11, 2019 (runc)" id="february-11-2019-runc" tabindex="0">
      11 de febrero del 2019 (runc)
     </h2>
     <table>
@@ -2220,7 +2409,7 @@ kubectl delete -f \
           cuanto antes a la versión más reciente del parche como se indica a continuación.
          </strong>
         </p>
-        <h4 data-text="¿Qué debo hacer?" id="¿qué-debo-hacer_11" tabindex="0">
+        <h4 data-text="What should I do?" id="what-should-i-do_13" tabindex="0">
          ¿Qué debo hacer?
         </h4>
         <p>
@@ -2242,7 +2431,7 @@ kubectl delete -f \
           por lo que es posible que debas actualizar la memoria asignada a
           los contenedores si has establecido los límites de memoria en un nivel bajo (menos de 16 MB).
         </p>
-        <h4 data-text="¿Qué vulnerabilidad trata este parche?" id="¿qué-vulnerabilidad-trata-este-parche_7" tabindex="0">
+        <h4 data-text="What vulnerability is addressed by this patch?" id="what-vulnerability-is-addressed-by-this-patch_7" tabindex="0">
          ¿Qué vulnerabilidad trata este parche?
         </h4>
         <p>
@@ -2270,7 +2459,7 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="11 de febrero del 2019 (Go)" id="february-11-2019-go" tabindex="0">
+    <h2 data-text="February 11, 2019 (Go)" id="february-11-2019-go" tabindex="0">
      11 de febrero del 2019 (Go)
     </h2>
     <table>
@@ -2328,7 +2517,7 @@ kubectl delete -f \
             automáticamente las instancias maestras del clúster a la versión con parche según la programación habitual.
          </strong>
         </p>
-        <h4 data-text="¿Qué debo hacer?" id="¿qué-debo-hacer_12" tabindex="0">
+        <h4 data-text="What should I do?" id="what-should-i-do_14" tabindex="0">
          ¿Qué debo hacer?
         </h4>
         <p>
@@ -2346,7 +2535,7 @@ kubectl delete -f \
          Este parche está disponible en GKE 1.10.12-gke.7, 1.11.6-gke.11, 1.11.7-gke.4,
             1.12.5-gke.5 y versiones posteriores.
         </p>
-        <h4 data-text="¿Qué vulnerabilidad trata este parche?" id="¿qué-vulnerabilidad-trata-este-parche_8" tabindex="0">
+        <h4 data-text="What vulnerability is addressed by this patch?" id="what-vulnerability-is-addressed-by-this-patch_8" tabindex="0">
          ¿Qué vulnerabilidad trata este parche?
         </h4>
         <p>
@@ -2369,7 +2558,7 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="3 de diciembre del 2018" id="december-3-2018" tabindex="0">
+    <h2 data-text="December 3, 2018" id="december-3-2018" tabindex="0">
      3 de diciembre del 2018
     </h2>
     <table>
@@ -2390,7 +2579,7 @@ kubectl delete -f \
       <tr>
        <td>
         <p>
-         En los últimos días, se ha encontrado una nueva vulnerabilidad
+         Recientemente se ha encontrado una nueva vulnerabilidad
             en la seguridad de Kubernetes, la
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1002105">
           CVE‑2018‑1002105
@@ -2413,7 +2602,7 @@ kubectl delete -f \
             No tienes que hacer nada.
          </strong>
         </p>
-        <h4 data-text="¿Qué debo hacer?" id="¿qué-debo-hacer_13" tabindex="0">
+        <h4 data-text="What should I do?" id="what-should-i-do_15" tabindex="0">
          ¿Qué debo hacer?
         </h4>
         <p>
@@ -2425,7 +2614,7 @@ kubectl delete -f \
          El parche está disponible en GKE 1.9.7‑gke.11, 1.10.6‑gke.11, 1.10.7‑gke.11, 1.10.9‑gke.5 y 1.11.2‑gke.18,
             así como en las últimas versiones.
         </p>
-        <h4 data-text="¿Qué vulnerabilidad trata este parche?" id="¿qué-vulnerabilidad-trata-este-parche_9" tabindex="0">
+        <h4 data-text="What vulnerability is addressed by this patch?" id="what-vulnerability-is-addressed-by-this-patch_9" tabindex="0">
          ¿Qué vulnerabilidad trata este parche?
         </h4>
         <p>
@@ -2452,7 +2641,7 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="13 de noviembre del 2018" id="november-13-2018" tabindex="0">
+    <h2 data-text="November 13, 2018" id="november-13-2018" tabindex="0">
      13 de noviembre del 2018
     </h2>
     <table>
@@ -2588,7 +2777,7 @@ kubectl delete -f \
      <tbody>
       <tr>
        <td>
-        <h4 data-text="Detección" id="detección" tabindex="0">
+        <h4 data-text="Detection" id="detection" tabindex="0">
          Detección
         </h4>
         <p>
@@ -2682,7 +2871,7 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="14 de agosto del 2018" id="august-14-2018" tabindex="0">
+    <h2 data-text="August 14, 2018" id="august-14-2018" tabindex="0">
      14 de agosto del 2018
     </h2>
     <table>
@@ -2754,7 +2943,7 @@ kubectl delete -f \
          para obtener más información sobre estas vulnerabilidades y las medidas
           de mitigación de Compute Engine.
         </p>
-        <h4 data-text="El impacto en Google Kubernetes Engine" id="el-impacto-en-google-kubernetes-engine" tabindex="0">
+        <h4 data-text="Google Kubernetes Engine impact" id="google-kubernetes-engine-impact" tabindex="0">
          El impacto en Google Kubernetes Engine
         </h4>
         <p>
@@ -2811,7 +3000,7 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="6 de agosto del 2018 (última actualización: 5 de septiembre del 2018)" id="august-6-2018" tabindex="0">
+    <h2 data-text="August 6, 2018; last updated: September 5th, 2018" id="august-6-2018" tabindex="0">
      6 de agosto del 2018 (última actualización: 5 de septiembre del 2018)
     </h2>
     <table>
@@ -2831,7 +3020,7 @@ kubectl delete -f \
      <tbody>
       <tr>
        <td>
-        <h4 data-text="Actualización del 5 de septiembre del 2018" id="actualización-del-5-de-septiembre-del-2018" tabindex="0">
+        <h4 data-text="2018-09-05 Update" id="2018-09-05-update" tabindex="0">
          Actualización del 5 de septiembre del 2018
         </h4>
         <p>
@@ -2850,7 +3039,7 @@ kubectl delete -f \
           es que puede aprovecharse a través de conexiones IP. Actualizamos este boletín para que
           abarque ambas vulnerabilidades.
         </p>
-        <h4 data-text="Descripción" id="descripción" tabindex="0">
+        <h4 data-text="Description" id="description" tabindex="0">
          Descripción
         </h4>
         <p>
@@ -2873,7 +3062,7 @@ kubectl delete -f \
             aumenta la efectividad de los ataques de denegación de servicio (DoS)
             contra sistemas vulnerables a través de conexiones IP.
         </p>
-        <h4 data-text="El impacto en Google Kubernetes Engine" id="el-impacto-en-google-kubernetes-engine_1" tabindex="0">
+        <h4 data-text="Google Kubernetes Engine impact" id="google-kubernetes-engine-impact_1" tabindex="0">
          El impacto en Google Kubernetes Engine
         </h4>
         <p>
@@ -2890,7 +3079,7 @@ kubectl delete -f \
          y que se hayan actualizado manualmente
             por última vez antes del 11 de agosto del 2018.
         </p>
-        <h4 data-text="Versiones con parche" id="versiones-con-parche" tabindex="0">
+        <h4 data-text="Patched versions" id="patched-versions" tabindex="0">
          Versiones con parche
         </h4>
         <p>
@@ -2921,8 +3110,8 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="30 de mayo del 2018" id="may-30-2018" tabindex="0">
-     30 de mayo del 2018
+    <h2 data-text="May 30, 2018" id="may-30-2018" tabindex="0">
+     30 de mayo del 2018
     </h2>
     <table>
      <thead>
@@ -2950,7 +3139,7 @@ kubectl delete -f \
          </a>
          .
         </p>
-        <h4 data-text="¿Me afecta esta vulnerabilidad?" id="¿me-afecta-esta-vulnerabilidad" tabindex="0">
+        <h4 data-text="Am I affected?" id="am-i-affected" tabindex="0">
          ¿Me afecta esta vulnerabilidad?
         </h4>
         <p>
@@ -2977,7 +3166,7 @@ kubectl delete -f \
         <p>
          Todos los nodos de Kubernetes Engine son vulnerables.
         </p>
-        <h4 data-text="¿Qué debo hacer?" id="¿qué-debo-hacer_14" tabindex="0">
+        <h4 data-text="What should I do?" id="what-should-i-do_16" tabindex="0">
          ¿Qué debo hacer?
         </h4>
         <p>
@@ -3025,7 +3214,7 @@ kubectl delete -f \
       volumes:
         - name: git-repo
           emptyDir: {}</code></pre>
-        <h4 data-text="¿Qué parche trata esta vulnerabilidad?" id="¿qué-parche-trata-esta-vulnerabilidad" tabindex="0">
+        <h4 data-text="What patch addresses this vulnerability?" id="what-patch-addresses-this-vulnerability" tabindex="0">
          ¿Qué parche trata esta vulnerabilidad?
         </h4>
         <p>
@@ -3048,8 +3237,8 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="21 de mayo del 2018" id="may-21-2018" tabindex="0">
-     21 de mayo del 2018
+    <h2 data-text="May 21, 2018" id="may-21-2018" tabindex="0">
+     21 de mayo del 2018
     </h2>
     <table>
      <thead>
@@ -3092,7 +3281,7 @@ kubectl delete -f \
          a la versión más reciente
             del parche como se indica a continuación.
         </p>
-        <h4 data-text="¿Qué debo hacer?" id="¿qué-debo-hacer_15" tabindex="0">
+        <h4 data-text="What should I do?" id="what-should-i-do_17" tabindex="0">
          ¿Qué debo hacer?
         </h4>
         <p>
@@ -3111,7 +3300,7 @@ kubectl delete -f \
          y no realicen la actualización manualmente se les actualizarán los nodos a las versiones
             con parche en las próximas semanas.
         </p>
-        <h4 data-text="¿Qué vulnerabilidades mitiga este parche?" id="¿qué-vulnerabilidades-mitiga-este-parche_2" tabindex="0">
+        <h4 data-text="What vulnerabilities are addressed by this patch?" id="what-vulnerabilities-are-addressed-by-this-patch_3" tabindex="0">
          ¿Qué vulnerabilidades mitiga este parche?
         </h4>
         <p>
@@ -3174,8 +3363,8 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="12 de marzo del 2018" id="march-12-2018" tabindex="0">
-     12 de marzo del 2018
+    <h2 data-text="March 12, 2018" id="march-12-2018" tabindex="0">
+     12 de marzo del 2018
     </h2>
     <table id="20180312">
      <thead>
@@ -3217,7 +3406,7 @@ kubectl delete -f \
             se ven afectados por estas vulnerabilidades, así que te recomendamos actualizar
             cuanto antes a la versión más reciente del parche como se indica a continuación.
         </p>
-        <h4 data-text="¿Qué debo hacer?" id="¿qué-debo-hacer_16" tabindex="0">
+        <h4 data-text="What should I do?" id="what-should-i-do_18" tabindex="0">
          ¿Qué debo hacer?
         </h4>
         <p>
@@ -3260,7 +3449,7 @@ kubectl delete -f \
             cuanto esté disponible
             el parche.
         </p>
-        <h4 data-text="¿Qué vulnerabilidades mitiga este parche?" id="¿qué-vulnerabilidades-mitiga-este-parche_3" tabindex="0">
+        <h4 data-text="What vulnerabilities are addressed by this patch?" id="what-vulnerabilities-are-addressed-by-this-patch_4" tabindex="0">
          ¿Qué vulnerabilidades mitiga este parche?
         </h4>
         <p>
