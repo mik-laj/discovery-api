@@ -15,6 +15,83 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/aiplatform-release-notes.xml `
 
+##  April 29, 2020
+
+**AI Platform Prediction**
+
+**FEATURE:**
+
+AI Platform Prediction now supports several [ regional endpoints
+](https://cloud.google.com/ai-platform/prediction/docs/regional-endpoints) for
+online prediction. Regional endpoints provide additional protection against
+outages in other regions by isolating your model and version resources from
+other regions. The following regional endpoints are available in beta:
+
+  * ` us-central1-ml.googleapis.com `
+  * ` europe-west4-ml.googleapis.com `
+  * ` asia-east1-ml.googleapis.com `
+
+You can use these endpoints instead of the global endpoint, `
+ml.googleapis.com ` , when you use AI Platform Prediction for online
+prediction. [ Learn how to use regional endpoints for online prediction, and
+read about their benefits and limitations. ](https://cloud.google.com/ai-
+platform/prediction/docs/regional-endpoints)
+
+**FEATURE:**
+
+You can now deploy scikit-learn and XGBoost models for online prediction using
+[ Compute Engine (N1) machine types ](https://cloud.google.com/ai-
+platform/prediction/docs/machine-types-online-prediction) . Previously, you
+could only deploy TensorFlow models when you used these machine types. Learn
+more about [ ML framework support for Compute Engine (N1) machine types
+](https://cloud.google.com/ai-platform/prediction/docs/machine-types-online-
+prediction#ml_framework_support) .
+
+You cannot use GPUs with scikit-learn or XGBoost models, and you can only use
+scikit-learn and XGBoost models with Compute Engine (N1) machine types when
+you deploy your models and versions to a [ regional endpoint
+](https://cloud.google.com/ai-platform/prediction/docs/regional-endpoints) .
+
+Compute Engine (N1) machine types for online prediction remain available in
+the beta launch stage.
+
+**FEATURE:**
+
+The ` europe-west4 ` (Netherlands) and ` asia-east1 ` (Taiwan) regions are now
+available for online prediction. These regions are only available for online
+prediction on their respective [ regional endpoints
+](https://cloud.google.com/ai-platform/prediction/docs/regional-endpoints) ,
+and you can only use [ Compute Engine (N1) machine types
+](https://cloud.google.com/ai-platform/prediction/docs/machine-types-online-
+prediction) for online prediction in these regions.
+
+When you deploy model versions in the ` europe-west4 ` region, you can
+optionally use NVIDIA Tesla P4, NVIDIA Tesla T4, or NVIDIA Tesla V100 GPUs to
+accelerate prediction.
+
+When you deploy model versions in the ` asia-east1 ` region, you can
+optionally use NVIDIA Tesla K80 or NVIDIA Tesla P100 GPUs to accelerate
+prediction.
+
+Learn more about [ using GPUs for online prediction
+](https://cloud.google.com/ai-platform/prediction/docs/machine-types-online-
+prediction#gpus) , and see [ which GPUs are available in which regions
+](https://cloud.google.com/ai-platform/prediction/docs/regions) .
+
+Learn about the [ pricing for the newly available regions and GPU resources
+](https://cloud.google.com/ai-platform/prediction/pricing) .
+
+**CHANGED:**
+
+We recommend against using Compute Engine (N1) machine types on the AI
+Platform Prediction global endpoint. Instead, only use Compute Engine (N1)
+machine types when you deploy models and versions to a [ regional endpoint
+](https://cloud.google.com/ai-platform/prediction/docs/regional-endpoints) .
+
+Model versions that use Compute Engine (N1) machine types and were previously
+deployed to the ` us-central1 ` region on the global endpoint will continue to
+function.
+
 ##  April 24, 2020
 
 **AI Platform Prediction**
