@@ -23,6 +23,13 @@ available for Anthos Service Mesh installations on Google Kubernetes Engine
 clusters. For more information, see the [ Observability overview
 ](https://cloud.google.com/service-mesh/docs/observability-overview) .
 
+**Media Translation**
+
+**FEATURE:**
+
+Beta release of Media Translation API. Media Translation translates an audio
+file or stream of speech into text for 12 languages.
+
 ##  April 27, 2020
 
 **BigQuery**
@@ -173,10 +180,10 @@ Controller enforcement
 
 **FIXED:**
 
+Anthos Config Management v1.3.1 now supports Kubernetes v1.16 and higher.
 Earlier versions of Anthos Config Management relied on APIs that have been [
 deprecated in Kubernetes v1.16 ](https://cloud.google.com/kubernetes-
-engine/docs/deprecations/apis-1-16) . Anthos Config Management v1.3.1 is
-required to run on Kubernetes v1.16 and higher.
+engine/docs/deprecations/apis-1-16) .
 
 **FIXED:**
 
@@ -1839,146 +1846,4 @@ tools/blob/master/docs/schema.md#gpus) .
 support for the following integrations:
 
   * [ Container Analysis ](https://cloud.google.com/container-registry/docs/container-analysis)
-
-##  March 31, 2020
-
-**AI Platform Notebooks**
-
-**FEATURE:**
-
-AI Platform Notebooks is now [ Generally Available
-](https://cloud.google.com/products#product-launch-stages) . Some integrations
-with and specific features of AI Platform Notebooks are still in beta, such as
-[ Virtual Private Cloud Service Controls ](https://cloud.google.com/ai-
-platform/notebooks/docs/service-perimeter) , [ Cloud Identity and Access
-Management (Cloud IAM) ](https://cloud.google.com/ai-
-platform/notebooks/docs/iam) roles, and [ AI Platform Notebooks API
-](https://cloud.google.com/ai-platform/notebooks/docs/reference/rest) .
-
-**BigQuery**
-
-**FEATURE:**
-
-` INFORMATION_SCHEMA ` views for [ BigQuery reservations
-](https://cloud.google.com/bigquery/docs/information-schema-reservations) are
-now in public [ alpha ](https://cloud.google.com/products/?hl=EN#product-
-launch-stages) .
-
-**Cloud Composer**
-
-**FEATURE:**
-
-The new [ Composer monitoring dashboard
-](https://cloud.google.com/composer/docs/monitoring-dashboard) is now in beta.
-
-**Cloud Functions**
-
-**CHANGED:**
-
-Cloud Functions now supports [ Connecting to Cloud SQL
-](https://cloud.google.com/sql/docs/mysql/connect-functions) at the [ General
-Availability release level ](https://cloud.google.com/products/#product-
-launch-stages) .
-
-  * The Beta release introduced improved security when accessing Cloud SQL from functions via the ` /cloudsql ` filesystem path. Most functions have been automatically upgraded. In some cases, you may see warning messages in Stackdriver logging to help you complete the required upgrade steps. 
-
-**Compute Engine**
-
-**FEATURE:**
-
-  * **Beta:** [ Collect diagnostic information from Windows VMs ](https://cloud.google.com/compute/docs/instances/collecting-diagnostic-information) . 
-
-**FEATURE:**
-
-  * C2 machine types are now available in the following [ regions and zones ](https://cloud.google.com/compute/docs/regions-zones#available) : 
-
-    * Frankfurt, Germany ` europe-west3-a,b `
-    * Ashburn, Northern Virginia, USA ` us-east4-a `
-
-**FEATURE:**
-
-  * N2 machine types are now available in the following [ regions and zones ](https://cloud.google.com/compute/docs/regions-zones#available) : 
-
-    * The Dalles, Oregon, USA ` us-west1-a `
-    * Changua County, Taiwan ` asia-east1-c `
-
-**FEATURE:**
-
-  * M1 megamem machine types are now available in the following [ regions and zones ](https://cloud.google.com/compute/docs/regions-zones#available) : 
-
-    * Eemshaven, Netherlands ` europe-west4-b `
-
-**FEATURE:**
-
-  * M1 ultramem machine types are now available in the following [ regions and zones ](https://cloud.google.com/compute/docs/regions-zones#available) : 
-
-    * Ashburn, Northern Virginia, USA ` us-east4-a `
-
-**FEATURE:**
-
-  * M2 ultramem machine types are now available in the following [ regions and zones ](https://cloud.google.com/compute/docs/regions-zones#available) : 
-
-    * Los Angeles, California, USA ` us-west2-a,c `
-
-**Dialogflow**
-
-**CHANGED:**
-
-When using fulfillment, the ` WebhookResponse.payload ` field can now only be
-used for two cases:
-
-  * Custom data sent from your webhook service to a Dialogflow API caller. 
-  * Google Assitant integration custom payload rich response messages. 
-
-For all other [ custom payload rich response messages
-](https://cloud.google.com/dialogflow/docs/intents-rich-messages#custom) , you
-should use the ` WebhookResponse.fulfillment_mesages[].payload ` field.
-
-**Google Cloud Armor**
-
-**FEATURE:**
-
-[ Google Cloud Armor ](https://cloud.google.com/armor) [ integration with
-Cloud Security Command Center ](https://cloud.google.com/armor/docs/cscc-
-findings) is generally available.
-
-**Storage Transfer Service**
-
-**FEATURE:**
-
-[ Beta stage ](https://cloud.google.com/products/#product-launch-stages)
-integration with [ VPC Service Controls ](https://cloud.google.com/vpc-
-service-controls/docs/overview)
-
-**FEATURE:**
-
-Transfer service on-premises: [ Beta stage
-](https://cloud.google.com/products/#product-launch-stages) integration with [
-VPC Service Controls ](https://cloud.google.com/vpc-service-
-controls/docs/overview)
-
-**VPC Service Controls**
-
-**FEATURE:**
-
-[ Beta stage ](https://cloud.google.com/products/#product-launch-stages)
-support for the following integrations:
-
-  * [ AutoML Natural Language ](https://cloud.google.com/natural-language/automl/docs)
-  * [ AutoML Tables ](https://cloud.google.com/automl-tables/docs)
-  * [ AutoML Translation ](https://cloud.google.com/translate/automl/docs)
-  * [ AutoML Video Intelligence ](https://cloud.google.com/video-intelligence/automl/docs)
-  * [ AutoML Vision ](https://cloud.google.com/vision/automl/docs)
-  * [ Artifact Registry ](https://cloud.google.com/artifacts/docs)
-
-**Video Intelligence API**
-
-**FEATURE:**
-
-The following GA feature is available in the Video Intelligence API version
-v1:
-
-**Logo recognition** : Detect, track, and recognize the presence of over
-100,000 brands and logos in video content. [ Learn more
-](https://cloud.google.com/video-intelligence/docs/logo-recognition)
 
