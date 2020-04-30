@@ -29,6 +29,16 @@ their Cloud Billing documents in the Transactions page. See the [
 ⁠documentation ](https://cloud.google.com/billing/docs/how-to/get-invoice) for
 more details.
 
+**CHANGED:**
+
+Cost forecasts in Cloud Billing reports has been updated to calculate your
+forecasted spend up to 12 months in the future. Previously, the calculation
+forecasted your spend for the next 30 days. Cost forecasts make it easier to
+see at a glance how your costs are trending and how much you are projected to
+spend over a time range you specify. See the [ documentation
+](https://cloud.google.com/billing/docs/how-to/reports#cost-forecast) for more
+information.
+
 ##  April 22, 2020
 
 **FEATURE:**
