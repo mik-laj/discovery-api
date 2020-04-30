@@ -26,6 +26,109 @@ disposición, añade la URL de esta página a tu [ lector de feeds
 del feed directamente: ` https://cloud.google.com/feeds/kubernetes-engine-
 security-bulletins.xml ` .
 
+##  GCP-2020-003
+
+Descripción  |  Gravedad  |  Notas  
+---|---|---  
+  
+Hace poco se ha descubierto una vulnerabilidad en Kubernetes, descrita en la [
+CVE-2019-11254 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2019-11254) , que permite que cualquier usuario
+autorizado envíe solicitudes POST para ejecutar un ataque remoto de denegación
+de servicio en un servidor de API de Kubernetes. El Comité de Seguridad de
+Producto (PSC) de Kubernetes ha publicado [ información adicional sobre esta
+vulnerabilidad ](https://groups.google.com/g/kubernetes-security-
+announce/c/wuwEwZigXBc?hl=es) .
+
+Los clústeres de GKE que usan [ redes maestras autorizadas
+](https://cloud.google.com/kubernetes-engine/docs/how-to/authorized-
+networks?hl=es) y [ clústeres privados sin punto de conexión público
+](https://cloud.google.com/kubernetes-engine/docs/how-to/private-
+clusters?hl=es#private_master) mitigan esta vulnerabilidad.
+
+####  ¿Qué debo hacer?
+
+Te recomendamos que actualices tu clúster a una versión del parche que
+contenga la mitigación a esta vulnerabilidad.
+
+A continuación, se indican las versiones de parches que contienen la
+mitigación:
+
+  * 1.13.12-gke.29 
+  * 1.14.9-gke.27 
+  * 1.14.10-gke.24 
+  * 1.15.9-gke.20 
+  * 1.16.6-gke.1 
+
+####  ¿Qué vulnerabilidades mitiga este parche?
+
+El parche mitiga una vulnerabilidad de denegación de servicio (DoS):
+
+[ CVE-2019-11254 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2019-11254)
+
+|
+
+Media
+
+|
+
+[ CVE-2019-11254 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2019-11254)  
+  
+##  GCP-2020-002
+
+Descripción  |  Gravedad  |  Notas  
+---|---|---  
+  
+Kubernetes ha divulgado [ dos vulnerabilidades de denegación de servicio
+](https://groups.google.com/forum/?hl=es#!topic/kubernetes-security-
+announce/2UOlsba2g0s) : una afecta al servidor de APIs y la otra a los
+kubelets. Si quieres obtener más información al respecto, consulta los
+siguientes problemas de Kubernetes: [ 89377
+](https://github.com/kubernetes/kubernetes/issues/89377) y [ 89378
+](https://github.com/kubernetes/kubernetes/issues/89378) .
+
+####  ¿Qué debo hacer?
+
+En GKE, todos los usuarios están protegidos ante la vulnerabilidad
+CVE-2020-8551, a menos que los usuarios que no son de confianza puedan enviar
+solicitudes en la red interna del clúster. Si se utilizan [ redes maestras
+autorizadas ](https://cloud.google.com/kubernetes-engine/docs/how-
+to/authorized-networks?hl=es) , también se mitiga la vulnerabilidad
+CVE-2020-8552.
+
+####  ¿Cuándo se les aplicarán parches a estas vulnerabilidades?
+
+Los parches para la CVE-2020-8551 requieren una actualización de nodos. A
+continuación, se indican las versiones de parches que contendrán la
+mitigación:
+
+  * 1.15.10-gke.* 
+  * 1.16.7-gke.* 
+
+Nota: Las versiones 1.14.x y todas las anteriores no se ven afectadas por esta
+vulnerabilidad, por lo que no requieren parches.
+
+Los parches para la CVE-2020-8552 requieren una actualización maestra. A
+continuación, se indican las versiones de parches que contendrán la
+mitigación:
+
+  * 1.14.10-gke.32 
+  * 1.15.10-gke.* 
+  * 1.16.7-gke.* 
+
+|
+
+Media
+
+|
+
+[ CVE-2020-8551 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8551)  
+[ CVE-2020-8552 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8552)  
+  
 ##  21 de enero del 2020; última actualización: 24 de enero del 2020
 
 Descripción  |  Gravedad  |  Notas  
@@ -172,8 +275,8 @@ platform-update-ipu/) .
 
 ####  ¿Qué debo hacer?
 
-**Esta situación te afectará únicamente si usas grupos de nodos N2, M2 o C2
-_y_ estos ejecutan código no fiable dentro de tus propios clústeres de varios
+**Esta situación te afectará únicamente si usas grupos de nodos N2, M2 o C2 y
+__ estos ejecutan código no fiable dentro de tus propios clústeres de varios
 propietarios de GKE. **
 
 **Reinicia los nodos para que se aplique el parche.** La forma más sencilla de
@@ -267,8 +370,8 @@ clusters?hl=es#private_master) mitigan esta vulnerabilidad.
 ######  ¿Qué debo hacer?
 
 Te recomendamos que actualices tu clúster en cuanto haya disponible una
-versión del parche que contenga la corrección Está previsto que el parche esté
-disponible en todas las zonas con el lanzamiento de la versión de GKE
+versión del parche que contenga la corrección. Está previsto que el parche
+esté disponible en todas las zonas con el lanzamiento de la versión de GKE
 programado para la semana del 14 de octubre.
 
 A continuación se indican las versiones de parches que contendrán la
@@ -585,7 +688,7 @@ posteriores.
 
 * * *
 
-Hace poco Kubernetes descubrió la vulnerabilidad [ CVE-2019-11246
+Hace poco, Kubernetes descubrió la vulnerabilidad [ CVE-2019-11246
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11246) , que permite
 que un atacante con acceso a una operación ` kubectl cp ` y a la ejecución de
 código dentro de un contenedor modifique archivos en el host. Es posible que
@@ -1129,8 +1232,8 @@ bin/cvename.cgi?name=CVE-2019-6486)
 Descripción  |  Gravedad  |  Notas  
 ---|---|---  
   
-En los últimos días, se ha encontrado una nueva vulnerabilidad en la seguridad
-de Kubernetes, la [ CVE‑2018‑1002105 ](https://cve.mitre.org/cgi-
+Recientemente se ha encontrado una nueva vulnerabilidad en la seguridad de
+Kubernetes, la [ CVE‑2018‑1002105 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2018-1002105) , por la que usuarios con privilegios
 de un nivel relativamente bajo pueden saltarse la autorización de las API de
 kubelet. En consecuencia, pueden ejecutar operaciones arbitrarias para
