@@ -38,10 +38,10 @@ Controller enforcement
 
 **FIXED:**
 
+Anthos Config Management v1.3.1 now supports Kubernetes v1.16 and higher.
 Earlier versions of Anthos Config Management relied on APIs that have been [
 deprecated in Kubernetes v1.16 ](https://cloud.google.com/kubernetes-
-engine/docs/deprecations/apis-1-16) . Anthos Config Management v1.3.1 is
-required to run on Kubernetes v1.16 and higher.
+engine/docs/deprecations/apis-1-16) .
 
 **FIXED:**
 
