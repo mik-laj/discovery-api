@@ -14,6 +14,23 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/compute-release-notes.xml `
 
+##  April 30, 2020
+
+**FEATURE:**
+
+You can now suspend and resume VM instances, available in **Beta** . Learn
+more about [ Suspending and Resuming an Instance
+](https://cloud.google.com/compute/docs/instances/suspend-resume-instance) .
+
+**CHANGED:**
+
+SSD persistent disks now have increased write throughput limits on instances
+with 1 to 15 vCPUs. This improvement applies to SSD persistent disks on all
+machine types except C2 machine types. To learn more about the requirements to
+reach these limits, see [ Block storage performance
+](https://cloud.google.com/compute/docs/disks/performance#size_price_performance)
+.
+
 ##  April 20, 2020
 
 **FEATURE:**
