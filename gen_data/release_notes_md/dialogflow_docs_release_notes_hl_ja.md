@@ -15,6 +15,14 @@ notes.pdf?hl=ja) も閲覧できます。
 URL ディレクトリ ` https://cloud.google.com/feeds/dialogflow-release-notes.xml `
 を直接追加します。
 
+##  April 30, 2020
+
+**FEATURE:**
+
+Beta launch of a one-click integration with a new telephony partner:
+
+  * [ Avaya ](https://cloud.google.com/dialogflow/docs/integrations/avaya?hl=ja)
+
 ##  April 25, 2020
 
 **CHANGED:**
