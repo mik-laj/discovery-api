@@ -18,6 +18,14 @@ página a tu [ lector de feeds
 directamente la URL del feed: ` https://cloud.google.com/feeds/dialogflow-
 release-notes.xml ` .
 
+##  April 30, 2020
+
+**FEATURE:**
+
+Beta launch of a one-click integration with a new telephony partner:
+
+  * [ Avaya ](https://cloud.google.com/dialogflow/docs/integrations/avaya?hl=es_419)
+
 ##  April 25, 2020
 
 **CHANGED:**
