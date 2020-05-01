@@ -1338,6 +1338,37 @@
         },
         "orderreturns": {
             "methods": {
+                "acknowledge": {
+                    "httpMethod": "POST",
+                    "id": "content.orderreturns.acknowledge",
+                    "parameterOrder": [
+                        "merchantId",
+                        "returnId"
+                    ],
+                    "parameters": {
+                        "merchantId": {
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "returnId": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/orderreturns/{returnId}/acknowledge",
+                    "request": {
+                        "$ref": "OrderreturnsAcknowledgeRequest"
+                    },
+                    "response": {
+                        "$ref": "OrderreturnsAcknowledgeResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
                 "get": {
                     "httpMethod": "GET",
                     "id": "content.orderreturns.get",
@@ -1373,12 +1404,21 @@
                         "merchantId"
                     ],
                     "parameters": {
+                        "acknowledged": {
+                            "location": "query",
+                            "type": "boolean"
+                        },
                         "createdEndDate": {
                             "location": "query",
                             "type": "string"
                         },
                         "createdStartDate": {
                             "location": "query",
+                            "type": "string"
+                        },
+                        "googleOrderIds": {
+                            "location": "query",
+                            "repeated": true,
                             "type": "string"
                         },
                         "maxResults": {
@@ -1403,11 +1443,78 @@
                         "pageToken": {
                             "location": "query",
                             "type": "string"
+                        },
+                        "shipmentStates": {
+                            "enum": [
+                                "completed",
+                                "new",
+                                "shipped",
+                                "undeliverable"
+                            ],
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
+                        },
+                        "shipmentStatus": {
+                            "enum": [
+                                "inProgress",
+                                "new",
+                                "processed"
+                            ],
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
+                        },
+                        "shipmentTrackingNumbers": {
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
+                        },
+                        "shipmentTypes": {
+                            "enum": [
+                                "byMail",
+                                "contactCustomerSupport",
+                                "returnless"
+                            ],
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
                         }
                     },
                     "path": "{merchantId}/orderreturns",
                     "response": {
                         "$ref": "OrderreturnsListResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "process": {
+                    "httpMethod": "POST",
+                    "id": "content.orderreturns.process",
+                    "parameterOrder": [
+                        "merchantId",
+                        "returnId"
+                    ],
+                    "parameters": {
+                        "merchantId": {
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "returnId": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/orderreturns/{returnId}/process",
+                    "request": {
+                        "$ref": "OrderreturnsProcessRequest"
+                    },
+                    "response": {
+                        "$ref": "OrderreturnsProcessResponse"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/content"
@@ -3242,6 +3349,9 @@
         "AccountGoogleMyBusinessLink": {
             "id": "AccountGoogleMyBusinessLink",
             "properties": {
+                "gmbAccountId": {
+                    "type": "string"
+                },
                 "gmbEmail": {
                     "type": "string"
                 },
@@ -5090,6 +5200,9 @@
                     },
                     "type": "array"
                 },
+                "returnPricingInfo": {
+                    "$ref": "ReturnPricingInfo"
+                },
                 "returnShipments": {
                     "items": {
                         "$ref": "ReturnShipment"
@@ -5108,11 +5221,20 @@
                 "itemId": {
                     "type": "string"
                 },
+                "merchantRejectionReason": {
+                    "$ref": "MerchantRejectionReason"
+                },
                 "merchantReturnReason": {
                     "$ref": "RefundReason"
                 },
                 "product": {
                     "$ref": "OrderLineItemProduct"
+                },
+                "refundableAmount": {
+                    "$ref": "MonetaryAmount"
+                },
+                "returnItemId": {
+                    "type": "string"
                 },
                 "returnShipmentIds": {
                     "items": {
@@ -5120,7 +5242,22 @@
                     },
                     "type": "array"
                 },
+                "shipmentGroupId": {
+                    "type": "string"
+                },
+                "shipmentUnitId": {
+                    "type": "string"
+                },
                 "state": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "MerchantRejectionReason": {
+            "id": "MerchantRejectionReason",
+            "properties": {
+                "reasonCode": {
                     "type": "string"
                 }
             },
@@ -5148,6 +5285,18 @@
                     "type": "array"
                 },
                 "value": {
+                    "$ref": "Price"
+                }
+            },
+            "type": "object"
+        },
+        "MonetaryAmount": {
+            "id": "MonetaryAmount",
+            "properties": {
+                "priceAmount": {
+                    "$ref": "Price"
+                },
+                "taxAmount": {
                     "$ref": "Price"
                 }
             },
@@ -6043,6 +6192,28 @@
             },
             "type": "object"
         },
+        "OrderreturnsAcknowledgeRequest": {
+            "id": "OrderreturnsAcknowledgeRequest",
+            "properties": {
+                "operationId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "OrderreturnsAcknowledgeResponse": {
+            "id": "OrderreturnsAcknowledgeResponse",
+            "properties": {
+                "executionStatus": {
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "content#orderreturnsAcknowledgeResponse",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "OrderreturnsListResponse": {
             "id": "OrderreturnsListResponse",
             "properties": {
@@ -6058,6 +6229,97 @@
                         "$ref": "MerchantOrderReturn"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "OrderreturnsPartialRefund": {
+            "id": "OrderreturnsPartialRefund",
+            "properties": {
+                "priceAmount": {
+                    "$ref": "Price"
+                },
+                "taxAmount": {
+                    "$ref": "Price"
+                }
+            },
+            "type": "object"
+        },
+        "OrderreturnsProcessRequest": {
+            "id": "OrderreturnsProcessRequest",
+            "properties": {
+                "fullChargeReturnShippingCost": {
+                    "type": "boolean"
+                },
+                "operationId": {
+                    "type": "string"
+                },
+                "refundShippingFee": {
+                    "$ref": "OrderreturnsRefundOperation"
+                },
+                "returnItems": {
+                    "items": {
+                        "$ref": "OrderreturnsReturnItem"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "OrderreturnsProcessResponse": {
+            "id": "OrderreturnsProcessResponse",
+            "properties": {
+                "executionStatus": {
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "content#orderreturnsProcessResponse",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "OrderreturnsRefundOperation": {
+            "id": "OrderreturnsRefundOperation",
+            "properties": {
+                "fullRefund": {
+                    "type": "boolean"
+                },
+                "partialRefund": {
+                    "$ref": "OrderreturnsPartialRefund"
+                },
+                "reasonText": {
+                    "type": "string"
+                },
+                "returnRefundReason": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "OrderreturnsRejectOperation": {
+            "id": "OrderreturnsRejectOperation",
+            "properties": {
+                "reason": {
+                    "type": "string"
+                },
+                "reasonText": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "OrderreturnsReturnItem": {
+            "id": "OrderreturnsReturnItem",
+            "properties": {
+                "refund": {
+                    "$ref": "OrderreturnsRefundOperation"
+                },
+                "reject": {
+                    "$ref": "OrderreturnsRejectOperation"
+                },
+                "returnItemId": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -8277,6 +8539,27 @@
                         ]
                     },
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ReturnPricingInfo": {
+            "id": "ReturnPricingInfo",
+            "properties": {
+                "chargeReturnShippingFee": {
+                    "type": "boolean"
+                },
+                "maxReturnShippingFee": {
+                    "$ref": "MonetaryAmount"
+                },
+                "refundableItemsTotalAmount": {
+                    "$ref": "MonetaryAmount"
+                },
+                "refundableShippingAmount": {
+                    "$ref": "MonetaryAmount"
+                },
+                "totalRefundedAmount": {
+                    "$ref": "MonetaryAmount"
                 }
             },
             "type": "object"
