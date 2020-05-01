@@ -13,6 +13,24 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/configconnector-release-
 notes.xml `
 
+##  April 30, 2020
+
+**CHANGED:**
+
+Fixes for the examples for the following resources: CloudBuildTrigger,
+AccessContextManager, ComputeDisk, and ComputeSubNetwork
+
+**CHANGED:**
+
+Reduced memory requirements for deletion defender, recorder, and webhook.
+Reduced cpu requirements for recorder and webhook Increased CPU for the
+manager controller from 100m to 200m.
+
+**CHANGED:**
+
+Ensure the webhook process does not signal it is ready until it is serving
+HTTP traffic
+
 ##  April 21, 2020
 
 **CHANGED:**
