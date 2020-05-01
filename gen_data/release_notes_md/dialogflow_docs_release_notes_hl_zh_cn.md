@@ -13,6 +13,14 @@ notes.pdf?hl=zh_cn) 。
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/dialogflow-release-notes.xml `
 
+##  April 30, 2020
+
+**FEATURE:**
+
+Beta launch of a one-click integration with a new telephony partner:
+
+  * [ Avaya ](https://cloud.google.com/dialogflow/docs/integrations/avaya?hl=zh_cn)
+
 ##  April 25, 2020
 
 **CHANGED:**
