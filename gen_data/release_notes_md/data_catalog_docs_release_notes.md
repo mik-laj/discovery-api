@@ -13,7 +13,25 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/data-catalog-release-notes.xml
 `
 
+##  April 30, 2020
+
+v1
+
+**FEATURE:**
+
+Data Catalog is now generally available (GA). \- The Data Catalog v1 API,
+gcloud commands, and UI are now available. For details, [ see the API
+reference ](https://cloud.google.com/data-catalog/docs/reference) . Code
+samples throughout the documentation have been updated to use the new API. \-
+Data Catalog has been regionalized, and now hosts user metadata in [ 23
+regions worldwide ](https://cloud.google.com/data-
+catalog/docs/concepts/regions) . \- Billing has been enabled for Data Catalog
+API calls and storage using all supported resources. For more info, see the [
+pricing page ](https://cloud.google.com/data-catalog/pricing) .
+
 ##  March 12, 2020
+
+v1beta1
 
 **FEATURE:**
 
@@ -22,6 +40,8 @@ to/custom-entries) is now in beta. This feature lets you ingest metadata of
 any type, so it can be tagged and searched in Data Catalog.
 
 ##  January 27, 2020
+
+v1beta1
 
 **FEATURE:**
 
@@ -37,6 +57,8 @@ tag#create_a_tag_template_and_attach_tags_to_your_table) .
 
 ##  January 21, 2020
 
+v1beta1
+
 **CHANGED:**
 
 IAM policies are no longer available for individual entries, but still are
@@ -49,6 +71,8 @@ This change is relevant to users who have created filesets in Data Catalog.
 Data Catalog users who do not have filesets are not impacted by this change.
 
 ##  June 27, 2019
+
+v1beta1
 
 **FEATURE:**
 
