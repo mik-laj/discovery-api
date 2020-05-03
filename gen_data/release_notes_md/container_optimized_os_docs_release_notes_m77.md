@@ -5,12 +5,24 @@
 Image Family  |  cos-77-lts  
 ---|---  
 Deprecated After  |  Dec 17, 2020  
-Kernel  |  [ 4.19.104
-](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/0c94af8a1221168be9c750ad378d494e969fa425)  
+Kernel  |  [ 4.19.112
+](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/5d4ffd91281840f7a118143d77fbefb02e87943c)  
 Kubernetes  |  v1.15.3  
 Docker  |  v19.03.1  
   
 ##  Changelog
+
+###  cos-77-12371-251-0
+
+_Date: Apr 29, 2020_
+
+  * Fixed a kernel bug where eBPF programs can cause softlockups. 
+
+###  cos-77-12371-233-0
+
+_Date: Apr 29, 2020_
+
+  * Disabled `accept_ra` on all interfaces by default. 
 
 ###  cos-77-12371-227-0
 
