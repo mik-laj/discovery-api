@@ -1,15 +1,15 @@
 #  Notas de la versión
 
-En esta página, se documentan las actualizaciones de producción para Cloud
-Speech-to-Text. Puedes consultar esta página de forma periódica si quieres ver
-anuncios sobre características nuevas o actualizadas, correcciones de errores,
-problemas comunes y funciones obsoletas.
+En esta página, se documentan las actualizaciones de producción para Speech-
+to-Text. Puedes consultarla de forma periódica si deseas ver anuncios sobre
+características nuevas o actualizadas, correcciones de errores, problemas
+conocidos y funciones obsoletas.
 
 Para recibir las últimas actualizaciones de productos, agrega la URL de esta
 página a tu [ lector de feeds
-](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , o agrega
-directamente la URL del feed: ` https://cloud.google.com/feeds/cloud-speech-
-to-text-release-notes.xml ` .
+](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) o agrega
+directamente la URL del feed: ` https://cloud.google.com/feeds/speech-release-
+notes.xml ` .
 
 ##  March 05, 2020
 
