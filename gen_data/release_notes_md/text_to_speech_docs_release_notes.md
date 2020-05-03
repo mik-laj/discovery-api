@@ -12,6 +12,31 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/tts-release-notes.xml `
 
+##  May 01, 2020
+
+**FEATURE:**
+
+Cloud Speech-to-Text now offers 25 new voices (both Standard and WaveNet) in
+the following languages. See the [ Supported Voices and Languages
+](https://cloud.google.com/text-to-speech/docs/voices) page for complete
+details.
+
+  * Arabic 
+  * Bengali (India) 
+  * English (India) 
+  * French (France) 
+  * German (Germany) 
+  * Gujarati (India) 
+  * Hindi (India) 
+  * Indonesian (Indonesia) 
+  * Kannada (India) 
+  * Malayalam (India) 
+  * Mandarin Chinese 
+  * Russian (Russia) 
+  * Tamil (India) 
+  * Telugu (India) 
+  * Thai (Thailand) 
+
 ##  August 27, 2019
 
 **FEATURE:**
