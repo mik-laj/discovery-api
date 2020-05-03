@@ -7,8 +7,8 @@ project:  Stable  |  Beta  |  Dev
 ---|---|---  
       
     
-    **cos-stable-81-12871-69-0**
-    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/7e8a5293f4a62df1dc717093ce6c22cc97b7f1ae)
+    **cos-stable-81-12871-96-0**
+    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/fa84f12c6d738af9486e69a006a57df923f9476a)
     Kubernetes:     v1.17.3
     Docker:         v19.03.6
     
