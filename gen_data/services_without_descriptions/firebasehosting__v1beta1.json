@@ -468,29 +468,6 @@
                         },
                         "versions": {
                             "methods": {
-                                "clone": {
-                                    "flatPath": "v1beta1/projects/{projectsId}/sites/{sitesId}/versions:clone",
-                                    "httpMethod": "POST",
-                                    "id": "firebasehosting.projects.sites.versions.clone",
-                                    "parameterOrder": [
-                                        "parent"
-                                    ],
-                                    "parameters": {
-                                        "parent": {
-                                            "location": "path",
-                                            "pattern": "^projects/[^/]+/sites/[^/]+$",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1beta1/{+parent}/versions:clone",
-                                    "request": {
-                                        "$ref": "CloneVersionRequest"
-                                    },
-                                    "response": {
-                                        "$ref": "Operation"
-                                    }
-                                },
                                 "create": {
                                     "flatPath": "v1beta1/projects/{projectsId}/sites/{sitesId}/versions",
                                     "httpMethod": "POST",
@@ -582,7 +559,13 @@
                                     "path": "v1beta1/{+parent}/versions",
                                     "response": {
                                         "$ref": "ListVersionsResponse"
-                                    }
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/cloud-platform.read-only",
+                                        "https://www.googleapis.com/auth/firebase",
+                                        "https://www.googleapis.com/auth/firebase.readonly"
+                                    ]
                                 },
                                 "patch": {
                                     "flatPath": "v1beta1/projects/{projectsId}/sites/{sitesId}/versions/{versionsId}",
@@ -1050,29 +1033,6 @@
                 },
                 "versions": {
                     "methods": {
-                        "clone": {
-                            "flatPath": "v1beta1/sites/{sitesId}/versions:clone",
-                            "httpMethod": "POST",
-                            "id": "firebasehosting.sites.versions.clone",
-                            "parameterOrder": [
-                                "parent"
-                            ],
-                            "parameters": {
-                                "parent": {
-                                    "location": "path",
-                                    "pattern": "^sites/[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v1beta1/{+parent}/versions:clone",
-                            "request": {
-                                "$ref": "CloneVersionRequest"
-                            },
-                            "response": {
-                                "$ref": "Operation"
-                            }
-                        },
                         "create": {
                             "flatPath": "v1beta1/sites/{sitesId}/versions",
                             "httpMethod": "POST",
@@ -1164,7 +1124,13 @@
                             "path": "v1beta1/{+parent}/versions",
                             "response": {
                                 "$ref": "ListVersionsResponse"
-                            }
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/cloud-platform.read-only",
+                                "https://www.googleapis.com/auth/firebase",
+                                "https://www.googleapis.com/auth/firebase.readonly"
+                            ]
                         },
                         "patch": {
                             "flatPath": "v1beta1/sites/{sitesId}/versions/{versionsId}",
@@ -1313,24 +1279,6 @@
                     "type": "string"
                 },
                 "token": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "CloneVersionRequest": {
-            "id": "CloneVersionRequest",
-            "properties": {
-                "exclude": {
-                    "$ref": "PathFilter"
-                },
-                "finalize": {
-                    "type": "boolean"
-                },
-                "include": {
-                    "$ref": "PathFilter"
-                },
-                "sourceVersion": {
                     "type": "string"
                 }
             },
@@ -1563,18 +1511,6 @@
             },
             "type": "object"
         },
-        "PathFilter": {
-            "id": "PathFilter",
-            "properties": {
-                "regexes": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
         "PopulateVersionFilesRequest": {
             "id": "PopulateVersionFilesRequest",
             "properties": {
@@ -1734,6 +1670,9 @@
         "SiteConfig": {
             "id": "SiteConfig",
             "properties": {
+                "cloudLoggingEnabled": {
+                    "type": "boolean"
+                },
                 "maxVersions": {
                     "format": "int64",
                     "type": "string"
