@@ -17,6 +17,27 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/dlp-release-notes.xml `
 
+##  May 04, 2020
+
+**CHANGED:**
+
+We have made quality and performance enhancements to our name detectors.
+PERSON_NAME should be used in most scenarios as it will return the most
+comprehensive finding. MALE_NAME and FEMALE_NAME are now synonymous with
+FIRST_NAME with [ ` Likelihood `
+](https://cloud.google.com/dlp/docs/reference/rpc/google.privacy.dlp.v2#likelihood)
+now never being greater than ` POSSIBLE ` . These changes will be rolled out
+over the coming days.
+
+##  April 28, 2020
+
+**FEATURE:**
+
+Added additional [ infoType detector
+](https://cloud.google.com/dlp/docs/infotypes-reference) :
+
+  * JSON_WEB_TOKEN 
+
 ##  April 16, 2020
 
 **FEATURE:**
