@@ -1,12 +1,12 @@
 #  출시 노트
 
-이 페이지에서는 Vision API의 프로덕션 업데이트에 대해 설명합니다. Vision API 개발자는 이 목록을 주기적으로 참고하여 새로운
-소식을 확인하는 것이 좋습니다.
+이 페이지에서는 Vision API의 프로덕션 업데이트에 대해 설명합니다. Vision 개발자는 이 목록을 주기적으로 참고하여 새로운 소식을
+확인하는 것이 좋습니다.
 
 최신 제품 업데이트를 받으려면 [ 피드 리더
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) 에 이 페이지의 URL을
-추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/cloud-vision-
-api-release-notes.xml `
+추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/vision-
+release-notes.xml `
 
 ##  April 11, 2020
 
