@@ -8,6 +8,20 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/cloud-sql-release-notes.xml `
 
+##  May 04, 2020
+
+**Cloud SQL for MySQL**
+
+**DEPRECATED:**
+
+As [ previously announced ](https://cloud.google.com/sql/docs/mysql/release-
+notes#January_29_2019) , Cloud SQL First Generation was deprecated on January
+29, 2019. All First Generation instances have been migrated to Second
+Generation. In the documentation and in the Google Cloud Console, "MySQL
+Second Generation instances" are now referred to simply as "MySQL instances."
+For general information about this deprecation, see the existing [ deprecation
+notice ](https://cloud.google.com/sql/docs/mysql/deprecation-notice) .
+
 ##  April 20, 2020
 
 **Cloud SQL for MySQL**
