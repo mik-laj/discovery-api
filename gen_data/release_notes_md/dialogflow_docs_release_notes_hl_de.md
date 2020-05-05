@@ -17,6 +17,14 @@ Feedreader ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
 einfügen oder die Feed-URL direkt hinzufügen: `
 https://cloud.google.com/feeds/dialogflow-release-notes.xml `
 
+##  May 04, 2020
+
+**CHANGED:**
+
+The shutdown of 7 integrations [ announced in January
+](https://cloud.google.com/dialogflow/docs/release-
+notes?hl=de#January_06_2020) is now extended to June 6th, 2020.
+
 ##  April 30, 2020
 
 **FEATURE:**
@@ -83,7 +91,8 @@ notes?hl=de#November_14_2019) has been extended to May 31, 2020,
 
 The shutdown of 7 integrations [ announced in January
 ](https://cloud.google.com/dialogflow/docs/release-
-notes?hl=de#January_06_2020) is now extended to May 6th, 2020.
+notes?hl=de#January_06_2020) is now extended to ~~May 6th, 2020~~ June 6th,
+2020.
 
 ##  March 13, 2020
 
@@ -136,7 +145,8 @@ multiple sub-agents agents into a single mega agent.
 
 The following [ integrations
 ](https://cloud.google.com/dialogflow/docs/integrations/?hl=de) are now
-deprecated and will be shut down on ~~April 6th, 2020~~ May 6th, 2020:
+deprecated and will be shut down on ~~April 6th, 2020~~ ~~May 6th, 2020~~ June
+6th, 2020 :
 
   * Kik 
   * Skype 
