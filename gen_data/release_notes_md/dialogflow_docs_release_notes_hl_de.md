@@ -17,6 +17,13 @@ Feedreader ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
 einfügen oder die Feed-URL direkt hinzufügen: `
 https://cloud.google.com/feeds/dialogflow-release-notes.xml `
 
+##  May 05, 2020
+
+**FEATURE:**
+
+GA (general availability) launch of [ auto speech adaptation
+](https://cloud.google.com/dialogflow/docs/speech-adaptation?hl=de) .
+
 ##  May 04, 2020
 
 **CHANGED:**
