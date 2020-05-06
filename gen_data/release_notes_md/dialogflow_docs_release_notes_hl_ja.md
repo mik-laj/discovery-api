@@ -15,6 +15,13 @@ notes.pdf?hl=ja) も閲覧できます。
 URL ディレクトリ ` https://cloud.google.com/feeds/dialogflow-release-notes.xml `
 を直接追加します。
 
+##  May 05, 2020
+
+**FEATURE:**
+
+GA (general availability) launch of [ auto speech adaptation
+](https://cloud.google.com/dialogflow/docs/speech-adaptation?hl=ja) .
+
 ##  May 04, 2020
 
 **CHANGED:**
