@@ -1,14 +1,15 @@
 #  Notes de version
 
-Cette page répertorie les mises à jour en production de l'API Vision. Nous
-recommandons aux développeurs qui utilisent l'API Vision de consulter
-régulièrement cette liste pour prendre connaissance des nouvelles annonces.
+Cette page répertorie les mises à jour en production de l'API Cloud Vision.
+Nous recommandons aux développeurs qui utilisent l'API Cloud Vision de
+consulter régulièrement cette liste pour prendre connaissance des nouvelles
+annonces.
 
 Pour recevoir les dernières mises à jour concernant ce produit, ajoutez l'URL
 de cette page à votre [ lecteur de flux
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ou ajoutez l'URL
-du flux directement : ` https://cloud.google.com/feeds/cloud-vision-api-
-release-notes.xml `
+du flux directement : ` https://cloud.google.com/feeds/vision-release-
+notes.xml `
 
 ##  April 11, 2020
 
