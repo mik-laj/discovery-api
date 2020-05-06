@@ -6,9 +6,9 @@ esta lista para verificar se há novos anúncios.
 
 Para receber as atualizações de produtos mais recentes, adicione o URL desta
 página ao [ leitor de feeds
-](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) (em inglês) ou
-adicione o URL do feed diretamente: ` https://cloud.google.com/feeds/cloud-
-vision-api-release-notes.xml `
+](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ou adicione o URL
+do feed diretamente: ` https://cloud.google.com/feeds/vision-release-notes.xml
+`
 
 ##  April 11, 2020
 
