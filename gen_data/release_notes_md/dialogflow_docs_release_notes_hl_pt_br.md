@@ -18,6 +18,13 @@ página ao [ leitor de feeds
 adicione o URL do feed diretamente: `
 https://cloud.google.com/feeds/dialogflow-release-notes.xml `
 
+##  May 05, 2020
+
+**FEATURE:**
+
+GA (general availability) launch of [ auto speech adaptation
+](https://cloud.google.com/dialogflow/docs/speech-adaptation?hl=pt_br) .
+
 ##  May 04, 2020
 
 **CHANGED:**
