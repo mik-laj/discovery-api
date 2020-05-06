@@ -5,11 +5,11 @@ AutoML Vision dokumentiert. Wir empfehlen Entwicklern, die die Objekterkennung
 von AutoML Vision verwenden, diese Liste regelmäßig auf neue Ankündigungen zu
 prüfen.
 
-Für neueste Produktaktualisierungen können Sie die URL dieser Seite in einen [
+Für neueste Produktaktualisierungen können Sie die URL der Seite in den [
 Feedreader ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
 einfügen oder die Feed-URL direkt hinzufügen: `
 https://cloud.google.com/feeds/automl-vision-object-detection-release-
-notes.xml `
+notes.xml ` .
 
 ##  April 03, 2020
 
