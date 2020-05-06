@@ -7,9 +7,9 @@ para conocer los nuevos anuncios.
 
 Para recibir las últimas actualizaciones de productos, agrega la URL de esta
 página a tu [ lector de feeds
-](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) o agrega
+](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , o agrega
 directamente la URL del feed: ` https://cloud.google.com/feeds/automl-vision-
-object-detection-release-notes.xml ` .
+object-detection-release-notes.xml `
 
 ##  April 03, 2020
 
