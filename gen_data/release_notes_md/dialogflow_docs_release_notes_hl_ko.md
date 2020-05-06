@@ -15,6 +15,13 @@ notes.pdf?hl=ko) 도 읽을 수 있습니다.
 추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/dialogflow-
 release-notes.xml `
 
+##  May 05, 2020
+
+**FEATURE:**
+
+GA (general availability) launch of [ auto speech adaptation
+](https://cloud.google.com/dialogflow/docs/speech-adaptation?hl=ko) .
+
 ##  May 04, 2020
 
 **CHANGED:**
