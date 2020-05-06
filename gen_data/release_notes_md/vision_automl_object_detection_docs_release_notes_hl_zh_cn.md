@@ -1,8 +1,9 @@
 #  版本说明
 
-本页面记录了 AutoML Vision 对象检测的正式版更新。我们建议 AutoML Vision 对象检测开发者定期查看此列表，以便及时获知新公告。
+本页面记录了 AutoML Vision Object Detection 的正式版更新。我们建议 AutoML Vision Object
+Detection 开发者定期查看此列表，以便及时获知新公告。
 
-如需接收最新产品动态，请将本页面的网址添加到您的 [ Feed 阅读器
+要接收最新产品动态，请将本页面的网址添加到您的 [ Feed 阅读器
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/automl-vision-object-detection-release-
 notes.xml `
