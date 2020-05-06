@@ -16,7 +16,7 @@ URL directly: ` https://cloud.google.com/feeds/tts-release-notes.xml `
 
 **FEATURE:**
 
-Cloud Text-to-Speech now offers 25 new voices (both Standard and WaveNet) in
+Cloud Text-to-Speech now offers 36 new voices (both Standard and WaveNet) in
 the following languages. See the [ Supported Voices and Languages
 ](https://cloud.google.com/text-to-speech/docs/voices) page for complete
 details.
