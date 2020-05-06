@@ -18,6 +18,13 @@ de cette page à votre [ lecteur de flux
 du flux directement : ` https://cloud.google.com/feeds/dialogflow-release-
 notes.xml `
 
+##  May 05, 2020
+
+**FEATURE:**
+
+GA (general availability) launch of [ auto speech adaptation
+](https://cloud.google.com/dialogflow/docs/speech-adaptation?hl=fr) .
+
 ##  May 04, 2020
 
 **CHANGED:**
