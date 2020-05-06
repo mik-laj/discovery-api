@@ -1,14 +1,14 @@
 #  Notas de la versión
 
-En esta página, se documentan las actualizaciones de producción de la API de
-Vision. Recomendamos que los desarrolladores de la API de Vision verifiquen de
-forma periódica esta lista para ver si hay anuncios nuevos.
+Esta página documenta las actualizaciones de producción de la API de Vision.
+Recomendamos que los desarrolladores de Vision revisen periódicamente esta
+lista para ver si hay anuncios nuevos.
 
-Si deseas recibir las últimas actualizaciones de productos, agrega la URL de
-esta página a tu [ lector de feed
+Para recibir las últimas actualizaciones de productos, agrega la URL de esta
+página a tu [ lector de feeds
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , o agrega
-directamente la URL del feed: ` https://cloud.google.com/feeds/cloud-vision-
-api-release-notes.xml `
+directamente la URL del feed: ` https://cloud.google.com/feeds/vision-release-
+notes.xml `
 
 ##  April 11, 2020
 
