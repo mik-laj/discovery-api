@@ -6,9 +6,9 @@ Detection consultem esta lista periodicamente para saber das novidades.
 
 Para receber as atualizações de produtos mais recentes, adicione o URL desta
 página ao [ leitor de feeds
-](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) (em inglês) ou
-inclua o URL do feed diretamente: ` https://cloud.google.com/feeds/automl-
-vision-object-detection-release-notes.xml `
+](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ou adicione o URL
+do feed diretamente: ` https://cloud.google.com/feeds/automl-vision-object-
+detection-release-notes.xml `
 
 ##  April 03, 2020
 
