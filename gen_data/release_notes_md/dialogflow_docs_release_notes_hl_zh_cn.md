@@ -13,6 +13,13 @@ notes.pdf?hl=zh_cn) 。
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/dialogflow-release-notes.xml `
 
+##  May 05, 2020
+
+**FEATURE:**
+
+GA (general availability) launch of [ auto speech adaptation
+](https://cloud.google.com/dialogflow/docs/speech-adaptation?hl=zh_cn) .
+
 ##  May 04, 2020
 
 **CHANGED:**
