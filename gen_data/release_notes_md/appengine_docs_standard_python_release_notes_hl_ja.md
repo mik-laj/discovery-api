@@ -4,6 +4,9 @@ python3/?hl=ja) ことをおすすめします。
 
 #  Python 2.7 リリースノート
 
+[ Google Cloud リリースノート ](https://cloud.google.com/release-notes?hl=ja)
+ページに、すべての Google Cloud の最新のアップデートが表示されます。
+
 プロダクトのアップデートに関する最新情報を受け取るには、このページの URL を [ フィード リーダー
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) に追加するか、またはフィード
 URL ディレクトリ ` https://cloud.google.com/feeds/gaestd-py-release-notes.xml `
