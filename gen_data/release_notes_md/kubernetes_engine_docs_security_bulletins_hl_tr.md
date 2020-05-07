@@ -18,11 +18,60 @@ yığınının farklı katmanlarında yalıtım
 ](https://cloudplatform.googleblog.com/2018/05/Exploring-container-security-
 Isolation-at-different-layers-of-the-Kubernetes-stack.html) bölümüne bakın.
 
-En yeni güvenlik bültenlerini almak istiyorsanız bu sayfanın URL'sini [ feed
+En son yayınlanan bültenleri almak istiyorsanız bu sayfanın URL'sini [ feed
 okuyucunuza ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
-ekleyin veya doğrudan feed URL'sini ekleyin: `
+ekleyin veya feed URL'sini doğrudan ekleyin: `
 https://cloud.google.com/feeds/kubernetes-engine-security-bulletins.xml `
 
+##  GCP-2020-003
+
+Açıklama  |  Önem Düzeyi  |  Notlar  
+---|---|---  
+  
+Yakın zamanda Kubernetes'te [ CVE-2019-11254 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2019-11254) ile açıklanan bir güvenlik açığı tespit
+edildi. İlgili güvenlik açığı, POST isteği yapma yetkisi olan tüm
+kullanıcılara, bir Kubernetes API sunucusunda uzaktan Hizmet Reddi saldırısı
+yürütme izni veriyor. Kubernetes Ürün Güvenliği Komitesi'nin (PSC) bu güvenlik
+açığıyla ilgili yayınladığı ek bilgilere [ buradan
+](https://groups.google.com/g/kubernetes-security-
+announce/c/wuwEwZigXBc?hl=tr) ulaşabilirsiniz.
+
+[ Ana Yetkili Ağları ](https://cloud.google.com/kubernetes-engine/docs/how-
+to/authorized-networks?hl=tr) ve [ Herkese açık uç noktası olmayan özel
+kümeleri ](https://cloud.google.com/kubernetes-engine/docs/how-to/private-
+clusters?hl=tr#private_master) kullanan GKE Kümeleri, bu güvenlik açığının
+risklerini azaltır.
+
+####  Ne yapmalıyım?
+
+Kümenizi, bu güvenlik açığının çözümünü içeren bir yama sürümüne yükseltmenizi
+öneririz.
+
+Çözümün yer aldığı yama sürümlerinin listesi aşağıda verilmiştir:
+
+  * 1.13.12-gke.29 
+  * 1.14.9-gke.27 
+  * 1.14.10-gke.24 
+  * 1.15.9-gke.20 
+  * 1.16.6-gke.1 
+
+####  Bu yama hangi güvenlik açıklarını ele alıyor?
+
+Yama ile aşağıdaki Hizmet Reddi (DoS) güvenlik açıkları düzeltilir:
+
+[ CVE-2019-11254 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2019-11254) .
+
+|
+
+Orta
+
+|
+
+[ CVE-2019-11254 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2019-11254)  
+  
 ##  GCP-2020-002
 
 Açıklama  |  Önem Düzeyi  |  Notlar  
@@ -637,8 +686,8 @@ bir sürüm yer alacaktır. Dilerseniz [ ` kubectl ` için doğrudan kendiniz
 yükseltme yapabilirsiniz ](https://kubernetes.io/docs/tasks/tools/install-
 kubectl/) .
 
-Bu yamanın kullanıma sunulma durumunu [ ` gcloud ` sürüm notlarından
-](https://cloud.google.com/sdk/docs/release-notes?hl=tr) takip edebilirsiniz.
+Track the availability of this patch in the [ ` gcloud ` release notes
+](https://cloud.google.com/sdk/docs/release-notes?hl=tr) .
 
 ######  Bu yama hangi güvenlik açığını ele alıyor?
 
@@ -798,7 +847,7 @@ Açıklama  |  Önem Düzeyi  |  Notlar
 1.11.10-gke.4, 1.12.8-gke.6 ve 1.13.6-gke.5 sürümlerinde ve daha yeni
 sürümlerde mevcuttur.
 
-Intel tarafından aşağıdaki CVE'ler açıklanmıştır:
+Aşağıdaki CVE'ler Intel tarafından açıklanmıştır:
 
   * [ CVE-2018-12126 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12126)
   * [ CVE-2018-12127 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12127)
