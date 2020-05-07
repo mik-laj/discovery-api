@@ -12,6 +12,284 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  May 06, 2020
+
+**Traffic Director**
+
+**FEATURE:**
+
+A new document is added to [ Traffic Director
+](https://cloud.google.com/traffic-director/docs) : [ Ingress traffic for your
+mesh ](https://cloud.google.com/traffic-director/docs/traffic-director-
+ingress-traffic) .
+
+##  May 05, 2020
+
+**Dialogflow**
+
+**FEATURE:**
+
+GA (general availability) launch of [ auto speech adaptation
+](https://cloud.google.com/dialogflow/docs/speech-adaptation) .
+
+##  May 04, 2020
+
+**Cloud Data Loss Prevention**
+
+**CHANGED:**
+
+We have made quality and performance enhancements to our name detectors.
+PERSON_NAME should be used in most scenarios as it will return the most
+comprehensive finding. MALE_NAME and FEMALE_NAME are now synonymous with
+FIRST_NAME with [ ` Likelihood `
+](https://cloud.google.com/dlp/docs/reference/rpc/google.privacy.dlp.v2#likelihood)
+now never being greater than ` POSSIBLE ` . These changes will be rolled out
+over the coming days.
+
+**Cloud SQL for MySQL**
+
+**DEPRECATED:**
+
+As [ previously announced ](https://cloud.google.com/sql/docs/mysql/release-
+notes#January_29_2019) , Cloud SQL First Generation was deprecated on January
+29, 2019. All First Generation instances have been migrated to Second
+Generation. In the documentation and in the Google Cloud Console, "MySQL
+Second Generation instances" are now referred to simply as "MySQL instances."
+For general information about this deprecation, see the existing [ deprecation
+notice ](https://cloud.google.com/sql/docs/mysql/deprecation-notice) .
+
+**Dialogflow**
+
+**CHANGED:**
+
+The shutdown of 7 integrations [ announced in January
+](https://cloud.google.com/dialogflow/docs/release-notes#January_06_2020) is
+now extended to June 6th, 2020.
+
+##  May 01, 2020
+
+**BigQuery**
+
+**FEATURE:**
+
+A new function, ` JSON_EXTRACT_ARRAY ` , has been added to the list of JSON
+functions. This function allows you to extract the contents of a JSON document
+as a string array. For more information, see the [ ` JSON_EXTRACT_ARRAY `
+reference section ](https://cloud.google.com/bigquery/docs/reference/standard-
+sql/json_functions#json_extract_array) .
+
+**FEATURE:**
+
+The ` ORDER BY ` clause now supports the ` NULLS FIRST ` and ` NULLS LAST `
+clauses. These clauses allow you to specify the sort order of null and non-
+null values. For more information, see the [ ` ORDER BY ` reference section
+](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-
+syntax#order_by_clause) .
+
+**Cloud CDN**
+
+**CHANGED:**
+
+Added a new [ Features page ](https://cloud.google.com/cdn/docs/features) that
+summarizes all Cloud CDN capabilities.
+
+**Dataproc**
+
+**FEATURE:**
+
+Announcing the [ Beta ](https://cloud.google.com/products#product-launch-
+stages) release of [ Dataproc Component Gateway
+](https://cloud.google.com/dataproc/docs/concepts/accessing/dataproc-gateways)
+, which provides secure access to web endpoints for Dataproc default and
+optional components.
+
+**Text-to-Speech**
+
+**FEATURE:**
+
+Cloud Text-to-Speech now offers 36 new voices (both Standard and WaveNet) in
+the following languages. See the [ Supported Voices and Languages
+](https://cloud.google.com/text-to-speech/docs/voices) page for complete
+details.
+
+  * Arabic 
+  * Bengali (India) 
+  * English (India) 
+  * French (France) 
+  * German (Germany) 
+  * Gujarati (India) 
+  * Hindi (India) 
+  * Indonesian (Indonesia) 
+  * Kannada (India) 
+  * Malayalam (India) 
+  * Mandarin Chinese 
+  * Russian (Russia) 
+  * Tamil (India) 
+  * Telugu (India) 
+  * Thai (Thailand) 
+
+##  April 30, 2020
+
+**BigQuery**
+
+**CHANGED:**
+
+The BigQuery Data Transfer Service is now available in the [ Taiwan (asia-
+east1) region ](https://cloud.google.com/bigquery-
+transfer/docs/locations#supported_regions) .
+
+**BigQuery Data Transfer Service**
+
+**CHANGED:**
+
+BigQuery Data Transfer Service is now available in the [ Taiwan (asia-east1)
+region ](https://cloud.google.com/bigquery-
+transfer/docs/locations#supported_regions) .
+
+**Compute Engine**
+
+**FEATURE:**
+
+You can now suspend and resume VM instances, available in **Beta** . Learn
+more about [ Suspending and Resuming an Instance
+](https://cloud.google.com/compute/docs/instances/suspend-resume-instance) .
+
+**CHANGED:**
+
+SSD persistent disks now have increased write throughput limits on instances
+with 1 to 15 vCPUs. This improvement applies to SSD persistent disks on all
+machine types except C2 machine types. To learn more about the requirements to
+reach these limits, see [ Block storage performance
+](https://cloud.google.com/compute/docs/disks/performance#size_price_performance)
+.
+
+**Config Connector**
+
+**CHANGED:**
+
+Fixes for the examples for the following resources: CloudBuildTrigger,
+AccessContextManager, ComputeDisk, and ComputeSubNetwork
+
+**CHANGED:**
+
+Reduced memory requirements for deletion defender, recorder, and webhook.
+Reduced cpu requirements for recorder and webhook Increased CPU for the
+manager controller from 100m to 200m.
+
+**CHANGED:**
+
+Ensure the webhook process does not signal it is ready until it is serving
+HTTP traffic
+
+**Data Catalog**
+
+**FEATURE:**
+
+Data Catalog is now generally available (GA). \- The Data Catalog v1 API,
+gcloud commands, and UI are now available. For details, [ see the API
+reference ](https://cloud.google.com/data-catalog/docs/reference) . Code
+samples throughout the documentation have been updated to use the new API. \-
+Data Catalog has been regionalized, and now hosts user metadata in [ 23
+regions worldwide ](https://cloud.google.com/data-
+catalog/docs/concepts/regions) . \- Billing has been enabled for Data Catalog
+API calls and storage using all supported resources. For more info, see the [
+pricing page ](https://cloud.google.com/data-catalog/pricing) .
+
+**Dialogflow**
+
+**FEATURE:**
+
+Beta launch of a one-click integration with a new telephony partner:
+
+  * [ Avaya ](https://cloud.google.com/dialogflow/docs/integrations/avaya)
+
+##  April 29, 2020
+
+**AI Platform Prediction**
+
+**FEATURE:**
+
+AI Platform Prediction now supports several [ regional endpoints
+](https://cloud.google.com/ai-platform/prediction/docs/regional-endpoints) for
+online prediction. Regional endpoints provide additional protection against
+outages in other regions by isolating your model and version resources from
+other regions. The following regional endpoints are available in beta:
+
+  * ` us-central1-ml.googleapis.com `
+  * ` europe-west4-ml.googleapis.com `
+  * ` asia-east1-ml.googleapis.com `
+
+You can use these endpoints instead of the global endpoint, `
+ml.googleapis.com ` , when you use AI Platform Prediction for online
+prediction. [ Learn how to use regional endpoints for online prediction, and
+read about their benefits and limitations. ](https://cloud.google.com/ai-
+platform/prediction/docs/regional-endpoints)
+
+**FEATURE:**
+
+You can now deploy scikit-learn and XGBoost models for online prediction using
+[ Compute Engine (N1) machine types ](https://cloud.google.com/ai-
+platform/prediction/docs/machine-types-online-prediction) . Previously, you
+could only deploy TensorFlow models when you used these machine types. Learn
+more about [ ML framework support for Compute Engine (N1) machine types
+](https://cloud.google.com/ai-platform/prediction/docs/machine-types-online-
+prediction#ml_framework_support) .
+
+You cannot use GPUs with scikit-learn or XGBoost models, and you can only use
+scikit-learn and XGBoost models with Compute Engine (N1) machine types when
+you deploy your models and versions to a [ regional endpoint
+](https://cloud.google.com/ai-platform/prediction/docs/regional-endpoints) .
+
+Compute Engine (N1) machine types for online prediction remain available in
+the beta launch stage.
+
+**FEATURE:**
+
+The ` europe-west4 ` (Netherlands) and ` asia-east1 ` (Taiwan) regions are now
+available for online prediction. These regions are only available for online
+prediction on their respective [ regional endpoints
+](https://cloud.google.com/ai-platform/prediction/docs/regional-endpoints) ,
+and you can only use [ Compute Engine (N1) machine types
+](https://cloud.google.com/ai-platform/prediction/docs/machine-types-online-
+prediction) for online prediction in these regions.
+
+When you deploy model versions in the ` europe-west4 ` region, you can
+optionally use NVIDIA Tesla P4, NVIDIA Tesla T4, or NVIDIA Tesla V100 GPUs to
+accelerate prediction.
+
+When you deploy model versions in the ` asia-east1 ` region, you can
+optionally use NVIDIA Tesla K80 or NVIDIA Tesla P100 GPUs to accelerate
+prediction.
+
+Learn more about [ using GPUs for online prediction
+](https://cloud.google.com/ai-platform/prediction/docs/machine-types-online-
+prediction#gpus) , and see [ which GPUs are available in which regions
+](https://cloud.google.com/ai-platform/prediction/docs/regions) .
+
+Learn about the [ pricing for the newly available regions and GPU resources
+](https://cloud.google.com/ai-platform/prediction/pricing) .
+
+**CHANGED:**
+
+We recommend against using Compute Engine (N1) machine types on the AI
+Platform Prediction global endpoint. Instead, only use Compute Engine (N1)
+machine types when you deploy models and versions to a [ regional endpoint
+](https://cloud.google.com/ai-platform/prediction/docs/regional-endpoints) .
+
+Model versions that use Compute Engine (N1) machine types and were previously
+deployed to the ` us-central1 ` region on the global endpoint will continue to
+function.
+
+**Virtual Private Cloud**
+
+**CHANGED:**
+
+Google Cloud now encrypts VPC traffic within the boundaries of the data
+centers in _asia-east2_ . We will roll out this feature gradually to other
+regions. Google Cloud already encrypts VPC traffic _between all data centers_
+as described in [ Encryption in Transit in Google Cloud
+](https://cloud.google.com/security/encryption-in-transit#virtual-network) .
+
 ##  April 28, 2020
 
 **Anthos Service Mesh**
@@ -22,6 +300,33 @@ The Anthos Service Mesh dashboard in the Google Cloud Console is generally
 available for Anthos Service Mesh installations on Google Kubernetes Engine
 clusters. For more information, see the [ Observability overview
 ](https://cloud.google.com/service-mesh/docs/observability-overview) .
+
+**Cloud Data Loss Prevention**
+
+**FEATURE:**
+
+Added additional [ infoType detector
+](https://cloud.google.com/dlp/docs/infotypes-reference) :
+
+  * JSON_WEB_TOKEN 
+
+**Cloud Monitoring**
+
+**DEPRECATED:**
+
+The 5.x version of the Cloud Monitoring agent for Linux is deprecated. Users
+are encouraged [ to upgrade their agents
+](https://cloud.google.com/monitoring/agent/install-agent#upgrade) as soon as
+possible.
+
+**DEPRECATED:**
+
+The ` stack-install.sh ` and the ` install-monitoring-agent.sh ` installation
+scripts for the Cloud Monitoring agent for Linux [ are deprecated
+](https://cloud.google.com/stackdriver/docs/deprecations/mon-agent-install) .
+Refer to the [ Installing the Cloud Monitoring agent
+](https://cloud.google.com/monitoring/agent/install-agent#joint-install) guide
+for the latest installation procedures.
 
 **Media Translation**
 
@@ -335,6 +640,16 @@ Billing accounts, while self-serve/online accounts were limited to finding
 their Cloud Billing documents in the Transactions page. See the [
 ⁠documentation ](https://cloud.google.com/billing/docs/how-to/get-invoice) for
 more details.
+
+**CHANGED:**
+
+Cost forecasts in Cloud Billing reports has been updated to calculate your
+forecasted spend up to 12 months in the future. Previously, the calculation
+forecasted your spend for the next 30 days. Cost forecasts make it easier to
+see at a glance how your costs are trending and how much you are projected to
+spend over a time range you specify. See the [ documentation
+](https://cloud.google.com/billing/docs/how-to/reports#cost-forecast) for more
+information.
 
 **Cloud Load Balancing**
 
@@ -1522,186 +1837,4 @@ Added additional infoType detectors:
 **FEATURE:**
 
   * You can identify idle persistent disk resources by using [ idle persistent disk recommendations ](https://cloud.google.com/compute/docs/disks/viewing-and-applying-idle-pd-recommendations) . Following these recommendations will help reduce unused resources and reduce your compute bill. This feature is in **Beta** . 
-
-##  April 07, 2020
-
-**Dataflow**
-
-**FEATURE:**
-
-Dataflow now [ supports
-](https://cloud.google.com/dataflow/pricing#pricing_details) Dataflow Shuffle,
-Streaming Engine, FlexRS, and the following [ regional endpoints
-](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) in GA:
-
-  * ` us-east4 ` (Northern Virginia) 
-  * ` europe-west2 ` (London) 
-  * ` europe-west3 ` (Frankfurt) 
-
-##  April 06, 2020
-
-**AI Platform Training**
-
-**FIXED:**
-
-[ Runtime version 2.1 ](https://cloud.google.com/ai-
-platform/training/docs/runtime-version-list) now includes scikit-learn 0.22.1
-instead of scikit-learn 0.22.
-
-**Cloud Bigtable**
-
-**FEATURE:**
-
-Key Visualizer for Cloud Bigtable is now integrated into the [ Google Cloud
-Console ](https://console.cloud.google.com) . The following enhancements have
-been added:
-
-  * Eligibility has been simplified to a minimum of 30 GB of data per table. 
-  * You can now specify the start and end time for a scan. 
-  * Performance data is now more recent. 
-  * Your performance data is retained for 14 days. 
-
-**Compute Engine**
-
-**FEATURE:**
-
-  * C2 machine types are now available in the following [ regions and zones ](https://cloud.google.com/compute/docs/regions-zones#available) : 
-
-    * Ashburn, Northern Virginia, USA ` us-east4-b,c `
-
-**FEATURE:**
-
-  * N2 machine types are now available in the following [ regions and zones ](https://cloud.google.com/compute/docs/regions-zones#available) : 
-
-    * The Dalles, Oregon, USA ` us-west1-b `
-    * Ashburn, Northern Virginia, USA ` us-east4-a `
-    * St. Ghislain, Belgium ` europe-west1-d `
-
-**FEATURE:**
-
-  * [ N2D machine types ](https://cloud.google.com/compute/docs/machine-types#n2d_machine_types) are now **Generally Available** . 
-
-##  April 05, 2020
-
-**Cloud Composer**
-
-**FEATURE:**
-
-Cloud Composer is now available in Salt Lake City ( ` us-west3 ` ).
-
-##  April 03, 2020
-
-**AI Platform Training**
-
-**FEATURE:**
-
-You can now use customer-managed encryption keys (CMEK) to protect data in
-your AI Platform Training jobs. This feature is available in beta.
-
-To learn about the benefits and limitations of using CMEK, and to walk through
-configuring CMEK for a training job, read the [ guide to using CMEK with AI
-Platform Training ](https://cloud.google.com/ai-platform/training/docs/cmek) .
-
-**Access Context Manager**
-
-**FEATURE:**
-
-Beta release of the Access Context Manager Bulk API.
-
-The Access Context Manager Bulk API can be used for operations such as
-replacing all of your organization's access levels. For more information, see
-[ Making bulk changes to access levels ](https://cloud.google.com/access-
-context-manager/docs/bulk-operations) .
-
-**AutoML Natural Language**
-
-**CHANGED:**
-
-Integration with [ VPC Service Controls ](https://cloud.google.com/vpc-
-service-controls/docs/overview) is now in [ beta stage
-](https://cloud.google.com/products/#product-launch-stages) .
-
-**AutoML Tables**
-
-**CHANGED:**
-
-Integration with [ VPC Service Controls ](https://cloud.google.com/vpc-
-service-controls/docs/overview) is now in [ beta stage
-](https://cloud.google.com/products/#product-launch-stages) .
-
-**AutoML Translation**
-
-**CHANGED:**
-
-Integration with [ VPC Service Controls ](https://cloud.google.com/vpc-
-service-controls/docs/overview) is now in [ beta stage
-](https://cloud.google.com/products/#product-launch-stages) .
-
-**AutoML Vision Image Classification (ICN)**
-
-**CHANGED:**
-
-Integration with [ VPC Service Controls ](https://cloud.google.com/vpc-
-service-controls/docs/overview) is now in [ beta stage
-](https://cloud.google.com/products/#product-launch-stages) .
-
-**AutoML Vision Object Detection**
-
-**CHANGED:**
-
-Integration with [ VPC Service Controls ](https://cloud.google.com/vpc-
-service-controls/docs/overview) is now in [ beta stage
-](https://cloud.google.com/products/#product-launch-stages) .
-
-**Cloud Asset Inventory**
-
-**FEATURE:**
-
-BigQuery export for org policies and access policies
-
-You can now export org policies and access policies to BigQuery tables. See [
-Exporting assets to BigQuery ](https://cloud.google.com/asset-
-inventory/docs/exporting-to-bigquery) for more information.
-
-**FEATURE:**
-
-Real-time asset monitoring for org policies and access policies
-
-You can now subscribe to real-time notifications for changes to org policies
-and access policies. See [ Monitoring asset changes
-](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes) for
-more information.
-
-**Cloud Talent Solution Job Search**
-
-**DEPRECATED:**
-
-As of this date, Cloud Talent Solution Job Search v2 is no longer available.
-Calls to v2 will result in error. The deprecation of v2 was first communicated
-in August 2018.
-
-**Dataproc**
-
-**FEATURE:**
-
-Added Presto and SparkR job type support to [ Dataproc Workflows
-](https://cloud.google.com/dataproc/docs/concepts/workflows/overview) .
-
-**FIXED:**
-
-Fixed an [ Auto Zone Placement
-](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-
-zone) bug that incorrectly returned ` INVALID_ARGUMENT ` errors as ` INTERNAL
-` errors, and didn't propagate these error messages to the user.
-
-**VPC Service Controls**
-
-**FEATURE:**
-
-Beta support for bulk changes to service perimeters.
-
-Using the beta release of Access Context Manager's Bulk API, you can perform
-operations such as replacing all of your organization's service perimeters.
-For more information, see [ Making bulk changes to service perimeters
-](https://cloud.google.com/vpc-service-controls/docs/bulk-operations) .
 
