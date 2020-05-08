@@ -130,6 +130,40 @@ details.
 
 ##  April 30, 2020
 
+**Anthos GKE deployed on AWS**
+
+**BREAKING:**
+
+To upgrade your Anthos GKE on AWS clusters, you need to [ uninstall
+](https://cloud.google.com/anthos/gke/docs/aws/how-to/uninstalling) all your
+management and user clusters. You also need to download the new version of the
+[ ` anthos-gke `
+](https://cloud.google.com/anthos/gke/docs/aws/downloads#anthos-gke_cli_tool)
+cli tool.
+
+**CHANGED:**
+
+Anthos GKE on AWS now supports [ auto-scaling
+](https://cloud.google.com/anthos/gke/docs/aws/how-to/scaling-user-cluster) .
+You can enable auto-scaling by changing settings in your AWSNodePools, or
+scale your clusters manually by adding new AWSNodePools.
+
+**CHANGED:**
+
+Built-in EBS StorageClass names have been changed to ` standard-rwo ` and `
+premium-rwo ` . If you declare the [ ` singlewriter-standard ` or `
+singlewriter-premium `
+](https://cloud.google.com/anthos/gke/docs/aws/concepts/storage.md)
+StorageClasses with your workloads, you must update your workloads when
+upgrading.
+
+**CHANGED:**
+
+Anthos GKE on AWS now support for Application-layer secrets encryption with
+Cloud KMS by passing a KMS key ARN to your [ AWSCluster
+](https://cloud.google.com/anthos/gke/docs/aws/reference/awscluster#speccontrolplane)
+.
+
 **BigQuery**
 
 **CHANGED:**
@@ -1788,53 +1822,4 @@ The beta version of dry run mode for service perimeters is now available.
 This release introduces a new method of configuring service perimeters: dry
 run mode. For more information, [ read about dry run mode
 ](https://cloud.google.com/vpc-service-controls/docs/dry-run-mode) .
-
-##  April 08, 2020
-
-**AI Platform Optimizer**
-
-**FEATURE:**
-
-AI Platform Optimizer is now available in [ beta
-](https://cloud.google.com/products#product-launch-stages) .
-
-AI Platform Optimizer is a black-box optimization service that helps you tune
-hyperparameters in complex machine learning models.
-
-Visit the [ AI Platform Optimizer overview ](https://cloud.google.com/ai-
-platform/optimizer/docs/overview) to learn more about how it works. To get
-started, try using AI Platform Optimizer to [ optimize a machine learning
-model ](https://cloud.google.com/ai-platform/optimizer/docs/optimizing-ml-
-model) or to [ optimize two functions at once ](https://cloud.google.com/ai-
-platform/optimizer/docs/optimizing-multiple-objectives) .
-
-**App Engine standard environment Python**
-
-**CHANGED:**
-
-Updated Python SDK to version 1.9.90
-
-**BigQuery**
-
-**FEATURE:**
-
-BigQuery materialized views are now available as a [ beta
-](https://cloud.google.com/products#product-launch-stages) release. For more
-information, see [ Introduction to materialized views
-](https://cloud.google.com/bigquery/docs/materialized-views-intro) .
-
-**Cloud Data Loss Prevention**
-
-**FEATURE:**
-
-Added additional infoType detectors:
-
-  * ` AZURE_AUTH_TOKEN `
-  * ` GCP_API_KEY `
-
-**Compute Engine**
-
-**FEATURE:**
-
-  * You can identify idle persistent disk resources by using [ idle persistent disk recommendations ](https://cloud.google.com/compute/docs/disks/viewing-and-applying-idle-pd-recommendations) . Following these recommendations will help reduce unused resources and reduce your compute bill. This feature is in **Beta** . 
 
