@@ -1,3 +1,7 @@
+A new version of Anthos GKE on AWS was released on May 7. See the [ release
+notes ](/anthos/gke/docs/aws/release-notes) for information on breaking
+changes.
+
 #  Release notes
 
 This page documents production updates to Anthos GKE on AWS. Check this page
@@ -6,6 +10,40 @@ deprecated functionality.
 
 You can see the latest product updates for all of Google Cloud on the [ Google
 Cloud release notes ](/release-notes) page.
+
+##  April 30, 2020
+
+**BREAKING:**
+
+To upgrade your Anthos GKE on AWS clusters, you need to [ uninstall
+](https://cloud.google.com/anthos/gke/docs/aws/how-to/uninstalling) all your
+management and user clusters. You also need to download the new version of the
+[ ` anthos-gke `
+](https://cloud.google.com/anthos/gke/docs/aws/downloads#anthos-gke_cli_tool)
+cli tool.
+
+**CHANGED:**
+
+Anthos GKE on AWS now supports [ auto-scaling
+](https://cloud.google.com/anthos/gke/docs/aws/how-to/scaling-user-cluster) .
+You can enable auto-scaling by changing settings in your AWSNodePools, or
+scale your clusters manually by adding new AWSNodePools.
+
+**CHANGED:**
+
+Built-in EBS StorageClass names have been changed to ` standard-rwo ` and `
+premium-rwo ` . If you declare the [ ` singlewriter-standard ` or `
+singlewriter-premium `
+](https://cloud.google.com/anthos/gke/docs/aws/concepts/storage.md)
+StorageClasses with your workloads, you must update your workloads when
+upgrading.
+
+**CHANGED:**
+
+Anthos GKE on AWS now support for Application-layer secrets encryption with
+Cloud KMS by passing a KMS key ARN to your [ AWSCluster
+](https://cloud.google.com/anthos/gke/docs/aws/reference/awscluster#speccontrolplane)
+.
 
 ##  April 02, 2020
 
