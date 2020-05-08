@@ -4,7 +4,7 @@ Cet article décrit tous les bulletins de sécurité qui s'appliquent à Google
 Kubernetes Engine (GKE).
 
 Les failles de sécurité sont souvent gardées secrètes jusqu'à ce que les
-parties concernées aient eu la possibilité de les corriger. Si c'est le cas,
+parties concernées aient eu la possibilité de les corriger. Si tel est le cas,
 les [ notes de version ](https://cloud.google.com/kubernetes-
 engine/docs/release-notes?hl=fr) de GKE font référence à des "mises à jour de
 sécurité" jusqu'à la levée du secret. Les notes sont alors mises à jour pour
@@ -26,6 +26,56 @@ Pour recevoir les derniers bulletins de sécurité, ajoutez l'URL de cette page
 également ajouter l'URL du flux directement : `
 https://cloud.google.com/feeds/kubernetes-engine-security-bulletins.xml `
 
+##  GCP-2020-003
+
+Description  |  Niveau de gravité  |  Remarques  
+---|---|---  
+  
+La faille [ CVE-2019-11254 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2019-11254) a été récemment découverte dans
+Kubernetes. Elle permet à tout utilisateur autorisé d'effectuer des requêtes
+POST afin de réaliser une attaque par déni de service à distance sur un
+serveur d'API Kubernetes. Le comité de sécurité des produits (PSC, Product
+Security Committee) Kubernetes a publié des informations complémentaires sur
+cette faille. Pour les consulter, [ cliquez ici
+](https://groups.google.com/g/kubernetes-security-
+announce/c/wuwEwZigXBc?hl=fr) .
+
+Les clusters GKE qui utilisent des [ réseaux autorisés maîtres
+](https://cloud.google.com/kubernetes-engine/docs/how-to/authorized-
+networks?hl=fr) et des [ clusters privés sans accès à un point de terminaison
+public ](https://cloud.google.com/kubernetes-engine/docs/how-to/private-
+clusters?hl=fr#private_master) réduisent les risques liés à cette faille.
+
+####  Que dois-je faire ?
+
+Nous vous recommandons de mettre à niveau votre cluster vers une version du
+correctif permettant de remédier à cette faille.
+
+Les versions du correctif correspondantes sont indiquées ci-dessous :
+
+  * 1.13.12-gke.29 
+  * 1.14.9-gke.27 
+  * 1.14.10-gke.24 
+  * 1.15.9-gke.20 
+  * 1.16.6-gke.1 
+
+####  Quelles failles ce correctif permet-il de résoudre ?
+
+Ce correctif permet de résoudre la faille de déni de service (DoS) suivante :
+
+[ CVE-2019-11254 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2019-11254) .
+
+|
+
+Moyen
+
+|
+
+[ CVE-2019-11254 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2019-11254)  
+  
 ##  GCP-2020-002
 
 Description  |  Niveau de gravité  |  Remarques  
@@ -88,9 +138,9 @@ versions corrigées est en cours et devrait s'achever le 25 janvier 2020.
 
 * * *
 
-Microsoft a révélé la présence d'une faille dans l'API Windows Crypto et dans
-son processus de validation des signatures à courbes elliptiques. Pour en
-savoir plus, consultez le [ communiqué de Microsoft
+Microsoft a révélé la présence d'une faille dans l'API Windows Crypto et son
+processus de validation des signatures à courbes elliptiques. Pour en savoir
+plus, consultez le [ communiqué de Microsoft
 ](https://portal.msrc.microsoft.com/en-US/security-
 guidance/advisory/CVE-2020-0601) .
 
@@ -115,11 +165,11 @@ la plus récente a été effectuée le 14 janvier 2020 ou après cette date.
 **Pour mettre à jour les nœuds, procédez comme suit :**
 
 Le processus de mise à disposition des versions corrigées est en cours et
-s'achèvera le 24 janvier 2020 au plus tard.
+s'achèvera d'ici le 24 janvier 2020.
 
 Vous pouvez soit patienter jusqu'à cette date et effectuer une mise à jour des
 nœuds en installant une version corrigée de GKE, soit utiliser Windows Update
-pour déployer manuellement le dernier correctif Windows à tout moment.
+pour déployer le dernier correctif Windows manuellement à tout moment.
 
 Vous trouverez ci-dessous la liste des versions du correctif permettant de
 réduire les risques liés à cette faille :
@@ -140,9 +190,9 @@ bin/cvename.cgi?name=CVE-2020-0601) (aussi appelée la [ faille de spoofing de
 l'API Windows Crypto ](https://portal.msrc.microsoft.com/en-US/security-
 guidance/advisory/CVE-2020-0601) ) : un pirate peut l'exploiter pour faire en
 sorte que ses fichiers exécutables malveillants soient considérés comme
-fiables ou encore pour procéder à des attaques MITM ("man in the middle") afin
-de déchiffrer des informations confidentielles diffusées via les connexions
-TLS associées aux logiciels concernés par la faille.
+fiables ou encore pour procéder à des attaques de type MITM ("man in the
+middle") afin de déchiffrer des informations confidentielles diffusées via les
+connexions TLS associées aux logiciels concernés par la faille.
 
 |
 
@@ -171,13 +221,12 @@ communiqué de Kubernetes
 ](https://github.com/kubernetes/kubernetes/issues/85233) .
 
 **Que dois-je faire ?**  
-**Cette faille n'a pas d'incidence sur les composants GKE gérés.** En
-revanche, vous pouvez être affecté si vous gérez vos propres pilotes CSI dans
-des [ clusters alpha GKE ](https://cloud.google.com/kubernetes-
-engine/docs/concepts/alpha-clusters?hl=fr) exécutant GKE version 1.12 ou
-ultérieure. Si vous êtes concerné par ce problème, renseignez-vous auprès de
-votre fournisseur de pilotes CSI afin d'obtenir les instructions de mise à
-niveau.
+**Cette faille n'a pas d'incidence sur les composants GKE gérés.** Vous pouvez
+être affecté si vous gérez vos propres pilotes CSI dans des [ clusters alpha
+GKE ](https://cloud.google.com/kubernetes-engine/docs/concepts/alpha-
+clusters?hl=fr) exécutant GKE version 1.12 ou ultérieure. Si vous êtes
+concerné par ce problème, renseignez-vous auprès de votre fournisseur de
+pilotes CSI afin d'obtenir les instructions de mise à niveau.
 
 **Quelles failles ce correctif permet-il de résoudre ?**  
 [ CVE-2019-11255 ](https://cve.mitre.org/cgi-
@@ -206,9 +255,9 @@ bin/cvename.cgi?name=CVE-2019-11255)
 Description  |  Niveau de gravité  |  Remarques  
 ---|---|---  
   
-Intel a divulgué des failles CVE qui permettent potentiellement des
-interactions entre l'exécution spéculative et l'état microarchitectural afin
-d'exposer les données. Pour en savoir plus, consultez le [ communiqué d'Intel
+Intel a divulgué des failles CVE qui permettent des interactions entre
+l'exécution spéculative et l'état microarchitectural afin d'exposer les
+données. Pour en savoir plus, consultez le [ communiqué d'Intel
 ](https://blogs.intel.com/technology/2019/11/ipas-november-2019-intel-
 platform-update-ipu/) .
 
@@ -232,8 +281,8 @@ mutualisés. **
 **Le redémarrage des nœuds permet d'appliquer le correctif.** Le moyen le plus
 simple de redémarrer l'ensemble des nœuds de votre pool consiste à effectuer
 une opération de [ mise à niveau ](https://cloud.google.com/kubernetes-
-engine/docs/how-to/upgrading-a-cluster?hl=fr#upgrade_nodes) , qui entraîne le
-redémarrage forcé de tous les nœuds du pool concerné.  
+engine/docs/how-to/upgrading-a-cluster?hl=fr#upgrade_nodes) . Celle-ci force
+le redémarrage de tous les nœuds du pool concerné.  
 
 Remarque : Il n'est pas nécessaire de changer de version lors d'une mise à
 niveau. Vous pouvez lancer une mise à niveau vers la même version d'un nœud
@@ -305,11 +354,11 @@ disponibles dans toutes les zones.
 
 La faille [ CVE-2019-11253 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2019-11253) a été récemment découverte dans
-Kubernetes. Elle permet à tout utilisateur autorisé d'effectuer des requêtes
-POST afin de réaliser une attaque par déni de service à distance sur un
-serveur d'API Kubernetes. Le comité de sécurité des produits (PSC, Product
-Security Committee) Kubernetes a publié des informations complémentaires sur
-cette faille. Pour les consulter, [ cliquez ici
+Kubernetes. Elle permet à tout utilisateur autorisé à effectuer des requêtes
+POST de réaliser une attaque par déni de service à distance sur un serveur
+d'API Kubernetes. Le comité de sécurité des produits (PSC, Product Security
+Committee) Kubernetes a publié des informations complémentaires sur cette
+faille. Pour les consulter, [ cliquez ici
 ](https://groups.google.com/forum/?hl=fr#!topic/kubernetes-security-
 announce/jk8polzSUxs) .
 
@@ -323,10 +372,10 @@ clusters?hl=fr#private_master) réduisent les risques liés à cette faille.
 
 Nous vous recommandons de mettre à niveau votre cluster vers une version du
 correctif permettant de remédier à cette faille dès sa mise à disposition.
-Elle devrait être proposée dans toutes les zones avec la version de GKE prévue
-pour la semaine du 14 octobre.
+Elle devrait être proposée dans toutes les zones avec la version de GKE
+planifiée pour la semaine du 14 octobre.
 
-Les versions du correctif permettant de réduire les risques liés à cette
+Les versions du correctif permettant de limiter les risques liés à cette
 faille sont indiquées ci-dessous.
 
   * 1.12.10-gke.15 
@@ -357,27 +406,27 @@ Description  |  Niveau de gravité  |  Remarques
   
 Ce bulletin a été mis à jour depuis sa publication initiale.
 
-L'équipe du langage de programmation Go a récemment découvert deux nouvelles
-failles de sécurité par déni de service (DoS) : [ CVE-2019-9512
-](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9512) et [
-CVE-2019-9514 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9514)
-. Dans GKE, elles permettent à un utilisateur de créer des requêtes
-malveillantes qui surutilisent le processeur du serveur d'API Kubernetes, ce
-qui risque de réduire la disponibilité du plan de contrôle du cluster. Pour en
-savoir plus, consultez le [ communiqué de l'équipe du langage de programmation
-Go ](https://groups.google.com/forum/?hl=fr#!topic/golang-
-announce/65QixT3tcmg) .
+Le langage de programmation Go a récemment découvert de nouvelles failles de
+sécurité, [ CVE-2019-9512 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2019-9512) et [ CVE-2019-9514
+](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9514) . Il s'agit de
+failles par déni de service (DoS). Dans GKE, elles permettent à un utilisateur
+de créer des requêtes malveillantes qui surutilisent le processeur du serveur
+d'API Kubernetes, ce qui risque de réduire la disponibilité du plan de
+contrôle du cluster. Pour en savoir plus, consultez le [ communiqué sur le
+langage de programmation Go
+](https://groups.google.com/forum/?hl=fr#!topic/golang-announce/65QixT3tcmg) .
 
 ######  Que dois-je faire ?
 
-Nous vous recommandons de mettre à jour votre cluster vers la dernière version
-du correctif, qui permet de réduire les risques liés à cette faille, dès sa
-mise à disposition. Elle devrait être proposée dans toutes les zones avec la
-prochaine version de GKE, selon le [ calendrier des lancements
+Nous vous recommandons de mettre à niveau votre cluster vers la dernière
+version du correctif, qui permet de limiter les risques liés à cette faille,
+dès sa mise à disposition. Elle devrait être proposée dans toutes les zones
+avec la prochaine version de GKE, selon le [ calendrier des lancements
 ](https://cloud.google.com/kubernetes-engine/docs/release-
 notes?hl=fr#september_16_2019) .
 
-Les versions du correctif permettant de réduire les risques liés à cette
+Les versions du correctif permettant de limiter les risques liés à cette
 faille sont indiquées ci-dessous.
 
   * **Mise à jour du 16 octobre 2019** : 1.12.10-gke.15 
@@ -430,9 +479,9 @@ Description  |  Niveau de gravité  |  Remarques
   
 Ce bulletin a été mis à jour depuis sa publication initiale.
 
-La communauté Kubernetes a récemment découvert une faille de sécurité ( [
+La communauté Kubernetes a récemment découvert une faille de sécurité, [
 CVE-2019-11247 ](https://cve.mitre.org/cgi-
-bin/cvename.cgi?name=CVE-2019-11247) ) qui permet d'intervenir sur les
+bin/cvename.cgi?name=CVE-2019-11247) , qui permet d'intervenir sur les
 instances de [ ressources personnalisées
 ](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-
 resources/) à l'échelle d'un cluster comme s'il s'agissait d'objets présents
@@ -445,13 +494,13 @@ noms.
 
 ######  Que dois-je faire ?
 
-Nous vous recommandons de [ mettre à jour
+Nous vous recommandons de [ mettre à niveau
 ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
-cluster?hl=fr) votre cluster vers la dernière version du correctif dès sa mise
-à disposition car elle permet de réduire les risques liés à cette faille. Elle
+cluster?hl=fr) votre cluster vers la dernière version du correctif, qui permet
+de limiter les risques liés à cette faille, dès sa mise à disposition. Elle
 devrait être proposée dans toutes les zones avec la prochaine version de GKE.
-Vous trouverez ci-dessous la liste des versions du correctif permettant de
-réduire les risques liés à cette faille :
+Les versions du correctif permettant de limiter les risques liés à cette
+faille sont indiquées ci-dessous.
 
   * 1.11.10-gke.6 
   * 1.12.9-gke.13 
@@ -460,7 +509,7 @@ réduire les risques liés à cette faille :
 
 ######  Quelle faille ce correctif permet-il de résoudre ?
 
-Le correctif réduit les risques liés à la faille suivante : [ CVE-2019-11247
+Le correctif limite les risques liés à la faille suivante : [ CVE-2019-11247
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11247) .
 
 |
@@ -504,18 +553,18 @@ Lors de notre dernière mise à jour, les correctifs des versions 1.11.9 et
 1.11.10 n'étaient pas encore disponibles. Nous avons publié 1.11.10-gke.5 en
 tant que cible de mise à niveau des deux versions 1.11.
 
-À l'heure actuelle, les maîtres GKE ont été corrigés, de même que
-l'infrastructure de Google qui exécute Kubernetes Engine. Celle-ci est donc
-protégée contre cette faille.
+À l'heure actuelle, les instances maîtres de GKE ont été corrigées, de même
+que l'infrastructure de Google qui exécute Kubernetes Engine. Celle-ci est
+donc protégée contre cette faille.
 
-Les maîtres 1.11 seront bientôt obsolètes. La mise à jour vers la version 1.12
-est planifiée pour s'exécuter automatiquement la semaine du 8 juillet 2019.
-Vous pouvez exécuter l'une des actions suggérées ci-dessous pour mettre à
-niveau les nœuds vers une version corrigée :
+Les instances maîtres 1.11 seront bientôt obsolètes. La mise à niveau vers la
+version 1.12 est planifiée pour s'exécuter automatiquement la semaine du 8
+juillet 2019. Vous pouvez exécuter l'une des actions suggérées ci-dessous pour
+mettre à niveau les nœuds vers une version corrigée.
 
   * Procédez à la mise à niveau des nœuds vers 1.11.10-gke.5 d'ici le 8 juillet 2019. Après cette date, les versions 1.11 commenceront à être supprimées de la liste des cibles de mise à niveau disponibles. 
-  * Activez les [ mises à niveau automatiques ](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-upgrades?hl=fr) sur les nœuds 1.11 et faites en sorte qu'elles aient lieu lorsque les maîtres sont mis à jour vers la version 1.12. 
-  * [ Mettez à niveau manuellement ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=fr) les maîtres et les nœuds vers une version 1.12 corrigée. 
+  * Activez les [ mises à niveau automatiques ](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-upgrades?hl=fr) sur les nœuds 1.11 et faites en sorte qu'elles aient lieu lorsque les instances maîtres sont mises à niveau vers la version 1.12. 
+  * [ Mettez à niveau manuellement ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=fr) les instances maîtres et les nœuds vers une version 1.12 corrigée. 
 
 Bulletin initial du 24 juin 2019 :
 
@@ -524,18 +573,18 @@ Bulletin initial du 24 juin 2019 :
 ######  Mise à jour du 24 juin 2019
 
 Depuis le 22/06/2019 21:40 UTC, nous avons mis à disposition les versions
-corrigées de Kubernetes qui sont indiquées ci-dessous. Les maîtres exécutant
-des versions de Kubernetes comprises entre 1.11.0 et 1.13.6 seront
-automatiquement mis à jour vers une version corrigée. Si vous n'exécutez pas
-une version compatible avec ce correctif, procédez à la mise à niveau vers une
-version compatible du maître (voir la liste ci-dessous) avant de mettre à
-niveau les nœuds.
+corrigées de Kubernetes qui sont indiquées ci-dessous. Les instances maîtres
+exécutant des versions de Kubernetes comprises entre 1.11.0 et 1.13.6 seront
+automatiquement mises à niveau vers une version corrigée. Si vous n'exécutez
+pas une version compatible avec ce correctif, procédez à la mise à niveau vers
+une version compatible de l'instance maître (voir la liste ci-dessous) avant
+de mettre à niveau les nœuds.
 
 **En raison de la gravité de ces failles, que la mise à niveau automatique des
 nœuds soit activée ou non, nous vous recommandons de[ mettre à niveau
 manuellement ](https://cloud.google.com/kubernetes-engine/docs/how-
 to/upgrading-a-container-cluster?hl=fr) dès que possible les nœuds et les
-maîtres vers l'une de ces versions. **
+instances maîtres vers l'une de ces versions. **
 
 Versions corrigées :
 
@@ -554,21 +603,21 @@ Récemment, Netflix a révélé trois failles TCP dans les noyaux Linux :
   * [ CVE-2019-11478 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11478)
   * [ CVE-2019-11479 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11479)
 
-Ces failles CVE sont collectivement désignées sous le nom de [ NFLX-2019-001
-](https://github.com/Netflix/security-bulletins/blob/master/advisories/third-
-party/2019-001.md) .
+Ces failles CVE sont collectivement désignées par l'appellation [
+NFLX-2019-001 ](https://github.com/Netflix/security-
+bulletins/blob/master/advisories/third-party/2019-001.md) .
 
 Les noyaux Linux non corrigés peuvent être vulnérables face aux attaques par
 déni de service déclenchées à distance. **Les nœuds Google Kubernetes Engine
 qui envoient ou reçoivent du trafic réseau non approuvé sont affectés. Par
 conséquent, nous vous recommandons de suivre les procédures de limitation des
-risques présentées ci-dessous afin de protéger vos charges de travail.**
+risques qui sont présentées ci-dessous pour protéger vos charges de travail.**
 
-######  Maîtres Kubernetes
+######  Instances maîtres Kubernetes
 
-  * Les maîtres Kubernetes utilisant des [ réseaux autorisés ](https://cloud.google.com/kubernetes-engine/docs/how-to/authorized-networks?hl=fr) pour limiter le trafic vers les réseaux approuvés ne sont pas affectés. 
+  * Les instances maîtres Kubernetes utilisant des [ réseaux autorisés ](https://cloud.google.com/kubernetes-engine/docs/how-to/authorized-networks?hl=fr) pour limiter le trafic vers les réseaux approuvés ne sont pas affectées. 
 
-  * Les maîtres des clusters GKE, qui sont gérés par Google, seront corrigés automatiquement dans les prochains jours. Aucune action n'est requise de la part du client. 
+  * Les instances maîtres des clusters GKE, qui sont gérées par Google, seront corrigées automatiquement dans les prochains jours. Aucune action n'est requise de la part du client. 
 
 ######  Nœuds Kubernetes
 
@@ -592,7 +641,7 @@ la configuration ` iptables ` de l'hôte.
 
 Appliquez le DaemonSet Kubernetes à tous les nœuds de votre cluster en
 exécutant la commande ci-dessous. Vous ajoutez ainsi une règle ` iptables `
-aux règles ` iptables ` existantes du nœud afin de réduire les risques liés à
+aux règles ` iptables ` existantes du nœud afin de limiter les risques liés à
 la faille. **Exécutez la commande une fois pour chaque cluster et chaque
 projet Google Cloud.**
 
@@ -600,25 +649,25 @@ projet Google Cloud.**
     
     
     kubectl apply -f \
-        https://raw.githubusercontent.com/GoogleCloudPlatform\
-        /k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
-              
+    https://raw.githubusercontent.com/GoogleCloudPlatform\
+    /k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
+          
 
-Le protocole IPv6 n'étant pas compatible avec GKE, aucune règle "ip6tables"
+Le protocole Ipv6 n'étant pas compatible avec GKE, aucune règle "ip6tables"
 n'est requise.
 
-Dès lors qu'une version de nœud corrigée sera disponible et que vous aurez mis
-à niveau tous les nœuds susceptibles d'être affectés, vous pourrez supprimer
-le DaemonSet à l'aide de la commande ci-dessous. **Exécutez la commande une
-fois pour chaque cluster et chaque projet Google Cloud.**
+Dès qu'une version de nœud corrigée sera disponible et que vous aurez mis à
+niveau tous les nœuds susceptibles d'être affectés, vous pourrez supprimer le
+DaemonSet à l'aide de la commande ci-dessous. **Exécutez la commande une fois
+pour chaque cluster et chaque projet Google Cloud.**
 
     
     
     
     kubectl delete -f \
-        https://raw.githubusercontent.com/GoogleCloudPlatform\
-        /k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
-              
+    https://raw.githubusercontent.com/GoogleCloudPlatform\
+    /k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
+          
 
 |  Élevé  
 Moyen  
@@ -648,17 +697,17 @@ La communauté Kubernetes a récemment découvert la faille [ CVE-2019-11246
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11246) , qui permet
 à un pirate informatique ayant accès à une opération ` kubectl cp ` et à
 l'exécution de code dans un conteneur de modifier les fichiers se trouvant sur
-l'hôte. Par le biais de cette attaque, le pirate est potentiellement en mesure
-de remplacer ou de créer un fichier dans le système de fichiers de l'hôte.
-Pour en savoir plus, consultez le [ communiqué de Kubernetes
+l'hôte. Par le biais de cette attaque, le pirate est en mesure de remplacer ou
+de créer un fichier dans le système de fichiers de l'hôte. Pour en savoir
+plus, consultez le [ communiqué de Kubernetes
 ](https://groups.google.com/forum/?hl=fr#!topic/kubernetes-security-
 announce/NLs2TGbfPdo) .
 
 **Toutes les versions de` gcloud ` sur Google Kubernetes Engine (GKE) sont
 affectées par cette faille. Par conséquent, nous vous recommandons de procéder
-à la mise à jour vers la dernière version du correctif de ` gcloud `
+à la mise à niveau vers la dernière version du correctif de ` gcloud `
 lorsqu'elle sera disponible. ** Une prochaine version du correctif permettra
-de réduire les risques liés à cette faille.
+de limiter les risques liés à cette faille.
 
 ######  Que dois-je faire ?
 
@@ -694,24 +743,24 @@ bin/cvename.cgi?name=CVE-2018-15664)
 Description  |  Niveau de gravité  |  Remarques  
 ---|---|---  
   
-La communauté Docker a récemment découvert la faille [ CVE-2018-15664
+Docker a récemment découvert la faille [ CVE-2018-15664
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-15664) , qui permet
 à un pirate informatique pouvant exécuter du code dans un conteneur de
 détourner une opération ` docker cp ` lancée en externe. Par le biais de cette
-attaque, le pirate est potentiellement en mesure de remplacer l'endroit où un
-fichier est écrit par un emplacement arbitraire dans le système de fichiers de
-l'hôte.
+attaque, le pirate est en mesure de remplacer l'endroit où un fichier est
+écrit par un emplacement arbitraire dans le système de fichiers de l'hôte.
 
 **Tous les nœuds Google Kubernetes Engine (GKE) exécutant Docker sont affectés
 par cette faille. Par conséquent, nous vous recommandons de procéder à la mise
 à niveau vers la dernière version du correctif dès qu'elle sera disponible.
-Une prochaine version du correctif permettra de réduire les risques liés à
+Une prochaine version du correctif permettra de limiter les risques liés à
 cette faille.**
 
-**Tous les maîtres Google Kubernetes Engine (GKE) antérieurs à la version
-1.12.7 exécutent Docker et sont affectés par cette faille.** Sur GKE, les
-utilisateurs n'ont pas accès à ` docker cp ` sur le maître. Par conséquent,
-les risques liés à cette faille sont limités pour les maîtres GKE.
+**Toutes les instances maîtres Google Kubernetes Engine (GKE) antérieures à la
+version 1.12.7 exécutent Docker et sont affectées par cette faille.** Sur GKE,
+les utilisateurs n'ont pas accès à ` docker cp ` sur l'instance maître. Par
+conséquent, les risques liés à cette faille sont limités pour les instances
+maîtres de GKE.
 
 #####  Que dois-je faire ?
 
@@ -722,19 +771,19 @@ environnement Kubernetes. Les nœuds exécutant [ COS avec containerd
 ](https://cloud.google.com/kubernetes-engine/docs/concepts/using-
 containerd?hl=fr) ne sont pas affectés.
 
-Pour mettre à niveau vos nœuds, vous devez d'abord [ mettre à jour votre
-maître ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
-cluster?hl=fr#upgrading_the_cluster) vers la version corrigée. Lorsque le
-correctif sera disponible, vous pourrez lancer une mise à niveau du maître ou
-attendre que Google procède automatiquement à cette opération. Le correctif
-sera disponible dans Docker 18.09.7, qui figurera dans un prochain correctif
-de GKE. **Ce correctif ne sera proposé que pour les versions 1.13 et
-ultérieures de GKE.**
+Pour mettre à niveau vos nœuds, vous devez d'abord [ mettre à niveau votre
+instance maître ](https://cloud.google.com/kubernetes-engine/docs/how-
+to/upgrading-a-cluster?hl=fr#upgrading_the_cluster) vers la version corrigée.
+Lorsque le correctif sera disponible, vous pourrez lancer une mise à niveau de
+l'instance maître ou attendre que Google procède automatiquement à cette
+opération. Le correctif sera disponible dans Docker 18.09.7, qui figurera dans
+un prochain correctif de GKE. **Ce correctif ne sera proposé que pour les
+versions 1.13 et ultérieures de GKE.**
 
-Nous mettrons automatiquement à jour les maîtres de cluster vers la version
-corrigée, selon le rythme de mise à niveau habituel. Vous pourrez également
-lancer vous-même une mise à niveau des maîtres lorsque la version corrigée
-sera disponible.
+Nous mettrons automatiquement à niveau les instances maîtres du cluster vers
+la version corrigée, selon le rythme de mise à niveau habituel. Vous pourrez
+également lancer vous-même une mise à niveau des instances maîtres lorsque la
+version corrigée sera disponible.
 
 Nous mettrons à jour ce bulletin en y ajoutant les versions contenant un
 correctif une fois qu'elles seront disponibles. Pour vérifier la disponibilité
@@ -748,9 +797,9 @@ Ce correctif réduit les risques liés à la faille suivante :
 La faille [ CVE-2018-15664 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2018-15664) permet à un pirate informatique pouvant
 exécuter du code dans un conteneur de détourner une opération ` docker cp `
-lancée en externe. Par le biais de cette attaque, le pirate est
-potentiellement en mesure de remplacer l'endroit où un fichier est écrit par
-un emplacement arbitraire dans le système de fichiers de l'hôte.
+lancée en externe. Par le biais de cette attaque, le pirate est en mesure de
+remplacer l'endroit où un fichier est écrit par un emplacement arbitraire dans
+le système de fichiers de l'hôte.
 
 |  Élevé  |  
   
@@ -766,25 +815,25 @@ Ce bulletin a été mis à jour depuis sa publication initiale.
 Au moment de la publication du bulletin initial, seules les versions
 1.13.6-gke.0 à 1.13.6-gke.5 étaient affectées. En raison d'une régression,
 toutes les versions 1.13.6.x sont désormais concernées. Si vous exécutez la
-version 1.13.6, procédez le plus rapidement possible à la mise à jour vers la
-version 1.13.7.
+version 1.13.6, procédez le plus rapidement possible à la mise à niveau vers
+la version 1.13.7.
 
 Le projet Kubernetes a divulgué la faille [ CVE-2019-11245
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11245) dans les kubelets
 v1.13.6 et v1.14.2. Celle-ci peut entraîner l'exécution des conteneurs en tant
 qu'UID 0 (qui correspond généralement à l'utilisateur ` root ` ), même si un
-autre utilisateur est spécifié dans leur image. **Si vos conteneurs
+autre utilisateur est spécifié dans l'image de conteneur. **Si vos conteneurs
 s'exécutent en tant qu'utilisateur non racine, et si vous utilisez une version
 de nœud comprise entre 1.13.6-gke.0 et 1.13.6-gke.6, nous vous recommandons de
 définir` RunAsUser ` sur tous les pods du cluster dont les conteneurs ne
 doivent pas s'exécuter en tant qu'UID 0. **
 
-Si une valeur ` USER ` non racine est spécifiée (par exemple, valeur ` USER `
-définie dans un fichier Dockerfile), un comportement inattendu peut se
+Si une valeur ` USER ` non racine est spécifiée (par exemple, avec la valeur `
+USER ` définie dans un fichier Dockerfile), un comportement inattendu peut se
 produire. Lorsqu'un conteneur s'exécute pour la première fois sur un nœud, il
 respecte l'UID spécifié. Toutefois, en raison de cette faille, le conteneur
 est défini en tant qu'UID 0 lors de la deuxième exécution (et des exécutions
-ultérieures), quel que soit l'UID spécifié. Cela est généralement dû à une
+ultérieures) quel que soit l'UID spécifié. Cela est généralement dû à une
 élévation de privilège indésirable et peut engendrer un comportement inattendu
 de l'application.
 
@@ -796,9 +845,9 @@ kubelet associée :
     
     
     
-        kubectl get nodes -o=jsonpath='{range .items[*]}'\
-        '{.status.nodeInfo.machineID}'\
-        '{"\t"}{.status.nodeInfo.kubeletVersion}{"\n"}{end}'
+    kubectl get nodes -o=jsonpath='{range .items[*]}'\
+    '{.status.nodeInfo.machineID}'\
+    '{"\t"}{.status.nodeInfo.kubeletVersion}{"\n"}{end}'
 
 Si les versions de kubelet suivantes sont renvoyées dans le résultat, vos
 nœuds sont affectés :
@@ -812,7 +861,7 @@ Si vos conteneurs s'exécutent en tant qu'utilisateur non racine, et si vous
 utilisez une version de nœud comprise entre 1.13.6-gke.0 et 1.13.6-gke.6,
 votre configuration est affectée sauf dans les cas suivants :
 
-  * Les pods qui spécifient une valeur non racine valide pour le contexte PodSecurityContext ` runAsUser ` ne sont pas affectés et continuent à fonctionner comme prévu. 
+  * Les pods qui spécifient une valeur non racine valide pour le PodSecurityContext ` runAsUser ` ne sont pas affectés et continuent à fonctionner comme prévu. 
   * Les règles PodSecurityPolicy qui appliquent un paramètre ` runAsUser ` ne sont pas affectées non plus et continuent à fonctionner comme prévu. 
   * Les pods qui spécifient ` mustRunAsNonRoot:true ` ne sont pas lancés en tant qu'UID 0, mais ne démarrent pas lorsqu'ils sont affectés par ce problème. 
 
@@ -858,21 +907,21 @@ mutualisés.**
 
 **Cette faille s'avère particulièrement grave pour les clients qui exécutent
 du code non approuvé au sein de leurs propres services mutualisés dans
-Kubernetes Engine.** Pour en réduire les risques dans Kubernetes Engine,
-désactivez l'Hyper-Threading dans vos nœuds. Seuls les nœuds Google Kubernetes
-Engine (GKE) utilisant plusieurs processeurs sont affectés par ces failles.
-Notez que les VM n1-standard-1 (type de machine GKE par défaut), g1-small et
-f1-micro n'exposent qu'un processeur virtuel à l'environnement invité. Il
-n'est donc pas nécessaire de désactiver l'Hyper-Threading.
+Kubernetes Engine.** Pour limiter les risques engendrés dans Kubernetes
+Engine, désactivez l'Hyper-Threading dans vos nœuds. Seuls les nœuds Google
+Kubernetes Engine (GKE) utilisant plusieurs processeurs sont affectés par ces
+failles. Notez que les VM n1-standard-1 (type de machine GKE par défaut),
+g1-small et f1-micro n'exposent qu'un processeur virtuel à l'environnement
+invité. Il n'est donc pas nécessaire de désactiver l'Hyper-Threading.
 
 D'autres protections permettant d'activer la fonctionnalité de vidage seront
 intégrées à une prochaine [ version du correctif
 ](https://cloud.google.com/kubernetes-engine/release-notes?hl=fr) . Nous
-mettrons automatiquement à jour les maîtres et les nœuds vers la version
-corrigée au cours des prochaines semaines, selon le rythme de mise à niveau
-habituel. **Le correctif ne permet pas, à lui seul, de réduire les risques
-découlant de l'exposition à cette faille. Pour connaître les actions
-recommandées, consultez les informations ci-dessous.**
+mettrons automatiquement à niveau les instances maîtres et les nœuds vers la
+version corrigée au cours des prochaines semaines, selon le rythme de mise à
+niveau habituel. **Le correctif ne permet pas, à lui seul, de limiter
+l'exposition à cette faille. Pour connaître les actions recommandées,
+consultez les informations ci-dessous.**
 
 Si vous exécutez GKE On-Prem, vous pouvez être affecté selon le matériel que
 vous utilisez. Veuillez vous reporter au [ communiqué d'Intel
@@ -892,7 +941,7 @@ Notez que les VM n1-standard-1, g1-small et f1-micro n'exposent qu'un
 processeur virtuel à l'environnement invité. Il n'est donc pas nécessaire de
 désactiver l'Hyper-Threading.
 
-**Avertissement** :
+**Avertissement :**
 
   * La désactivation de l'Hyper-Threading peut avoir de graves conséquences sur les performances de vos clusters et de vos applications. Assurez-vous que les répercussions sont acceptables avant de procéder au déploiement sur vos clusters de production. 
   * Vous pouvez désactiver l'Hyper-Threading au niveau du pool de nœuds GKE en déployant un DaemonSet. Toutefois, le déploiement de ce DaemonSet entraîne le redémarrage simultané de tous les nœuds du pool. Par conséquent, il est recommandé de créer un pool de nœuds dans le cluster, de déployer le DaemonSet pour désactiver l'Hyper-Threading dans ce pool, puis de migrer les charges de travail vers le nouveau pool. 
@@ -903,33 +952,33 @@ suit :
   1. Créez un pool de nœuds portant le libellé ` cloud.google.com/gke-smt-disabled=true ` dans votre cluster : 
     
         
-        gcloud container node-pools create smt-disabled --cluster=[CLUSTER_NAME] \
-            --node-labels=cloud.google.com/gke-smt-disabled=true
+    gcloud container node-pools create smt-disabled --cluster=[CLUSTER_NAME] \
+        --node-labels=cloud.google.com/gke-smt-disabled=true
 
   2. Déployez le DaemonSet dans ce nouveau pool de nœuds. Le DaemonSet ne s'exécute que sur les nœuds portant le libellé ` cloud.google.com/gke-smt-disabled=true ` . Il désactive l'Hyper-Threading, puis redémarre les nœuds. 
     
         
-        kubectl create -f \
-        https://raw.githubusercontent.com/GoogleCloudPlatform/\
-        k8s-node-tools/master/disable-smt/gke/disable-smt.yaml
+    kubectl create -f \
+    https://raw.githubusercontent.com/GoogleCloudPlatform/\
+    k8s-node-tools/master/disable-smt/gke/disable-smt.yaml
 
   3. Assurez-vous que les pods DaemonSet sont en cours d'exécution. 
     
         
-        kubectl get pods --selector=name=disable-smt -n kube-system
+    kubectl get pods --selector=name=disable-smt -n kube-system
 
 Vous devriez recevoir une réponse semblable à celle-ci :
 
     
         
-        NAME                READY     STATUS    RESTARTS   AGE
+    NAME                READY     STATUS    RESTARTS   AGE
     
-        disable-smt-2xnnc   1/1       Running   0          6m
+    disable-smt-2xnnc   1/1       Running   0          6m
 
   4. Vérifiez que le message "SMT has been disabled" (SMT a été désactivé) s'affiche dans les journaux des pods. 
     
         
-        kubectl logs disable-smt-2xnnc disable-smt -n kube-system
+    kubectl logs disable-smt-2xnnc disable-smt -n kube-system
 
 Le DaemonSet doit rester en cours d'exécution sur le pool de nœuds pour que
 les modifications soient automatiquement appliquées aux nœuds qui seront créés
@@ -942,11 +991,11 @@ déployer le DaemonSet fourni, puis migrer vos charges de travail vers le
 nouveau pool.
 
 Nous vous recommandons également de mettre à niveau manuellement les nœuds une
-fois que le correctif sera disponible. Avant tout, vous devez [ mettre à jour
-votre maître ](https://cloud.google.com/kubernetes-engine/docs/how-
-to/upgrading-a-cluster?hl=fr#upgrading_the_cluster) vers la version la plus
-récente. Les maîtres GKE seront automatiquement mis à niveau au rythme
-habituel.
+fois que le correctif sera disponible. Avant tout, vous devez [ mettre à
+niveau votre instance maître ](https://cloud.google.com/kubernetes-
+engine/docs/how-to/upgrading-a-cluster?hl=fr#upgrading_the_cluster) vers la
+version la plus récente. Les instances maîtres de GKE seront automatiquement
+mises à niveau au rythme habituel.
 
 Nous mettrons à jour ce bulletin en y ajoutant les versions contenant un
 correctif une fois qu'elles seront disponibles.
@@ -1008,11 +1057,11 @@ Ce correctif sera disponible dans les versions de GKE qui sont indiquées ci-
 dessous. Les nouveaux clusters utiliseront par défaut les versions corrigées à
 compter de l'annonce de celles-ci sur la page des bulletins de sécurité de
 GKE, laquelle doit avoir lieu le 15 avril 2019. Si vous créez un cluster avant
-cette date, vous devrez spécifier la version corrigée avec laquelle il doit
-être utilisé. Les clients GKE qui ont activé la [ mise à niveau automatique
-des nœuds ](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-
-upgrades?hl=fr) et qui ne procèdent pas à des mises à niveau manuelles seront
-mis à jour automatiquement vers les versions corrigées au cours de la semaine
+cette date, vous devrez spécifier la version corrigée pour qu'il l'utilise.
+Les nœuds des clients GKE qui ont activé les [ mises à niveau automatiques des
+nœuds ](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-
+upgrades?hl=fr) et ne procèdent pas à des mises à niveau manuelles seront mis
+à niveau automatiquement vers les versions corrigées au cours de la semaine
 suivante.
 
 Versions corrigées :
@@ -1060,26 +1109,26 @@ malveillante. Cette requête surutilise le processeur et la mémoire du serveur
 d'API Kubernetes, ce qui peut limiter la disponibilité du plan de contrôle du
 cluster. Pour en savoir plus, consultez le [ communiqué de Kubernetes
 ](https://groups.google.com/forum/?hl=fr#!topic/kubernetes-
-announce/vmUUNkYfG9g) . **Ces failles de sécurité affectent l'ensemble des
-maîtres Google Kubernetes Engine (GKE). Une prochaine version du correctif
-permettra de réduire les risques liés à cette faille. Nous mettrons
-automatiquement à jour les maîtres de cluster vers la version incluant le
-correctif au cours des prochaines semaines, selon le rythme de mise à niveau
+announce/vmUUNkYfG9g) . **Cette faille affecte l'ensemble des instances
+maîtres de Google Kubernetes Engine (GKE). Une prochaine version du correctif
+permettra de limiter les risques liés à cette faille. Nous mettrons
+automatiquement à niveau les instances maîtres du cluster vers la version
+corrigée au cours des prochaines semaines, selon le rythme de mise à niveau
 habituel.**
 
 ####  Que dois-je faire ?
 
-**Aucune action n'est requise. Les maîtres GKE seront automatiquement mis à
-niveau au rythme habituel.** Pour accélérer le processus, vous pouvez [ lancer
-manuellement la mise à niveau d'un maître
-](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
+**Aucune action n'est requise. Les instances maîtres de GKE seront
+automatiquement mises à niveau au rythme habituel.** Pour accélérer le
+processus, vous pouvez [ lancer manuellement la mise à niveau d'une instance
+maître ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
 cluster?hl=fr#upgrading_the_cluster) .
 
 Nous mettrons à jour ce bulletin en y ajoutant les versions contenant un
 correctif. Notez que le correctif ne sera pas proposé dans la version 1.10. Il
 ne sera disponible que dans les versions 1.11 et ultérieures.
 
-####  Quelle faille ce correctif permet-il de résoudre ?
+####  Quelle est la faille prise en charge par ce correctif ?
 
 Ce correctif réduit les risques liés à la faille suivante :
 
@@ -1112,12 +1161,12 @@ procédure décrite ci-dessous. **
 
 ####  Que dois-je faire ?
 
-Pour mettre à niveau vos nœuds, vous devez d'abord mettre à jour votre maître
-vers la dernière version. Ce correctif est disponible dans Kubernetes
-1.10.12-gke.7, 1.11.6-gke.11, 1.11.7-gke.4 et 1.12.5-gke.5, ainsi que dans les
-versions plus récentes. Pour vérifier la disponibilité de ces correctifs,
-consultez les [ notes de version ](https://cloud.google.com/kubernetes-
-engine/docs/release-notes?hl=fr#february-11-2019) .
+Avant tout, vous devez mettre à niveau votre nœud maître vers la toute
+dernière version. Ce correctif est disponible dans Kubernetes 1.10.12-gke.7,
+1.11.6-gke.11, 1.11.7-gke.4 et 1.12.5-gke.5, ainsi que dans les versions plus
+récentes. Pour vérifier sa disponibilité, consultez les [ notes de version
+](https://cloud.google.com/kubernetes-engine/docs/release-
+notes?hl=fr#february-11-2019) .
 
 Sachez que seuls les nœuds Ubuntu dans GKE sont affectés. Les nœuds exécutant
 COS ne sont pas concernés.
@@ -1126,7 +1175,7 @@ Sachez que la nouvelle version de runc nécessite davantage de mémoire. Vous
 devrez donc peut-être mettre à niveau la mémoire allouée aux conteneurs si
 vous avez défini des limites de mémoire peu élevées (< 16 Mo).
 
-####  Quelle faille ce correctif permet-il de résoudre ?
+####  Quelle est la faille prise en charge par ce correctif ?
 
 Ce correctif réduit les risques liés à la faille suivante :
 
@@ -1134,8 +1183,8 @@ La faille [ CVE-2019-5736 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2019-5736) affecte l'environnement d'exécution de
 conteneurs runc. Elle permet à un conteneur malveillant d'écraser le fichier
 binaire runc du nœud hôte et d'accéder ainsi en écriture à son répertoire
-racine (root) par le biais d'un simple appel système exec. Les conteneurs qui
-ne s'exécutent pas en mode root ne sont pas affectés. La gravité de cette
+racine (root) par le biais d'un simple appel système "exec". Les conteneurs
+qui ne s'exécutent pas en mode root ne sont pas affectés. La gravité de cette
 faille est évaluée comme élevée.
 
 |  Élevé  |  [ CVE-2019-5736 ](https://cve.mitre.org/cgi-
@@ -1148,41 +1197,41 @@ Description  |  Niveau de gravité  |  Remarques
   
 **Mise à jour du 25/02/2019** : comme indiqué précédemment, le correctif n'est
 pas disponible dans 1.11.7-gke.4. Si vous exécutez la version 1.11.7, vous
-pouvez revenir à la version 1.11.6, procéder à la mise à jour vers la version
-1.12 ou attendre que le prochain correctif de la version 1.11.7 soit mis à
-disposition la semaine du 04/03/2019.
+pouvez revenir à la version 1.11.6, procéder à la mise à niveau vers la
+version 1.12 ou attendre que le prochain correctif de la version 1.11.7 soit
+mis à disposition la semaine du 04/03/2019.
 
-L'équipe du langage de programmation Go a récemment découvert une nouvelle
-faille de sécurité, [ CVE-2019-6486 ](https://cve.mitre.org/cgi-
+Le langage de programmation Go a récemment découvert une nouvelle faille de
+sécurité, [ CVE-2019-6486 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2019-6486) . Il s'agit d'une faille par déni de
 service (DoS) dans les mises en œuvre de cryptographie sur les courbes
 elliptiques P-521 et P-384. Dans Google Kubernetes Engine (GKE), elle peut
 permettre à un utilisateur de créer des requêtes malveillantes qui
 surutilisent le processeur du serveur de l'API Kubernetes, ce qui peut réduire
 la disponibilité du plan de contrôle du cluster. Pour en savoir plus,
-consultez le [ communiqué de l'équipe du langage de programmation Go
+consultez le [ communiqué sur le langage de programmation Go
 ](https://groups.google.com/forum/?hl=fr#!topic/golang-announce/mVeX35iXuSw) .
 
-**Ces failles de sécurité affectent l'ensemble des maîtres Google Kubernetes
+**Cette faille affecte l'ensemble des instances maîtres de Google Kubernetes
 Engine (GKE). La[ dernière version du correctif
 ](https://cloud.google.com/kubernetes-engine/docs/release-
-notes?hl=fr#february-11-2019) permet de réduire les risques qu'elles
-engendrent. Nous mettrons automatiquement à jour les maîtres de cluster vers
-la version incluant le correctif au cours des prochaines semaines, selon le
-rythme de mise à niveau habituel. **
+notes?hl=fr#february-11-2019) permet de limiter les risques qu'elle engendre.
+Nous mettrons automatiquement à niveau les maîtres de cluster vers la version
+incluant le correctif au cours des prochaines semaines, selon le rythme de
+mise à niveau habituel. **
 
 ####  Que dois-je faire ?
 
-**Aucune action n'est requise. Les maîtres GKE seront automatiquement mis à
-niveau au rythme habituel.** Pour accélérer le processus, vous pouvez [ lancer
-manuellement la mise à niveau d'un maître
-](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
+**Aucune action n'est requise. Les instances maîtres de GKE seront
+automatiquement mises à niveau au rythme habituel.** Pour accélérer le
+processus, vous pouvez [ lancer manuellement la mise à niveau d'une instance
+maître ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
 cluster?hl=fr#upgrading_the_cluster) .
 
 Ce correctif est disponible dans GKE 1.10.12-gke.7, 1.11.6-gke.11,
 1.11.7-gke.4 et 1.12.5-gke.5, ainsi que dans les versions plus récentes.
 
-####  Quelle faille ce correctif permet-il de résoudre ?
+####  Quelle est la faille prise en charge par ce correctif ?
 
 Ce correctif réduit les risques liés à la faille suivante :
 
@@ -1198,29 +1247,30 @@ bin/cvename.cgi?name=CVE-2019-6486)
 Description  |  Niveau de gravité  |  Remarques  
 ---|---|---  
   
-La communauté Kubernetes a récemment découvert une nouvelle faille de
-sécurité, ( [ CVE-2018-1002105 ](https://cve.mitre.org/cgi-
-bin/cvename.cgi?name=CVE-2018-1002105) ) qui permet à un utilisateur disposant
+Kubernetes a récemment découvert une nouvelle faille de sécurité, [
+CVE-2018-1002105 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2018-1002105) , qui permet à un utilisateur disposant
 d'un niveau de privilèges relativement faible de contourner les autorisations
 d'accès aux API du kubelet. Par conséquent, cet utilisateur peut exécuter des
 opérations arbitraires pour tous les pods sur n'importe quel nœud du cluster.
 Pour en savoir plus, consultez le [ communiqué de Kubernetes
 ](https://groups.google.com/forum/?hl=fr#!topic/kubernetes-
-announce/GVllWCg6L88) . **Ces failles de sécurité affectaient l'ensemble des
-maîtres Google Kubernetes Engine (GKE), et nous avons déjà procédé à la mise à
-jour des clusters vers les[ dernières versions corrigées
+announce/GVllWCg6L88) . **Cette faille affectait l'ensemble des instances
+maîtres de Google Kubernetes Engine (GKE), et nous avons déjà procédé à la
+mise à niveau des clusters vers les[ dernières versions du correctif
 ](https://cloud.google.com/kubernetes-engine/docs/release-
 notes?hl=fr#november-12-2018) . Aucune action n'est requise. **
 
 ####  Que dois-je faire ?
 
-**Aucune action n'est requise. Les maîtres GKE ont déjà été mis à niveau.**
+**Aucune action n'est requise. Les instances maîtres de GKE ont déjà été mises
+à niveau.**
 
 Ce correctif est disponible dans GKE 1.9.7-gke.11, 1.10.6-gke.11,
 1.10.7-gke.11, 1.10.9-gke.5 et 1.11.2-gke.18 ainsi que dans les versions plus
 récentes.
 
-####  Quelle faille ce correctif permet-il de résoudre ?
+####  Quelle est la faille prise en charge par ce correctif ?
 
 Ce correctif réduit les risques liés à la faille suivante :
 
@@ -1258,42 +1308,43 @@ Ces jetons disposent des autorisations suivantes :
       
     
     
-        bgpconfigurations.crd.projectcalico.org     [create get list update watch]
-        bgppeers.crd.projectcalico.org              [create get list update watch]
-        clusterinformations.crd.projectcalico.org   [create get list update watch]
-        felixconfigurations.crd.projectcalico.org   [create get list update watch]
-        globalbgpconfigs.crd.projectcalico.org      [create get list update watch]
-        globalfelixconfigs.crd.projectcalico.org    [create get list update watch]
-        globalnetworkpolicies.crd.projectcalico.org [create get list update watch]
-        globalnetworksets.crd.projectcalico.org     [create get list update watch]
-        hostendpoints.crd.projectcalico.org         [create get list update watch]
-        ippools.crd.projectcalico.org               [create get list update watch]
-        networkpolicies.crd.projectcalico.org       [create get list update watch]
-        nodes                                       [get list update watch]
-        pods                                        [get list watch patch]
-        namespaces                                  [get list watch]
-        networkpolicies.extensions                  [get list watch]
-        endpoints                                   [get]
-        services                                    [get]
-        pods/status                                 [update]
-        networkpolicies.networking.k8s.io           [watch list]
-                
+    bgpconfigurations.crd.projectcalico.org     [create get list update watch]
+    bgppeers.crd.projectcalico.org              [create get list update watch]
+    clusterinformations.crd.projectcalico.org   [create get list update watch]
+    felixconfigurations.crd.projectcalico.org   [create get list update watch]
+    globalbgpconfigs.crd.projectcalico.org      [create get list update watch]
+    globalfelixconfigs.crd.projectcalico.org    [create get list update watch]
+    globalnetworkpolicies.crd.projectcalico.org [create get list update watch]
+    globalnetworksets.crd.projectcalico.org     [create get list update watch]
+    hostendpoints.crd.projectcalico.org         [create get list update watch]
+    ippools.crd.projectcalico.org               [create get list update watch]
+    networkpolicies.crd.projectcalico.org       [create get list update watch]
+    nodes                                       [get list update watch]
+    pods                                        [get list watch patch]
+    namespaces                                  [get list watch]
+    networkpolicies.extensions                  [get list watch]
+    endpoints                                   [get]
+    services                                    [get]
+    pods/status                                 [update]
+    networkpolicies.networking.k8s.io           [watch list]
+            
   
 ---  
   
-Les clusters Google Kubernetes Engine sur lesquels une règle de réseau de
+Les clusters Google Kubernetes Engine sur lesquels une stratégie de réseau de
 cluster et Stackdriver Logging sont activés ont consigné les jetons de compte
-de service Calico dans Stackdriver. Les clusters sur lesquels aucune règle de
-réseau de cluster n'est activée ne sont pas affectés.
+de service Calico dans Stackdriver. Les clusters sur lesquels aucune stratégie
+de réseau de cluster n'est activée ne sont pas affectés.
 
-Nous avons déployé un correctif qui migre le plug-in CNI Calico afin qu'il
-n'effectue la journalisation qu'au niveau de l'alerte, via un nouveau compte
-de service. Le code Calico corrigé sera déployé dans une version ultérieure.
+Nous avons déployé un correctif qui migre le plug-in CNI Calico afin que ce
+dernier n'effectue la journalisation qu'au niveau d'avertissement et qu'il
+utilise un nouveau compte de service. Le code Calico corrigé sera déployé dans
+une version ultérieure.
 
-Nous effectuerons une révocation progressive de tous les jetons
-potentiellement impactés au cours de la semaine prochaine. Ce bulletin sera
-mis à jour dès que la révocation sera terminée. **Aucune action supplémentaire
-de votre part n'est nécessaire.** (Cette rotation est terminée depuis le 16
+Au cours de la semaine prochaine, nous allons effectuer une révocation
+progressive de tous les jetons potentiellement impactés. Ce bulletin sera mis
+à jour dès que la révocation sera terminée. **Aucune action supplémentaire de
+votre part n'est nécessaire.** (Cette rotation est terminée depuis le 16
 novembre 2018.)
 
 Si vous souhaitez révoquer ces jetons immédiatement, vous pouvez exécuter la
@@ -1302,8 +1353,8 @@ recréé automatiquement en quelques secondes :
       
     
     
-        kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
-                
+    kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
+            
   
 ---  
   
@@ -1320,76 +1371,76 @@ les besoins de votre environnement spécifique.
       
     
     
-        resource.type="k8s_cluster"
-        protoPayload.authenticationInfo.principalEmail="system:serviceaccount:kube-system:calico"
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.34.208.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.192.0/21")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.200.0/23")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.59.80.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.192.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.208.0/21")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.216.0/22")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.220.0/23")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.222.0/24")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.224.0.0/13")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.216.148.0/22")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.222.176.0/21")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "173.255.112.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "192.158.28.0/22")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.192.112.0/22")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.232.0/22")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.236.0/23")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.236.48.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.251.128.0/19")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.204.0.0/14")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.208.0.0/13")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.167.160.0/19")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.178.192.0/18")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.2.0/23")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.4.0/22")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.8.0/21")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.16.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.32.0/19")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.64.0/18")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.0.0/17")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.128.0/18")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.192.0/19")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.240.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.8.0/21")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.16.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.32.0/19")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.64.0/18")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.128.0/17")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.154.0.0/15")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.196.0.0/14")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "208.68.108.0/23")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.184.0.0/14")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.188.0.0/15")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.202.0.0/16")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.0.0/17")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.128.0/18")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.192.0/19")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.224.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.192.0.0/14")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.196.0.0/15")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.198.0.0/16")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.0.0/17")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.128.0/18")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.200.0.0/15")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "2600:1900::/35")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.224.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.232.0.0/15")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.234.0.0/16")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.0.0/17")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.192.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.236.0.0/14")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.240.0.0/15")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.232.0/21")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.4.0/22")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.220.0.0/14")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.242.0.0/15")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.244.0.0/14")
-                
+    resource.type="k8s_cluster"
+    protoPayload.authenticationInfo.principalEmail="system:serviceaccount:kube-system:calico"
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.34.208.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.192.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.200.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.59.80.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.192.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.208.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.216.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.220.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.222.0/24")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.224.0.0/13")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.216.148.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.222.176.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "173.255.112.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "192.158.28.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.192.112.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.232.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.236.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.236.48.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.251.128.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.204.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.208.0.0/13")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.167.160.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.178.192.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.2.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.4.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.8.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.16.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.32.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.64.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.0.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.128.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.192.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.240.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.8.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.16.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.32.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.64.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.128.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.154.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.196.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "208.68.108.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.184.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.188.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.202.0.0/16")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.0.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.128.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.192.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.224.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.192.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.196.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.198.0.0/16")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.0.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.128.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.200.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "2600:1900::/35")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.224.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.232.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.234.0.0/16")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.0.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.192.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.236.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.240.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.232.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.4.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.220.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.242.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.244.0.0/14")
+            
   
 ---  
   
@@ -1421,13 +1472,12 @@ protections de Compute Engine.
 ####  Impact sur Google Kubernetes Engine
 
 L'infrastructure qui exécute Kubernetes Engine, et qui isole les clusters et
-les nœuds clients les uns des autres, est protégée contre les attaques
-connues.
+les nœuds client les uns des autres, est protégée contre les attaques connues.
 
 Les pools de nœuds Kubernetes Engine qui utilisent l'image Container-Optimized
 OS (COS) de Google et pour lesquels la [ mise à niveau automatique
 ](https://cloud.google.com/kubernetes-engine/docs/concepts/node-auto-
-upgrades?hl=fr) est activée seront automatiquement mis à jour vers les
+upgrades?hl=fr) est activée seront automatiquement mis à niveau vers les
 versions corrigées de notre image COS. Ces versions seront disponibles dès le
 20 août 2018.
 
@@ -1446,12 +1496,12 @@ seront disponibles.
 
   
   
-##  6 août 2018 – Dernière mise à jour : 5 septembre 2018
+##  6 août 2018 (dernière mise à jour le 5 septembre 2018)
 
 Description  |  Niveau de gravité  |  Remarques  
 ---|---|---  
   
-####  Mise à jour du 05/09/2018
+####  Mise à jour du 5 septembre 2018
 
 La faille [ CVE-2018-5391 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2018-5391) a été divulguée récemment. Tout comme [
@@ -1460,7 +1510,7 @@ CVE-2018-5390 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390)
 par déni de service (DoS) plus efficaces dans les systèmes vulnérables. La
 principale différence réside dans le fait que la faille CVE-2018-5391 est
 exploitable sur les connexions IP. Nous avons mis à jour ce bulletin afin de
-traiter ces deux failles.
+traiter de ces deux failles.
 
 ####  Description
 
@@ -1478,11 +1528,11 @@ IP.
 
 ####  Impact sur Google Kubernetes Engine
 
-Depuis le 11 août 2018, tous les maîtres Kubernetes Engine sont protégés
-contre ces deux failles. Par ailleurs, tous les clusters Kubernetes Engine qui
-ont été configurés pour être mis à niveau automatiquement sont également
-protégés contre ces deux failles. Les pools de nœuds Kubernetes Engine qui ne
-sont pas configurés pour [ être mis à niveau automatiquement
+Depuis le 11 août 2018, toutes les instances maîtres de Kubernetes Engine sont
+protégées contre ces deux failles. Par ailleurs, tous les clusters Kubernetes
+Engine qui ont été configurés pour être mis à niveau automatiquement sont
+également protégés contre ces deux failles. Les pools de nœuds Kubernetes
+Engine qui ne sont pas configurés pour [ être mis à niveau automatiquement
 ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
 cluster?hl=fr) , et qui ont été mis à niveau manuellement pour la dernière
 fois avant le 11 août 2018, sont affectés par ces deux failles.
@@ -1507,9 +1557,9 @@ Description  |  Niveau de gravité  |  Remarques
 ---|---|---  
   
 Une faille a récemment été détectée dans Git. Celle-ci peut entraîner
-l'élévation des privilèges dans Kubernetes si des utilisateurs non autorisés
-peuvent créer des pods avec des volumes gitRepo. La faille CVE est identifiée
-par le tag [ CVE-2018-11235 ](https://cve.mitre.org/cgi-
+l'élévation des privilèges dans Kubernetes si des utilisateurs non privilégiés
+sont autorisés à créer des pods avec des volumes gitRepo. La faille CVE est
+identifiée par le tag [ CVE-2018-11235 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2018-11235) .
 
 ####  Suis-je concerné ?
@@ -1519,50 +1569,50 @@ votre cas :
 
   * Les utilisateurs non approuvés peuvent créer des pods (ou déclencher la création de pods). 
   * Les pods créés par des utilisateurs non approuvés disposent de restrictions pour empêcher l'accès à la racine de l'hôte (par exemple, via [ PodSecurityPolicy ](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=fr) ). 
-  * Les pods créés par des utilisateurs non approuvés sont autorisés à utiliser le type de volume gitRepo. 
+  * Les pods créés par des utilisateurs non approuvés sont autorisés à utiliser le type de volume "gitRepo". 
 
 Tous les nœuds Kubernetes Engine sont vulnérables.
 
 ####  Que dois-je faire ?
 
-Interdisez l'utilisation du type de volume gitRepo. Pour effectuer cette
+Interdisez l'utilisation du type de volume "gitRepo". Pour effectuer cette
 opération avec PodSecurityPolicy, omettez ` gitRepo ` dans la liste blanche `
 volumes ` de votre règle PodSecurityPolicy.
 
-Il est possible d'obtenir un comportement équivalent du volume gitRepo en
-clonant un dépôt Git dans un volume EmptyDir à partir d'un conteneur
-initContainer :
+Il est possible d'obtenir un comportement équivalent du volume "gitRepo" en
+clonant un dépôt Git dans un volume "EmptyDir" à partir d'un conteneur
+"initContainer" :
 
     
     
     
     apiVersion: v1
-        kind: Pod
-        metadata:
-          name: git-repo-example
-        spec:
-          initContainers:
-            # This container clones the desired git repo to the EmptyDir volume.
-            - name: git-clone
-              image: alpine/git # Any image with git will do
-              args:
-                - clone
-                - --single-branch
-                - --
-                - https://github.com/kubernetes/kubernetes # Your repo
-                - /repo # Put it in the volume
-              securityContext:
-                runAsUser: 1 # Any non-root user will do. Match to the workload.
-                allowPrivilegeEscalation: false
-                readOnlyRootFilesystem: true
-              volumeMounts:
-                - name: git-repo
-                  mountPath: /repo
-          containers:
-            ...
-          volumes:
+    kind: Pod
+    metadata:
+      name: git-repo-example
+    spec:
+      initContainers:
+        # This container clones the desired git repo to the EmptyDir volume.
+        - name: git-clone
+          image: alpine/git # Any image with git will do
+          args:
+            - clone
+            - --single-branch
+            - --
+            - https://github.com/kubernetes/kubernetes # Your repo
+            - /repo # Put it in the volume
+          securityContext:
+            runAsUser: 1 # Any non-root user will do. Match to the workload.
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+          volumeMounts:
             - name: git-repo
-              emptyDir: {}
+              mountPath: /repo
+      containers:
+        ...
+      volumes:
+        - name: git-repo
+          emptyDir: {}
 
 ####  Quel correctif résout cette faille ?
 
@@ -1588,49 +1638,51 @@ bin/cvename.cgi?name=CVE-2018-1000199) , [ CVE-2018-8897
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-8897) et [
 CVE-2018-1087 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1087)
 . Tous les nœuds Kubernetes Engine sont affectés par ces failles. Nous vous
-recommandons donc d'effectuer une [ mise à jour
+recommandons donc d'effectuer une [ mise à niveau
 ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
-container-cluster?hl=fr) vers la dernière version corrigée, en suivant la
-procédure ci-dessous.
+container-cluster?hl=fr) vers la dernière version du correctif conformément à
+la procédure ci-dessous.
 
 ####  Que dois-je faire ?
 
-Avant tout, vous devez mettre à jour votre maître vers la version la plus
-récente. Ce correctif est disponible dans Kubernetes Engine 1.8.12-gke.1,
-Kubernetes Engine 1.9.7-gke.1 et Kubernetes Engine 1.10.2-gke.1. Ces versions
-incluent des correctifs pour les images Container-Optimized OS et Ubuntu.
+Avant tout, vous devez mettre à niveau votre instance maître vers la toute
+dernière version. Ce correctif est disponible dans Kubernetes Engine
+1.8.12-gke.1, Kubernetes Engine 1.9.7-gke.1 et Kubernetes Engine 1.10.2-gke.1.
+Ces versions incluent des correctifs pour les images Container-Optimized OS et
+Ubuntu.
 
 Si vous créez un nouveau cluster avant la mise à niveau, vous devez spécifier
 la version corrigée avec laquelle il doit être utilisé. Les clients qui ont
 activé la [ mise à niveau automatique des nœuds
 ](https://cloud.google.com/kubernetes-engine/docs/concepts/node-auto-
 upgrades?hl=fr) et qui ne procèdent pas à une mise à niveau manuelle verront
-leurs nœuds mis à jour vers les versions corrigées dans les semaines à venir.
+leurs nœuds mis à niveau vers les versions corrigées dans les prochaines
+semaines.
 
 ####  Quelles failles ce correctif permet-il de résoudre ?
 
 Ce correctif réduit les risques liés aux failles suivantes :
 
-[ CVE-2018-8897 ](https://cve.mitre.org/cgi-
+[ CVE-2018-1000199 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2018-1000199) : cette faille affecte le noyau Linux.
-Elle permet à un utilisateur ou à un processus non autorisé d'entraîner le
+Elle permet à un utilisateur ou à un processus non privilégié d'entraîner le
 plantage du noyau du système, ce qui conduit à une attaque DoS ou à une
 élévation des privilèges. La gravité de cette faille est évaluée comme élevée,
 et son score CVSS est de 7,8.
 
 [ CVE-2018-8897 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2018-8897) : cette faille affecte le noyau Linux.
-Elle permet à un utilisateur ou à un processus non autorisé d'entraîner le
+Elle permet à un utilisateur ou à un processus non privilégié d'entraîner le
 plantage du noyau du système, ce qui conduit à une attaque DoS. La gravité de
 cette faille est évaluée comme moyenne, et son score CVSS est de 6,5.
 
 [ CVE-2018-1087 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2018-1087) : cette faille affecte l'hyperviseur KVM
-du noyau Linux. Elle permet à un processus non autorisé d'entraîner le
+du noyau Linux. Elle permet à un processus non privilégié d'entraîner le
 plantage du noyau invité ou, potentiellement, d'obtenir des privilèges. Cette
 faille est résolue dans l'infrastructure sur laquelle s'exécute Kubernetes
 Engine. Ce dernier n'est donc pas affecté. La gravité de cette faille est
-évaluée comme élevée, et son score CVSS est de 8.
+évaluée comme élevée, et son score CVSS est de 8,0.
 
 |  Élevé  |
 
@@ -1653,36 +1705,36 @@ CVE-2017-1002102 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=2017-1002102) , qui permettent à un conteneur d'accéder
 aux fichiers situés en dehors de celui-ci. Tous les nœuds Kubernetes Engine
 sont affectés par ces failles. Nous vous recommandons donc d'effectuer dès que
-possible une mise à jour vers la dernière version du correctif. La procédure
-de mise à niveau est expliquée ci-dessous.
+possible une mise à niveau vers la dernière version munie du correctif. La
+procédure de mise à niveau est expliquée ci-dessous.
 
 ####  Que dois-je faire ?
 
 En raison de la gravité de ces failles, que la mise à niveau automatique des
 nœuds soit activée ou non, nous vous recommandons de [ mettre à niveau
 manuellement ](https://cloud.google.com/kubernetes-engine/docs/how-
-to/upgrading-a-container-cluster?hl=fr) vos nœuds dès que le correctif sera
+to/upgrading-a-container-cluster?hl=fr) vos nœuds dès que le correctif est
 disponible. Celui-ci sera mis à la disposition de tous les clients au plus
 tard le 16 mars. Toutefois, en fonction du [ calendrier des lancements
 ](https://cloud.google.com/kubernetes-engine/docs/release-
 notes?hl=fr#march-12-2018) , vous pourriez avoir accès à ce correctif plus
 tôt, selon la zone dans laquelle se trouve votre cluster.
 
-Avant tout, vous devez mettre à jour votre maître vers la version la plus
-récente. Ce correctif sera disponible dans Kubernetes 1.9.4-gke.1, Kubernetes
-1.8.9-gke.1 et Kubernetes 1.7.14-gke.1. Par défaut, à compter du 30 mars, les
-nouveaux clusters utiliseront la version corrigée. Toutefois, si vous créez un
-nouveau cluster avant la mise à niveau, vous devrez spécifier la version
-corrigée avec laquelle il doit être utilisé.
+Avant tout, vous devez mettre à niveau votre instance maître vers la toute
+dernière version. Ce correctif sera disponible dans Kubernetes 1.9.4-gke.1,
+Kubernetes 1.8.9-gke.1 et Kubernetes 1.7.14-gke.1. Par défaut, à compter du 30
+mars, les nouveaux clusters utiliseront la version corrigée. Toutefois, si
+vous créez un nouveau cluster avant la mise à niveau, vous devrez spécifier la
+version corrigée avec laquelle il doit être utilisé.
 
 Les clients Kubernetes Engine qui ont activé la [ mise à niveau automatique
 des nœuds ](https://cloud.google.com/kubernetes-engine/docs/concepts/node-
 auto-upgrades?hl=fr) et qui ne procèdent pas à une mise à niveau manuelle
-verront leurs nœuds mis à jour vers les versions corrigées d'ici le 23 avril.
-Toutefois, en raison de la nature de ces failles, nous vous recommandons de [
-mettre à niveau manuellement ](https://cloud.google.com/kubernetes-
-engine/docs/how-to/upgrading-a-container-cluster?hl=fr) vos nœuds dès que le
-correctif sera disponible.
+verront leurs nœuds mis à niveau vers les versions corrigées d'ici le 23
+avril. Toutefois, en raison de la nature de ces failles, nous vous
+recommandons de [ mettre à niveau manuellement
+](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
+container-cluster?hl=fr) vos nœuds dès que le correctif sera disponible.
 
 ####  Quelles failles ce correctif permet-il de résoudre ?
 
@@ -1691,9 +1743,9 @@ Ce correctif réduit les risques liés aux deux failles suivantes :
 La faille CVE-2017-1002101 permet aux conteneurs utilisant des montages de
 volume de [ sous-chemin
 ](https://kubernetes.io/docs/concepts/storage/volumes/#using-subpath)
-d'accéder aux fichiers en dehors du volume. Par conséquent, si la règle
-PodSecurityPolicy empêche les conteneurs d'accéder au chemin d'accès à l'hôte,
-un pirate qui parvient à mettre à jour ou à créer des pods peut monter un
+d'accéder aux fichiers en dehors du volume. Par conséquent, si la stratégie
+"PodSecurityPolicy" empêche les conteneurs d'accéder au chemin d'accès à
+l'hôte, un pirate autorisé à mettre à jour ou à créer des pods peut monter un
 chemin d'accès à l'hôte à l'aide d'un autre type de volume.
 
 La faille CVE-2017-1002102 permet aux conteneurs utilisant certains types de
