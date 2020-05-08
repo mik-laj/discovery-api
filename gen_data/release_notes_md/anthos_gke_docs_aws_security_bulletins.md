@@ -1,3 +1,7 @@
+A new version of Anthos GKE on AWS was released on May 7. See the [ release
+notes ](/anthos/gke/docs/aws/release-notes) for information on breaking
+changes.
+
 #  Security bulletins
 
 **Beta**
