@@ -23,6 +23,53 @@ page to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/kubernetes-engine-security-
 bulletins.xml `
 
+##  GCP-2020-005
+
+Description  |  Severity  |  Notes  
+---|---|---  
+  
+A vulnerability was recently discovered in the Linux kernel, described in [
+CVE-2020-8835 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8835)
+, allowing container escape to obtain root privileges on the host node.
+
+Google Kubernetes Engine (GKE) Ubuntu nodes running GKE 1.16 or 1.17 are
+affected by this vulnerability, and we recommend that you upgrade to the
+latest patch version as soon as possible, as we detail below.
+
+Nodes running Container-Optimized OS are not affected. Nodes running on GKE
+on-prem are not affected.
+
+####  What should I do?
+
+**For most customers, no further action is required. Only nodes running Ubuntu
+in GKE version 1.16 or 1.17 are affected.**
+
+In order to upgrade your nodes, you must first upgrade your master to the
+newest version. This patch will be available in Kubernetes 1.16.8-gke.12,
+1.17.4-gke.10, and newer releases. Track the availability of these patches in
+the [ release notes ](/kubernetes-engine/docs/release-notes) .
+
+####  What vulnerability is addressed by this patch?
+
+The patch mitigates the following vulnerability:
+
+[ CVE-2020-8835 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8835) describes a vulnerability in the Linux
+kernel version 5.5.0 and newer that allows a malicious container to (with
+minimal user interaction in the form of an exec) read and write kernel memory
+and thus gain root-level code execution on the host node. This is rated as a
+'High' severity vulnerability.
+
+|
+
+High
+
+|
+
+[ CVE-2020-8835 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8835)  
+  
+  
 ##  GCP-2020-003
 
 Description  |  Severity  |  Notes  
