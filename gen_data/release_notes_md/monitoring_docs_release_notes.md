@@ -12,13 +12,6 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/stackdriver-release-notes.xml `
 
-##  May 05, 2020
-
-**CHANGED:**
-
-Alert notifications delivered by e-mail now come from "alerting-
-noreply@google.com" instead of "alerts@stackdriver.com".
-
 ##  April 28, 2020
 
 **DEPRECATED:**
