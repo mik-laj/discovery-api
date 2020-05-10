@@ -18,6 +18,14 @@ de cette page à votre [ lecteur de flux
 du flux directement : ` https://cloud.google.com/feeds/dialogflow-release-
 notes.xml `
 
+##  May 08, 2020
+
+**FEATURE:**
+
+Beta launch of a one-click integration with the [ Voximplant
+](https://cloud.google.com/dialogflow/docs/integrations/voximplant?hl=fr)
+telephony partner:
+
 ##  May 05, 2020
 
 **FEATURE:**
