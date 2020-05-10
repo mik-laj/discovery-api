@@ -1112,6 +1112,35 @@
                         "https://www.googleapis.com/auth/cloud-platform.read-only"
                     ]
                 },
+                "getIamPolicy": {
+                    "flatPath": "projects/{projectsId}/datasets/{datasetsId}/tables/{tablesId}:getIamPolicy",
+                    "httpMethod": "POST",
+                    "id": "bigquery.tables.getIamPolicy",
+                    "parameterOrder": [
+                        "resource"
+                    ],
+                    "parameters": {
+                        "resource": {
+                            "location": "path",
+                            "pattern": "^projects/[^/]+/datasets/[^/]+/tables/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{+resource}:getIamPolicy",
+                    "request": {
+                        "$ref": "GetIamPolicyRequest"
+                    },
+                    "response": {
+                        "$ref": "Policy"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/bigquery",
+                        "https://www.googleapis.com/auth/bigquery.readonly",
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only"
+                    ]
+                },
                 "insert": {
                     "httpMethod": "POST",
                     "id": "bigquery.tables.insert",
@@ -1217,6 +1246,62 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/bigquery",
                         "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
+                "setIamPolicy": {
+                    "flatPath": "projects/{projectsId}/datasets/{datasetsId}/tables/{tablesId}:setIamPolicy",
+                    "httpMethod": "POST",
+                    "id": "bigquery.tables.setIamPolicy",
+                    "parameterOrder": [
+                        "resource"
+                    ],
+                    "parameters": {
+                        "resource": {
+                            "location": "path",
+                            "pattern": "^projects/[^/]+/datasets/[^/]+/tables/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{+resource}:setIamPolicy",
+                    "request": {
+                        "$ref": "SetIamPolicyRequest"
+                    },
+                    "response": {
+                        "$ref": "Policy"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/bigquery",
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
+                "testIamPermissions": {
+                    "flatPath": "projects/{projectsId}/datasets/{datasetsId}/tables/{tablesId}:testIamPermissions",
+                    "httpMethod": "POST",
+                    "id": "bigquery.tables.testIamPermissions",
+                    "parameterOrder": [
+                        "resource"
+                    ],
+                    "parameters": {
+                        "resource": {
+                            "location": "path",
+                            "pattern": "^projects/[^/]+/datasets/[^/]+/tables/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{+resource}:testIamPermissions",
+                    "request": {
+                        "$ref": "TestIamPermissionsRequest"
+                    },
+                    "response": {
+                        "$ref": "TestIamPermissionsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/bigquery",
+                        "https://www.googleapis.com/auth/bigquery.readonly",
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only"
                     ]
                 },
                 "update": {
@@ -1447,6 +1532,42 @@
             },
             "type": "object"
         },
+        "AuditConfig": {
+            "id": "AuditConfig",
+            "properties": {
+                "auditLogConfigs": {
+                    "items": {
+                        "$ref": "AuditLogConfig"
+                    },
+                    "type": "array"
+                },
+                "service": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AuditLogConfig": {
+            "id": "AuditLogConfig",
+            "properties": {
+                "exemptedMembers": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "logType": {
+                    "enum": [
+                        "LOG_TYPE_UNSPECIFIED",
+                        "ADMIN_READ",
+                        "DATA_WRITE",
+                        "DATA_READ"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "BigQueryModelTraining": {
             "id": "BigQueryModelTraining",
             "properties": {
@@ -1586,6 +1707,24 @@
                 },
                 "truePositives": {
                     "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Binding": {
+            "id": "Binding",
+            "properties": {
+                "condition": {
+                    "$ref": "Expr"
+                },
+                "members": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "role": {
                     "type": "string"
                 }
             },
@@ -2206,6 +2345,21 @@
             },
             "type": "object"
         },
+        "Expr": {
+            "id": "Expr",
+            "properties": {
+                "expression": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ExternalDataConfiguration": {
             "id": "ExternalDataConfiguration",
             "properties": {
@@ -2261,6 +2415,25 @@
                 "numericalValue": {
                     "format": "double",
                     "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "GetIamPolicyRequest": {
+            "id": "GetIamPolicyRequest",
+            "properties": {
+                "options": {
+                    "$ref": "GetPolicyOptions"
+                }
+            },
+            "type": "object"
+        },
+        "GetPolicyOptions": {
+            "id": "GetPolicyOptions",
+            "properties": {
+                "requestedPolicyVersion": {
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -3267,6 +3440,32 @@
             },
             "type": "object"
         },
+        "Policy": {
+            "id": "Policy",
+            "properties": {
+                "auditConfigs": {
+                    "items": {
+                        "$ref": "AuditConfig"
+                    },
+                    "type": "array"
+                },
+                "bindings": {
+                    "items": {
+                        "$ref": "Binding"
+                    },
+                    "type": "array"
+                },
+                "etag": {
+                    "format": "byte",
+                    "type": "string"
+                },
+                "version": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "ProjectList": {
             "id": "ProjectList",
             "properties": {
@@ -3747,6 +3946,19 @@
             },
             "type": "object"
         },
+        "SetIamPolicyRequest": {
+            "id": "SetIamPolicyRequest",
+            "properties": {
+                "policy": {
+                    "$ref": "Policy"
+                },
+                "updateMask": {
+                    "format": "google-fieldmask",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "StandardSqlDataType": {
             "id": "StandardSqlDataType",
             "properties": {
@@ -4181,6 +4393,30 @@
                 "fields": {
                     "items": {
                         "$ref": "TableFieldSchema"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "TestIamPermissionsRequest": {
+            "id": "TestIamPermissionsRequest",
+            "properties": {
+                "permissions": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "TestIamPermissionsResponse": {
+            "id": "TestIamPermissionsResponse",
+            "properties": {
+                "permissions": {
+                    "items": {
+                        "type": "string"
                     },
                     "type": "array"
                 }
