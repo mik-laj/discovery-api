@@ -12,6 +12,16 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/composer-release-notes.xml `
 
+##  May 08, 2020
+
+**FEATURE:**
+
+Cloud Composer is now available in Hong Kong ( ` asia-east2 ` ).
+
+**FEATURE:**
+
+Cloud Composer is now available in Las Vegas ( ` us-west4 ` ).
+
 ##  April 27, 2020
 
 **CHANGED:**
