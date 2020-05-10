@@ -15,6 +15,14 @@ notes.pdf?hl=ja) も閲覧できます。
 URL ディレクトリ ` https://cloud.google.com/feeds/dialogflow-release-notes.xml `
 を直接追加します。
 
+##  May 08, 2020
+
+**FEATURE:**
+
+Beta launch of a one-click integration with the [ Voximplant
+](https://cloud.google.com/dialogflow/docs/integrations/voximplant?hl=ja)
+telephony partner:
+
 ##  May 05, 2020
 
 **FEATURE:**
