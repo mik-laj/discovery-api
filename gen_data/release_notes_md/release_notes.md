@@ -12,11 +12,40 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  May 08, 2020
+
+**BigQuery**
+
+**FEATURE:**
+
+[ Next generation BigQuery streaming
+](https://cloud.google.com/bigquery/quotas#streaming_inserts) is now [
+Generally Available (GA) ](https://cloud.google.com/products/?hl=EN#product-
+launch-stages) .
+
+**Cloud Composer**
+
+**FEATURE:**
+
+Cloud Composer is now available in Hong Kong ( ` asia-east2 ` ).
+
+**FEATURE:**
+
+Cloud Composer is now available in Las Vegas ( ` us-west4 ` ).
+
+**Dialogflow**
+
+**FEATURE:**
+
+Beta launch of a one-click integration with the [ Voximplant
+](https://cloud.google.com/dialogflow/docs/integrations/voximplant) telephony
+partner:
+
 ##  May 06, 2020
 
 **Traffic Director**
 
-**FEATURE:**
+**CHANGED:**
 
 A new document is added to [ Traffic Director
 ](https://cloud.google.com/traffic-director/docs) : [ Ingress traffic for your
@@ -24,6 +53,12 @@ mesh ](https://cloud.google.com/traffic-director/docs/traffic-director-
 ingress-traffic) .
 
 ##  May 05, 2020
+
+**Dataproc**
+
+**FEATURE:**
+
+Clusters can now be created with non-preemptible secondary workers.
 
 **Dialogflow**
 
@@ -160,7 +195,7 @@ upgrading.
 **CHANGED:**
 
 Anthos GKE on AWS now support for Application-layer secrets encryption with
-Cloud KMS by passing a KMS key ARN to your [ AWSCluster
+AWS KMS by passing a KMS key ARN to your [ AWSCluster
 ](https://cloud.google.com/anthos/gke/docs/aws/reference/awscluster#speccontrolplane)
 .
 
@@ -1699,127 +1734,4 @@ Security Health Analytics is now in general availability.
 
   * Learn about the [ vulnerability findings ](https://cloud.google.com/security-command-center/docs/concepts-vulnerabilities-findings) provided by Security Health Analytics. 
   * [ Get started with Security Health Analytics ](https://cloud.google.com/security-command-center/docs/quickstart-security-health-analytics) . 
-
-##  April 09, 2020
-
-**AI Platform Prediction**
-
-**FIXED:**
-
-If you deploy a model version for online prediction that uses [ runtime
-version 2.1 ](https://cloud.google.com/ai-platform/prediction/docs/runtime-
-version-list) with a [ GPU ](https://cloud.google.com/ai-
-platform/prediction/docs/machine-types-online-prediction#gpus) , AI Platform
-Prediction now correctly uses TensorFlow 2.1.0 to serve predictions.
-Previously, AI Platform Prediction used TensorFlow 2.0.0 to serve predictions
-in this situation.
-
-**AI Platform Training**
-
-**FEATURE:**
-
-You can now specify virtual machine instances with the evaluator task type as
-part of your training cluster for distributed training jobs. Read more about [
-evaluators in TensorFlow distributed training ](https://cloud.google.com/ai-
-platform/training/docs/distributed-training-details) , see [ how to configure
-machine types for evaluators ](https://cloud.google.com/ai-
-platform/training/docs/machine-types) , and learn about [ using evaluators
-with custom containers ](https://cloud.google.com/ai-
-platform/training/docs/distributed-training-containers) .
-
-**CHANGED:**
-
-The maximum running time for training jobs now defaults to seven days. If a
-training job is still running after this duration, AI Platform Training
-cancels the job.
-
-[ Learn how to adjust the maximum running time for a job.
-](https://cloud.google.com/ai-platform/training/docs/training-
-jobs#configuring_the_job)
-
-**BigQuery**
-
-**FEATURE:**
-
-Scheduling queries no longer requires the ` bigquery.transfers.update `
-permission. The ` bigquery.jobs.create ` permission can now be used to
-schedule queries. See [ Scheduling queries
-](https://cloud.google.com/bigquery/docs/scheduling-
-queries#required_permissions) for details.
-
-**Cloud CDN**
-
-**FEATURE:**
-
-TLS v1.3 is now enabled by default for all external HTTPS load balancers, SSL
-proxy load balancers, and Cloud CDN. Note that this change doesn't apply to
-internal HTTPS load balancers or Traffic Director.
-
-TLS v1.3 supports modern ciphers with forward-secrecy as a baseline and,
-critically, reduces the number of round trips required to establish a TLS
-session, which directly improves performance seen by your end-users.
-
-Clients that support TLS v1.3 include Chrome, Chromium-based browsers, and
-Android. These clients automatically negotiate TLS v1.3 without requiring any
-changes. Clients that do not support TLS v1.3 are unaffected.
-
-**Cloud Load Balancing**
-
-**FEATURE:**
-
-TLS v1.3 is now enabled by default for all external HTTPS load balancers, SSL
-proxy load balancers, and Cloud CDN. Note that this change doesn't apply to
-internal HTTPS load balancers or Traffic Director.
-
-TLS v1.3 supports modern ciphers with forward-secrecy as a baseline and,
-critically, reduces the number of round trips required to establish a TLS
-session, which directly improves performance seen by your end-users.
-
-Clients that support TLS v1.3 include Chrome, Chromium-based browsers, and
-Android. These clients automatically negotiate TLS v1.3 without requiring any
-changes. Clients that do not support TLS v1.3 are unaffected.
-
-**Compute Engine**
-
-**FEATURE:**
-
-  * **GA:** [ Compute Engine enables Shielded VM features by default ](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm) . 
-
-**Dataflow**
-
-**FEATURE:**
-
-Dataflow now provides beta support for [ Flex Templates
-](https://cloud.google.com/dataflow/docs/guides/templates/using-flex-
-templates) .
-
-**FEATURE:**
-
-Dataflow now provides beta support for [ Interactive Notebooks
-](https://cloud.google.com/dataflow/docs/guides/interactive-pipeline-
-development) .
-
-**VPC Service Controls**
-
-**FEATURE:**
-
-The beta version of the VPC accessible services feature is now available.
-
-The [ VPC accessible services ](https://cloud.google.com/vpc-service-
-controls/docs/vpc-accessible-services) feature introduces the ability to limit
-the access of network endpoints inside your service perimeter to an explicit
-set of services.
-
-To learn how to configure VPC accessible services for your perimeter, read
-about [ limiting access to services inside a perimeter
-](https://cloud.google.com/vpc-service-controls/docs/manage-service-
-perimeters#accessible-services) .
-
-**FEATURE:**
-
-The beta version of dry run mode for service perimeters is now available.
-
-This release introduces a new method of configuring service perimeters: dry
-run mode. For more information, [ read about dry run mode
-](https://cloud.google.com/vpc-service-controls/docs/dry-run-mode) .
 
