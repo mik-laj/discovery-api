@@ -1,12 +1,12 @@
 #  リリースノート
 
-このページには、Cloud Speech-to-Text
-の本番環境に関する更新情報が記載されています。このページを定期的にチェックして、新機能や更新された機能、バグ修正、既知の問題、非推奨となった機能に関するお知らせを確認してください。
+このページでは、Speech-to-Text
+に関する本番環境の更新内容が記載されています。このページを定期的にチェックして、新機能や更新された機能、バグ修正、既知の問題、サポートが終了した（非推奨になった）機能に関するお知らせを確認してください。
 
 プロダクトのアップデートに関する最新情報を受け取るには、このページの URL を [ フィード リーダー
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) に追加するか、またはフィード
-URL ディレクトリ ` https://cloud.google.com/feeds/cloud-speech-to-text-release-
-notes.xml ` を直接追加します。
+URL ディレクトリ ` https://cloud.google.com/feeds/speech-release-notes.xml `
+を直接追加します。
 
 ##  March 05, 2020
 
