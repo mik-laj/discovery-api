@@ -15,6 +15,14 @@ notes.pdf?hl=ko) 도 읽을 수 있습니다.
 추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/dialogflow-
 release-notes.xml `
 
+##  May 08, 2020
+
+**FEATURE:**
+
+Beta launch of a one-click integration with the [ Voximplant
+](https://cloud.google.com/dialogflow/docs/integrations/voximplant?hl=ko)
+telephony partner:
+
 ##  May 05, 2020
 
 **FEATURE:**
