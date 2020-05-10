@@ -41,7 +41,7 @@ upgrading.
 **CHANGED:**
 
 Anthos GKE on AWS now support for Application-layer secrets encryption with
-Cloud KMS by passing a KMS key ARN to your [ AWSCluster
+AWS KMS by passing a KMS key ARN to your [ AWSCluster
 ](https://cloud.google.com/anthos/gke/docs/aws/reference/awscluster#speccontrolplane)
 .
 
