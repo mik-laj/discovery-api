@@ -1,11 +1,10 @@
 #  版本说明
 
-本页面记录 Cloud Speech-to-Text
-的正式版更新。您可以定期查看本页面，以了解有关新增的功能、经过更新的功能、已弃用的功能、错误修复和已知问题的公告。
+此页面记录 Speech-to-Text 的正式版更新。您可以定期查看本页面，以了解有关新增功能、功能更新、功能弃用、错误修复和已知问题的公告。
 
 如需接收最新产品动态，请将此页面的网址添加到您的 [ Feed 阅读器
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
-https://cloud.google.com/feeds/cloud-speech-to-text-release-notes.xml `
+https://cloud.google.com/feeds/speech-release-notes.xml `
 
 ##  March 05, 2020
 
