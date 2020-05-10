@@ -18,6 +18,14 @@ página ao [ leitor de feeds
 adicione o URL do feed diretamente: `
 https://cloud.google.com/feeds/dialogflow-release-notes.xml `
 
+##  May 08, 2020
+
+**FEATURE:**
+
+Beta launch of a one-click integration with the [ Voximplant
+](https://cloud.google.com/dialogflow/docs/integrations/voximplant?hl=pt_br)
+telephony partner:
+
 ##  May 05, 2020
 
 **FEATURE:**
