@@ -217,12 +217,6 @@ transfer/docs/locations#supported_regions) .
 
 **Compute Engine**
 
-**FEATURE:**
-
-You can now suspend and resume VM instances, available in **Beta** . Learn
-more about [ Suspending and Resuming an Instance
-](https://cloud.google.com/compute/docs/instances/suspend-resume-instance) .
-
 **CHANGED:**
 
 SSD persistent disks now have increased write throughput limits on instances
@@ -1662,76 +1656,4 @@ Event Threat Detection is now in general availability.
 
 Update to rules language syntax. Adds support for the CEL 'has' macro so that
 Google Cloud Armor check for absence of a header in the 'request.headers' map.
-
-##  April 11, 2020
-
-**Cloud Vision**
-
-**FEATURE:**
-
-**CMEK compliance**
-
-Vision API is now compliant with customer-managed encryption keys (CMEK). To
-learn more, vist the [ CMEK compliance page
-](https://cloud.google.com/vision/docs/cmek) . Please note that [ Product
-Search ](https://cloud.google.com/vision/product-search/docs/) is _not_ CMEK
-compliant at this time.
-
-##  April 10, 2020
-
-**Cloud Composer**
-
-**FEATURE:**
-
-[ Private IP Composer environments
-](https://cloud.google.com/composer/docs/concepts/private-ip) are now
-generally available (GA). See [ Configuring private IP
-](https://cloud.google.com/composer/docs/how-to/managing/configuring-private-
-ip) to learn how to use this feature.
-
-**FEATURE:**
-
-Support for [ Shared VPC networks
-](https://cloud.google.com/composer/docs/how-to/managing/configuring-shared-
-vpc) is now generally available (GA).
-
-**Cloud Load Balancing**
-
-**CHANGED:**
-
-[ Backend services documentation ](https://cloud.google.com/load-
-balancing/docs/backend-service) is updated through the Cloud Load Balancing
-doc set.
-
-**Config Connector**
-
-**FEATURE:**
-
-Add the CloudBuildTrigger resource
-
-Add the SourceRepoRepository resource
-
-**CHANGED:**
-
-miscellaneous bug fixes and improvements
-
-**Resource Manager**
-
-**FEATURE:**
-
-The Organization Policy Service resource locations constraint has launched for
-general availability. This constraint allows you to define the location where
-your resources are created, providing important data location compliance
-tools. For more information, see the [ Restricting Resource Locations
-](https://cloud.google.com/resource-manager/docs/organization-policy/defining-
-locations) .
-
-**Security Command Center**
-
-**FEATURE:**
-
-Security Health Analytics is now in general availability.
-
-  * Learn about the [ vulnerability findings ](https://cloud.google.com/security-command-center/docs/concepts-vulnerabilities-findings) provided by Security Health Analytics. 
-  * [ Get started with Security Health Analytics ](https://cloud.google.com/security-command-center/docs/quickstart-security-health-analytics) . 
 
