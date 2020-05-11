@@ -16,12 +16,6 @@ URL directly: ` https://cloud.google.com/feeds/compute-release-notes.xml `
 
 ##  April 30, 2020
 
-**FEATURE:**
-
-You can now suspend and resume VM instances, available in **Beta** . Learn
-more about [ Suspending and Resuming an Instance
-](https://cloud.google.com/compute/docs/instances/suspend-resume-instance) .
-
 **CHANGED:**
 
 SSD persistent disks now have increased write throughput limits on instances
