@@ -1,6 +1,5 @@
-You are viewing documentation for a previous version of GKE On-Prem. [ View
-the latest documentation ](https://cloud.google.com/anthos/gke/docs/on-
-prem/?hl=zh-cn) .
+您正在查看 GKE On-Prem 以前版本的文档。 [ 查看最新文档
+](https://cloud.google.com/anthos/gke/docs/on-prem/?hl=zh-cn) 。
 
 #  安全公告
 
