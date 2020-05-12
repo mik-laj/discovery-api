@@ -25,7 +25,8 @@ bulletins.xml `
 
 ##  GCP-2020-005
 
-Description  |  Severity  |  Notes  
+**Published:** 2020-05-07  
+**Updated:** 2020-05-07  Description  |  Severity  |  Notes  
 ---|---|---  
   
 A vulnerability was recently discovered in the Linux kernel, described in [
@@ -72,7 +73,8 @@ bin/cvename.cgi?name=CVE-2020-8835)
   
 ##  GCP-2020-003
 
-Description  |  Severity  |  Notes  
+**Published:** 2020-03-31  
+**Updated:** 2020-03-31  Description  |  Severity  |  Notes  
 ---|---|---  
   
 A vulnerability was recently discovered in Kubernetes, described in [
@@ -81,8 +83,8 @@ bin/cvename.cgi?name=CVE-2019-11254) , which allows any user authorized to
 make POST requests to execute a remote Denial-of-Service attack on a
 Kubernetes API server. The Kubernetes Product Security Committee (PSC)
 released additional information on this vulnerability which can be found [
-here ](https://groups.google.com/g/kubernetes-security-announce/c/wuwEwZigXBc)
-.
+here ](https://groups.google.com/forum/#!topic/kubernetes-security-
+announce/wuwEwZigXBc) .
 
 GKE Clusters that use [ Master Authorized Networks ](/kubernetes-
 engine/docs/how-to/authorized-networks) and [ Private clusters with no public
@@ -120,7 +122,8 @@ bin/cvename.cgi?name=CVE-2019-11254)
   
 ##  GCP-2020-002
 
-Description  |  Severity  |  Notes  
+**Published:** 2020-03-23  
+**Updated:** 2020-03-23  Description  |  Severity  |  Notes  
 ---|---|---  
   
 Kubernetes has disclosed [ two denial of service vulnerabilities
@@ -168,7 +171,8 @@ bin/cvename.cgi?name=CVE-2020-8552)
   
 ##  January 21, 2020; last updated January 24, 2020
 
-Description  |  Severity  |  Notes  
+**Published:** 2020-01-21  
+**Updated:** 2020-01-24  Description  |  Severity  |  Notes  
 ---|---|---  
   
 **2020-01-24 Update:** The process of making patched versions available is
@@ -240,7 +244,8 @@ bin/cvename.cgi?name=CVE-2020-0601)
   
 ##  November 14, 2019
 
-Description  |  Severity  |  Notes  
+**Published:** 2019-11-14  
+**Updated:** 2019-11-14  Description  |  Severity  |  Notes  
 ---|---|---  
   
 Kubernetes has disclosed a security issue in the kubernetes-csi [ ` external-
@@ -282,7 +287,8 @@ bin/cvename.cgi?name=CVE-2019-11255)
   
 ##  November 12, 2019
 
-Description  |  Severity  |  Notes  
+**Published:** 2019-11-12  
+**Updated:** 2019-11-12  Description  |  Severity  |  Notes  
 ---|---|---  
   
 Intel has disclosed CVEs that potentially allow interactions between
@@ -344,7 +350,8 @@ Medium
   
 ##  October 22, 2019
 
-Description  |  Severity  |  Notes  
+**Published:** 2019-10-22  
+**Updated:** 2019-10-22  Description  |  Severity  |  Notes  
 ---|---|---  
   
 A vulnerability was recently discovered in the Go programming language,
@@ -370,7 +377,8 @@ bin/cvename.cgi?name=CVE-2019-16276)
   
 ##  October 16, 2019
 
-Description  |  Severity  |  Notes  
+**Published:** 2019-10-16  
+**Updated:** 2019-10-24  Description  |  Severity  |  Notes  
 ---|---|---  
   
 **2019-10-24 Update:** Patched versions are now available in all zones.
@@ -422,7 +430,8 @@ bin/cvename.cgi?name=CVE-2019-11253)
   
 ##  September 16, 2019
 
-Description  |  Severity  |  Notes  
+**Published:** 2019-09-16  
+**Updated:** 2019-10-16  Description  |  Severity  |  Notes  
 ---|---|---  
   
 This bulletin has been updated since its original publication.
@@ -474,10 +483,16 @@ bin/cvename.cgi?name=CVE-2019-9514)
   
 ##  September 5, 2019
 
+**Published:** 2019-09-05  
+**Updated:** 2019-09-05
+
 The bulletin for the fix for the vulnerability documented in the bulletin of
 May 31, 2019  is updated.
 
 ##  August 22, 2019
+
+**Published:** 2019-08-22  
+**Updated:** 2019-08-22
 
 The bulletin for  August 5, 2019  has been updated. The fix for the
 vulnerability documented in the earlier bulletin is [ available ](/kubernetes-
@@ -485,13 +500,17 @@ engine/docs/release-notes#august_22_2019) .
 
 ##  August 8, 2019
 
+**Published:** 2019-08-08  
+**Updated:** 2019-08-08
+
 The bulletin for  August 5, 2019  has been updated. We expect the fix for the
 vulnerability documented in that bulletin to be available in the next release
 of GKE.
 
 ##  August 5, 2019
 
-Description  |  Severity  |  Notes  
+**Published:** 2019-08-05  
+**Updated:** 2019-08-09  Description  |  Severity  |  Notes  
 ---|---|---  
   
 This bulletin has been updated since its original publication.
@@ -536,7 +555,8 @@ bin/cvename.cgi?name=CVE-2019-11247)
   
 ##  July 3, 2019
 
-Description  |  Severity  |  Notes  
+**Published:** 2019-07-03  
+**Updated:** 2019-07-03  Description  |  Severity  |  Notes  
 ---|---|---  
   
 A patched version of ` kubectl ` to address CVE-2019-11246 is now available
@@ -557,7 +577,8 @@ bin/cvename.cgi?name=CVE-2018-15664)
   
 ##  July 3, 2019
 
-Description  |  Severity  |  Notes  
+**Published:** 2019-06-25  
+**Updated:** 2019-07-03  Description  |  Severity  |  Notes  
 ---|---|---  
   
 ######  July 3, 2019 Update
