@@ -8,6 +8,12 @@ python3/?hl=zh-cn) 。
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/gaestd-py-release-notes.xml `
 
+##  May 11, 2020
+
+**CHANGED:**
+
+Updated Python SDK to version 1.9.91.
+
 ##  April 20, 2020
 
 **FEATURE:**
