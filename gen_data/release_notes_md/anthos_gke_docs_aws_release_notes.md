@@ -11,7 +11,7 @@ deprecated functionality.
 You can see the latest product updates for all of Google Cloud on the [ Google
 Cloud release notes ](/release-notes) page.
 
-##  April 30, 2020
+##  May 07, 2020
 
 **BREAKING:**
 
