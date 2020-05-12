@@ -12,6 +12,12 @@ python3/?hl=ja) ことをおすすめします。
 URL ディレクトリ ` https://cloud.google.com/feeds/gaestd-py-release-notes.xml `
 を直接追加します。
 
+##  May 11, 2020
+
+**CHANGED:**
+
+Updated Python SDK to version 1.9.91.
+
 ##  April 20, 2020
 
 **FEATURE:**
