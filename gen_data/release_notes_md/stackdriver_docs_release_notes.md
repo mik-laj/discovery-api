@@ -23,6 +23,30 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/stackdriver-release-notes.xml `
 
+##  May 11, 2020
+
+**Cloud Logging**
+
+**FEATURE:**
+
+You can now use regular expressions to query your logs data and create
+filters. For more information, go to [ Using regular expressions
+](https://cloud.google.com/logging/docs/view/logging-query-language#regular-
+expressions) .
+
+##  May 08, 2020
+
+**Cloud Monitoring**
+
+**FEATURE:**
+
+Monitoring Query Language (MQL) is now available in Beta. MQL is an
+expressive, text-based interface to Cloud Monitoring time-series data. With
+MQL, you can create charts you can't create any other way. You can access MQL
+from both the Cloud Console and the Monitoring API. For more information, see
+[ Introduction to Monitoring Query Language
+](https://cloud.google.com/monitoring/mql/) .
+
 ##  April 28, 2020
 
 **Cloud Monitoring**
