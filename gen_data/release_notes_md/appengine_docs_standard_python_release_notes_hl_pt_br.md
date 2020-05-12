@@ -11,6 +11,12 @@ página ao [ leitor de feeds
 adicione o URL do feed diretamente: ` https://cloud.google.com/feeds/gaestd-
 py-release-notes.xml `
 
+##  May 11, 2020
+
+**CHANGED:**
+
+Updated Python SDK to version 1.9.91.
+
 ##  April 20, 2020
 
 **FEATURE:**
