@@ -12,6 +12,15 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/run-release-notes.xml `
 
+##  May 08, 2020
+
+**FEATURE:**
+
+Cloud Code IDE extensions support Cloud Run. See [ Cloud Code for VS Code
+](https://cloud.google.com/code/docs/vscode/deploying-a-cloud-run-app) and [
+Cloud Code for IntelliJ
+](https://cloud.google.com/code/docs/intellij/deploying-a-cloud-run-app)
+
 ##  March 30, 2020
 
 **FEATURE:**
