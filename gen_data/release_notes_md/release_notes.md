@@ -12,6 +12,42 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  May 11, 2020
+
+**App Engine standard environment Python**
+
+**CHANGED:**
+
+Updated Python SDK to version 1.9.91.
+
+**Cloud Logging**
+
+**FEATURE:**
+
+You can now use regular expressions to query your logs data and create
+filters. For more information, go to [ Using regular expressions
+](https://cloud.google.com/logging/docs/view/logging-query-language#regular-
+expressions) .
+
+**Cloud SQL for PostgreSQL**
+
+**FEATURE:**
+
+Cloud SQL has expanded support for PostgreSQL extensions. Eight additional
+PostgreSQL extensions are now available:
+
+  * pageinspect 
+  * pgfincore 
+  * pg_freespacemap 
+  * pg_repack 
+  * pg_visibility 
+  * PL/Proxy 
+  * postgres_fdw 
+  * postgresql-hll 
+
+For information about these newly-added extensions, see [ PostgreSQL
+extensions ](https://cloud.google.com/sql/docs/postgres/extensions) .
+
 ##  May 08, 2020
 
 **BigQuery**
@@ -33,6 +69,36 @@ Cloud Composer is now available in Hong Kong ( ` asia-east2 ` ).
 
 Cloud Composer is now available in Las Vegas ( ` us-west4 ` ).
 
+**Cloud Monitoring**
+
+**FEATURE:**
+
+Monitoring Query Language (MQL) is now available in Beta. MQL is an
+expressive, text-based interface to Cloud Monitoring time-series data. With
+MQL, you can create charts you can't create any other way. You can access MQL
+from both the Cloud Console and the Monitoring API. For more information, see
+[ Introduction to Monitoring Query Language
+](https://cloud.google.com/monitoring/mql/) .
+
+**Cloud Run**
+
+**FEATURE:**
+
+Cloud Code IDE extensions support Cloud Run. See [ Cloud Code for VS Code
+](https://cloud.google.com/code/docs/vscode/deploying-a-cloud-run-app) and [
+Cloud Code for IntelliJ
+](https://cloud.google.com/code/docs/intellij/deploying-a-cloud-run-app)
+
+**Cloud TPU**
+
+**CHANGED:**
+
+Cloud TPU now supports TensorFlow 2.2. See the [ TensorFlow 2.2 Release Notes
+](https://github.com/tensorflow/tensorflow/releases/tag/v2.2.0) for a complete
+list of features included with this release. New models for Image segmentation
+and Image classification have been added to the official cloud [ TPU supported
+models list ](https://cloud.google.com/tpu/docs/tutorials/support-matrix) .
+
 **Dialogflow**
 
 **FEATURE:**
@@ -40,6 +106,42 @@ Cloud Composer is now available in Las Vegas ( ` us-west4 ` ).
 Beta launch of a one-click integration with the [ Voximplant
 ](https://cloud.google.com/dialogflow/docs/integrations/voximplant) telephony
 partner:
+
+##  May 07, 2020
+
+**Anthos GKE deployed on AWS**
+
+**BREAKING:**
+
+To upgrade your Anthos GKE on AWS clusters, you need to [ uninstall
+](https://cloud.google.com/anthos/gke/docs/aws/how-to/uninstalling) all your
+management and user clusters. You also need to download the new version of the
+[ ` anthos-gke `
+](https://cloud.google.com/anthos/gke/docs/aws/downloads#anthos-gke_cli_tool)
+cli tool.
+
+**CHANGED:**
+
+Anthos GKE on AWS now supports [ auto-scaling
+](https://cloud.google.com/anthos/gke/docs/aws/how-to/scaling-user-cluster) .
+You can enable auto-scaling by changing settings in your AWSNodePools, or
+scale your clusters manually by adding new AWSNodePools.
+
+**CHANGED:**
+
+Built-in EBS StorageClass names have been changed to ` standard-rwo ` and `
+premium-rwo ` . If you declare the [ ` singlewriter-standard ` or `
+singlewriter-premium `
+](https://cloud.google.com/anthos/gke/docs/aws/concepts/storage.md)
+StorageClasses with your workloads, you must update your workloads when
+upgrading.
+
+**CHANGED:**
+
+Anthos GKE on AWS now support for Application-layer secrets encryption with
+AWS KMS by passing a KMS key ARN to your [ AWSCluster
+](https://cloud.google.com/anthos/gke/docs/aws/reference/awscluster#speccontrolplane)
+.
 
 ##  May 06, 2020
 
@@ -164,40 +266,6 @@ details.
   * Thai (Thailand) 
 
 ##  April 30, 2020
-
-**Anthos GKE deployed on AWS**
-
-**BREAKING:**
-
-To upgrade your Anthos GKE on AWS clusters, you need to [ uninstall
-](https://cloud.google.com/anthos/gke/docs/aws/how-to/uninstalling) all your
-management and user clusters. You also need to download the new version of the
-[ ` anthos-gke `
-](https://cloud.google.com/anthos/gke/docs/aws/downloads#anthos-gke_cli_tool)
-cli tool.
-
-**CHANGED:**
-
-Anthos GKE on AWS now supports [ auto-scaling
-](https://cloud.google.com/anthos/gke/docs/aws/how-to/scaling-user-cluster) .
-You can enable auto-scaling by changing settings in your AWSNodePools, or
-scale your clusters manually by adding new AWSNodePools.
-
-**CHANGED:**
-
-Built-in EBS StorageClass names have been changed to ` standard-rwo ` and `
-premium-rwo ` . If you declare the [ ` singlewriter-standard ` or `
-singlewriter-premium `
-](https://cloud.google.com/anthos/gke/docs/aws/concepts/storage.md)
-StorageClasses with your workloads, you must update your workloads when
-upgrading.
-
-**CHANGED:**
-
-Anthos GKE on AWS now support for Application-layer secrets encryption with
-AWS KMS by passing a KMS key ARN to your [ AWSCluster
-](https://cloud.google.com/anthos/gke/docs/aws/reference/awscluster#speccontrolplane)
-.
 
 **BigQuery**
 
@@ -503,6 +571,48 @@ customize how feature attributions are displayed for image data.
 
 Learn more about [ visualizing explanations ](https://cloud.google.com/ai-
 platform/prediction/docs/ai-explanations/visualizing-explanations) .
+
+**Dataproc**
+
+**FEATURE:**
+
+**Image 1.5**
+
+Delta Lake version is upgraded to 0.5.0 release. Delta Lake Hive Connector
+0.1.0 is also added to the 1.5 image.
+
+**FEATURE:**
+
+Customers can now adjust the amount of time the Dataproc startup script will
+wait for Presto Coordinator service to start before deciding that their
+startup has succeeded. This is set via ` dataproc:startup.component.service-
+binding-timeout.presto-coordinator ` property and takes a value in seconds.
+The maximum respected value is 1800 (30 minutes).
+
+**CHANGED:**
+
+New [ sub-minor
+](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-
+versions#supported_cloud_dataproc_versions) image versions: 1.2.96-debian9,
+1.3.56-debian9, 1.4.27-debian9, 1.3.56-debian10, 1.4.27-debian10,
+1.5.2-debian10, 1.3.56-ubuntu18, 1.4.27-ubuntu18, 1.5.2-ubuntu18
+
+**CHANGED:**
+
+**Image 1.5**
+
+Cloud Storage connector upgraded to version 2.1.2 (for more information,
+review the [ change notes ](https://github.com/GoogleCloudDataproc/hadoop-
+connectors/releases/tag/v2.1.2) in the GitHub repository)
+
+**FIXED:**
+
+**Image 1.5**
+
+Notebook bug fixes: fixed a bug in Zeppelin and Jupyter that resulted in a
+failure to render images when using Component Gateway. Also fixed a Jupyter
+Notebooks bug that [ caused notebook downloads to fail
+](https://github.com/jupyter/notebook/issues/4869) .
 
 **Virtual Private Cloud**
 
