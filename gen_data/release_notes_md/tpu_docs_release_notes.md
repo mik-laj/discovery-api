@@ -12,6 +12,16 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/tpu-release-notes.xml `
 
+##  May 08, 2020
+
+**CHANGED:**
+
+Cloud TPU now supports TensorFlow 2.2. See the [ TensorFlow 2.2 Release Notes
+](https://github.com/tensorflow/tensorflow/releases/tag/v2.2.0) for a complete
+list of features included with this release. New models for Image segmentation
+and Image classification have been added to the official cloud [ TPU supported
+models list ](https://cloud.google.com/tpu/docs/tutorials/support-matrix) .
+
 ##  April 21, 2020
 
 **FEATURE:**
