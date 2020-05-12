@@ -13,6 +13,25 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloud-sql-postgres-release-
 notes.xml `
 
+##  May 11, 2020
+
+**FEATURE:**
+
+Cloud SQL has expanded support for PostgreSQL extensions. Eight additional
+PostgreSQL extensions are now available:
+
+  * pageinspect 
+  * pgfincore 
+  * pg_freespacemap 
+  * pg_repack 
+  * pg_visibility 
+  * PL/Proxy 
+  * postgres_fdw 
+  * postgresql-hll 
+
+For information about these newly-added extensions, see [ PostgreSQL
+extensions ](https://cloud.google.com/sql/docs/postgres/extensions) .
+
 ##  April 20, 2020
 
 **FEATURE:**
