@@ -14,6 +14,16 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/compute-release-notes.xml `
 
+##  May 11, 2020
+
+**FEATURE:**
+
+You can identify idle persistent disk resources by using [ idle persistent
+disk recommendations ](https://cloud.google.com/compute/docs/disks/viewing-
+and-applying-idle-pd-recommendations) . Following these recommendations will
+help reduce unused resources and reduce your compute bill. This feature is
+**Generally available** .
+
 ##  April 30, 2020
 
 **CHANGED:**
