@@ -562,10 +562,10 @@ command, the ` --admin-ssh-key-path ` parameter is now optional.
 
 **CHANGED:**
 
-On May 8, 2019, we introduced a change to Connect for Anthos, the service that
-enables you to interact with your GKE on-prem clusters using Cloud Console. To
-use the new Connect for Anthos agent, you must re-register your clusters with
-Cloud Console, or you must upgrade to Anthos GKE on-prem beta-1.4.
+On May 8, 2019, we introduced a change to Connect, the service that enables
+you to interact with your GKE on-prem clusters using Cloud Console. To use the
+new Connect agent, you must re-register your clusters with Cloud Console, or
+you must upgrade to Anthos GKE on-prem beta-1.4.
 
 Your GKE on-prem clusters and the workloads running on them will continue to
 operate uninterrupted. However, your clusters will not be visible in Cloud
@@ -616,9 +616,9 @@ prem/archive/1.1/beta-1.4/how-to/administration/upgrading-a-cluster) :
 
 **ISSUE:**
 
-There is an issue that prevents the Connect for Anthos agent from being
-updated to the new version during an upgrade. To work around this issue, run
-the following command after you upgrade a cluster:
+There is an issue that prevents the Connect agent from being updated to the
+new version during an upgrade. To work around this issue, run the following
+command after you upgrade a cluster:
 
     
     
@@ -685,10 +685,10 @@ command, the ` --admin-ssh-key-path ` parameter is now optional.
 
 **CHANGED:**
 
-On May 8, 2019, we introduced a change to Connect for Anthos, the service that
-enables you to interact with your GKE on-prem clusters using Cloud Console. To
-use the new Connect for Anthos agent, you must re-register your clusters with
-Cloud Console, or you must upgrade to Anthos GKE on-prem beta-1.4.
+On May 8, 2019, we introduced a change to Connect, the service that enables
+you to interact with your GKE on-prem clusters using Cloud Console. To use the
+new Connect agent, you must re-register your clusters with Cloud Console, or
+you must upgrade to Anthos GKE on-prem beta-1.4.
 
 Your GKE on-prem clusters and the workloads running on them will continue to
 operate uninterrupted. However, your clusters will not be visible in Cloud
@@ -739,9 +739,9 @@ prem/archive/1.1/beta-1.4/how-to/administration/upgrading-a-cluster) :
 
 **ISSUE:**
 
-There is an issue that prevents the Connect for Anthos agent from being
-updated to the new version during an upgrade. To work around this issue, run
-the following command after you upgrade a cluster:
+There is an issue that prevents the Connect agent from being updated to the
+new version during an upgrade. To work around this issue, run the following
+command after you upgrade a cluster:
 
     
     
@@ -810,7 +810,7 @@ following changes:
 **FEATURE:**
 
 GKE on-prem clusters now automatically connect back to Google using [ Connect
-for Anthos ](/kubernetes-engine/connect) .
+](/kubernetes-engine/connect) .
 
 **FEATURE:**
 
@@ -881,8 +881,7 @@ user clusters.
 
 **CHANGED:**
 
-[ Connect for Anthos documentation ](/kubernetes-engine/connect) has been
-migrated.
+[ Connect documentation ](/kubernetes-engine/connect) has been migrated.
 
 ###  Fixes
 
@@ -975,10 +974,10 @@ now available.
 
 Stackdriver Logging is now enabled on each node. By default, the logging agent
 replicates logs to your GCP project for only control plane services, cluster
-API, vSphere controller, Calico, BIG-IP controller, Envoy proxy, Connect for
-Anthos, Anthos Config Management, Prometheus and Grafana services, Istio
-control plane, and Docker. Application container logs are excluded by default,
-but can be optionally enabled.
+API, vSphere controller, Calico, BIG-IP controller, Envoy proxy, Connect,
+Anthos Config Management, Prometheus and Grafana services, Istio control
+plane, and Docker. Application container logs are excluded by default, but can
+be optionally enabled.
 
 **FEATURE:**
 
