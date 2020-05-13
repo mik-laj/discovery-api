@@ -12,6 +12,16 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/tpu-release-notes.xml `
 
+##  May 12, 2020
+
+**CHANGED:**
+
+Cloud TPU currently supports TensorFlow version 1.15.2. See the [ Release
+Notes ](https://github.com/tensorflow/tensorflow/releases/tag/v1.15.2) .
+
+TensorFlow 1.15 supported Python 2, but that support has been discontinued
+with TensorFlow 1.15.2.
+
 ##  May 08, 2020
 
 **CHANGED:**
@@ -36,16 +46,6 @@ scale on Google Cloud (all the way up to full Cloud TPU Pods).
 See the ⁠ [ PyTorch/XLA 1.5 Release Notes
 ](https://github.com/pytorch/xla/releases/tag/v1.5.0) for a complete list of
 features included in this release.
-
-##  April 01, 2020
-
-**CHANGED:**
-
-Cloud TPU now supports TensorFlow version 1.15.2 [ Release Notes
-](https://github.com/tensorflow/tensorflow/releases/tag/v1.15.2) . No changes
-to the API or the [ official Cloud TPU supported models list
-](https://cloud.google.com/tpu/docs/tutorials/support-matrix) has been
-introduced with this release.
 
 ##  January 09, 2020
 
