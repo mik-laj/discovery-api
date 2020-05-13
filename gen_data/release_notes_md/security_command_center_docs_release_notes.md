@@ -1,8 +1,10 @@
 #  Release Notes
 
-This page documents production updates to Security Command Center. You can
-periodically check this page for announcements about new or updated features,
-bug fixes, known issues, and deprecated functionality.
+This page documents production updates to Security Command Center and the
+products and features available in the Security Command Center Premium and
+Standard tiers. You can periodically check this page for announcements about
+new or updated features, bug fixes, known issues, and deprecated
+functionality.
 
 You can see the latest product updates for all of Google Cloud on the [ Google
 Cloud release notes ](/release-notes) page.
@@ -11,6 +13,44 @@ To get the latest product updates delivered to you, add the URL of this page
 to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/scc-release-notes.xml `
+
+##  May 12, 2020
+
+**FEATURE:**
+
+Security Command Center Premium and Standard tiers are now available.
+
+**FEATURE:**
+
+The Security Command Center Premium tier includes:
+
+  * Security Health Analytics 
+  * Web Security Scanner managed scans 
+  * Event Threat Detection 
+  * Container Threat Detection 
+
+Learn more about the [ Security Command Center Premium tier
+](https://cloud.google.com/security-command-center/docs/concepts-security-
+command-center-overview) .
+
+**DEPRECATED:**
+
+The Event Threat Detection API will be deprecated in the coming months.
+Similar functionality is available in the Security Command Center API settings
+feature.
+
+**FEATURE:**
+
+Container Threat Detection currently supports the following Kubernetes Engine
+versions on the Regular and Rapid [ channels
+](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels) :
+
+  * >= 1.15.9-gke.12 
+  * >= 1.16.5-gke.2 
+  * >= 1.17 
+
+In a future update, Container Threat Detection will support version 1.14 and
+the Stable channel.
 
 ##  April 10, 2020
 
