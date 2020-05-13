@@ -1,6 +1,6 @@
-You are viewing documentation for a previous version of GKE On-Prem. [ View
-the latest documentation ](https://cloud.google.com/anthos/gke/docs/on-
-prem/?hl=de) .
+Sie betrachten die Dokumentation für eine frühere Version von GKE On-Prem. [
+Sehen Sie sich die aktuelle Dokumentation an
+](https://cloud.google.com/anthos/gke/docs/on-prem/?hl=de) .
 
 #  Sicherheitsbulletins
 
