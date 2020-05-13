@@ -12,6 +12,72 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  May 12, 2020
+
+**BigQuery**
+
+**CHANGED:**
+
+Updated versions of [ Magnitude Simba ODBC
+](https://cloud.google.com/bigquery/providers/simba-drivers/) drivers have
+been released.
+
+**Cloud Profiler**
+
+**CHANGED:**
+
+The Cloud Profiler Python agent is now generally available. See [ Profiling
+Python applications ](https://cloud.google.com/profiler/docs/profiling-python)
+for information on configuring your Python application.
+
+**Cloud TPU**
+
+**CHANGED:**
+
+Cloud TPU currently supports TensorFlow version 1.15.2. See the [ Release
+Notes ](https://github.com/tensorflow/tensorflow/releases/tag/v1.15.2) .
+
+TensorFlow 1.15 supported Python 2, but that support has been discontinued
+with TensorFlow 1.15.2.
+
+**Security Command Center**
+
+**FEATURE:**
+
+Security Command Center Premium and Standard tiers are now available.
+
+**FEATURE:**
+
+The Security Command Center Premium tier includes:
+
+  * Security Health Analytics 
+  * Web Security Scanner managed scans 
+  * Event Threat Detection 
+  * Container Threat Detection 
+
+Learn more about the [ Security Command Center Premium tier
+](https://cloud.google.com/security-command-center/docs/concepts-security-
+command-center-overview) .
+
+**DEPRECATED:**
+
+The Event Threat Detection API will be deprecated in the coming months.
+Similar functionality is available in the Security Command Center API settings
+feature.
+
+**FEATURE:**
+
+Container Threat Detection currently supports the following Kubernetes Engine
+versions on the Regular and Rapid [ channels
+](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels) :
+
+  * >= 1.15.9-gke.12 
+  * >= 1.16.5-gke.2 
+  * >= 1.17 
+
+In a future update, Container Threat Detection will support version 1.14 and
+the Stable channel.
+
 ##  May 11, 2020
 
 **App Engine standard environment Python**
@@ -47,6 +113,16 @@ PostgreSQL extensions are now available:
 
 For information about these newly-added extensions, see [ PostgreSQL
 extensions ](https://cloud.google.com/sql/docs/postgres/extensions) .
+
+**Compute Engine**
+
+**FEATURE:**
+
+You can identify idle persistent disk resources by using [ idle persistent
+disk recommendations ](https://cloud.google.com/compute/docs/disks/viewing-
+and-applying-idle-pd-recommendations) . Following these recommendations will
+help reduce unused resources and reduce your compute bill. This feature is
+**Generally available** .
 
 ##  May 08, 2020
 
@@ -1647,123 +1723,4 @@ The following beta features are available in API version **v1beta2** :
 
 [ Firewall Insights ](https://cloud.google.com/network-intelligence-
 center/docs/firewall-insights/concepts/overview) is now in Beta.
-
-##  April 13, 2020
-
-**AI Platform Prediction**
-
-**CHANGED:**
-
-The pricing of Compute Engine (N1) machine types for online prediction in the
-us-central1 region has changed. vCPU resources now cost $0.031613 per vCPU
-hour and RAM now costs $0.004242 per GB hour.
-
-[ Read more details about pricing. ](https://cloud.google.com/ai-
-platform/prediction/pricing)
-
-**App Engine flexible environment .NET**
-
-**CHANGED:**
-
-Quotas for sockets have been removed. There is no longer a limit on the number
-of socket connections or the amount of data you can send and receive through a
-socket.
-
-**App Engine flexible environment Go**
-
-**CHANGED:**
-
-Quotas for sockets have been removed. There is no longer a limit on the number
-of socket connections or the amount of data you can send and receive through a
-socket.
-
-**App Engine flexible environment Java**
-
-**CHANGED:**
-
-Quotas for sockets have been removed. There is no longer a limit on the number
-of socket connections or the amount of data you can send and receive through a
-socket.
-
-**App Engine flexible environment Node.js**
-
-**CHANGED:**
-
-Quotas for sockets have been removed. There is no longer a limit on the number
-of socket connections or the amount of data you can send and receive through a
-socket.
-
-**App Engine flexible environment PHP**
-
-**CHANGED:**
-
-Quotas for sockets have been removed. There is no longer a limit on the number
-of socket connections or the amount of data you can send and receive through a
-socket.
-
-**App Engine flexible environment Ruby**
-
-**CHANGED:**
-
-Quotas for sockets have been removed. There is no longer a limit on the number
-of socket connections or the amount of data you can send and receive through a
-socket.
-
-**App Engine flexible environment custom runtimes**
-
-**CHANGED:**
-
-Quotas for sockets have been removed. There is no longer a limit on the number
-of socket connections or the amount of data you can send and receive through a
-socket.
-
-**App Engine standard environment Java**
-
-**CHANGED:**
-
-Quotas for sockets have been removed. There is no longer a limit on the number
-of socket connections or the amount of data your Java 8 app can send and
-receive through a socket.
-
-**App Engine standard environment PHP**
-
-**CHANGED:**
-
-Quotas for sockets have been removed. There is no longer a limit on the number
-of socket connections or the amount of data your PHP 5 app can send and
-receive through a socket.
-
-**App Engine standard environment Python**
-
-**CHANGED:**
-
-Quotas for sockets have been removed. There is no longer a limit on the number
-of socket connections or the amount of data your Python 2 app can send and
-receive through a socket.
-
-**Cloud Data Loss Prevention**
-
-**FEATURE:**
-
-Added additional [ infoType detectors
-](https://cloud.google.com/dlp/docs/infotypes-reference) :
-
-  * IRELAND_PPSN 
-  * IRELAND_PASSPORT 
-
-**Event Threat Detection**
-
-**FEATURE:**
-
-Event Threat Detection is now in general availability.
-
-  * Learn [ how Event Threat Detection works ](https://cloud.google.com/event-threat-detection/docs/concepts-overview) . 
-  * [ Get started using Event Threat Detection ](https://cloud.google.com/event-threat-detection/docs/quickstart-etd-console) . 
-
-**Google Cloud Armor**
-
-**CHANGED:**
-
-Update to rules language syntax. Adds support for the CEL 'has' macro so that
-Google Cloud Armor check for absence of a header in the 'request.headers' map.
 
