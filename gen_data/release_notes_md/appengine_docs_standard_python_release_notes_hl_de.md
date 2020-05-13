@@ -5,10 +5,14 @@ python3/?hl=de) .
 
 #  Python 2.7 – Versionshinweise
 
-Für neueste Produktaktualisierungen können Sie die URL dieser Seite in einen [
+Die neuesten Produktaktualisierungen für Google Cloud finden Sie auf der Seite
+mit den [ Google Cloud-Versionshinweisen ](https://cloud.google.com/release-
+notes?hl=de) .
+
+Für neueste Produktaktualisierungen können Sie die URL der Seite in den [
 Feedreader ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
 einfügen oder die Feed-URL direkt hinzufügen: `
-https://cloud.google.com/feeds/gaestd-py-release-notes.xml `
+https://cloud.google.com/feeds/gaestd-py-release-notes.xml ` .
 
 ##  May 11, 2020
 
