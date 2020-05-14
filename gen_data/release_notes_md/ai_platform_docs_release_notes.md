@@ -15,6 +15,53 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/aiplatform-release-notes.xml `
 
+##  May 13, 2020
+
+**AI Platform Prediction**
+
+**FEATURE:**
+
+AI Platform Prediction now supports the following regions for batch
+prediction, in addition to those that were already supported:
+
+  * ` northamerica-northeast1 ` (Montréal) 
+  * ` southamerica-east1 ` (São Paulo) 
+  * ` australia-southeast1 ` (Sydney) 
+
+See the [ full list of available regions ](https://cloud.google.com/ai-
+platform/prediction/docs/regions) .
+
+` northamerica-northeast1 ` and ` southamerica-east1 ` have the same pricing
+as other Americas regions, and ` australia-southeast1 ` has the same pricing
+as other Asia Pacific regions. Learn about [ pricing for each region
+](https://cloud.google.com/ai-platform/prediction/pricing) .
+
+**AI Platform Training**
+
+**FEATURE:**
+
+AI Platform Training now supports the following regions, in addition to those
+that were already supported:
+
+  * ` northamerica-northeast1 ` (Montréal) 
+  * ` southamerica-east1 ` (São Paulo) 
+  * ` australia-southeast1 ` (Sydney) 
+
+GPUs are available for training in each of the new regions:
+
+  * NVIDIA Tesla P4 GPUs are available in ` northamerica-northeast1 ` . 
+  * NVIDIA Tesla T4 GPUs are available in ` southamerica-east1 ` . 
+  * NVIDIA Tesla P4 GPUs and NVIDIA Tesla P100 GPUs are available in ` australia-southeast1 ` . 
+
+See the [ full list of available regions ](https://cloud.google.com/ai-
+platform/training/docs/regions) and the [ guide to training with GPUs
+](https://cloud.google.com/ai-platform/training/docs/using-gpus) .
+
+` northamerica-northeast1 ` and ` southamerica-east1 ` have the same pricing
+as other Americas regions, and ` australia-southeast1 ` has the same pricing
+as other Asia Pacific regions. Learn about [ pricing for each region
+](https://cloud.google.com/ai-platform/training/pricing) .
+
 ##  April 29, 2020
 
 **AI Platform Prediction**
