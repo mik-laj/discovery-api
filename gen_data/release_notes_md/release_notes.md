@@ -12,7 +12,37 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  May 13, 2020
+
+**Memorystore for Redis**
+
+**FEATURE:**
+
+Released support for [ VPC Service Controls
+](https://cloud.google.com/memorystore/docs/redis/using-vpc-service-controls)
+for Memorystore for Redis.
+
+**VPC Service Controls**
+
+**FEATURE:**
+
+[ Beta stage ](https://cloud.google.com/products/#product-launch-stages)
+support for the following integration:
+
+  * [ Memorystore for Redis ](https://cloud.google.com/memorystore/docs/redis)
+
 ##  May 12, 2020
+
+**Anthos Service Mesh**
+
+**FIXED:**
+
+1.4.9-asm.1
+
+Fixes the security issue, CVE-2020-10739, with the same fixes as [ OSS Istio
+1.4.9 ](https://istio.io/news/releases/1.4.x/announcing-1.4.9/) . See [ ISTIO-
+SECURITY-2020-005 ](https://istio.io/news/security/istio-security-2020-005)
+for more information.
 
 **BigQuery**
 
@@ -39,6 +69,15 @@ Notes ](https://github.com/tensorflow/tensorflow/releases/tag/v1.15.2) .
 
 TensorFlow 1.15 supported Python 2, but that support has been discontinued
 with TensorFlow 1.15.2.
+
+**Compute Engine**
+
+**FEATURE:**
+
+Automatically manage the size of sole-tenant node groups with the [ sole-
+tenant node group autoscaler
+](https://cloud.google.com/compute/docs/nodes/node-group-autoscaler) . This is
+**Generally Available** .
 
 **Security Command Center**
 
@@ -1667,60 +1706,4 @@ in **General Availability** .
 
 A new document, [ Traffic Director features
 ](https://cloud.google.com/traffic-director/docs/features) , is published.
-
-##  April 14, 2020
-
-**BigQuery Data Transfer Service**
-
-**FEATURE:**
-
-BigQuery Data Transfer Service now supports [ Google Merchant Center data
-transfers for best sellers data
-](https://cloud.google.com/bigquery/docs/merchant-center-
-transfer#supported_reports) .
-
-**Cloud Load Balancing**
-
-**FEATURE:**
-
-External HTTP(S) load balancers now support [ URL rewrites and redirects
-](https://cloud.google.com/load-balancing/docs/https/traffic-management) .
-
-URL rewrites allow you to decouple the URLs that your external users use from
-those that your services use.
-
-With URL redirects, you can redirect client requests from one URL to another
-URL.
-
-These features are available in **General Availability** .
-
-**Config Connector**
-
-**CHANGED:**
-
-Added readiness probes to Config Connector pods
-
-**Document AI**
-
-**FEATURE:**
-
-**Document AI Beta released**
-
-The following beta features are available in API version **v1beta2** :
-
-  * **Document processing** : You can use the API to [ parse forms ](https://cloud.google.com/solutions/document-ai/docs/process-forms) or [ tables ](https://cloud.google.com/solutions/document-ai/docs/process-tables) from PDF, TIFF, or GIF documents. 
-  * **Regional support** : The API now offers multi-regional support ( ` us ` and ` eu ` ) for all features. [ Using a multi-region endpoint ](https://cloud.google.com/solutions/document-ai/docs/regions) enables you to configure the API to store and process your data in the United States or European Union. 
-
-**FEATURE:**
-
-**Invoice processing Beta**
-
-  * Invoice processing is now available as a restricted feature. See [ Parsing invoices ](https://cloud.google.com/solutions/document-ai/docs/process-invoices) for more information. 
-
-**Network Intelligence Center**
-
-**FEATURE:**
-
-[ Firewall Insights ](https://cloud.google.com/network-intelligence-
-center/docs/firewall-insights/concepts/overview) is now in Beta.
 
