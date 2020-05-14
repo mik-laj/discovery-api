@@ -1779,6 +1779,14 @@
                 },
                 "name": {
                     "type": "string"
+                },
+                "testPlatform": {
+                    "enum": [
+                        "UNKNOWN_PLATFORM",
+                        "ANDROID",
+                        "IOS"
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1867,6 +1875,62 @@
             "properties": {
                 "stackTrace": {
                     "$ref": "StackTrace"
+                }
+            },
+            "type": "object"
+        },
+        "IosAppInfo": {
+            "id": "IosAppInfo",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "IosRoboTest": {
+            "id": "IosRoboTest",
+            "properties": {},
+            "type": "object"
+        },
+        "IosTest": {
+            "id": "IosTest",
+            "properties": {
+                "iosAppInfo": {
+                    "$ref": "IosAppInfo"
+                },
+                "iosRoboTest": {
+                    "$ref": "IosRoboTest"
+                },
+                "iosTestLoop": {
+                    "$ref": "IosTestLoop"
+                },
+                "iosXcTest": {
+                    "$ref": "IosXcTest"
+                },
+                "testTimeout": {
+                    "$ref": "Duration"
+                }
+            },
+            "type": "object"
+        },
+        "IosTestLoop": {
+            "id": "IosTestLoop",
+            "properties": {
+                "bundleId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "IosXcTest": {
+            "id": "IosXcTest",
+            "properties": {
+                "bundleId": {
+                    "type": "string"
+                },
+                "xcodeVersion": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2530,6 +2594,9 @@
             "properties": {
                 "androidTest": {
                     "$ref": "AndroidTest"
+                },
+                "iosTest": {
+                    "$ref": "IosTest"
                 }
             },
             "type": "object"
