@@ -23,6 +23,16 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/stackdriver-release-notes.xml `
 
+##  May 12, 2020
+
+**Cloud Profiler**
+
+**CHANGED:**
+
+The Cloud Profiler Python agent is now generally available. See [ Profiling
+Python applications ](https://cloud.google.com/profiler/docs/profiling-python)
+for information on configuring your Python application.
+
 ##  May 11, 2020
 
 **Cloud Logging**
