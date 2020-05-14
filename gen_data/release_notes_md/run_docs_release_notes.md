@@ -12,6 +12,15 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/run-release-notes.xml `
 
+##  May 13, 2020
+
+**FEATURE:**
+
+Cloud Run (fully managed) now supports [ connecting to a VPC network
+](https://cloud.google.com/run/docs/configuring/connecting-vpc) with [
+Serverless VPC Access ](https://cloud.google.com/vpc/docs/configure-
+serverless-vpc-access) , in beta.
+
 ##  May 08, 2020
 
 **FEATURE:**
