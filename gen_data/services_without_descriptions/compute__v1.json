@@ -12334,6 +12334,44 @@
                         "https://www.googleapis.com/auth/compute.readonly"
                     ]
                 },
+                "getIamPolicy": {
+                    "httpMethod": "GET",
+                    "id": "compute.regionDisks.getIamPolicy",
+                    "parameterOrder": [
+                        "project",
+                        "region",
+                        "resource"
+                    ],
+                    "parameters": {
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "resource": {
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/disks/{resource}/getIamPolicy",
+                    "response": {
+                        "$ref": "Policy"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
                 "insert": {
                     "httpMethod": "POST",
                     "id": "compute.regionDisks.insert",
@@ -12507,6 +12545,46 @@
                     },
                     "response": {
                         "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "setIamPolicy": {
+                    "httpMethod": "POST",
+                    "id": "compute.regionDisks.setIamPolicy",
+                    "parameterOrder": [
+                        "project",
+                        "region",
+                        "resource"
+                    ],
+                    "parameters": {
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "resource": {
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/disks/{resource}/setIamPolicy",
+                    "request": {
+                        "$ref": "RegionSetPolicyRequest"
+                    },
+                    "response": {
+                        "$ref": "Policy"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
@@ -29097,6 +29175,21 @@
         "MachineType": {
             "id": "MachineType",
             "properties": {
+                "accelerators": {
+                    "items": {
+                        "properties": {
+                            "guestAcceleratorCount": {
+                                "format": "int32",
+                                "type": "integer"
+                            },
+                            "guestAcceleratorType": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
                 "creationTimestamp": {
                     "type": "string"
                 },
