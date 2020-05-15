@@ -62,6 +62,19 @@ as other Americas regions, and ` australia-southeast1 ` has the same pricing
 as other Asia Pacific regions. Learn about [ pricing for each region
 ](https://cloud.google.com/ai-platform/training/pricing) .
 
+##  May 12, 2020
+
+**AI Platform Deep Learning VM Image**
+
+**FIXED:**
+
+**M47 release**
+
+Fixed an OS login issue under single user mode for a user external to an
+organization.
+
+Fixed a git extensions plugin issue in TensorFlow 2 images.
+
 ##  April 29, 2020
 
 **AI Platform Prediction**
