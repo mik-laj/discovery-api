@@ -14,6 +14,68 @@ URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
 ##  May 13, 2020
 
+**AI Platform Prediction**
+
+**FEATURE:**
+
+AI Platform Prediction now supports the following regions for batch
+prediction, in addition to those that were already supported:
+
+  * ` northamerica-northeast1 ` (Montréal) 
+  * ` southamerica-east1 ` (São Paulo) 
+  * ` australia-southeast1 ` (Sydney) 
+
+See the [ full list of available regions ](https://cloud.google.com/ai-
+platform/prediction/docs/regions) .
+
+` northamerica-northeast1 ` and ` southamerica-east1 ` have the same pricing
+as other Americas regions, and ` australia-southeast1 ` has the same pricing
+as other Asia Pacific regions. Learn about [ pricing for each region
+](https://cloud.google.com/ai-platform/prediction/pricing) .
+
+**AI Platform Training**
+
+**FEATURE:**
+
+AI Platform Training now supports the following regions, in addition to those
+that were already supported:
+
+  * ` northamerica-northeast1 ` (Montréal) 
+  * ` southamerica-east1 ` (São Paulo) 
+  * ` australia-southeast1 ` (Sydney) 
+
+GPUs are available for training in each of the new regions:
+
+  * NVIDIA Tesla P4 GPUs are available in ` northamerica-northeast1 ` . 
+  * NVIDIA Tesla T4 GPUs are available in ` southamerica-east1 ` . 
+  * NVIDIA Tesla P4 GPUs and NVIDIA Tesla P100 GPUs are available in ` australia-southeast1 ` . 
+
+See the [ full list of available regions ](https://cloud.google.com/ai-
+platform/training/docs/regions) and the [ guide to training with GPUs
+](https://cloud.google.com/ai-platform/training/docs/using-gpus) .
+
+` northamerica-northeast1 ` and ` southamerica-east1 ` have the same pricing
+as other Americas regions, and ` australia-southeast1 ` has the same pricing
+as other Asia Pacific regions. Learn about [ pricing for each region
+](https://cloud.google.com/ai-platform/training/pricing) .
+
+**BigQuery**
+
+**CHANGED:**
+
+Updated versions of [ Magnitude Simba JDBC
+](https://cloud.google.com/bigquery/providers/simba-drivers/) drivers have
+been released.
+
+**Cloud Run**
+
+**FEATURE:**
+
+Cloud Run (fully managed) now supports [ connecting to a VPC network
+](https://cloud.google.com/run/docs/configuring/connecting-vpc) with [
+Serverless VPC Access ](https://cloud.google.com/vpc/docs/configure-
+serverless-vpc-access) , in beta.
+
 **Memorystore for Redis**
 
 **FEATURE:**
@@ -32,6 +94,17 @@ support for the following integration:
   * [ Memorystore for Redis ](https://cloud.google.com/memorystore/docs/redis)
 
 ##  May 12, 2020
+
+**AI Platform Deep Learning VM Image**
+
+**FIXED:**
+
+**M47 release**
+
+Fixed an OS login issue under single user mode for a user external to an
+organization.
+
+Fixed a git extensions plugin issue in TensorFlow 2 images.
 
 **Anthos Service Mesh**
 
@@ -1462,248 +1535,4 @@ You can now create private quotes for VM solutions ( [ alpha
 [ Performance Dashboard ](https://cloud.google.com/network-intelligence-
 center/docs/performance-dashboard/concepts/overview) is now available in
 **General Availability** .
-
-##  April 15, 2020
-
-**Cloud CDN**
-
-**FEATURE:**
-
-[ Signed Cookies ](https://cloud.google.com/cdn/docs/using-signed-cookies) are
-available in **General Availability** . Signed Cookies complement our existing
-[ Signed URLs ](https://cloud.google.com/cdn/docs/using-signed-urls)
-functionality by allowing you to sign a URL prefix and issue a cookie to a
-client, avoiding the need to sign content on a per-URL basis when protecting
-media or other content cached by Cloud CDN. Support for authorizing a URL
-prefix is extended to Signed URLs as an alternative signing scheme.
-
-**Cloud Deployment Manager**
-
-**FEATURE:**
-
-Added support for [ Cloud Scheduler ](https://cloud.google.com/scheduler)
-through ` gcp-types/cloudscheduler-v1:projects.locations.jobs ` .
-
-**CHANGED:**
-
-You can now apply granular [ IAM Permissions
-](https://cloud.google.com/iam/docs/permissions-reference) to the [ Google
-APIs service account used by Deployment Manager
-](https://cloud.google.com/deployment-manager/docs/access-
-control#access_control_for) , as we've removed the requirement for `
-roles/editor ` being assigned to the service account.
-
-**CHANGED:**
-
-Updates on [ Cloud Functions ](https://cloud.google.com/functions) resources
-using ` gcp-types/cloudfunctions-v1 ` now retry on 429 errors.
-
-**CHANGED:**
-
-GKE clusters and node pools will wait for maintenance to complete before
-attempting to apply any updates. Affected collections:
-
-  * ` gcp-types/container-v1:projects.zones.clusters `
-  * ` gcp-types/container-v1:projects.locations.clusters `
-  * ` gcp-types/container-v1:projects.zones.clusters.nodePools `
-  * ` gcp-types/container-v1:projects.locations.clusters.nodePools `
-  * ` gcp-types/container-v1beta1:projects.zones.clusters `
-  * ` gcp-types/container-v1beta1:projects.locations.clusters `
-  * ` gcp-types/container-v1beta1:projects.zones.clusters.nodePools `
-  * ` gcp-types/container-v1beta1:projects.locations.clusters.nodePools `
-
-**FIXED:**
-
-Deployment Manager now acquires existing GKE cluster resources of type ` gcp-
-types/container-v1:projects.locations.clusters ` .
-
-**CHANGED:**
-
-Added support for updating the following properties on ` gcp-
-types/container-v1:projects.zones.clusters ` and ` gcp-
-types/container-v1:projects.locations.clusters ` :
-
-  * binaryAuthorization 
-  * databaseEncryption 
-  * masterAuthorizedNetworksConfig 
-  * autoscaling 
-  * resourceUsageExportConfig 
-  * verticalPodAutoscaling 
-
-Additionally, for ` gcp-types/container-v1beta1:projects.zones.clusters ` and
-` gcp-types/container-v1beta1:projects.locations.clusters ` the following
-fields can also be updated:
-
-  * podSecurityPolicyConfig 
-  * privateClusterConfig 
-  * shieldedNodes 
-  * workloadIdentityConfig 
-
-**FIXED:**
-
-Deployment Manager now correctly updates autoscaling properties for resources
-of type ` gcp-types/container-v1:projects.locations.clusters.nodePools ` and `
-gcp-types/container-v1beta1:projects.locations.clusters.nodePools ` .
-
-**FIXED:**
-
-Deployment Manager now correctly acquires [ Access Context Manager
-](https://cloud.google.com/access-context-manager/docs) resources of type `
-gcp-types/accesscontextmanager-v1:accessPolicies.accessLevels ` and ` gcp-
-types/accesscontextmanager-v1beta:accessPolicies.accessLevels ` if the
-resources already exist.
-
-**CHANGED:**
-
-Added support for updating [ Cloud Pub/Sub ](https://cloud.google.com/pubsub)
-subscriptions using ` gcp-types/pubsub-v1:projects.subscriptions ` .
-
-**FIXED:**
-
-Deployment Manager now correctly deletes [ Compute Engine
-](https://cloud.google.com/compute/docs) forwarding rules of type `
-compute.v1.forwardingRule ` , ` compute.beta.forwardingRule ` , ` gcp-
-types/compute-v1:forwardingRules ` and ` gcp-types/compute-
-beta:forwardingRules ` when the resource name does not match the forwarding
-rule name.
-
-**CHANGED:**
-
-Performance improvements when handling large Swagger / OpenAPI specs when [
-adding an API as a type provider ](https://cloud.google.com/deployment-
-manager/docs/configuration/type-providers/creating-type-provider) .
-
-**Cloud Key Management Service**
-
-**FEATURE:**
-
-[ Cloud External Key Manager (Cloud EKM)
-](https://cloud.google.com/kms/docs/ekm) is generally available.
-
-**Compute Engine**
-
-**FEATURE:**
-
-You can identify VM instances that are not being used with [ idle VM
-recommendations ](https://cloud.google.com/compute/docs/instances/viewing-and-
-applying-idle-vm-recommendations) . Use these recommendations to reduce unused
-resources and reduce your compute bill. This feature is **Generally
-available** .
-
-**FEATURE:**
-
-You can manage, maintain, and view patch compliance for your VM instances
-using the OS patch management feature. For more information, see [ OS patch
-management ](https://cloud.google.com/compute/docs/os-patch-management) . This
-feature is now **Generally available** .
-
-**FEATURE:**
-
-The latest stable version of the OS Config agent is [ ` 20200402.01 `
-](https://github.com/GoogleCloudPlatform/osconfig/releases/tag/20200402.01) .
-If you were using OS patch management in Beta, you can update the agent on
-your existing VMs, see [ Updating the OS Config agent
-](https://cloud.google.com/compute/docs/manage-os#update-agent) .
-
-**Dataflow**
-
-**FEATURE:**
-
-[ Cloud Dataflow SQL
-](https://cloud.google.com/dataflow/docs/guides/sql/dataflow-sql-intro) is now
-generally available. You can now run parameterized queries from the Dataflow
-SQL UI.
-
-**Dataproc**
-
-**FEATURE:**
-
-**Image 1.5**
-
-[ Jupyter on Dataproc
-](https://cloud.google.com/dataproc/docs/concepts/components/jupyter) now
-supports exporting notebooks as PDFs.
-
-**FEATURE:**
-
-**Image 1.5**
-
-[ Presto ](https://cloud.google.com/dataproc/docs/concepts/components/presto)
-now includes two default catalogs:
-
-  * ` bigquery ` pointing to the datasets of the cluster's project 
-
-  * ` bigquery_public_data ` pointing to the public datasets 
-
-**FEATURE:**
-
-**Image 1.3, 1.4 and 1.5**
-
-Added [ Component Gateway
-](https://cloud.google.com/dataproc/docs/concepts/accessing/dataproc-gateways)
-support for Datarpoc clusters secured with Kerberos.
-
-**CHANGED:**
-
-New [ sub-minor
-](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-
-versions#supported_cloud_dataproc_versions) versions of Dataproc images:
-1.2.95-debian9, 1.3.55-debian9, 1.4.26-debian9, 1.3.55-debian10,
-1.4.26-debian10, 1.5.1-debian10, 1.3.55-ubuntu18, 1.4.26-ubuntu18,
-1.5.1-ubuntu18.
-
-**CHANGED:**
-
-**Image 1.5**
-
-Updated Presto to [ version 331
-](https://prestosql.io/docs/current/release/release-331.html) .
-
-**CHANGED:**
-
-Created ` cloud-sql-proxy ` log file for the Cloud SQL Proxy initialization
-action and for Dataproc clusters with Ranger that use Cloud SQL Proxy.
-
-**CHANGED:**
-
-**Image 1.3 and 1.4**
-
-Debian 10 images will become default images for 1.3 and 1.4 image tracks and
-Debian 9 images will not be released for these tracks anymore after June 30,
-2020.
-
-**FIXED:**
-
-**Images 1.4 and 1.5**
-
-[ SPARK-29080 ](https://issues.apache.org/jira/browse/SPARK-29080) : Support R
-file extension case-insensitively when submitting Spark R jobs.
-
-**FIXED:**
-
-**Image 1.3, 1.4 and 1.5**
-
-Fixed a bug where Jupyter was unable to read and write notebooks stored in
-Cloud Storage buckets with CMEK enabled.
-
-**FIXED:**
-
-**Image 1.3, 1.4 and 1.5**
-
-[ HIVE-17275 ](https://issues.apache.org/jira/browse/HIVE-17275) : Auto-merge
-fails on writes of ` UNION ALL ` output to ORC file with dynamic partitioning.
-
-**Google Cloud Armor**
-
-**FEATURE:**
-
-Google Cloud Armor support for CDN origins and hybrid origins is now available
-in **General Availability** .
-
-**Traffic Director**
-
-**CHANGED:**
-
-A new document, [ Traffic Director features
-](https://cloud.google.com/traffic-director/docs/features) , is published.
 
