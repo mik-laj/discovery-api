@@ -7,7 +7,7 @@ project:  Stable  |  Beta  |  Dev
 ---|---|---  
       
     
-    **cos-stable-81-12871-96-0**
+    **cos-stable-81-12871-103-0**
     Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/fa84f12c6d738af9486e69a006a57df923f9476a)
     Kubernetes:     v1.17.3
     Docker:         v19.03.6
@@ -27,10 +27,10 @@ project:  Stable  |  Beta  |  Dev
 
     
     
-    **cos-dev-83-13020-12-0**
-    Kernel:         [COS-4.19.114](https://cos.googlesource.com/third_party/kernel/+/a8c47ac5afe9c1a9f569b2caaa93b803a6c4d94b)
-    Kubernetes:     v1.17.3
-    Docker:         v19.03.6
+    **cos-dev-84-13078-0-0**
+    Kernel:         [COS-4.19.119](https://cos.googlesource.com/third_party/kernel/+/cf82bb6a0699ca4452067a6c88483909d1dbc90e)
+    Kubernetes:     v1.18.2
+    Docker:         v19.03.8
       
   
 ###  LTS Image Families
