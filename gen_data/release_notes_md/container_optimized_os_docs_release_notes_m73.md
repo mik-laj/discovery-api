@@ -12,6 +12,12 @@ Docker  |  v18.09.7
   
 ##  Changelog
 
+###  cos-73-11647-534-0
+
+_Date: May 07, 2020_
+
+  * Image rebuild to address an infrastructure issue. No image changes. 
+
 ###  cos-73-11647-510-0
 
 _Date: Apr 13, 2020_
