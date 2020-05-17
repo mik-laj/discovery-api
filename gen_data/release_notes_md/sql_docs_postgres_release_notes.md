@@ -13,6 +13,14 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloud-sql-postgres-release-
 notes.xml `
 
+##  May 15, 2020
+
+**FEATURE:**
+
+PostgreSQL 9.6 minor version is upgraded to 9.6.16. PostgreSQL 10 minor
+version is upgraded to 10.11. PostgreSQL 11 minor version is upgraded to 11.6.
+PostgreSQL 12 minor version is upgraded to 12.1.
+
 ##  May 11, 2020
 
 **FEATURE:**
