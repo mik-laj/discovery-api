@@ -12,6 +12,13 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/stackdriver-release-notes.xml `
 
+##  May 14, 2020
+
+**CHANGED:**
+
+Starting in version 6.0.2, the Cloud Monitoring agent is available for the
+Ubuntu LTS 20.04 (Focal Fossa) distribution.
+
 ##  May 08, 2020
 
 **FEATURE:**
