@@ -12,6 +12,27 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/composer-release-notes.xml `
 
+##  May 15, 2020
+
+**CHANGED:**
+
+  * [ New versions ](https://cloud.google.com/composer/docs/concepts/versioning/composer-versions) of Cloud Composer images: ` composer-1.10.3-airflow-1.10.2 ` , ` composer-1.10.3-airflow-1.10.3 ` and ` composer-1.10.3-airflow-1.10.6 ` . The default is ` composer-1.10.3-airflow-1.10.3 ` . Upgrade your Cloud SDK to use features in this release. 
+
+**FEATURE:**
+
+  * Resource quota limits have been updated, allowing environment administrators to set quotas with more granularity. The default quotas for read and write operations have also changed; see [ Cloud Composer resource quotas ](https://cloud.google.com/composer/quotas) for details. The old limits are deprecated, but will not be removed from the Cloud Console Quotas page until a future release. 
+
+**CHANGED:**
+
+  * The machine type of the Airflow web server will now be preserved during Composer environment updates, including cases like new PyPi module installations, or adding new environment variables. 
+  * Synchronization of log files between the Airflow scheduler, web server and workers has been improved. 
+  * More useful error messages have been added for Composer environment upgrade failures. 
+  * _Future change:_ Airflow 1.10.6 will become the default Airflow version for Composer environments in an upcoming release. 
+
+**DEPRECATED:**
+
+  * Composer version 1.6.1 has been deprecated. 
+
 ##  May 08, 2020
 
 **FEATURE:**
