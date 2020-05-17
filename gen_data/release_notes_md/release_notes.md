@@ -12,6 +12,60 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  May 15, 2020
+
+**Cloud Composer**
+
+**CHANGED:**
+
+  * [ New versions ](https://cloud.google.com/composer/docs/concepts/versioning/composer-versions) of Cloud Composer images: ` composer-1.10.3-airflow-1.10.2 ` , ` composer-1.10.3-airflow-1.10.3 ` and ` composer-1.10.3-airflow-1.10.6 ` . The default is ` composer-1.10.3-airflow-1.10.3 ` . Upgrade your Cloud SDK to use features in this release. 
+
+**FEATURE:**
+
+  * Resource quota limits have been updated, allowing environment administrators to set quotas with more granularity. The default quotas for read and write operations have also changed; see [ Cloud Composer resource quotas ](https://cloud.google.com/composer/quotas) for details. The old limits are deprecated, but will not be removed from the Cloud Console Quotas page until a future release. 
+
+**CHANGED:**
+
+  * The machine type of the Airflow web server will now be preserved during Composer environment updates, including cases like new PyPi module installations, or adding new environment variables. 
+  * Synchronization of log files between the Airflow scheduler, web server and workers has been improved. 
+  * More useful error messages have been added for Composer environment upgrade failures. 
+  * _Future change:_ Airflow 1.10.6 will become the default Airflow version for Composer environments in an upcoming release. 
+
+**DEPRECATED:**
+
+  * Composer version 1.6.1 has been deprecated. 
+
+**Cloud SQL for PostgreSQL**
+
+**FEATURE:**
+
+PostgreSQL 9.6 minor version is upgraded to 9.6.16. PostgreSQL 10 minor
+version is upgraded to 10.11. PostgreSQL 11 minor version is upgraded to 11.6.
+PostgreSQL 12 minor version is upgraded to 12.1.
+
+**Config Connector**
+
+**FIXED:**
+
+fix ContainerNodePool version upgrade scenario
+
+**CHANGED:**
+
+increase the cpu/memory request for webhook and recorder
+
+**CHANGED:**
+
+Miscellaneous bug fixes and improvement
+
+##  May 14, 2020
+
+**Cloud Monitoring**
+
+**CHANGED:**
+
+Starting in version 6.0.2, the Cloud Monitoring agent is available for the
+Ubuntu LTS 20.04 (Focal Fossa) distribution.
+
 ##  May 13, 2020
 
 **AI Platform Prediction**
@@ -1376,163 +1430,4 @@ Vegas ` us-west4 ` region. For more information, see [ Auto mode IP ranges
 [ Packet Mirroring pricing ](https://cloud.google.com/compute/network-
 pricing#packet-mirroring) will come into effect from June 20, 2020. There is
 no charge for Packet Mirroring until that time.
-
-##  April 17, 2020
-
-**BigQuery ML**
-
-**FEATURE:**
-
-BigQuery ML now supports Matrix Factorization models for recommendations, as a
-[ beta ](https://cloud.google.com/products#product-launch-stages) release. For
-more information, see [ The CREATE MODEL statement for Matrix Factorization
-](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-
-syntax-create-matrix-factorization) .
-
-**Cloud CDN**
-
-**FEATURE:**
-
-Cloud CDN [ request logs ](https://cloud.google.com/cdn/docs/logging) now
-include a ` cacheId ` field, which captures the location and cache node the
-client connected to. A ` cacheId ` of ` LHR-1209ea83 ` indicates a client
-connected to an edge cache near London, with ` 1209ea83 ` representing the
-opaque ID of the cache instance their response was served from.
-
-Location codes map to ⁠ [ IATA codes
-](https://en.wikipedia.org/wiki/IATA_airport_code) . The ` cacheId ` field can
-be found within the ` jsonPayload ` object in each log entry.
-
-**Cloud Composer**
-
-**BREAKING:**
-
-Composer version 1.10.1 has been rolled back. If you created an environment
-with ` composer-1.10.1-airflow-* ` , you can retrieve and delete the
-environment, but not update it. We recommend that you delete the environment
-and create a new environment with the latest image version. Refer to the March
-20, 2020 release notes for default version.
-
-**Cloud Spanner**
-
-**FEATURE:**
-
-Cloud Spanner Backup and Restore is now [ generally available
-](https://cloud.google.com/products#product-launch-stages) , enabling you to
-create backups of Cloud Spanner databases on demand, and restore them. For
-more information, see [ Backup and Restore
-](https://cloud.google.com/spanner/docs/backup) .
-
-**FEATURE:**
-
-Query Optimizer Versioning is now [ generally available
-](https://cloud.google.com/products#product-launch-stages) , enabling you to
-select which version of the optimizer to use for your database, application or
-query. For more information, see [ Query optimizer
-](https://cloud.google.com/spanner/docs/query-optimizer/overview) .
-
-**Dataproc**
-
-**FEATURE:**
-
-Announcing the [ Beta ](https://cloud.google.com/products#product-launch-
-stages) release of [ Dataproc on Google Kubernetes Engine
-](https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke) .
-Customers can now create Dataproc on GKE clusters to run Spark jobs on
-Kubernetes via the Dataproc jobs API.
-
-##  April 16, 2020
-
-**BigQuery**
-
-**FEATURE:**
-
-[ BigQuery Reservations ](https://cloud.google.com/bigquery/docs/reservations-
-intro) is now [ Generally Available (GA)
-](https://cloud.google.com/products/?hl=EN#product-launch-stages) . BigQuery
-Reservations allows you to purchase BigQuery [ slots
-](https://cloud.google.com/bigquery/docs/slots) to take advantage of BigQuery
-[ flat-rate pricing
-](https://cloud.google.com/bigquery/pricing#flat_rate_pricing) and allocate
-slots for workload management.
-
-**CHANGED:**
-
-Around the end of April 2020, [ ` INFORMATION_SCHEMA ` (Beta) views for
-dataset metadata ](https://cloud.google.com/bigquery/docs/information-schema-
-datasets) will return metadata about all datasets in a region. Currently,
-these views return metadata about all datasets in the project across all
-regions. This upcoming change will also provide support for querying a
-specific region's metadata (for example, ` region-
-us.INFORMATION_SCHEMA.SCHEMATA ` instead of ` INFORMATION_SCHEMA.SCHEMATA ` ).
-
-You can replicate this future behavior now by filtering on the ` SCHEMATA `
-view's ` LOCATION ` column (for example, ` LOCATION = 'US' ` ).
-
-**Cloud Billing**
-
-**FEATURE:**
-
-Discount sharing for committed use discounts is now available in **beta** .
-With discount sharing enabled, you can apply your purchased commitments across
-multiple projects within a single Cloud Billing account. Discount sharing
-helps you minimize the overhead of managing each of your commitments
-individually and provides increased flexibility so that you can use the
-compute options that best suit your needs, while also increasing cost
-predictability.
-
-  * For more information about enabling committed use discount sharing, see [ Turning on committed use discount sharing ](https://cloud.google.com/compute/docs/instances/signing-up-committed-use-discounts#turning_on_committed_use_discount_sharing) . 
-  * For more information on the possible cost savings using committed use discount sharing, see [ Understanding discount sharing ](https://cloud.google.com/billing/docs/how-to/cud-analysis#understanding_discount_sharing) . 
-
-**FEATURE:**
-
-Cloud Billing console now has a Pricing report, providing a tabular view of
-the prices of Google’s cloud services SKUs, including Google Cloud, Google
-Maps Platform, and G Suite. You can select to view the SKUs with historical
-usage on the billing account or all Google Cloud SKUs. If you have a
-negotiated contract, the pricing table will include the list price, the
-contract price and the effective discount. You can also download the table to
-CSV for offline analysis. See the [ documentation
-](https://cloud.google.com/billing/docs/how-to/pricing-table) for more
-details.
-
-**Cloud Data Loss Prevention**
-
-**FEATURE:**
-
-Added support for ` PDF ` and ` WORD ` [ ` FileTypes `
-](http://cloud.google.com/dlp/docs/reference/rpc/google.privacy.dlp.v2#filetype)
-and ` PDF ` and ` WORD_DOCUMENT ` [ ` BytesTypes `
-](http://cloud.google.com/dlp/docs/reference/rpc/google.privacy.dlp.v2#bytestype)
-.
-
-**Compute Engine**
-
-**FEATURE:**
-
-  * Committed use discount shared billing is now available in **beta** . You can share committed use discounts among all your projects that fall under the same billing account. For more information, see [ Signing up committed use discounts ](https://cloud.google.com/compute/docs/instances/signing-up-committed-use-discounts) . 
-
-**Dataprep by Trifacta**
-
-**FIXED:**
-
-TD-47149: Cannot edit settings when importing Google Sheets.
-
-**Google Cloud Marketplace Partners**
-
-**FEATURE:**
-
-You can now create private quotes for VM solutions ( [ alpha
-](https://cloud.google.com/products/?hl=EN#product-launch-stages) ).
-
-[ Learn about creating quotes for specific customers
-](https://cloud.google.com/marketplace/docs/partners/create-quotes) .
-
-**Network Intelligence Center**
-
-**FEATURE:**
-
-[ Performance Dashboard ](https://cloud.google.com/network-intelligence-
-center/docs/performance-dashboard/concepts/overview) is now available in
-**General Availability** .
 
