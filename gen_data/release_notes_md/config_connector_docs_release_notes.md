@@ -13,6 +13,20 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/configconnector-release-
 notes.xml `
 
+##  May 15, 2020
+
+**FIXED:**
+
+fix ContainerNodePool version upgrade scenario
+
+**CHANGED:**
+
+increase the cpu/memory request for webhook and recorder
+
+**CHANGED:**
+
+Miscellaneous bug fixes and improvement
+
 ##  April 30, 2020
 
 **CHANGED:**
