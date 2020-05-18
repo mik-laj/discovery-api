@@ -12,6 +12,35 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  May 17, 2020
+
+**Dialogflow**
+
+**CHANGED:**
+
+Old Node.js client library require statements must be updated. Your require
+statements should look like this:
+
+` const dialogflow = require('@google-cloud/dialogflow').v2; `
+
+or this:
+
+` const dialogflow = require('@google-cloud/dialogflow').v2beta1; `
+
+Old syntax that does not include ` @google-cloud ` is now deprecated. The old
+syntax will continue to work, but you will not receive updates.
+
+##  May 16, 2020
+
+**Cloud Data Loss Prevention**
+
+**FEATURE:**
+
+Added [ infoType detectors ](https://cloud.google.com/dlp/docs/infotypes-
+reference) :
+
+AWS_CREDENTIALS
+
 ##  May 15, 2020
 
 **Cloud Composer**
@@ -924,10 +953,6 @@ Config Management will be unable to update the CRD.
 
 Anthos Config Management no longer overwrites undeclared labels and
 annotations on Namespaces.
-
-**FIXED:**
-
-This release includes several performance and memory improvements.
 
 **Anthos GKE on-prem**
 
