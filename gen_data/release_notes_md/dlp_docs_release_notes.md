@@ -17,6 +17,15 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/dlp-release-notes.xml `
 
+##  May 16, 2020
+
+**FEATURE:**
+
+Added [ infoType detectors ](https://cloud.google.com/dlp/docs/infotypes-
+reference) :
+
+AWS_CREDENTIALS
+
 ##  May 04, 2020
 
 **CHANGED:**
