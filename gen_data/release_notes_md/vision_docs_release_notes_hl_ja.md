@@ -8,6 +8,26 @@
 URL ディレクトリ ` https://cloud.google.com/feeds/vision-release-notes.xml `
 を直接追加します。
 
+##  May 15, 2020
+
+**CHANGED:**
+
+**OCR model upgrades**
+
+The ` text_detection ` and ` document_text_detection ` models have been
+upgraded to newer versions. The API interface and client library will be the
+same as previous version. The API follows the same [ Service Level Agreement
+](https://cloud.google.com/vision/sla?hl=ja) .
+
+The legacy models can still be accessed until June 30, 2020. Specify
+"builtin/legacy_20190601" in the [ ` model `
+](https://cloud.google.com/vision/docs/reference/rest/v1/Feature?hl=ja) field
+of a ` Feature ` object to get the old model results. After June 30, 2020 the
+old models will not longer be offered.
+
+For more information, see the [ product documentation
+](https://cloud.google.com/vision/docs/ocr?hl=ja) .
+
 ##  April 11, 2020
 
 **FEATURE:**
