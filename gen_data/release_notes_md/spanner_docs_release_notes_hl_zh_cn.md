@@ -6,6 +6,14 @@
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/cloud-spanner-release-notes.xml `
 
+##  May 18, 2020
+
+**FEATURE:**
+
+You can now run SQL queries to retrieve [ transaction statistics
+](https://cloud.google.com/spanner/docs/transaction-stats-tables?hl=zh_cn) for
+your database over recent one-minute, 10-minute, and one-hour time periods.
+
 ##  April 20, 2020
 
 **FEATURE:**
