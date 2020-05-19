@@ -12,6 +12,110 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  May 18, 2020
+
+**Cloud Bigtable**
+
+**CHANGED:**
+
+The [ Cloud Bigtable Monitoring
+](https://cloud.google.com/bigtable/docs/monitoring-instance) page in the
+Cloud Console has been redesigned. Changes to the visual experience include
+the following: * Views that are now split into separate tabs * A new time
+range picker * Updated styling on the graphs
+
+**Cloud Billing**
+
+**FEATURE:**
+
+**Cloud Billing budgets emails** : ensure your budget alert emails are seen by
+the right people using Cloud Monitoring notifications on your Cloud Billing
+budgets. By default, alert emails are sent to Billing Account Administrators.
+With the _Monitoring notifications_ feature, you can customize your budget to
+send alerts to up to five additional email recipients you specify. See the [
+documentation ](https://cloud.google.com/billing/docs/how-to/budgets-
+notification-recipients) for more details.
+
+**FEATURE:**
+
+New information is now available on your **Cloud Billing** account
+**Overview** page in the **Cloud Console** , featuring at-a-glance summaries
+of the top five spending projects and top five spending products over the last
+12 months.
+
+To see the updated Billing Account Overview page, go to the [ Manage billing
+accounts page ](https://console.cloud.google.com/billing) in the Cloud Console
+and sign in, then select the name of the Cloud Billing account you want to
+view. The Billing Overview page is displayed with the **BILLING ACCOUNT
+OVERVIEW** tab selected. You might need to scroll the page to see all the
+features.
+
+**Cloud DNS**
+
+**FEATURE:**
+
+[ DNS forwarding to a non-RFC 1918 address
+](https://cloud.google.com/dns/zones/#creating-forwarding-zones) is available
+in **General Availability** .
+
+**Cloud Functions**
+
+**CHANGED:**
+
+Cloud Functions now supports [ Node.js 10
+](https://cloud.google.com/functions/docs/concepts/nodejs-10-runtime) at the [
+General Availability release level
+](https://cloud.google.com/products/#product-launch-stages) .
+
+**Cloud Identity and Access Management**
+
+**CHANGED:**
+
+Recommendations from the [ Cloud IAM recommender
+](https://cloud.google.com/iam/docs/recommender-overview) can now include [
+suggestions to create custom roles
+](https://cloud.google.com/iam/docs/recommender-overview#custom-roles) .
+
+**Cloud Logging**
+
+**FEATURE:**
+
+**Logs Viewer** now contains the **Logs field explorer** panel, which lets you
+view aggregation-based results for your project's log fields and makes it more
+efficient to refine queries. To learn more, go to the [ Logs Viewer (Preview)
+page ](https://cloud.google.com/logging/docs/view/logs-viewer-interface) .
+
+**Cloud SQL for MySQL**
+
+**FEATURE:**
+
+MySQL 5.6 minor version is upgraded to 5.6.42. MySQL 5.7 minor version is
+upgraded to 5.7.25.
+
+**Cloud Spanner**
+
+**FEATURE:**
+
+You can now run SQL queries to retrieve [ transaction statistics
+](https://cloud.google.com/spanner/docs/transaction-stats-tables) for your
+database over recent one-minute, 10-minute, and one-hour time periods.
+
+**Cloud Storage**
+
+**CHANGED:**
+
+The V4 signing process is now in GA.
+
+  * The V4 signing process is an improved method for creating [ signatures ](https://cloud.google.com/storage/docs/authentication/signatures) using RSA or HMAC keys. 
+
+**Virtual Private Cloud**
+
+**FEATURE:**
+
+Subnets in VPC networks now support IP addresses other than RFC 1918
+addresses. For more information, see [ Subnet ranges
+](https://cloud.google.com/vpc/docs/vpc#manually_created_subnet_ip_ranges) .
+
 ##  May 17, 2020
 
 **Dialogflow**
@@ -72,6 +176,26 @@ PostgreSQL 9.6 minor version is upgraded to 9.6.16. PostgreSQL 10 minor
 version is upgraded to 10.11. PostgreSQL 11 minor version is upgraded to 11.6.
 PostgreSQL 12 minor version is upgraded to 12.1.
 
+**Cloud Vision**
+
+**CHANGED:**
+
+**OCR model upgrades**
+
+The ` text_detection ` and ` document_text_detection ` models have been
+upgraded to newer versions. The API interface and client library will be the
+same as previous version. The API follows the same [ Service Level Agreement
+](https://cloud.google.com/vision/sla) .
+
+The legacy models can still be accessed until June 30, 2020. Specify
+"builtin/legacy_20190601" in the [ ` model `
+](https://cloud.google.com/vision/docs/reference/rest/v1/Feature) field of a `
+Feature ` object to get the old model results. After June 30, 2020 the old
+models will not longer be offered.
+
+For more information, see the [ product documentation
+](https://cloud.google.com/vision/docs/ocr) .
+
 **Config Connector**
 
 **FIXED:**
@@ -87,6 +211,26 @@ increase the cpu/memory request for webhook and recorder
 Miscellaneous bug fixes and improvement
 
 ##  May 14, 2020
+
+**App Engine flexible environment PHP**
+
+**FEATURE:**
+
+To get a fine-grained view of billing data for each resource used by your App
+Engine services, you can apply labels to the services, export your billing
+data to BigQuery, and run queries. For more information, see [ Labeling App
+Engine resources
+](https://cloud.google.com/appengine/docs/flexible/php/labeling-resources) .
+
+**App Engine flexible environment Ruby**
+
+**FEATURE:**
+
+To get a fine-grained view of billing data for each resource used by your App
+Engine services, you can apply labels to the services, export your billing
+data to BigQuery, and run queries. For more information, see [ Labeling App
+Engine resources
+](https://cloud.google.com/appengine/docs/flexible/ruby/labeling-resources) .
 
 **Cloud Monitoring**
 
@@ -917,8 +1061,8 @@ authorization) .
 **FEATURE:**
 
 Policy Agent now allows configuration of namespaces that will bypass the
-admission controller. For more information, please see [ Excluding Namespaces
-from Policy Controller ](https://cloud.google.com/anthos-config-
+admission controller. For more information, see [ Excluding Namespaces from
+Policy Controller ](https://cloud.google.com/anthos-config-
 management/docs/how-to/policy-controller-exclude-namespaces)
 
 **CHANGED:**
