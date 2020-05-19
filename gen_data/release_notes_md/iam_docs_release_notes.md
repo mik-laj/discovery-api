@@ -16,6 +16,15 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/iam-release-notes.xml `
 
+##  May 18, 2020
+
+**CHANGED:**
+
+Recommendations from the [ Cloud IAM recommender
+](https://cloud.google.com/iam/docs/recommender-overview) can now include [
+suggestions to create custom roles
+](https://cloud.google.com/iam/docs/recommender-overview#custom-roles) .
+
 ##  April 01, 2020
 
 **FEATURE:**
