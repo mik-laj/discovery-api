@@ -10,6 +10,14 @@ página ao [ leitor de feeds
 do feed diretamente: ` https://cloud.google.com/feeds/cloud-spanner-release-
 notes.xml `
 
+##  May 18, 2020
+
+**FEATURE:**
+
+You can now run SQL queries to retrieve [ transaction statistics
+](https://cloud.google.com/spanner/docs/transaction-stats-tables?hl=pt_br) for
+your database over recent one-minute, 10-minute, and one-hour time periods.
+
 ##  April 20, 2020
 
 **FEATURE:**
