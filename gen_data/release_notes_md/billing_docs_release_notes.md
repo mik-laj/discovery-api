@@ -12,6 +12,32 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/billing-release-notes.xml `
 
+##  May 18, 2020
+
+**FEATURE:**
+
+**Cloud Billing budgets emails** : ensure your budget alert emails are seen by
+the right people using Cloud Monitoring notifications on your Cloud Billing
+budgets. By default, alert emails are sent to Billing Account Administrators.
+With the _Monitoring notifications_ feature, you can customize your budget to
+send alerts to up to five additional email recipients you specify. See the [
+documentation ](https://cloud.google.com/billing/docs/how-to/budgets-
+notification-recipients) for more details.
+
+**FEATURE:**
+
+New information is now available on your **Cloud Billing** account
+**Overview** page in the **Cloud Console** , featuring at-a-glance summaries
+of the top five spending projects and top five spending products over the last
+12 months.
+
+To see the updated Billing Account Overview page, go to the [ Manage billing
+accounts page ](https://console.cloud.google.com/billing) in the Cloud Console
+and sign in, then select the name of the Cloud Billing account you want to
+view. The Billing Overview page is displayed with the **BILLING ACCOUNT
+OVERVIEW** tab selected. You might need to scroll the page to see all the
+features.
+
 ##  April 23, 2020
 
 **FEATURE:**
