@@ -26,8 +26,8 @@ authorization) .
 **FEATURE:**
 
 Policy Agent now allows configuration of namespaces that will bypass the
-admission controller. For more information, please see [ Excluding Namespaces
-from Policy Controller ](https://cloud.google.com/anthos-config-
+admission controller. For more information, see [ Excluding Namespaces from
+Policy Controller ](https://cloud.google.com/anthos-config-
 management/docs/how-to/policy-controller-exclude-namespaces)
 
 **CHANGED:**
@@ -62,10 +62,6 @@ Config Management will be unable to update the CRD.
 
 Anthos Config Management no longer overwrites undeclared labels and
 annotations on Namespaces.
-
-**FIXED:**
-
-This release includes several performance and memory improvements.
 
 ##  March 24, 2020
 
