@@ -8,6 +8,14 @@
 URL ディレクトリ ` https://cloud.google.com/feeds/cloud-spanner-release-notes.xml `
 を直接追加します。
 
+##  May 18, 2020
+
+**FEATURE:**
+
+You can now run SQL queries to retrieve [ transaction statistics
+](https://cloud.google.com/spanner/docs/transaction-stats-tables?hl=ja) for
+your database over recent one-minute, 10-minute, and one-hour time periods.
+
 ##  April 20, 2020
 
 **FEATURE:**
