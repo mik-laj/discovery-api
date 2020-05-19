@@ -1,6 +1,6 @@
 #  보안 게시판
 
-Google Kubernetes Engine(GKE)에 해당하는 모든 보안 게시판은 이 주제에서 확인할 수 있습니다.
+이 주제에서는 Google Kubernetes Engine(GKE)의 모든 보안 게시판에 대해 설명합니다.
 
 취약점은 영향을 받는 당사자가 대처 방안을 마련할 수 있을 때까지 엠바고에 따라 비밀로 유지되는 경우가 많습니다. 이 경우 GKE의 [ 출시
 노트 ](https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=ko) 에서
@@ -8,8 +8,8 @@ Google Kubernetes Engine(GKE)에 해당하는 모든 보안 게시판은 이 주
 업데이트됩니다.
 
 **참고:** GKE에서 멀티 테넌트 워크로드를 실행할 경우 해당 게시판에 각별히 유의하시기 바랍니다. 취약점이 멀티 테넌트 워크로드에
-영향을 미칠 가능성이 크기 때문입니다. GKE의 보안 경계에 대한 기술적 설명과 이에 따라 워크로드가 받는 영향에 대해서는 [ 다양한
-Kubernetes 스택 레이어에서의 격리
+영향을 미칠 가능성이 크기 때문입니다. GKE의 보안 경계에 대한 기술적 설명과 이에 따라 워크로드가 받는 영향에 대해서는 [
+Kubernetes 스택 내 여러 레이어의 격리
 ](https://cloudplatform.googleblog.com/2018/05/Exploring-container-security-
 Isolation-at-different-layers-of-the-Kubernetes-stack.html) 를 참조하세요.
 
@@ -18,17 +18,63 @@ Isolation-at-different-layers-of-the-Kubernetes-stack.html) 를 참조하세요.
 추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/kubernetes-
 engine-security-bulletins.xml `
 
+##  GCP-2020-005
+
+**게시:** 2020년 5월 7일  
+**업데이트:** 2020년 5월 7일  설명  |  심각도  |  참고  
+---|---|---  
+  
+[ CVE-2020-8835 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8835) 에 설명된 바와 같이 최근 Linux 커널에서 취약점이 발견되었으며, 이
+취약점은 컨테이너 이스케이프가 호스트 노드의 루트 권한을 확보할 수 있다는 문제를 안고 있습니다.
+
+GKE 1.16 또는 1.17을 실행하는 Google Kubernetes Engine (GKE) Ubuntu 노드가 이 취약점의 영향을
+받으며, 아래의 세부정보에 따라 최대한 빨리 최신 패치 버전으로 업그레이드하는 것이 좋습니다.
+
+Container-Optimized OS를 실행하는 노드는 영향을 받지 않습니다. GKE On-Prem을 실행하는 노드는 영향을 받지
+않습니다.
+
+####  어떻게 해야 하나요?
+
+**대부분 고객의 경우 추가 조치는 필요하지 않습니다. GKE 버전 1.16 또는 1.17의 Ubuntu를 실행하는 노드만 영향을
+받습니다.**
+
+노드를 업그레이드하려면 먼저 마스터를 최신 버전으로 업그레이드해야 합니다. 이 패치는 Kubernetes 1.16.8-gke.12,
+1.17.4-gke.10 및 그 이상의 출시 버전에서 제공됩니다. [ 출시 노트
+](https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=ko) 에서 이
+패치의 가용성을 추적할 수 있습니다.
+
+####  이 패치로 어떤 취약점이 해결되나요?
+
+이 패치로 다음의 취약점이 완화됩니다.
+
+[ CVE-2020-8835 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8835) 는 악의적인 컨테이너가 실행 형태인 사용자 상호작용이 최소화된 상태로 커널
+메모리를 읽고 쓸 수 있게 하여 호스트 노드에서 루트 수준의 코드 실행을 획득할 수 있는 Linux 커널 버전 5.5.0 이상의 취약점을
+설명합니다. 이 문제는 '높음' 등급의 취약점으로 분류됩니다.
+
+|
+
+높음
+
+|
+
+[ CVE-2020-8835 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8835)  
+  
+  
 ##  GCP-2020-003
 
-설명  |  심각도  |  참고  
+**게시:** 2020년 3월 31일  
+**업데이트:** 2020년 3월 31일  설명  |  심각도  |  참고  
 ---|---|---  
   
 [ CVE-2019-11254 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2019-11254) 에 설명된 바와 같이 최근 Kubernetes에서 취약점이 발견되었으며,
 이 취약점에는 POST 요청 권한이 있는 모든 사용자가 Kubernetes API 서버에서 원격으로 서비스 거부 공격을 실행할 수 있다는
 문제가 있습니다. Kubernetes Product Security Committee(PSC)에서 공개한 이 취약점에 관한 추가 정보는 [
-여기 ](https://groups.google.com/g/kubernetes-security-
-announce/c/wuwEwZigXBc?hl=ko) 에서 확인할 수 있습니다.
+여기 ](https://groups.google.com/forum/?hl=ko#!topic/kubernetes-security-
+announce/wuwEwZigXBc) 에서 확인할 수 있습니다.
 
 [ 마스터 승인 네트워크 ](https://cloud.google.com/kubernetes-engine/docs/how-
 to/authorized-networks?hl=ko) 와 [ 공개 엔드포인트가 없는 비공개 클러스터
@@ -65,7 +111,8 @@ bin/cvename.cgi?name=CVE-2019-11254)
   
 ##  GCP-2020-002
 
-설명  |  심각도  |  참고  
+**게시:** 2020년 3월 23일  
+**업데이트:** 2020년 3월 23일  설명  |  심각도  |  참고  
 ---|---|---  
   
 Kubernetes는 각각 API 서버와 Kubelet에 영향을 미치는 [ 2개의 서비스 거부 취약점
@@ -108,11 +155,11 @@ bin/cvename.cgi?name=CVE-2020-8552)
   
 ##  2020년 1월 21일, 최종 업데이트: 2020년 1월 24일
 
-설명  |  심각도  |  참고  
+**게시:** 2020년 1월 21일  
+**업데이트:** 2020년 1월 24일  설명  |  심각도  |  참고  
 ---|---|---  
   
-**2020년 01월 24일 업데이트:** 이미 패치 버전을 사용 가능하도록 만드는 과정이 진행 중이며 2020년 1월 25일까지 완료될
-예정입니다.
+**2020년 1월 24일 업데이트:** 이미 패치 버전을 출시하기 위한 과정이 진행 중이며 2020년 1월 25일까지 완료될 예정입니다.
 
 * * *
 
@@ -125,7 +172,7 @@ guidance/advisory/CVE-2020-0601) 를 참조하세요.
 **대부분 고객의 경우 추가 조치는 필요하지 않습니다. Windows Server를 실행 중인 노드만 영향을 받습니다.**
 
 Windows Server 노드를 사용하고 있는 고객의 경우 노드와 해당 노드에서 실행되는 컨테이너화된 워크로드를 모두 패치 버전으로
-업데이트해야 이 취약점을 해결할 수 있습니다.
+업데이트해야 이 취약점을 완화할 수 있습니다.
 
 **컨테이너 업데이트 방법:**
 
@@ -136,7 +183,7 @@ Microsoft의 최신 기본 컨테이너 이미지를 사용하고 최종 업데�
 
 **노드 업데이트 방법:**
 
-이미 패치 버전을 사용 가능하도록 만드는 과정이 진행 중이며 2020년 1월 24일까지 완료될 예정입니다.
+이미 패치 버전을 출시하기 위한 과정이 진행 중이며 2020년 1월 24일까지 완료될 예정입니다.
 
 그때까지 기다렸다가 패치된 GKE 버전으로 노드 업그레이드를 수행하거나 Windows Update를 사용하여 언제든지 최신 Windows
 패치를 수동으로 배포할 수도 있습니다.
@@ -158,7 +205,7 @@ Microsoft의 최신 기본 컨테이너 이미지를 사용하고 최종 업데�
 bin/cvename.cgi?name=CVE-2020-0601) \- 이 취약점은 [ Windows Crypto API 스푸핑 취약점
 ](https://portal.msrc.microsoft.com/en-US/security-
 guidance/advisory/CVE-2020-0601) 이라고도 하며, 악성 실행 파일을 신뢰할 수 있는 파일인 것처럼 보이게 하거나
-공격자가 중간에 데이터를 가로채는 공격을 수행하고 TLS 연결의 기밀 정보를 영향을 받는 소프트웨어에 복호화하는 데 악용될 수 있습니다.
+공격자가 중간자 공격을 수행하고 TLS 연결의 기밀 정보를 영향을 받는 소프트웨어에 복호화하는 데 악용될 수 있습니다.
 
 |
 
@@ -172,7 +219,8 @@ bin/cvename.cgi?name=CVE-2020-0601)
   
 ##  2019년 11월 14일
 
-설명  |  심각도  |  참고  
+**게시:** 2019년 11월 14일  
+**업데이트:** 2019년 11월 14일  설명  |  심각도  |  참고  
 ---|---|---  
   
 Kubernetes는 [ 컨테이너 스토리지 인터페이스(CSI) 드라이버 ](https://kubernetes-
@@ -212,7 +260,8 @@ bin/cvename.cgi?name=CVE-2019-11255)
   
 ##  2019년 11월 12일
 
-설명  |  심각도  |  참고  
+**게시:** 2019년 11월 12일  
+**업데이트:** 2019년 11월 12일  설명  |  심각도  |  참고  
 ---|---|---  
   
 Intel은 예측 실행과 마이크로아키텍처 상태 사이의 상호작용으로 인해 데이터가 노출될 수 있다는 내용의 CVE를 공개했습니다. 자세한
@@ -246,8 +295,8 @@ cluster?hl=ko#upgrade_nodes) 작업을 사용하여 영향을 받는 모든 노�
 [ CVE-2019-11135 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11135)
 : 이 CVE는 TAA(TSX Async Abort)로도 알려져 있습니다. TAA는 [ 마이크로아키텍처 데이터 샘플링(MDS)
 ](https://cloud.google.com/kubernetes-engine/docs/security-
-bulletins?hl=ko#may-14-2019) 에서 악용한 것과 동일한 마이크로아키텍처 데이터 구조로 데이터를 유출할 수 있는 또 다른
-경로를 제공합니다.
+bulletins?hl=ko#may-14-2019) 에서 악용한 것과 동일한 마이크로아키텍처 데이터 구조로 데이터를 무단 반출할 수 있는 또
+다른 경로를 제공합니다.
 
 [ CVE-2018-12207 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12207)
 이 서비스 거부(DoS) 취약점은 가상 머신 호스트에 영향을 미치며, 악의적인 게스트가 보호되지 않는 호스트를 비정상 종료할 수 있다는
@@ -264,7 +313,8 @@ bulletins?hl=ko#may-14-2019) 에서 악용한 것과 동일한 마이크로아�
   
 ##  2019년 10월 22일
 
-설명  |  심각도  |  참고  
+**게시:** 2019년 10월 22일  
+**업데이트:** 2019년 10월 22일  설명  |  심각도  |  참고  
 ---|---|---  
   
 이 취약점은 최근 Go 프로그래밍 언어에서 발견되었으며, [ CVE-2019-16276 ](https://cve.mitre.org/cgi-
@@ -287,7 +337,8 @@ bin/cvename.cgi?name=CVE-2019-16276)
   
 ##  2019년 10월 16일
 
-설명  |  심각도  |  참고  
+**게시:** 2019년 10월 16일  
+**업데이트:** 2019년 10월 24일  설명  |  심각도  |  참고  
 ---|---|---  
   
 **2019년 10월 24일 업데이트:** 이제 모든 영역에서 패치 버전을 사용할 수 있습니다.
@@ -308,7 +359,7 @@ clusters?hl=ko#private_master) 를 사용하는 GKE 클러스터는 이 취약�
 
 ######  어떻게 해야 하나요?
 
-수정사항이 포함된 패치 버전이 제공되는 즉시 클러스터를 업데이트하는 것이 좋습니다. 패치 버전은 10월 14일이 포함된 주에 계획된 GKE
+수정사항이 포함된 패치 버전이 제공되는 즉시 클러스터를 업그레이드하는 것이 좋습니다. 패치 버전은 10월 14일이 포함된 주에 계획된 GKE
 출시를 통해 모든 영역에 제공될 예정입니다.
 
 취약점 완화 방법이 포함된 패치 버전은 아래와 같습니다.
@@ -336,7 +387,8 @@ bin/cvename.cgi?name=CVE-2019-11253)
   
 ##  2019년 9월 16일
 
-설명  |  심각도  |  참고  
+**게시:** 2019년 9월 16일  
+**업데이트:** 2019년 10월 16일  설명  |  심각도  |  참고  
 ---|---|---  
   
 이 게시판은 처음 게시된 이후 업데이트되었습니다.
@@ -344,7 +396,7 @@ bin/cvename.cgi?name=CVE-2019-11253)
 Go 프로그래밍 언어는 최근 보안 취약점 [ CVE-2019-9512 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2019-9512) 와 [ CVE-2019-9514
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9514) 를 발견했으며, 두
-CVE는 서비스 거부(DoS) 취약점입니다. GKE에서 사용자가 이 취약점을 이용하면 Kubernetes API 서버의 CPU를 과도하게
+CVE는 서비스 거부(DoS) 취약점입니다. GKE에서 사용자는 이 취약점을 악용해 Kubernetes API 서버의 CPU를 과도하게
 소비하도록 악의적인 요청을 만들어서 클러스터 제어 영역의 가용성을 줄일 수 있습니다. 자세한 내용은 [ Go 프로그래밍 언어 정보 공개
 ](https://groups.google.com/forum/?hl=ko#!topic/golang-announce/65QixT3tcmg) 를
 참조하세요.
@@ -384,9 +436,15 @@ bin/cvename.cgi?name=CVE-2019-9514)
   
 ##  2019년 9월 5일
 
+**게시:** 2019년 9월 5일  
+**업데이트:** 2019년 9월 5일
+
 2019년 5월 31일  게시판에 설명된 취약점 해결책 게시판이 업데이트되었습니다.
 
 ##  2019년 8월 22일
+
+**게시:** 2019년 8월 22일  
+**업데이트:** 2019년 8월 22일
 
 2019년 8월 5일  게시판이 업데이트되었습니다. 이전 게시판에 설명된 취약점 해결책이 [ 제공
 ](https://cloud.google.com/kubernetes-engine/docs/release-
@@ -394,11 +452,15 @@ notes?hl=ko#august_22_2019) 됩니다.
 
 ##  2019년 8월 8일
 
+**게시:** 2019년 8월 8일  
+**업데이트:** 2019년 8월 8일
+
 2019년 8월 5일  게시판이 업데이트되었습니다. 해당 게시판에 설명된 취약점 해결책은 다음 GKE 출시에서 제공될 예정입니다.
 
 ##  2019년 8월 5일
 
-설명  |  심각도  |  참고  
+**게시:** 2019년 8월 5일  
+**업데이트:** 2019년 8월 9일  설명  |  심각도  |  참고  
 ---|---|---  
   
 이 게시판은 처음 게시된 이후 업데이트되었습니다.
@@ -438,7 +500,8 @@ bin/cvename.cgi?name=CVE-2019-11247)
   
 ##  2019년 7월 3일
 
-설명  |  심각도  |  참고  
+**게시:** 2019년 7월 3일  
+**업데이트:** 2019년 7월 3일  설명  |  심각도  |  참고  
 ---|---|---  
   
 CVE-2019-11246을 해결하는 ` kubectl ` 의 패치 버전이 이제 [ ` gcloud ` 253.0.0
@@ -458,7 +521,8 @@ bin/cvename.cgi?name=CVE-2018-15664)
   
 ##  2019년 7월 3일
 
-설명  |  심각도  |  참고  
+**게시:** 2019년 6월 25일  
+**업데이트:** 2019년 7월 3일  설명  |  심각도  |  참고  
 ---|---|---  
   
 ######  2019년 7월 3일 업데이트
@@ -472,10 +536,10 @@ bin/cvename.cgi?name=CVE-2018-15664)
 선택하여 노드를 패치 버전으로 업그레이드할 수 있습니다.
 
   * 2019년 7월 8일까지 1.11.10-gke.5로 노드를 업그레이드하세요. 이 날짜 이후에는 1.11 버전이 업그레이드 대상 목록에서 삭제됩니다. 
-  * 1.11 노드에서 [ 자동 업그레이드 ](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-upgrades?hl=ko) 를 사용 설정하고 마스터를 1.12로 업그레이드할 때 노드를 업그레이드하도록 허용하세요. 
+  * 1.11 노드에서 [ 자동 업그레이드 ](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-upgrades?hl=ko) 를 사용 설정하여 마스터를 1.12로 업그레이드할 때 노드를 업그레이드하도록 허용하세요. 
   * 마스터와 노드 모두를 수정된 1.12 버전으로 [ 수동 업그레이드 ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=ko) 하세요. 
 
-2019년 6월 24일의 처음 게시판 내용은 다음과 같습니다.
+2019년 6월 24일에 처음 공개된 게시판 내용은 다음과 같습니다.
 
 * * *
 
@@ -496,7 +560,7 @@ container-cluster?hl=ko) 하는 것이 좋습니다. **
   * 1.12.8-gke.10 
   * 1.13.6-gke.13 
 
-2019년 6월 18일의 처음 게시판 내용은 다음과 같습니다.
+2019년 6월 18일에 처음 공개된 게시판 내용은 다음과 같습니다.
 
 * * *
 
@@ -526,9 +590,9 @@ bulletins/blob/master/advisories/third-party/2019-001.md) 이라고 합니다.
   * 공개 LoadBalancer 서비스가 없는 클러스터 
 
 Google은 이러한 취약점을 영구적으로 완화할 방법을 준비 중이며 새 노드 버전으로 제공할 예정입니다. 영구적 해결책이 제공되면 이
-게시판을 업데이트하고 모든 GKE 고객에게 이메일을 보내 드립니다.
+게시판을 업데이트하고 모든 GKE 고객에게 이메일을 보내드릴 것입니다.
 
-영구 수정이 제공되기 전에 사용할 수 있도록 호스트 ` iptables ` 구성을 수정하여 완화 방법을 구현하는 Kubernetes
+영구적 해결책이 제공되기 전에 사용할 수 있도록 호스트 ` iptables ` 구성을 수정하여 완화 방법을 구현하는 Kubernetes
 DaemonSet가 제공됩니다.
 
 #####  어떻게 해야 하나요?
@@ -602,7 +666,7 @@ announce/NLs2TGbfPdo) 를 참조하세요.
 ######  이 패치로 어떤 취약점이 해결되나요?
 
 컨테이너 내부 ` kubectl cp ` 작업 및 코드 실행에 대한 액세스 권한이 있는 공격자는 취약점 [ CVE-2019-11246
-](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11246) 을 이용하여 호스트의
+](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11246) 을 악용하여 호스트의
 파일을 수정할 수 있습니다. 공격자는 이 취약점을 악용하여 호스트 파일 시스템에서 파일을 바꾸거나 만들 수 있습니다.
 
 |
@@ -703,9 +767,9 @@ Kubernetes 프로젝트에서 공개한 kubelet v1.13.6 및 v1.14.2의 취약점
 컨테이너가 루트가 아닌 사용자로 실행되고 노드 버전 1.13.6-gke.0~1.13.6-gke.6을 실행하고 있다면 다음 경우를 제외하고는
 영향을 받습니다.
 
-  * 루트가 아닌 유효한 ` runAsUser ` PodSecurityContext 값을 지정하는 Pod는 영향을 받지 않으며 계속 정상적으로 작동합니다. 
+  * 루트가 아닌 유효한 ` runAsUser ` PodSecurityContext 값을 지정하는 pod는 영향을 받지 않으며 계속 정상적으로 작동합니다. 
   * ` runAsUser ` 설정을 적용하는 PodSecurityPolicies도 영향을 받지 않으며 계속 정상적으로 작동합니다. 
-  * ` mustRunAsNonRoot:true ` 를 지정하는 Pod는 UID 0으로 시작하지 않지만 이 문제의 영향을 받을 경우 시작할 수 없습니다. 
+  * ` mustRunAsNonRoot:true ` 를 지정하는 pod는 UID 0으로 시작하지 않지만 이 문제의 영향을 받을 경우 시작할 수 없습니다. 
 
 #####  어떻게 해야 하나요?
 
@@ -785,7 +849,7 @@ n1-standard-1, g1-small, f1-micro VM은 1개의 vCPU만 게스트 환경에 노�
     https://raw.githubusercontent.com/GoogleCloudPlatform/\
     k8s-node-tools/master/disable-smt/gke/disable-smt.yaml
 
-  3. DaemonSet Pod가 실행 중인 상태인지 확인합니다. 
+  3. DaemonSet pod가 실행 중인 상태인지 확인합니다. 
     
         
     kubectl get pods --selector=name=disable-smt -n kube-system
@@ -802,6 +866,11 @@ n1-standard-1, g1-small, f1-micro VM은 1개의 vCPU만 게스트 환경에 노�
     
         
     kubectl logs disable-smt-2xnnc disable-smt -n kube-system
+
+참고: 노드에 [보안 부팅](/kubernetes-engine/docs/how-to/shielded-gke-nodes#secure_boot)
+기능이 사용 설정되어 있으면 부팅 옵션을 수정할 수 없습니다. 보안 부팅이 사용 설정된 경우 DaemonSet를 생성하기 전에 [사용
+중지](/ kubernetes-engine / docs / how-to / shielded-gke-nodes # disabling)해야
+합니다.
 
 풀에서 만든 새 노드에 변경사항이 자동으로 적용될 수 있도록 노드 풀에서 DaemonSet를 실행 중인 상태로 유지해야 합니다. 노드 생성은
 노드 자동 복구, 수동 또는 자동 업그레이드, 자동 확장으로 트리거될 수 있습니다.
@@ -856,15 +925,15 @@ Google Kubernetes Engine(GKE)에서 Istio를 사용 설정한 경우 이 취약�
 **이 취약점의 심각도가 높으므로 노드 자동 업그레이드 사용 설정 여부와 관계없이 다음 조치를 취하는 것이 좋습니다.**
 
   1. **패치가 제공되는 즉시 클러스터를[ 수동 업그레이드 ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=ko) 합니다. **
-  2. **[ 사이드카 업그레이드 설명서 ](https://istio.io/docs/setup/kubernetes/upgrade/steps/#sidecar-upgrade) 에 따라 사이드카를 업그레이드합니다. **
+  2. **[ 사이드카 업그레이드 문서 ](https://istio.io/docs/setup/kubernetes/upgrade/steps/#sidecar-upgrade) 에 따라 사이드카를 업그레이드합니다. **
 
 패치 버전은 금일 오후 7시(PDT 기준) 이전에 모든 GKE 프로젝트에 제공될 예정입니다.
 
 이 패치는 아래 GKE 버전에 제공됩니다. GKE 보안 게시판 페이지에서 패치 버전이 발표되면(2019년 4월 15일로 예정) 새
-클러스터에서 기본적으로 이 패치 버전을 사용합니다. 그 전에 새 클러스터를 만들었다면 사용할 패치 버전을 지정해야 합니다. [ 노드 자동
-업그레이드 ](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-
-upgrades?hl=ko) 를 사용 설정했으며 수동으로 업그레이드 하지 않는 GKE 고객의 노드는 그 다음 주에 패치 버전으로 자동
-업그레이드됩니다.
+클러스터에서 기본적으로 이 패치 버전을 사용합니다. 그 전에 새 클러스터를 만드는 경우에는 여기에 사용할 패치 버전을 지정해야 합니다. [
+노드 자동 업그레이드 ](https://cloud.google.com/kubernetes-engine/docs/how-to/node-
+auto-upgrades?hl=ko) 를 사용 설정했으며 수동으로 업그레이드 하지 않는 GKE 고객의 노드는 그 다음 주에 패치 버전으로
+자동 업그레이드됩니다.
 
 패치 버전:
 
@@ -1035,7 +1104,7 @@ engine/docs/release-notes?hl=ko#november-12-2018) 으로 클러스터를 업그�
 취약점 CVE-2018-1002105는 권한이 비교적 낮은 사용자가 kubelet의 API에 대한 승인을 우회할 수 있다는 문제를 안고
 있습니다. 이에 따라 사용자에게는 kubelet API 임의 호출 수행과 에스컬레이션을 위한 요청(업그레이드 가능) 권한이 주어집니다. 이는
 Kubernetes에서 심각한 취약점으로 분류됩니다. 미승인 에스컬레이션 경로가 차단된 GKE 구현을 좀 더 상세히 고려해 보면 이 문제는
-높은 등급의 취약점으로 분류됩니다.
+'높음' 등급의 취약점으로 분류됩니다.
 
 |  높음  |  [ CVE-2018-1002105 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2018-1002105)  
@@ -1086,8 +1155,8 @@ Google은 최근 Calico Container Network Interface(CNI) 플러그인이 특정 
 클러스터 네트워크 정책과 Stackdriver Logging이 사용 설정된 Google Kubernetes Engine 클러스터가
 Calico 서비스 계정 토큰을 Stackdriver에 로깅했습니다. 네트워크 정책이 사용 설정되지 않은 클러스터는 영향을 받지 않습니다.
 
-Google은 수정 배포를 통해 Calico CNI 플러그인을 이전하여 경고 수준에서만 로깅하고 새로운 서비스 계정을 사용할 수 있도록
-했습니다. 패치된 calico 코드는 후속 출시 버전에서 배포됩니다.
+Google은 수정 배포를 통해 Calico CNI 플러그인을 마이그레이션하여 경고 수준에서만 로깅하고 새로운 서비스 계정을 사용할 수
+있도록 했습니다. 패치된 calico 코드는 후속 출시 버전에서 배포됩니다.
 
 영향을 받았을 가능성이 있는 모든 토큰은 다음 주 중에 단계적으로 취소될 예정입니다. 취소가 완료되면 이 게시판이 업데이트됩니다. **추가
 조치는 필요하지 않습니다.** (이 순환은 2018년 11월 16일에 완료됨)
@@ -1197,7 +1266,7 @@ technology/l1tf.html) 했습니다.
   * [ CVE-2018-3620 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3620) (운영체제 및 [ SMT ](https://en.wikipedia.org/wiki/Hyper-threading) 용) 
   * [ CVE-2018-3646 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-3646) (가상화용) 
 
-이러한 CVE를 통칭하여 'L1 터미널 오류(L1TF)'라고 부릅니다.
+이러한 CVE를 통칭하여 'L1 터미널 오류(L1TF)'라고 합니다.
 
 이러한 L1TF 취약점은 프로세서 수준 데이터 구조의 구성을 공격하는 식의 예측 실행 악용 문제를 안고 있습니다. 'L1'은 레벨 1 데이터
 캐시(L1D), 즉 메모리 액세스 가속화에 사용되는 소형 온코어(on-core) 리소스를 의미합니다.
@@ -1238,7 +1307,7 @@ to/upgrading-a-container-cluster?hl=ko) 해야 합니다.
 최근 공개된 [ CVE-2018-5391 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2018-5391) 은 [ CVE-2018-5390
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390) 과 같은 커널 수준의
-네트워킹 취약점이며, 이로 인해 취약 시스템에 대한 서비스 거부(DoS) 공격 효과가 증가한다는 문제를 안고 있습니다. 주요한 차이는
+네트워킹 취약점이며, 취약 시스템에 대한 서비스 거부(DoS) 공격 효과가 증가한다는 문제를 안고 있습니다. 주요한 차이는
 CVE-2018-5391은 IP 연결 시 악용될 수 있다는 점입니다. 이 두 취약점을 모두 고려할 수 있도록 게시판이 업데이트되었습니다.
 
 ####  설명
@@ -1285,8 +1354,8 @@ Git에서 최근 발견된 취약점은 권한 없는 사용자가 gitRepo 볼�
 다음 항목이 모두 해당된다면 이 취약점의 영향을 받는 것입니다.
 
   * 신뢰할 수 없는 사용자가 Pod를 생성하거나 Pod 생성을 트리거할 수 있습니다. 
-  * 신뢰할 수 없는 사용자가 생성한 Pod에 호스트 루트 액세스를 방지하는 제한이 있습니다(예: [ PodSecurityPolicy ](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=ko) 를 통해 설정한 경우). 
-  * 신뢰할 수 없는 사용자가 생성한 Pod가 gitRepo 볼륨 유형을 사용할 수 있습니다. 
+  * 신뢰할 수 없는 사용자가 생성한 pod에 호스트 루트 액세스를 방지하는 제한이 있습니다(예: [ PodSecurityPolicy ](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=ko) 를 통해 설정한 경우). 
+  * 신뢰할 수 없는 사용자가 생성한 pod가 gitRepo 볼륨 유형을 사용할 수 있습니다. 
 
 모든 Kubernetes Engine 노드가 취약합니다.
 
@@ -1369,18 +1438,18 @@ upgrades?hl=ko) 를 사용 설정하고 수동으로는 업그레이드하지 �
 [ CVE-2018-1000199 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2018-1000199) : 이 취약점은 Linux 커널에 영향을 미치며, 이로 인해 권한이
 없는 사용자나 프로세스가 시스템 커널에 장애를 일으켜 DoS 공격이나 권한 에스컬레이션이 발생할 수 있습니다. 이 문제는 CVSS 7.8점에
-해당하는 높은 등급의 취약점으로 분류됩니다.
+해당하는 '높음' 등급의 취약점으로 분류됩니다.
 
 [ CVE-2018-8897 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2018-8897) : 이 취약점은 Linux 커널에 영향을 미치며, 이로 인해 권한이 없는
-사용자나 프로세스가 시스템 커널에 장애를 일으켜 DoS 공격이 발생할 수 있습니다. 이 문제는 CVSS 6.5점에 해당하는 보통 등급의
+사용자나 프로세스가 시스템 커널에 장애를 일으켜 DoS 공격이 발생할 수 있습니다. 이 문제는 CVSS 6.5점에 해당하는 '보통' 등급의
 취약점으로 분류됩니다.
 
 [ CVE-2018-1087 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2018-1087) : 이 취약점은 Linux 커널의 KVM 하이퍼바이저에 영향을 미치며, 이로
 인해 권한이 없는 프로세스가 게스트 커널에 장애를 일으킬 수 있거나 이 프로세스에 권한이 주어질 가능성도 있습니다. Kubernetes
 Engine 실행 인프라에서는 이 취약점을 해결하는 패치가 적용되었으므로 Kubernetes Engine은 영향을 받지 않습니다. 이 문제는
-CVSS 8.0점에 해당하는 높은 등급의 취약점으로 분류됩니다.
+CVSS 8.0점에 해당하는 '높음' 등급의 취약점으로 분류됩니다.
 
 |  높음  |
 
@@ -1400,7 +1469,7 @@ Kubernetes 프로젝트에서 [ 최근 공개된
 announce/P7lBjbjDKd8) 신규 보안 취약점 [ CVE-2017-1002101
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2017-1002101) 과 [
 CVE-2017-1002102 ](https://cve.mitre.org/cgi-
-bin/cvename.cgi?name=2017-1002102) 는 컨테이너의 컨테이너 외부 파일 액세스가 가능하다는 문제를 안고 있습니다.
+bin/cvename.cgi?name=2017-1002102) 는 컨테이너가 컨테이너 외부 파일에 액세스할 수 있다는 문제를 안고 있습니다.
 이 취약점은 모든 Kubernetes Engine 노드에 영향을 미치므로 아래의 세부정보를 참고하여 최대한 빨리 최신 패치 버전으로
 업그레이드하는 것이 좋습니다.
 
@@ -1429,14 +1498,14 @@ container-cluster?hl=ko) 하는 것이 좋습니다.
 취약점 CVE-2017-1002101은 [ subpath
 ](https://kubernetes.io/docs/concepts/storage/volumes/#using-subpath) 볼륨 마운트를
 사용하는 컨테이너가 볼륨 외부의 파일에 액세스할 수 있다는 문제를 안고 있습니다. 즉, PodSecurityPolicy로 컨테이너의
-hostpath 볼륨 액세스를 차단하는 경우 포드 업데이트나 생성이 가능한 공격자가 다른 볼륨 유형으로 임의의 hostpath를 마운트할 수
-있게 됩니다.
+hostpath 볼륨 액세스를 차단하는 경우 pod를 업데이트하거나 생성할 수 있는 공격자가 다른 볼륨 유형으로 임의의 hostpath를
+마운트할 수 있게 됩니다.
 
 취약점 CVE-2017-1002102는 특정 볼륨 유형(보안 비밀, 구성 맵, 예상 볼륨 또는 하향식 API 볼륨 등)을 사용하는 컨테이너가
 볼륨 외부의 파일을 삭제할 수 있다는 문제를 안고 있습니다. 즉, 이러한 볼륨 유형 중 하나를 사용하는 컨테이너가 손상되거나 신뢰할 수 없는
-사용자의 Pod 생성이 허용되는 경우 공격자가 이러한 컨테이너로 호스트상의 임의 파일을 삭제할 수 있게 됩니다.
+사용자의 pod 생성이 허용되는 경우 공격자가 이러한 컨테이너로 호스트상의 임의 파일을 삭제할 수 있게 됩니다.
 
-수정에 대한 자세한 내용은 [ Kubernetes 블로그 게시물
+해결책에 대한 자세한 내용은 [ Kubernetes 블로그 게시물
 ](https://kubernetes.io/blog/2018/04/04/fixing-subpath-volume-vulnerability/)
 을 참조하세요.
 
