@@ -13,6 +13,13 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloud-sql-mysql-release-
 notes.xml `
 
+##  May 18, 2020
+
+**FEATURE:**
+
+MySQL 5.6 minor version is upgraded to 5.6.42. MySQL 5.7 minor version is
+upgraded to 5.7.25.
+
 ##  May 04, 2020
 
 **DEPRECATED:**
