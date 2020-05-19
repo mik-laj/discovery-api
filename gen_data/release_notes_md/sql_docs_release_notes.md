@@ -8,6 +8,15 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/cloud-sql-release-notes.xml `
 
+##  May 18, 2020
+
+**Cloud SQL for MySQL**
+
+**FEATURE:**
+
+MySQL 5.6 minor version is upgraded to 5.6.42. MySQL 5.7 minor version is
+upgraded to 5.7.25.
+
 ##  May 15, 2020
 
 **Cloud SQL for PostgreSQL**
