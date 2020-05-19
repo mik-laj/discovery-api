@@ -11,6 +11,14 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/vpc-release-notes.xml `
 
+##  May 18, 2020
+
+**FEATURE:**
+
+Subnets in VPC networks now support IP addresses other than RFC 1918
+addresses. For more information, see [ Subnet ranges
+](https://cloud.google.com/vpc/docs/vpc#manually_created_subnet_ip_ranges) .
+
 ##  April 29, 2020
 
 **CHANGED:**
