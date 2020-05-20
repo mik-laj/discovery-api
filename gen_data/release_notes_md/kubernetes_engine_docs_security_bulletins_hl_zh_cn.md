@@ -15,16 +15,58 @@ Isolation-at-different-layers-of-the-Kubernetes-stack.html) 。
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/kubernetes-engine-security-bulletins.xml `
 
+##  GCP-2020-005
+
+**发布日期** ：2020 年 5 月 7 日  
+**更新日期** ：2020 年 5 月 7 日  说明  |  严重级别  |  备注  
+---|---|---  
+  
+近期在 Linux 内核中发现了一个漏洞（如 [ CVE-2020-8835 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8835) 中所述），该漏洞允许容器逃逸，从而获得主机节点上的 root 权限。
+
+运行 GKE 1.16 或 1.17 版本的 Google Kubernetes Engine (GKE) Ubuntu
+节点均受此漏洞影响，我们建议您按照下文详述的方法，尽快升级到最新补丁程序版本。
+
+运行 Container-Optimized OS 的节点不受影响。在 GKE On-Prem 上运行的节点不受影响。
+
+####  我该怎么做？
+
+**大多数客户无需执行任何额外操作。只有使用 GKE 1.16 或 1.17 版本且运行 Ubuntu 的节点会受到影响。**
+
+若要升级节点，您必须先将主实例升级到最新版本。Kubernetes 1.16.8-gke.12、1.17.4-gke.10
+及更新的版本中提供了该补丁程序。在 [ 版本说明 ](https://cloud.google.com/kubernetes-
+engine/docs/release-notes?hl=zh_cn) 中可以跟踪这些补丁程序的提供情况。
+
+####  该补丁程序解决了哪一漏洞？
+
+该补丁程序解决了以下漏洞：
+
+[ CVE-2020-8835 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8835) 描述了 Linux 内核 5.5.0
+版本及更新版本中的一个漏洞，该漏洞允许恶意容器（只需极少的用户互动，执行一次 exec 即可触发）读写内核内存，从而获得主机节点上的 root
+级代码执行权限。此漏洞的严重级别分级为“高”。
+
+|
+
+高
+
+|
+
+[ CVE-2020-8835 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8835)  
+  
+  
 ##  GCP-2020-003
 
-说明  |  严重级别  |  备注  
+**发布日期** ：2020 年 3 月 31 日  
+**更新日期** ：2020 年 3 月 31 日  说明  |  严重级别  |  备注  
 ---|---|---  
   
 近期在 Kubernetes 中发现了一个漏洞（如 [ CVE-2019-11254 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2019-11254) 中所述），该漏洞导致任何有权发出 POST 请求的用户都可以对
 Kubernetes API 服务器执行远程拒绝服务攻击。Kubernetes 产品安全委员会 (PSC) 已经发布了有关此漏洞的更多信息，详见 [ 此处
-](https://groups.google.com/g/kubernetes-security-
-announce/c/wuwEwZigXBc?hl=zh_cn) 。
+](https://groups.google.com/forum/?hl=zh_cn#!topic/kubernetes-security-
+announce/wuwEwZigXBc) 。
 
 使用 [ 主授权网络 ](https://cloud.google.com/kubernetes-engine/docs/how-
 to/authorized-networks?hl=zh_cn) 的 GKE 集群和 [ 无公共端点的专用集群
@@ -61,7 +103,8 @@ bin/cvename.cgi?name=CVE-2019-11254)
   
 ##  GCP-2020-002
 
-说明  |  严重级别  |  备注  
+**发布日期** ：2020 年 3 月 23 日  
+**更新日期** ：2020 年 3 月 23 日  说明  |  严重级别  |  备注  
 ---|---|---  
   
 Kubernetes 披露了 [ 两个拒绝服务攻击漏洞
@@ -104,7 +147,8 @@ bin/cvename.cgi?name=CVE-2020-8552)
   
 ##  2020 年 1 月 21 日；上次更新时间：2020 年 1 月 24 日
 
-说明  |  严重级别  |  备注  
+**发布日期** ：2020 年 1 月 21 日  
+**更新日期** ：2020 年 1 月 24 日  说明  |  严重级别  |  备注  
 ---|---|---  
   
 **2020 年 1 月 24 日更新** ：我们正在推出修补版本，此过程将在 2020 年 1 月 25 日完成。
@@ -164,7 +208,8 @@ bin/cvename.cgi?name=CVE-2020-0601)
   
 ##  2019 年 11 月 14 日
 
-说明  |  严重级别  |  备注  
+**发布日期** ：2019 年 11 月 14 日  
+**更新日期** ：2019 年 11 月 14 日  说明  |  严重级别  |  备注  
 ---|---|---  
   
 Kubernetes 披露了 kubernetes-csi [ ` external-provisioner `
@@ -202,7 +247,8 @@ bin/cvename.cgi?name=CVE-2019-11255)
   
 ##  2019 年 11 月 12 日
 
-说明  |  严重级别  |  备注  
+**发布日期** ：2019 年 11 月 12 日  
+**更新日期** ：2019 年 11 月 12 日  说明  |  严重级别  |  备注  
 ---|---|---  
   
 Intel 披露了多个可能允许在推测性执行与微架构状态之间进行交互，从而导致数据泄露的 CVE。如需了解详情，请参阅 [ Intel 披露信息
@@ -250,7 +296,8 @@ GKE。
   
 ##  2019 年 10 月 22 日
 
-说明  |  严重级别  |  备注  
+**发布日期** ：2019 年 10 月 22 日  
+**更新日期** ：2019 年 10 月 22 日  说明  |  严重级别  |  备注  
 ---|---|---  
   
 [ CVE-2019-16276 ](https://cve.mitre.org/cgi-
@@ -273,7 +320,8 @@ bin/cvename.cgi?name=CVE-2019-16276)
   
 ##  2019 年 10 月 16 日
 
-说明  |  严重级别  |  备注  
+**发布日期** ：2019 年 10 月 16 日  
+**更新日期** ：2019 年 10 月 24 日  说明  |  严重级别  |  备注  
 ---|---|---  
   
 **2019 年 10 月 24 日更新** ：经过修补的版本现已在所有地区推出。
@@ -321,7 +369,8 @@ bin/cvename.cgi?name=CVE-2019-11253)
   
 ##  2019 年 9 月 16 日
 
-说明  |  严重级别  |  备注  
+**发布日期** ：2019 年 9 月 16 日  
+**更新日期** ：2019 年 10 月 16 日  说明  |  严重级别  |  备注  
 ---|---|---  
   
 此公告在原始发布版本的基础上进行了更新。
@@ -369,9 +418,15 @@ bin/cvename.cgi?name=CVE-2019-9514)
   
 ##  2019 年 9 月 5 日
 
+**发布日期** ：2019 年 9 月 5 日  
+**更新日期** ：2019 年 9 月 5 日
+
 修复  2019 年 5 月 31 日  的安全公告内记录的漏洞的公告已更新。
 
 ##  2019 年 8 月 22 日
+
+**发布日期** ：2019 年 8 月 22 日  
+**更新日期** ：2019 年 8 月 22 日
 
 2019 年 8 月 5 日  的公告已更新。 先前发布的一则公告中记录的漏洞的修复已 [ 发布
 ](https://cloud.google.com/kubernetes-engine/docs/release-
@@ -379,11 +434,15 @@ notes?hl=zh_cn#august_22_2019) 。
 
 ##  2019 年 8 月 8 日
 
+**发布日期** ：2019 年 8 月 8 日  
+**更新日期** ：2019 年 8 月 8 日
+
 2019 年 8 月 5 日  的公告已更新。 我们预计，该公告中记录的漏洞的修复将在下个版本的 GKE 中提供。
 
 ##  2019 年 8 月 5 日
 
-说明  |  严重级别  |  备注  
+**发布日期** ：2019 年 8 月 5 日  
+**更新日期** ：2019 年 8 月 9 日  说明  |  严重级别  |  备注  
 ---|---|---  
   
 此公告在原始发布版本的基础上进行了更新。
@@ -421,7 +480,8 @@ bin/cvename.cgi?name=CVE-2019-11247)
   
 ##  2019 年 7 月 3 日
 
-说明  |  严重级别  |  备注  
+**发布日期** ：2019 年 7 月 3 日  
+**更新日期** ：2019 年 7 月 3 日  说明  |  严重级别  |  备注  
 ---|---|---  
   
 解决 CVE-2019-11246 的 ` kubectl ` 修补版本将随 [ ` gcloud ` 253.0.0
@@ -441,7 +501,8 @@ bin/cvename.cgi?name=CVE-2018-15664)
   
 ##  2019 年 7 月 3 日
 
-说明  |  严重级别  |  备注  
+**发布日期** ：2019 年 6 月 25 日  
+**更新日期** ：2019 年 7 月 3 日  说明  |  严重级别  |  备注  
 ---|---|---  
   
 ######  2019 年 7 月 3 日更新
@@ -772,7 +833,11 @@ sa-00233.html) 。
         
     kubectl logs disable-smt-2xnnc disable-smt -n kube-system
 
-您必须保持 DaemonSet 在节点池上运行，使得池中创建的新节点可以自动应用更改。节点创建可由节点自动修复、手动升级或自动升级和自动扩缩触发。
+注意：如果节点启用了[安全启动](/kubernetes-engine/docs/how-to/shielded-gke-
+nodes#secure_boot)功能，则无法修改启动选项。如果已经启用安全启动功能，需要首先将其[停用](/kubernetes-
+engine/docs/how-to/shielded-gke-nodes#disabling)，然后才能创建 DaemonSet。
+
+您必须让 DaemonSet 在节点池上保持运行，从而使得池中创建的新节点可以自动应用更改。节点创建可由节点自动修复、手动升级或自动升级和自动扩缩触发。
 
 如需再次启用超线程，您需要重新创建节点池，但不要在其中部署所提供的 DaemonSet，然后将工作负载迁移到新节点池。
 
