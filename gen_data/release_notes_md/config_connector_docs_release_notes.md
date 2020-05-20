@@ -13,6 +13,17 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/configconnector-release-
 notes.xml `
 
+##  May 19, 2020
+
+**FIXED:**
+
+Bug fixes and reliability improvements
+
+**FIXED:**
+
+Improving handling of scenarios when ` version ` field on ` ContainerNodePool
+` is updated externally
+
 ##  May 15, 2020
 
 **FIXED:**
