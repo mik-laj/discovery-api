@@ -10,7 +10,10 @@ go/releases) 、 [ Java ](https://github.com/googleapis/java-pubsub/releases) �
 ](https://github.com/googleapis/python-pubsub/releases) 、 [ Ruby
 ](https://github.com/googleapis/google-cloud-ruby/releases) 。
 
-如需接收最新产品动态，请将此页面的网址添加到您的 [ Feed 阅读器
+您可以在 [ Google Cloud 版本说明 ](https://cloud.google.com/release-notes?hl=zh-cn)
+页面上查看所有 Google Cloud 的最新产品动态。
+
+要接收最新产品动态，请将本页面的网址添加到您的 [ Feed 阅读器
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/pubsub-release-notes.xml `
 
