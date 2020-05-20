@@ -12,6 +12,42 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  May 19, 2020
+
+**Cloud Debugger**
+
+**FEATURE:**
+
+Cloud Debugger now lets you canary snapshots and logpoints on your Java
+applications. To learn more, see the [ Java page for setting up Cloud Debugger
+](https://cloud.google.com/debugger/docs/setup/java) .
+
+**Cloud Monitoring**
+
+**CHANGED:**
+
+Alert notifications delivered by email now come from "alerting-
+noreply@google.com" instead of "alerts@stackdriver.com".
+
+**Config Connector**
+
+**FIXED:**
+
+Bug fixes and reliability improvements
+
+**FIXED:**
+
+Improving handling of scenarios when ` version ` field on ` ContainerNodePool
+` is updated externally
+
+**Filestore**
+
+**FEATURE:**
+
+Learn how to create [ low disk space alerts
+](https://cloud.google.com/filestore/docs/monitoring-instances) for your
+Filestore instances.
+
 ##  May 18, 2020
 
 **Cloud Bigtable**
@@ -21,8 +57,11 @@ URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 The [ Cloud Bigtable Monitoring
 ](https://cloud.google.com/bigtable/docs/monitoring-instance) page in the
 Cloud Console has been redesigned. Changes to the visual experience include
-the following: * Views that are now split into separate tabs * A new time
-range picker * Updated styling on the graphs
+the following:
+
+  * Views that are now split into separate tabs 
+  * A new time range picker 
+  * Updated styling on the graphs 
 
 **Cloud Billing**
 
@@ -1328,275 +1367,4 @@ features included in this release.
 **CHANGED:**
 
 Miscellaneous bug fixes and improvements
-
-##  April 20, 2020
-
-**App Engine flexible environment .NET**
-
-**FEATURE:**
-
-App Engine is now available in the ` us-west4 ` region (Las Vegas, NV)
-
-**App Engine flexible environment Go**
-
-**FEATURE:**
-
-App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
-
-**App Engine flexible environment Java**
-
-**FEATURE:**
-
-App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
-
-**App Engine flexible environment Node.js**
-
-**FEATURE:**
-
-App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
-
-**App Engine flexible environment PHP**
-
-**FEATURE:**
-
-App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
-
-**App Engine flexible environment Ruby**
-
-**FEATURE:**
-
-App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
-
-**App Engine flexible environment custom runtimes**
-
-**FEATURE:**
-
-App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
-
-**App Engine standard environment Go**
-
-**FEATURE:**
-
-App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
-
-**FEATURE:**
-
-App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
-
-**App Engine standard environment Java**
-
-**FEATURE:**
-
-App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
-
-**CHANGED:**
-
-  * Updated Java SDK to Version 1.9.80 
-  * Fixed deployment of cron.yaml file with retry_parameters configured 
-  * Fixed class LocalTaskQueueTestConfig to support custom paths for queue.yaml files ( [ public issue 138528920 ](https://issuetracker.google.com/138528920) ) 
-
-**FEATURE:**
-
-App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
-
-**App Engine standard environment Node.js**
-
-**FEATURE:**
-
-App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
-
-**App Engine standard environment PHP**
-
-**FEATURE:**
-
-App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
-
-**FEATURE:**
-
-App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
-
-**App Engine standard environment Python**
-
-**FEATURE:**
-
-App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
-
-**FEATURE:**
-
-App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
-
-**App Engine standard environment Ruby**
-
-**FEATURE:**
-
-App Engine is now available in the ` us-west4 ` region (Las Vegas, NV).
-
-**Cloud Bigtable**
-
-**FEATURE:**
-
-Cloud Bigtable is now available in the [ ` us-west4 ` (Las Vegas) region
-](https://cloud.google.com/bigtable/docs/locations) .
-
-**Cloud Key Management Service**
-
-**FEATURE:**
-
-Cloud KMS and Cloud EKM resources are available in the ` us-west4 ` region.
-Cloud HSM resources are **not** available in this region.
-
-Cloud HSM resources are available in the ` global ` multi-regional location.
-
-For information about which [ Cloud Locations
-](https://cloud.google.com/about/locations/) are supported by Cloud KMS, Cloud
-HSM, and Cloud EKM, see the [ Cloud KMS regional locations
-](https://cloud.google.com/kms/docs/locations#regional) .
-
-**Cloud Load Balancing**
-
-**FEATURE:**
-
-[ Internal TCP/UDP Load Balancing with failover groups
-](https://cloud.google.com/load-balancing/docs/internal/failover-overview) is
-available in **General Availability** .
-
-**Cloud Profiler**
-
-**CHANGED:**
-
-The Cloud Profiler Node.js agent is now generally available. See [ Profiling
-Node.js applications ](https://cloud.google.com/profiler/docs/profiling-
-nodejs) for information on configuring your Node.js application.
-
-**FEATURE:**
-
-The Cloud Profiler Node.js agent now supports release 12 of Node.js. See [
-Profiling Node.js applications
-](https://cloud.google.com/profiler/docs/profiling-nodejs) for information on
-configuring your Node.js application.
-
-**CHANGED:**
-
-The Cloud Profiler Node.js agent no longer supports release 8 of Node.js.
-
-**Cloud SQL for MySQL**
-
-**FEATURE:**
-
-Support for [ us-west4 ](https://cloud.google.com/sql/docs/mysql/locations)
-region (Las Vegas).
-
-**Cloud SQL for PostgreSQL**
-
-**FEATURE:**
-
-Support for [ us-west4 ](https://cloud.google.com/sql/docs/postgres/locations)
-region (Las Vegas).
-
-**Cloud SQL for SQL Server**
-
-**FEATURE:**
-
-Support for [ us-west4
-](https://cloud.google.com/sql/docs/sqlserver/locations) region (Las Vegas).
-
-**Cloud Spanner**
-
-**FEATURE:**
-
-Cloud Spanner [ regional instances
-](https://cloud.google.com/spanner/docs/instances#available-configurations-
-regional) can now be created in Las Vegas (us-west4).
-
-**Cloud Storage**
-
-**FEATURE:**
-
-Las Vegas region ( ` us-west4 ` ) launched.
-
-  * New [ location ](https://cloud.google.com/storage/docs/locations) for storing your data. 
-
-**Cloud VPN**
-
-**FEATURE:**
-
-Cloud VPN is now available in [ region
-](https://cloud.google.com/compute/docs/regions-zones/#available) us-west4
-(Las Vegas, Nevada, USA).
-
-Pricing is available on the [ Cloud VPN pricing page
-](https://cloud.google.com/vpn/pricing) .
-
-**Compute Engine**
-
-**FEATURE:**
-
-  * The ` us-west4 ` Las Vegas, Nevada region is now available to all projects and users. The zones in the ` us-west4 ` region have [ N1 and E2 machine types ](https://cloud.google.com/compute/docs/machine-types) . See [ Regions and zones ](https://cloud.google.com/compute/docs/regions-zones) for more information. 
-
-**Dataflow**
-
-**FEATURE:**
-
-Dataflow is now able to use workers in zones in the ` us-west4 ` region (Las
-Vegas).
-
-**Dataproc**
-
-**CHANGED:**
-
-Dataproc is now available in the ` us-west4 ` [ region
-](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available)
-(Las Vegas).
-
-**Datastore**
-
-**FEATURE:**
-
-Support for [ ` us-west4 ` region (Las Vegas)
-](https://cloud.google.com/datastore/docs/locations) .
-
-**Dialogflow**
-
-**FEATURE:**
-
-Beta launch of one-click integrations with two telephony partners:
-
-  * [ AudioCodes ](https://cloud.google.com/dialogflow/docs/integrations/audiocodes)
-  * [ SignalWire ](https://cloud.google.com/dialogflow/docs/integrations/signalwire)
-
-**Filestore**
-
-**FEATURE:**
-
-Filestore is available in the ` us-west4 ` (Las Vegas) region. See [ Regions
-and zones ](https://cloud.google.com/filestore/docs/regions) .
-
-**Firestore**
-
-**FEATURE:**
-
-Support for [ ` us-west4 ` region (Las Vegas)
-](https://cloud.google.com/firestore/docs/locations) .
-
-**Memorystore for Redis**
-
-**FEATURE:**
-
-Added new Memorystore for Redis [ region
-](https://cloud.google.com/memorystore/docs/redis/regions) : Las Vegas ( ` us-
-west4 ` ).
-
-**Virtual Private Cloud**
-
-**FEATURE:**
-
-For auto mode VPC networks, added a new subnet ` 10.182.0.0/20 ` for the Las
-Vegas ` us-west4 ` region. For more information, see [ Auto mode IP ranges
-](https://cloud.google.com/vpc/docs/vpc#ip-ranges) .
-
-**CHANGED:**
-
-[ Packet Mirroring pricing ](https://cloud.google.com/compute/network-
-pricing#packet-mirroring) will come into effect from June 20, 2020. There is
-no charge for Packet Mirroring until that time.
 
