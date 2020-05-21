@@ -12,6 +12,176 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  May 20, 2020
+
+**Anthos Service Mesh**
+
+**FEATURE:**
+
+#  1.5.4-asm.2
+
+1.5.4-asm.2 is now available.
+
+**FIXED:**
+
+##  Security fixes
+
+1.5.4-asm.2 contains all the same security fixes that are in Anthos Service
+Mesh 1.4.
+
+**FEATURE:**
+
+##  Beta release of the Anthos CLI
+
+The Anthos CLI simplifies the installation of Anthos Service Mesh. You can use
+the Anthos CLI to:
+
+  * Create a new cluster that meets the Anthos Service Mesh cluster requirements and install Anthos Service Mesh. See [ Installing Anthos Service Mesh on a new cluster using the Anthos CLI ](https://cloud.google.com//service-mesh/docs/gke-anthos-cli-new-cluster) . 
+  * Update an existing cluster with the options that Anthos Service Mesh requires and install Anthos Service Mesh. See [ Installing Anthos Service Mesh on an existing cluster using the Anthos CLI ](https://cloud.google.com//service-mesh/docs/gke-anthos-cli-existing-cluster) . 
+
+**BREAKING:**
+
+##  Port change for automatic sidecar injection
+
+If you are installing Anthos Service Mesh on a private cluster, you must add a
+firewall rule to open port 15017 if you want to use [ automatic sidecar
+injection ](https://cloud.google.com/service-mesh/docs/proxy-injection) . In
+Anthos Service Mesh 1.4, the port used for automatic sidecar injection is
+9443.
+
+If you don't add the firewall rule and automatic sidecar injection is enabled,
+you get an error when you deploy workloads. For details on adding a firewall
+rule, see [ Adding firewall rules for specific use cases
+](https://cloud.google.com/kubernetes-engine/docs/how-to/private-
+clusters#add_firewall_rules) .
+
+**DEPRECATED:**
+
+##  The alpha authentication policy is deprecated
+
+See [ Updating to the beta security policies
+](https://cloud.google.com/service-mesh/docs/security/update-authentication-
+policies) for more information.
+
+**BREAKING:**
+
+##  ` IstioOperator ` API replaces ` IstioControlPlane ` API
+
+The alpha [ ` IstioControlPlane ` API
+](https://archive.istio.io/v1.4/docs/reference/config/istio.operator.v1alpha12.pb/#IstioControlPlane)
+has been replaced by the [ ` IstioOperator ` API
+](https://istio.io/docs/reference/config/istio.operator.v1alpha1/#IstioComponentSetSpec)
+. You must use the ` IstioOperator ` API in YAML files to enable optional
+features when you install Anthos Service Mesh.
+
+**CHANGED:**
+
+##  Citadel CA supported on GKE
+
+By default, the Anthos Service Mesh Certificate Authority (Mesh CA) is enabled
+on GKE when you install Anthos Service Mesh. You can optionally enable the
+Citadel CA as a replacement for Mesh CA on GKE.
+
+**CHANGED:**
+
+##  Istio CNI plugin is supported
+
+By default Anthos Service Mesh injects an ` initContainer ` , ` istio-init ` ,
+in pods deployed in the mesh. The ` istio-init ` container sets up the pod
+network traffic redirection to/from the sidecar proxy. This requires the user
+or service-account deploying pods to the mesh to have sufficient Kubernetes
+RBAC permissions to deploy containers with the ` NET_ADMIN ` and ` NET_RAW `
+capabilities. Requiring users to have elevated Kubernetes RBAC permissions is
+problematic for some organization's security compliance. The Istio Container
+Network Interface (CNI) plugin is a replacement for the ` istio-init `
+container that performs the same networking functionality but without
+requiring users to enable elevated Kubernetes RBAC permissions.
+
+The Istio CNI plugin performs the mesh pod traffic redirection in the
+Kubernetes pod lifecycle's network setup phase, thereby removing the
+requirement for the ` NET_ADMIN ` and ` NET_RAW ` capabilities for users
+deploying pods into the mesh. The Istio CNI plugin replaces the functionality
+provided by the ` istio-init ` container.
+
+**CHANGED:**
+
+##  Kiali is supported on GKE on-prem
+
+The Kiali observability console is supported on GKE on-prem.
+
+**CHANGED:**
+
+##  Enabling pod security policies no longer needed
+
+SDS security was improved by merging Node Agent with Pilot Agent as Istio
+Agent and removing cross-pod UDS, which no longer requires users to deploy
+Kubernetes pod security policies for UDS connections.
+
+**BigQuery**
+
+**FEATURE:**
+
+Happy 10th birthday, BigQuery!
+
+**FEATURE:**
+
+[ Cloud SQL federated queries ](https://cloud.google.com/bigquery/docs/cloud-
+sql-federated-queries) are now generally available [ (GA)
+](https://cloud.google.com/terms/launch-stages) .
+
+**FEATURE:**
+
+[ Hourly partitioned tables ](https://cloud.google.com/bigquery/docs/creating-
+column-partitions) are now in [ beta
+](https://cloud.google.com/products/#product-launch-stages) .
+
+**FEATURE:**
+
+Dynamic SQL is now available as a [ beta
+](https://cloud.google.com/products/#product-launch-stages) release in all
+BigQuery regions. Dynamic SQL lets you generate and execute SQL statements
+dynamically at runtime. For more information, see [ EXECUTE IMMEDIATE
+](https://cloud.google.com/bigquery/docs/reference/standard-
+sql/scripting#execute_immediate) .
+
+**FEATURE:**
+
+[ BigQuery Trial slots
+](https://cloud.google.com/bigquery/pricing#flat_rate_pricing) are now
+available in US and EU multi-regions. Trial slots are a limited promotion for
+qualified customers.
+
+**Cloud Load Balancing**
+
+**FEATURE:**
+
+For internal TCP/UDP load balancers, you can create [ multiple forwarding
+fules with the same IP address ](https://cloud.google.com/load-
+balancing/docs/internal/multiple-forwarding-rules-same-ip) . The forwarding
+rules can have different protocols and ports. This feature is available in
+**Beta** .
+
+**Cloud Monitoring**
+
+**FEATURE:**
+
+Cloud Monitoring introduces an improved experience for viewing and managing
+incidents. Improvements include performance optimizations for Workspaces with
+large numbers of incidents, summary statics, and the ability to filter by
+alerting policy name, metric type, and resource type. For more information,
+see [ Incidents and events
+](https://cloud.google.com/monitoring/alerts/incidents-events) .
+
+**Compute Engine**
+
+**FEATURE:**
+
+If your managed instance group encountered errors - for example, if a VM could
+not be created - you can [ view those errors
+](https://cloud.google.com/compute/docs/instance-groups/getting-info-about-
+migs#listing_instance_errors) to diagnose and mitigate the cause. This is
+**Generally available** .
+
 ##  May 19, 2020
 
 **Cloud Debugger**
@@ -28,6 +198,14 @@ applications. To learn more, see the [ Java page for setting up Cloud Debugger
 
 Alert notifications delivered by email now come from "alerting-
 noreply@google.com" instead of "alerts@stackdriver.com".
+
+**Compute Engine**
+
+**FEATURE:**
+
+Troubleshoot VMs by [ capturing screenshots
+](https://cloud.google.com/compute/docs/instances/capturing-vm-screenshots) .
+This is in **beta** .
 
 **Config Connector**
 
@@ -1344,27 +1522,4 @@ Fixed a bug that caused DBSource plugin to fail in preview mode.
 **FIXED:**
 
 Fixed a race condition that caused a failure when running a Spark program.
-
-##  April 21, 2020
-
-**Cloud TPU**
-
-**FEATURE:**
-
-Cloud TPUs and Cloud TPU Pods now support PyTorch 1.5 via the PyTorch/XLA
-integration. This integration makes it possible for PyTorch users to do
-everything they can do on GPUs on Cloud TPUs, while minimizing changes to the
-user experience. You can try out PyTorch on an 8-core Cloud TPU device for
-free via Google Colab, and you can use PyTorch on Cloud TPUs at a much larger
-scale on Google Cloud (all the way up to full Cloud TPU Pods).
-
-See the ⁠ [ PyTorch/XLA 1.5 Release Notes
-](https://github.com/pytorch/xla/releases/tag/v1.5.0) for a complete list of
-features included in this release.
-
-**Config Connector**
-
-**CHANGED:**
-
-Miscellaneous bug fixes and improvements
 
