@@ -23,6 +23,36 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/stackdriver-release-notes.xml `
 
+##  May 20, 2020
+
+**Cloud Monitoring**
+
+**FEATURE:**
+
+Cloud Monitoring introduces an improved experience for viewing and managing
+incidents. Improvements include performance optimizations for Workspaces with
+large numbers of incidents, summary statics, and the ability to filter by
+alerting policy name, metric type, and resource type. For more information,
+see [ Incidents and events
+](https://cloud.google.com/monitoring/alerts/incidents-events) .
+
+##  May 19, 2020
+
+**Cloud Debugger**
+
+**FEATURE:**
+
+Cloud Debugger now lets you canary snapshots and logpoints on your Java
+applications. To learn more, see the [ Java page for setting up Cloud Debugger
+](https://cloud.google.com/debugger/docs/setup/java) .
+
+**Cloud Monitoring**
+
+**CHANGED:**
+
+Alert notifications delivered by email now come from "alerting-
+noreply@google.com" instead of "alerts@stackdriver.com".
+
 ##  May 18, 2020
 
 **Cloud Logging**
