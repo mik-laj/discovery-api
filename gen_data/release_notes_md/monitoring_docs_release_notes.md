@@ -12,6 +12,17 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/stackdriver-release-notes.xml `
 
+##  May 20, 2020
+
+**FEATURE:**
+
+Cloud Monitoring introduces an improved experience for viewing and managing
+incidents. Improvements include performance optimizations for Workspaces with
+large numbers of incidents, summary statics, and the ability to filter by
+alerting policy name, metric type, and resource type. For more information,
+see [ Incidents and events
+](https://cloud.google.com/monitoring/alerts/incidents-events) .
+
 ##  May 19, 2020
 
 **CHANGED:**
