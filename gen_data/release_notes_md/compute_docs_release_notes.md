@@ -14,6 +14,24 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/compute-release-notes.xml `
 
+##  May 20, 2020
+
+**FEATURE:**
+
+If your managed instance group encountered errors - for example, if a VM could
+not be created - you can [ view those errors
+](https://cloud.google.com/compute/docs/instance-groups/getting-info-about-
+migs#listing_instance_errors) to diagnose and mitigate the cause. This is
+**Generally available** .
+
+##  May 19, 2020
+
+**FEATURE:**
+
+Troubleshoot VMs by [ capturing screenshots
+](https://cloud.google.com/compute/docs/instances/capturing-vm-screenshots) .
+This is in **beta** .
+
 ##  May 12, 2020
 
 **FEATURE:**
