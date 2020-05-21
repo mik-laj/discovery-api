@@ -40,6 +40,342 @@ For a comprehensive list, see the
    </section>
    <section class="releases">
     <section class="releases">
+     <h2 data-text="May 20, 2020" id="May_20_2020" tabindex="0">
+      May 20, 2020
+     </h2>
+     <strong class="release-note-product-title">
+      Anthos Service Mesh
+     </strong>
+     <div class="release-feature" id="1d2776f1">
+      <strong>
+       FEATURE:
+      </strong>
+      <h1 class="page-title" data-text="1.5.4-asm.2" id="154-asm2" tabindex="0">
+       1.5.4-asm.2
+      </h1>
+      <p>
+       1.5.4-asm.2 is now available.
+      </p>
+     </div>
+     <div class="release-fixed" id="49078639">
+      <strong>
+       FIXED:
+      </strong>
+      <h2 data-text="Security fixes" id="security_fixes" tabindex="0">
+       Security fixes
+      </h2>
+      <p>
+       1.5.4-asm.2 contains all the same security fixes that are in Anthos Service Mesh 1.4.
+      </p>
+     </div>
+     <div class="release-feature" id="60b91a42">
+      <strong>
+       FEATURE:
+      </strong>
+      <h2 data-text="Beta release of the  Anthos CLI" id="beta_release_of_the_anthos_cli" tabindex="0">
+       Beta release of the  Anthos CLI
+      </h2>
+      <p>
+       The Anthos CLI simplifies the installation of Anthos Service Mesh. You can use the Anthos CLI to:
+      </p>
+      <ul>
+       <li>
+        Create a new cluster that meets the Anthos Service Mesh cluster requirements and install Anthos Service Mesh. See
+        <a href="https://cloud.google.com//service-mesh/docs/gke-anthos-cli-new-cluster">
+         Installing Anthos Service Mesh on a new cluster using the Anthos CLI
+        </a>
+        .
+       </li>
+       <li>
+        Update an existing cluster with the options that Anthos Service Mesh requires and install Anthos Service Mesh. See
+        <a href="https://cloud.google.com//service-mesh/docs/gke-anthos-cli-existing-cluster">
+         Installing Anthos Service Mesh on an existing cluster using the Anthos CLI
+        </a>
+        .
+       </li>
+      </ul>
+     </div>
+     <div class="release-breaking" id="aa2fcc18">
+      <strong>
+       BREAKING:
+      </strong>
+      <h2 data-text="Port change for automatic sidecar injection" id="port_change_for_automatic_sidecar_injection" tabindex="0">
+       Port change for automatic sidecar injection
+      </h2>
+      <p>
+       If you are installing Anthos Service Mesh on a private cluster, you must add a
+firewall rule to open port 15017 if you want to use
+       <a href="https://cloud.google.com/service-mesh/docs/proxy-injection">
+        automatic sidecar injection
+       </a>
+       . In Anthos Service Mesh 1.4, the port used for automatic sidecar injection is 9443.
+      </p>
+      <p>
+       If you don't add the firewall rule and  automatic sidecar injection is
+enabled, you get an error when you deploy workloads. For details on adding a
+firewall rule, see
+       <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#add_firewall_rules">
+        Adding firewall rules for specific use cases
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-deprecated" id="14b0cfb0">
+      <strong>
+       DEPRECATED:
+      </strong>
+      <h2 data-text="The alpha authentication policy is deprecated" id="the_alpha_authentication_policy_is_deprecated" tabindex="0">
+       The alpha authentication policy is deprecated
+      </h2>
+      <p>
+       See
+       <a href="https://cloud.google.com/service-mesh/docs/security/update-authentication-policies">
+        Updating to the beta security policies
+       </a>
+       for more information.
+      </p>
+     </div>
+     <div class="release-breaking" id="50b997ba">
+      <strong>
+       BREAKING:
+      </strong>
+      <h2 data-text="IstioOperator API replaces IstioControlPlane API" id="istiooperator_api_replaces_istiocontrolplane_api" tabindex="0">
+       <code dir="ltr" translate="no">
+        IstioOperator
+       </code>
+       API replaces
+       <code dir="ltr" translate="no">
+        IstioControlPlane
+       </code>
+       API
+      </h2>
+      <p>
+       The alpha
+       <a href="https://archive.istio.io/v1.4/docs/reference/config/istio.operator.v1alpha12.pb/#IstioControlPlane">
+        <code dir="ltr" translate="no">
+         IstioControlPlane
+        </code>
+        API
+       </a>
+       has been replaced by the
+       <a href="https://istio.io/docs/reference/config/istio.operator.v1alpha1/#IstioComponentSetSpec">
+        <code dir="ltr" translate="no">
+         IstioOperator
+        </code>
+        API
+       </a>
+       . You must use the
+       <code dir="ltr" translate="no">
+        IstioOperator
+       </code>
+       API in YAML files to enable optional features when you install Anthos Service Mesh.
+      </p>
+     </div>
+     <div class="release-changed" id="1c022b54">
+      <strong>
+       CHANGED:
+      </strong>
+      <h2 data-text="Citadel CA supported on GKE" id="citadel_ca_supported_on_gke" tabindex="0">
+       Citadel CA supported on GKE
+      </h2>
+      <p>
+       By default, the Anthos Service Mesh Certificate Authority (Mesh CA) is enabled on GKE  when you install Anthos Service Mesh. You can optionally enable the Citadel CA as a replacement for Mesh CA on GKE.
+      </p>
+     </div>
+     <div class="release-changed" id="ca20a964">
+      <strong>
+       CHANGED:
+      </strong>
+      <h2 data-text="Istio CNI plugin is supported" id="istio_cni_plugin_is_supported" tabindex="0">
+       Istio CNI plugin is supported
+      </h2>
+      <p>
+       By default Anthos Service Mesh injects an
+       <code dir="ltr" translate="no">
+        initContainer
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        istio-init
+       </code>
+       , in pods deployed in the mesh. The
+       <code dir="ltr" translate="no">
+        istio-init
+       </code>
+       container sets up the pod network traffic redirection to/from the sidecar proxy. This requires the user or service-account deploying pods to the mesh to have sufficient Kubernetes RBAC permissions to deploy containers with the
+       <code dir="ltr" translate="no">
+        NET_ADMIN
+       </code>
+       and
+       <code dir="ltr" translate="no">
+        NET_RAW
+       </code>
+       capabilities. Requiring users to have elevated Kubernetes RBAC permissions is problematic for some organization's security compliance. The Istio Container Network Interface (CNI) plugin is a replacement for the
+       <code dir="ltr" translate="no">
+        istio-init
+       </code>
+       container that performs the same networking functionality but without requiring users to enable elevated Kubernetes RBAC permissions.
+      </p>
+      <p>
+       The Istio CNI plugin performs the mesh pod traffic redirection in the Kubernetes pod lifecycle's network setup phase, thereby removing the requirement for the
+       <code dir="ltr" translate="no">
+        NET_ADMIN
+       </code>
+       and
+       <code dir="ltr" translate="no">
+        NET_RAW
+       </code>
+       capabilities for users deploying pods into the mesh. The Istio CNI plugin replaces the functionality provided by the
+       <code dir="ltr" translate="no">
+        istio-init
+       </code>
+       container.
+      </p>
+     </div>
+     <div class="release-changed" id="cc0dd9ea">
+      <strong>
+       CHANGED:
+      </strong>
+      <h2 data-text="Kiali is supported on GKE on-prem" id="kiali_is_supported_on_gke_on-prem" tabindex="0">
+       Kiali is supported on GKE on-prem
+      </h2>
+      <p>
+       The Kiali observability console is supported on GKE on-prem.
+      </p>
+     </div>
+     <div class="release-changed" id="b454d77e">
+      <strong>
+       CHANGED:
+      </strong>
+      <h2 data-text="Enabling pod security policies no longer needed" id="enabling_pod_security_policies_no_longer_needed" tabindex="0">
+       Enabling pod security policies no longer needed
+      </h2>
+      <p>
+       SDS security was improved by merging Node Agent with Pilot Agent as Istio Agent and removing cross-pod UDS, which no longer requires users to deploy Kubernetes pod security policies for UDS connections.
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      BigQuery
+     </strong>
+     <div class="release-feature" id="2d273e1d">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Happy 10th birthday, BigQuery!
+      </p>
+     </div>
+     <div class="release-feature" id="babbdacf">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <a href="https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries">
+        Cloud SQL federated queries
+       </a>
+       are now generally available
+       <a href="https://cloud.google.com/terms/launch-stages">
+        (GA)
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-feature" id="39ded3b5">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <a href="https://cloud.google.com/bigquery/docs/creating-column-partitions">
+        Hourly partitioned tables
+       </a>
+       are now in
+       <a href="https://cloud.google.com/products/#product-launch-stages">
+        beta
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-feature" id="108a4f65">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Dynamic SQL is now available as a
+       <a href="https://cloud.google.com/products/#product-launch-stages">
+        beta
+       </a>
+       release in all BigQuery regions. Dynamic SQL lets you generate and execute SQL statements dynamically at runtime. For more information, see
+       <a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/scripting#execute_immediate">
+        EXECUTE IMMEDIATE
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-feature" id="64a92b56">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <a href="https://cloud.google.com/bigquery/pricing#flat_rate_pricing">
+        BigQuery Trial slots
+       </a>
+       are now available in US and EU multi-regions. Trial slots are a limited promotion for qualified customers.
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      Cloud Load Balancing
+     </strong>
+     <div class="release-feature" id="255a1655">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       For internal TCP/UDP load balancers, you can create
+       <a href="https://cloud.google.com/load-balancing/docs/internal/multiple-forwarding-rules-same-ip">
+        multiple forwarding fules with the same IP address
+       </a>
+       . The forwarding rules can have different protocols and ports. This feature is available in
+       <strong>
+        Beta
+       </strong>
+       .
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      Cloud Monitoring
+     </strong>
+     <div class="release-feature" id="a82d430b">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Cloud Monitoring introduces an improved experience for viewing and managing incidents. Improvements include performance optimizations for Workspaces with large numbers of incidents, summary statics, and the ability to filter by alerting policy name, metric type, and resource type. For more information, see
+       <a href="https://cloud.google.com/monitoring/alerts/incidents-events">
+        Incidents and events
+       </a>
+       .
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      Compute Engine
+     </strong>
+     <div class="release-feature" id="45a218b4">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       If your managed instance group encountered errors - for example, if a VM could
+  not be created - you can
+       <a href="https://cloud.google.com/compute/docs/instance-groups/getting-info-about-migs#listing_instance_errors">
+        view those errors
+       </a>
+       to diagnose and mitigate the cause. This is
+       <strong>
+        Generally available
+       </strong>
+       .
+      </p>
+     </div>
      <h2 data-text="May 19, 2020" id="May_19_2020" tabindex="0">
       May 19, 2020
      </h2>
@@ -67,6 +403,25 @@ For a comprehensive list, see the
       </strong>
       <p>
        Alert notifications delivered by email now come from "alerting-noreply@google.com" instead of  "alerts@stackdriver.com".
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      Compute Engine
+     </strong>
+     <div class="release-feature" id="442c5c34">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Troubleshoot VMs by
+       <a href="https://cloud.google.com/compute/docs/instances/capturing-vm-screenshots">
+        capturing screenshots
+       </a>
+       . This is in
+       <strong>
+        beta
+       </strong>
+       .
       </p>
      </div>
      <strong class="release-note-product-title">
@@ -2824,38 +3179,6 @@ Increased CPU for the manager controller from 100m to 200m.
       </strong>
       <p>
        Fixed a race condition that caused a failure when running a Spark program.
-      </p>
-     </div>
-     <h2 data-text="April 21, 2020" id="April_21_2020" tabindex="0">
-      April 21, 2020
-     </h2>
-     <strong class="release-note-product-title">
-      Cloud TPU
-     </strong>
-     <div class="release-feature" id="49d69e52">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       Cloud TPUs and Cloud TPU Pods now support PyTorch 1.5 via the PyTorch/XLA integration. This integration makes it possible for PyTorch users to do everything they can do on GPUs on Cloud TPUs, while minimizing changes to the user experience. You can try out PyTorch on an 8-core Cloud TPU device for free via Google Colab, and you can use PyTorch on Cloud TPUs at a much larger scale on Google Cloud (all the way up to full Cloud TPU Pods).
-      </p>
-      <p>
-       See the ⁠
-       <a href="https://github.com/pytorch/xla/releases/tag/v1.5.0">
-        PyTorch/XLA 1.5 Release Notes
-       </a>
-       for a complete list of features included in this release.
-      </p>
-     </div>
-     <strong class="release-note-product-title">
-      Config Connector
-     </strong>
-     <div class="release-changed" id="4c56d569">
-      <strong>
-       CHANGED:
-      </strong>
-      <p>
-       Miscellaneous bug fixes and improvements
       </p>
      </div>
     </section>
