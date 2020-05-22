@@ -15,6 +15,21 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/aiplatform-release-notes.xml `
 
+##  May 21, 2020
+
+**AI Platform Training**
+
+**FEATURE:**
+
+You can now use TPUs with TensorFlow 2.1 when you create a training job with
+runtime version 2.1. You can also [ use TPUs with TensorFlow 2.1 when you
+train in a custom container ](https://cloud.google.com/ai-
+platform/training/docs/using-tpus#custom-containers) .
+
+Read the [ guide to using TPUs with AI Platform Training
+](https://cloud.google.com/ai-platform/training/docs/using-tpus) , which has
+been updated to show how to use TPUs with TensorFlow 2 APIs.
+
 ##  May 13, 2020
 
 **AI Platform Prediction**
