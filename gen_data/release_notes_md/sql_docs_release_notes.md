@@ -8,6 +8,16 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/cloud-sql-release-notes.xml `
 
+##  May 21, 2020
+
+**Cloud SQL for PostgreSQL**
+
+**FEATURE:**
+
+PostgreSQL version 12 is now generally available. To start using PostgreSQL
+12, see [ Creating instances
+](https://cloud.google.com/sql/docs/postgres/create-instance) .
+
 ##  May 18, 2020
 
 **Cloud SQL for MySQL**
