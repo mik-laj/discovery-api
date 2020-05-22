@@ -13,6 +13,76 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/anthos-config-management-
 release-notes.xml `
 
+##  May 21, 2020
+
+1.3.2
+
+**CHANGED:**
+
+This release includes several performance and memory improvements.
+
+In order to help prevent accidental deletion, Anthos Config Management will no
+longer allow a user to remove all namespaces or cluster-scoped resources in a
+single commit. If you wish to delete the full set of resources under
+management, it now requires two steps: remove all but one in a first commit,
+allow ACM to sync those changes, then remove the final resource in a second
+commit.
+
+**CHANGED:**
+
+[ Error documentation ](https://cloud.google.com/anthos-config-
+management/docs/reference/errors) has been updated to add more information on
+error codes. Errors that are no longer encountered in the product have been
+removed. Most error references have been embellished with examples and steps
+for remediation.
+
+**CHANGED:**
+
+Anthos Config Management now supports a GKE-only authentication mechanism
+based on the service account of the cluster's node pool. Documentation on its
+use is [ here ](https://cloud.google.com/anthos-config-management/docs/how-
+to/installing#git-creds-gcenode) .
+
+**FEATURE:**
+
+Anthos Config Management now includes [ Config Connector
+](https://cloud.google.com/config-connector) v1.8.0.
+
+**CHANGED:**
+
+Anthos Config Management will now attempt to detect when resources that it
+manages are also managed by other controllers. Documentation on this behavior
+is available in [ error ` knv2005 ` ](https://cloud.google.com/anthos-config-
+management/docs/reference/errors#knv2005) which ACM will log in that case.
+
+**CHANGED:**
+
+Policy Controller has been upgraded to include a newer version of [ Open
+Policy Agent Gatekeeper ](https://github.com/open-policy-
+agent/gatekeeper/tree/480baac44179d75d418b88fbd2c80581fcf183dd) .
+
+This version includes updates to improve the management of policy resources.
+As a consequence, finalizers are no longer used to manage Constraints and
+Constraint Templates.
+
+The following metrics have been made obsolete due to these changes and have
+been removed:
+
+  * gatekeeper_watch_manager_is_running 
+
+  * gatekeeper_watch_manager_last_restart_check_time 
+
+  * gatekeeper_watch_manager_last_restart_time 
+
+  * gatekeeper_watch_manager_restart_attempts 
+
+The following metrics were removed and will be re-implemented in a later
+version:
+
+  * gatekeeper_watch_manager_intended_watch_gvk 
+
+  * gatekeeper_watch_manager_watched_gvk 
+
 ##  April 23, 2020
 
 1.3.1
