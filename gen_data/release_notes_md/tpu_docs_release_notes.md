@@ -12,6 +12,15 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/tpu-release-notes.xml `
 
+##  May 21, 2020
+
+**CHANGED:**
+
+Cloud TPU now supports TensorFlow 2.1.1 with Keras support. See the [
+TensorFlow 2.1.1 Release Notes
+](https://github.com/tensorflow/tensorflow/releases/tag/v2.1.1) for a complete
+list of features included in this release.
+
 ##  May 12, 2020
 
 **CHANGED:**
