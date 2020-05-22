@@ -20,6 +20,39 @@ Feedreader ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
 einfügen oder die Feed-URL direkt hinzufügen: `
 https://cloud.google.com/feeds/gkeonprem-release-notes.xml ` .
 
+##  May 21, 2020
+
+**FEATURE:**
+
+Workload Identity is now available in Alpha for GKE on-prem. Please contact
+support if you are interested in a trial of Workload Identity in GKE on-prem.
+
+**CHANGED:**
+
+Preflight check for VM internet and Docker Registry access validation is
+updated.
+
+**CHANGED:**
+
+Preflight check for internet validation is updated to not follow redirect. If
+your organization requires outbound traffic to pass through a proxy server,
+you no longer need to whitelist the following addresses in your proxy server:
+
+  * console.cloud.google.com -cloud.google.com 
+
+**CHANGED:**
+
+The Ubuntu image is upgraded to include the newest packages.
+
+**FIXED:**
+
+Upgraded the Istio image to version 1.4.7 to fix a security vulnerability.
+
+**FIXED:**
+
+Some ConfigMaps in the admin cluster were refactored to Secrets to allow for
+more granular access control of sensitive configuration data.
+
 ##  April 23, 2020
 
 **CHANGED:**
