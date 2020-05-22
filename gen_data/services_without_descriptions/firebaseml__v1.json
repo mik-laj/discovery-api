@@ -1,0 +1,273 @@
+{
+    "auth": {
+        "oauth2": {
+            "scopes": {
+                "https://www.googleapis.com/auth/cloud-platform": {}
+            }
+        }
+    },
+    "basePath": "",
+    "baseUrl": "https://firebaseml.googleapis.com/",
+    "batchPath": "batch",
+    "canonicalName": "Firebase ML",
+    "discoveryVersion": "v1",
+    "documentationLink": "https://firebase.google.com",
+    "fullyEncodeReservedExpansion": true,
+    "icons": {
+        "x16": "http://www.google.com/images/icons/product/search-16.gif",
+        "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    },
+    "id": "firebaseml:v1",
+    "kind": "discovery#restDescription",
+    "mtlsRootUrl": "https://firebaseml.mtls.googleapis.com/",
+    "name": "firebaseml",
+    "ownerDomain": "google.com",
+    "ownerName": "Google",
+    "parameters": {
+        "$.xgafv": {
+            "enum": [
+                "1",
+                "2"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "alt": {
+            "default": "json",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "location": "query",
+            "type": "boolean"
+        },
+        "quotaUser": {
+            "location": "query",
+            "type": "string"
+        },
+        "uploadType": {
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "location": "query",
+            "type": "string"
+        }
+    },
+    "protocol": "rest",
+    "resources": {
+        "operations": {
+            "methods": {
+                "cancel": {
+                    "flatPath": "v1/operations/{operationsId}:cancel",
+                    "httpMethod": "POST",
+                    "id": "firebaseml.operations.cancel",
+                    "parameterOrder": [
+                        "name"
+                    ],
+                    "parameters": {
+                        "name": {
+                            "location": "path",
+                            "pattern": "^operations/.*$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+name}:cancel",
+                    "request": {
+                        "$ref": "CancelOperationRequest"
+                    },
+                    "response": {
+                        "$ref": "Empty"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
+                "delete": {
+                    "flatPath": "v1/operations/{operationsId}",
+                    "httpMethod": "DELETE",
+                    "id": "firebaseml.operations.delete",
+                    "parameterOrder": [
+                        "name"
+                    ],
+                    "parameters": {
+                        "name": {
+                            "location": "path",
+                            "pattern": "^operations/.*$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+name}",
+                    "response": {
+                        "$ref": "Empty"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
+                "list": {
+                    "flatPath": "v1/operations",
+                    "httpMethod": "GET",
+                    "id": "firebaseml.operations.list",
+                    "parameterOrder": [
+                        "name"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "name": {
+                            "location": "path",
+                            "pattern": "^operations$",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "pageSize": {
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+name}",
+                    "response": {
+                        "$ref": "ListOperationsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                }
+            }
+        }
+    },
+    "rootUrl": "https://firebaseml.googleapis.com/",
+    "schemas": {
+        "CancelOperationRequest": {
+            "id": "CancelOperationRequest",
+            "properties": {},
+            "type": "object"
+        },
+        "Empty": {
+            "id": "Empty",
+            "properties": {},
+            "type": "object"
+        },
+        "ListOperationsResponse": {
+            "id": "ListOperationsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "operations": {
+                    "items": {
+                        "$ref": "Operation"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ModelOperationMetadata": {
+            "id": "ModelOperationMetadata",
+            "properties": {
+                "basicOperationStatus": {
+                    "enum": [
+                        "BASIC_OPERATION_STATUS_UNSPECIFIED",
+                        "BASIC_OPERATION_STATUS_UPLOADING",
+                        "BASIC_OPERATION_STATUS_VERIFYING"
+                    ],
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Operation": {
+            "id": "Operation",
+            "properties": {
+                "done": {
+                    "type": "boolean"
+                },
+                "error": {
+                    "$ref": "Status"
+                },
+                "metadata": {
+                    "additionalProperties": {
+                        "type": "any"
+                    },
+                    "type": "object"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "response": {
+                    "additionalProperties": {
+                        "type": "any"
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "Status": {
+            "id": "Status",
+            "properties": {
+                "code": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "details": {
+                    "items": {
+                        "additionalProperties": {
+                            "type": "any"
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "message": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "servicePath": "",
+    "title": "Firebase ML API",
+    "version": "v1",
+    "version_module": true
+}
