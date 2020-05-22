@@ -12,6 +12,15 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/run-release-notes.xml `
 
+##  May 20, 2020
+
+**FEATURE:**
+
+The Cloud Run [ container instance metadata server
+](https://cloud.google.com/run/docs/reference/container-contract#metadata-
+server) now exposes the unique identifier of the container instance and the
+region of the Cloud Run service
+
 ##  May 13, 2020
 
 **FEATURE:**
