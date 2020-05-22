@@ -12,6 +12,196 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  May 21, 2020
+
+**AI Platform Training**
+
+**FEATURE:**
+
+You can now use TPUs with TensorFlow 2.1 when you create a training job with
+runtime version 2.1. You can also [ use TPUs with TensorFlow 2.1 when you
+train in a custom container ](https://cloud.google.com/ai-
+platform/training/docs/using-tpus#custom-containers) .
+
+Read the [ guide to using TPUs with AI Platform Training
+](https://cloud.google.com/ai-platform/training/docs/using-tpus) , which has
+been updated to show how to use TPUs with TensorFlow 2 APIs.
+
+**Anthos**
+
+**FEATURE:**
+
+[ Anthos ](https://cloud.google.com/anthos) 1.3.2 is now available.
+
+**Updated components:**
+
+  * [ Anthos GKE on-prem release notes ](https://cloud.google.com/anthos/gke/docs/on-prem/release-notes)
+  * [ Anthos Config Management release notes ](https://cloud.google.com/anthos-config-management/docs/release-notes)
+  * [ Anthos GKE on AWS ](https://cloud.google.com/anthos/gke/docs/aws/) is available as a limited preview for customers with an existing relationship with Google Cloud. Contact your sales representative for access. 
+
+**Anthos Config Management**
+
+**CHANGED:**
+
+This release includes several performance and memory improvements.
+
+In order to help prevent accidental deletion, Anthos Config Management will no
+longer allow a user to remove all namespaces or cluster-scoped resources in a
+single commit. If you wish to delete the full set of resources under
+management, it now requires two steps: remove all but one in a first commit,
+allow ACM to sync those changes, then remove the final resource in a second
+commit.
+
+**CHANGED:**
+
+[ Error documentation ](https://cloud.google.com/anthos-config-
+management/docs/reference/errors) has been updated to add more information on
+error codes. Errors that are no longer encountered in the product have been
+removed. Most error references have been embellished with examples and steps
+for remediation.
+
+**CHANGED:**
+
+Anthos Config Management now supports a GKE-only authentication mechanism
+based on the service account of the cluster's node pool. Documentation on its
+use is [ here ](https://cloud.google.com/anthos-config-management/docs/how-
+to/installing#git-creds-gcenode) .
+
+**FEATURE:**
+
+Anthos Config Management now includes [ Config Connector
+](https://cloud.google.com/config-connector) v1.8.0.
+
+**CHANGED:**
+
+Anthos Config Management will now attempt to detect when resources that it
+manages are also managed by other controllers. Documentation on this behavior
+is available in [ error ` knv2005 ` ](https://cloud.google.com/anthos-config-
+management/docs/reference/errors#knv2005) which ACM will log in that case.
+
+**CHANGED:**
+
+Policy Controller has been upgraded to include a newer version of [ Open
+Policy Agent Gatekeeper ](https://github.com/open-policy-
+agent/gatekeeper/tree/480baac44179d75d418b88fbd2c80581fcf183dd) .
+
+This version includes updates to improve the management of policy resources.
+As a consequence, finalizers are no longer used to manage Constraints and
+Constraint Templates.
+
+The following metrics have been made obsolete due to these changes and have
+been removed:
+
+  * gatekeeper_watch_manager_is_running 
+
+  * gatekeeper_watch_manager_last_restart_check_time 
+
+  * gatekeeper_watch_manager_last_restart_time 
+
+  * gatekeeper_watch_manager_restart_attempts 
+
+The following metrics were removed and will be re-implemented in a later
+version:
+
+  * gatekeeper_watch_manager_intended_watch_gvk 
+
+  * gatekeeper_watch_manager_watched_gvk 
+
+**Anthos GKE on-prem**
+
+**FEATURE:**
+
+Workload Identity is now available in Alpha for GKE on-prem. Please contact
+support if you are interested in a trial of Workload Identity in GKE on-prem.
+
+**CHANGED:**
+
+Preflight check for VM internet and Docker Registry access validation is
+updated.
+
+**CHANGED:**
+
+Preflight check for internet validation is updated to not follow redirect. If
+your organization requires outbound traffic to pass through a proxy server,
+you no longer need to whitelist the following addresses in your proxy server:
+
+  * console.cloud.google.com -cloud.google.com 
+
+**CHANGED:**
+
+The Ubuntu image is upgraded to include the newest packages.
+
+**FIXED:**
+
+Upgraded the Istio image to version 1.4.7 to fix a security vulnerability.
+
+**FIXED:**
+
+Some ConfigMaps in the admin cluster were refactored to Secrets to allow for
+more granular access control of sensitive configuration data.
+
+**BigQuery**
+
+**CHANGED:**
+
+The BigQuery Storage API now supports reading small anonymous (cached) tables
+without any limitations.
+
+**Cloud SQL for PostgreSQL**
+
+**FEATURE:**
+
+PostgreSQL version 12 is now generally available. To start using PostgreSQL
+12, see [ Creating instances
+](https://cloud.google.com/sql/docs/postgres/create-instance) .
+
+**Cloud TPU**
+
+**CHANGED:**
+
+Cloud TPU now supports TensorFlow 2.1.1 with Keras support. See the [
+TensorFlow 2.1.1 Release Notes
+](https://github.com/tensorflow/tensorflow/releases/tag/v2.1.1) for a complete
+list of features included in this release.
+
+**Compute Engine**
+
+**FEATURE:**
+
+E2 shared-core machine types now support committed use discounts in all
+regions. See the [ VM instance ](https://cloud.google.com/compute/vm-instance-
+pricing#e2_sharedcore_machine_types) pricing page for more information.
+
+**FEATURE:**
+
+You can now SSH to your VMs using hardware-backed SSH key pairs. For more
+information, see [ SSH with security keys
+](https://cloud.google.com/compute/docs/tutorials/ssh-with-sk) .
+
+**VPC Service Controls**
+
+**FEATURE:**
+
+[ Beta stage ](https://cloud.google.com/products/#product-launch-stages)
+support for the following integration:
+
+  * [ Service Directory ](https://cloud.google.com/service-directory/docs/securing-with-vpc-sc)
+
+**Video Intelligence API**
+
+**FEATURE:**
+
+The following features are available in the Video Intelligence API version
+v1p3beta1:
+
+**Face detection** : Locate faces within a video, and identify attributes such
+as glasses being worn. [ Learn more ](https://cloud.google.com/video-
+intelligence/docs/face-detection)
+
+**Person detection** : Locate people in a video, and identify attributes and
+2D landmarks. [ Learn more ](https://cloud.google.com/video-
+intelligence/docs/people-detection)
+
 ##  May 20, 2020
 
 **Anthos Service Mesh**
@@ -76,14 +266,6 @@ features when you install Anthos Service Mesh.
 
 **CHANGED:**
 
-##  Citadel CA supported on GKE
-
-By default, the Anthos Service Mesh Certificate Authority (Mesh CA) is enabled
-on GKE when you install Anthos Service Mesh. You can optionally enable the
-Citadel CA as a replacement for Mesh CA on GKE.
-
-**CHANGED:**
-
 ##  Istio CNI plugin is supported
 
 By default Anthos Service Mesh injects an ` initContainer ` , ` istio-init ` ,
@@ -102,12 +284,6 @@ Kubernetes pod lifecycle's network setup phase, thereby removing the
 requirement for the ` NET_ADMIN ` and ` NET_RAW ` capabilities for users
 deploying pods into the mesh. The Istio CNI plugin replaces the functionality
 provided by the ` istio-init ` container.
-
-**CHANGED:**
-
-##  Kiali is supported on GKE on-prem
-
-The Kiali observability console is supported on GKE on-prem.
 
 **CHANGED:**
 
@@ -156,7 +332,7 @@ qualified customers.
 **FEATURE:**
 
 For internal TCP/UDP load balancers, you can create [ multiple forwarding
-fules with the same IP address ](https://cloud.google.com/load-
+rules with the same IP address ](https://cloud.google.com/load-
 balancing/docs/internal/multiple-forwarding-rules-same-ip) . The forwarding
 rules can have different protocols and ports. This feature is available in
 **Beta** .
@@ -171,6 +347,15 @@ large numbers of incidents, summary statics, and the ability to filter by
 alerting policy name, metric type, and resource type. For more information,
 see [ Incidents and events
 ](https://cloud.google.com/monitoring/alerts/incidents-events) .
+
+**Cloud Run**
+
+**FEATURE:**
+
+The Cloud Run [ container instance metadata server
+](https://cloud.google.com/run/docs/reference/container-contract#metadata-
+server) now exposes the unique identifier of the container instance and the
+region of the Cloud Run service
 
 **Compute Engine**
 
@@ -1463,63 +1648,4 @@ management#http-header-based-routing) and [ query parameter-based routing
 management#query-parameter-routing) .
 
 These features are available in **General Availability** .
-
-##  April 22, 2020
-
-**BigQuery ML**
-
-**FEATURE:**
-
-BigQuery ML now supports exporting BigQuery ML models to Cloud Storage and
-using them for online prediction. This feature is in [ beta
-](https://cloud.google.com/products#product-launch-stages) . For more
-information, see [ Exporting models ](https://cloud.google.com/bigquery-
-ml/docs/exporting-models) .
-
-**Cloud Billing**
-
-**FEATURE:**
-
-Budget alerts: new budget filters are now available. In addition to project
-and product filters, you can now scope your budgets and alerts for groups of
-subaccounts and resource labels. Budget alerts help you stay informed of how
-your spend is tracking against your budget so you can avoid billing surprises.
-(Note that these filters are not available in the Budgets API in this
-release.) See the [ ⁠documentation
-](https://cloud.google.com/billing/docs/how-to/budgets) for more details.
-
-**Cloud Data Fusion**
-
-**FEATURE:**
-
-Cloud Data Fusion version 6.1.2 is now available. This version includes
-several stability and performance improvements and new features.
-
-  * Added support for [ Field Level Lineage ](https://cloud.google.com/data-fusion/docs/tutorials/lineage) for Spark plugins and Streaming pipelines 
-  * Added support for Spark 2.4 
-  * Added an option to skip header in the files in delimited, CSV, TSV, and text formats 
-  * Added an option for database source to replace the characters in the field names 
-
-**FIXED:**
-
-Reduced preview startup by 60%. Also added limit to max concurrent preview
-runs (10 by default).
-
-**FIXED:**
-
-Fixed a bug that caused errors when Wrangler's parse-as-csv with header was
-used when reading multiple small files.
-
-**FIXED:**
-
-Fixed a bug that caused zombie processes when using the Remote Hadoop
-Provisioner.
-
-**FIXED:**
-
-Fixed a bug that caused DBSource plugin to fail in preview mode.
-
-**FIXED:**
-
-Fixed a race condition that caused a failure when running a Spark program.
 
