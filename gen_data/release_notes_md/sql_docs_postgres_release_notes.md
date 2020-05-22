@@ -13,6 +13,14 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloud-sql-postgres-release-
 notes.xml `
 
+##  May 21, 2020
+
+**FEATURE:**
+
+PostgreSQL version 12 is now generally available. To start using PostgreSQL
+12, see [ Creating instances
+](https://cloud.google.com/sql/docs/postgres/create-instance) .
+
 ##  May 15, 2020
 
 **FEATURE:**
