@@ -14,6 +14,20 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/compute-release-notes.xml `
 
+##  May 21, 2020
+
+**FEATURE:**
+
+E2 shared-core machine types now support committed use discounts in all
+regions. See the [ VM instance ](https://cloud.google.com/compute/vm-instance-
+pricing#e2_sharedcore_machine_types) pricing page for more information.
+
+**FEATURE:**
+
+You can now SSH to your VMs using hardware-backed SSH key pairs. For more
+information, see [ SSH with security keys
+](https://cloud.google.com/compute/docs/tutorials/ssh-with-sk) .
+
 ##  May 20, 2020
 
 **FEATURE:**
