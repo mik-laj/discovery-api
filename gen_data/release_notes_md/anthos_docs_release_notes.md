@@ -12,6 +12,18 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/anthos-release-notes.xml `
 
+##  May 21, 2020
+
+**FEATURE:**
+
+[ Anthos ](https://cloud.google.com/anthos) 1.3.2 is now available.
+
+**Updated components:**
+
+  * [ Anthos GKE on-prem release notes ](https://cloud.google.com/anthos/gke/docs/on-prem/release-notes)
+  * [ Anthos Config Management release notes ](https://cloud.google.com/anthos-config-management/docs/release-notes)
+  * [ Anthos GKE on AWS ](https://cloud.google.com/anthos/gke/docs/aws/) is available as a limited preview for customers with an existing relationship with Google Cloud. Contact your sales representative for access. 
+
 ##  April 23, 2020
 
 **FEATURE:**
