@@ -12,6 +12,15 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/vpc-sc-release-notes.xml `
 
+##  May 21, 2020
+
+**FEATURE:**
+
+[ Beta stage ](https://cloud.google.com/products/#product-launch-stages)
+support for the following integration:
+
+  * [ Service Directory ](https://cloud.google.com/service-directory/docs/securing-with-vpc-sc)
+
 ##  May 13, 2020
 
 **FEATURE:**
