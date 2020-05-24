@@ -26,9 +26,63 @@ Pour recevoir les derniers bulletins de sécurité, ajoutez l'URL de cette page
 également ajouter l'URL du flux directement : `
 https://cloud.google.com/feeds/kubernetes-engine-security-bulletins.xml `
 
+##  GCP-2020-005
+
+**Date de publication** : 07-05-2020  
+**Dernière mise à jour** : 07-05-2020  Description  |  Niveau de gravité  |
+Notes  
+---|---|---  
+  
+La faille [ CVE-2020-8835 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8835) a été récemment découverte dans le noyau
+Linux. Elle permet de "s'échapper d'un conteneur" pour obtenir un accès root
+(racine) sur le nœud hôte.
+
+Cette faille affecte les nœuds Ubuntu exécutant Google Kubernetes Engine (GKE)
+version 1.16 ou 1.17. Nous vous recommandons donc d'effectuer dès que possible
+une mise à niveau vers la dernière version du correctif, conformément à la
+procédure décrite ci-dessous.
+
+Les nœuds exécutant Container-Optimized OS ne sont pas concernés, ni ceux
+exécutant GKE On-Prem.
+
+####  Que dois-je faire ?
+
+**Pour la plupart des clients, aucune action n'est requise. Seuls les nœuds
+Ubuntu exécutant GKE version 1.16 ou 1.17 sont concernés.**
+
+Avant tout, vous devez mettre à niveau votre nœud maître vers la toute
+dernière version. Le correctif sera disponible dans Kubernetes 1.16.8-gke.12
+et 1.17.4-gke.10, ainsi que dans les versions ultérieures. Pour vérifier la
+disponibilité de ces correctifs, consultez les [ notes de version
+](https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=fr) .
+
+####  Quelle faille ce correctif permet-il de résoudre ?
+
+Ce correctif réduit les risques liés à la faille suivante :
+
+La faille [ CVE-2020-8835 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8835) affecte les versions 5.5.0 et ultérieures
+du noyau Linux. Elle permet à un conteneur malveillant d'accéder en lecture et
+en écriture à la mémoire du noyau, et ainsi d'exécuter des codes avec un accès
+root par le biais d'un simple appel système "exec". La gravité de cette faille
+est évaluée comme élevée.
+
+|
+
+Élevé
+
+|
+
+[ CVE-2020-8835 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8835)  
+  
+  
 ##  GCP-2020-003
 
-Description  |  Niveau de gravité  |  Remarques  
+**Date de publication** : 31-03-2020  
+**Dernière mise à jour** : 31-03-2020  Description  |  Niveau de gravité  |
+Remarques  
 ---|---|---  
   
 La faille [ CVE-2019-11254 ](https://cve.mitre.org/cgi-
@@ -38,8 +92,8 @@ POST afin de réaliser une attaque par déni de service à distance sur un
 serveur d'API Kubernetes. Le comité de sécurité des produits (PSC, Product
 Security Committee) Kubernetes a publié des informations complémentaires sur
 cette faille. Pour les consulter, [ cliquez ici
-](https://groups.google.com/g/kubernetes-security-
-announce/c/wuwEwZigXBc?hl=fr) .
+](https://groups.google.com/forum/?hl=fr#!topic/kubernetes-security-
+announce/wuwEwZigXBc) .
 
 Les clusters GKE qui utilisent des [ réseaux autorisés maîtres
 ](https://cloud.google.com/kubernetes-engine/docs/how-to/authorized-
@@ -78,7 +132,9 @@ bin/cvename.cgi?name=CVE-2019-11254)
   
 ##  GCP-2020-002
 
-Description  |  Niveau de gravité  |  Remarques  
+**Date de publication** : 23-03-2020  
+**Dernière mise à jour** : 23-03-2020  Description  |  Niveau de gravité  |
+Remarques  
 ---|---|---  
   
 La communauté Kubernetes a divulgué [ deux failles de déni de service
@@ -130,7 +186,9 @@ bin/cvename.cgi?name=CVE-2020-8552)
   
 ##  21 janvier 2020 (dernière mise à jour le 24 janvier 2020)
 
-Description  |  Niveau de gravité  |  Remarques  
+**Date de publication** : 21-01-2020  
+**Dernière mise à jour** : 24-01-2020  Description  |  Niveau de gravité  |
+Remarques  
 ---|---|---  
   
 **Mise à jour du 24/01/2020** : le processus de mise à disposition des
@@ -206,7 +264,9 @@ bin/cvename.cgi?name=CVE-2020-0601)
   
 ##  14 novembre 2019
 
-Description  |  Niveau de gravité  |  Remarques  
+**Date de publication** : 14-11-2019  
+**Dernière mise à jour** : 14-11-2019  Description  |  Niveau de gravité  |
+Remarques  
 ---|---|---  
   
 La communauté Kubernetes a divulgué une faille de sécurité dans les side-cars
@@ -252,7 +312,9 @@ bin/cvename.cgi?name=CVE-2019-11255)
   
 ##  12 novembre 2019
 
-Description  |  Niveau de gravité  |  Remarques  
+**Date de publication** : 12-11-2019  
+**Dernière mise à jour** : 12-11-2019  Description  |  Niveau de gravité  |
+Remarques  
 ---|---|---  
   
 Intel a divulgué des failles CVE qui permettent des interactions entre
@@ -318,7 +380,9 @@ Moyen
   
 ##  22 octobre 2019
 
-Description  |  Niveau de gravité  |  Remarques  
+**Date de publication** : 22-10-2019  
+**Dernière mise à jour** : 22-10-2019  Description  |  Niveau de gravité  |
+Remarques  
 ---|---|---  
   
 La faille [ CVE-2019-16276 ](https://cve.mitre.org/cgi-
@@ -344,7 +408,9 @@ bin/cvename.cgi?name=CVE-2019-16276)
   
 ##  16 octobre 2019
 
-Description  |  Niveau de gravité  |  Remarques  
+**Date de publication** : 16-10-2019  
+**Dernière mise à jour** : 24-10-2019  Description  |  Niveau de gravité  |
+Remarques  
 ---|---|---  
   
 **Mise à jour du 24/10/2019** : les versions corrigées sont désormais
@@ -401,7 +467,9 @@ bin/cvename.cgi?name=CVE-2019-11253)
   
 ##  16 septembre 2019
 
-Description  |  Niveau de gravité  |  Remarques  
+**Date de publication** : 16-09-2019  
+**Dernière mise à jour** : 16-10-2019  Description  |  Niveau de gravité  |
+Remarques  
 ---|---|---  
   
 Ce bulletin a été mis à jour depuis sa publication initiale.
@@ -456,10 +524,16 @@ bin/cvename.cgi?name=CVE-2019-9514)
   
 ##  5 septembre 2019
 
+**Date de publication** : 05-09-2019  
+**Dernière mise à jour** : 05-09-2019
+
 Le bulletin concernant le correctif de la faille documentée dans le bulletin
 du  31 mai 2019  a été mis à jour.
 
 ##  22 août 2019
+
+**Date de publication** : 22-08-2019  
+**Dernière mise à jour** : 22-08-2019
 
 Le bulletin du  5 août 2019  a été mis à jour. Le correctif de la faille
 documentée dans le bulletin antérieur est [ disponible
@@ -468,13 +542,18 @@ notes?hl=fr#august_22_2019) .
 
 ##  8 août 2019
 
+**Date de publication** : 08-08-2019  
+**Dernière mise à jour** : 08-08-2019
+
 Le bulletin du  5 août 2019  a été mis à jour. Le correctif de la faille
 documentée dans ce bulletin devrait être disponible dans la prochaine version
 de GKE.
 
 ##  5 août 2019
 
-Description  |  Niveau de gravité  |  Remarques  
+**Date de publication** : 05-08-2019  
+**Dernière mise à jour** : 09-08-2019  Description  |  Niveau de gravité  |
+Remarques  
 ---|---|---  
   
 Ce bulletin a été mis à jour depuis sa publication initiale.
@@ -523,7 +602,9 @@ bin/cvename.cgi?name=CVE-2019-11247)
   
 ##  3 juillet 2019
 
-Description  |  Niveau de gravité  |  Remarques  
+**Date de publication** : 03-07-2019  
+**Dernière mise à jour** : 03-07-2019  Description  |  Niveau de gravité  |
+Remarques  
 ---|---|---  
   
 Une version corrigée de ` kubectl ` permettant de remédier à la faille
@@ -544,7 +625,9 @@ bin/cvename.cgi?name=CVE-2018-15664)
   
 ##  3 juillet 2019
 
-Description  |  Niveau de gravité  |  Remarques  
+**Date de publication** : 25-06-2019  
+**Dernière mise à jour** : 03-07-2019  Description  |  Niveau de gravité  |
+Remarques  
 ---|---|---  
   
 ######  Mise à jour du 3 juillet 2019
@@ -979,6 +1062,12 @@ Vous devriez recevoir une réponse semblable à celle-ci :
     
         
     kubectl logs disable-smt-2xnnc disable-smt -n kube-system
+
+Remarque : Les options de démarrage ne peuvent pas être modifiées si la
+fonctionnalité de [démarrage sécurisé](/kubernetes-engine/docs/how-
+to/shielded-gke-nodes#secure_boot) est activée sur le nœud. Si le démarrage
+sécurisé est activé, il doit être [désactivé](/kubernetes-engine/docs/how-
+to/shielded-gke-nodes#disabling) avant que le DaemonSet soit créé.
 
 Le DaemonSet doit rester en cours d'exécution sur le pool de nœuds pour que
 les modifications soient automatiquement appliquées aux nœuds qui seront créés
