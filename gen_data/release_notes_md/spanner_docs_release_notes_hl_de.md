@@ -2,12 +2,12 @@
 
 Auf dieser Seite werden die Produktionsupdates von Cloud Spanner dokumentiert.
 Prüfen Sie diese Seite regelmäßig auf Hinweise zu neuen oder aktualisierten
-Funktionen, Fehlerkorrekturen, bekannten Problemen und verworfenen Funktionen.
+Features, Fehlerkorrekturen, bekannten Problemen und verworfenen Funktionen.
 
-Für neueste Produktaktualisierungen können Sie die URL der Seite in den [
+Für neueste Produktaktualisierungen können Sie die URL dieser Seite in einen [
 Feedreader ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
 einfügen oder die Feed-URL direkt hinzufügen: `
-https://cloud.google.com/feeds/cloud-spanner-release-notes.xml ` .
+https://cloud.google.com/feeds/spanner-release-notes.xml `
 
 ##  May 18, 2020
 
