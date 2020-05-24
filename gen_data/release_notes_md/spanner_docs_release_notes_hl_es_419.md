@@ -7,9 +7,9 @@ problemas conocidos y funciones obsoletas.
 
 Para recibir las últimas actualizaciones de productos, agrega la URL de esta
 página a tu [ lector de feeds
-](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , o agrega
-directamente la URL del feed: ` https://cloud.google.com/feeds/cloud-spanner-
-release-notes.xml `
+](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) o agrega
+directamente la URL del feed: ` https://cloud.google.com/feeds/spanner-
+release-notes.xml ` .
 
 ##  May 18, 2020
 
