@@ -8,7 +8,7 @@ problèmes connus et les fonctionnalités obsolètes.
 Pour recevoir les dernières mises à jour concernant ce produit, ajoutez l'URL
 de cette page à votre [ lecteur de flux
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ou ajoutez l'URL
-du flux directement : ` https://cloud.google.com/feeds/cloud-spanner-release-
+du flux directement : ` https://cloud.google.com/feeds/spanner-release-
 notes.xml `
 
 ##  May 18, 2020
