@@ -1,11 +1,11 @@
 #  リリースノート
 
-このページには Cloud Spanner
-に関する本番環境の更新内容が記載されています。このページを定期的にチェックして、新機能や更新された機能、バグ修正、既知の問題、非推奨になった機能に関するお知らせを確認してください。
+このページには、Cloud Spanner
+の本番環境に関する更新情報が記載されています。このページを定期的にチェックして、新機能や更新された機能、バグ修正、既知の問題、非推奨となった機能に関するお知らせを確認してください。
 
 プロダクトのアップデートに関する最新情報を受け取るには、このページの URL を [ フィード リーダー
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) に追加するか、またはフィード
-URL ディレクトリ ` https://cloud.google.com/feeds/cloud-spanner-release-notes.xml `
+URL ディレクトリ ` https://cloud.google.com/feeds/spanner-release-notes.xml `
 を直接追加します。
 
 ##  May 18, 2020
