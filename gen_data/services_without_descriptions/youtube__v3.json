@@ -66,31 +66,6 @@
     "resources": {
         "activities": {
             "methods": {
-                "insert": {
-                    "httpMethod": "POST",
-                    "id": "youtube.activities.insert",
-                    "parameterOrder": [
-                        "part"
-                    ],
-                    "parameters": {
-                        "part": {
-                            "location": "query",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "activities",
-                    "request": {
-                        "$ref": "Activity"
-                    },
-                    "response": {
-                        "$ref": "Activity"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/youtube",
-                        "https://www.googleapis.com/auth/youtube.force-ssl"
-                    ]
-                },
                 "list": {
                     "httpMethod": "GET",
                     "id": "youtube.activities.list",
@@ -2587,6 +2562,114 @@
                 }
             }
         },
+        "thirdPartyLink": {
+            "methods": {
+                "delete": {
+                    "httpMethod": "DELETE",
+                    "id": "youtube.thirdPartyLink.delete",
+                    "parameterOrder": [
+                        "linkingToken",
+                        "type"
+                    ],
+                    "parameters": {
+                        "linkingToken": {
+                            "location": "query",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "type": {
+                            "enum": [
+                                "channelToStoreLink"
+                            ],
+                            "location": "query",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "thirdPartyLinks"
+                },
+                "insert": {
+                    "httpMethod": "POST",
+                    "id": "youtube.thirdPartyLink.insert",
+                    "parameterOrder": [
+                        "part"
+                    ],
+                    "parameters": {
+                        "debugProjectIdOverride": {
+                            "format": "int64",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "part": {
+                            "location": "query",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "thirdPartyLinks",
+                    "request": {
+                        "$ref": "ThirdPartyLink"
+                    },
+                    "response": {
+                        "$ref": "ThirdPartyLink"
+                    }
+                },
+                "update": {
+                    "httpMethod": "PUT",
+                    "id": "youtube.thirdPartyLink.update",
+                    "parameterOrder": [
+                        "part"
+                    ],
+                    "parameters": {
+                        "part": {
+                            "location": "query",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "thirdPartyLinks",
+                    "request": {
+                        "$ref": "ThirdPartyLink"
+                    },
+                    "response": {
+                        "$ref": "ThirdPartyLink"
+                    }
+                }
+            }
+        },
+        "thirdPartyLinks": {
+            "methods": {
+                "list": {
+                    "httpMethod": "GET",
+                    "id": "youtube.thirdPartyLinks.list",
+                    "parameterOrder": [
+                        "part"
+                    ],
+                    "parameters": {
+                        "linkingToken": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "part": {
+                            "location": "query",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "type": {
+                            "enum": [
+                                "channelToStoreLink"
+                            ],
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "thirdPartyLinks",
+                    "response": {
+                        "$ref": "ThirdPartyLinkListResponse"
+                    }
+                }
+            }
+        },
         "thumbnails": {
             "methods": {
                 "set": {
@@ -4119,6 +4202,18 @@
             },
             "type": "object"
         },
+        "ChannelToStoreLinkDetails": {
+            "id": "ChannelToStoreLinkDetails",
+            "properties": {
+                "storeName": {
+                    "type": "string"
+                },
+                "storeUrl": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ChannelTopicDetails": {
             "id": "ChannelTopicDetails",
             "properties": {
@@ -5502,6 +5597,12 @@
                 "ingestionAddress": {
                     "type": "string"
                 },
+                "rtmpsBackupIngestionAddress": {
+                    "type": "string"
+                },
+                "rtmpsIngestionAddress": {
+                    "type": "string"
+                },
                 "streamName": {
                     "type": "string"
                 }
@@ -6119,18 +6220,6 @@
                 "messageRetractedDetails": {
                     "$ref": "LiveChatMessageRetractedDetails"
                 },
-                "pollClosedDetails": {
-                    "$ref": "LiveChatPollClosedDetails"
-                },
-                "pollEditedDetails": {
-                    "$ref": "LiveChatPollEditedDetails"
-                },
-                "pollOpenedDetails": {
-                    "$ref": "LiveChatPollOpenedDetails"
-                },
-                "pollVotedDetails": {
-                    "$ref": "LiveChatPollVotedDetails"
-                },
                 "publishedAt": {
                     "format": "date-time",
                     "type": "string"
@@ -6151,10 +6240,6 @@
                         "messageDeletedEvent",
                         "messageRetractedEvent",
                         "newSponsorEvent",
-                        "pollClosedEvent",
-                        "pollEditedEvent",
-                        "pollOpenedEvent",
-                        "pollVotedEvent",
                         "sponsorOnlyModeEndedEvent",
                         "sponsorOnlyModeStartedEvent",
                         "superChatEvent",
@@ -6235,72 +6320,6 @@
                 },
                 "moderatorDetails": {
                     "$ref": "ChannelProfileDetails"
-                }
-            },
-            "type": "object"
-        },
-        "LiveChatPollClosedDetails": {
-            "id": "LiveChatPollClosedDetails",
-            "properties": {
-                "pollId": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "LiveChatPollEditedDetails": {
-            "id": "LiveChatPollEditedDetails",
-            "properties": {
-                "id": {
-                    "type": "string"
-                },
-                "items": {
-                    "items": {
-                        "$ref": "LiveChatPollItem"
-                    },
-                    "type": "array"
-                },
-                "prompt": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "LiveChatPollItem": {
-            "id": "LiveChatPollItem",
-            "properties": {
-                "itemId": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "LiveChatPollOpenedDetails": {
-            "id": "LiveChatPollOpenedDetails",
-            "properties": {
-                "id": {
-                    "type": "string"
-                },
-                "items": {
-                    "items": {
-                        "$ref": "LiveChatPollItem"
-                    },
-                    "type": "array"
-                },
-                "prompt": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "LiveChatPollVotedDetails": {
-            "id": "LiveChatPollVotedDetails",
-            "properties": {
-                "itemId": {
-                    "type": "string"
-                },
-                "pollId": {
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -7617,6 +7636,84 @@
                     "type": "string"
                 },
                 "stickerId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ThirdPartyLink": {
+            "id": "ThirdPartyLink",
+            "properties": {
+                "etag": {
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "youtube#thirdPartyLink",
+                    "type": "string"
+                },
+                "linkingToken": {
+                    "type": "string"
+                },
+                "snippet": {
+                    "$ref": "ThirdPartyLinkSnippet"
+                },
+                "status": {
+                    "$ref": "ThirdPartyLinkStatus"
+                }
+            },
+            "type": "object"
+        },
+        "ThirdPartyLinkListResponse": {
+            "id": "ThirdPartyLinkListResponse",
+            "properties": {
+                "etag": {
+                    "type": "string"
+                },
+                "eventId": {
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "youtube#thirdPartyLinkListResponse",
+                    "type": "string"
+                },
+                "links": {
+                    "items": {
+                        "$ref": "ThirdPartyLink"
+                    },
+                    "type": "array"
+                },
+                "visitorId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ThirdPartyLinkSnippet": {
+            "id": "ThirdPartyLinkSnippet",
+            "properties": {
+                "channelToStoreLink": {
+                    "$ref": "ChannelToStoreLinkDetails"
+                },
+                "type": {
+                    "enum": [
+                        "channelToStoreLink",
+                        "unknownLink"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ThirdPartyLinkStatus": {
+            "id": "ThirdPartyLinkStatus",
+            "properties": {
+                "linkStatus": {
+                    "enum": [
+                        "failed",
+                        "linked",
+                        "pending",
+                        "unknown"
+                    ],
                     "type": "string"
                 }
             },
