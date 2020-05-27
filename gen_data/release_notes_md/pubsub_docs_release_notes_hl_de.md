@@ -21,6 +21,14 @@ Feedreader ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
 einfügen oder die Feed-URL direkt hinzufügen: `
 https://cloud.google.com/feeds/pubsub-release-notes.xml ` .
 
+##  May 26, 2020
+
+**FEATURE:**
+
+[ Pub/Sub Lite ](https://cloud.google.com/pubsub/docs/choosing-pubsub-or-
+lite?hl=de) is now available at the [ beta release level
+](https://cloud.google.com/sdk/gcloud/?hl=de#release_levels) .
+
 ##  April 20, 2020
 
 **FEATURE:**
