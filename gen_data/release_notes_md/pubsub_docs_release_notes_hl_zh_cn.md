@@ -17,6 +17,14 @@ go/releases) 、 [ Java ](https://github.com/googleapis/java-pubsub/releases) �
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/pubsub-release-notes.xml `
 
+##  May 26, 2020
+
+**FEATURE:**
+
+[ Pub/Sub Lite ](https://cloud.google.com/pubsub/docs/choosing-pubsub-or-
+lite?hl=zh-cn) is now available at the [ beta release level
+](https://cloud.google.com/sdk/gcloud/?hl=zh-cn#release_levels) .
+
 ##  April 20, 2020
 
 **FEATURE:**
