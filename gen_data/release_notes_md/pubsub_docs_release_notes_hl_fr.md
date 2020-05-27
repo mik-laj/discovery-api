@@ -19,6 +19,14 @@ page à votre [ lecteur de flux
 de flux directement : ` https://cloud.google.com/feeds/cloud-pub-sub-release-
 notes.xml `
 
+##  May 26, 2020
+
+**FEATURE:**
+
+[ Pub/Sub Lite ](https://cloud.google.com/pubsub/docs/choosing-pubsub-or-
+lite?hl=fr) is now available at the [ beta release level
+](https://cloud.google.com/sdk/gcloud/?hl=fr#release_levels) .
+
 ##  April 20, 2020
 
 **FEATURE:**
