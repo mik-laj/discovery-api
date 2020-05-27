@@ -13,6 +13,17 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloud-game-servers-release-
 notes.xml `
 
+##  May 18, 2020
+
+**CHANGED:**
+
+Added support in the Google Cloud Console for managing game server [ configs
+](https://cloud.google.com/game-servers/docs/how-to/creating-config) , [
+deployments ](https://cloud.google.com/game-servers/docs/how-to/creating-
+deployment) , and [ rollouts ](https://cloud.google.com/game-servers/docs/how-
+to/updating-rollout) . You can now create, view, update, and delete game
+server configs, deployments, and rollouts from the Cloud Console.
+
 ##  March 23, 2020
 
 **FEATURE:**
