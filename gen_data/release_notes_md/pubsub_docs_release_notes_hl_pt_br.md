@@ -7,17 +7,25 @@ biblioteca de cliente
 Pub/Sub para cada linguagem, acesse os links a seguir: [ C#
 ](https://github.com/googleapis/google-cloud-dotnet/releases) , [ Go
 ](https://github.com/googleapis/google-cloud-go/releases) , [ Java
-](https://github.com/googleapis/google-cloud-java/releases) , [ Node.js
+](https://github.com/googleapis/java-pubsub/releases) , [ Node.js
 ](https://github.com/googleapis/nodejs-pubsub/releases) , [ PHP
 ](https://github.com/googleapis/google-cloud-php/releases) , [ Python
-](https://github.com/googleapis/google-cloud-python/releases) e [ Ruby
+](https://github.com/googleapis/python-pubsub/releases) e [ Ruby
 ](https://github.com/googleapis/google-cloud-ruby/releases) .
 
 Para receber as atualizações de produtos mais recentes, adicione o URL desta
 página ao [ leitor de feeds
-](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ou adicione o URL
-do feed diretamente: ` https://cloud.google.com/feeds/cloud-pub-sub-release-
-notes.xml `
+](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) (em inglês) ou
+adicione o URL do feed diretamente: ` https://cloud.google.com/feeds/pubsub-
+release-notes.xml `
+
+##  May 26, 2020
+
+**FEATURE:**
+
+[ Pub/Sub Lite ](https://cloud.google.com/pubsub/docs/choosing-pubsub-or-
+lite?hl=pt-br) is now available at the [ beta release level
+](https://cloud.google.com/sdk/gcloud/?hl=pt-br#release_levels) .
 
 ##  April 20, 2020
 
