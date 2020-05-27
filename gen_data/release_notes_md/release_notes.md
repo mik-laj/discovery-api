@@ -12,6 +12,27 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  May 26, 2020
+
+**Cloud Composer**
+
+**CHANGED:**
+
+  * [ New versions ](https://cloud.google.com/composer/docs/concepts/versioning/composer-versions) of Cloud Composer images: ` composer-1.10.4-airflow-1.10.2 ` , ` composer-1.10.4-airflow-1.10.3 ` and ` composer-1.10.4-airflow-1.10.6 ` . The default is ` composer-1.10.4-airflow-1.10.3 ` . Upgrade your Cloud SDK to use features in this release. 
+  * **For Airflow 1.10.6 and later:** The Airflow config property ` [celery] pool ` is now blocked. 
+
+**FIXED:**
+
+  * Fixed an issue with Airflow 1.10.6 environments where task logs were not visible in the UI when DAG serialization was enabled. 
+
+**Cloud Functions**
+
+**FEATURE:**
+
+Cloud Functions has added support for a new runtime, Java 11, in Beta:
+
+  * [ The Java Runtime ](https://cloud.google.com/functions/docs/concepts/java-runtime)
+
 ##  May 21, 2020
 
 **AI Platform Training**
@@ -125,7 +146,8 @@ Preflight check for internet validation is updated to not follow redirect. If
 your organization requires outbound traffic to pass through a proxy server,
 you no longer need to whitelist the following addresses in your proxy server:
 
-  * console.cloud.google.com -cloud.google.com 
+  * console.cloud.google.com 
+  * cloud.google.com 
 
 **CHANGED:**
 
@@ -509,6 +531,17 @@ database over recent one-minute, 10-minute, and one-hour time periods.
 The V4 signing process is now in GA.
 
   * The V4 signing process is an improved method for creating [ signatures ](https://cloud.google.com/storage/docs/authentication/signatures) using RSA or HMAC keys. 
+
+**Game Servers**
+
+**CHANGED:**
+
+Added support in the Google Cloud Console for managing game server [ configs
+](https://cloud.google.com/game-servers/docs/how-to/creating-config) , [
+deployments ](https://cloud.google.com/game-servers/docs/how-to/creating-
+deployment) , and [ rollouts ](https://cloud.google.com/game-servers/docs/how-
+to/updating-rollout) . You can now create, view, update, and delete game
+server configs, deployments, and rollouts from the Cloud Console.
 
 **Virtual Private Cloud**
 
@@ -1282,76 +1315,4 @@ for the latest installation procedures.
 
 Beta release of Media Translation API. Media Translation translates an audio
 file or stream of speech into text for 12 languages.
-
-##  April 27, 2020
-
-**BigQuery**
-
-**CHANGED:**
-
-BigQuery is now available in the [ Las Vegas (us-west4) region
-](https://cloud.google.com/bigquery/docs/locations#supported_regions) .
-
-**BigQuery BI Engine**
-
-**CHANGED:**
-
-BigQuery BI Engine is now available in the [ Las Vegas (us-west4) region
-](https://cloud.google.com/bi-engine/docs/locations#supported_regions) .
-
-**BigQuery Data Transfer Service**
-
-**CHANGED:**
-
-BigQuery Data Transfer Service is now available in the [ Las Vegas (us-west4)
-region ](https://cloud.google.com/bigquery-
-transfer/docs/locations#supported_regions) .
-
-**BigQuery ML**
-
-**CHANGED:**
-
-BigQuery ML is now available in the [ Las Vegas (us-west4) region
-](https://cloud.google.com/bigquery-ml/docs/locations#supported_regions) .
-
-**Cloud Composer**
-
-**CHANGED:**
-
-  * [ New versions ](https://cloud.google.com/composer/docs/concepts/versioning/composer-versions) of Cloud Composer images: ` composer-1.10.2-airflow-1.10.2 ` , ` composer-1.10.2-airflow-1.10.3 ` and ` composer-1.10.2-airflow-1.10.6 ` . The default is ` composer-1.10.2-airflow-1.10.3 ` . Upgrade your Cloud SDK to use features in this release. 
-
-**FIXED:**
-
-  * Fixed an issue with the CloudSQL Proxy HealthCheck that caused the Proxy Pod to restart repeatedly. 
-  * The fluentd spec for in-cluster build log exporting now correctly points to the production fluentd image from ` cloud-airflow-releaser ` . This fix is required for Composer to correctly perform in-cluster builds for VPC SC configuration. 
-  * Adjusted ImageBuilder to fix PyPI package installation issues when using VPC SC. 
-  * Fixed intermittent issues with ` airflow-monitoring ` during the initialization phase. 
-  * Fixed an issue that caused the Airflow scheduler and worker pods to take ~10 minutes to terminate. 
-  * Fixed an issue with upgrading the image version and improved error handling during Composer environment upgrades. 
-
-**DEPRECATED:**
-
-  * The oldest supported version of Composer is now ` composer-1.6.0-airflow-x.x.x `
-
-**Cloud Load Balancing**
-
-**FEATURE:**
-
-[ Google-managed SSL certificates ](https://cloud.google.com/load-
-balancing/docs/ssl-certificates/google-managed-certs) are available in
-**General Availability** .
-
-**Cloud Logging**
-
-**CHANGED:**
-
-The Logs Viewer (Preview) is now GA. To learn more, go to the [ Logs Viewer
-(Preview) Overview page ](https://cloud.google.com/logging/docs/view/logs-
-viewer-preview) .
-
-**Dataproc**
-
-**FEATURE:**
-
-Dataproc on GKE version ` 1.4.27-beta ` is available with minor fixes.
 
