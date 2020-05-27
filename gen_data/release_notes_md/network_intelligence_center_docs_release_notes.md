@@ -1,4 +1,4 @@
-#  Release Notes
+#  Release notes
 
 This page contains release notes for features and updates to Network
 Intelligence Center and its components.
