@@ -19,6 +19,14 @@
 URL ディレクトリ ` https://cloud.google.com/feeds/pubsub-release-notes.xml `
 を直接追加します。
 
+##  May 26, 2020
+
+**FEATURE:**
+
+[ Pub/Sub Lite ](https://cloud.google.com/pubsub/docs/choosing-pubsub-or-
+lite?hl=ja) is now available at the [ beta release level
+](https://cloud.google.com/sdk/gcloud/?hl=ja#release_levels) .
+
 ##  April 20, 2020
 
 **FEATURE:**
