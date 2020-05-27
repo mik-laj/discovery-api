@@ -36,7 +36,8 @@ Preflight check for internet validation is updated to not follow redirect. If
 your organization requires outbound traffic to pass through a proxy server,
 you no longer need to whitelist the following addresses in your proxy server:
 
-  * console.cloud.google.com -cloud.google.com 
+  * console.cloud.google.com 
+  * cloud.google.com 
 
 **CHANGED:**
 
