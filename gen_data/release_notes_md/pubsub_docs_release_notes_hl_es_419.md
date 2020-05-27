@@ -19,6 +19,14 @@ página a tu [ lector de feeds
 directamente la URL del feed: ` https://cloud.google.com/feeds/pubsub-release-
 notes.xml ` .
 
+##  May 26, 2020
+
+**FEATURE:**
+
+[ Pub/Sub Lite ](https://cloud.google.com/pubsub/docs/choosing-pubsub-or-
+lite?hl=es-419) is now available at the [ beta release level
+](https://cloud.google.com/sdk/gcloud/?hl=es-419#release_levels) .
+
 ##  April 20, 2020
 
 **FEATURE:**
