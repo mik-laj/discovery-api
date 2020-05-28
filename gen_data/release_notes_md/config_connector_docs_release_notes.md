@@ -13,6 +13,12 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/configconnector-release-
 notes.xml `
 
+##  May 27, 2020
+
+**CHANGED:**
+
+Added support for ` BigQueryJob ` resource
+
 ##  May 19, 2020
 
 **FIXED:**
