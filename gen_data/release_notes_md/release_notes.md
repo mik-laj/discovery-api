@@ -12,6 +12,44 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  May 27, 2020
+
+**Cloud Billing**
+
+**CHANGED:**
+
+New data property now available for Cloud Billing budget alerts that are
+configured for [ programmatic notifications
+](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-
+notifications) . You set up a Cloud Billing budget to trigger an alert
+notification based on [ threshold rules
+](https://cloud.google.com/billing/docs/how-to/budgets#alert-thresholds) for
+_Actual_ or _Forecasted_ spend. Programmatic notifications triggered on
+**Forecasted** costs are now identified with the ` forecastThresholdExceeded `
+property in the JSON object. See the [ documentation
+](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-
+notifications#notification_format) for more details.
+
+**Config Connector**
+
+**CHANGED:**
+
+Added support for ` BigQueryJob ` resource
+
+**Dataproc**
+
+**FEATURE:**
+
+Dataproc now provides beta support for [ Dataproc Hub
+](https://cloud.google.com/dataproc/docs/tutorials/dataproc-hub-admins) .
+
+**Google Cloud Armor**
+
+**CHANGED:**
+
+Error correction: Beta flag removed from feature Google Cloud Armor with Cloud
+CDN. This feature was released with the status General Availabiliity.
+
 ##  May 26, 2020
 
 **Cloud Composer**
@@ -32,6 +70,18 @@ URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 Cloud Functions has added support for a new runtime, Java 11, in Beta:
 
   * [ The Java Runtime ](https://cloud.google.com/functions/docs/concepts/java-runtime)
+
+**Recommender**
+
+**FEATURE:**
+
+You can now view, prioritize, and apply recommendations in the Google Cloud
+Console using Recommendation Hub ( [ Beta
+](https://cloud.google.com/products/#product-launch-stages) ).
+
+[ Get started with Recommendation Hub
+](https://cloud.google.com/recommender/docs/recommendation-hub/getting-
+started) .
 
 ##  May 21, 2020
 
@@ -169,6 +219,15 @@ more granular access control of sensitive configuration data.
 The BigQuery Storage API now supports reading small anonymous (cached) tables
 without any limitations.
 
+**Cloud Billing**
+
+**FEATURE:**
+
+Cloud Billing Budget API: new budget filters for groups of subaccounts and
+resource labels are now available in the Budget API. See the [ documentation
+](https://cloud.google.com/billing/docs/reference/budget/rest/v1beta1/billingAccounts.budgets)
+for more details.
+
 **Cloud SQL for PostgreSQL**
 
 **FEATURE:**
@@ -230,20 +289,20 @@ intelligence/docs/people-detection)
 
 **FEATURE:**
 
-#  1.5.4-asm.2
+**1.5.4-asm.2**
 
 1.5.4-asm.2 is now available.
 
 **FIXED:**
 
-##  Security fixes
+**Security fixes**
 
 1.5.4-asm.2 contains all the same security fixes that are in Anthos Service
 Mesh 1.4.
 
 **FEATURE:**
 
-##  Beta release of the Anthos CLI
+**Beta release of the Anthos CLI**
 
 The Anthos CLI simplifies the installation of Anthos Service Mesh. You can use
 the Anthos CLI to:
@@ -253,7 +312,7 @@ the Anthos CLI to:
 
 **BREAKING:**
 
-##  Port change for automatic sidecar injection
+**Port change for automatic sidecar injection**
 
 If you are installing Anthos Service Mesh on a private cluster, you must add a
 firewall rule to open port 15017 if you want to use [ automatic sidecar
@@ -269,7 +328,7 @@ clusters#add_firewall_rules) .
 
 **DEPRECATED:**
 
-##  The alpha authentication policy is deprecated
+**The alpha authentication policy is deprecated**
 
 See [ Updating to the beta security policies
 ](https://cloud.google.com/service-mesh/docs/security/update-authentication-
@@ -277,7 +336,7 @@ policies) for more information.
 
 **BREAKING:**
 
-##  ` IstioOperator ` API replaces ` IstioControlPlane ` API
+**` IstioOperator ` API replaces ` IstioControlPlane ` API **
 
 The alpha [ ` IstioControlPlane ` API
 ](https://archive.istio.io/v1.4/docs/reference/config/istio.operator.v1alpha12.pb/#IstioControlPlane)
@@ -288,7 +347,7 @@ features when you install Anthos Service Mesh.
 
 **CHANGED:**
 
-##  Istio CNI plugin is supported
+**Istio CNI plugin is supported**
 
 By default Anthos Service Mesh injects an ` initContainer ` , ` istio-init ` ,
 in pods deployed in the mesh. The ` istio-init ` container sets up the pod
@@ -309,7 +368,7 @@ provided by the ` istio-init ` container.
 
 **CHANGED:**
 
-##  Enabling pod security policies no longer needed
+**Enabling pod security policies no longer needed**
 
 SDS security was improved by merging Node Agent with Pilot Agent as Istio
 Agent and removing cross-pod UDS, which no longer requires users to deploy
@@ -434,6 +493,14 @@ Learn how to create [ low disk space alerts
 Filestore instances.
 
 ##  May 18, 2020
+
+**AI Platform Deep Learning VM Image**
+
+**FEATURE:**
+
+TensorFlow 2.2 images have been added. The new TensorFlow 2.2 image families
+are ` tf2-2-2-cpu ` and ` tf2-2-2-cu101 ` . See the [ available image families
+](https://cloud.google.com/ai-platform/deep-learning-vm/docs/images) .
 
 **Cloud Bigtable**
 
@@ -1270,49 +1337,4 @@ centers in _asia-east2_ . We will roll out this feature gradually to other
 regions. Google Cloud already encrypts VPC traffic _between all data centers_
 as described in [ Encryption in Transit in Google Cloud
 ](https://cloud.google.com/security/encryption-in-transit#virtual-network) .
-
-##  April 28, 2020
-
-**Anthos Service Mesh**
-
-**FEATURE:**
-
-The Anthos Service Mesh dashboard in the Google Cloud Console is generally
-available for Anthos Service Mesh installations on Google Kubernetes Engine
-clusters. For more information, see the [ Observability overview
-](https://cloud.google.com/service-mesh/docs/observability-overview) .
-
-**Cloud Data Loss Prevention**
-
-**FEATURE:**
-
-Added additional [ infoType detector
-](https://cloud.google.com/dlp/docs/infotypes-reference) :
-
-  * JSON_WEB_TOKEN 
-
-**Cloud Monitoring**
-
-**DEPRECATED:**
-
-The 5.x version of the Cloud Monitoring agent for Linux is deprecated. Users
-are encouraged [ to upgrade their agents
-](https://cloud.google.com/monitoring/agent/install-agent#upgrade) as soon as
-possible.
-
-**DEPRECATED:**
-
-The ` stack-install.sh ` and the ` install-monitoring-agent.sh ` installation
-scripts for the Cloud Monitoring agent for Linux [ are deprecated
-](https://cloud.google.com/stackdriver/docs/deprecations/mon-agent-install) .
-Refer to the [ Installing the Cloud Monitoring agent
-](https://cloud.google.com/monitoring/agent/install-agent#joint-install) guide
-for the latest installation procedures.
-
-**Media Translation**
-
-**FEATURE:**
-
-Beta release of Media Translation API. Media Translation translates an audio
-file or stream of speech into text for 12 languages.
 
