@@ -9,9 +9,15 @@ Les dernières mises à jour sont également disponibles sur la page des [ notes
 de version de GitHub ](https://github.com/GoogleCloudPlatform/cloud-code-
 intellij/blob/master/CHANGELOG.md) .
 
-Pour recevoir les dernières mises à jour de ce produit, ajoutez l'URL de cette
-page à votre [ lecteur de flux
-](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) .
+Vous pouvez consulter les dernières mises à jour de produits pour l'ensemble
+de Google Cloud sur la page [ Notes de version de Google Cloud
+](https://cloud.google.com/release-notes?hl=fr) .
+
+Pour recevoir les dernières mises à jour concernant ce produit, ajoutez l'URL
+de cette page à votre [ lecteur de flux
+](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ou ajoutez l'URL
+du flux directement : ` https://cloud.google.com/feeds/cloud-code-for-
+intellij-release-notes.xml `
 
 ##  18.5.1
 
@@ -33,9 +39,9 @@ Repositories depuis PyCharm. D'autres IDE seront disponibles prochainement.
 
 ##  18.4.1
 
-###  Ajouts
+###  Ajout
 
-  * Le plug-in Google Cloud Tools est autorisé à gérer le SDK Cloud, y compris le téléchargement, l'installation et les mises à jour. Vous n'avez plus besoin de télécharger manuellement le SDK Cloud. [ 673 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/673)
+  * Le plug-in Google Cloud Tools est autorisé à gérer le SDK Cloud, y compris le téléchargement, l'installation et les mises à jour. Vous n'avez plus besoin de télécharger manuellement le SDK. [ 673 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/673)
   * Diminution des conflits de version de dépendance grâce à la compatibilité intégrée avec le BOM Java de Google Cloud. Cela inclut l'ajout automatique du BOM lors de l'ajout de bibliothèques clientes Google, ainsi que des inspections pom.xml pour faciliter la gestion des conflits de version de dépendance. [ 1921 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1921)
   * Ajout automatique des variables d'environnement requises aux configurations d'exécution locales d'App Engine pour accéder localement aux API Google Cloud. [ 1917 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1917)
 
@@ -55,12 +61,12 @@ Repositories depuis PyCharm. D'autres IDE seront disponibles prochainement.
 
 ##  18.2.1
 
-###  Ajouts
+###  Ajout
 
   * Découverte et ajout depuis l'IDE de la bibliothèque cliente Google Cloud Java. [ 1806 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1806)
   * Possibilité d'activer les API Google Cloud à partir de l'IDE. [ 1807 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1807)
 
-###  Modifications
+###  Modification
 
   * Mise à jour du sélecteur de projet Cloud avec une expérience utilisateur grandement améliorée. [ 1719 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1719)
   * Mise à jour du sélecteur de projet Cloud afin que la dernière sélection soit mémorisée et utilisée par défaut. [ 1812 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1812)
@@ -98,7 +104,7 @@ dialogue pour le supprimer et redémarrez l'IDE afin d'éviter tout problème.
 
 ##  17.11.1
 
-###  Ajouts
+###  Ajout
 
   * Intégration de Cloud Storage dans IntelliJ. Vous pouvez désormais parcourir vos buckets et afficher leur contenu sans quitter l'IDE. [ 1696 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1696)
   * Fonctions de recherche et de filtrage dans le sélecteur de projet Cloud. [ 1660 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1660)
@@ -125,16 +131,16 @@ environment-is-now-generally-available.html) .
 
   * Possibilité de modifier le nom de l'artefact de préproduction pour les déploiements dans l'environnement flexible App Engine. [ 1610 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1610)
 
-###  Modifications
+###  Modification
 
-  * Par défaut, les configurations de déploiement de l'environnement flexible App Engine déploient l'artefact tel quel, sans le renommer en ` target.jar ` ou ` target.war ` . [ 1151 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1151)
+  * Par défaut, les configurations de déploiement flexibles App Engine déploient l'artefact tel quel, sans renommer ` target.jar ` ni ` target.war ` . [ 1151 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1151)
   * Mise à jour du nom de l'artefact d'espace réservé dans les modèles Dockerfile générés pour indiquer qu'il doit être mis à jour par l'utilisateur. [ 1648 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1648)
   * Les configurations de déploiement dans l'environnement standard App Engine sont désormais configurées par défaut pour mettre à jour les fichiers dos, dispatch, Cron, les files d'attente et les index du datastore. [ 1613 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1613)
-  * Les projets natifs qui ajoutent la compatibilité Endworks Frameworks pour App Engine utilisent désormais Endpoints V2. [ 1612 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1612)
+  * Les projets natifs qui ajoutent la compatibilité Endpoints Frameworks pour App Engine utilisent désormais Endpoints V2. [ 1612 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1612)
 
-###  Corrections
+###  Correction
 
-  * Correction de l'erreur ` Deployment source not found ` obtenue lors du déploiement d'artefacts Maven. [ 1220 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1220)
+  * Correction de l'erreur ` Deployment source not found ` lors du déploiement d'artefacts Maven. [ 1220 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1220)
   * Correction de la taille de l'icône d'utilisateur sur les écrans HiDPI. [ 1633 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1633)
   * Résolution du problème de retour à une version antérieure du plug-in sur IDEA 2017.3. EAP. [ 1631 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1631)
 
@@ -154,10 +160,10 @@ environment-is-now-generally-available.html) .
 
   * Les utilisateurs peuvent désormais enregistrer les configurations d'exécution de déploiement partiellement terminées ou en état d'erreur. [ 1407 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1407)
 
-###  Corrections
+###  Correction
 
   * Résolution du conflit de langage enregistré dans Docker, causant des problèmes lors de l’exécution du plug-in avec .ignore plugin. [ 1535 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1535)
-  * Résolution des exceptions NPE lors de l'analyse de l'horodatage des points d'arrêt Stackdriver Debugger. [ 1537 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1537)
+  * Résolution des exceptions NPE lors de l'analyse de l'horodatage des points d'arrêt Cloud Debugger. [ 1537 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1537)
   * Suppression du fichier EAR en tant que type d'artefact App Engine accepté pour les exécutions de serveur de développement en local. [ 1190 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1190)
   * Les déploiements sont désormais affichés dans plusieurs fenêtres IDE. [ 1432 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1432)
   * Résolution du plantage causé par une tentative de modification d'une collection en lecture seule. [ 1571 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1571)
@@ -170,12 +176,12 @@ environment-is-now-generally-available.html) .
 
 ##  17.6.1
 
-###  Ajouts
+###  Ajout
 
-  * Attribut d'environnement flexible App Engine avec ` app.yaml ` et configuration Dockerfile. [ 1514 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1514)
+  * Attribut flexible App Engine avec configuration ` app.yaml ` et Dockerfile. [ 1514 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1514)
   * Détection de la compatibilité avec le framework d'environnement flexible App Engine. [ 1277 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1277)
 
-###  Modifications
+###  Modification
 
   * Utilisateur autorisé à spécifier un répertoire Docker au lieu d'un fichier Docker simple pour les déploiements en environnement flexible. [ 1304 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1304)
   * Nouvelle expérience utilisateur de la boîte de dialogue de déploiement (environnement standard et flexible). [ 1477 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1477)
@@ -186,7 +192,7 @@ environment-is-now-generally-available.html) .
 
 ##  17.2.5_2017
 
-###  Ajouts
+###  Ajout
 
   * Les variables d'environnement de la configuration d'exécution locale en environnement standard App Engine sont maintenant transmises au serveur de développement. [ #1364 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1364)
   * Les variables d'environnement configurées dans appengine-web.xml sont maintenant reconnues et transmises au serveur de développement. [ #377 ](https://github.com/GoogleCloudPlatform/appengine-plugins-core/issues/377)
@@ -222,12 +228,12 @@ cloud-intellij/issues/1174) .
 
 Voici une liste des changements visibles :
 
-###  Ajouts
+###  Ajout
 
   * Prise en charge de plusieurs dépôts Cloud Source Repositories pour un seul projet GCP. ( [ #1024 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1024) ) 
   * Initialisation App Engine et sélection de la région. ( [ #1232 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1232) ) 
 
-###  Corrections
+###  Correction
 
   * L'arrêt de dev_appserver sous Windows échoue toujours avec ` com.intellij.execution.ExecutionException ` . ( [ #1215 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1215) ) 
   * Le nouvel assistant de projet pour l'environnement standard App Engine doit générer le fichier web.xml avec le servlet 2.5. ( [ #1194 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1194) ) 
@@ -240,47 +246,46 @@ intellij/milestone/19?closed=1) .
 
 ##  16.11.6
 
-###  Ajouts
+###  Ajout
 
   * Extension du menu Google Cloud Tools avec divers raccourcis d'actions. ( [ #1061 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1061) ) 
   * Vérifie la version minimale compatible du SDK Cloud. ( [ #1051 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1051) ) 
   * Crée automatiquement toutes les configurations d'exécution pertinentes pour les applications de l'environnement standard App Engine. ( [ #1063 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1063) ) 
   * Le framework App Engine est désormais un enfant du framework Web dans le nouvel assistant de projet. ( [ #1065 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1065) ) 
 
-###  Corrections
+###  Correction
 
   * Les sources de déploiement uniques dans le panneau de déploiement du serveur d'applications apparaissent désormais comme des éléments de ligne distincts. ( [ #821 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/821) ) 
   * Validation des chemins d'accès SDK Cloud non valides sous Windows. ( [ #1091 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1091) ) 
 
 ##  16.10.5
 
-IMPORTANT : Ce plug-in nécessite l'utilisation du SDK Cloud version 133.0.0
-pour une exécution correcte du serveur de développement local avec le dernier
-Java 8 du SDK. Veuillez exécuter la commande ` gcloud components update ` à
-partir de votre interface système pour vous assurer que vous disposez de la
-dernière version du SDK Cloud.
+IMPORTANT : Ce plug-in nécessite l'utilisation du SDK Cloud v 133.0.0 pour une
+exécution correcte du serveur de développement local avec le dernier SDK Java
+8. Veuillez exécuter ` gcloud components update ` depuis votre shell pour vous
+assurer que vous disposez de la dernière version du SDK Cloud.
 
-###  Corrections
+###  Correction
 
   * Résolution du problème lié au mode de débogage du serveur de développement local lorsque des modifications sont effectuées pendant l'exécution du serveur. ( [ #972 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/972) ) 
   * Amélioration de la formulation du message obtenu lorsque le serveur de développement comporte un chemin d'accès au SDK Cloud non valide. ( [ #1043 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1043) ) 
-  * Mise à jour des noms de configuration d'exécution avec le préfixe "Google".( [ #1021 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1021) ) 
+  * Mise à jour des noms de configuration d'exécution avec le préfixe "Google" ( [ #1021 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/1021) ). 
 
 ##  16.10.1
 
-  * Notez que nous modifions le schéma de gestion des versions pour le remplacer par YY.MM.i. Nous prévoyons une cadence de publication mensuelle afin de minimiser les interruptions des mises à jour. Notez également que nous avons abandonné le libellé "Bêta". 
+  * Notez que nous planifions de remplacer le schéma de gestion des versions par YY.MM.i. Nous prévoyons une fréquence de publication mensuelle afin de minimiser les interruptions des mises à jour. Notez également que nous avons abandonné le libellé "Bêta". 
   * ATTENTION : Le serveur de développement local App Engine ne fonctionne pas avec les dernières versions de JDK 8. ( [ #920 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/920) ) Cela devrait être résolu avec la prochaine version du SDK App Engine, disponible prochainement. 
 
-###  Ajouts
+###  Ajout
 
   * Importateur de bibliothèque en environnement standard App Engine dans l'assistant d'attributs et de projets. ( [ #866 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/866) ) 
   * Les applications de l'environnement standard App Engine utilisant le langage Java 8 recevront une notification leur indiquant d'utiliser le niveau de langage 7. ( [ # 966 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/pull/966) ) 
 
 ###  Modification
 
-  * Mise à jour des libellés et des icônes de configuration d'exécution. (Cloud Debugger se nomme désormais Stackdriver Debug.) ( [ # 936 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/936) ) 
+  * Mise à jour des libellés et des icônes de configuration d'exécution. (Cloud Debugger se nomme désormais Cloud Debugger.) ( [ # 936 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/936) ) 
 
-###  Corrections
+###  Correction
 
   * Le mode de débogage du serveur de développement local a été corrigé. ( [ #928 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/928) ) 
   * Le déploiement de l'environnement flexible ne fonctionne pas sous Windows 10. ( [ #937 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/937) ) 
@@ -289,7 +294,7 @@ dernière version du SDK Cloud.
 
 ##  1.0-bêta - 2016-09-14
 
-###  Ajouts
+###  Ajout
 
   * Compatibilité avec l'environnement standard App Engine. ( [ # 767 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/issues/767) ) 
   * Champs supplémentaires désormais disponibles dans la configuration de déploiement. ( [ # 868 ](https://github.com/GoogleCloudPlatform/google-cloud-intellij/pull/868) ) 
@@ -302,7 +307,7 @@ dernière version du SDK Cloud.
 
 ##  0.9.6-bêta - 2016-06-23
 
-###  Ajouts
+###  Ajout
 
   * Compatibilité avec le déploiement dans l'environnement flexible App Engine _compat_ . ( [ #720 ](https://github.com/GoogleCloudPlatform/gcloud-intellij/issues/720) ) 
   * Compatibilité avec le déploiement dans l'environnement standard App Engine. ( [ #665 ](https://github.com/GoogleCloudPlatform/gcloud-intellij/issues/665) ) 
@@ -314,7 +319,7 @@ dernière version du SDK Cloud.
 
 ##  0.9.4-bêta - 2016-04-20
 
-###  Ajouts
+###  Ajout
 
   * Élément de menu d'outils pour le déploiement dans l'environnement flexible App Engine. ( [ #635 ](https://github.com/GoogleCloudPlatform/gcloud-intellij/issues/635) ) 
   * Compatibilité des projets basés sur Maven en tant que sources de déploiement pour les déploiements dans l'environnement flexible App Engine. ( [ # 600 ](https://github.com/GoogleCloudPlatform/gcloud-intellij/issues/600) ) 
@@ -324,7 +329,7 @@ dernière version du SDK Cloud.
   * Le déploiement dans l'environnement flexible App Engine peut être annulé en se déconnectant du serveur d'applications App Engine. ( [ #581 ](https://github.com/GoogleCloudPlatform/gcloud-intellij/issues/581) ) 
   * Les fichiers Dockerfile et ` app.yaml ` générés dans l’environnement flexible App Engine sont désormais automatiquement stockés à l'emplacement recommandé dans un projet Java basé sur Maven. ( [ #575 ](https://github.com/GoogleCloudPlatform/gcloud-intellij/issues/575) ) 
 
-###  Corrections
+###  Correction
 
   * Erreur au moment de la connexion qui pourrait avoir pour conséquence qu'aucun utilisateur actif ne soit sélectionné lors de l'ajout d'un utilisateur. ( [ #644 ](https://github.com/GoogleCloudPlatform/gcloud-intellij/issues/644) ) 
   * L'annulation du déploiement App Engine peut entraîner une erreur. ( [ #599 ](https://github.com/GoogleCloudPlatform/gcloud-intellij/issues/599) ) 
