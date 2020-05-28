@@ -12,6 +12,31 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/billing-release-notes.xml `
 
+##  May 27, 2020
+
+**CHANGED:**
+
+New data property now available for Cloud Billing budget alerts that are
+configured for [ programmatic notifications
+](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-
+notifications) . You set up a Cloud Billing budget to trigger an alert
+notification based on [ threshold rules
+](https://cloud.google.com/billing/docs/how-to/budgets#alert-thresholds) for
+_Actual_ or _Forecasted_ spend. Programmatic notifications triggered on
+**Forecasted** costs are now identified with the ` forecastThresholdExceeded `
+property in the JSON object. See the [ documentation
+](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-
+notifications#notification_format) for more details.
+
+##  May 21, 2020
+
+**FEATURE:**
+
+Cloud Billing Budget API: new budget filters for groups of subaccounts and
+resource labels are now available in the Budget API. See the [ documentation
+](https://cloud.google.com/billing/docs/reference/budget/rest/v1beta1/billingAccounts.budgets)
+for more details.
+
 ##  May 18, 2020
 
 **FEATURE:**
