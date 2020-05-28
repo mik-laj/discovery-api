@@ -30,6 +30,16 @@ Read the [ guide to using TPUs with AI Platform Training
 ](https://cloud.google.com/ai-platform/training/docs/using-tpus) , which has
 been updated to show how to use TPUs with TensorFlow 2 APIs.
 
+##  May 18, 2020
+
+**AI Platform Deep Learning VM Image**
+
+**FEATURE:**
+
+TensorFlow 2.2 images have been added. The new TensorFlow 2.2 image families
+are ` tf2-2-2-cpu ` and ` tf2-2-2-cu101 ` . See the [ available image families
+](https://cloud.google.com/ai-platform/deep-learning-vm/docs/images) .
+
 ##  May 13, 2020
 
 **AI Platform Prediction**
