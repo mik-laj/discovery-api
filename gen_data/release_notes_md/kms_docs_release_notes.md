@@ -14,6 +14,16 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/kms-release-notes.xml `
 
+##  May 28, 2020
+
+**FEATURE:**
+
+Several fields related to data integrity have been added to the Cloud KMS API,
+along with guidelines for using them. To learn more about maintaining data
+integrity when performing cryptographic operations, see [ Verifying end-to-end
+data integrity ](https://cloud.google.com/kms/docs/data-integrity-guidelines)
+.
+
 ##  April 20, 2020
 
 **FEATURE:**
