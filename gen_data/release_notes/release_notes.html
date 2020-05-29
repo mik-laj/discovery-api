@@ -40,6 +40,43 @@ For a comprehensive list, see the
    </section>
    <section class="releases">
     <section class="releases">
+     <h2 data-text="May 28, 2020" id="May_28_2020" tabindex="0">
+      May 28, 2020
+     </h2>
+     <strong class="release-note-product-title">
+      Cloud Functions
+     </strong>
+     <div class="release-changed" id="c35e9853">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Cloud Functions now supports
+       <a href="https://cloud.google.com/functions/docs/concepts/go-runtime">
+        Go 1.13
+       </a>
+       at the
+       <a href="https://cloud.google.com/products/#product-launch-stages">
+        General Availability release level
+       </a>
+       .
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      Cloud Key Management Service
+     </strong>
+     <div class="release-feature" id="6069b678">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Several fields related to data integrity have been added to the Cloud KMS API, along with guidelines for using them. To learn more about maintaining data integrity when performing cryptographic operations, see
+       <a href="https://cloud.google.com/kms/docs/data-integrity-guidelines">
+        Verifying end-to-end data integrity
+       </a>
+       .
+      </p>
+     </div>
      <h2 data-text="May 27, 2020" id="May_27_2020" tabindex="0">
       May 27, 2020
      </h2>
@@ -537,6 +574,263 @@ For a comprehensive list, see the
        <a href="https://cloud.google.com/compute/docs/tutorials/ssh-with-sk">
         SSH with security keys
        </a>
+       .
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      Dataproc
+     </strong>
+     <div class="release-feature" id="385c1cf5">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       You can now set
+       <code dir="ltr" translate="no">
+        core:fs.defaultFS
+       </code>
+       to a location in Cloud Storage (for example,
+       <code dir="ltr" translate="no">
+        gs://bucket
+       </code>
+       ) when creating a cluster to set Cloud Storage as the default filesystem. This also sets
+       <code dir="ltr" translate="no">
+        core:fs.gs.reported.permissions
+       </code>
+       , the reported permission returned by the Cloud Storage connector for all files, to 777. If Cloud Storage is not set as the default filesystem, this property will continue to return 700, the default value.
+      </p>
+     </div>
+     <div class="release-feature" id="c1aa35e2">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <strong>
+        Image 1.4 and 1.5
+       </strong>
+      </p>
+      <p>
+       <a href="https://issues.apache.org/jira/browse/HADOOP-16984">
+        HADOOP-16984
+       </a>
+       : Enable persistent history server to read from done directory.
+      </p>
+     </div>
+     <div class="release-changed" id="e6a1411c">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       New
+       <a href="https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_cloud_dataproc_versions">
+        sub-minor versions
+       </a>
+       of Dataproc images: 1.2.98-debian9, 1.3.58-debian9, 1.4.29-debian9, 1.3.58-debian10, 1.4.29-debian10, 1.5.4-debian10, 1.3.58-ubuntu18, 1.4.29-ubuntu18, 1.5.4-ubuntu18.
+      </p>
+     </div>
+     <div class="release-changed" id="e29f80f0">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <strong>
+        Image 1.3, 1.4, and 1.5
+       </strong>
+      </p>
+      <ul>
+       <li>
+        <p>
+         Restrict Jupyter, Zeppelin, and Knox to only accept connections from
+         <code dir="ltr" translate="no">
+          localhost
+         </code>
+         when
+         <a href="https://cloud.google.com/dataproc/docs/concepts/accessing/dataproc-gateways">
+          Component Gateway
+         </a>
+         is enabled. This restriction reduces the risk of remote code execution over unsecured notebook server APIs. To override this change, when you create the cluster, set the Jupyter, Zeppelin, and Knox
+         <a href="https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/cluster-properties">
+          cluster properties
+         </a>
+         , respectively, as follows:
+         <code dir="ltr" translate="no">
+          dataproc:jupyter.listen.all.interfaces=true
+         </code>
+         ,
+         <code dir="ltr" translate="no">
+          zeppelin:zeppelin.server.addr=0.0.0.0
+         </code>
+         , and
+         <code dir="ltr" translate="no">
+          knox:gateway.host=0.0.0.0
+         </code>
+         .
+        </p>
+       </li>
+       <li>
+        <p>
+         Upgrade Hive to version 2.3.7.
+        </p>
+       </li>
+      </ul>
+     </div>
+     <div class="release-changed" id="3626588a">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <strong>
+        Image 1.4 and 1.5
+       </strong>
+      </p>
+      <p>
+       <a href="https://issues.apache.org/jira/browse/SPARK-29367">
+        SPARK-29367
+       </a>
+       : Add
+       <code dir="ltr" translate="no">
+        ARROW_PRE_0_15_IPC_FORMAT=1
+       </code>
+       in yarn-env.sh to fix the Pandas UDF issue with
+       <code dir="ltr" translate="no">
+        pyarrow
+       </code>
+       0.15.
+      </p>
+     </div>
+     <div class="release-changed" id="a800bf89">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <strong>
+        Image 1.5
+       </strong>
+      </p>
+      <ul>
+       <li>
+        <p>
+         Upgrade Druid to
+         <a href="https://github.com/apache/druid/releases/tag/druid-0.17.1">
+          version 0.17.1
+         </a>
+         .
+        </p>
+       </li>
+       <li>
+        <p>
+         Upgrade Cloud Storage Connector to
+         <a href="https://github.com/GoogleCloudDataproc/hadoop-connectors/releases/tag/v2.1.3">
+          version 2.1.3
+         </a>
+         .
+        </p>
+       </li>
+       <li>
+        <p>
+         Upgrade Delta Lake to
+         <a href="https://github.com/delta-io/delta/releases/tag/v0.6.0">
+          version 0.6.0
+         </a>
+         .
+        </p>
+       </li>
+      </ul>
+     </div>
+     <div class="release-changed" id="41457d3b">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Hide the "Quit" button from Jupyter notebook (
+       <code dir="ltr" translate="no">
+        c.NotebookApp.quit_button = False
+       </code>
+       ) when using the
+       <a href="https://cloud.google.com/dataproc/docs/concepts/components/jupyter">
+        Jupyter optional component
+       </a>
+       . The Jupyter environment is shut down when the cluster is deleted.
+      </p>
+     </div>
+     <div class="release-changed" id="96912a38">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Set the
+       <code dir="ltr" translate="no">
+        hive.localize.resource.num.wait.attempts
+       </code>
+       property to 25 to improve reliability of Hive queries.
+      </p>
+     </div>
+     <div class="release-fixed" id="f2b9b27f">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       <strong>
+        Image 1.5
+       </strong>
+      </p>
+      <p>
+       Fix a race condition in which
+       <code dir="ltr" translate="no">
+        hbase-master
+       </code>
+       would try to write
+       <code dir="ltr" translate="no">
+        /hbase/.tmp/hbase.version
+       </code>
+       to HDFS before HDFS was initialized. This can increase cluster creation time for clusters created with HBase.
+      </p>
+     </div>
+     <div class="release-fixed" id="85603bb3">
+      <strong>
+       FIXED:
+      </strong>
+      <ul>
+       <li>
+        <p>
+         Fix a race condition in which, when the
+         <code dir="ltr" translate="no">
+          am.primary_only
+         </code>
+         property is provided, the "non-preemptible" node label was not added to the resource manager's node label store before node managers started registering with the resource manager.
+        </p>
+       </li>
+       <li>
+        <p>
+         Store resource manager node labels in Cloud Storage when
+         <code dir="ltr" translate="no">
+          am.primary_only
+         </code>
+         property is provided.
+        </p>
+       </li>
+      </ul>
+     </div>
+     <div class="release-deprecated" id="cc4562c8">
+      <strong>
+       DEPRECATED:
+      </strong>
+      <p>
+       The
+       <code dir="ltr" translate="no">
+        dataproc:alpha.state.shuffle.hcfs.enabled
+       </code>
+       <a href="https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/cluster-properties">
+        cluster property
+       </a>
+       has been deprecated. To enable Enhanced Flexibility Mode (EFM) for Spark, set
+       <code dir="ltr" translate="no">
+        dataproc:efm.spark.shuffle=hcfs
+       </code>
+       . To enable EFM for MapReduce, set
+       <code dir="ltr" translate="no">
+        dataproc:efm.mapreduce.shuffle=hcfs
+       </code>
        .
       </p>
      </div>
@@ -2622,175 +2916,6 @@ Increased CPU for the manager controller from 100m to 200m.
         </a>
        </li>
       </ul>
-     </div>
-     <h2 data-text="April 29, 2020" id="April_29_2020" tabindex="0">
-      April 29, 2020
-     </h2>
-     <strong class="release-note-product-title">
-      AI Platform Prediction
-     </strong>
-     <div class="release-feature" id="35899402">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       AI Platform Prediction now supports several
-       <a href="https://cloud.google.com/ai-platform/prediction/docs/regional-endpoints">
-        regional endpoints
-       </a>
-       for online prediction. Regional endpoints provide additional protection against outages in other regions by isolating your model and version resources from other regions. The following regional endpoints are available in beta:
-      </p>
-      <ul>
-       <li>
-        <code dir="ltr" translate="no">
-         us-central1-ml.googleapis.com
-        </code>
-       </li>
-       <li>
-        <code dir="ltr" translate="no">
-         europe-west4-ml.googleapis.com
-        </code>
-       </li>
-       <li>
-        <code dir="ltr" translate="no">
-         asia-east1-ml.googleapis.com
-        </code>
-       </li>
-      </ul>
-      <p>
-       You can use these endpoints instead of the global endpoint,
-       <code dir="ltr" translate="no">
-        ml.googleapis.com
-       </code>
-       , when you use AI Platform Prediction for online prediction.
-       <a href="https://cloud.google.com/ai-platform/prediction/docs/regional-endpoints">
-        Learn how to use regional endpoints for online prediction, and read about their benefits and limitations.
-       </a>
-      </p>
-     </div>
-     <div class="release-feature" id="e6e63641">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       You can now deploy scikit-learn and XGBoost models for online prediction using
-       <a href="https://cloud.google.com/ai-platform/prediction/docs/machine-types-online-prediction">
-        Compute Engine (N1) machine types
-       </a>
-       . Previously, you could only deploy TensorFlow models when you used these machine types. Learn more about
-       <a href="https://cloud.google.com/ai-platform/prediction/docs/machine-types-online-prediction#ml_framework_support">
-        ML framework support for Compute Engine (N1) machine types
-       </a>
-       .
-      </p>
-      <p>
-       You cannot use GPUs with scikit-learn or XGBoost models, and you can only use scikit-learn and XGBoost models with Compute Engine (N1) machine types when you deploy your models and versions to a
-       <a href="https://cloud.google.com/ai-platform/prediction/docs/regional-endpoints">
-        regional endpoint
-       </a>
-       .
-      </p>
-      <p>
-       Compute Engine (N1) machine types for online prediction remain available in the beta launch stage.
-      </p>
-     </div>
-     <div class="release-feature" id="f08e7cc1">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       The
-       <code dir="ltr" translate="no">
-        europe-west4
-       </code>
-       (Netherlands) and
-       <code dir="ltr" translate="no">
-        asia-east1
-       </code>
-       (Taiwan) regions are now available for online prediction. These regions are only available for online prediction on their respective
-       <a href="https://cloud.google.com/ai-platform/prediction/docs/regional-endpoints">
-        regional endpoints
-       </a>
-       , and you can only use
-       <a href="https://cloud.google.com/ai-platform/prediction/docs/machine-types-online-prediction">
-        Compute Engine (N1) machine types
-       </a>
-       for online prediction in these regions.
-      </p>
-      <p>
-       When you deploy model versions in the
-       <code dir="ltr" translate="no">
-        europe-west4
-       </code>
-       region, you can optionally use NVIDIA Tesla P4,  NVIDIA Tesla T4, or NVIDIA Tesla V100 GPUs to accelerate prediction.
-      </p>
-      <p>
-       When you deploy model versions in the
-       <code dir="ltr" translate="no">
-        asia-east1
-       </code>
-       region, you can optionally use NVIDIA Tesla K80 or NVIDIA Tesla P100 GPUs to accelerate prediction.
-      </p>
-      <p>
-       Learn more about
-       <a href="https://cloud.google.com/ai-platform/prediction/docs/machine-types-online-prediction#gpus">
-        using GPUs for online prediction
-       </a>
-       , and see
-       <a href="https://cloud.google.com/ai-platform/prediction/docs/regions">
-        which GPUs are available in which regions
-       </a>
-       .
-      </p>
-      <p>
-       Learn about the
-       <a href="https://cloud.google.com/ai-platform/prediction/pricing">
-        pricing for the newly available regions and GPU resources
-       </a>
-       .
-      </p>
-     </div>
-     <div class="release-changed" id="e8ef6cb8">
-      <strong>
-       CHANGED:
-      </strong>
-      <p>
-       We recommend against using Compute Engine (N1) machine types on the AI Platform Prediction global endpoint. Instead, only use Compute Engine (N1) machine types when you deploy models and versions to a
-       <a href="https://cloud.google.com/ai-platform/prediction/docs/regional-endpoints">
-        regional endpoint
-       </a>
-       .
-      </p>
-      <p>
-       Model versions that use Compute Engine (N1) machine types and were previously deployed to the
-       <code dir="ltr" translate="no">
-        us-central1
-       </code>
-       region on the global endpoint will continue to function.
-      </p>
-     </div>
-     <strong class="release-note-product-title">
-      Virtual Private Cloud
-     </strong>
-     <div class="release-changed" id="e6adc0a0">
-      <strong>
-       CHANGED:
-      </strong>
-      <p>
-       Google Cloud now encrypts VPC traffic within the boundaries of the data centers in
-       <em>
-        asia-east2
-       </em>
-       . We will roll out this feature gradually to other regions. Google Cloud already encrypts VPC traffic
-       <em>
-        between all data centers
-       </em>
-       as described in
-       <a href="https://cloud.google.com/security/encryption-in-transit#virtual-network">
-        Encryption in Transit in Google Cloud
-       </a>
-       .
-      </p>
      </div>
     </section>
    </section>
