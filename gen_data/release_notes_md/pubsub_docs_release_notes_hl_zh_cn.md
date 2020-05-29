@@ -22,8 +22,8 @@ https://cloud.google.com/feeds/pubsub-release-notes.xml `
 **FEATURE:**
 
 [ Pub/Sub Lite ](https://cloud.google.com/pubsub/docs/choosing-pubsub-or-
-lite?hl=zh-cn) is now available at the [ beta release level
-](https://cloud.google.com/sdk/gcloud/?hl=zh-cn#release_levels) .
+lite?hl=zh-cn) is now available at the [ beta launch stage
+](https://cloud.google.com/products/?hl=zh-cn#product-launch-stages) .
 
 ##  April 20, 2020
 
