@@ -12,6 +12,27 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  May 28, 2020
+
+**Cloud Functions**
+
+**CHANGED:**
+
+Cloud Functions now supports [ Go 1.13
+](https://cloud.google.com/functions/docs/concepts/go-runtime) at the [
+General Availability release level
+](https://cloud.google.com/products/#product-launch-stages) .
+
+**Cloud Key Management Service**
+
+**FEATURE:**
+
+Several fields related to data integrity have been added to the Cloud KMS API,
+along with guidelines for using them. To learn more about maintaining data
+integrity when performing cryptographic operations, see [ Verifying end-to-end
+data integrity ](https://cloud.google.com/kms/docs/data-integrity-guidelines)
+.
+
 ##  May 27, 2020
 
 **Cloud Billing**
@@ -258,6 +279,93 @@ pricing#e2_sharedcore_machine_types) pricing page for more information.
 You can now SSH to your VMs using hardware-backed SSH key pairs. For more
 information, see [ SSH with security keys
 ](https://cloud.google.com/compute/docs/tutorials/ssh-with-sk) .
+
+**Dataproc**
+
+**FEATURE:**
+
+You can now set ` core:fs.defaultFS ` to a location in Cloud Storage (for
+example, ` gs://bucket ` ) when creating a cluster to set Cloud Storage as the
+default filesystem. This also sets ` core:fs.gs.reported.permissions ` , the
+reported permission returned by the Cloud Storage connector for all files, to
+777. If Cloud Storage is not set as the default filesystem, this property will
+continue to return 700, the default value.
+
+**FEATURE:**
+
+**Image 1.4 and 1.5**
+
+[ HADOOP-16984 ](https://issues.apache.org/jira/browse/HADOOP-16984) : Enable
+persistent history server to read from done directory.
+
+**CHANGED:**
+
+New [ sub-minor versions
+](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-
+versions#supported_cloud_dataproc_versions) of Dataproc images:
+1.2.98-debian9, 1.3.58-debian9, 1.4.29-debian9, 1.3.58-debian10,
+1.4.29-debian10, 1.5.4-debian10, 1.3.58-ubuntu18, 1.4.29-ubuntu18,
+1.5.4-ubuntu18.
+
+**CHANGED:**
+
+**Image 1.3, 1.4, and 1.5**
+
+  * Restrict Jupyter, Zeppelin, and Knox to only accept connections from ` localhost ` when [ Component Gateway ](https://cloud.google.com/dataproc/docs/concepts/accessing/dataproc-gateways) is enabled. This restriction reduces the risk of remote code execution over unsecured notebook server APIs. To override this change, when you create the cluster, set the Jupyter, Zeppelin, and Knox [ cluster properties ](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/cluster-properties) , respectively, as follows: ` dataproc:jupyter.listen.all.interfaces=true ` , ` zeppelin:zeppelin.server.addr=0.0.0.0 ` , and ` knox:gateway.host=0.0.0.0 ` . 
+
+  * Upgrade Hive to version 2.3.7. 
+
+**CHANGED:**
+
+**Image 1.4 and 1.5**
+
+[ SPARK-29367 ](https://issues.apache.org/jira/browse/SPARK-29367) : Add `
+ARROW_PRE_0_15_IPC_FORMAT=1 ` in yarn-env.sh to fix the Pandas UDF issue with
+` pyarrow ` 0.15.
+
+**CHANGED:**
+
+**Image 1.5**
+
+  * Upgrade Druid to [ version 0.17.1 ](https://github.com/apache/druid/releases/tag/druid-0.17.1) . 
+
+  * Upgrade Cloud Storage Connector to [ version 2.1.3 ](https://github.com/GoogleCloudDataproc/hadoop-connectors/releases/tag/v2.1.3) . 
+
+  * Upgrade Delta Lake to [ version 0.6.0 ](https://github.com/delta-io/delta/releases/tag/v0.6.0) . 
+
+**CHANGED:**
+
+Hide the "Quit" button from Jupyter notebook ( ` c.NotebookApp.quit_button =
+False ` ) when using the [ Jupyter optional component
+](https://cloud.google.com/dataproc/docs/concepts/components/jupyter) . The
+Jupyter environment is shut down when the cluster is deleted.
+
+**CHANGED:**
+
+Set the ` hive.localize.resource.num.wait.attempts ` property to 25 to improve
+reliability of Hive queries.
+
+**FIXED:**
+
+**Image 1.5**
+
+Fix a race condition in which ` hbase-master ` would try to write `
+/hbase/.tmp/hbase.version ` to HDFS before HDFS was initialized. This can
+increase cluster creation time for clusters created with HBase.
+
+**FIXED:**
+
+  * Fix a race condition in which, when the ` am.primary_only ` property is provided, the "non-preemptible" node label was not added to the resource manager's node label store before node managers started registering with the resource manager. 
+
+  * Store resource manager node labels in Cloud Storage when ` am.primary_only ` property is provided. 
+
+**DEPRECATED:**
+
+The ` dataproc:alpha.state.shuffle.hcfs.enabled ` [ cluster property
+](https://cloud.google.com/dataproc/docs/concepts/configuring-
+clusters/cluster-properties) has been deprecated. To enable Enhanced
+Flexibility Mode (EFM) for Spark, set ` dataproc:efm.spark.shuffle=hcfs ` . To
+enable EFM for MapReduce, set ` dataproc:efm.mapreduce.shuffle=hcfs ` .
 
 **VPC Service Controls**
 
@@ -1250,91 +1358,4 @@ pricing page ](https://cloud.google.com/data-catalog/pricing) .
 Beta launch of a one-click integration with a new telephony partner:
 
   * [ Avaya ](https://cloud.google.com/dialogflow/docs/integrations/avaya)
-
-##  April 29, 2020
-
-**AI Platform Prediction**
-
-**FEATURE:**
-
-AI Platform Prediction now supports several [ regional endpoints
-](https://cloud.google.com/ai-platform/prediction/docs/regional-endpoints) for
-online prediction. Regional endpoints provide additional protection against
-outages in other regions by isolating your model and version resources from
-other regions. The following regional endpoints are available in beta:
-
-  * ` us-central1-ml.googleapis.com `
-  * ` europe-west4-ml.googleapis.com `
-  * ` asia-east1-ml.googleapis.com `
-
-You can use these endpoints instead of the global endpoint, `
-ml.googleapis.com ` , when you use AI Platform Prediction for online
-prediction. [ Learn how to use regional endpoints for online prediction, and
-read about their benefits and limitations. ](https://cloud.google.com/ai-
-platform/prediction/docs/regional-endpoints)
-
-**FEATURE:**
-
-You can now deploy scikit-learn and XGBoost models for online prediction using
-[ Compute Engine (N1) machine types ](https://cloud.google.com/ai-
-platform/prediction/docs/machine-types-online-prediction) . Previously, you
-could only deploy TensorFlow models when you used these machine types. Learn
-more about [ ML framework support for Compute Engine (N1) machine types
-](https://cloud.google.com/ai-platform/prediction/docs/machine-types-online-
-prediction#ml_framework_support) .
-
-You cannot use GPUs with scikit-learn or XGBoost models, and you can only use
-scikit-learn and XGBoost models with Compute Engine (N1) machine types when
-you deploy your models and versions to a [ regional endpoint
-](https://cloud.google.com/ai-platform/prediction/docs/regional-endpoints) .
-
-Compute Engine (N1) machine types for online prediction remain available in
-the beta launch stage.
-
-**FEATURE:**
-
-The ` europe-west4 ` (Netherlands) and ` asia-east1 ` (Taiwan) regions are now
-available for online prediction. These regions are only available for online
-prediction on their respective [ regional endpoints
-](https://cloud.google.com/ai-platform/prediction/docs/regional-endpoints) ,
-and you can only use [ Compute Engine (N1) machine types
-](https://cloud.google.com/ai-platform/prediction/docs/machine-types-online-
-prediction) for online prediction in these regions.
-
-When you deploy model versions in the ` europe-west4 ` region, you can
-optionally use NVIDIA Tesla P4, NVIDIA Tesla T4, or NVIDIA Tesla V100 GPUs to
-accelerate prediction.
-
-When you deploy model versions in the ` asia-east1 ` region, you can
-optionally use NVIDIA Tesla K80 or NVIDIA Tesla P100 GPUs to accelerate
-prediction.
-
-Learn more about [ using GPUs for online prediction
-](https://cloud.google.com/ai-platform/prediction/docs/machine-types-online-
-prediction#gpus) , and see [ which GPUs are available in which regions
-](https://cloud.google.com/ai-platform/prediction/docs/regions) .
-
-Learn about the [ pricing for the newly available regions and GPU resources
-](https://cloud.google.com/ai-platform/prediction/pricing) .
-
-**CHANGED:**
-
-We recommend against using Compute Engine (N1) machine types on the AI
-Platform Prediction global endpoint. Instead, only use Compute Engine (N1)
-machine types when you deploy models and versions to a [ regional endpoint
-](https://cloud.google.com/ai-platform/prediction/docs/regional-endpoints) .
-
-Model versions that use Compute Engine (N1) machine types and were previously
-deployed to the ` us-central1 ` region on the global endpoint will continue to
-function.
-
-**Virtual Private Cloud**
-
-**CHANGED:**
-
-Google Cloud now encrypts VPC traffic within the boundaries of the data
-centers in _asia-east2_ . We will roll out this feature gradually to other
-regions. Google Cloud already encrypts VPC traffic _between all data centers_
-as described in [ Encryption in Transit in Google Cloud
-](https://cloud.google.com/security/encryption-in-transit#virtual-network) .
 
