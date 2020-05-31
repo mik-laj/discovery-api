@@ -13,6 +13,18 @@ notes.pdf?hl=zh_cn) 。
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/dialogflow-release-notes.xml `
 
+##  May 29, 2020
+
+**CHANGED:**
+
+The [ Dialogflow Facebook Messenger integration
+](https://cloud.google.com/dialogflow/docs/integrations/facebook?hl=zh_cn) has
+been updated to to be compliant with newer Facebook Messenger API versions. If
+you have an agent that enabled this integration prior to today, you should
+have received an email from Dialogflow with upgrade instructions. If you have
+not received this email, please [ contact Dialogflow support
+](https://cloud.google.com/dialogflow/docs/support/getting-support?hl=zh_cn) .
+
 ##  May 17, 2020
 
 **CHANGED:**
