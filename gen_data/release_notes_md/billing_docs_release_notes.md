@@ -12,6 +12,20 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/billing-release-notes.xml `
 
+##  May 29, 2020
+
+**FEATURE:**
+
+[ ` Labels ` ](https://cloud.google.com/billing/docs/how-to/cost-
+table#columns_in_the_cost_table) column added to the [ flat table view
+](https://cloud.google.com/billing/docs/how-to/cost-table#flat_table_view) of
+the Cloud Billing Cost Table report. The Cost Table report provides a tabular
+view of your invoice costs. You can quickly filter your costs by available
+fields, such as project, service, SKU, and labels (among other fields), and
+you can download the table to CSV for offline analysis. See the [
+documentation ](https://cloud.google.com/billing/docs/how-to/cost-table) for
+more details.
+
 ##  May 27, 2020
 
 **CHANGED:**
