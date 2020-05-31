@@ -11,6 +11,23 @@ deprecated functionality.
 You can see the latest product updates for all of Google Cloud on the [ Google
 Cloud release notes ](/release-notes) page.
 
+##  May 29, 2020
+
+**CHANGED:**
+
+A new build of Anthos GKE on AWS has been released. This build removes the
+need to check AWS IAM privileges when creating a management cluster. **You
+don't need to update** if you have not encountered this issue.
+
+To install this build, download the ` anthos-gke ` tool by running the
+following command:
+
+` gsutil cp gs://gke-multi-cloud-release/bin/aws-0.2.1-gke.8/anthos-gke . `
+
+Then, recreate your [ Terraform configuration
+](https://cloud.google.com/anthos/gke/docs/aws/how-to/installing-management)
+and continue with your installation.
+
 ##  May 07, 2020
 
 **BREAKING:**
