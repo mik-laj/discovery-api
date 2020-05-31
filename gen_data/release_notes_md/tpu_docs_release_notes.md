@@ -12,6 +12,14 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/tpu-release-notes.xml `
 
+##  May 29, 2020
+
+**CHANGED:**
+
+Cloud TPU now supports TensorFlow version 1.15.3. See the [ TensorFlow 1.15.3
+Release Notes ](https://github.com/tensorflow/tensorflow/releases/tag/v1.15.3)
+.
+
 ##  May 21, 2020
 
 **CHANGED:**
