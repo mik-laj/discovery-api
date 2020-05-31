@@ -12,6 +12,19 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/gcpmarketplace-release-
 notes.xml `
 
+##  April 14, 2020
+
+**CHANGED:**
+
+Security software agents on Google Cloud Marketplace are now **Generally
+available** .
+
+Security software agents are typically part of larger security solutions, and
+can be deployed to VM instances in your projects.
+
+[ Learn about Deploying security software agents
+](https://cloud.google.com/marketplace/docs/deploy-security-software-agents) .
+
 ##  February 27, 2020
 
 **FEATURE:**
