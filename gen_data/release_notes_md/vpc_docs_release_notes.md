@@ -11,6 +11,14 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/vpc-release-notes.xml `
 
+##  May 29, 2020
+
+**FEATURE:**
+
+GKE annotations and advanced controls for [ VPC Flow Logs
+](https://cloud.google.com/vpc/docs/using-flow-logs) is now available in
+**Beta** .
+
 ##  May 18, 2020
 
 **FEATURE:**
