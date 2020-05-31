@@ -12,6 +12,77 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  May 29, 2020
+
+**Anthos GKE deployed on AWS**
+
+**CHANGED:**
+
+A new build of Anthos GKE on AWS has been released. This build removes the
+need to check AWS IAM privileges when creating a management cluster. **You
+don't need to update** if you have not encountered this issue.
+
+To install this build, download the ` anthos-gke ` tool by running the
+following command:
+
+` gsutil cp gs://gke-multi-cloud-release/bin/aws-0.2.1-gke.8/anthos-gke . `
+
+Then, recreate your [ Terraform configuration
+](https://cloud.google.com/anthos/gke/docs/aws/how-to/installing-management)
+and continue with your installation.
+
+**Cloud Billing**
+
+**FEATURE:**
+
+[ ` Labels ` ](https://cloud.google.com/billing/docs/how-to/cost-
+table#columns_in_the_cost_table) column added to the [ flat table view
+](https://cloud.google.com/billing/docs/how-to/cost-table#flat_table_view) of
+the Cloud Billing Cost Table report. The Cost Table report provides a tabular
+view of your invoice costs. You can quickly filter your costs by available
+fields, such as project, service, SKU, and labels (among other fields), and
+you can download the table to CSV for offline analysis. See the [
+documentation ](https://cloud.google.com/billing/docs/how-to/cost-table) for
+more details.
+
+**Cloud CDN**
+
+**CHANGED:**
+
+To help you get started quickly, added two new examples for setting up Cloud
+CDN:
+
+  * [ Setting up Cloud CDN with a managed instance group ](https://cloud.google.com/cdn/docs/setting-up-cdn-with-mig)
+  * [ Setting up Cloud CDN with a backend bucket ](https://cloud.google.com/cdn/docs/setting-up-cdn-with-bucket)
+
+**Cloud TPU**
+
+**CHANGED:**
+
+Cloud TPU now supports TensorFlow version 1.15.3. See the [ TensorFlow 1.15.3
+Release Notes ](https://github.com/tensorflow/tensorflow/releases/tag/v1.15.3)
+.
+
+**Dialogflow**
+
+**CHANGED:**
+
+The [ Dialogflow Facebook Messenger integration
+](https://cloud.google.com/dialogflow/docs/integrations/facebook) has been
+updated to to be compliant with newer Facebook Messenger API versions. If you
+have an agent that enabled this integration prior to today, you should have
+received an email from Dialogflow with upgrade instructions. If you have not
+received this email, please [ contact Dialogflow support
+](https://cloud.google.com/dialogflow/docs/support/getting-support) .
+
+**Virtual Private Cloud**
+
+**FEATURE:**
+
+GKE annotations and advanced controls for [ VPC Flow Logs
+](https://cloud.google.com/vpc/docs/using-flow-logs) is now available in
+**Beta** .
+
 ##  May 28, 2020
 
 **Cloud Functions**
@@ -822,6 +893,48 @@ Miscellaneous bug fixes and improvement
 
 ##  May 14, 2020
 
+**App Engine flexible environment .NET**
+
+**FEATURE:**
+
+To get a fine-grained view of billing data for each resource used by your App
+Engine services, you can apply labels to the services, export your billing
+data to BigQuery, and run queries. For more information, see [ Labeling App
+Engine resources
+](https://cloud.google.com/appengine/docs/flexible/dotnet/labeling-resources)
+.
+
+**App Engine flexible environment Go**
+
+**FEATURE:**
+
+To get a fine-grained view of billing data for each resource used by your App
+Engine services, you can apply labels to the services, export your billing
+data to BigQuery, and run queries. For more information, see [ Labeling App
+Engine resources
+](https://cloud.google.com/appengine/docs/flexible/go/labeling-resources) .
+
+**App Engine flexible environment Java**
+
+**FEATURE:**
+
+To get a fine-grained view of billing data for each resource used by your App
+Engine services, you can apply labels to the services, export your billing
+data to BigQuery, and run queries. For more information, see [ Labeling App
+Engine resources
+](https://cloud.google.com/appengine/docs/flexible/java/labeling-resources) .
+
+**App Engine flexible environment Node.js**
+
+**FEATURE:**
+
+To get a fine-grained view of billing data for each resource used by your App
+Engine services, you can apply labels to the services, export your billing
+data to BigQuery, and run queries. For more information, see [ Labeling App
+Engine resources
+](https://cloud.google.com/appengine/docs/flexible/nodejs/labeling-resources)
+.
+
 **App Engine flexible environment PHP**
 
 **FEATURE:**
@@ -841,6 +954,102 @@ Engine services, you can apply labels to the services, export your billing
 data to BigQuery, and run queries. For more information, see [ Labeling App
 Engine resources
 ](https://cloud.google.com/appengine/docs/flexible/ruby/labeling-resources) .
+
+**App Engine standard environment Go**
+
+**FEATURE:**
+
+To get a fine-grained view of billing data for each resource used by your App
+Engine services, you can apply labels to the services, export your billing
+data to BigQuery, and run queries. For more information, see [ Labeling App
+Engine resources
+](https://cloud.google.com/appengine/docs/standard/go/labeling-resources) .
+
+**FEATURE:**
+
+To get a fine-grained view of billing data for each resource used by your App
+Engine services, you can apply labels to the services, export your billing
+data to BigQuery, and run queries. For more information, see [ Labeling App
+Engine resources
+](https://cloud.google.com/appengine/docs/standard/go111/labeling-resources) .
+
+**App Engine standard environment Java**
+
+**FEATURE:**
+
+To get a fine-grained view of billing data for each resource used by your App
+Engine services, you can apply labels to the services, export your billing
+data to BigQuery, and run queries. For more information, see [ Labeling App
+Engine resources
+](https://cloud.google.com/appengine/docs/standard/java/labeling-resources) .
+
+**FEATURE:**
+
+To get a fine-grained view of billing data for each resource used by your App
+Engine services, you can apply labels to the services, export your billing
+data to BigQuery, and run queries. For more information, see [ Labeling App
+Engine resources
+](https://cloud.google.com/appengine/docs/standard/java11/labeling-resources)
+.
+
+**App Engine standard environment Node.js**
+
+**FEATURE:**
+
+To get a fine-grained view of billing data for each resource used by your App
+Engine services, you can apply labels to the services, export your billing
+data to BigQuery, and run queries. For more information, see [ Labeling App
+Engine resources
+](https://cloud.google.com/appengine/docs/standard/nodejs/labeling-resources)
+.
+
+**App Engine standard environment PHP**
+
+**FEATURE:**
+
+To get a fine-grained view of billing data for each resource used by your App
+Engine services, you can apply labels to the services, export your billing
+data to BigQuery, and run queries. For more information, see [ Labeling App
+Engine resources
+](https://cloud.google.com/appengine/docs/standard/php/labeling-resources) .
+
+**FEATURE:**
+
+To get a fine-grained view of billing data for each resource used by your App
+Engine services, you can apply labels to the services, export your billing
+data to BigQuery, and run queries. For more information, see [ Labeling App
+Engine resources
+](https://cloud.google.com/appengine/docs/standard/php7/labeling-resources) .
+
+**App Engine standard environment Python**
+
+**FEATURE:**
+
+To get a fine-grained view of billing data for each resource used by your App
+Engine services, you can apply labels to the services, export your billing
+data to BigQuery, and run queries. For more information, see [ Labeling App
+Engine resources
+](https://cloud.google.com/appengine/docs/standard/python/labeling-resources)
+.
+
+**FEATURE:**
+
+To get a fine-grained view of billing data for each resource used by your App
+Engine services, you can apply labels to the services, export your billing
+data to BigQuery, and run queries. For more information, see [ Labeling App
+Engine resources
+](https://cloud.google.com/appengine/docs/standard/python3/labeling-resources)
+.
+
+**App Engine standard environment Ruby**
+
+**FEATURE:**
+
+To get a fine-grained view of billing data for each resource used by your App
+Engine services, you can apply labels to the services, export your billing
+data to BigQuery, and run queries. For more information, see [ Labeling App
+Engine resources
+](https://cloud.google.com/appengine/docs/standard/ruby/labeling-resources) .
 
 **Cloud Monitoring**
 
@@ -1227,135 +1436,4 @@ notice ](https://cloud.google.com/sql/docs/mysql/deprecation-notice) .
 The shutdown of 7 integrations [ announced in January
 ](https://cloud.google.com/dialogflow/docs/release-notes#January_06_2020) is
 now extended to June 6th, 2020.
-
-##  May 01, 2020
-
-**BigQuery**
-
-**FEATURE:**
-
-A new function, ` JSON_EXTRACT_ARRAY ` , has been added to the list of JSON
-functions. This function allows you to extract the contents of a JSON document
-as a string array. For more information, see the [ ` JSON_EXTRACT_ARRAY `
-reference section ](https://cloud.google.com/bigquery/docs/reference/standard-
-sql/json_functions#json_extract_array) .
-
-**FEATURE:**
-
-The ` ORDER BY ` clause now supports the ` NULLS FIRST ` and ` NULLS LAST `
-clauses. These clauses allow you to specify the sort order of null and non-
-null values. For more information, see the [ ` ORDER BY ` reference section
-](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-
-syntax#order_by_clause) .
-
-**Cloud CDN**
-
-**CHANGED:**
-
-Added a new [ Features page ](https://cloud.google.com/cdn/docs/features) that
-summarizes all Cloud CDN capabilities.
-
-**Dataproc**
-
-**FEATURE:**
-
-Announcing the [ Beta ](https://cloud.google.com/products#product-launch-
-stages) release of [ Dataproc Component Gateway
-](https://cloud.google.com/dataproc/docs/concepts/accessing/dataproc-gateways)
-, which provides secure access to web endpoints for Dataproc default and
-optional components.
-
-**Text-to-Speech**
-
-**FEATURE:**
-
-Cloud Text-to-Speech now offers 36 new voices (both Standard and WaveNet) in
-the following languages. See the [ Supported Voices and Languages
-](https://cloud.google.com/text-to-speech/docs/voices) page for complete
-details.
-
-  * Arabic 
-  * Bengali (India) 
-  * English (India) 
-  * French (France) 
-  * German (Germany) 
-  * Gujarati (India) 
-  * Hindi (India) 
-  * Indonesian (Indonesia) 
-  * Kannada (India) 
-  * Malayalam (India) 
-  * Mandarin Chinese 
-  * Russian (Russia) 
-  * Tamil (India) 
-  * Telugu (India) 
-  * Thai (Thailand) 
-
-##  April 30, 2020
-
-**BigQuery**
-
-**CHANGED:**
-
-The BigQuery Data Transfer Service is now available in the [ Taiwan (asia-
-east1) region ](https://cloud.google.com/bigquery-
-transfer/docs/locations#supported_regions) .
-
-**BigQuery Data Transfer Service**
-
-**CHANGED:**
-
-BigQuery Data Transfer Service is now available in the [ Taiwan (asia-east1)
-region ](https://cloud.google.com/bigquery-
-transfer/docs/locations#supported_regions) .
-
-**Compute Engine**
-
-**CHANGED:**
-
-SSD persistent disks now have increased write throughput limits on instances
-with 1 to 15 vCPUs. This improvement applies to SSD persistent disks on all
-machine types except C2 machine types. To learn more about the requirements to
-reach these limits, see [ Block storage performance
-](https://cloud.google.com/compute/docs/disks/performance#size_price_performance)
-.
-
-**Config Connector**
-
-**CHANGED:**
-
-Fixes for the examples for the following resources: CloudBuildTrigger,
-AccessContextManager, ComputeDisk, and ComputeSubNetwork
-
-**CHANGED:**
-
-Reduced memory requirements for deletion defender, recorder, and webhook.
-Reduced cpu requirements for recorder and webhook Increased CPU for the
-manager controller from 100m to 200m.
-
-**CHANGED:**
-
-Ensure the webhook process does not signal it is ready until it is serving
-HTTP traffic
-
-**Data Catalog**
-
-**FEATURE:**
-
-Data Catalog is now generally available (GA). \- The Data Catalog v1 API,
-gcloud commands, and UI are now available. For details, [ see the API
-reference ](https://cloud.google.com/data-catalog/docs/reference) . Code
-samples throughout the documentation have been updated to use the new API. \-
-Data Catalog has been regionalized, and now hosts user metadata in [ 23
-regions worldwide ](https://cloud.google.com/data-
-catalog/docs/concepts/regions) . \- Billing has been enabled for Data Catalog
-API calls and storage using all supported resources. For more info, see the [
-pricing page ](https://cloud.google.com/data-catalog/pricing) .
-
-**Dialogflow**
-
-**FEATURE:**
-
-Beta launch of a one-click integration with a new telephony partner:
-
-  * [ Avaya ](https://cloud.google.com/dialogflow/docs/integrations/avaya)
 
