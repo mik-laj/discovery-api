@@ -1,14 +1,18 @@
 #  Notas da versão
 
-Esta página documenta as atualizações de produção para os pipelines da AI
-Platform. Acesse-a periodicamente para ver avisos de recursos novos ou
+Nesta página, documentamos as atualizações de produção para o AI Platform
+Pipelines. Acesse-a periodicamente para ver avisos de recursos novos ou
 atualizados, correções de bugs, problemas conhecidos e recursos obsoletos.
+
+É possível ver as atualizações mais recentes de todos os produtos do Google
+Cloud na página [ Notas da versão do Google Cloud
+](https://cloud.google.com/release-notes?hl=pt_br) .
 
 Para receber as atualizações de produtos mais recentes, adicione o URL desta
 página ao [ leitor de feeds
-](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) (em inglês) ou
-adicione o URL do feed diretamente: ` https://cloud.google.com/feeds/ai-
-platform-pipelines-release-notes.xml `
+](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ou adicione o URL
+do feed diretamente: ` https://cloud.google.com/feeds/ai-platform-pipelines-
+release-notes.xml `
 
 ##  March 05, 2020
 
