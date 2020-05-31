@@ -13,7 +13,29 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloud-healthcare-release-
 notes.xml `
 
+##  May 29, 2020
+
+v1
+
+**FEATURE:**
+
+The Cloud Healthcare API offers single-region support in the ` asia-east2 `
+(Hong Kong) region.
+
+##  May 26, 2020
+
+v1
+
+**CHANGED:**
+
+Search results for DICOM studies and series might take several seconds to
+update after deleting an instance using [ ` instances.delete `
+](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets.dicomStores.studies.series.instances/delete)
+.
+
 ##  April 23, 2020
+
+v1
 
 **FEATURE:**
 
@@ -21,6 +43,8 @@ Code samples are available for the Cloud Healthcare API v1 in Go, Java,
 Node.js, and Python.
 
 ##  April 07, 2020
+
+v1
 
 **FEATURE:**
 
@@ -46,6 +70,8 @@ release, see [ Transitioning to the v1 API
 
 ##  February 13, 2020
 
+v1beta1
+
 **CHANGED:**
 
 The ` messages ` field returned by the [ `
@@ -59,6 +85,8 @@ deprecation period ends on March 2, 2020, the method will only return `
 hl7_v2_messages ` .
 
 ##  February 10, 2020
+
+v1beta1
 
 **FEATURE:**
 
@@ -78,6 +106,8 @@ Logging has been added for ` executeBundle ` .
 
 ##  October 24, 2019
 
+v1beta1
+
 **FEATURE:**
 
 DICOM and FHIR de-identification at the individual store level is now
@@ -90,6 +120,8 @@ deidentify#fhir_store_level_de-identification) data for more information.
 
 ##  September 24, 2019
 
+v1beta1
+
 **CHANGED:**
 
 Public access to the Cloud Healthcare API v1alpha2 version has been
@@ -99,6 +131,8 @@ Testers. To become a Trusted Tester, complete [ this form
 
 ##  September 16, 2019
 
+v1beta1
+
 **FEATURE:**
 
 The Cloud Healthcare API offers single-region support in the ` asia-southeast1
@@ -106,12 +140,16 @@ The Cloud Healthcare API offers single-region support in the ` asia-southeast1
 
 ##  September 12, 2019
 
+v1beta1
+
 **FEATURE:**
 
 Cloud Healthcare API ` gcloud ` tool commands are now available in ` gcloud
 beta ` .
 
 ##  August 13, 2019
+
+v1beta1
 
 **FEATURE:**
 
@@ -124,12 +162,16 @@ for more information on when you might want to enable this option.
 
 ##  July 26, 2019
 
+v1beta1
+
 **FEATURE:**
 
 The Cloud Healthcare API offers single-region support in the ` asia-northeast1
 ` (Tokyo) region.
 
 ##  July 15, 2019
+
+v1beta1
 
 **FEATURE:**
 
@@ -138,12 +180,16 @@ The Cloud Healthcare API offers single-region support in the ` europe-west4 `
 
 ##  July 10, 2019
 
+v1beta1
+
 **FEATURE:**
 
 The Cloud Healthcare API offers multi-region support in the ` us ` (United
 States) region.
 
 ##  June 19, 2019
+
+v1beta1
 
 **FEATURE:**
 
@@ -152,6 +198,8 @@ tos/dicom-deidentify) has improved image output quality. There is now support
 for lossless image output for lossless image input formats.
 
 ##  April 04, 2019
+
+v1beta1
 
 **FEATURE:**
 
