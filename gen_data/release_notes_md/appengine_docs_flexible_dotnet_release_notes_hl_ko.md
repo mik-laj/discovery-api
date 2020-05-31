@@ -8,6 +8,17 @@ Google Cloud의 최신 제품 업데이트를 확인할 수 있습니다.
 추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/gaeflex-net-
 release-notes.xml `
 
+##  May 14, 2020
+
+**FEATURE:**
+
+To get a fine-grained view of billing data for each resource used by your App
+Engine services, you can apply labels to the services, export your billing
+data to BigQuery, and run queries. For more information, see [ Labeling App
+Engine resources
+](https://cloud.google.com/appengine/docs/flexible/dotnet/labeling-
+resources?hl=ko) .
+
 ##  April 20, 2020
 
 **FEATURE:**
