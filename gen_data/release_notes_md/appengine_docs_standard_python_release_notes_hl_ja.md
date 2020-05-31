@@ -12,6 +12,17 @@ python3/?hl=ja) ことをおすすめします。
 URL ディレクトリ ` https://cloud.google.com/feeds/gaestd-py-release-notes.xml `
 を直接追加します。
 
+##  May 14, 2020
+
+**FEATURE:**
+
+To get a fine-grained view of billing data for each resource used by your App
+Engine services, you can apply labels to the services, export your billing
+data to BigQuery, and run queries. For more information, see [ Labeling App
+Engine resources
+](https://cloud.google.com/appengine/docs/standard/python/labeling-
+resources?hl=ja) .
+
 ##  May 11, 2020
 
 **CHANGED:**
