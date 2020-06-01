@@ -12,27 +12,47 @@
             }
         }
     },
-    "basePath": "/youtube/v3/",
-    "baseUrl": "https://www.googleapis.com/youtube/v3/",
-    "batchPath": "batch/youtube/v3",
+    "basePath": "",
+    "baseUrl": "https://www.googleapis.com/",
+    "batchPath": "batch/youtube",
     "canonicalName": "YouTube",
     "discoveryVersion": "v1",
-    "documentationLink": "https://developers.google.com/youtube/v3",
+    "documentationLink": "https://developers.google.com/youtube/",
+    "fullyEncodeReservedExpansion": true,
     "icons": {
-        "x16": "https://www.google.com/images/icons/product/youtube-16.png",
-        "x32": "https://www.google.com/images/icons/product/youtube-32.png"
+        "x16": "http://www.google.com/images/icons/product/search-16.gif",
+        "x32": "http://www.google.com/images/icons/product/search-32.gif"
     },
     "id": "youtube:v3",
     "kind": "discovery#restDescription",
+    "mtlsRootUrl": "https://www.mtls.googleapis.com/",
     "name": "youtube",
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "$.xgafv": {
+            "enum": [
+                "1",
+                "2"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "location": "query",
+            "type": "string"
+        },
         "alt": {
             "default": "json",
             "enum": [
-                "json"
+                "json",
+                "media",
+                "proto"
             ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
             "location": "query",
             "type": "string"
         },
@@ -57,7 +77,11 @@
             "location": "query",
             "type": "string"
         },
-        "userIp": {
+        "uploadType": {
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
             "location": "query",
             "type": "string"
         }
@@ -67,6 +91,7 @@
         "activities": {
             "methods": {
                 "list": {
+                    "flatPath": "youtube/v3/activities",
                     "httpMethod": "GET",
                     "id": "youtube.activities.list",
                     "parameterOrder": [
@@ -85,8 +110,6 @@
                             "default": "5",
                             "format": "uint32",
                             "location": "query",
-                            "maximum": "50",
-                            "minimum": "0",
                             "type": "integer"
                         },
                         "mine": {
@@ -99,16 +122,17 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         },
                         "publishedAfter": {
-                            "format": "date-time",
+                            "format": "google-datetime",
                             "location": "query",
                             "type": "string"
                         },
                         "publishedBefore": {
-                            "format": "date-time",
+                            "format": "google-datetime",
                             "location": "query",
                             "type": "string"
                         },
@@ -117,7 +141,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "activities",
+                    "path": "youtube/v3/activities",
                     "response": {
                         "$ref": "ActivityListResponse"
                     },
@@ -132,6 +156,7 @@
         "captions": {
             "methods": {
                 "delete": {
+                    "flatPath": "youtube/v3/captions",
                     "httpMethod": "DELETE",
                     "id": "youtube.captions.delete",
                     "parameterOrder": [
@@ -152,13 +177,14 @@
                             "type": "string"
                         }
                     },
-                    "path": "captions",
+                    "path": "youtube/v3/captions",
                     "scopes": [
                         "https://www.googleapis.com/auth/youtube.force-ssl",
                         "https://www.googleapis.com/auth/youtubepartner"
                     ]
                 },
                 "download": {
+                    "flatPath": "youtube/v3/captions/{id}",
                     "httpMethod": "GET",
                     "id": "youtube.captions.download",
                     "parameterOrder": [
@@ -179,13 +205,6 @@
                             "type": "string"
                         },
                         "tfmt": {
-                            "enum": [
-                                "sbv",
-                                "scc",
-                                "srt",
-                                "ttml",
-                                "vtt"
-                            ],
                             "location": "query",
                             "type": "string"
                         },
@@ -194,28 +213,26 @@
                             "type": "string"
                         }
                     },
-                    "path": "captions/{id}",
+                    "path": "youtube/v3/captions/{id}",
                     "scopes": [
                         "https://www.googleapis.com/auth/youtube.force-ssl",
                         "https://www.googleapis.com/auth/youtubepartner"
                     ],
-                    "supportsMediaDownload": true
+                    "supportsMediaDownload": true,
+                    "useMediaDownloadService": true
                 },
                 "insert": {
+                    "flatPath": "youtube/v3/captions",
                     "httpMethod": "POST",
                     "id": "youtube.captions.insert",
                     "mediaUpload": {
                         "accept": [
-                            "*/*",
+                            "text/xml",
                             "application/octet-stream",
-                            "text/xml"
+                            "*/*"
                         ],
-                        "maxSize": "100MB",
+                        "maxSize": "104857600",
                         "protocols": {
-                            "resumable": {
-                                "multipart": true,
-                                "path": "/resumable/upload/youtube/v3/captions"
-                            },
                             "simple": {
                                 "multipart": true,
                                 "path": "/upload/youtube/v3/captions"
@@ -236,6 +253,7 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         },
@@ -244,7 +262,7 @@
                             "type": "boolean"
                         }
                     },
-                    "path": "captions",
+                    "path": "youtube/v3/captions",
                     "request": {
                         "$ref": "Caption"
                     },
@@ -258,15 +276,17 @@
                     "supportsMediaUpload": true
                 },
                 "list": {
+                    "flatPath": "youtube/v3/captions",
                     "httpMethod": "GET",
                     "id": "youtube.captions.list",
                     "parameterOrder": [
-                        "part",
-                        "videoId"
+                        "videoId",
+                        "part"
                     ],
                     "parameters": {
                         "id": {
                             "location": "query",
+                            "repeated": true,
                             "type": "string"
                         },
                         "onBehalfOf": {
@@ -279,6 +299,7 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         },
@@ -288,7 +309,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "captions",
+                    "path": "youtube/v3/captions",
                     "response": {
                         "$ref": "CaptionListResponse"
                     },
@@ -298,20 +319,17 @@
                     ]
                 },
                 "update": {
+                    "flatPath": "youtube/v3/captions",
                     "httpMethod": "PUT",
                     "id": "youtube.captions.update",
                     "mediaUpload": {
                         "accept": [
-                            "*/*",
+                            "text/xml",
                             "application/octet-stream",
-                            "text/xml"
+                            "*/*"
                         ],
-                        "maxSize": "100MB",
+                        "maxSize": "104857600",
                         "protocols": {
-                            "resumable": {
-                                "multipart": true,
-                                "path": "/resumable/upload/youtube/v3/captions"
-                            },
                             "simple": {
                                 "multipart": true,
                                 "path": "/upload/youtube/v3/captions"
@@ -332,6 +350,7 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         },
@@ -340,7 +359,7 @@
                             "type": "boolean"
                         }
                     },
-                    "path": "captions",
+                    "path": "youtube/v3/captions",
                     "request": {
                         "$ref": "Caption"
                     },
@@ -358,26 +377,24 @@
         "channelBanners": {
             "methods": {
                 "insert": {
+                    "flatPath": "youtube/v3/channelBanners/insert",
                     "httpMethod": "POST",
                     "id": "youtube.channelBanners.insert",
                     "mediaUpload": {
                         "accept": [
-                            "application/octet-stream",
                             "image/jpeg",
-                            "image/png"
+                            "image/png",
+                            "application/octet-stream"
                         ],
-                        "maxSize": "6MB",
+                        "maxSize": "6291456",
                         "protocols": {
-                            "resumable": {
-                                "multipart": true,
-                                "path": "/resumable/upload/youtube/v3/channelBanners/insert"
-                            },
                             "simple": {
                                 "multipart": true,
                                 "path": "/upload/youtube/v3/channelBanners/insert"
                             }
                         }
                     },
+                    "parameterOrder": [],
                     "parameters": {
                         "channelId": {
                             "location": "query",
@@ -386,9 +403,13 @@
                         "onBehalfOfContentOwner": {
                             "location": "query",
                             "type": "string"
+                        },
+                        "onBehalfOfContentOwnerChannel": {
+                            "location": "query",
+                            "type": "string"
                         }
                     },
-                    "path": "channelBanners/insert",
+                    "path": "youtube/v3/channelBanners/insert",
                     "request": {
                         "$ref": "ChannelBannerResource"
                     },
@@ -407,6 +428,7 @@
         "channelSections": {
             "methods": {
                 "delete": {
+                    "flatPath": "youtube/v3/channelSections",
                     "httpMethod": "DELETE",
                     "id": "youtube.channelSections.delete",
                     "parameterOrder": [
@@ -423,7 +445,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "channelSections",
+                    "path": "youtube/v3/channelSections",
                     "scopes": [
                         "https://www.googleapis.com/auth/youtube",
                         "https://www.googleapis.com/auth/youtube.force-ssl",
@@ -431,6 +453,7 @@
                     ]
                 },
                 "insert": {
+                    "flatPath": "youtube/v3/channelSections",
                     "httpMethod": "POST",
                     "id": "youtube.channelSections.insert",
                     "parameterOrder": [
@@ -447,11 +470,12 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "channelSections",
+                    "path": "youtube/v3/channelSections",
                     "request": {
                         "$ref": "ChannelSection"
                     },
@@ -465,6 +489,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "youtube/v3/channelSections",
                     "httpMethod": "GET",
                     "id": "youtube.channelSections.list",
                     "parameterOrder": [
@@ -481,6 +506,7 @@
                         },
                         "id": {
                             "location": "query",
+                            "repeated": true,
                             "type": "string"
                         },
                         "mine": {
@@ -493,11 +519,12 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "channelSections",
+                    "path": "youtube/v3/channelSections",
                     "response": {
                         "$ref": "ChannelSectionListResponse"
                     },
@@ -509,6 +536,7 @@
                     ]
                 },
                 "update": {
+                    "flatPath": "youtube/v3/channelSections",
                     "httpMethod": "PUT",
                     "id": "youtube.channelSections.update",
                     "parameterOrder": [
@@ -521,11 +549,12 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "channelSections",
+                    "path": "youtube/v3/channelSections",
                     "request": {
                         "$ref": "ChannelSection"
                     },
@@ -543,6 +572,7 @@
         "channels": {
             "methods": {
                 "list": {
+                    "flatPath": "youtube/v3/channels",
                     "httpMethod": "GET",
                     "id": "youtube.channels.list",
                     "parameterOrder": [
@@ -563,6 +593,7 @@
                         },
                         "id": {
                             "location": "query",
+                            "repeated": true,
                             "type": "string"
                         },
                         "managedByMe": {
@@ -573,8 +604,6 @@
                             "default": "5",
                             "format": "uint32",
                             "location": "query",
-                            "maximum": "50",
-                            "minimum": "0",
                             "type": "integer"
                         },
                         "mine": {
@@ -595,11 +624,12 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "channels",
+                    "path": "youtube/v3/channels",
                     "response": {
                         "$ref": "ChannelListResponse"
                     },
@@ -612,6 +642,7 @@
                     ]
                 },
                 "update": {
+                    "flatPath": "youtube/v3/channels",
                     "httpMethod": "PUT",
                     "id": "youtube.channels.update",
                     "parameterOrder": [
@@ -624,11 +655,12 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "channels",
+                    "path": "youtube/v3/channels",
                     "request": {
                         "$ref": "Channel"
                     },
@@ -646,6 +678,7 @@
         "commentThreads": {
             "methods": {
                 "insert": {
+                    "flatPath": "youtube/v3/commentThreads",
                     "httpMethod": "POST",
                     "id": "youtube.commentThreads.insert",
                     "parameterOrder": [
@@ -654,11 +687,12 @@
                     "parameters": {
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "commentThreads",
+                    "path": "youtube/v3/commentThreads",
                     "request": {
                         "$ref": "CommentThread"
                     },
@@ -670,6 +704,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "youtube/v3/commentThreads",
                     "httpMethod": "GET",
                     "id": "youtube.commentThreads.list",
                     "parameterOrder": [
@@ -686,22 +721,22 @@
                         },
                         "id": {
                             "location": "query",
+                            "repeated": true,
                             "type": "string"
                         },
                         "maxResults": {
                             "default": "20",
                             "format": "uint32",
                             "location": "query",
-                            "maximum": "100",
-                            "minimum": "1",
                             "type": "integer"
                         },
                         "moderationStatus": {
                             "default": "published",
                             "enum": [
+                                "published",
                                 "heldForReview",
                                 "likelySpam",
-                                "published"
+                                "rejected"
                             ],
                             "location": "query",
                             "type": "string"
@@ -709,8 +744,9 @@
                         "order": {
                             "default": "time",
                             "enum": [
-                                "relevance",
-                                "time"
+                                "orderUnspecified",
+                                "time",
+                                "relevance"
                             ],
                             "location": "query",
                             "type": "string"
@@ -721,6 +757,7 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         },
@@ -731,6 +768,7 @@
                         "textFormat": {
                             "default": "html",
                             "enum": [
+                                "textFormatUnspecified",
                                 "html",
                                 "plainText"
                             ],
@@ -742,7 +780,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "commentThreads",
+                    "path": "youtube/v3/commentThreads",
                     "response": {
                         "$ref": "CommentThreadListResponse"
                     },
@@ -751,6 +789,7 @@
                     ]
                 },
                 "update": {
+                    "flatPath": "youtube/v3/commentThreads",
                     "httpMethod": "PUT",
                     "id": "youtube.commentThreads.update",
                     "parameterOrder": [
@@ -759,11 +798,12 @@
                     "parameters": {
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "commentThreads",
+                    "path": "youtube/v3/commentThreads",
                     "request": {
                         "$ref": "CommentThread"
                     },
@@ -779,6 +819,7 @@
         "comments": {
             "methods": {
                 "delete": {
+                    "flatPath": "youtube/v3/comments",
                     "httpMethod": "DELETE",
                     "id": "youtube.comments.delete",
                     "parameterOrder": [
@@ -791,12 +832,13 @@
                             "type": "string"
                         }
                     },
-                    "path": "comments",
+                    "path": "youtube/v3/comments",
                     "scopes": [
                         "https://www.googleapis.com/auth/youtube.force-ssl"
                     ]
                 },
                 "insert": {
+                    "flatPath": "youtube/v3/comments",
                     "httpMethod": "POST",
                     "id": "youtube.comments.insert",
                     "parameterOrder": [
@@ -805,11 +847,12 @@
                     "parameters": {
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "comments",
+                    "path": "youtube/v3/comments",
                     "request": {
                         "$ref": "Comment"
                     },
@@ -821,6 +864,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "youtube/v3/comments",
                     "httpMethod": "GET",
                     "id": "youtube.comments.list",
                     "parameterOrder": [
@@ -829,14 +873,13 @@
                     "parameters": {
                         "id": {
                             "location": "query",
+                            "repeated": true,
                             "type": "string"
                         },
                         "maxResults": {
                             "default": "20",
                             "format": "uint32",
                             "location": "query",
-                            "maximum": "100",
-                            "minimum": "1",
                             "type": "integer"
                         },
                         "pageToken": {
@@ -849,12 +892,14 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         },
                         "textFormat": {
                             "default": "html",
                             "enum": [
+                                "textFormatUnspecified",
                                 "html",
                                 "plainText"
                             ],
@@ -862,7 +907,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "comments",
+                    "path": "youtube/v3/comments",
                     "response": {
                         "$ref": "CommentListResponse"
                     },
@@ -871,6 +916,7 @@
                     ]
                 },
                 "markAsSpam": {
+                    "flatPath": "youtube/v3/comments/markAsSpam",
                     "httpMethod": "POST",
                     "id": "youtube.comments.markAsSpam",
                     "parameterOrder": [
@@ -879,16 +925,18 @@
                     "parameters": {
                         "id": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "comments/markAsSpam",
+                    "path": "youtube/v3/comments/markAsSpam",
                     "scopes": [
                         "https://www.googleapis.com/auth/youtube.force-ssl"
                     ]
                 },
                 "setModerationStatus": {
+                    "flatPath": "youtube/v3/comments/setModerationStatus",
                     "httpMethod": "POST",
                     "id": "youtube.comments.setModerationStatus",
                     "parameterOrder": [
@@ -903,13 +951,15 @@
                         },
                         "id": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         },
                         "moderationStatus": {
                             "enum": [
-                                "heldForReview",
                                 "published",
+                                "heldForReview",
+                                "likelySpam",
                                 "rejected"
                             ],
                             "location": "query",
@@ -917,12 +967,13 @@
                             "type": "string"
                         }
                     },
-                    "path": "comments/setModerationStatus",
+                    "path": "youtube/v3/comments/setModerationStatus",
                     "scopes": [
                         "https://www.googleapis.com/auth/youtube.force-ssl"
                     ]
                 },
                 "update": {
+                    "flatPath": "youtube/v3/comments",
                     "httpMethod": "PUT",
                     "id": "youtube.comments.update",
                     "parameterOrder": [
@@ -931,11 +982,12 @@
                     "parameters": {
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "comments",
+                    "path": "youtube/v3/comments",
                     "request": {
                         "$ref": "Comment"
                     },
@@ -951,6 +1003,7 @@
         "guideCategories": {
             "methods": {
                 "list": {
+                    "flatPath": "youtube/v3/guideCategories",
                     "httpMethod": "GET",
                     "id": "youtube.guideCategories.list",
                     "parameterOrder": [
@@ -964,10 +1017,12 @@
                         },
                         "id": {
                             "location": "query",
+                            "repeated": true,
                             "type": "string"
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         },
@@ -976,7 +1031,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "guideCategories",
+                    "path": "youtube/v3/guideCategories",
                     "response": {
                         "$ref": "GuideCategoryListResponse"
                     },
@@ -992,6 +1047,7 @@
         "i18nLanguages": {
             "methods": {
                 "list": {
+                    "flatPath": "youtube/v3/i18nLanguages",
                     "httpMethod": "GET",
                     "id": "youtube.i18nLanguages.list",
                     "parameterOrder": [
@@ -1005,11 +1061,12 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "i18nLanguages",
+                    "path": "youtube/v3/i18nLanguages",
                     "response": {
                         "$ref": "I18nLanguageListResponse"
                     },
@@ -1025,6 +1082,7 @@
         "i18nRegions": {
             "methods": {
                 "list": {
+                    "flatPath": "youtube/v3/i18nRegions",
                     "httpMethod": "GET",
                     "id": "youtube.i18nRegions.list",
                     "parameterOrder": [
@@ -1038,11 +1096,12 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "i18nRegions",
+                    "path": "youtube/v3/i18nRegions",
                     "response": {
                         "$ref": "I18nRegionListResponse"
                     },
@@ -1058,6 +1117,7 @@
         "liveBroadcasts": {
             "methods": {
                 "bind": {
+                    "flatPath": "youtube/v3/liveBroadcasts/bind",
                     "httpMethod": "POST",
                     "id": "youtube.liveBroadcasts.bind",
                     "parameterOrder": [
@@ -1080,6 +1140,7 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         },
@@ -1088,7 +1149,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "liveBroadcasts/bind",
+                    "path": "youtube/v3/liveBroadcasts/bind",
                     "response": {
                         "$ref": "LiveBroadcast"
                     },
@@ -1098,6 +1159,7 @@
                     ]
                 },
                 "control": {
+                    "flatPath": "youtube/v3/liveBroadcasts/control",
                     "httpMethod": "POST",
                     "id": "youtube.liveBroadcasts.control",
                     "parameterOrder": [
@@ -1129,16 +1191,17 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         },
                         "walltime": {
-                            "format": "date-time",
+                            "format": "google-datetime",
                             "location": "query",
                             "type": "string"
                         }
                     },
-                    "path": "liveBroadcasts/control",
+                    "path": "youtube/v3/liveBroadcasts/control",
                     "response": {
                         "$ref": "LiveBroadcast"
                     },
@@ -1148,6 +1211,7 @@
                     ]
                 },
                 "delete": {
+                    "flatPath": "youtube/v3/liveBroadcasts",
                     "httpMethod": "DELETE",
                     "id": "youtube.liveBroadcasts.delete",
                     "parameterOrder": [
@@ -1168,13 +1232,14 @@
                             "type": "string"
                         }
                     },
-                    "path": "liveBroadcasts",
+                    "path": "youtube/v3/liveBroadcasts",
                     "scopes": [
                         "https://www.googleapis.com/auth/youtube",
                         "https://www.googleapis.com/auth/youtube.force-ssl"
                     ]
                 },
                 "insert": {
+                    "flatPath": "youtube/v3/liveBroadcasts",
                     "httpMethod": "POST",
                     "id": "youtube.liveBroadcasts.insert",
                     "parameterOrder": [
@@ -1191,11 +1256,12 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "liveBroadcasts",
+                    "path": "youtube/v3/liveBroadcasts",
                     "request": {
                         "$ref": "LiveBroadcast"
                     },
@@ -1208,6 +1274,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "youtube/v3/liveBroadcasts",
                     "httpMethod": "GET",
                     "id": "youtube.liveBroadcasts.list",
                     "parameterOrder": [
@@ -1216,10 +1283,11 @@
                     "parameters": {
                         "broadcastStatus": {
                             "enum": [
-                                "active",
+                                "broadcastStatusFilterUnspecified",
                                 "all",
-                                "completed",
-                                "upcoming"
+                                "active",
+                                "upcoming",
+                                "completed"
                             ],
                             "location": "query",
                             "type": "string"
@@ -1227,6 +1295,7 @@
                         "broadcastType": {
                             "default": "event",
                             "enum": [
+                                "broadcastTypeFilterUnspecified",
                                 "all",
                                 "event",
                                 "persistent"
@@ -1236,14 +1305,13 @@
                         },
                         "id": {
                             "location": "query",
+                            "repeated": true,
                             "type": "string"
                         },
                         "maxResults": {
                             "default": "5",
                             "format": "uint32",
                             "location": "query",
-                            "maximum": "50",
-                            "minimum": "0",
                             "type": "integer"
                         },
                         "mine": {
@@ -1264,11 +1332,12 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "liveBroadcasts",
+                    "path": "youtube/v3/liveBroadcasts",
                     "response": {
                         "$ref": "LiveBroadcastListResponse"
                     },
@@ -1279,19 +1348,21 @@
                     ]
                 },
                 "transition": {
+                    "flatPath": "youtube/v3/liveBroadcasts/transition",
                     "httpMethod": "POST",
                     "id": "youtube.liveBroadcasts.transition",
                     "parameterOrder": [
-                        "broadcastStatus",
                         "id",
+                        "broadcastStatus",
                         "part"
                     ],
                     "parameters": {
                         "broadcastStatus": {
                             "enum": [
-                                "complete",
+                                "statusUnspecified",
+                                "testing",
                                 "live",
-                                "testing"
+                                "complete"
                             ],
                             "location": "query",
                             "required": true,
@@ -1312,11 +1383,12 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "liveBroadcasts/transition",
+                    "path": "youtube/v3/liveBroadcasts/transition",
                     "response": {
                         "$ref": "LiveBroadcast"
                     },
@@ -1326,6 +1398,7 @@
                     ]
                 },
                 "update": {
+                    "flatPath": "youtube/v3/liveBroadcasts",
                     "httpMethod": "PUT",
                     "id": "youtube.liveBroadcasts.update",
                     "parameterOrder": [
@@ -1342,11 +1415,12 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "liveBroadcasts",
+                    "path": "youtube/v3/liveBroadcasts",
                     "request": {
                         "$ref": "LiveBroadcast"
                     },
@@ -1363,6 +1437,7 @@
         "liveChatBans": {
             "methods": {
                 "delete": {
+                    "flatPath": "youtube/v3/liveChat/bans",
                     "httpMethod": "DELETE",
                     "id": "youtube.liveChatBans.delete",
                     "parameterOrder": [
@@ -1375,13 +1450,14 @@
                             "type": "string"
                         }
                     },
-                    "path": "liveChat/bans",
+                    "path": "youtube/v3/liveChat/bans",
                     "scopes": [
                         "https://www.googleapis.com/auth/youtube",
                         "https://www.googleapis.com/auth/youtube.force-ssl"
                     ]
                 },
                 "insert": {
+                    "flatPath": "youtube/v3/liveChat/bans",
                     "httpMethod": "POST",
                     "id": "youtube.liveChatBans.insert",
                     "parameterOrder": [
@@ -1390,11 +1466,12 @@
                     "parameters": {
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "liveChat/bans",
+                    "path": "youtube/v3/liveChat/bans",
                     "request": {
                         "$ref": "LiveChatBan"
                     },
@@ -1411,6 +1488,7 @@
         "liveChatMessages": {
             "methods": {
                 "delete": {
+                    "flatPath": "youtube/v3/liveChat/messages",
                     "httpMethod": "DELETE",
                     "id": "youtube.liveChatMessages.delete",
                     "parameterOrder": [
@@ -1423,13 +1501,14 @@
                             "type": "string"
                         }
                     },
-                    "path": "liveChat/messages",
+                    "path": "youtube/v3/liveChat/messages",
                     "scopes": [
                         "https://www.googleapis.com/auth/youtube",
                         "https://www.googleapis.com/auth/youtube.force-ssl"
                     ]
                 },
                 "insert": {
+                    "flatPath": "youtube/v3/liveChat/messages",
                     "httpMethod": "POST",
                     "id": "youtube.liveChatMessages.insert",
                     "parameterOrder": [
@@ -1438,11 +1517,12 @@
                     "parameters": {
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "liveChat/messages",
+                    "path": "youtube/v3/liveChat/messages",
                     "request": {
                         "$ref": "LiveChatMessage"
                     },
@@ -1455,6 +1535,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "youtube/v3/liveChat/messages",
                     "httpMethod": "GET",
                     "id": "youtube.liveChatMessages.list",
                     "parameterOrder": [
@@ -1475,8 +1556,6 @@
                             "default": "500",
                             "format": "uint32",
                             "location": "query",
-                            "maximum": "2000",
-                            "minimum": "200",
                             "type": "integer"
                         },
                         "pageToken": {
@@ -1485,18 +1564,17 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         },
                         "profileImageSize": {
                             "format": "uint32",
                             "location": "query",
-                            "maximum": "720",
-                            "minimum": "16",
                             "type": "integer"
                         }
                     },
-                    "path": "liveChat/messages",
+                    "path": "youtube/v3/liveChat/messages",
                     "response": {
                         "$ref": "LiveChatMessageListResponse"
                     },
@@ -1511,6 +1589,7 @@
         "liveChatModerators": {
             "methods": {
                 "delete": {
+                    "flatPath": "youtube/v3/liveChat/moderators",
                     "httpMethod": "DELETE",
                     "id": "youtube.liveChatModerators.delete",
                     "parameterOrder": [
@@ -1523,13 +1602,14 @@
                             "type": "string"
                         }
                     },
-                    "path": "liveChat/moderators",
+                    "path": "youtube/v3/liveChat/moderators",
                     "scopes": [
                         "https://www.googleapis.com/auth/youtube",
                         "https://www.googleapis.com/auth/youtube.force-ssl"
                     ]
                 },
                 "insert": {
+                    "flatPath": "youtube/v3/liveChat/moderators",
                     "httpMethod": "POST",
                     "id": "youtube.liveChatModerators.insert",
                     "parameterOrder": [
@@ -1538,11 +1618,12 @@
                     "parameters": {
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "liveChat/moderators",
+                    "path": "youtube/v3/liveChat/moderators",
                     "request": {
                         "$ref": "LiveChatModerator"
                     },
@@ -1555,6 +1636,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "youtube/v3/liveChat/moderators",
                     "httpMethod": "GET",
                     "id": "youtube.liveChatModerators.list",
                     "parameterOrder": [
@@ -1571,8 +1653,6 @@
                             "default": "5",
                             "format": "uint32",
                             "location": "query",
-                            "maximum": "50",
-                            "minimum": "0",
                             "type": "integer"
                         },
                         "pageToken": {
@@ -1581,11 +1661,12 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "liveChat/moderators",
+                    "path": "youtube/v3/liveChat/moderators",
                     "response": {
                         "$ref": "LiveChatModeratorListResponse"
                     },
@@ -1600,6 +1681,7 @@
         "liveStreams": {
             "methods": {
                 "delete": {
+                    "flatPath": "youtube/v3/liveStreams",
                     "httpMethod": "DELETE",
                     "id": "youtube.liveStreams.delete",
                     "parameterOrder": [
@@ -1620,13 +1702,14 @@
                             "type": "string"
                         }
                     },
-                    "path": "liveStreams",
+                    "path": "youtube/v3/liveStreams",
                     "scopes": [
                         "https://www.googleapis.com/auth/youtube",
                         "https://www.googleapis.com/auth/youtube.force-ssl"
                     ]
                 },
                 "insert": {
+                    "flatPath": "youtube/v3/liveStreams",
                     "httpMethod": "POST",
                     "id": "youtube.liveStreams.insert",
                     "parameterOrder": [
@@ -1643,11 +1726,12 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "liveStreams",
+                    "path": "youtube/v3/liveStreams",
                     "request": {
                         "$ref": "LiveStream"
                     },
@@ -1660,6 +1744,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "youtube/v3/liveStreams",
                     "httpMethod": "GET",
                     "id": "youtube.liveStreams.list",
                     "parameterOrder": [
@@ -1668,14 +1753,13 @@
                     "parameters": {
                         "id": {
                             "location": "query",
+                            "repeated": true,
                             "type": "string"
                         },
                         "maxResults": {
                             "default": "5",
                             "format": "uint32",
                             "location": "query",
-                            "maximum": "50",
-                            "minimum": "0",
                             "type": "integer"
                         },
                         "mine": {
@@ -1696,11 +1780,12 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "liveStreams",
+                    "path": "youtube/v3/liveStreams",
                     "response": {
                         "$ref": "LiveStreamListResponse"
                     },
@@ -1711,6 +1796,7 @@
                     ]
                 },
                 "update": {
+                    "flatPath": "youtube/v3/liveStreams",
                     "httpMethod": "PUT",
                     "id": "youtube.liveStreams.update",
                     "parameterOrder": [
@@ -1727,11 +1813,12 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "liveStreams",
+                    "path": "youtube/v3/liveStreams",
                     "request": {
                         "$ref": "LiveStream"
                     },
@@ -1748,6 +1835,7 @@
         "members": {
             "methods": {
                 "list": {
+                    "flatPath": "youtube/v3/members",
                     "httpMethod": "GET",
                     "id": "youtube.members.list",
                     "parameterOrder": [
@@ -1766,15 +1854,14 @@
                             "default": "5",
                             "format": "uint32",
                             "location": "query",
-                            "maximum": "1000",
-                            "minimum": "0",
                             "type": "integer"
                         },
                         "mode": {
                             "default": "all_current",
                             "enum": [
-                                "all_current",
-                                "updates"
+                                "listMembersModeUnknown",
+                                "updates",
+                                "all_current"
                             ],
                             "location": "query",
                             "type": "string"
@@ -1785,11 +1872,12 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "members",
+                    "path": "youtube/v3/members",
                     "response": {
                         "$ref": "MemberListResponse"
                     },
@@ -1806,6 +1894,7 @@
         "membershipsLevels": {
             "methods": {
                 "list": {
+                    "flatPath": "youtube/v3/membershipsLevels",
                     "httpMethod": "GET",
                     "id": "youtube.membershipsLevels.list",
                     "parameterOrder": [
@@ -1814,11 +1903,12 @@
                     "parameters": {
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "membershipsLevels",
+                    "path": "youtube/v3/membershipsLevels",
                     "response": {
                         "$ref": "MembershipsLevelListResponse"
                     },
@@ -1835,6 +1925,7 @@
         "playlistItems": {
             "methods": {
                 "delete": {
+                    "flatPath": "youtube/v3/playlistItems",
                     "httpMethod": "DELETE",
                     "id": "youtube.playlistItems.delete",
                     "parameterOrder": [
@@ -1851,7 +1942,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "playlistItems",
+                    "path": "youtube/v3/playlistItems",
                     "scopes": [
                         "https://www.googleapis.com/auth/youtube",
                         "https://www.googleapis.com/auth/youtube.force-ssl",
@@ -1859,6 +1950,7 @@
                     ]
                 },
                 "insert": {
+                    "flatPath": "youtube/v3/playlistItems",
                     "httpMethod": "POST",
                     "id": "youtube.playlistItems.insert",
                     "parameterOrder": [
@@ -1871,11 +1963,12 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "playlistItems",
+                    "path": "youtube/v3/playlistItems",
                     "request": {
                         "$ref": "PlaylistItem"
                     },
@@ -1889,6 +1982,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "youtube/v3/playlistItems",
                     "httpMethod": "GET",
                     "id": "youtube.playlistItems.list",
                     "parameterOrder": [
@@ -1897,14 +1991,13 @@
                     "parameters": {
                         "id": {
                             "location": "query",
+                            "repeated": true,
                             "type": "string"
                         },
                         "maxResults": {
                             "default": "5",
                             "format": "uint32",
                             "location": "query",
-                            "maximum": "50",
-                            "minimum": "0",
                             "type": "integer"
                         },
                         "onBehalfOfContentOwner": {
@@ -1917,6 +2010,7 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         },
@@ -1929,7 +2023,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "playlistItems",
+                    "path": "youtube/v3/playlistItems",
                     "response": {
                         "$ref": "PlaylistItemListResponse"
                     },
@@ -1938,10 +2032,10 @@
                         "https://www.googleapis.com/auth/youtube.force-ssl",
                         "https://www.googleapis.com/auth/youtube.readonly",
                         "https://www.googleapis.com/auth/youtubepartner"
-                    ],
-                    "supportsSubscription": true
+                    ]
                 },
                 "update": {
+                    "flatPath": "youtube/v3/playlistItems",
                     "httpMethod": "PUT",
                     "id": "youtube.playlistItems.update",
                     "parameterOrder": [
@@ -1954,11 +2048,12 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "playlistItems",
+                    "path": "youtube/v3/playlistItems",
                     "request": {
                         "$ref": "PlaylistItem"
                     },
@@ -1976,6 +2071,7 @@
         "playlists": {
             "methods": {
                 "delete": {
+                    "flatPath": "youtube/v3/playlists",
                     "httpMethod": "DELETE",
                     "id": "youtube.playlists.delete",
                     "parameterOrder": [
@@ -1992,7 +2088,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "playlists",
+                    "path": "youtube/v3/playlists",
                     "scopes": [
                         "https://www.googleapis.com/auth/youtube",
                         "https://www.googleapis.com/auth/youtube.force-ssl",
@@ -2000,6 +2096,7 @@
                     ]
                 },
                 "insert": {
+                    "flatPath": "youtube/v3/playlists",
                     "httpMethod": "POST",
                     "id": "youtube.playlists.insert",
                     "parameterOrder": [
@@ -2016,11 +2113,12 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "playlists",
+                    "path": "youtube/v3/playlists",
                     "request": {
                         "$ref": "Playlist"
                     },
@@ -2034,6 +2132,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "youtube/v3/playlists",
                     "httpMethod": "GET",
                     "id": "youtube.playlists.list",
                     "parameterOrder": [
@@ -2050,14 +2149,13 @@
                         },
                         "id": {
                             "location": "query",
+                            "repeated": true,
                             "type": "string"
                         },
                         "maxResults": {
                             "default": "5",
                             "format": "uint32",
                             "location": "query",
-                            "maximum": "50",
-                            "minimum": "0",
                             "type": "integer"
                         },
                         "mine": {
@@ -2078,11 +2176,12 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "playlists",
+                    "path": "youtube/v3/playlists",
                     "response": {
                         "$ref": "PlaylistListResponse"
                     },
@@ -2094,6 +2193,7 @@
                     ]
                 },
                 "update": {
+                    "flatPath": "youtube/v3/playlists",
                     "httpMethod": "PUT",
                     "id": "youtube.playlists.update",
                     "parameterOrder": [
@@ -2106,11 +2206,12 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "playlists",
+                    "path": "youtube/v3/playlists",
                     "request": {
                         "$ref": "Playlist"
                     },
@@ -2128,6 +2229,7 @@
         "search": {
             "methods": {
                 "list": {
+                    "flatPath": "youtube/v3/search",
                     "httpMethod": "GET",
                     "id": "youtube.search.list",
                     "parameterOrder": [
@@ -2140,6 +2242,7 @@
                         },
                         "channelType": {
                             "enum": [
+                                "channelTypeUnspecified",
                                 "any",
                                 "show"
                             ],
@@ -2148,9 +2251,10 @@
                         },
                         "eventType": {
                             "enum": [
-                                "completed",
+                                "none",
+                                "upcoming",
                                 "live",
-                                "upcoming"
+                                "completed"
                             ],
                             "location": "query",
                             "type": "string"
@@ -2179,8 +2283,6 @@
                             "default": "5",
                             "format": "uint32",
                             "location": "query",
-                            "maximum": "50",
-                            "minimum": "0",
                             "type": "integer"
                         },
                         "onBehalfOfContentOwner": {
@@ -2190,12 +2292,13 @@
                         "order": {
                             "default": "relevance",
                             "enum": [
+                                "searchSortUnspecified",
                                 "date",
                                 "rating",
+                                "viewCount",
                                 "relevance",
                                 "title",
-                                "videoCount",
-                                "viewCount"
+                                "videoCount"
                             ],
                             "location": "query",
                             "type": "string"
@@ -2206,16 +2309,17 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         },
                         "publishedAfter": {
-                            "format": "date-time",
+                            "format": "google-datetime",
                             "location": "query",
                             "type": "string"
                         },
                         "publishedBefore": {
-                            "format": "date-time",
+                            "format": "google-datetime",
                             "location": "query",
                             "type": "string"
                         },
@@ -2238,8 +2342,9 @@
                         "safeSearch": {
                             "default": "moderate",
                             "enum": [
-                                "moderate",
+                                "safeSearchSettingUnspecified",
                                 "none",
+                                "moderate",
                                 "strict"
                             ],
                             "location": "query",
@@ -2252,10 +2357,12 @@
                         "type": {
                             "default": "video,channel,playlist",
                             "location": "query",
+                            "repeated": true,
                             "type": "string"
                         },
                         "videoCaption": {
                             "enum": [
+                                "videoCaptionUnspecified",
                                 "any",
                                 "closedCaption",
                                 "none"
@@ -2270,33 +2377,35 @@
                         "videoDefinition": {
                             "enum": [
                                 "any",
-                                "high",
-                                "standard"
+                                "standard",
+                                "high"
                             ],
                             "location": "query",
                             "type": "string"
                         },
                         "videoDimension": {
                             "enum": [
+                                "any",
                                 "2d",
-                                "3d",
-                                "any"
+                                "3d"
                             ],
                             "location": "query",
                             "type": "string"
                         },
                         "videoDuration": {
                             "enum": [
+                                "videoDurationUnspecified",
                                 "any",
-                                "long",
+                                "short",
                                 "medium",
-                                "short"
+                                "long"
                             ],
                             "location": "query",
                             "type": "string"
                         },
                         "videoEmbeddable": {
                             "enum": [
+                                "videoEmbeddableUnspecified",
                                 "any",
                                 "true"
                             ],
@@ -2306,14 +2415,15 @@
                         "videoLicense": {
                             "enum": [
                                 "any",
-                                "creativeCommon",
-                                "youtube"
+                                "youtube",
+                                "creativeCommon"
                             ],
                             "location": "query",
                             "type": "string"
                         },
                         "videoSyndicated": {
                             "enum": [
+                                "videoSyndicatedUnspecified",
                                 "any",
                                 "true"
                             ],
@@ -2322,15 +2432,16 @@
                         },
                         "videoType": {
                             "enum": [
+                                "videoTypeUnspecified",
                                 "any",
-                                "episode",
-                                "movie"
+                                "movie",
+                                "episode"
                             ],
                             "location": "query",
                             "type": "string"
                         }
                     },
-                    "path": "search",
+                    "path": "youtube/v3/search",
                     "response": {
                         "$ref": "SearchListResponse"
                     },
@@ -2346,6 +2457,7 @@
         "sponsors": {
             "methods": {
                 "list": {
+                    "flatPath": "youtube/v3/sponsors",
                     "httpMethod": "GET",
                     "id": "youtube.sponsors.list",
                     "parameterOrder": [
@@ -2355,8 +2467,9 @@
                         "filter": {
                             "default": "newest",
                             "enum": [
-                                "all",
-                                "newest"
+                                "sponsorFilterUnknown",
+                                "newest",
+                                "all"
                             ],
                             "location": "query",
                             "type": "string"
@@ -2365,8 +2478,6 @@
                             "default": "5",
                             "format": "uint32",
                             "location": "query",
-                            "maximum": "50",
-                            "minimum": "0",
                             "type": "integer"
                         },
                         "pageToken": {
@@ -2375,11 +2486,12 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "sponsors",
+                    "path": "youtube/v3/sponsors",
                     "response": {
                         "$ref": "SponsorListResponse"
                     },
@@ -2394,6 +2506,7 @@
         "subscriptions": {
             "methods": {
                 "delete": {
+                    "flatPath": "youtube/v3/subscriptions",
                     "httpMethod": "DELETE",
                     "id": "youtube.subscriptions.delete",
                     "parameterOrder": [
@@ -2406,7 +2519,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "subscriptions",
+                    "path": "youtube/v3/subscriptions",
                     "scopes": [
                         "https://www.googleapis.com/auth/youtube",
                         "https://www.googleapis.com/auth/youtube.force-ssl",
@@ -2414,6 +2527,7 @@
                     ]
                 },
                 "insert": {
+                    "flatPath": "youtube/v3/subscriptions",
                     "httpMethod": "POST",
                     "id": "youtube.subscriptions.insert",
                     "parameterOrder": [
@@ -2422,11 +2536,12 @@
                     "parameters": {
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "subscriptions",
+                    "path": "youtube/v3/subscriptions",
                     "request": {
                         "$ref": "Subscription"
                     },
@@ -2440,6 +2555,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "youtube/v3/subscriptions",
                     "httpMethod": "GET",
                     "id": "youtube.subscriptions.list",
                     "parameterOrder": [
@@ -2456,14 +2572,13 @@
                         },
                         "id": {
                             "location": "query",
+                            "repeated": true,
                             "type": "string"
                         },
                         "maxResults": {
                             "default": "5",
                             "format": "uint32",
                             "location": "query",
-                            "maximum": "50",
-                            "minimum": "0",
                             "type": "integer"
                         },
                         "mine": {
@@ -2489,9 +2604,10 @@
                         "order": {
                             "default": "relevance",
                             "enum": [
-                                "alphabetical",
+                                "subscriptionOrderUnspecified",
                                 "relevance",
-                                "unread"
+                                "unread",
+                                "alphabetical"
                             ],
                             "location": "query",
                             "type": "string"
@@ -2502,11 +2618,12 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "subscriptions",
+                    "path": "youtube/v3/subscriptions",
                     "response": {
                         "$ref": "SubscriptionListResponse"
                     },
@@ -2522,6 +2639,7 @@
         "superChatEvents": {
             "methods": {
                 "list": {
+                    "flatPath": "youtube/v3/superChatEvents",
                     "httpMethod": "GET",
                     "id": "youtube.superChatEvents.list",
                     "parameterOrder": [
@@ -2536,8 +2654,6 @@
                             "default": "5",
                             "format": "uint32",
                             "location": "query",
-                            "maximum": "50",
-                            "minimum": "1",
                             "type": "integer"
                         },
                         "pageToken": {
@@ -2546,11 +2662,12 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "superChatEvents",
+                    "path": "youtube/v3/superChatEvents",
                     "response": {
                         "$ref": "SuperChatEventListResponse"
                     },
@@ -2562,131 +2679,20 @@
                 }
             }
         },
-        "thirdPartyLink": {
-            "methods": {
-                "delete": {
-                    "httpMethod": "DELETE",
-                    "id": "youtube.thirdPartyLink.delete",
-                    "parameterOrder": [
-                        "linkingToken",
-                        "type"
-                    ],
-                    "parameters": {
-                        "linkingToken": {
-                            "location": "query",
-                            "required": true,
-                            "type": "string"
-                        },
-                        "type": {
-                            "enum": [
-                                "channelToStoreLink"
-                            ],
-                            "location": "query",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "thirdPartyLinks"
-                },
-                "insert": {
-                    "httpMethod": "POST",
-                    "id": "youtube.thirdPartyLink.insert",
-                    "parameterOrder": [
-                        "part"
-                    ],
-                    "parameters": {
-                        "debugProjectIdOverride": {
-                            "format": "int64",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "part": {
-                            "location": "query",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "thirdPartyLinks",
-                    "request": {
-                        "$ref": "ThirdPartyLink"
-                    },
-                    "response": {
-                        "$ref": "ThirdPartyLink"
-                    }
-                },
-                "update": {
-                    "httpMethod": "PUT",
-                    "id": "youtube.thirdPartyLink.update",
-                    "parameterOrder": [
-                        "part"
-                    ],
-                    "parameters": {
-                        "part": {
-                            "location": "query",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "thirdPartyLinks",
-                    "request": {
-                        "$ref": "ThirdPartyLink"
-                    },
-                    "response": {
-                        "$ref": "ThirdPartyLink"
-                    }
-                }
-            }
-        },
-        "thirdPartyLinks": {
-            "methods": {
-                "list": {
-                    "httpMethod": "GET",
-                    "id": "youtube.thirdPartyLinks.list",
-                    "parameterOrder": [
-                        "part"
-                    ],
-                    "parameters": {
-                        "linkingToken": {
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "part": {
-                            "location": "query",
-                            "required": true,
-                            "type": "string"
-                        },
-                        "type": {
-                            "enum": [
-                                "channelToStoreLink"
-                            ],
-                            "location": "query",
-                            "type": "string"
-                        }
-                    },
-                    "path": "thirdPartyLinks",
-                    "response": {
-                        "$ref": "ThirdPartyLinkListResponse"
-                    }
-                }
-            }
-        },
         "thumbnails": {
             "methods": {
                 "set": {
+                    "flatPath": "youtube/v3/thumbnails/set",
                     "httpMethod": "POST",
                     "id": "youtube.thumbnails.set",
                     "mediaUpload": {
                         "accept": [
-                            "application/octet-stream",
                             "image/jpeg",
-                            "image/png"
+                            "image/png",
+                            "application/octet-stream"
                         ],
-                        "maxSize": "2MB",
+                        "maxSize": "2097152",
                         "protocols": {
-                            "resumable": {
-                                "multipart": true,
-                                "path": "/resumable/upload/youtube/v3/thumbnails/set"
-                            },
                             "simple": {
                                 "multipart": true,
                                 "path": "/upload/youtube/v3/thumbnails/set"
@@ -2707,7 +2713,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "thumbnails/set",
+                    "path": "youtube/v3/thumbnails/set",
                     "response": {
                         "$ref": "ThumbnailSetResponse"
                     },
@@ -2724,6 +2730,7 @@
         "videoAbuseReportReasons": {
             "methods": {
                 "list": {
+                    "flatPath": "youtube/v3/videoAbuseReportReasons",
                     "httpMethod": "GET",
                     "id": "youtube.videoAbuseReportReasons.list",
                     "parameterOrder": [
@@ -2737,11 +2744,12 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "videoAbuseReportReasons",
+                    "path": "youtube/v3/videoAbuseReportReasons",
                     "response": {
                         "$ref": "VideoAbuseReportReasonListResponse"
                     },
@@ -2756,6 +2764,7 @@
         "videoCategories": {
             "methods": {
                 "list": {
+                    "flatPath": "youtube/v3/videoCategories",
                     "httpMethod": "GET",
                     "id": "youtube.videoCategories.list",
                     "parameterOrder": [
@@ -2769,10 +2778,12 @@
                         },
                         "id": {
                             "location": "query",
+                            "repeated": true,
                             "type": "string"
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         },
@@ -2781,7 +2792,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "videoCategories",
+                    "path": "youtube/v3/videoCategories",
                     "response": {
                         "$ref": "VideoCategoryListResponse"
                     },
@@ -2797,6 +2808,7 @@
         "videos": {
             "methods": {
                 "delete": {
+                    "flatPath": "youtube/v3/videos",
                     "httpMethod": "DELETE",
                     "id": "youtube.videos.delete",
                     "parameterOrder": [
@@ -2813,7 +2825,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "videos",
+                    "path": "youtube/v3/videos",
                     "scopes": [
                         "https://www.googleapis.com/auth/youtube",
                         "https://www.googleapis.com/auth/youtube.force-ssl",
@@ -2821,6 +2833,7 @@
                     ]
                 },
                 "getRating": {
+                    "flatPath": "youtube/v3/videos/getRating",
                     "httpMethod": "GET",
                     "id": "youtube.videos.getRating",
                     "parameterOrder": [
@@ -2829,6 +2842,7 @@
                     "parameters": {
                         "id": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         },
@@ -2837,9 +2851,9 @@
                             "type": "string"
                         }
                     },
-                    "path": "videos/getRating",
+                    "path": "youtube/v3/videos/getRating",
                     "response": {
-                        "$ref": "VideoGetRatingResponse"
+                        "$ref": "VideoRatingListResponse"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/youtube",
@@ -2848,19 +2862,16 @@
                     ]
                 },
                 "insert": {
+                    "flatPath": "youtube/v3/videos",
                     "httpMethod": "POST",
                     "id": "youtube.videos.insert",
                     "mediaUpload": {
                         "accept": [
-                            "application/octet-stream",
-                            "video/*"
+                            "video/*",
+                            "application/octet-stream"
                         ],
-                        "maxSize": "128GB",
+                        "maxSize": "137438953472",
                         "protocols": {
-                            "resumable": {
-                                "multipart": true,
-                                "path": "/resumable/upload/youtube/v3/videos"
-                            },
                             "simple": {
                                 "multipart": true,
                                 "path": "/upload/youtube/v3/videos"
@@ -2890,6 +2901,7 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         },
@@ -2898,7 +2910,7 @@
                             "type": "boolean"
                         }
                     },
-                    "path": "videos",
+                    "path": "youtube/v3/videos",
                     "request": {
                         "$ref": "Video"
                     },
@@ -2914,6 +2926,7 @@
                     "supportsMediaUpload": true
                 },
                 "list": {
+                    "flatPath": "youtube/v3/videos",
                     "httpMethod": "GET",
                     "id": "youtube.videos.list",
                     "parameterOrder": [
@@ -2922,6 +2935,7 @@
                     "parameters": {
                         "chart": {
                             "enum": [
+                                "chartUnspecified",
                                 "mostPopular"
                             ],
                             "location": "query",
@@ -2933,6 +2947,7 @@
                         },
                         "id": {
                             "location": "query",
+                            "repeated": true,
                             "type": "string"
                         },
                         "locale": {
@@ -2940,31 +2955,26 @@
                             "type": "string"
                         },
                         "maxHeight": {
-                            "format": "uint32",
+                            "format": "int32",
                             "location": "query",
-                            "maximum": "8192",
-                            "minimum": "72",
                             "type": "integer"
                         },
                         "maxResults": {
                             "default": "5",
                             "format": "uint32",
                             "location": "query",
-                            "maximum": "50",
-                            "minimum": "1",
                             "type": "integer"
                         },
                         "maxWidth": {
-                            "format": "uint32",
+                            "format": "int32",
                             "location": "query",
-                            "maximum": "8192",
-                            "minimum": "72",
                             "type": "integer"
                         },
                         "myRating": {
                             "enum": [
-                                "dislike",
-                                "like"
+                                "none",
+                                "like",
+                                "dislike"
                             ],
                             "location": "query",
                             "type": "string"
@@ -2979,6 +2989,7 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         },
@@ -2992,7 +3003,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "videos",
+                    "path": "youtube/v3/videos",
                     "response": {
                         "$ref": "VideoListResponse"
                     },
@@ -3004,6 +3015,7 @@
                     ]
                 },
                 "rate": {
+                    "flatPath": "youtube/v3/videos/rate",
                     "httpMethod": "POST",
                     "id": "youtube.videos.rate",
                     "parameterOrder": [
@@ -3018,16 +3030,16 @@
                         },
                         "rating": {
                             "enum": [
-                                "dislike",
+                                "none",
                                 "like",
-                                "none"
+                                "dislike"
                             ],
                             "location": "query",
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "videos/rate",
+                    "path": "youtube/v3/videos/rate",
                     "scopes": [
                         "https://www.googleapis.com/auth/youtube",
                         "https://www.googleapis.com/auth/youtube.force-ssl",
@@ -3035,15 +3047,17 @@
                     ]
                 },
                 "reportAbuse": {
+                    "flatPath": "youtube/v3/videos/reportAbuse",
                     "httpMethod": "POST",
                     "id": "youtube.videos.reportAbuse",
+                    "parameterOrder": [],
                     "parameters": {
                         "onBehalfOfContentOwner": {
                             "location": "query",
                             "type": "string"
                         }
                     },
-                    "path": "videos/reportAbuse",
+                    "path": "youtube/v3/videos/reportAbuse",
                     "request": {
                         "$ref": "VideoAbuseReport"
                     },
@@ -3054,6 +3068,7 @@
                     ]
                 },
                 "update": {
+                    "flatPath": "youtube/v3/videos",
                     "httpMethod": "PUT",
                     "id": "youtube.videos.update",
                     "parameterOrder": [
@@ -3066,11 +3081,12 @@
                         },
                         "part": {
                             "location": "query",
+                            "repeated": true,
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "videos",
+                    "path": "youtube/v3/videos",
                     "request": {
                         "$ref": "Video"
                     },
@@ -3088,20 +3104,17 @@
         "watermarks": {
             "methods": {
                 "set": {
+                    "flatPath": "youtube/v3/watermarks/set",
                     "httpMethod": "POST",
                     "id": "youtube.watermarks.set",
                     "mediaUpload": {
                         "accept": [
-                            "application/octet-stream",
                             "image/jpeg",
-                            "image/png"
+                            "image/png",
+                            "application/octet-stream"
                         ],
-                        "maxSize": "10MB",
+                        "maxSize": "10485760",
                         "protocols": {
-                            "resumable": {
-                                "multipart": true,
-                                "path": "/resumable/upload/youtube/v3/watermarks/set"
-                            },
                             "simple": {
                                 "multipart": true,
                                 "path": "/upload/youtube/v3/watermarks/set"
@@ -3122,7 +3135,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "watermarks/set",
+                    "path": "youtube/v3/watermarks/set",
                     "request": {
                         "$ref": "InvideoBranding"
                     },
@@ -3135,6 +3148,7 @@
                     "supportsMediaUpload": true
                 },
                 "unset": {
+                    "flatPath": "youtube/v3/watermarks/unset",
                     "httpMethod": "POST",
                     "id": "youtube.watermarks.unset",
                     "parameterOrder": [
@@ -3151,7 +3165,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "watermarks/unset",
+                    "path": "youtube/v3/watermarks/unset",
                     "scopes": [
                         "https://www.googleapis.com/auth/youtube",
                         "https://www.googleapis.com/auth/youtube.force-ssl",
@@ -3313,7 +3327,7 @@
                 },
                 "ctaType": {
                     "enum": [
-                        "unspecified",
+                        "ctaTypeUnspecified",
                         "visitAdvertiserSite"
                     ],
                     "type": "string"
@@ -3350,7 +3364,7 @@
             "properties": {
                 "reason": {
                     "enum": [
-                        "unspecified",
+                        "reasonUnspecified",
                         "videoFavorited",
                         "videoLiked",
                         "videoWatched"
@@ -3383,10 +3397,10 @@
                 },
                 "type": {
                     "enum": [
-                        "facebook",
+                        "typeUnspecified",
                         "googlePlus",
-                        "twitter",
-                        "unspecified"
+                        "facebook",
+                        "twitter"
                     ],
                     "type": "string"
                 }
@@ -3461,7 +3475,6 @@
                     "type": "string"
                 },
                 "publishedAt": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "thumbnails": {
@@ -3472,17 +3485,18 @@
                 },
                 "type": {
                     "enum": [
-                        "bulletin",
-                        "channelItem",
-                        "comment",
-                        "favorite",
+                        "typeUnspecified",
+                        "upload",
                         "like",
-                        "playlistItem",
-                        "promotedItem",
-                        "recommendation",
-                        "social",
+                        "favorite",
+                        "comment",
                         "subscription",
-                        "upload"
+                        "playlistItem",
+                        "recommendation",
+                        "bulletin",
+                        "social",
+                        "channelItem",
+                        "promotedItem"
                     ],
                     "type": "string"
                 }
@@ -3543,18 +3557,18 @@
             "properties": {
                 "audioTrackType": {
                     "enum": [
-                        "commentary",
-                        "descriptive",
+                        "unknown",
                         "primary",
-                        "unknown"
+                        "commentary",
+                        "descriptive"
                     ],
                     "type": "string"
                 },
                 "failureReason": {
                     "enum": [
-                        "processingFailed",
                         "unknownFormat",
-                        "unsupportedFormat"
+                        "unsupportedFormat",
+                        "processingFailed"
                     ],
                     "type": "string"
                 },
@@ -3574,38 +3588,27 @@
                     "type": "boolean"
                 },
                 "language": {
-                    "annotations": {
-                        "required": [
-                            "youtube.captions.insert"
-                        ]
-                    },
                     "type": "string"
                 },
                 "lastUpdated": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "name": {
-                    "annotations": {
-                        "required": [
-                            "youtube.captions.insert"
-                        ]
-                    },
                     "type": "string"
                 },
                 "status": {
                     "enum": [
-                        "failed",
                         "serving",
-                        "syncing"
+                        "syncing",
+                        "failed"
                     ],
                     "type": "string"
                 },
                 "trackKind": {
                     "enum": [
+                        "standard",
                         "ASR",
-                        "forced",
-                        "standard"
+                        "forced"
                     ],
                     "type": "string"
                 },
@@ -3624,12 +3627,6 @@
             "id": "CdnSettings",
             "properties": {
                 "format": {
-                    "annotations": {
-                        "required": [
-                            "youtube.liveStreams.insert",
-                            "youtube.liveStreams.update"
-                        ]
-                    },
                     "type": "string"
                 },
                 "frameRate": {
@@ -3644,29 +3641,23 @@
                     "$ref": "IngestionInfo"
                 },
                 "ingestionType": {
-                    "annotations": {
-                        "required": [
-                            "youtube.liveStreams.insert",
-                            "youtube.liveStreams.update"
-                        ]
-                    },
                     "enum": [
-                        "dash",
-                        "hls",
                         "rtmp",
-                        "webrtc"
+                        "dash",
+                        "webrtc",
+                        "hls"
                     ],
                     "type": "string"
                 },
                 "resolution": {
                     "enum": [
-                        "1080p",
-                        "1440p",
-                        "2160p",
                         "240p",
                         "360p",
                         "480p",
                         "720p",
+                        "1080p",
+                        "1440p",
+                        "2160p",
                         "variable"
                     ],
                     "type": "string"
@@ -3811,7 +3802,6 @@
                     "type": "string"
                 },
                 "timeLinked": {
-                    "format": "date-time",
                     "type": "string"
                 }
             },
@@ -3822,9 +3812,9 @@
             "properties": {
                 "context": {
                     "enum": [
-                        "cview",
                         "subscribe",
-                        "unsubscribe"
+                        "unsubscribe",
+                        "cview"
                     ],
                     "type": "string"
                 },
@@ -4011,7 +4001,7 @@
                 },
                 "style": {
                     "enum": [
-                        "channelsectionStyleUndefined",
+                        "channelsectionStyleUnspecified",
                         "horizontalRow",
                         "verticalList"
                     ],
@@ -4022,23 +4012,23 @@
                 },
                 "type": {
                     "enum": [
-                        "allPlaylists",
-                        "channelsectionTypeUndefined",
-                        "completedEvents",
-                        "likedPlaylists",
-                        "likes",
-                        "liveEvents",
-                        "multipleChannels",
+                        "channelsectionTypeUnspecified",
+                        "singlePlaylist",
                         "multiplePlaylists",
                         "popularUploads",
-                        "postedPlaylists",
-                        "postedVideos",
-                        "recentActivity",
-                        "recentPosts",
                         "recentUploads",
-                        "singlePlaylist",
-                        "subscriptions",
-                        "upcomingEvents"
+                        "likes",
+                        "allPlaylists",
+                        "likedPlaylists",
+                        "recentPosts",
+                        "recentActivity",
+                        "liveEvents",
+                        "upcomingEvents",
+                        "completedEvents",
+                        "multipleChannels",
+                        "postedVideos",
+                        "postedPlaylists",
+                        "subscriptions"
                     ],
                     "type": "string"
                 }
@@ -4133,7 +4123,6 @@
                     "$ref": "ChannelLocalization"
                 },
                 "publishedAt": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "thumbnails": {
@@ -4178,10 +4167,10 @@
                 },
                 "longUploadsStatus": {
                     "enum": [
+                        "longUploadsUnspecified",
                         "allowed",
-                        "disallowed",
                         "eligible",
-                        "longUploadsUnspecified"
+                        "disallowed"
                     ],
                     "type": "string"
                 },
@@ -4190,26 +4179,14 @@
                 },
                 "privacyStatus": {
                     "enum": [
-                        "private",
                         "public",
-                        "unlisted"
+                        "unlisted",
+                        "private"
                     ],
                     "type": "string"
                 },
                 "selfDeclaredMadeForKids": {
                     "type": "boolean"
-                }
-            },
-            "type": "object"
-        },
-        "ChannelToStoreLinkDetails": {
-            "id": "ChannelToStoreLinkDetails",
-            "properties": {
-                "storeName": {
-                    "type": "string"
-                },
-                "storeUrl": {
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -4289,7 +4266,7 @@
             "id": "CommentSnippet",
             "properties": {
                 "authorChannelId": {
-                    "type": "any"
+                    "$ref": "CommentSnippetAuthorChannelId"
                 },
                 "authorChannelUrl": {
                     "type": "string"
@@ -4312,9 +4289,9 @@
                 },
                 "moderationStatus": {
                     "enum": [
+                        "published",
                         "heldForReview",
                         "likelySpam",
-                        "published",
                         "rejected"
                     ],
                     "type": "string"
@@ -4323,7 +4300,6 @@
                     "type": "string"
                 },
                 "publishedAt": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "textDisplay": {
@@ -4333,7 +4309,6 @@
                     "type": "string"
                 },
                 "updatedAt": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "videoId": {
@@ -4341,11 +4316,19 @@
                 },
                 "viewerRating": {
                     "enum": [
-                        "dislike",
-                        "like",
                         "none",
-                        "unspecified"
+                        "like",
+                        "dislike"
                     ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CommentSnippetAuthorChannelId": {
+            "id": "CommentSnippetAuthorChannelId",
+            "properties": {
+                "value": {
                     "type": "string"
                 }
             },
@@ -4449,13 +4432,14 @@
             "properties": {
                 "acbRating": {
                     "enum": [
-                        "acbC",
+                        "acbUnspecified",
                         "acbE",
+                        "acbP",
+                        "acbC",
                         "acbG",
+                        "acbPg",
                         "acbM",
                         "acbMa15plus",
-                        "acbP",
-                        "acbPg",
                         "acbR18plus",
                         "acbUnrated"
                     ],
@@ -4463,237 +4447,256 @@
                 },
                 "agcomRating": {
                     "enum": [
+                        "agcomUnspecified",
                         "agcomT",
-                        "agcomUnrated",
                         "agcomVm14",
-                        "agcomVm18"
+                        "agcomVm18",
+                        "agcomUnrated"
                     ],
                     "type": "string"
                 },
                 "anatelRating": {
                     "enum": [
-                        "anatelA",
+                        "anatelUnspecified",
                         "anatelF",
                         "anatelI",
+                        "anatelI7",
                         "anatelI10",
                         "anatelI12",
-                        "anatelI7",
                         "anatelR",
+                        "anatelA",
                         "anatelUnrated"
                     ],
                     "type": "string"
                 },
                 "bbfcRating": {
                     "enum": [
-                        "bbfc12",
+                        "bbfcUnspecified",
+                        "bbfcU",
+                        "bbfcPg",
                         "bbfc12a",
+                        "bbfc12",
                         "bbfc15",
                         "bbfc18",
-                        "bbfcPg",
                         "bbfcR18",
-                        "bbfcU",
                         "bbfcUnrated"
                     ],
                     "type": "string"
                 },
                 "bfvcRating": {
                     "enum": [
+                        "bfvcUnspecified",
+                        "bfvcG",
+                        "bfvcE",
                         "bfvc13",
                         "bfvc15",
                         "bfvc18",
                         "bfvc20",
                         "bfvcB",
-                        "bfvcE",
-                        "bfvcG",
                         "bfvcUnrated"
                     ],
                     "type": "string"
                 },
                 "bmukkRating": {
                     "enum": [
+                        "bmukkUnspecified",
+                        "bmukkAa",
+                        "bmukk6",
+                        "bmukk8",
                         "bmukk10",
                         "bmukk12",
                         "bmukk14",
                         "bmukk16",
-                        "bmukk6",
-                        "bmukk8",
-                        "bmukkAa",
                         "bmukkUnrated"
                     ],
                     "type": "string"
                 },
                 "catvRating": {
                     "enum": [
-                        "catv14plus",
-                        "catv18plus",
+                        "catvUnspecified",
                         "catvC",
                         "catvC8",
                         "catvG",
                         "catvPg",
+                        "catv14plus",
+                        "catv18plus",
                         "catvUnrated"
                     ],
                     "type": "string"
                 },
                 "catvfrRating": {
                     "enum": [
+                        "catvfrUnspecified",
+                        "catvfrG",
+                        "catvfr8plus",
                         "catvfr13plus",
                         "catvfr16plus",
                         "catvfr18plus",
-                        "catvfr8plus",
-                        "catvfrG",
                         "catvfrUnrated"
                     ],
                     "type": "string"
                 },
                 "cbfcRating": {
                     "enum": [
-                        "cbfcA",
-                        "cbfcS",
+                        "cbfcUnspecified",
                         "cbfcU",
                         "cbfcUA",
+                        "cbfcA",
+                        "cbfcS",
                         "cbfcUnrated"
                     ],
                     "type": "string"
                 },
                 "cccRating": {
                     "enum": [
+                        "cccUnspecified",
+                        "cccTe",
+                        "ccc6",
                         "ccc14",
                         "ccc18",
-                        "ccc18s",
                         "ccc18v",
-                        "ccc6",
-                        "cccTe",
+                        "ccc18s",
                         "cccUnrated"
                     ],
                     "type": "string"
                 },
                 "cceRating": {
                     "enum": [
-                        "cceM12",
-                        "cceM14",
-                        "cceM16",
-                        "cceM18",
+                        "cceUnspecified",
                         "cceM4",
                         "cceM6",
-                        "cceUnrated"
+                        "cceM12",
+                        "cceM16",
+                        "cceM18",
+                        "cceUnrated",
+                        "cceM14"
                     ],
                     "type": "string"
                 },
                 "chfilmRating": {
                     "enum": [
+                        "chfilmUnspecified",
                         "chfilm0",
+                        "chfilm6",
                         "chfilm12",
                         "chfilm16",
                         "chfilm18",
-                        "chfilm6",
                         "chfilmUnrated"
                     ],
                     "type": "string"
                 },
                 "chvrsRating": {
                     "enum": [
-                        "chvrs14a",
-                        "chvrs18a",
-                        "chvrsE",
+                        "chvrsUnspecified",
                         "chvrsG",
                         "chvrsPg",
+                        "chvrs14a",
+                        "chvrs18a",
                         "chvrsR",
+                        "chvrsE",
                         "chvrsUnrated"
                     ],
                     "type": "string"
                 },
                 "cicfRating": {
                     "enum": [
+                        "cicfUnspecified",
                         "cicfE",
-                        "cicfKntEna",
                         "cicfKtEa",
+                        "cicfKntEna",
                         "cicfUnrated"
                     ],
                     "type": "string"
                 },
                 "cnaRating": {
                     "enum": [
+                        "cnaUnspecified",
+                        "cnaAp",
                         "cna12",
                         "cna15",
                         "cna18",
                         "cna18plus",
-                        "cnaAp",
                         "cnaUnrated"
                     ],
                     "type": "string"
                 },
                 "cncRating": {
                     "enum": [
+                        "cncUnspecified",
+                        "cncT",
                         "cnc10",
                         "cnc12",
                         "cnc16",
                         "cnc18",
                         "cncE",
                         "cncInterdiction",
-                        "cncT",
                         "cncUnrated"
                     ],
                     "type": "string"
                 },
                 "csaRating": {
                     "enum": [
+                        "csaUnspecified",
+                        "csaT",
                         "csa10",
                         "csa12",
                         "csa16",
                         "csa18",
                         "csaInterdiction",
-                        "csaT",
                         "csaUnrated"
                     ],
                     "type": "string"
                 },
                 "cscfRating": {
                     "enum": [
+                        "cscfUnspecified",
+                        "cscfAl",
+                        "cscfA",
+                        "cscf6",
+                        "cscf9",
                         "cscf12",
                         "cscf16",
                         "cscf18",
-                        "cscf6",
-                        "cscf9",
-                        "cscfA",
-                        "cscfAl",
                         "cscfUnrated"
                     ],
                     "type": "string"
                 },
                 "czfilmRating": {
                     "enum": [
+                        "czfilmUnspecified",
+                        "czfilmU",
                         "czfilm12",
                         "czfilm14",
                         "czfilm18",
-                        "czfilmU",
                         "czfilmUnrated"
                     ],
                     "type": "string"
                 },
                 "djctqRating": {
                     "enum": [
+                        "djctqUnspecified",
+                        "djctqL",
                         "djctq10",
-                        "djctq1012",
-                        "djctq1014",
-                        "djctq1016",
-                        "djctq1018",
                         "djctq12",
-                        "djctq1214",
-                        "djctq1216",
-                        "djctq1218",
                         "djctq14",
-                        "djctq1416",
-                        "djctq1418",
                         "djctq16",
-                        "djctq1618",
                         "djctq18",
                         "djctqEr",
-                        "djctqL",
                         "djctqL10",
                         "djctqL12",
                         "djctqL14",
                         "djctqL16",
                         "djctqL18",
+                        "djctq1012",
+                        "djctq1014",
+                        "djctq1016",
+                        "djctq1018",
+                        "djctq1214",
+                        "djctq1216",
+                        "djctq1218",
+                        "djctq1416",
+                        "djctq1418",
+                        "djctq1618",
                         "djctqUnrated"
                     ],
                     "type": "string"
@@ -4701,18 +4704,19 @@
                 "djctqRatingReasons": {
                     "items": {
                         "enum": [
-                            "djctqCriminalActs",
-                            "djctqDrugs",
-                            "djctqExplicitSex",
+                            "djctqRatingReasonUnspecified",
+                            "djctqViolence",
                             "djctqExtremeViolence",
-                            "djctqIllegalDrugs",
-                            "djctqImpactingContent",
-                            "djctqInappropriateLanguage",
-                            "djctqLegalDrugs",
+                            "djctqSexualContent",
                             "djctqNudity",
                             "djctqSex",
-                            "djctqSexualContent",
-                            "djctqViolence"
+                            "djctqExplicitSex",
+                            "djctqDrugs",
+                            "djctqLegalDrugs",
+                            "djctqIllegalDrugs",
+                            "djctqInappropriateLanguage",
+                            "djctqCriminalActs",
+                            "djctqImpactingContent"
                         ],
                         "type": "string"
                     },
@@ -4720,43 +4724,47 @@
                 },
                 "ecbmctRating": {
                     "enum": [
+                        "ecbmctUnspecified",
+                        "ecbmctG",
+                        "ecbmct7a",
+                        "ecbmct7plus",
                         "ecbmct13a",
                         "ecbmct13plus",
                         "ecbmct15a",
                         "ecbmct15plus",
                         "ecbmct18plus",
-                        "ecbmct7a",
-                        "ecbmct7plus",
-                        "ecbmctG",
                         "ecbmctUnrated"
                     ],
                     "type": "string"
                 },
                 "eefilmRating": {
                     "enum": [
+                        "eefilmUnspecified",
+                        "eefilmPere",
+                        "eefilmL",
+                        "eefilmMs6",
+                        "eefilmK6",
+                        "eefilmMs12",
                         "eefilmK12",
                         "eefilmK14",
                         "eefilmK16",
-                        "eefilmK6",
-                        "eefilmL",
-                        "eefilmMs12",
-                        "eefilmMs6",
-                        "eefilmPere",
                         "eefilmUnrated"
                     ],
                     "type": "string"
                 },
                 "egfilmRating": {
                     "enum": [
+                        "egfilmUnspecified",
+                        "egfilmGn",
                         "egfilm18",
                         "egfilmBn",
-                        "egfilmGn",
                         "egfilmUnrated"
                     ],
                     "type": "string"
                 },
                 "eirinRating": {
                     "enum": [
+                        "eirinUnspecified",
                         "eirinG",
                         "eirinPg12",
                         "eirinR15plus",
@@ -4767,24 +4775,26 @@
                 },
                 "fcbmRating": {
                     "enum": [
-                        "fcbm18",
-                        "fcbm18pa",
-                        "fcbm18pl",
-                        "fcbm18sg",
-                        "fcbm18sx",
-                        "fcbmP13",
-                        "fcbmPg13",
+                        "fcbmUnspecified",
                         "fcbmU",
+                        "fcbmPg13",
+                        "fcbmP13",
+                        "fcbm18",
+                        "fcbm18sx",
+                        "fcbm18pa",
+                        "fcbm18sg",
+                        "fcbm18pl",
                         "fcbmUnrated"
                     ],
                     "type": "string"
                 },
                 "fcoRating": {
                     "enum": [
+                        "fcoUnspecified",
                         "fcoI",
-                        "fcoIi",
                         "fcoIia",
                         "fcoIib",
+                        "fcoIi",
                         "fcoIii",
                         "fcoUnrated"
                     ],
@@ -4792,46 +4802,49 @@
                 },
                 "fmocRating": {
                     "enum": [
+                        "fmocUnspecified",
+                        "fmocU",
                         "fmoc10",
                         "fmoc12",
                         "fmoc16",
                         "fmoc18",
                         "fmocE",
-                        "fmocU",
                         "fmocUnrated"
                     ],
                     "type": "string"
                 },
                 "fpbRating": {
                     "enum": [
-                        "fpb10",
+                        "fpbUnspecified",
+                        "fpbA",
+                        "fpbPg",
+                        "fpb79Pg",
                         "fpb1012Pg",
                         "fpb13",
                         "fpb16",
                         "fpb18",
-                        "fpb79Pg",
-                        "fpbA",
-                        "fpbPg",
-                        "fpbUnrated",
                         "fpbX18",
-                        "fpbXx"
+                        "fpbXx",
+                        "fpbUnrated",
+                        "fpb10"
                     ],
                     "type": "string"
                 },
                 "fpbRatingReasons": {
                     "items": {
                         "enum": [
+                            "fpbRatingReasonUnspecified",
                             "fpbBlasphemy",
-                            "fpbCriminalTechniques",
-                            "fpbDrugs",
-                            "fpbHorror",
-                            "fpbImitativeActsTechniques",
                             "fpbLanguage",
                             "fpbNudity",
                             "fpbPrejudice",
                             "fpbSex",
+                            "fpbViolence",
+                            "fpbDrugs",
                             "fpbSexualViolence",
-                            "fpbViolence"
+                            "fpbHorror",
+                            "fpbCriminalTechniques",
+                            "fpbImitativeActsTechniques"
                         ],
                         "type": "string"
                     },
@@ -4839,19 +4852,21 @@
                 },
                 "fskRating": {
                     "enum": [
+                        "fskUnspecified",
                         "fsk0",
+                        "fsk6",
                         "fsk12",
                         "fsk16",
                         "fsk18",
-                        "fsk6",
                         "fskUnrated"
                     ],
                     "type": "string"
                 },
                 "grfilmRating": {
                     "enum": [
-                        "grfilmE",
+                        "grfilmUnspecified",
                         "grfilmK",
+                        "grfilmE",
                         "grfilmK12",
                         "grfilmK13",
                         "grfilmK15",
@@ -4863,58 +4878,63 @@
                 },
                 "icaaRating": {
                     "enum": [
+                        "icaaUnspecified",
+                        "icaaApta",
+                        "icaa7",
                         "icaa12",
                         "icaa13",
                         "icaa16",
                         "icaa18",
-                        "icaa7",
-                        "icaaApta",
-                        "icaaUnrated",
-                        "icaaX"
+                        "icaaX",
+                        "icaaUnrated"
                     ],
                     "type": "string"
                 },
                 "ifcoRating": {
                     "enum": [
+                        "ifcoUnspecified",
+                        "ifcoG",
+                        "ifcoPg",
                         "ifco12",
                         "ifco12a",
                         "ifco15",
                         "ifco15a",
                         "ifco16",
                         "ifco18",
-                        "ifcoG",
-                        "ifcoPg",
                         "ifcoUnrated"
                     ],
                     "type": "string"
                 },
                 "ilfilmRating": {
                     "enum": [
+                        "ilfilmUnspecified",
+                        "ilfilmAa",
                         "ilfilm12",
                         "ilfilm14",
                         "ilfilm16",
                         "ilfilm18",
-                        "ilfilmAa",
                         "ilfilmUnrated"
                     ],
                     "type": "string"
                 },
                 "incaaRating": {
                     "enum": [
+                        "incaaUnspecified",
                         "incaaAtp",
-                        "incaaC",
                         "incaaSam13",
                         "incaaSam16",
                         "incaaSam18",
+                        "incaaC",
                         "incaaUnrated"
                     ],
                     "type": "string"
                 },
                 "kfcbRating": {
                     "enum": [
-                        "kfcb16plus",
+                        "kfcbUnspecified",
                         "kfcbG",
                         "kfcbPg",
+                        "kfcb16plus",
                         "kfcbR",
                         "kfcbUnrated"
                     ],
@@ -4922,85 +4942,92 @@
                 },
                 "kijkwijzerRating": {
                     "enum": [
+                        "kijkwijzerUnspecified",
+                        "kijkwijzerAl",
+                        "kijkwijzer6",
+                        "kijkwijzer9",
                         "kijkwijzer12",
                         "kijkwijzer16",
                         "kijkwijzer18",
-                        "kijkwijzer6",
-                        "kijkwijzer9",
-                        "kijkwijzerAl",
                         "kijkwijzerUnrated"
                     ],
                     "type": "string"
                 },
                 "kmrbRating": {
                     "enum": [
+                        "kmrbUnspecified",
+                        "kmrbAll",
                         "kmrb12plus",
                         "kmrb15plus",
-                        "kmrbAll",
-                        "kmrbR",
                         "kmrbTeenr",
+                        "kmrbR",
                         "kmrbUnrated"
                     ],
                     "type": "string"
                 },
                 "lsfRating": {
                     "enum": [
-                        "lsf13",
-                        "lsf17",
-                        "lsf21",
+                        "lsfUnspecified",
+                        "lsfSu",
                         "lsfA",
                         "lsfBo",
-                        "lsfD",
+                        "lsf13",
                         "lsfR",
-                        "lsfSu",
+                        "lsf17",
+                        "lsfD",
+                        "lsf21",
                         "lsfUnrated"
                     ],
                     "type": "string"
                 },
                 "mccaaRating": {
                     "enum": [
-                        "mccaa12",
+                        "mccaaUnspecified",
+                        "mccaaU",
+                        "mccaaPg",
                         "mccaa12a",
+                        "mccaa12",
                         "mccaa14",
                         "mccaa15",
                         "mccaa16",
                         "mccaa18",
-                        "mccaaPg",
-                        "mccaaU",
                         "mccaaUnrated"
                     ],
                     "type": "string"
                 },
                 "mccypRating": {
                     "enum": [
+                        "mccypUnspecified",
+                        "mccypA",
+                        "mccyp7",
                         "mccyp11",
                         "mccyp15",
-                        "mccyp7",
-                        "mccypA",
                         "mccypUnrated"
                     ],
                     "type": "string"
                 },
                 "mcstRating": {
                     "enum": [
+                        "mcstUnspecified",
+                        "mcstP",
                         "mcst0",
-                        "mcst16plus",
                         "mcstC13",
                         "mcstC16",
+                        "mcst16plus",
                         "mcstC18",
                         "mcstGPg",
-                        "mcstP",
                         "mcstUnrated"
                     ],
                     "type": "string"
                 },
                 "mdaRating": {
                     "enum": [
+                        "mdaUnspecified",
                         "mdaG",
-                        "mdaM18",
-                        "mdaNc16",
                         "mdaPg",
                         "mdaPg13",
+                        "mdaNc16",
+                        "mdaM18",
                         "mdaR21",
                         "mdaUnrated"
                     ],
@@ -5008,31 +5035,34 @@
                 },
                 "medietilsynetRating": {
                     "enum": [
+                        "medietilsynetUnspecified",
+                        "medietilsynetA",
+                        "medietilsynet6",
+                        "medietilsynet7",
+                        "medietilsynet9",
                         "medietilsynet11",
                         "medietilsynet12",
                         "medietilsynet15",
                         "medietilsynet18",
-                        "medietilsynet6",
-                        "medietilsynet7",
-                        "medietilsynet9",
-                        "medietilsynetA",
                         "medietilsynetUnrated"
                     ],
                     "type": "string"
                 },
                 "mekuRating": {
                     "enum": [
+                        "mekuUnspecified",
+                        "mekuS",
+                        "meku7",
                         "meku12",
                         "meku16",
                         "meku18",
-                        "meku7",
-                        "mekuS",
                         "mekuUnrated"
                     ],
                     "type": "string"
                 },
                 "menaMpaaRating": {
                     "enum": [
+                        "menaMpaaUnspecified",
                         "menaMpaaG",
                         "menaMpaaPg",
                         "menaMpaaPg13",
@@ -5043,55 +5073,60 @@
                 },
                 "mibacRating": {
                     "enum": [
+                        "mibacUnspecified",
                         "mibacT",
-                        "mibacUnrated",
                         "mibacVap",
                         "mibacVm12",
                         "mibacVm14",
-                        "mibacVm18"
+                        "mibacVm18",
+                        "mibacUnrated"
                     ],
                     "type": "string"
                 },
                 "mocRating": {
                     "enum": [
+                        "mocUnspecified",
+                        "mocE",
+                        "mocT",
+                        "moc7",
                         "moc12",
                         "moc15",
                         "moc18",
-                        "moc7",
+                        "mocX",
                         "mocBanned",
-                        "mocE",
-                        "mocT",
-                        "mocUnrated",
-                        "mocX"
+                        "mocUnrated"
                     ],
                     "type": "string"
                 },
                 "moctwRating": {
                     "enum": [
+                        "moctwUnspecified",
                         "moctwG",
                         "moctwP",
                         "moctwPg",
                         "moctwR",
+                        "moctwUnrated",
                         "moctwR12",
-                        "moctwR15",
-                        "moctwUnrated"
+                        "moctwR15"
                     ],
                     "type": "string"
                 },
                 "mpaaRating": {
                     "enum": [
+                        "mpaaUnspecified",
                         "mpaaG",
-                        "mpaaNc17",
                         "mpaaPg",
                         "mpaaPg13",
                         "mpaaR",
-                        "mpaaUnrated",
-                        "mpaaX"
+                        "mpaaNc17",
+                        "mpaaX",
+                        "mpaaUnrated"
                     ],
                     "type": "string"
                 },
                 "mpaatRating": {
                     "enum": [
+                        "mpaatUnspecified",
                         "mpaatGb",
                         "mpaatRb"
                     ],
@@ -5099,24 +5134,26 @@
                 },
                 "mtrcbRating": {
                     "enum": [
+                        "mtrcbUnspecified",
                         "mtrcbG",
                         "mtrcbPg",
                         "mtrcbR13",
                         "mtrcbR16",
                         "mtrcbR18",
-                        "mtrcbUnrated",
-                        "mtrcbX"
+                        "mtrcbX",
+                        "mtrcbUnrated"
                     ],
                     "type": "string"
                 },
                 "nbcRating": {
                     "enum": [
+                        "nbcUnspecified",
+                        "nbcG",
+                        "nbcPg",
                         "nbc12plus",
                         "nbc15plus",
                         "nbc18plus",
                         "nbc18plusr",
-                        "nbcG",
-                        "nbcPg",
                         "nbcPu",
                         "nbcUnrated"
                     ],
@@ -5124,34 +5161,37 @@
                 },
                 "nbcplRating": {
                     "enum": [
-                        "nbcpl18plus",
+                        "nbcplUnspecified",
                         "nbcplI",
                         "nbcplIi",
                         "nbcplIii",
                         "nbcplIv",
+                        "nbcpl18plus",
                         "nbcplUnrated"
                     ],
                     "type": "string"
                 },
                 "nfrcRating": {
                     "enum": [
+                        "nfrcUnspecified",
                         "nfrcA",
                         "nfrcB",
                         "nfrcC",
                         "nfrcD",
-                        "nfrcUnrated",
-                        "nfrcX"
+                        "nfrcX",
+                        "nfrcUnrated"
                     ],
                     "type": "string"
                 },
                 "nfvcbRating": {
                     "enum": [
+                        "nfvcbUnspecified",
+                        "nfvcbG",
+                        "nfvcbPg",
                         "nfvcb12",
                         "nfvcb12a",
                         "nfvcb15",
                         "nfvcb18",
-                        "nfvcbG",
-                        "nfvcbPg",
                         "nfvcbRe",
                         "nfvcbUnrated"
                     ],
@@ -5159,68 +5199,74 @@
                 },
                 "nkclvRating": {
                     "enum": [
+                        "nkclvUnspecified",
+                        "nkclvU",
+                        "nkclv7plus",
                         "nkclv12plus",
                         "nkclv16plus",
                         "nkclv18plus",
-                        "nkclv7plus",
-                        "nkclvU",
                         "nkclvUnrated"
                     ],
                     "type": "string"
                 },
                 "nmcRating": {
                     "enum": [
-                        "nmc15plus",
-                        "nmc18plus",
-                        "nmc18tc",
+                        "nmcUnspecified",
                         "nmcG",
                         "nmcPg",
                         "nmcPg13",
                         "nmcPg15",
+                        "nmc15plus",
+                        "nmc18plus",
+                        "nmc18tc",
                         "nmcUnrated"
                     ],
                     "type": "string"
                 },
                 "oflcRating": {
                     "enum": [
+                        "oflcUnspecified",
                         "oflcG",
-                        "oflcM",
                         "oflcPg",
+                        "oflcM",
                         "oflcR13",
                         "oflcR15",
                         "oflcR16",
                         "oflcR18",
+                        "oflcUnrated",
                         "oflcRp13",
                         "oflcRp16",
-                        "oflcRp18",
-                        "oflcUnrated"
+                        "oflcRp18"
                     ],
                     "type": "string"
                 },
                 "pefilmRating": {
                     "enum": [
+                        "pefilmUnspecified",
+                        "pefilmPt",
+                        "pefilmPg",
                         "pefilm14",
                         "pefilm18",
-                        "pefilmPg",
-                        "pefilmPt",
                         "pefilmUnrated"
                     ],
                     "type": "string"
                 },
                 "rcnofRating": {
                     "enum": [
+                        "rcnofUnspecified",
                         "rcnofI",
                         "rcnofIi",
                         "rcnofIii",
                         "rcnofIv",
-                        "rcnofUnrated",
                         "rcnofV",
-                        "rcnofVi"
+                        "rcnofVi",
+                        "rcnofUnrated"
                     ],
                     "type": "string"
                 },
                 "resorteviolenciaRating": {
                     "enum": [
+                        "resorteviolenciaUnspecified",
                         "resorteviolenciaA",
                         "resorteviolenciaB",
                         "resorteviolenciaC",
@@ -5232,8 +5278,9 @@
                 },
                 "rtcRating": {
                     "enum": [
-                        "rtcA",
+                        "rtcUnspecified",
                         "rtcAa",
+                        "rtcA",
                         "rtcB",
                         "rtcB15",
                         "rtcC",
@@ -5244,27 +5291,30 @@
                 },
                 "rteRating": {
                     "enum": [
-                        "rteCh",
+                        "rteUnspecified",
                         "rteGa",
-                        "rteMa",
+                        "rteCh",
                         "rtePs",
+                        "rteMa",
                         "rteUnrated"
                     ],
                     "type": "string"
                 },
                 "russiaRating": {
                     "enum": [
+                        "russiaUnspecified",
                         "russia0",
+                        "russia6",
                         "russia12",
                         "russia16",
                         "russia18",
-                        "russia6",
                         "russiaUnrated"
                     ],
                     "type": "string"
                 },
                 "skfilmRating": {
                     "enum": [
+                        "skfilmUnspecified",
                         "skfilmG",
                         "skfilmP2",
                         "skfilmP5",
@@ -5275,41 +5325,45 @@
                 },
                 "smaisRating": {
                     "enum": [
+                        "smaisUnspecified",
+                        "smaisL",
+                        "smais7",
                         "smais12",
                         "smais14",
                         "smais16",
                         "smais18",
-                        "smais7",
-                        "smaisL",
                         "smaisUnrated"
                     ],
                     "type": "string"
                 },
                 "smsaRating": {
                     "enum": [
+                        "smsaUnspecified",
+                        "smsaA",
+                        "smsa7",
                         "smsa11",
                         "smsa15",
-                        "smsa7",
-                        "smsaA",
                         "smsaUnrated"
                     ],
                     "type": "string"
                 },
                 "tvpgRating": {
                     "enum": [
-                        "pg14",
-                        "tvpgG",
-                        "tvpgMa",
-                        "tvpgPg",
-                        "tvpgUnrated",
+                        "tvpgUnspecified",
                         "tvpgY",
                         "tvpgY7",
-                        "tvpgY7Fv"
+                        "tvpgY7Fv",
+                        "tvpgG",
+                        "tvpgPg",
+                        "pg14",
+                        "tvpgMa",
+                        "tvpgUnrated"
                     ],
                     "type": "string"
                 },
                 "ytRating": {
                     "enum": [
+                        "ytUnspecified",
                         "ytAgeRestricted"
                     ],
                     "type": "string"
@@ -5395,7 +5449,6 @@
             "id": "GuideCategorySnippet",
             "properties": {
                 "channelId": {
-                    "default": "UCBR8-60-B28hp2BmDPdntcQ",
                     "type": "string"
                 },
                 "title": {
@@ -5636,10 +5689,10 @@
             "properties": {
                 "cornerPosition": {
                     "enum": [
-                        "bottomLeft",
-                        "bottomRight",
                         "topLeft",
-                        "topRight"
+                        "topRight",
+                        "bottomLeft",
+                        "bottomRight"
                     ],
                     "type": "string"
                 },
@@ -5686,8 +5739,8 @@
                 },
                 "type": {
                     "enum": [
-                        "offsetFromEnd",
-                        "offsetFromStart"
+                        "offsetFromStart",
+                        "offsetFromEnd"
                     ],
                     "type": "string"
                 }
@@ -5722,11 +5775,6 @@
                     "type": "string"
                 },
                 "id": {
-                    "annotations": {
-                        "required": [
-                            "youtube.liveBroadcasts.update"
-                        ]
-                    },
                     "type": "string"
                 },
                 "kind": {
@@ -5752,14 +5800,14 @@
                     "type": "string"
                 },
                 "boundStreamLastUpdateTimeMs": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "closedCaptionsType": {
                     "enum": [
+                        "closedCaptionsTypeUnspecified",
                         "closedCaptionsDisabled",
-                        "closedCaptionsEmbedded",
-                        "closedCaptionsHttpPost"
+                        "closedCaptionsHttpPost",
+                        "closedCaptionsEmbedded"
                     ],
                     "type": "string"
                 },
@@ -5801,8 +5849,9 @@
                 },
                 "latencyPreference": {
                     "enum": [
-                        "low",
+                        "latencyPreferenceUnspecified",
                         "normal",
+                        "low",
                         "ultraLow"
                     ],
                     "type": "string"
@@ -5816,9 +5865,10 @@
                 },
                 "projection": {
                     "enum": [
+                        "projectionUnspecified",
+                        "rectangular",
                         "360",
-                        "mesh",
-                        "rectangular"
+                        "mesh"
                     ],
                     "type": "string"
                 },
@@ -5837,14 +5887,6 @@
                         ]
                     },
                     "type": "boolean"
-                },
-                "stereoLayout": {
-                    "enum": [
-                        "left_right",
-                        "mono",
-                        "top_bottom"
-                    ],
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -5890,26 +5932,9 @@
             "id": "LiveBroadcastSnippet",
             "properties": {
                 "actualEndTime": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "actualStartTime": {
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "broadcastType": {
-                    "enum": [
-                        "fludd",
-                        "fluddArchive",
-                        "gplusHoa",
-                        "lcrEncoder",
-                        "mobile",
-                        "persistent",
-                        "premiere",
-                        "unspecified",
-                        "webcam",
-                        "ytHoa"
-                    ],
                     "type": "string"
                 },
                 "channelId": {
@@ -5922,33 +5947,18 @@
                     "type": "string"
                 },
                 "publishedAt": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "scheduledEndTime": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "scheduledStartTime": {
-                    "annotations": {
-                        "required": [
-                            "youtube.liveBroadcasts.insert",
-                            "youtube.liveBroadcasts.update"
-                        ]
-                    },
-                    "format": "date-time",
                     "type": "string"
                 },
                 "thumbnails": {
                     "$ref": "ThumbnailDetails"
                 },
                 "title": {
-                    "annotations": {
-                        "required": [
-                            "youtube.liveBroadcasts.insert",
-                            "youtube.liveBroadcasts.update"
-                        ]
-                    },
                     "type": "string"
                 }
             },
@@ -5957,10 +5967,6 @@
         "LiveBroadcastStatistics": {
             "id": "LiveBroadcastStatistics",
             "properties": {
-                "concurrentViewers": {
-                    "format": "uint64",
-                    "type": "string"
-                },
                 "totalChatCount": {
                     "format": "uint64",
                     "type": "string"
@@ -5973,22 +5979,24 @@
             "properties": {
                 "lifeCycleStatus": {
                     "enum": [
-                        "complete",
+                        "lifeCycleStatusUnspecified",
                         "created",
-                        "live",
-                        "liveStarting",
                         "ready",
+                        "testing",
+                        "live",
+                        "complete",
                         "revoked",
                         "testStarting",
-                        "testing"
+                        "liveStarting"
                     ],
                     "type": "string"
                 },
                 "liveBroadcastPriority": {
                     "enum": [
-                        "high",
+                        "liveBroadcastPriorityUnspecified",
                         "low",
-                        "normal"
+                        "normal",
+                        "high"
                     ],
                     "type": "string"
                 },
@@ -5996,24 +6004,19 @@
                     "type": "boolean"
                 },
                 "privacyStatus": {
-                    "annotations": {
-                        "required": [
-                            "youtube.liveBroadcasts.insert",
-                            "youtube.liveBroadcasts.update"
-                        ]
-                    },
                     "enum": [
-                        "private",
                         "public",
-                        "unlisted"
+                        "unlisted",
+                        "private"
                     ],
                     "type": "string"
                 },
                 "recordingStatus": {
                     "enum": [
+                        "liveBroadcastRecordingStatusUnspecified",
                         "notRecording",
-                        "recorded",
-                        "recording"
+                        "recording",
+                        "recorded"
                     ],
                     "type": "string"
                 },
@@ -6057,6 +6060,7 @@
                 },
                 "type": {
                     "enum": [
+                        "liveChatBanTypeUnspecified",
                         "permanent",
                         "temporary"
                     ],
@@ -6168,7 +6172,6 @@
                     "type": "string"
                 },
                 "offlineAt": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "pageInfo": {
@@ -6221,7 +6224,6 @@
                     "$ref": "LiveChatMessageRetractedDetails"
                 },
                 "publishedAt": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "superChatDetails": {
@@ -6235,18 +6237,19 @@
                 },
                 "type": {
                     "enum": [
-                        "chatEndedEvent",
-                        "fanFundingEvent",
-                        "messageDeletedEvent",
-                        "messageRetractedEvent",
-                        "newSponsorEvent",
-                        "sponsorOnlyModeEndedEvent",
-                        "sponsorOnlyModeStartedEvent",
-                        "superChatEvent",
-                        "superStickerEvent",
+                        "invalidType",
                         "textMessageEvent",
                         "tombstone",
-                        "userBannedEvent"
+                        "fanFundingEvent",
+                        "chatEndedEvent",
+                        "sponsorOnlyModeStartedEvent",
+                        "sponsorOnlyModeEndedEvent",
+                        "newSponsorEvent",
+                        "messageDeletedEvent",
+                        "messageRetractedEvent",
+                        "userBannedEvent",
+                        "superChatEvent",
+                        "superStickerEvent"
                     ],
                     "type": "string"
                 },
@@ -6412,11 +6415,6 @@
                     "type": "string"
                 },
                 "id": {
-                    "annotations": {
-                        "required": [
-                            "youtube.liveStreams.update"
-                        ]
-                    },
                     "type": "string"
                 },
                 "kind": {
@@ -6440,48 +6438,48 @@
                 },
                 "severity": {
                     "enum": [
-                        "error",
                         "info",
-                        "warning"
+                        "warning",
+                        "error"
                     ],
                     "type": "string"
                 },
                 "type": {
                     "enum": [
+                        "gopSizeOver",
+                        "gopSizeLong",
+                        "gopSizeShort",
+                        "openGop",
+                        "badContainer",
                         "audioBitrateHigh",
                         "audioBitrateLow",
-                        "audioBitrateMismatch",
-                        "audioCodec",
-                        "audioCodecMismatch",
                         "audioSampleRate",
-                        "audioSampleRateMismatch",
-                        "audioStereoMismatch",
-                        "audioTooManyChannels",
-                        "badContainer",
                         "bitrateHigh",
                         "bitrateLow",
-                        "frameRateHigh",
-                        "framerateMismatch",
-                        "gopMismatch",
-                        "gopSizeLong",
-                        "gopSizeOver",
-                        "gopSizeShort",
-                        "interlacedVideo",
-                        "multipleAudioStreams",
-                        "multipleVideoStreams",
+                        "audioCodec",
+                        "videoCodec",
                         "noAudioStream",
                         "noVideoStream",
-                        "openGop",
+                        "multipleVideoStreams",
+                        "multipleAudioStreams",
+                        "audioTooManyChannels",
+                        "interlacedVideo",
+                        "frameRateHigh",
                         "resolutionMismatch",
-                        "videoBitrateMismatch",
-                        "videoCodec",
                         "videoCodecMismatch",
-                        "videoIngestionFasterThanRealtime",
-                        "videoIngestionStarved",
                         "videoInterlaceMismatch",
                         "videoProfileMismatch",
+                        "videoBitrateMismatch",
+                        "framerateMismatch",
+                        "gopMismatch",
+                        "audioSampleRateMismatch",
+                        "audioStereoMismatch",
+                        "audioCodecMismatch",
+                        "audioBitrateMismatch",
                         "videoResolutionSuboptimal",
-                        "videoResolutionUnsupported"
+                        "videoResolutionUnsupported",
+                        "videoIngestionStarved",
+                        "videoIngestionFasterThanRealtime"
                     ],
                     "type": "string"
                 }
@@ -6515,10 +6513,10 @@
                 },
                 "status": {
                     "enum": [
-                        "bad",
                         "good",
-                        "noData",
                         "ok",
+                        "bad",
+                        "noData",
                         "revoked"
                     ],
                     "type": "string"
@@ -6573,16 +6571,9 @@
                     "type": "boolean"
                 },
                 "publishedAt": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "title": {
-                    "annotations": {
-                        "required": [
-                            "youtube.liveStreams.insert",
-                            "youtube.liveStreams.update"
-                        ]
-                    },
                     "type": "string"
                 }
             },
@@ -6596,11 +6587,11 @@
                 },
                 "streamStatus": {
                     "enum": [
-                        "active",
                         "created",
-                        "error",
+                        "ready",
+                        "active",
                         "inactive",
-                        "ready"
+                        "error"
                     ],
                     "type": "string"
                 }
@@ -6840,27 +6831,6 @@
             },
             "type": "object"
         },
-        "Nonprofit": {
-            "id": "Nonprofit",
-            "properties": {
-                "nonprofitId": {
-                    "$ref": "NonprofitId"
-                },
-                "nonprofitLegalName": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "NonprofitId": {
-            "id": "NonprofitId",
-            "properties": {
-                "value": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "PageInfo": {
             "id": "PageInfo",
             "properties": {
@@ -6960,7 +6930,6 @@
                     "type": "string"
                 },
                 "videoPublishedAt": {
-                    "format": "date-time",
                     "type": "string"
                 }
             },
@@ -7013,12 +6982,6 @@
                     "type": "string"
                 },
                 "playlistId": {
-                    "annotations": {
-                        "required": [
-                            "youtube.playlistItems.insert",
-                            "youtube.playlistItems.update"
-                        ]
-                    },
                     "type": "string"
                 },
                 "position": {
@@ -7026,17 +6989,10 @@
                     "type": "integer"
                 },
                 "publishedAt": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "resourceId": {
-                    "$ref": "ResourceId",
-                    "annotations": {
-                        "required": [
-                            "youtube.playlistItems.insert",
-                            "youtube.playlistItems.update"
-                        ]
-                    }
+                    "$ref": "ResourceId"
                 },
                 "thumbnails": {
                     "$ref": "ThumbnailDetails"
@@ -7052,9 +7008,9 @@
             "properties": {
                 "privacyStatus": {
                     "enum": [
-                        "private",
                         "public",
-                        "unlisted"
+                        "unlisted",
+                        "private"
                     ],
                     "type": "string"
                 }
@@ -7132,7 +7088,6 @@
                     "$ref": "PlaylistLocalization"
                 },
                 "publishedAt": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "tags": {
@@ -7145,12 +7100,6 @@
                     "$ref": "ThumbnailDetails"
                 },
                 "title": {
-                    "annotations": {
-                        "required": [
-                            "youtube.playlists.insert",
-                            "youtube.playlists.update"
-                        ]
-                    },
                     "type": "string"
                 }
             },
@@ -7161,9 +7110,9 @@
             "properties": {
                 "privacyStatus": {
                     "enum": [
-                        "private",
                         "public",
-                        "unlisted"
+                        "unlisted",
+                        "private"
                     ],
                     "type": "string"
                 }
@@ -7196,9 +7145,9 @@
                 },
                 "type": {
                     "enum": [
-                        "recentUpload",
                         "video",
-                        "website"
+                        "website",
+                        "recentUpload"
                     ],
                     "type": "string"
                 },
@@ -7311,14 +7260,14 @@
                 },
                 "liveBroadcastContent": {
                     "enum": [
-                        "live",
                         "none",
-                        "upcoming"
+                        "upcoming",
+                        "live",
+                        "completed"
                     ],
                     "type": "string"
                 },
                 "publishedAt": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "thumbnails": {
@@ -7394,7 +7343,6 @@
                     "$ref": "ChannelProfileDetails"
                 },
                 "sponsorSince": {
-                    "format": "date-time",
                     "type": "string"
                 }
             },
@@ -7430,6 +7378,7 @@
             "properties": {
                 "activityType": {
                     "enum": [
+                        "subscriptionActivityTypeUnspecified",
                         "all",
                         "uploads"
                     ],
@@ -7493,7 +7442,6 @@
                     "type": "string"
                 },
                 "publishedAt": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "resourceId": {
@@ -7595,7 +7543,6 @@
                     "type": "string"
                 },
                 "createdAt": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "currency": {
@@ -7604,18 +7551,12 @@
                 "displayString": {
                     "type": "string"
                 },
-                "isSuperChatForGood": {
-                    "type": "boolean"
-                },
                 "isSuperStickerEvent": {
                     "type": "boolean"
                 },
                 "messageType": {
                     "format": "uint32",
                     "type": "integer"
-                },
-                "nonprofit": {
-                    "$ref": "Nonprofit"
                 },
                 "superStickerMetadata": {
                     "$ref": "SuperStickerMetadata"
@@ -7636,84 +7577,6 @@
                     "type": "string"
                 },
                 "stickerId": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ThirdPartyLink": {
-            "id": "ThirdPartyLink",
-            "properties": {
-                "etag": {
-                    "type": "string"
-                },
-                "kind": {
-                    "default": "youtube#thirdPartyLink",
-                    "type": "string"
-                },
-                "linkingToken": {
-                    "type": "string"
-                },
-                "snippet": {
-                    "$ref": "ThirdPartyLinkSnippet"
-                },
-                "status": {
-                    "$ref": "ThirdPartyLinkStatus"
-                }
-            },
-            "type": "object"
-        },
-        "ThirdPartyLinkListResponse": {
-            "id": "ThirdPartyLinkListResponse",
-            "properties": {
-                "etag": {
-                    "type": "string"
-                },
-                "eventId": {
-                    "type": "string"
-                },
-                "kind": {
-                    "default": "youtube#thirdPartyLinkListResponse",
-                    "type": "string"
-                },
-                "links": {
-                    "items": {
-                        "$ref": "ThirdPartyLink"
-                    },
-                    "type": "array"
-                },
-                "visitorId": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ThirdPartyLinkSnippet": {
-            "id": "ThirdPartyLinkSnippet",
-            "properties": {
-                "channelToStoreLink": {
-                    "$ref": "ChannelToStoreLinkDetails"
-                },
-                "type": {
-                    "enum": [
-                        "channelToStoreLink",
-                        "unknownLink"
-                    ],
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ThirdPartyLinkStatus": {
-            "id": "ThirdPartyLinkStatus",
-            "properties": {
-                "linkStatus": {
-                    "enum": [
-                        "failed",
-                        "linked",
-                        "pending",
-                        "unknown"
-                    ],
                     "type": "string"
                 }
             },
@@ -7784,6 +7647,7 @@
         },
         "TokenPagination": {
             "id": "TokenPagination",
+            "properties": {},
             "type": "object"
         },
         "Video": {
@@ -7802,11 +7666,6 @@
                     "$ref": "VideoFileDetails"
                 },
                 "id": {
-                    "annotations": {
-                        "required": [
-                            "youtube.videos.update"
-                        ]
-                    },
                     "type": "string"
                 },
                 "kind": {
@@ -8031,7 +7890,6 @@
                     "type": "boolean"
                 },
                 "channelId": {
-                    "default": "UCBR8-60-B28hp2BmDPdntcQ",
                     "type": "string"
                 },
                 "title": {
@@ -8045,8 +7903,8 @@
             "properties": {
                 "caption": {
                     "enum": [
-                        "false",
-                        "true"
+                        "true",
+                        "false"
                     ],
                     "type": "string"
                 },
@@ -8058,8 +7916,8 @@
                 },
                 "definition": {
                     "enum": [
-                        "hd",
-                        "sd"
+                        "sd",
+                        "hd"
                     ],
                     "type": "string"
                 },
@@ -8077,8 +7935,8 @@
                 },
                 "projection": {
                     "enum": [
-                        "360",
-                        "rectangular"
+                        "rectangular",
+                        "360"
                     ],
                     "type": "string"
                 },
@@ -8138,13 +7996,13 @@
                 },
                 "fileType": {
                     "enum": [
-                        "archive",
+                        "video",
                         "audio",
-                        "document",
                         "image",
-                        "other",
+                        "archive",
+                        "document",
                         "project",
-                        "video"
+                        "other"
                     ],
                     "type": "string"
                 },
@@ -8201,11 +8059,11 @@
                 },
                 "rotation": {
                     "enum": [
-                        "clockwise",
-                        "counterClockwise",
                         "none",
-                        "other",
-                        "upsideDown"
+                        "clockwise",
+                        "upsideDown",
+                        "counterClockwise",
+                        "other"
                     ],
                     "type": "string"
                 },
@@ -8215,31 +8073,6 @@
                 "widthPixels": {
                     "format": "uint32",
                     "type": "integer"
-                }
-            },
-            "type": "object"
-        },
-        "VideoGetRatingResponse": {
-            "id": "VideoGetRatingResponse",
-            "properties": {
-                "etag": {
-                    "type": "string"
-                },
-                "eventId": {
-                    "type": "string"
-                },
-                "items": {
-                    "items": {
-                        "$ref": "VideoRating"
-                    },
-                    "type": "array"
-                },
-                "kind": {
-                    "default": "youtube#videoGetRatingResponse",
-                    "type": "string"
-                },
-                "visitorId": {
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -8288,11 +8121,9 @@
                     "type": "string"
                 },
                 "actualEndTime": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "actualStartTime": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "concurrentViewers": {
@@ -8300,11 +8131,9 @@
                     "type": "string"
                 },
                 "scheduledEndTime": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "scheduledStartTime": {
-                    "format": "date-time",
                     "type": "string"
                 }
             },
@@ -8356,10 +8185,10 @@
                 },
                 "processingFailureReason": {
                     "enum": [
-                        "other",
-                        "streamingFailed",
+                        "uploadFailed",
                         "transcodeFailed",
-                        "uploadFailed"
+                        "streamingFailed",
+                        "other"
                     ],
                     "type": "string"
                 },
@@ -8371,9 +8200,9 @@
                 },
                 "processingStatus": {
                     "enum": [
-                        "failed",
                         "processing",
                         "succeeded",
+                        "failed",
                         "terminated"
                     ],
                     "type": "string"
@@ -8422,14 +8251,38 @@
             "properties": {
                 "rating": {
                     "enum": [
-                        "dislike",
-                        "like",
                         "none",
-                        "unspecified"
+                        "like",
+                        "dislike"
                     ],
                     "type": "string"
                 },
                 "videoId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "VideoRatingListResponse": {
+            "id": "VideoRatingListResponse",
+            "properties": {
+                "etag": {
+                    "type": "string"
+                },
+                "eventId": {
+                    "type": "string"
+                },
+                "items": {
+                    "items": {
+                        "$ref": "VideoRating"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "youtube#videoGetRatingResponse",
+                    "type": "string"
+                },
+                "visitorId": {
                     "type": "string"
                 }
             },
@@ -8445,7 +8298,6 @@
                     "type": "string"
                 },
                 "recordingDate": {
-                    "format": "date-time",
                     "type": "string"
                 }
             },
@@ -8471,9 +8323,10 @@
                 },
                 "liveBroadcastContent": {
                     "enum": [
-                        "live",
                         "none",
-                        "upcoming"
+                        "upcoming",
+                        "live",
+                        "completed"
                     ],
                     "type": "string"
                 },
@@ -8481,7 +8334,6 @@
                     "$ref": "VideoLocalization"
                 },
                 "publishedAt": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "tags": {
@@ -8533,19 +8385,19 @@
                 },
                 "failureReason": {
                     "enum": [
-                        "codec",
                         "conversion",
-                        "emptyFile",
                         "invalidFile",
+                        "emptyFile",
                         "tooSmall",
+                        "codec",
                         "uploadAborted"
                     ],
                     "type": "string"
                 },
                 "license": {
                     "enum": [
-                        "creativeCommon",
-                        "youtube"
+                        "youtube",
+                        "creativeCommon"
                     ],
                     "type": "string"
                 },
@@ -8554,9 +8406,9 @@
                 },
                 "privacyStatus": {
                     "enum": [
-                        "private",
                         "public",
-                        "unlisted"
+                        "unlisted",
+                        "private"
                     ],
                     "type": "string"
                 },
@@ -8564,21 +8416,20 @@
                     "type": "boolean"
                 },
                 "publishAt": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "rejectionReason": {
                     "enum": [
-                        "claim",
                         "copyright",
-                        "duplicate",
                         "inappropriate",
-                        "legal",
-                        "length",
+                        "duplicate",
                         "termsOfUse",
-                        "trademark",
+                        "uploaderAccountSuspended",
+                        "length",
+                        "claim",
                         "uploaderAccountClosed",
-                        "uploaderAccountSuspended"
+                        "trademark",
+                        "legal"
                     ],
                     "type": "string"
                 },
@@ -8587,11 +8438,11 @@
                 },
                 "uploadStatus": {
                     "enum": [
-                        "deleted",
-                        "failed",
+                        "uploaded",
                         "processed",
+                        "failed",
                         "rejected",
-                        "uploaded"
+                        "deleted"
                     ],
                     "type": "string"
                 }
@@ -8604,10 +8455,10 @@
                 "editorSuggestions": {
                     "items": {
                         "enum": [
-                            "audioQuietAudioSwap",
                             "videoAutoLevels",
+                            "videoStabilize",
                             "videoCrop",
-                            "videoStabilize"
+                            "audioQuietAudioSwap"
                         ],
                         "type": "string"
                     },
@@ -8616,12 +8467,12 @@
                 "processingErrors": {
                     "items": {
                         "enum": [
-                            "archiveFile",
                             "audioFile",
-                            "docFile",
                             "imageFile",
-                            "notAVideoFile",
                             "projectFile",
+                            "notAVideoFile",
+                            "docFile",
+                            "archiveFile",
                             "unsupportedSpatialAudioLayout"
                         ],
                         "type": "string"
@@ -8631,12 +8482,12 @@
                 "processingHints": {
                     "items": {
                         "enum": [
-                            "hdrVideo",
                             "nonStreamableMov",
                             "sendBestQualityVideo",
-                            "spatialAudio",
                             "sphericalVideo",
-                            "vrVideo"
+                            "spatialAudio",
+                            "vrVideo",
+                            "hdrVideo"
                         ],
                         "type": "string"
                     },
@@ -8645,18 +8496,18 @@
                 "processingWarnings": {
                     "items": {
                         "enum": [
-                            "hasEditlist",
-                            "inconsistentResolution",
-                            "problematicAudioCodec",
-                            "problematicHdrLookupTable",
-                            "problematicVideoCodec",
-                            "unknownAudioCodec",
                             "unknownContainer",
                             "unknownVideoCodec",
-                            "unsupportedHdrColorMetadata",
-                            "unsupportedHdrPixelFormat",
+                            "unknownAudioCodec",
+                            "inconsistentResolution",
+                            "hasEditlist",
+                            "problematicVideoCodec",
+                            "problematicAudioCodec",
+                            "unsupportedVrStereoMode",
                             "unsupportedSphericalProjectionType",
-                            "unsupportedVrStereoMode"
+                            "unsupportedHdrPixelFormat",
+                            "unsupportedHdrColorMetadata",
+                            "problematicHdrLookupTable"
                         ],
                         "type": "string"
                     },
@@ -8726,7 +8577,7 @@
             "type": "object"
         }
     },
-    "servicePath": "youtube/v3/",
-    "title": "YouTube Data API",
+    "servicePath": "",
+    "title": "YouTube Data API v3",
     "version": "v3"
 }
