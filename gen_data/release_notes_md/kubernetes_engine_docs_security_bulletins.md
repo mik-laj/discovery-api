@@ -23,6 +23,177 @@ page to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/kubernetes-engine-security-
 bulletins.xml `
 
+##  GCP-2020-007
+
+**Published:** 2020-06-01  
+Description  |  Severity  |  Notes  
+---|---|---  
+  
+Server Side Request Forgery (SSRF) vulnerability, [ CVE-2020-8555
+](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555) , was recently
+discovered in Kubernetes, allowing certain authorized users to leak up to 500
+bytes of sensitive information from the control plane host network. The Google
+Kubernetes Engine (GKE) control plane uses controllers from Kubernetes and is
+thus affected by this vulnerability. We recommend that you [ upgrade
+](/kubernetes-engine/docs/how-to/upgrading-a-container-cluster) the control
+plane to the latest patch version, as we detail below. A node upgrade is not
+required.  
+
+####  What should I do?
+
+For most customers, no further action is required. The vast majority of
+clusters are already running a patched version. The following GKE versions or
+newer contain the fix for this vulnerability:
+
+  * 1.14.7-gke.39 
+  * 1.14.8-gke.32 
+  * 1.14.9-gke.17 
+  * 1.14.10-gke.12 
+  * 1.15.7-gke.17 
+  * 1.16.4-gke.21 
+  * 1.17.0-gke.0 
+
+Clusters using [ release channels ](/kubernetes-engine/docs/concepts/release-
+channels) are already on control plane versions with the mitigation.
+
+####  What vulnerability is addressed by this patch?
+
+These patches mitigate vulnerability CVE-2020-8555. This is rated as a Medium
+vulnerability for GKE as it was difficult to exploit due to various control
+plane hardening measures.
+
+An attacker with permissions to create a Pod with certain built-in Volume
+types (GlusterFS, Quobyte, StorageFS, ScaleIO) or permissions to create a
+StorageClass can cause ` kube-controller-manager ` to make ` GET ` requests or
+` POST ` requests _without_ an attacker controlled request body from the
+master's host network. These volume types are rarely used on GKE, so new use
+of these volume types may be a useful detection signal.
+
+Combined with a means to leak the results of the ` GET/POST ` back to the
+attacker, such as through logs, this can lead to disclosure of sensitive
+information. We have updated the storage drivers in question to remove the
+potential for such leaks.
+
+|
+
+Medium
+
+|
+
+[ CVE-2020-8555 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8555)  
+  
+##  GCP-2020-006
+
+**Published:** 2020-06-01  
+Description  |  Severity  |  Notes  
+---|---|---  
+  
+Kubernetes has disclosed a [ vulnerability
+](https://github.com/kubernetes/kubernetes/issues/91507) that allows a
+privileged container to redirect node traffic to another container. Mutual
+TLS/SSH traffic, such as between the kubelet and API server or traffic from
+applications using mTLS cannot be read or modified by this attack. All Google
+Kubernetes Engine (GKE) nodes are affected by this vulnerability, and we
+recommend that you [ upgrade ](/kubernetes-engine/docs/how-to/upgrading-a-
+cluster) to the latest patch version, as we detail below.
+
+####  What should I do?
+
+To mitigate this vulnerability, [ upgrade ](/kubernetes-engine/docs/how-
+to/upgrading-a-cluster) your control plane, and then your nodes to one of the
+patched versions listed below. Clusters on release channels are already
+running a patched version on both control plane and nodes:
+
+  * 1.14.10-gke.36 
+  * 1.15.11-gke.15 
+  * 1.16.8-gke.15 
+
+Very few containers typically require ` CAP_NET_RAW ` . This and other
+powerful capabilities should be blocked by default through [ PodSecurityPolicy
+](/kubernetes-engine/docs/how-to/pod-security-policies) or [ Anthos Policy
+Controller ](/anthos-config-management/docs/concepts/policy-controller) :
+
+  * Drop the ` CAP_NET_RAW ` capability from containers: 
+    * By enforcing it through [ PodSecurityPolicy ](/kubernetes-engine/docs/how-to/pod-security-policies) using: 
+        
+                # Require dropping CAP_NET_RAW with a PSP
+        apiversion: extensions/v1beta1
+        kind: PodSecurityPolicy
+        metadata:
+          name: no-cap-net-raw
+        spec:
+          requiredDropCapabilities:
+            -NET_RAW
+             ...
+             # Unrelated fields omitted
+        
+
+    * Or by using Anthos Policy Controller/Gatekeeper with this [ constraint template ](https://github.com/open-policy-agent/gatekeeper/blob/master/library/pod-security-policy/capabilities/template.yaml) and applying it, for example: 
+        
+                # Dropping CAP_NET_RAW with Gatekeeper
+        # (requires the K8sPSPCapabilities template)
+        apiversion: constraints.gatekeeper.sh/v1beta1
+        kind:  K8sPSPCapabilities
+        metadata:
+          name: forbid-cap-net-raw
+        spec:
+          match:
+            kinds:
+              - apiGroups: [""]
+              kinds: ["Pod"]
+            namespaces:
+              #List of namespaces to enforce this constraint on
+              - default
+            # If running gatekeeper >= v3.1.0-beta.5,
+            # you can exclude namespaces rather than including them above.
+            excludedNamespaces:
+              - kube-system
+          parameters:
+            requiredDropCapabilities:
+              - "NET_RAW"
+        
+
+    * Or by updating your Pod specs: 
+        
+                # Dropping CAP_NET_RAW from a Pod:
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          name: no-cap-net-raw
+        spec:
+          containers:
+            -name: may-container
+             ...
+            securityContext:
+              capabilities:
+                drop:
+                  -NET_RAW
+        
+
+####  What vulnerability is addressed by this patch?
+
+The patch mitigate the following vulnerability:
+
+The vulnerability described in [ Kubernetes issue 91507
+](https://github.com/kubernetes/kubernetes/issues/91507) ` CAP_NET_RAW `
+capability (which is included in the default container capability set) to
+maliciously configure the IPv6 stack on the node and redirect node traffic to
+the attacker controlled container. This will allow the attacker to
+intercept/modify traffic originating from or destined for the node. Mutual
+TLS/SSH traffic, such as between the kubelet and API server or traffic from
+applications using mTLS cannot be read or modified by this attack.
+
+|
+
+Medium
+
+|
+
+[ Kubernetes issue 91507
+](https://github.com/kubernetes/kubernetes/issues/91507)  
+  
+  
 ##  GCP-2020-005
 
 **Published:** 2020-05-07  
@@ -1310,11 +1481,9 @@ was completed on 2018-11-16)
 If you wish to rotate these tokens immediately you can run the following
 command, the new secret for the service account should be re-created
 automatically within a few seconds:  
-      
-    
-    kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
-            
   
+kubectl get sa --namespace kube-system calico -o template --template '{{(index
+.secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system  
 ---  
   
 ####  Detection
