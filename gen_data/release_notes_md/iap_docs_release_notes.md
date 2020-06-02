@@ -14,6 +14,14 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/iap-release-notes.xml `
 
+##  May 29, 2020
+
+**FEATURE:**
+
+The ability to authenticate users with [ external identities
+](https://cloud.google.com/iap/docs/enable-external-identities) is now
+generally available.
+
 ##  February 12, 2020
 
 **FEATURE:**
