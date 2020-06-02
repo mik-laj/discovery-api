@@ -11,6 +11,20 @@
 URL ディレクトリ ` https://cloud.google.com/feeds/access-context-manager-release-
 notes.xml ` を直接追加します。
 
+##  June 01, 2020
+
+**FEATURE:**
+
+General availability of custom access levels.
+
+[ Custom access levels ](https://cloud.google.com/access-context-
+manager/docs/custom-access-levels?hl=ja) provide a way to use Common
+Expression Language to craft custom conditions. [ Create custom access levels
+](https://cloud.google.com/access-context-manager/docs/create-custom-access-
+level?hl=ja) using the ` gcloud ` command line tool, the Access Context
+Manager API, and in the Google Cloud Console using the Advanced Mode for
+configuring access levels.
+
 ##  April 03, 2020
 
 **FEATURE:**
