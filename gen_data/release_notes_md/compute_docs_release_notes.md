@@ -14,6 +14,18 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/compute-release-notes.xml `
 
+##  June 01, 2020
+
+**FEATURE:**
+
+NVIDIA® Tesla® T4 GPUs are now available in the following additional regions
+and zones:
+
+  * Changua County, Taiwan ` asia-east1-c `
+
+For information about using T4 GPUs on Compute Engine, see [ GPUs on Compute
+Engine ](https://cloud.google.com/compute/docs/gpus) .
+
 ##  May 21, 2020
 
 **FEATURE:**
