@@ -281,6 +281,36 @@
                 }
             }
         },
+        "otherContacts": {
+            "methods": {
+                "copyOtherContactToMyContactsGroup": {
+                    "flatPath": "v1/otherContacts/{otherContactsId}:copyOtherContactToMyContactsGroup",
+                    "httpMethod": "POST",
+                    "id": "people.otherContacts.copyOtherContactToMyContactsGroup",
+                    "parameterOrder": [
+                        "resourceName"
+                    ],
+                    "parameters": {
+                        "resourceName": {
+                            "location": "path",
+                            "pattern": "^otherContacts/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+resourceName}:copyOtherContactToMyContactsGroup",
+                    "request": {
+                        "$ref": "CopyOtherContactToMyContactsGroupRequest"
+                    },
+                    "response": {
+                        "$ref": "Person"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/contacts"
+                    ]
+                }
+            }
+        },
         "people": {
             "methods": {
                 "createContact": {
@@ -559,6 +589,44 @@
                     }
                 }
             }
+        },
+        "v1": {
+            "methods": {
+                "otherContacts": {
+                    "flatPath": "v1/otherContacts",
+                    "httpMethod": "POST",
+                    "id": "people.otherContacts",
+                    "parameterOrder": [],
+                    "parameters": {
+                        "pageSize": {
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "readMask": {
+                            "format": "google-fieldmask",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "requestSyncToken": {
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "syncToken": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/otherContacts",
+                    "response": {
+                        "$ref": "ListOtherContactsResponse"
+                    }
+                }
+            }
         }
     },
     "rootUrl": "https://people.googleapis.com/",
@@ -757,6 +825,20 @@
                 },
                 "status": {
                     "$ref": "Status"
+                }
+            },
+            "type": "object"
+        },
+        "CopyOtherContactToMyContactsGroupRequest": {
+            "id": "CopyOtherContactToMyContactsGroupRequest",
+            "properties": {
+                "copyMask": {
+                    "format": "google-fieldmask",
+                    "type": "string"
+                },
+                "readMask": {
+                    "format": "google-fieldmask",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -990,6 +1072,24 @@
                 "totalItems": {
                     "format": "int32",
                     "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "ListOtherContactsResponse": {
+            "id": "ListOtherContactsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "nextSyncToken": {
+                    "type": "string"
+                },
+                "otherContacts": {
+                    "items": {
+                        "$ref": "Person"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -1608,7 +1708,8 @@
                         "ACCOUNT",
                         "PROFILE",
                         "DOMAIN_PROFILE",
-                        "CONTACT"
+                        "CONTACT",
+                        "OTHER_CONTACT"
                     ],
                     "type": "string"
                 },
