@@ -12,6 +12,42 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  June 01, 2020
+
+**Access Context Manager**
+
+**FEATURE:**
+
+General availability of custom access levels.
+
+[ Custom access levels ](https://cloud.google.com/access-context-
+manager/docs/custom-access-levels) provide a way to use Common Expression
+Language to craft custom conditions. [ Create custom access levels
+](https://cloud.google.com/access-context-manager/docs/create-custom-access-
+level) using the ` gcloud ` command line tool, the Access Context Manager API,
+and in the Google Cloud Console using the Advanced Mode for configuring access
+levels.
+
+**Compute Engine**
+
+**FEATURE:**
+
+NVIDIA® Tesla® T4 GPUs are now available in the following additional regions
+and zones:
+
+  * Changua County, Taiwan ` asia-east1-c `
+
+For information about using T4 GPUs on Compute Engine, see [ GPUs on Compute
+Engine ](https://cloud.google.com/compute/docs/gpus) .
+
+**Dialogflow**
+
+**CHANGED:**
+
+The shutdown of 7 integrations [ announced in January
+](https://cloud.google.com/dialogflow/docs/release-notes#January_06_2020) is
+now extended to July 6th, 2020.
+
 ##  May 29, 2020
 
 **Anthos GKE deployed on AWS**
@@ -63,6 +99,23 @@ Cloud TPU now supports TensorFlow version 1.15.3. See the [ TensorFlow 1.15.3
 Release Notes ](https://github.com/tensorflow/tensorflow/releases/tag/v1.15.3)
 .
 
+**Config Connector**
+
+**CHANGED:**
+
+Added support for ` SQLSSLCert `
+
+**CHANGED:**
+
+Supported acquisition of backends added to Compute Backend Services out-of-
+band of Config Connector
+
+**FIXED:**
+
+Fixed support for [ autoscaling and manually resizing node pools with
+ContainerNodePool ](https://github.com/GoogleCloudPlatform/k8s-config-
+connector/issues/165)
+
 **Dialogflow**
 
 **CHANGED:**
@@ -74,6 +127,14 @@ have an agent that enabled this integration prior to today, you should have
 received an email from Dialogflow with upgrade instructions. If you have not
 received this email, please [ contact Dialogflow support
 ](https://cloud.google.com/dialogflow/docs/support/getting-support) .
+
+**Identity-Aware Proxy**
+
+**FEATURE:**
+
+The ability to authenticate users with [ external identities
+](https://cloud.google.com/iap/docs/enable-external-identities) is now
+generally available.
 
 **Virtual Private Cloud**
 
@@ -162,6 +223,14 @@ CDN. This feature was released with the status General Availabiliity.
 Cloud Functions has added support for a new runtime, Java 11, in Beta:
 
   * [ The Java Runtime ](https://cloud.google.com/functions/docs/concepts/java-runtime)
+
+**Pub/Sub**
+
+**FEATURE:**
+
+[ Pub/Sub Lite ](https://cloud.google.com/pubsub/docs/choosing-pubsub-or-lite)
+is now available at the [ beta launch stage
+](https://cloud.google.com/products/#product-launch-stages) .
 
 **Recommender**
 
@@ -1428,12 +1497,4 @@ Generation. In the documentation and in the Google Cloud Console, "MySQL
 Second Generation instances" are now referred to simply as "MySQL instances."
 For general information about this deprecation, see the existing [ deprecation
 notice ](https://cloud.google.com/sql/docs/mysql/deprecation-notice) .
-
-**Dialogflow**
-
-**CHANGED:**
-
-The shutdown of 7 integrations [ announced in January
-](https://cloud.google.com/dialogflow/docs/release-notes#January_06_2020) is
-now extended to June 6th, 2020.
 
