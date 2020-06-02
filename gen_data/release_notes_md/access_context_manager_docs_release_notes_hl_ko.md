@@ -11,6 +11,20 @@ Google Cloud의 최신 제품 업데이트를 확인할 수 있습니다.
 추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/access-
 context-manager-release-notes.xml `
 
+##  June 01, 2020
+
+**FEATURE:**
+
+General availability of custom access levels.
+
+[ Custom access levels ](https://cloud.google.com/access-context-
+manager/docs/custom-access-levels?hl=ko) provide a way to use Common
+Expression Language to craft custom conditions. [ Create custom access levels
+](https://cloud.google.com/access-context-manager/docs/create-custom-access-
+level?hl=ko) using the ` gcloud ` command line tool, the Access Context
+Manager API, and in the Google Cloud Console using the Advanced Mode for
+configuring access levels.
+
 ##  April 03, 2020
 
 **FEATURE:**
