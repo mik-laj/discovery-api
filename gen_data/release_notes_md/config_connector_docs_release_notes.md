@@ -13,6 +13,23 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/configconnector-release-
 notes.xml `
 
+##  May 29, 2020
+
+**CHANGED:**
+
+Added support for ` SQLSSLCert `
+
+**CHANGED:**
+
+Supported acquisition of backends added to Compute Backend Services out-of-
+band of Config Connector
+
+**FIXED:**
+
+Fixed support for [ autoscaling and manually resizing node pools with
+ContainerNodePool ](https://github.com/GoogleCloudPlatform/k8s-config-
+connector/issues/165)
+
 ##  May 27, 2020
 
 **CHANGED:**
@@ -301,7 +318,7 @@ ComputeFirewall: v1alpha2->v1alpha3
 
 Added new resources and [ samples
 ](https://github.com/GoogleCloudPlatform/k8s-config-
-connector/tree/master/resources) for BigQueryTable, ComputeExternalVPNGateway
+connector/tree/master/samples) for BigQueryTable, ComputeExternalVPNGateway
 
 ##  October 15, 2019
 
@@ -317,7 +334,7 @@ Bump compute api group version to v1alpha2
 
 Add the following new resources with [ samples
 ](https://github.com/GoogleCloudPlatform/k8s-config-
-connector/tree/master/resources) : ComputeNetworkPeering,
+connector/tree/master/samples) : ComputeNetworkPeering,
 ComputeTargetVPNGateway, ComputeVpnGateway, IAMCustomRole,
 ComputeHTTPSHealthCheck, ComputeSharedVPCHostProject, ComputeRouter
 
