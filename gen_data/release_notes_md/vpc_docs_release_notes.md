@@ -17,7 +17,7 @@ URL directly: ` https://cloud.google.com/feeds/vpc-release-notes.xml `
 
 GKE annotations and advanced controls for [ VPC Flow Logs
 ](https://cloud.google.com/vpc/docs/using-flow-logs) is now available in
-**Beta** .
+**General Availability** .
 
 ##  May 18, 2020
 
