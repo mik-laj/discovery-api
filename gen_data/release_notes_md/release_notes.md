@@ -12,6 +12,30 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  June 02, 2020
+
+**BigQuery**
+
+**FEATURE:**
+
+You can now [ purchase BigQuery slots
+](https://cloud.google.com/bigquery/docs/reservations-workload-
+management#getting_started_with_reservations) using the ` bq ` command-line
+tool. BigQuery Reservations allows you to purchase slots to take advantage of
+BigQuery [ flat-rate pricing
+](https://cloud.google.com/bigquery/pricing#flat_rate_pricing) and allocate
+slots for workload management.
+
+**Cloud Load Balancing**
+
+**FEATURE:**
+
+You can now use a [ custom filter ](https://cloud.google.com/load-
+balancing/docs/negs/setting-up-zonal-
+negs#custom_filtering_when_you_list_endpoints_in_a_network_endpoint_group)
+when you list endpoints in a zonal network endpoint group. This feature is
+available as a Beta release.
+
 ##  June 01, 2020
 
 **Access Context Manager**
@@ -142,7 +166,7 @@ generally available.
 
 GKE annotations and advanced controls for [ VPC Flow Logs
 ](https://cloud.google.com/vpc/docs/using-flow-logs) is now available in
-**Beta** .
+**General Availability** .
 
 ##  May 28, 2020
 
@@ -1471,30 +1495,4 @@ Clusters can now be created with non-preemptible secondary workers.
 
 GA (general availability) launch of [ auto speech adaptation
 ](https://cloud.google.com/dialogflow/docs/speech-adaptation) .
-
-##  May 04, 2020
-
-**Cloud Data Loss Prevention**
-
-**CHANGED:**
-
-We have made quality and performance enhancements to our name detectors.
-PERSON_NAME should be used in most scenarios as it will return the most
-comprehensive finding. MALE_NAME and FEMALE_NAME are now synonymous with
-FIRST_NAME with [ ` Likelihood `
-](https://cloud.google.com/dlp/docs/reference/rpc/google.privacy.dlp.v2#likelihood)
-now never being greater than ` POSSIBLE ` . These changes will be rolled out
-over the coming days.
-
-**Cloud SQL for MySQL**
-
-**DEPRECATED:**
-
-As [ previously announced ](https://cloud.google.com/sql/docs/mysql/release-
-notes#January_29_2019) , Cloud SQL First Generation was deprecated on January
-29, 2019. All First Generation instances have been migrated to Second
-Generation. In the documentation and in the Google Cloud Console, "MySQL
-Second Generation instances" are now referred to simply as "MySQL instances."
-For general information about this deprecation, see the existing [ deprecation
-notice ](https://cloud.google.com/sql/docs/mysql/deprecation-notice) .
 
