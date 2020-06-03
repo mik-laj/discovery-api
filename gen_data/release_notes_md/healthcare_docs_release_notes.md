@@ -13,6 +13,16 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloud-healthcare-release-
 notes.xml `
 
+##  June 02, 2020
+
+v1
+
+**FEATURE:**
+
+It is now possible to import DICOM data to and export DICOM data from BigQuery
+using the Healthcare Browser in the Cloud Console. You can also import DICOM
+data from Cloud Storage using the Healthcare Browser.
+
 ##  May 29, 2020
 
 v1
