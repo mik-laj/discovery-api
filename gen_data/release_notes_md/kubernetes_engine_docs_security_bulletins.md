@@ -1138,9 +1138,9 @@ You should get a response similar to:
     
         kubectl logs disable-smt-2xnnc disable-smt -n kube-system
 
-Note: Boot options cannot be modified if the node has [Secure
-Boot](/kubernetes-engine/docs/how-to/shielded-gke-nodes#secure_boot) feature
-enabled. If Secure Boot is enabled, it needs to be [disabled](/kubernetes-
+Note: Boot options cannot be modified if the node has [ Secure Boot
+](/kubernetes-engine/docs/how-to/shielded-gke-nodes#secure_boot) feature
+enabled. If Secure Boot is enabled, it needs to be [ disabled ](/kubernetes-
 engine/docs/how-to/shielded-gke-nodes#disabling) before the DaemonSet is
 created.
 
