@@ -12,6 +12,18 @@ Docker  |  v19.03.1
   
 ##  Changelog
 
+###  cos-77-12371-274-0
+
+_Date: May 26, 2020_
+
+  * Fixed a few OS Login CVEs: CVE-2020-8903, CVE-2020-8907, CVE-2020-8933. 
+
+###  cos-77-12371-273-0
+
+_Date: May 21, 2020_
+
+  * Fixed a Stackdriver Monitoring agent bug where not all mounted disk partitions has their usage reported. 
+
 ###  cos-77-12371-251-0
 
 _Date: Apr 29, 2020_
