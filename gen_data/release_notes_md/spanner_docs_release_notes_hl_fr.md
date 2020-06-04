@@ -11,6 +11,15 @@ de cette page à votre [ lecteur de flux
 du flux directement : ` https://cloud.google.com/feeds/spanner-release-
 notes.xml `
 
+##  June 03, 2020
+
+**CHANGED:**
+
+Cloud Spanner SQL now supports the following statistical aggregate functions -
+STDDEV, VARIANCE. For more information, see [ Statistical Aggregate Functions
+](https://cloud.google.com/spanner/docs/statistical_aggregate_functions?hl=fr)
+.
+
 ##  May 18, 2020
 
 **FEATURE:**
