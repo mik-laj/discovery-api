@@ -11,6 +11,13 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/vpc-release-notes.xml `
 
+##  June 03, 2020
+
+**FEATURE:**
+
+[ Hierarchical firewall policies ](https://cloud.google.com/vpc/docs/firewall-
+policies) are now available in **Beta** .
+
 ##  May 29, 2020
 
 **FEATURE:**
