@@ -12,6 +12,16 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/memorystore-release-notes.xml `
 
+##  June 03, 2020
+
+**FEATURE:**
+
+The [ Version Upgrade
+](https://cloud.google.com/memorystore/docs/redis/upgrading-instance-version)
+and [ Redis version 5.0
+](https://cloud.google.com/memorystore/docs/redis/supported-versions) features
+are now Generally Available on Memorystore for Redis.
+
 ##  May 13, 2020
 
 **FEATURE:**
