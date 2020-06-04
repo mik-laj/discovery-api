@@ -23,6 +23,17 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/stackdriver-release-notes.xml `
 
+##  June 03, 2020
+
+**Cloud Logging**
+
+**FEATURE:**
+
+In the Logs Viewer (Preview), you can now save your queries, which can then be
+viewed and run from the **Saved** queries tab. For more information, see the [
+Saved queries section on the Building queries page
+](https://cloud.google.com/logging/docs/view/building-queries#saved-queries) .
+
 ##  May 20, 2020
 
 **Cloud Monitoring**
