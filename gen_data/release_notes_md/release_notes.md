@@ -12,6 +12,56 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  June 03, 2020
+
+**Cloud Load Balancing**
+
+**FEATURE:**
+
+[ HTTP(S) Load Balancing logging ](https://cloud.google.com/load-
+balancing/docs/https/https-logging-monitoring#logging) is now available in
+**General Availability** .
+
+**Cloud Logging**
+
+**FEATURE:**
+
+In the Logs Viewer (Preview), you can now save your queries, which can then be
+viewed and run from the **Saved** queries tab. For more information, see the [
+Saved queries section on the Building queries page
+](https://cloud.google.com/logging/docs/view/building-queries#saved-queries) .
+
+**Cloud Run**
+
+**FEATURE:**
+
+The Cloud Run user interface now allows you to edit the service YAML.
+
+**Cloud Spanner**
+
+**CHANGED:**
+
+Cloud Spanner SQL now supports the following statistical aggregate functions -
+STDDEV, VARIANCE. For more information, see [ Statistical Aggregate Functions
+](https://cloud.google.com/spanner/docs/statistical_aggregate_functions) .
+
+**Memorystore for Redis**
+
+**FEATURE:**
+
+The [ Version Upgrade
+](https://cloud.google.com/memorystore/docs/redis/upgrading-instance-version)
+and [ Redis version 5.0
+](https://cloud.google.com/memorystore/docs/redis/supported-versions) features
+are now Generally Available on Memorystore for Redis.
+
+**Virtual Private Cloud**
+
+**FEATURE:**
+
+[ Hierarchical firewall policies ](https://cloud.google.com/vpc/docs/firewall-
+policies) are now available in **Beta** .
+
 ##  June 02, 2020
 
 **BigQuery**
@@ -25,6 +75,30 @@ tool. BigQuery Reservations allows you to purchase slots to take advantage of
 BigQuery [ flat-rate pricing
 ](https://cloud.google.com/bigquery/pricing#flat_rate_pricing) and allocate
 slots for workload management.
+
+**FEATURE:**
+
+A new GIS function, [ ` ST_Simplify `
+](https://cloud.google.com/bigquery/docs/reference/standard-
+sql/geography_functions#st_simplify) , is available. [ ` ST_Simplify `
+](https://cloud.google.com/bigquery/docs/reference/standard-
+sql/geography_functions#st_simplify) returns a simplified version of the input
+` GEOGRAPHY ` by replacing sections with straight lines.
+
+**CHANGED:**
+
+Standard SQL view definition bodies can now contain references without project
+qualifiers, as long as the view is created by the [ ` tables.insert `
+](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables/insert) REST
+API or is in the same project used to run the [ ` CREATE VIEW `
+](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-
+definition-language#create_view_statement) DDL query.
+
+**CHANGED:**
+
+Standard SQL [ user-defined function
+](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-
+functions) definition bodies can now contain references to tables and views.
 
 **Cloud Load Balancing**
 
@@ -1480,19 +1554,4 @@ A new document is added to [ Traffic Director
 ](https://cloud.google.com/traffic-director/docs) : [ Ingress traffic for your
 mesh ](https://cloud.google.com/traffic-director/docs/traffic-director-
 ingress-traffic) .
-
-##  May 05, 2020
-
-**Dataproc**
-
-**FEATURE:**
-
-Clusters can now be created with non-preemptible secondary workers.
-
-**Dialogflow**
-
-**FEATURE:**
-
-GA (general availability) launch of [ auto speech adaptation
-](https://cloud.google.com/dialogflow/docs/speech-adaptation) .
 
