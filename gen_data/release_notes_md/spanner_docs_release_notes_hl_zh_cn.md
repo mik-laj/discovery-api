@@ -6,6 +6,15 @@
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/cloud-spanner-release-notes.xml `
 
+##  June 03, 2020
+
+**CHANGED:**
+
+Cloud Spanner SQL now supports the following statistical aggregate functions -
+STDDEV, VARIANCE. For more information, see [ Statistical Aggregate Functions
+](https://cloud.google.com/spanner/docs/statistical_aggregate_functions?hl=zh_cn)
+.
+
 ##  May 18, 2020
 
 **FEATURE:**
