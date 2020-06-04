@@ -33,6 +33,11 @@ project:  Stable  |  Beta  |  Dev
     Docker:         v19.03.8
       
   
+**Note:** Kubernetes version provided in the changelog corresponds to the
+Kubelet and the Kubectl version that are shipped in that Container-Optimized
+OS image. Also, these component version may not be used when running a GKE
+cluster using a Container-Optimized OS image.
+
 ###  LTS Image Families
 
   * [ cos-69-lts ](/container-optimized-os/docs/release-notes/m69)
