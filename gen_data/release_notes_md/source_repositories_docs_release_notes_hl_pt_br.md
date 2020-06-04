@@ -1,9 +1,13 @@
 #  Notas da versão
 
 Nesta página, estão documentadas as atualizações de produção realizadas no
-Cloud Source Repositories. Acesse-a periodicamente para ver anúncios sobre
-recursos novos ou atualizados, correções de bugs, problemas conhecidos e
-funcionalidades obsoletas.
+Cloud Source Repositories. Acesse-a periodicamente para ver avisos de recursos
+novos ou atualizados, correções de bugs, problemas conhecidos e recursos
+obsoletos.
+
+É possível ver as atualizações mais recentes de todos os produtos do Google
+Cloud na página [ Notas da versão do Google Cloud
+](https://cloud.google.com/release-notes?hl=pt-br) .
 
 Para receber as atualizações de produtos mais recentes, adicione o URL desta
 página ao [ leitor de feeds
