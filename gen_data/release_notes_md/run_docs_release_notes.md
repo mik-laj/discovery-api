@@ -12,6 +12,12 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/run-release-notes.xml `
 
+##  June 03, 2020
+
+**FEATURE:**
+
+The Cloud Run user interface now allows you to edit the service YAML.
+
 ##  May 20, 2020
 
 **FEATURE:**
