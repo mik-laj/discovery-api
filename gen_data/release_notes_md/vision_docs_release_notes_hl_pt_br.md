@@ -10,6 +10,17 @@ página ao [ leitor de feeds
 do feed diretamente: ` https://cloud.google.com/feeds/vision-release-notes.xml
 `
 
+##  June 04, 2020
+
+**FEATURE:**
+
+**Access Transparency GA**
+
+Access Transparency logging is now Generally Available. If you want to enable
+Access Transparency logs, see [ Enabling Access Transparency
+](https://cloud.google.com/logging/docs/audit/access-transparency-
+overview?hl=pt_br#enabling) .
+
 ##  May 15, 2020
 
 **CHANGED:**
