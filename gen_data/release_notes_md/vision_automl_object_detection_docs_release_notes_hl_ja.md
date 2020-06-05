@@ -8,6 +8,25 @@ Detection のデベロッパーの方には、ここにリストされる発表�
 URL ディレクトリ ` https://cloud.google.com/feeds/automl-vision-object-detection-
 release-notes.xml ` を直接追加します。
 
+##  June 04, 2020
+
+**DEPRECATED:**
+
+**v1beta1 endpoint deprecated**
+
+After June 4, 2020, the v1beta1 version of AutoML API will deny increasing
+numbers of API requests from AutoML Vision users. Please refer to the [
+November 20, 2019 ](https://cloud.google.com/vision/automl/object-
+detection/docs/release-notes?hl=ja#November_20_2019) release notes and migrate
+to v1 version immediately.
+
+If you have any questions regarding the above action items, join the [ cloud-
+vision-discuss Google group ](https://groups.google.com/g/cloud-vision-
+discuss?hl=ja) . For further assistance, please open an issue in this [
+private issue tracker
+](https://issuetracker.google.com/issues/new?component=836902&template=1440861&hl=ja)
+.
+
 ##  April 03, 2020
 
 **CHANGED:**
