@@ -6,6 +6,17 @@
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/vision-release-notes.xml `
 
+##  June 04, 2020
+
+**FEATURE:**
+
+**Access Transparency GA**
+
+Access Transparency logging is now Generally Available. If you want to enable
+Access Transparency logs, see [ Enabling Access Transparency
+](https://cloud.google.com/logging/docs/audit/access-transparency-
+overview?hl=zh_cn#enabling) .
+
 ##  May 15, 2020
 
 **CHANGED:**
