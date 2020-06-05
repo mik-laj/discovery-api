@@ -13,6 +13,12 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/configconnector-release-
 notes.xml `
 
+##  June 03, 2020
+
+**CHANGED:**
+
+Miscellaneous bug fixes and improvements
+
 ##  May 29, 2020
 
 **CHANGED:**
