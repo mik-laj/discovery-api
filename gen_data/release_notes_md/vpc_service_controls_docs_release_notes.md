@@ -12,6 +12,18 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/vpc-sc-release-notes.xml `
 
+##  June 04, 2020
+
+**FEATURE:**
+
+The VPC accessible services feature is now generally available. Use VPC
+accessible services to limit the access of network endpoints and VMs in a
+perimeter to only services protected by that perimeter.
+
+For more information about the feature, see [ VPC accessible services
+](https://cloud.google.com/docs/vpc-service-controls/docs/vpc-accessible-
+services) .
+
 ##  May 21, 2020
 
 **FEATURE:**
