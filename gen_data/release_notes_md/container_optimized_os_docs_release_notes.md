@@ -27,10 +27,10 @@ project:  Stable  |  Beta  |  Dev
 
     
     
-    **cos-dev-84-13078-0-0**
-    Kernel:         [COS-4.19.119](https://cos.googlesource.com/third_party/kernel/+/cf82bb6a0699ca4452067a6c88483909d1dbc90e)
+    **cos-dev-85-13260-0-0**
+    Kernel:         [COS-4.19.124](https://cos.googlesource.com/third_party/kernel/+/5451c40e92fbfc19edc953cb9affea60eee60378)
     Kubernetes:     v1.18.2
-    Docker:         v19.03.8
+    Docker:         v19.03.9
       
   
 **Note:** Kubernetes version provided in the changelog corresponds to the
