@@ -1812,7 +1812,8 @@
                                 "template1a",
                                 "template1b",
                                 "template2",
-                                "template3"
+                                "template3",
+                                "template4"
                             ],
                             "location": "path",
                             "required": true,
@@ -1918,6 +1919,68 @@
                     "path": "{merchantId}/orders",
                     "response": {
                         "$ref": "OrdersListResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "refunditem": {
+                    "httpMethod": "POST",
+                    "id": "content.orders.refunditem",
+                    "parameterOrder": [
+                        "merchantId",
+                        "orderId"
+                    ],
+                    "parameters": {
+                        "merchantId": {
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "orderId": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/orders/{orderId}/refunditem",
+                    "request": {
+                        "$ref": "OrdersRefundItemRequest"
+                    },
+                    "response": {
+                        "$ref": "OrdersRefundItemResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "refundorder": {
+                    "httpMethod": "POST",
+                    "id": "content.orders.refundorder",
+                    "parameterOrder": [
+                        "merchantId",
+                        "orderId"
+                    ],
+                    "parameters": {
+                        "merchantId": {
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "orderId": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/orders/{orderId}/refundorder",
+                    "request": {
+                        "$ref": "OrdersRefundOrderRequest"
+                    },
+                    "response": {
+                        "$ref": "OrdersRefundOrderResponse"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/content"
@@ -5308,6 +5371,12 @@
                 "acknowledged": {
                     "type": "boolean"
                 },
+                "annotations": {
+                    "items": {
+                        "$ref": "OrderOrderAnnotation"
+                    },
+                    "type": "array"
+                },
                 "billingAddress": {
                     "$ref": "OrderAddress"
                 },
@@ -5726,6 +5795,10 @@
                         ]
                     }
                 },
+                "pickupPromiseInMinutes": {
+                    "format": "uint32",
+                    "type": "integer"
+                },
                 "shipByDate": {
                     "annotations": {
                         "required": [
@@ -5787,6 +5860,18 @@
             },
             "type": "object"
         },
+        "OrderOrderAnnotation": {
+            "id": "OrderOrderAnnotation",
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "OrderPickupDetails": {
             "id": "OrderPickupDetails",
             "properties": {
@@ -5800,6 +5885,9 @@
                     "type": "array"
                 },
                 "locationId": {
+                    "type": "string"
+                },
+                "pickupType": {
                     "type": "string"
                 }
             },
@@ -6522,6 +6610,40 @@
             },
             "type": "object"
         },
+        "OrdersCustomBatchRequestEntryRefundItemItem": {
+            "id": "OrdersCustomBatchRequestEntryRefundItemItem",
+            "properties": {
+                "amount": {
+                    "$ref": "MonetaryAmount"
+                },
+                "fullRefund": {
+                    "type": "boolean"
+                },
+                "lineItemId": {
+                    "type": "string"
+                },
+                "productId": {
+                    "type": "string"
+                },
+                "quantity": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "OrdersCustomBatchRequestEntryRefundItemShipping": {
+            "id": "OrdersCustomBatchRequestEntryRefundItemShipping",
+            "properties": {
+                "amount": {
+                    "$ref": "Price"
+                },
+                "fullRefund": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo": {
             "id": "OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo",
             "properties": {
@@ -6627,6 +6749,77 @@
                         "$ref": "Order"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "OrdersRefundItemRequest": {
+            "id": "OrdersRefundItemRequest",
+            "properties": {
+                "items": {
+                    "items": {
+                        "$ref": "OrdersCustomBatchRequestEntryRefundItemItem"
+                    },
+                    "type": "array"
+                },
+                "operationId": {
+                    "type": "string"
+                },
+                "reason": {
+                    "type": "string"
+                },
+                "reasonText": {
+                    "type": "string"
+                },
+                "shipping": {
+                    "$ref": "OrdersCustomBatchRequestEntryRefundItemShipping"
+                }
+            },
+            "type": "object"
+        },
+        "OrdersRefundItemResponse": {
+            "id": "OrdersRefundItemResponse",
+            "properties": {
+                "executionStatus": {
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "content#ordersRefundItemResponse",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "OrdersRefundOrderRequest": {
+            "id": "OrdersRefundOrderRequest",
+            "properties": {
+                "amount": {
+                    "$ref": "MonetaryAmount"
+                },
+                "fullRefund": {
+                    "type": "boolean"
+                },
+                "operationId": {
+                    "type": "string"
+                },
+                "reason": {
+                    "type": "string"
+                },
+                "reasonText": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "OrdersRefundOrderResponse": {
+            "id": "OrdersRefundOrderResponse",
+            "properties": {
+                "executionStatus": {
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "content#ordersRefundOrderResponse",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -6852,7 +7045,13 @@
                 "deliveryDate": {
                     "type": "string"
                 },
+                "lastPickupDate": {
+                    "type": "string"
+                },
                 "operationId": {
+                    "type": "string"
+                },
+                "readyPickupDate": {
                     "type": "string"
                 },
                 "shipmentId": {
@@ -6862,6 +7061,9 @@
                     "type": "string"
                 },
                 "trackingId": {
+                    "type": "string"
+                },
+                "undeliveredDate": {
                     "type": "string"
                 }
             },
