@@ -12,6 +12,16 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/stackdriver-release-notes.xml `
 
+##  June 05, 2020
+
+**CHANGED:**
+
+Custom retention is now generally available (GA). In order to have time to
+explore this feature, you won't be charged for extended retention of logs
+until March 31, 2021. To learn more, see the [ Logging pricing section on the
+Pricing for Google Cloud's operations suite page
+](https://cloud.google.com/stackdriver/pricing#logging-costs) .
+
 ##  June 03, 2020
 
 **FEATURE:**
