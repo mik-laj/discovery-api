@@ -15,7 +15,7 @@ notes.xml ` .
 
 **DEPRECATED:**
 
-**v1beta1 endpoint deprecated**
+**v1beta1 endpoint end-of-life**
 
 After June 4, 2020, the v1beta1 version of AutoML API will deny increasing
 numbers of API requests from AutoML Vision users. Please refer to the [
