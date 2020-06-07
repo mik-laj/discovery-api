@@ -12,13 +12,36 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  June 05, 2020
+
+**Cloud Functions**
+
+**DEPRECATED:**
+
+The Node.js 8 runtime is deprecated as of 2020-06-05. To ensure that your
+functions are on a supported version of Node.js, migrate them to [ Node.js 10
+](https://cloud.google.com/functions/docs/concepts/nodejs-10-runtime) .
+
+For more discussion of Cloud Functions runtime support policy, see [ Runtime
+Support ](https://cloud.google.com/functions/docs/runtime-support) .
+
+**Cloud Logging**
+
+**CHANGED:**
+
+Custom retention is now generally available (GA). In order to have time to
+explore this feature, you won't be charged for extended retention of logs
+until March 31, 2021. To learn more, see the [ Logging pricing section on the
+Pricing for Google Cloud's operations suite page
+](https://cloud.google.com/stackdriver/pricing#logging-costs) .
+
 ##  June 04, 2020
 
 **AutoML Vision Image Classification (ICN)**
 
 **DEPRECATED:**
 
-**v1beta1 endpoint deprecated**
+**v1beta1 endpoint end-of-life**
 
 After June 4, 2020, the v1beta1 version of AutoML API will deny increasing
 numbers of API requests from AutoML Vision users. Please refer to the [
@@ -36,7 +59,7 @@ issue tracker
 
 **DEPRECATED:**
 
-**v1beta1 endpoint deprecated**
+**v1beta1 endpoint end-of-life**
 
 After June 4, 2020, the v1beta1 version of AutoML API will deny increasing
 numbers of API requests from AutoML Vision users. Please refer to the [
@@ -1679,99 +1702,4 @@ disk recommendations ](https://cloud.google.com/compute/docs/disks/viewing-
 and-applying-idle-pd-recommendations) . Following these recommendations will
 help reduce unused resources and reduce your compute bill. This feature is
 **Generally available** .
-
-##  May 08, 2020
-
-**BigQuery**
-
-**FEATURE:**
-
-[ Next generation BigQuery streaming
-](https://cloud.google.com/bigquery/quotas#streaming_inserts) is now [
-Generally Available (GA) ](https://cloud.google.com/products/?hl=EN#product-
-launch-stages) .
-
-**Cloud Composer**
-
-**FEATURE:**
-
-Cloud Composer is now available in Hong Kong ( ` asia-east2 ` ).
-
-**FEATURE:**
-
-Cloud Composer is now available in Las Vegas ( ` us-west4 ` ).
-
-**Cloud Monitoring**
-
-**FEATURE:**
-
-Monitoring Query Language (MQL) is now available in Beta. MQL is an
-expressive, text-based interface to Cloud Monitoring time-series data. With
-MQL, you can create charts you can't create any other way. You can access MQL
-from both the Cloud Console and the Monitoring API. For more information, see
-[ Introduction to Monitoring Query Language
-](https://cloud.google.com/monitoring/mql/) .
-
-**Cloud Run**
-
-**FEATURE:**
-
-Cloud Code IDE extensions support Cloud Run. See [ Cloud Code for VS Code
-](https://cloud.google.com/code/docs/vscode/deploying-a-cloud-run-app) and [
-Cloud Code for IntelliJ
-](https://cloud.google.com/code/docs/intellij/deploying-a-cloud-run-app)
-
-**Cloud TPU**
-
-**CHANGED:**
-
-Cloud TPU now supports TensorFlow 2.2. See the [ TensorFlow 2.2 Release Notes
-](https://github.com/tensorflow/tensorflow/releases/tag/v2.2.0) for a complete
-list of features included with this release. New models for Image segmentation
-and Image classification have been added to the official cloud [ TPU supported
-models list ](https://cloud.google.com/tpu/docs/tutorials/support-matrix) .
-
-**Dialogflow**
-
-**FEATURE:**
-
-Beta launch of a one-click integration with the [ Voximplant
-](https://cloud.google.com/dialogflow/docs/integrations/voximplant) telephony
-partner:
-
-##  May 07, 2020
-
-**Anthos GKE deployed on AWS**
-
-**BREAKING:**
-
-To upgrade your Anthos GKE on AWS clusters, you need to [ uninstall
-](https://cloud.google.com/anthos/gke/docs/aws/how-to/uninstalling) all your
-management and user clusters. You also need to download the new version of the
-[ ` anthos-gke `
-](https://cloud.google.com/anthos/gke/docs/aws/downloads#anthos-gke_cli_tool)
-cli tool.
-
-**CHANGED:**
-
-Anthos GKE on AWS now supports [ auto-scaling
-](https://cloud.google.com/anthos/gke/docs/aws/how-to/scaling-user-cluster) .
-You can enable auto-scaling by changing settings in your AWSNodePools, or
-scale your clusters manually by adding new AWSNodePools.
-
-**CHANGED:**
-
-Built-in EBS StorageClass names have been changed to ` standard-rwo ` and `
-premium-rwo ` . If you declare the [ ` singlewriter-standard ` or `
-singlewriter-premium `
-](https://cloud.google.com/anthos/gke/docs/aws/concepts/storage.md)
-StorageClasses with your workloads, you must update your workloads when
-upgrading.
-
-**CHANGED:**
-
-Anthos GKE on AWS now support for Application-layer secrets encryption with
-AWS KMS by passing a KMS key ARN to your [ AWSCluster
-](https://cloud.google.com/anthos/gke/docs/aws/reference/awscluster#speccontrolplane)
-.
 
