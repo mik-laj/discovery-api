@@ -1,10 +1,35 @@
 #  版本说明
 
-此页面记录 Cloud Spanner 的正式版更新。您可以定期查看本页面，以了解有关新功能或更新功能、错误修复、已知问题和已弃用功能的公告。
+此页面记录 Cloud Spanner 的正式版更新。您可以定期查看本页面，以了解有关新功能或更新功能、Bug 修复、已知问题和已弃用功能的公告。
+
+您可以在 [ Google Cloud 版本说明 ](https://cloud.google.com/release-notes?hl=zh_cn)
+页面上查看 Google Cloud 所有产品的最新产品动态。
 
 要接收最新产品动态，请将本页面的网址添加到您的 [ Feed 阅读器
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
-https://cloud.google.com/feeds/cloud-spanner-release-notes.xml `
+https://cloud.google.com/feeds/spanner-release-notes.xml `
+
+##  June 08, 2020
+
+**FEATURE:**
+
+A second [ multi-region instance configuration
+](https://cloud.google.com/spanner/docs/instances?hl=zh_cn#available-
+configurations-multi-region) is now available in Europe - ` eur5 `
+(London/Belgium).
+
+**FEATURE:**
+
+A [ multi-region instance configuration
+](https://cloud.google.com/spanner/docs/instances?hl=zh_cn#available-
+configurations-multi-region) is now available in Asia - ` asia1 `
+(Tokyo/Osaka).
+
+**FEATURE:**
+
+Cloud Spanner [ regional instances
+](https://cloud.google.com/spanner/docs/instances?hl=zh_cn#available-
+configurations-regional) can now be created in Jakarta (asia-southeast2).
 
 ##  June 03, 2020
 
