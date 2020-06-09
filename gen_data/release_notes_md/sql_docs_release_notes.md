@@ -8,6 +8,29 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/cloud-sql-release-notes.xml `
 
+##  June 08, 2020
+
+**Cloud SQL for MySQL**
+
+**FEATURE:**
+
+Support for [ asia-southeast2
+](https://cloud.google.com/sql/docs/mysql/locations) region (Jakarta).
+
+**Cloud SQL for PostgreSQL**
+
+**FEATURE:**
+
+Support for [ asia-southeast2
+](https://cloud.google.com/sql/docs/mysql/locations) region (Jakarta).
+
+**Cloud SQL for SQL Server**
+
+**FEATURE:**
+
+Support for [ asia-southeast2
+](https://cloud.google.com/sql/docs/mysql/locations) region (Jakarta).
+
 ##  May 21, 2020
 
 **Cloud SQL for PostgreSQL**
