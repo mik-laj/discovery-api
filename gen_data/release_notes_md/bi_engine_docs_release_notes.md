@@ -12,6 +12,13 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/biengine-release-notes.xml `
 
+##  June 08, 2020
+
+**CHANGED:**
+
+BigQuery BI Engine is now available in the [ Jakarta (asia-southeast2) region
+](https://cloud.google.com/bi-engine/docs/locations#supported_regions) .
+
 ##  April 27, 2020
 
 **CHANGED:**
