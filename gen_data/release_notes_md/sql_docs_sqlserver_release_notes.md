@@ -13,6 +13,13 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloud-sql-server-release-
 notes.xml `
 
+##  June 08, 2020
+
+**FEATURE:**
+
+Support for [ asia-southeast2
+](https://cloud.google.com/sql/docs/mysql/locations) region (Jakarta).
+
 ##  April 20, 2020
 
 **FEATURE:**
