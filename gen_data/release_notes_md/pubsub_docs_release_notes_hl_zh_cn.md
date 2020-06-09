@@ -17,6 +17,19 @@ go/releases) 、 [ Java ](https://github.com/googleapis/java-pubsub/releases) �
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/pubsub-release-notes.xml `
 
+##  June 08, 2020
+
+**FEATURE:**
+
+Pub/Sub is now available in the ` asia-southeast2 ` region (Jakarta).
+
+**FEATURE:**
+
+Pub/Sub [ message filtering
+](https://cloud.google.com/pubsub/docs/filtering?hl=zh-cn) is now available at
+the [ beta launch stage ](https://cloud.google.com/products/?hl=zh-cn#product-
+launch-stages) .
+
 ##  May 26, 2020
 
 **FEATURE:**
