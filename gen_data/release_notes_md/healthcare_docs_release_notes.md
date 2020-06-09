@@ -13,6 +13,15 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloud-healthcare-release-
 notes.xml `
 
+##  June 08, 2020
+
+v1
+
+**FEATURE:**
+
+It is now possible to de-identify data from within the Healthcare Browser in
+the Cloud Console.
+
 ##  June 02, 2020
 
 v1
