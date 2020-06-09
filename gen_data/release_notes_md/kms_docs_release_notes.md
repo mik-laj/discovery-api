@@ -14,6 +14,18 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/kms-release-notes.xml `
 
+##  June 08, 2020
+
+**FEATURE:**
+
+Cloud KMS and Cloud EKM resources are available in the ` asia-southeast2 `
+region. Cloud HSM resources are **not** available in this region.
+
+For information about which [ Cloud Locations
+](https://cloud.google.com/about/locations/) are supported by Cloud KMS, Cloud
+HSM, and Cloud EKM, see the [ Cloud KMS regional locations
+](https://cloud.google.com/kms/docs/locations#regional) .
+
 ##  May 28, 2020
 
 **FEATURE:**
