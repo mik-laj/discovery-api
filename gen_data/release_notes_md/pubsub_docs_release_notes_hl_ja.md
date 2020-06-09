@@ -19,6 +19,19 @@
 URL ディレクトリ ` https://cloud.google.com/feeds/pubsub-release-notes.xml `
 を直接追加します。
 
+##  June 08, 2020
+
+**FEATURE:**
+
+Pub/Sub is now available in the ` asia-southeast2 ` region (Jakarta).
+
+**FEATURE:**
+
+Pub/Sub [ message filtering
+](https://cloud.google.com/pubsub/docs/filtering?hl=ja) is now available at
+the [ beta launch stage ](https://cloud.google.com/products/?hl=ja#product-
+launch-stages) .
+
 ##  May 26, 2020
 
 **FEATURE:**
