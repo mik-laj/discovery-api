@@ -23,6 +23,19 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/stackdriver-release-notes.xml `
 
+##  June 08, 2020
+
+**Cloud Monitoring**
+
+**FEATURE:**
+
+Enhancements to the pre-configured Compute Engine **VM Instances** dashboard.
+Compute Engine cross-fleet metrics and detail views specific to CPU, Disk,
+Memory, and Network are now available. Use filters to narrow down the set of
+VMs being inspected, and use the time selector or in-chart time selection to
+change the time window. VMs with the Monitoring agent installed get detailed
+memory and disk analysis out of the box.
+
 ##  June 05, 2020
 
 **Cloud Logging**
@@ -440,23 +453,21 @@ is now beta. For more information, see [ VPC Service Controls documentation
 
 **CHANGED:**
 
-Google Kubernetes Engine (GKE) version 1.15, which is now [ generally
-available ](https://cloud.google.com/kubernetes-engine/docs/release-
-notes#december_13_2019) , drops support for GKE versions 1.12 and earlier. As
-a result, the beta version of Stackdriver Kubernetes Engine Monitoring is no
-longer supported. If your GKE clusters are running version 1.12 or earlier,
-then you must upgrade them as soon as possible.
+Google Kubernetes Engine (GKE) version 1.15, which is now generally available,
+drops support for GKE versions 1.12 and earlier. As a result, the beta version
+of Stackdriver Kubernetes Engine Monitoring is no longer supported. If your
+GKE clusters are running version 1.12 or earlier, then you must upgrade them
+as soon as possible.
 
 **Cloud Monitoring**
 
 **CHANGED:**
 
-Google Kubernetes Engine (GKE) version 1.15, which is now [ generally
-available ](https://cloud.google.com/kubernetes-engine/docs/release-
-notes#december_13_2019) , drops support for GKE versions 1.12 and earlier. As
-a result, the beta version of Stackdriver Kubernetes Engine Monitoring is no
-longer supported. If your GKE clusters are running version 1.12 or earlier,
-then you must upgrade them as soon as possible.
+Google Kubernetes Engine (GKE) version 1.15, which is now generally available,
+drops support for GKE versions 1.12 and earlier. As a result, the beta version
+of Stackdriver Kubernetes Engine Monitoring is no longer supported. If your
+GKE clusters are running version 1.12 or earlier, then you must upgrade them
+as soon as possible.
 
 **Cloud Profiler**
 
@@ -2749,8 +2760,8 @@ Cloud SDK is now named ` gcloud beta logging ` .
 
 **FEATURE:**
 
-The [ Cloud Logging API ](https://cloud.google.com/logging/docs/api/ref/rest/)
-and [ command-line interface
+The [ Cloud Logging API ](https://cloud.google.com/logging/docs/reference/api-
+overview) and [ command-line interface
 ](https://cloud.google.com/logging/docs/api/gcloud-logging) now support
 project sinks. A project sink can export log entries from any combination of
 logs, based on [ advanced logs filters
