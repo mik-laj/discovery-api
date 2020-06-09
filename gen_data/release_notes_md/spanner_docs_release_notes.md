@@ -12,6 +12,26 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/spanner-release-notes.xml `
 
+##  June 08, 2020
+
+**FEATURE:**
+
+A second [ multi-region instance configuration
+](https://cloud.google.com/spanner/docs/instances#available-configurations-
+multi-region) is now available in Europe - ` eur5 ` (London/Belgium).
+
+**FEATURE:**
+
+A [ multi-region instance configuration
+](https://cloud.google.com/spanner/docs/instances#available-configurations-
+multi-region) is now available in Asia - ` asia1 ` (Tokyo/Osaka).
+
+**FEATURE:**
+
+Cloud Spanner [ regional instances
+](https://cloud.google.com/spanner/docs/instances#available-configurations-
+regional) can now be created in Jakarta (asia-southeast2).
+
 ##  June 03, 2020
 
 **CHANGED:**
