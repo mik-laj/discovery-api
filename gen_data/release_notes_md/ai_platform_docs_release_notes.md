@@ -15,6 +15,23 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/aiplatform-release-notes.xml `
 
+##  June 08, 2020
+
+**AI Platform Prediction**
+
+**FIXED:**
+
+The [ **Total latency** chart ](https://cloud.google.com/ai-
+platform/prediction/docs/monitor-prediction) on the **Version details** page
+of the Google Cloud Console was reporting incorrect information. This chart
+has now been fixed.
+
+In some cases, this adjustment might cause latencies to appear higher than
+they were previously. However, the latency of models has not changed.
+
+This affects both Compute Engine (N1) machine types and legacy (MLS1) machine
+types.
+
 ##  May 21, 2020
 
 **AI Platform Training**
@@ -35,6 +52,8 @@ been updated to show how to use TPUs with TensorFlow 2 APIs.
 **AI Platform Deep Learning VM Image**
 
 **FEATURE:**
+
+**M48 release**
 
 TensorFlow 2.2 images have been added. The new TensorFlow 2.2 image families
 are ` tf2-2-2-cpu ` and ` tf2-2-2-cu101 ` . See the [ available image families
