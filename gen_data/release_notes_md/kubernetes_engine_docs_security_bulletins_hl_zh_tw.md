@@ -21,11 +21,10 @@ https://cloud.google.com/feeds/kubernetes-engine-security-bulletins.xml `
 ---|---|---  
   
 最近在 Kubernetes 中發現一個安全漏洞 (請參考 [ CVE-2019-11254 ](https://cve.mitre.org/cgi-
-bin/cvename.cgi?name=CVE-2019-11254) 中的說明)，這個漏洞允許任何經授權可進行 POST 要求的使用者在
-Kubernetes API 伺服器上執行遠端阻斷服務攻擊。您可以在 [ 這裡
-](https://groups.google.com/g/kubernetes-security-
-announce/c/wuwEwZigXBc?hl=zh_tw) 找到 Kubernetes Product Security Committee
-(PSC) 發布的相關安全漏洞資訊。
+bin/cvename.cgi?name=CVE-2019-11254) 中的說明)，允許任何經授權可進行 POST 要求的使用者在 Kubernetes
+API 伺服器上執行遠端阻斷服務攻擊。您可以在 [ 這裡 ](https://groups.google.com/g/kubernetes-
+security-announce/c/wuwEwZigXBc?hl=zh_tw) 找到 Kubernetes Product Security
+Committee (PSC) 發布的相關安全漏洞資訊。
 
 無論是使用 [ 主要授權網路 ](https://cloud.google.com/kubernetes-engine/docs/how-
 to/authorized-networks?hl=zh_tw) 的 GKE 叢集或是 [ 無公開端點的私人叢集
@@ -189,8 +188,8 @@ external-provisioner ` ](https://github.com/kubernetes-csi/external-
 provisioner) 、 [ ` external-snapshotter ` ](https://github.com/kubernetes-
 csi/external-snapshotter) 及 [ ` external-resizer `
 ](https://github.com/kubernetes-csi/external-resizer)
-中是安全漏洞，可能會允許未經授權的大規模資料存取或變更。這會影響隨附在 [ CSI 驅動程式 ](https://kubernetes-
-csi.github.io/docs/drivers.html) 的大多數補充元件版本。
+中是安全漏洞，可能會允許未經授權的磁碟區資料存取或變更。這會影響 [ CSI 驅動程式 ](https://kubernetes-
+csi.github.io/docs/drivers.html) 隨附補充元件的大多數版本。
 
 |
 
@@ -207,7 +206,7 @@ bin/cvename.cgi?name=CVE-2019-11255)
 說明  |  嚴重性  |  附註  
 ---|---|---  
   
-Intel 已揭露多個 CVE，顯示可能允許推測性執行功能和微架構狀態經過交互作用後，公開資料。詳情請參閱 [ Intel 公告事項
+Intel 已揭露了多個 CVE，顯示可能允許推測性執行功能和微架構狀態經過交互作用後，公開資料。詳情請參閱 [ Intel 公告事項
 ](https://blogs.intel.com/technology/2019/11/ipas-november-2019-intel-
 platform-update-ipu/) 。
 
@@ -220,7 +219,7 @@ platform-update-ipu/) 相互比對。
 
 ####  我該怎麼做？
 
-**只有當您使用 N2、M2 或 C2 節點的節點集區，「並且」 __ 這些節點在您自己的多用戶群 GKE
+**只有當您使用 N2、M2 或 C2 節點的節點集區， _並且_ 這些節點在您自己的多用戶群 GKE
 叢集中執行不受信任的程式碼，才會受到影響，也才需要採取行動。 **
 
 **重新啟動節點會套用修補程式** 。在您的節點集區中重新啟動所有節點的最簡單方法，是使用 [ 升級
@@ -234,13 +233,13 @@ cluster?hl=zh_tw#upgrade_nodes) 作業強制所有受影響的節點集區重新
 這個修補程式可有效降低下列安全漏洞的風險：
 
 [ CVE-2019-11135 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11135)
-：這項 CVE 又稱為 TSX 非同步取消 (TAA)。TAA 提供的另一種資料竊取途徑，是利用與 [ 微架構資料取樣 (MDS)
+：這項 CVE 又稱為 TSX 非同步取消 (TAA)。TAA 所提供的另一種資料竊取途徑，是利用與 [ 微架構資料取樣 (MDS)
 ](https://cloud.google.com/kubernetes-engine/docs/security-
 bulletins?hl=zh_tw#may-14-2019) 所使用的同一種微架構資料結構。
 
 [ CVE-2018-12207 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12207)
 ：這是阻斷服務 (DoS) 安全漏洞，會讓虛擬機器主機允許惡意客體侵襲未受保護的主機，並引發當機。這項 CVE
-又稱為「關於頁面大小變更的機器檢查錯誤」，不會影響 GKE。
+又稱為「頁面大小變更的機器檢查錯誤」。這不會影響 GKE。
 
 |
 
@@ -262,7 +261,7 @@ bin/cvename.cgi?name=CVE-2019-16276) 中的說明。這項安全漏洞可能會�
 ](https://groups.google.com/forum/?hl=zh_tw#!topic/kubernetes-security-
 announce/PtsUCqFi4h4) 。
 
-Kubernetes Engine 不允許設定驗證 Proxy，因此不受這項安全漏洞的影響。
+Kubernetes Engine 不允許驗證 Proxy 的設定，因此不受這項安全漏洞的影響。
 
 |
 
@@ -297,7 +296,7 @@ clusters?hl=zh_tw#private_master) ，都可以有效降低這個安全漏洞的�
 
 ######  我該怎麼做？
 
-含有相關修正的修補程式版本發布後，建議您盡快升級叢集。排定於 10 月 14 日當週發布的 GKE 版本，預期將在所有區域隨附這類修補程式版本。
+含有相關修正的修補程式版本發布後，建議您盡快升級叢集。排定於 10 月 14 日當週發布的 GKE 版本，預期將隨附這類修補程式版本，所有區域皆可使用。
 
 下列修補程式版本將包含暫時解決措施：
 
@@ -392,10 +391,10 @@ notes?hl=zh_tw#august_22_2019) 。
 這則公告自最初發布後已經過更新。
 
 我們最近在 Kubernetes 中發現一個安全漏洞 [ CVE-2019-11247 ](https://cve.mitre.org/cgi-
-bin/cvename.cgi?name=CVE-2019-11247) ，允許將叢集範圍內的 [ 自訂資源
+bin/cvename.cgi?name=CVE-2019-11247) ，允許叢集範圍內的 [ 自訂資源
 ](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-
 resources/) 執行個體，當做所有命名空間中存在的命名空間物件處理。這表示，只具有命名空間層級 RBAC
-權限的使用者和服務帳戶，可與叢集範圍內的自訂資源互動。攻擊者如要利用這項安全漏洞，必須對任何命名空間中的資源有存取權。
+權限的使用者和服務帳戶，可與叢集範圍內的自訂資源互動。攻擊者如要利用這項安全漏洞，必須要能存取任何命名空間中的資源。
 
 ######  我該怎麼做？
 
@@ -431,7 +430,7 @@ bin/cvename.cgi?name=CVE-2019-11247)
 ](https://cloud.google.com/sdk/docs/release-notes?hl=zh_tw#kubernetes_engine)
 提供。詳情請參閱  2019 年 6 月 25 日安全性公告  。
 
-**注意：** ` kubectl ` 1.11.10 中不提供這個修補程式。
+**注意：** ` kubectl ` 1.11.10 中未提供修補程式。
 
 |
 
@@ -451,9 +450,9 @@ bin/cvename.cgi?name=CVE-2018-15664)
 
 我們上次更新時，1.11.9 和 1.11.10 版本尚未提供修補程式。現在我們已針對這兩個 1.11 版本發布升級程式 1.11.10-gke.5。
 
-目前 GKE 主要執行個體已經過修補，而執行 Kubernetes Engine 的 Google 基礎架構已經過修補且不會受到這個安全漏洞的影響。
+目前 GKE 主要執行個體已修補完畢，而執行 Kubernetes Engine 的 Google 基礎架構已經過修補且不會受到這個安全漏洞的影響。
 
-1.11 主要執行個體即將淘汰，並排定在 2019 年 7 月 8 日當週自動升級至 1.12。您可以選擇任何下列建議動作，讓節點使用修補版本：
+1.11 主要執行個體即將淘汰，並排定在 2019 年 7 月 8 日當週自動升級至 1.12。您可以選擇任何下列建議動作，促使節點使用修補的版本：
 
   * 在 2019 年 7 月 8 日前將節點升級至 1.11.10-gke.5。在這天之後，1.11 版本會開始從可用升級目標清單中移除。 
   * 在 1.11 節點上啟用 [ 自動升級 ](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-upgrades?hl=zh_tw) ，並且在主要執行個體升級至 1.12 時允許節點升級。 
@@ -465,8 +464,8 @@ bin/cvename.cgi?name=CVE-2018-15664)
 
 ######  2019 年 6 月 24 日更新
 
-我們在世界標準時間 2019 年 6 月 22 日 21:40 提供下列修補過的 Kubernetes 版本。Kubernetes 1.11.0 和
-1.13.6 版本間的主要執行個體會自動更新至修補過的版本。如果您執行的版本與此修補程式不相容，請在升級節點前先升級至相容的主要執行個體版本 (如下所列)。
+我們在世界標準時間 2019 年 6 月 22 日 21:40 提供下列修補過的Kubernetes 版本。Kubernetes 1.11.0 和
+1.13.6 版本間的主要執行個體會自動更新至修補的版本。如果您執行的版本與此修補程式不相容，請在升級節點前先升級至相容的主要執行個體版本 (如下所列)。
 
 **由於這些安全漏洞比較嚴重，無論是否已啟用節點自動升級功能，建議您還是盡快[ 手動升級
 ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
@@ -517,28 +516,28 @@ bulletins/blob/master/advisories/third-party/2019-001.md) 。
 #####  我該怎麼做？
 
 執行下列指令，將 Kubernetes DaemonSet 套用到叢集中的所有節點。這會將 ` iptables ` 規則新增至節點上現有的 `
-iptables ` 規則，以降低這個安全漏洞的風險。 **請為每個 Google Cloud 專案的每個叢集都執行這個指令一次。**
+iptables ` 規則，以降低這個安全漏洞的風險。 **請為每個 Google Cloud 專案的每個叢集執行指令一次。**
 
     
     
     
     kubectl apply -f \
-        https://raw.githubusercontent.com/GoogleCloudPlatform\
-        /k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
-              
+    https://raw.githubusercontent.com/GoogleCloudPlatform\
+    /k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
+          
 
 因為 GKE 不支援 Ipv6,，因此不需要 ip6tables 規則。
 
 一旦修補的節點版本準備就緒，而所有可能受影響的節點也都升級了，您就可以使用下列指令移除 DaemonSet。 **請為每個 Google Cloud
-專案的每個叢集都執行這個指令一次。**
+專案的每個叢集執行指令一次。**
 
     
     
     
     kubectl delete -f \
-        https://raw.githubusercontent.com/GoogleCloudPlatform\
-        /k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
-              
+    https://raw.githubusercontent.com/GoogleCloudPlatform\
+    /k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
+          
 
 |  高  
 中  
@@ -556,10 +555,10 @@ bin/cvename.cgi?name=CVE-2019-11479)
 說明  |  嚴重性  |  附註  
 ---|---|---  
   
-**2019 年 7 月 3 日更新：** ` gcloud ` 253.0.0， ` kubectl ` 1.12.9、1.13.6、1.14.2
+**2019 年 7 月 3 日更新：** 在 ` gcloud ` 253.0.0， ` kubectl ` 1.12.9、1.13.6、1.14.2
 及以上版本均含有這個修補程式。
 
-**注意：** 1.11.10 版不提供這個修補程式。
+**注意：** 1.11.10 中不提供這個修補程式。
 
 * * *
 
@@ -577,8 +576,8 @@ gcloud ` 修補程式版本發布時進行升級。 ** 即將提供的修補程�
 下一版的 ` gcloud ` 將會提供 ` kubectl ` 的修補版本。您也可以自己 [ 直接升級 ` kubectl `
 ](https://kubernetes.io/docs/tasks/tools/install-kubectl/) 。
 
-您可以從 [ ` gcloud ` 版本資訊 ](https://cloud.google.com/sdk/docs/release-
-notes?hl=zh_tw) 中得知該版本是否提供這個修補程式。
+您可以在 [ ` gcloud ` 版本資訊 ](https://cloud.google.com/sdk/docs/release-
+notes?hl=zh_tw) 中得知是否提供這個修補程式。
 
 ######  這個修補程式修正了什麼安全漏洞？
 
@@ -614,7 +613,7 @@ Docker，因此都會受到這個安全漏洞的影響。** 在 GKE，使用者�
 #####  我該怎麼做？
 
 只有執行 Docker 的節點會受到影響，且只有在發出可能遭到把持的 ` docker cp ` (或 API 相等) 指令時，才會出現問題。在
-Kubernetes 環境中，這是相當不尋常的情況。執行 [ 含 Containerd 的 COS
+Kubernetes 環境中，這是相當不尋常的情況。 執行 [ 含 Containerd 的 COS
 ](https://cloud.google.com/kubernetes-engine/docs/concepts/using-
 containerd?hl=zh_tw) 節點不會受到影響。
 
@@ -660,18 +659,18 @@ Pod 設定` RunAsUser ` 。 **
 的值)，就會出現非預期的行為。當容器在節點上第一次執行時，會正確套用指定的 UID。不過因為有這個問題，在第二次 (及後續的) 執行時，容器會以 UID 0
 的身分執行，而不使用指定的 UID。這通常是不必要的權限提升，可能會導致非預期的應用程式行為。
 
-#####  如何判斷自己執行的版本受到影響？
+#####  我如何判斷自己執行的是受影響的版本？
 
 執行以下指令即可列出所有節點及其 kubelet 版本：
 
     
     
     
-        kubectl get nodes -o=jsonpath='{range .items[*]}'\
-        '{.status.nodeInfo.machineID}'\
-        '{"\t"}{.status.nodeInfo.kubeletVersion}{"\n"}{end}'
+    kubectl get nodes -o=jsonpath='{range .items[*]}'\
+    '{.status.nodeInfo.machineID}'\
+    '{"\t"}{.status.nodeInfo.kubeletVersion}{"\n"}{end}'
 
-倘若結果清單出現下列 kubelet 版本，就表示您的節點會受到影響：
+如果輸出有下列 kubelet 版本，您的節點即受到影響：
 
   * v1.13.6 
   * v1.14.2 
@@ -709,7 +708,7 @@ Intel 已揭露下列 CVE：
   * [ CVE-2018-12130 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12130)
   * [ CVE-2019-11091 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11091)
 
-上述 CVE 統稱為「微架構資料取樣」(MDS)。當系統利用微架構狀態來進行推測性執行的互動時，這些安全漏洞會使資料有曝光風險。詳情請參閱 [ Intel
+上述 CVE 統稱為「微架構資料取樣」(MDS)。當系統利用微架構狀態來進行推測執行的互動時，這些安全漏洞會使資料有曝光風險。詳情請參閱 [ Intel
 公告事項 ](https://www.intel.com/content/www/us/en/security-center/advisory/intel-
 sa-00233.html) 。
 
@@ -726,13 +725,13 @@ notes?hl=zh_tw)
 會納入啟用清除功能的其他防護機制。我們會透過自動升級功能，依一般升級節奏，在未來幾週內自動將主要執行個體和節點升級至修補的版本。
 **然而，僅靠修補程式不足以降低此安全漏洞的風險。請參閱以下的建議做法。**
 
-如果您執行的是 GKE On-Prem，依使用硬體而定，可能會受影響。請參閱 [ Intel 公告事項
+如果您執行 GKE on prem，依使用的硬體而定，可能會受影響。請參閱 [ Intel 公告事項
 ](https://www.intel.com/content/www/us/en/security-center/advisory/intel-
 sa-00233.html) 。
 
 ####  我該怎麼做？
 
-**除非您在自己的多用戶群 GKE 叢集內執行不受信任的程式碼，否則就不會受到影響。**
+**除非您在自己的多用戶群 GKE 叢集內執行不受信任的程式碼，否則您不受影響。**
 
 **針對 Kubernetes Engine 中的節點，建立新節點集區且停用超執行緒功能，並且將您的工作負載重新安排到新的節點。**
 
@@ -748,33 +747,33 @@ sa-00233.html) 。
   1. 在叢集中使用節點標籤 ` cloud.google.com/gke-smt-disabled=true ` 建立一個新的節點集區： 
     
         
-        gcloud container node-pools create smt-disabled --cluster=[CLUSTER_NAME] \
-            --node-labels=cloud.google.com/gke-smt-disabled=true
+    gcloud container node-pools create smt-disabled --cluster=[CLUSTER_NAME] \
+        --node-labels=cloud.google.com/gke-smt-disabled=true
 
   2. 將 DaemonSet 部署到此新節點集區。DaemonSet 只會在具有 ` cloud.google.com/gke-smt-disabled=true ` 標籤的節點上執行。如此會停用超執行緒功能，然後重新啟動節點。 
     
         
-        kubectl create -f \
-        https://raw.githubusercontent.com/GoogleCloudPlatform/\
-        k8s-node-tools/master/disable-smt/gke/disable-smt.yaml
+    kubectl create -f \
+    https://raw.githubusercontent.com/GoogleCloudPlatform/\
+    k8s-node-tools/master/disable-smt/gke/disable-smt.yaml
 
   3. 確認 DaemonSet pod 處於執行狀態。 
     
         
-        kubectl get pods --selector=name=disable-smt -n kube-system
+    kubectl get pods --selector=name=disable-smt -n kube-system
 
 您應該會得到類似以下的回覆：
 
     
         
-        NAME                READY     STATUS    RESTARTS   AGE
+    NAME                READY     STATUS    RESTARTS   AGE
     
-        disable-smt-2xnnc   1/1       Running   0          6m
+    disable-smt-2xnnc   1/1       Running   0          6m
 
   4. 請檢查 pod 中的記錄是否顯示「SMT has been disabled」(SMT 已停用)。 
     
         
-        kubectl logs disable-smt-2xnnc disable-smt -n kube-system
+    kubectl logs disable-smt-2xnnc disable-smt -n kube-system
 
 您必須讓 DaemonSet
 在節點集區中持續運作，如此在集區建立新節點時才會自動套用變更。而節點自動修復、手動或自動升級，以及自動調整資源配置等事件，都可能導致集區內建立節點。
@@ -796,7 +795,7 @@ cluster?hl=zh_tw#upgrading_the_cluster) 至最新版本。GKE 主要執行個體
 bin/cvename.cgi?name=2018-12127) 、 [ CVE-2018-12130
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12130) 、 [
 CVE-2019-11091 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11091)
-：這些安全漏洞會濫用推測性執行功能。上述 CVE 統稱為「微架構資料取樣」。當系統利用微架構狀態來進行推測性執行的互動時，這些安全漏洞會使資料有曝光風險。
+：這些安全漏洞會濫用推測性執行功能。上述 CVE 統稱為「微架構資料取樣」。當系統利用微架構狀態來進行推測執行的互動時，這些安全漏洞會使資料有曝光風險。
 |  中  |
 
   * [ CVE-2018-12126 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12126)
@@ -872,8 +871,8 @@ notes?hl=zh_tw#march_19_2019) 中得知該版本是否提供這些修補程式�
 
 我們最近在 Kubernetes 中發現新的阻斷服務安全漏洞 [ CVE-2019-1002100 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2019-1002100) ，允許授權可進行修補要求的使用者編寫惡意的「json-
-patch」要求，以過度耗用 Kubernetes API 伺服器中的 CPU 和記憶體，而這可能降低叢集控制層的可用性。詳情請參閱 [
-Kubernetes 公告事項 ](https://groups.google.com/forum/?hl=zh_tw#!topic/kubernetes-
+patch」要求，以過度耗用 Kubernetes API 伺服器中的 CPU 和記憶體，可能降低叢集控制層的可用性。詳情請參閱 [ Kubernetes
+公告事項 ](https://groups.google.com/forum/?hl=zh_tw#!topic/kubernetes-
 announce/vmUUNkYfG9g) 。 **所有 Google Kubernetes Engine (GKE)
 主要執行個體都受到這些安全漏洞的影響。即將提供的修補程式版本會包含此安全漏洞的因應措施。我們會依一般升級節奏，在未來幾週內自動將叢集主要執行個體升級至修補的版本。**
 
@@ -883,7 +882,7 @@ announce/vmUUNkYfG9g) 。 **所有 Google Kubernetes Engine (GKE)
 ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
 cluster?hl=zh_tw#upgrading_the_cluster) 。
 
-我們會在更新此公告時，指出提供修補程式的版本。請注意，只有 1.11 以上版本提供了這個修補程式，1.10 版並未納入。
+我們會在含有修補程式的版本發布後立即更新此公告。請注意，只有 1.11 以上版本提供了這個修補程式，1.10 版並未納入。
 
 ####  這個修補程式修正了什麼安全漏洞？
 
@@ -917,7 +916,7 @@ cluster?hl=zh_tw) 至最新的修補程式版本。 **
 ](https://cloud.google.com/kubernetes-engine/docs/release-
 notes?hl=zh_tw#february-11-2019) 中得知該版本是否提供這些修補程式。
 
-請注意，只有 GKE 中的 Ubuntu 節點受到影響，執行 COS 的節點不受影響。
+請注意，只有 GKE 中的 Ubuntu 節點受到影響。執行 COS 的節點不受影響。
 
 請注意，runc 的新版本已增加記憶體用量，如果您設定低記憶體限制 (< 16 MB)，可能需要更新分配給容器的記憶體。
 
@@ -927,7 +926,7 @@ notes?hl=zh_tw#february-11-2019) 中得知該版本是否提供這些修補程�
 
 [ CVE-2019-5736 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2019-5736) 說明 runc 中的安全漏洞，這個安全漏洞將使用者以 exec
-形式操作的機率降至最低，允許惡意容器覆寫主機 runc 二進位檔，以藉此在主機節點上執行根層級程式碼。不是以 root
+形式操作的機率降至最低，允許惡意容器覆寫主機 runc 二進位檔，以藉此在主機節點上執行根層級程式碼。未以 root
 執行的容器不受影響。這個安全漏洞的嚴重性為「高」。
 
 |  高  |  [ CVE-2019-5736 ](https://cve.mitre.org/cgi-
@@ -941,7 +940,7 @@ bin/cvename.cgi?name=CVE-2019-5736)
 **2019 年 2 月 25 日更新：** 如先前的通知內容所述，1.11.7-gke.4 並未提供這個修補程式。如果您現在的版本是
 1.11.7，可以考慮：降級至 1.11.6、升級至 1.12，或等待 2019 年 3 月 4 日當週發布的後續 1.11.7 修補程式。
 
-最近在 Go 程式設計語言發現新的安全漏洞 [ CVE-2019-6486 ](https://cve.mitre.org/cgi-
+Go 程式設計語言最近發現新的安全漏洞 [ CVE-2019-6486 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2019-6486) ，這是 P-521 和 P-384 橢圓曲線的密碼編譯/橢圓實作中的阻斷服務
 (DoS) 安全漏洞。在 Google Kubernetes Engine (GKE) 中，這可能會允許使用者編寫惡意要求，過度耗用 Kubernetes
 API 伺服器中的 CPU，而這可能降低叢集控制層的可用性。詳情請參閱 [ Go 程式設計語言公告事項
@@ -959,13 +958,13 @@ notes?hl=zh_tw#february-11-2019)
 ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
 cluster?hl=zh_tw#upgrading_the_cluster) 。
 
-這個修補程式會在 GKE 1.10.12-gke.7、1.11.6-gke.11、1.11.7-gke.4、1.12.5-gke.5 及後續版本提供。
+GKE 1.10.12-gke.7、1.11.6-gke.11、1.11.7-gke.4 及 1.12.5-gke.5 以上版本包含了這個修補程式。
 
 ####  這個修補程式修正了什麼安全漏洞？
 
 這個修補程式可有效降低下列安全漏洞的風險：
 
-CVE-2019-6486 是 P-521 和 P-384 橢圓曲線的密碼編譯/橢圓實作中的安全漏洞，可允許使用者編寫過度耗用 CPU 的輸入內容。
+CVE-2019-6486 是 P-521 和 P-384 橢圓曲線的密碼編譯/橢圓實作中的安全漏洞。可允許使用者編寫過度耗用 CPU 的輸入內容。
 
 |  高  |  [ CVE-2019-6486 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2019-6486)  
@@ -987,15 +986,15 @@ engine/docs/release-notes?hl=zh_tw#november-12-2018) 。您不需要採取任何
 
 **您不需要採取任何動作。GKE 主要執行個體已升級。**
 
-這個修補程式會在 GKE
-1.9.7-gke.11、1.10.6-gke.11、1.10.7-gke.11、1.10.9-gke.5、1.11.2-gke.18 及後續版本提供。
+GKE 1.9.7-gke.11、1.10.6-gke.11、1.10.7-gke.11、1.10.9-gke.5、1.11.2-gke.18
+以上版本包含了這個修補程式。
 
 ####  這個修補程式修正了什麼安全漏洞？
 
 這個修補程式可有效降低下列安全漏洞的風險：
 
-安全漏洞 CVE-2018-1002105 讓權限相對較低的使用者能略過 Kubelet API 的授權，於是使用者就能發出可升級的權限提升要求，並對
-Kubelet API 進行任意呼叫。對於 Kubernetes 而言，這個安全漏洞的嚴重性屬於「重大」。而 GKE
+安全漏洞 CVE-2018-1002105 讓權限相對較低的使用者能略過 Kubelet API 的授權，這讓使用者有權發出可升級的權限提升要求，並對
+Kubelet API 進行任意呼叫。這個安全漏洞在 Kubernetes 中的嚴重性為「重大」。而 GKE
 因為實作上某些細項能防堵未經驗證的權限提升路徑，所以這個安全漏洞的嚴重性僅列為「高」。
 
 |  高  |  [ CVE-2018-1002105 ](https://cve.mitre.org/cgi-
@@ -1008,7 +1007,7 @@ bin/cvename.cgi?name=CVE-2018-1002105)
   
 **2018 年 11 月 16 日更新：** 我們已為所有可能受到影響的憑證完成撤銷與輪替作業，因此您無須採取任何進一步行動。
 
-Google 日前在 Calico Container Network Interface (CNI)
+Google 最近在 Calico Container Network Interface (CNI)
 外掛程式中發現一個問題。在特定設定中，這個外掛程式會記錄機密資訊。這個問題已列入 Tigera Technical Advisory 的追蹤清單，編號為 [
 TTA-2018-001 ](https://www.projectcalico.org/security-bulletins/) 。
 
@@ -1020,26 +1019,26 @@ TTA-2018-001 ](https://www.projectcalico.org/security-bulletins/) 。
       
     
     
-        bgpconfigurations.crd.projectcalico.org     [create get list update watch]
-        bgppeers.crd.projectcalico.org              [create get list update watch]
-        clusterinformations.crd.projectcalico.org   [create get list update watch]
-        felixconfigurations.crd.projectcalico.org   [create get list update watch]
-        globalbgpconfigs.crd.projectcalico.org      [create get list update watch]
-        globalfelixconfigs.crd.projectcalico.org    [create get list update watch]
-        globalnetworkpolicies.crd.projectcalico.org [create get list update watch]
-        globalnetworksets.crd.projectcalico.org     [create get list update watch]
-        hostendpoints.crd.projectcalico.org         [create get list update watch]
-        ippools.crd.projectcalico.org               [create get list update watch]
-        networkpolicies.crd.projectcalico.org       [create get list update watch]
-        nodes                                       [get list update watch]
-        pods                                        [get list watch patch]
-        namespaces                                  [get list watch]
-        networkpolicies.extensions                  [get list watch]
-        endpoints                                   [get]
-        services                                    [get]
-        pods/status                                 [update]
-        networkpolicies.networking.k8s.io           [watch list]
-                
+    bgpconfigurations.crd.projectcalico.org     [create get list update watch]
+    bgppeers.crd.projectcalico.org              [create get list update watch]
+    clusterinformations.crd.projectcalico.org   [create get list update watch]
+    felixconfigurations.crd.projectcalico.org   [create get list update watch]
+    globalbgpconfigs.crd.projectcalico.org      [create get list update watch]
+    globalfelixconfigs.crd.projectcalico.org    [create get list update watch]
+    globalnetworkpolicies.crd.projectcalico.org [create get list update watch]
+    globalnetworksets.crd.projectcalico.org     [create get list update watch]
+    hostendpoints.crd.projectcalico.org         [create get list update watch]
+    ippools.crd.projectcalico.org               [create get list update watch]
+    networkpolicies.crd.projectcalico.org       [create get list update watch]
+    nodes                                       [get list update watch]
+    pods                                        [get list watch patch]
+    namespaces                                  [get list watch]
+    networkpolicies.extensions                  [get list watch]
+    endpoints                                   [get]
+    services                                    [get]
+    pods/status                                 [update]
+    networkpolicies.networking.k8s.io           [watch list]
+            
   
 ---  
   
@@ -1056,8 +1055,8 @@ Calico 程式碼。
       
     
     
-        kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
-                
+    kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
+            
   
 ---  
   
@@ -1070,76 +1069,76 @@ Stackdriver 查詢。請注意，這項作業只會傳回從 GCP 網路以外位
       
     
     
-        resource.type="k8s_cluster"
-        protoPayload.authenticationInfo.principalEmail="system:serviceaccount:kube-system:calico"
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.34.208.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.192.0/21")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.200.0/23")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.59.80.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.192.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.208.0/21")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.216.0/22")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.220.0/23")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.222.0/24")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.224.0.0/13")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.216.148.0/22")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.222.176.0/21")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "173.255.112.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "192.158.28.0/22")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.192.112.0/22")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.232.0/22")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.236.0/23")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.236.48.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.251.128.0/19")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.204.0.0/14")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.208.0.0/13")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.167.160.0/19")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.178.192.0/18")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.2.0/23")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.4.0/22")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.8.0/21")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.16.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.32.0/19")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.64.0/18")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.0.0/17")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.128.0/18")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.192.0/19")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.240.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.8.0/21")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.16.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.32.0/19")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.64.0/18")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.128.0/17")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.154.0.0/15")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.196.0.0/14")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "208.68.108.0/23")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.184.0.0/14")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.188.0.0/15")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.202.0.0/16")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.0.0/17")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.128.0/18")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.192.0/19")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.224.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.192.0.0/14")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.196.0.0/15")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.198.0.0/16")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.0.0/17")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.128.0/18")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.200.0.0/15")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "2600:1900::/35")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.224.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.232.0.0/15")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.234.0.0/16")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.0.0/17")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.192.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.236.0.0/14")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.240.0.0/15")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.232.0/21")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.4.0/22")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.220.0.0/14")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.242.0.0/15")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.244.0.0/14")
-                
+    resource.type="k8s_cluster"
+    protoPayload.authenticationInfo.principalEmail="system:serviceaccount:kube-system:calico"
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.34.208.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.192.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.200.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.59.80.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.192.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.208.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.216.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.220.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.222.0/24")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.224.0.0/13")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.216.148.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.222.176.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "173.255.112.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "192.158.28.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.192.112.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.232.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.236.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.236.48.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.251.128.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.204.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.208.0.0/13")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.167.160.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.178.192.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.2.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.4.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.8.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.16.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.32.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.64.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.0.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.128.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.192.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.240.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.8.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.16.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.32.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.64.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.128.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.154.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.196.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "208.68.108.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.184.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.188.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.202.0.0/16")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.0.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.128.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.192.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.224.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.192.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.196.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.198.0.0/16")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.0.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.128.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.200.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "2600:1900::/35")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.224.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.232.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.234.0.0/16")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.0.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.192.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.236.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.240.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.232.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.4.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.220.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.242.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.244.0.0/14")
+            
   
 ---  
   
@@ -1157,7 +1156,7 @@ technology/l1tf.html) 下列 CVE：
 
 上述 CVE 統稱為「L1 終端機錯誤」(L1TF)。
 
-這些 L1TF 安全漏洞會攻擊處理器層級的資料結構設定，藉此濫用推測性執行功能。「L1」是指 1 級資料快取
+這些 L1TF 安全漏洞會攻擊處理器層級的資料結構設定，藉此濫用推測性執行功能。 「L1」是指 1 級資料快取
 (L1D)，這是一種用於加快記憶體存取速度的小型核心資源。
 
 歡迎參閱 [ Google Cloud 網誌文章
@@ -1259,32 +1258,32 @@ PodSecurityPolicy 的 ` volumes ` 許可清單中省略 ` gitRepo ` 。
     
     
     apiVersion: v1
-        kind: Pod
-        metadata:
-          name: git-repo-example
-        spec:
-          initContainers:
-            # This container clones the desired git repo to the EmptyDir volume.
-            - name: git-clone
-              image: alpine/git # Any image with git will do
-              args:
-                - clone
-                - --single-branch
-                - --
-                - https://github.com/kubernetes/kubernetes # Your repo
-                - /repo # Put it in the volume
-              securityContext:
-                runAsUser: 1 # Any non-root user will do. Match to the workload.
-                allowPrivilegeEscalation: false
-                readOnlyRootFilesystem: true
-              volumeMounts:
-                - name: git-repo
-                  mountPath: /repo
-          containers:
-            ...
-          volumes:
+    kind: Pod
+    metadata:
+      name: git-repo-example
+    spec:
+      initContainers:
+        # This container clones the desired git repo to the EmptyDir volume.
+        - name: git-clone
+          image: alpine/git # Any image with git will do
+          args:
+            - clone
+            - --single-branch
+            - --
+            - https://github.com/kubernetes/kubernetes # Your repo
+            - /repo # Put it in the volume
+          securityContext:
+            runAsUser: 1 # Any non-root user will do. Match to the workload.
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+          volumeMounts:
             - name: git-repo
-              emptyDir: {}
+              mountPath: /repo
+      containers:
+        ...
+      volumes:
+        - name: git-repo
+          emptyDir: {}
 
 ####  解決這個安全漏洞的修補程式為何？
 
@@ -1301,12 +1300,12 @@ PodSecurityPolicy 的 ` volumes ` 許可清單中省略 ` gitRepo ` 。
 說明  |  嚴重性  |  附註  
 ---|---|---  
   
-我們最近在 Linux 核心中發現多個安全漏洞，這些安全漏洞可能會允許以未經授權程序來提升權限，或是觸發核心當機而阻斷服務。我們已知悉這些
+我們最近在 Linux 核心中發現多個安全漏洞，這些安全漏洞可能會允許以未經授權程序升級權限，或是觸發核心當機而阻斷服務。我們已知悉這些
 CVE，其標記分別為 [ CVE-2018-1000199 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2018-1000199) 、 [ CVE-2018-8897
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-8897) 及 [
 CVE-2018-1087 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1087)
-。所有 Kubernetes Engine 節點均會受到這些安全漏洞的影響，建議您按照下列步驟操作，以 [ 升級
+。 所有 Kubernetes Engine 節點均會受到這些安全漏洞的影響，建議您按照下列步驟操作，以 [ 升級
 ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
 container-cluster?hl=zh_tw) 至最新修補程式版本。
 
@@ -1326,7 +1325,7 @@ upgrades?hl=zh_tw) 功能，且並沒有進行手動升級的客戶，其節點�
 
 [ CVE-2018-1000199 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2018-1000199) ：這個安全漏洞會影響 Linux
-核心，允許未經授權的使用者或程序觸發系統核心當機，進而招致 DoS 攻擊或造成權限提升。這個安全漏洞的嚴重性為「高」，CVSS 為 7.8。
+核心，允許未經授權的使用者或程序觸發系統核心當機，進而招致 DoS 攻擊或造成權限升級。這個安全漏洞的嚴重性為「高」，CVSS 為 7.8。
 
 [ CVE-2018-8897 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2018-8897) ：這個安全漏洞會影響 Linux
@@ -1367,8 +1366,8 @@ container-cluster?hl=zh_tw) 節點。我們會在 3 月 16
 ](https://cloud.google.com/kubernetes-engine/docs/release-
 notes?hl=zh_tw#march-12-2018) 。
 
-如要進行升級，您必須先將主要執行個體升級至最新版本。這個修補程式將會在 Kubernetes 1.9.4-gke.1、Kubernetes
-1.8.9-gke.1 和 Kubernetes 1.7.14-gke.1 中發布。在 3 月 30
+如要進行升級，您必須先將主要執行個體升級至最新版本。Kubernetes 1.9.4-gke.1、Kubernetes 1.8.9-gke.1 和
+Kubernetes 1.7.14-gke.1 版本均包含了這個修補程式。在 3 月 30
 日，新的叢集將依預設使用修補的版本。如果您在此之前即已建立新的叢集，則必須指定叢集要使用的修補版本。
 
 如果您是已啟用 [ 節點自動升級 ](https://cloud.google.com/kubernetes-
