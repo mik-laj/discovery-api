@@ -18,6 +18,19 @@ Google Cloud의 최신 제품 업데이트를 확인할 수 있습니다.
 추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/pubsub-
 release-notes.xml `
 
+##  June 08, 2020
+
+**FEATURE:**
+
+Pub/Sub is now available in the ` asia-southeast2 ` region (Jakarta).
+
+**FEATURE:**
+
+Pub/Sub [ message filtering
+](https://cloud.google.com/pubsub/docs/filtering?hl=ko) is now available at
+the [ beta launch stage ](https://cloud.google.com/products/?hl=ko#product-
+launch-stages) .
+
 ##  May 26, 2020
 
 **FEATURE:**
