@@ -7,6 +7,17 @@
 추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/cloudvpn-
 release-notes.xml `
 
+##  June 08, 2020
+
+**FEATURE:**
+
+Cloud VPN is now available in [ region
+](https://cloud.google.com/compute/docs/regions-zones/?hl=ko#available) asia-
+southeast2 (Jakarta, Indonesia).
+
+Pricing is available on the [ Cloud VPN pricing page
+](https://cloud.google.com/vpn/pricing?hl=ko) .
+
 ##  April 20, 2020
 
 **FEATURE:**
