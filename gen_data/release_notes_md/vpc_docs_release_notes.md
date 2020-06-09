@@ -11,6 +11,14 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/vpc-release-notes.xml `
 
+##  June 08, 2020
+
+**FEATURE:**
+
+For auto mode VPC networks, added a new subnet ` 10.184.0.0/20 ` for the
+Jakarta ` asia-southeast2 ` region. For more information, see [ Auto mode IP
+ranges ](https://cloud.google.com/vpc/docs/vpc#ip-ranges) .
+
 ##  June 03, 2020
 
 **FEATURE:**
