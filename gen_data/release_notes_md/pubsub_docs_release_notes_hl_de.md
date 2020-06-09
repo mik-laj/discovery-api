@@ -21,6 +21,19 @@ Feedreader ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
 einfügen oder die Feed-URL direkt hinzufügen: `
 https://cloud.google.com/feeds/pubsub-release-notes.xml ` .
 
+##  June 08, 2020
+
+**FEATURE:**
+
+Pub/Sub is now available in the ` asia-southeast2 ` region (Jakarta).
+
+**FEATURE:**
+
+Pub/Sub [ message filtering
+](https://cloud.google.com/pubsub/docs/filtering?hl=de) is now available at
+the [ beta launch stage ](https://cloud.google.com/products/?hl=de#product-
+launch-stages) .
+
 ##  May 26, 2020
 
 **FEATURE:**
