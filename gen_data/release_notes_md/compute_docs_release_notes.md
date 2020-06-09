@@ -14,6 +14,41 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/compute-release-notes.xml `
 
+##  June 08, 2020
+
+**FEATURE:**
+
+The ` asia-southeast2 ` Jakarta, Indonesia region is now available to all
+projects and users. The zones in the ` asia-southeast2 ` region have [ E2 and
+N1 machine types ](https://cloud.google.com/compute/docs/machine-types) . See
+[ Regions and zones ](https://cloud.google.com/compute/docs/regions-zones) for
+more information.
+
+**FEATURE:**
+
+Enhancements to the pre-configured Cloud Monitoring Compute Engine **VM
+Instances** dashboard. Compute Engine cross-fleet metrics and detail views
+specific to CPU, Disk, Memory, and Network are now available. Use filters to
+narrow down the set of VMs being inspected, and use the time selector or in-
+chart time selection to change the time window. VMs with the Monitoring agent
+installed get detailed memory and disk analysis out of the box.
+
+##  June 05, 2020
+
+**FEATURE:**
+
+[ CPU overcommit on sole-tenant nodes
+](https://cloud.google.com/compute/docs/nodes/overcommitting-cpus-sole-tenant-
+vms) lets you overprovision sole-tenant node resources and schedule more VM
+CPUs on a sole-tenant node than are normally available. This feature is in
+**Beta** .
+
+**FEATURE:**
+
+[ New sole-tenant node types
+](https://cloud.google.com/compute/docs/nodes#node_types) are available in
+**Beta** .
+
 ##  June 01, 2020
 
 **FEATURE:**
