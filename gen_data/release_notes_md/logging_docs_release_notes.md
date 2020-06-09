@@ -124,12 +124,11 @@ For details, go to [ Partitioned tables
 
 **CHANGED:**
 
-Google Kubernetes Engine (GKE) version 1.15, which is now [ generally
-available ](https://cloud.google.com/kubernetes-engine/docs/release-
-notes#december_13_2019) , drops support for GKE versions 1.12 and earlier. As
-a result, the beta version of Stackdriver Kubernetes Engine Monitoring is no
-longer supported. If your GKE clusters are running version 1.12 or earlier,
-then you must upgrade them as soon as possible.
+Google Kubernetes Engine (GKE) version 1.15, which is now generally available,
+drops support for GKE versions 1.12 and earlier. As a result, the beta version
+of Stackdriver Kubernetes Engine Monitoring is no longer supported. If your
+GKE clusters are running version 1.12 or earlier, then you must upgrade them
+as soon as possible.
 
 ##  December 11, 2019
 
@@ -918,8 +917,8 @@ Cloud SDK is now named ` gcloud beta logging ` .
 
 **FEATURE:**
 
-The [ Cloud Logging API ](https://cloud.google.com/logging/docs/api/ref/rest/)
-and [ command-line interface
+The [ Cloud Logging API ](https://cloud.google.com/logging/docs/reference/api-
+overview) and [ command-line interface
 ](https://cloud.google.com/logging/docs/api/gcloud-logging) now support
 project sinks. A project sink can export log entries from any combination of
 logs, based on [ advanced logs filters
