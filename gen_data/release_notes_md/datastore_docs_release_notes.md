@@ -12,6 +12,13 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/datastore-release-notes.xml `
 
+##  June 08, 2020
+
+**FEATURE:**
+
+Support for the [ ` asia-southeast2 ` (Jakarta)
+](https://cloud.google.com/datastore/docs/locations) .
+
 ##  April 20, 2020
 
 **FEATURE:**
