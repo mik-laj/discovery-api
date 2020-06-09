@@ -1,7 +1,10 @@
 #  출시 노트
 
-이 페이지에는 Container Registry에 대한 프로덕션 업데이트가 정리되어 있습니다. 이 페이지에서는 새로운 기능이나 업데이트된
-기능, 버그 수정, 알려진 문제, 지원 중단된 기능에 대한 공지 사항을 정기적으로 확인할 수 있습니다.
+이 페이지에는 Container Registry의 프로덕션 업데이트가 정리되어 있습니다. 이 페이지에서는 새로운 기능이나 업데이트된 기능,
+버그 수정, 알려진 문제, 지원 중단된 기능에 관한 공지 사항을 정기적으로 확인할 수 있습니다.
+
+[ Google Cloud 출시 노트 ](https://cloud.google.com/release-notes?hl=ko) 페이지에서 모든
+Google Cloud의 최신 제품 업데이트를 확인할 수 있습니다.
 
 최신 제품 업데이트를 받으려면 [ 피드 리더
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) 에 이 페이지의 URL을
