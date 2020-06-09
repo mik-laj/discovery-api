@@ -12,6 +12,252 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  June 08, 2020
+
+**AI Platform Prediction**
+
+**FIXED:**
+
+The [ **Total latency** chart ](https://cloud.google.com/ai-
+platform/prediction/docs/monitor-prediction) on the **Version details** page
+of the Google Cloud Console was reporting incorrect information. This chart
+has now been fixed.
+
+In some cases, this adjustment might cause latencies to appear higher than
+they were previously. However, the latency of models has not changed.
+
+This affects both Compute Engine (N1) machine types and legacy (MLS1) machine
+types.
+
+**BigQuery**
+
+**CHANGED:**
+
+BigQuery is now available in the [ Jakarta (asia-southeast2) region
+](https://cloud.google.com/bigquery/docs/locations#supported_regions) .
+
+**BigQuery BI Engine**
+
+**CHANGED:**
+
+BigQuery BI Engine is now available in the [ Jakarta (asia-southeast2) region
+](https://cloud.google.com/bi-engine/docs/locations#supported_regions) .
+
+**BigQuery Data Transfer Service**
+
+**CHANGED:**
+
+BigQuery Data Transfer Service is now available in the [ Jakarta (asia-
+southeast2) region ](https://cloud.google.com/bigquery-
+transfer/docs/locations#supported_regions) .
+
+**BigQuery ML**
+
+**CHANGED:**
+
+BigQuery ML is now available in the [ Jakarta (asia-southeast2) region
+](https://cloud.google.com/bigquery-ml/docs/locations#supported_regions) .
+
+**Cloud Bigtable**
+
+**FEATURE:**
+
+Cloud Bigtable is now available in the [ ` asia-southeast2 ` (Jakarta) region
+](https://cloud.google.com/bigtable/docs/locations) .
+
+**Cloud Key Management Service**
+
+**FEATURE:**
+
+Cloud KMS and Cloud EKM resources are available in the ` asia-southeast2 `
+region. Cloud HSM resources are **not** available in this region.
+
+For information about which [ Cloud Locations
+](https://cloud.google.com/about/locations/) are supported by Cloud KMS, Cloud
+HSM, and Cloud EKM, see the [ Cloud KMS regional locations
+](https://cloud.google.com/kms/docs/locations#regional) .
+
+**Cloud Monitoring**
+
+**FEATURE:**
+
+Enhancements to the pre-configured Compute Engine **VM Instances** dashboard.
+Compute Engine cross-fleet metrics and detail views specific to CPU, Disk,
+Memory, and Network are now available. Use filters to narrow down the set of
+VMs being inspected, and use the time selector or in-chart time selection to
+change the time window. VMs with the Monitoring agent installed get detailed
+memory and disk analysis out of the box.
+
+**Cloud SQL for MySQL**
+
+**FEATURE:**
+
+Support for [ asia-southeast2
+](https://cloud.google.com/sql/docs/mysql/locations) region (Jakarta).
+
+**Cloud SQL for PostgreSQL**
+
+**FEATURE:**
+
+Support for [ asia-southeast2
+](https://cloud.google.com/sql/docs/mysql/locations) region (Jakarta).
+
+**Cloud SQL for SQL Server**
+
+**FEATURE:**
+
+Support for [ asia-southeast2
+](https://cloud.google.com/sql/docs/mysql/locations) region (Jakarta).
+
+**Cloud Spanner**
+
+**FEATURE:**
+
+A second [ multi-region instance configuration
+](https://cloud.google.com/spanner/docs/instances#available-configurations-
+multi-region) is now available in Europe - ` eur5 ` (London/Belgium).
+
+**FEATURE:**
+
+A [ multi-region instance configuration
+](https://cloud.google.com/spanner/docs/instances#available-configurations-
+multi-region) is now available in Asia - ` asia1 ` (Tokyo/Osaka).
+
+**FEATURE:**
+
+Cloud Spanner [ regional instances
+](https://cloud.google.com/spanner/docs/instances#available-configurations-
+regional) can now be created in Jakarta (asia-southeast2).
+
+**Cloud Storage**
+
+**FEATURE:**
+
+Jakarta region ( ` asia-southeast2 ` ) launched.
+
+  * New [ location ](https://cloud.google.com/storage/docs/locations) for storing your data. 
+
+**Cloud VPN**
+
+**FEATURE:**
+
+Cloud VPN is now available in [ region
+](https://cloud.google.com/compute/docs/regions-zones/#available) asia-
+southeast2 (Jakarta, Indonesia).
+
+Pricing is available on the [ Cloud VPN pricing page
+](https://cloud.google.com/vpn/pricing) .
+
+**Compute Engine**
+
+**FEATURE:**
+
+The ` asia-southeast2 ` Jakarta, Indonesia region is now available to all
+projects and users. The zones in the ` asia-southeast2 ` region have [ E2 and
+N1 machine types ](https://cloud.google.com/compute/docs/machine-types) . See
+[ Regions and zones ](https://cloud.google.com/compute/docs/regions-zones) for
+more information.
+
+**FEATURE:**
+
+Enhancements to the pre-configured Cloud Monitoring Compute Engine **VM
+Instances** dashboard. Compute Engine cross-fleet metrics and detail views
+specific to CPU, Disk, Memory, and Network are now available. Use filters to
+narrow down the set of VMs being inspected, and use the time selector or in-
+chart time selection to change the time window. VMs with the Monitoring agent
+installed get detailed memory and disk analysis out of the box.
+
+**Dataflow**
+
+**FEATURE:**
+
+Dataflow is now able to use workers in zones in the ` asia-southeast2 ` region
+(Jakarta).
+
+**Dataproc**
+
+**FEATURE:**
+
+Dataproc is now available in the ` asia-southeast2 ` [ region
+](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available)
+(Jakarta).
+
+**Datastore**
+
+**FEATURE:**
+
+Support for the [ ` asia-southeast2 ` (Jakarta)
+](https://cloud.google.com/datastore/docs/locations) .
+
+**Filestore**
+
+**FEATURE:**
+
+[ **High Scale SSD** ](https://cloud.google.com/filestore/docs/high-scale)
+tier released to beta. This new service tier for Filestore provides greater
+performance and allows you to grow and shrink capacity between 60-320 TB.
+
+**FEATURE:**
+
+[ **IP-based access control**
+](https://cloud.google.com/filestore/docs/creating-instances#configuring_ip-
+based_access_control) released to beta. This feature allows you to control
+access to file shares by the IP addresses of clients.
+
+**CHANGED:**
+
+Filestore service tier name change:
+
+  * **Standard** tier is now called **Basic HDD** . 
+  * **Premium** tier is now called **Basic SSD** . 
+  * You can still use the old tier names and they will continue to be supported. 
+
+This change may affect you if you use:  
+* The ` gcloud beta filestore ` command line tool (beta). * The Filestore beta API (v1beta1). * The Cloud Console in combination with the Filestore API. * The Cloud Console in combination with the ` gcloud ` tool. 
+
+For details, see [ New service tier names
+](https://cloud.google.com/filestore/docs/high-scale#new_service_tier_names) .
+
+**FEATURE:**
+
+Filestore is available in the ` asia-southeast2 ` (Jakarta) region. See [
+Regions and zones ](https://cloud.google.com/filestore/docs/regions) .
+
+**Firestore**
+
+**FEATURE:**
+
+Support for the [ ` asia-southeast2 ` (Jakarta)
+](https://cloud.google.com/firestore/docs/locations) .
+
+**Memorystore for Redis**
+
+**FEATURE:**
+
+Added new Memorystore for Redis [ region
+](https://cloud.google.com/memorystore/docs/redis/regions) : Jakarta ( ` asia-
+southeast2 ` ).
+
+**Pub/Sub**
+
+**FEATURE:**
+
+Pub/Sub is now available in the ` asia-southeast2 ` region (Jakarta).
+
+**FEATURE:**
+
+Pub/Sub [ message filtering ](https://cloud.google.com/pubsub/docs/filtering)
+is now available at the [ beta launch stage
+](https://cloud.google.com/products/#product-launch-stages) .
+
+**Virtual Private Cloud**
+
+**FEATURE:**
+
+For auto mode VPC networks, added a new subnet ` 10.184.0.0/20 ` for the
+Jakarta ` asia-southeast2 ` region. For more information, see [ Auto mode IP
+ranges ](https://cloud.google.com/vpc/docs/vpc#ip-ranges) .
+
 ##  June 05, 2020
 
 **Cloud Functions**
@@ -34,6 +280,22 @@ explore this feature, you won't be charged for extended retention of logs
 until March 31, 2021. To learn more, see the [ Logging pricing section on the
 Pricing for Google Cloud's operations suite page
 ](https://cloud.google.com/stackdriver/pricing#logging-costs) .
+
+**Compute Engine**
+
+**FEATURE:**
+
+[ CPU overcommit on sole-tenant nodes
+](https://cloud.google.com/compute/docs/nodes/overcommitting-cpus-sole-tenant-
+vms) lets you overprovision sole-tenant node resources and schedule more VM
+CPUs on a sole-tenant node than are normally available. This feature is in
+**Beta** .
+
+**FEATURE:**
+
+[ New sole-tenant node types
+](https://cloud.google.com/compute/docs/nodes#node_types) are available in
+**Beta** .
 
 ##  June 04, 2020
 
@@ -1097,6 +1359,8 @@ Filestore instances.
 **AI Platform Deep Learning VM Image**
 
 **FEATURE:**
+
+**M48 release**
 
 TensorFlow 2.2 images have been added. The new TensorFlow 2.2 image families
 are ` tf2-2-2-cpu ` and ` tf2-2-2-cu101 ` . See the [ available image families
