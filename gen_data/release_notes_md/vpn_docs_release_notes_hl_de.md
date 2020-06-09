@@ -7,6 +7,17 @@ Feedreader ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
 einfügen oder die Feed-URL direkt hinzufügen: `
 https://cloud.google.com/feeds/cloudvpn-release-notes.xml `
 
+##  June 08, 2020
+
+**FEATURE:**
+
+Cloud VPN is now available in [ region
+](https://cloud.google.com/compute/docs/regions-zones/?hl=de#available) asia-
+southeast2 (Jakarta, Indonesia).
+
+Pricing is available on the [ Cloud VPN pricing page
+](https://cloud.google.com/vpn/pricing?hl=de) .
+
 ##  April 20, 2020
 
 **FEATURE:**
