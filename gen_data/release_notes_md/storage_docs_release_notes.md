@@ -12,6 +12,14 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/storage-release-notes.xml `
 
+##  June 08, 2020
+
+**FEATURE:**
+
+Jakarta region ( ` asia-southeast2 ` ) launched.
+
+  * New [ location ](https://cloud.google.com/storage/docs/locations) for storing your data. 
+
 ##  May 18, 2020
 
 **CHANGED:**
