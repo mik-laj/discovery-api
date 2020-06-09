@@ -19,6 +19,19 @@ page à votre [ lecteur de flux
 de flux directement : ` https://cloud.google.com/feeds/cloud-pub-sub-release-
 notes.xml `
 
+##  June 08, 2020
+
+**FEATURE:**
+
+Pub/Sub is now available in the ` asia-southeast2 ` region (Jakarta).
+
+**FEATURE:**
+
+Pub/Sub [ message filtering
+](https://cloud.google.com/pubsub/docs/filtering?hl=fr) is now available at
+the [ beta launch stage ](https://cloud.google.com/products/?hl=fr#product-
+launch-stages) .
+
 ##  May 26, 2020
 
 **FEATURE:**
