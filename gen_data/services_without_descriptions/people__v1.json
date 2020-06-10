@@ -308,6 +308,40 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/contacts"
                     ]
+                },
+                "list": {
+                    "flatPath": "v1/otherContacts",
+                    "httpMethod": "GET",
+                    "id": "people.otherContacts.list",
+                    "parameterOrder": [],
+                    "parameters": {
+                        "pageSize": {
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "readMask": {
+                            "format": "google-fieldmask",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "requestSyncToken": {
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "syncToken": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/otherContacts",
+                    "response": {
+                        "$ref": "ListOtherContactsResponse"
+                    }
                 }
             }
         },
@@ -318,7 +352,23 @@
                     "httpMethod": "POST",
                     "id": "people.people.createContact",
                     "parameterOrder": [],
-                    "parameters": {},
+                    "parameters": {
+                        "personFields": {
+                            "format": "google-fieldmask",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "sources": {
+                            "enum": [
+                                "READ_SOURCE_TYPE_UNSPECIFIED",
+                                "READ_SOURCE_TYPE_PROFILE",
+                                "READ_SOURCE_TYPE_CONTACT"
+                            ],
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
+                        }
+                    },
                     "path": "v1/people:createContact",
                     "request": {
                         "$ref": "Person"
@@ -371,6 +421,16 @@
                             "pattern": "^people/[^/]+$",
                             "required": true,
                             "type": "string"
+                        },
+                        "sources": {
+                            "enum": [
+                                "READ_SOURCE_TYPE_UNSPECIFIED",
+                                "READ_SOURCE_TYPE_PROFILE",
+                                "READ_SOURCE_TYPE_CONTACT"
+                            ],
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
                         }
                     },
                     "path": "v1/{+resourceName}:deleteContactPhoto",
@@ -403,6 +463,16 @@
                             "location": "path",
                             "pattern": "^people/[^/]+$",
                             "required": true,
+                            "type": "string"
+                        },
+                        "sources": {
+                            "enum": [
+                                "READ_SOURCE_TYPE_UNSPECIFIED",
+                                "READ_SOURCE_TYPE_PROFILE",
+                                "READ_SOURCE_TYPE_CONTACT"
+                            ],
+                            "location": "query",
+                            "repeated": true,
                             "type": "string"
                         }
                     },
@@ -444,6 +514,16 @@
                             "location": "query",
                             "repeated": true,
                             "type": "string"
+                        },
+                        "sources": {
+                            "enum": [
+                                "READ_SOURCE_TYPE_UNSPECIFIED",
+                                "READ_SOURCE_TYPE_PROFILE",
+                                "READ_SOURCE_TYPE_CONTACT"
+                            ],
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
                         }
                     },
                     "path": "v1/people:batchGet",
@@ -472,10 +552,25 @@
                         "resourceName"
                     ],
                     "parameters": {
+                        "personFields": {
+                            "format": "google-fieldmask",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "resourceName": {
                             "location": "path",
                             "pattern": "^people/[^/]+$",
                             "required": true,
+                            "type": "string"
+                        },
+                        "sources": {
+                            "enum": [
+                                "READ_SOURCE_TYPE_UNSPECIFIED",
+                                "READ_SOURCE_TYPE_PROFILE",
+                                "READ_SOURCE_TYPE_CONTACT"
+                            ],
+                            "location": "query",
+                            "repeated": true,
                             "type": "string"
                         },
                         "updatePersonFields": {
@@ -572,6 +667,16 @@
                                     "location": "query",
                                     "type": "string"
                                 },
+                                "sources": {
+                                    "enum": [
+                                        "READ_SOURCE_TYPE_UNSPECIFIED",
+                                        "READ_SOURCE_TYPE_PROFILE",
+                                        "READ_SOURCE_TYPE_CONTACT"
+                                    ],
+                                    "location": "query",
+                                    "repeated": true,
+                                    "type": "string"
+                                },
                                 "syncToken": {
                                     "location": "query",
                                     "type": "string"
@@ -586,44 +691,6 @@
                                 "https://www.googleapis.com/auth/contacts.readonly"
                             ]
                         }
-                    }
-                }
-            }
-        },
-        "v1": {
-            "methods": {
-                "otherContacts": {
-                    "flatPath": "v1/otherContacts",
-                    "httpMethod": "POST",
-                    "id": "people.otherContacts",
-                    "parameterOrder": [],
-                    "parameters": {
-                        "pageSize": {
-                            "format": "int32",
-                            "location": "query",
-                            "type": "integer"
-                        },
-                        "pageToken": {
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "readMask": {
-                            "format": "google-fieldmask",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "requestSyncToken": {
-                            "location": "query",
-                            "type": "boolean"
-                        },
-                        "syncToken": {
-                            "location": "query",
-                            "type": "string"
-                        }
-                    },
-                    "path": "v1/otherContacts",
-                    "response": {
-                        "$ref": "ListOtherContactsResponse"
                     }
                 }
             }
@@ -839,6 +906,17 @@
                 "readMask": {
                     "format": "google-fieldmask",
                     "type": "string"
+                },
+                "sources": {
+                    "items": {
+                        "enum": [
+                            "READ_SOURCE_TYPE_UNSPECIFIED",
+                            "READ_SOURCE_TYPE_PROFILE",
+                            "READ_SOURCE_TYPE_CONTACT"
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -1776,6 +1854,17 @@
                 "photoBytes": {
                     "format": "byte",
                     "type": "string"
+                },
+                "sources": {
+                    "items": {
+                        "enum": [
+                            "READ_SOURCE_TYPE_UNSPECIFIED",
+                            "READ_SOURCE_TYPE_PROFILE",
+                            "READ_SOURCE_TYPE_CONTACT"
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
