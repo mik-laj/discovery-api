@@ -18,8 +18,12 @@ URL directly: ` https://cloud.google.com/feeds/runanthos-release-notes.xml `
 
 Cloud Run for Anthos on Google Cloud version [ 0.13.2-gke.3
 ](https://github.com/knative/serving/releases/tag/v0.13.2) is now available
-for following cluster versions (and greater): * 1.15.11-gke.9 * 1.16.5-gke.2 *
-1.16.6-gke.11 * 1.16.8-gke.7
+for following cluster versions (and greater):
+
+  * 1.15.11-gke.9 
+  * 1.16.5-gke.2 
+  * 1.16.6-gke.11 
+  * 1.16.8-gke.7 
 
 ##  April 22, 2020
 
@@ -27,8 +31,12 @@ for following cluster versions (and greater): * 1.15.11-gke.9 * 1.16.5-gke.2 *
 
 Cloud Run for Anthos now support [ Private Clusters
 ](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-
-concept) for following cluster versions (and greater): * 1.15.11-gke.9 *
-1.16.5-gke.2 * 1.16.6-gke.11 * 1.16.8-gke.7
+concept) for following cluster versions (and greater):
+
+  * 1.15.11-gke.9 
+  * 1.16.5-gke.2 
+  * 1.16.6-gke.11 
+  * 1.16.8-gke.7 
 
 ##  March 13, 2020
 
