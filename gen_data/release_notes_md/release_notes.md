@@ -12,6 +12,16 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  June 09, 2020
+
+**BigQuery**
+
+**FEATURE:**
+
+Clustering for non-partitioned tables is now supported. For more information
+about clustered tables, see [ Introduction to clustered tables
+](https://cloud.google.com/bigquery/docs/clustered-tables) .
+
 ##  June 08, 2020
 
 **AI Platform Prediction**
@@ -1920,50 +1930,4 @@ versions on the Regular and Rapid [ channels
 
 In a future update, Container Threat Detection will support version 1.14 and
 the Stable channel.
-
-##  May 11, 2020
-
-**App Engine standard environment Python**
-
-**CHANGED:**
-
-Updated Python SDK to version 1.9.91.
-
-**Cloud Logging**
-
-**FEATURE:**
-
-You can now use regular expressions to query your logs data and create
-filters. For more information, go to [ Using regular expressions
-](https://cloud.google.com/logging/docs/view/logging-query-language#regular-
-expressions) .
-
-**Cloud SQL for PostgreSQL**
-
-**FEATURE:**
-
-Cloud SQL has expanded support for PostgreSQL extensions. Eight additional
-PostgreSQL extensions are now available:
-
-  * pageinspect 
-  * pgfincore 
-  * pg_freespacemap 
-  * pg_repack 
-  * pg_visibility 
-  * PL/Proxy 
-  * postgres_fdw 
-  * postgresql-hll 
-
-For information about these newly-added extensions, see [ PostgreSQL
-extensions ](https://cloud.google.com/sql/docs/postgres/extensions) .
-
-**Compute Engine**
-
-**FEATURE:**
-
-You can identify idle persistent disk resources by using [ idle persistent
-disk recommendations ](https://cloud.google.com/compute/docs/disks/viewing-
-and-applying-idle-pd-recommendations) . Following these recommendations will
-help reduce unused resources and reduce your compute bill. This feature is
-**Generally available** .
 
