@@ -40,6 +40,7 @@ cluster using a Container-Optimized OS image.
 
 ###  LTS Image Families
 
+  * [ cos-81-lts ](/container-optimized-os/docs/release-notes/m81)
   * [ cos-77-lts ](/container-optimized-os/docs/release-notes/m77)
   * [ cos-73-lts ](/container-optimized-os/docs/release-notes/m73)
 
