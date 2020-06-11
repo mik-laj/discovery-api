@@ -10,6 +10,12 @@ página a tu [ lector de feeds
 directamente la URL del feed: ` https://cloud.google.com/feeds/gaeflex-net-
 release-notes.xml `
 
+##  June 08, 2020
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
 ##  May 14, 2020
 
 **FEATURE:**
