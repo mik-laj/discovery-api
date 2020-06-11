@@ -13,6 +13,12 @@ versions.php) ため、新しいアプリでは [ PHP 7 ランタイム
 URL ディレクトリ ` https://cloud.google.com/feeds/gaestd-php-release-notes.xml `
 を直接追加します。
 
+##  June 08, 2020
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
 ##  May 14, 2020
 
 **FEATURE:**
