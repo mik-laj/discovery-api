@@ -8,6 +8,12 @@ Google Cloud의 최신 제품 업데이트를 확인할 수 있습니다.
 추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/gaestd-php-
 release-notes.xml `
 
+##  June 08, 2020
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
 ##  May 14, 2020
 
 **FEATURE:**
