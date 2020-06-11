@@ -9,6 +9,12 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/gaeflex-ruby-release-notes.xml
 `
 
+##  June 08, 2020
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
 ##  May 14, 2020
 
 **FEATURE:**
