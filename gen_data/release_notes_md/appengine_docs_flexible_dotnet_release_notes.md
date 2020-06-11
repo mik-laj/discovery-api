@@ -8,6 +8,12 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gaeflex-net-release-notes.xml `
 
+##  June 08, 2020
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
 ##  May 14, 2020
 
 **FEATURE:**
