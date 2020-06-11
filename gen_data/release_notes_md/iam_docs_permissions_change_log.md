@@ -19,6 +19,200 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloud-iam-permissions-change-
 log.xml `
 
+##  Upcoming Cloud IAM changes for the week of 2020-06-08
+
+Service  |  Change  |  Description  
+---|---|---  
+Customer Usage Data Processing API  |  Now GA  |
+
+The role ` roles/dataprocessing.admin ` (Data Processing Controls Resource
+Admin) is now GA.  
+  
+Customer Usage Data Processing API  |  Now GA  |
+
+The role ` roles/dataprocessing.iamAccessHistoryExporter ` (Data Processing
+IAM Access History Exporter) is now GA.  
+  
+Cloud Data Loss Prevention  |  Now GA  |
+
+The role ` roles/dlp.inspectFindingsReader ` (DLP Inspect Findings Reader) is
+now GA.  
+  
+GKE Hub  |  Now GA  |
+
+The role ` roles/gkehub.admin ` (GKE Hub Admin) is now GA.  
+  
+GKE Hub  |  Now GA  |
+
+The role ` roles/gkehub.connect ` (GKE Hub Connection Agent) is now GA.  
+  
+GKE Hub  |  Now GA  |
+
+The role ` roles/gkehub.viewer ` (GKE Hub Viewer) is now GA.  
+  
+Cloud Life Sciences  |  Role Updated  |
+
+The following permissions have been added to the role `
+roles/lifesciences.viewer ` (Cloud Life Sciences Viewer):
+
+` resourcemanager.projects.get `  
+` resourcemanager.projects.list `  
+  
+Cloud Monitoring  |  Now GA  |
+
+The role ` roles/monitoring.dashboardEditor ` (Monitoring Dashboard
+Configuration Editor) is now GA.  
+  
+Cloud Monitoring  |  Now GA  |
+
+The role ` roles/monitoring.dashboardViewer ` (Monitoring Dashboard
+Configuration Viewer) is now GA.  
+  
+Apigee Connect  |  Added  |  ` apigeeconnect.connections.list `  
+` apigeeconnect.endpoints.connect `  
+  
+Apigee Connect  |  Supported In Custom Roles  |  `
+apigeeconnect.connections.list `  
+` apigeeconnect.endpoints.connect `  
+  
+Service Usage  |  Added  |  ` apikeys.keys.create `  
+` apikeys.keys.delete `  
+` apikeys.keys.get `  
+` apikeys.keys.list `  
+` apikeys.keys.lookup `  
+` apikeys.keys.update `  
+  
+Recommendations AI  |  Supported In Custom Roles  |  `
+automlrecommendations.events.create `  
+  
+BigQuery  |  Added  |  ` bigquery.tables.getIamPolicy `  
+` bigquery.tables.setIamPolicy `  
+  
+BigQuery  |  Supported In Custom Roles  |  ` bigquery.tables.getIamPolicy `  
+` bigquery.tables.setIamPolicy `  
+  
+Cloud Asset Inventory  |  Added  |  `
+cloudasset.assets.exportCloudkmsImportJobs `  
+  
+Cloud Asset Inventory  |  Supported In Custom Roles  |  `
+cloudasset.assets.exportCloudkmsImportJobs `  
+  
+Cloud Asset Inventory  |  Now GA  |  ` cloudasset.assets.searchAllIamPolicies
+`  
+` cloudasset.assets.searchAllResources `  
+  
+Compute Engine  |  Added  |  ` compute.globalPublicDelegatedPrefixes.create `  
+` compute.globalPublicDelegatedPrefixes.delete `  
+` compute.globalPublicDelegatedPrefixes.get `  
+` compute.globalPublicDelegatedPrefixes.list `  
+` compute.globalPublicDelegatedPrefixes.update `  
+` compute.globalPublicDelegatedPrefixes.updatePolicy `  
+` compute.globalPublicDelegatedPrefixes.use `  
+` compute.publicAdvertisedPrefixes.create `  
+` compute.publicAdvertisedPrefixes.delete `  
+` compute.publicAdvertisedPrefixes.get `  
+` compute.publicAdvertisedPrefixes.list `  
+` compute.publicAdvertisedPrefixes.update `  
+` compute.publicAdvertisedPrefixes.updatePolicy `  
+` compute.publicAdvertisedPrefixes.use `  
+` compute.publicDelegatedPrefixes.create `  
+` compute.publicDelegatedPrefixes.delete `  
+` compute.publicDelegatedPrefixes.get `  
+` compute.publicDelegatedPrefixes.list `  
+` compute.publicDelegatedPrefixes.update `  
+` compute.publicDelegatedPrefixes.updatePolicy `  
+` compute.publicDelegatedPrefixes.use `  
+  
+Compute Engine  |  Supported In Custom Roles  |  `
+compute.globalPublicDelegatedPrefixes.create `  
+` compute.globalPublicDelegatedPrefixes.delete `  
+` compute.globalPublicDelegatedPrefixes.get `  
+` compute.globalPublicDelegatedPrefixes.list `  
+` compute.globalPublicDelegatedPrefixes.update `  
+` compute.globalPublicDelegatedPrefixes.updatePolicy `  
+` compute.globalPublicDelegatedPrefixes.use `  
+` compute.publicAdvertisedPrefixes.create `  
+` compute.publicAdvertisedPrefixes.delete `  
+` compute.publicAdvertisedPrefixes.get `  
+` compute.publicAdvertisedPrefixes.list `  
+` compute.publicAdvertisedPrefixes.update `  
+` compute.publicAdvertisedPrefixes.updatePolicy `  
+` compute.publicAdvertisedPrefixes.use `  
+` compute.publicDelegatedPrefixes.create `  
+` compute.publicDelegatedPrefixes.delete `  
+` compute.publicDelegatedPrefixes.get `  
+` compute.publicDelegatedPrefixes.list `  
+` compute.publicDelegatedPrefixes.update `  
+` compute.publicDelegatedPrefixes.updatePolicy `  
+` compute.publicDelegatedPrefixes.use `  
+  
+Cloud Data Fusion  |  Added  |  ` datafusion.instances.runtime `  
+  
+Customer Usage Data Processing API  |  Now GA  |  `
+dataprocessing.featurecontrols.list `  
+` dataprocessing.featurecontrols.update `  
+` dataprocessing.groupcontrols.list `  
+` dataprocessing.groupcontrols.update `  
+  
+Cloud Data Loss Prevention  |  Added  |  ` dlp.inspectFindings.list `  
+` dlp.jobTriggers.hybridInspect `  
+` dlp.jobs.hybridInspect `  
+  
+Cloud Data Loss Prevention  |  Now GA  |  ` dlp.inspectFindings.list `  
+` dlp.jobTriggers.hybridInspect `  
+` dlp.jobs.hybridInspect `  
+  
+GKE Hub  |  Now GA  |  ` gkehub.endpoints.connect `  
+` gkehub.locations.get `  
+` gkehub.locations.list `  
+` gkehub.memberships.create `  
+` gkehub.memberships.delete `  
+` gkehub.memberships.generateConnectManifest `  
+` gkehub.memberships.get `  
+` gkehub.memberships.getIamPolicy `  
+` gkehub.memberships.list `  
+` gkehub.memberships.setIamPolicy `  
+` gkehub.memberships.update `  
+` gkehub.operations.cancel `  
+` gkehub.operations.get `  
+` gkehub.operations.list `  
+  
+Cloud Healthcare API  |  Added  |  `
+healthcare.fhirResources.translateConceptMap `  
+  
+Cloud Healthcare API  |  Supported In Custom Roles  |  `
+healthcare.fhirResources.translateConceptMap `  
+  
+Cloud Healthcare API  |  Now GA  |  `
+healthcare.fhirResources.translateConceptMap `  
+  
+Recommender  |  Added  |  `
+recommender.computeDiskIdleResourceRecommendations.get `  
+` recommender.computeDiskIdleResourceRecommendations.list `  
+` recommender.computeDiskIdleResourceRecommendations.update `  
+  
+Recommender  |  Supported In Custom Roles  |  `
+recommender.computeDiskIdleResourceRecommendations.get `  
+` recommender.computeDiskIdleResourceRecommendations.list `  
+` recommender.computeDiskIdleResourceRecommendations.update `  
+  
+Recommender  |  Now GA  |  `
+recommender.computeDiskIdleResourceRecommendations.get `  
+` recommender.computeDiskIdleResourceRecommendations.list `  
+` recommender.computeDiskIdleResourceRecommendations.update `  
+  
+  
+##  Cloud IAM changes as of 2020-05-22
+
+Service  |  Change  |  Description  
+---|---|---  
+Primitive Role  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/owner ` (Owner):
+
+` apigee.appkeys.create `  
+  
+  
 ##  Cloud IAM changes as of 2020-03-27
 
 Service  |  Change  |  Description  
