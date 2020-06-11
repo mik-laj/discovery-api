@@ -12,6 +12,12 @@ will be deprecated on July 31, 2020. See also [ Python 2 Sunset
 ](https://cloud.google.com/python/docs/python2-sunset/) and [ Using Python 3
 ](https://cloud.google.com/sdk/gcloud/reference/topic/startup) .
 
+##  296.0.1 (2020-06-10)
+
+###  Anthos
+
+  * Fixed blocking bug in ` anthos auth login ` command. 
+
 ##  296.0.0 (2020-06-09)
 
 ###  Cloud SDK
