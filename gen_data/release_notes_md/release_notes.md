@@ -12,6 +12,16 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  June 10, 2020
+
+**Cloud CDN**
+
+**FEATURE:**
+
+HTTP(S) Load Balancing with [ Cloud CDN logging
+](https://cloud.google.com/cdn/docs/logging) is available in **General
+Availability** .
+
 ##  June 09, 2020
 
 **BigQuery**
@@ -21,6 +31,13 @@ URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 Clustering for non-partitioned tables is now supported. For more information
 about clustered tables, see [ Introduction to clustered tables
 ](https://cloud.google.com/bigquery/docs/clustered-tables) .
+
+**Cloud Run**
+
+**FEATURE:**
+
+Export a Cloud Run service to a YAML file with ` gcloud run services describe
+SERVICE --format export `
 
 ##  June 08, 2020
 
@@ -38,6 +55,94 @@ they were previously. However, the latency of models has not changed.
 
 This affects both Compute Engine (N1) machine types and legacy (MLS1) machine
 types.
+
+**App Engine flexible environment .NET**
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
+**App Engine flexible environment Go**
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
+**App Engine flexible environment Java**
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
+**App Engine flexible environment Node.js**
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
+**App Engine flexible environment PHP**
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
+**App Engine flexible environment Ruby**
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
+**App Engine standard environment Go**
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
+**App Engine standard environment Java**
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
+**App Engine standard environment Node.js**
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
+**App Engine standard environment PHP**
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
+**App Engine standard environment Python**
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
+**App Engine standard environment Ruby**
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
 
 **BigQuery**
 
@@ -1833,101 +1938,4 @@ for Memorystore for Redis.
 support for the following integration:
 
   * [ Memorystore for Redis ](https://cloud.google.com/memorystore/docs/redis)
-
-##  May 12, 2020
-
-**AI Platform Deep Learning VM Image**
-
-**FIXED:**
-
-**M47 release**
-
-Fixed an OS login issue under single user mode for a user external to an
-organization.
-
-Fixed a git extensions plugin issue in TensorFlow 2 images.
-
-**Anthos Service Mesh**
-
-**FIXED:**
-
-1.4.9-asm.1
-
-Fixes the security issue, CVE-2020-10739, with the same fixes as [ OSS Istio
-1.4.9 ](https://istio.io/news/releases/1.4.x/announcing-1.4.9/) . See [ ISTIO-
-SECURITY-2020-005 ](https://istio.io/news/security/istio-security-2020-005)
-for more information.
-
-**BigQuery**
-
-**CHANGED:**
-
-Updated versions of [ Magnitude Simba ODBC
-](https://cloud.google.com/bigquery/providers/simba-drivers/) drivers have
-been released.
-
-**Cloud Profiler**
-
-**CHANGED:**
-
-The Cloud Profiler Python agent is now generally available. See [ Profiling
-Python applications ](https://cloud.google.com/profiler/docs/profiling-python)
-for information on configuring your Python application.
-
-**Cloud TPU**
-
-**CHANGED:**
-
-Cloud TPU currently supports TensorFlow version 1.15.2. See the [ Release
-Notes ](https://github.com/tensorflow/tensorflow/releases/tag/v1.15.2) .
-
-TensorFlow 1.15 supported Python 2, but that support has been discontinued
-with TensorFlow 1.15.2.
-
-**Compute Engine**
-
-**FEATURE:**
-
-Automatically manage the size of sole-tenant node groups with the [ sole-
-tenant node group autoscaler
-](https://cloud.google.com/compute/docs/nodes/node-group-autoscaler) . This is
-**Generally Available** .
-
-**Security Command Center**
-
-**FEATURE:**
-
-Security Command Center Premium and Standard tiers are now available.
-
-**FEATURE:**
-
-The Security Command Center Premium tier includes:
-
-  * Security Health Analytics 
-  * Web Security Scanner managed scans 
-  * Event Threat Detection 
-  * Container Threat Detection 
-
-Learn more about the [ Security Command Center Premium tier
-](https://cloud.google.com/security-command-center/docs/concepts-security-
-command-center-overview) .
-
-**DEPRECATED:**
-
-The Event Threat Detection API will be deprecated in the coming months.
-Similar functionality is available in the Security Command Center API settings
-feature.
-
-**FEATURE:**
-
-Container Threat Detection currently supports the following Kubernetes Engine
-versions on the Regular and Rapid [ channels
-](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels) :
-
-  * >= 1.15.9-gke.12 
-  * >= 1.16.5-gke.2 
-  * >= 1.17 
-
-In a future update, Container Threat Detection will support version 1.14 and
-the Stable channel.
 
