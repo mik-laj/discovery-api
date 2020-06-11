@@ -12,6 +12,12 @@ python3/?hl=ja) ことをおすすめします。
 URL ディレクトリ ` https://cloud.google.com/feeds/gaestd-py-release-notes.xml `
 を直接追加します。
 
+##  June 08, 2020
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
 ##  May 14, 2020
 
 **FEATURE:**
