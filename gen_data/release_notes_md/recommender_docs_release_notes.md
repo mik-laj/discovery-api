@@ -9,7 +9,7 @@ Cloud release notes ](/release-notes) page.
 
 ##  May 26, 2020
 
-v1beta1
+v1
 
 **FEATURE:**
 
@@ -33,7 +33,7 @@ details.
 
 ##  January 21, 2020
 
-v1beta1
+v1
 
 **FEATURE:**
 
