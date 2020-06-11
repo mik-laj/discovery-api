@@ -14,6 +14,12 @@ Feedreader ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
 einfügen oder die Feed-URL direkt hinzufügen: `
 https://cloud.google.com/feeds/gaestd-php-release-notes.xml ` .
 
+##  June 08, 2020
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
 ##  May 14, 2020
 
 **FEATURE:**
