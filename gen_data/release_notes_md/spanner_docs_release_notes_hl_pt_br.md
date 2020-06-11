@@ -1,13 +1,17 @@
 #  Notas da versão
 
 Veja nesta página as atualizações de produção do Cloud Spanner. Acesse-a
-periodicamente para ver os anúncios sobre recursos novos ou atualizados,
-correções de bugs, problemas conhecidos e funcionalidades suspensas.
+periodicamente para ver avisos de recursos novos ou atualizados, correções de
+bugs, problemas conhecidos e recursos obsoletos.
+
+É possível ver as atualizações mais recentes de todos os produtos do Google
+Cloud na página [ Notas da versão do Google Cloud
+](https://cloud.google.com/release-notes?hl=pt_br) .
 
 Para receber as atualizações de produtos mais recentes, adicione o URL desta
 página ao [ leitor de feeds
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ou adicione o URL
-do feed diretamente: ` https://cloud.google.com/feeds/cloud-spanner-release-
+do feed diretamente: ` https://cloud.google.com/feeds/spanner-release-
 notes.xml `
 
 ##  June 08, 2020
