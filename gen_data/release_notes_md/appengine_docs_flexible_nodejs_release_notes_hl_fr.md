@@ -10,6 +10,12 @@ de cette page à votre [ lecteur de flux
 du flux directement : ` https://cloud.google.com/feeds/gaeflex-node-release-
 notes.xml `
 
+##  June 08, 2020
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
 ##  May 14, 2020
 
 **FEATURE:**
