@@ -12,6 +12,13 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/run-release-notes.xml `
 
+##  June 09, 2020
+
+**FEATURE:**
+
+Export a Cloud Run service to a YAML file with ` gcloud run services describe
+SERVICE --format export `
+
 ##  June 03, 2020
 
 **FEATURE:**
