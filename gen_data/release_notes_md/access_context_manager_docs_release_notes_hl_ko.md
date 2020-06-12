@@ -11,6 +11,17 @@ Google Cloud의 최신 제품 업데이트를 확인할 수 있습니다.
 추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/access-
 context-manager-release-notes.xml `
 
+##  June 11, 2020
+
+**FEATURE:**
+
+General availability of the Access Context Manager Bulk API.
+
+Use the Access Context Manager Bulk API to replace all of your organization's
+access levels in one operation. For more information, see [ Making bulk
+changes to access levels ](https://cloud.google.com/access-context-
+manager/docs/bulk-operations?hl=ko) .
+
 ##  June 01, 2020
 
 **FEATURE:**
