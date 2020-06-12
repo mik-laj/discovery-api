@@ -11,6 +11,24 @@ de cette page à votre [ lecteur de flux
 du flux directement : ` https://cloud.google.com/feeds/vision-release-
 notes.xml `
 
+##  June 11, 2020
+
+**CHANGED:**
+
+**OCR legacy model access extension**
+
+Based on customer feedback, we have decided to extend support of the legacy `
+TEXT_DETECTION ` and ` DOCUMENT_TEXT_DETECTION ` models. These legacy models
+are accessed by specifying "builtin/legacy_20190601" in the [ ` model `
+](https://cloud.google.com/vision/docs/reference/rest/v1/Feature?hl=fr) of a `
+Feature ` object.
+
+These models will now be accessible until **November 15, 2020 (6 months from
+launch date)** to give customers more time to adapt and migrate to the new
+model.
+
+See the  May 15, 2020  release note for the original update announcement.
+
 ##  June 04, 2020
 
 **FEATURE:**
@@ -28,7 +46,10 @@ overview?hl=fr#enabling) .
 
 **OCR model upgrades**
 
-The ` text_detection ` and ` document_text_detection ` models have been
+_**Note** : As per the  June 11, 2020  release note, the legacy models are
+accessible through November 15, 2020. _
+
+The ` TEXT_DETECTION ` and ` DOCUMENT_TEXT_DETECTION ` models have been
 upgraded to newer versions. The API interface and client library will be the
 same as previous version. The API follows the same [ Service Level Agreement
 ](https://cloud.google.com/vision/sla?hl=fr) .
