@@ -12,6 +12,113 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  June 11, 2020
+
+**Access Context Manager**
+
+**FEATURE:**
+
+General availability of the Access Context Manager Bulk API.
+
+Use the Access Context Manager Bulk API to replace all of your organization's
+access levels in one operation. For more information, see [ Making bulk
+changes to access levels ](https://cloud.google.com/access-context-
+manager/docs/bulk-operations) .
+
+**Anthos Service Mesh**
+
+**FIXED:**
+
+**1.5.5-asm.0 and 1.4.10-asm.1**
+
+Fixes the security issue, CVE-2020-11080, with the same fixes as [ OSS Istio
+1.5.5 ](https://istio.io/news/releases/1.5.x/announcing-1.5.5/) . The security
+fixes were backported to ASM 1.4.10.
+
+**Description**
+
+A vulnerability affecting the HTTP/2 library used by Envoy has been fixed and
+publicly disclosed (c.f. Denial of service: Overly large SETTINGS frames ).
+
+[ CVE-2020-11080 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-11080) : By sending a specially crafted packet,
+an attacker could cause the CPU to spike at 100%. This could be sent to the
+ingress gateway or a sidecar.
+
+**Mitigation**
+
+HTTP/2 support could be disabled on the Ingress Gateway as a temporary
+workaround using the following configuration. Note that HTTP/2 support at
+ingress can only be disabled if you are not exposing HTTP/2 services that
+cannot fallback to HTTP/1.1 through ingress (such as gRPC services).
+
+    
+    
+    apiVersion: networking.istio.io/v1alpha3
+    kind: EnvoyFilter
+    metadata:
+      name: disable-ingress-h2
+      namespace: istio-system
+    spec:
+      workloadSelector:
+        labels:
+          istio: ingressgateway
+      configPatches:
+      - applyTo: NETWORK_FILTER # http connection manager is a filter in Envoy
+        match:
+          context: GATEWAY
+          listener:
+            filterChain:
+              filter:
+                name: "envoy.http_connection_manager"
+        patch:
+          operation: MERGE
+          value:
+            typed_config:
+              "@type": type.googleapis.com/envoy.config.filter.network.http_connection_manager.v2.HttpConnectionManager
+              codec_type: HTTP1
+    
+
+For additional information, see [ ISTIO-SECURITY-2020-006
+](https://istio.io/news/security/istio-security-2020-006) .
+
+**App Engine standard environment Go**
+
+**FEATURE:**
+
+The [ Go 1.13 runtime
+](https://cloud.google.com/appengine/docs/standard/go/runtime) for the App
+Engine standard environment is now generally available.
+
+**Cloud Vision**
+
+**CHANGED:**
+
+**OCR legacy model access extension**
+
+Based on customer feedback, we have decided to extend support of the legacy `
+TEXT_DETECTION ` and ` DOCUMENT_TEXT_DETECTION ` models. These legacy models
+are accessed by specifying "builtin/legacy_20190601" in the [ ` model `
+](https://cloud.google.com/vision/docs/reference/rest/v1/Feature) of a `
+Feature ` object.
+
+These models will now be accessible until **November 15, 2020 (6 months from
+launch date)** to give customers more time to adapt and migrate to the new
+model.
+
+See the  May 15, 2020  release note for the original update announcement.
+
+**VPC Service Controls**
+
+**FEATURE:**
+
+General availability for bulk changes to service perimeters.
+
+Using Access Context Manager's Bulk API, you can replace all of your
+organization's service perimeters in one operation. For more information, see
+[ Making bulk changes to service perimeters ](https://cloud.google.com/vpc-
+service-controls/docs/bulk-operations) .
+
 ##  June 10, 2020
 
 **Cloud CDN**
@@ -1663,7 +1770,10 @@ PostgreSQL 12 minor version is upgraded to 12.1.
 
 **OCR model upgrades**
 
-The ` text_detection ` and ` document_text_detection ` models have been
+_**Note** : As per the  June 11, 2020  release note, the legacy models are
+accessible through November 15, 2020. _
+
+The ` TEXT_DETECTION ` and ` DOCUMENT_TEXT_DETECTION ` models have been
 upgraded to newer versions. The API interface and client library will be the
 same as previous version. The API follows the same [ Service Level Agreement
 ](https://cloud.google.com/vision/sla) .
@@ -1857,85 +1967,4 @@ Engine resources
 
 Starting in version 6.0.2, the Cloud Monitoring agent is available for the
 Ubuntu LTS 20.04 (Focal Fossa) distribution.
-
-##  May 13, 2020
-
-**AI Platform Prediction**
-
-**FEATURE:**
-
-AI Platform Prediction now supports the following regions for batch
-prediction, in addition to those that were already supported:
-
-  * ` northamerica-northeast1 ` (Montréal) 
-  * ` southamerica-east1 ` (São Paulo) 
-  * ` australia-southeast1 ` (Sydney) 
-
-See the [ full list of available regions ](https://cloud.google.com/ai-
-platform/prediction/docs/regions) .
-
-` northamerica-northeast1 ` and ` southamerica-east1 ` have the same pricing
-as other Americas regions, and ` australia-southeast1 ` has the same pricing
-as other Asia Pacific regions. Learn about [ pricing for each region
-](https://cloud.google.com/ai-platform/prediction/pricing) .
-
-**AI Platform Training**
-
-**FEATURE:**
-
-AI Platform Training now supports the following regions, in addition to those
-that were already supported:
-
-  * ` northamerica-northeast1 ` (Montréal) 
-  * ` southamerica-east1 ` (São Paulo) 
-  * ` australia-southeast1 ` (Sydney) 
-
-GPUs are available for training in each of the new regions:
-
-  * NVIDIA Tesla P4 GPUs are available in ` northamerica-northeast1 ` . 
-  * NVIDIA Tesla T4 GPUs are available in ` southamerica-east1 ` . 
-  * NVIDIA Tesla P4 GPUs and NVIDIA Tesla P100 GPUs are available in ` australia-southeast1 ` . 
-
-See the [ full list of available regions ](https://cloud.google.com/ai-
-platform/training/docs/regions) and the [ guide to training with GPUs
-](https://cloud.google.com/ai-platform/training/docs/using-gpus) .
-
-` northamerica-northeast1 ` and ` southamerica-east1 ` have the same pricing
-as other Americas regions, and ` australia-southeast1 ` has the same pricing
-as other Asia Pacific regions. Learn about [ pricing for each region
-](https://cloud.google.com/ai-platform/training/pricing) .
-
-**BigQuery**
-
-**CHANGED:**
-
-Updated versions of [ Magnitude Simba JDBC
-](https://cloud.google.com/bigquery/providers/simba-drivers/) drivers have
-been released.
-
-**Cloud Run**
-
-**FEATURE:**
-
-Cloud Run (fully managed) now supports [ connecting to a VPC network
-](https://cloud.google.com/run/docs/configuring/connecting-vpc) with [
-Serverless VPC Access ](https://cloud.google.com/vpc/docs/configure-
-serverless-vpc-access) , in beta.
-
-**Memorystore for Redis**
-
-**FEATURE:**
-
-Released support for [ VPC Service Controls
-](https://cloud.google.com/memorystore/docs/redis/using-vpc-service-controls)
-for Memorystore for Redis.
-
-**VPC Service Controls**
-
-**FEATURE:**
-
-[ Beta stage ](https://cloud.google.com/products/#product-launch-stages)
-support for the following integration:
-
-  * [ Memorystore for Redis ](https://cloud.google.com/memorystore/docs/redis)
 
