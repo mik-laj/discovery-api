@@ -207,6 +207,64 @@ bug fixes, known issues, and deprecated functionality.
       </strong>
       <p>
        <strong>
+        #158647217:
+       </strong>
+       Windows image from AWS fails to start after migration.
+      </p>
+      <p>
+       Some Windows images from AWS might fail when running on GCP with the following error message written to the console:
+      </p>
+      <pre dir="ltr" translate="no">Windows failed to start. A recent hardware or software change might be the cause. To fix the problem:
+      1. Insert your Windows installation disc and restart your computer.
+      2. Choose your language settings, and then click "Next."
+      3. Click "Repair your computer."
+    If you do not have this disc, contact your system administrator or computer manufacturer for assistance. 
+    File: \Windows\system32\DRIVERS\ena.sys 
+    Status: 0xc0000428</pre>
+      <p>
+       This issue is a result of an AWS driver being marked as corrupt when Windows
+    starts in a different environment.
+      </p>
+      <p>
+       <strong>
+        Workaround:
+       </strong>
+       Before migrating:
+       <ol>
+        <li>
+         <p>
+          Backup the system and delete the following file from the source AWS instance:
+         </p>
+         <pre dir="ltr" translate="no">C:\Windows\system32\DRIVERS\ena.sys</pre>
+        </li>
+        <li>
+         For the
+         <code dir="ltr" translate="no">
+          HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ena
+         </code>
+         registry entry,
+set the
+         <code dir="ltr" translate="no">
+          Start
+         </code>
+         subkey to
+         <code dir="ltr" translate="no">
+          4
+         </code>
+         .
+        </li>
+       </ol>
+       <p>
+        This issue is fixed in versions 4.10 and above.
+       </p>
+      </p>
+     </div>
+     <div class="release-issue">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
         #149004085:
        </strong>
        Ubuntu 14 from on-premise may fail to start
@@ -220,8 +278,6 @@ bug fixes, known issues, and deprecated functionality.
       add the network interface with DHCP.
       </p>
      </div>
-    </p>
-    <p>
      <div class="release-issue">
       <strong>
        ISSUE:
@@ -245,8 +301,6 @@ bug fixes, known issues, and deprecated functionality.
       migrating to update the system.
       </p>
      </div>
-    </p>
-    <p>
      <div class="release-issue">
       <strong>
        ISSUE:
@@ -267,11 +321,7 @@ bug fixes, known issues, and deprecated functionality.
       reinstall when preparing to migrate.
       </p>
      </div>
-    </p>
-    <h3 data-text="Previous known issues" id="previous_known_issues" tabindex="0">
-     Previous known issues
-    </h3>
-    <p>
+     ### Previous known issues
      <div class="release-issue">
       <strong>
        ISSUE:
@@ -295,8 +345,6 @@ bug fixes, known issues, and deprecated functionality.
       or higher before migrating.
       </p>
      </div>
-    </p>
-    <p>
      <div class="release-issue">
       <strong>
        ISSUE:
@@ -319,8 +367,6 @@ bug fixes, known issues, and deprecated functionality.
        Make sure VM has data disk smaller than 4TB.
       </p>
      </div>
-    </p>
-    <p>
      <div class="release-issue">
       <strong>
        ISSUE:
@@ -353,6 +399,11 @@ bug fixes, known issues, and deprecated functionality.
         <li>
          Open a command prompt as an Administrator and run the following:
          <pre dir="ltr" translate="no">nvspbind.exe /d * symc_teefer2</pre>
+         <pre class="prettyprint" dir="ltr" translate="no"><code dir="ltr" translate="no">    &lt;/li&gt;
+  &lt;/ol&gt;
+</code></pre>
+         <p>
+         </p>
         </li>
        </ol>
       </p>
