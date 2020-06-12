@@ -12,6 +12,17 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/vpc-sc-release-notes.xml `
 
+##  June 11, 2020
+
+**FEATURE:**
+
+General availability for bulk changes to service perimeters.
+
+Using Access Context Manager's Bulk API, you can replace all of your
+organization's service perimeters in one operation. For more information, see
+[ Making bulk changes to service perimeters ](https://cloud.google.com/vpc-
+service-controls/docs/bulk-operations) .
+
 ##  June 04, 2020
 
 **FEATURE:**
