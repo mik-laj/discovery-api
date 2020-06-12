@@ -15,6 +15,17 @@ página a tu [ lector de feeds
 directamente la URL del feed: ` https://cloud.google.com/feeds/access-context-
 manager-release-notes.xml `
 
+##  June 11, 2020
+
+**FEATURE:**
+
+General availability of the Access Context Manager Bulk API.
+
+Use the Access Context Manager Bulk API to replace all of your organization's
+access levels in one operation. For more information, see [ Making bulk
+changes to access levels ](https://cloud.google.com/access-context-
+manager/docs/bulk-operations?hl=es-419) .
+
 ##  June 01, 2020
 
 **FEATURE:**
