@@ -10,6 +10,14 @@ página a tu [ lector de feeds
 directamente la URL del feed: ` https://cloud.google.com/feeds/gaestd-go-
 release-notes.xml `
 
+##  June 11, 2020
+
+**FEATURE:**
+
+The [ Go 1.13 runtime
+](https://cloud.google.com/appengine/docs/standard/go/runtime?hl=es-419) for
+the App Engine standard environment is now generally available.
+
 ##  June 08, 2020
 
 **FEATURE:**
