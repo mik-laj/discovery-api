@@ -11,6 +11,17 @@
 URL ディレクトリ ` https://cloud.google.com/feeds/access-context-manager-release-
 notes.xml ` を直接追加します。
 
+##  June 11, 2020
+
+**FEATURE:**
+
+General availability of the Access Context Manager Bulk API.
+
+Use the Access Context Manager Bulk API to replace all of your organization's
+access levels in one operation. For more information, see [ Making bulk
+changes to access levels ](https://cloud.google.com/access-context-
+manager/docs/bulk-operations?hl=ja) .
+
 ##  June 01, 2020
 
 **FEATURE:**
