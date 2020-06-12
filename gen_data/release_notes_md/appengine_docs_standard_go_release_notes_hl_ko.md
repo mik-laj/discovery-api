@@ -8,6 +8,14 @@ Google Cloud의 최신 제품 업데이트를 확인할 수 있습니다.
 추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/gaestd-go-
 release-notes.xml `
 
+##  June 11, 2020
+
+**FEATURE:**
+
+The [ Go 1.13 runtime
+](https://cloud.google.com/appengine/docs/standard/go/runtime?hl=ko) for the
+App Engine standard environment is now generally available.
+
 ##  June 08, 2020
 
 **FEATURE:**
