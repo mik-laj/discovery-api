@@ -81,6 +81,13 @@ will need to provide these as inputs in the Runbook. Please see the [
 licensing section ](/migrate/compute-engine/docs/4.10/reference/runbooks) in
 the documentation.
 
+##  Fixed issues
+
+**FIXED:**
+
+Fixed an issue with AWS ena drivers causing Windows images to crash after
+migration.
+
 ##  Known Issues
 
 **ISSUE:**
