@@ -40,6 +40,182 @@ For a comprehensive list, see the
    </section>
    <section class="releases">
     <section class="releases">
+     <h2 data-text="June 11, 2020" id="June_11_2020" tabindex="0">
+      June 11, 2020
+     </h2>
+     <strong class="release-note-product-title">
+      Access Context Manager
+     </strong>
+     <div class="release-feature" id="a9f89f7b">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       General availability of the Access Context Manager Bulk API.
+      </p>
+      <p>
+       Use the Access Context Manager Bulk API to replace all of your organization's access levels in one operation. For more information, see
+       <a href="https://cloud.google.com/access-context-manager/docs/bulk-operations">
+        Making bulk changes to access levels
+       </a>
+       .
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      Anthos Service Mesh
+     </strong>
+     <div class="release-fixed" id="16561e1a">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       <strong>
+        1.5.5-asm.0 and 1.4.10-asm.1
+       </strong>
+      </p>
+      <p>
+       Fixes the security issue, CVE-2020-11080, with the same fixes as
+       <a href="https://istio.io/news/releases/1.5.x/announcing-1.5.5/">
+        OSS Istio 1.5.5
+       </a>
+       . The security fixes were backported to ASM 1.4.10.
+      </p>
+      <p>
+       <strong>
+        Description
+       </strong>
+      </p>
+      <p>
+       A vulnerability affecting the HTTP/2 library used by Envoy has been fixed and publicly disclosed (c.f. Denial of service: Overly large SETTINGS frames ).
+      </p>
+      <p>
+       <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-11080">
+        CVE-2020-11080
+       </a>
+       :  By sending a specially crafted packet, an attacker could cause the CPU to spike at 100%. This could be sent to the ingress gateway or a sidecar.
+      </p>
+      <p>
+       <strong>
+        Mitigation
+       </strong>
+      </p>
+      <p>
+       HTTP/2 support could be disabled on the Ingress Gateway as a temporary workaround using the following configuration. Note that HTTP/2 support at ingress can only be disabled if you are not exposing HTTP/2 services that cannot fallback to HTTP/1.1 through ingress (such as gRPC services).
+      </p>
+      <pre class="prettyprint" dir="ltr" translate="no"><code dir="ltr" translate="no">
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: disable-ingress-h2
+  namespace: istio-system
+spec:
+  workloadSelector:
+    labels:
+      istio: ingressgateway
+  configPatches:
+  - applyTo: NETWORK_FILTER # http connection manager is a filter in Envoy
+    match:
+      context: GATEWAY
+      listener:
+        filterChain:
+          filter:
+            name: "envoy.http_connection_manager"
+    patch:
+      operation: MERGE
+      value:
+        typed_config:
+          "@type": type.googleapis.com/envoy.config.filter.network.http_connection_manager.v2.HttpConnectionManager
+          codec_type: HTTP1
+</code></pre>
+      <p>
+       For additional information, see
+       <a href="https://istio.io/news/security/istio-security-2020-006">
+        ISTIO-SECURITY-2020-006
+       </a>
+       .
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      App Engine standard environment Go
+     </strong>
+     <div class="release-feature" id="67788fcb">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       The
+       <a href="https://cloud.google.com/appengine/docs/standard/go/runtime">
+        Go 1.13 runtime
+       </a>
+       for the App Engine standard environment is now generally available.
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      Cloud Vision
+     </strong>
+     <div class="release-changed" id="39b0c0c2">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <strong>
+        OCR legacy model access extension
+       </strong>
+      </p>
+      <p>
+       Based on customer feedback, we have decided to extend support of the legacy
+       <code dir="ltr" translate="no">
+        TEXT_DETECTION
+       </code>
+       and
+       <code dir="ltr" translate="no">
+        DOCUMENT_TEXT_DETECTION
+       </code>
+       models. These legacy models are accessed by specifying "builtin/legacy_20190601" in the
+       <a href="https://cloud.google.com/vision/docs/reference/rest/v1/Feature">
+        <code dir="ltr" translate="no">
+         model
+        </code>
+       </a>
+       of a
+       <code dir="ltr" translate="no">
+        Feature
+       </code>
+       object.
+      </p>
+      <p>
+       These models will now be accessible until
+       <strong>
+        November 15, 2020 (6 months from launch date)
+       </strong>
+       to give customers more time to adapt and migrate to the new model.
+      </p>
+      <p>
+       See the
+       <a href="#May_15_2020">
+        May 15, 2020
+       </a>
+       release note for the original update announcement.
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      VPC Service Controls
+     </strong>
+     <div class="release-feature" id="7a1470f6">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       General availability for bulk changes to service perimeters.
+      </p>
+      <p>
+       Using Access Context Manager's Bulk API, you can replace all of your organization's service perimeters in one operation. For more information, see
+       <a href="https://cloud.google.com/vpc-service-controls/docs/bulk-operations">
+        Making bulk changes to service perimeters
+       </a>
+       .
+      </p>
+     </div>
      <h2 data-text="June 10, 2020" id="June_10_2020" tabindex="0">
       June 10, 2020
      </h2>
@@ -3826,13 +4002,25 @@ PostgreSQL 12 minor version is upgraded to 12.1.
        </strong>
       </p>
       <p>
+       <em>
+        <strong>
+         Note
+        </strong>
+        : As per the
+        <a href="#June_11_2020">
+         June 11, 2020
+        </a>
+        release note, the legacy models are accessible through November 15, 2020.
+       </em>
+      </p>
+      <p>
        The
        <code dir="ltr" translate="no">
-        text_detection
+        TEXT_DETECTION
        </code>
        and
        <code dir="ltr" translate="no">
-        document_text_detection
+        DOCUMENT_TEXT_DETECTION
        </code>
        models have been upgraded to newer versions. The API interface and client library will be the same as previous version. The API follows the same
        <a href="https://cloud.google.com/vision/sla">
@@ -4130,221 +4318,6 @@ PostgreSQL 12 minor version is upgraded to 12.1.
       <p>
        Starting in version 6.0.2, the Cloud Monitoring agent is available for the Ubuntu LTS 20.04 (Focal Fossa) distribution.
       </p>
-     </div>
-     <h2 data-text="May 13, 2020" id="May_13_2020" tabindex="0">
-      May 13, 2020
-     </h2>
-     <strong class="release-note-product-title">
-      AI Platform Prediction
-     </strong>
-     <div class="release-feature" id="cd4e5da2">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       AI Platform Prediction now supports the following regions for batch prediction, in addition to those that were already supported:
-      </p>
-      <ul>
-       <li>
-        <code dir="ltr" translate="no">
-         northamerica-northeast1
-        </code>
-        (Montréal)
-       </li>
-       <li>
-        <code dir="ltr" translate="no">
-         southamerica-east1
-        </code>
-        (São Paulo)
-       </li>
-       <li>
-        <code dir="ltr" translate="no">
-         australia-southeast1
-        </code>
-        (Sydney)
-       </li>
-      </ul>
-      <p>
-       See the
-       <a href="https://cloud.google.com/ai-platform/prediction/docs/regions">
-        full list of available regions
-       </a>
-       .
-      </p>
-      <p>
-       <code dir="ltr" translate="no">
-        northamerica-northeast1
-       </code>
-       and
-       <code dir="ltr" translate="no">
-        southamerica-east1
-       </code>
-       have the same pricing as other Americas regions, and
-       <code dir="ltr" translate="no">
-        australia-southeast1
-       </code>
-       has the same pricing as other Asia Pacific regions. Learn about
-       <a href="https://cloud.google.com/ai-platform/prediction/pricing">
-        pricing for each region
-       </a>
-       .
-      </p>
-     </div>
-     <strong class="release-note-product-title">
-      AI Platform Training
-     </strong>
-     <div class="release-feature" id="8f5bfe4a">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       AI Platform Training now supports the following regions, in addition to those that were already supported:
-      </p>
-      <ul>
-       <li>
-        <code dir="ltr" translate="no">
-         northamerica-northeast1
-        </code>
-        (Montréal)
-       </li>
-       <li>
-        <code dir="ltr" translate="no">
-         southamerica-east1
-        </code>
-        (São Paulo)
-       </li>
-       <li>
-        <code dir="ltr" translate="no">
-         australia-southeast1
-        </code>
-        (Sydney)
-       </li>
-      </ul>
-      <p>
-       GPUs are available for training in each of the new regions:
-      </p>
-      <ul>
-       <li>
-        NVIDIA Tesla P4 GPUs are available in
-        <code dir="ltr" translate="no">
-         northamerica-northeast1
-        </code>
-        .
-       </li>
-       <li>
-        NVIDIA Tesla T4 GPUs are available in
-        <code dir="ltr" translate="no">
-         southamerica-east1
-        </code>
-        .
-       </li>
-       <li>
-        NVIDIA Tesla P4 GPUs and NVIDIA Tesla P100 GPUs are available in
-        <code dir="ltr" translate="no">
-         australia-southeast1
-        </code>
-        .
-       </li>
-      </ul>
-      <p>
-       See the
-       <a href="https://cloud.google.com/ai-platform/training/docs/regions">
-        full list of available regions
-       </a>
-       and the
-       <a href="https://cloud.google.com/ai-platform/training/docs/using-gpus">
-        guide to training with GPUs
-       </a>
-       .
-      </p>
-      <p>
-       <code dir="ltr" translate="no">
-        northamerica-northeast1
-       </code>
-       and
-       <code dir="ltr" translate="no">
-        southamerica-east1
-       </code>
-       have the same pricing as other Americas regions, and
-       <code dir="ltr" translate="no">
-        australia-southeast1
-       </code>
-       has the same pricing as other Asia Pacific regions. Learn about
-       <a href="https://cloud.google.com/ai-platform/training/pricing">
-        pricing for each region
-       </a>
-       .
-      </p>
-     </div>
-     <strong class="release-note-product-title">
-      BigQuery
-     </strong>
-     <div class="release-changed" id="5e73a93d">
-      <strong>
-       CHANGED:
-      </strong>
-      <p>
-       Updated versions of
-       <a href="https://cloud.google.com/bigquery/providers/simba-drivers/">
-        Magnitude Simba JDBC
-       </a>
-       drivers have been released.
-      </p>
-     </div>
-     <strong class="release-note-product-title">
-      Cloud Run
-     </strong>
-     <div class="release-feature" id="0bb93a49">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       Cloud Run (fully managed) now supports
-       <a href="https://cloud.google.com/run/docs/configuring/connecting-vpc">
-        connecting to a VPC network
-       </a>
-       with
-       <a href="https://cloud.google.com/vpc/docs/configure-serverless-vpc-access">
-        Serverless VPC Access
-       </a>
-       , in beta.
-      </p>
-     </div>
-     <strong class="release-note-product-title">
-      Memorystore for Redis
-     </strong>
-     <div class="release-feature" id="563d8815">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       Released support for
-       <a href="https://cloud.google.com/memorystore/docs/redis/using-vpc-service-controls">
-        VPC Service Controls
-       </a>
-       for Memorystore for Redis.
-      </p>
-     </div>
-     <strong class="release-note-product-title">
-      VPC Service Controls
-     </strong>
-     <div class="release-feature" id="953e2c53">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       <a href="https://cloud.google.com/products/#product-launch-stages">
-        Beta stage
-       </a>
-       support for the following integration:
-      </p>
-      <ul>
-       <li>
-        <a href="https://cloud.google.com/memorystore/docs/redis">
-         Memorystore for Redis
-        </a>
-       </li>
-      </ul>
      </div>
     </section>
    </section>
