@@ -98,6 +98,36 @@ the system).
 
 **ISSUE:**
 
+**#158647217:** Windows image from AWS fails to start after migration.
+
+Some Windows images from AWS might fail when running on GCP with the following
+error message written to the console:
+
+    
+    
+    Windows failed to start. A recent hardware or software change might be the cause. To fix the problem:
+          1. Insert your Windows installation disc and restart your computer.
+          2. Choose your language settings, and then click "Next."
+          3. Click "Repair your computer."
+        If you do not have this disc, contact your system administrator or computer manufacturer for assistance. 
+        File: \Windows\system32\DRIVERS\ena.sys 
+        Status: 0xc0000428
+
+This issue is a result of an AWS driver being marked as corrupt when Windows
+starts in a different environment.
+
+**Workaround:** Before migrating:
+
+  1. Backup the system and delete the following file from the source AWS instance: 
+    
+        C:\Windows\system32\DRIVERS\ena.sys
+
+  2. For the ` HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ena ` registry entry, set the ` Start ` subkey to ` 4 ` . 
+
+This issue is fixed in versions 4.10 and above.
+
+**ISSUE:**
+
 **#149004085:** Ubuntu 14 from on-premise may fail to start networking post
 detach.
 
@@ -121,7 +151,7 @@ installing the Linux prep package.
 **Workaround:** Uninstall the package before cloning and reinstall when
 preparing to migrate.
 
-###  Previous known issues
+### Previous known issues
 
 **ISSUE:**
 
@@ -158,6 +188,10 @@ option.
   3. Open a command prompt as an Administrator and run the following: 
     
         nvspbind.exe /d * symc_teefer2
+    
+            </li>
+      </ol>
+    
 
 **ISSUE:**
 
