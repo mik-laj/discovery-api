@@ -9,6 +9,14 @@ Feedreader ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
 einfügen oder die Feed-URL direkt hinzufügen: `
 https://cloud.google.com/feeds/gaestd-go-release-notes.xml ` .
 
+##  June 11, 2020
+
+**FEATURE:**
+
+The [ Go 1.13 runtime
+](https://cloud.google.com/appengine/docs/standard/go/runtime?hl=de) for the
+App Engine standard environment is now generally available.
+
 ##  June 08, 2020
 
 **FEATURE:**
