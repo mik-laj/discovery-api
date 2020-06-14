@@ -13,6 +13,13 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/configconnector-release-
 notes.xml `
 
+##  June 12, 2020
+
+**FEATURE:**
+
+  * Added ability to [ update streaming DataflowJobs ](https://cloud.google.com/dataflow/docs/guides/updating-a-pipeline) by updating its spec (e.g. ` spec.templateGcsPath ` ). Note that not all fields can be updated, and batch DataflowJobs don't support updates. 
+  * Added ` IAMPolicy ` to the output of ` config-connector `
+
 ##  June 03, 2020
 
 **CHANGED:**
