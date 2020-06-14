@@ -12,6 +12,41 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  June 12, 2020
+
+**Cloud Build**
+
+**CHANGED:**
+
+Upgraded to Docker server version 19.03.8.
+
+**Cloud Functions**
+
+**FEATURE:**
+
+Cloud Functions is now available in the following regions:
+
+  * ` europe-west6 ` (Zurich) 
+  * ` us-west3 ` (Salt Lake City) 
+
+See [ Cloud Functions Locations
+](https://cloud.google.com/functions/docs/locations) for details.
+
+**Config Connector**
+
+**FEATURE:**
+
+  * Added ability to [ update streaming DataflowJobs ](https://cloud.google.com/dataflow/docs/guides/updating-a-pipeline) by updating its spec (e.g. ` spec.templateGcsPath ` ). Note that not all fields can be updated, and batch DataflowJobs don't support updates. 
+  * Added ` IAMPolicy ` to the output of ` config-connector `
+
+**Virtual Private Cloud**
+
+**FEATURE:**
+
+[ Firewall Rules Logging metadata controls
+](https://cloud.google.com/vpc/docs/firewall-rules-logging#log-format) is now
+available in **Beta** .
+
 ##  June 11, 2020
 
 **Access Context Manager**
@@ -48,9 +83,10 @@ ingress gateway or a sidecar.
 **Mitigation**
 
 HTTP/2 support could be disabled on the Ingress Gateway as a temporary
-workaround using the following configuration. Note that HTTP/2 support at
-ingress can only be disabled if you are not exposing HTTP/2 services that
-cannot fallback to HTTP/1.1 through ingress (such as gRPC services).
+workaround using the following configuration. HTTP/2 support at ingress can
+only be disabled if you are not exposing HTTP/2 services that cannot fallback
+to HTTP/1.1 through ingress. Note that gRPC services cannot fallback to
+HTTP/1.1.
 
     
     
@@ -107,6 +143,85 @@ launch date)** to give customers more time to adapt and migrate to the new
 model.
 
 See the  May 15, 2020  release note for the original update announcement.
+
+**Dataproc**
+
+**FEATURE:**
+
+Users can now configure a [ ` tempBucket `
+](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#FIELDS.temp_bucket)
+in API calls. The temp bucket is a Cloud Storage bucket used to store
+ephemeral cluster and jobs data, such as Spark and MapReduce history files. If
+you do not specify a temp bucket, Dataproc will determine a Cloud Storage
+location (US, ASIA, or EU) for your cluster's temp bucket according to the
+Compute Engine zone where your cluster is deployed, and then create and manage
+this project-level, per-location bucket.
+
+**CHANGED:**
+
+  * New [ subminor image versions ](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_cloud_dataproc_versions) : 1.2.99-debian9, 1.3.59-debian9, 1.4.30-debian9, 1.3.59-debian10, 1.4.30-debian10, 1.5.5-debian10, 1.3.59-ubuntu18, 1.4.30-ubuntu18, and 1.5.5-ubuntu18. 
+
+  * New [ preview image 2.0.0-RC1-debian10, 2.0.0-RC1-ubuntu18 ](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_cloud_dataproc_versions) , with the following components: 
+
+    * Anaconda 2019.10 
+    * Atlas 2.0.0 
+    * Druid 0.18.1 
+    * Flink 1.10.1 
+    * Hadoop 3.2.1 
+    * HBase 2.2.4 
+    * Hive 3.1.2 (with LLAP support) 
+    * Hue 4.7.0 
+    * JupyterLab 2.1.0 
+    * Kafka 2.3.1 
+    * Miniconda3 4.8.3 
+    * Pig 0.18.0 
+    * Presto SQL 333 
+    * Oozie 5.2.0 
+    * R 3.6.0 
+    * Ranger 2.0.0 
+    * Solr 8.1.1 
+    * Spark 3.0.0 
+    * Sqoop 1.5.0 
+    * Zeppelin 0.9.0 
+
+**CHANGED:**
+
+  * Image 1.3+ 
+
+    * Patched [ HIVE-23496 ](https://issues.apache.org/jira/browse/HIVE-23496) Adding a flag to disable materialized views cache warm up. 
+
+**CHANGED:**
+
+Druid's Historical's and Broker's JVM and runtime properties are now
+calculated using server resources. Previously, only the Historical's and
+MiddleManager's ` MaxHeapSize ` property was calculated using server
+resources. This change modifies how new values for ` MaxHeapSize ` and `
+MaxDirectMemorySize ` properties are calculated for Broker and Historical
+processes. Also, new runtime properties ` druid.processing.numThreads ` and `
+druid.processing.numMergeBuffers ` are calculated using server resources.
+
+**CHANGED:**
+
+If the project-level staging bucket is manually deleted, it will be recreated
+when a cluster is created.
+
+**CHANGED:**
+
+Dataproc now uses [ Compute Engine shielded VMs
+](https://cloud.google.com/security/shielded-cloud/shielded-vm) for Debian 10
+and Ubuntu 18.04 clusters by default.
+
+**CHANGED:**
+
+Dataproc Job container logging now supports [ Dataproc Kerberized clusters
+](https://cloud.google.com/dataproc/docs/concepts/configuring-
+clusters/security#create_a_kerberos_cluster) .
+
+**FIXED:**
+
+Image 1.5:
+
+  * Fixed a bug that prevented users from logging on to the Presto UI when using Component Gateway. 
 
 **VPC Service Controls**
 
@@ -1732,239 +1847,4 @@ Added [ infoType detectors ](https://cloud.google.com/dlp/docs/infotypes-
 reference) :
 
 AWS_CREDENTIALS
-
-##  May 15, 2020
-
-**Cloud Composer**
-
-**CHANGED:**
-
-  * [ New versions ](https://cloud.google.com/composer/docs/concepts/versioning/composer-versions) of Cloud Composer images: ` composer-1.10.3-airflow-1.10.2 ` , ` composer-1.10.3-airflow-1.10.3 ` and ` composer-1.10.3-airflow-1.10.6 ` . The default is ` composer-1.10.3-airflow-1.10.3 ` . Upgrade your Cloud SDK to use features in this release. 
-
-**FEATURE:**
-
-  * Resource quota limits have been updated, allowing environment administrators to set quotas with more granularity. The default quotas for read and write operations have also changed; see [ Cloud Composer resource quotas ](https://cloud.google.com/composer/quotas) for details. The old limits are deprecated, but will not be removed from the Cloud Console Quotas page until a future release. 
-
-**CHANGED:**
-
-  * The machine type of the Airflow web server will now be preserved during Composer environment updates, including cases like new PyPi module installations, or adding new environment variables. 
-  * Synchronization of log files between the Airflow scheduler, web server and workers has been improved. 
-  * More useful error messages have been added for Composer environment upgrade failures. 
-  * _Future change:_ Airflow 1.10.6 will become the default Airflow version for Composer environments in an upcoming release. 
-
-**DEPRECATED:**
-
-  * Composer version 1.6.1 has been deprecated. 
-
-**Cloud SQL for PostgreSQL**
-
-**FEATURE:**
-
-PostgreSQL 9.6 minor version is upgraded to 9.6.16. PostgreSQL 10 minor
-version is upgraded to 10.11. PostgreSQL 11 minor version is upgraded to 11.6.
-PostgreSQL 12 minor version is upgraded to 12.1.
-
-**Cloud Vision**
-
-**CHANGED:**
-
-**OCR model upgrades**
-
-_**Note** : As per the  June 11, 2020  release note, the legacy models are
-accessible through November 15, 2020. _
-
-The ` TEXT_DETECTION ` and ` DOCUMENT_TEXT_DETECTION ` models have been
-upgraded to newer versions. The API interface and client library will be the
-same as previous version. The API follows the same [ Service Level Agreement
-](https://cloud.google.com/vision/sla) .
-
-The legacy models can still be accessed until June 30, 2020. Specify
-"builtin/legacy_20190601" in the [ ` model `
-](https://cloud.google.com/vision/docs/reference/rest/v1/Feature) field of a `
-Feature ` object to get the old model results. After June 30, 2020 the old
-models will not longer be offered.
-
-For more information, see the [ product documentation
-](https://cloud.google.com/vision/docs/ocr) .
-
-**Config Connector**
-
-**FIXED:**
-
-fix ContainerNodePool version upgrade scenario
-
-**CHANGED:**
-
-increase the cpu/memory request for webhook and recorder
-
-**CHANGED:**
-
-Miscellaneous bug fixes and improvement
-
-##  May 14, 2020
-
-**App Engine flexible environment .NET**
-
-**FEATURE:**
-
-To get a fine-grained view of billing data for each resource used by your App
-Engine services, you can apply labels to the services, export your billing
-data to BigQuery, and run queries. For more information, see [ Labeling App
-Engine resources
-](https://cloud.google.com/appengine/docs/flexible/dotnet/labeling-resources)
-.
-
-**App Engine flexible environment Go**
-
-**FEATURE:**
-
-To get a fine-grained view of billing data for each resource used by your App
-Engine services, you can apply labels to the services, export your billing
-data to BigQuery, and run queries. For more information, see [ Labeling App
-Engine resources
-](https://cloud.google.com/appengine/docs/flexible/go/labeling-resources) .
-
-**App Engine flexible environment Java**
-
-**FEATURE:**
-
-To get a fine-grained view of billing data for each resource used by your App
-Engine services, you can apply labels to the services, export your billing
-data to BigQuery, and run queries. For more information, see [ Labeling App
-Engine resources
-](https://cloud.google.com/appengine/docs/flexible/java/labeling-resources) .
-
-**App Engine flexible environment Node.js**
-
-**FEATURE:**
-
-To get a fine-grained view of billing data for each resource used by your App
-Engine services, you can apply labels to the services, export your billing
-data to BigQuery, and run queries. For more information, see [ Labeling App
-Engine resources
-](https://cloud.google.com/appengine/docs/flexible/nodejs/labeling-resources)
-.
-
-**App Engine flexible environment PHP**
-
-**FEATURE:**
-
-To get a fine-grained view of billing data for each resource used by your App
-Engine services, you can apply labels to the services, export your billing
-data to BigQuery, and run queries. For more information, see [ Labeling App
-Engine resources
-](https://cloud.google.com/appengine/docs/flexible/php/labeling-resources) .
-
-**App Engine flexible environment Ruby**
-
-**FEATURE:**
-
-To get a fine-grained view of billing data for each resource used by your App
-Engine services, you can apply labels to the services, export your billing
-data to BigQuery, and run queries. For more information, see [ Labeling App
-Engine resources
-](https://cloud.google.com/appengine/docs/flexible/ruby/labeling-resources) .
-
-**App Engine standard environment Go**
-
-**FEATURE:**
-
-To get a fine-grained view of billing data for each resource used by your App
-Engine services, you can apply labels to the services, export your billing
-data to BigQuery, and run queries. For more information, see [ Labeling App
-Engine resources
-](https://cloud.google.com/appengine/docs/standard/go/labeling-resources) .
-
-**FEATURE:**
-
-To get a fine-grained view of billing data for each resource used by your App
-Engine services, you can apply labels to the services, export your billing
-data to BigQuery, and run queries. For more information, see [ Labeling App
-Engine resources
-](https://cloud.google.com/appengine/docs/standard/go111/labeling-resources) .
-
-**App Engine standard environment Java**
-
-**FEATURE:**
-
-To get a fine-grained view of billing data for each resource used by your App
-Engine services, you can apply labels to the services, export your billing
-data to BigQuery, and run queries. For more information, see [ Labeling App
-Engine resources
-](https://cloud.google.com/appengine/docs/standard/java/labeling-resources) .
-
-**FEATURE:**
-
-To get a fine-grained view of billing data for each resource used by your App
-Engine services, you can apply labels to the services, export your billing
-data to BigQuery, and run queries. For more information, see [ Labeling App
-Engine resources
-](https://cloud.google.com/appengine/docs/standard/java11/labeling-resources)
-.
-
-**App Engine standard environment Node.js**
-
-**FEATURE:**
-
-To get a fine-grained view of billing data for each resource used by your App
-Engine services, you can apply labels to the services, export your billing
-data to BigQuery, and run queries. For more information, see [ Labeling App
-Engine resources
-](https://cloud.google.com/appengine/docs/standard/nodejs/labeling-resources)
-.
-
-**App Engine standard environment PHP**
-
-**FEATURE:**
-
-To get a fine-grained view of billing data for each resource used by your App
-Engine services, you can apply labels to the services, export your billing
-data to BigQuery, and run queries. For more information, see [ Labeling App
-Engine resources
-](https://cloud.google.com/appengine/docs/standard/php/labeling-resources) .
-
-**FEATURE:**
-
-To get a fine-grained view of billing data for each resource used by your App
-Engine services, you can apply labels to the services, export your billing
-data to BigQuery, and run queries. For more information, see [ Labeling App
-Engine resources
-](https://cloud.google.com/appengine/docs/standard/php7/labeling-resources) .
-
-**App Engine standard environment Python**
-
-**FEATURE:**
-
-To get a fine-grained view of billing data for each resource used by your App
-Engine services, you can apply labels to the services, export your billing
-data to BigQuery, and run queries. For more information, see [ Labeling App
-Engine resources
-](https://cloud.google.com/appengine/docs/standard/python/labeling-resources)
-.
-
-**FEATURE:**
-
-To get a fine-grained view of billing data for each resource used by your App
-Engine services, you can apply labels to the services, export your billing
-data to BigQuery, and run queries. For more information, see [ Labeling App
-Engine resources
-](https://cloud.google.com/appengine/docs/standard/python3/labeling-resources)
-.
-
-**App Engine standard environment Ruby**
-
-**FEATURE:**
-
-To get a fine-grained view of billing data for each resource used by your App
-Engine services, you can apply labels to the services, export your billing
-data to BigQuery, and run queries. For more information, see [ Labeling App
-Engine resources
-](https://cloud.google.com/appengine/docs/standard/ruby/labeling-resources) .
-
-**Cloud Monitoring**
-
-**CHANGED:**
-
-Starting in version 6.0.2, the Cloud Monitoring agent is available for the
-Ubuntu LTS 20.04 (Focal Fossa) distribution.
 
