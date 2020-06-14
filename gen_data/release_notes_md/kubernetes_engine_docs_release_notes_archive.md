@@ -4302,8 +4302,7 @@ assigned the Pods and the alias IP address range for the nodes. This is
 expected to be fixed in the coming weeks.
 
 To work around this problem, follow these steps. Use the name of your node in
-place of ` [NODE_NAME]  ` , and use your cluster's zone in place of ` [ZONE]
-` .
+place of  [NODE_NAME]  , and use your cluster's zone in place of  [ZONE]  .
 
   1. Cordon node that has been affected: 
     
