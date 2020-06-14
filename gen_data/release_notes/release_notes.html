@@ -40,6 +40,101 @@ For a comprehensive list, see the
    </section>
    <section class="releases">
     <section class="releases">
+     <h2 data-text="June 12, 2020" id="June_12_2020" tabindex="0">
+      June 12, 2020
+     </h2>
+     <strong class="release-note-product-title">
+      Cloud Build
+     </strong>
+     <div class="release-changed" id="89a7c235">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Upgraded to Docker server version 19.03.8.
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      Cloud Functions
+     </strong>
+     <div class="release-feature" id="84dbeb9d">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Cloud Functions is now available in the following regions:
+      </p>
+      <ul>
+       <li>
+        <code dir="ltr" translate="no">
+         europe-west6
+        </code>
+        (Zurich)
+       </li>
+       <li>
+        <code dir="ltr" translate="no">
+         us-west3
+        </code>
+        (Salt Lake City)
+       </li>
+      </ul>
+      <p>
+       See
+       <a href="https://cloud.google.com/functions/docs/locations">
+        Cloud Functions Locations
+       </a>
+       for details.
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      Config Connector
+     </strong>
+     <div class="release-feature" id="d76511a2">
+      <strong>
+       FEATURE:
+      </strong>
+      <ul>
+       <li>
+        Added ability to
+        <a href="https://cloud.google.com/dataflow/docs/guides/updating-a-pipeline">
+         update streaming DataflowJobs
+        </a>
+        by updating its spec (e.g.
+        <code dir="ltr" translate="no">
+         spec.templateGcsPath
+        </code>
+        ). Note that not all fields can be updated, and batch DataflowJobs don't support updates.
+       </li>
+       <li>
+        Added
+        <code dir="ltr" translate="no">
+         IAMPolicy
+        </code>
+        to the output of
+        <code dir="ltr" translate="no">
+         config-connector
+        </code>
+       </li>
+      </ul>
+     </div>
+     <strong class="release-note-product-title">
+      Virtual Private Cloud
+     </strong>
+     <div class="release-feature" id="3de0a7f3">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <a href="https://cloud.google.com/vpc/docs/firewall-rules-logging#log-format">
+        Firewall Rules Logging metadata controls
+       </a>
+       is now available in
+       <strong>
+        Beta
+       </strong>
+       .
+      </p>
+     </div>
      <h2 data-text="June 11, 2020" id="June_11_2020" tabindex="0">
       June 11, 2020
      </h2>
@@ -100,7 +195,7 @@ For a comprehensive list, see the
        </strong>
       </p>
       <p>
-       HTTP/2 support could be disabled on the Ingress Gateway as a temporary workaround using the following configuration. Note that HTTP/2 support at ingress can only be disabled if you are not exposing HTTP/2 services that cannot fallback to HTTP/1.1 through ingress (such as gRPC services).
+       HTTP/2 support could be disabled on the Ingress Gateway as a temporary workaround using the following configuration. HTTP/2 support at ingress can only be disabled if you are not exposing HTTP/2 services that cannot fallback to HTTP/1.1 through ingress. Note that gRPC services cannot fallback to HTTP/1.1.
       </p>
       <pre class="prettyprint" dir="ltr" translate="no"><code dir="ltr" translate="no">
 apiVersion: networking.istio.io/v1alpha3
@@ -197,6 +292,204 @@ spec:
        </a>
        release note for the original update announcement.
       </p>
+     </div>
+     <strong class="release-note-product-title">
+      Dataproc
+     </strong>
+     <div class="release-feature" id="73ecbfd0">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Users can now configure a
+       <a href="https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#FIELDS.temp_bucket">
+        <code dir="ltr" translate="no">
+         tempBucket
+        </code>
+       </a>
+       in API calls. The temp bucket is a Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket.
+      </p>
+     </div>
+     <div class="release-changed" id="4bc6d877">
+      <strong>
+       CHANGED:
+      </strong>
+      <ul>
+       <li>
+        <p>
+         New
+         <a href="https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_cloud_dataproc_versions">
+          subminor image versions
+         </a>
+         : 1.2.99-debian9, 1.3.59-debian9, 1.4.30-debian9, 1.3.59-debian10, 1.4.30-debian10, 1.5.5-debian10, 1.3.59-ubuntu18, 1.4.30-ubuntu18, and 1.5.5-ubuntu18.
+        </p>
+       </li>
+       <li>
+        <p>
+         New
+         <a href="https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_cloud_dataproc_versions">
+          preview image 2.0.0-RC1-debian10, 2.0.0-RC1-ubuntu18
+         </a>
+         , with the following components:
+        </p>
+        <ul>
+         <li>
+          Anaconda 2019.10
+         </li>
+         <li>
+          Atlas 2.0.0
+         </li>
+         <li>
+          Druid 0.18.1
+         </li>
+         <li>
+          Flink 1.10.1
+         </li>
+         <li>
+          Hadoop 3.2.1
+         </li>
+         <li>
+          HBase 2.2.4
+         </li>
+         <li>
+          Hive 3.1.2 (with LLAP support)
+         </li>
+         <li>
+          Hue 4.7.0
+         </li>
+         <li>
+          JupyterLab 2.1.0
+         </li>
+         <li>
+          Kafka 2.3.1
+         </li>
+         <li>
+          Miniconda3 4.8.3
+         </li>
+         <li>
+          Pig 0.18.0
+         </li>
+         <li>
+          Presto SQL 333
+         </li>
+         <li>
+          Oozie 5.2.0
+         </li>
+         <li>
+          R 3.6.0
+         </li>
+         <li>
+          Ranger 2.0.0
+         </li>
+         <li>
+          Solr 8.1.1
+         </li>
+         <li>
+          Spark 3.0.0
+         </li>
+         <li>
+          Sqoop 1.5.0
+         </li>
+         <li>
+          Zeppelin 0.9.0
+         </li>
+        </ul>
+       </li>
+      </ul>
+     </div>
+     <div class="release-changed" id="1cfff665">
+      <strong>
+       CHANGED:
+      </strong>
+      <ul>
+       <li>
+        <p>
+         Image 1.3+
+        </p>
+        <ul>
+         <li>
+          Patched
+          <a href="https://issues.apache.org/jira/browse/HIVE-23496">
+           HIVE-23496
+          </a>
+          Adding a flag to disable materialized views cache warm up.
+         </li>
+        </ul>
+       </li>
+      </ul>
+     </div>
+     <div class="release-changed" id="8d05a021">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Druid's Historical's and Broker's JVM and runtime properties are now calculated using server resources. Previously, only the Historical's and MiddleManager's
+       <code dir="ltr" translate="no">
+        MaxHeapSize
+       </code>
+       property was calculated using server resources. This change modifies how new values for
+       <code dir="ltr" translate="no">
+        MaxHeapSize
+       </code>
+       and
+       <code dir="ltr" translate="no">
+        MaxDirectMemorySize
+       </code>
+       properties are calculated for Broker and Historical processes. Also, new runtime properties
+       <code dir="ltr" translate="no">
+        druid.processing.numThreads
+       </code>
+       and
+       <code dir="ltr" translate="no">
+        druid.processing.numMergeBuffers
+       </code>
+       are calculated using server resources.
+      </p>
+     </div>
+     <div class="release-changed" id="22ded815">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       If the project-level staging bucket is manually deleted, it will be recreated when a cluster is created.
+      </p>
+     </div>
+     <div class="release-changed" id="1ff3b867">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Dataproc now uses
+       <a href="https://cloud.google.com/security/shielded-cloud/shielded-vm">
+        Compute Engine shielded VMs
+       </a>
+       for Debian 10 and Ubuntu 18.04 clusters by default.
+      </p>
+     </div>
+     <div class="release-changed" id="02f9a56e">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Dataproc Job container logging now supports
+       <a href="https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/security#create_a_kerberos_cluster">
+        Dataproc Kerberized clusters
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-fixed" id="1a3c43ed">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Image 1.5:
+      </p>
+      <ul>
+       <li>
+        Fixed a bug that prevented users from logging on to the Presto UI when using Component Gateway.
+       </li>
+      </ul>
      </div>
      <strong class="release-note-product-title">
       VPC Service Controls
@@ -3892,431 +4185,6 @@ firewall rule, see
       </p>
       <p>
        AWS_CREDENTIALS
-      </p>
-     </div>
-     <h2 data-text="May 15, 2020" id="May_15_2020" tabindex="0">
-      May 15, 2020
-     </h2>
-     <strong class="release-note-product-title">
-      Cloud Composer
-     </strong>
-     <div class="release-changed" id="4d1f432a">
-      <strong>
-       CHANGED:
-      </strong>
-      <ul>
-       <li>
-        <a href="https://cloud.google.com/composer/docs/concepts/versioning/composer-versions">
-         New versions
-        </a>
-        of Cloud Composer images:
-        <code dir="ltr" translate="no">
-         composer-1.10.3-airflow-1.10.2
-        </code>
-        ,
-        <code dir="ltr" translate="no">
-         composer-1.10.3-airflow-1.10.3
-        </code>
-        and
-        <code dir="ltr" translate="no">
-         composer-1.10.3-airflow-1.10.6
-        </code>
-        . The default is
-        <code dir="ltr" translate="no">
-         composer-1.10.3-airflow-1.10.3
-        </code>
-        . Upgrade your Cloud SDK to use features in this release.
-       </li>
-      </ul>
-     </div>
-     <div class="release-feature" id="0c837aa8">
-      <strong>
-       FEATURE:
-      </strong>
-      <ul>
-       <li>
-        Resource quota limits have been updated, allowing environment administrators to set quotas with more granularity. The default quotas for read and write operations have also changed; see
-        <a href="https://cloud.google.com/composer/quotas">
-         Cloud Composer resource quotas
-        </a>
-        for details. The old limits are deprecated, but will not be removed from the Cloud Console Quotas page until a future release.
-       </li>
-      </ul>
-     </div>
-     <div class="release-changed" id="53240b44">
-      <strong>
-       CHANGED:
-      </strong>
-      <ul>
-       <li>
-        The machine type of the Airflow web server will now be preserved during Composer environment updates, including cases like new PyPi module installations, or adding new environment variables.
-       </li>
-       <li>
-        Synchronization of log files between the Airflow scheduler, web server and workers has been improved.
-       </li>
-       <li>
-        More useful error messages have been added for Composer environment upgrade failures.
-       </li>
-       <li>
-        <em>
-         Future change:
-        </em>
-        Airflow 1.10.6 will become the default Airflow version for Composer environments in an upcoming release.
-       </li>
-      </ul>
-     </div>
-     <div class="release-deprecated" id="659fbb1f">
-      <strong>
-       DEPRECATED:
-      </strong>
-      <ul>
-       <li>
-        Composer version 1.6.1 has been deprecated.
-       </li>
-      </ul>
-     </div>
-     <strong class="release-note-product-title">
-      Cloud SQL for PostgreSQL
-     </strong>
-     <div class="release-feature" id="6c1c17a3">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       PostgreSQL 9.6 minor version is upgraded to 9.6.16.
-PostgreSQL 10 minor version is upgraded to 10.11.
-PostgreSQL 11 minor version is upgraded to 11.6.
-PostgreSQL 12 minor version is upgraded to 12.1.
-      </p>
-     </div>
-     <strong class="release-note-product-title">
-      Cloud Vision
-     </strong>
-     <div class="release-changed" id="0a902a65">
-      <strong>
-       CHANGED:
-      </strong>
-      <p>
-       <strong>
-        OCR model upgrades
-       </strong>
-      </p>
-      <p>
-       <em>
-        <strong>
-         Note
-        </strong>
-        : As per the
-        <a href="#June_11_2020">
-         June 11, 2020
-        </a>
-        release note, the legacy models are accessible through November 15, 2020.
-       </em>
-      </p>
-      <p>
-       The
-       <code dir="ltr" translate="no">
-        TEXT_DETECTION
-       </code>
-       and
-       <code dir="ltr" translate="no">
-        DOCUMENT_TEXT_DETECTION
-       </code>
-       models have been upgraded to newer versions. The API interface and client library will be the same as previous version. The API follows the same
-       <a href="https://cloud.google.com/vision/sla">
-        Service Level Agreement
-       </a>
-       .
-      </p>
-      <p>
-       The legacy models can still be accessed until June 30, 2020. Specify
-    "builtin/legacy_20190601" in the
-       <a href="https://cloud.google.com/vision/docs/reference/rest/v1/Feature">
-        <code dir="ltr" translate="no">
-         model
-        </code>
-       </a>
-       field of a
-       <code dir="ltr" translate="no">
-        Feature
-       </code>
-       object to get the old model results. After June 30, 2020 the old models will not longer be offered.
-      </p>
-      <p>
-       For more information, see the
-       <a href="https://cloud.google.com/vision/docs/ocr">
-        product documentation
-       </a>
-       .
-      </p>
-     </div>
-     <strong class="release-note-product-title">
-      Config Connector
-     </strong>
-     <div class="release-fixed" id="d343527f">
-      <strong>
-       FIXED:
-      </strong>
-      <p>
-       fix ContainerNodePool version upgrade scenario
-      </p>
-     </div>
-     <div class="release-changed" id="479b24ff">
-      <strong>
-       CHANGED:
-      </strong>
-      <p>
-       increase the cpu/memory request for webhook and recorder
-      </p>
-     </div>
-     <div class="release-changed" id="c677286c">
-      <strong>
-       CHANGED:
-      </strong>
-      <p>
-       Miscellaneous bug fixes and improvement
-      </p>
-     </div>
-     <h2 data-text="May 14, 2020" id="May_14_2020" tabindex="0">
-      May 14, 2020
-     </h2>
-     <strong class="release-note-product-title">
-      App Engine flexible environment .NET
-     </strong>
-     <div class="release-feature" id="7c1295f3">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       To get a fine-grained view of billing data for each resource used by your App Engine services, you can apply labels to the services, export your billing data to BigQuery, and run queries. For more information, see
-       <a href="https://cloud.google.com/appengine/docs/flexible/dotnet/labeling-resources">
-        Labeling App Engine resources
-       </a>
-       .
-      </p>
-     </div>
-     <strong class="release-note-product-title">
-      App Engine flexible environment Go
-     </strong>
-     <div class="release-feature" id="47c88c6e">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       To get a fine-grained view of billing data for each resource used by your App Engine services, you can apply labels to the services, export your billing data to BigQuery, and run queries. For more information, see
-       <a href="https://cloud.google.com/appengine/docs/flexible/go/labeling-resources">
-        Labeling App Engine resources
-       </a>
-       .
-      </p>
-     </div>
-     <strong class="release-note-product-title">
-      App Engine flexible environment Java
-     </strong>
-     <div class="release-feature" id="c7f75dd4">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       To get a fine-grained view of billing data for each resource used by your App Engine services, you can apply labels to the services, export your billing data to BigQuery, and run queries. For more information, see
-       <a href="https://cloud.google.com/appengine/docs/flexible/java/labeling-resources">
-        Labeling App Engine resources
-       </a>
-       .
-      </p>
-     </div>
-     <strong class="release-note-product-title">
-      App Engine flexible environment Node.js
-     </strong>
-     <div class="release-feature" id="2982233b">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       To get a fine-grained view of billing data for each resource used by your App Engine services, you can apply labels to the services, export your billing data to BigQuery, and run queries. For more information, see
-       <a href="https://cloud.google.com/appengine/docs/flexible/nodejs/labeling-resources">
-        Labeling App Engine resources
-       </a>
-       .
-      </p>
-     </div>
-     <strong class="release-note-product-title">
-      App Engine flexible environment PHP
-     </strong>
-     <div class="release-feature" id="0d41124a">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       To get a fine-grained view of billing data for each resource used by your App Engine services, you can apply labels to the services, export your billing data to BigQuery, and run queries. For more information, see
-       <a href="https://cloud.google.com/appengine/docs/flexible/php/labeling-resources">
-        Labeling App Engine resources
-       </a>
-       .
-      </p>
-     </div>
-     <strong class="release-note-product-title">
-      App Engine flexible environment Ruby
-     </strong>
-     <div class="release-feature" id="347c4de6">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       To get a fine-grained view of billing data for each resource used by your App Engine services, you can apply labels to the services, export your billing data to BigQuery, and run queries. For more information, see
-       <a href="https://cloud.google.com/appengine/docs/flexible/ruby/labeling-resources">
-        Labeling App Engine resources
-       </a>
-       .
-      </p>
-     </div>
-     <strong class="release-note-product-title">
-      App Engine standard environment Go
-     </strong>
-     <div class="release-feature" id="d7a75398">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       To get a fine-grained view of billing data for each resource used by your App Engine services, you can apply labels to the services, export your billing data to BigQuery, and run queries. For more information, see
-       <a href="https://cloud.google.com/appengine/docs/standard/go/labeling-resources">
-        Labeling App Engine resources
-       </a>
-       .
-      </p>
-     </div>
-     <div class="release-feature" id="23f50e86">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       To get a fine-grained view of billing data for each resource used by your App Engine services, you can apply labels to the services, export your billing data to BigQuery, and run queries. For more information, see
-       <a href="https://cloud.google.com/appengine/docs/standard/go111/labeling-resources">
-        Labeling App Engine resources
-       </a>
-       .
-      </p>
-     </div>
-     <strong class="release-note-product-title">
-      App Engine standard environment Java
-     </strong>
-     <div class="release-feature" id="43042e1f">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       To get a fine-grained view of billing data for each resource used by your App Engine services, you can apply labels to the services, export your billing data to BigQuery, and run queries. For more information, see
-       <a href="https://cloud.google.com/appengine/docs/standard/java/labeling-resources">
-        Labeling App Engine resources
-       </a>
-       .
-      </p>
-     </div>
-     <div class="release-feature" id="2de4b2da">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       To get a fine-grained view of billing data for each resource used by your App Engine services, you can apply labels to the services, export your billing data to BigQuery, and run queries. For more information, see
-       <a href="https://cloud.google.com/appengine/docs/standard/java11/labeling-resources">
-        Labeling App Engine resources
-       </a>
-       .
-      </p>
-     </div>
-     <strong class="release-note-product-title">
-      App Engine standard environment Node.js
-     </strong>
-     <div class="release-feature" id="81f22707">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       To get a fine-grained view of billing data for each resource used by your App Engine services, you can apply labels to the services, export your billing data to BigQuery, and run queries. For more information, see
-       <a href="https://cloud.google.com/appengine/docs/standard/nodejs/labeling-resources">
-        Labeling App Engine resources
-       </a>
-       .
-      </p>
-     </div>
-     <strong class="release-note-product-title">
-      App Engine standard environment PHP
-     </strong>
-     <div class="release-feature" id="b235b8fe">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       To get a fine-grained view of billing data for each resource used by your App Engine services, you can apply labels to the services, export your billing data to BigQuery, and run queries. For more information, see
-       <a href="https://cloud.google.com/appengine/docs/standard/php/labeling-resources">
-        Labeling App Engine resources
-       </a>
-       .
-      </p>
-     </div>
-     <div class="release-feature" id="ba6e5517">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       To get a fine-grained view of billing data for each resource used by your App Engine services, you can apply labels to the services, export your billing data to BigQuery, and run queries. For more information, see
-       <a href="https://cloud.google.com/appengine/docs/standard/php7/labeling-resources">
-        Labeling App Engine resources
-       </a>
-       .
-      </p>
-     </div>
-     <strong class="release-note-product-title">
-      App Engine standard environment Python
-     </strong>
-     <div class="release-feature" id="7d1f80c0">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       To get a fine-grained view of billing data for each resource used by your App Engine services, you can apply labels to the services, export your billing data to BigQuery, and run queries. For more information, see
-       <a href="https://cloud.google.com/appengine/docs/standard/python/labeling-resources">
-        Labeling App Engine resources
-       </a>
-       .
-      </p>
-     </div>
-     <div class="release-feature" id="cf497133">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       To get a fine-grained view of billing data for each resource used by your App Engine services, you can apply labels to the services, export your billing data to BigQuery, and run queries. For more information, see
-       <a href="https://cloud.google.com/appengine/docs/standard/python3/labeling-resources">
-        Labeling App Engine resources
-       </a>
-       .
-      </p>
-     </div>
-     <strong class="release-note-product-title">
-      App Engine standard environment Ruby
-     </strong>
-     <div class="release-feature" id="ffdbc82b">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       To get a fine-grained view of billing data for each resource used by your App Engine services, you can apply labels to the services, export your billing data to BigQuery, and run queries. For more information, see
-       <a href="https://cloud.google.com/appengine/docs/standard/ruby/labeling-resources">
-        Labeling App Engine resources
-       </a>
-       .
-      </p>
-     </div>
-     <strong class="release-note-product-title">
-      Cloud Monitoring
-     </strong>
-     <div class="release-changed" id="243ea9f4">
-      <strong>
-       CHANGED:
-      </strong>
-      <p>
-       Starting in version 6.0.2, the Cloud Monitoring agent is available for the Ubuntu LTS 20.04 (Focal Fossa) distribution.
       </p>
      </div>
     </section>
