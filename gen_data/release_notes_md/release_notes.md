@@ -1837,14 +1837,3 @@ or this:
 Old syntax that does not include ` @google-cloud ` is now deprecated. The old
 syntax will continue to work, but you will not receive updates.
 
-##  May 16, 2020
-
-**Cloud Data Loss Prevention**
-
-**FEATURE:**
-
-Added [ infoType detectors ](https://cloud.google.com/dlp/docs/infotypes-
-reference) :
-
-AWS_CREDENTIALS
-
