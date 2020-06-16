@@ -7,6 +7,14 @@ Feedreader ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
 einfügen oder die Feed-URL direkt hinzufügen: `
 https://cloud.google.com/feeds/cloudvpn-release-notes.xml `
 
+##  June 15, 2020
+
+**FEATURE:**
+
+Cloud VPN now supports [ an org-level policy
+](https://cloud.google.com/vpn/docs/concepts/overview?hl=de#vpn-org-policy)
+that restricts peer IP addresses through a Cloud VPN tunnel.
+
 ##  June 08, 2020
 
 **FEATURE:**
