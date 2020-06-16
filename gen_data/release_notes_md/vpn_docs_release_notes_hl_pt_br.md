@@ -9,6 +9,14 @@ página ao [ leitor de feeds
 adicione o URL do feed diretamente: ` https://cloud.google.com/feeds/cloudvpn-
 release-notes.xml `
 
+##  June 15, 2020
+
+**FEATURE:**
+
+Cloud VPN now supports [ an org-level policy
+](https://cloud.google.com/vpn/docs/concepts/overview?hl=pt_br#vpn-org-policy)
+that restricts peer IP addresses through a Cloud VPN tunnel.
+
 ##  June 08, 2020
 
 **FEATURE:**
