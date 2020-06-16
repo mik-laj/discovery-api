@@ -12,6 +12,57 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  June 15, 2020
+
+**AI Platform Training**
+
+**FEATURE:**
+
+AI Platform Training now supports [ private services access
+](https://cloud.google.com/vpc/docs/private-access-options#service-networking)
+in beta. You can use VPC Network Peering to create a private connection so
+that training jobs can connect to your network on private IP.
+
+Learn how to set up [ VPC Network Peering with AI Platform Training
+](https://cloud.google.com/ai-platform/training/docs/vpc-peering) .
+
+**Anthos Service Mesh**
+
+**FIXED:**
+
+**1.5.5-asm.2**
+
+Fixes a bug in the ` istioctl ` ` HorizontalPodAutoscaling ` setting that
+caused Anthos Service Mesh installations to fail.
+
+**Cloud Data Loss Prevention**
+
+**FEATURE:**
+
+Added [ infoType detector ](https://cloud.google.com/dlp/docs/infotypes-
+reference) :
+
+  * VEHICLE_IDENTIFICATION_NUMBER 
+
+**Cloud Monitoring**
+
+**CHANGED:**
+
+The Service Monitoring API is now Generally Available. You can use this
+feature to create services, set service-level objectives (SLOs), and create
+alerting policies to monitor your SLOs. See [ Service monitoring
+](https://cloud.google.com/monitoring/service-monitoring/) for documentation,
+and [ ` services ` ](https://cloud.google.com/monitoring/api/v3/#service-
+monitoring) for reference material.
+
+**Cloud VPN**
+
+**FEATURE:**
+
+Cloud VPN now supports [ an org-level policy
+](https://cloud.google.com/vpn/docs/concepts/overview#vpn-org-policy) that
+restricts peer IP addresses through a Cloud VPN tunnel.
+
 ##  June 12, 2020
 
 **Cloud Build**
@@ -630,7 +681,7 @@ CPUs on a sole-tenant node than are normally available. This feature is in
 
 **FEATURE:**
 
-[ New sole-tenant node types
+[ New sole-tenant node types (m1-node-96-1433 and n2-node-80-640)
 ](https://cloud.google.com/compute/docs/nodes#node_types) are available in
 **Beta** .
 
@@ -1340,6 +1391,16 @@ resource labels are now available in the Budget API. See the [ documentation
 ](https://cloud.google.com/billing/docs/reference/budget/rest/v1beta1/billingAccounts.budgets)
 for more details.
 
+**Cloud Data Loss Prevention**
+
+**FEATURE:**
+
+Added additional [ infoType detectors
+](https://cloud.google.com/dlp/docs/infotypes-reference) :
+
+  * IRELAND_DRIVING_LICENSE_NUMBER 
+  * IRELAND_EIRCODE 
+
 **Cloud SQL for PostgreSQL**
 
 **FEATURE:**
@@ -1818,22 +1879,4 @@ server configs, deployments, and rollouts from the Cloud Console.
 Subnets in VPC networks now support IP addresses other than RFC 1918
 addresses. For more information, see [ Subnet ranges
 ](https://cloud.google.com/vpc/docs/vpc#manually_created_subnet_ip_ranges) .
-
-##  May 17, 2020
-
-**Dialogflow**
-
-**CHANGED:**
-
-Old Node.js client library require statements must be updated. Your require
-statements should look like this:
-
-` const dialogflow = require('@google-cloud/dialogflow').v2; `
-
-or this:
-
-` const dialogflow = require('@google-cloud/dialogflow').v2beta1; `
-
-Old syntax that does not include ` @google-cloud ` is now deprecated. The old
-syntax will continue to work, but you will not receive updates.
 
