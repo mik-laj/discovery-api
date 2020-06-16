@@ -15,6 +15,20 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/aiplatform-release-notes.xml `
 
+##  June 15, 2020
+
+**AI Platform Training**
+
+**FEATURE:**
+
+AI Platform Training now supports [ private services access
+](https://cloud.google.com/vpc/docs/private-access-options#service-networking)
+in beta. You can use VPC Network Peering to create a private connection so
+that training jobs can connect to your network on private IP.
+
+Learn how to set up [ VPC Network Peering with AI Platform Training
+](https://cloud.google.com/ai-platform/training/docs/vpc-peering) .
+
 ##  June 08, 2020
 
 **AI Platform Prediction**
