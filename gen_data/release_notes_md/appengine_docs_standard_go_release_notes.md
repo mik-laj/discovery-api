@@ -1,3 +1,5 @@
+[ Go 1.13 ](/appengine/docs/standard/go/runtime) is now generally available.
+
 #  Go 1.12+ release notes
 
 You can see the latest product updates for all of Google Cloud on the [ Google
