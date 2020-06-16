@@ -7,6 +7,14 @@
 추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/cloudvpn-
 release-notes.xml `
 
+##  June 15, 2020
+
+**FEATURE:**
+
+Cloud VPN now supports [ an org-level policy
+](https://cloud.google.com/vpn/docs/concepts/overview?hl=ko#vpn-org-policy)
+that restricts peer IP addresses through a Cloud VPN tunnel.
+
 ##  June 08, 2020
 
 **FEATURE:**
