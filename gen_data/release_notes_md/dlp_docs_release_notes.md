@@ -17,6 +17,25 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/dlp-release-notes.xml `
 
+##  June 15, 2020
+
+**FEATURE:**
+
+Added [ infoType detector ](https://cloud.google.com/dlp/docs/infotypes-
+reference) :
+
+  * VEHICLE_IDENTIFICATION_NUMBER 
+
+##  May 21, 2020
+
+**FEATURE:**
+
+Added additional [ infoType detectors
+](https://cloud.google.com/dlp/docs/infotypes-reference) :
+
+  * IRELAND_DRIVING_LICENSE_NUMBER 
+  * IRELAND_EIRCODE 
+
 ##  May 16, 2020
 
 **FEATURE:**
