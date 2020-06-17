@@ -18,6 +18,14 @@ Google Cloud의 최신 제품 업데이트를 확인할 수 있습니다.
 추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/pubsub-
 release-notes.xml `
 
+##  June 16, 2020
+
+**FEATURE:**
+
+[ Retry policies for Pub/Sub subscriptions
+](https://cloud.google.com/pubsub/docs/admin?hl=ko#creating_subscriptions) are
+now available at the GA launch stage.
+
 ##  June 08, 2020
 
 **FEATURE:**
