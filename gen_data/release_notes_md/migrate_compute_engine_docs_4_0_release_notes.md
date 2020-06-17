@@ -43,8 +43,7 @@ For detailed instructions on how to use the new features, see [ Organizing
 migrations with waves ](/migrate/compute-engine/docs/4.0/how-to/organizing-
 migrations/overview) .
 
-####  Deployment of Velostrata Manager on Google Cloud via Google Cloud
-Marketplace
+####  Deployment of Velostrata Manager on Google Cloud via Cloud Marketplace
 
 Velostrata V4.0 Manager deployment is now available via [ Google Cloud
 Marketplace's
