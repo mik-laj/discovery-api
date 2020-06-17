@@ -1,7 +1,7 @@
 #  Release notes
 
-This page contains the latest release notes for features and updates to Google
-Cloud Marketplace.
+This page contains the latest release notes for features and updates to Cloud
+Marketplace.
 
 You can see the latest product updates for all of Google Cloud on the [ Google
 Cloud release notes ](/release-notes) page.
