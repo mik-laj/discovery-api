@@ -13,6 +13,18 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/configconnector-release-
 notes.xml `
 
+##  June 16, 2020
+
+**FEATURE:**
+
+You can use ` config-connector ` tool to export Google Cloud resources into
+Config Connector: [ documentation ](https://cloud.google.com/config-
+connector/docs/how-to/importing-existing-resources)
+
+**FIXED:**
+
+Bug fixes
+
 ##  June 12, 2020
 
 **FEATURE:**
