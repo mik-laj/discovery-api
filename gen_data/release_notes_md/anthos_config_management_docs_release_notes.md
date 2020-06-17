@@ -13,6 +13,22 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/anthosconfig-release-notes.xml
 `
 
+##  June 15, 2020
+
+1.3.2
+
+**ISSUE:**
+
+A regression in Anthos Config Management 1.3.2 results in unnecessary patches
+to the API server for the ` gatekeeper-system ` namespace and spurious logging
+for error ` KNV2005 ` . This "fight" results when the ` gatekeeper-system `
+namespace is managed in the Git repo, and two Anthos Config Management
+components (the operator and syncer) are both trying to reconcile the state of
+the namespace with the API server. The only workaround at this time is to [
+unmanage ](https://cloud.google.com/anthos-config-management/docs/how-
+to/managing-objects#unmanaged-namespaces) the ` gatekeeper-system ` namespace.
+The issue will be fixed in Anthos Config Management 1.4.1.
+
 ##  May 21, 2020
 
 1.3.2
