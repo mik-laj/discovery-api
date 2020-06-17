@@ -1,7 +1,7 @@
 #  Release Notes
 
-This page contains the latest release notes for features and updates for
-Google Cloud Marketplace Partners.
+This page contains the latest release notes for features and updates for Cloud
+Marketplace Partners.
 
 You can see the latest product updates for all of Google Cloud on the [ Google
 Cloud release notes ](/release-notes) page.
