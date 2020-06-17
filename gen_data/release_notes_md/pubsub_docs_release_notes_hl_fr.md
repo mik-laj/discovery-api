@@ -19,6 +19,14 @@ page à votre [ lecteur de flux
 de flux directement : ` https://cloud.google.com/feeds/cloud-pub-sub-release-
 notes.xml `
 
+##  June 16, 2020
+
+**FEATURE:**
+
+[ Retry policies for Pub/Sub subscriptions
+](https://cloud.google.com/pubsub/docs/admin?hl=fr#creating_subscriptions) are
+now available at the GA launch stage.
+
 ##  June 08, 2020
 
 **FEATURE:**
