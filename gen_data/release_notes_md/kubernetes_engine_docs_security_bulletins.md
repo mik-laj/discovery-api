@@ -622,8 +622,8 @@ further details, see the [ Go programming language disclosure
 We recommend that you upgrade your cluster to the latest patch version, which
 contains the mitigation to this vulnerability, as soon as they are available.
 We expect them to be available in all zones with the next GKE release,
-according to the [ release schedule ](/kubernetes-engine/docs/release-
-notes#september_16_2019) .
+according to the [ release schedule ](/kubernetes-engine/docs/release-notes-
+archive#september_16_2019) .
 
 The patch versions which will contain the mitigation are listed below:
 
@@ -667,7 +667,7 @@ May 31, 2019  is updated.
 
 The bulletin for  August 5, 2019  has been updated. The fix for the
 vulnerability documented in the earlier bulletin is [ available ](/kubernetes-
-engine/docs/release-notes#august_22_2019) .
+engine/docs/release-notes-archive#august_22_2019) .
 
 ##  August 8, 2019
 
@@ -1206,7 +1206,7 @@ Istio sidecars (instructions below).**
 upgrades enabled or not, we recommend that you:
 
   1. [ Manually upgrade ](/kubernetes-engine/docs/how-to/upgrading-a-cluster) your cluster as soon as the patch becomes available. 
-  2. Upgrade your sidecars by following the [ sidecar upgrade documentation ](https://istio.io/docs/setup/kubernetes/upgrade/steps/#sidecar-upgrade) . 
+  2. Upgrade your sidecars by following the [ sidecar upgrade documentation ](https://archive.istio.io/v1.5/docs/setup/upgrade/cni-helm-upgrade/#control-plane-upgrade) . 
 
 **
 
@@ -1255,7 +1255,7 @@ Description  |  Severity  |  Notes
 **2019-03-22 Update:** This patch is available in Kubernetes 1.11.8-gke.4,
 1.13.4-gke.1, and newer releases. The patch is not yet available in 1.12.
 Track the availability of these patches in the [ release notes ](/kubernetes-
-engine/docs/release-notes#march_19_2019) .
+engine/docs/release-notes-archive#march_19_2019) .
 
 Kubernetes recently discovered a new denial of service vulnerability [
 CVE-2019-1002100 ](https://cve.mitre.org/cgi-
@@ -1315,7 +1315,7 @@ In order to upgrade your nodes, you must first upgrade your master to the
 newest version. This patch is available in Kubernetes 1.10.12-gke.7,
 1.11.6-gke.11, 1.11.7-gke.4, 1.12.5-gke.5 and newer releases. Track the
 availability of these patches in the [ release notes ](/kubernetes-
-engine/docs/release-notes#february-11-2019) .
+engine/docs/release-notes-archive#february-11-2019) .
 
 Note that only Ubuntu nodes in GKE are affected. Nodes running COS are not
 affected.
@@ -1398,8 +1398,8 @@ node in the cluster. For further details, see the [ Kubernetes disclosure
 ](https://groups.google.com/forum/#!topic/kubernetes-announce/GVllWCg6L88) .
 **All Google Kubernetes Engine (GKE) masters were affected by these
 vulnerabilities, and we have already upgraded clusters to the[ latest patch
-versions ](/kubernetes-engine/docs/release-notes#november-12-2018) . No action
-is required. **
+versions ](/kubernetes-engine/docs/release-notes-archive#november-12-2018) .
+No action is required. **
 
 ####  What should I do?
 
@@ -1821,7 +1821,7 @@ upgrades enabled or not, we recommend that you [ manually upgrade
 soon as the patch becomes available. The patch will be available for all
 customers by March 16th, but it may be available for you sooner based on the
 zone your cluster is in, according to the [ release schedule ](/kubernetes-
-engine/docs/release-notes#march-12-2018) .
+engine/docs/release-notes-archive#march-12-2018) .
 
 In order to upgrade, you must first upgrade your master to the newest version.
 This patch will be available in Kubernetes 1.9.4-gke.1, Kubernetes
