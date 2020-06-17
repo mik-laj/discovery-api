@@ -12,6 +12,52 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  June 16, 2020
+
+**BigQuery**
+
+**FEATURE:**
+
+[ ` INFORMATION_SCHEMA ` views for jobs
+](https://cloud.google.com/bigquery/docs/information-schema-jobs) are now [
+generally available (GA) ](https://cloud.google.com/products/?hl=EN#product-
+launch-stages) .
+
+**BigQuery Data Transfer Service**
+
+**FEATURE:**
+
+The [ Top Brands report ](https://cloud.google.com/bigquery-
+transfer/docs/merchant-center-top-brands-schema) for Google Merchant Center
+Best Sellers exports is now in [ beta
+](https://cloud.google.com/products/#product-launch-stages) .
+
+**Cloud Run**
+
+**FEATURE:**
+
+The Cloud Run user interface now allows you to copy a Cloud Run service.
+
+**Config Connector**
+
+**FEATURE:**
+
+You can use ` config-connector ` tool to export Google Cloud resources into
+Config Connector: [ documentation ](https://cloud.google.com/config-
+connector/docs/how-to/importing-existing-resources)
+
+**FIXED:**
+
+Bug fixes
+
+**Pub/Sub**
+
+**FEATURE:**
+
+[ Retry policies for Pub/Sub subscriptions
+](https://cloud.google.com/pubsub/docs/admin#creating_subscriptions) are now
+available at the GA launch stage.
+
 ##  June 15, 2020
 
 **AI Platform Training**
@@ -99,6 +145,21 @@ See [ Cloud Functions Locations
 available in **Beta** .
 
 ##  June 11, 2020
+
+**AI Platform Deep Learning VM Image**
+
+**FEATURE:**
+
+**M49 release**
+
+TensorFlow Enterprise images updated to 1.15.3 and 2.1.1.
+
+The [ tensorflow-enterprise-addons ](https://pypi.org/project/tensorflow-
+enterprise-addons/) package is now available in all deep learning
+environments.
+
+XGBoost, MXNet, R, PyTorch, CNTK, and Caffe images have been updated with
+library upgrades and bug fixes.
 
 **Access Context Manager**
 
@@ -1751,132 +1812,4 @@ Improving handling of scenarios when ` version ` field on ` ContainerNodePool
 Learn how to create [ low disk space alerts
 ](https://cloud.google.com/filestore/docs/monitoring-instances) for your
 Filestore instances.
-
-##  May 18, 2020
-
-**AI Platform Deep Learning VM Image**
-
-**FEATURE:**
-
-**M48 release**
-
-TensorFlow 2.2 images have been added. The new TensorFlow 2.2 image families
-are ` tf2-2-2-cpu ` and ` tf2-2-2-cu101 ` . See the [ available image families
-](https://cloud.google.com/ai-platform/deep-learning-vm/docs/images) .
-
-**Cloud Bigtable**
-
-**CHANGED:**
-
-The [ Cloud Bigtable Monitoring
-](https://cloud.google.com/bigtable/docs/monitoring-instance) page in the
-Cloud Console has been redesigned. Changes to the visual experience include
-the following:
-
-  * Views that are now split into separate tabs 
-  * A new time range picker 
-  * Updated styling on the graphs 
-
-**Cloud Billing**
-
-**FEATURE:**
-
-**Cloud Billing budgets emails** : ensure your budget alert emails are seen by
-the right people using Cloud Monitoring notifications on your Cloud Billing
-budgets. By default, alert emails are sent to Billing Account Administrators.
-With the _Monitoring notifications_ feature, you can customize your budget to
-send alerts to up to five additional email recipients you specify. See the [
-documentation ](https://cloud.google.com/billing/docs/how-to/budgets-
-notification-recipients) for more details.
-
-**FEATURE:**
-
-New information is now available on your **Cloud Billing** account
-**Overview** page in the **Cloud Console** , featuring at-a-glance summaries
-of the top five spending projects and top five spending products over the last
-12 months.
-
-To see the updated Billing Account Overview page, go to the [ Manage billing
-accounts page ](https://console.cloud.google.com/billing) in the Cloud Console
-and sign in, then select the name of the Cloud Billing account you want to
-view. The Billing Overview page is displayed with the **BILLING ACCOUNT
-OVERVIEW** tab selected. You might need to scroll the page to see all the
-features.
-
-**Cloud DNS**
-
-**FEATURE:**
-
-[ DNS forwarding to a non-RFC 1918 address
-](https://cloud.google.com/dns/zones/#creating-forwarding-zones) is available
-in **General Availability** .
-
-**Cloud Functions**
-
-**CHANGED:**
-
-Cloud Functions now supports [ Node.js 10
-](https://cloud.google.com/functions/docs/concepts/nodejs-10-runtime) at the [
-General Availability release level
-](https://cloud.google.com/products/#product-launch-stages) .
-
-**Cloud Identity and Access Management**
-
-**CHANGED:**
-
-Recommendations from the [ Cloud IAM recommender
-](https://cloud.google.com/iam/docs/recommender-overview) can now include [
-suggestions to create custom roles
-](https://cloud.google.com/iam/docs/recommender-overview#custom-roles) .
-
-**Cloud Logging**
-
-**FEATURE:**
-
-**Logs Viewer** now contains the **Logs field explorer** panel, which lets you
-view aggregation-based results for your project's log fields and makes it more
-efficient to refine queries. To learn more, go to the [ Logs Viewer (Preview)
-page ](https://cloud.google.com/logging/docs/view/logs-viewer-interface) .
-
-**Cloud SQL for MySQL**
-
-**FEATURE:**
-
-MySQL 5.6 minor version is upgraded to 5.6.42. MySQL 5.7 minor version is
-upgraded to 5.7.25.
-
-**Cloud Spanner**
-
-**FEATURE:**
-
-You can now run SQL queries to retrieve [ transaction statistics
-](https://cloud.google.com/spanner/docs/transaction-stats-tables) for your
-database over recent one-minute, 10-minute, and one-hour time periods.
-
-**Cloud Storage**
-
-**CHANGED:**
-
-The V4 signing process is now in GA.
-
-  * The V4 signing process is an improved method for creating [ signatures ](https://cloud.google.com/storage/docs/authentication/signatures) using RSA or HMAC keys. 
-
-**Game Servers**
-
-**CHANGED:**
-
-Added support in the Google Cloud Console for managing game server [ configs
-](https://cloud.google.com/game-servers/docs/how-to/creating-config) , [
-deployments ](https://cloud.google.com/game-servers/docs/how-to/creating-
-deployment) , and [ rollouts ](https://cloud.google.com/game-servers/docs/how-
-to/updating-rollout) . You can now create, view, update, and delete game
-server configs, deployments, and rollouts from the Cloud Console.
-
-**Virtual Private Cloud**
-
-**FEATURE:**
-
-Subnets in VPC networks now support IP addresses other than RFC 1918
-addresses. For more information, see [ Subnet ranges
-](https://cloud.google.com/vpc/docs/vpc#manually_created_subnet_ip_ranges) .
 
