@@ -719,8 +719,9 @@ channel release notes ](/kubernetes-engine/docs/release-notes-regular) .
 ######  1.14.7-gke.10
 
 This version was generally available on [ October 18, 2019 ](/kubernetes-
-engine/docs/release-notes#october_18_2019) and is now available in the Regular
-[ release channel ](/kubernetes-engine/docs/concepts/release-channels) .
+engine/docs/release-notes-archive#october_18_2019) and is now available in the
+Regular [ release channel ](/kubernetes-engine/docs/concepts/release-channels)
+.
 
 **FIXED:**
 
@@ -1042,9 +1043,9 @@ channel release notes ](/kubernetes-engine/docs/release-notes-regular) .
 ######  1.14.6-gke.1
 
 This version was generally available on [ September 9, 2019 ](/kubernetes-
-engine/docs/release-notes#september_9_2019) and is now available in the
-Regular [ release channel ](/kubernetes-engine/docs/concepts/release-channels)
-.
+engine/docs/release-notes-archive#september_9_2019) and is now available in
+the Regular [ release channel ](/kubernetes-engine/docs/concepts/release-
+channels) .
 
 #####  No channel
 
@@ -2626,8 +2627,8 @@ No v1.12.x versions this week.
 **CHANGED:**
 
 **Correction:** Istio was not upgraded to 1.1.3 in v1.12.7-gke.17. The [
-release note for May 13, 2019 ](/kubernetes-engine/docs/release-
-notes#may_13_2019) has been corrected.
+release note for May 13, 2019 ](/kubernetes-engine/docs/release-notes-
+archive#may_13_2019) has been corrected.
 
 ###  v1.13.x
 
@@ -3042,9 +3043,9 @@ guarantee, but is provided to help you plan for upcoming changes.
 ##  April 26, 2019
 
 Due to delays during the [ April 22 GKE release rollout ](/kubernetes-
-engine/docs/release-notes#april_22_2019) , the release will not complete by
-April 26, 2019 as originally planned. Rollout is expected to complete by April
-29, 2019 GMT.
+engine/docs/release-notes-archive#april_22_2019) , the release will not
+complete by April 26, 2019 as originally planned. Rollout is expected to
+complete by April 29, 2019 GMT.
 
 ##  April 25, 2019
 
