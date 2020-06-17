@@ -14,6 +14,15 @@ URL directly: `
 https://cloud.google.com/feeds/aiplatformdeeplearningcontainers-release-
 notes.xml `
 
+##  January 08, 2020
+
+**FEATURE:**
+
+TensorFlow Enterprise environments are now available. [ Use TensorFlow
+Enterprise with Deep Learning Containers
+](https://cloud.google.com/tensorflow-enterprise/docs/use-with-deep-learning-
+containers) .
+
 ##  June 24, 2019
 
 **FEATURE:**
