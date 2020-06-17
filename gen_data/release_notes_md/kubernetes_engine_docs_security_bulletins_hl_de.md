@@ -11,7 +11,7 @@ bis die Geheimhaltungsverpflichtung aufgehoben wurde. Sobald das geschehen
 ist, werden die Hinweise mit Informationen über die durch den Patch behobene
 Sicherheitslücke aktualisiert.
 
-**Hinweis:** Diese Sicherheitsbulletins sind insbesondere dann zu beachten,
+**Hinweis** : Diese Sicherheitsbulletins sind insbesondere dann zu beachten,
 wenn Sie Arbeitslasten für mehrere Mandanten in GKE ausführen. Bei ihnen ist
 die Wahrscheinlichkeit größer, dass sie durch diese Sicherheitslücken
 gefährdet sind. Eine technische Beschreibung der Sicherheitsgrenzen in GKE und
@@ -239,7 +239,7 @@ Container.
 
 |
 
-Mittel
+Mittelgroß
 
 |
 
@@ -255,7 +255,7 @@ Beschreibung  |  Schweregrad  |  Hinweise
 Intel hat CVE-Sicherheitslücken festgestellt, bei denen Daten Angriffen
 ausgesetzt sein können, die durch Interaktion einer spekulativen Ausführung
 mit dem mikroarchitektonischen Status erfolgen. Weitere Informationen erhalten
-Sie im folgenden [ Intel-Blog
+Sie in folgendem [ Intel-Blog
 ](https://blogs.intel.com/technology/2019/11/ipas-november-2019-intel-
 platform-update-ipu/) .
 
@@ -305,7 +305,7 @@ bezeichnet. Das betrifft nicht GKE.
 
 |
 
-Mittel
+Mittelgroß
 
 |
 
@@ -331,7 +331,7 @@ zulässt, ist es nicht von dieser Sicherheitslücke betroffen.
 
 |
 
-–
+Kein Flag
 
 |
 
@@ -417,9 +417,10 @@ announce/65QixT3tcmg) .
 
 Wir empfehlen ein Upgrade Ihres Clusters auf die neueste Patchversion, mit der
 diese Sicherheitslücke entschärft wird, sobald die Version verfügbar ist. Laut
-[ Releasezeitplan ](https://cloud.google.com/kubernetes-engine/docs/release-
-notes?hl=de#september_16_2019) sollten die neuen Patchversionen in allen Zonen
-mit dem nächsten GKE-Release bereitgestellt werden.
+[ Veröffentlichungszeitplan ](https://cloud.google.com/kubernetes-
+engine/docs/release-notes?hl=de#september_16_2019) sollten die neuen
+Patchversionen in allen Zonen mit dem nächsten GKE-Release bereitgestellt
+werden.
 
 Die Patchversionen, mit denen die Sicherheitslücke entschärft wird, sind unten
 aufgeführt.
@@ -480,9 +481,9 @@ Kubernetes hat kürzlich die Sicherheitslücke [ CVE-2019-11247
 Dadurch können clusterbezogene [ benutzerdefinierte Ressourceninstanzen
 ](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-
 resources/) wie mit einem Namespace versehene Objekte behandelt werden, die in
-allen Namespaces existieren. Nutzer und Dienstkonten, die lediglich RBAC-
-Berechtigungen auf Namespace-Ebene haben, können also mit clusterbezogenen
-benutzerdefinierten Ressourcen interagieren. Damit der Angreifer diese
+allen Namespaces existieren. Das bedeutet, dass Nutzer und Dienstkonten, die
+lediglich RBAC-Berechtigungen auf Namespace-Ebene haben, mit clusterbezogenen
+benutzerdefinierten Ressourcen interagieren können. Damit der Angreifer diese
 Sicherheitslücke nutzen kann, benötigt er Zugriffsrechte auf die Ressource in
 einem Namespace.
 
@@ -490,10 +491,10 @@ einem Namespace.
 
 Wir empfehlen ein [ Upgrade ](https://cloud.google.com/kubernetes-
 engine/docs/how-to/upgrading-a-cluster?hl=de) Ihres Clusters auf die neuste
-Patchversion, mit der diese Sicherheitslücke entschärft wird, sobald die
+Patchversion, mit der der diese Sicherheitslücke entschärft wird, sobald die
 Version verfügbar ist. Die Patchversionen werden voraussichtlich mit dem
-nächsten GKE-Release in allen Zonen bereitgestellt. Die Patchversionen, mit
-denen die Sicherheitslücke entschärft wird, sind unten aufgeführt.
+nächsten GCK-Release in allen Zonen bereitgestellt. Die Sicherheitslücke wurde
+in folgenden Patchversionen entschärft:
 
   * 1.11.10-gke.6 
   * 1.12.9-gke.13 
@@ -507,7 +508,7 @@ Der Patch entschärft die Sicherheitslücke [ CVE-2019-11247
 
 |
 
-Mittel
+Mittelgroß
 
 |
 
@@ -572,7 +573,7 @@ mit diesem Patch kompatible Version ausführen, führen Sie vor dem Upgrade
 Ihrer Knoten ein Upgrade auf eine der unten aufgeführten kompatiblen
 Masterversionen durch.
 
-**Aufgrund des Schweregrads dieser Sicherheitslücken empfehlen wir ungeachtet
+**Aufgrund der Schwere dieser Sicherheitslücken empfehlen wir ungeachtet
 dessen, ob Sie automatische Knotenupgrades aktiviert haben, möglichst umgehend
 ein[ manuelles Upgrade ](https://cloud.google.com/kubernetes-engine/docs/how-
 to/upgrading-a-container-cluster?hl=de) Ihrer Knoten und Master auf eine
@@ -590,15 +591,15 @@ Nachfolgend das ursprüngliche Bulletin vom 18. Juni 2019:
 * * *
 
 Netflix hat vor Kurzem drei TCP-Sicherheitslücken in Linux-Kernels
-offengelegt:
+festgestellt:
 
   * [ CVE-2019-11477 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11477)
   * [ CVE-2019-11478 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11478)
   * [ CVE-2019-11479 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11479)
 
-Diese CVEs (Common Vulnerabilities and Exposures) werden zusammen als [
-NFLX-2019-001 ](https://github.com/Netflix/security-
-bulletins/blob/master/advisories/third-party/2019-001.md) bezeichnet.
+Diese CVEs werden zusammen als [ NFLX-2019-001
+](https://github.com/Netflix/security-bulletins/blob/master/advisories/third-
+party/2019-001.md) bezeichnet.
 
 Nicht gepatchte Linux-Kernels können für remote ausgelöste DoS-Angriffe
 (Denial of Service) anfällig sein. **Google Kubernetes Engine-Knoten, die
@@ -606,7 +607,7 @@ nicht vertrauenswürdigen Netzwerktraffic senden oder empfangen, sind
 betroffen. Zum Schutz Ihrer Arbeitslasten empfehlen wir zur Entschärfung die
 folgenden Schritte.**
 
-######  Kubernetes-Master
+######  Kubernetes--Master
 
   * Kubernetes-Master, die den Traffic mithilfe von [ autorisierten Netzwerken ](https://cloud.google.com/kubernetes-engine/docs/how-to/authorized-networks?hl=de) auf vertrauenswürdige Netzwerke begrenzen, sind nicht betroffen. 
 
@@ -641,9 +642,9 @@ Cloud-Projekt einmal pro Cluster aus.**
     
     
     kubectl apply -f \
-        https://raw.githubusercontent.com/GoogleCloudPlatform\
-        /k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
-              
+    https://raw.githubusercontent.com/GoogleCloudPlatform\
+    /k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
+          
 
 Da Ipv6 in GKE nicht unterstützt wird, ist keine Regel vom Typ "ip6tables"
 erforderlich.
@@ -657,9 +658,9 @@ Projekt einmal pro Cluster aus.**
     
     
     kubectl delete -f \
-        https://raw.githubusercontent.com/GoogleCloudPlatform\
-        /k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
-              
+    https://raw.githubusercontent.com/GoogleCloudPlatform\
+    /k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
+          
 
 |  Hoch  
 Mittel  
@@ -688,8 +689,8 @@ Kubernetes hat kürzlich die Sicherheitslücke [ CVE-2019-11246
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11246) festgestellt.
 Dadurch kann ein Angreifer, der Zugriff auf einen Vorgang vom Typ ` kubectl cp
 ` sowie die Codeausführung in einem Container hat, Dateien auf dem Host
-ändern. Angreifer haben die Möglichkeit, Dateien im Hostdateisystem zu
-ersetzen oder zu erstellen. Weitere Informationen erhalten Sie in der [
+ändern. Der Angreifer hat die Möglichkeit, Dateien auf dem Hostdateisystem zu
+ersetzen und zu erstellen. Weitere Informationen erhalten Sie in der [
 Mitteilung zu Kubernetes
 ](https://groups.google.com/forum/?hl=de#!topic/kubernetes-security-
 announce/NLs2TGbfPdo) .
@@ -697,7 +698,7 @@ announce/NLs2TGbfPdo) .
 **Von dieser Sicherheitslücke sind alle` gcloud ` -Versionen für Google
 Kubernetes Engine (GKE) betroffen. Wir empfehlen daher ein Upgrade auf die
 neueste Patchversion von ` gcloud ` , sobald sie bereitsteht. ** Diese
-Sicherheitslücke wird in einer der nächsten Patchversionen entschärft.
+Sicherheitslücke wird in einer nächsten Patchversion entschärft.
 
 ######  Was soll ich tun?
 
@@ -739,8 +740,8 @@ beliebig zu ändern.
 
 **Von dieser Sicherheitslücke sind alle Google Kubernetes Engine-Knoten (GKE)
 betroffen, die Docker ausführen. Wir empfehlen ein Upgrade auf die neueste
-Patchversion, sobald sie bereitsteht. Diese Sicherheitslücke wird in einer der
-nächsten Patchversionen entschärft.**
+Patchversion, sobald sie bereitsteht. Diese Sicherheitslücke wird in einer
+nächsten Patchversion entschärft.**
 
 **Alle Google Kubernetes Engine-Master (GKE) vor Version 1.12.7 führen Docker
 aus und sind von dieser Sicherheitslücke betroffen.** Da Nutzer in GKE auf dem
@@ -823,9 +824,9 @@ Listen Sie mit dem folgenden Befehl alle Knoten und deren Kubelet-Version auf:
     
     
     
-        kubectl get nodes -o=jsonpath='{range .items[*]}'\
-        '{.status.nodeInfo.machineID}'\
-        '{"\t"}{.status.nodeInfo.kubeletVersion}{"\n"}{end}'
+    kubectl get nodes -o=jsonpath='{range .items[*]}'\
+    '{.status.nodeInfo.machineID}'\
+    '{"\t"}{.status.nodeInfo.kubeletVersion}{"\n"}{end}'
 
 Wenn in der Ausgabe die unten angegebenen Kubelet-Versionen aufgelistet
 werden, sind Ihre Knoten betroffen:
@@ -860,12 +861,12 @@ bin/cvename.cgi?name=2019-11245)
 Beschreibung  |  Schweregrad  |  Hinweise  
 ---|---|---  
   
-**Aktualisierung vom 11. Juli 2019:** Der Patch ist in 1.11.10-gke.4,
+**Aktualisierung von 11. Juli 2019** : Der Patch ist in 1.11.10-gke.4,
 1.12.8-gke.6 und 1.13.6-gke.5 verfügbar, die in der Woche vom 28. Mai 2019
 veröffentlicht wurden, sowie in neueren Releases.
 
 Die folgenden CVEs (Common Vulnerabilities and Exposures) wurden von Intel
-offengelegt:
+festgestellt:
 
   * [ CVE-2018-12126 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12126)
   * [ CVE-2018-12127 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12127)
@@ -881,9 +882,9 @@ Sie im folgenden [ Intel-Blog
 sa-00233.html) .
 
 **Die Hostinfrastruktur, auf der Kubernetes Engine ausgeführt wird, dient
-dazu, Arbeitslasten von Kunden voneinander zu isolieren.** Sie sind nicht
-betroffen, es sei denn, Sie würden in Ihren GKE-Clustern für mehrere Mandanten
-nicht vertrauenswürdigen Code ausführen.
+dazu, Arbeitslasten von Kunden voneinander zu isolieren. Sie sind nicht
+betroffen, es sei denn, sie würden in Ihren eigenen GKE-Clustern für mehrere
+Mandanten nicht vertrauenswürdigen Code ausführen.**
 
 **Für Kunden, die in Kubernetes Engine in ihren eigenen Diensten für mehrere
 Mandanten nicht vertrauenswürdigen Code ausführen, stellt das eine besonders
@@ -930,33 +931,33 @@ So erstellen Sie einen neuen Knotenpool mit deaktiviertem Hyper-Threading:
   1. Erstellen Sie in Ihrem Cluster einen neuen Knotenpool mit dem Knotenlabel ` cloud.google.com/gke-smt-disabled=true ` : 
     
         
-        gcloud container node-pools create smt-disabled --cluster=[CLUSTER_NAME] \
-            --node-labels=cloud.google.com/gke-smt-disabled=true
+    gcloud container node-pools create smt-disabled --cluster=[CLUSTER_NAME] \
+        --node-labels=cloud.google.com/gke-smt-disabled=true
 
   2. Stellen Sie das DaemonSet diesem neuen Knotenpool bereit. Das DaemonSet wird nur auf Knoten mit dem Label ` cloud.google.com/gke-smt-disabled=true ` ausgeführt. Es deaktiviert Hyper-Threading und startet dann den Knoten neu. 
     
         
-        kubectl create -f \
-        https://raw.githubusercontent.com/GoogleCloudPlatform/\
-        k8s-node-tools/master/disable-smt/gke/disable-smt.yaml
+    kubectl create -f \
+    https://raw.githubusercontent.com/GoogleCloudPlatform/\
+    k8s-node-tools/master/disable-smt/gke/disable-smt.yaml
 
   3. Prüfen Sie, ob die DaemonSet-Pods ausgeführt werden. 
     
         
-        kubectl get pods --selector=name=disable-smt -n kube-system
+    kubectl get pods --selector=name=disable-smt -n kube-system
 
 Sie sollten eine Antwort ähnlich der folgenden erhalten:
 
     
         
-        NAME                READY     STATUS    RESTARTS   AGE
+    NAME                READY     STATUS    RESTARTS   AGE
     
-        disable-smt-2xnnc   1/1       Running   0          6m
+    disable-smt-2xnnc   1/1       Running   0          6m
 
   4. Prüfen Sie, ob in den Logs der Pods "SMT has been disabled" angegeben wird. 
     
         
-        kubectl logs disable-smt-2xnnc disable-smt -n kube-system
+    kubectl logs disable-smt-2xnnc disable-smt -n kube-system
 
 Das DaemonSet muss auf den Knotenpools weiter ausgeführt werden, damit die
 Änderungen automatisch auf die neu im Pool erstellten Knoten angewendet
@@ -1053,7 +1054,7 @@ Dieser Patch dient zur Entschärfung der folgenden Sicherheitslücken:
 [ CVE-2019-9900 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2019-9900) und [ CVE-2019-9901.
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9901) Mehr darüber
-können Sie im [ Istio-Blog ](https://istio.io/blog/2019/announcing-1.1.2)
+können Sie im [ Blog zu Istio ](https://istio.io/blog/2019/announcing-1.1.2)
 lesen.
 
 |  Hoch  |
@@ -1225,10 +1226,11 @@ für jeden Pod auf jedem Knoten im Cluster beliebige Vorgänge ausführen.
 Weitere Informationen erhalten Sie in der [ Mitteilung zu Kubernetes
 ](https://groups.google.com/forum/?hl=de#!topic/kubernetes-
 announce/GVllWCg6L88) . **Von diesen Sicherheitslücken sind alle Google
-Kubernetes Engine-Master betroffen. Außerdem haben wir die Cluster bereits auf
-die[ aktuellen Patchversionen ](https://cloud.google.com/kubernetes-
-engine/docs/release-notes?hl=de#november-12-2018) aktualisiert. Es sind keine
-Maßnahmen erforderlich. **
+Kubernetes Engine-Master (GKE) betroffen. Außerdem haben wir die Cluster
+bereits auf die[ aktuellen Patchversionen
+](https://cloud.google.com/kubernetes-engine/docs/release-
+notes?hl=de#november-12-2018) aktualisiert. Es sind keine Maßnahmen
+erforderlich. **
 
 ####  Was soll ich tun?
 
@@ -1236,7 +1238,7 @@ Maßnahmen erforderlich. **
 aktualisiert.**
 
 Dieser Patch ist verfügbar in GKE 1.9.7-gke.11, 1.10.6-gke.11, 1.10.7-gke.11,
-1.10.9-gke.5 und 1.11.2-gke.18 sowie neueren Releases.
+1.10.9-gke.5 und 1.11.2-gke.18 sowie neueren Versionen.
 
 ####  Welche Sicherheitslücke wird mit diesem Patch behoben?
 
@@ -1275,26 +1277,26 @@ Diese Tokens haben die folgenden Berechtigungen:
       
     
     
-        bgpconfigurations.crd.projectcalico.org     [create get list update watch]
-        bgppeers.crd.projectcalico.org              [create get list update watch]
-        clusterinformations.crd.projectcalico.org   [create get list update watch]
-        felixconfigurations.crd.projectcalico.org   [create get list update watch]
-        globalbgpconfigs.crd.projectcalico.org      [create get list update watch]
-        globalfelixconfigs.crd.projectcalico.org    [create get list update watch]
-        globalnetworkpolicies.crd.projectcalico.org [create get list update watch]
-        globalnetworksets.crd.projectcalico.org     [create get list update watch]
-        hostendpoints.crd.projectcalico.org         [create get list update watch]
-        ippools.crd.projectcalico.org               [create get list update watch]
-        networkpolicies.crd.projectcalico.org       [create get list update watch]
-        nodes                                       [get list update watch]
-        pods                                        [get list watch patch]
-        namespaces                                  [get list watch]
-        networkpolicies.extensions                  [get list watch]
-        endpoints                                   [get]
-        services                                    [get]
-        pods/status                                 [update]
-        networkpolicies.networking.k8s.io           [watch list]
-                
+    bgpconfigurations.crd.projectcalico.org     [create get list update watch]
+    bgppeers.crd.projectcalico.org              [create get list update watch]
+    clusterinformations.crd.projectcalico.org   [create get list update watch]
+    felixconfigurations.crd.projectcalico.org   [create get list update watch]
+    globalbgpconfigs.crd.projectcalico.org      [create get list update watch]
+    globalfelixconfigs.crd.projectcalico.org    [create get list update watch]
+    globalnetworkpolicies.crd.projectcalico.org [create get list update watch]
+    globalnetworksets.crd.projectcalico.org     [create get list update watch]
+    hostendpoints.crd.projectcalico.org         [create get list update watch]
+    ippools.crd.projectcalico.org               [create get list update watch]
+    networkpolicies.crd.projectcalico.org       [create get list update watch]
+    nodes                                       [get list update watch]
+    pods                                        [get list watch patch]
+    namespaces                                  [get list watch]
+    networkpolicies.extensions                  [get list watch]
+    endpoints                                   [get]
+    services                                    [get]
+    pods/status                                 [update]
+    networkpolicies.networking.k8s.io           [watch list]
+            
   
 ---  
   
@@ -1319,8 +1321,8 @@ Sekunden automatisch erstellt werden:
       
     
     
-        kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
-                
+    kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
+            
   
 ---  
   
@@ -1328,84 +1330,84 @@ Sekunden automatisch erstellt werden:
 
 GKE protokolliert alle Zugriffe auf den API-Server. Mit nachstehender
 Stackdriver-Abfrage können Sie feststellen, ob ein Calico-Token außerhalb des
-erwarteten IP-Bereichs von Google Cloud verwendet wurde. Es werden nur
-Einträge für Aufrufe von außerhalb des GCP-Netzwerks zurückgegeben. Sie können
-das nach Bedarf an Ihre Umgebung anpassen.  
+erwarteten IP-Bereichs von Google Cloud verwendet wurde. Beachten Sie dabei,
+dass nur Einträge für Aufrufe von außerhalb des GCP-Netzwerks zurückgegeben
+werden. Sie können dies nach Bedarf an Ihre Umgebung anpassen.  
   
 ---  
       
     
     
-        resource.type="k8s_cluster"
-        protoPayload.authenticationInfo.principalEmail="system:serviceaccount:kube-system:calico"
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.34.208.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.192.0/21")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.200.0/23")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.59.80.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.192.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.208.0/21")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.216.0/22")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.220.0/23")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.222.0/24")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.224.0.0/13")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.216.148.0/22")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.222.176.0/21")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "173.255.112.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "192.158.28.0/22")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.192.112.0/22")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.232.0/22")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.236.0/23")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.236.48.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.251.128.0/19")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.204.0.0/14")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.208.0.0/13")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.167.160.0/19")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.178.192.0/18")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.2.0/23")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.4.0/22")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.8.0/21")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.16.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.32.0/19")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.64.0/18")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.0.0/17")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.128.0/18")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.192.0/19")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.240.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.8.0/21")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.16.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.32.0/19")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.64.0/18")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.128.0/17")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.154.0.0/15")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.196.0.0/14")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "208.68.108.0/23")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.184.0.0/14")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.188.0.0/15")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.202.0.0/16")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.0.0/17")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.128.0/18")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.192.0/19")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.224.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.192.0.0/14")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.196.0.0/15")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.198.0.0/16")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.0.0/17")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.128.0/18")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.200.0.0/15")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "2600:1900::/35")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.224.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.232.0.0/15")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.234.0.0/16")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.0.0/17")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.192.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.236.0.0/14")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.240.0.0/15")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.232.0/21")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.4.0/22")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.220.0.0/14")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.242.0.0/15")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.244.0.0/14")
-                
+    resource.type="k8s_cluster"
+    protoPayload.authenticationInfo.principalEmail="system:serviceaccount:kube-system:calico"
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.34.208.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.192.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.200.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.59.80.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.192.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.208.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.216.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.220.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.222.0/24")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.224.0.0/13")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.216.148.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.222.176.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "173.255.112.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "192.158.28.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.192.112.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.232.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.236.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.236.48.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.251.128.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.204.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.208.0.0/13")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.167.160.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.178.192.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.2.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.4.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.8.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.16.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.32.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.64.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.0.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.128.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.192.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.240.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.8.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.16.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.32.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.64.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.128.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.154.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.196.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "208.68.108.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.184.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.188.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.202.0.0/16")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.0.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.128.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.192.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.224.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.192.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.196.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.198.0.0/16")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.0.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.128.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.200.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "2600:1900::/35")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.224.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.232.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.234.0.0/16")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.0.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.192.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.236.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.240.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.232.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.4.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.220.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.242.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.244.0.0/14")
+            
   
 ---  
   
@@ -1425,10 +1427,9 @@ technology/l1tf.html) :
 Diese CVEs werden zusammen als "L1 Terminal Fault (L1TF)" bezeichnet.
 
 Durch diese L1TF-Sicherheitslücken wird die spekulative Ausführung des
-Prozessors dazu genutzt, Angriffe auf die Konfiguration von Datenstrukturen
-auf Prozessorebene durchzuführen. "L1" bezeichnet den Level-1-Datencache
-(L1D), eine kleine On-Core-Ressource für die Beschleunigung des
-Speicherzugriffs.
+Prozessors für Angriffe auf die Konfiguration von Datenstrukturen auf
+Prozessorebene ausgenutzt. "L1" bezeichnet den Level-1-Datencache (L1D), eine
+kleine On-Core-Ressource für die Beschleunigung des Speicherzugriffs.
 
 Weitere Informationen zu diesen Sicherheitslücken und zu den empfohlenen
 Maßnahmen für Compute Engine finden Sie im [ Google Cloud-Blogpost
@@ -1445,8 +1446,8 @@ Kubernetes Engine-Knotenpools, die das Container-Optimized OS-Image (COS) von
 Google verwenden und für die [ automatische Upgrades
 ](https://cloud.google.com/kubernetes-engine/docs/concepts/node-auto-
 upgrades?hl=de) aktiviert sind, werden automatisch auf die Patchversionen
-unseres COS-Images aktualisiert, sobald sie verfügbar sind. Dies gilt ab der
-Woche des 20.08.2018.
+unseres COS-Images aktualisiert, sobald sie verfügbar sind. Dies gilt seit
+20.08.2018.
 
 Bei Kubernetes Engine-Knotenpools, für die keine [ automatischen Upgrades
 ](https://cloud.google.com/kubernetes-engine/docs/concepts/node-auto-
@@ -1475,9 +1476,9 @@ bin/cvename.cgi?name=CVE-2018-5391) festgestellt. Wie bei [ CVE-2018-5390
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390) wird eine
 Sicherheitslücke bei Netzwerken auf Kernel-Ebene beschrieben, durch die die
 Effektivität von DoS-Angriffen (Denial of Service) auf anfällige Systeme
-erhöht wird. Der Hauptunterschied besteht darin, dass CVE-2018-5391 über IP-
-Verbindungen ausgenutzt werden kann. Dieses Bulletin wurde aktualisiert und
-deckt nun beide Sicherheitslücken ab.
+erhöht wird. Der Unterschied besteht im Wesentlichen darin, dass CVE-2018-5391
+über IP-Verbindungen ausgenutzt werden kann. Dieses Bulletin wurde
+aktualisiert und deckt nun beide Sicherheitslücken ab.
 
 ####  Beschreibung
 
@@ -1542,8 +1543,8 @@ Alle Kubernetes Engine-Knoten sind gefährdet.
 ####  Was soll ich tun?
 
 Verhindern Sie die Verwendung des Volume-Typs "gitRepo". Wenn Sie Volumes vom
-Typ "gitRepo" mit der PodSecurityPolicy verbieten möchten, lassen Sie `
-gitRepo ` in der weißen Liste ` volumes ` Ihrer PodSecurityPolicy weg.
+Typ gitRepo mit der PodSecurityPolicy verbieten möchten, lassen Sie ` gitRepo
+` in der Whitelist ` volumes ` Ihrer PodSecurityPolicy weg.
 
 Ein vergleichbares gitRepo-Volume-Verhalten erzielen Sie, wenn Sie ein Git-
 Repository von einem initContainer in ein EmptyDir-Volume klonen:
@@ -1552,32 +1553,32 @@ Repository von einem initContainer in ein EmptyDir-Volume klonen:
     
     
     apiVersion: v1
-        kind: Pod
-        metadata:
-          name: git-repo-example
-        spec:
-          initContainers:
-            # This container clones the desired git repo to the EmptyDir volume.
-            - name: git-clone
-              image: alpine/git # Any image with git will do
-              args:
-                - clone
-                - --single-branch
-                - --
-                - https://github.com/kubernetes/kubernetes # Your repo
-                - /repo # Put it in the volume
-              securityContext:
-                runAsUser: 1 # Any non-root user will do. Match to the workload.
-                allowPrivilegeEscalation: false
-                readOnlyRootFilesystem: true
-              volumeMounts:
-                - name: git-repo
-                  mountPath: /repo
-          containers:
-            ...
-          volumes:
+    kind: Pod
+    metadata:
+      name: git-repo-example
+    spec:
+      initContainers:
+        # This container clones the desired git repo to the EmptyDir volume.
+        - name: git-clone
+          image: alpine/git # Any image with git will do
+          args:
+            - clone
+            - --single-branch
+            - --
+            - https://github.com/kubernetes/kubernetes # Your repo
+            - /repo # Put it in the volume
+          securityContext:
+            runAsUser: 1 # Any non-root user will do. Match to the workload.
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+          volumeMounts:
             - name: git-repo
-              emptyDir: {}
+              mountPath: /repo
+      containers:
+        ...
+      volumes:
+        - name: git-repo
+          emptyDir: {}
 
 ####  Welcher Patch behebt diese Sicherheitslücke?
 
@@ -1611,14 +1612,15 @@ unten).
 
 ####  Was soll ich tun?
 
-Führen Sie zuerst ein Masterupgrade auf die neueste Version durch. Dieser
-Patch ist in Kubernetes Engine 1.8.12-gke.1, Kubernetes Engine 1.9.7-gke.1 und
-Kubernetes Engine 1.10.2-gke.1 verfügbar. Diese Releases umfassen sowohl
-Patches für Images von Container-Optimized OS als auch für Ubuntu.
+Führen Sie zuerst ein Upgrade auf die neueste Version für den Master durch.
+Dieser Patch ist in Kubernetes Engine 1.8.12-gke.1, Kubernetes Engine
+1.9.7-gke.1 und Kubernetes Engine 1.10.2-gke.1 verfügbar. Diese Releases
+umfassen sowohl Patches für Images von Container-Optimized OS als auch für
+Ubuntu.
 
 Wenn Sie vorher einen neuen Cluster erstellen, müssen Sie die Patchversion
-angeben, damit diese verwendet wird. Für Knoten, für die [ automatische
-Upgrades ](https://cloud.google.com/kubernetes-engine/docs/concepts/node-auto-
+angeben, damit sie verwendet wird. Für Knoten, für die [ automatische Upgrades
+](https://cloud.google.com/kubernetes-engine/docs/concepts/node-auto-
 upgrades?hl=de) aktiviert sind und keine manuellen Upgrades durchgeführt
 werden, wird in den nächsten Wochen automatisch ein Upgrade auf Patchversionen
 durchgeführt.
@@ -1627,7 +1629,7 @@ durchgeführt.
 
 Dieser Patch dient zur Entschärfung der folgenden Sicherheitslücken:
 
-[ CVE-2018-8897 ](https://cve.mitre.org/cgi-
+[ CVE-2018-1000199 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2018-1000199) : Diese Sicherheitslücke betrifft den
 Linux-Kernel. Nicht privilegierte Nutzer oder Prozesse können einen Absturz
 des System-Kernels auslösen und damit einen DoS-Angriff oder eine
@@ -1639,8 +1641,8 @@ etwa "Allgemeines Verwundbarkeitsbewertungssystem") von 7,8.
 bin/cvename.cgi?name=CVE-2018-8897) : Diese Sicherheitslücke betrifft den
 Linux-Kernel. Nicht privilegierte Nutzer oder Prozesse können einen Absturz
 des System-Kernels auslösen und damit einen DoS-Angriff verursachen. Diese
-Sicherheitslücke wird mit dem Schweregrad "Mittel" bewertet, mit einem CVSS-
-Wert von 6,5.
+Sicherheitslücke wird mit dem Schweregrad "Mittel" bewertet, mit einem CVSS
+von 6,5.
 
 [ CVE-2018-1087 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2018-1087) : Diese Sicherheitslücke betrifft den KVM-
@@ -1648,8 +1650,8 @@ Hypervisor des Linux-Kernels. Nicht privilegierte Prozesse können einen
 Absturz des Guest-Kernels auslösen oder erweiterte Berechtigungen erlangen.
 Diese Sicherheitslücke wurde in der Infrastruktur behoben, in der Kubernetes
 Engine ausgeführt wird. Kubernetes Engine ist somit nicht betroffen. Diese
-Sicherheitslücke wurde mit dem Schweregrad "Hoch" bewertet, mit einem CVSS-
-Wert von 8,0.
+Sicherheitslücke wurde mit dem Schweregrad "Hoch" bewertet, mit einer CVSS-
+Punktzahl von 8,0.
 
 |  Hoch  |
 
@@ -1687,12 +1689,12 @@ Kunden verfügbar. Gemäß dem [ Releasezeitplan
 notes?hl=de#march-12-2018) kann er je nach Zone, in der sich Ihr Cluster
 befindet, auch schon früher für Sie verfügbar sein.
 
-Führen Sie zuerst ein Masterupgrade auf die neueste Version durch. Dieser
-Patch wird in Kubernetes 1.9.4-gke.1, Kubernetes 1.8.9-gke.1 und Kubernetes
-1.7.14-gke.1 verfügbar sein. Neue Cluster verwenden die Patchversion
-standardmäßig ab dem 30. März. Wenn Sie bereits vor diesem Datum einen neuen
-Cluster erstellen, müssen Sie die Patchversion angeben, damit sie verwendet
-wird.
+Führen Sie zuerst ein Upgrade auf die neueste Version für den Master durch.
+Dieser Patch wird in Kubernetes 1.9.4-gke.1, Kubernetes 1.8.9-gke.1 und
+Kubernetes 1.7.14-gke.1 verfügbar sein. Neue Cluster verwenden die
+Patchversion standardmäßig ab dem 30. März. Wenn Sie bereits vor diesem Datum
+einen neuen Cluster erstellen, müssen Sie die Patchversion angeben, damit sie
+verwendet wird.
 
 Knoten, für die [ automatische Upgrades ](https://cloud.google.com/kubernetes-
 engine/docs/concepts/node-auto-upgrades?hl=de) aktiviert sind und keine
@@ -1708,11 +1710,11 @@ Mit diesem Patch werden die folgenden beiden Sicherheitslücken behoben:
 
 Die Sicherheitslücke CVE-2017-1002101 ermöglicht Containern, die [ Subpfad
 ](https://kubernetes.io/docs/concepts/storage/volumes/#using-subpath) -Volume-
-Bereitstellungen verwenden, den Zugriff auf Dateien außerhalb des Volumes. Das
-bedeutet Folgendes: Wenn Sie den Containerzugriff auf Hostpfad-Volumes mit
-PodSecurityPolicy blockieren, kann ein Angreifer, der in der Lage ist, Pods zu
-aktualisieren oder zu erstellen, jeden beliebigen Hostpfad durch Verwendung
-eines anderen Volume-Typs bereitstellen.
+Bereitstellungen verwenden, den Zugriff auf Dateien außerhalb des Volumes.
+Dies bedeutet Folgendes: Wenn Sie den Containerzugriff auf Hostpfad-Volumes
+mit PodSecurityPolicy blockieren, kann ein Angreifer, der in der Lage ist,
+Pods zu aktualisieren oder zu erstellen, jeden beliebigen Hostpfad durch
+Verwendung eines anderen Volume-Typs bereitstellen.
 
 Aufgrund der Sicherheitslücke CVE-2017-1002102 können Container, die bestimmte
 Volume-Typen verwenden, wie z. B. Secrets, Konfigurationspläne, projizierte
