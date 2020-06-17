@@ -12,6 +12,12 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/run-release-notes.xml `
 
+##  June 16, 2020
+
+**FEATURE:**
+
+The Cloud Run user interface now allows you to copy a Cloud Run service.
+
 ##  June 09, 2020
 
 **FEATURE:**
