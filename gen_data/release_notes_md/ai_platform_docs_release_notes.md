@@ -29,6 +29,23 @@ that training jobs can connect to your network on private IP.
 Learn how to set up [ VPC Network Peering with AI Platform Training
 ](https://cloud.google.com/ai-platform/training/docs/vpc-peering) .
 
+##  June 11, 2020
+
+**AI Platform Deep Learning VM Image**
+
+**FEATURE:**
+
+**M49 release**
+
+TensorFlow Enterprise images updated to 1.15.3 and 2.1.1.
+
+The [ tensorflow-enterprise-addons ](https://pypi.org/project/tensorflow-
+enterprise-addons/) package is now available in all deep learning
+environments.
+
+XGBoost, MXNet, R, PyTorch, CNTK, and Caffe images have been updated with
+library upgrades and bug fixes.
+
 ##  June 08, 2020
 
 **AI Platform Prediction**
@@ -756,6 +773,17 @@ Geographic area  |  Old price per hour  |  New price per hour
   
 Read more about [ using GPUs for training ](https://cloud.google.com/ai-
 platform/training/docs/using-gpus) .
+
+##  January 08, 2020
+
+**AI Platform Deep Learning Containers**
+
+**FEATURE:**
+
+TensorFlow Enterprise environments are now available. [ Use TensorFlow
+Enterprise with Deep Learning Containers
+](https://cloud.google.com/tensorflow-enterprise/docs/use-with-deep-learning-
+containers) .
 
 ##  January 07, 2020
 
