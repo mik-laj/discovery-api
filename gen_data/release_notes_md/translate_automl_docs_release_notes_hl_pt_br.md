@@ -7,10 +7,14 @@ também serão anunciadas na lista de e-mails do grupo [ google-translate-api
 ](https://groups.google.com/forum/?hl=pt_br#!forum/google-translate-api) (em
 inglês).
 
+É possível ver as atualizações mais recentes de todos os produtos do Google
+Cloud na página [ Notas da versão do Google Cloud
+](https://cloud.google.com/release-notes?hl=pt_br) .
+
 Para receber as atualizações de produtos mais recentes, adicione o URL desta
 página ao [ leitor de feeds
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ou adicione o URL
-do feed diretamente: ` https://cloud.google.com/feeds/automl-translation-
+do feed diretamente: ` https://cloud.google.com/feeds/automl-translate-
 release-notes.xml `
 
 ##  April 03, 2020
