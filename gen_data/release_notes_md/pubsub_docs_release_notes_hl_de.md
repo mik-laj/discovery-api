@@ -21,6 +21,14 @@ Feedreader ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
 einfügen oder die Feed-URL direkt hinzufügen: `
 https://cloud.google.com/feeds/pubsub-release-notes.xml ` .
 
+##  June 16, 2020
+
+**FEATURE:**
+
+[ Retry policies for Pub/Sub subscriptions
+](https://cloud.google.com/pubsub/docs/admin?hl=de#creating_subscriptions) are
+now available at the GA launch stage.
+
 ##  June 08, 2020
 
 **FEATURE:**
