@@ -19,6 +19,14 @@ página a tu [ lector de feeds
 directamente la URL del feed: ` https://cloud.google.com/feeds/pubsub-release-
 notes.xml ` .
 
+##  June 16, 2020
+
+**FEATURE:**
+
+[ Retry policies for Pub/Sub subscriptions
+](https://cloud.google.com/pubsub/docs/admin?hl=es-419#creating_subscriptions)
+are now available at the GA launch stage.
+
 ##  June 08, 2020
 
 **FEATURE:**
