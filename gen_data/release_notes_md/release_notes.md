@@ -12,6 +12,28 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  June 17, 2020
+
+**Cloud Debugger**
+
+**FEATURE:**
+
+Cloud Debugger now lets you canary snapshots and logpoints on your Python
+applications. To learn more, see the [ Python page for setting up Cloud
+Debugger ](https://cloud.google.com/debugger/docs/setup/python) .
+
+**Memorystore for Memcached**
+
+**FEATURE:**
+
+Added new Memorystore for Memcached [ regions
+](https://cloud.google.com/memorystore/docs/memcached/regions) : Finland ( `
+europe-north1 ` ), Hong Kong ( ` asia-east2 ` ), Jakarta ( ` asia-southeast2 `
+), Las Vegas ( ` us-west4 ` ), Montréal ( ` northamerica-northeast1 ` ),
+Mumbai ( ` asia-south1 ` ), Osaka ( ` asia-northeast2 ` ), Salt Lake City ( `
+us-west3 ` ), São Paulo ( ` southamerica-east1 ` ), Seoul ( ` asia-northeast3
+` ), and Zurich ( ` europe-west6 ` ).
+
 ##  June 16, 2020
 
 **BigQuery**
@@ -32,11 +54,48 @@ transfer/docs/merchant-center-top-brands-schema) for Google Merchant Center
 Best Sellers exports is now in [ beta
 ](https://cloud.google.com/products/#product-launch-stages) .
 
+**BigQuery ML**
+
+**FEATURE:**
+
+BigQuery ML now supports [ beta ](https://cloud.google.com/products#product-
+launch-stages) integration with [ AI Platform ](https://cloud.google.com/ai-
+platform) . The following models are supported in [ beta
+](http://cloud/products#product-launch-stages) :
+
+  * AutoML Tables models. For more information, see [ CREATE MODEL statement for AutoML Tables models ](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create-automl) . 
+
+  * Boosted Tree models using XGBoost. For more information, see [ CREATE MODEL statement for Boosted Tree models ](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create-boosted-tree) . 
+
+  * Deep Neural Network (DNN) models. For more information, see [ CREATE MODEL statement for DNN models ](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create-dnn-models) . 
+
+**Cloud Interconnect**
+
+**CHANGED:**
+
+The public documentation for Cloud Interconnect is now located under the [
+Network Connectivity page ](https://cloud.google.com/network-
+connectivity/docs/) .
+
+**Cloud Router**
+
+**CHANGED:**
+
+The public documentation for Cloud Router is now located under the [ Network
+Connectivity page ](https://cloud.google.com/network-connectivity/docs/) .
+
 **Cloud Run**
 
 **FEATURE:**
 
 The Cloud Run user interface now allows you to copy a Cloud Run service.
+
+**Cloud VPN**
+
+**CHANGED:**
+
+The public documentation for Cloud VPN is now located under the [ Network
+Connectivity page ](https://cloud.google.com/network-connectivity/docs/) .
 
 **Config Connector**
 
@@ -71,6 +130,20 @@ that training jobs can connect to your network on private IP.
 
 Learn how to set up [ VPC Network Peering with AI Platform Training
 ](https://cloud.google.com/ai-platform/training/docs/vpc-peering) .
+
+**Anthos Config Management**
+
+**ISSUE:**
+
+A regression in Anthos Config Management 1.3.2 results in unnecessary patches
+to the API server for the ` gatekeeper-system ` namespace and spurious logging
+for error ` KNV2005 ` . This "fight" results when the ` gatekeeper-system `
+namespace is managed in the Git repo, and two Anthos Config Management
+components (the operator and syncer) are both trying to reconcile the state of
+the namespace with the API server. The only workaround at this time is to [
+unmanage ](https://cloud.google.com/anthos-config-management/docs/how-
+to/managing-objects#unmanaged-namespaces) the ` gatekeeper-system ` namespace.
+The issue will be fixed in Anthos Config Management 1.4.1.
 
 **Anthos Service Mesh**
 
@@ -1768,48 +1841,4 @@ not be created - you can [ view those errors
 ](https://cloud.google.com/compute/docs/instance-groups/getting-info-about-
 migs#listing_instance_errors) to diagnose and mitigate the cause. This is
 **Generally available** .
-
-##  May 19, 2020
-
-**Cloud Debugger**
-
-**FEATURE:**
-
-Cloud Debugger now lets you canary snapshots and logpoints on your Java
-applications. To learn more, see the [ Java page for setting up Cloud Debugger
-](https://cloud.google.com/debugger/docs/setup/java) .
-
-**Cloud Monitoring**
-
-**CHANGED:**
-
-Alert notifications delivered by email now come from "alerting-
-noreply@google.com" instead of "alerts@stackdriver.com".
-
-**Compute Engine**
-
-**FEATURE:**
-
-Troubleshoot VMs by [ capturing screenshots
-](https://cloud.google.com/compute/docs/instances/capturing-vm-screenshots) .
-This is in **beta** .
-
-**Config Connector**
-
-**FIXED:**
-
-Bug fixes and reliability improvements
-
-**FIXED:**
-
-Improving handling of scenarios when ` version ` field on ` ContainerNodePool
-` is updated externally
-
-**Filestore**
-
-**FEATURE:**
-
-Learn how to create [ low disk space alerts
-](https://cloud.google.com/filestore/docs/monitoring-instances) for your
-Filestore instances.
 
