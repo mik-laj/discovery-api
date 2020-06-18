@@ -12,6 +12,10 @@ will be deprecated on July 31, 2020. See also [ Python 2 Sunset
 ](https://cloud.google.com/python/docs/python2-sunset/) and [ Using Python 3
 ](https://cloud.google.com/sdk/gcloud/reference/topic/startup) .
 
+##  297.0.1 (2020-06-17)
+
+  * Fixed bug in ` gcloud app deploy ` command. This issue can be tracked at [ https://issuetracker.google.com/issues/159109983 ](https://issuetracker.google.com/issues/159109983)
+
 ##  297.0.0 (2020-06-16)
 
 ###  Anthos
@@ -6547,7 +6551,7 @@ gcloud firebase test android run
 ###  Google Compute Engine
 
   * Promoted ` gcloud compute interconnects ` commands to beta. These commands allow you to provision an interconnection between your network and Google Cloud VPCs. For more details see online documentation, 
-    * https://cloud.google.com//network-connectivity/docs/interconnect/ 
+    * https://cloud.google.com/interconnect/docs 
   * Fixed a bug in ` gcloud compute update routers ` where removing interfaces/peers was failing. 
   * Added ` --security-policy ` flag to ` gcloud beta compute backend-services update ` . 
   * ` gcloud compute security-policies ` commands now in beta. 
