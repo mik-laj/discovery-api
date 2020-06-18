@@ -11,6 +11,18 @@ Google Cloud의 최신 제품 업데이트를 확인할 수 있습니다.
 추가하거나 피드 URL을 다음과 같이 직접 추가하세요. `
 https://cloud.google.com/feeds/memorystorememcache-release-notes.xml `
 
+##  June 17, 2020
+
+**FEATURE:**
+
+Added new Memorystore for Memcached [ regions
+](https://cloud.google.com/memorystore/docs/memcached/regions?hl=ko) : Finland
+( ` europe-north1 ` ), Hong Kong ( ` asia-east2 ` ), Jakarta ( ` asia-
+southeast2 ` ), Las Vegas ( ` us-west4 ` ), Montréal ( ` northamerica-
+northeast1 ` ), Mumbai ( ` asia-south1 ` ), Osaka ( ` asia-northeast2 ` ),
+Salt Lake City ( ` us-west3 ` ), São Paulo ( ` southamerica-east1 ` ), Seoul (
+` asia-northeast3 ` ), and Zurich ( ` europe-west6 ` ).
+
 ##  March 26, 2020
 
 **FEATURE:**
