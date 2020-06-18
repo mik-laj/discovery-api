@@ -15,6 +15,18 @@ de cette page à votre [ lecteur de flux
 du flux directement : ` https://cloud.google.com/feeds/memorystorememcache-
 release-notes.xml `
 
+##  June 17, 2020
+
+**FEATURE:**
+
+Added new Memorystore for Memcached [ regions
+](https://cloud.google.com/memorystore/docs/memcached/regions?hl=fr) : Finland
+( ` europe-north1 ` ), Hong Kong ( ` asia-east2 ` ), Jakarta ( ` asia-
+southeast2 ` ), Las Vegas ( ` us-west4 ` ), Montréal ( ` northamerica-
+northeast1 ` ), Mumbai ( ` asia-south1 ` ), Osaka ( ` asia-northeast2 ` ),
+Salt Lake City ( ` us-west3 ` ), São Paulo ( ` southamerica-east1 ` ), Seoul (
+` asia-northeast3 ` ), and Zurich ( ` europe-west6 ` ).
+
 ##  March 26, 2020
 
 **FEATURE:**
