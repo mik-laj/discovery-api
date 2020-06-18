@@ -12,6 +12,14 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/stackdriver-release-notes.xml `
 
+##  June 17, 2020
+
+**FEATURE:**
+
+Cloud Debugger now lets you canary snapshots and logpoints on your Python
+applications. To learn more, see the [ Python page for setting up Cloud
+Debugger ](https://cloud.google.com/debugger/docs/setup/python) .
+
 ##  May 19, 2020
 
 **FEATURE:**
