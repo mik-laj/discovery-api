@@ -182,6 +182,14 @@ Cloud VPN now supports [ an org-level policy
 ](https://cloud.google.com/vpn/docs/concepts/overview#vpn-org-policy) that
 restricts peer IP addresses through a Cloud VPN tunnel.
 
+**Compute Engine**
+
+**FEATURE:**
+
+[ New sole-tenant node types (c2-node-60-240, n1-node-96-1433, and
+n2d-node-224-896) ](https://cloud.google.com/compute/docs/nodes#node_types)
+are available in **Beta** .
+
 ##  June 12, 2020
 
 **Cloud Build**
@@ -1676,169 +1684,4 @@ intelligence/docs/face-detection)
 **Person detection** : Locate people in a video, and identify attributes and
 2D landmarks. [ Learn more ](https://cloud.google.com/video-
 intelligence/docs/people-detection)
-
-##  May 20, 2020
-
-**Anthos Service Mesh**
-
-**FEATURE:**
-
-**1.5.4-asm.2**
-
-1.5.4-asm.2 is now available.
-
-**FIXED:**
-
-**Security fixes**
-
-1.5.4-asm.2 contains all the same security fixes that are in Anthos Service
-Mesh 1.4.
-
-**FEATURE:**
-
-**Beta release of the Anthos CLI**
-
-The Anthos CLI simplifies the installation of Anthos Service Mesh. You can use
-the Anthos CLI to:
-
-  * Create a new cluster that meets the Anthos Service Mesh cluster requirements and install Anthos Service Mesh. See [ Installing Anthos Service Mesh on a new cluster using the Anthos CLI ](https://cloud.google.com//service-mesh/docs/gke-anthos-cli-new-cluster) . 
-  * Update an existing cluster with the options that Anthos Service Mesh requires and install Anthos Service Mesh. See [ Installing Anthos Service Mesh on an existing cluster using the Anthos CLI ](https://cloud.google.com//service-mesh/docs/gke-anthos-cli-existing-cluster) . 
-
-**BREAKING:**
-
-**Port change for automatic sidecar injection**
-
-If you are installing Anthos Service Mesh on a private cluster, you must add a
-firewall rule to open port 15017 if you want to use [ automatic sidecar
-injection ](https://cloud.google.com/service-mesh/docs/proxy-injection) . In
-Anthos Service Mesh 1.4, the port used for automatic sidecar injection is
-9443.
-
-If you don't add the firewall rule and automatic sidecar injection is enabled,
-you get an error when you deploy workloads. For details on adding a firewall
-rule, see [ Adding firewall rules for specific use cases
-](https://cloud.google.com/kubernetes-engine/docs/how-to/private-
-clusters#add_firewall_rules) .
-
-**DEPRECATED:**
-
-**The alpha authentication policy is deprecated**
-
-See [ Updating to the beta security policies
-](https://cloud.google.com/service-mesh/docs/security/update-authentication-
-policies) for more information.
-
-**BREAKING:**
-
-**` IstioOperator ` API replaces ` IstioControlPlane ` API **
-
-The alpha [ ` IstioControlPlane ` API
-](https://archive.istio.io/v1.4/docs/reference/config/istio.operator.v1alpha12.pb/#IstioControlPlane)
-has been replaced by the [ ` IstioOperator ` API
-](https://istio.io/docs/reference/config/istio.operator.v1alpha1/#IstioComponentSetSpec)
-. You must use the ` IstioOperator ` API in YAML files to enable optional
-features when you install Anthos Service Mesh.
-
-**CHANGED:**
-
-**Istio CNI plugin is supported**
-
-By default Anthos Service Mesh injects an ` initContainer ` , ` istio-init ` ,
-in pods deployed in the mesh. The ` istio-init ` container sets up the pod
-network traffic redirection to/from the sidecar proxy. This requires the user
-or service-account deploying pods to the mesh to have sufficient Kubernetes
-RBAC permissions to deploy containers with the ` NET_ADMIN ` and ` NET_RAW `
-capabilities. Requiring users to have elevated Kubernetes RBAC permissions is
-problematic for some organization's security compliance. The Istio Container
-Network Interface (CNI) plugin is a replacement for the ` istio-init `
-container that performs the same networking functionality but without
-requiring users to enable elevated Kubernetes RBAC permissions.
-
-The Istio CNI plugin performs the mesh pod traffic redirection in the
-Kubernetes pod lifecycle's network setup phase, thereby removing the
-requirement for the ` NET_ADMIN ` and ` NET_RAW ` capabilities for users
-deploying pods into the mesh. The Istio CNI plugin replaces the functionality
-provided by the ` istio-init ` container.
-
-**CHANGED:**
-
-**Enabling pod security policies no longer needed**
-
-SDS security was improved by merging Node Agent with Pilot Agent as Istio
-Agent and removing cross-pod UDS, which no longer requires users to deploy
-Kubernetes pod security policies for UDS connections.
-
-**BigQuery**
-
-**FEATURE:**
-
-Happy 10th birthday, BigQuery!
-
-**FEATURE:**
-
-[ Cloud SQL federated queries ](https://cloud.google.com/bigquery/docs/cloud-
-sql-federated-queries) are now generally available [ (GA)
-](https://cloud.google.com/terms/launch-stages) .
-
-**FEATURE:**
-
-[ Hourly partitioned tables ](https://cloud.google.com/bigquery/docs/creating-
-column-partitions) are now in [ beta
-](https://cloud.google.com/products/#product-launch-stages) .
-
-**FEATURE:**
-
-Dynamic SQL is now available as a [ beta
-](https://cloud.google.com/products/#product-launch-stages) release in all
-BigQuery regions. Dynamic SQL lets you generate and execute SQL statements
-dynamically at runtime. For more information, see [ EXECUTE IMMEDIATE
-](https://cloud.google.com/bigquery/docs/reference/standard-
-sql/scripting#execute_immediate) .
-
-**FEATURE:**
-
-[ BigQuery Trial slots
-](https://cloud.google.com/bigquery/pricing#flat_rate_pricing) are now
-available in US and EU multi-regions. Trial slots are a limited promotion for
-qualified customers.
-
-**Cloud Load Balancing**
-
-**FEATURE:**
-
-For internal TCP/UDP load balancers, you can create [ multiple forwarding
-rules with the same IP address ](https://cloud.google.com/load-
-balancing/docs/internal/multiple-forwarding-rules-same-ip) . The forwarding
-rules can have different protocols and ports. This feature is available in
-**Beta** .
-
-**Cloud Monitoring**
-
-**FEATURE:**
-
-Cloud Monitoring introduces an improved experience for viewing and managing
-incidents. Improvements include performance optimizations for Workspaces with
-large numbers of incidents, summary statics, and the ability to filter by
-alerting policy name, metric type, and resource type. For more information,
-see [ Incidents and events
-](https://cloud.google.com/monitoring/alerts/incidents-events) .
-
-**Cloud Run**
-
-**FEATURE:**
-
-The Cloud Run [ container instance metadata server
-](https://cloud.google.com/run/docs/reference/container-contract#metadata-
-server) now exposes the unique identifier of the container instance and the
-region of the Cloud Run service
-
-**Compute Engine**
-
-**FEATURE:**
-
-If your managed instance group encountered errors - for example, if a VM could
-not be created - you can [ view those errors
-](https://cloud.google.com/compute/docs/instance-groups/getting-info-about-
-migs#listing_instance_errors) to diagnose and mitigate the cause. This is
-**Generally available** .
 
