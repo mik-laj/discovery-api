@@ -53,6 +53,19 @@ This version enhances the [ OS support matrix ](/migrate/compute-
 engine/docs/4.9/reference/supported-os-versions) to include RHEL 8 and CentOS
 8.
 
+##  4.9.2
+
+See the [ downloads page ](/migrate/compute-
+engine/docs/4.9/resources/downloads) for the upgrade package and hash. To
+upgrade, see the instructions in [ Applying patches and upgrades
+](/migrate/compute-engine/docs/4.9/support/applying-patches-and-upgrades) .
+
+###  Fixed issues
+
+**FIXED:**
+
+Fixed an issue with Windows partition detection for certain volume structures.
+
 ##  4.9.1
 
 See the [ downloads page ](/migrate/compute-
@@ -95,6 +108,21 @@ the system).
 ##  4.9.0
 
 ###  Known Issues
+
+**ISSUE:**
+
+**#159008022:** On certain Windows installations, Windows adaptations may fail
+to find the Windows installation drive. This can happen if the volume on which
+Windows is installed has an allocated partition larger than 1GB preceding the
+Windows and/or SYSTEM partitions.
+
+**Workaround:** If the partition is not in use:
+
+  1. In Windows, go to "Disk Management". 
+  2. Select the Raw partition before any Windows or SYSTEM RESERVED partitions, and deallocate it by right clicking, and selecting "delete volume". 
+
+Otherwise: Please upgrade Migrate for Compute Engine version 4.9.2 or later
+which contains the fix.
 
 **ISSUE:**
 
