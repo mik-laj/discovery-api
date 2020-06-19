@@ -14,6 +14,14 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/compute-release-notes.xml `
 
+##  June 15, 2020
+
+**FEATURE:**
+
+[ New sole-tenant node types (c2-node-60-240, n1-node-96-1433, and
+n2d-node-224-896) ](https://cloud.google.com/compute/docs/nodes#node_types)
+are available in **Beta** .
+
 ##  June 08, 2020
 
 **FEATURE:**
@@ -45,7 +53,7 @@ CPUs on a sole-tenant node than are normally available. This feature is in
 
 **FEATURE:**
 
-[ New sole-tenant node types
+[ New sole-tenant node types (m1-node-96-1433 and n2-node-80-640)
 ](https://cloud.google.com/compute/docs/nodes#node_types) are available in
 **Beta** .
 
