@@ -5,6 +5,10 @@ Consultez-la pour obtenir des informations sur les fonctionnalités nouvelles
 ou mises à jour, les corrections de bugs, les problèmes connus et les
 fonctionnalités obsolètes.
 
+Vous pouvez consulter les dernières mises à jour de produits pour l'ensemble
+de Google Cloud sur la page [ Notes de version de Google Cloud
+](https://cloud.google.com/release-notes?hl=fr) .
+
 Pour recevoir les dernières mises à jour concernant ce produit, ajoutez l'URL
 de cette page à votre [ lecteur de flux
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ou ajoutez l'URL
@@ -38,9 +42,9 @@ revient à la normale.
 
 **ISSUE:**
 
-` nomos view ` peut échouer à analyser les objets CRD (Custom Resource
-Definitions, définitions de ressources personnalisées) qui existent dans la
-copie locale du dépôt, mais n'ont pas encore été synchronisés avec un cluster.
+` nomos view ` peut ne pas parvenir à analyser les définitions de ressources
+personnalisées (CRD, Custom Resource Definitions) qui existent dans le clone
+local du dépôt, mais n'ont pas encore été synchronisées avec un cluster.
 
 Pour contourner ce problème, utilisez [ ` nomos hydrate `
 ](https://cloud.google.com/kubernetes-engine/docs/add-on/config-sync/how-
