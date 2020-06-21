@@ -12,6 +12,37 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  June 19, 2020
+
+**Cloud Data Loss Prevention**
+
+**FEATURE:**
+
+Added support for location-based processing. Learn more:
+
+  * [ Cloud DLP locations ](https://cloud.google.com/dlp/docs/locations)
+  * [ Specifying processing locations ](https://cloud.google.com/dlp/docs/specifying-location)
+
+**Cloud Functions**
+
+**FEATURE:**
+
+Cloud Functions is now available in the following regions:
+
+  * ` australia-southeast1 ` (Sydney) 
+  * ` northamerica-northeast1 ` (Montreal) 
+
+See [ Cloud Functions Locations
+](https://cloud.google.com/functions/docs/locations) for details.
+
+**Cloud Run for Anthos**
+
+**FEATURE:**
+
+Cloud Run for Anthos on Google Cloud version [ 0.14.0-gke.5
+](https://github.com/knative/serving/releases/tag/v0.14.0) is now available
+for following cluster versions (and greater): * 1.17.6-gke.4
+
 ##  June 17, 2020
 
 **Cloud Debugger**
@@ -595,6 +626,13 @@ BigQuery ML is now available in the [ Jakarta (asia-southeast2) region
 Cloud Bigtable is now available in the [ ` asia-southeast2 ` (Jakarta) region
 ](https://cloud.google.com/bigtable/docs/locations) .
 
+**Cloud Healthcare API**
+
+**FEATURE:**
+
+It is now possible to de-identify data from within the Healthcare Browser in
+the Cloud Console.
+
 **Cloud Key Management Service**
 
 **FEATURE:**
@@ -1146,6 +1184,14 @@ Standard SQL [ user-defined function
 ](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-
 functions) definition bodies can now contain references to tables and views.
 
+**Cloud Healthcare API**
+
+**FEATURE:**
+
+It is now possible to import DICOM data to and export DICOM data from BigQuery
+using the Healthcare Browser in the Cloud Console. You can also import DICOM
+data from Cloud Storage using the Healthcare Browser.
+
 **Cloud Load Balancing**
 
 **FEATURE:**
@@ -1234,6 +1280,13 @@ CDN:
 
   * [ Setting up Cloud CDN with a managed instance group ](https://cloud.google.com/cdn/docs/setting-up-cdn-with-mig)
   * [ Setting up Cloud CDN with a backend bucket ](https://cloud.google.com/cdn/docs/setting-up-cdn-with-bucket)
+
+**Cloud Healthcare API**
+
+**FEATURE:**
+
+The Cloud Healthcare API offers single-region support in the ` asia-east2 `
+(Hong Kong) region.
 
 **Cloud TPU**
 
@@ -1368,6 +1421,15 @@ Cloud Functions has added support for a new runtime, Java 11, in Beta:
 
   * [ The Java Runtime ](https://cloud.google.com/functions/docs/concepts/java-runtime)
 
+**Cloud Healthcare API**
+
+**CHANGED:**
+
+Search results for DICOM studies and series might take several seconds to
+update after deleting an instance using [ ` instances.delete `
+](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets.dicomStores.studies.series.instances/delete)
+.
+
 **Pub/Sub**
 
 **FEATURE:**
@@ -1387,301 +1449,4 @@ Console using Recommendation Hub ( [ Beta
 [ Get started with Recommendation Hub
 ](https://cloud.google.com/recommender/docs/recommendation-hub/getting-
 started) .
-
-##  May 21, 2020
-
-**AI Platform Training**
-
-**FEATURE:**
-
-You can now use TPUs with TensorFlow 2.1 when you create a training job with
-runtime version 2.1. You can also [ use TPUs with TensorFlow 2.1 when you
-train in a custom container ](https://cloud.google.com/ai-
-platform/training/docs/using-tpus#custom-containers) .
-
-Read the [ guide to using TPUs with AI Platform Training
-](https://cloud.google.com/ai-platform/training/docs/using-tpus) , which has
-been updated to show how to use TPUs with TensorFlow 2 APIs.
-
-**Anthos**
-
-**FEATURE:**
-
-[ Anthos ](https://cloud.google.com/anthos) 1.3.2 is now available.
-
-**Updated components:**
-
-  * [ Anthos GKE on-prem release notes ](https://cloud.google.com/anthos/gke/docs/on-prem/release-notes)
-  * [ Anthos Config Management release notes ](https://cloud.google.com/anthos-config-management/docs/release-notes)
-  * [ Anthos GKE on AWS ](https://cloud.google.com/anthos/gke/docs/aws/) is available as a limited preview for customers with an existing relationship with Google Cloud. Contact your sales representative for access. 
-
-**Anthos Config Management**
-
-**CHANGED:**
-
-This release includes several performance and memory improvements.
-
-In order to help prevent accidental deletion, Anthos Config Management will no
-longer allow a user to remove all namespaces or cluster-scoped resources in a
-single commit. If you wish to delete the full set of resources under
-management, it now requires two steps: remove all but one in a first commit,
-allow ACM to sync those changes, then remove the final resource in a second
-commit.
-
-**CHANGED:**
-
-[ Error documentation ](https://cloud.google.com/anthos-config-
-management/docs/reference/errors) has been updated to add more information on
-error codes. Errors that are no longer encountered in the product have been
-removed. Most error references have been embellished with examples and steps
-for remediation.
-
-**CHANGED:**
-
-Anthos Config Management now supports a GKE-only authentication mechanism
-based on the service account of the cluster's node pool. Documentation on its
-use is [ here ](https://cloud.google.com/anthos-config-management/docs/how-
-to/installing#git-creds-gcenode) .
-
-**FEATURE:**
-
-Anthos Config Management now includes [ Config Connector
-](https://cloud.google.com/config-connector) v1.8.0.
-
-**CHANGED:**
-
-Anthos Config Management will now attempt to detect when resources that it
-manages are also managed by other controllers. Documentation on this behavior
-is available in [ error ` knv2005 ` ](https://cloud.google.com/anthos-config-
-management/docs/reference/errors#knv2005) which ACM will log in that case.
-
-**CHANGED:**
-
-Policy Controller has been upgraded to include a newer version of [ Open
-Policy Agent Gatekeeper ](https://github.com/open-policy-
-agent/gatekeeper/tree/480baac44179d75d418b88fbd2c80581fcf183dd) .
-
-This version includes updates to improve the management of policy resources.
-As a consequence, finalizers are no longer used to manage Constraints and
-Constraint Templates.
-
-The following metrics have been made obsolete due to these changes and have
-been removed:
-
-  * gatekeeper_watch_manager_is_running 
-
-  * gatekeeper_watch_manager_last_restart_check_time 
-
-  * gatekeeper_watch_manager_last_restart_time 
-
-  * gatekeeper_watch_manager_restart_attempts 
-
-The following metrics were removed and will be re-implemented in a later
-version:
-
-  * gatekeeper_watch_manager_intended_watch_gvk 
-
-  * gatekeeper_watch_manager_watched_gvk 
-
-**Anthos GKE on-prem**
-
-**FEATURE:**
-
-Workload Identity is now available in Alpha for GKE on-prem. Please contact
-support if you are interested in a trial of Workload Identity in GKE on-prem.
-
-**CHANGED:**
-
-Preflight check for VM internet and Docker Registry access validation is
-updated.
-
-**CHANGED:**
-
-Preflight check for internet validation is updated to not follow redirect. If
-your organization requires outbound traffic to pass through a proxy server,
-you no longer need to whitelist the following addresses in your proxy server:
-
-  * console.cloud.google.com 
-  * cloud.google.com 
-
-**CHANGED:**
-
-The Ubuntu image is upgraded to include the newest packages.
-
-**FIXED:**
-
-Upgraded the Istio image to version 1.4.7 to fix a security vulnerability.
-
-**FIXED:**
-
-Some ConfigMaps in the admin cluster were refactored to Secrets to allow for
-more granular access control of sensitive configuration data.
-
-**BigQuery**
-
-**CHANGED:**
-
-The BigQuery Storage API now supports reading small anonymous (cached) tables
-without any limitations.
-
-**Cloud Billing**
-
-**FEATURE:**
-
-Cloud Billing Budget API: new budget filters for groups of subaccounts and
-resource labels are now available in the Budget API. See the [ documentation
-](https://cloud.google.com/billing/docs/reference/budget/rest/v1beta1/billingAccounts.budgets)
-for more details.
-
-**Cloud Data Loss Prevention**
-
-**FEATURE:**
-
-Added additional [ infoType detectors
-](https://cloud.google.com/dlp/docs/infotypes-reference) :
-
-  * IRELAND_DRIVING_LICENSE_NUMBER 
-  * IRELAND_EIRCODE 
-
-**Cloud SQL for PostgreSQL**
-
-**FEATURE:**
-
-PostgreSQL version 12 is now generally available. To start using PostgreSQL
-12, see [ Creating instances
-](https://cloud.google.com/sql/docs/postgres/create-instance) .
-
-**Cloud TPU**
-
-**CHANGED:**
-
-Cloud TPU now supports TensorFlow 2.1.1 with Keras support. See the [
-TensorFlow 2.1.1 Release Notes
-](https://github.com/tensorflow/tensorflow/releases/tag/v2.1.1) for a complete
-list of features included in this release.
-
-**Compute Engine**
-
-**FEATURE:**
-
-E2 shared-core machine types now support committed use discounts in all
-regions. See the [ VM instance ](https://cloud.google.com/compute/vm-instance-
-pricing#e2_sharedcore_machine_types) pricing page for more information.
-
-**FEATURE:**
-
-You can now SSH to your VMs using hardware-backed SSH key pairs. For more
-information, see [ SSH with security keys
-](https://cloud.google.com/compute/docs/tutorials/ssh-with-sk) .
-
-**Dataproc**
-
-**FEATURE:**
-
-You can now set ` core:fs.defaultFS ` to a location in Cloud Storage (for
-example, ` gs://bucket ` ) when creating a cluster to set Cloud Storage as the
-default filesystem. This also sets ` core:fs.gs.reported.permissions ` , the
-reported permission returned by the Cloud Storage connector for all files, to
-777. If Cloud Storage is not set as the default filesystem, this property will
-continue to return 700, the default value.
-
-**FEATURE:**
-
-**Image 1.4 and 1.5**
-
-[ HADOOP-16984 ](https://issues.apache.org/jira/browse/HADOOP-16984) : Enable
-persistent history server to read from done directory.
-
-**CHANGED:**
-
-New [ sub-minor versions
-](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-
-versions#supported_cloud_dataproc_versions) of Dataproc images:
-1.2.98-debian9, 1.3.58-debian9, 1.4.29-debian9, 1.3.58-debian10,
-1.4.29-debian10, 1.5.4-debian10, 1.3.58-ubuntu18, 1.4.29-ubuntu18,
-1.5.4-ubuntu18.
-
-**CHANGED:**
-
-**Image 1.3, 1.4, and 1.5**
-
-  * Restrict Jupyter, Zeppelin, and Knox to only accept connections from ` localhost ` when [ Component Gateway ](https://cloud.google.com/dataproc/docs/concepts/accessing/dataproc-gateways) is enabled. This restriction reduces the risk of remote code execution over unsecured notebook server APIs. To override this change, when you create the cluster, set the Jupyter, Zeppelin, and Knox [ cluster properties ](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/cluster-properties) , respectively, as follows: ` dataproc:jupyter.listen.all.interfaces=true ` , ` zeppelin:zeppelin.server.addr=0.0.0.0 ` , and ` knox:gateway.host=0.0.0.0 ` . 
-
-  * Upgrade Hive to version 2.3.7. 
-
-**CHANGED:**
-
-**Image 1.4 and 1.5**
-
-[ SPARK-29367 ](https://issues.apache.org/jira/browse/SPARK-29367) : Add `
-ARROW_PRE_0_15_IPC_FORMAT=1 ` in yarn-env.sh to fix the Pandas UDF issue with
-` pyarrow ` 0.15.
-
-**CHANGED:**
-
-**Image 1.5**
-
-  * Upgrade Druid to [ version 0.17.1 ](https://github.com/apache/druid/releases/tag/druid-0.17.1) . 
-
-  * Upgrade Cloud Storage Connector to [ version 2.1.3 ](https://github.com/GoogleCloudDataproc/hadoop-connectors/releases/tag/v2.1.3) . 
-
-  * Upgrade Delta Lake to [ version 0.6.0 ](https://github.com/delta-io/delta/releases/tag/v0.6.0) . 
-
-**CHANGED:**
-
-Hide the "Quit" button from Jupyter notebook ( ` c.NotebookApp.quit_button =
-False ` ) when using the [ Jupyter optional component
-](https://cloud.google.com/dataproc/docs/concepts/components/jupyter) . The
-Jupyter environment is shut down when the cluster is deleted.
-
-**CHANGED:**
-
-Set the ` hive.localize.resource.num.wait.attempts ` property to 25 to improve
-reliability of Hive queries.
-
-**FIXED:**
-
-**Image 1.5**
-
-Fix a race condition in which ` hbase-master ` would try to write `
-/hbase/.tmp/hbase.version ` to HDFS before HDFS was initialized. This can
-increase cluster creation time for clusters created with HBase.
-
-**FIXED:**
-
-  * Fix a race condition in which, when the ` am.primary_only ` property is provided, the "non-preemptible" node label was not added to the resource manager's node label store before node managers started registering with the resource manager. 
-
-  * Store resource manager node labels in Cloud Storage when ` am.primary_only ` property is provided. 
-
-**DEPRECATED:**
-
-The ` dataproc:alpha.state.shuffle.hcfs.enabled ` [ cluster property
-](https://cloud.google.com/dataproc/docs/concepts/configuring-
-clusters/cluster-properties) has been deprecated. To enable Enhanced
-Flexibility Mode (EFM) for Spark, set ` dataproc:efm.spark.shuffle=hcfs ` . To
-enable EFM for MapReduce, set ` dataproc:efm.mapreduce.shuffle=hcfs ` .
-
-**VPC Service Controls**
-
-**FEATURE:**
-
-[ Beta stage ](https://cloud.google.com/products/#product-launch-stages)
-support for the following integration:
-
-  * [ Service Directory ](https://cloud.google.com/service-directory/docs/securing-with-vpc-sc)
-
-**Video Intelligence API**
-
-**FEATURE:**
-
-The following features are available in the Video Intelligence API version
-v1p3beta1:
-
-**Face detection** : Locate faces within a video, and identify attributes such
-as glasses being worn. [ Learn more ](https://cloud.google.com/video-
-intelligence/docs/face-detection)
-
-**Person detection** : Locate people in a video, and identify attributes and
-2D landmarks. [ Learn more ](https://cloud.google.com/video-
-intelligence/docs/people-detection)
 
