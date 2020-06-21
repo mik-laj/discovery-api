@@ -5,6 +5,10 @@ Nous recommandons aux développeurs qui utilisent l'API Cloud Vision de
 consulter régulièrement cette liste pour prendre connaissance des nouvelles
 annonces.
 
+Vous pouvez consulter les dernières mises à jour de produits pour l'ensemble
+de Google Cloud sur la page [ Notes de version de Google Cloud
+](https://cloud.google.com/release-notes?hl=fr) .
+
 Pour recevoir les dernières mises à jour concernant ce produit, ajoutez l'URL
 de cette page à votre [ lecteur de flux
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ou ajoutez l'URL
