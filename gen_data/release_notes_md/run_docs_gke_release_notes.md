@@ -12,6 +12,14 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/runanthos-release-notes.xml `
 
+##  June 19, 2020
+
+**FEATURE:**
+
+Cloud Run for Anthos on Google Cloud version [ 0.14.0-gke.5
+](https://github.com/knative/serving/releases/tag/v0.14.0) is now available
+for following cluster versions (and greater): * 1.17.6-gke.4
+
 ##  April 27, 2020
 
 **FEATURE:**
