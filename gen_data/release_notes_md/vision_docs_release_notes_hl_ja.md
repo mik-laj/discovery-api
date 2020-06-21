@@ -1,7 +1,10 @@
 #  リリースノート
 
-このページには、Vision API に関する更新内容が記載されています。Vision
+このページには、Vision API に関する本番環境の更新内容が記載されています。Vision
 デベロッパーの方には、ここにリストされる発表内容を定期的に確認されることをおすすめします。
+
+[ Google Cloud リリースノート ](https://cloud.google.com/release-notes?hl=ja)
+のページで、Google Cloud の最新のプロダクト更新情報をすべて確認できます。
 
 プロダクトのアップデートに関する最新情報を受け取るには、このページの URL を [ フィード リーダー
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) に追加するか、またはフィード
