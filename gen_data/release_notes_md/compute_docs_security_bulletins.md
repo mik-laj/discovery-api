@@ -7,6 +7,43 @@ Engine. All security bulletins for Compute Engine are described here.
 icon.png) ](https://cloud.google.com/feeds/compute-engine-security-
 bulletins.xml)
 
+##  Date published: 2020-06-19
+
+Description  |  Severity  |  Notes  
+---|---|---  
+  
+####  Description
+
+VMs that have OS Login enabled might be susceptible to privilege escalation
+vulnerabilities. These vulnerabilities gives users that are granted OS Login
+permissions (but not given admin access) the ability to escalate to root
+access in the VM.
+
+####  Vulnerabilities
+
+The following three vulnerabilities, which are due to overly permissive
+default group memberships, were identified for Compute Engine images:
+
+  * [ CVE-2020-8903 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8903) : by using the ` adm ` user, it is possible to leverage the DHCP XID to obtain administrative privileges. 
+  * [ CVE-2020-8907 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8907) : by using the ` docker ` user, it is possible to mount and modify the host OS filesystem to obtain administrative privileges. 
+  * [ CVE-2020-8933 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8933) : by using the ` lxd ` user, it is possible to attach host OS file systems and obtain administrative privileges. 
+
+####  Patched images and fixes
+
+All Compute Engine public images created after ` v20200506 ` are patched.
+
+If you need to fix this issue without updating to a later version of your
+image, you can edit the ` /etc/group/security.conf ` file and remove the ` adm
+` , ` lxd ` and ` docker ` users from the default OS Login entry.
+
+|  High  |
+
+  * [ CVE-2020-8903 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8903)
+  * [ CVE-2020-8907 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8907)
+  * [ CVE-2020-8933 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8933)
+
+  
+  
 ##  Date published: 2020-01-21
 
 Description  |  Severity  |  Notes  
