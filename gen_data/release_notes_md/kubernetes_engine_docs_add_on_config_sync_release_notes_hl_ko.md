@@ -1,12 +1,15 @@
 #  출시 노트
 
-이 페이지에서는 Config Sync의 프로덕션 업데이트에 대해 설명합니다. 새로운 기능이나 업데이트된 기능, 버그 수정, 알려진 문제,
-지원 중단된 기능에 대한 공지를 이 페이지에서 확인하세요.
+이 페이지에서는 구성 동기화의 프로덕션 업데이트에 대해 설명합니다. 새로운 기능이나 업데이트된 기능, 버그 수정, 알려진 문제, 지원 중단된
+기능에 대한 공지를 이 페이지에서 확인하세요.
+
+[ Google Cloud 출시 노트 ](https://cloud.google.com/release-notes?hl=ko) 페이지에서 모든
+Google Cloud의 최신 제품 업데이트를 확인할 수 있습니다.
 
 최신 제품 업데이트를 받으려면 [ 피드 리더
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) 에 이 페이지의 URL을
-추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/kubernetes-
-engine-add-on-config-sync-release-notes.xml `
+추가하거나 피드 URL( ` https://cloud.google.com/feeds/kubernetes-engine-add-on-
+config-sync-release-notes.xml ` )을 직접 추가하세요.
 
 ##  1.2.0
 
