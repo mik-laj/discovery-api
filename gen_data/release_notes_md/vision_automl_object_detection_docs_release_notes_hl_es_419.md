@@ -5,6 +5,10 @@ detección de objetos de AutoML Vision. Recomendamos que los desarrolladores de
 detección objetos de AutoML Vision verifiquen esta lista de forma periódica
 para conocer los nuevos anuncios.
 
+Puedes ver las últimas actualizaciones de productos de todo Google Cloud
+Platform en la página [ Notas de la versión de Google Cloud
+](https://cloud.google.com/release-notes?hl=es_419) .
+
 Para recibir las últimas actualizaciones de productos, agrega la URL de esta
 página a tu [ lector de feeds
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , o agrega
