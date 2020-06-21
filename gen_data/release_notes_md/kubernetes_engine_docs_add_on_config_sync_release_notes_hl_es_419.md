@@ -1,15 +1,19 @@
 #  Notas de la versión
 
-En esta página, se documentan las actualizaciones de producción en Config
-Sync. Consulta esta página para conocer los anuncios sobre funciones nuevas o
-actualizadas, las correcciones de errores, los problemas conocidos y las
-funciones obsoletas.
+En esta página, se documentan las actualizaciones de producción del
+Sincronizador de configuración. Consulta esta página para conocer los anuncios
+sobre funciones nuevas o actualizadas, las correcciones de errores, los
+problemas conocidos y las funciones obsoletas.
+
+Puedes ver las últimas actualizaciones de productos de todo Google Cloud en la
+página [ Notas de la versión de Google Cloud
+](https://cloud.google.com/release-notes?hl=es_419) .
 
 Para recibir las últimas actualizaciones de productos, agrega la URL de esta
 página a tu [ lector de feeds
-](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) o agrega
+](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , o agrega
 directamente la URL del feed: ` https://cloud.google.com/feeds/kubernetes-
-engine-add-on-config-sync-release-notes.xml ` .
+engine-add-on-config-sync-release-notes.xml `
 
 ##  1.2.0
 
@@ -37,8 +41,8 @@ normalidad.
 **ISSUE:**
 
 ` nomos view ` puede no analizar los CRD (definiciones de recursos
-personalizados) que existen en el clon local del repositorio, pero que aún no
-se sincronizaron con un clúster.
+personalizados) que existen en la clonación local del repositorio, pero que
+aún no se sincronizaron con un clúster.
 
 Para solucionar este problema, usa [ ` nomos hydrate `
 ](https://cloud.google.com/kubernetes-engine/docs/add-on/config-sync/how-
