@@ -1,8 +1,12 @@
-#  Notas da versão
+#  Notas de lançamento
 
 Nesta página, estão documentadas as atualizações de produção no AutoML Vision
 Object Detection. Recomendamos que os desenvolvedores do AutoML Vision Object
 Detection consultem esta lista periodicamente para saber das novidades.
+
+É possível ver as atualizações mais recentes de todos os produtos do Google
+Cloud na página [ Notas de lançamento do Google Cloud
+](https://cloud.google.com/release-notes?hl=pt_br) .
 
 Para receber as atualizações de produtos mais recentes, adicione o URL desta
 página ao [ leitor de feeds
