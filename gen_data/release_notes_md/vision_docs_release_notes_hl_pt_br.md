@@ -1,8 +1,12 @@
-#  Notas da versão
+#  Notas de lançamento
 
 Nesta página, documentamos as atualizações de produção da API Vision.
 Recomendamos que os desenvolvedores da API Vision consultem periodicamente
 esta lista para verificar se há novos anúncios.
+
+É possível ver as atualizações mais recentes de todos os produtos do Google
+Cloud na página [ Notas da versão do Google Cloud
+](https://cloud.google.com/release-notes?hl=pt_br) .
 
 Para receber as atualizações de produtos mais recentes, adicione o URL desta
 página ao [ leitor de feeds
