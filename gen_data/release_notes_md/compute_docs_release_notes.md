@@ -14,6 +14,15 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/compute-release-notes.xml `
 
+##  June 22, 2020
+
+**FEATURE:**
+
+N2D machine types are now available in Belgium, europe-west1, in all three
+zones. Read more information on the [ VM instance pricing
+](https://cloud.google.com/compute/vm-instance-pricing#n2d_machine_types)
+page.
+
 ##  June 15, 2020
 
 **FEATURE:**
