@@ -16,6 +16,16 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/iam-release-notes.xml `
 
+##  June 22, 2020
+
+**DEPRECATED:**
+
+Using the Cloud IAM API to sign JSON Web Tokens (JWTs) or binary blobs is now
+deprecated.
+
+  * If you use the Cloud IAM API or its client libraries to sign JWTs or binary blobs, you must [ migrate to the Service Account Credentials API ](https://cloud.google.com/iam/docs/migrating-to-credentials-api) before July 1, 2021. 
+  * If you use the ` gcloud ` command-line tool to sign JWTs, you must [ prepare for changes to the ` gcloud ` tool ](https://cloud.google.com/iam/docs/migrating-to-credentials-api#gcloud) before July 1, 2021. 
+
 ##  May 18, 2020
 
 **CHANGED:**
