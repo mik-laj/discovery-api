@@ -12,6 +12,17 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/cloudbuild-release-notes.xml `
 
+##  June 22, 2020
+
+**FEATURE:**
+
+Cloud Build's substitution variables can now refer to other substitution
+variables, manipulate them using bash-style string operations, and pull
+information from a trigger event payload. To learn more, see [ Using bash-
+style string operations and payload bindings in substitutions
+](http://cloud.google.com/cloud-build/docs/configuring-builds/use-bash-and-
+bindings-in-substitutions) .
+
 ##  June 12, 2020
 
 **CHANGED:**
