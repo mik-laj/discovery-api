@@ -19,7 +19,217 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloud-iam-permissions-change-
 log.xml `
 
-##  Upcoming Cloud IAM changes for the week of 2020-06-08
+##  Cloud IAM changes as of 2020-06-19
+
+Service  |  Change  |  Description  
+---|---|---  
+Actions API  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/actions.Admin `
+(Actions Admin):
+
+` serviceusage.services.use `  
+  
+Actions API  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/actions.Viewer `
+(Actions Viewer):
+
+` serviceusage.services.use `  
+  
+Container Analysis  |  Now GA  |
+
+The role ` roles/containeranalysis.admin ` (Container Analysis Admin) is now
+GA.  
+  
+Container Analysis  |  Now GA  |
+
+The role ` roles/containeranalysis.notes.attacher ` (Container Analysis Notes
+Attacher) is now GA.  
+  
+Container Analysis  |  Now GA  |
+
+The role ` roles/containeranalysis.notes.editor ` (Container Analysis Notes
+Editor) is now GA.  
+  
+Container Analysis  |  Now GA  |
+
+The role ` roles/containeranalysis.notes.viewer ` (Container Analysis Notes
+Viewer) is now GA.  
+  
+Container Analysis  |  Now GA  |
+
+The role ` roles/containeranalysis.occurrences.editor ` (Container Analysis
+Occurrences Editor) is now GA.  
+  
+Container Analysis  |  Now GA  |
+
+The role ` roles/containeranalysis.occurrences.viewer ` (Container Analysis
+Occurrences Viewer) is now GA.  
+  
+Cloud OS Config  |  Now GA  |
+
+The role ` roles/osconfig.assignmentAdmin ` (Assignment Admin) is now GA.  
+  
+Cloud OS Config  |  Now GA  |
+
+The role ` roles/osconfig.assignmentEditor ` (Assignment Editor) is now GA.  
+  
+Cloud OS Config  |  Now GA  |
+
+The role ` roles/osconfig.assignmentViewer ` (Assignment Viewer) is now GA.  
+  
+Cloud OS Config  |  Now GA  |
+
+The role ` roles/osconfig.osConfigAdmin ` (OsConfig Admin) is now GA.  
+  
+Cloud OS Config  |  Now GA  |
+
+The role ` roles/osconfig.osConfigEditor ` (OsConfig Editor) is now GA.  
+  
+Cloud OS Config  |  Now GA  |
+
+The role ` roles/osconfig.osConfigViewer ` (OsConfig Viewer) is now GA.  
+  
+Cloud OS Config  |  Now GA  |
+
+The role ` roles/osconfig.patchDeploymentAdmin ` (PatchDeployment Admin) is
+now GA.  
+  
+Cloud OS Config  |  Now GA  |
+
+The role ` roles/osconfig.patchDeploymentViewer ` (PatchDeployment Viewer) is
+now GA.  
+  
+Cloud OS Config  |  Now GA  |
+
+The role ` roles/osconfig.patchJobExecutor ` (Patch Job Executor) is now GA.  
+  
+Cloud OS Config  |  Now GA  |
+
+The role ` roles/osconfig.patchJobViewer ` (Patch Job Viewer) is now GA.  
+  
+Primitive Role  |  Role Updated  |
+
+The following permissions have been removed from the role ` roles/viewer `
+(Viewer):
+
+` apigee.appkeys.create `  
+  
+BigQuery  |  Supported In Custom Roles  |  ` bigquery.connections.create `  
+` bigquery.connections.delete `  
+` bigquery.connections.get `  
+` bigquery.connections.getIamPolicy `  
+` bigquery.connections.list `  
+` bigquery.connections.setIamPolicy `  
+` bigquery.connections.update `  
+` bigquery.connections.use `  
+  
+Compute Engine  |  Added  |  ` compute.instances.update `  
+  
+Compute Engine  |  Supported In Custom Roles  |  ` compute.instances.update `  
+  
+Compute Engine  |  Now GA  |  ` compute.instances.update `  
+  
+Filestore  |  Added  |  ` file.backups.create `  
+` file.backups.delete `  
+` file.backups.get `  
+` file.backups.list `  
+` file.backups.update `  
+  
+GKE Hub  |  Added  |  ` gkehub.features.create `  
+` gkehub.features.delete `  
+` gkehub.features.get `  
+` gkehub.features.getIamPolicy `  
+` gkehub.features.list `  
+` gkehub.features.setIamPolicy `  
+` gkehub.features.update `  
+  
+GKE Hub  |  Now GA  |  ` gkehub.features.create `  
+` gkehub.features.delete `  
+` gkehub.features.get `  
+` gkehub.features.getIamPolicy `  
+` gkehub.features.list `  
+` gkehub.features.setIamPolicy `  
+` gkehub.features.update `  
+  
+Cloud OS Config  |  Now GA  |  ` osconfig.patchDeployments.create `  
+` osconfig.patchDeployments.delete `  
+` osconfig.patchDeployments.execute `  
+` osconfig.patchDeployments.get `  
+` osconfig.patchDeployments.list `  
+` osconfig.patchDeployments.update `  
+` osconfig.patchJobs.exec `  
+` osconfig.patchJobs.get `  
+` osconfig.patchJobs.list `  
+  
+Pub/Sub Lite  |  Added  |  ` pubsublite.subscriptions.create `  
+` pubsublite.subscriptions.delete `  
+` pubsublite.subscriptions.get `  
+` pubsublite.subscriptions.getCursor `  
+` pubsublite.subscriptions.list `  
+` pubsublite.subscriptions.setCursor `  
+` pubsublite.subscriptions.subscribe `  
+` pubsublite.subscriptions.update `  
+` pubsublite.topics.create `  
+` pubsublite.topics.delete `  
+` pubsublite.topics.get `  
+` pubsublite.topics.getPartitions `  
+` pubsublite.topics.list `  
+` pubsublite.topics.listSubscriptions `  
+` pubsublite.topics.publish `  
+` pubsublite.topics.subscribe `  
+` pubsublite.topics.update `  
+  
+Pub/Sub Lite  |  Supported In Custom Roles  |  `
+pubsublite.subscriptions.create `  
+` pubsublite.subscriptions.delete `  
+` pubsublite.subscriptions.get `  
+` pubsublite.subscriptions.getCursor `  
+` pubsublite.subscriptions.list `  
+` pubsublite.subscriptions.setCursor `  
+` pubsublite.subscriptions.subscribe `  
+` pubsublite.subscriptions.update `  
+` pubsublite.topics.create `  
+` pubsublite.topics.delete `  
+` pubsublite.topics.get `  
+` pubsublite.topics.getPartitions `  
+` pubsublite.topics.list `  
+` pubsublite.topics.listSubscriptions `  
+` pubsublite.topics.publish `  
+` pubsublite.topics.subscribe `  
+` pubsublite.topics.update `  
+  
+Google Cloud VMware Engine  |  Now GA  |
+
+The role ` roles/vmwareengine.vmwareengineAdmin ` (VMWare Engine Service
+Admin) is now GA.  
+  
+Google Cloud VMware Engine  |  Now GA  |
+
+The role ` roles/vmwareengine.vmwareengineViewer ` (VMWare Engine Service
+Viewer) is now GA.  
+  
+Google Cloud VMware Engine  |  Added  |  `
+vmwareengine.googleapis.com/services.use `  
+` vmwareengine.googleapis.com/services.view `  
+` vmwareengine.services.use `  
+` vmwareengine.services.view `  
+  
+Google Cloud VMware Engine  |  Supported In Custom Roles  |  `
+vmwareengine.googleapis.com/services.use `  
+` vmwareengine.googleapis.com/services.view `  
+` vmwareengine.services.use `  
+` vmwareengine.services.view `  
+  
+Google Cloud VMware Engine  |  Now GA  |  `
+vmwareengine.googleapis.com/services.use `  
+` vmwareengine.googleapis.com/services.view `  
+` vmwareengine.services.use `  
+` vmwareengine.services.view `  
+  
+  
+##  Cloud IAM changes as of 2020-06-12
 
 Service  |  Change  |  Description  
 ---|---|---  
