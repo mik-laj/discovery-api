@@ -14,6 +14,15 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/kms-release-notes.xml `
 
+##  June 22, 2020
+
+**FEATURE:**
+
+Keys hosted by [ Thales
+](https://thalesdocs.com/dpod/services/key_management_services/ekms/ekms_setup_guide/)
+are now supported in Cloud EKM. To learn more, see [ Cloud EKM
+](https://cloud.google.com/kms/docs/ekm) .
+
 ##  June 08, 2020
 
 **FEATURE:**
