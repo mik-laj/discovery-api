@@ -12,6 +12,47 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  June 22, 2020
+
+**Cloud Build**
+
+**FEATURE:**
+
+Cloud Build's substitution variables can now refer to other substitution
+variables, manipulate them using bash-style string operations, and pull
+information from a trigger event payload. To learn more, see [ Using bash-
+style string operations and payload bindings in substitutions
+](http://cloud.google.com/cloud-build/docs/configuring-builds/use-bash-and-
+bindings-in-substitutions) .
+
+**Cloud Identity and Access Management**
+
+**DEPRECATED:**
+
+Using the Cloud IAM API to sign JSON Web Tokens (JWTs) or binary blobs is now
+deprecated.
+
+  * If you use the Cloud IAM API or its client libraries to sign JWTs or binary blobs, you must [ migrate to the Service Account Credentials API ](https://cloud.google.com/iam/docs/migrating-to-credentials-api) before July 1, 2021. 
+  * If you use the ` gcloud ` command-line tool to sign JWTs, you must [ prepare for changes to the ` gcloud ` tool ](https://cloud.google.com/iam/docs/migrating-to-credentials-api#gcloud) before July 1, 2021. 
+
+**Cloud Key Management Service**
+
+**FEATURE:**
+
+Keys hosted by [ Thales
+](https://thalesdocs.com/dpod/services/key_management_services/ekms/ekms_setup_guide/)
+are now supported in Cloud EKM. To learn more, see [ Cloud EKM
+](https://cloud.google.com/kms/docs/ekm) .
+
+**Compute Engine**
+
+**FEATURE:**
+
+N2D machine types are now available in Belgium, europe-west1, in all three
+zones. Read more information on the [ VM instance pricing
+](https://cloud.google.com/compute/vm-instance-pricing#n2d_machine_types)
+page.
+
 ##  June 19, 2020
 
 **Cloud Data Loss Prevention**
