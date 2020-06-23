@@ -779,7 +779,7 @@ documentation.
 **March 05, 2015**
 
   * Released new [ ` moveInstance() ` ](/compute/docs/reference/latest/projects/moveInstance) feature that moves an instance and its attached disks to another zone. See [ Moving an instance between zones ](/compute/docs/instances/moving-instance-across-zones) for more information. 
-  * VPN is now available in **Beta** . For more information, see the [ VPN documentation ](/vpn/docs/concepts/overview) . 
+  * VPN is now available in **Beta** . For more information, see the [ VPN documentation ](/network-connectivity/docs/vpn/concepts/overview) . 
 
 ##  February 2015
 
