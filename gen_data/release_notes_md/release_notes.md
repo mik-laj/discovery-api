@@ -12,7 +12,76 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  June 23, 2020
+
+**AI Platform Deep Learning VM Image**
+
+**FIXED:**
+
+**M50 release**
+
+Various bug fixes.
+
+**Cloud Billing**
+
+**FEATURE:**
+
+Committed use discounts (CUDs) are now available to purchase for Cloud SQL.
+CUDs provide discounted prices in exchange for your commitment to use a
+minimum level of resources for a specified term. With spend-based committed
+use discounts for Cloud SQL, you can earn a deep discount off your cost of use
+in exchange for committing to continuously use database instances in a
+particular region for a 1- or 3-year term. See the [ documentation
+](https://cloud.google.com/docs/cuds) for more details.
+
+**Cloud SQL for MySQL**
+
+**FEATURE:**
+
+Committed use discounts (CUDs) are now available to purchase for Cloud SQL.
+CUDs provide discounted prices in exchange for your commitment to use a
+minimum level of resources for a specified term. With committed use discounts
+for Cloud SQL, you can earn a deep discount off your cost of use in exchange
+for committing to continuously use database instances in a particular region
+for a 1- or 3-year term. See the [ documentation
+](https://cloud.google.com/sql/docs/mysql/cud) for more details.
+
+**Cloud SQL for PostgreSQL**
+
+**FEATURE:**
+
+Committed use discounts (CUDs) are now available to purchase for Cloud SQL.
+CUDs provide discounted prices in exchange for your commitment to use a
+minimum level of resources for a specified term. With committed use discounts
+for Cloud SQL, you can earn a deep discount off your cost of use in exchange
+for committing to continuously use database instances in a particular region
+for a 1- or 3-year term. See the [ documentation
+](https://cloud.google.com/sql/docs/mysql/cud) for more details.
+
+**Cloud SQL for SQL Server**
+
+**FEATURE:**
+
+Committed use discounts (CUDs) are now available to purchase for Cloud SQL.
+CUDs provide discounted prices in exchange for your commitment to use a
+minimum level of resources for a specified term. With committed use discounts
+for Cloud SQL, you can earn a deep discount off your cost of use in exchange
+for committing to continuously use database instances in a particular region
+for a 1- or 3-year term. See the [ documentation
+](https://cloud.google.com/sql/docs/mysql/cud) for more details.
+
 ##  June 22, 2020
+
+**Anthos Service Mesh**
+
+**FIXED:**
+
+**1.5.6-asm.0 and 1.4.10.asm.2**
+
+Contains the same fixes as OSS Istio 1.5.6. Non-critical, minor improvements
+were also backported to ASM 1.4.10. See [ Announcing Istio 1.5.6
+](https://istio.io/latest/news/releases/1.5.x/announcing-1.5.6/) for more
+information.
 
 **Cloud Build**
 
@@ -52,6 +121,13 @@ N2D machine types are now available in Belgium, europe-west1, in all three
 zones. Read more information on the [ VM instance pricing
 ](https://cloud.google.com/compute/vm-instance-pricing#n2d_machine_types)
 page.
+
+**Firestore**
+
+**FEATURE:**
+
+The Google Cloud console now includes a [ Firestore usage dashboard
+](https://cloud.google.com/firestore/docs/monitor-usage) .
 
 ##  June 19, 2020
 
