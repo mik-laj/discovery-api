@@ -19,6 +19,178 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloud-iam-permissions-change-
 log.xml `
 
+##  Upcoming Cloud IAM changes for the week of 2020-06-22
+
+Service  |  Change  |  Description  
+---|---|---  
+Apigee API  |  Role Updated  |
+
+The following permissions have been added to the role `
+roles/apigee.analyticsViewer ` (Apigee Analytics Viewer):
+
+` apigee.queries.get `  
+` apigee.queries.list `  
+` apigee.reports.get `  
+` apigee.reports.list `  
+  
+Cloud Billing  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/billing.admin `
+(Billing Account Administrator):
+
+` dataprocessing.groupcontrols.list `  
+  
+Cloud Billing  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/billing.viewer `
+(Billing Account Viewer):
+
+` dataprocessing.groupcontrols.list `  
+  
+Cloud Composer  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/composer.worker
+` (Composer Worker):
+
+` monitoring.timeSeries.list `  
+  
+Dataproc  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/dataproc.viewer
+` (Dataproc Viewer):
+
+` compute.zones.list `  
+  
+Customer Usage Data Processing API  |  Role Updated  |
+
+The following permissions have been added to the role `
+roles/dataprocessing.admin ` (Data Processing Controls Resource Admin):
+
+` billing.accounts.get `  
+` billing.accounts.list `  
+  
+Primitive Role  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/editor `
+(Editor):
+
+` containeranalysis.notes.getIamPolicy `  
+` containeranalysis.occurrences.getIamPolicy `  
+  
+Cloud Identity and Access Management  |  Role Updated  |
+
+The following permissions have been removed from the role `
+roles/iam.securityAdmin ` (Security Admin):
+
+` container.secrets.list `  
+  
+Cloud Identity and Access Management  |  Role Updated  |
+
+The following permissions have been removed from the role `
+roles/iam.securityReviewer ` (Security Reviewer):
+
+` container.secrets.list `  
+  
+Primitive Role  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/viewer `
+(Viewer):
+
+` containeranalysis.notes.getIamPolicy `  
+` containeranalysis.occurrences.getIamPolicy `  
+  
+Serverless VPC Access  |  Now GA  |
+
+The role ` roles/vpcaccess.user ` (Serverless VPC Access User) is now GA.  
+  
+Serverless VPC Access  |  Now GA  |
+
+The role ` roles/vpcaccess.viewer ` (Serverless VPC Access Viewer) is now GA.  
+  
+Compute Engine  |  Added  |  ` compute.images.update `  
+` compute.instances.getEffectiveFirewalls `  
+` compute.networks.getEffectiveFirewalls `  
+` compute.organizations.listAssociations `  
+` compute.organizations.setSecurityPolicy `  
+` compute.securityPolicies.addAssociation `  
+` compute.securityPolicies.copyRules `  
+` compute.securityPolicies.move `  
+` compute.securityPolicies.removeAssociation `  
+  
+Compute Engine  |  Supported In Custom Roles  |  `
+compute.instances.getEffectiveFirewalls `  
+` compute.networks.getEffectiveFirewalls `  
+` compute.organizations.listAssociations `  
+` compute.organizations.setSecurityPolicy `  
+` compute.securityPolicies.addAssociation `  
+` compute.securityPolicies.copyRules `  
+` compute.securityPolicies.move `  
+` compute.securityPolicies.removeAssociation `  
+  
+Container Analysis  |  Added  |  ` containeranalysis.notes.attachOccurrence `  
+` containeranalysis.notes.create `  
+` containeranalysis.notes.delete `  
+` containeranalysis.notes.get `  
+` containeranalysis.notes.getIamPolicy `  
+` containeranalysis.notes.list `  
+` containeranalysis.notes.listOccurrences `  
+` containeranalysis.notes.setIamPolicy `  
+` containeranalysis.notes.update `  
+` containeranalysis.occurrences.create `  
+` containeranalysis.occurrences.delete `  
+` containeranalysis.occurrences.get `  
+` containeranalysis.occurrences.getIamPolicy `  
+` containeranalysis.occurrences.list `  
+` containeranalysis.occurrences.setIamPolicy `  
+` containeranalysis.occurrences.update `  
+  
+Container Analysis  |  Supported In Custom Roles  |  `
+containeranalysis.notes.attachOccurrence `  
+` containeranalysis.notes.create `  
+` containeranalysis.notes.delete `  
+` containeranalysis.notes.get `  
+` containeranalysis.notes.getIamPolicy `  
+` containeranalysis.notes.list `  
+` containeranalysis.notes.listOccurrences `  
+` containeranalysis.notes.setIamPolicy `  
+` containeranalysis.notes.update `  
+` containeranalysis.occurrences.create `  
+` containeranalysis.occurrences.delete `  
+` containeranalysis.occurrences.get `  
+` containeranalysis.occurrences.getIamPolicy `  
+` containeranalysis.occurrences.list `  
+` containeranalysis.occurrences.setIamPolicy `  
+` containeranalysis.occurrences.update `  
+  
+Recommender  |  Added  |  ` recommender.iamServiceAccountInsights.get `  
+` recommender.iamServiceAccountInsights.list `  
+` recommender.iamServiceAccountInsights.update `  
+  
+Recommender  |  Supported In Custom Roles  |  `
+recommender.iamServiceAccountInsights.get `  
+` recommender.iamServiceAccountInsights.list `  
+` recommender.iamServiceAccountInsights.update `  
+  
+Recommender  |  Now GA  |  ` recommender.iamServiceAccountInsights.get `  
+` recommender.iamServiceAccountInsights.list `  
+` recommender.iamServiceAccountInsights.update `  
+  
+Cloud Spanner  |  Added  |  ` spanner.databases.beginPartitionedDmlTransaction
+`  
+` spanner.databases.partitionQuery `  
+` spanner.databases.partitionRead `  
+  
+Cloud Spanner  |  Supported In Custom Roles  |  `
+spanner.databases.beginPartitionedDmlTransaction `  
+` spanner.databases.partitionQuery `  
+` spanner.databases.partitionRead `  
+  
+Cloud Spanner  |  Now GA  |  `
+spanner.databases.beginPartitionedDmlTransaction `  
+` spanner.databases.partitionQuery `  
+` spanner.databases.partitionRead `  
+  
+  
 ##  Cloud IAM changes as of 2020-06-19
 
 Service  |  Change  |  Description  
