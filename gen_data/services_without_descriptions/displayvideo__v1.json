@@ -33,6 +33,10 @@
             "location": "query",
             "type": "string"
         },
+        "access_token": {
+            "location": "query",
+            "type": "string"
+        },
         "alt": {
             "default": "json",
             "enum": [
@@ -52,6 +56,10 @@
             "type": "string"
         },
         "key": {
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
             "location": "query",
             "type": "string"
         },
@@ -502,6 +510,38 @@
                 },
                 "channels": {
                     "methods": {
+                        "create": {
+                            "flatPath": "v1/advertisers/{advertisersId}/channels",
+                            "httpMethod": "POST",
+                            "id": "displayvideo.advertisers.channels.create",
+                            "parameterOrder": [
+                                "advertiserId"
+                            ],
+                            "parameters": {
+                                "advertiserId": {
+                                    "format": "int64",
+                                    "location": "path",
+                                    "pattern": "^[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "partnerId": {
+                                    "format": "int64",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/advertisers/{+advertiserId}/channels",
+                            "request": {
+                                "$ref": "Channel"
+                            },
+                            "response": {
+                                "$ref": "Channel"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/display-video"
+                            ]
+                        },
                         "get": {
                             "flatPath": "v1/advertisers/{advertisersId}/channels/{channelsId}",
                             "httpMethod": "GET",
@@ -3569,6 +3609,38 @@
             "resources": {
                 "channels": {
                     "methods": {
+                        "create": {
+                            "flatPath": "v1/partners/{partnersId}/channels",
+                            "httpMethod": "POST",
+                            "id": "displayvideo.partners.channels.create",
+                            "parameterOrder": [
+                                "partnerId"
+                            ],
+                            "parameters": {
+                                "advertiserId": {
+                                    "format": "int64",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "partnerId": {
+                                    "format": "int64",
+                                    "location": "path",
+                                    "pattern": "^[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/partners/{+partnerId}/channels",
+                            "request": {
+                                "$ref": "Channel"
+                            },
+                            "response": {
+                                "$ref": "Channel"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/display-video"
+                            ]
+                        },
                         "get": {
                             "flatPath": "v1/partners/{partnersId}/channels/{channelsId}",
                             "httpMethod": "GET",
@@ -6413,6 +6485,52 @@
         "FirstAndThirdPartyAudience": {
             "id": "FirstAndThirdPartyAudience",
             "properties": {
+                "activeDisplayAudienceSize": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "audienceSource": {
+                    "enum": [
+                        "AUDIENCE_SOURCE_UNSPECIFIED",
+                        "DISPLAY_VIDEO_360",
+                        "CAMPAIGN_MANAGER",
+                        "AD_MANAGER",
+                        "SEARCH_ADS_360",
+                        "YOUTUBE",
+                        "ADS_DATA_HUB"
+                    ],
+                    "type": "string"
+                },
+                "audienceType": {
+                    "enum": [
+                        "AUDIENCE_TYPE_UNSPECIFIED",
+                        "CUSTOMER_MATCH_CONTACT_INFO",
+                        "CUSTOMER_MATCH_DEVICE_ID",
+                        "CUSTOMER_MATCH_USER_ID",
+                        "ACTIVITY_BASED",
+                        "FREQUENCY_CAP",
+                        "TAG_BASED",
+                        "YOUTUBE_USERS",
+                        "LICENSED"
+                    ],
+                    "type": "string"
+                },
+                "displayAudienceSize": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "displayDesktopAudienceSize": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "displayMobileAppAudienceSize": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "displayMobileWebAudienceSize": {
+                    "format": "int64",
+                    "type": "string"
+                },
                 "displayName": {
                     "type": "string"
                 },
@@ -6428,7 +6546,19 @@
                     ],
                     "type": "string"
                 },
+                "gmailAudienceSize": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "membershipDurationDays": {
+                    "format": "int64",
+                    "type": "string"
+                },
                 "name": {
+                    "type": "string"
+                },
+                "youtubeAudienceSize": {
+                    "format": "int64",
                     "type": "string"
                 }
             },
