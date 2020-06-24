@@ -12,6 +12,12 @@ Docker  |  v19.03.1
   
 ##  Changelog
 
+###  cos-77-12371-296-0
+
+_Date: June 16, 2020_
+
+  * Updated toolbox base container image to include security patches. 
+
 ###  cos-77-12371-274-0
 
 _Date: May 26, 2020_
