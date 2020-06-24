@@ -7,9 +7,9 @@ project:  Stable  |  Beta  |  Dev
 ---|---|---  
       
     
-    **cos-stable-81-12871-119-0**
-    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/fa84f12c6d738af9486e69a006a57df923f9476a)
-    Kubernetes:     v1.17.3
+    **cos-stable-81-12871-148-0**
+    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/1d5bc45f886bc0308010614cdcdf658f5fb44a25)
+    Kubernetes:     v1.17.6
     Docker:         v19.03.6
     
 
@@ -27,9 +27,9 @@ project:  Stable  |  Beta  |  Dev
 
     
     
-    **cos-dev-85-13260-0-0**
-    Kernel:         [COS-4.19.124](https://cos.googlesource.com/third_party/kernel/+/5451c40e92fbfc19edc953cb9affea60eee60378)
-    Kubernetes:     v1.18.2
+    **cos-dev-85-13288-0-0**
+    Kernel:         [COS-4.19.127](https://cos.googlesource.com/third_party/kernel/+/f8649a7408c63f53937e33b0e8379679b0434849)
+    Kubernetes:     v1.18.3
     Docker:         v19.03.9
       
   
