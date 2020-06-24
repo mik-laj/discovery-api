@@ -81,14 +81,30 @@ will need to provide these as inputs in the Runbook. Please see the [
 licensing section ](/migrate/compute-engine/docs/4.10/reference/runbooks) in
 the documentation.
 
-##  Fixed issues
+##  4.10.1
+
+###  Fixed issues
+
+**FIXED:**
+
+Fixed an issue with Windows partition detection for certain volume structures.
+
+**FIXED:**
+
+Support added for Azure disks over 4 TB.
+
+##  4.10
+
+###  Fixed issues
 
 **FIXED:**
 
 Fixed an issue with AWS ena drivers causing Windows images to crash after
 migration.
 
-##  Known Issues
+##  4.10
+
+###  Known Issues
 
 **ISSUE:**
 
