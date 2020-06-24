@@ -6,11 +6,29 @@ Image Family  |  cos-81-lts
 ---|---  
 Deprecated After  |  Jun 24, 2021  
 Kernel  |  [ 4.19.112
-](https://cos.googlesource.com/third_party/kernel/+/fa84f12c6d738af9486e69a006a57df923f9476a)  
-Kubernetes  |  v1.17.3  
+](https://cos.googlesource.com/third_party/kernel/+/1d5bc45f886bc0308010614cdcdf658f5fb44a25)  
+Kubernetes  |  v1.17.6  
 Docker  |  v19.03.6  
   
 ##  Changelog
+
+###  cos-81-12871-148-0
+
+_Date: June 17, 2020_
+
+  * Made dioread_nolock non-default. 
+
+###  cos-81-12871-146-0
+
+_Date: June 16, 2020_
+
+  * Updated toolbox base container image to include security patches. 
+
+###  cos-81-12871-130-0
+
+_Date: June 16, 2020_
+
+  * Updated the built-in kubectl/kubelet to v1.17.6 to fix a bug that could result in the inability to start a cluster. 
 
 ###  cos-81-12871-119-0
 
