@@ -12,6 +12,13 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/fs-release-notes.xml `
 
+##  June 22, 2020
+
+**FEATURE:**
+
+The Google Cloud console now includes a [ Firestore usage dashboard
+](https://cloud.google.com/firestore/docs/monitor-usage) .
+
 ##  June 08, 2020
 
 **FEATURE:**
