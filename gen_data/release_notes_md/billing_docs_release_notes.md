@@ -21,7 +21,9 @@ CUDs provide discounted prices in exchange for your commitment to use a
 minimum level of resources for a specified term. With spend-based committed
 use discounts for Cloud SQL, you can earn a deep discount off your cost of use
 in exchange for committing to continuously use database instances in a
-particular region for a 1- or 3-year term. See the [ documentation
+particular region for a 1- or 3-year term. See the [ blog
+](https://cloud.google.com/blog/products/databases/cloud-sql-database-
+instances-now-discounted) and [ documentation
 ](https://cloud.google.com/docs/cuds) for more details.
 
 ##  May 29, 2020
