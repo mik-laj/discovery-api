@@ -12,6 +12,35 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  June 24, 2020
+
+**Dataproc**
+
+**CHANGED:**
+
+New [ subminor image versions
+](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-
+versions#supported_cloud_dataproc_versions) : 1.2.100-debian9, 1.3.60-debian9,
+1.4.31-debian9, 1.3.60-debian10, 1.4.31-debian10, 1.5.6-debian10,
+1.3.60-ubuntu18, 1.4.31-ubuntu18, 1.5.6-ubuntu18, preview 2.0.0-RC2-debian10,
+and preview 2.0.0-RC2-ubuntu18.
+
+**CHANGED:**
+
+  * **Image 2.0 preview** : 
+
+    * [ SPARK-22404 ](https://issues.apache.org/jira/browse/SPARK-22404) : set ` spark.yarn.unmanagedAM.enabled ` property to ` true ` on clusters where Kerberos is not enabled to run Spark Application Master in driver (not managed in YARN) to improve job execution time. 
+    * Updated R version to 3.6 
+  * **Image 1.5**
+
+    * Updated R version to 3.6 
+
+**FIXED:**
+
+Fixed a quota validation bug where accelerator counts were squared before
+validation -- for example, previously if you requested 8 GPUs, Dataproc
+validated whether your project had quota for ` 8^2=64 ` GPUs.
+
 ##  June 23, 2020
 
 **AI Platform Deep Learning VM Image**
@@ -31,7 +60,9 @@ CUDs provide discounted prices in exchange for your commitment to use a
 minimum level of resources for a specified term. With spend-based committed
 use discounts for Cloud SQL, you can earn a deep discount off your cost of use
 in exchange for committing to continuously use database instances in a
-particular region for a 1- or 3-year term. See the [ documentation
+particular region for a 1- or 3-year term. See the [ blog
+](https://cloud.google.com/blog/products/databases/cloud-sql-database-
+instances-now-discounted) and [ documentation
 ](https://cloud.google.com/docs/cuds) for more details.
 
 **Cloud SQL for MySQL**
@@ -1516,54 +1547,4 @@ Dataproc now provides beta support for [ Dataproc Hub
 
 Error correction: Beta flag removed from feature Google Cloud Armor with Cloud
 CDN. This feature was released with the status General Availabiliity.
-
-##  May 26, 2020
-
-**Cloud Composer**
-
-**CHANGED:**
-
-  * [ New versions ](https://cloud.google.com/composer/docs/concepts/versioning/composer-versions) of Cloud Composer images: ` composer-1.10.4-airflow-1.10.2 ` , ` composer-1.10.4-airflow-1.10.3 ` and ` composer-1.10.4-airflow-1.10.6 ` . The default is ` composer-1.10.4-airflow-1.10.3 ` . Upgrade your Cloud SDK to use features in this release. 
-  * **For Airflow 1.10.6 and later:** The Airflow config property ` [celery] pool ` is now blocked. 
-
-**FIXED:**
-
-  * Fixed an issue with Airflow 1.10.6 environments where task logs were not visible in the UI when DAG serialization was enabled. 
-
-**Cloud Functions**
-
-**FEATURE:**
-
-Cloud Functions has added support for a new runtime, Java 11, in Beta:
-
-  * [ The Java Runtime ](https://cloud.google.com/functions/docs/concepts/java-runtime)
-
-**Cloud Healthcare API**
-
-**CHANGED:**
-
-Search results for DICOM studies and series might take several seconds to
-update after deleting an instance using [ ` instances.delete `
-](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets.dicomStores.studies.series.instances/delete)
-.
-
-**Pub/Sub**
-
-**FEATURE:**
-
-[ Pub/Sub Lite ](https://cloud.google.com/pubsub/docs/choosing-pubsub-or-lite)
-is now available at the [ beta launch stage
-](https://cloud.google.com/products/#product-launch-stages) .
-
-**Recommender**
-
-**FEATURE:**
-
-You can now view, prioritize, and apply recommendations in the Google Cloud
-Console using Recommendation Hub ( [ Beta
-](https://cloud.google.com/products/#product-launch-stages) ).
-
-[ Get started with Recommendation Hub
-](https://cloud.google.com/recommender/docs/recommendation-hub/getting-
-started) .
 
