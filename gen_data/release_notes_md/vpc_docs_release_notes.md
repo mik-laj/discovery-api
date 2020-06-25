@@ -79,7 +79,7 @@ Vegas ` us-west4 ` region. For more information, see [ Auto mode IP ranges
 
 **CHANGED:**
 
-[ Packet Mirroring pricing ](https://cloud.google.com/compute/network-
+[ Packet Mirroring pricing ](https://cloud.google.com/vpc/network-
 pricing#packet-mirroring) will come into effect from June 20, 2020. There is
 no charge for Packet Mirroring until that time.
 
@@ -112,8 +112,7 @@ For auto mode VPC networks, added a new subnet ` 10.178.0.0/20 ` for the Seoul
 
 Google now charges for static external IPv4 addresses that are in use, except
 for ones that are used by forwarding rules. For more information, see the [
-Network pricing ](https://cloud.google.com/compute/network-pricing#ipaddress)
-.
+Network pricing ](https://cloud.google.com/vpc/network-pricing#ipaddress) .
 
 ##  December 19, 2019
 
