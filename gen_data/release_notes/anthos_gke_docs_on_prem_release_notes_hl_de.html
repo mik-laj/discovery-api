@@ -57,6 +57,386 @@
    </section>
    <section class="releases">
     <section class="releases">
+     <h2 data-text="June 25, 2020" id="June_25_2020" tabindex="0">
+      June 25, 2020
+     </h2>
+     <div class="release-feature" id="6d5edfc9">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Anthos GKE on-prem 1.4.0-gke.13 is now available. To upgrade, see
+       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=de">
+        Upgrading GKE on-prem
+       </a>
+       . GKE on-prem 1.4.0-gke.13 clusters run on Kubernetes 1.16.8-gke.6.
+      </p>
+     </div>
+     <div class="release-feature" id="20e8bc12">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <strong>
+        Updated to Kubernetes 1.16:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        Please note that Kubernetes 1.16 has deprecated some of its APIs. For more information, see
+        <a href="https://cloud.google.com/kubernetes-engine/docs/deprecations/apis-1-16?hl=de">
+         Kubernetes 1.16 deprecated APIs
+        </a>
+        .
+       </li>
+      </ul>
+     </div>
+     <div class="release-feature" id="1ce044f0">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <strong>
+        Simplified upgrade:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        <p>
+         This release provides a simplified upgrade experience via the following changes:
+        </p>
+        <ul>
+         <li>
+          Automatically migrate information from the previous version of admin workstation using
+          <code dir="ltr" translate="no">
+           gkeadm
+          </code>
+          .
+         </li>
+         <li>
+          Extend preflight checks to better prepare for upgrades.
+         </li>
+         <li>
+          Support skip version upgrade to enable users to upgrade the cluster from any patch release of a minor release to any patch release of the next minor release. For more information about the detailed upgrade procedure and limitations, see
+          <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=de">
+           upgrading GKE on-prem
+          </a>
+          .
+         </li>
+         <li>
+          The
+          <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=de">
+           alternate upgrade scenario for Common Vulnerabilities and Exposures
+          </a>
+          has been deprecated. All upgrades starting with version 1.3.2 need to upgrade the entire admin workstation.
+         </li>
+         <li>
+          The bundled load balancer is now automatically upgraded during cluster upgrade.
+         </li>
+        </ul>
+       </li>
+      </ul>
+     </div>
+     <div class="release-feature" id="872b803b">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <strong>
+        Improved installation and cluster configuration:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        The user cluster
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/user-cluster-basic?hl=de#nodepoolsname">
+         node pools
+        </a>
+        feature is now generally available.
+       </li>
+       <li>
+        <p>
+         This release improves the installation experience via the following changes:
+        </p>
+        <ul>
+         <li>
+          Supports
+          <code dir="ltr" translate="no">
+           gkeadm
+          </code>
+          for Windows OS.
+         </li>
+         <li>
+          Introduces a standalone command for creating admin clusters.
+         </li>
+        </ul>
+       </li>
+       <li>
+        <p>
+         Introduce a new version of configuration files to separate admin and user cluster configurations and commands. This is designed to provide a consistent user experience and better configuration management.
+        </p>
+       </li>
+      </ul>
+     </div>
+     <div class="release-feature" id="90e2b4c5">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <strong>
+        Improved disaster recovery capabilities:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        This release provides enhanced disaster recovery functionality to
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/backing-up?hl=de#user_cluster_backups">
+         support backup and restore
+        </a>
+        HA user cluster with etcd.
+       </li>
+       <li>
+        This release also provides a manual process to recover a single etcd replica failure in a HA cluster without any data loss.
+       </li>
+      </ul>
+     </div>
+     <div class="release-feature" id="b7bb2217">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <strong>
+        Enhanced monitoring with Cloud Monitoring (formerly Stackdriver):
+       </strong>
+      </p>
+      <ul>
+       <li>
+        <p>
+         This release provides better product monitoring and resource usage management via the following changes:
+        </p>
+        <ul>
+         <li>
+          Introduces a
+          <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/logging-and-monitoring?hl=de#dashboards">
+           default monitoring dashboard
+          </a>
+          .
+         </li>
+         <li>
+          Enables vSphere resource metrics collection by default.
+         </li>
+        </ul>
+       </li>
+       <li>
+        <p>
+         Ubuntu Image now conforms with PCI DSS, NIST Baseline High, and DoD SRG IL2 compliance configurations.
+        </p>
+       </li>
+      </ul>
+     </div>
+     <div class="release-changed" id="2e1bba1b">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <strong>
+        Functionality changes:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        Enabled Horizontal Pod Autoscaler (HPA) for the Istio ingress gateway.
+       </li>
+       <li>
+        Removed ingress controller from admin cluster.
+       </li>
+       <li>
+        Consolidated sysctl configs with Google Kubernetes Engine.
+       </li>
+       <li>
+        Added etcd defrag pod in admin cluster and user cluster, which will be responsible for monitoring etcd's database size and defragmenting it as needed. This helps reclaim etcd database size and recover etcd when its disk space is exceeded.
+       </li>
+      </ul>
+     </div>
+     <div class="release-changed" id="08498e2d">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <strong>
+        Support for a vSphere folder (Preview):
+       </strong>
+      </p>
+      <ul>
+       <li>
+        This release allows customers to install GKE on-prem in a vSphere folder, reducing the scope of the permission required for the vSphere user.
+       </li>
+      </ul>
+     </div>
+     <div class="release-changed" id="90ae9b46">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <strong>
+        Improved scale:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        This release improves the cluster scalability by supporting
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/quotas?hl=de">
+         a maximum of 10 instead of 5 user clusters for each admin cluster
+        </a>
+        .
+       </li>
+      </ul>
+     </div>
+     <div class="release-fixed" id="33ed1474">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       <strong>
+        Fixes:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        Fixed the issue of the user cluster's Kubernetes API server not being able to connect to kube-etcd after admin nodes and user cluster master reboot. In previous versions, kube-dns in admin clusters was configured through kubeadm. In 1.4, this configuration is moved from kubeadm to bundle, which enables deploying two kube-dns replicas on two admin nodes. As a result, a single admin node reboot/failure won't disrupt user cluster API access.
+       </li>
+       <li>
+        Fixed the issue that controllers such as calico-typha can't be scheduled on an admin cluster master node, when the admin cluster master node is under disk pressure.
+       </li>
+       <li>
+        Resolved pods failure with MatchNodeSelector on admin cluster master after node reboot or kubelet restart.
+       </li>
+       <li>
+        Tuned etcd quota limit settings based on the etcd data disk size and the settings in GKE Classic.
+       </li>
+      </ul>
+     </div>
+     <div class="release-issue" id="ddd737da">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        Known issues:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        If a user cluster is created without any node pool named the same as the cluster, managing the node pools using
+        <code dir="ltr" translate="no">
+         gkectl update cluster
+        </code>
+        would fail. To avoid this issue, when creating a user cluster, you need to name one node pool the same as the cluster.
+       </li>
+       <li>
+        The
+        <code dir="ltr" translate="no">
+         gkectl
+        </code>
+        command might exit with panic when converting config from "/path/to/config.yaml" to v1 config files. When that occurs, you can resolve the issue by removing the unused bundled load balancer section ("loadbalancerconfig") in the config file.
+       </li>
+       <li>
+        When using gkeadm to upgrade an admin workstation on Windows, the info file filled out from this template needs to have the line endings converted to use Unix line endings (LF) instead of Windows line endings (CRLF). You can use Notepad++ to convert the line endings.
+       </li>
+       <li>
+        After upgrading an admin workstation with a static IP using gkeadm, you need to run
+        <code dir="ltr" translate="no">
+         ssh-keygen -R &lt;admin-workstation-ip&gt;
+        </code>
+        to remove the IP from the known hosts, because the host identification changed after VM re-creation.
+       </li>
+       <li>
+        We have added Horizontal Pod Autoscaler for istio-ingress and istio-pilot deployments. HPA can scale up unnecessarily for istio-ingress and istio-pilot deployments during cluster upgrades. This happens because the metrics server is not able to report usage of some pods (newly created and terminating; for more information, see
+        <a href="https://github.com/kubernetes/kubernetes/issues/72775">
+         this Kubernetes issue
+        </a>
+        ). No actions are needed; scale down will happen five minutes after the upgrade finishes.
+       </li>
+       <li>
+        When running a preflight check for
+        <code dir="ltr" translate="no">
+         config.yaml
+        </code>
+        that contains both
+        <code dir="ltr" translate="no">
+         admincluster
+        </code>
+        and
+        <code dir="ltr" translate="no">
+         usercluster
+        </code>
+        sections, the "data disk" check in the "user cluster vCenter" category might fail with the message:
+        <code dir="ltr" translate="no">
+         [FAILURE] Data Disk: Data disk is not in a folder. Use a data disk in a folder when using vSAN datastore.
+        </code>
+        User clusters don't use data disks, and it's safe to ignore the failure.
+       </li>
+       <li>
+        When upgrading the admin cluster, the preflight check for the user cluster OS image validation will fail. The user cluster OS image is not used in this case, and it's safe to ignore the "User Cluster OS Image Exists"  failure in this case.
+       </li>
+       <li>
+        A Calico-node pod might be stuck in an unready state after node IP changes. To resolve this issue, you need to delete any unready Calico-node pods.
+       </li>
+       <li>
+        The BIG-IP controller might fail to update F5 VIP after any admin cluster master IP changes. To resolve this, you need to use the admin cluster master node IP in kubeconfig and delete the bigip-controller pod from the admin master.
+       </li>
+       <li>
+        The stackdriver-prometheus-k8s pod could enter a crashloop after host failure. To resolve this, you need to remove any corrupted PersistentVolumes that the stackdriver-prometheus-k8s pod uses.
+       </li>
+       <li>
+        After node IP change, pods running with hostNetwork don't get podIP corrected until Kubelet restarts. To resolve this, you need to restart Kubelet or delete those pods using previous IPs.
+       </li>
+       <li>
+        An admin cluster fails after any admin cluster master node IP address changes. To avoid this, you should avoid changing the admin master IP address if possible by using a static IP or a non-expired DHCP lease instead. If you encounter this issue and need further assistance, please contact Google Support.
+       </li>
+       <li>
+        User cluster upgrade might be stuck with the error:
+        <code dir="ltr" translate="no">
+         Failed to update machine status: no matches for kind "Machine" in version "cluster.k8s.io/v1alpha1".
+        </code>
+        To resolve this, you need to delete the clusterapi pod in the user cluster namespace in the admin cluster.
+       </li>
+      </ul>
+     </div>
+     <div class="release-issue" id="40c10ea4">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       If your vSphere environment has fewer than three hosts, user cluster upgrade might fail. To resolve this, you need to disable
+       <code dir="ltr" translate="no">
+        antiAffinityGroups
+       </code>
+       in the cluster config before upgrading the user cluster. For v1 config, please set
+       <code dir="ltr" translate="no">
+        antiAffinityGroups.enabled = false
+       </code>
+       ; for v0 config, please set
+       <code dir="ltr" translate="no">
+        usercluster.antiaffinitygroups.enabled = false
+       </code>
+       .
+      </p>
+      <p>
+       <strong>
+        Note:
+       </strong>
+       Disabling
+       <code dir="ltr" translate="no">
+        antiAffinityGroups
+       </code>
+       in the cluster config during upgrade is only allowed for the 1.3.2 to 1.4.
+       <em>
+        x
+       </em>
+       upgrade to resolve the upgrade issue; the support might be removed in the future.
+      </p>
+     </div>
      <h2 data-text="May 21, 2020" id="May_21_2020" tabindex="0">
       May 21, 2020
      </h2>
