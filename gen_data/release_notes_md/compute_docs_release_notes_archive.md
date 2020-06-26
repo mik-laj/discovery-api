@@ -853,7 +853,7 @@ remove this restriction before this feature is generally available.
 **November 04, 2014**
 
   * Lowered pricing for persistent SSD and persistent disk snapshots. See [ Persistent disk pricing ](/compute/disks-image-pricing#persistentdisk) for more information. 
-  * Lowered network pricing. See [ Network pricing ](/compute/network-pricing) for more information. 
+  * Lowered network pricing. See [ Network pricing ](/vpc/network-pricing) for more information. 
   * Autoscaler is now available in Beta and available to all users and projects. See [ Autoscaler ](/compute/docs/autoscaler) for more information. 
 
 **November 03, 2014**
