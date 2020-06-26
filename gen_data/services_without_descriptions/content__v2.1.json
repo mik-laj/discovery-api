@@ -9484,6 +9484,9 @@
         "TestOrder": {
             "id": "TestOrder",
             "properties": {
+                "deliveryDetails": {
+                    "$ref": "TestOrderDeliveryDetails"
+                },
                 "enableOrderinvoices": {
                     "type": "boolean"
                 },
@@ -9504,6 +9507,9 @@
                 },
                 "notificationMode": {
                     "type": "string"
+                },
+                "pickupDetails": {
+                    "$ref": "TestOrderPickupDetails"
                 },
                 "predefinedBillingAddress": {
                     "annotations": {
@@ -9552,6 +9558,54 @@
                             "content.orders.createtestorder"
                         ]
                     },
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TestOrderAddress": {
+            "id": "TestOrderAddress",
+            "properties": {
+                "country": {
+                    "type": "string"
+                },
+                "fullAddress": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "isPostOfficeBox": {
+                    "type": "boolean"
+                },
+                "locality": {
+                    "type": "string"
+                },
+                "postalCode": {
+                    "type": "string"
+                },
+                "recipientName": {
+                    "type": "string"
+                },
+                "region": {
+                    "type": "string"
+                },
+                "streetAddress": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "TestOrderDeliveryDetails": {
+            "id": "TestOrderDeliveryDetails",
+            "properties": {
+                "address": {
+                    "$ref": "TestOrderAddress"
+                },
+                "phoneNumber": {
                     "type": "string"
                 }
             },
@@ -9678,6 +9732,39 @@
                         "$ref": "OrderLineItemProductVariantAttribute"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "TestOrderPickupDetails": {
+            "id": "TestOrderPickupDetails",
+            "properties": {
+                "locationCode": {
+                    "type": "string"
+                },
+                "pickupLocationAddress": {
+                    "$ref": "TestOrderAddress"
+                },
+                "pickupLocationType": {
+                    "type": "string"
+                },
+                "pickupPersons": {
+                    "items": {
+                        "$ref": "TestOrderPickupDetailsPickupPerson"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "TestOrderPickupDetailsPickupPerson": {
+            "id": "TestOrderPickupDetailsPickupPerson",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "phoneNumber": {
+                    "type": "string"
                 }
             },
             "type": "object"
