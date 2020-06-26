@@ -12,6 +12,42 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/composer-release-notes.xml `
 
+##  June 24, 2020
+
+**CHANGED:**
+
+  * [ New versions ](https://cloud.google.com/composer/docs/concepts/versioning/composer-versions) of Cloud Composer images: ` composer-1.10.5-airflow-1.10.2 ` , ` composer-1.10.5-airflow-1.10.3 ` and ` composer-1.10.5-airflow-1.10.6 ` . The default is ` composer-1.10.5-airflow-1.10.3 ` . Upgrade your Cloud SDK to use features in this release. 
+
+**FEATURE:**
+
+  * Composer now uses the Kubernetes v1 API, and is compatible with GKE 1.16 
+  * An updated haproxy configuration for Composer increases the maximum number of connections to 2000, and changes load balancing to be based on the number of connections. These settings can be configured with environment variables. 
+
+**FIXED:**
+
+  * Error messages for ` TP_APP_ENGINE_CREATING ` timeout and RPC delivery issues have been expanded. 
+  * Airflow Providers can now be installed inside Cloud Composer. 
+  * Error handling for rendering templates in the Airflow web server UI has been improved. 
+  * Fixed an issue with rendering task instance details (logs, task instance template, params) in the Airflow web server UI when DAG serialization is enabled. 
+  * Fixed an issue with ` DataFlowJavaOperator ` , so it can now be used with Apache Beam 2.20. 
+  * Improved error reporting for failing operations. 
+  * Memory consumption of the ` gcs-syncd ` container is now constrained to prevent system instability. 
+
+##  May 31, 2020
+
+**FEATURE:**
+
+Cloud Composer is now available in Seoul ( ` asia-northeast3 ` ).
+
+##  May 30, 2020
+
+**FEATURE:**
+
+Domain restricted sharing is now generally available (GA). The v1 Composer API
+and GCP Console now support [ domain restricted sharing
+](https://cloud.google.com/resource-manager/docs/organization-
+policy/restricting-domains) for Composer environments.
+
 ##  May 26, 2020
 
 **CHANGED:**
