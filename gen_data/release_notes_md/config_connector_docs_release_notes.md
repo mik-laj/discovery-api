@@ -13,6 +13,27 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/configconnector-release-
 notes.xml `
 
+##  June 25, 2020
+
+**FEATURE:**
+
+Add an option, iam-format, to config-connector to control IAM output, options
+are policy, policymember, or none.
+
+**FEATURE:**
+
+ComputeForwardingRule's target field now supports referencing a
+ComputeTargetSSLProxy and ComputeTargetTCPProxy.
+
+**CHANGED:**
+
+DataFlowJob's serviceAccountEmail, network, subnetwork, machineType, and
+ipConfiguration fields now support updates.
+
+**FIXED:**
+
+Fix an issue where config-connector would error on a Project resource.
+
 ##  June 16, 2020
 
 **FEATURE:**
