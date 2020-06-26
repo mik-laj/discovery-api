@@ -35,6 +35,227 @@ deprecated functionality.
    </section>
    <section class="releases">
     <section class="releases">
+     <h2 data-text="June 25, 2020" id="June_25_2020" tabindex="0">
+      June 25, 2020
+     </h2>
+     <div class="release-note-product-version-title">
+      1.4.0
+     </div>
+     <div class="release-feature" id="2b3ff791">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Anthos Config Management is now Generally Available on AKS (Kubernetes v1.16 or higher) and EKS (Kubernetes v1.16 or higher).
+      </p>
+     </div>
+     <div class="release-issue" id="206cbd61">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       Config Connector is not currently supported on EKS or AKS, as it is unable to run on these providers.
+      </p>
+     </div>
+     <div class="release-changed" id="9cebe939">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       The following Policy Controller constraint templates have been added to the Default Template Library:
+      </p>
+      <ul>
+       <li>
+        allowedserviceportname
+       </li>
+       <li>
+        destinationruletlsenabled
+       </li>
+       <li>
+        disallowedauthzprefix
+       </li>
+       <li>
+        policystrictonly
+       </li>
+       <li>
+        sourcenotallauthz
+       </li>
+      </ul>
+      <p>
+       The following constraint templates have been updated:
+      </p>
+      <ul>
+       <li>
+        k8sblockprocessnamespacesharing
+       </li>
+       <li>
+        k8sdisallowedrolebindingsubjects
+       </li>
+       <li>
+        k8semptydirhassizelimit
+       </li>
+       <li>
+        k8slocalstoragerequiresafetoevict
+       </li>
+       <li>
+        k8smemoryrequestequalslimit
+       </li>
+       <li>
+        k8snoexternalservices
+       </li>
+       <li>
+        k8spspallowedusers
+       </li>
+       <li>
+        k8spspallowprivilegeescalationcontainer
+       </li>
+       <li>
+        k8spspapparmor
+       </li>
+       <li>
+        k8spspcapabilities
+       </li>
+       <li>
+        k8spspflexvolumes
+       </li>
+       <li>
+        k8spspforbiddensysctls
+       </li>
+       <li>
+        k8spspfsgroup
+       </li>
+       <li>
+        k8spsphostfilesystem
+       </li>
+       <li>
+        k8spsphostnamespace
+       </li>
+       <li>
+        k8spsphostnetworkingports
+       </li>
+       <li>
+        k8spspprivilegedcontainer
+       </li>
+       <li>
+        k8spspprocmount
+       </li>
+       <li>
+        k8spspreadonlyrootfilesystem
+       </li>
+       <li>
+        k8spspseccomp
+       </li>
+       <li>
+        k8spspselinux
+       </li>
+       <li>
+        k8spspvolumetypes
+       </li>
+      </ul>
+      <p>
+       See the
+       <a href="https://cloud.google.com/anthos-config-management/docs/reference/constraint-template-library">
+        Default Template Library documentation
+       </a>
+       for more information.
+      </p>
+     </div>
+     <div class="release-changed" id="59782c22">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Anthos Policy Controller has been updated to include a more recent build of OPA Gatekeeper (hash:
+       <a href="https://github.com/open-policy-agent/gatekeeper/tree/25ca7993efb26079156e24d4c9bc8b8a2e83c3ef">
+        25ca799
+       </a>
+       ).
+      </p>
+      <p>
+       This new build of OPA Gatekeeper includes a number of bug fixes and performance improvements, and adds three new monitoring metrics:
+      </p>
+      <ul>
+       <li>
+        gatekeeper_sync
+       </li>
+       <li>
+        gatekeeper_sync_duration_seconds
+       </li>
+       <li>
+        gatekeeper_sync_last_run_time
+       </li>
+      </ul>
+     </div>
+     <div class="release-fixed" id="08eac43f">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       The
+       <code dir="ltr" translate="no">
+        nomos
+       </code>
+       CLI tool now supports the
+       <code dir="ltr" translate="no">
+        KUBECONFIG
+       </code>
+       environment variable in a way that matches the
+       <a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#the-kubeconfig-environment-variable">
+        <code dir="ltr" translate="no">
+         kubectl
+        </code>
+        behavior
+       </a>
+       with multiple delimited configuration files.
+      </p>
+     </div>
+     <div class="release-fixed" id="5da979ba">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Anthos Config Management no longer gets into a continuous
+       <code dir="ltr" translate="no">
+        PATCH
+       </code>
+       loop when encountering unmanaged resources with config-management annotations and a missing
+       <code dir="ltr" translate="no">
+        last-applied-configuration
+       </code>
+       annotation.
+      </p>
+     </div>
+     <div class="release-issue" id="1d7567aa">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       Anthos Config Management is not issuing errors when it encounters certain types of malformed configurations in a resource definition. This may result in the Kubernetes API Server ignoring the malformed fields and applying the default value for the field instead.
+      </p>
+     </div>
+     <div class="release-issue" id="4e9aa7cd">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       Policy Controller may fail to start successfully when synced resources are marked for deletion.
+      </p>
+      <p>
+       This issue will be addressed in the upstream OPA Gatekeeper project in a future release. For more information see the
+       <a href="https://github.com/open-policy-agent/gatekeeper/issues/660">
+        relevant issue
+       </a>
+       in the Gatekeeper project.
+      </p>
+     </div>
+     <div class="release-changed" id="1e3a135a">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       This release includes several logging and performance improvements.
+      </p>
+     </div>
      <h2 data-text="June 15, 2020" id="June_15_2020" tabindex="0">
       June 15, 2020
      </h2>
