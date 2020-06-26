@@ -17,6 +17,121 @@ Google Cloud의 최신 제품 업데이트를 확인할 수 있습니다.
 추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/gkeonprem-
 release-notes.xml `
 
+##  June 25, 2020
+
+**FEATURE:**
+
+Anthos GKE on-prem 1.4.0-gke.13 is now available. To upgrade, see [ Upgrading
+GKE on-prem ](https://cloud.google.com/anthos/gke/docs/on-prem/how-
+to/upgrading?hl=ko) . GKE on-prem 1.4.0-gke.13 clusters run on Kubernetes
+1.16.8-gke.6.
+
+**FEATURE:**
+
+**Updated to Kubernetes 1.16:**
+
+  * Please note that Kubernetes 1.16 has deprecated some of its APIs. For more information, see [ Kubernetes 1.16 deprecated APIs ](https://cloud.google.com/kubernetes-engine/docs/deprecations/apis-1-16?hl=ko) . 
+
+**FEATURE:**
+
+**Simplified upgrade:**
+
+  * This release provides a simplified upgrade experience via the following changes: 
+
+    * Automatically migrate information from the previous version of admin workstation using ` gkeadm ` . 
+    * Extend preflight checks to better prepare for upgrades. 
+    * Support skip version upgrade to enable users to upgrade the cluster from any patch release of a minor release to any patch release of the next minor release. For more information about the detailed upgrade procedure and limitations, see [ upgrading GKE on-prem ](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=ko) . 
+    * The [ alternate upgrade scenario for Common Vulnerabilities and Exposures ](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=ko) has been deprecated. All upgrades starting with version 1.3.2 need to upgrade the entire admin workstation. 
+    * The bundled load balancer is now automatically upgraded during cluster upgrade. 
+
+**FEATURE:**
+
+**Improved installation and cluster configuration:**
+
+  * The user cluster [ node pools ](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/user-cluster-basic?hl=ko#nodepoolsname) feature is now generally available. 
+  * This release improves the installation experience via the following changes: 
+
+    * Supports ` gkeadm ` for Windows OS. 
+    * Introduces a standalone command for creating admin clusters. 
+  * Introduce a new version of configuration files to separate admin and user cluster configurations and commands. This is designed to provide a consistent user experience and better configuration management. 
+
+**FEATURE:**
+
+**Improved disaster recovery capabilities:**
+
+  * This release provides enhanced disaster recovery functionality to [ support backup and restore ](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/backing-up?hl=ko#user_cluster_backups) HA user cluster with etcd. 
+  * This release also provides a manual process to recover a single etcd replica failure in a HA cluster without any data loss. 
+
+**FEATURE:**
+
+**Enhanced monitoring with Cloud Monitoring (formerly Stackdriver):**
+
+  * This release provides better product monitoring and resource usage management via the following changes: 
+
+    * Introduces a [ default monitoring dashboard ](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/logging-and-monitoring?hl=ko#dashboards) . 
+    * Enables vSphere resource metrics collection by default. 
+  * Ubuntu Image now conforms with PCI DSS, NIST Baseline High, and DoD SRG IL2 compliance configurations. 
+
+**CHANGED:**
+
+**Functionality changes:**
+
+  * Enabled Horizontal Pod Autoscaler (HPA) for the Istio ingress gateway. 
+  * Removed ingress controller from admin cluster. 
+  * Consolidated sysctl configs with Google Kubernetes Engine. 
+  * Added etcd defrag pod in admin cluster and user cluster, which will be responsible for monitoring etcd's database size and defragmenting it as needed. This helps reclaim etcd database size and recover etcd when its disk space is exceeded. 
+
+**CHANGED:**
+
+**Support for a vSphere folder (Preview):**
+
+  * This release allows customers to install GKE on-prem in a vSphere folder, reducing the scope of the permission required for the vSphere user. 
+
+**CHANGED:**
+
+**Improved scale:**
+
+  * This release improves the cluster scalability by supporting [ a maximum of 10 instead of 5 user clusters for each admin cluster ](https://cloud.google.com/anthos/gke/docs/on-prem/quotas?hl=ko) . 
+
+**FIXED:**
+
+**Fixes:**
+
+  * Fixed the issue of the user cluster's Kubernetes API server not being able to connect to kube-etcd after admin nodes and user cluster master reboot. In previous versions, kube-dns in admin clusters was configured through kubeadm. In 1.4, this configuration is moved from kubeadm to bundle, which enables deploying two kube-dns replicas on two admin nodes. As a result, a single admin node reboot/failure won't disrupt user cluster API access. 
+  * Fixed the issue that controllers such as calico-typha can't be scheduled on an admin cluster master node, when the admin cluster master node is under disk pressure. 
+  * Resolved pods failure with MatchNodeSelector on admin cluster master after node reboot or kubelet restart. 
+  * Tuned etcd quota limit settings based on the etcd data disk size and the settings in GKE Classic. 
+
+**ISSUE:**
+
+**Known issues:**
+
+  * If a user cluster is created without any node pool named the same as the cluster, managing the node pools using ` gkectl update cluster ` would fail. To avoid this issue, when creating a user cluster, you need to name one node pool the same as the cluster. 
+  * The ` gkectl ` command might exit with panic when converting config from "/path/to/config.yaml" to v1 config files. When that occurs, you can resolve the issue by removing the unused bundled load balancer section ("loadbalancerconfig") in the config file. 
+  * When using gkeadm to upgrade an admin workstation on Windows, the info file filled out from this template needs to have the line endings converted to use Unix line endings (LF) instead of Windows line endings (CRLF). You can use Notepad++ to convert the line endings. 
+  * After upgrading an admin workstation with a static IP using gkeadm, you need to run ` ssh-keygen -R <admin-workstation-ip> ` to remove the IP from the known hosts, because the host identification changed after VM re-creation. 
+  * We have added Horizontal Pod Autoscaler for istio-ingress and istio-pilot deployments. HPA can scale up unnecessarily for istio-ingress and istio-pilot deployments during cluster upgrades. This happens because the metrics server is not able to report usage of some pods (newly created and terminating; for more information, see [ this Kubernetes issue ](https://github.com/kubernetes/kubernetes/issues/72775) ). No actions are needed; scale down will happen five minutes after the upgrade finishes. 
+  * When running a preflight check for ` config.yaml ` that contains both ` admincluster ` and ` usercluster ` sections, the "data disk" check in the "user cluster vCenter" category might fail with the message: ` [FAILURE] Data Disk: Data disk is not in a folder. Use a data disk in a folder when using vSAN datastore. ` User clusters don't use data disks, and it's safe to ignore the failure. 
+  * When upgrading the admin cluster, the preflight check for the user cluster OS image validation will fail. The user cluster OS image is not used in this case, and it's safe to ignore the "User Cluster OS Image Exists" failure in this case. 
+  * A Calico-node pod might be stuck in an unready state after node IP changes. To resolve this issue, you need to delete any unready Calico-node pods. 
+  * The BIG-IP controller might fail to update F5 VIP after any admin cluster master IP changes. To resolve this, you need to use the admin cluster master node IP in kubeconfig and delete the bigip-controller pod from the admin master. 
+  * The stackdriver-prometheus-k8s pod could enter a crashloop after host failure. To resolve this, you need to remove any corrupted PersistentVolumes that the stackdriver-prometheus-k8s pod uses. 
+  * After node IP change, pods running with hostNetwork don't get podIP corrected until Kubelet restarts. To resolve this, you need to restart Kubelet or delete those pods using previous IPs. 
+  * An admin cluster fails after any admin cluster master node IP address changes. To avoid this, you should avoid changing the admin master IP address if possible by using a static IP or a non-expired DHCP lease instead. If you encounter this issue and need further assistance, please contact Google Support. 
+  * User cluster upgrade might be stuck with the error: ` Failed to update machine status: no matches for kind "Machine" in version "cluster.k8s.io/v1alpha1". ` To resolve this, you need to delete the clusterapi pod in the user cluster namespace in the admin cluster. 
+
+**ISSUE:**
+
+If your vSphere environment has fewer than three hosts, user cluster upgrade
+might fail. To resolve this, you need to disable ` antiAffinityGroups ` in the
+cluster config before upgrading the user cluster. For v1 config, please set `
+antiAffinityGroups.enabled = false ` ; for v0 config, please set `
+usercluster.antiaffinitygroups.enabled = false ` .
+
+**Note:** Disabling ` antiAffinityGroups ` in the cluster config during
+upgrade is only allowed for the 1.3.2 to 1.4. _x_ upgrade to resolve the
+upgrade issue; the support might be removed in the future.
+
 ##  May 21, 2020
 
 **FEATURE:**
