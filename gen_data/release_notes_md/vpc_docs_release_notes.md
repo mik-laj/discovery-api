@@ -511,7 +511,7 @@ For more information, read the [ IAM
 **CHANGED:**
 
 Lowered network pricing. See [ Network pricing
-](https://cloud.google.com/compute/network-pricing) for more information.
+](https://cloud.google.com/vpc/network-pricing) for more information.
 
 ##  May 05, 2014
 
