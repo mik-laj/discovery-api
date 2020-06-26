@@ -13,6 +13,15 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloudresourcemanager-release-
 notes.xml `
 
+##  June 15, 2020
+
+**FEATURE:**
+
+The Organization Policy for [ restricting peer IP addresses through a Cloud
+VPN tunnel ](https://cloud.google.com/network-
+connectivity/docs/vpn/concepts/overview#vpn-org-policy) has been launched into
+general availability.
+
 ##  April 10, 2020
 
 **FEATURE:**
