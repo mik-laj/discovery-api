@@ -13,6 +13,108 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/anthosconfig-release-notes.xml
 `
 
+##  June 25, 2020
+
+1.4.0
+
+**FEATURE:**
+
+Anthos Config Management is now Generally Available on AKS (Kubernetes v1.16
+or higher) and EKS (Kubernetes v1.16 or higher).
+
+**ISSUE:**
+
+Config Connector is not currently supported on EKS or AKS, as it is unable to
+run on these providers.
+
+**CHANGED:**
+
+The following Policy Controller constraint templates have been added to the
+Default Template Library:
+
+  * allowedserviceportname 
+  * destinationruletlsenabled 
+  * disallowedauthzprefix 
+  * policystrictonly 
+  * sourcenotallauthz 
+
+The following constraint templates have been updated:
+
+  * k8sblockprocessnamespacesharing 
+  * k8sdisallowedrolebindingsubjects 
+  * k8semptydirhassizelimit 
+  * k8slocalstoragerequiresafetoevict 
+  * k8smemoryrequestequalslimit 
+  * k8snoexternalservices 
+  * k8spspallowedusers 
+  * k8spspallowprivilegeescalationcontainer 
+  * k8spspapparmor 
+  * k8spspcapabilities 
+  * k8spspflexvolumes 
+  * k8spspforbiddensysctls 
+  * k8spspfsgroup 
+  * k8spsphostfilesystem 
+  * k8spsphostnamespace 
+  * k8spsphostnetworkingports 
+  * k8spspprivilegedcontainer 
+  * k8spspprocmount 
+  * k8spspreadonlyrootfilesystem 
+  * k8spspseccomp 
+  * k8spspselinux 
+  * k8spspvolumetypes 
+
+See the [ Default Template Library documentation
+](https://cloud.google.com/anthos-config-management/docs/reference/constraint-
+template-library) for more information.
+
+**CHANGED:**
+
+Anthos Policy Controller has been updated to include a more recent build of
+OPA Gatekeeper (hash: [ 25ca799 ](https://github.com/open-policy-
+agent/gatekeeper/tree/25ca7993efb26079156e24d4c9bc8b8a2e83c3ef) ).
+
+This new build of OPA Gatekeeper includes a number of bug fixes and
+performance improvements, and adds three new monitoring metrics:
+
+  * gatekeeper_sync 
+  * gatekeeper_sync_duration_seconds 
+  * gatekeeper_sync_last_run_time 
+
+**FIXED:**
+
+The ` nomos ` CLI tool now supports the ` KUBECONFIG ` environment variable in
+a way that matches the [ ` kubectl ` behavior
+](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-
+kubeconfig/#the-kubeconfig-environment-variable) with multiple delimited
+configuration files.
+
+**FIXED:**
+
+Anthos Config Management no longer gets into a continuous ` PATCH ` loop when
+encountering unmanaged resources with config-management annotations and a
+missing ` last-applied-configuration ` annotation.
+
+**ISSUE:**
+
+Anthos Config Management is not issuing errors when it encounters certain
+types of malformed configurations in a resource definition. This may result in
+the Kubernetes API Server ignoring the malformed fields and applying the
+default value for the field instead.
+
+**ISSUE:**
+
+Policy Controller may fail to start successfully when synced resources are
+marked for deletion.
+
+This issue will be addressed in the upstream OPA Gatekeeper project in a
+future release. For more information see the [ relevant issue
+](https://github.com/open-policy-agent/gatekeeper/issues/660) in the
+Gatekeeper project.
+
+**CHANGED:**
+
+This release includes several logging and performance improvements.
+
 ##  June 15, 2020
 
 1.3.2
