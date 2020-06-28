@@ -12,6 +12,43 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  June 26, 2020
+
+**App Engine standard environment Go**
+
+**FEATURE:**
+
+The [ Go 1.14 runtime Beta
+](https://cloud.google.com/appengine/docs/standard/go/runtime) for the App
+Engine standard environment is now available.
+
+**BigQuery**
+
+**FEATURE:**
+
+[ Region qualified ` INFORMATION_SCHEMA ` views
+](https://cloud.google.com/bigquery/docs/information-schema-intro#syntax) are
+now in [ beta ](https://cloud.google.com/products/#product-launch-stages) .
+
+**BigQuery ML**
+
+**FEATURE:**
+
+BigQuery ML now supports time series models as a [ beta
+](https://cloud.google.com/products#product-launch-stages) release. For more
+information, see [ CREATE MODEL statement for time series models
+](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-
+syntax-create-time-series) .
+
+**Compute Engine**
+
+**FEATURE:**
+
+To support a wide variety of BYOL scenarios, you can now [ configure VMs to
+live migrate within a sole-tenant node group during host maintenance events
+](https://cloud.google.com/compute/docs/nodes/bringing-your-own-licenses) .
+This is **Generally Available** .
+
 ##  June 25, 2020
 
 **Anthos Config Management**
@@ -464,7 +501,9 @@ See [ Cloud Functions Locations
 
 Cloud Run for Anthos on Google Cloud version [ 0.14.0-gke.5
 ](https://github.com/knative/serving/releases/tag/v0.14.0) is now available
-for following cluster versions (and greater): * 1.17.6-gke.4
+for following cluster versions (and greater):
+
+  * 1.17.6-gke.4 
 
 ##  June 17, 2020
 
@@ -1688,128 +1727,4 @@ Domain restricted sharing is now generally available (GA). The v1 Composer API
 and GCP Console now support [ domain restricted sharing
 ](https://cloud.google.com/resource-manager/docs/organization-
 policy/restricting-domains) for Composer environments.
-
-##  May 29, 2020
-
-**Anthos GKE deployed on AWS**
-
-**CHANGED:**
-
-A new build of Anthos GKE on AWS has been released. This build removes the
-need to check AWS IAM privileges when creating a management cluster. **You
-don't need to update** if you have not encountered this issue.
-
-To install this build, download the ` anthos-gke ` tool by running the
-following command:
-
-` gsutil cp gs://gke-multi-cloud-release/bin/aws-0.2.1-gke.8/anthos-gke . `
-
-Then, recreate your [ Terraform configuration
-](https://cloud.google.com/anthos/gke/docs/aws/how-to/installing-management)
-and continue with your installation.
-
-**Cloud Billing**
-
-**FEATURE:**
-
-[ ` Labels ` ](https://cloud.google.com/billing/docs/how-to/cost-
-table#columns_in_the_cost_table) column added to the [ flat table view
-](https://cloud.google.com/billing/docs/how-to/cost-table#flat_table_view) of
-the Cloud Billing Cost Table report. The Cost Table report provides a tabular
-view of your invoice costs. You can quickly filter your costs by available
-fields, such as project, service, SKU, and labels (among other fields), and
-you can download the table to CSV for offline analysis. See the [
-documentation ](https://cloud.google.com/billing/docs/how-to/cost-table) for
-more details.
-
-**Cloud CDN**
-
-**CHANGED:**
-
-To help you get started quickly, added two new examples for setting up Cloud
-CDN:
-
-  * [ Setting up Cloud CDN with a managed instance group ](https://cloud.google.com/cdn/docs/setting-up-cdn-with-mig)
-  * [ Setting up Cloud CDN with a backend bucket ](https://cloud.google.com/cdn/docs/setting-up-cdn-with-bucket)
-
-**Cloud Healthcare API**
-
-**FEATURE:**
-
-The Cloud Healthcare API offers single-region support in the ` asia-east2 `
-(Hong Kong) region.
-
-**Cloud TPU**
-
-**CHANGED:**
-
-Cloud TPU now supports TensorFlow version 1.15.3. See the [ TensorFlow 1.15.3
-Release Notes ](https://github.com/tensorflow/tensorflow/releases/tag/v1.15.3)
-.
-
-**Config Connector**
-
-**CHANGED:**
-
-Added support for ` SQLSSLCert `
-
-**CHANGED:**
-
-Supported acquisition of backends added to Compute Backend Services out-of-
-band of Config Connector
-
-**FIXED:**
-
-Fixed support for [ autoscaling and manually resizing node pools with
-ContainerNodePool ](https://github.com/GoogleCloudPlatform/k8s-config-
-connector/issues/165)
-
-**Dialogflow**
-
-**CHANGED:**
-
-The [ Dialogflow Facebook Messenger integration
-](https://cloud.google.com/dialogflow/docs/integrations/facebook) has been
-updated to to be compliant with newer Facebook Messenger API versions. If you
-have an agent that enabled this integration prior to today, you should have
-received an email from Dialogflow with upgrade instructions. If you have not
-received this email, please [ contact Dialogflow support
-](https://cloud.google.com/dialogflow/docs/support/getting-support) .
-
-**Identity-Aware Proxy**
-
-**FEATURE:**
-
-The ability to authenticate users with [ external identities
-](https://cloud.google.com/iap/docs/enable-external-identities) is now
-generally available.
-
-**Virtual Private Cloud**
-
-**FEATURE:**
-
-GKE annotations and advanced controls for [ VPC Flow Logs
-](https://cloud.google.com/vpc/docs/using-flow-logs) is now available in
-**General Availability** .
-
-##  May 28, 2020
-
-**Cloud Functions**
-
-**CHANGED:**
-
-Cloud Functions now supports [ Go 1.13
-](https://cloud.google.com/functions/docs/concepts/go-runtime) at the [
-General Availability release level
-](https://cloud.google.com/products/#product-launch-stages) .
-
-**Cloud Key Management Service**
-
-**FEATURE:**
-
-Several fields related to data integrity have been added to the Cloud KMS API,
-along with guidelines for using them. To learn more about maintaining data
-integrity when performing cryptographic operations, see [ Verifying end-to-end
-data integrity ](https://cloud.google.com/kms/docs/data-integrity-guidelines)
-.
 
