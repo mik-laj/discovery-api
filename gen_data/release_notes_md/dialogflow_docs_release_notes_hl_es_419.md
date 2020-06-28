@@ -2,21 +2,25 @@
 
 En esta página, se documentan las actualizaciones de producción de Dialogflow.
 Recomendamos que los desarrolladores de Dialogflow verifiquen esta lista de
-forma periódica para consultar los nuevos anuncios. Los cambios importantes
-también se anunciarán en los siguientes lugares:
+forma periódica para consultar los anuncios nuevos. Los cambios importantes
+también se anunciarán por los siguientes medios:
 
   * [ Lista de distribución de Dialogflow Enterprise ](https://groups.google.com/forum/?hl=es_419#!forum/dialogflow-enterprise-edition-users)
   * [ Blog de Cloud: IA y aprendizaje automático ](https://cloud.google.com/blog/products/ai-machine-learning?hl=es_419)
 
-**Nota:** También puedes leer las [ notas de la versión anteriores
+**Nota:** También puedes leer el [ historial de notas de la versión
 ](https://cloud.google.com/dialogflow/docs/data/historic-release-
-notes.pdf?hl=es_419) de antes del 16 de noviembre de 2017.
+notes.pdf?hl=es_419) anterior al 16 de noviembre de 2017.
+
+Puedes ver las últimas actualizaciones de productos de todo Google Cloud en la
+página [ Notas de la versión de Google Cloud
+](https://cloud.google.com/release-notes?hl=es_419) .
 
 Para recibir las últimas actualizaciones de productos, agrega la URL de esta
 página a tu [ lector de feeds
-](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) o agrega
+](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , o agrega
 directamente la URL del feed: ` https://cloud.google.com/feeds/dialogflow-
-release-notes.xml ` .
+release-notes.xml `
 
 ##  June 01, 2020
 
