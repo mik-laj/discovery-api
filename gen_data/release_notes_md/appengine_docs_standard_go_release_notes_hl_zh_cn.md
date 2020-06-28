@@ -7,6 +7,14 @@
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/gaestd-go-release-notes.xml `
 
+##  June 26, 2020
+
+**FEATURE:**
+
+The [ Go 1.14 runtime Beta
+](https://cloud.google.com/appengine/docs/standard/go/runtime?hl=zh-cn) for
+the App Engine standard environment is now available.
+
 ##  June 11, 2020
 
 **FEATURE:**
