@@ -6,11 +6,15 @@ liste pour prendre connaissance des nouvelles annonces. Les changements
 majeurs seront également annoncés ici :
 
   * [ Liste de diffusion Dialogflow Enterprise ](https://groups.google.com/forum/?hl=fr#!forum/dialogflow-enterprise-edition-users)
-  * [ Blog Google Cloud : IA et machine learning ](https://cloud.google.com/blog/products/ai-machine-learning?hl=fr)
+  * [ Blog Cloud : IA et machine learning ](https://cloud.google.com/blog/products/ai-machine-learning?hl=fr)
 
-**Remarque** :  Vous pouvez également consulter l' [ historique des notes de
+**Remarque** : Vous pouvez également consulter l' [ historique des notes de
 version ](https://cloud.google.com/dialogflow/docs/data/historic-release-
 notes.pdf?hl=fr) datant d'avant le 16 novembre 2017.
+
+Vous pouvez consulter les dernières mises à jour de produits pour l'ensemble
+de Google Cloud sur la page [ Notes de version de Google Cloud
+](https://cloud.google.com/release-notes?hl=fr) .
 
 Pour recevoir les dernières mises à jour concernant ce produit, ajoutez l'URL
 de cette page à votre [ lecteur de flux
