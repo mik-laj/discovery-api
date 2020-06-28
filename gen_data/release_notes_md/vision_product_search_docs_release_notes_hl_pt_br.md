@@ -1,15 +1,18 @@
 #  Notas da versão
 
-Nesta página estão documentadas as atualizações de produção da pesquisa de
-produtos do Vision. Recomendamos que os desenvolvedores da pesquisa de
-produtos do Vision consultem esta lista periodicamente para saber das
-novidades.
+Nesta página estão documentadas as atualizações de produção do Vision Product
+Search. Recomendamos que os desenvolvedores do Vision Product Search consultem
+esta lista periodicamente para saber sobre as novidades.
+
+É possível ver as atualizações mais recentes de todos os produtos do Google
+Cloud na página [ Notas da versão do Google Cloud
+](https://cloud.google.com/release-notes?hl=pt_br) .
 
 Para receber as atualizações de produtos mais recentes, adicione o URL desta
 página ao [ leitor de feeds
-](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) (em inglês) ou
-adicione o URL do feed diretamente: ` https://cloud.google.com/feeds/cloud-
-vision-api-product-search-release-notes.xml `
+](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ou adicione o URL
+do feed diretamente: ` https://cloud.google.com/feeds/visionproductsearch-
+release-notes.xml `
 
 ##  September 18, 2019
 
