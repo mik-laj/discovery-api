@@ -14,6 +14,15 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/compute-release-notes.xml `
 
+##  June 26, 2020
+
+**FEATURE:**
+
+To support a wide variety of BYOL scenarios, you can now [ configure VMs to
+live migrate within a sole-tenant node group during host maintenance events
+](https://cloud.google.com/compute/docs/nodes/bringing-your-own-licenses) .
+This is **Generally Available** .
+
 ##  June 22, 2020
 
 **FEATURE:**
