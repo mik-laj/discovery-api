@@ -10,6 +10,14 @@ de cette page à votre [ lecteur de flux
 du flux directement : ` https://cloud.google.com/feeds/gaestd-go-release-
 notes.xml `
 
+##  June 26, 2020
+
+**FEATURE:**
+
+The [ Go 1.14 runtime Beta
+](https://cloud.google.com/appengine/docs/standard/go/runtime?hl=fr) for the
+App Engine standard environment is now available.
+
 ##  June 11, 2020
 
 **FEATURE:**
