@@ -10,7 +10,7 @@
   * [ 升级管理员工作站 ](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=zh-cn)
 
 您可以在 [ Google Cloud 版本说明 ](https://cloud.google.com/release-notes?hl=zh-cn)
-页面上查看所有 Google Cloud 的最新产品动态。
+页面上查看 Google Cloud 所有产品的最新产品动态。
 
 要接收最新产品动态，请将本页面的网址添加到您的 [ Feed 阅读器
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
@@ -226,9 +226,9 @@ to/administration/diagnose?hl=zh-cn#capture_admin) 命令中， ` --admin-ssh-ke
 
 **CHANGED:**
 
-2019 年 5 月 8 日，我们对 Connect for Anthos 进行了一项更改，该服务可让您使用 Cloud Console 与 GKE On-
-Prem 集群进行交互。要使用新的 Connect for Anthos 代理，您必须通过 Cloud Console 重新注册集群，或者必须升级到
-Anthos GKE on-prem-beta-1.4。
+我们于 2019 年 5 月 8 日对 Connect 进行了一项更改，该服务可让您使用 Cloud Console 与 GKE On-Prem
+集群进行交互。要使用新的 Connect Agent，您必须向 Cloud Console 重新注册集群，或者必须升级到 Anthos GKE On-
+Prem Beta 版 1.4。
 
 您的 GKE On-Prem 集群及其上运行的工作负载将继续不间断运行。但是，在您重新注册集群或升级到 beta-1.4 之前，集群在 Cloud
 Console 中将不可见。
@@ -277,7 +277,7 @@ to/administration/upgrading-a-cluster?hl=zh-cn) ，请执行以下操作：
 
 **ISSUE:**
 
-有一个问题会导致 Connect for Anthos 代理在升级期间无法更新到新版本。要解决此问题，请在升级集群后运行以下命令：
+有一个问题会导致 Connect Agent 在升级期间无法更新到新版本。要解决此问题，请在升级集群后运行以下命令：
 
     
     
@@ -341,9 +341,9 @@ to/administration/diagnose?hl=zh-cn#capture_admin) 命令中， ` --admin-ssh-ke
 
 **CHANGED:**
 
-2019 年 5 月 8 日，我们对 Connect for Anthos 进行了一项更改，该服务可让您使用 Cloud Console 与 GKE On-
-Prem 集群进行交互。要使用新的 Connect for Anthos 代理，您必须通过 Cloud Console 重新注册集群，或者必须升级到
-Anthos GKE on-prem-beta-1.4。
+我们于 2019 年 5 月 8 日对 Connect 进行了一项更改，该服务可让您使用 Cloud Console 与 GKE On-Prem
+集群进行交互。要使用新的 Connect Agent，您必须向 Cloud Console 重新注册集群，或者必须升级到 Anthos GKE On-
+Prem Beta 版 1.4。
 
 您的 GKE On-Prem 集群及其上运行的工作负载将继续不间断运行。但是，在您重新注册集群或升级到 beta-1.4 之前，集群在 Cloud
 Console 中将不可见。
@@ -392,7 +392,7 @@ to/administration/upgrading-a-cluster?hl=zh-cn) ，请执行以下操作：
 
 **ISSUE:**
 
-有一个问题会导致 Connect for Anthos 代理在升级期间无法更新到新版本。要解决此问题，请在升级集群后运行以下命令：
+有一个问题会导致 Connect Agent 在升级期间无法更新到新版本。要解决此问题，请在升级集群后运行以下命令：
 
     
     
@@ -452,8 +452,8 @@ GKE On-Prem Beta 版 1.2.1 现已发布。此版本包括以下更改：
 
 **FEATURE:**
 
-GKE On-Prem 集群现在使用 [ Connect for Anthos ](https://cloud.google.com/kubernetes-
-engine/connect?hl=zh-cn) 自动连接回 Google。
+GKE On-Prem 集群现在自动使用 [ Connect ](https://cloud.google.com/kubernetes-
+engine/connect?hl=zh-cn) 连接回 Google。
 
 **FEATURE:**
 
@@ -514,8 +514,8 @@ prem/archive/1.0/concepts/authentication?hl=zh-cn) 。
 
 **CHANGED:**
 
-[ Connect for Anthos 文档 ](https://cloud.google.com/kubernetes-
-engine/connect?hl=zh-cn) 已迁移。
+[ Connect 文档 ](https://cloud.google.com/kubernetes-engine/connect?hl=zh-cn)
+已迁移。
 
 ###  修复
 
@@ -599,7 +599,7 @@ management/docs?hl=zh-cn) 0.11.6 版现已发布。
 **FEATURE:**
 
 现在，每个节点都会启用 Stackdriver Logging。默认情况下，日志记录代理会将日志复制到您的 GCP 项目，仅用于控制平面服务、集群
-API、vSphere 控制器、Calico、BIG-IP 控制器、Envoy 代理、Connect for Anthos、Anthos Config
+API、vSphere 控制器、Calico、BIG-IP 控制器、Envoy 代理、Connect、Anthos Config
 Management、Prometheus 和 Grafana 服务、Istio 控制平面和 Docker。默认情况下，排除应用容器日志，但可以选择启用。
 
 **FEATURE:**
