@@ -9,9 +9,11 @@ tables/docs/known-issues) .
 
 **Beta**
 
-This product is in a pre-release state and might change or have limited
-support. For more information, see the [ product launch stages
-](/products#product-launch-stages) .
+This product is covered by the [ Pre-GA Offerings Terms ](/terms/service-
+terms#1) of the Google Cloud Platform Terms of Service. Pre-GA products may
+have limited support, and changes to pre-GA products may not be compatible
+with other pre-GA versions. For more information, see the [ launch stage
+descriptions ](/products#product-launch-stages) .
 
 You can see the latest product updates for all of Google Cloud on the [ Google
 Cloud release notes ](/release-notes) page.
