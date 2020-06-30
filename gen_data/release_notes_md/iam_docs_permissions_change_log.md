@@ -19,7 +19,7 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloud-iam-permissions-change-
 log.xml `
 
-##  Upcoming Cloud IAM changes for the week of 2020-06-22
+##  Cloud IAM changes as of 2020-06-26
 
 Service  |  Change  |  Description  
 ---|---|---  
@@ -76,20 +76,6 @@ The following permissions have been added to the role ` roles/editor `
 
 ` containeranalysis.notes.getIamPolicy `  
 ` containeranalysis.occurrences.getIamPolicy `  
-  
-Cloud Identity and Access Management  |  Role Updated  |
-
-The following permissions have been removed from the role `
-roles/iam.securityAdmin ` (Security Admin):
-
-` container.secrets.list `  
-  
-Cloud Identity and Access Management  |  Role Updated  |
-
-The following permissions have been removed from the role `
-roles/iam.securityReviewer ` (Security Reviewer):
-
-` container.secrets.list `  
   
 Primitive Role  |  Role Updated  |
 
