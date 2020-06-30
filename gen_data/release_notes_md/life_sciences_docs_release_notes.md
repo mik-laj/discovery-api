@@ -2,9 +2,12 @@
 
 **Beta**
 
-This product or feature is in a pre-release state and might change or have
-limited support. For more information, see the [ product launch stages
-](/products#product-launch-stages) .
+This product or feature is covered by the [ Pre-GA Offerings Terms
+](/terms/service-terms#1) of the Google Cloud Platform Terms of Service. Pre-
+GA products and features may have limited support, and changes to pre-GA
+products and features may not be compatible with other pre-GA versions. For
+more information, see the [ launch stage descriptions ](/products#product-
+launch-stages) .
 
 This page documents production updates to Cloud Life Sciences. Check this page
 for announcements about new or updated features, bug fixes, known issues, and
