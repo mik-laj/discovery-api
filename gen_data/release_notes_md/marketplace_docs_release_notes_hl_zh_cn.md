@@ -1,6 +1,6 @@
 #  版本说明
 
-本页包含有关 Google Cloud Marketplace 的功能和更新的最新版本说明。
+本页面包含有关 Cloud Marketplace 特性和更新的最新版本说明。
 
 您可以在 [ Google Cloud 版本说明 ](https://cloud.google.com/release-notes?hl=zh-cn)
 页面上查看 Google Cloud 所有产品的最新产品动态。
