@@ -12,6 +12,57 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  June 29, 2020
+
+**BigQuery**
+
+**FEATURE:**
+
+[ Flex slots ](https://cloud.google.com/bigquery/docs/reservations-
+concepts#commitment_plans) are now [ generally available (GA)
+](https://cloud.google.com/products/?hl=EN#product-launch-stages) .
+
+**CHANGED:**
+
+The [ BigQuery SLA ](https://cloud.google.com/bigquery/sla) has been updated
+to >= 99.99% Monthly Uptime Percentage for all users.
+
+**Cloud Debugger**
+
+**FEATURE:**
+
+Cloud Debugger now lets you canary snapshots and logpoints on your Node.js
+applications. To learn more, see the [ Node.js page for setting up Cloud
+Debugger ](https://cloud.google.com/debugger/docs/setup/nodejs) .
+
+**Cloud Load Balancing**
+
+**FEATURE:**
+
+You can now [ create an internal HTTP(S) load balancer in a Shared VPC
+_service_ project ](https://cloud.google.com/load-
+balancing/docs/l7-internal#shared_vpc) .
+
+This feature is available in Beta.
+
+**Cloud Run**
+
+**FEATURE:**
+
+Cloud Run is now available in the following regions:
+
+  * ` asia-northeast2 ` (Osaka) 
+  * ` australia-southeast1 ` (Sydney) 
+  * ` northamerica-northeast1 ` (Montréal) 
+
+**Dialogflow**
+
+**DEPRECATED:**
+
+The V1 API is in the process of a gradual shutdown. See the [ November 14,
+2019 release note ](https://cloud.google.com/dialogflow/docs/release-
+notes#November_14_2019) for details.
+
 ##  June 26, 2020
 
 **App Engine standard environment Go**
@@ -30,15 +81,14 @@ Engine standard environment is now available.
 ](https://cloud.google.com/bigquery/docs/information-schema-intro#syntax) are
 now in [ beta ](https://cloud.google.com/products/#product-launch-stages) .
 
-**BigQuery ML**
+**CHANGED:**
 
-**FEATURE:**
-
-BigQuery ML now supports time series models as a [ beta
-](https://cloud.google.com/products#product-launch-stages) release. For more
-information, see [ CREATE MODEL statement for time series models
-](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-
-syntax-create-time-series) .
+Starting in mid-July, unqualified ` INFORMATION_SCHEMA ` queries for `
+SCHEMATA ` and ` SCHEMATA_OPTIONS ` views will default to returning metadata
+from the ` US ` multi-region. For information about how to specify a region,
+see [ region qualifier syntax
+](https://cloud.google.com/bigquery/docs/information-schema-
+intro#region_qualifier) .
 
 **Compute Engine**
 
@@ -48,6 +98,15 @@ To support a wide variety of BYOL scenarios, you can now [ configure VMs to
 live migrate within a sole-tenant node group during host maintenance events
 ](https://cloud.google.com/compute/docs/nodes/bringing-your-own-licenses) .
 This is **Generally Available** .
+
+**VPC Service Controls**
+
+**CHANGED:**
+
+[ Beta stage support ](https://cloud.google.com/products/#product-launch-
+stages) for the following integration:
+
+  * [ Binary Authorization ](https://cloud.google.com/binary-authorization/docs/securing-with-vpcsc)
 
 ##  June 25, 2020
 
@@ -1708,23 +1767,4 @@ Engine ](https://cloud.google.com/compute/docs/gpus) .
 The shutdown of 7 integrations [ announced in January
 ](https://cloud.google.com/dialogflow/docs/release-notes#January_06_2020) is
 now extended to July 6th, 2020.
-
-##  May 31, 2020
-
-**Cloud Composer**
-
-**FEATURE:**
-
-Cloud Composer is now available in Seoul ( ` asia-northeast3 ` ).
-
-##  May 30, 2020
-
-**Cloud Composer**
-
-**FEATURE:**
-
-Domain restricted sharing is now generally available (GA). The v1 Composer API
-and GCP Console now support [ domain restricted sharing
-](https://cloud.google.com/resource-manager/docs/organization-
-policy/restricting-domains) for Composer environments.
 
