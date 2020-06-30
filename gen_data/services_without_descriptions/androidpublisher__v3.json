@@ -2182,6 +2182,146 @@
                     ]
                 }
             }
+        },
+        "systemapks": {
+            "resources": {
+                "variants": {
+                    "methods": {
+                        "create": {
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants",
+                            "httpMethod": "POST",
+                            "id": "androidpublisher.systemapks.variants.create",
+                            "parameterOrder": [
+                                "packageName",
+                                "versionCode"
+                            ],
+                            "parameters": {
+                                "packageName": {
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "versionCode": {
+                                    "format": "int64",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants",
+                            "request": {
+                                "$ref": "Variant"
+                            },
+                            "response": {
+                                "$ref": "Variant"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/androidpublisher"
+                            ]
+                        },
+                        "download": {
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants/{variantId}:download",
+                            "httpMethod": "GET",
+                            "id": "androidpublisher.systemapks.variants.download",
+                            "parameterOrder": [
+                                "packageName",
+                                "versionCode",
+                                "variantId"
+                            ],
+                            "parameters": {
+                                "packageName": {
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "variantId": {
+                                    "format": "uint32",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "integer"
+                                },
+                                "versionCode": {
+                                    "format": "int64",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants/{variantId}:download",
+                            "scopes": [
+                                "https://www.googleapis.com/auth/androidpublisher"
+                            ],
+                            "supportsMediaDownload": true,
+                            "useMediaDownloadService": true
+                        },
+                        "get": {
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants/{variantId}",
+                            "httpMethod": "GET",
+                            "id": "androidpublisher.systemapks.variants.get",
+                            "parameterOrder": [
+                                "packageName",
+                                "versionCode",
+                                "variantId"
+                            ],
+                            "parameters": {
+                                "packageName": {
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "variantId": {
+                                    "format": "uint32",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "integer"
+                                },
+                                "versionCode": {
+                                    "format": "int64",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants/{variantId}",
+                            "response": {
+                                "$ref": "Variant"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/androidpublisher"
+                            ]
+                        },
+                        "list": {
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants",
+                            "httpMethod": "GET",
+                            "id": "androidpublisher.systemapks.variants.list",
+                            "parameterOrder": [
+                                "packageName",
+                                "versionCode"
+                            ],
+                            "parameters": {
+                                "packageName": {
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "versionCode": {
+                                    "format": "int64",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "androidpublisher/v3/applications/{packageName}/systemApks/{versionCode}/variants",
+                            "response": {
+                                "$ref": "SystemApksListResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/androidpublisher"
+                            ]
+                        }
+                    }
+                }
+            }
         }
     },
     "rootUrl": "https://www.googleapis.com/",
@@ -2407,6 +2547,28 @@
                 "screenWidthPx": {
                     "format": "int32",
                     "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "DeviceSpec": {
+            "id": "DeviceSpec",
+            "properties": {
+                "screenDensity": {
+                    "format": "uint32",
+                    "type": "integer"
+                },
+                "supportedAbis": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "supportedLocales": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -3053,6 +3215,18 @@
             },
             "type": "object"
         },
+        "SystemApksListResponse": {
+            "id": "SystemApksListResponse",
+            "properties": {
+                "variants": {
+                    "items": {
+                        "$ref": "Variant"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "Testers": {
             "id": "Testers",
             "properties": {
@@ -3220,6 +3394,19 @@
                 },
                 "name": {
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Variant": {
+            "id": "Variant",
+            "properties": {
+                "deviceSpec": {
+                    "$ref": "DeviceSpec"
+                },
+                "variantId": {
+                    "format": "uint32",
+                    "type": "integer"
                 }
             },
             "type": "object"
