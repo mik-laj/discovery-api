@@ -1360,9 +1360,9 @@ Go programming language disclosure
 
 **All Google Kubernetes Engine (GKE) masters are affected by these
 Vulnerabilities. The[ latest patch version ](/kubernetes-engine/docs/release-
-notes#february-11-2019) Includes a mitigation for this vulnerability. We will
-upgrade cluster masters to the patched version automatically in the coming
-weeks, at the regular upgrade cadence. **
+notes-archive#february-11-2019) Includes a mitigation for this vulnerability.
+We will upgrade cluster masters to the patched version automatically in the
+coming weeks, at the regular upgrade cadence. **
 
 ####  What should I do?
 
