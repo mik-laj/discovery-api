@@ -90,8 +90,8 @@ validation-docker ` 플래그를 ` gkectl create cluster ` 에 전달합니다.
 **ISSUE:**
 
 GKE On-Prem의 구성 파일에는 가상 머신 디스크(VMDK) 파일의 경로를 찾는 ` vcenter.datadisk ` 필드가 있습니다.
-설치하는 동안 VMDK의 이름을 선택합니다. 기본적으로 GKE On-Prem은 VMDK를 생성하고 이를 vSphere Datastore의
-루트에 저장합니다.
+설치 중에 VMDK의 이름을 선택합니다. 기본적으로 GKE On-Prem은 VMDK를 만들어 vSphere Datastore의 루트에
+저장합니다.
 
 vSAN Datastore를 사용하는 경우 Datastore에 VMDK를 저장할 폴더를 만들어야 합니다. 필드에 대한 전체 경로(예: `
 datadisk: anthos/gke/docs/on-prem/datadisk.vmdk ` )를 제공하면 GKE On-Prem이 해당 폴더에
@@ -261,8 +261,8 @@ to/installation/install?hl=ko#skip_validate) 수 있습니다.
 
 **FEATURE:**
 
-` gkectl diagnose snapshot ` 플래그 ` --seed-config ` 를 추가합니다. 플래그를 전달하면 `
-snapshot ` 에서 생성된 타르볼에 클러스터의 GKE On-Prem 구성 파일이 포함됩니다.
+` gkectl diagnose snapshot ` 플래그 ` --seed-config ` 를 추가합니다. 플래그를 전달하면 클러스터의
+GKE On-Prem 구성 파일이 ` snapshot ` 에 의해 생성된 tarball에 포함됩니다.
 
 ###  변경사항
 
@@ -304,8 +304,8 @@ prem/archive/1.1/support/diagnose?hl=ko#diagnose_snapshot) 를 참조하세요.
 **ISSUE:**
 
 알려진 문제로 인해 OIDC를 사용하는 버전 1.0.11, 1.0.1-gke.5, 1.0.2-gke.3 클러스터가 버전 1.1로
-업그레이드되지 않습니다. 수정은 버전 1.1.1을 대상으로 합니다. OIDC를 사용하여 버전 1.0.11, 1.0.1-gke.5 또는
-1.0.2-gke.3 클러스터를 구성한 경우 업그레이드할 수 없습니다. [ GKE On-Prem 설치
+업그레이드되지 않습니다. 수정은 버전 1.1.1을 대상으로 합니다. OIDC를 사용하여 1.0.11, 1.0.1-gke.5 또는
+1.0.2-gke.3 클러스터를 구성한 경우에는 업그레이드할 수 없습니다. [ GKE On-Prem 설치
 ](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/install?hl=ko) 에 따라
 버전 1.1 클러스터를 만듭니다.
 
@@ -325,13 +325,13 @@ GKE On-Prem 버전 1.0.2-gke.3이 출시되었습니다. 이 패치 출시 버�
 
 **FEATURE:**
 
-이제 ` gkectl ` 를 사용하여 사용자 클러스터를 삭제할 수 있습니다. [ 사용자 클러스터 삭제
+이제 ` gkectl ` 을 사용하여 사용자 클러스터를 삭제할 수 있습니다. [ 사용자 클러스터 삭제
 ](https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-
 to/administration/deleting-a-user-cluster?hl=ko) 를 참조하세요.
 
 ###  변경사항
 
-**CHANGED:** 이제 ` gkectl diagnose snapshot ` 가 사용자 클러스터 제어 영역에서 로그를 가져옵니다.
+**CHANGED:** 이제 ` gkectl diagnose snapshot ` 이 사용자 클러스터 제어 영역에서 로그를 가져옵니다.
 
 **CHANGED:**
 
@@ -340,7 +340,7 @@ extraparams ` 및 ` usehttpproxy ` 로 업그레이드되었습니다.
 
 **CHANGED:**
 
-Calico가 버전 3.7.4로 업데이트되었습니다.
+Calico 버전 3.7.4로 업데이트되었습니다.
 
 **CHANGED:**
 
@@ -384,7 +384,7 @@ prem/archive/1.1/reference/cheatsheet?hl=ko) 이 게시되었습니다.
 
 **CHANGED:**
 
-해당 클러스터의 vCPU 클러스터 및 리소스 풀 지정 지원을 추가합니다.
+해당 클러스터의 vCPU 클러스터 및 리소스 풀 지정을 위한 지원을 추가합니다.
 
 **CHANGED:**
 
@@ -402,7 +402,7 @@ Istio 인그레스 컨트롤러를 버전 1.2.2로 업그레이드합니다.
 
 **FIXED:**
 
-사용자 클러스터의 이름이 이미 사용 중인지 확인하는 유효성 검사를 수정합니다.
+사용자 클러스터의 이름이 이미 사용 중인지 확인하는 검사가 수정되었습니다.
 
 ##  2019년 7월 25일
 
@@ -442,9 +442,9 @@ prem/archive/1.1/how-to/installation/manual-lb?hl=ko) 를 사용 설정하여 L4
 
 **FEATURE:**
 
-GKE On-Prem의 구성 기반 설치 프로세스가 업데이트되었습니다. 이제 선언적으로 단일 [ 구성 파일
+GKE On-Prem의 구성 기반 설치 프로세스가 업데이트되었습니다. 이제 단일 [ 구성 파일
 ](https://cloud.google.com/anthos/gke/docs/on-
-prem/archive/1.1/overview?hl=ko#config) 을 사용하여 설치합니다.
+prem/archive/1.1/overview?hl=ko#config) 을 사용하여 선언적으로 설치합니다.
 
 **FEATURE:**
 
@@ -473,8 +473,8 @@ to/installation/install?hl=ko#prepare) 에 대한 업데이트된 문서를 참�
 
 Kubernetes 버전을 1.12.7-gke.19로 업그레이드합니다. 이제 이 버전으로 [ 클러스터를 업그레이드
 ](https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-
-to/administration/upgrading-clusters?hl=ko) 할 수 있습니다. 더 이상 Kubernetes 버전
-1.11.2-gke.19를 실행하는 클러스터를 만들 수 없습니다.
+to/administration/upgrading-clusters?hl=ko) 할 수 있습니다. Kubernetes 버전
+1.11.2-gke.19를 실행하는 클러스터는 더 이상 만들 수 없습니다.
 
 사용자 클러스터를 업그레이드하기 전에 관리 클러스터를 업그레이드하는 것이 좋습니다.
 
@@ -526,9 +526,9 @@ to/administration/diagnose?hl=ko#capture_admin) 명령어에서 ` --admin-ssh-ke
 
 **CHANGED:**
 
-2019년 5월 8일에 Cloud Console을 사용하여 GKE On-Prem 클러스터와 상호 작용할 수 있는 서비스인 Connect
-for Anthos가 변경되었습니다. 새로운 Anthos for Connect 에이전트를 사용하려면 Cloud Console에 클러스터를
-다시 등록하거나 Anthos GKE On-Prem 베타 1.4로 업그레이드해야 합니다.
+2019년 5월 8일에 Cloud Console을 사용하여 GKE On-Prem 클러스터와 상호 작용할 수 있는 서비스인 Connect가
+변경되었습니다. 새 Connect 에이전트를 사용하려면 Cloud Console에 클러스터를 다시 등록하거나 GKE On-Prem
+베타-1.4로 업그레이드해야 합니다.
 
 GKE On-Prem 클러스터와 클러스터에서 실행 중인 워크로드는 중단 없이 계속 작동합니다. 그러나 클러스터를 다시 등록하거나 베타
 1.4로 업그레이드해야 Cloud Console에 클러스터가 표시됩니다.
@@ -578,8 +578,8 @@ to/administration/upgrading-a-cluster?hl=ko) 하려면 다음 단계를 따르�
 
 **ISSUE:**
 
-Connect for Anthos 에이전트가 업그레이드 중에 새 버전으로 업데이트되지 않는 문제가 있습니다. 이 문제를 해결하려면 클러스터를
-업그레이드한 후 다음 명령어를 실행하세요.
+Connect 에이전트가 업그레이드 중에 새 버전으로 업데이트되지 않는 문제가 있습니다. 이 문제를 해결하려면 클러스터를 업그레이드한 후
+다음 명령어를 실행하세요.
 
     
     
@@ -591,8 +591,8 @@ Connect for Anthos 에이전트가 업그레이드 중에 새 버전으로 업�
 
 **ISSUE:**
 
-베타 1.2에서 베타 1.3 버전으로 업그레이드된 클러스터는 클러스터의 구성 파일을 손상시키고 향후 클러스터를 업그레이드하지 못하게 하는
-알려진 문제의 영향을 받을 수 있습니다. 이 문제는 향후 모든 클러스터 업그레이드에 영향을 미칩니다.
+버전 베타-1.2에서 베타-1.3으로 업그레이드된 클러스터는 클러스터의 구성 파일을 손상시키고 향후 클러스터 업그레이드를 방지하는 알려진
+문제로 영향을 받을 수 있습니다. 이 문제는 이후의 모든 클러스터 업그레이드에 영향을 미칩니다.
 
 베타 1.2에서 베타 1.3으로 업그레이드된 클러스터를 삭제하고 다시 만들어야 이 문제를 해결할 수 있습니다.
 
@@ -606,7 +606,7 @@ Connect for Anthos 에이전트가 업그레이드 중에 새 버전으로 업�
 
   2. 편집기에서 사용자 클러스터별로 ` [USER_CLUSTER_NAME]  _create_secret.yaml ` 파일을 만듭니다. ` registerserviceaccountkey ` 및 ` connectserviceaccountkey ` 의 값이 ` REDACTED ` 가 아닌 경우 추가 작업이 필요하지 않습니다. 보안 비밀을 다시 인코딩하여 클러스터에 기록할 필요가 없습니다. 
   3. 다른 편집기에서 원본 ` create_config.yaml ` 파일을 엽니다. 
-  4. ` [USER_CLUSTER_NAME]  _create_secret.yaml ` 에서 ` registerserviceaccountkey ` 및 ` connectserviceaccountkey ` 값을 원본 ` create_config.yaml ` 파일의 값으로 바꿉니다. 변경된 파일을 저장합니다. 
+  4. ` [USER_CLUSTER_NAME]  _create_secret.yaml ` 에서 ` registerserviceaccountkey ` 및 ` connectserviceaccountkey ` 값을 원본 ` create_config.yaml ` 파일 값으로 바꿉니다. 변경된 파일을 저장합니다. 
   5. 각 ` [USER_CLUSTER_NAME]  _create_secret.yaml ` 및 ` kube-system_create_secret.yaml ` 파일에 대해 3~5단계를 반복합니다. 
   6. 각 ` [USER_CLUSTER_NAME]  _create_secret.yaml ` 파일 및 ` kube-system_create_secret.yaml ` 파일을 Base64로 인코딩합니다. 
     
@@ -643,14 +643,14 @@ to/administration/diagnose?hl=ko#capture_admin) 명령어에서 ` --admin-ssh-ke
 
 **CHANGED:**
 
-2019년 5월 8일에 Cloud Console을 사용하여 GKE On-Prem 클러스터와 상호 작용할 수 있는 서비스인 Connect
-for Anthos가 변경되었습니다. 새로운 Anthos for Connect 에이전트를 사용하려면 Cloud Console에 클러스터를
-다시 등록하거나 Anthos GKE On-Prem 베타 1.4로 업그레이드해야 합니다.
+2019년 5월 8일에 Cloud Console을 사용하여 GKE On-Prem 클러스터와 상호 작용할 수 있는 서비스인 Connect가
+변경되었습니다. 새 Connect 에이전트를 사용하려면 Cloud Console에 클러스터를 다시 등록하거나 GKE On-Prem
+베타-1.4로 업그레이드해야 합니다.
 
 GKE On-Prem 클러스터와 클러스터에서 실행 중인 워크로드는 중단 없이 계속 작동합니다. 그러나 클러스터를 다시 등록하거나 베타
 1.4로 업그레이드해야 Cloud Console에 클러스터가 표시됩니다.
 
-다시 등록하거나 업그레이드하기 전에 서비스 계정에 gkehub.connect 역할이 있는지 확인하세요. 또한 서비스 계정에 이전
+재등록 또는 업그레이드를 하기 전에 서비스 계정에 gkehub.connect 역할이 있는지 확인합니다. 또한 서비스 계정에 이전
 clusterregistry.connect 역할이 있다면 해당 역할을 삭제하는 것이 좋습니다.
 
 서비스 계정에 gkehub.connect 역할을 부여합니다.
@@ -695,8 +695,8 @@ to/administration/upgrading-a-cluster?hl=ko) 하려면 다음 단계를 따르�
 
 **ISSUE:**
 
-Connect for Anthos 에이전트가 업그레이드 중에 새 버전으로 업데이트되지 않는 문제가 있습니다. 이 문제를 해결하려면 클러스터를
-업그레이드한 후 다음 명령어를 실행하세요.
+Connect 에이전트가 업그레이드 중에 새 버전으로 업데이트되지 않는 문제가 있습니다. 이 문제를 해결하려면 클러스터를 업그레이드한 후
+다음 명령어를 실행하세요.
 
     
     
@@ -746,9 +746,9 @@ to/installation/install?hl=ko#enabling_ingress) 의 안내를 따르세요.
 
 **ISSUE:**
 
-GKE On-Prem의 인그레스 컨트롤러는 Istio 1.1을 자동 보안 비밀 검색과 함께 사용합니다. 하지만 보안 비밀 검색을 위한 노드
-에이전트는 보안 비밀을 삭제한 후 보안 비밀 업데이트를 받지 못할 수 있습니다. 따라서 보안 비밀을 삭제하지 마세요. 보안 비밀을 삭제해야
-하는데 나중에 인그레스 TLS가 실패하면 gke-system 네임스페이스에서 인그레스 Pod를 수동으로 다시 시작합니다.
+GKE On-Prem의 인그레스 컨트롤러는 자동 보안 비밀 검색이 포함된 Istio 1.1을 사용합니다. 하지만 보안 비밀을 삭제하면 보안
+비밀 검색용 노드 에이전트에서 보안 비밀 업데이트를 받지 못할 수 있습니다. 따라서 보안 비밀을 삭제하지 마세요. 보안 비밀을 삭제해야 하고
+인그레스 TLS가 실패하면 gke-system 네임스페이스에서 인그레스 Pod를 수동으로 다시 시작하세요.
 
 ##  2019년 4월 11일
 
@@ -758,9 +758,8 @@ GKE On-Prem 베타 버전 1.2.1이 출시되었습니다. 이 출시 버전에�
 
 **FEATURE:**
 
-이제 GKE On-Prem 클러스터가 [ Connect for Anthos
-](https://cloud.google.com/kubernetes-engine/connect?hl=ko) 를 사용하여 Google에
-자동으로 다시 연결됩니다.
+이제 GKE On-Prem 클러스터가 [ Connect ](https://cloud.google.com/kubernetes-
+engine/connect?hl=ko) 를 사용하여 Google에 자동으로 다시 연결됩니다.
 
 **FEATURE:**
 
@@ -770,14 +769,14 @@ GKE On-Prem 베타 버전 1.2.1이 출시되었습니다. 이 출시 버전에�
 
 **CHANGED:**
 
-이제 ` gkectl ` 에서 클러스터를 만드는 vSphere 및 F5 BIG-IP 사용자 인증 정보를 확인합니다.
+이제 ` gkectl ` 가 클러스터를 만들어 Sphere 및 F5 BIG-IP 사용자 인증 정보를 검증합니다.
 
 ###  알려진 문제
 
 **ISSUE:**
 
-회귀로 인해 ` gkectl diagnose snapshot ` 명령어가 잘못된 SSH 키를 사용하게 되어 명령어가 사용자 클러스터에서
-정보를 수집하지 못합니다. 지원 사례를 해결하려면 개별 사용자 클러스터 노드에 SSH로 연결하여 수동으로 데이터를 수집해야 할 수 있습니다.
+회귀 때문에 ` gkectl diagnose snapshot ` 명령어가 잘못된 SSH 키를 사용하므로 사용자 클러스터에서 정보를 수집하지
+못하게 됩니다. 지원 기록 문제를 해결하려면 개별 사용자 클러스터 노드에 SSH로 연결하여 수동으로 데이터를 수집해야 할 수 있습니다.
 
 ##  2019년 4월 2일
 
@@ -787,10 +786,10 @@ GKE On-Prem 베타 버전 1.1.1이 출시되었습니다. 이 출시 버전에�
 
 **FEATURE:**
 
-이제 여러 명령줄 인터페이스 도구가 포함된 사전 구성된 가상 머신 이미지인 [ Open Virtual Appliance(OVA)
+이제 몇 가지 명령줄 인터페이스 도구가 포함된 사전 구성된 가상 머신 이미지인 [ Open Virtual Appliance(OVA)
 ](https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/beta-1.1/how-
-to/installation/getting-started?hl=ko#download_ova) 로 GKE On-Prem을 설치합니다. 이렇게
-변경하면 설치가 더욱 쉬워지고 가상화 레이어가 제거됩니다. 더 이상 Docker 컨테이너 내에서 ` gkectl ` 를 실행할 필요가
+to/installation/getting-started?hl=ko#download_ova) 를 사용하여 GKE On-Prem을 설치합니다.
+이렇게 변경하면 설치가 더욱 쉬워지고 가상화 레이어가 제거됩니다. 더 이상 Docker 컨테이너 내에서 ` gkectl ` 을 실행할 필요가
 없습니다.
 
 베타 1.1.1 이전에 GKE On-Prem 버전을 설치한 경우 문서화된 안내에 따라 새 관리 워크스테이션을 만들어야 합니다. 새 관리
@@ -800,14 +799,13 @@ to/installation/getting-started?hl=ko#download_ova) 로 GKE On-Prem을 설치합
 **FEATURE:**
 
 [ 클러스터 백업 및 복원 ](https://cloud.google.com/anthos/gke/docs/on-
-prem/archive/1.1/beta-1.1/how-to/administration/backing-up?hl=ko) 에 대한 문서가
-추가되었습니다.
+prem/archive/1.1/beta-1.1/how-to/administration/backing-up?hl=ko) 문서가 추가되었습니다.
 
 **FEATURE:**
 
 이제 OIDC 및 ADFS를 사용하여 클러스터에 대한 인증을 구성할 수 있습니다. 자세한 내용은 [ OIDC 및 ADFS로 인증
 ](https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/beta-1.1/how-
-to/security/oidc-adfs?hl=ko) 및 [ 인증
+to/security/oidc-adfs?hl=ko) 과 [ 인증
 ](https://cloud.google.com/anthos/gke/docs/on-
 prem/archive/1.1/concepts/authentication?hl=ko) 을 참조하세요.
 
@@ -823,8 +821,8 @@ prem/archive/1.1/concepts/authentication?hl=ko) 을 참조하세요.
 
 **CHANGED:**
 
-[ Connect for Anthos 문서 ](https://cloud.google.com/kubernetes-
-engine/connect?hl=ko) 가 이전되었습니다.
+[ Connect 문서 ](https://cloud.google.com/kubernetes-engine/connect?hl=ko) 가
+마이그레이션되었습니다.
 
 ###  수정
 
@@ -883,7 +881,7 @@ GKE On-Prem 베타 버전 1.0.3이 출시되었습니다. 이 출시 버전에�
 
 **FIXED:**
 
-Docker 인증서가 잘못된 위치에 저장되는 문제가 해결되었습니다.
+Docker 인증서를 잘못된 위치에 저장하는 문제가 수정되었습니다.
 
 ##  2019년 3월 4일
 
@@ -908,10 +906,10 @@ management/docs?hl=ko) 버전 0.11.6이 출시되었습니다.
 
 **FEATURE:**
 
-이제 각 노드에서 Stackdriver Logging이 활성화됩니다. 기본적으로 로깅 에이전트는 GCP 프로젝트에 제어 영역 서비스,
-클러스터 API, vSphere 컨트롤러, Calico, BIG-IP 컨트롤러, Envoy 프록시, Connect for Anthos,
-Anthos Config Management, Prometheus, Grafana 서비스, Istio 제어 영역 및 Docker에 대한
-로그만 복제합니다. 애플리케이션 컨테이너 로그는 기본적으로 제외되지만 원하는 경우 사용할 수 있습니다.
+이제 각 노드에서 Stackdriver Logging이 사용 설정됩니다. 기본적으로 Logging 에이전트는 제어 영역 서비스, 클러스터
+API, vSphere 컨트롤러, Calico, BIG-IP 컨트롤러, Envoy 프록시, Connect, Anthos Config
+Management, Prometheus와 Grafana 서비스, Istio 제어 영역, Docker으로만 GCP 프로젝트에 로그를
+복제합니다. 애플리케이션 컨테이너 로그는 기본적으로 제외되지만 선택적으로 사용할 수 있습니다.
 
 **FEATURE:**
 
@@ -930,8 +928,8 @@ networking/network-policies/) 이 지원됩니다.
 
 **CHANGED:**
 
-알파 버전에서 설치한 클러스터가 베타 후에 Google에서 연결 해제된 경우 다시 연결해야 할 수 있습니다. [ 사용자 클러스터 수동 등록
-](https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-
+알파 기간 중에 설치한 클러스터가 베타 기간 후 Google에서 연결이 끊긴 경우 다시 연결해야 할 수 있습니다. [ 수동으로 사용자
+클러스터 등록 ](https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-
 to/installation/registering-a-user-cluster?hl=ko) 을 참조하세요.
 
 **CHANGED:**
@@ -1001,7 +999,7 @@ Prometheus 및 Alertmanager 상태 확인을 개선했습니다.
 
 **CHANGED:**
 
-이제 Prometheus는 보안 포트를 사용하여 통계를 스크랩합니다.
+이제 Prometheus는 보안 포트를 사용하여 측정항목을 스크랩합니다.
 
 **CHANGED:**
 
@@ -1081,7 +1079,7 @@ GKE On-Prem은 minikube 버전 **0.28.0** 에서 실행됩니다.
 
 **CHANGED:**
 
-GKE 정책 관리가 버전 **0.11.1** 으로 업그레이드되었습니다.
+GKE 정책 관리가 버전 **0.11.1** 로 업그레이드되었습니다.
 
 **CHANGED:**
 
@@ -1150,17 +1148,17 @@ element 'Config' `
 
 **ISSUE:**
 
-PersistentVolume이 마운트되지 않아 ` devicePath is empty ` 오류가 발생합니다. 이 문제를 해결하려면 연결된
-PersistentVolumeClaim을 삭제하고 다시 만드세요.
+PersistentVolume이 마운트되지 않아 ` devicePath is empty ` 오류가 발생할 수 있습니다. 이 문제를 해결하려면
+연결된 PersistentVolumeClaim을 삭제하고 다시 만드세요.
 
 **ISSUE:**
 
-노드에서 고정 IP 할당을 사용하는 경우 IPAM 주소 블록 크기를 조절하는 기능은 알파에서 지원되지 않습니다. 이 문제를 해결하려면 현재
-필요한 것보다 더 많은 IP 주소를 할당하는 것이 좋습니다.
+노드에 고정 IP 할당을 사용하는 경우 알파에서는 IPAM 주소 블록의 크기를 조정할 수 없습니다. 이 문제를 해결하려면 현재 필요한 것보다
+많은 IP 주소를 할당하는 것이 좋습니다.
 
 **ISSUE:**
 
-느린 디스크에서는 VM 생성 시간이 초과되어 배포가 실패할 수 있습니다. 이 경우 모든 리소스를 삭제하고 다시 시도하세요.
+느린 디스크에서 VM 생성이 시간 초과되어 배포에 실패할 수 있습니다. 이 경우 모든 리소스를 삭제하고 다시 시도하세요.
 
 ##  2018년 12월 19일
 
@@ -1170,8 +1168,8 @@ GKE On-Prem 알파 1.0.4가 출시되었습니다. 이 출시 버전에는 다�
 
 **FIXED:**
 
-[ CVE-2018-1002105 ](https://github.com/kubernetes/kubernetes/issues/71411) 에
-의한 취약점이 패치되었습니다.
+[ CVE-2018-1002105 ](https://github.com/kubernetes/kubernetes/issues/71411) 로
+인해 발생한 취약점이 패치되었습니다.
 
 ##  2018년 11월 30일
 
@@ -1223,20 +1221,20 @@ node_exporter가 **1.15.2** 에서 **1.16.0** 으로 업그레이드되었습니
 
 **FIXED:**
 
-[ CVE-2018-1002103 ](https://github.com/kubernetes/minikube/issues/3208) 에 의한
-취약점이 패치되었습니다.
+[ CVE-2018-1002103 ](https://github.com/kubernetes/minikube/issues/3208) 으로 인해
+발생한 취약점이 패치되었습니다.
 
 ###  알려진 문제
 
 **ISSUE:**
 
-PersistentVolume이 마운트되지 않아 ` devicePath is empty ` 오류가 발생합니다. 이 문제를 해결하려면 연결된
-PersistentVolumeClaim을 삭제하고 다시 만드세요.
+PersistentVolume이 마운트되지 않아 ` devicePath is empty ` 오류가 발생할 수 있습니다. 이 문제를 해결하려면
+연결된 PersistentVolumeClaim을 삭제하고 다시 만드세요.
 
 **ISSUE:**
 
-노드에서 고정 IP 할당을 사용하는 경우 IPAM 주소 블록 크기를 조절하는 기능은 알파에서 지원되지 않습니다. 이 문제를 해결하려면 현재
-필요한 것보다 더 많은 IP 주소를 할당하는 것이 좋습니다.
+노드에 고정 IP 할당을 사용하는 경우 알파에서는 IPAM 주소 블록의 크기를 조정할 수 없습니다. 이 문제를 해결하려면 현재 필요한 것보다
+많은 IP 주소를 할당하는 것이 좋습니다.
 
 **ISSUE:**
 
@@ -1286,17 +1284,17 @@ Monitoring 지원
 
 **CHANGED:**
 
-F5 BIG-IP의 L4 VIP로 L7 부하 분산기 프런트 엔드 지원
+F5 BIG-IP에서 L7 부하 분산기를 L4 VIP로 프런트엔드 지원
 
 **CHANGED:**
 
-클러스터 부트스트랩 중에 노드의 고정 IP 할당을 지원합니다.
+클러스터 부트스트랩 시 노드의 고정 IP 할당 지원
 
 ###  알려진 문제
 
 **ISSUE:**
 
-관리 클러스터당 하나의 사용자 클러스터만 만들 수 있습니다. 추가 사용자 클러스터를 만들려면 다른 관리 클러스터를 만듭니다.
+관리자 클러스터당 하나의 사용자 클러스터만 만들 수 있습니다. 추가 사용자 클러스터를 만들려면 다른 관리자 클러스터를 만듭니다.
 
 **ISSUE:**
 
@@ -1304,7 +1302,7 @@ EAP 2.0에서는 클러스터 업그레이드가 지원되지 않습니다.
 
 **ISSUE:**
 
-느린 디스크에서는 VM 생성 시간이 초과되어 배포가 실패할 수 있습니다. 이 경우 모든 리소스를 삭제하고 다시 시도하세요.
+느린 디스크에서 VM 생성이 시간 초과되어 배포에 실패할 수 있습니다. 이 경우 모든 리소스를 삭제하고 다시 시도하세요.
 
 **ISSUE:**
 
