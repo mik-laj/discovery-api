@@ -1,6 +1,6 @@
 #  출시 노트
 
-이 페이지에는 Google Cloud Marketplace의 기능과 업데이트에 대한 최신 출시 노트가 포함되어 있습니다.
+이 페이지에는 Cloud Marketplace의 기능과 업데이트에 대한 최신 출시 노트가 포함되어 있습니다.
 
 [ Google Cloud 출시 노트 ](https://cloud.google.com/release-notes?hl=ko) 페이지에서 모든
 Google Cloud의 최신 제품 업데이트를 확인할 수 있습니다.
