@@ -1,4 +1,4 @@
-Anthos Service Mesh 1.5
+Anthos Service Mesh 1.6
 
 #  Release notes
 
