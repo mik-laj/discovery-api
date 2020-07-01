@@ -12,6 +12,16 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/cloudbuild-release-notes.xml `
 
+##  June 30, 2020
+
+**FEATURE:**
+
+Cloud Build now provides open-source notifiers for [ Slack
+](https://cloud.google.com/cloud-build/docs/configuring-
+notifications/configure-slack) and [ SMTP ](https://cloud.google.com/cloud-
+build/docs/configuring-notifications/configure-smtp) . These notifiers can be
+configured to securely alert users about build status.
+
 ##  June 22, 2020
 
 **FEATURE:**
