@@ -132,6 +132,42 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform"
                     ]
+                },
+                "list": {
+                    "flatPath": "v1/operations",
+                    "httpMethod": "GET",
+                    "id": "cloudbuild.operations.list",
+                    "parameterOrder": [
+                        "name"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "name": {
+                            "location": "path",
+                            "pattern": "^operations$",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "pageSize": {
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+name}",
+                    "response": {
+                        "$ref": "ListOperationsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
                 }
             }
         },
@@ -339,6 +375,42 @@
                                     "path": "v1/{+name}",
                                     "response": {
                                         "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "list": {
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
+                                    "httpMethod": "GET",
+                                    "id": "cloudbuild.projects.locations.operations.list",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "filter": {
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "pageSize": {
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "pageToken": {
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}/operations",
+                                    "response": {
+                                        "$ref": "ListOperationsResponse"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -973,15 +1045,6 @@
             },
             "type": "object"
         },
-        "HTTPDelivery": {
-            "id": "HTTPDelivery",
-            "properties": {
-                "uri": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "Hash": {
             "id": "Hash",
             "properties": {
@@ -1030,90 +1093,15 @@
             },
             "type": "object"
         },
-        "Notification": {
-            "id": "Notification",
+        "ListOperationsResponse": {
+            "id": "ListOperationsResponse",
             "properties": {
-                "filter": {
+                "nextPageToken": {
                     "type": "string"
                 },
-                "httpDelivery": {
-                    "$ref": "HTTPDelivery"
-                },
-                "slackDelivery": {
-                    "$ref": "SlackDelivery"
-                },
-                "smtpDelivery": {
-                    "$ref": "SMTPDelivery"
-                },
-                "structDelivery": {
-                    "additionalProperties": {
-                        "type": "any"
-                    },
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
-        "NotifierConfig": {
-            "id": "NotifierConfig",
-            "properties": {
-                "apiVersion": {
-                    "type": "string"
-                },
-                "kind": {
-                    "type": "string"
-                },
-                "metadata": {
-                    "$ref": "NotifierMetadata"
-                },
-                "spec": {
-                    "$ref": "NotifierSpec"
-                }
-            },
-            "type": "object"
-        },
-        "NotifierMetadata": {
-            "id": "NotifierMetadata",
-            "properties": {
-                "name": {
-                    "type": "string"
-                },
-                "notifier": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "NotifierSecret": {
-            "id": "NotifierSecret",
-            "properties": {
-                "name": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "NotifierSecretRef": {
-            "id": "NotifierSecretRef",
-            "properties": {
-                "secretRef": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "NotifierSpec": {
-            "id": "NotifierSpec",
-            "properties": {
-                "notification": {
-                    "$ref": "Notification"
-                },
-                "secrets": {
+                "operations": {
                     "items": {
-                        "$ref": "NotifierSecret"
+                        "$ref": "Operation"
                     },
                     "type": "array"
                 }
@@ -1254,33 +1242,6 @@
             "properties": {},
             "type": "object"
         },
-        "SMTPDelivery": {
-            "id": "SMTPDelivery",
-            "properties": {
-                "fromAddress": {
-                    "type": "string"
-                },
-                "password": {
-                    "$ref": "NotifierSecretRef"
-                },
-                "port": {
-                    "type": "string"
-                },
-                "recipientAddresses": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "senderAddress": {
-                    "type": "string"
-                },
-                "server": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "Secret": {
             "id": "Secret",
             "properties": {
@@ -1293,15 +1254,6 @@
                         "type": "string"
                     },
                     "type": "object"
-                }
-            },
-            "type": "object"
-        },
-        "SlackDelivery": {
-            "id": "SlackDelivery",
-            "properties": {
-                "webhookUri": {
-                    "$ref": "NotifierSecretRef"
                 }
             },
             "type": "object"
