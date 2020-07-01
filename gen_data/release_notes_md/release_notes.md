@@ -12,6 +12,192 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  June 30, 2020
+
+**Anthos Service Mesh**
+
+**FEATURE:**
+
+1.6.4-asm.9 is now available.
+
+**FEATURE:**
+
+ASM 1.6 is compatible with and has the feature set of Istio 1.6 (see [ Istio
+release notes ](https://istio.io/latest/news/releases/1.6.x/announcing-1.6/)
+), subject to the list of [ ASM Supported Features
+](https://cloud.google.com/service-mesh/docs/supported-features) .
+
+**FIXED:**
+
+1.5.7-asm.0 and 1.4.10-asm.3
+
+Fixes the security issue, [ ISTIO-SECURITY-2020-007
+](https://istio.io/latest/news/security/istio-security-2020-007/) , with the
+same fixes as Istio 1.6.4. For information, see the [ Istio release notes
+](https://istio.io/latest/news/releases/1.6.x/announcing-1.6.4/) .
+
+**Description**
+
+The vulnerability affects Anthos Service Mesh (ASM) versions 1.4.0 to 1.4.10,
+1.5.0 to 1.5.5, and 1.6.4 whether running in Anthos GKE on-prem or on GKE,
+potentially exposing your application to Denial of Service (DOS) attacks. This
+vulnerability is referenced in these publicly disclosed Istio security
+bulletins:
+
+  * [ ISTIO-SECURITY-2020-007 ](https://istio.io/news/security/istio-security-2020-007/) : 
+    * CVE-2020-12603 (CVSS score 7.0, High): Envoy through 1.14.1 may consume excessive amounts of memory when proxying HTTP/2 requests or responses with many small (e.g., 1 byte) data frames. 
+    * CVE-2020-12605 (CVSS score 7.0, High): Envoy through 1.14.1 may consume excessive amounts of memory when processing HTTP/1.1 headers with long field names or requests with long URLs. 
+    * CVE-2020-8663 (CVSS score 7.0, High): Envoy version 1.14.1 or earlier may exhaust file descriptors and/or memory when accepting too many connections. 
+    * CVE-2020-12604 (CVSS score 7.0, High): Envoy through 1.14.1 is susceptible to increased memory usage in the case where an HTTP/2 client requests a large payload but does not send enough window updates to consume the entire stream and does not reset the stream. The attacker can cause data associated with many streams to be buffered forever. 
+
+**Mitigation**
+
+If you use ASM 1.6.4: * Apply the additional configuration changes specified
+in [ ISTIO-SECURITY-2020-007 ](https://istio.io/latest/news/security/istio-
+security-2020-007/) to prevent Denial of Service (DOS) attacks on your mesh.
+
+If you use ASM 1.4.0 to 1.4.10 or 1.5.0 to 1.5.5: * Upgrade your clusters to
+ASM 1.4.10-asm.3 or ASM 1.5.7-asm.0 as soon as possible and apply the
+additional configuration changes specified in [ ISTIO-SECURITY-2020-007
+](https://istio.io/latest/news/security/istio-security-2020-007/) to prevent
+Denial of Service (DOS) attacks on your mesh.
+
+  * See the following documentation for how to upgrade your Anthos Service Mesh. 
+
+    * ASM 1.5 for GKE and on-premises, respectively: 
+    * [ Upgrading Anthos Service Mesh on GKE ](https://cloud.google.com/service-mesh/docs/upgrading-gke)
+    * [ Upgrading Anthos Service Mesh on-prem ](https://cloud.google.com/service-mesh/docs/gke-on-prem-upgrading)
+
+    * ASM 1.4 for GKE and on-premises, respectively: 
+
+    * [ Upgrading Anthos Service Mesh on GKE ](https://cloud.google.com/service-mesh/docs/archive/1.4/docs/upgrading-gke-1-4)
+
+    * [ Upgrading Anthos Service Mesh on-prem ](https://cloud.google.com/service-mesh/docs/archive/1.4/docs/gke-on-prem-upgrading-1-4)
+
+**FEATURE:**
+
+Anthos Service Mesh now supports multi-cluster meshes (beta) when running on
+GKE on Google Cloud.
+
+**FEATURE:**
+
+Users that configure multiple clusters in their mesh can now see unified,
+multi-cluster views of their services in the Anthos Service Mesh pages in the
+Cloud Console. Note that multi-cluster support is in Beta and not all UI
+features are supported in multi-cluster mode.
+
+**FEATURE:**
+
+ASM 1.6 is supported in a single cluster configuration in Anthos Attached
+Clusters in the following environments: Amazon Elastic Kubernetes Service
+(EKS) and Microsoft Azure Kubernetes Service (AKS).
+
+**CHANGED:**
+
+The profile to install ASM in GKE has been renamed from ` asm ` to ` asm-gcp `
+, see [ Upgrading Anthos Service Mesh on GKE
+](https://cloud.google.com/service-mesh/docs/upgrading-gke) . The profile to
+install ASM in GKE on-premise clusters has been renamed from ` asm-onprem ` to
+` asm-multicloud ` , see [ Upgrading Anthos Service Mesh on premises
+](https://cloud.google.com/service-mesh/docs/gke-on-prem-upgrading) .
+
+**FEATURE:**
+
+In the ` asm-multicloud ` profile, ASM now installs a complete observability
+stack (Prometheus, Grafana and Kiali).
+
+**FEATURE:**
+
+Support for cross-cluster load balancing (beta) for your [ multi-cluster mesh
+](https://cloud.google.com/service-mesh/docs/gke-install-multi-cluster) for
+GKE on Google Cloud.
+
+**FEATURE:**
+
+New installation guides: [ Installing Anthos Service Mesh on attached clusters
+](https://cloud.google.com/service-mesh/docs/attached-clusters-install) and [
+Adding clusters to an Anthos Service Mesh ](https://cloud.google.com/service-
+mesh/docs/gke-install-multi-cluster) .
+
+**FEATURE:**
+
+Anthos Service Mesh now supports cross-cluster security policies (beta) for
+your [ multi-cluster mesh ](https://cloud.google.com/service-mesh/docs/gke-
+install-multi-cluster) when running on GKE on Google Cloud.
+
+**FEATURE:**
+
+Upgrade from ASM 1.5 to ASM 1.6 without downtime using a [ dual control plane
+upgrade ](https://istio.io/latest/blog/2020/multiple-control-planes/) .
+
+**BREAKING:**
+
+Known Issue: If you upgrade from Istio to ASM 1.6 and have set SLOs on your
+service metrics, those SLOs might be lost and need to be recreated after the
+upgrade.
+
+**Cloud Build**
+
+**FEATURE:**
+
+Cloud Build now provides open-source notifiers for [ Slack
+](https://cloud.google.com/cloud-build/docs/configuring-
+notifications/configure-slack) and [ SMTP ](https://cloud.google.com/cloud-
+build/docs/configuring-notifications/configure-smtp) . These notifiers can be
+configured to securely alert users about build status.
+
+**Cloud Composer**
+
+**FEATURE:**
+
+Cloud Composer support for [ VPC Service Controls
+](https://cloud.google.com/composer/docs/configuring-vpc-sc) is now in Beta.
+
+**Cloud Logging**
+
+**FEATURE:**
+
+Cloud Logging now contains a Logs Dashboard page that provides a high-level
+overview into the health of your systems running within a project. To learn
+more, see [ Logs Dashboard
+](https://cloud.google.com/logging/docs/view/dashboard) .
+
+**Cloud Run**
+
+**CHANGED:**
+
+Cloud Run (fully managed) support for [ connecting to a VPC network
+](https://cloud.google.com/run/docs/configuring/connecting-vpc) with [
+Serverless VPC Access ](https://cloud.google.com/vpc/docs/configure-
+serverless-vpc-access) is now at general availability (GA).
+
+**VPC Service Controls**
+
+**FEATURE:**
+
+Beta release of the VPC Service Controls Troubleshooter.
+
+The VPC Service Controls Troubleshooter allows you to use the unique
+identifiers generated by VPC Service Controls errors to understand and resolve
+common denials to services in your perimeters.
+
+During the beta period, the following error types are supported:
+
+  * ` NO_MATCHING_ACCESS_LEVEL `
+  * ` NETWORK_NOT_IN_SAME_SERVICE_PERIMETER `
+  * ` NO_MATCHING_ACCESS_LEVEL `
+
+For more information, read about [ the VPC Service Controls Troubleshooter
+](https://cloud.google.com/vpc-service-controls/docs/troubleshooter) .
+
+**FEATURE:**
+
+[ Beta stage ](https://cloud.google.com/products/#product-launch-stages)
+support for the following integrations:
+
+  * [ Cloud Composer ](https://cloud.google.com/vpc-service-controls/docs/supported-products#table_composer)
+  * [ Cloud Healthcare API ](https://cloud.google.com/vpc-service-controls/docs/supported-products#table_healthcare)
+
 ##  June 29, 2020
 
 **BigQuery**
@@ -1731,40 +1917,4 @@ balancing/docs/negs/setting-up-zonal-
 negs#custom_filtering_when_you_list_endpoints_in_a_network_endpoint_group)
 when you list endpoints in a zonal network endpoint group. This feature is
 available as a Beta release.
-
-##  June 01, 2020
-
-**Access Context Manager**
-
-**FEATURE:**
-
-General availability of custom access levels.
-
-[ Custom access levels ](https://cloud.google.com/access-context-
-manager/docs/custom-access-levels) provide a way to use Common Expression
-Language to craft custom conditions. [ Create custom access levels
-](https://cloud.google.com/access-context-manager/docs/create-custom-access-
-level) using the ` gcloud ` command line tool, the Access Context Manager API,
-and in the Google Cloud Console using the Advanced Mode for configuring access
-levels.
-
-**Compute Engine**
-
-**FEATURE:**
-
-NVIDIA® Tesla® T4 GPUs are now available in the following additional regions
-and zones:
-
-  * Changua County, Taiwan ` asia-east1-c `
-
-For information about using T4 GPUs on Compute Engine, see [ GPUs on Compute
-Engine ](https://cloud.google.com/compute/docs/gpus) .
-
-**Dialogflow**
-
-**CHANGED:**
-
-The shutdown of 7 integrations [ announced in January
-](https://cloud.google.com/dialogflow/docs/release-notes#January_06_2020) is
-now extended to July 6th, 2020.
 
