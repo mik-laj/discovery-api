@@ -529,7 +529,7 @@
       CHANGED:
      </strong>
      <p>
-      2019 年 5 月 8 日に、Cloud Console を使用して GKE On-Prem クラスタとやり取りできるサービス、Connect for Anthos に変更を加えました。新しい Connect for Anthos エージェントを使用するには、Cloud Console にクラスタを再登録するか、Anthos GKE On-Prem ベータ版 -1.4 にアップグレードする必要があります。
+      2019 年 5 月 8 日に、Cloud Console を使用して GKE On-Prem クラスタを操作できるサービス Connect に変更を加えました。新しい Connect エージェントを使用するには、クラスタを Cloud Console に再登録するか、Anthos GKE On-Prem ベータ版 -1.4 にアップグレードする必要があります。
      </p>
      <p>
       GKE On-Prem クラスタ、およびこれらのクラスタで実行されているワークロードは、中断なく動作し続けます。ただし、クラスタを再登録するか、ベータ版 -1.4 にアップグレードするまで Cloud Console には表示されません。
@@ -544,8 +544,8 @@
      <p>
       サービス アカウントに gkehub.connect のロールを付与します。
      </p>
-     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects add-iam-policy-binding <var class="edit">[PROJECT_ID]</var> \
-      --member="serviceAccount:<var class="edit">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit">[PROJECT_ID]</var>.iam.gserviceaccount.com" \
+     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects add-iam-policy-binding <var class="edit" translate="no">[PROJECT_ID]</var> \
+      --member="serviceAccount:<var class="edit" translate="no">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit" translate="no">[PROJECT_ID]</var>.iam.gserviceaccount.com" \
       --role="roles/gkehub.connect"</pre>
      <p>
       サービス アカウントに以前の
@@ -554,8 +554,8 @@
       </code>
       ロールがある場合は、以前のロールを削除します。
      </p>
-     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects remove-iam-policy-binding <var class="edit">[PROJECT_ID]</var> \
-      --member="serviceAccount:<var class="edit">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit">[PROJECT_ID]</var>.iam.gserviceaccount.com" \
+     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects remove-iam-policy-binding <var class="edit" translate="no">[PROJECT_ID]</var> \
+      --member="serviceAccount:<var class="edit" translate="no">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit" translate="no">[PROJECT_ID]</var>.iam.gserviceaccount.com" \
       --role="roles/clusterregistry.connect"</pre>
      <p>
       クラスタを再登録するか、Anthos GKE On-Prem ベータ版 -1.4 にアップグレードします。
@@ -566,11 +566,11 @@
       </a>
       :
      </p>
-     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud alpha container hub register-cluster <var class="edit">[CLUSTER_NAME]</var> \
-      --context=<var class="edit">[USER_CLUSTER_CONTEXT]</var> \
-      --service-account-key-file=<var class="edit">[LOCAL_KEY_PATH]</var> \
-      --kubeconfig-file=<var class="edit">[KUBECONFIG_PATH]</var> \
-      --project=<var class="edit">[PROJECT_ID]</var></pre>
+     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud alpha container hub register-cluster <var class="edit" translate="no">[CLUSTER_NAME]</var> \
+      --context=<var class="edit" translate="no">[USER_CLUSTER_CONTEXT]</var> \
+      --service-account-key-file=<var class="edit" translate="no">[LOCAL_KEY_PATH]</var> \
+      --kubeconfig-file=<var class="edit" translate="no">[KUBECONFIG_PATH]</var> \
+      --project=<var class="edit" translate="no">[PROJECT_ID]</var></pre>
      <p>
       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.0/beta-1.4/how-to/administration/upgrading-a-cluster?hl=ja">
        Anthos GKE On-Prem ベータ版 -1.4 にアップグレードするには
@@ -587,7 +587,7 @@
       ISSUE:
      </strong>
      <p>
-      アップグレード中に Connect for Anthos エージェントが新しいバージョンに更新されない問題があります。この問題を回避するには、クラスタをアップグレードした後に次のコマンドを実行します。
+      アップグレード中に Connect エージェントが新しいバージョンに更新されない問題があります。この問題を回避するには、クラスタをアップグレードした後に次のコマンドを実行します。
      </p>
      <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl delete pod gke-connect-agent-install -n gke-connect</pre>
     </div>
@@ -626,12 +626,12 @@
        </code>
        Secret に対して行う必要があります。
        <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl get secret create-config -n kube-system -o jsonpath={.data.cfg} | base64 -d &gt; kube-system_create_secret.yaml</pre>
-       <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl get secret create-config -n <var>[USER_CLUSTER_NAME]</var> -o jsonpath={.data.cfg} | base64 -d &gt; <var>[USER_CLUSTER_NAME]</var>_create_secret.yaml</pre>
+       <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl get secret create-config -n <var translate="no">[USER_CLUSTER_NAME]</var> -o jsonpath={.data.cfg} | base64 -d &gt; <var translate="no">[USER_CLUSTER_NAME]</var>_create_secret.yaml</pre>
       </li>
       <li>
        ユーザー クラスタごとに、エディタで
        <code dir="ltr" translate="no">
-        <var>
+        <var translate="no">
          [USER_CLUSTER_NAME]
         </var>
         _create_secret.yaml
@@ -659,7 +659,7 @@
       </li>
       <li>
        <code dir="ltr" translate="no">
-        <var>
+        <var translate="no">
          [USER_CLUSTER_NAME]
         </var>
         _create_secret.yaml
@@ -681,7 +681,7 @@
       <li>
        各
        <code dir="ltr" translate="no">
-        <var>
+        <var translate="no">
          [USER_CLUSTER_NAME]
         </var>
         _create_secret.yaml
@@ -695,7 +695,7 @@
       <li>
        各
        <code dir="ltr" translate="no">
-        <var>
+        <var translate="no">
          [USER_CLUSTER_NAME]
         </var>
         _create_secret.yaml
@@ -705,7 +705,7 @@
         kube-system_create_secret.yaml
        </code>
        ファイルを Base64 エンコードします。
-       <pre class="devsite-click-to-copy" dir="ltr" translate="no">cat <var>[USER_CLUSTER_NAME]</var>_create_secret.yaml | base64 &gt; <var>[USER_CLUSTER_NAME]</var>_create_secret_create_secret.b64</pre>
+       <pre class="devsite-click-to-copy" dir="ltr" translate="no">cat <var translate="no">[USER_CLUSTER_NAME]</var>_create_secret.yaml | base64 &gt; <var translate="no">[USER_CLUSTER_NAME]</var>_create_secret_create_secret.b64</pre>
        <pre class="devsite-click-to-copy" dir="ltr" translate="no">cat kube-system-cluster_create_secret.yaml | base64 &gt;kube-system-cluster_create_secret.b64</pre>
       </li>
       <li>
@@ -714,7 +714,7 @@
         data[cfg]
        </code>
        フィールドを、対応するファイルの内容に置き換えます。
-       <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl edit secret create-config -n <var class="edit">[USER_CLUSTER_NAME]</var>
+       <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl edit secret create-config -n <var class="edit" translate="no">[USER_CLUSTER_NAME]</var>
 
   # kubectl edit opens the file in the shell's default text editor
   # Open `first-user-cluster_create_secret.b64` in another editor, and replace
@@ -724,7 +724,7 @@
       <li>
        各
        <code dir="ltr" translate="no">
-        <var>
+        <var translate="no">
          [USER_CLUSTER_NAME]
         </var>
         _create_secret.yaml
@@ -774,7 +774,7 @@
       CHANGED:
      </strong>
      <p>
-      2019 年 5 月 8 日に、Cloud Console を使用して GKE On-Prem クラスタとやり取りできるサービス、Connect for Anthos に変更を加えました。新しい Connect for Anthos エージェントを使用するには、Cloud Console にクラスタを再登録するか、Anthos GKE On-Prem ベータ版 -1.4 にアップグレードする必要があります。
+      2019 年 5 月 8 日に、Cloud Console を使用して GKE On-Prem クラスタを操作できるサービス Connect に変更を加えました。新しい Connect エージェントを使用するには、クラスタを Cloud Console に再登録するか、Anthos GKE On-Prem ベータ版 -1.4 にアップグレードする必要があります。
      </p>
      <p>
       GKE On-Prem クラスタ、およびこれらのクラスタで実行されているワークロードは、中断なく動作し続けます。ただし、クラスタを再登録するか、ベータ版 -1.4 にアップグレードするまで Cloud Console には表示されません。
@@ -785,14 +785,14 @@
      <p>
       サービス アカウントに gkehub.connect のロールを付与します。
      </p>
-     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects add-iam-policy-binding <var class="edit">[PROJECT_ID]</var> \
-      --member="serviceAccount:<var class="edit">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit">[PROJECT_ID]</var>.iam.gserviceaccount.com" \
+     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects add-iam-policy-binding <var class="edit" translate="no">[PROJECT_ID]</var> \
+      --member="serviceAccount:<var class="edit" translate="no">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit" translate="no">[PROJECT_ID]</var>.iam.gserviceaccount.com" \
       --role="roles/gkehub.connect"</pre>
      <p>
       サービス アカウントに以前の clusterregistry.connect ロールがある場合は、以前のロールを削除します。
      </p>
-     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects remove-iam-policy-binding <var class="edit">[PROJECT_ID]</var> \
-      --member="serviceAccount:<var class="edit">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit">[PROJECT_ID]</var>.iam.gserviceaccount.com" \
+     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects remove-iam-policy-binding <var class="edit" translate="no">[PROJECT_ID]</var> \
+      --member="serviceAccount:<var class="edit" translate="no">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit" translate="no">[PROJECT_ID]</var>.iam.gserviceaccount.com" \
       --role="roles/clusterregistry.connect"</pre>
      <p>
       クラスタを再登録するか、Anthos GKE On-Prem ベータ版 -1.4 にアップグレードします。
@@ -803,11 +803,11 @@
       </a>
       :
      </p>
-     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud alpha container hub register-cluster <var class="edit">[CLUSTER_NAME]</var> \
-      --context=<var class="edit">[USER_CLUSTER_CONTEXT]</var> \
-      --service-account-key-file=<var class="edit">[LOCAL_KEY_PATH]</var> \
-      --kubeconfig-file=<var class="edit">[KUBECONFIG_PATH]</var> \
-      --project=<var class="edit">[PROJECT_ID]</var></pre>
+     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud alpha container hub register-cluster <var class="edit" translate="no">[CLUSTER_NAME]</var> \
+      --context=<var class="edit" translate="no">[USER_CLUSTER_CONTEXT]</var> \
+      --service-account-key-file=<var class="edit" translate="no">[LOCAL_KEY_PATH]</var> \
+      --kubeconfig-file=<var class="edit" translate="no">[KUBECONFIG_PATH]</var> \
+      --project=<var class="edit" translate="no">[PROJECT_ID]</var></pre>
      <p>
       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.0/beta-1.4/how-to/administration/upgrading-a-cluster?hl=ja">
        Anthos GKE On-Prem ベータ版 -1.4 にアップグレードするには
@@ -824,7 +824,7 @@
       ISSUE:
      </strong>
      <p>
-      アップグレード中に Connect for Anthos エージェントが新しいバージョンに更新されない問題があります。この問題を回避するには、クラスタをアップグレードした後に次のコマンドを実行します。
+      アップグレード中に Connect エージェントが新しいバージョンに更新されない問題があります。この問題を回避するには、クラスタをアップグレードした後に次のコマンドを実行します。
      </p>
      <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl delete pod gke-connect-agent-install -n gke-connect</pre>
     </div>
@@ -941,7 +941,7 @@
      <p>
       GKE On-Prem クラスタが、
       <a href="https://cloud.google.com/kubernetes-engine/connect?hl=ja">
-       Connect for Anthos
+       Connect
       </a>
       を使用して自動的に Google に接続するようになりました。
      </p>
@@ -1066,7 +1066,7 @@
      </strong>
      <p>
       <a href="https://cloud.google.com/kubernetes-engine/connect?hl=ja">
-       Connect for Anthos のドキュメント
+       Connect のドキュメント
       </a>
       が移行されました。
      </p>
@@ -1220,7 +1220,7 @@
       FEATURE:
      </strong>
      <p>
-      Stackdriver Logging が各ノードで有効になりました。デフォルトでは、ロギング エージェントは、コントロール プレーン サービス、クラスタ API、vSphere コントローラ、Calico、BIG-IP コントローラ、Envoy プロキシ、Connect for Anthos、Anthos Config Management、Prometheus サービス、Grafana サービス、Istio コントロール プレーン、Docker のログのみを GCP プロジェクトに複製します。アプリケーション コンテナログはデフォルトで除外されますが、必要に応じて有効にできます。
+      Stackdriver Logging が各ノードで有効になりました。デフォルトでは、ロギング エージェントは、コントロール プレーン サービス、クラスタ API、vSphere コントローラ、Calico、BIG-IP コントローラ、Envoy プロキシ、Connect、Anthos Config Management、Prometheus サービス、Grafana サービス、Istio コントロール プレーン、Docker のログのみを GCP プロジェクトに複製します。アプリケーション コンテナログはデフォルトで除外されますが、必要に応じて有効にできます。
      </p>
     </div>
     <div class="release-feature">
