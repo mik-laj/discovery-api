@@ -31,7 +31,7 @@ unter [ Administrator-Workstation aktualisieren
 [ Cluster aktualisieren ](https://cloud.google.com/anthos/gke/docs/on-
 prem/how-to/upgrading?hl=de) .
 
-Diese Patchversion enthält die folgenden Änderungen:
+Diese Patchversion beinhaltet die folgenden Änderungen:
 
 ###  Neue Funktionen
 
@@ -43,7 +43,7 @@ to/security/hardening-your-cluster?hl=de) .
 
 **FEATURE:**
 
-Veröffentlicht: [ Cluster verwalten
+Veröffentlichung von [ Clustern verwalten
 ](https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-
 to/administration/managing-clusters?hl=de) .
 
@@ -72,9 +72,8 @@ können:
 
 **ISSUE:**
 
-Wenn Sie einen vSAN-Datenspeicher ausführen, kann beim Ausführen von ` gkectl
-diagnose cluster ` der folgende Fehler zurückgegeben werden, den Sie
-ignorieren können:
+Wenn Sie einen vSAN-Datenspeicher ausführen, gibt ` gkectl diagnose cluster `
+möglicherweise den folgenden Fehler aus, den Sie ignorieren können:
 
     
     
@@ -85,15 +84,15 @@ ignorieren können:
 
 **ISSUE:**
 
-In der GKE-On-Premix-Version 1.1.1-gke.2 verhindert ein bekanntes Problem die
+In der GKE On-Prem-Version 1.1.1-gke.2 verhindert ein bekanntes Problem die
 Erstellung von Clustern, die für die Verwendung einer Docker-Registry
-konfiguriert sind. Zum Konfigurieren einer Docker-Registry füllen Sie das Feld
-` privateregistryconfig ` der GKE On-Prem-Konfigurationsdatei aus. Die
+konfiguriert sind. Sie konfigurieren eine Docker-Registry, indem Sie das Feld
+` privateregistryconfig ` der GKE On-Prem-Konfigurationsdatei ausfüllen. Die
 Clustererstellung schlägt mit einem Fehler wie ` Failed to create root
 cluster: could not create external client: could not create external control
 plane: docker run error: exit status 125 ` fehl.
 
-Ein Update ist für Version 1.1.2 vorgesehen. Wenn Sie in der Zwischenzeit
+Eine Update ist für Version 1.1.2 vorgesehen. Wenn Sie in der Zwischenzeit
 einen Cluster erstellen möchten, der für die Verwendung einer Docker-Registry
 konfiguriert ist, übergeben Sie das Flag ` --skip-validation-docker ` an `
 gkectl create cluster ` .
@@ -119,12 +118,12 @@ Konfiguration angeben, sucht die vSphere API nach der UUID des Ordners.
 Derzeit kann dieser Konflikt dazu führen, dass die Erstellung von Clustern und
 Upgrades fehlschlagen.
 
-Ein Update ist für Version 1.1.2 vorgesehen. In der Zwischenzeit müssen Sie
+Eine Update ist für Version 1.1.2 vorgesehen. In der Zwischenzeit müssen Sie
 die UUID des Ordners und nicht den Pfad des Ordners angeben. Folgen Sie der
-aktuell verfügbaren Anleitung zur Problemumgehung in den Themen [ Cluster
+aktuell verfügbaren Anleitung zur Problemumgehung unter [ Cluster
 aktualisieren ](https://cloud.google.com/anthos/gke/docs/on-
 prem/archive/1.1/how-to/administration/upgrading-
-clusters?hl=de#admin_datadisk_folder) und Installation.
+clusters?hl=de#admin_datadisk_folder) und in den Installationsthemen.
 
 ##  25\. Oktober 2019
 
@@ -137,20 +136,19 @@ Workstation aktualisieren ](https://cloud.google.com/anthos/gke/docs/on-
 prem/how-to/upgrading?hl=de) und [ Cluster aktualisieren
 ](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=de) .
 
-Diese Patchversion enthält die folgenden Änderungen:
+Diese Patchversion beinhaltet die folgenden Änderungen:
 
 ###  Neue Funktionen
 
 **FEATURE:**
 
-**Erforderliche Aktion:** Mit dieser Version wird die Mindestversion ` gcloud
-` auf der Administrator-Workstation auf 256.0.0 aktualisiert. Sie sollten [
-Ihre Administrator-Workstation aktualisieren
+**Erforderliche Aktion:** Mit dieser Version wird die Mindestversion von `
+gcloud ` auf der Admin-Workstation auf 256.0.0 aktualisiert. Sie sollten Ihre
+[ Admin-Workstation aktualisieren
 ](https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-
 to/administration/upgrading-admin-workstation?hl=de) . Anschließend sollten
-Sie [ Ihre Cluster aktualisieren
-](https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-
-to/administration/upgrading-clusters?hl=de) .
+Sie die [ Cluster aktualisieren ](https://cloud.google.com/anthos/gke/docs/on-
+prem/archive/1.1/how-to/administration/upgrading-clusters?hl=de) .
 
 **FEATURE:**
 
@@ -192,17 +190,17 @@ Messwerten langsamer war als die Aufnahme von Nutzercluster-Messwerten.
 
 **ISSUE:**
 
-Bei Nutzerclustern, die statische IP-Adressen und ein anderes Netzwerk als den
+Für Nutzercluster, die statische IP-Adressen und ein anderes Netzwerk als ihr
 Administratorcluster verwenden: Wenn Sie die Netzwerkkonfiguration des
-Nutzerclusters überschreiben, kann die Nutzersteuerungsebene möglicherweise
-nicht gestartet werden. Dies liegt daran, dass das Netzwerk des Nutzerclusters
-verwendet wird, vom Administratorcluster jedoch eine IP-Adresse und ein
-Gateway zugewiesen werden.
+Nutzerclusters überschreiben, kann die Steuerungsebene des Nutzers
+möglicherweise nicht gestartet werden. Dies liegt daran, dass das Netzwerk des
+Nutzerclusters verwendet wird, dem Administratorcluster jedoch eine IP-Adresse
+und ein Gateway zugewiesen werden.
 
 Als Behelfslösung können Sie die MachineDeployment-Spezifikation jeder
 Nutzersteuerungsebene aktualisieren, um das richtige Netzwerk zu verwenden.
-Löschen Sie dann jede Maschine auf Nutzersteuerungsebene, sodass das
-MachineDeployment neue Maschinen erstellt:
+Löschen Sie anschließend alle Maschinen der Steuerungsebene für die Nutzer,
+damit vom MachineDeployment neue Maschinen erstellt werden:
 
   1.     # List MachineDeployments in the admin cluster
         kubectl get machinedeployments --kubeconfig [ADMIN_CLUSTER_KUBECONFIG]
@@ -266,7 +264,7 @@ Nutzercluster aktualisieren:
     
 
   3. Speichern Sie die Datei. 
-  4. Verwenden Sie die Konfigurationsdatei für die Aktualisierung. Ihre Cluster werden aktualisiert, aber die Funktion ist nicht aktiviert. 
+  4. Verwenden Sie die Konfigurationsdatei zur Aktualisierung. Ihre Cluster werden aktualisiert, aber die Funktion ist nicht aktiviert. 
 
 **FEATURE:**
 
@@ -307,17 +305,17 @@ standardmäßig ein Log der Befehlsausgabe.
 
 **FEATURE:**
 
-Fügt das Flag ` gkectl diagnose snapshot ` ` --seed-config ` hinzu. Wenn Sie
-das Flag übergeben, wird die GKE On-Prem-Konfigurationsdatei des Clusters in
-das von ` snapshot ` generierte Tarball-Paket aufgenommen.
+Fügt dem Flag ` gkectl diagnose snapshot ` ` --seed-config ` hinzu. Wenn Sie
+das Flag übergeben, wird die lokale GKE-Konfigurationsdatei des Clusters in
+den von ` snapshot ` generierten Tarball aufgenommen.
 
 ###  Änderungen
 
 **CHANGED:**
 
-Das Feld ` gkeplatformversion ` wurde aus der GKE On-Prem-Konfigurationsdatei
-entfernt. Geben Sie das Feld der Version im Feld ` bundlepath ` an, um die
-Version eines Clusters anzugeben.
+Das Feld ` gkeplatformversion ` wurde aus der Konfigurationsdatei von GKE On-
+Prem entfernt. Geben Sie zum Angeben der Version eines Clusters das Bundle der
+Version im Feld ` bundlepath ` an.
 
 **CHANGED:**
 
@@ -328,16 +326,16 @@ to/installation/install?hl=de#antiaffinitygroups) verwenden können.
 
 **CHANGED:**
 
-Sie geben jetzt eine Konfigurationsdatei in ` gkectl diagnose snapshot ` an,
-indem Sie ` --snapshot-config ` (zuvor ` --config ` ) übergeben. Siehe [
+Sie geben jetzt in ` gkectl diagnose snapshot ` eine Konfigurationsdatei an,
+indem Sie die ` --snapshot-config ` (früher ` --config ` ) übergeben. Siehe [
 Clusterprobleme diagnostizieren ](https://cloud.google.com/anthos/gke/docs/on-
 prem/archive/1.1/support/diagnose?hl=de#diagnose_snapshot) .
 
 **CHANGED:**
 
-Jetzt erfassen Sie die Konfigurationsdatei Ihres Clusters mit ` gkectl
-diagnose snapshot ` , indem Sie ` --snapshot-config ` (zuvor ` --config ` )
-übergeben. Siehe [ Clusterprobleme diagnostizieren
+Erfassen Sie nun die Konfigurationsdatei Ihres Clusters mit ` gkectl diagnose
+snapshot ` , indem Sie ` --snapshot-config ` (früher ` --config ` ) übergeben.
+Weitere Informationen finden Sie unter [ Clusterprobleme diagnostizieren
 ](https://cloud.google.com/anthos/gke/docs/on-
 prem/archive/1.1/support/diagnose?hl=de#diagnose_snapshot) .
 
@@ -349,7 +347,7 @@ Administratorclusters angeben.
 
 **CHANGED:**
 
-Die Cloud Console benachrichtigt Sie jetzt, wenn ein Upgrade für einen
+Sie werden von der Cloud Console benachrichtigt, wenn ein Upgrade für einen
 registrierten Nutzercluster verfügbar ist.
 
 ###  Bekannte Probleme
@@ -403,10 +401,10 @@ Calico wurde auf Version 3.7.4 aktualisiert.
 
 **CHANGED:**
 
-Die Systemmesswerte von Cloud Monitoring haben sich von `
-external.googleapis.com/prometheus/ ` zu ` kubernetes.io/anthos/ ` geändert.
+Die Systemmesswerte von Cloud Monitoring wurden von `
+external.googleapis.com/prometheus/ ` in ` kubernetes.io/anthos/ ` geändert.
 Wenn Sie Messwerte oder Benachrichtigungen erfassen, aktualisieren Sie Ihre
-Dashbaords mit dem nächsten Präfix.
+Dashboards mit dem nächsten Präfix.
 
 ###  Fest
 
@@ -418,9 +416,9 @@ bulletins?hl=de#august-22-2019) .
 
 **FIXED:**
 
-[ Eine Sicherheitslücke im RBAC-Proxy wurde behoben.
+[ Eine Sicherheitslücke im RBAC-Proxy wurde behoben
 ](https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/security-
-bulletins?hl=de#august-23-2019)
+bulletins?hl=de#august-23-2019) .
 
 ##  30\. Juli 2019
 
@@ -468,8 +466,8 @@ der Administrator-Workstation.
 
 **FIXED:**
 
-Behebt die Validierung, die überprüft, ob der Name eines Nutzerclusters
-bereits verwendet wird.
+Behebt Probleme mit der Validierung, die prüft, ob der Name eines
+Nutzerclusters bereits verwendet wird.
 
 ##  25\. Juli 2019
 
@@ -498,7 +496,7 @@ und lesen Sie die folgenden Punkte:
 
   * Die Bestätigung des vCenter-Zertifikats ist jetzt erforderlich. ( ` vsphereinsecure ` wird nicht mehr unterstützt.) Wenn Sie ein Upgrade Ihrer Beta-1.4-Cluster auf 1.0.10 ausführen, müssen Sie in der Upgrade-Konfigurationsdatei ein öffentliches Zertifikat für die vertrauenswürdige Stammzertifizierungsstelle von vCenter bereitstellen. 
 
-  * Sie müssen _alle_ Ihrer ausgeführten Cluster umstellen. Damit dieses Upgrade erfolgreich ist, können Ihre Cluster nicht in einem gemischten Versionsstatus ausgeführt werden. 
+  * Sie müssen _alle_ Ihrer laufenden Cluster umstellen. Damit dieses Upgrade erfolgreich ist, können Ihre Cluster nicht in einem gemischten Versionsstatus ausgeführt werden. 
 
   * Sie müssen zuerst Ihre Administratorcluster auf die neueste Version und dann Ihre Nutzercluster aktualisieren. 
 
@@ -521,12 +519,12 @@ prem/archive/1.1/overview?hl=de#config) .
 
 **FEATURE:**
 
-Fügt ` gkectl create-config ` hinzu, das eine Konfigurationsdatei für
-Installation von GKE On-Prem, das Upgrade vorhandener Cluster und das
-Erstellen zusätzlicher Nutzercluster in einer vorhandenen Installation
-generiert. Dadurch werden der Installationsassistent und ` create-config.yaml
-` aus früheren Versionen ersetzt. Weitere Informationen finden Sie in der
-aktualisierten Dokumentation für [ GKE on-Prem installieren
+Fügt ` gkectl create-config ` hinzu, die eine Konfigurationsdatei für die
+lokale Installation von GKE, das Upgrade vorhandener Cluster und das Erstellen
+zusätzlicher Nutzercluster in einer vorhandenen Installation generiert.
+Dadurch werden der Installationsassistent und ` create-config.yaml ` aus
+früheren Versionen ersetzt. Weitere Informationen finden Sie in der
+aktualisierten Dokumentation für [ GKE On-Prem installieren
 ](https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-
 to/installation/install?hl=de#generate_config) .
 
@@ -540,10 +538,10 @@ to/installation/install?hl=de#validate_config) .
 
 **FEATURE:**
 
-Fügt ` gkectl prepare ` ein optionales Flag ` --validate-attestations ` hinzu.
-Mit diesem Flag wird sichergestellt, dass die Container-Images auf Ihrer
-Administrator-Workstation von Google erstellt sowie signiert wurden und bereit
-für die Bereitstellung sind. Weitere Informationen finden Sie in der
+Fügt ` gkectl prepare ` ein optionales ` --validate-attestations ` -Flag
+hinzu. Mit diesem Flag wird sichergestellt, dass die Container-Images auf
+Ihrer Verwaltungs-Workstation von Google erstellt und signiert wurden und
+bereit für die Bereitstellung sind. Weitere Informationen finden Sie in der
 aktualisierten Dokumentation für [ GKE On-Prem installieren
 ](https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-
 to/installation/install?hl=de#prepare) .
@@ -552,11 +550,11 @@ to/installation/install?hl=de#prepare) .
 
 **CHANGED:**
 
-Aktualisiert Kubernetes-Version auf 1.12.7-gke.19. Sie können jetzt ein [
-Upgrade Ihrer Cluster auf diese Version ausführen
+Aktualisiert Kubernetes-Version auf 1.12.7-gke.19. Sie können jetzt [ Ihre
+Cluster auf diese Version aktualisieren
 ](https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-
 to/administration/upgrading-clusters?hl=de) . Sie können keine Cluster mehr
-erstellen, auf denen Kubernetes Version 1.11.2-gke.19 ausgeführt wird.
+erstellen, auf denen die Kubernetes-Version 1.11.2-gke.19 ausgeführt wird.
 
 Wir empfehlen Ihnen, Ihren Administratorcluster zu aktualisieren, bevor Sie
 ein Upgrade Ihrer Nutzerclusters ausführen.
@@ -567,8 +565,8 @@ Aktualisiert den Istio Ingress-Controller auf Version 1.1.7.
 
 **CHANGED:**
 
-Die Bestätigung des vCenter-Zertifikats ist jetzt erforderlich. `
-vsphereinsecure ` wird nicht mehr unterstützt. Sie geben das Zertifikat im
+Die Bestätigung des vCenter-Zertifikats ist jetzt erforderlich. ( `
+vsphereinsecure ` wird nicht mehr unterstützt.) Sie geben das Zertifikat im
 Feld ` cacertpath ` der GKE On-Prem-Konfigurationsdatei an.
 
 Wenn ein Client den vCenter-Server aufruft, muss der vCenter-Server dem Client
@@ -602,7 +600,7 @@ Sie die Cluster neu erstellen.
 
 ##  24\. Mai 2019
 
-Die GKE On-Prem-Betaversion 1.4.7 ist jetzt verfügbar. Diese Version enthält
+Die GKE On-Prem-Betaversion 1.4.7 ist jetzt verfügbar. Dieser Release enthält
 die folgenden Änderungen:
 
 ###  Neue Funktionen
@@ -618,20 +616,20 @@ ssh-key-path ` jetzt optional.
 
 **CHANGED:**
 
-Am 8. Mai 2019 haben wir eine Änderung an Connect for Anthos eingeführt, dem
-Dienst, mit dem Sie über die Cloud Console mit Ihren GKE On-Prem-Clustern
-interagieren können. Wenn Sie den neuen Connect for Anthos-Agent verwenden
-möchten, müssen Sie Ihre Cluster noch einmal bei der Cloud Console
-registrieren oder ein Upgrade auf Anthos GKE On-Prem-Beta-1.4 ausführen.
+Am 8. Mai 2019 haben wir eine Änderung an Connect eingeführt, dem Dienst, mit
+dem Sie über die Cloud Console mit Ihren GKE On-Prem-Clustern interagieren
+können. Wenn Sie den neuen Connect-Agent verwenden möchten, müssen Sie Ihre
+Cluster noch einmal in der Cloud Console registrieren oder auf Anthos GKE On-
+Prem Beta-1.4 aktualisieren.
 
 Ihre GKE On-Prem-Cluster und die darauf ausgeführten Arbeitslasten
 funktionieren weiterhin ohne Unterbrechung. Ihre Cluster sind jedoch erst in
 der Cloud Console sichtbar, wenn Sie sie neu registrieren oder ein Upgrade auf
 Beta-1.4 ausführen.
 
-Gewährleisten Sie vor der erneuten Registrierung oder dem Upgrade, dass Ihr
-Dienstkonto die Rolle ` gkehub.connect ` hat. Wenn Ihr Dienstkonto die alte
-Rolle "clusterregistry.connect" hat, ist es empfehlenswert, diese Rolle zu
+Stellen Sie vor der erneuten Registrierung oder dem Upgrade sicher, dass Ihr
+Dienstkonto die Rolle ` gkehub.connect ` hat. Wenn Ihr Dienstkonto außerdem
+die alte Rolle clusterregistry.connect hat, sollten Sie diese Rolle auch
 entfernen.
 
 Gewähren Sie Ihrem Dienstkonto die Rolle "gkehub.connect":
@@ -642,8 +640,8 @@ Gewähren Sie Ihrem Dienstkonto die Rolle "gkehub.connect":
           --member="serviceAccount:[SERVICE_ACCOUNT_NAME]@[PROJECT_ID].iam.gserviceaccount.com" \
           --role="roles/gkehub.connect"
 
-Wenn Ihr Dienstkonto die alte ` clusterregistry.connect ` Rolle hat, entfernen
-Sie die alte Rolle:
+Wenn Ihr Dienstkonto die alte ` clusterregistry.connect ` -Rolle hat,
+entfernen Sie die alte Rolle:
 
     
     
@@ -678,9 +676,9 @@ to/administration/upgrading-a-cluster?hl=de) :
 
 **ISSUE:**
 
-Aufgrund eines Problems kann der Connect for Anthos-Agent während eines
-Upgrades nicht auf die neue Version aktualisiert werden. Führen Sie nach dem
-Upgrade eines Clusters den folgenden Befehl aus, um dieses Problem zu umgehen:
+Aufgrund eines Problems kann der Connect-Agent während eines Upgrades nicht
+auf die neue Version aktualisiert werden. Führen Sie nach dem Upgrade eines
+Clusters den folgenden Befehl aus, um dieses Problem zu umgehen:
 
     
     
@@ -694,17 +692,17 @@ Upgrade eines Clusters den folgenden Befehl aus, um dieses Problem zu umgehen:
 
 Cluster, die von Version Beta-1.2 auf Beta-1.3 aktualisiert wurden, sind
 möglicherweise von einem bekannten Problem betroffen, das die
-Konfigurationsdatei des Clusters beschädigt und zukünftige Clusterupgrades
+Konfigurationsdatei des Clusters beschädigt und zukünftige Cluster-Upgrades
 verhindert. Dieses Problem betrifft alle zukünftigen Clusterupgrades.
 
 Sie können dieses Problem beheben, indem Sie Cluster löschen und neu
 erstellen, die von Beta-1.2 auf Beta-1.3 aktualisiert wurden.
 
-Um das Problem zu lösen, ohne den Cluster zu löschen und neu zu erstellen,
+Um das Problem zu beheben, ohne den Cluster zu löschen und neu zu erstellen,
 müssen Sie die Secrets jedes Clusters neu codieren und anwenden. Führen Sie
 diese Schritte aus:
 
-  1. Rufen Sie den Inhalt der im Administratorcluster gespeicherten ` create-config ` -Secrets ab. Dies muss für das Secret ` create-config ` im Namespace kube-system und für die Secrets ` create-config ` im Namespace jedes Nutzerclusters durchgeführt werden: 
+  1. Ruft den Inhalt der im Admincluster gespeicherten ` create-config ` -Secrets ab. Dies muss für das Secret ` create-config ` im Namespace kube-system und für die Secrets ` create-config ` im Namespace jedes Nutzerclusters durchgeführt werden: 
     
         kubectl get secret create-config -n kube-system -o jsonpath={.data.cfg} | base64 -d > kube-system_create_secret.yaml
     
@@ -734,7 +732,7 @@ diese Schritte aus:
 
 ##  7\. Mai 2019
 
-Die GKE On-Prem-Betaversion 1.4.1 ist jetzt verfügbar. Diese Version enthält
+Die GKE On-Prem-Betaversion 1.4.1 ist jetzt verfügbar. Dieser Release enthält
 die folgenden Änderungen:
 
 ###  Neue Funktionen
@@ -750,11 +748,11 @@ ssh-key-path ` jetzt optional.
 
 **CHANGED:**
 
-Am 8. Mai 2019 haben wir eine Änderung an Connect for Anthos eingeführt, dem
-Dienst, mit dem Sie über die Cloud Console mit Ihren GKE On-Prem-Clustern
-interagieren können. Wenn Sie den neuen Connect for Anthos-Agent verwenden
-möchten, müssen Sie Ihre Cluster noch einmal bei der Cloud Console
-registrieren oder ein Upgrade auf Anthos GKE On-Prem-Beta-1.4 ausführen.
+Am 8. Mai 2019 haben wir eine Änderung an Connect eingeführt, dem Dienst, mit
+dem Sie über die Cloud Console mit Ihren GKE On-Prem-Clustern interagieren
+können. Wenn Sie den neuen Connect-Agent verwenden möchten, müssen Sie Ihre
+Cluster noch einmal in der Cloud Console registrieren oder auf Anthos GKE On-
+Prem Beta-1.4 aktualisieren.
 
 Ihre GKE On-Prem-Cluster und die darauf ausgeführten Arbeitslasten
 funktionieren weiterhin ohne Unterbrechung. Ihre Cluster sind jedoch erst in
@@ -763,7 +761,7 @@ Beta-1.4 ausführen.
 
 Stellen Sie vor der erneuten Registrierung oder Aktualisierung sicher, dass
 Ihr Dienstkonto die Rolle gkehub.connect hat. Wenn Ihr Dienstkonto außerdem
-die alte Rolle "clusterregistry.connect" hat, sollten Sie diese Rolle auch
+die alte Rolle clusterregistry.connect hat, sollten Sie diese Rolle auch
 entfernen.
 
 Gewähren Sie Ihrem Dienstkonto die Rolle "gkehub.connect":
@@ -774,8 +772,8 @@ Gewähren Sie Ihrem Dienstkonto die Rolle "gkehub.connect":
           --member="serviceAccount:[SERVICE_ACCOUNT_NAME]@[PROJECT_ID].iam.gserviceaccount.com" \
           --role="roles/gkehub.connect"
 
-Wenn Ihr Dienstkonto die alte Rolle "clusterregistry.connect" hat, entfernen
-Sie die alte Rolle:
+Wenn Ihr Dienstkonto die alte Rolle clusterregistry.connect hat, entfernen Sie
+die alte Rolle:
 
     
     
@@ -810,9 +808,9 @@ to/administration/upgrading-a-cluster?hl=de) :
 
 **ISSUE:**
 
-Aufgrund eines Problems kann der Connect for Anthos-Agent während eines
-Upgrades nicht auf die neue Version aktualisiert werden. Führen Sie nach dem
-Upgrade eines Clusters den folgenden Befehl aus, um dieses Problem zu umgehen:
+Aufgrund eines Problems kann der Connect-Agent während eines Upgrades nicht
+auf die neue Version aktualisiert werden. Führen Sie nach dem Upgrade eines
+Clusters den folgenden Befehl aus, um dieses Problem zu umgehen:
 
     
     
@@ -820,7 +818,7 @@ Upgrade eines Clusters den folgenden Befehl aus, um dieses Problem zu umgehen:
 
 ##  25\. April 2019
 
-Die GKE On-Prem-Betaversion 1.3.1 ist jetzt verfügbar. Diese Version enthält
+Die GKE On-Prem-Betaversion 1.3.1 ist jetzt verfügbar. Dieser Release enthält
 die folgenden Änderungen:
 
 ###  Neue Funktionen
@@ -851,17 +849,17 @@ Istio 1.1 ist jetzt der standardmäßige [ Ingress-Controller
 to/administration/upgrading-a-cluster?hl=de#upgrading_the_ingress_controller)
 . Der Ingress-Controller wird im ` gke-system ` -Namespace für Administrator-
 und Nutzercluster ausgeführt. Dies ermöglicht eine einfachere TLS-Verwaltung
-für Ingress. Um das Ingress-Verfahren zu aktivieren oder das Eindringen nach
-einem Upgrade wieder zu aktivieren, folgen Sie der Anleitung unter [ Ingress
+für Ingress. Um das Ingress-Verfahren zu aktivieren oder Ingress nach einem
+Upgrade wieder zu aktivieren, folgen Sie der Anleitung unter [ Ingress
 aktivieren ](https://cloud.google.com/anthos/gke/docs/on-
 prem/archive/1.1/beta-1.3/how-to/installation/install?hl=de#enabling_ingress)
 .
 
 **CHANGED:**
 
-Das Tool ` gkectl ` verwendet Minikube und KVM nicht mehr zum Bootstrapping.
-Dies bedeutet, dass Sie die verschachtelte Virtualisierung auf Ihrer VM für
-die Administrator-Workstation nicht aktivieren müssen.
+Das ` gkectl ` -Tool verwendet für Bootstrapping nicht mehr Minikube oder KVM.
+Dies bedeutet, dass Sie die verschachtelte Virtualisierung nicht auf der VM
+Ihrer Administrator-Workstation aktivieren müssen.
 
 ###  Bekannte Probleme
 
@@ -875,16 +873,16 @@ fehlschlägt, starten Sie den Ingress-Pod im gke-system-Namespace manuell neu.
 
 ##  11\. April 2019
 
-Die GKE On-Prem-Betaversion 1.2.1 ist jetzt verfügbar. Diese Version enthält
+Die GKE On-Prem-Betaversion 1.2.1 ist jetzt verfügbar. Dieser Release enthält
 die folgenden Änderungen:
 
 ###  Neue Funktionen
 
 **FEATURE:**
 
-GKE On-Prem-Cluster werden jetzt automatisch über [ Connect for Anthos
-](https://cloud.google.com/kubernetes-engine/connect?hl=de) mit Google
-verbunden.
+GKE On-Prem-Cluster stellen jetzt über [ Connect
+](https://cloud.google.com/kubernetes-engine/connect?hl=de) automatisch eine
+Verbindung zu Google her.
 
 **FEATURE:**
 
@@ -902,21 +900,21 @@ erstellen.
 **ISSUE:**
 
 Eine Regression führt dazu, dass ` gkectl diagnose snapshot ` -Befehle den
-falschen SSH-Schlüssel verwenden, wodurch verhindert wird, dass der Befehl
+falschen SSH-Schlüssel verwenden. Dadurch wird verhindert, dass der Befehl
 Informationen aus Nutzerclustern erfasst. Zur Umgehung von Supportfällen
 müssen Sie möglicherweise eine SSH-Verbindung zu einzelnen Nutzerclusterknoten
 herstellen und Daten manuell erfassen.
 
 ##  2\. April 2019
 
-Die GKE On-Prem-Betaversion 1.1.1 ist jetzt verfügbar. Diese Version enthält
+Die GKE On-Prem-Betaversion 1.1.1 ist jetzt verfügbar. Dieser Release enthält
 die folgenden Änderungen:
 
 ###  Neue Funktionen
 
 **FEATURE:**
 
-Sie installieren GKE On-Prem jetzt mit einer [ Open Virtual Appliance (OVA)
+Sie installieren GKE jetzt lokal mit einer [ Open Virtual Appliance (OVA)
 ](https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/beta-1.1/how-
 to/installation/getting-started?hl=de#download_ova) , einem vorkonfigurierten
 VM-Image, das mehrere Befehlszeilentools enthält. Diese Änderung vereinfacht
@@ -958,7 +956,7 @@ Bereitstellung von Multi-Master-Nutzerclustern hinzugefügt.
 
 **CHANGED:**
 
-Die [ Connect for Anthos-Dokumentation ](https://cloud.google.com/kubernetes-
+Die [ Connect-Dokumentation ](https://cloud.google.com/kubernetes-
 engine/connect?hl=de) wurde migriert.
 
 ###  Korrekturen
@@ -972,10 +970,10 @@ wurde. Dieses Problem wurde behoben.
 
 **ISSUE:**
 
-Die Konfigurationsverwaltung von GKE On-Prem wurde von Version 0.11 auf
-Version 0.13 aktualisiert. Mehrere Komponenten des Systems wurden umbenannt.
-Sie müssen einige Schritte ausführen, um die Ressourcen der vorherigen
-Versionen zu bereinigen und eine neue Instanz zu installieren.
+Die Konfigurationsverwaltung von GKE On-Prem wurde von Version 0.11 auf 0.13
+aktualisiert. Mehrere Komponenten des Systems wurden umbenannt. Sie müssen
+einige Schritte ausführen, um die Ressourcen der vorherigen Versionen zu
+bereinigen und eine neue Instanz zu installieren.
 
 Wenn Sie eine aktive Instanz der Konfigurationsverwaltung haben:
 
@@ -1015,7 +1013,7 @@ Wenn Sie keine aktive Instanz der Konfigurationsverwaltung haben:
 
 ##  12\. März 2019
 
-Die GKE On-Prem-Betaversion 1.0.3 ist jetzt verfügbar. Diese Version enthält
+Die GKE On-Prem-Betaversion 1.0.3 ist jetzt verfügbar. Dieser Release enthält
 die folgenden Änderungen:
 
 ###  Korrekturen
@@ -1027,7 +1025,7 @@ wurden, wurde behoben.
 
 ##  4\. März 2019
 
-Die GKE On-Prem-Betaversion 1.0.2 ist jetzt verfügbar. Diese Version enthält
+Die GKE On-Prem-Betaversion 1.0.2 ist jetzt verfügbar. Dieser Release enthält
 die folgenden Änderungen:
 
 ###  Neue Funktionen
@@ -1052,11 +1050,10 @@ management/docs?hl=de) Version 0.11.6 ist jetzt verfügbar.
 
 Stackdriver Logging ist jetzt auf jedem Knoten aktiviert. Standardmäßig
 repliziert der Logging-Agent Logs für Ihr GCP-Projekt nur für
-Steuerungsebenendienste, Cluster API, vSphere-Controller, Calico, BIG-IP-
-Controller, Envoy-Proxy, Connect for Anthos, Anthos Config Management,
-Prometheus und Grafana, Istio-Steuerungsebene und
-Docker.Anwendungscontainerlogs sind standardmäßig ausgeschlossen, können aber
-optional aktiviert werden.
+Steuerungsebenendienste, Cluster-API, vspare-Controller, Calico, BIG-IP-
+Controller, Envoy-Proxy, Connect, Anthos Config Management, Prometheus und
+Grafana, Steuerungsebene von Istio und Docker. Anwendungscontainerlogs sind
+standardmäßig ausgeschlossen, können aber optional aktiviert werden.
 
 **FEATURE:**
 
@@ -1073,16 +1070,17 @@ werden jetzt unterstützt.
 
 **CHANGED:**
 
-Sie können nun IP-Blöcke in der Clusterspezifikation aktualisieren, um den IP-
-Bereich für einen bestimmten Cluster zu erweitern.
+Sie können jetzt IP-Blöcke in der Clusterspezifikation aktualisieren, um den
+IP-Bereich für einen bestimmten Cluster zu erweitern.
 
 **CHANGED:**
 
 Wenn Cluster, die Sie in der Alphaphase installiert haben, nach der
 Betaversion von Google getrennt wurden, müssen Sie sie möglicherweise noch
-einmal verbinden. Weitere Informationen finden Sie unter [ Nutzercluster
-manuell registrieren ](https://cloud.google.com/anthos/gke/docs/on-
-prem/archive/1.1/how-to/installation/registering-a-user-cluster?hl=de) .
+einmal verbinden. Weitere Informationen finden Sie unter [ Manuelles
+Registrieren eines User-Clusters
+](https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-
+to/installation/registering-a-user-cluster?hl=de) .
 
 **CHANGED:**
 
@@ -1093,7 +1091,7 @@ Ihres Dienstkontos und zur Ausführung von ` gkectl prepare ` aktualisiert.
 **CHANGED:**
 
 ` gkectl diagnose snapshot ` erfasst jetzt nur Konfigurationsdaten und
-schließt Logs aus.Mit diesem Tool werden Details zu Ihrer Umgebung erfasst,
+schließt Logs aus. Mit diesem Tool werden Details zu Ihrer Umgebung erfasst,
 bevor ein Supportfall geöffnet wird.
 
 **CHANGED:**
@@ -1118,7 +1116,7 @@ unbeabsichtigtes Löschen von Knoten zu verhindern.
 
 ##  07\. Februar 2019
 
-Die GKE On-Prem-Alphaversion 1.3 ist jetzt verfügbar. Diese Version enthält
+Die lokale GKE-Alphaversion 1.3 ist jetzt verfügbar. Dieser Release enthält
 die folgenden Änderungen:
 
 ###  Neue Funktionen
@@ -1178,8 +1176,8 @@ während der Installation zur Eingabe des Nutzerkontos aufgefordert werden.
 
 ##  23\. Januar 2019
 
-GKE On-Prem-Alphaversion 1.2.1 ist jetzt verfügbar. Diese Version enthält die
-folgenden Änderungen:
+Die lokale GKE-Alphaversion 1.2.1 ist jetzt verfügbar. Dieser Release enthält
+die folgenden Änderungen:
 
 ###  Neue Funktionen
 
@@ -1198,7 +1196,7 @@ während Sie Snapshots von Remotebefehlsergebnissen und -dateien erfassen.
 
 ##  14\. Januar 2019
 
-Die GKE On-Prem-Alphaversion 1.1.2 ist jetzt verfügbar. Diese Version enthält
+Die lokale GKE-Alphaversion 1.1.2 ist jetzt verfügbar. Diese Version enthält
 die folgenden Änderungen:
 
 ###  Neue Funktionen
@@ -1260,14 +1258,14 @@ anzugeben.
 
 **CHANGED:**
 
-Der Namespace des Nutzerclusters enthält drei neue ConfigMap-Ressourcen: `
-cluster-api-etcd-metrics-config ` , ` kube-etcd-metrics-config ` und ` kube-
-apiserver-config ` . GKE On-Prem verwendet diese Dateien, um den Proxy-
-Container mit Messwerten schnell zu laden.
+Im Nutzercluster-Namespace gibt es drei neue ConfigMap-Ressourcen: ` cluster-
+api-etcd-metrics-config ` , ` kube-etcd-metrics-config ` und ` kube-apiserver-
+config ` . GKE On-Prem verwendet diese Dateien, um den Proxy-Container mit
+Messwerten schnell zu laden.
 
 **CHANGED:**
 
-"kube-apiserver"-Ereignisse befinden sich jetzt in einer eigenen etcd. Sie
+"kube-apiserver" -Ereignisse befinden sich jetzt in einer eigenen etcd. Sie
 können kube-etcd-Ereignisse im Namespace Ihres Nutzerclusters sehen.
 
 **CHANGED:**
@@ -1291,8 +1289,8 @@ erstellen.
 
 **CHANGED:**
 
-` gkectl diagnose snapshot ` kann jetzt Snapshots in mehreren parallelen
-Threads erstellen.
+` gkectl diagnose snapshot ` kann nun Snapshots in mehreren parallelen Threads
+erstellen.
 
 **CHANGED:**
 
@@ -1308,7 +1306,7 @@ haben, wurden behoben.
 
 **FIXED:**
 
-Ein Problem beim Abrufen von FIG BIG-IP-Anmeldedaten wurde behoben.
+Ein Problem beim Abrufen von F5 BIG-IP-Anmeldedaten wurde behoben.
 Anmeldedaten werden jetzt aus einer Datei mit Anmeldedaten anstelle von
 Umgebungsvariablen gelesen.
 
@@ -1348,7 +1346,7 @@ Ressourcen und versuchen Sie es noch einmal.
 
 ##  19\. Dezember 2018
 
-GKE On-Prem-Alphaversion 1.0.4 ist jetzt verfügbar. Diese Version enthält die
+GKE On-Prem Alpha 1.0.4 ist jetzt verfügbar. Diese Version enthält die
 folgenden Änderungen:
 
 ###  Korrekturen
@@ -1361,8 +1359,8 @@ Sicherheitslücke wurde behoben.
 
 ##  30\. November 2018
 
-GKE On-Prem-Alphaversion 1.0 ist jetzt verfügbar. Die folgenden Änderungen
-sind in dieser Version enthalten:
+GKE On-Prem Alpha 1.0 ist jetzt verfügbar. Die folgenden Änderungen sind in
+dieser Version enthalten:
 
 ###  Änderungen
 
@@ -1426,7 +1424,7 @@ PersistentVolumeClaim löschen und neu erstellen.
 
 Das Ändern der Größe von IPAM-Adressblöcken bei Verwendung der statischen IP-
 Zuordnung für Knoten wird in der Alphaphase nicht unterstützt. Um dieses
-Problem zu umgehen, können Sie mehr IP-Adressen zuweisen, als Sie derzeit
+Problem zu umgehen, sollten Sie mehr IP-Adressen zuweisen, als Sie derzeit
 benötigen.
 
 **ISSUE:**
@@ -1436,13 +1434,13 @@ GKE On-Prem-Alphaversion 1.0 erfüllt noch nicht alle Konformitätstests.
 **ISSUE:**
 
 Pro Administratorcluster kann nur ein Nutzercluster erstellt werden. Wenn Sie
-weitere Nutzercluster erstellen möchten, erstellen Sie einen weiteren
+zusätzliche Nutzercluster erstellen möchten, erstellen Sie einen weiteren
 Administratorcluster.
 
 ##  31\. Oktober 2018
 
-GKE On-Prem EAP 2.1 ist jetzt verfügbar. Die folgenden Änderungen sind in
-dieser Version enthalten:
+GKE lokal EAP 2.1 ist jetzt verfügbar. Die folgenden Änderungen sind in dieser
+Version enthalten:
 
 ###  Änderungen
 
@@ -1466,7 +1464,7 @@ fünf Minuten).
 
 ##  17\. Oktober 2018
 
-GKE On-Prem EAP 2.0 ist jetzt verfügbar. Die folgenden Änderungen sind in
+GKE On-Premises EAP 2.0 ist jetzt verfügbar. Die folgenden Änderungen sind in
 dieser Version enthalten:
 
 ###  Änderungen
@@ -1481,7 +1479,7 @@ Support für Monitoring.
 
 **CHANGED:**
 
-Support für die Installation mit privaten Registrys
+Support für die Installation mit privaten Registrys.
 
 **CHANGED:**
 
@@ -1496,7 +1494,7 @@ Support der statischen IP-Zuordnung für Knoten während des Cluster-Bootstraps.
 **ISSUE:**
 
 Pro Administratorcluster kann nur ein Nutzercluster erstellt werden. Wenn Sie
-weitere Nutzercluster erstellen möchten, erstellen Sie einen weiteren
+zusätzliche Nutzercluster erstellen möchten, erstellen Sie einen weiteren
 Administratorcluster.
 
 **ISSUE:**
@@ -1511,7 +1509,7 @@ Ressourcen und versuchen Sie es noch einmal.
 
 **ISSUE:**
 
-Im Rahmen des Cluster-Bootstrapping-Prozesses wird eine kurzlebige Minikube-
+Im Rahmen des Cluster-Bootstrapping-Prozesses wird eine kurzlebigere Minikube-
 Instanz ausgeführt. Die verwendete Minikube-Version hat die Sicherheitslücke [
 CVE-2018-1002103 ](https://github.com/kubernetes/minikube/issues/3208) .
 
