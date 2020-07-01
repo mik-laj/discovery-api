@@ -1,6 +1,6 @@
 #  リリースノート
 
-このページには Anthos GKE on-prem
+このページには Anthos GKE On-Prem
 に関する更新内容が記載されています。このページを定期的にチェックして、新機能や更新された機能、バグ修正、既知の問題、サポートが終了した（非推奨になった）機能に関するお知らせを確認してください。
 
 関連情報:
@@ -533,9 +533,9 @@ prem/archive/1.1/beta-1.4/how-to/administration/diagnose?hl=ja#capture_admin)
 
 **CHANGED:**
 
-2019 年 5 月 8 日に、Cloud Console を使用して GKE on-prem クラスタとやり取りできるサービス、Connect for
-Anthos に変更を加えました。新しい Connect for Anthos エージェントを使用するには、Cloud Console
-にクラスタを再登録するか、Anthos GKE on-prem ベータ版 -1.4 にアップグレードする必要があります。
+2019 年 5 月 8 日に、Cloud Console を使用して GKE On-Prem クラスタを操作できるサービス Connect
+に変更を加えました。新しい Connect エージェントを使用するには、クラスタを Cloud Console に再登録するか、Anthos GKE On-
+Prem ベータ版 -1.4 にアップグレードする必要があります。
 
 GKE on-prem クラスタ、およびこれらのクラスタで実行されているワークロードは、中断なく動作し続けます。ただし、クラスタを再登録するか、ベータ版
 -1.4 にアップグレードするまで Cloud Console には表示されません。
@@ -585,7 +585,7 @@ to/administration/upgrading-a-cluster?hl=ja) :
 
 **ISSUE:**
 
-アップグレード中に Connect for Anthos
+アップグレード中に Connect
 エージェントが新しいバージョンに更新されない問題があります。この問題を回避するには、クラスタをアップグレードした後に次のコマンドを実行します。
 
     
@@ -649,9 +649,9 @@ prem/archive/1.1/beta-1.4/how-to/administration/diagnose?hl=ja#capture_admin)
 
 **CHANGED:**
 
-2019 年 5 月 8 日に、Cloud Console を使用して GKE on-prem クラスタとやり取りできるサービス、Connect for
-Anthos に変更を加えました。新しい Connect for Anthos エージェントを使用するには、Cloud Console
-にクラスタを再登録するか、Anthos GKE on-prem ベータ版 -1.4 にアップグレードする必要があります。
+2019 年 5 月 8 日に、Cloud Console を使用して GKE On-Prem クラスタを操作できるサービス Connect
+に変更を加えました。新しい Connect エージェントを使用するには、クラスタを Cloud Console に再登録するか、Anthos GKE On-
+Prem ベータ版 -1.4 にアップグレードする必要があります。
 
 GKE on-prem クラスタ、およびこれらのクラスタで実行されているワークロードは、中断なく動作し続けます。ただし、クラスタを再登録するか、ベータ版
 -1.4 にアップグレードするまで Cloud Console には表示されません。
@@ -701,7 +701,7 @@ to/administration/upgrading-a-cluster?hl=ja) :
 
 **ISSUE:**
 
-アップグレード中に Connect for Anthos
+アップグレード中に Connect
 エージェントが新しいバージョンに更新されない問題があります。この問題を回避するには、クラスタをアップグレードした後に次のコマンドを実行します。
 
     
@@ -765,7 +765,7 @@ GKE on-prem ベータ版バージョン 1.2.1 が利用可能になりました�
 
 **FEATURE:**
 
-GKE on-prem クラスタが、 [ Connect for Anthos ](https://cloud.google.com/kubernetes-
+GKE On-prem クラスタが、 [ Connect ](https://cloud.google.com/kubernetes-
 engine/connect?hl=ja) を使用して自動的に Google に接続するようになりました。
 
 **FEATURE:**
@@ -830,8 +830,8 @@ prem/archive/1.1/concepts/authentication?hl=ja) をご覧ください。
 
 **CHANGED:**
 
-[ Connect for Anthos のドキュメント ](https://cloud.google.com/kubernetes-
-engine/connect?hl=ja) が移行されました。
+[ Connect のドキュメント ](https://cloud.google.com/kubernetes-engine/connect?hl=ja)
+が移行されました。
 
 ###  修正済み
 
@@ -916,9 +916,9 @@ management/docs?hl=ja) バージョン 0.11.6 が利用可能になりました�
 **FEATURE:**
 
 Stackdriver Logging が各ノードで有効になりました。デフォルトでは、ロギング エージェントは、コントロール プレーン サービス、クラスタ
-API、vSphere コントローラ、Calico、BIG-IP コントローラ、Envoy プロキシ、Connect for Anthos、Anthos
-Config Management、Prometheus サービス、Grafana サービス、Istio コントロール プレーン、Docker のログのみを
-GCP プロジェクトに複製します。アプリケーション コンテナ ログはデフォルトで除外されますが、必要に応じて有効にできます。
+API、vSphere コントローラ、Calico、BIG-IP コントローラ、Envoy プロキシ、Connect、Anthos Config
+Management、Prometheus サービス、Grafana サービス、Istio コントロール プレーン、Docker のログのみを GCP
+プロジェクトに複製します。アプリケーション コンテナ ログはデフォルトで除外されますが、必要に応じて有効にできます。
 
 **FEATURE:**
 
@@ -1076,17 +1076,17 @@ TLS Secret と証明書を指定すると、 ` gkectl ` で Ingress TLS を設�
 
 **CHANGED:**
 
-GKE on-prem で Kubernetes バージョン **1.11.2-gke.19** が実行されるようになりました。
+GKE On-Prem で Kubernetes バージョン **1.11.2-gke.19** が実行されるようになりました。
 
 **CHANGED:**
 
-GKE on-prem のデフォルトのフットプリントが変更されました。
+GKE On-Prem のデフォルトのフットプリントが変更されました。
 
   * ユーザー クラスタ ノードの最小メモリ要件が 8,192 MB になりました。 
 
 **CHANGED:**
 
-GKE on-prem で minikube バージョン **0.28.0** が実行されるようになりました。
+GKE On-Prem で minikube バージョン **0.28.0** が実行されるようになりました。
 
 **CHANGED:**
 
@@ -1189,11 +1189,11 @@ GKE on-prem アルファ版 1.0 が利用可能になりました。このリリ
 
 **CHANGED:**
 
-GKE on-prem アルファ版 1.0 は Kubernetes 1.11 を実行します。
+GKE On-Prem アルファ版 1.0 は Kubernetes 1.11 を実行します。
 
 **CHANGED:**
 
-GKE on-prem のデフォルトのフットプリントが変更されました。
+GKE On-Prem のデフォルトのフットプリントが変更されました。
 
   * 管理コントロール プレーンは 3 つのノードを実行し、4 基の CPU と 16 GB のメモリを使用します。 
   * ユーザー コントロール プレーンは 1 つのノードを実行し、4 基の CPU と 16 GB のメモリを使用します。 
