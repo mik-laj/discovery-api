@@ -16,6 +16,139 @@ Isolation-at-different-layers-of-the-Kubernetes-stack.html) 를 참조하세요.
 사용자에게 제공된 최신 보안 게시판을 보려면 이 페이지의 URL을 사용자의 [ 피드 리더
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) 에 추가합니다.
 
+##  GCP-2020-007
+
+**게시:** 2020년 6월 1일  
+설명  |  심각도  |  참고  
+---|---|---  
+  
+특정 승인된 사용자가 제어 영역 호스트 네트워크에서 최대 500바이트까지 민감한 정보를 누출할 수 있도록 허용하는 서버 측 요청
+위조(SSRF) 취약점, [ CVE-2020-8555 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8555) 가 최근 Kubernetes에서 발견되었습니다. Google
+Kubernetes Engine(GKE) 제어 영역은 Kubernetes의 컨트롤러를 사용하므로 이 취약점의 영향을 받습니다. 아래의
+세부정보를 참고하여 제어 영역을 최신 패치 버전으로 업그레이드하는 것이 좋습니다. 노드 업그레이드는 필요하지 않습니다.  
+
+####  어떻게 해야 하나요?
+
+다음 Anthos GKE On-Prem(GKE On-Prem) 이상 버전에는 이 취약점의 수정 사항이 포함되어 있습니다.
+
+  * Anthos 1.3.0 
+
+이전 버전을 사용하는 경우 수정사항이 포함된 버전으로 [ 기존 클러스터를 업그레이드
+](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=ko)
+합니다.
+
+####  이 패치로 어떤 취약점이 해결되나요?
+
+이러한 패치는 CVE-2020-8555 취약점을 완화합니다. 여러 제어 영역 강화 조치로 인해 악용이 어렵기 때문에 이 문제는 GKE에서
+'보통' 등급의 취약점으로 분류됩니다.
+
+특정 볼륨 유형(GlusterFS, Quobyte, StorageFS, ScaleIO)이 내장된 Pod를 생성할 수 있는 권한이나
+StorageClass를 생성할 수 있는 권한을 보유한 공격자는 마스터의 호스트 네트워크에서 요청 본문을 제어하지 _않아도_ ` kube-
+controller-manager ` 에서 ` GET ` 요청 또는 ` POST ` 요청을 보내도록 만들 수 있습니다. 이러한 볼륨은
+GKE에서 거의 사용되지 않으므로 이러한 볼륨이 새로 사용되는 것을 감지 신호로 보면 유용합니다.
+
+로그처럼 ` GET/POST ` 의 결과를 공격자에게 반환하는 수단과 결합되면 민감한 정보 공개로 이어질 수 있습니다. 문제가 되는 스토리지
+드라이버를 업데이트하여 이러한 유출 가능성을 제거했습니다.
+
+|
+
+보통
+
+|
+
+[ CVE-2020-8555 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8555)  
+  
+##  GCP-2020-006
+
+**게시:** 2020년 6월 1일  
+설명  |  심각도  |  참고  
+---|---|---  
+  
+Kubernetes에서 권한이 있는 컨테이너가 노드 트래픽을 다른 컨테이너로 리디렉션할 수 있도록 허용하는 [ 취약점
+](https://github.com/kubernetes/kubernetes/issues/91507) 이 발견되었습니다. 이 공격을 받으면
+상호 TLS/SSH 트래픽(예: Kubelet과 API 서버 사이 또는 mTLS를 사용하는 애플리케이션의 트래픽)을 읽거나 수정할 수
+없습니다. 이 취약점은 모든 Google Kubernetes Engine(GKE) 노드에 영향을 미치므로 아래의 세부정보를 참고하여 최신
+패치 버전으로 업그레이드하는 것이 좋습니다.
+
+####  어떻게 해야 하나요?
+
+Anthos GKE On-Preme(GKE On-Prem)의 이 취약점을 완화하려면 다음 이상 버전으로 [ 클러스터를 업그레이드
+](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=ko)
+합니다.
+
+  * Anthos 1.3.2 
+
+일반적으로 ` CAP_NET_RAW ` 가 필요한 컨테이너는 거의 없습니다. 이 기능 및 기타 강력한 기능은 [ Anthos Policy
+Controller ](https://cloud.google.com/anthos-config-
+management/docs/concepts/policy-controller?hl=ko) 를 통해 기본적으로 또는 Pod 사양을 업데이트하여
+차단되어야 합니다.
+
+  * 컨테이너에서 ` CAP_NET_RAW ` 기능을 사용 중지합니다. 
+    * 이 [ 제약조건 템플릿 ](https://github.com/open-policy-agent/gatekeeper/blob/master/library/pod-security-policy/capabilities/template.yaml) 과 함께 Anthos Policy Controller/Gatekeeper를 사용한 후 적용하는 방법도 있습니다. 예를 들면 다음과 같습니다. 
+        
+                
+        # Dropping CAP_NET_RAW with Gatekeeper
+        # (requires the K8sPSPCapabilities template)
+        apiversion: constraints.gatekeeper.sh/v1beta1
+        kind:  K8sPSPCapabilities
+        metadata:
+          name: forbid-cap-net-raw
+        spec:
+          match:
+            kinds:
+              - apiGroups: [""]
+              kinds: ["Pod"]
+            namespaces:
+              #List of namespaces to enforce this constraint on
+              - default
+            # If running gatekeeper >= v3.1.0-beta.5,
+            # you can exclude namespaces rather than including them above.
+            excludedNamespaces:
+              - kube-system
+          parameters:
+            requiredDropCapabilities:
+              - "NET_RAW"
+        
+
+    * Pod 사양을 업데이트하면 다음과 같습니다. 
+        
+                
+        # Dropping CAP_NET_RAW from a Pod:
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          name: no-cap-net-raw
+        spec:
+          containers:
+            -name: may-container
+             ...
+            securityContext:
+              capabilities:
+                drop:
+                  -NET_RAW
+        
+
+####  이 패치로 어떤 취약점이 해결되나요?
+
+이 패치로 다음의 취약점이 완화됩니다.
+
+[ Kubernetes 문제 91507 ](https://github.com/kubernetes/kubernetes/issues/91507)
+에는 노드에서 IPv6 스택을 악의적으로 구성하고 노드 트래픽을 공격자가 제어하는 컨테이너로 리디렉션할 수 있는 ` CAP_NET_RAW `
+기능(기본 컨테이너 기능 모음에 포함되어 있음)의 취약점이 설명되어 있습니다. 공격자는 이 취약점을 이용해 노드에서 송/수신되는 트래픽을
+가로채거나 수정할 수 있습니다. 이 공격을 받으면 상호 TLS/SSH 트래픽(예: Kubelet과 API 서버 사이 또는 mTLS를 사용하는
+애플리케이션의 트래픽)을 읽거나 수정할 수 없습니다.
+
+|
+
+보통
+
+|
+
+[ Kubernetes 문제 91507 ](https://github.com/kubernetes/kubernetes/issues/91507)  
+  
+  
 ##  GCP-2020-004
 
 설명  |  심각도  |  참고  
@@ -47,7 +180,7 @@ bin/cvename.cgi?name=CVE-2019-11254)
 
 |
 
-중간
+보통
 
 |
 
