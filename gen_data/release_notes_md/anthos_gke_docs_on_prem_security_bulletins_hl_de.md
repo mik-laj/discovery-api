@@ -23,12 +23,167 @@ Um die neuesten Sicherheitsbulletins zu erhalten, fügen Sie die URL dieser
 Seite zu Ihrer [ Feed-Reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) hinzu.
 
+##  GCP-2020-007
+
+**Veröffentlicht:** 01.06.2020  
+Beschreibung  |  Schweregrad  |  Hinweise  
+---|---|---  
+  
+Serverseitige Anfragefälschung (Server Side Request Forgery, SSRF), [
+CVE-2020-8555 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555)
+, wurde kürzlich in Kubernetes entdeckt und ermöglicht bestimmten
+autorisierten Nutzern, bis zu 500 Byte vertraulicher Informationen aus dem
+Hostnetzwerk der Steuerungsebene abzurufen. Die Google Kubernetes Engine-
+Steuerungsebene (GKE) verwendet Controller von Kubernetes und ist daher von
+dieser Sicherheitslücke betroffen. Wir empfehlen Ihnen, die Steuerungsebene
+auf die neueste Patch-Version zu aktualisieren, wie unten beschrieben. Ein
+Knotenupgrade ist nicht erforderlich.  
+
+####  Was soll ich tun?
+
+Die folgenden Anthos GKE On-Prem-Versionen (GKE oder höher) enthalten die
+Fehlerkorrektur für diese Sicherheitslücke:
+
+  * Anthos 1.3.0 
+
+Wenn Sie eine Vorgängerversion verwenden, [ aktualisieren Sie den vorhandenen
+Cluster ](https://cloud.google.com/anthos/gke/docs/on-prem/how-
+to/upgrading?hl=de) auf eine Version, die die Fehlerbehebung enthält.
+
+####  Welche Sicherheitslücke wird mit diesem Patch behoben?
+
+Diese Patches verringern die Sicherheitslücke CVE-2020-8555. Dies wird als
+mittlere Sicherheitslücke für GKE eingestuft, da es aufgrund verschiedener
+Härtungsmaßnahmen auf Steuerungsebene schwierig auszunutzen war.
+
+Ein Angreifer mit Berechtigungen zum Erstellen eines Pods mit bestimmten
+integrierten Volume-Typen (GlusterFS, Quobyte, StorageFS, ScaleIO) oder
+Berechtigungen zum Erstellen einer StorageClass kann ` kube-controller-manager
+` dazu veranlassen, ` GET ` -Anfragen oder ` POST ` -Anfragen _ohne_ von ihm
+kontrolliertem Anfragetext über das Master-Hostnetzwerk zu senden. Diese
+Volume-Typen werden selten auf GKE verwendet. Neue Nutzungsfälle dieser
+Volume-Typen können also ein hilfreiches Signal zur Angriffserkennung sein.
+
+Wird der Angriff mit einer Methode kombiniert, um die Ergebnisse von `
+GET/POST ` beispielsweise durch Logs zurück an den Angreifer zu senden, kann
+das zur Offenlegung von vertraulichen Informationen führen. Wir haben die
+entsprechenden Speichertreiber aktualisiert, um das Risiko von Schwachstellen
+zu beheben.
+
+|
+
+Mittel
+
+|
+
+[ CVE-2020-8555 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8555)  
+  
+##  GCP-2020-006
+
+**Veröffentlicht:** 01.06.2020  
+Beschreibung  |  Schweregrad  |  Hinweise  
+---|---|---  
+  
+Kubernetes hat eine [ Sicherheitslücke
+](https://github.com/kubernetes/kubernetes/issues/91507) entdeckt, die es
+einem berechtigten Container ermöglicht, Knoten-Traffic an einen anderen
+Container weiterzuleiten. Gegenseitiger TLS/SSH-Traffic, z. B. zwischen dem
+Kubelet und dem API-Server oder Traffic von Anwendungen, die mTLS verwenden,
+kann durch diesen Angriff nicht gelesen oder geändert werden. Von dieser
+Sicherheitslücke sind alle Google Kubernetes Engine-Knoten (GKE) betroffen.
+Wir empfehlen ein Upgrade auf die neueste Patchversion, wie unten beschrieben.
+
+####  Was soll ich tun?
+
+[ Aktualisieren Sie Ihre Cluster
+](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=de) auf
+die folgende oder eine neuere Version, um diese Sicherheitslücke für Anthos
+GKE On-Prem (GKE On-Prem) zu beheben:
+
+  * Anthos 1.3.2 
+
+Sehr wenige Container benötigen normalerweise ` CAP_NET_RAW ` . Diese und
+andere leistungsstarke Funktionen sollten standardmäßig über [ Anthos Policy
+Controller ](https://cloud.google.com/anthos-config-
+management/docs/concepts/policy-controller?hl=de) oder durch Aktualisieren
+Ihrer Pod-Spezifikationen blockiert werden:
+
+  * So entfernen Sie die ` CAP_NET_RAW ` -Funktion aus Containern: 
+    * Durch Verwendung von Anthos Policy Controller/Gatekeeper mit dieser [ Einschränkungsvorlage ](https://github.com/open-policy-agent/gatekeeper/blob/master/library/pod-security-policy/capabilities/template.yaml) und Anwendung der Vorlage. Beispiel: 
+        
+                
+        # Dropping CAP_NET_RAW with Gatekeeper
+        # (requires the K8sPSPCapabilities template)
+        apiversion: constraints.gatekeeper.sh/v1beta1
+        kind:  K8sPSPCapabilities
+        metadata:
+          name: forbid-cap-net-raw
+        spec:
+          match:
+            kinds:
+              - apiGroups: [""]
+              kinds: ["Pod"]
+            namespaces:
+              #List of namespaces to enforce this constraint on
+              - default
+            # If running gatekeeper >= v3.1.0-beta.5,
+            # you can exclude namespaces rather than including them above.
+            excludedNamespaces:
+              - kube-system
+          parameters:
+            requiredDropCapabilities:
+              - "NET_RAW"
+        
+
+    * Aktualisieren der Pod-Spezifikationen: 
+        
+                
+        # Dropping CAP_NET_RAW from a Pod:
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          name: no-cap-net-raw
+        spec:
+          containers:
+            -name: may-container
+             ...
+            securityContext:
+              capabilities:
+                drop:
+                  -NET_RAW
+        
+
+####  Welche Sicherheitslücke wird mit diesem Patch behoben?
+
+Dieser Patch dient zur Entschärfung der folgenden Sicherheitslücke:
+
+Die Sicherheitslücke, die unter [ Kubernetes-Problem 91507
+](https://github.com/kubernetes/kubernetes/issues/91507) beschrieben ist.
+Dabei kann die ` CAP_NET_RAW ` -Funktion (im standardmäßigen Container-
+Funktionsset enthalten) den IPv6-Stack auf dem Knoten schädlich konfigurieren
+und den Knoten-Traffic an den vom Angreifer kontrollierten Container
+weiterleiten. Dadurch kann der Angreifer ausgehenden und eingehenden Traffic
+des Knotens abfangen und ändern. Gegenseitiger TLS/SSH-Traffic, z. B. zwischen
+dem Kubelet und dem API-Server oder Traffic von Anwendungen, die mTLS
+verwenden, kann durch diesen Angriff nicht gelesen oder geändert werden.
+
+|
+
+Mittel
+
+|
+
+[ Kubernetes-Problem 91507
+](https://github.com/kubernetes/kubernetes/issues/91507)  
+  
+  
 ##  GCP-2020-004
 
 Beschreibung  |  Schweregrad  |  Hinweise  
 ---|---|---  
   
-In Kubernetes wurde kürzlich eine in [ CVE-2019-11253
+In Kubernetes wurde kürzlich eine in [ CVE-2019-11254
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11254) beschriebene
 Sicherheitslücke festgestellt. Sie erlaubt Nutzern, die POST-Anfragen stellen
 dürfen, DoS-Remoteangriffe auf Kubernetes API-Server. Das Kubernetes Product
