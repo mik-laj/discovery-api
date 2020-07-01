@@ -997,9 +997,9 @@ channel release notes ](/kubernetes-engine/docs/release-notes-stable) .
 ######  1.13.10-gke.0
 
 This version was generally available on [ September 16, 2019 ](/kubernetes-
-engine/docs/release-notes#september_16_2019) and is now available in the
-Stable [ release channel ](/kubernetes-engine/docs/concepts/release-channels)
-.
+engine/docs/release-notes-archive#september_16_2019) and is now available in
+the Stable [ release channel ](/kubernetes-engine/docs/concepts/release-
+channels) .
 
 **FIXED:**
 
@@ -1375,8 +1375,9 @@ Reduces startup time for GPU nodes running [ Container-Optimized OS
 #####  v1.13.7-gke.8
 
 This version was generally available on [ June 27, 2019 ](/kubernetes-
-engine/docs/release-notes#june_27_2019) and is now available in the Stable [
-release channel ](/kubernetes-engine/docs/concepts/release-channels) .
+engine/docs/release-notes-archive#june_27_2019) and is now available in the
+Stable [ release channel ](/kubernetes-engine/docs/concepts/release-channels)
+.
 
 ###  Regular channel  
 (1.14.x)
@@ -1403,9 +1404,9 @@ Reduces startup time for GPU nodes running [ Container-Optimized OS
 #####  v1.14.3-gke.11
 
 This version was generally available on [ September 5, 2019 ](/kubernetes-
-engine/docs/release-notes#september_5_2019) and is now available in the
-Regular [ release channel ](/kubernetes-engine/docs/concepts/release-channels)
-.
+engine/docs/release-notes-archive#september_5_2019) and is now available in
+the Regular [ release channel ](/kubernetes-engine/docs/concepts/release-
+channels) .
 
 ###  Rapid channel  
 (1.14.x)
@@ -4586,7 +4587,7 @@ GKE 1.11.2-gke.9 is now generally available.
 
   * You can now select Container-Optimized OS with ` containerd ` images when creating, modifying, or upgrading a cluster to GKE v1.11. Visit [ Using Container-Optimized OS with containerd ](/kubernetes-engine/docs/concepts/using-containerd) for details. 
 
-  * The CustomResourceDefinition API supports a ` versions ` list field (and deprecates the previous singular ` version ` field) that you can use to support multiple versions of custom resources you have developed, to indicate the stability of a given custom resource. All versions must currently use the same schema, so if you need to add a field, you must add it to all versions. Currently, versions only indicate the stability of your custom resource, and do not allow for any difference in functionality among versions. For more information, visit [ Versions of CustomResourceDefinitions ](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definition-versioning/) . 
+  * The CustomResourceDefinition API supports a ` versions ` list field (and deprecates the previous singular ` version ` field) that you can use to support multiple versions of custom resources you have developed, to indicate the stability of a given custom resource. All versions must currently use the same schema, so if you need to add a field, you must add it to all versions. Currently, versions only indicate the stability of your custom resource, and do not allow for any difference in functionality among versions. For more information, visit [ Versions of CustomResourceDefinitions ](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/) . 
 
   * Kubernetes 1.11 introduces beta support for increasing the size of an existing PersistentVolume. To increase the size of a PersistentVolume, edit the PersistentVolumeClaim (PVC) object. Kubernetes expands the file system automatically. 
 
@@ -4600,7 +4601,7 @@ Resizing a volume containing a file system
 ](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#resizing-a-
 volume-containing-a-file-system) .
 
-  * Subresources allow you to add capabilities to custom resources. You can enable ` /status ` and ` /scale ` REST endpoints for a given custom resource. You can access these endpoints to view or modify the behavior of the custom resource, using ` PUT ` , ` POST ` , or ` PATCH ` requests. Visit [ Subresources ](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/#subresources) for details. 
+  * Subresources allow you to add capabilities to custom resources. You can enable ` /status ` and ` /scale ` REST endpoints for a given custom resource. You can access these endpoints to view or modify the behavior of the custom resource, using ` PUT ` , ` POST ` , or ` PATCH ` requests. Visit [ Subresources ](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#subresources) for details. 
 
 Also, 1.10.9-gke.0 is available.
 
