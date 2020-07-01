@@ -34,13 +34,13 @@ GKE On-Prem 버전 1.0.2-gke.3이 출시되었습니다. 이 패치 출시 버�
 
 **FEATURE:**
 
-이제 ` gkectl ` 를 사용하여 사용자 클러스터를 삭제할 수 있습니다. [ 사용자 클러스터 삭제
+이제 ` gkectl ` 을 사용하여 사용자 클러스터를 삭제할 수 있습니다. [ 사용자 클러스터 삭제
 ](https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.0/how-
 to/administration/deleting-a-user-cluster?hl=ko) 를 참조하세요.
 
 ###  변경사항
 
-**CHANGED:** 이제 ` gkectl diagnose snapshot ` 가 사용자 클러스터 제어 영역에서 로그를 가져옵니다.
+**CHANGED:** 이제 ` gkectl diagnose snapshot ` 이 사용자 클러스터 제어 영역에서 로그를 가져옵니다.
 
 **CHANGED:**
 
@@ -179,9 +179,9 @@ to/installation/install?hl=ko#prepare) 에 대한 업데이트된 문서를 참�
 Kubernetes 버전을 1.12.7-gke.19로 업그레이드합니다. 이제 이 버전으로 [ 클러스터를 업그레이드
 ](https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.0/latest/how-
 to/administration/upgrading-clusters?hl=ko) 할 수 있습니다. Kubernetes 버전
-1.11.2-gke.19를 실행하는 클러스터를 더 이상 만들 수 없습니다.
+1.11.2-gke.19를 실행하는 클러스터는 더 이상 만들 수 없습니다.
 
-사용자 클러스터를 업그레이드하기 전에 관리자 클러스터를 업그레이드하는 것이 좋습니다.
+사용자 클러스터를 업그레이드하기 전에 관리 클러스터를 업그레이드하는 것이 좋습니다.
 
 **CHANGED:**
 
@@ -231,9 +231,9 @@ to/administration/diagnose?hl=ko#capture_admin) 명령어에서 ` --admin-ssh-ke
 
 **CHANGED:**
 
-2019년 5월 8일에 Cloud Console을 사용하여 GKE On-Prem 클러스터와 상호 작용할 수 있는 서비스인 Connect
-for Anthos가 변경되었습니다. 새로운 Connect for Anthos 에이전트를 사용하려면 Cloud Console에 클러스터를
-다시 등록하거나 Anthos GKE On-Prem 베타 1.4로 업그레이드해야 합니다.
+2019년 5월 8일에 Cloud Console을 사용하여 GKE On-Prem 클러스터와 상호작용할 수 있는 서비스인 Connect가
+변경되었습니다. 새 Connect 에이전트를 사용하려면 Cloud Console에 클러스터를 다시 등록하거나 GKE On-Prem
+베타-1.4로 업그레이드해야 합니다.
 
 GKE On-Prem 클러스터와 클러스터에서 실행 중인 워크로드는 중단 없이 계속 작동합니다. 그러나 클러스터를 다시 등록하거나 베타
 1.4로 업그레이드해야 Cloud Console에 클러스터가 표시됩니다.
@@ -282,8 +282,8 @@ to/administration/upgrading-a-cluster?hl=ko) 하려면 다음 단계를 따르�
 
 **ISSUE:**
 
-Connect for Anthos 에이전트가 업그레이드 중에 새 버전으로 업데이트되지 않는 문제가 있습니다. 이 문제를 해결하려면 클러스터를
-업그레이드한 후 다음 명령어를 실행하세요.
+Connect 에이전트가 업그레이드 중에 새 버전으로 업데이트되지 않는 문제가 있습니다. 이 문제를 해결하려면 클러스터를 업그레이드한 후
+다음 명령어를 실행하세요.
 
     
     
@@ -295,8 +295,8 @@ Connect for Anthos 에이전트가 업그레이드 중에 새 버전으로 업�
 
 **ISSUE:**
 
-버전 베타 1.2에서 베타 1.3으로 업그레이드된 클러스터는 클러스터의 구성 파일을 손상시키고 향후 클러스터 업그레이드를 막는 알려진 문제의
-영향을 받을 수 있습니다. 이 문제는 향후 모든 클러스터 업그레이드에 영향을 미칩니다.
+버전 베타-1.2에서 베타-1.3으로 업그레이드된 클러스터는 클러스터의 구성 파일을 손상시키고 향후 클러스터 업그레이드를 방지하는 알려진
+문제의 영향을 받을 수 있습니다. 이 문제는 이후의 모든 클러스터 업그레이드에 영향을 미칩니다.
 
 베타 1.2에서 베타 1.3으로 업그레이드된 클러스터를 삭제하고 다시 만들어야 이 문제를 해결할 수 있습니다.
 
@@ -347,9 +347,9 @@ to/administration/diagnose?hl=ko#capture_admin) 명령어에서 ` --admin-ssh-ke
 
 **CHANGED:**
 
-2019년 5월 8일에 Cloud Console을 사용하여 GKE On-Prem 클러스터와 상호 작용할 수 있는 서비스인 Connect
-for Anthos가 변경되었습니다. 새로운 Connect for Anthos 에이전트를 사용하려면 Cloud Console에 클러스터를
-다시 등록하거나 Anthos GKE On-Prem 베타 1.4로 업그레이드해야 합니다.
+2019년 5월 8일에 Cloud Console을 사용하여 GKE On-Prem 클러스터와 상호작용할 수 있는 서비스인 Connect가
+변경되었습니다. 새 Connect 에이전트를 사용하려면 Cloud Console에 클러스터를 다시 등록하거나 GKE On-Prem
+베타-1.4로 업그레이드해야 합니다.
 
 GKE On-Prem 클러스터와 클러스터에서 실행 중인 워크로드는 중단 없이 계속 작동합니다. 그러나 클러스터를 다시 등록하거나 베타
 1.4로 업그레이드해야 Cloud Console에 클러스터가 표시됩니다.
@@ -398,8 +398,8 @@ to/administration/upgrading-a-cluster?hl=ko) 하려면 다음 단계를 따르�
 
 **ISSUE:**
 
-Connect for Anthos 에이전트가 업그레이드 중에 새 버전으로 업데이트되지 않는 문제가 있습니다. 이 문제를 해결하려면 클러스터를
-업그레이드한 후 다음 명령어를 실행하세요.
+Connect 에이전트가 업그레이드 중에 새 버전으로 업데이트되지 않는 문제가 있습니다. 이 문제를 해결하려면 클러스터를 업그레이드한 후
+다음 명령어를 실행하세요.
 
     
     
@@ -461,9 +461,8 @@ GKE On-Prem 베타 버전 1.2.1이 출시되었습니다. 이 출시 버전에�
 
 **FEATURE:**
 
-이제 GKE On-Prem 클러스터가 [ Connect for Anthos
-](https://cloud.google.com/kubernetes-engine/connect?hl=ko) 를 사용하여 Google에
-자동으로 다시 연결됩니다.
+이제 GKE On-Prem 클러스터가 [ Connect ](https://cloud.google.com/kubernetes-
+engine/connect?hl=ko) 를 사용하여 Google에 자동으로 다시 연결됩니다.
 
 **FEATURE:**
 
@@ -492,8 +491,9 @@ GKE On-Prem 베타 버전 1.1.1이 출시되었습니다. 이 출시 버전에�
 
 이제 여러 명령줄 인터페이스 도구가 포함된 사전 구성된 가상 머신 이미지인 [ Open Virtual Appliance(OVA)
 ](https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.0/beta-1.1/how-
-to/installation/getting-started?hl=ko#download_ova) 로 GKE On-Prem을 설치합니다. 이 변경
-조치로 설치가 쉬워지고 가상화 계층이 제거됩니다. 더 이상 Docker 컨테이너에서 ` gkectl ` 을 실행할 필요가 없습니다.
+to/installation/getting-started?hl=ko#download_ova) 를 사용하여 GKE On-Prem을 설치합니다.
+이렇게 변경하면 설치가 더욱 쉬워지고 가상화 레이어가 제거됩니다. 더 이상 Docker 컨테이너 내에서 ` gkectl ` 을 실행할 필요가
+없습니다.
 
 베타 1.1.1 이전에 GKE On-Prem 버전을 설치한 경우 문서화된 안내에 따라 새 관리 워크스테이션을 만들어야 합니다. 새 관리
 워크스테이션을 설치한 후 SSH 키, 구성 파일, kubeconfigs 및 기타 필요한 파일을 이전 워크스테이션에서 새 워크스테이션으로
@@ -502,13 +502,14 @@ to/installation/getting-started?hl=ko#download_ova) 로 GKE On-Prem을 설치합
 **FEATURE:**
 
 [ 클러스터 백업 및 복원 ](https://cloud.google.com/anthos/gke/docs/on-
-prem/archive/1.0/beta-1.1/how-to/administration/backing-up?hl=ko) 문서가 추가되었습니다.
+prem/archive/1.0/beta-1.1/how-to/administration/backing-up?hl=ko) 에 대한 문서가
+추가되었습니다.
 
 **FEATURE:**
 
 이제 OIDC 및 ADFS를 사용하여 클러스터에 대한 인증을 구성할 수 있습니다. 자세한 내용은 [ OIDC 및 ADFS로 인증
 ](https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.0/beta-1.1/how-
-to/security/oidc-adfs?hl=ko) 및 [ 인증
+to/security/oidc-adfs?hl=ko) 과 [ 인증
 ](https://cloud.google.com/anthos/gke/docs/on-
 prem/archive/1.0/concepts/authentication?hl=ko) 을 참조하세요.
 
@@ -524,8 +525,8 @@ prem/archive/1.0/concepts/authentication?hl=ko) 을 참조하세요.
 
 **CHANGED:**
 
-[ Connect for Anthos 문서 ](https://cloud.google.com/kubernetes-
-engine/connect?hl=ko) 가 이전되었습니다.
+[ Connect 문서 ](https://cloud.google.com/kubernetes-engine/connect?hl=ko) 가
+마이그레이션되었습니다.
 
 ###  수정
 
@@ -609,10 +610,10 @@ management/docs?hl=ko) 버전 0.11.6이 출시되었습니다.
 
 **FEATURE:**
 
-이제 Stackdriver Logging이 각 노드에서 사용 설정됩니다. 기본적으로 로깅 에이전트는 제어 영역 서비스, 클러스터 API,
-vSphere 컨트롤러, Calico, BIG-IP 컨트롤러, Envoy 프록시, Connect for Anthos, Anthos
-Config Management, Prometheus 및 Grafana 서비스, Istio 제어 영역, Docker에 대해서만 GCP
-프로젝트에 로그를 복제합니다. 애플리케이션 컨테이너 로그는 기본적으로 제외되지만 원할 경우 사용 설정할 수 있습니다.
+이제 Stackdriver Logging이 각 노드에서 사용 설정됩니다. 기본적으로 로깅 에이전트는 GCP 프로젝트에 제어 영역 서비스,
+클러스터 API, vSphere 컨트롤러, Calico, BIG-IP 컨트롤러, Envoy 프록시, Connect, Anthos Config
+Management, Prometheus 및 Grafana 서비스, Istio 제어 영역, Docker에 대한 로그만 복제합니다.애플리케이션
+컨테이너 로그는 기본적으로 제외되지만, 선택적으로 사용 설정할 수 있습니다.
 
 **FEATURE:**
 
@@ -661,7 +662,7 @@ dev-snat-pool-name' 값을 구성하는 데 사용할 수 있습니다.
 
 **FIXED:**
 
-의도하지 않은 노드 삭제를 방지하기 위해 클러스터 크기 조정 작업이 개선되었습니다.
+의도하지 않은 노드 삭제를 방지하기 위해 클러스터 크기 조절 작업이 개선되었습니다.
 
 ##  2019년 2월 7일
 
@@ -864,7 +865,7 @@ PersistentVolumeClaim을 삭제하고 다시 만드세요.
 
 **ISSUE:**
 
-느린 디스크에서는 VM 생성이 시간 초과되어 배포가 실패할 수 있습니다. 이 경우 모든 리소스를 삭제하고 다시 시도하세요.
+속도가 느린 디스크에서는 VM 생성 시간이 초과되어 배포가 실패할 수 있습니다. 이 경우 모든 리소스를 삭제하고 다시 시도하세요.
 
 ##  2018년 12월 19일
 
@@ -1008,7 +1009,7 @@ EAP 2.0에서는 클러스터 업그레이드가 지원되지 않습니다.
 
 **ISSUE:**
 
-느린 디스크에서는 VM 생성이 시간 초과되어 배포가 실패할 수 있습니다. 이 경우 모든 리소스를 삭제하고 다시 시도하세요.
+속도가 느린 디스크에서는 VM 생성 시간이 초과되어 배포가 실패할 수 있습니다. 이 경우 모든 리소스를 삭제하고 다시 시도하세요.
 
 **ISSUE:**
 
