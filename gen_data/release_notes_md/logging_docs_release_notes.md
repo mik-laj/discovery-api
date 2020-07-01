@@ -12,6 +12,15 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/stackdriver-release-notes.xml `
 
+##  June 30, 2020
+
+**FEATURE:**
+
+Cloud Logging now contains a Logs Dashboard page that provides a high-level
+overview into the health of your systems running within a project. To learn
+more, see [ Logs Dashboard
+](https://cloud.google.com/logging/docs/view/dashboard) .
+
 ##  June 05, 2020
 
 **CHANGED:**
