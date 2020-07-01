@@ -39,8 +39,8 @@ Netzwerk angeben.
 
 **FEATURE:**
 
-Sie können jetzt Nutzercluster mit ` gkectl ` löschen. Siehe [ Löschen eines
-User-Clusters ](https://cloud.google.com/anthos/gke/docs/on-
+Sie können jetzt Nutzercluster mit ` gkectl ` löschen. Siehe [ Einen
+Nutzercluster löschen ](https://cloud.google.com/anthos/gke/docs/on-
 prem/archive/1.0/how-to/administration/deleting-a-user-cluster?hl=de) .
 
 ###  Änderungen
@@ -270,11 +270,11 @@ to/administration/diagnose?hl=de#capture_admin) -Befehl ist der Parameter `
 
 **CHANGED:**
 
-Am 8. Mai 2019 haben wir eine Änderung an Connect for Anthos eingeführt, dem
-Dienst, mit dem Sie über die Cloud Console mit Ihren lokalen GKE-Clustern
-interagieren können. Wenn Sie den neuen Connect for Anthos-Agent verwenden
-möchten, müssen Sie Ihre Cluster erneut bei der Cloud Console registrieren
-oder ein Upgrade auf Anthos GKE on -sein Beta-1.4 durchführen.
+Am 8. Mai 2019 haben wir eine Änderung an Connect eingeführt, dem Dienst, mit
+dem Sie über die Cloud Console mit Ihren GKE On-Prem-Clustern interagieren
+können. Wenn Sie den neuen Connect-Agent verwenden möchten, müssen Sie Ihre
+Cluster noch einmal in der Cloud Console registrieren oder ein Upgrade auf
+Anthos GKE On-Prem Beta-1.4 durchführen.
 
 Ihre GKE On-Prem-Cluster und die darauf ausgeführten Arbeitslasten
 funktionieren weiterhin ohne Unterbrechung. Ihre Cluster sind jedoch erst in
@@ -329,9 +329,9 @@ to/administration/upgrading-a-cluster?hl=de) :
 
 **ISSUE:**
 
-Aufgrund eines Problems kann der Connect for Anthos-Agent während eines
-Upgrades nicht auf die neue Version aktualisiert werden. Führen Sie nach dem
-Upgrade eines Clusters den folgenden Befehl aus, um dieses Problem zu umgehen:
+Aufgrund eines Problems kann der Connect-Agent während eines Upgrades nicht
+auf die neue Version aktualisiert werden. Führen Sie nach dem Upgrade eines
+Clusters den folgenden Befehl aus, um dieses Problem zu umgehen:
 
     
     
@@ -401,11 +401,11 @@ ssh-key-path ` jetzt optional.
 
 **CHANGED:**
 
-Am 8. Mai 2019 haben wir eine Änderung an Connect for Anthos eingeführt, dem
-Dienst, mit dem Sie über die Cloud Console mit Ihren lokalen GKE-Clustern
-interagieren können. Wenn Sie den neuen Connect for Anthos-Agent verwenden
-möchten, müssen Sie Ihre Cluster erneut bei der Cloud Console registrieren
-oder ein Upgrade auf Anthos GKE on -sein Beta-1.4 durchführen.
+Am 8. Mai 2019 haben wir eine Änderung an Connect eingeführt, dem Dienst, mit
+dem Sie über die Cloud Console mit Ihren GKE On-Prem-Clustern interagieren
+können. Wenn Sie den neuen Connect-Agent verwenden möchten, müssen Sie Ihre
+Cluster noch einmal in der Cloud Console registrieren oder ein Upgrade auf
+Anthos GKE On-Prem Beta-1.4 durchführen.
 
 Ihre GKE On-Prem-Cluster und die darauf ausgeführten Arbeitslasten
 funktionieren weiterhin ohne Unterbrechung. Ihre Cluster sind jedoch erst in
@@ -460,9 +460,9 @@ to/administration/upgrading-a-cluster?hl=de) :
 
 **ISSUE:**
 
-Aufgrund eines Problems kann der Connect for Anthos-Agent während eines
-Upgrades nicht auf die neue Version aktualisiert werden. Führen Sie nach dem
-Upgrade eines Clusters den folgenden Befehl aus, um dieses Problem zu umgehen:
+Aufgrund eines Problems kann der Connect-Agent während eines Upgrades nicht
+auf die neue Version aktualisiert werden. Führen Sie nach dem Upgrade eines
+Clusters den folgenden Befehl aus, um dieses Problem zu umgehen:
 
     
     
@@ -509,9 +509,9 @@ prem/archive/1.0/beta-1.3/how-to/installation/install?hl=de#enabling_ingress)
 
 **CHANGED:**
 
-Das Tool ` gkectl ` verwendet Minikube und KVM nicht mehr zum Bootstrapping.
-Dies bedeutet, dass Sie die verschachtelte Virtualisierung auf Ihrer VM für
-die Admin-Workstation nicht aktivieren müssen.
+Das ` gkectl ` -Tool verwendet für Bootstrapping nicht mehr Minikube oder KVM.
+Dies bedeutet, dass Sie die verschachtelte Virtualisierung nicht auf der VM
+Ihrer Administrator-Workstation aktivieren müssen.
 
 ###  Bekannte Probleme
 
@@ -532,9 +532,9 @@ die folgenden Änderungen:
 
 **FEATURE:**
 
-Lokale GKE-Cluster werden nun über [ Connect für Anthos
-](https://cloud.google.com/kubernetes-engine/connect?hl=de) automatisch mit
-Google verbunden.
+GKE On-Prem-Cluster stellen jetzt über [ Connect
+](https://cloud.google.com/kubernetes-engine/connect?hl=de) automatisch eine
+Verbindung zu Google her.
 
 **FEATURE:**
 
@@ -609,7 +609,7 @@ Bereitstellung von Multi-Master-User-Clustern hinzugefügt.
 
 **CHANGED:**
 
-Die [ Connect for Anthos-Dokumentation ](https://cloud.google.com/kubernetes-
+Die [ Connect-Dokumentation ](https://cloud.google.com/kubernetes-
 engine/connect?hl=de) wurde migriert.
 
 ###  Korrekturen
@@ -634,7 +634,7 @@ Wenn Sie eine aktive Instanz der Konfigurationsverwaltung haben:
     
         kubectl -n=nomos-system delete nomos --all
 
-  2. Stellen Sie sicher, dass der Namespace der Instanz keine Ressourcen enthält: 
+  2. Gewährleisten Sie, dass der Namespace der Instanz keine Ressourcen enthält: 
     
         kubectl -n nomos-system get all
 
@@ -646,13 +646,13 @@ Wenn Sie eine aktive Instanz der Konfigurationsverwaltung haben:
     
         kubectl delete crd nomos.addons.sigs.k8s.io
 
-  5. Alle Kube-Systemressourcen für den Betreiber löschen: 
+  5. Löschen Sie alle Kube-Systemressourcen für den Betreiber: 
     
         kubectl -n kube-system delete all -l k8s-app=nomos-operator
 
 Wenn Sie keine aktive Instanz der Konfigurationsverwaltung haben:
 
-  1. Löschen Sie den Configuration Management-Namespace: 
+  1. Löschen Sie den Konfigurationsmanager-Namespace: 
     
         kubectl delete ns nomos-system
 
@@ -660,7 +660,7 @@ Wenn Sie keine aktive Instanz der Konfigurationsverwaltung haben:
     
         kubectl delete crd nomos.addons.sigs.k8s.io
 
-  3. Alle Kube-System-Ressourcen für den Betreiber löschen: 
+  3. Löschen Sie alle Kube-Systemressourcen für den Betreiber: 
     
         kubectl -n kube-system delete all -l k8s-app=nomos-operator
 
@@ -703,11 +703,10 @@ management/docs?hl=de) Version 0.11.6 ist jetzt verfügbar.
 
 Stackdriver Logging ist jetzt auf jedem Knoten aktiviert. Standardmäßig
 repliziert der Logging-Agent Logs für Ihr GCP-Projekt nur für
-Steuerungsebenendienste, Cluster-API, vspare-Controller, Calico, BIG-IP-
-Controller, Envoy-Proxy, Connect for Anthos, Anthos Config Management,
-Prometheus und Grafana, Steuerungsebene von Istio und
-Docker.Anwendungscontainerlogs sind standardmäßig ausgeschlossen, können aber
-optional aktiviert werden.
+Steuerungsebenendienste, Cluster-API, vSphare-Controller, Calico, BIG-IP-
+Controller, Envoy-Proxy, Connect, Anthos Config Management, Prometheus- und
+Grafana-Dienste, Steuerungsebene von Istio und Docker.Anwendungscontainerlogs
+sind standardmäßig ausgeschlossen, können aber optional aktiviert werden.
 
 **FEATURE:**
 
@@ -893,17 +892,17 @@ deaktiviert.
 
 **CHANGED:**
 
-GKE on-prem führt jetzt die Kubernetes-Version aus **1.11.2-gke.19** .
+GKE On-Prem führt jetzt die Kubernetes-Version **1.11.2-gke.19** aus.
 
 **CHANGED:**
 
 Der Standard-Footprint für GKE On-Prem hat sich geändert:
 
-  * Der Mindestspeicherbedarf für User-Cluster-Knoten beträgt jetzt 8192 Millionen. 
+  * Die Mindestspeicheranforderung für Nutzerclusterknoten beträgt jetzt 8.192 Millionen. 
 
 **CHANGED:**
 
-GKE lokal führt jetzt die Minikube-Version **0.28.0** aus.
+GKE On-Prem führt jetzt die minikube-Version **0.28.0** aus.
 
 **CHANGED:**
 
@@ -1023,19 +1022,19 @@ dieser Version enthalten:
 
 **CHANGED:**
 
-GKE On-Premix 1.0 führt Kubernetes 1.11 aus.
+GKE On-Prem-Alphaversion 1.0 führt Kubernetes 1.11 aus.
 
 **CHANGED:**
 
 Der Standard-Footprint für GKE On-Prem hat sich geändert:
 
-  * Die Admin-Steuerungsebene führt drei Knoten aus, die 4 CPUs und 16 GB Speicher verwenden. 
+  * Die Administrator-Steuerungsebene führt drei Knoten aus, die 4 CPUs und 16 GB Arbeitsspeicher verwenden. 
   * Die Nutzersteuerungsebene führt einen Knoten mit 4 CPUs und 16 GB Arbeitsspeicher aus. 
-  * User-Cluster führen mindestens drei Knoten aus, die vier CPUs und 16 GB Speicher belegen. 
+  * Nutzercluster führen mindestens drei Knoten aus, die 4 CPUs und 16 GB Speicher belegen. 
 
 **CHANGED:**
 
-Unterstützung für die Prometheus-Einrichtung mit hoher Verfügbarkeit.
+Unterstützung für die Prometheus-Einrichtung mit Hochverfügbarkeit.
 
 **CHANGED:**
 
@@ -1043,7 +1042,7 @@ Unterstützung für benutzerdefinierte Alert Manager-Konfiguration.
 
 **CHANGED:**
 
-Prometheus aktualisiert von **2.3.2** an **2.4.3** .
+Prometheus wurde von **2.3.2** auf **2.4.3** aktualisiert.
 
 **CHANGED:**
 
@@ -1051,15 +1050,15 @@ Grafana wurde von **5.0.4** auf **5.3.4** aktualisiert.
 
 **CHANGED:**
 
-Aktualisierung von kube-state-metrics von **1.3.1** an **1.4.0** .
+Kube-state-metrics wurde von **1.3.1** auf **1.4.0** aktualisiert.
 
 **CHANGED:**
 
-Der Alert Manager wurde von **1.14.0** auf **1.15.2** aktualisiert.
+Alert Manager wurde von **1.14.0** auf **1.15.2** aktualisiert.
 
 **CHANGED:**
 
-node_exporter wurde von **1.15.2** auf **1.16.0** aktualisiert.
+Node_exporter wurde von **1.15.2** auf **1.16.0** aktualisiert.
 
 ###  Korrekturen
 
@@ -1113,7 +1112,7 @@ F5 BIG-IP-Controller wurde auf die neueste OSS-Version 1.7.0 aktualisiert.
 
 **CHANGED:**
 
-Zur Verbesserung der Stabilität bei langsamen vsphere-Maschinen beträgt das
+Zur Verbesserung der Stabilität bei langsamen vSphere-Maschinen beträgt das
 Zeitlimit für die Erstellung von Clustermaschinen jetzt 15 Minuten (vorher
 fünf Minuten).
 
