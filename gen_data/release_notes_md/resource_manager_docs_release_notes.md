@@ -13,6 +13,16 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloudresourcemanager-release-
 notes.xml `
 
+##  July 01, 2020
+
+**FEATURE:**
+
+The Organization Policy for [ restricting automatic IAM permission grants to
+new service accounts ](https://cloud.google.com/resource-
+manager/docs/organization-policy/restricting-service-
+accounts#disable_service_account_default_grants) has launched into general
+availability.
+
 ##  June 15, 2020
 
 **FEATURE:**
