@@ -16,6 +16,50 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/iam-release-notes.xml `
 
+##  July 01, 2020
+
+**CHANGED:**
+
+The organization policy constraint to [ prevent automatic role grants to Cloud
+IAM service accounts ](https://cloud.google.com/resource-
+manager/docs/organization-policy/restricting-service-
+accounts#disable_service_account_default_grants) is now [ generally available
+](https://cloud.google.com/products/#product-launch-stages) . To improve
+security, we strongly recommend that you enable this constraint.
+
+**CHANGED:**
+
+Starting on July 27, 2020, IAM policies will identify deleted members that are
+bound to a role. Deleted members have the prefix ` deleted: ` and the suffix `
+?uid=  numeric-id  ` .
+
+For example, if you delete the account for the user ` tamika@example.com ` ,
+and a policy binds that user to a role, the policy shows an identifier similar
+to ` deleted:user:tamika@example.com?uid=123456789012345678901 ` .
+
+For ` SetIamPolicy ` requests, you can use this new syntax starting on July
+27. For ` GetIamPolicy ` and ` SetIamPolicy ` responses, you might see the new
+prefix and suffix in some, but not all, responses until we finish rolling out
+the change. We expect to complete the rollout by July 31, 2020.
+
+See the documentation for a [ detailed example
+](https://cloud.google.com/iam/docs/policies#example-deleted-member) , as well
+as guidance on [ updating policies that contain deleted members
+](https://cloud.google.com/iam/docs/policies#handle-deleted-members) .
+
+**ISSUE:**
+
+Starting on July 27, 2020, if a binding in a policy refers to a deleted member
+(for example, ` deleted:user:tamika@example.com?uid=123456789012345678901 ` ),
+you cannot add a binding for a newly created member with the same name (in
+this case, ` user:tamika@example.com ` ). If you try to add a binding for the
+newly created member, IAM will apply the binding to the deleted member
+instead.
+
+To resolve this issue, see our guidance on [ updating policies that contain
+deleted members ](https://cloud.google.com/iam/docs/policies#handle-deleted-
+members) .
+
 ##  June 22, 2020
 
 **DEPRECATED:**
