@@ -12,6 +12,15 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/networkintelligence-release-
 notes.xml `
 
+##  July 01, 2020
+
+**FEATURE:**
+
+Connectivity Tests now supports [ running tests
+](https://cloud.google.com/network-intelligence-center/docs/connectivity-
+tests/how-to/running-connectivity-tests) from the **Network interface details
+screen** of a Compute Engine VM instance in the Google Cloud Console.
+
 ##  April 16, 2020
 
 **FEATURE:**
