@@ -29,16 +29,21 @@
     </span>
    </aside>
    <p>
-    Pour recevoir les derniers bulletins de sécurité, ajoutez l'URL de cette page à votre
+    Pour recevoir les dernières mises à jour concernant ce produit, ajoutez l'URL de cette page à votre
     <a class="external" href="https://wikipedia.org/wiki/Comparison_of_feed_aggregators">
      lecteur de flux
     </a>
     .
    </p>
    <section class="bulletins">
-    <h2 data-text="GCP-2020-004" id="gcp-2020-004" tabindex="0">
-     GCP-2020-004
+    <h2 data-text="GCP-2020-007" id="gcp-2020-007" tabindex="0">
+     GCP-2020-007
     </h2>
+    <strong>
+     Date de publication
+    </strong>
+    : 2020-06-01
+    <br/>
     <table>
      <thead>
       <tr>
@@ -57,6 +62,254 @@
       <tr>
        <td>
         <p>
+         La faille SSRF (Server Side Request Forgery, falsification de requête côté serveur)
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555">
+          CVE-2020-8555
+         </a>
+         a été récemment détectée dans Kubernetes. Elle permet à certains utilisateurs autorisés de divulguer jusqu'à 500 octets d'informations sensibles depuis le réseau hôte du plan de contrôle. Le plan de contrôle de Google Kubernetes Engine (GKE) utilise des contrôleurs Kubernetes. Il est donc concerné par cette faille. Nous vous recommandons de mettre à niveau le plan de contrôle en installant la dernière version du correctif, conformément à la procédure expliquée ci-dessous. Aucune mise à niveau de nœud n'est requise.
+         <br/>
+        </p>
+        <h4 data-text="Que dois-je faire ?" id="what-should-i-do" tabindex="0">
+         Que dois-je faire ?
+        </h4>
+        <p>
+         Les versions d'Anthos GKE On-Prem (GKE On-Prem) suivantes ou ultérieures contiennent le correctif de cette faille :
+        </p>
+        <ul>
+         <li>
+          Anthos 1.3.0
+         </li>
+        </ul>
+        <p>
+         Si vous utilisez une version précédente,
+         <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=fr">
+          mettez à niveau votre cluster existant
+         </a>
+         vers une version contenant le correctif.
+        </p>
+        <h4 data-text="Quelle faille ce correctif permet-il de résoudre ?" id="what-vulnerability-is-addressed-by-this-patch" tabindex="0">
+         Quelle faille ce correctif permet-il de résoudre ?
+        </h4>
+        <p>
+         Ce correctif réduit les risques liés à la faille CVE-2020-8555. La gravité de cette faille est évaluée comme moyenne pour GKE, car elle était difficile à exploiter en raison des diverses mesures de renforcement des plans de contrôle.
+        </p>
+        <p>
+         Un pirate informatique autorisé à créer un pod avec certains types de volumes intégrés (comme GlusterFS, Quobyte, StorageFS ou ScaleIO) ou à créer un objet StorageClass, peut activer l'envoi de requêtes
+         <code dir="ltr" translate="no">
+          GET
+         </code>
+         ou
+         <code dir="ltr" translate="no">
+          POST
+         </code>
+         par
+         <code dir="ltr" translate="no">
+          kube-controller-manager
+         </code>
+         <em>
+          sans
+         </em>
+         que le corps de la requête contrôlée par le pirate provienne du réseau hôte du maître. Ces types de volumes étant rarement employés sur GKE, leur utilisation récente constitue un bon signal de détection.
+        </p>
+        <p>
+         Associés à des moyens permettant de partager les résultats de la commande
+         <code dir="ltr" translate="no">
+          GET/POST
+         </code>
+         avec le pirate (via des journaux, par exemple), ils peuvent entraîner la divulgation d'informations sensibles. Nous avons mis à jour les pilotes de stockage concernés afin de supprimer les risques de telles divulgations.
+        </p>
+       </td>
+       <td>
+        <p>
+         Moyen
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555">
+          CVE-2020-8555
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-006" id="gcp-2020-006" tabindex="0">
+     GCP-2020-006
+    </h2>
+    <strong>
+     Date de publication
+    </strong>
+    : 2020-06-01
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Description
+       </th>
+       <th>
+        Niveau de gravité
+       </th>
+       <th>
+        Notes
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Kubernetes a divulgué une
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          faille
+         </a>
+         qui permet à un conteneur privilégié de rediriger le trafic de nœuds vers un autre conteneur. Le trafic TLS/SSH mutuel (entre le kubelet et le serveur d'API, ou en provenance d'applications via le protocole mTLS) ne peut pas être lu ni modifié par cette attaque. Tous les nœuds Google Kubernetes Engine (GKE) sont affectés par cette faille. Par conséquent, nous vous recommandons de procéder à la mise à niveau en installant la dernière version du correctif, conformément à la procédure expliquée ci-dessous.
+        </p>
+        <h4 data-text="Que dois-je faire ?" id="what-should-i-do_1" tabindex="0">
+         Que dois-je faire ?
+        </h4>
+        Pour réduire les risques liés à cette faille dans Anthos GKE On-Prem (GKE On-Prem),
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=fr">
+         mettez à niveau vos clusters
+        </a>
+        vers la version suivante ou ultérieure :
+        <ul>
+         <li>
+          Anthos 1.3.2
+         </li>
+        </ul>
+        <p>
+         Très peu de conteneurs nécessitent généralement
+         <code dir="ltr" translate="no">
+          CAP_NET_RAW
+         </code>
+         . Il faut donc la bloquer par défaut, ainsi que d'autres fonctionnalités puissantes, via
+         <a href="https://cloud.google.com/anthos-config-management/docs/concepts/policy-controller?hl=fr">
+          Anthos Policy Controller
+         </a>
+         ou en mettant à jour les spécifications du pod :
+        </p>
+        <ul>
+         <li>
+          Supprimez la fonctionnalité
+          <code dir="ltr" translate="no">
+           CAP_NET_RAW
+          </code>
+          des conteneurs :
+         </li>
+         <ul>
+         </ul>
+         <ul>
+          <li>
+           En utilisant Anthos Policy Controller/Gatekeeper, avec ce
+           <a class="external" href="https://github.com/open-policy-agent/gatekeeper/blob/master/library/pod-security-policy/capabilities/template.yaml">
+            modèle de contrainte
+           </a>
+           et en appliquant ce dernier. Exemple :
+          </li>
+          <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Dropping CAP_NET_RAW with Gatekeeper
+# (requires the K8sPSPCapabilities template)
+apiversion: constraints.gatekeeper.sh/v1beta1
+kind:  K8sPSPCapabilities
+metadata:
+  name: forbid-cap-net-raw
+spec:
+  match:
+    kinds:
+      - apiGroups: [""]
+      kinds: ["Pod"]
+    namespaces:
+      #List of namespaces to enforce this constraint on
+      - default
+    # If running gatekeeper &gt;= v3.1.0-beta.5,
+    # you can exclude namespaces rather than including them above.
+    excludedNamespaces:
+      - kube-system
+  parameters:
+    requiredDropCapabilities:
+      - "NET_RAW"
+</pre>
+         </ul>
+         <ul>
+          <li>
+           En mettant à jour les spécifications du pod :
+          </li>
+          <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Dropping CAP_NET_RAW from a Pod:
+apiVersion: v1
+kind: Pod
+metadata:
+  name: no-cap-net-raw
+spec:
+  containers:
+    -name: may-container
+     ...
+    securityContext:
+      capabilities:
+        drop:
+          -NET_RAW
+</pre>
+         </ul>
+        </ul>
+        <h4 data-text="Quelle faille ce correctif permet-il de résoudre ?" id="what-vulnerability-is-addressed-by-this-patch_1" tabindex="0">
+         Quelle faille ce correctif permet-il de résoudre ?
+        </h4>
+        <p>
+         Ce correctif réduit les risques liés à la faille suivante :
+        </p>
+        <p>
+         La faille décrite dans l'article
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          Problème Kubernetes 91507
+         </a>
+         est liée à la fonctionnalité
+         <code dir="ltr" translate="no">
+          CAP_NET_RAW
+         </code>
+         (qui fait partie de l'ensemble de fonctionnalités par défaut du conteneur). Elle configure de manière malveillante la pile IPv6 sur le nœud, et redirige le trafic de nœuds vers le conteneur contrôlé par le pirate. Cela permet au pirate d'intercepter ou de modifier le trafic en provenance du nœud ou à destination de celui-ci. Le trafic TLS/SSH mutuel (entre le kubelet et le serveur d'API, ou en provenance d'applications via le protocole mTLS) ne peut pas être lu ni modifié par cette attaque.
+        </p>
+       </td>
+       <td>
+        <p>
+         Moyen
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          Problème Kubernetes 91507
+         </a>
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-004" id="gcp-2020-004" tabindex="0">
+     GCP-2020-004
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Description
+       </th>
+       <th>
+        Niveau de gravité
+       </th>
+       <th>
+        Remarques
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
          La faille
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11254">
           CVE-2019-11254
@@ -68,9 +321,9 @@
          .
         </p>
         <p>
-         Vous pouvez limiter cette faille en limitant les clients ayant un accès réseau à vos serveurs d'API Kubernetes.
+         Vous pouvez réduire les risques liés à cette faille en limitant les clients disposant d'un accès réseau à vos serveurs d'API Kubernetes.
         </p>
-        <h4 data-text="Que dois-je faire ?" id="what-should-i-do" tabindex="0">
+        <h4 data-text="Que dois-je faire ?" id="what-should-i-do_2" tabindex="0">
          Que dois-je faire ?
         </h4>
         <p>
@@ -81,7 +334,7 @@
         </p>
         <ul>
          <li>
-          Anthos 1.3.0, qui exécute Kubernetes version 1.15.7-gke.32
+          Anthos 1.3.0, qui exécute la version 1.15.7-gke.32 de Kubernetes
          </li>
         </ul>
         <h4 data-text="Quelles failles ce correctif permet-il de résoudre ?" id="what-vulnerabilities-are-addressed-by-this-patch" tabindex="0">
@@ -94,11 +347,12 @@
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11254">
           CVE-2019-11254
          </a>
+         .
         </p>
        </td>
        <td>
         <p>
-         M
+         Moyen
         </p>
        </td>
        <td>
@@ -136,16 +390,16 @@
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11253">
           CVE-2019-11253
          </a>
-         a été récemment découverte dans Kubernetes. Elle permet à tout utilisateur autorisé d'effectuer des requêtes POST afin de réaliser une attaque par déni de service à distance sur un serveur d'API Kubernetes. Le comité de sécurité des produits (PSC, Product Security Committee) Kubernetes a publié des informations complémentaires sur cette faille. Pour les consulter,
+         a été récemment découverte dans Kubernetes. Elle permet à tout utilisateur autorisé d'effectuer des requêtes POST afin de réaliser une attaque par déni de service à distance sur un serveur d'API Kubernetes. Le comité de sécurité des produits (PSC, Product Security Committee) Kubernetes a publié des informations complémentaires sur cette faille. Pour les consulter, cliquez
          <a href="https://groups.google.com/forum/?hl=fr#!topic/kubernetes-security-announce/jk8polzSUxs">
-          cliquez ici
+          ici
          </a>
          .
         </p>
         <p>
          Vous pouvez atténuer cette faille en limitant les clients disposant d'un accès réseau à vos serveurs API Kubernetes.
         </p>
-        <h6 data-text="Que dois-je faire ?" id="what-should-i-do_1" tabindex="0">
+        <h6 data-text="Que dois-je faire ?" id="what-should-i-do_3" tabindex="0">
          Que dois-je faire ?
         </h6>
         <p>
@@ -160,10 +414,10 @@
         </p>
         <ul>
          <li>
-          Anthos 1.1.1, qui exécute Kubernetes version 1.13.7-gke 30
+          Anthos 1.1.1, qui exécute la version 1.13.7-gke.30 de Kubernetes
          </li>
         </ul>
-        <h6 data-text="Quelle faille ce correctif permet-il de résoudre ?" id="what-vulnerability-is-addressed-by-this-patch" tabindex="0">
+        <h6 data-text="Quelle faille ce correctif permet-il de résoudre ?" id="what-vulnerability-is-addressed-by-this-patch_2" tabindex="0">
          Quelle faille ce correctif permet-il de résoudre ?
         </h6>
         <p>
@@ -182,7 +436,7 @@
        <td>
         <p>
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11253">
-          CVE-2019-11091
+          CVE-2019-11253
          </a>
         </p>
        </td>
@@ -210,8 +464,8 @@
       <tr>
        <td>
         <p>
-         Nous avons récemment découvert et atténué une faille dans laquelle le proxy RBAC utilisé pour sécuriser les points de terminaison de surveillance n'autorisait pas correctement les utilisateurs.
-      Par conséquent, les statistiques provenant de certains composants sont disponibles pour les utilisateurs non autorisés à partir du réseau du cluster interne. Les composants suivants ont été affectés :
+         Nous avons récemment découvert et corrigé une faille de sécurité : le proxy RBAC sécurisant les points de terminaison de surveillance n'autorisait pas correctement les utilisateurs.
+      Par conséquent, les statistiques de certains composants étaient à la disposition des utilisateurs non autorisés au sein du réseau de cluster interne. Les composants suivants ont été affectés :
         </p>
         <ul>
          <li>
@@ -260,7 +514,7 @@
           </code>
          </li>
         </ul>
-        <h6 data-text="Que dois-je faire ?" id="what-should-i-do_2" tabindex="0">
+        <h6 data-text="Que dois-je faire ?" id="what-should-i-do_4" tabindex="0">
          Que dois-je faire ?
         </h6>
         <p>
@@ -321,7 +575,7 @@
          </a>
          à l'échelle d'un cluster comme s'il s'agissait d'objets présents dans tous les espaces de noms. Cela signifie que les comptes utilisateur et de service ne disposant que d'autorisations RBAC au niveau de l'espace de noms peuvent interagir avec des ressources personnalisées à l'échelle du cluster. Pour exploiter cette faille, le pirate informatique doit disposer de privilèges permettant d'accéder aux ressources de n'importe quel espace de noms.
         </p>
-        <h6 data-text="Que dois-je faire ?" id="what-should-i-do_3" tabindex="0">
+        <h6 data-text="Que dois-je faire ?" id="what-should-i-do_5" tabindex="0">
          Que dois-je faire ?
         </h6>
         <p>
@@ -335,7 +589,7 @@
          </a>
          , qui inclut le correctif de cette faille, dès que possible.
         </p>
-        <h6 data-text="Quelle faille ce correctif permet-il de résoudre ?" id="what-vulnerability-is-addressed-by-this-patch_1" tabindex="0">
+        <h6 data-text="Quelle faille ce correctif permet-il de résoudre ?" id="what-vulnerability-is-addressed-by-this-patch_3" tabindex="0">
          Quelle faille ce correctif permet-il de résoudre ?
         </h6>
         <p>
