@@ -50,6 +50,104 @@ Google Cloud service, see the
    </section>
    <section class="releases">
     <section class="releases">
+     <h2 data-text="July 01, 2020" id="July_01_2020" tabindex="0">
+      July 01, 2020
+     </h2>
+     <div class="release-changed" id="06118d59">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       The organization policy constraint to
+       <a href="https://cloud.google.com/resource-manager/docs/organization-policy/restricting-service-accounts#disable_service_account_default_grants">
+        prevent automatic role grants to Cloud IAM service accounts
+       </a>
+       is now
+       <a href="https://cloud.google.com/products/#product-launch-stages">
+        generally available
+       </a>
+       . To improve security, we strongly recommend that you enable this constraint.
+      </p>
+     </div>
+     <div class="release-changed" id="4230e902">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Starting on July 27, 2020, IAM policies will identify deleted members that are bound to a role. Deleted members have the prefix
+       <code dir="ltr" translate="no">
+        deleted:
+       </code>
+       and the suffix
+       <code dir="ltr" translate="no">
+        ?uid=
+        <var translate="no">
+         numeric-id
+        </var>
+       </code>
+       .
+      </p>
+      <p>
+       For example, if you delete the account for the user
+       <code dir="ltr" translate="no">
+        tamika@example.com
+       </code>
+       , and a policy binds that user to a role, the policy shows an identifier similar to
+       <code dir="ltr" translate="no">
+        deleted:user:tamika@example.com?uid=123456789012345678901
+       </code>
+       .
+      </p>
+      <p>
+       For
+       <code dir="ltr" translate="no">
+        SetIamPolicy
+       </code>
+       requests, you can use this new syntax starting on July 27. For
+       <code dir="ltr" translate="no">
+        GetIamPolicy
+       </code>
+       and
+       <code dir="ltr" translate="no">
+        SetIamPolicy
+       </code>
+       responses, you might see the new prefix and suffix in some, but not all, responses until we finish rolling out the change. We expect to complete the rollout by July 31, 2020.
+      </p>
+      <p>
+       See the documentation for a
+       <a href="https://cloud.google.com/iam/docs/policies#example-deleted-member">
+        detailed example
+       </a>
+       , as well as guidance on
+       <a href="https://cloud.google.com/iam/docs/policies#handle-deleted-members">
+        updating policies that contain deleted members
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-issue" id="47892775">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       Starting on July 27, 2020, if a binding in a policy refers to a deleted member (for example,
+       <code dir="ltr" translate="no">
+        deleted:user:tamika@example.com?uid=123456789012345678901
+       </code>
+       ), you cannot add a binding for a newly created member with the same name (in this case,
+       <code dir="ltr" translate="no">
+        user:tamika@example.com
+       </code>
+       ). If you try to add a binding for the newly created member, IAM will apply the binding to the deleted member instead.
+      </p>
+      <p>
+       To resolve this issue, see our guidance on
+       <a href="https://cloud.google.com/iam/docs/policies#handle-deleted-members">
+        updating policies that contain deleted members
+       </a>
+       .
+      </p>
+     </div>
      <h2 data-text="June 22, 2020" id="June_22_2020" tabindex="0">
       June 22, 2020
      </h2>
