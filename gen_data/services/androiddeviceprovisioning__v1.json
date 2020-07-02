@@ -838,7 +838,7 @@
                 },
                 "deviceIdentifier": {
                     "$ref": "DeviceIdentifier",
-                    "description": "Required. The device identifier of the device to claim."
+                    "description": "Required. Required. The device identifier of the device to claim."
                 },
                 "deviceMetadata": {
                     "$ref": "DeviceMetadata",
@@ -896,7 +896,7 @@
             "id": "Company",
             "properties": {
                 "adminEmails": {
-                    "description": "Optional. Input only. Email address of customer's users in the admin role.\nEach email address must be associated with a Google Account.",
+                    "description": "Optional. Email address of customer's users in the admin role.\nEach email address must be associated with a Google Account.",
                     "items": {
                         "type": "string"
                     },
@@ -916,7 +916,7 @@
                     "type": "string"
                 },
                 "ownerEmails": {
-                    "description": "Input only. Email address of customer's users in the owner role. At least\none `owner_email` is required. Each email address must be associated with a\nGoogle Account. Owners share the same access as admins but can also add,\ndelete, and edit your organization's portal users.",
+                    "description": "Required. Input only. Email address of customer's users in the owner role. At least\none `owner_email` is required. Each email address must be associated with a\nGoogle Account. Owners share the same access as admins but can also add,\ndelete, and edit your organization's portal users.",
                     "items": {
                         "type": "string"
                     },
@@ -1123,11 +1123,11 @@
                 },
                 "deviceIdentifier": {
                     "$ref": "DeviceIdentifier",
-                    "description": "The hardware IDs that identify a manufactured device. To learn more, read\n[Identifiers](/zero-touch/guides/identifiers)."
+                    "description": "The hardware IDs that identify a manufactured device. To learn more, read\n[Identifiers](https://developers.google.com/zero-touch/guides/identifiers)."
                 },
                 "deviceMetadata": {
                     "$ref": "DeviceMetadata",
-                    "description": "The metadata attached to the device. Structured as key-value pairs. To\nlearn more, read [Device metadata](/zero-touch/guides/metadata)."
+                    "description": "The metadata attached to the device. Structured as key-value pairs. To\nlearn more, read [Device\nmetadata](https://developers.google.com/zero-touch/guides/metadata)."
                 },
                 "name": {
                     "description": "Output only. The API resource name in the format\n`partners/[PARTNER_ID]/devices/[DEVICE_ID]`. Assigned by the server.",
@@ -1178,7 +1178,7 @@
             "type": "object"
         },
         "DeviceIdentifier": {
-            "description": "Encapsulates hardware and product IDs to identify a manufactured device.\nTo understand requirements on identifier sets, read\n[Identifiers](/zero-touch/guides/identifiers).",
+            "description": "Encapsulates hardware and product IDs to identify a manufactured device.\nTo understand requirements on identifier sets, read\n[Identifiers](https://developers.google.com/zero-touch/guides/identifiers).",
             "id": "DeviceIdentifier",
             "properties": {
                 "imei": {
@@ -1205,7 +1205,7 @@
             "type": "object"
         },
         "DeviceMetadata": {
-            "description": "Metadata entries that can be attached to a `Device`. To learn more, read\n[Device metadata](/zero-touch/guides/metadata).",
+            "description": "Metadata entries that can be attached to a `Device`. To learn more, read\n[Device metadata](https://developers.google.com/zero-touch/guides/metadata).",
             "id": "DeviceMetadata",
             "properties": {
                 "entries": {
@@ -1219,7 +1219,7 @@
             "type": "object"
         },
         "DeviceReference": {
-            "description": "A `DeviceReference` is an API abstraction that lets you supply a _device_\nargument to a method using one of the following identifier types:\n\n* A numeric API resource ID.\n* Real-world hardware IDs, such as IMEI number, belonging to the manufactured\n  device.\n\nMethods that operate on devices take a `DeviceReference` as a parameter type\nbecause it's more flexible for the caller. To learn more about device\nidentifiers, read [Identifiers](/zero-touch/guides/identifiers).",
+            "description": "A `DeviceReference` is an API abstraction that lets you supply a _device_\nargument to a method using one of the following identifier types:\n\n* A numeric API resource ID.\n* Real-world hardware IDs, such as IMEI number, belonging to the manufactured\n  device.\n\nMethods that operate on devices take a `DeviceReference` as a parameter type\nbecause it's more flexible for the caller. To learn more about device\nidentifiers, read\n[Identifiers](https://developers.google.com/zero-touch/guides/identifiers).",
             "id": "DeviceReference",
             "properties": {
                 "deviceId": {
@@ -1317,7 +1317,7 @@
             "properties": {
                 "deviceIdentifier": {
                     "$ref": "DeviceIdentifier",
-                    "description": "Required. The device identifier to search for."
+                    "description": "Required. Required. The device identifier to search for."
                 },
                 "limit": {
                     "description": "Required. The maximum number of devices to show in a page of results. Must\nbe between 1 and 100 inclusive.",
@@ -1553,7 +1553,7 @@
                 },
                 "deviceIdentifier": {
                     "$ref": "DeviceIdentifier",
-                    "description": "Required. Device identifier of the device."
+                    "description": "Required. Required. Device identifier of the device."
                 },
                 "deviceMetadata": {
                     "$ref": "DeviceMetadata",
@@ -1581,13 +1581,13 @@
             "id": "PartnerUnclaim",
             "properties": {
                 "deviceId": {
-                    "description": "Device ID of the device.",
+                    "description": "Required. Device ID of the device.",
                     "format": "int64",
                     "type": "string"
                 },
                 "deviceIdentifier": {
                     "$ref": "DeviceIdentifier",
-                    "description": "Device identifier of the device."
+                    "description": "Required. Device identifier of the device."
                 },
                 "sectionType": {
                     "description": "Required. The section type of the device's provisioning record.",
@@ -1604,12 +1604,12 @@
                     "type": "string"
                 },
                 "vacationModeDays": {
-                    "description": "The duration of the vacation unlock starting from when the request is\nprocessed. (1 day is treated as 24 hours)",
+                    "description": "Optional. The duration of the vacation unlock starting from when the request is\nprocessed. (1 day is treated as 24 hours)",
                     "format": "int32",
                     "type": "integer"
                 },
                 "vacationModeExpireTime": {
-                    "description": "The expiration time of the vacation unlock.",
+                    "description": "Optional. The expiration time of the vacation unlock.",
                     "format": "google-datetime",
                     "type": "string"
                 }
@@ -1692,13 +1692,13 @@
             "id": "UnclaimDeviceRequest",
             "properties": {
                 "deviceId": {
-                    "description": "The device ID returned by `ClaimDevice`.",
+                    "description": "Required. The device ID returned by `ClaimDevice`.",
                     "format": "int64",
                     "type": "string"
                 },
                 "deviceIdentifier": {
                     "$ref": "DeviceIdentifier",
-                    "description": "The device identifier you used when you claimed this device."
+                    "description": "Required. The device identifier you used when you claimed this device."
                 },
                 "sectionType": {
                     "description": "Required. The section type of the device's provisioning record.",
@@ -1771,13 +1771,13 @@
             "id": "UpdateMetadataArguments",
             "properties": {
                 "deviceId": {
-                    "description": "Device ID of the device.",
+                    "description": "Required. Device ID of the device.",
                     "format": "int64",
                     "type": "string"
                 },
                 "deviceIdentifier": {
                     "$ref": "DeviceIdentifier",
-                    "description": "Device identifier."
+                    "description": "Required. Device identifier."
                 },
                 "deviceMetadata": {
                     "$ref": "DeviceMetadata",
