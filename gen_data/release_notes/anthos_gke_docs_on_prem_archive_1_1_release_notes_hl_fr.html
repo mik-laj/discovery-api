@@ -173,18 +173,18 @@ path '*' resolves to multiple datacenters</pre>
       ISSUE:
      </strong>
      <p>
-      Dans la version 1.1.1-gke.2 de GKE On-Prem, un problème connu empêche la création de clusters configurés pour utiliser un registre Docker. Vous configurez un registre Docker en renseignant le champ
+      Dans GKE version 1.1.1-gke.2, un problème connu empêche la création de clusters configurés pour utiliser un registre Docker. Pour configurer un registre Docker, renseignez le champ
       <code dir="ltr" translate="no">
        privateregistryconfig
       </code>
-      du fichier de configuration de GKE On-Prem. Échec de la création du cluster avec une erreur telle que
+      du fichier de configuration GKE On-Prem. La création du cluster échoue et renvoie une erreur telle que
       <code dir="ltr" translate="no">
        Failed to create root cluster: could not create external client:
 could not create external control plane: docker run error: exit status 125
       </code>
      </p>
      <p>
-      Un correctif est prévu pour la version 1.1.2. En attendant, si vous souhaitez créer un cluster configuré pour utiliser un registre Docker, transmettez l'indicateur
+      Un correctif est prévu pour la version 1.1.2. En attendant, si vous souhaitez créer un cluster configuré pour utiliser un registre Docker, transmettez l'option
       <code dir="ltr" translate="no">
        --skip-validation-docker
       </code>
@@ -207,7 +207,7 @@ could not create external control plane: docker run error: exit status 125
       <code dir="ltr" translate="no">
        vcenter.datadisk
       </code>
-      , qui recherche le chemin d'accès à un fichier de disque de machine virtuelle (VMDK). Lors de l'installation, vous choisissez un nom pour le VMDK. Par défaut, GKE On-Prem crée un VMDK et l'enregistre à la racine de votre datastore vSphere.
+      , qui recherche un chemin d'accès à un fichier de disque de machine virtuelle (VMDK). Lors de l'installation, vous choisissez un nom pour le VMDK. Par défaut, GKE On-Prem crée une VMDK et l'enregistre à la racine de votre datastore vSphere.
      </p>
      <p>
       Si vous utilisez un datastore vSAN, vous devez créer un dossier dans le datastore dans lequel enregistrer le VMDK. Vous fournissez le chemin d'accès complet au champ. Par exemple,
@@ -217,8 +217,8 @@ could not create external control plane: docker run error: exit status 125
       - et GKE On-Prem enregistre le VMDK dans ce dossier.
      </p>
      <p>
-      Lors de la création du dossier, vSphere attribue au dossier un identifiant unique universel (UUID). Bien que vous fournissiez le chemin d'accès au dossier de la configuration GKE On-Prem, l'API vSphere recherche l'UUID du dossier.
-Actuellement, cette non-concordance peut entraîner l'échec de la création et des mises à jour du cluster.
+      Lorsque vous créez le dossier, vSphere lui attribue un identifiant unique universel (UUID). Bien que vous fournissiez le chemin d'accès au dossier à la configuration GKE On-Prem, l'API vSphere recherche l'UUID du dossier.
+Actuellement, cette incohérence peut entraîner l'échec de la création de clusters et des mises à niveau.
      </p>
      <p>
       Un correctif est prévu pour la version 1.1.2. En attendant, vous devez fournir l'UUID du dossier au lieu du chemin d'accès au dossier. Suivez les instructions de contournement actuellement disponibles dans les rubriques
@@ -262,19 +262,19 @@ Actuellement, cette non-concordance peut entraîner l'échec de la création et 
      </strong>
      <p>
       <strong>
-       Action requise :
+       Action requise
       </strong>
-      Cette version met à jour la version minimale de
+      : Cette version met à jour la version
       <code dir="ltr" translate="no">
        gcloud
       </code>
-      sur le poste de travail administrateur vers 256.0.0. Vous devez
+      minimale du poste de travail administrateur vers 256.0.0. Vous devez
       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/administration/upgrading-admin-workstation?hl=fr">
-       mettre à jour votre poste de travail d'administration
+       mettre à niveau votre poste de travail administrateur
       </a>
-      . Vous devez ensuite
+      . Ensuite, vous devez
       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/administration/upgrading-clusters?hl=fr">
-       mettre à jour vos clusters
+       mettre à niveau vos clusters
       </a>
       .
      </p>
@@ -284,13 +284,12 @@ Actuellement, cette non-concordance peut entraîner l'échec de la création et 
       FEATURE:
      </strong>
      <p>
-      La
       <a class="external" href="https://github.com/coreos/toolbox">
-       boîte à outils CoreOS
+       CoreOS Toolbox
       </a>
-      Open Source est désormais incluse dans tous les nœuds de cluster GKE On-Prem. Cette suite d'outils est utile pour résoudre les problèmes liés aux nœuds. Voir
+      Open Source est désormais inclus dans tous les nœuds de cluster GKE On-Prem. Cette suite d'outils est utile pour résoudre les problèmes liés aux nœuds. Consultez la page
       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/support/toolbox?hl=fr">
-       Déboguer des problèmes de nœud à l'aide de la boîte à outils
+       Déboguer les problèmes de nœuds avec CoreOS Toolbox
       </a>
       .
      </p>
@@ -399,7 +398,7 @@ Actuellement, cette non-concordance peut entraîner l'échec de la création et 
       FEATURE:
      </strong>
      <p>
-      La version par défaut de Kubernetes pour les nœuds de cluster est désormais la version 1.13.7-gke.20 (anciennement 1.12.7-gke.19).
+      La version par défaut de Kubernetes pour les nœuds de cluster est maintenant la version 1.13.7-gke.20 (anciennement 1.12.7-gke.19).
      </p>
     </div>
     <div class="release-feature">
@@ -426,9 +425,9 @@ Actuellement, cette non-concordance peut entraîner l'échec de la création et 
      </p>
      <ul>
       <li>
-       VMware DRS doit être activé. VMware DRS nécessite une édition de licence vSphere Enterprise Plus. Pour en savoir plus sur l'activation de DRS, consultez l'article
+       VMware DRS doit être activé. VMware DRS nécessite l'édition de licence vSphere Enterprise Plus. Pour en savoir plus sur l'activation de DRS, consultez l'article
        <a class="external" href="https://kb.vmware.com/s/article/1034280">
-        Activer VMware DRS dans un cluster
+        Activation de VMware DRS dans un cluster
        </a>
        .
       </li>
@@ -444,7 +443,7 @@ Actuellement, cette non-concordance peut entraîner l'échec de la création et 
        .
       </li>
       <li>
-       Trois hôtes physiques au moins sont disponibles.
+       Au moins trois hôtes physiques sont disponibles.
       </li>
      </ul>
      <p>
@@ -489,7 +488,7 @@ usercluster:
        Enregistrez le fichier.
       </li>
       <li>
-       Utilisez le fichier de configuration pour effectuer la mise à jour. Vos clusters sont mis à jour, mais la fonctionnalité n'est pas activée.
+       Utilisez le fichier de configuration pour effectuer la mise à niveau. Vos clusters sont mis à niveau, mais la fonctionnalité n'est pas activée.
       </li>
      </ol>
     </div>
@@ -512,7 +511,7 @@ usercluster:
      <p>
       Vous pouvez désormais utiliser
       <a class="external" href="https://github.com/container-storage-interface/spec">
-       Container Storage Interface (CSI) 1.0
+       Container Storage Interface (CSI) 1.0
       </a>
       comme classe de stockage pour vos clusters.
      </p>
@@ -524,7 +523,7 @@ usercluster:
      <p>
       Vous pouvez désormais
       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/administration/deleting-a-user-cluster?hl=fr#delete_unhealthy_cluster">
-       supprimer les clusters d'utilisateurs endommagés ou non opérationnels
+       supprimer les clusters utilisateur défectueux ou non opérationnels
       </a>
       avec
       <code dir="ltr" translate="no">
@@ -540,7 +539,7 @@ usercluster:
      <p>
       Vous pouvez désormais
       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/support/debug-toolbox?hl=fr">
-       diagnostiquer les problèmes de nœud
+       diagnostiquer les problèmes de nœuds
       </a>
       à l'aide de l'image de conteneur
       <code dir="ltr" translate="no">
@@ -608,7 +607,7 @@ usercluster:
       <code dir="ltr" translate="no">
        gkeplatformversion
       </code>
-      a été supprimé du fichier de configuration GKE On-Prem. Pour spécifier la version d'un cluster, fournissez le groupe de la version dans le champ
+      a été supprimé du fichier de configuration GKE On-Prem. Pour spécifier la version d'un cluster, indiquez le groupe de la version dans le champ
       <code dir="ltr" translate="no">
        bundlepath
       </code>
@@ -638,7 +637,7 @@ usercluster:
       CHANGED:
      </strong>
      <p>
-      Vous spécifiez maintenant un fichier de configuration dans
+      Désormais, vous spécifiez un fichier de configuration dans
       <code dir="ltr" translate="no">
        gkectl diagnose snapshot
       </code>
@@ -662,7 +661,7 @@ usercluster:
       CHANGED:
      </strong>
      <p>
-      Vous pouvez maintenant capturer le fichier de configuration de votre cluster avec
+      Désormais, vous capturez le fichier de configuration de votre cluster avec
       <code dir="ltr" translate="no">
        gkectl diagnose snapshot
       </code>
@@ -670,13 +669,13 @@ usercluster:
       <code dir="ltr" translate="no">
        --snapshot-config
       </code>
-      (précédemment
+      (anciennement
       <code dir="ltr" translate="no">
        --config
       </code>
-      ). Consultez la section
+      ). Consultez la page
       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/support/diagnose?hl=fr#diagnose_snapshot">
-       Diagnostic des problèmes liés aux clusters
+       Diagnostiquer des problèmes de cluster
       </a>
       .
      </p>
@@ -709,7 +708,7 @@ usercluster:
       ISSUE:
      </strong>
      <p>
-      Un problème connu empêche les clusters 1.0.11, 1.0.1-gke.5 et 1.0.2-gke.3 utilisant OIDC d'être mis à jour vers la version 1.1. Un correctif est prévu pour la version 1.1.1. Si vous avez configuré un cluster version 1.0.11, 1.0.1-gke.5 ou 1.0.2-gke.3 avec OIDC, vous ne pouvez pas le mettre à jour. Créez un cluster version 1.1 en suivant la procédure
+      Un problème connu empêche la mise à niveau des clusters des versions 1.0.11, 1.0.1-gke.5 et 1.0.2-gke.3 utilisant OIDC vers la version 1.1. Un correctif est prévu pour la version 1.1.1. Si vous avez configuré un cluster de version 1.0.11, 1.0.1-gke.5 ou 1.0.2-gke.3 avec OIDC, vous ne pouvez pas le mettre à niveau. Créez un cluster de version 1.1 en suivant les instructions de la section
       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/install?hl=fr">
        Installer GKE On-Prem
       </a>
@@ -828,7 +827,7 @@ usercluster:
      </strong>
      <p>
       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/security-bulletins?hl=fr#august-22-2019">
-       Correction d'une faille dans CVE-2019-11247
+       Correction d'une faille de CVE-2019-11247
       </a>
       .
      </p>
@@ -910,7 +909,7 @@ usercluster:
       CHANGED:
      </strong>
      <p>
-      Met à jour le contrôleur d'entrée Istho vers la version 1.2.2.
+      Met à jour le contrôleur Istio Ingress vers la version 1.2.2.
      </p>
     </div>
     <h3 data-text="Corrections" id="fixes_2" tabindex="0">
@@ -921,7 +920,7 @@ usercluster:
       FIXED:
      </strong>
      <p>
-      Corrige les problèmes de persistance des données de registre avec le registre Docker du poste de travail administrateur.
+      Correction des problèmes de persistance des données de registre avec le registre Docker du poste de travail administrateur.
      </p>
     </div>
     <div class="release-fixed">
@@ -944,8 +943,8 @@ usercluster:
     <p>
      GKE On-Prem est désormais accessible à tous. La version 1.0.10 inclut les modifications suivantes :
     </p>
-    <h3 data-text="Passer de la version bêta 1.4 à la version 1.0.10" id="beta-upgrade" tabindex="0">
-     Passage de la version bêta-1.4 à la version 1.0.10
+    <h3 data-text="Mettre à niveau de la version bêta 1.4 à la version 1.0.10" id="beta-upgrade" tabindex="0">
+     Mettre à niveau de la version bêta 1.4 à la version 1.0.10
     </h3>
     <p>
      Avant de mettre à jour vos clusters bêta vers la première version disponible généralement, exécutez la procédure décrite dans
@@ -981,16 +980,16 @@ usercluster:
        <code dir="ltr" translate="no">
         vsphereinsecure
        </code>
-       n'est plus acceptée.) Si vous mettez à jour vos clusters bêta 1.4 vers la version 1.0.10, vous devez fournir un certificat public d'autorité de certification racine vCenter de confiance dans le fichier de configuration de mise à jour.
+       n'est plus acceptée.) Si vous mettez à jour vos clusters bêta 1.4 vers la version 1.0.10, vous devez fournir un certificat public CA racine de confiance vCenter dans le fichier de configuration de la mise à jour.
       </p>
      </li>
      <li>
       <p>
-       Vous devez mettre à jour
+       Vous devez mettre à niveau
        <i>
         tous
        </i>
-       vos clusters en cours d'exécution. Pour que cette mise à jour réussisse, vos clusters ne peuvent pas être exécutés dans un état de version mixte.
+       vos clusters en cours d'exécution. Pour que cette mise à niveau réussisse, vos clusters ne peuvent pas s'exécuter dans une version mixte.
       </p>
      </li>
      <li>
@@ -1009,11 +1008,11 @@ usercluster:
       FEATURE:
      </strong>
      <p>
-      Vous pouvez désormais activer le
+      Vous pouvez maintenant activer le
       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/installation/manual-lb?hl=fr">
-       mode Équilibrage de charge manuel
+       mode d'équilibrage de charge manuel
       </a>
-      pour configurer un équilibreur de charge L4. Vous pouvez toujours choisir d'utiliser l'équilibreur de charge par défaut, F5 BIG-IP.
+      pour configurer un équilibreur de charge L4. Vous pouvez toujours choisir d'utiliser l'équilibreur de charge par défaut (F5 BIG-IP).
      </p>
     </div>
     <div class="release-feature">
@@ -1037,7 +1036,7 @@ usercluster:
       <code dir="ltr" translate="no">
        gkectl create-config
       </code>
-      , qui génère un fichier de configuration pour installer GKE On-Prem, mettre à jour les clusters existants et créer des clusters d'utilisateurs supplémentaires dans une installation existante. Cela remplace l'assistant d'installation et
+      , qui génère un fichier de configuration pour l'installation de GKE On-Prem, la mise à niveau de clusters existants et la création de clusters d'utilisateurs supplémentaires dans une installation existante. Cette opération remplace l'assistant d'installation et
       <code dir="ltr" translate="no">
        create-config.yaml
       </code>
@@ -1069,17 +1068,17 @@ usercluster:
       FEATURE:
      </strong>
      <p>
-      Ajoute un indicateur
+      Ajoute une option
       <code dir="ltr" translate="no">
        --validate-attestations
       </code>
-      facultatif à
+      facultative à
       <code dir="ltr" translate="no">
        gkectl prepare
       </code>
-      . Cet indicateur vérifie que les images de conteneur incluses dans votre poste de travail d'administration ont été conçues et signées par Google et sont prêtes pour le déploiement. Consultez la documentation mise à jour pour
+      . Cette option vérifie que les images de conteneur incluses dans votre poste de travail administrateur ont été créées et signées par Google et sont prêtes à être déployées. Consultez la documentation mise à jour pour
       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/installation/install?hl=fr#prepare">
-       installer GKE On-Prem
+       installer GKE On-Prem
       </a>
       .
      </p>
@@ -1092,11 +1091,11 @@ usercluster:
       CHANGED:
      </strong>
      <p>
-      Met à jour la version Kubernetes vers la version 1.12.7-gke.19. Vous pouvez désormais
+      Met à niveau Kubernetes vers la version 1.12.7-gke.19. Vous pouvez désormais
       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/administration/upgrading-clusters?hl=fr">
-       mettre à jour vos clusters
+       mettre à niveau vos clusters
       </a>
-      vers cette version. Vous ne pouvez plus créer de clusters exécutant Kubernetes version 1.11.2-gke.19.
+      vers cette version. Vous ne pouvez plus créer de clusters exécutant Kubernetes version 1.11.2-gke.19.
      </p>
      <p>
       Nous vous recommandons de mettre à jour votre cluster d'administrateur avant de mettre à jour vos clusters d'utilisateurs.
@@ -1115,18 +1114,18 @@ usercluster:
       CHANGED:
      </strong>
      <p>
-      La vérification du certificat vCenter est désormais requise. La valeur
+      La validation du certificat vCenter est désormais obligatoire. (La valeur
       <code dir="ltr" translate="no">
        vsphereinsecure
       </code>
-      n'est plus acceptée. Vous fournissez le certificat dans le champ
+      n'est plus acceptée.) Vous fournissez le certificat dans le champ
       <code dir="ltr" translate="no">
        cacertpath
       </code>
-      du fichier de configuration de GKE On-Prem.
+      du fichier de configuration GKE On-Prem.
      </p>
      <p>
-      Lorsqu'un client appelle le serveur vCenter, ce dernier doit lui prouver son identité en présentant un certificat. Ce certificat doit être signé par une autorité de certification (CA). Le certificat ne doit pas être autosigné.
+      Lorsqu'un client appelle le serveur vCenter, ce dernier doit prouver son identité au client en présentant un certificat. Ce certificat doit être signé par une autorité de certification (CA). Le certificat ne doit pas être autosigné.
      </p>
      <p>
       Si vous mettez à jour vos clusters bêta 1.4 vers la version 1.0.10, vous devez fournir un certificat public CA racine de confiance vCenter dans le fichier de configuration de la mise à jour.
@@ -1155,14 +1154,14 @@ usercluster:
       ISSUE:
      </strong>
      <p>
-      Vous ne pourrez peut-être pas mettre à jour les clusters bêta utilisant le
+      Vous ne pourrez peut-être pas mettre à niveau les clusters bêta qui utilisent le
       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/installation/manual-lb?hl=fr">
-       mode manuel d'équilibrage de la charge
+       mode d'équilibrage de charge manuel
       </a>
-      vers la version 1.0.10 de GKE On-Prem. Pour mettre à niveau et continuer à utiliser votre propre équilibreur de charge avec ces clusters, vous devez recréer les clusters.
+      vers GKE On-Prem version 10.10. Pour mettre à niveau et continuer à utiliser votre propre équilibreur de charge avec ces clusters, vous devez recréer les clusters.
      </p>
     </div>
-    <h2 data-text="24 mai 2019" id="may_24_2019" tabindex="0">
+    <h2 data-text="24 mai 2019" id="may_24_2019" tabindex="0">
      24 mai 2019
     </h2>
     <p>
@@ -1197,13 +1196,13 @@ usercluster:
       CHANGED:
      </strong>
      <p>
-      Le 8 mai 2019, nous avons apporté une modification à Connect for Anthos, le service qui vous permet d'interagir avec vos clusters GKE On-Prem à l'aide de Cloud Console. Pour utiliser le nouvel agent Connect for Anthos, vous devez enregistrer de nouveau vos clusters avec Cloud Console, ou vous devez passer à la version bêta1.4 d'Anthos GKE.
+      Le 8 mai 2019, nous avons apporté une modification à Connect, le service qui vous permet d'interagir avec vos clusters GKE On-Prem à l'aide de Cloud Console. Pour utiliser le nouvel agent Connect, vous devez enregistrer à nouveau vos clusters avec Cloud Console, ou vous devez passer à Anthos GKE On-Prem version bêta-1.4.
      </p>
      <p>
       Vos clusters GKE On-Prem et les charges de travail s'exécutant sur ces clusters continueront de fonctionner de manière ininterrompue. Toutefois, vos clusters ne seront pas visibles dans Cloud Console tant que vous ne les aurez pas réenregistrés ou mis à jour vers la version bêta 1.4.
      </p>
      <p>
-      Avant de vous réenregistrer ou d'effectuer la mise à jour, assurez-vous que votre compte de service dispose du rôle
+      Avant de vous réinscrire ou d'effectuer la mise à niveau, assurez-vous que votre compte de service dispose du rôle
       <code dir="ltr" translate="no">
        gkehub.connect
       </code>
@@ -1212,8 +1211,8 @@ usercluster:
      <p>
       Attribuez le rôle gkehub.connect à votre compte de service :
      </p>
-     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects add-iam-policy-binding <var class="edit">[PROJECT_ID]</var> \
-      --member="serviceAccount:<var class="edit">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit">[PROJECT_ID]</var>.iam.gserviceaccount.com" \
+     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects add-iam-policy-binding <var class="edit" translate="no">[PROJECT_ID]</var> \
+      --member="serviceAccount:<var class="edit" translate="no">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit" translate="no">[PROJECT_ID]</var>.iam.gserviceaccount.com" \
       --role="roles/gkehub.connect"</pre>
      <p>
       Si votre compte de service a l'ancien rôle
@@ -1222,8 +1221,8 @@ usercluster:
       </code>
       , supprimez l'ancien rôle :
      </p>
-     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects remove-iam-policy-binding <var class="edit">[PROJECT_ID]</var> \
-      --member="serviceAccount:<var class="edit">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit">[PROJECT_ID]</var>.iam.gserviceaccount.com" \
+     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects remove-iam-policy-binding <var class="edit" translate="no">[PROJECT_ID]</var> \
+      --member="serviceAccount:<var class="edit" translate="no">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit" translate="no">[PROJECT_ID]</var>.iam.gserviceaccount.com" \
       --role="roles/clusterregistry.connect"</pre>
      <p>
       Réenregistrez votre cluster ou passez à Anthos GKE On-Prem version bêta 1.4.
@@ -1235,11 +1234,11 @@ usercluster:
       </a>
       :
      </p>
-     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud alpha container hub register-cluster <var class="edit">[CLUSTER_NAME]</var> \
-      --context=<var class="edit">[USER_CLUSTER_CONTEXT]</var> \
-      --service-account-key-file=<var class="edit">[LOCAL_KEY_PATH]</var> \
-      --kubeconfig-file=<var class="edit">[KUBECONFIG_PATH]</var> \
-      --project=<var class="edit">[PROJECT_ID]</var>
+     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud alpha container hub register-cluster <var class="edit" translate="no">[CLUSTER_NAME]</var> \
+      --context=<var class="edit" translate="no">[USER_CLUSTER_CONTEXT]</var> \
+      --service-account-key-file=<var class="edit" translate="no">[LOCAL_KEY_PATH]</var> \
+      --kubeconfig-file=<var class="edit" translate="no">[KUBECONFIG_PATH]</var> \
+      --project=<var class="edit" translate="no">[PROJECT_ID]</var>
       </pre>
      <p>
       Pour
@@ -1258,7 +1257,7 @@ usercluster:
       ISSUE:
      </strong>
      <p>
-      Un problème empêche l'agent Connect for Anthos d'être mis à jour vers la nouvelle version lors d'une mise à niveau. Pour contourner ce problème, exécutez la commande suivante après la mise à jour d'un cluster :
+      Un problème empêche l'agent Connect d'être mis à jour vers la nouvelle version lors d'une mise à niveau. Pour contourner ce problème, exécutez la commande suivante après la mise à jour d'un cluster :
      </p>
      <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl delete pod gke-connect-agent-install -n gke-connect</pre>
     </div>
@@ -1273,13 +1272,13 @@ usercluster:
       ISSUE:
      </strong>
      <p>
-      Les clusters mis à jour de la version bêta 1.2 vers bêta 1.3 peuvent être affectés par un problème connu qui endommage le fichier de configuration du cluster et empêche les futures mises à jour. Ce problème affecte toutes les futures mises à jour du cluster.
+      Les clusters mis à niveau de la version bêta-1.2 à la version bêta-1.3 peuvent être affectés par un problème connu qui dégrade le fichier de configuration du cluster et empêche les futures mises à niveau du cluster. Ce problème affecte toutes les futures mises à niveau de clusters.
      </p>
      <p>
       Vous pouvez résoudre ce problème en supprimant et en recréant des clusters mis à jour de la version bêta 1.2 vers la version bêta 1.3.
      </p>
      <p>
-      Pour résoudre le problème sans supprimer ni recréer le cluster, vous devez réencoder et appliquer les secrets de chaque cluster. Procédez comme suit :
+      Pour résoudre le problème sans supprimer et recréer le cluster, vous devez réencoder et appliquer les codes secrets de chaque cluster. Procédez comme suit :
      </p>
      <ol>
       <li>
@@ -1297,12 +1296,12 @@ usercluster:
        </code>
        dans l'espace de noms de chaque cluster d'utilisateur :
        <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl get secret create-config -n kube-system -o jsonpath={.data.cfg} | base64 -d &gt; kube-system_create_secret.yaml</pre>
-       <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl get secret create-config -n <var>[USER_CLUSTER_NAME]</var> -o jsonpath={.data.cfg} | base64 -d &gt; <var>[USER_CLUSTER_NAME]</var>_create_secret.yaml</pre>
+       <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl get secret create-config -n <var translate="no">[USER_CLUSTER_NAME]</var> -o jsonpath={.data.cfg} | base64 -d &gt; <var translate="no">[USER_CLUSTER_NAME]</var>_create_secret.yaml</pre>
       </li>
       <li>
        Pour chaque cluster d'utilisateur, ouvrez le fichier
        <code dir="ltr" translate="no">
-        <var>
+        <var translate="no">
          [USER_CLUSTER_NAME]
         </var>
         _create_secret.yaml
@@ -1331,7 +1330,7 @@ usercluster:
       <li>
        Dans
        <code dir="ltr" translate="no">
-        <var>
+        <var translate="no">
          [USER_CLUSTER_NAME]
         </var>
         _create_secret.yaml
@@ -1351,9 +1350,9 @@ usercluster:
        d'origine. Enregistrez le fichier modifié.
       </li>
       <li>
-       Répétez les étapes 3 à 5 pour chaque fichier
+       Répétez les étapes 3 à 5 pour chaque fichier
        <code dir="ltr" translate="no">
-        <var>
+        <var translate="no">
          [USER_CLUSTER_NAME]
         </var>
         _create_secret.yaml
@@ -1367,7 +1366,7 @@ usercluster:
       <li>
        Encodez en base64 chaque fichier
        <code dir="ltr" translate="no">
-        <var>
+        <var translate="no">
          [USER_CLUSTER_NAME]
         </var>
         _create_secret.yaml
@@ -1377,7 +1376,7 @@ usercluster:
         kube-system_create_secret.yaml
        </code>
        :
-       <pre class="devsite-click-to-copy" dir="ltr" translate="no">cat <var>[USER_CLUSTER_NAME]</var>_create_secret.yaml | base64 &gt; <var>[USER_CLUSTER_NAME]</var>_create_secret_create_secret.b64</pre>
+       <pre class="devsite-click-to-copy" dir="ltr" translate="no">cat <var translate="no">[USER_CLUSTER_NAME]</var>_create_secret.yaml | base64 &gt; <var translate="no">[USER_CLUSTER_NAME]</var>_create_secret_create_secret.b64</pre>
        <pre class="devsite-click-to-copy" dir="ltr" translate="no">cat kube-system-cluster_create_secret.yaml | base64 &gt;kube-system-cluster_create_secret.b64</pre>
       </li>
       <li>
@@ -1386,7 +1385,7 @@ usercluster:
         data[cfg]
        </code>
        de chaque secret du cluster par le contenu du fichier correspondant :
-       <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl edit secret create-config -n <var class="edit">[USER_CLUSTER_NAME]</var>
+       <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl edit secret create-config -n <var class="edit" translate="no">[USER_CLUSTER_NAME]</var>
 
   # kubectl edit opens the file in the shell's default text editor
   # Open `first-user-cluster_create_secret.b64` in another editor, and replace
@@ -1394,9 +1393,9 @@ usercluster:
   # Make sure the copied string has no newlines in it!</pre>
       </li>
       <li>
-       Répétez l'étape 8 pour chaque secret
+       Répétez l'étape 8 pour chaque secret
        <code dir="ltr" translate="no">
-        <var>
+        <var translate="no">
          [USER_CLUSTER_NAME]
         </var>
         _create_secret.yaml
@@ -1408,7 +1407,7 @@ usercluster:
        .
       </li>
       <li>
-       Pour vous assurer que la mise à jour a réussi, répétez l'étape 1.
+       Pour vous assurer que la mise à jour a réussi, répétez l'étape 1.
       </li>
      </ol>
     </div>
@@ -1447,25 +1446,25 @@ usercluster:
       CHANGED:
      </strong>
      <p>
-      Le 8 mai 2019, nous avons apporté une modification à Connect for Anthos, le service qui vous permet d'interagir avec vos clusters GKE On-Prem à l'aide de Cloud Console. Pour utiliser le nouvel agent Connect for Anthos, vous devez enregistrer de nouveau vos clusters avec Cloud Console, ou vous devez passer à la version bêta1.4 d'Anthos GKE.
+      Le 8 mai 2019, nous avons apporté une modification à Connect, le service qui vous permet d'interagir avec vos clusters GKE On-Prem à l'aide de Cloud Console. Pour utiliser le nouvel agent Connect, vous devez enregistrer à nouveau vos clusters avec Cloud Console, ou vous devez passer à Anthos GKE On-Prem version bêta-1.4.
      </p>
      <p>
       Vos clusters GKE On-Prem et les charges de travail s'exécutant sur ces clusters continueront de fonctionner de manière ininterrompue. Toutefois, vos clusters ne seront pas visibles dans Cloud Console tant que vous ne les aurez pas réenregistrés ou mis à jour vers la version bêta 1.4.
      </p>
      <p>
-      Avant de vous réenregistrer ou de procéder à la mise à jour, assurez-vous que votre compte de service est associé au rôle gkehub.connect. En outre, si votre compte de service possède l'ancien rôle clusterregister.connect, il est recommandé de supprimer ce rôle.
+      Avant de vous réinscrire ou d'effectuer la mise à niveau, assurez-vous que votre compte de service dispose du rôle gkehub.connect. En outre, si votre compte de service dispose de l'ancien rôle clustercluster.connect, il est recommandé de supprimer ce rôle.
      </p>
      <p>
       Attribuez le rôle gkehub.connect à votre compte de service :
      </p>
-     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects add-iam-policy-binding <var class="edit">[PROJECT_ID]</var> \
-      --member="serviceAccount:<var class="edit">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit">[PROJECT_ID]</var>.iam.gserviceaccount.com" \
+     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects add-iam-policy-binding <var class="edit" translate="no">[PROJECT_ID]</var> \
+      --member="serviceAccount:<var class="edit" translate="no">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit" translate="no">[PROJECT_ID]</var>.iam.gserviceaccount.com" \
       --role="roles/gkehub.connect"</pre>
      <p>
       Si votre compte de service dispose de l'ancien rôle clusterregister.connect, supprimez l'ancien rôle :
      </p>
-     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects remove-iam-policy-binding <var class="edit">[PROJECT_ID]</var> \
-      --member="serviceAccount:<var class="edit">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit">[PROJECT_ID]</var>.iam.gserviceaccount.com" \
+     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects remove-iam-policy-binding <var class="edit" translate="no">[PROJECT_ID]</var> \
+      --member="serviceAccount:<var class="edit" translate="no">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit" translate="no">[PROJECT_ID]</var>.iam.gserviceaccount.com" \
       --role="roles/clusterregistry.connect"</pre>
      <p>
       Réenregistrez votre cluster ou passez à Anthos GKE On-Prem version bêta 1.4.
@@ -1477,11 +1476,11 @@ usercluster:
       </a>
       :
      </p>
-     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud alpha container hub register-cluster <var class="edit">[CLUSTER_NAME]</var> \
-      --context=<var class="edit">[USER_CLUSTER_CONTEXT]</var> \
-      --service-account-key-file=<var class="edit">[LOCAL_KEY_PATH]</var> \
-      --kubeconfig-file=<var class="edit">[KUBECONFIG_PATH]</var> \
-      --project=<var class="edit">[PROJECT_ID]</var>
+     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud alpha container hub register-cluster <var class="edit" translate="no">[CLUSTER_NAME]</var> \
+      --context=<var class="edit" translate="no">[USER_CLUSTER_CONTEXT]</var> \
+      --service-account-key-file=<var class="edit" translate="no">[LOCAL_KEY_PATH]</var> \
+      --kubeconfig-file=<var class="edit" translate="no">[KUBECONFIG_PATH]</var> \
+      --project=<var class="edit" translate="no">[PROJECT_ID]</var>
       </pre>
      <p>
       Pour
@@ -1500,7 +1499,7 @@ usercluster:
       ISSUE:
      </strong>
      <p>
-      Un problème empêche l'agent Connect for Anthos d'être mis à jour vers la nouvelle version lors d'une mise à niveau. Pour contourner ce problème, exécutez la commande suivante après la mise à jour d'un cluster :
+      Un problème empêche l'agent Connect d'être mis à jour vers la nouvelle version lors d'une mise à niveau. Pour contourner ce problème, exécutez la commande suivante après la mise à jour d'un cluster :
      </p>
      <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl delete pod gke-connect-agent-install -n gke-connect</pre>
     </div>
@@ -1522,7 +1521,7 @@ usercluster:
       <code dir="ltr" translate="no">
        gkectl diagnose snapshot
       </code>
-      est désormais associée à un indicateur
+      dispose désormais d'une option
       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/beta-1.3/how-to/administration/diagnose?hl=fr#performing_a_dry_run_for_a_snapshot">
        <code dir="ltr" translate="no">
         --dry-run
@@ -1540,7 +1539,7 @@ usercluster:
       <code dir="ltr" translate="no">
        gkectl diagnose snapshot
       </code>
-      accepte désormais quatre
+      est désormais compatible avec quatre
       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/beta-1.3/how-to/administration/diagnose?hl=fr#snapshot_scenarios">
        scénarios
       </a>
@@ -1556,7 +1555,7 @@ usercluster:
       <code dir="ltr" translate="no">
        gkectl diagnose snapshot
       </code>
-      accepte désormais les expressions régulières permettant de spécifier des espaces de noms.
+      accepte désormais les expressions régulières pour spécifier des espaces de noms.
      </p>
     </div>
     <h3 data-text="Modifications" id="changes_6" tabindex="0">
@@ -1567,7 +1566,7 @@ usercluster:
       CHANGED:
      </strong>
      <p>
-      Istio 1.1 est désormais le
+      Istio 1.1 est désormais le
       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/beta-1.3/how-to/administration/upgrading-a-cluster?hl=fr#upgrading_the_ingress_controller">
        contrôleur d'entrée
       </a>
@@ -1576,7 +1575,7 @@ usercluster:
       <code dir="ltr" translate="no">
        gke-system
       </code>
-      pour les clusters d'administrateur et d'utilisateur. Cela facilite la gestion TLS pour Ingress. Pour activer l'entrée ou la réactiver après une mise à jour, suivez les instructions de la section
+      pour les clusters d'administrateur et d'utilisateur. Cela facilite la gestion TLS pour l'entrée. Pour activer l'entrée ou la réactiver après une mise à niveau, suivez les instructions de la section
       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/beta-1.3/how-to/installation/install?hl=fr#enabling_ingress">
        Activer l'entrée
       </a>
@@ -1603,7 +1602,7 @@ usercluster:
       ISSUE:
      </strong>
      <p>
-      Le contrôleur d'entrée de GKE On-Prem utilise Istio 1.1 avec la découverte automatique de secrets. Cependant, l'agent de nœud pour la découverte de secret peut ne pas obtenir les mises à jour de secret après la suppression du secret. Évitez donc de supprimer les secrets. Si vous devez supprimer un secret et que Ingress TLS échoue ensuite, vous devez redémarrer manuellement le pod Ingress dans l'espace de noms gke-system.
+      Le contrôleur d'entrée de GKE On-Prem utilise Istio 1.1 avec la découverte automatique des secrets. Cependant, l'agent de nœud pour la découverte des secrets peut ne pas obtenir les mises à jour des secrets après leur suppression. Évitez donc de supprimer des secrets. Si vous devez supprimer un secret et que TLS d'entrée échoue par la suite, redémarrez manuellement le pod d'entrée dans l'espace de noms gke-system.
      </p>
     </div>
     <h2 data-text="11 avril 2019" id="april_11_2019" tabindex="0">
@@ -1620,9 +1619,9 @@ usercluster:
       FEATURE:
      </strong>
      <p>
-      Les clusters GKE On-Prem se reconnectent désormais automatiquement à Google à l'aide de
+      Les clusters GKE On-Prem se reconnectent automatiquement à Google à l'aide de
       <a href="https://cloud.google.com/kubernetes-engine/connect?hl=fr">
-       Connect for Anthos
+       Connect
       </a>
       .
      </p>
@@ -1678,11 +1677,11 @@ usercluster:
       FEATURE:
      </strong>
      <p>
-      Vous installez maintenant GKE On-Prem avec un
+      Désormais, vous installez GKE On-Prem avec
       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/beta-1.1/how-to/installation/getting-started?hl=fr#download_ova">
-       OVA (Open Virtual Appliance)
+       Open Virtual Appliance (OVA)
       </a>
-      , une image de machine virtuelle préconfigurée qui inclut plusieurs outils d'interface de ligne de commande. Cette modification facilite les installations et supprime une couche de virtualisation. Vous n'avez plus besoin d'exécuter
+      , une image de machine virtuelle préconfigurée comprenant plusieurs outils d'interface de ligne de commande. Cette modification facilite les installations et supprime une couche de virtualisation. Vous n'avez plus besoin d'exécuter
       <code dir="ltr" translate="no">
        gkectl
       </code>
@@ -1710,10 +1709,10 @@ usercluster:
       FEATURE:
      </strong>
      <p>
-      Vous pouvez maintenant configurer l'authentification pour les clusters à l'aide d'OIDC et d'ADFS.
-        Pour en savoir plus, consultez les pages
+      Vous pouvez désormais configurer l'authentification pour les clusters à l'aide d'OIDC et d'ADFS.
+        Pour en savoir plus, consultez les sections
       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/beta-1.1/how-to/security/oidc-adfs?hl=fr">
-       S'authentifier avec OIDC et ADFS
+       Procéder à l'authentification à l'aide d'OIDC et d'ADFS
       </a>
       et
       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/concepts/authentication?hl=fr">
@@ -1730,7 +1729,7 @@ usercluster:
       CHANGED:
      </strong>
      <p>
-      Vous devez maintenant utiliser la clé privée d'un cluster d'administrateur pour exécuter
+      Désormais, vous devez utiliser la clé privée d'un cluster d'administration pour exécuter
       <code dir="ltr" translate="no">
        gkectl diagnose snapshot
       </code>
@@ -1750,8 +1749,9 @@ usercluster:
       CHANGED:
      </strong>
      <p>
+      La
       <a href="https://cloud.google.com/kubernetes-engine/connect?hl=fr">
-       La documentation associée à Connect for Anthos
+       documentation sur Connect
       </a>
       a été migrée.
      </p>
@@ -1775,8 +1775,8 @@ usercluster:
       ISSUE:
      </strong>
      <p>
-      La gestion de la configuration de GKE On-Prem est passée de la version 0.11 à la version 0.13. Plusieurs composants du système ont été renommés.
-        Vous devez prendre quelques mesures pour nettoyer les ressources des versions précédentes et installer une nouvelle instance.
+      La gestion de la configuration de GKE Om-Prem a été mise à niveau de la version 0.11 à la version 0.13. Plusieurs composants du système ont été renommés.
+        Vous devez prendre des mesures pour nettoyer les ressources des versions précédentes et installer une nouvelle instance.
      </p>
      <p>
       Si vous disposez d'une instance active de gestion de la configuration :
@@ -1825,7 +1825,7 @@ usercluster:
       </li>
       <li>
        <p>
-        Supprimez le CRD :
+        Supprimez le CRD:
        </p>
        <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl delete crd nomos.addons.sigs.k8s.io</pre>
       </li>
@@ -1838,7 +1838,7 @@ usercluster:
      </ol>
     </div>
     <h2 data-text="12 mars 2019" id="march_12_2019" tabindex="0">
-     12 mars 2019
+     13 mars 2018
     </h2>
     <p>
      La version bêta 1.0.3 de G GKE On-Prem est désormais disponible. Cette version inclut les modifications suivantes :
@@ -1868,7 +1868,7 @@ usercluster:
       FEATURE:
      </strong>
      <p>
-      Vous pouvez maintenant exécuter
+      Vous pouvez désormais exécuter
       <code dir="ltr" translate="no">
        gkectl version
       </code>
@@ -1896,9 +1896,9 @@ usercluster:
       FEATURE:
      </strong>
      <p>
-      La version 0.11.6
+      La version 0.11.6 d'
       <a href="https://cloud.google.com/anthos-config-management/docs?hl=fr">
-       d'Anthos Config Management
+       Anthos Config Management
       </a>
       est désormais disponible.
      </p>
@@ -1908,7 +1908,7 @@ usercluster:
       FEATURE:
      </strong>
      <p>
-      Stackdriver Logging est désormais activé sur chaque nœud. Par défaut, l'agent de journalisation réplique les journaux dans votre projet GCP uniquement pour les services de plan de contrôle, l'API de cluster, le contrôleur vSphere, Calico, le contrôleur BIG-IP, le proxy Envoy, Connect for Anthos, Anthos Config Management, les services Prometheus et Grafana, le plan de contrôle Istio. et Docker.Les journaux de conteneur d'application sont exclus par défaut, mais peuvent être activés facultativement.
+      Stackdriver Logging est désormais activé sur chaque nœud. Par défaut, l'agent Logging réplique les journaux dans votre projet GCP pour les services du plan de contrôle, l'API de cluster, le contrôleur vSphere, Calico, le contrôleur BIG-IP, le proxy Envoy, Connect, Anthos Config Management, les services Prometheus et Grafana, le plan de contrôle Istio et Docker.Les journaux de conteneur d'application sont exclus par défaut, mais peuvent éventuellement être activés.
      </p>
     </div>
     <div class="release-feature">
@@ -1916,7 +1916,7 @@ usercluster:
       FEATURE:
      </strong>
      <p>
-      Stackdriver Prometheus Sidecar capture des métriques pour les mêmes composants que l'agent de journalisation.
+      Le side-car Stackdriver Prometheus capture les métriques des mêmes composants que l'agent Logging.
      </p>
     </div>
     <div class="release-feature">
@@ -1928,7 +1928,7 @@ usercluster:
       <a href="https://kubernetes.io/docs/concepts/services-networking/network-policies/">
        règles de réseau Kubernetes
       </a>
-      sont désormais acceptées.
+      sont désormais compatibles.
      </p>
     </div>
     <h3 data-text="Modifications" id="changes_9" tabindex="0">
@@ -1939,7 +1939,7 @@ usercluster:
       CHANGED:
      </strong>
      <p>
-      Vous pouvez désormais mettre à jour les blocs d'adresses IP dans la spécification de cluster pour développer la plage d'adresses IP d'un cluster donné.
+      Vous pouvez désormais mettre à jour les blocs d'adresses IP dans la spécification du cluster pour étendre la plage d'adresses IP d'un cluster donné.
      </p>
     </div>
     <div class="release-changed">
@@ -1947,7 +1947,7 @@ usercluster:
       CHANGED:
      </strong>
      <p>
-      Si les clusters que vous avez installés en version alpha ont été déconnectés de Google après la version bêta, vous devrez peut-être les reconnecter. Consultez la section
+      Si les clusters que vous avez installés en version alpha ont été déconnectés de Google après la phase bêta, vous devrez peut-être les connecter à nouveau. Consultez la section
       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/installation/registering-a-user-cluster?hl=fr">
        Enregistrer manuellement un cluster d'utilisateur
       </a>
@@ -1963,7 +1963,7 @@ usercluster:
       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/installation/getting-started?hl=fr">
        Premiers pas
       </a>
-      a été mise à jour avec des étapes pour activer votre compte de service et exécuter
+      a été mise à jour avec les étapes pour activer votre compte de service et exécuter
       <code dir="ltr" translate="no">
        gkectl prepare
       </code>
@@ -1978,7 +1978,7 @@ usercluster:
       <code dir="ltr" translate="no">
        gkectl diagnose snapshot
       </code>
-      collecte désormais uniquement les données de configuration et exclut les journaux.Cet outil permet de capturer les détails de votre environnement avant d'ouvrir une demande d'assistance.
+      ne collecte plus que les données de configuration et exclut les journaux.Cet outil permet de capturer les détails de votre environnement avant d'ouvrir une demande d'assistance.
      </p>
     </div>
     <div class="release-changed">
@@ -1986,10 +1986,10 @@ usercluster:
       CHANGED:
      </strong>
      <p>
-      Prise en charge de la configuration facultative du nom de pool SNAT pour F5 BIG-IP au moment de la création du cluster.
-        Cela peut être utilisé pour configurer la valeur "--vs-snat-pool-name" sur le
+      Compatibilité avec la configuration facultative du nom de pool SNAT pour F5 BIG-IP au moment de la création du cluster.
+        Cela permet de configurer la valeur "--vs-snat-pool-name" sur le
       <a class="external" href="https://clouddocs.f5.com/products/connectors/k8s-bigip-ctlr/v1.8/">
-       contrôleur F5 BIG-IP
+       contrôleur d'adresse F5 BIG-IP
       </a>
       .
      </p>
@@ -2055,7 +2055,7 @@ usercluster:
       CHANGED:
      </strong>
      <p>
-      Vous ne pouvez désormais fournir des noms d'hôte en minuscules qu'aux blocs
+      Vous ne pouvez désormais fournir que des noms d'hôte en minuscules aux blocs
       <code dir="ltr" translate="no">
        nodeip
       </code>
@@ -2230,11 +2230,11 @@ usercluster:
       </code>
      </p>
      <p>
-      Fournir le secret et les certificats TLS permet à
+      La spécification du secret et des certificats TLS permet à
       <code dir="ltr" translate="no">
        gkectl
       </code>
-      de configurer le TLS Ingress. HTTP n'est pas automatiquement désactivé lors de l'installation de TLS.
+      de configurer le TLS d'entrée. Le protocole HTTP n'est pas automatiquement désactivé avec l'installation TLS.
      </p>
     </div>
     <h3 data-text="Modifications" id="changes_12" tabindex="0">
@@ -2245,11 +2245,11 @@ usercluster:
       CHANGED:
      </strong>
      <p>
-      GKE On-Prem exécute maintenant la version de Kubernetes
+      GKE On-Prem exécute désormais la version
       <strong>
        1.11.2-gke.19
       </strong>
-      .
+      de Kubernetes.
      </p>
     </div>
     <div class="release-changed">
@@ -2257,7 +2257,7 @@ usercluster:
       CHANGED:
      </strong>
      <p>
-      L'empreinte par défaut de GKE On-Prem a changé :
+      L'empreinte par défaut de GKE On-Prem a changé:
      </p>
      <ul>
       <li>
@@ -2299,7 +2299,7 @@ usercluster:
       <code dir="ltr" translate="no">
        gkectl
       </code>
-      ne vous invite plus à fournir une configuration proxy par défaut.
+      ne vous invite plus à fournir une configuration de proxy par défaut.
      </p>
     </div>
     <div class="release-changed">
@@ -2366,7 +2366,7 @@ usercluster:
       <code dir="ltr" translate="no">
        gkectl diagnose snapshot
       </code>
-      peut maintenant prendre des instantanés des fichiers distants sur le nœud, des résultats des commandes à distance sur les nœuds et des requêtes Prometheus.
+      peut désormais prendre des instantanés de fichiers distants sur le nœud, des résultats de commandes à distance sur les nœuds et des requêtes Prometheus.
      </p>
     </div>
     <div class="release-changed">
@@ -2407,7 +2407,7 @@ usercluster:
       FIXED:
      </strong>
      <p>
-      Résolution du problème lié à l'extraction des identifiants F5 BIG-IP. Les identifiants sont désormais lus à partir d'un fichier d'identifiants au lieu d'utiliser des variables d'environnement.
+      Résolution du problème lié à l'extraction des identifiants F5 BIG-IP. Les identifiants sont désormais lus à partir d'un fichier d'identifiants au lieu d'utiliser des variables d'environnement.
      </p>
     </div>
     <h3 data-text="Problèmes connus" id="known-issues_11" tabindex="0">
@@ -2449,11 +2449,11 @@ usercluster:
       ISSUE:
      </strong>
      <p>
-      L'installation de PersistentVolumes peut échouer, ce qui génère l'erreur
+      L'installation des ressources PersistentVolume peut échouer et générer l'erreur
       <code dir="ltr" translate="no">
        devicePath is empty
       </code>
-      . Pour contourner ce problème, supprimez et recréer la valeur PersistentVolumeClaim associée.
+      . Pour contourner ce problème, supprimez et recréez l'objet PersistentVolumeClaim associé.
      </p>
     </div>
     <div class="release-issue">
@@ -2461,7 +2461,7 @@ usercluster:
       ISSUE:
      </strong>
      <p>
-      Le redimensionnement des blocs d'adresses IPAM en cas d'utilisation de l'allocation d'adresses IP statiques pour les nœuds n'est pas pris en charge dans la version alpha. Pour contourner ce problème, pensez à allouer plus d'adresses IP que nécessaire.
+      Le redimensionnement des blocs d'adresses IPAM si vous utilisez l'allocation d'adresses IP statiques pour les nœuds n'est pas disponible en version alpha. Pour contourner ce problème, envisagez d'allouer plus d'adresses IP que nécessaire.
      </p>
     </div>
     <div class="release-issue">
@@ -2469,7 +2469,7 @@ usercluster:
       ISSUE:
      </strong>
      <p>
-      Sur les disques lents, la création de la VM peut expirer et entraîner l'échec des déploiements. Dans ce cas, supprimez toutes les ressources et réessayez.
+      Sur les disques lents, la création de VM peut expirer et entraîner l'échec des déploiements. Dans ce cas, supprimez toutes les ressources et réessayez.
      </p>
     </div>
     <h2 data-text="19 décembre 2018" id="december_19_2018" tabindex="0">
@@ -2507,7 +2507,7 @@ usercluster:
       CHANGED:
      </strong>
      <p>
-      GKE On-Prem alpha 1.0 exécute Kubernetes 1.11.
+      GKE On-Prem alpha 1.0 exécute Kubernetes 1.11.
      </p>
     </div>
     <div class="release-changed">
@@ -2515,7 +2515,7 @@ usercluster:
       CHANGED:
      </strong>
      <p>
-      L'empreinte par défaut de GKE On-Prem a changé:
+      L'empreinte par défaut de GKE On-Prem a changé:
      </p>
      <ul>
       <li>
@@ -2534,7 +2534,7 @@ usercluster:
       CHANGED:
      </strong>
      <p>
-      Compatibilité avec la configuration de Prometheus à haute disponibilité
+      Compatibilité avec la configuration de Prometheus à haute disponibilité.
      </p>
     </div>
     <div class="release-changed">
@@ -2542,7 +2542,7 @@ usercluster:
       CHANGED:
      </strong>
      <p>
-      Compatibilité avec la configuration personnalisée d'Alert Manager
+      Compatibilité avec la configuration personnalisée d'Alert Manager.
      </p>
     </div>
     <div class="release-changed">
@@ -2550,7 +2550,7 @@ usercluster:
       CHANGED:
      </strong>
      <p>
-      Prometheus est passé de
+      Prometheus a été mis à niveau de
       <strong>
        2.3.2
       </strong>
@@ -2566,7 +2566,7 @@ usercluster:
       CHANGED:
      </strong>
      <p>
-      Grafana est passé de
+      Grafana a été mis à niveau de
       <strong>
        5.0.4
       </strong>
@@ -2598,7 +2598,7 @@ usercluster:
       CHANGED:
      </strong>
      <p>
-      Alert Manager est passé de
+      Alert Manager a été mis à niveau de
       <strong>
        1.14.0
       </strong>
@@ -2648,7 +2648,7 @@ usercluster:
       ISSUE:
      </strong>
      <p>
-      L'installation de PersistentVolumes peut échouer, ce qui génère l'erreur
+      L'installation des ressources PersistentVolume peut échouer et générer l'erreur
       <code dir="ltr" translate="no">
        devicePath is empty
       </code>
@@ -2660,7 +2660,7 @@ usercluster:
       ISSUE:
      </strong>
      <p>
-      Le redimensionnement des blocs d'adresses IPAM si vous utilisez l'allocation d'adresses IP statiques pour les nœuds n'est pas pris en charge dans la version alpha. Pour contourner ce problème, envisagez d'allouer plus d'adresses IP que nécessaire.
+      Le redimensionnement des blocs d'adresses IPAM si vous utilisez l'allocation d'adresses IP statiques pour les nœuds n'est pas disponible en version alpha. Pour contourner ce problème, envisagez d'allouer plus d'adresses IP que nécessaire.
      </p>
     </div>
     <div class="release-issue">
@@ -2730,7 +2730,7 @@ usercluster:
       CHANGED:
      </strong>
      <p>
-      Compatibilité avec GKE Connect
+      Compatibilité avec GKE Connect.
      </p>
     </div>
     <div class="release-changed">
@@ -2762,7 +2762,7 @@ usercluster:
       CHANGED:
      </strong>
      <p>
-      Prise en charge de l'allocation d'adresses IP statiques pour les nœuds lors du démarrage du cluster.
+      Prise en charge de l'allocation d'adresses IP statiques pour les nœuds lors du démarrage du cluster.
      </p>
     </div>
     <h3 data-text="Problèmes connus" id="known-issues_13" tabindex="0">
@@ -2797,7 +2797,7 @@ usercluster:
       ISSUE:
      </strong>
      <p>
-      Dans le cadre du processus d'amorçage de cluster, une instance de minikube éphémère est exécutée. La version minikube utilisée présente une faille de sécurité
+      Dans le cadre du processus d'amorçage du cluster, une instance minikube éphémère est exécutée. La version de Minikube utilisée présente une faille de sécurité
       <a class="external" href="https://github.com/kubernetes/minikube/issues/3208">
        CVE-2018-1002103
       </a>
