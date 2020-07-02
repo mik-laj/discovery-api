@@ -12,6 +12,81 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  July 01, 2020
+
+**BigQuery ML**
+
+**FEATURE:**
+
+BigQuery ML now supports time series models as a [ beta
+](https://cloud.google.com/products#product-launch-stages) release. For more
+information, see [ CREATE MODEL statement for time series models
+](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-
+syntax-create-time-series) .
+
+**Cloud Identity and Access Management**
+
+**CHANGED:**
+
+The organization policy constraint to [ prevent automatic role grants to Cloud
+IAM service accounts ](https://cloud.google.com/resource-
+manager/docs/organization-policy/restricting-service-
+accounts#disable_service_account_default_grants) is now [ generally available
+](https://cloud.google.com/products/#product-launch-stages) . To improve
+security, we strongly recommend that you enable this constraint.
+
+**CHANGED:**
+
+Starting on July 27, 2020, IAM policies will identify deleted members that are
+bound to a role. Deleted members have the prefix ` deleted: ` and the suffix `
+?uid=  numeric-id  ` .
+
+For example, if you delete the account for the user ` tamika@example.com ` ,
+and a policy binds that user to a role, the policy shows an identifier similar
+to ` deleted:user:tamika@example.com?uid=123456789012345678901 ` .
+
+For ` SetIamPolicy ` requests, you can use this new syntax starting on July
+27. For ` GetIamPolicy ` and ` SetIamPolicy ` responses, you might see the new
+prefix and suffix in some, but not all, responses until we finish rolling out
+the change. We expect to complete the rollout by July 31, 2020.
+
+See the documentation for a [ detailed example
+](https://cloud.google.com/iam/docs/policies#example-deleted-member) , as well
+as guidance on [ updating policies that contain deleted members
+](https://cloud.google.com/iam/docs/policies#handle-deleted-members) .
+
+**ISSUE:**
+
+Starting on July 27, 2020, if a binding in a policy refers to a deleted member
+(for example, ` deleted:user:tamika@example.com?uid=123456789012345678901 ` ),
+you cannot add a binding for a newly created member with the same name (in
+this case, ` user:tamika@example.com ` ). If you try to add a binding for the
+newly created member, IAM will apply the binding to the deleted member
+instead.
+
+To resolve this issue, see our guidance on [ updating policies that contain
+deleted members ](https://cloud.google.com/iam/docs/policies#handle-deleted-
+members) .
+
+**Network Intelligence Center**
+
+**FEATURE:**
+
+Connectivity Tests now supports [ running tests
+](https://cloud.google.com/network-intelligence-center/docs/connectivity-
+tests/how-to/running-connectivity-tests) from the **Network interface details
+screen** of a Compute Engine VM instance in the Google Cloud Console.
+
+**Resource Manager**
+
+**FEATURE:**
+
+The Organization Policy for [ restricting automatic IAM permission grants to
+new service accounts ](https://cloud.google.com/resource-
+manager/docs/organization-policy/restricting-service-
+accounts#disable_service_account_default_grants) has launched into general
+availability.
+
 ##  June 30, 2020
 
 **Anthos Service Mesh**
@@ -1861,60 +1936,4 @@ are now Generally Available on Memorystore for Redis.
 
 [ Hierarchical firewall policies ](https://cloud.google.com/vpc/docs/firewall-
 policies) are now available in **Beta** .
-
-##  June 02, 2020
-
-**BigQuery**
-
-**FEATURE:**
-
-You can now [ purchase BigQuery slots
-](https://cloud.google.com/bigquery/docs/reservations-workload-
-management#getting_started_with_reservations) using the ` bq ` command-line
-tool. BigQuery Reservations allows you to purchase slots to take advantage of
-BigQuery [ flat-rate pricing
-](https://cloud.google.com/bigquery/pricing#flat_rate_pricing) and allocate
-slots for workload management.
-
-**FEATURE:**
-
-A new GIS function, [ ` ST_Simplify `
-](https://cloud.google.com/bigquery/docs/reference/standard-
-sql/geography_functions#st_simplify) , is available. [ ` ST_Simplify `
-](https://cloud.google.com/bigquery/docs/reference/standard-
-sql/geography_functions#st_simplify) returns a simplified version of the input
-` GEOGRAPHY ` by replacing sections with straight lines.
-
-**CHANGED:**
-
-Standard SQL view definition bodies can now contain references without project
-qualifiers, as long as the view is created by the [ ` tables.insert `
-](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables/insert) REST
-API or is in the same project used to run the [ ` CREATE VIEW `
-](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-
-definition-language#create_view_statement) DDL query.
-
-**CHANGED:**
-
-Standard SQL [ user-defined function
-](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-
-functions) definition bodies can now contain references to tables and views.
-
-**Cloud Healthcare API**
-
-**FEATURE:**
-
-It is now possible to import DICOM data to and export DICOM data from BigQuery
-using the Healthcare Browser in the Cloud Console. You can also import DICOM
-data from Cloud Storage using the Healthcare Browser.
-
-**Cloud Load Balancing**
-
-**FEATURE:**
-
-You can now use a [ custom filter ](https://cloud.google.com/load-
-balancing/docs/negs/setting-up-zonal-
-negs#custom_filtering_when_you_list_endpoints_in_a_network_endpoint_group)
-when you list endpoints in a zonal network endpoint group. This feature is
-available as a Beta release.
 
