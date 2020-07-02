@@ -40,6 +40,160 @@ For a comprehensive list, see the
    </section>
    <section class="releases">
     <section class="releases">
+     <h2 data-text="July 01, 2020" id="July_01_2020" tabindex="0">
+      July 01, 2020
+     </h2>
+     <strong class="release-note-product-title">
+      BigQuery ML
+     </strong>
+     <div class="release-feature" id="ae214d54">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       BigQuery ML now supports time series models as a
+       <a href="https://cloud.google.com/products#product-launch-stages">
+        beta
+       </a>
+       release. For more information, see
+       <a href="https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create-time-series">
+        CREATE MODEL statement for time series models
+       </a>
+       .
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      Cloud Identity and Access Management
+     </strong>
+     <div class="release-changed" id="cbb8c048">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       The organization policy constraint to
+       <a href="https://cloud.google.com/resource-manager/docs/organization-policy/restricting-service-accounts#disable_service_account_default_grants">
+        prevent automatic role grants to Cloud IAM service accounts
+       </a>
+       is now
+       <a href="https://cloud.google.com/products/#product-launch-stages">
+        generally available
+       </a>
+       . To improve security, we strongly recommend that you enable this constraint.
+      </p>
+     </div>
+     <div class="release-changed" id="ef0a1cfd">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Starting on July 27, 2020, IAM policies will identify deleted members that are bound to a role. Deleted members have the prefix
+       <code dir="ltr" translate="no">
+        deleted:
+       </code>
+       and the suffix
+       <code dir="ltr" translate="no">
+        ?uid=
+        <var translate="no">
+         numeric-id
+        </var>
+       </code>
+       .
+      </p>
+      <p>
+       For example, if you delete the account for the user
+       <code dir="ltr" translate="no">
+        tamika@example.com
+       </code>
+       , and a policy binds that user to a role, the policy shows an identifier similar to
+       <code dir="ltr" translate="no">
+        deleted:user:tamika@example.com?uid=123456789012345678901
+       </code>
+       .
+      </p>
+      <p>
+       For
+       <code dir="ltr" translate="no">
+        SetIamPolicy
+       </code>
+       requests, you can use this new syntax starting on July 27. For
+       <code dir="ltr" translate="no">
+        GetIamPolicy
+       </code>
+       and
+       <code dir="ltr" translate="no">
+        SetIamPolicy
+       </code>
+       responses, you might see the new prefix and suffix in some, but not all, responses until we finish rolling out the change. We expect to complete the rollout by July 31, 2020.
+      </p>
+      <p>
+       See the documentation for a
+       <a href="https://cloud.google.com/iam/docs/policies#example-deleted-member">
+        detailed example
+       </a>
+       , as well as guidance on
+       <a href="https://cloud.google.com/iam/docs/policies#handle-deleted-members">
+        updating policies that contain deleted members
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-issue" id="1959dc91">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       Starting on July 27, 2020, if a binding in a policy refers to a deleted member (for example,
+       <code dir="ltr" translate="no">
+        deleted:user:tamika@example.com?uid=123456789012345678901
+       </code>
+       ), you cannot add a binding for a newly created member with the same name (in this case,
+       <code dir="ltr" translate="no">
+        user:tamika@example.com
+       </code>
+       ). If you try to add a binding for the newly created member, IAM will apply the binding to the deleted member instead.
+      </p>
+      <p>
+       To resolve this issue, see our guidance on
+       <a href="https://cloud.google.com/iam/docs/policies#handle-deleted-members">
+        updating policies that contain deleted members
+       </a>
+       .
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      Network Intelligence Center
+     </strong>
+     <div class="release-feature" id="770e0ed9">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Connectivity Tests now supports
+       <a href="https://cloud.google.com/network-intelligence-center/docs/connectivity-tests/how-to/running-connectivity-tests">
+        running tests
+       </a>
+       from the
+       <strong>
+        Network interface details screen
+       </strong>
+       of a Compute Engine VM instance in the Google Cloud Console.
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      Resource Manager
+     </strong>
+     <div class="release-feature" id="acebd0fd">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       The Organization Policy for
+       <a href="https://cloud.google.com/resource-manager/docs/organization-policy/restricting-service-accounts#disable_service_account_default_grants">
+        restricting automatic IAM permission grants to new service accounts
+       </a>
+       has launched into general availability.
+      </p>
+     </div>
      <h2 data-text="June 30, 2020" id="June_30_2020" tabindex="0">
       June 30, 2020
      </h2>
@@ -4424,114 +4578,6 @@ spec:
         Beta
        </strong>
        .
-      </p>
-     </div>
-     <h2 data-text="June 02, 2020" id="June_02_2020" tabindex="0">
-      June 02, 2020
-     </h2>
-     <strong class="release-note-product-title">
-      BigQuery
-     </strong>
-     <div class="release-feature" id="5cd95207">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       You can now
-       <a href="https://cloud.google.com/bigquery/docs/reservations-workload-management#getting_started_with_reservations">
-        purchase BigQuery slots
-       </a>
-       using the
-       <code dir="ltr" translate="no">
-        bq
-       </code>
-       command-line tool. BigQuery Reservations allows you to purchase slots to take advantage of BigQuery
-       <a href="https://cloud.google.com/bigquery/pricing#flat_rate_pricing">
-        flat-rate pricing
-       </a>
-       and allocate slots for workload management.
-      </p>
-     </div>
-     <div class="release-feature" id="42b0c3c9">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       A new GIS function,
-       <a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_simplify">
-        <code dir="ltr" translate="no">
-         ST_Simplify
-        </code>
-       </a>
-       , is available.
-       <a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_simplify">
-        <code dir="ltr" translate="no">
-         ST_Simplify
-        </code>
-       </a>
-       returns a simplified version of the input
-       <code dir="ltr" translate="no">
-        GEOGRAPHY
-       </code>
-       by replacing sections with straight lines.
-      </p>
-     </div>
-     <div class="release-changed" id="08b1db29">
-      <strong>
-       CHANGED:
-      </strong>
-      <p>
-       Standard SQL view definition bodies can now contain references without project qualifiers, as long as the view is created by the
-       <a href="https://cloud.google.com/bigquery/docs/reference/rest/v2/tables/insert">
-        <code dir="ltr" translate="no">
-         tables.insert
-        </code>
-       </a>
-       REST API or is in the same project used to run the
-       <a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_view_statement">
-        <code dir="ltr" translate="no">
-         CREATE VIEW
-        </code>
-       </a>
-       DDL query.
-      </p>
-     </div>
-     <div class="release-changed" id="cb1bee53">
-      <strong>
-       CHANGED:
-      </strong>
-      <p>
-       Standard SQL
-       <a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions">
-        user-defined function
-       </a>
-       definition bodies can now contain references to tables and views.
-      </p>
-     </div>
-     <strong class="release-note-product-title">
-      Cloud Healthcare API
-     </strong>
-     <div class="release-feature" id="6d72e6b7">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       It is now possible to import DICOM data to and export DICOM data from BigQuery using the Healthcare Browser in the Cloud Console. You can also import DICOM data from Cloud Storage using the Healthcare Browser.
-      </p>
-     </div>
-     <strong class="release-note-product-title">
-      Cloud Load Balancing
-     </strong>
-     <div class="release-feature" id="5ab1be04">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       You can now use a
-       <a href="https://cloud.google.com/load-balancing/docs/negs/setting-up-zonal-negs#custom_filtering_when_you_list_endpoints_in_a_network_endpoint_group">
-        custom filter
-       </a>
-       when you list endpoints in a zonal network endpoint group. This feature is available as a Beta release.
       </p>
      </div>
     </section>
