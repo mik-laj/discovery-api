@@ -4,18 +4,18 @@
 공지사항을 확인하는 것이 좋습니다. 주요 변경사항은 다음 항목을 통해서도 공지됩니다.
 
   * [ Dialogflow Enterprise 메일링 리스트 ](https://groups.google.com/forum/?hl=ko#!forum/dialogflow-enterprise-edition-users)
-  * [ 클라우드 블로그: AI 및 머신러닝 ](https://cloud.google.com/blog/products/ai-machine-learning?hl=ko)
+  * [ Cloud 블로그: AI 및 머신러닝 ](https://cloud.google.com/blog/products/ai-machine-learning?hl=ko)
 
 **참고:** 2017년 11월 16일 이전의 [ 과거 출시 노트
 ](https://cloud.google.com/dialogflow/docs/data/historic-release-
 notes.pdf?hl=ko) 도 읽을 수 있습니다.
 
-[ Google Cloud 출시 노트 ](https://cloud.google.com/release-notes?hl=ko) 페이지에서 모든
-Google Cloud의 최신 제품 업데이트를 확인할 수 있습니다.
+[ Google Cloud 출시 노트 ](https://cloud.google.com/release-notes?hl=ko) 페이지에서
+Google Cloud의 모든 최신 제품 업데이트를 확인할 수 있습니다.
 
 최신 제품 업데이트를 받으려면 [ 피드 리더
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) 에 이 페이지의 URL을
-추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/dialogflow-
+추가하거나 다음의 피드 URL을 직접 추가하세요. ` https://cloud.google.com/feeds/dialogflow-
 release-notes.xml `
 
 ##  June 29, 2020
