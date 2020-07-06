@@ -2485,6 +2485,9 @@
                 "privateClusterConfig": {
                     "$ref": "PrivateClusterConfig"
                 },
+                "releaseChannel": {
+                    "$ref": "ReleaseChannel"
+                },
                 "resourceLabels": {
                     "additionalProperties": {
                         "type": "string"
@@ -2607,6 +2610,9 @@
                 },
                 "desiredNodeVersion": {
                     "type": "string"
+                },
+                "desiredReleaseChannel": {
+                    "$ref": "ReleaseChannel"
                 },
                 "desiredResourceUsageExportConfig": {
                     "$ref": "ResourceUsageExportConfig"
@@ -3139,6 +3145,9 @@
                     },
                     "type": "array"
                 },
+                "bootDiskKmsKey": {
+                    "type": "string"
+                },
                 "diskSizeGb": {
                     "format": "int32",
                     "type": "integer"
@@ -3484,6 +3493,45 @@
             },
             "type": "object"
         },
+        "ReleaseChannel": {
+            "id": "ReleaseChannel",
+            "properties": {
+                "channel": {
+                    "enum": [
+                        "UNSPECIFIED",
+                        "RAPID",
+                        "REGULAR",
+                        "STABLE"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ReleaseChannelConfig": {
+            "id": "ReleaseChannelConfig",
+            "properties": {
+                "channel": {
+                    "enum": [
+                        "UNSPECIFIED",
+                        "RAPID",
+                        "REGULAR",
+                        "STABLE"
+                    ],
+                    "type": "string"
+                },
+                "defaultVersion": {
+                    "type": "string"
+                },
+                "validVersions": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "ReservationAffinity": {
             "id": "ReservationAffinity",
             "properties": {
@@ -3577,6 +3625,12 @@
         "ServerConfig": {
             "id": "ServerConfig",
             "properties": {
+                "channels": {
+                    "items": {
+                        "$ref": "ReleaseChannelConfig"
+                    },
+                    "type": "array"
+                },
                 "defaultClusterVersion": {
                     "type": "string"
                 },
