@@ -9,7 +9,7 @@ Cloud release notes ](/release-notes) page.
 
 ##  June 30, 2020
 
-  * [ Google Cloud VMware Engine ](https://cloud.google.com/vmware-engine/) is **generally available** . This service delivers a fully managed VMware platform stack—VMware ESXi, vCenter, vSAN, NSX-T, and HCX—in a dedicated environment on Google Cloud's infrastructure to support your enterprise production workloads. Using VMware Engine, you can bring your on-premises workloads to Google Cloud by connecting to a dedicated VMware environment.   
+  * [ Google Cloud VMware Engine ](/vmware-engine) is **generally available** . This service delivers a fully managed VMware platform stack—VMware ESXi, vCenter, vSAN, NSX-T, and HCX—in a dedicated environment on Google Cloud's infrastructure to support your enterprise production workloads. Using VMware Engine, you can bring your on-premises workloads to Google Cloud by connecting to a dedicated VMware environment.   
   
 You can run the service in the ` us-east4 ` (Ashburn, Northern Virginia) and `
 us-west2 ` (Los Angeles, California) regions.  
