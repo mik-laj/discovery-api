@@ -18,6 +18,14 @@ Google Cloud의 모든 최신 제품 업데이트를 확인할 수 있습니다.
 추가하거나 다음의 피드 URL을 직접 추가하세요. ` https://cloud.google.com/feeds/dialogflow-
 release-notes.xml `
 
+##  July 06, 2020
+
+**FEATURE:**
+
+The Dialogflow Console has been upgraded with an improved [ Analytics page
+](https://cloud.google.com/dialogflow/docs/analytics?hl=ko) (Beta) that
+provides new metrics and data views.
+
 ##  June 29, 2020
 
 **DEPRECATED:**
