@@ -22,6 +22,14 @@ página a tu [ lector de feeds
 directamente la URL del feed: ` https://cloud.google.com/feeds/dialogflow-
 release-notes.xml `
 
+##  July 06, 2020
+
+**FEATURE:**
+
+The Dialogflow Console has been upgraded with an improved [ Analytics page
+](https://cloud.google.com/dialogflow/docs/analytics?hl=es_419) (Beta) that
+provides new metrics and data views.
+
 ##  June 29, 2020
 
 **DEPRECATED:**
