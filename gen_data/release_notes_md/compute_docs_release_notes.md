@@ -14,6 +14,14 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/compute-release-notes.xml `
 
+##  July 06, 2020
+
+**FEATURE:**
+
+E2 machine types now offer up to 32 vCPUs. See [ E2 machine types
+](https://cloud.google.com/compute/docs/machine-types#e2_machine_types) for
+more information.
+
 ##  June 26, 2020
 
 **FEATURE:**
