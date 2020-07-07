@@ -16,6 +16,15 @@ URL directly: ` https://cloud.google.com/feeds/vpc-sc-release-notes.xml `
 
 **FEATURE:**
 
+General availability of dry run mode for service perimeters.
+
+This release introduces dry run configurations for your service perimeters,
+allowing you to test changes to perimeters before enforcing the changes. For
+more information, [ read about dry run mode ](https://cloud.google.com/vpc-
+service-controls/docs/dry-run-mode) .
+
+**FEATURE:**
+
 Beta release of the VPC Service Controls Troubleshooter.
 
 The VPC Service Controls Troubleshooter allows you to use the unique
