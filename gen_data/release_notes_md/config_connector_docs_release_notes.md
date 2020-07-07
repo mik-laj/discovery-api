@@ -13,6 +13,23 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/configconnector-release-
 notes.xml `
 
+##  July 01, 2020
+
+**FEATURE:**
+
+Config Connector now supports [ ` --server-dry-run `
+](https://kubernetes.io/blog/2019/01/14/apiserver-dry-run-and-kubectl-diff/)
+for resource CRDs.
+
+**FIXED:**
+
+Fix a bug for the BigtableInstance resource that causes constant
+reconciliation.
+
+**CHANGED:**
+
+Deprecate BigtableInstance's spec.deletionProtection field.
+
 ##  June 25, 2020
 
 **FEATURE:**
