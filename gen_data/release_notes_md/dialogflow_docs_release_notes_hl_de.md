@@ -21,6 +21,14 @@ Feedreader ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
 einfügen oder die Feed-URL direkt hinzufügen: `
 https://cloud.google.com/feeds/dialogflow-release-notes.xml ` .
 
+##  July 06, 2020
+
+**FEATURE:**
+
+The Dialogflow Console has been upgraded with an improved [ Analytics page
+](https://cloud.google.com/dialogflow/docs/analytics?hl=de) (Beta) that
+provides new metrics and data views.
+
 ##  June 29, 2020
 
 **DEPRECATED:**
