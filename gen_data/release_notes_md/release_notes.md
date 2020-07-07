@@ -12,6 +12,34 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  July 06, 2020
+
+**BigQuery**
+
+**CHANGED:**
+
+Updated version of [ Magnitude Simba ODBC
+](https://cloud.google.com/bigquery/providers/simba-drivers) driver. This
+version includes some performance improvements and bug fixes, and it catches
+up with the JDBC driver by adding support for user defined functions and
+variable time zones using the connection string.
+
+**Compute Engine**
+
+**FEATURE:**
+
+E2 machine types now offer up to 32 vCPUs. See [ E2 machine types
+](https://cloud.google.com/compute/docs/machine-types#e2_machine_types) for
+more information.
+
+**Dialogflow**
+
+**FEATURE:**
+
+The Dialogflow Console has been upgraded with an improved [ Analytics page
+](https://cloud.google.com/dialogflow/docs/analytics) (Beta) that provides new
+metrics and data views.
+
 ##  July 01, 2020
 
 **BigQuery ML**
@@ -67,6 +95,23 @@ instead.
 To resolve this issue, see our guidance on [ updating policies that contain
 deleted members ](https://cloud.google.com/iam/docs/policies#handle-deleted-
 members) .
+
+**Config Connector**
+
+**FEATURE:**
+
+Config Connector now supports [ ` --server-dry-run `
+](https://kubernetes.io/blog/2019/01/14/apiserver-dry-run-and-kubectl-diff/)
+for resource CRDs.
+
+**FIXED:**
+
+Fix a bug for the BigtableInstance resource that causes constant
+reconciliation.
+
+**CHANGED:**
+
+Deprecate BigtableInstance's spec.deletionProtection field.
 
 **Network Intelligence Center**
 
@@ -250,6 +295,15 @@ serverless-vpc-access) is now at general availability (GA).
 
 **FEATURE:**
 
+General availability of dry run mode for service perimeters.
+
+This release introduces dry run configurations for your service perimeters,
+allowing you to test changes to perimeters before enforcing the changes. For
+more information, [ read about dry run mode ](https://cloud.google.com/vpc-
+service-controls/docs/dry-run-mode) .
+
+**FEATURE:**
+
 Beta release of the VPC Service Controls Troubleshooter.
 
 The VPC Service Controls Troubleshooter allows you to use the unique
@@ -304,7 +358,8 @@ You can now [ create an internal HTTP(S) load balancer in a Shared VPC
 _service_ project ](https://cloud.google.com/load-
 balancing/docs/l7-internal#shared_vpc) .
 
-This feature is available in Beta.
+This feature is available in **Alpha** . Please contact your Google account
+team to get access to this feature.
 
 **Cloud Run**
 
