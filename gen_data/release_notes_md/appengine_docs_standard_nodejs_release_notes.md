@@ -1,3 +1,6 @@
+[ Node.js 12 ](/appengine/docs/standard/nodejs/runtime) is now generally
+available.
+
 #  Node.js release notes
 
 You can see the latest product updates for all of Google Cloud on the [ Google
