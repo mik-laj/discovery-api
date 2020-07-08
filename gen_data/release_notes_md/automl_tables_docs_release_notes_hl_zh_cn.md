@@ -17,6 +17,14 @@ tables/docs/known-issues?hl=zh-cn) 。
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/automl-tables-release-notes.xml `
 
+##  June 01, 2020
+
+**FEATURE:**
+
+Support for [ feature importance with batch predictions
+](https://cloud.google.com/automl-tables/docs/explain?hl=zh-
+cn#getting_local_feature_importance_for_batch_predictions) .
+
 ##  April 03, 2020
 
 **CHANGED:**
