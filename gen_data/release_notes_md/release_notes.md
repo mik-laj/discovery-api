@@ -12,6 +12,90 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  July 07, 2020
+
+**Cloud Composer**
+
+**CHANGED:**
+
+  * [ New versions ](https://cloud.google.com/composer/docs/concepts/versioning/composer-versions) of Cloud Composer images: ` composer-1.10.6-airflow-1.10.2 ` , ` composer-1.10.6-airflow-1.10.3 ` and ` composer-1.10.6-airflow-1.10.6 ` . The default is ` composer-1.10.6-airflow-1.10.3 ` . Upgrade your Cloud SDK to use features in this release. 
+
+  * **For Airflow 1.10.6 and later:** The Airflow config property ` [celery] pool ` is now blocked. 
+
+**FIXED:**
+
+  * Fixed an issue with Airflow 1.10.6 environments where task logs were not visible in the UI when DAG serialization was enabled. 
+
+**Cloud Functions**
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for Google Cloud Functions
+via [ Serverless network endpoint groups ](https://cloud.google.com/load-
+balancing/docs/negs/setting-up-serverless-negs) .
+
+Notably, this feature allows you to use [ Cloud CDN
+](https://cloud.google.com/cdn) and [ Cloud Armor
+](https://cloud.google.com/armor) with Google Cloud Functions.
+
+This feature is available in Beta.
+
+**Cloud Load Balancing**
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for App Engine, Cloud
+Functions, and Cloud Run services. To configure this, you will need to use a
+new type of network endpoint group (NEG) called a [ Serverless NEG
+](https://cloud.google.com/load-balancing/docs/negs/setting-up-serverless-
+negs) .
+
+This feature is available in Beta.
+
+**Cloud Monitoring**
+
+**CHANGED:**
+
+Monitoring Query Language (MQL) is now Generally Available. MQL is an
+expressive, text-based interface to Cloud Monitoring time-series data. With
+MQL, you can create charts you can't create any other way. You can access MQL
+from both the Cloud Console and the Monitoring API. For more information, see
+[ Introduction to Monitoring Query Language
+](https://cloud.google.com/monitoring/mql/) .
+
+**Cloud Run**
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for Cloud Run services via [
+Serverless network endpoint groups ](https://cloud.google.com/load-
+balancing/docs/negs/setting-up-serverless-negs) .  
+Notably, this feature allows you to use [ Cloud CDN
+](https://cloud.google.com/cdn) and multi-region load balancing.  
+This feature is available in Beta.
+
+**Dataproc**
+
+**FEATURE:**
+
+Announcing the [ General Availability (GA)
+](https://cloud.google.com/products#product-launch-stages) release of [
+Dataproc Component Gateway
+](https://cloud.google.com/dataproc/docs/concepts/accessing/dataproc-gateways)
+, which provides secure access to web endpoints for Dataproc default and
+optional components.
+
+**Traffic Director**
+
+**FEATURE:**
+
+Traffic Director now provides the option of automated Envoy deployment.
+
+**FEATURE:**
+
+Traffic Director now supports automated Envoy deployments for Google Compute
+Engine VMs in Beta.
+
 ##  July 06, 2020
 
 **BigQuery**
@@ -52,7 +136,24 @@ information, see [ CREATE MODEL statement for time series models
 ](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-
 syntax-create-time-series) .
 
-**Cloud Identity and Access Management**
+**Config Connector**
+
+**FEATURE:**
+
+Config Connector now supports [ ` --server-dry-run `
+](https://kubernetes.io/blog/2019/01/14/apiserver-dry-run-and-kubectl-diff/)
+for resource CRDs.
+
+**FIXED:**
+
+Fix a bug for the BigtableInstance resource that causes constant
+reconciliation.
+
+**CHANGED:**
+
+Deprecate BigtableInstance's spec.deletionProtection field.
+
+**Identity and Access Management**
 
 **CHANGED:**
 
@@ -95,23 +196,6 @@ instead.
 To resolve this issue, see our guidance on [ updating policies that contain
 deleted members ](https://cloud.google.com/iam/docs/policies#handle-deleted-
 members) .
-
-**Config Connector**
-
-**FEATURE:**
-
-Config Connector now supports [ ` --server-dry-run `
-](https://kubernetes.io/blog/2019/01/14/apiserver-dry-run-and-kubectl-diff/)
-for resource CRDs.
-
-**FIXED:**
-
-Fix a bug for the BigtableInstance resource that causes constant
-reconciliation.
-
-**CHANGED:**
-
-Deprecate BigtableInstance's spec.deletionProtection field.
 
 **Network Intelligence Center**
 
@@ -812,16 +896,6 @@ style string operations and payload bindings in substitutions
 ](http://cloud.google.com/cloud-build/docs/configuring-builds/use-bash-and-
 bindings-in-substitutions) .
 
-**Cloud Identity and Access Management**
-
-**DEPRECATED:**
-
-Using the Cloud IAM API to sign JSON Web Tokens (JWTs) or binary blobs is now
-deprecated.
-
-  * If you use the Cloud IAM API or its client libraries to sign JWTs or binary blobs, you must [ migrate to the Service Account Credentials API ](https://cloud.google.com/iam/docs/migrating-to-credentials-api) before July 1, 2021. 
-  * If you use the ` gcloud ` command-line tool to sign JWTs, you must [ prepare for changes to the ` gcloud ` tool ](https://cloud.google.com/iam/docs/migrating-to-credentials-api#gcloud) before July 1, 2021. 
-
 **Cloud Key Management Service**
 
 **FEATURE:**
@@ -846,6 +920,16 @@ page.
 
 The Google Cloud console now includes a [ Firestore usage dashboard
 ](https://cloud.google.com/firestore/docs/monitor-usage) .
+
+**Identity and Access Management**
+
+**DEPRECATED:**
+
+Using the Cloud IAM API to sign JSON Web Tokens (JWTs) or binary blobs is now
+deprecated.
+
+  * If you use the Cloud IAM API or its client libraries to sign JWTs or binary blobs, you must [ migrate to the Service Account Credentials API ](https://cloud.google.com/iam/docs/migrating-to-credentials-api) before July 1, 2021. 
+  * If you use the ` gcloud ` command-line tool to sign JWTs, you must [ prepare for changes to the ` gcloud ` tool ](https://cloud.google.com/iam/docs/migrating-to-credentials-api#gcloud) before July 1, 2021. 
 
 ##  June 19, 2020
 
@@ -1330,345 +1414,4 @@ about clustered tables, see [ Introduction to clustered tables
 
 Export a Cloud Run service to a YAML file with ` gcloud run services describe
 SERVICE --format export `
-
-##  June 08, 2020
-
-**AI Platform Prediction**
-
-**FIXED:**
-
-The [ **Total latency** chart ](https://cloud.google.com/ai-
-platform/prediction/docs/monitor-prediction) on the **Version details** page
-of the Google Cloud Console was reporting incorrect information. This chart
-has now been fixed.
-
-In some cases, this adjustment might cause latencies to appear higher than
-they were previously. However, the latency of models has not changed.
-
-This affects both Compute Engine (N1) machine types and legacy (MLS1) machine
-types.
-
-**App Engine flexible environment .NET**
-
-**FEATURE:**
-
-App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
-
-**App Engine flexible environment Go**
-
-**FEATURE:**
-
-App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
-
-**App Engine flexible environment Java**
-
-**FEATURE:**
-
-App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
-
-**App Engine flexible environment Node.js**
-
-**FEATURE:**
-
-App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
-
-**App Engine flexible environment PHP**
-
-**FEATURE:**
-
-App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
-
-**App Engine flexible environment Ruby**
-
-**FEATURE:**
-
-App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
-
-**App Engine standard environment Go**
-
-**FEATURE:**
-
-App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
-
-**FEATURE:**
-
-App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
-
-**App Engine standard environment Java**
-
-**FEATURE:**
-
-App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
-
-**FEATURE:**
-
-App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
-
-**App Engine standard environment Node.js**
-
-**FEATURE:**
-
-App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
-
-**App Engine standard environment PHP**
-
-**FEATURE:**
-
-App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
-
-**FEATURE:**
-
-App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
-
-**App Engine standard environment Python**
-
-**FEATURE:**
-
-App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
-
-**FEATURE:**
-
-App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
-
-**App Engine standard environment Ruby**
-
-**FEATURE:**
-
-App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
-
-**BigQuery**
-
-**CHANGED:**
-
-BigQuery is now available in the [ Jakarta (asia-southeast2) region
-](https://cloud.google.com/bigquery/docs/locations#supported_regions) .
-
-**BigQuery BI Engine**
-
-**CHANGED:**
-
-BigQuery BI Engine is now available in the [ Jakarta (asia-southeast2) region
-](https://cloud.google.com/bi-engine/docs/locations#supported_regions) .
-
-**BigQuery Data Transfer Service**
-
-**CHANGED:**
-
-BigQuery Data Transfer Service is now available in the [ Jakarta (asia-
-southeast2) region ](https://cloud.google.com/bigquery-
-transfer/docs/locations#supported_regions) .
-
-**BigQuery ML**
-
-**CHANGED:**
-
-BigQuery ML is now available in the [ Jakarta (asia-southeast2) region
-](https://cloud.google.com/bigquery-ml/docs/locations#supported_regions) .
-
-**Cloud Bigtable**
-
-**FEATURE:**
-
-Cloud Bigtable is now available in the [ ` asia-southeast2 ` (Jakarta) region
-](https://cloud.google.com/bigtable/docs/locations) .
-
-**Cloud Healthcare API**
-
-**FEATURE:**
-
-It is now possible to de-identify data from within the Healthcare Browser in
-the Cloud Console.
-
-**Cloud Key Management Service**
-
-**FEATURE:**
-
-Cloud KMS and Cloud EKM resources are available in the ` asia-southeast2 `
-region. Cloud HSM resources are **not** available in this region.
-
-For information about which [ Cloud Locations
-](https://cloud.google.com/about/locations/) are supported by Cloud KMS, Cloud
-HSM, and Cloud EKM, see the [ Cloud KMS regional locations
-](https://cloud.google.com/kms/docs/locations#regional) .
-
-**Cloud Monitoring**
-
-**FEATURE:**
-
-Enhancements to the pre-configured Compute Engine **VM Instances** dashboard.
-Compute Engine cross-fleet metrics and detail views specific to CPU, Disk,
-Memory, and Network are now available. Use filters to narrow down the set of
-VMs being inspected, and use the time selector or in-chart time selection to
-change the time window. VMs with the Monitoring agent installed get detailed
-memory and disk analysis out of the box.
-
-**Cloud SQL for MySQL**
-
-**FEATURE:**
-
-Support for [ asia-southeast2
-](https://cloud.google.com/sql/docs/mysql/locations) region (Jakarta).
-
-**Cloud SQL for PostgreSQL**
-
-**FEATURE:**
-
-Support for [ asia-southeast2
-](https://cloud.google.com/sql/docs/mysql/locations) region (Jakarta).
-
-**Cloud SQL for SQL Server**
-
-**FEATURE:**
-
-Support for [ asia-southeast2
-](https://cloud.google.com/sql/docs/mysql/locations) region (Jakarta).
-
-**Cloud Spanner**
-
-**FEATURE:**
-
-A second [ multi-region instance configuration
-](https://cloud.google.com/spanner/docs/instances#available-configurations-
-multi-region) is now available in Europe - ` eur5 ` (London/Belgium).
-
-**FEATURE:**
-
-A [ multi-region instance configuration
-](https://cloud.google.com/spanner/docs/instances#available-configurations-
-multi-region) is now available in Asia - ` asia1 ` (Tokyo/Osaka).
-
-**FEATURE:**
-
-Cloud Spanner [ regional instances
-](https://cloud.google.com/spanner/docs/instances#available-configurations-
-regional) can now be created in Jakarta (asia-southeast2).
-
-**Cloud Storage**
-
-**FEATURE:**
-
-Jakarta region ( ` asia-southeast2 ` ) launched.
-
-  * New [ location ](https://cloud.google.com/storage/docs/locations) for storing your data. 
-
-**Cloud VPN**
-
-**FEATURE:**
-
-Cloud VPN is now available in [ region
-](https://cloud.google.com/compute/docs/regions-zones/#available) asia-
-southeast2 (Jakarta, Indonesia).
-
-Pricing is available on the [ Cloud VPN pricing page
-](https://cloud.google.com/vpn/pricing) .
-
-**Compute Engine**
-
-**FEATURE:**
-
-The ` asia-southeast2 ` Jakarta, Indonesia region is now available to all
-projects and users. The zones in the ` asia-southeast2 ` region have [ E2 and
-N1 machine types ](https://cloud.google.com/compute/docs/machine-types) . See
-[ Regions and zones ](https://cloud.google.com/compute/docs/regions-zones) for
-more information.
-
-**FEATURE:**
-
-Enhancements to the pre-configured Cloud Monitoring Compute Engine **VM
-Instances** dashboard. Compute Engine cross-fleet metrics and detail views
-specific to CPU, Disk, Memory, and Network are now available. Use filters to
-narrow down the set of VMs being inspected, and use the time selector or in-
-chart time selection to change the time window. VMs with the Monitoring agent
-installed get detailed memory and disk analysis out of the box.
-
-**Dataflow**
-
-**FEATURE:**
-
-Dataflow is now able to use workers in zones in the ` asia-southeast2 ` region
-(Jakarta).
-
-**Dataproc**
-
-**FEATURE:**
-
-Dataproc is now available in the ` asia-southeast2 ` [ region
-](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available)
-(Jakarta).
-
-**Datastore**
-
-**FEATURE:**
-
-Support for the [ ` asia-southeast2 ` (Jakarta)
-](https://cloud.google.com/datastore/docs/locations) .
-
-**Filestore**
-
-**FEATURE:**
-
-[ **High Scale SSD** ](https://cloud.google.com/filestore/docs/high-scale)
-tier released to beta. This new service tier for Filestore provides greater
-performance and allows you to grow and shrink capacity between 60-320 TB.
-
-**FEATURE:**
-
-[ **IP-based access control**
-](https://cloud.google.com/filestore/docs/creating-instances#configuring_ip-
-based_access_control) released to beta. This feature allows you to control
-access to file shares by the IP addresses of clients.
-
-**CHANGED:**
-
-Filestore service tier name change:
-
-  * **Standard** tier is now called **Basic HDD** . 
-  * **Premium** tier is now called **Basic SSD** . 
-  * You can still use the old tier names and they will continue to be supported. 
-
-This change may affect you if you use:  
-* The ` gcloud beta filestore ` command line tool (beta). * The Filestore beta API (v1beta1). * The Cloud Console in combination with the Filestore API. * The Cloud Console in combination with the ` gcloud ` tool. 
-
-For details, see [ New service tier names
-](https://cloud.google.com/filestore/docs/high-scale#new_service_tier_names) .
-
-**FEATURE:**
-
-Filestore is available in the ` asia-southeast2 ` (Jakarta) region. See [
-Regions and zones ](https://cloud.google.com/filestore/docs/regions) .
-
-**Firestore**
-
-**FEATURE:**
-
-Support for the [ ` asia-southeast2 ` (Jakarta)
-](https://cloud.google.com/firestore/docs/locations) .
-
-**Memorystore for Redis**
-
-**FEATURE:**
-
-Added new Memorystore for Redis [ region
-](https://cloud.google.com/memorystore/docs/redis/regions) : Jakarta ( ` asia-
-southeast2 ` ).
-
-**Pub/Sub**
-
-**FEATURE:**
-
-Pub/Sub is now available in the ` asia-southeast2 ` region (Jakarta).
-
-**FEATURE:**
-
-Pub/Sub [ message filtering ](https://cloud.google.com/pubsub/docs/filtering)
-is now available at the [ beta launch stage
-](https://cloud.google.com/products/#product-launch-stages) .
-
-**Virtual Private Cloud**
-
-**FEATURE:**
-
-For auto mode VPC networks, added a new subnet ` 10.184.0.0/20 ` for the
-Jakarta ` asia-southeast2 ` region. For more information, see [ Auto mode IP
-ranges ](https://cloud.google.com/vpc/docs/vpc#ip-ranges) .
 
