@@ -10,9 +10,20 @@ Google Cloud의 최신 제품 업데이트를 확인할 수 있습니다.
 추가하거나 피드 URL을 다음과 같이 직접 추가하세요. `
 https://cloud.google.com/feeds/trafficdirector-release-notes.xml `
 
-##  May 06, 2020
+##  July 07, 2020
 
 **FEATURE:**
+
+Traffic Director now provides the option of automated Envoy deployment.
+
+**FEATURE:**
+
+Traffic Director now supports automated Envoy deployments for Google Compute
+Engine VMs in Beta.
+
+##  May 06, 2020
+
+**CHANGED:**
 
 A new document is added to [ Traffic Director
 ](https://cloud.google.com/traffic-director/docs?hl=ko) : [ Ingress traffic
