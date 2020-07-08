@@ -1,3 +1,6 @@
+[ Python 3.8 ](/appengine/docs/standard/python3/runtime) is now generally
+available.
+
 #  Python 3 release notes
 
 You can see the latest product updates for all of Google Cloud on the [ Google
