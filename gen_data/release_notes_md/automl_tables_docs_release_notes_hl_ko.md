@@ -19,6 +19,15 @@ Google Cloud의 최신 제품 업데이트를 확인할 수 있습니다.
 추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/automl-tables-
 release-notes.xml `
 
+##  June 01, 2020
+
+**FEATURE:**
+
+Support for [ feature importance with batch predictions
+](https://cloud.google.com/automl-
+tables/docs/explain?hl=ko#getting_local_feature_importance_for_batch_predictions)
+.
+
 ##  April 03, 2020
 
 **CHANGED:**
