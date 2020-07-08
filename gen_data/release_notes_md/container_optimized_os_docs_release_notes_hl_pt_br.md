@@ -8,9 +8,9 @@ cloud ` :  Estável  |  Beta  |  Dev
       
     
     
-    **cos-stable-81-12871-119-0**
-    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/fa84f12c6d738af9486e69a006a57df923f9476a%0A)
-    Kubernetes:     v1.17.3
+    **cos-stable-81-12871-148-0**
+    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/1d5bc45f886bc0308010614cdcdf658f5fb44a25)
+    Kubernetes:     v1.17.6
     Docker:         v19.03.6
     
 
@@ -20,7 +20,7 @@ cloud ` :  Estável  |  Beta  |  Dev
     
     
     **cos-beta-81-12871-117-0**
-    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/fa84f12c6d738af9486e69a006a57df923f9476a%0A)
+    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/fa84f12c6d738af9486e69a006a57df923f9476a)
     Kubernetes:     v1.17.3
     Docker:         v19.03.6
     
@@ -30,17 +30,22 @@ cloud ` :  Estável  |  Beta  |  Dev
     
     
     
-    **cos-dev-84-13078-0-0**
-    Kernel:         [COS-4.19.119](https://cos.googlesource.com/third_party/kernel/+/cf82bb6a0699ca4452067a6c88483909d1dbc90e%0A)
-    Kubernetes:     v1.18.2
-    Docker:         v19.03.8
+    **cos-dev-85-13288-0-0**
+    Kernel:         [COS-4.19.127](https://cos.googlesource.com/third_party/kernel/+/f8649a7408c63f53937e33b0e8379679b0434849)
+    Kubernetes:     v1.18.3
+    Docker:         v19.03.9
       
   
+**Observação:** a versão do Kubernetes fornecida no registro de alterações
+corresponde ao Kubelet e à versão Kubectl enviados nessa imagem do Container-
+Optimized OS. Além disso, talvez essa versão do componente não seja usada ao
+executar um cluster do GKE usando uma imagem do Container-Optimized OS.
+
 ###  Famílias de imagens LTS
 
-  * [ cos-69-lts ](https://cloud.google.com/container-optimized-os/docs/release-notes/m69?hl=pt-br)
-  * [ cos-73-lts ](https://cloud.google.com/container-optimized-os/docs/release-notes/m73?hl=pt-br)
+  * [ cos-81-lts ](https://cloud.google.com/container-optimized-os/docs/release-notes/m81?hl=pt-br)
   * [ cos-77-lts ](https://cloud.google.com/container-optimized-os/docs/release-notes/m77?hl=pt-br)
+  * [ cos-73-lts ](https://cloud.google.com/container-optimized-os/docs/release-notes/m73?hl=pt-br)
 
 ##  Programação de lançamentos
 
@@ -48,17 +53,18 @@ As datas reais podem sofrer algumas mudanças.
 
 Marco  |  Estável após  
 ---|---  
-82  |  5 de maio de 2020  
+85 [LTS]  |  1º de setembro de 2020  
 81 [LTS]  |  24 de março de 2020  
-80  |  11 de fevereiro de 2019  
 77 [LTS]  |  17 de setembro de 2019  
 73 [LTS]  |  19 de março de 2019  
-69 [LTS]  |  11 de setembro de 2018  
   
 ####  Lançamentos anteriores
 
 Marco  |  Estável após  |  Obsoleto após  
 ---|---|---  
+[ 69 [LTS] ](https://cloud.google.com/container-optimized-os/docs/release-
+notes/m69?hl=pt-br) |  11 de setembro de 2018  |  11 de dezembro de 2019  
+80  |  11 de fevereiro de 2019  |  20 de março de 2020  
 79  |  17 de dezembro de 2019  |  12 de fevereiro de 2019  
 78  |  29 de outubro de 2019  |  17 de dezembro de 2019  
 76  |  6 de agosto de 2019  |  27 de setembro de 2019  
@@ -83,12 +89,118 @@ Marco  |  Estável após  |  Obsoleto após
   
 ##  Registro de alterações
 
+###  cos-dev-85-13288-0-0
+
+    
+    
+    Date:           Jun 17, 2020
+    Kernel:         [COS-4.19.127](https://cos.googlesource.com/third_party/kernel/+/f8649a7408c63f53937e33b0e8379679b0434849)
+    Kubernetes:     v1.18.3
+    Docker:         v19.03.9
+    Changelog (vs 85-13260-0-0):
+        * Fixed a build issue in systemd due to Meson upgrade.
+        * Updated toolbox base container image to include security patches.
+        * Upgraded the Linux kernel to v4.19.127.
+        * Made dioread_nolock non-default.
+        * Updated the built-in kubectl/kubelet to 1.18.3.
+        * Updated GVNIC driver to version 1.1.0.
+    
+
+###  cos-stable-81-12871-148-0
+
+    
+    
+    Date:           Jun 17, 2020
+    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/1d5bc45f886bc0308010614cdcdf658f5fb44a25)
+    Kubernetes:     v1.17.6
+    Docker:         v19.03.6
+    Changelog (vs 81-12871-146-0):
+        * Made dioread_nolock non-default.
+    
+
+###  cos-stable-81-12871-146-0
+
+    
+    
+    Date:           Jun 16, 2020
+    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/fa84f12c6d738af9486e69a006a57df923f9476a)
+    Kubernetes:     v1.17.6
+    Docker:         v19.03.6
+    Changelog (vs 81-12871-130-0):
+        * Updated toolbox base container image to include security patches.
+    
+
+###  cos-77-12371-296-0
+
+    
+    
+    Date:           Jun 16, 2020
+    Kernel:         [ChromiumOS-4.19.112](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/5d4ffd91281840f7a118143d77fbefb02e87943c)
+    Kubernetes:     v1.15.3
+    Docker:         v19.03.1
+    Changelog (vs 77-12371-284-0):
+        * Updated toolbox base container image to include security patches.
+    
+
+###  cos-stable-81-12871-130-0
+
+    
+    
+    Date:           Jun 16, 2020
+    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/fa84f12c6d738af9486e69a006a57df923f9476a)
+    Kubernetes:     v1.17.6
+    Docker:         v19.03.6
+    Changelog (vs 81-12871-119-0):
+        * Updated the built-in kubectl/kubelet to v1.17.6 to fix a bug that could result in the inability to start a cluster.
+    
+
+###  cos-dev-85-13260-0-0
+
+    
+    
+    Date:           Jun 01, 2020
+    Kernel:         [COS-4.19.124](https://cos.googlesource.com/third_party/kernel/+/5451c40e92fbfc19edc953cb9affea60eee60378)
+    Kubernetes:     v1.18.2
+    Docker:         v19.03.9
+    Changelog (vs 84-13078-0-0):
+        * Upgraded the Linux kernel to v4.19.124.
+        * Upgraded Docker to v19.0.9.
+        * Upgraded gve driver to v1.1.0.
+        * Upgraded json-c to v0.14-r2.
+        * Fixed OS Login CVEs.
+        * Set default umask to 027.
+    
+
+###  cos-77-12371-284-0
+
+    
+    
+    Date:           Jun 01, 2020
+    Kernel:         [ChromiumOS-4.19.112](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/5d4ffd91281840f7a118143d77fbefb02e87943c)
+    Kubernetes:     v1.15.3
+    Docker:         v19.03.1
+    Changelog (vs 77-12371-274-0):
+        * Upgraded libseccomp to version 2.4.2 to address CVE-2019-9893.
+    
+
+###  cos-73-11647-559-0
+
+    
+    
+    Date:           Jun 01, 2020
+    Kernel:         [ChromiumOS-4.14.174](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/657018fc00e3c2be2a7abb3ec149f9bca42b9ab0)
+    Kubernetes:     v1.13.3
+    Docker:         v18.09.7
+    Changelog (vs 73-11647-534-0):
+        * Upgraded libseccomp to version 2.4.2 to address CVE-2019-9893.
+    
+
 ###  cos-stable-81-12871-119-0
 
     
     
     Date:           May 28, 2020
-    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/fa84f12c6d738af9486e69a006a57df923f9476a%0A)
+    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/fa84f12c6d738af9486e69a006a57df923f9476a)
     Kubernetes:     v1.17.3
     Docker:         v19.03.6
     Changelog (vs 81-12871-117-0):
@@ -100,7 +212,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           May 27, 2020
-    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/fa84f12c6d738af9486e69a006a57df923f9476a%0A)
+    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/fa84f12c6d738af9486e69a006a57df923f9476a)
     Kubernetes:     v1.17.3
     Docker:         v19.03.6
     Changelog (vs 81-12871-103-0):
@@ -112,7 +224,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           May 26, 2020
-    Kernel:         [ChromiumOS-4.19.112](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/5d4ffd91281840f7a118143d77fbefb02e87943c%0A)
+    Kernel:         [ChromiumOS-4.19.112](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/5d4ffd91281840f7a118143d77fbefb02e87943c)
     Kubernetes:     v1.15.3
     Docker:         v19.03.1
     Changelog (vs 77-12371-273-0):
@@ -124,7 +236,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           May 26, 2020
-    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/fa84f12c6d738af9486e69a006a57df923f9476a%0A)
+    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/fa84f12c6d738af9486e69a006a57df923f9476a)
     Kubernetes:     v1.17.3
     Docker:         v19.03.6
     Changelog (vs 81-12871-44-0):
@@ -143,7 +255,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           May 21, 2020
-    Kernel:         [ChromiumOS-4.19.112](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/5d4ffd91281840f7a118143d77fbefb02e87943c%0A)
+    Kernel:         [ChromiumOS-4.19.112](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/5d4ffd91281840f7a118143d77fbefb02e87943c)
     Kubernetes:     v1.15.3
     Docker:         v19.03.1
     Changelog (vs 77-12371-251-0):
@@ -155,7 +267,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           May 07, 2020
-    Kernel:         [COS-4.19.119](https://cos.googlesource.com/third_party/kernel/+/cf82bb6a0699ca4452067a6c88483909d1dbc90e%0A)
+    Kernel:         [COS-4.19.119](https://cos.googlesource.com/third_party/kernel/+/cf82bb6a0699ca4452067a6c88483909d1dbc90e)
     Kubernetes:     v1.18.2
     Docker:         v19.03.8
     Changelog (vs 83-13020-12-0):
@@ -176,7 +288,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           May 07, 2020
-    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/fa84f12c6d738af9486e69a006a57df923f9476a%0A)
+    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/fa84f12c6d738af9486e69a006a57df923f9476a)
     Kubernetes:     v1.17.3
     Docker:         v19.03.6
     Changelog (vs 81-12871-96-0):
@@ -188,7 +300,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           May 07, 2020
-    Kernel:         [ChromiumOS-4.14.174](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/657018fc00e3c2be2a7abb3ec149f9bca42b9ab0%0A)
+    Kernel:         [ChromiumOS-4.14.174](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/657018fc00e3c2be2a7abb3ec149f9bca42b9ab0)
     Kubernetes:     v1.13.3
     Docker:         v18.09.7
     Changelog (vs 73-11647-510-0):
@@ -200,7 +312,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Apr 29, 2020
-    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/fa84f12c6d738af9486e69a006a57df923f9476a%0A)
+    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/fa84f12c6d738af9486e69a006a57df923f9476a)
     Kubernetes:     v1.17.3
     Docker:         v19.03.6
     Changelog (vs 81-12871-76-0):
@@ -212,7 +324,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Apr 29, 2020
-    Kernel:         [ChromiumOS-4.19.112](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/5d4ffd91281840f7a118143d77fbefb02e87943c%0A)
+    Kernel:         [ChromiumOS-4.19.112](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/5d4ffd91281840f7a118143d77fbefb02e87943c)
     Kubernetes:     v1.15.3
     Docker:         v19.03.1
     Changelog (vs 77-12371-233-0):
@@ -225,7 +337,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Apr 29, 2020
-    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/7e8a5293f4a62df1dc717093ce6c22cc97b7f1ae%0A)
+    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/7e8a5293f4a62df1dc717093ce6c22cc97b7f1ae)
     Kubernetes:     v1.17.3
     Docker:         v19.03.6
     Changelog (vs 81-12871-69-0):
@@ -237,7 +349,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Apr 29, 2020
-    Kernel:         [ChromiumOS-4.19.112](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/44db6154b00a43d87634fd0d35292aec1d0c14c7%0A)
+    Kernel:         [ChromiumOS-4.19.112](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/44db6154b00a43d87634fd0d35292aec1d0c14c7)
     Kubernetes:     v1.15.3
     Docker:         v19.03.1
     Changelog (vs 77-12371-227-0):
@@ -249,7 +361,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Apr 13, 2020
-    Kernel:         [COS-4.19.114](https://cos.googlesource.com/third_party/kernel/+/a8c47ac5afe9c1a9f569b2caaa93b803a6c4d94b%0A)
+    Kernel:         [COS-4.19.114](https://cos.googlesource.com/third_party/kernel/+/a8c47ac5afe9c1a9f569b2caaa93b803a6c4d94b)
     Kubernetes:     v1.17.3
     Docker:         v19.03.6
     Changelog (vs 83-12998-0-0):
@@ -265,7 +377,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Apr 13, 2020
-    Kernel:         [ChromiumOS-4.14.174](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/657018fc00e3c2be2a7abb3ec149f9bca42b9ab0%0A)
+    Kernel:         [ChromiumOS-4.14.174](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/657018fc00e3c2be2a7abb3ec149f9bca42b9ab0)
     Kubernetes:     v1.13.3
     Docker:         v18.09.7
     Changelog (vs 73-11647-501-0):
@@ -278,7 +390,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Apr 05, 2020
-    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/7e8a5293f4a62df1dc717093ce6c22cc97b7f1ae%0A)
+    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/7e8a5293f4a62df1dc717093ce6c22cc97b7f1ae)
     Kubernetes:     v1.17.3
     Docker:         v19.03.6
     Changelog (vs 81-12871-44-0):
@@ -295,7 +407,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Apr 05, 2020
-    Kernel:         [ChromiumOS-4.19.112](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/44db6154b00a43d87634fd0d35292aec1d0c14c7%0A)
+    Kernel:         [ChromiumOS-4.19.112](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/44db6154b00a43d87634fd0d35292aec1d0c14c7)
     Kubernetes:     v1.15.3
     Docker:         v19.03.1
     Changelog (vs 77-12371-208-0):
@@ -309,7 +421,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Apr 05, 2020
-    Kernel:         [ChromiumOS-4.14.174](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/657018fc00e3c2be2a7abb3ec149f9bca42b9ab0%0A)
+    Kernel:         [ChromiumOS-4.14.174](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/657018fc00e3c2be2a7abb3ec149f9bca42b9ab0)
     Kubernetes:     v1.13.3
     Docker:         v18.09.7
     Changelog (vs 73-11647-459-0):
@@ -323,7 +435,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Mar 27, 2020
-    Kernel:         [ChromiumOS-4.19.108](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/8bd983177d60daba1e1df7e90bf02cfd0294e9b9%0A)
+    Kernel:         [ChromiumOS-4.19.108](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/8bd983177d60daba1e1df7e90bf02cfd0294e9b9)
     Kubernetes:     v1.17.3
     Docker:         v19.03.6
     Changelog (vs 82-12962-0-0):
@@ -338,7 +450,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Mar 27, 2020
-    Kernel:         [ChromiumOS-4.19.112](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/7e8a5293f4a62df1dc717093ce6c22cc97b7f1ae%0A)
+    Kernel:         [ChromiumOS-4.19.112](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/7e8a5293f4a62df1dc717093ce6c22cc97b7f1ae)
     Kubernetes:     v1.17.3
     Docker:         v19.03.6
     Changelog (vs 81-12871-44-0):
@@ -350,7 +462,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Mar 17, 2020
-    Kernel:         [ChromiumOS-4.19.108](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/4d594cea40affe77720d76a1f70b5039aa488e52%0A)
+    Kernel:         [ChromiumOS-4.19.108](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/4d594cea40affe77720d76a1f70b5039aa488e52)
     Kubernetes:     v1.17.3
     Docker:         v19.03.6
     Changelog (vs 81-12871-38-0):
@@ -363,7 +475,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Mar 17, 2020
-    Kernel:         [ChromiumOS-4.19.87](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/709837de20828e09bbb42e2f6f2839efedded5a0%0A)
+    Kernel:         [ChromiumOS-4.19.87](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/709837de20828e09bbb42e2f6f2839efedded5a0)
     Kubernetes:     v1.16.6
     Docker:         v19.03.5
     Changelog (vs 80-12739-91-0):
@@ -375,7 +487,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Mar 17, 2020
-    Kernel:         [ChromiumOS-4.19.109](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/9e1168898f7dfad439286058801d5e6135b89ae3%0A)
+    Kernel:         [ChromiumOS-4.19.109](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/9e1168898f7dfad439286058801d5e6135b89ae3)
     Kubernetes:     v1.15.3
     Docker:         v19.03.1
     Changelog (vs 77-12371-183-0):
@@ -390,7 +502,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Mar 09, 2020
-    Kernel:         [ChromiumOS-4.19.107](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/d778e15bed1da70ccbcafe8c4a76d32139c291ce%0A)
+    Kernel:         [ChromiumOS-4.19.107](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/d778e15bed1da70ccbcafe8c4a76d32139c291ce)
     Kubernetes:     v1.17.3
     Docker:         v19.03.6
     Changelog (vs 82-12941-0-0):
@@ -405,7 +517,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Mar 09, 2020
-    Kernel:         [ChromiumOS-4.19.107](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/966e554f2db06013e1e4a556255e8d1c8c1de0a7%0A)
+    Kernel:         [ChromiumOS-4.19.107](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/966e554f2db06013e1e4a556255e8d1c8c1de0a7)
     Kubernetes:     v1.17.3
     Docker:         v19.03.6
     Changelog (vs 81-12871-31-0):
@@ -420,7 +532,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Mar 03, 2020
-    Kernel:         [ChromiumOS-4.19.105](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/cea96c38af5017f6b13bfdc13c50bdde55d7c380%0A)
+    Kernel:         [ChromiumOS-4.19.105](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/cea96c38af5017f6b13bfdc13c50bdde55d7c380)
     Kubernetes:     v1.17.3
     Docker:         v19.03.6
     Changelog (vs 82-12919-0-0):
@@ -432,7 +544,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Mar 03, 2020
-    Kernel:         [ChromiumOS-4.19.105](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/37dc923bdc535ccd64fa3d0ad45f64b7763ff8f3%0A)
+    Kernel:         [ChromiumOS-4.19.105](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/37dc923bdc535ccd64fa3d0ad45f64b7763ff8f3)
     Kubernetes:     v1.17.3
     Docker:         v19.03.6
     Changelog (vs 81-12871-17-0):
@@ -445,7 +557,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Mar 03, 2020
-    Kernel:         [ChromiumOS-4.19.87](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/709837de20828e09bbb42e2f6f2839efedded5a0%0A)
+    Kernel:         [ChromiumOS-4.19.87](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/709837de20828e09bbb42e2f6f2839efedded5a0)
     Kubernetes:     v1.16.6
     Docker:         v19.03.5
     Changelog (vs 80-12739-78-0):
@@ -457,7 +569,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Feb 21, 2020
-    Kernel:         [ChromiumOS-4.19.104](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/230a8e9a1c1e9acf75f6783b047711b357f746cd%0A)
+    Kernel:         [ChromiumOS-4.19.104](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/230a8e9a1c1e9acf75f6783b047711b357f746cd)
     Kubernetes:     v1.17.3
     Docker:         v19.03.6
     Changelog (vs 82-12894-0-0):
@@ -475,7 +587,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Feb 21, 2020
-    Kernel:         [ChromiumOS-4.19.104](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/810a37b78aab7edf1898a0f10b6d33f12999dd10%0A)
+    Kernel:         [ChromiumOS-4.19.104](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/810a37b78aab7edf1898a0f10b6d33f12999dd10)
     Kubernetes:     v1.17.3
     Docker:         v19.03.6
     Changelog (vs 81-12871-7-0):
@@ -492,7 +604,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Feb 21, 2020
-    Kernel:         [ChromiumOS-4.19.87](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/709837de20828e09bbb42e2f6f2839efedded5a0%0A)
+    Kernel:         [ChromiumOS-4.19.87](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/709837de20828e09bbb42e2f6f2839efedded5a0)
     Kubernetes:     v1.16.6
     Docker:         v19.03.5
     Changelog (vs 80-12739-68-0):
@@ -505,7 +617,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Feb 21, 2020
-    Kernel:         [ChromiumOS-4.19.104](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/0c94af8a1221168be9c750ad378d494e969fa425%0A)
+    Kernel:         [ChromiumOS-4.19.104](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/0c94af8a1221168be9c750ad378d494e969fa425)
     Kubernetes:     v1.15.3
     Docker:         v19.03.1
     Changelog (vs 77-12371-175-0):
@@ -518,7 +630,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Feb 21, 2020
-    Kernel:         [ChromiumOS-4.14.171](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/c88d15e74e7bedba260a8ef7ee6920e02182477a%0A)
+    Kernel:         [ChromiumOS-4.14.171](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/c88d15e74e7bedba260a8ef7ee6920e02182477a)
     Kubernetes:     v1.13.3
     Docker:         v18.09.7
     Changelog (vs 73-11647-449-0):
@@ -531,7 +643,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Feb 12, 2020
-    Kernel:         [ChromiumOS-4.19.102](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/dc18f11110004b0f87b205188af793af02f434e0%0A)
+    Kernel:         [ChromiumOS-4.19.102](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/dc18f11110004b0f87b205188af793af02f434e0)
     Kubernetes:     v1.17.2
     Docker:         v19.03.5
     Changelog (vs 82-12892-0-0):
@@ -543,7 +655,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Feb 12, 2020
-    Kernel:         [ChromiumOS-4.19.102](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/12060777ae0d5294a935e285df3e4a043915c371%0A)
+    Kernel:         [ChromiumOS-4.19.102](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/12060777ae0d5294a935e285df3e4a043915c371)
     Kubernetes:     v1.17.2
     Docker:         v19.03.5
     Changelog (vs 81-12871-6-0):
@@ -555,7 +667,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Feb 12, 2020
-    Kernel:         [ChromiumOS-4.19.87](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/2cfbd87eae7ca138d457c2085de8621b43ddf08e%0A)
+    Kernel:         [ChromiumOS-4.19.87](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/2cfbd87eae7ca138d457c2085de8621b43ddf08e)
     Kubernetes:     v1.16.6
     Docker:         v19.03.5
     Changelog (vs 80-12739-66-0):
@@ -567,7 +679,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Feb 12, 2020
-    Kernel:         [ChromiumOS-4.19.102](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/1be45a63ab45e4483c7f5aa32a0d0390e8b5a9b9%0A)
+    Kernel:         [ChromiumOS-4.19.102](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/1be45a63ab45e4483c7f5aa32a0d0390e8b5a9b9)
     Kubernetes:     v1.15.3
     Docker:         v19.03.1
     Changelog (vs 77-12371-141-0):
@@ -581,7 +693,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Feb 12, 2020
-    Kernel:         [ChromiumOS-4.14.170](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/2df639a0b50d8dbe6419a383afd3994810cd3760%0A)
+    Kernel:         [ChromiumOS-4.14.170](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/2df639a0b50d8dbe6419a383afd3994810cd3760)
     Kubernetes:     v1.13.3
     Docker:         v18.09.7
     Changelog (vs 73-11647-415-0):
@@ -594,7 +706,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Feb 10, 2020
-    Kernel:         [ChromiumOS-4.19.101](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/e97023266391178de3ef1b067f7019d1f959f57a%0A)
+    Kernel:         [ChromiumOS-4.19.101](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/e97023266391178de3ef1b067f7019d1f959f57a)
     Kubernetes:     v1.17.2
     Docker:         v19.03.5
     Changelog (vs 81-12854-0-0):
@@ -612,7 +724,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Feb 10, 2020
-    Kernel:         [ChromiumOS-4.19.101](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/0351c63f06a9e79d3111e82dfc15bb315f7aa13b%0A)
+    Kernel:         [ChromiumOS-4.19.101](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/0351c63f06a9e79d3111e82dfc15bb315f7aa13b)
     Kubernetes:     v1.17.2
     Docker:         v19.03.5
     Changelog (vs 81-12854-0-0):
@@ -627,7 +739,7 @@ Marco  |  Estável após  |  Obsoleto após
     
     
     Date:           Feb 10, 2020
-    Kernel:         [ChromiumOS-4.19.87](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/2cfbd87eae7ca138d457c2085de8621b43ddf08e%0A)
+    Kernel:         [ChromiumOS-4.19.87](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/2cfbd87eae7ca138d457c2085de8621b43ddf08e)
     Kubernetes:     v1.16.6
     Docker:         v19.03.5
     Changelog (vs 80-12739-48-0):
