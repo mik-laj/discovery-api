@@ -560,7 +560,7 @@
 
   * [
 
-###  Anthos Service Mesh (beta)
+###  Anthos Service Mesh
 
 ](/service-mesh/docs/release-notes)
 
@@ -635,6 +635,14 @@
 ###  Cloud Billing
 
 ](/billing/docs/release-notes)
+
+  * [
+
+###  Cloud Console
+
+](/cloud-console/docs/release-notes)
+
+  * 
 
 ##  Media and Gaming
 
