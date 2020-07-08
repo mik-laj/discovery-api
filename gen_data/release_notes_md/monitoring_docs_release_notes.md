@@ -12,6 +12,17 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/stackdriver-release-notes.xml `
 
+##  July 07, 2020
+
+**CHANGED:**
+
+Monitoring Query Language (MQL) is now Generally Available. MQL is an
+expressive, text-based interface to Cloud Monitoring time-series data. With
+MQL, you can create charts you can't create any other way. You can access MQL
+from both the Cloud Console and the Monitoring API. For more information, see
+[ Introduction to Monitoring Query Language
+](https://cloud.google.com/monitoring/mql/) .
+
 ##  June 15, 2020
 
 **CHANGED:**
