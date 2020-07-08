@@ -8,8 +8,8 @@ Google Cloud의 최신 제품 업데이트를 확인할 수 있습니다.
 
 최신 제품 업데이트를 받으려면 [ 피드 리더
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) 에 이 페이지의 URL을
-추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/automl-
-language-release-notes.xml `
+추가하거나 다음의 피드 URL을 직접 추가하세요. ` https://cloud.google.com/feeds/automl-language-
+release-notes.xml `
 
 ##  April 03, 2020
 
