@@ -9,9 +9,20 @@
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/trafficdirector-release-notes.xml `
 
-##  May 06, 2020
+##  July 07, 2020
 
 **FEATURE:**
+
+Traffic Director now provides the option of automated Envoy deployment.
+
+**FEATURE:**
+
+Traffic Director now supports automated Envoy deployments for Google Compute
+Engine VMs in Beta.
+
+##  May 06, 2020
+
+**CHANGED:**
 
 A new document is added to [ Traffic Director
 ](https://cloud.google.com/traffic-director/docs?hl=zh-cn) : [ Ingress traffic
