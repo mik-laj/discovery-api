@@ -25,6 +25,15 @@ Feedreader ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
 einfügen oder die Feed-URL direkt hinzufügen: `
 https://cloud.google.com/feeds/automl-tables-release-notes.xml ` .
 
+##  June 01, 2020
+
+**FEATURE:**
+
+Support for [ feature importance with batch predictions
+](https://cloud.google.com/automl-
+tables/docs/explain?hl=de#getting_local_feature_importance_for_batch_predictions)
+.
+
 ##  April 03, 2020
 
 **CHANGED:**
