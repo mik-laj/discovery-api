@@ -19,6 +19,15 @@ tables/docs/known-issues?hl=ja) をご覧ください。
 URL ディレクトリ ` https://cloud.google.com/feeds/automl-tables-release-notes.xml `
 を直接追加します。
 
+##  June 01, 2020
+
+**FEATURE:**
+
+Support for [ feature importance with batch predictions
+](https://cloud.google.com/automl-
+tables/docs/explain?hl=ja#getting_local_feature_importance_for_batch_predictions)
+.
+
 ##  April 03, 2020
 
 **CHANGED:**
