@@ -176,6 +176,43 @@
                                 "https://www.googleapis.com/auth/cloud-platform"
                             ]
                         },
+                        "searchAllAssignments": {
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}:searchAllAssignments",
+                            "httpMethod": "GET",
+                            "id": "bigqueryreservation.projects.locations.searchAllAssignments",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "pageSize": {
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "pageToken": {
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "parent": {
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "query": {
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+parent}:searchAllAssignments",
+                            "response": {
+                                "$ref": "SearchAllAssignmentsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/bigquery",
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
                         "searchAssignments": {
                             "flatPath": "v1/projects/{projectsId}/locations/{locationsId}:searchAssignments",
                             "httpMethod": "GET",
@@ -774,6 +811,10 @@
                     "format": "google-datetime",
                     "type": "string"
                 },
+                "commitmentStartTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                },
                 "failureStatus": {
                     "$ref": "Status"
                 },
@@ -949,6 +990,21 @@
                 },
                 "slotCapacity": {
                     "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SearchAllAssignmentsResponse": {
+            "id": "SearchAllAssignmentsResponse",
+            "properties": {
+                "assignments": {
+                    "items": {
+                        "$ref": "Assignment"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
                     "type": "string"
                 }
             },
