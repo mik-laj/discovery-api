@@ -19,7 +19,7 @@ URL directly: ` https://cloud.google.com/feeds/kms-release-notes.xml `
 **FEATURE:**
 
 Keys hosted by [ Thales
-](https://thalesdocs.com/dpod/services/key_management_services/ekms/ekms_setup_guide/)
+](https://thalesdocs.com/dpod/services/key_management_services/ekms/ekms_setup_guide/index.html)
 are now supported in Cloud EKM. To learn more, see [ Cloud EKM
 ](https://cloud.google.com/kms/docs/ekm) .
 
