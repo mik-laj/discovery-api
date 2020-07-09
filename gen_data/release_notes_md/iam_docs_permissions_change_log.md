@@ -19,6 +19,211 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloud-iam-permissions-change-
 log.xml `
 
+##  Upcoming Cloud IAM changes for the week of 2020-07-06
+
+Service  |  Change  |  Description  
+---|---|---  
+Cloud Monitoring  |  Now GA  |
+
+The role ` roles/monitoring.servicesEditor ` (Monitoring Services Editor) is
+now GA.  
+  
+Cloud Monitoring  |  Now GA  |
+
+The role ` roles/monitoring.servicesViewer ` (Monitoring Services Viewer) is
+now GA.  
+  
+NetApp Cloud Volumes Service  |  Added  |  ` cloudvolumesgcp-
+api.netapp.com/activeDirectories.create `  
+` cloudvolumesgcp-api.netapp.com/activeDirectories.delete `  
+` cloudvolumesgcp-api.netapp.com/activeDirectories.get `  
+` cloudvolumesgcp-api.netapp.com/activeDirectories.list `  
+` cloudvolumesgcp-api.netapp.com/activeDirectories.update `  
+` cloudvolumesgcp-api.netapp.com/ipRanges.list `  
+` cloudvolumesgcp-api.netapp.com/jobs.get `  
+` cloudvolumesgcp-api.netapp.com/jobs.list `  
+` cloudvolumesgcp-api.netapp.com/regions.list `  
+` cloudvolumesgcp-api.netapp.com/serviceLevels.list `  
+` cloudvolumesgcp-api.netapp.com/snapshots.create `  
+` cloudvolumesgcp-api.netapp.com/snapshots.delete `  
+` cloudvolumesgcp-api.netapp.com/snapshots.get `  
+` cloudvolumesgcp-api.netapp.com/snapshots.list `  
+` cloudvolumesgcp-api.netapp.com/snapshots.update `  
+` cloudvolumesgcp-api.netapp.com/volumes.create `  
+` cloudvolumesgcp-api.netapp.com/volumes.delete `  
+` cloudvolumesgcp-api.netapp.com/volumes.get `  
+` cloudvolumesgcp-api.netapp.com/volumes.list `  
+` cloudvolumesgcp-api.netapp.com/volumes.update `  
+  
+Cloud Monitoring  |  Added  |  ` monitoring.services.create `  
+` monitoring.services.delete `  
+` monitoring.services.get `  
+` monitoring.services.list `  
+` monitoring.services.update `  
+` monitoring.slos.create `  
+` monitoring.slos.delete `  
+` monitoring.slos.get `  
+` monitoring.slos.list `  
+` monitoring.slos.update `  
+  
+Cloud Monitoring  |  Supported In Custom Roles  |  `
+monitoring.services.create `  
+` monitoring.services.delete `  
+` monitoring.services.get `  
+` monitoring.services.list `  
+` monitoring.services.update `  
+` monitoring.slos.create `  
+` monitoring.slos.delete `  
+` monitoring.slos.get `  
+` monitoring.slos.list `  
+` monitoring.slos.update `  
+  
+Cloud Monitoring  |  Now GA  |  ` monitoring.services.create `  
+` monitoring.services.delete `  
+` monitoring.services.get `  
+` monitoring.services.list `  
+` monitoring.services.update `  
+` monitoring.slos.create `  
+` monitoring.slos.delete `  
+` monitoring.slos.get `  
+` monitoring.slos.list `  
+` monitoring.slos.update `  
+  
+Network Security  |  Added  |  ` networksecurity.authorizationPolicies.create
+`  
+` networksecurity.authorizationPolicies.delete `  
+` networksecurity.authorizationPolicies.get `  
+` networksecurity.authorizationPolicies.getIamPolicy `  
+` networksecurity.authorizationPolicies.list `  
+` networksecurity.authorizationPolicies.setIamPolicy `  
+` networksecurity.authorizationPolicies.update `  
+` networksecurity.authorizationPolicies.use `  
+` networksecurity.clientTlsPolicies.create `  
+` networksecurity.clientTlsPolicies.delete `  
+` networksecurity.clientTlsPolicies.get `  
+` networksecurity.clientTlsPolicies.getIamPolicy `  
+` networksecurity.clientTlsPolicies.list `  
+` networksecurity.clientTlsPolicies.setIamPolicy `  
+` networksecurity.clientTlsPolicies.update `  
+` networksecurity.clientTlsPolicies.use `  
+` networksecurity.locations.get `  
+` networksecurity.locations.list `  
+` networksecurity.operations.cancel `  
+` networksecurity.operations.delete `  
+` networksecurity.operations.get `  
+` networksecurity.operations.list `  
+` networksecurity.serverTlsPolicies.create `  
+` networksecurity.serverTlsPolicies.delete `  
+` networksecurity.serverTlsPolicies.get `  
+` networksecurity.serverTlsPolicies.getIamPolicy `  
+` networksecurity.serverTlsPolicies.list `  
+` networksecurity.serverTlsPolicies.setIamPolicy `  
+` networksecurity.serverTlsPolicies.update `  
+` networksecurity.serverTlsPolicies.use `  
+  
+Network Security  |  Supported In Custom Roles  |  `
+networksecurity.authorizationPolicies.create `  
+` networksecurity.authorizationPolicies.delete `  
+` networksecurity.authorizationPolicies.get `  
+` networksecurity.authorizationPolicies.getIamPolicy `  
+` networksecurity.authorizationPolicies.list `  
+` networksecurity.authorizationPolicies.setIamPolicy `  
+` networksecurity.authorizationPolicies.update `  
+` networksecurity.authorizationPolicies.use `  
+` networksecurity.clientTlsPolicies.create `  
+` networksecurity.clientTlsPolicies.delete `  
+` networksecurity.clientTlsPolicies.get `  
+` networksecurity.clientTlsPolicies.getIamPolicy `  
+` networksecurity.clientTlsPolicies.list `  
+` networksecurity.clientTlsPolicies.setIamPolicy `  
+` networksecurity.clientTlsPolicies.update `  
+` networksecurity.clientTlsPolicies.use `  
+` networksecurity.locations.get `  
+` networksecurity.locations.list `  
+` networksecurity.operations.cancel `  
+` networksecurity.operations.delete `  
+` networksecurity.operations.get `  
+` networksecurity.operations.list `  
+` networksecurity.serverTlsPolicies.create `  
+` networksecurity.serverTlsPolicies.delete `  
+` networksecurity.serverTlsPolicies.get `  
+` networksecurity.serverTlsPolicies.getIamPolicy `  
+` networksecurity.serverTlsPolicies.list `  
+` networksecurity.serverTlsPolicies.setIamPolicy `  
+` networksecurity.serverTlsPolicies.update `  
+` networksecurity.serverTlsPolicies.use `  
+  
+Network Services  |  Added  |  `
+networkservices.endpointConfigSelectors.create `  
+` networkservices.endpointConfigSelectors.delete `  
+` networkservices.endpointConfigSelectors.get `  
+` networkservices.endpointConfigSelectors.getIamPolicy `  
+` networkservices.endpointConfigSelectors.list `  
+` networkservices.endpointConfigSelectors.setIamPolicy `  
+` networkservices.endpointConfigSelectors.update `  
+` networkservices.endpointConfigSelectors.use `  
+` networkservices.httpFilters.create `  
+` networkservices.httpFilters.delete `  
+` networkservices.httpFilters.get `  
+` networkservices.httpFilters.getIamPolicy `  
+` networkservices.httpFilters.list `  
+` networkservices.httpFilters.setIamPolicy `  
+` networkservices.httpFilters.update `  
+` networkservices.httpFilters.use `  
+` networkservices.locations.get `  
+` networkservices.locations.list `  
+` networkservices.operations.cancel `  
+` networkservices.operations.delete `  
+` networkservices.operations.get `  
+` networkservices.operations.list `  
+  
+Network Services  |  Supported In Custom Roles  |  `
+networkservices.endpointConfigSelectors.create `  
+` networkservices.endpointConfigSelectors.delete `  
+` networkservices.endpointConfigSelectors.get `  
+` networkservices.endpointConfigSelectors.getIamPolicy `  
+` networkservices.endpointConfigSelectors.list `  
+` networkservices.endpointConfigSelectors.setIamPolicy `  
+` networkservices.endpointConfigSelectors.update `  
+` networkservices.endpointConfigSelectors.use `  
+` networkservices.httpFilters.create `  
+` networkservices.httpFilters.delete `  
+` networkservices.httpFilters.get `  
+` networkservices.httpFilters.getIamPolicy `  
+` networkservices.httpFilters.list `  
+` networkservices.httpFilters.setIamPolicy `  
+` networkservices.httpFilters.update `  
+` networkservices.httpFilters.use `  
+` networkservices.locations.get `  
+` networkservices.locations.list `  
+` networkservices.operations.cancel `  
+` networkservices.operations.delete `  
+` networkservices.operations.get `  
+` networkservices.operations.list `  
+  
+Pub/Sub  |  Added  |  ` pubsub.topics.detachSubscription `  
+  
+Pub/Sub  |  Now GA  |  ` pubsub.topics.detachSubscription `  
+  
+reCAPTCHA Enterprise  |  Added  |  ` recaptchaenterprise.metrics.get `  
+  
+reCAPTCHA Enterprise  |  Supported In Custom Roles  |  `
+recaptchaenterprise.metrics.get `  
+  
+Recommender  |  Added  |  ` recommender.computeDiskIdleResourceInsights.get `  
+` recommender.computeDiskIdleResourceInsights.list `  
+` recommender.computeDiskIdleResourceInsights.update `  
+  
+Recommender  |  Supported In Custom Roles  |  `
+recommender.computeDiskIdleResourceInsights.get `  
+` recommender.computeDiskIdleResourceInsights.list `  
+` recommender.computeDiskIdleResourceInsights.update `  
+  
+Recommender  |  Now GA  |  ` recommender.computeDiskIdleResourceInsights.get `  
+` recommender.computeDiskIdleResourceInsights.list `  
+` recommender.computeDiskIdleResourceInsights.update `  
+  
+  
 ##  Cloud IAM changes as of 2020-06-26
 
 Service  |  Change  |  Description  
