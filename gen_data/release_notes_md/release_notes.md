@@ -124,6 +124,25 @@ The Dialogflow Console has been upgraded with an improved [ Analytics page
 ](https://cloud.google.com/dialogflow/docs/analytics) (Beta) that provides new
 metrics and data views.
 
+##  July 04, 2020
+
+**Document AI**
+
+**CHANGED:**
+
+**Invoice Parsing Beta model upgrade**
+
+The Invoice Parsing Beta model has been upgraded. This model upgrade results
+in higher quality results for the [ entities
+](https://cloud.google.com/document-
+ai/docs/reference/rest/v1beta2/Document#Entity) and [ entityRelations
+](https://cloud.google.com/document-
+ai/docs/reference/rest/v1beta2/Document#EntityRelation) . There is no API
+change.
+
+See the [ product documentation ](https://cloud.google.com/solutions/document-
+ai/docs/process-invoices) for more information.
+
 ##  July 01, 2020
 
 **BigQuery ML**
@@ -901,7 +920,7 @@ bindings-in-substitutions) .
 **FEATURE:**
 
 Keys hosted by [ Thales
-](https://thalesdocs.com/dpod/services/key_management_services/ekms/ekms_setup_guide/)
+](https://thalesdocs.com/dpod/services/key_management_services/ekms/ekms_setup_guide/index.html)
 are now supported in Cloud EKM. To learn more, see [ Cloud EKM
 ](https://cloud.google.com/kms/docs/ekm) .
 
@@ -1361,12 +1380,6 @@ when a cluster is created.
 
 **CHANGED:**
 
-Dataproc now uses [ Compute Engine shielded VMs
-](https://cloud.google.com/security/shielded-cloud/shielded-vm) for Debian 10
-and Ubuntu 18.04 clusters by default.
-
-**CHANGED:**
-
 Dataproc Job container logging now supports [ Dataproc Kerberized clusters
 ](https://cloud.google.com/dataproc/docs/concepts/configuring-
 clusters/security#create_a_kerberos_cluster) .
@@ -1397,21 +1410,4 @@ service-controls/docs/bulk-operations) .
 HTTP(S) Load Balancing with [ Cloud CDN logging
 ](https://cloud.google.com/cdn/docs/logging) is available in **General
 Availability** .
-
-##  June 09, 2020
-
-**BigQuery**
-
-**FEATURE:**
-
-Clustering for non-partitioned tables is now supported. For more information
-about clustered tables, see [ Introduction to clustered tables
-](https://cloud.google.com/bigquery/docs/clustered-tables) .
-
-**Cloud Run**
-
-**FEATURE:**
-
-Export a Cloud Run service to a YAML file with ` gcloud run services describe
-SERVICE --format export `
 
