@@ -108,6 +108,31 @@ migration.
 
 **ISSUE:**
 
+**#160405343:** Due to a [ change in behavior
+](https://www.suse.com/support/kb/doc/?id=000019633) on the activation flow
+for SUSE, configuring repositories on SUSE Enterprise Linux instances post-
+detach now fail.
+
+**Workaround:** The following workaround can be used prior to detach (either
+before migration or before detach).
+
+  1. Follow the instructions described for Situation 4 at [ https://www.suse.com/support/kb/doc/?id=000019633 ](https://www.suse.com/support/kb/doc/?id=000019633) to download the required packages for Compute Engine as a tar.gz file. 
+  2. **For SLES 12.x** , then run the following commands: 
+    
+        sha1sum late_instance_offline_update_gce_SLE12.tar.gz
+    tar -xf late_instance_offline_update_gce_SLE12.tar.gz
+    cd x86_64/
+    zypper --no-refresh --no-remote --non-interactive in *.rpm
+
+  3. **For SLES 15.x** , then run the following commands: 
+    
+        sha1sum late_instance_offline_update_gce_SLE15.tar.gz
+    tar -xf late_instance_offline_update_gce_SLE15.tar.gz
+    cd x86_64/
+    zypper --no-refresh --no-remote --non-interactive in *.rpm
+
+**ISSUE:**
+
 **#149004085:** Ubuntu 14 from on-premise may fail to start networking post
 detach.
 
