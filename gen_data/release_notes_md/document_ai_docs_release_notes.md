@@ -20,6 +20,23 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/duai-release-notes.xml `
 
+##  July 04, 2020
+
+**CHANGED:**
+
+**Invoice Parsing Beta model upgrade**
+
+The Invoice Parsing Beta model has been upgraded. This model upgrade results
+in higher quality results for the [ entities
+](https://cloud.google.com/document-
+ai/docs/reference/rest/v1beta2/Document#Entity) and [ entityRelations
+](https://cloud.google.com/document-
+ai/docs/reference/rest/v1beta2/Document#EntityRelation) . There is no API
+change.
+
+See the [ product documentation ](https://cloud.google.com/solutions/document-
+ai/docs/process-invoices) for more information.
+
 ##  April 14, 2020
 
 **FEATURE:**
