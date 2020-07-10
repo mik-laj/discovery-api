@@ -1,3 +1,7 @@
+[ Node.js 12
+](https://cloud.google.com/appengine/docs/standard/nodejs/runtime?hl=de) ist
+jetzt allgemein verfügbar.
+
 #  Node.js-Versionshinweise
 
 Die neuesten Produktupdates für Google Cloud finden Sie auf der Seite mit den
@@ -8,6 +12,25 @@ Für neueste Produktaktualisierungen können Sie die URL der Seite in den [
 Feedreader ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
 einfügen oder die Feed-URL direkt hinzufügen: `
 https://cloud.google.com/feeds/gaestd-node-release-notes.xml ` .
+
+##  July 08, 2020
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for App Engine via [
+Serverless network endpoint groups ](https://cloud.google.com//load-
+balancing/docs/negs/setting-up-serverless-negs?hl=de) . Notably, this feature
+allows you to use [ Cloud CDN ](https://cloud.google.com/cdn?hl=de) with App
+Engine.  
+This feature is available in Beta.
+
+##  July 06, 2020
+
+**FEATURE:**
+
+The [ Node.js 12 runtime
+](https://cloud.google.com/appengine/docs/standard/nodejs/runtime?hl=de) for
+the App Engine standard environment is now generally available.
 
 ##  June 08, 2020
 
