@@ -23,6 +23,40 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/stackdriver-release-notes.xml `
 
+##  July 07, 2020
+
+**Cloud Monitoring**
+
+**CHANGED:**
+
+Monitoring Query Language (MQL) is now Generally Available. MQL is an
+expressive, text-based interface to Cloud Monitoring time-series data. With
+MQL, you can create charts you can't create any other way. You can access MQL
+from both the Cloud Console and the Monitoring API. For more information, see
+[ Introduction to Monitoring Query Language
+](https://cloud.google.com/monitoring/mql/) .
+
+##  June 30, 2020
+
+**Cloud Logging**
+
+**FEATURE:**
+
+Cloud Logging now contains a Logs Dashboard page that provides a high-level
+overview into the health of your systems running within a project. To learn
+more, see [ Logs Dashboard
+](https://cloud.google.com/logging/docs/view/dashboard) .
+
+##  June 29, 2020
+
+**Cloud Debugger**
+
+**FEATURE:**
+
+Cloud Debugger now lets you canary snapshots and logpoints on your Node.js
+applications. To learn more, see the [ Node.js page for setting up Cloud
+Debugger ](https://cloud.google.com/debugger/docs/setup/nodejs) .
+
 ##  June 17, 2020
 
 **Cloud Debugger**
