@@ -8,6 +8,17 @@ Google Cloud의 최신 제품 업데이트를 확인할 수 있습니다.
 추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/gaeflex-node-
 release-notes.xml `
 
+##  July 08, 2020
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for App Engine via [
+Serverless network endpoint groups ](https://cloud.google.com//load-
+balancing/docs/negs/setting-up-serverless-negs?hl=ko) . Notably, this feature
+allows you to use [ Cloud CDN ](https://cloud.google.com/cdn?hl=ko) with App
+Engine.  
+This feature is available in Beta.
+
 ##  June 08, 2020
 
 **FEATURE:**
