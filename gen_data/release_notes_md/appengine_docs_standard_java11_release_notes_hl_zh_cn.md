@@ -7,6 +7,17 @@
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/gaestd-java-release-notes.xml `
 
+##  July 08, 2020
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for App Engine via [
+Serverless network endpoint groups ](https://cloud.google.com//load-
+balancing/docs/negs/setting-up-serverless-negs?hl=zh-cn) . Notably, this
+feature allows you to use [ Cloud CDN ](https://cloud.google.com/cdn?hl=zh-cn)
+with App Engine.  
+This feature is available in Beta.
+
 ##  June 08, 2020
 
 **FEATURE:**
