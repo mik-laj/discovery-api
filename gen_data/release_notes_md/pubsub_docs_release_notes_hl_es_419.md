@@ -13,11 +13,15 @@ Pub/Sub para lenguajes específicos, usa los vínculos siguientes: [ C#
 ](https://github.com/googleapis/python-pubsub/releases) y [ Ruby
 ](https://github.com/googleapis/google-cloud-ruby/releases) .
 
+Puedes ver las actualizaciones más recientes de todos los productos de Google
+Cloud en la página de [ notas de la versión de Google Cloud
+](https://cloud.google.com/release-notes?hl=es-419) .
+
 Para recibir las últimas actualizaciones de productos, agrega la URL de esta
 página a tu [ lector de feeds
-](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) o agrega
+](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , o agrega
 directamente la URL del feed: ` https://cloud.google.com/feeds/pubsub-release-
-notes.xml ` .
+notes.xml `
 
 ##  June 16, 2020
 
