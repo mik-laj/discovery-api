@@ -86,6 +86,99 @@
             "resources": {
                 "locations": {
                     "resources": {
+                        "insightTypes": {
+                            "resources": {
+                                "insights": {
+                                    "methods": {
+                                        "get": {
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/insightTypes/{insightTypesId}/insights/{insightsId}",
+                                            "httpMethod": "GET",
+                                            "id": "recommender.projects.locations.insightTypes.insights.get",
+                                            "parameterOrder": [
+                                                "name"
+                                            ],
+                                            "parameters": {
+                                                "name": {
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/insightTypes/[^/]+/insights/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+name}",
+                                            "response": {
+                                                "$ref": "GoogleCloudRecommenderV1Insight"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
+                                        "list": {
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/insightTypes/{insightTypesId}/insights",
+                                            "httpMethod": "GET",
+                                            "id": "recommender.projects.locations.insightTypes.insights.list",
+                                            "parameterOrder": [
+                                                "parent"
+                                            ],
+                                            "parameters": {
+                                                "filter": {
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "pageSize": {
+                                                    "format": "int32",
+                                                    "location": "query",
+                                                    "type": "integer"
+                                                },
+                                                "pageToken": {
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "parent": {
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/insightTypes/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+parent}/insights",
+                                            "response": {
+                                                "$ref": "GoogleCloudRecommenderV1ListInsightsResponse"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
+                                        "markAccepted": {
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/insightTypes/{insightTypesId}/insights/{insightsId}:markAccepted",
+                                            "httpMethod": "POST",
+                                            "id": "recommender.projects.locations.insightTypes.insights.markAccepted",
+                                            "parameterOrder": [
+                                                "name"
+                                            ],
+                                            "parameters": {
+                                                "name": {
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/insightTypes/[^/]+/insights/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+name}:markAccepted",
+                                            "request": {
+                                                "$ref": "GoogleCloudRecommenderV1MarkInsightAcceptedRequest"
+                                            },
+                                            "response": {
+                                                "$ref": "GoogleCloudRecommenderV1Insight"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        },
                         "recommenders": {
                             "resources": {
                                 "recommendations": {
@@ -270,6 +363,105 @@
             },
             "type": "object"
         },
+        "GoogleCloudRecommenderV1Insight": {
+            "id": "GoogleCloudRecommenderV1Insight",
+            "properties": {
+                "associatedRecommendations": {
+                    "items": {
+                        "$ref": "GoogleCloudRecommenderV1InsightRecommendationReference"
+                    },
+                    "type": "array"
+                },
+                "category": {
+                    "enum": [
+                        "CATEGORY_UNSPECIFIED",
+                        "COST",
+                        "SECURITY",
+                        "PERFORMANCE",
+                        "MANAGEABILITY"
+                    ],
+                    "type": "string"
+                },
+                "content": {
+                    "additionalProperties": {
+                        "type": "any"
+                    },
+                    "type": "object"
+                },
+                "etag": {
+                    "type": "string"
+                },
+                "insightSubtype": {
+                    "type": "string"
+                },
+                "lastRefreshTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "observationPeriod": {
+                    "format": "google-duration",
+                    "type": "string"
+                },
+                "stateInfo": {
+                    "$ref": "GoogleCloudRecommenderV1InsightStateInfo"
+                },
+                "targetResources": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudRecommenderV1InsightRecommendationReference": {
+            "id": "GoogleCloudRecommenderV1InsightRecommendationReference",
+            "properties": {
+                "recommendation": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudRecommenderV1InsightStateInfo": {
+            "id": "GoogleCloudRecommenderV1InsightStateInfo",
+            "properties": {
+                "state": {
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "ACTIVE",
+                        "ACCEPTED",
+                        "DISMISSED"
+                    ],
+                    "type": "string"
+                },
+                "stateMetadata": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudRecommenderV1ListInsightsResponse": {
+            "id": "GoogleCloudRecommenderV1ListInsightsResponse",
+            "properties": {
+                "insights": {
+                    "items": {
+                        "$ref": "GoogleCloudRecommenderV1Insight"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudRecommenderV1ListRecommendationsResponse": {
             "id": "GoogleCloudRecommenderV1ListRecommendationsResponse",
             "properties": {
@@ -281,6 +473,21 @@
                         "$ref": "GoogleCloudRecommenderV1Recommendation"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudRecommenderV1MarkInsightAcceptedRequest": {
+            "id": "GoogleCloudRecommenderV1MarkInsightAcceptedRequest",
+            "properties": {
+                "etag": {
+                    "type": "string"
+                },
+                "stateMetadata": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object"
                 }
             },
             "type": "object"
@@ -393,6 +600,12 @@
                     },
                     "type": "array"
                 },
+                "associatedInsights": {
+                    "items": {
+                        "$ref": "GoogleCloudRecommenderV1RecommendationInsightReference"
+                    },
+                    "type": "array"
+                },
                 "content": {
                     "$ref": "GoogleCloudRecommenderV1RecommendationContent"
                 },
@@ -426,6 +639,15 @@
                         "$ref": "GoogleCloudRecommenderV1OperationGroup"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudRecommenderV1RecommendationInsightReference": {
+            "id": "GoogleCloudRecommenderV1RecommendationInsightReference",
+            "properties": {
+                "insight": {
+                    "type": "string"
                 }
             },
             "type": "object"
