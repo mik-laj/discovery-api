@@ -12,6 +12,195 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  July 09, 2020
+
+**Cloud SQL for PostgreSQL**
+
+**FEATURE:**
+
+Cloud SQL now supports [ point-in-time recovery (PITR) for PostgreSQL
+](https://cloud.google.com/sql/docs/postgres/backup-recovery/pitr) . Point-in-
+time recovery helps you recover an instance to a specific point in time. For
+example, if an error causes a loss of data, you can recover a database to its
+state before the error occurred.
+
+**Config Connector**
+
+**FEATURE:**
+
+Added support for ` SecretManagerSecret `
+
+**Managed Service for Microsoft Active Directory**
+
+**FEATURE:**
+
+The [ Managed Microsoft AD SLA ](https://cloud.google.com/managed-microsoft-
+ad/sla) has been published.
+
+##  July 08, 2020
+
+**App Engine flexible environment .NET**
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for App Engine via [
+Serverless network endpoint groups ](https://cloud.google.com//load-
+balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
+you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
+This feature is available in Beta.
+
+**App Engine flexible environment Go**
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for App Engine via [
+Serverless network endpoint groups ](https://cloud.google.com//load-
+balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
+you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
+This feature is available in Beta.
+
+**App Engine flexible environment Java**
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for App Engine via [
+Serverless network endpoint groups ](https://cloud.google.com//load-
+balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
+you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
+This feature is available in Beta.
+
+**App Engine flexible environment Node.js**
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for App Engine via [
+Serverless network endpoint groups ](https://cloud.google.com//load-
+balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
+you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
+This feature is available in Beta.
+
+**App Engine flexible environment PHP**
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for App Engine via [
+Serverless network endpoint groups ](https://cloud.google.com//load-
+balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
+you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
+This feature is available in Beta.
+
+**App Engine flexible environment Ruby**
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for App Engine via [
+Serverless network endpoint groups ](https://cloud.google.com//load-
+balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
+you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
+This feature is available in Beta.
+
+**App Engine flexible environment custom runtimes**
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for App Engine via [
+Serverless network endpoint groups ](https://cloud.google.com//load-
+balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
+you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
+This feature is available in Beta.
+
+**App Engine standard environment Go**
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for App Engine via [
+Serverless network endpoint groups ](https://cloud.google.com//load-
+balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
+you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
+This feature is available in Beta.
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for App Engine via [
+Serverless network endpoint groups ](https://cloud.google.com//load-
+balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
+you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
+This feature is available in Beta.
+
+**App Engine standard environment Java**
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for App Engine via [
+Serverless network endpoint groups ](https://cloud.google.com//load-
+balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
+you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
+This feature is available in Beta.
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for App Engine via [
+Serverless network endpoint groups ](https://cloud.google.com//load-
+balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
+you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
+This feature is available in Beta.
+
+**App Engine standard environment Node.js**
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for App Engine via [
+Serverless network endpoint groups ](https://cloud.google.com//load-
+balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
+you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
+This feature is available in Beta.
+
+**App Engine standard environment PHP**
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for App Engine via [
+Serverless network endpoint groups ](https://cloud.google.com//load-
+balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
+you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
+This feature is available in Beta.
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for App Engine via [
+Serverless network endpoint groups ](https://cloud.google.com//load-
+balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
+you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
+This feature is available in Beta.
+
+**App Engine standard environment Python**
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for App Engine via [
+Serverless network endpoint groups ](https://cloud.google.com//load-
+balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
+you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
+This feature is available in Beta.
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for App Engine via [
+Serverless network endpoint groups ](https://cloud.google.com//load-
+balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
+you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
+This feature is available in Beta.
+
+**App Engine standard environment Ruby**
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for App Engine via [
+Serverless network endpoint groups ](https://cloud.google.com//load-
+balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
+you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
+This feature is available in Beta.
+
 ##  July 07, 2020
 
 **Cloud Composer**
@@ -97,6 +286,30 @@ Traffic Director now supports automated Envoy deployments for Google Compute
 Engine VMs in Beta.
 
 ##  July 06, 2020
+
+**App Engine standard environment Node.js**
+
+**FEATURE:**
+
+The [ Node.js 12 runtime
+](https://cloud.google.com/appengine/docs/standard/nodejs/runtime) for the App
+Engine standard environment is now generally available.
+
+**App Engine standard environment Python**
+
+**FEATURE:**
+
+The [ Python 3.8 runtime
+](https://cloud.google.com/appengine/docs/standard/python3/runtime) for the
+App Engine standard environment is now generally available.
+
+**App Engine standard environment Ruby**
+
+**FEATURE:**
+
+The [ Ruby 2.6 and 2.7 runtime Betas
+](https://cloud.google.com/appengine/docs/standard/ruby/runtime) for the App
+Engine standard environment are now available.
 
 **BigQuery**
 
@@ -814,6 +1027,9 @@ and preview 2.0.0-RC2-ubuntu18.
 
     * [ SPARK-22404 ](https://issues.apache.org/jira/browse/SPARK-22404) : set ` spark.yarn.unmanagedAM.enabled ` property to ` true ` on clusters where Kerberos is not enabled to run Spark Application Master in driver (not managed in YARN) to improve job execution time. 
     * Updated R version to 3.6 
+
+    * Updated Spark to [ 3.0.0 version ](https://spark.apache.org/releases/spark-release-3-0-0.html)
+
   * **Image 1.5**
 
     * Updated R version to 3.6 
@@ -1400,14 +1616,4 @@ Using Access Context Manager's Bulk API, you can replace all of your
 organization's service perimeters in one operation. For more information, see
 [ Making bulk changes to service perimeters ](https://cloud.google.com/vpc-
 service-controls/docs/bulk-operations) .
-
-##  June 10, 2020
-
-**Cloud CDN**
-
-**FEATURE:**
-
-HTTP(S) Load Balancing with [ Cloud CDN logging
-](https://cloud.google.com/cdn/docs/logging) is available in **General
-Availability** .
 
