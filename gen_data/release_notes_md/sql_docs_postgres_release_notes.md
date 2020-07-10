@@ -13,6 +13,16 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloud-sql-postgres-release-
 notes.xml `
 
+##  July 09, 2020
+
+**FEATURE:**
+
+Cloud SQL now supports [ point-in-time recovery (PITR) for PostgreSQL
+](https://cloud.google.com/sql/docs/postgres/backup-recovery/pitr) . Point-in-
+time recovery helps you recover an instance to a specific point in time. For
+example, if an error causes a loss of data, you can recover a database to its
+state before the error occurred.
+
 ##  June 23, 2020
 
 **FEATURE:**
