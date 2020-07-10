@@ -13,6 +13,12 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/configconnector-release-
 notes.xml `
 
+##  July 09, 2020
+
+**FEATURE:**
+
+Added support for ` SecretManagerSecret `
+
 ##  July 01, 2020
 
 **FEATURE:**
