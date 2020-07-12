@@ -12,6 +12,21 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/billing-release-notes.xml `
 
+##  July 10, 2020
+
+**FEATURE:**
+
+The [ Cost Table report ](https://cloud.google.com/billing/docs/how-to/cost-
+table) functionality has been updated to add a **Table configuration**
+interface that replaces the previous _Group by_ and _Label_ selectors. Use the
+new **Table configuration** dialog to choose a **Label key** and select your
+**Group by** options. Additionally, the available **Group by** options have
+been enhanced to include a new **Custom grouping** option. Use custom grouping
+to view a [ nested cost table ](https://cloud.google.com/billing/docs/how-
+to/cost-table#nested_table_view) with your costs grouped by up to three
+dimensions that you choose, including label values. See the [ documentation
+](https://cloud.google.com/billing/docs/how-to/cost-table) for more details.
+
 ##  June 23, 2020
 
 **FEATURE:**
