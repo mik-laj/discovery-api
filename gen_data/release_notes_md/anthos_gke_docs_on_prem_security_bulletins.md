@@ -227,9 +227,9 @@ access to your Kubernetes API servers.
 
 ######  What should I do?
 
-We recommend that you [ upgrade your clusters ](/anthos/gke/docs/on-prem/how-
-to/upgrading#clusters) to a patch version containing the fix as soon as they
-are available.
+We recommend that you [ upgrade your clusters ](/anthos/gke/docs/on-prem/on-
+prem/how-to/upgrading#clusters) to a patch version containing the fix as soon
+as they are available.
 
 The patch versions which will contain the fix are listed below:
 
@@ -272,7 +272,7 @@ affected:
 
 ######  What should I do?
 
-We recommend that you [ upgrade ](/anthos/gke/docs/on-prem/how-
+We recommend that you [ upgrade ](/anthos/gke/docs/on-prem/on-prem/how-
 to/upgrading#clusters) your clusters to version [ 1.0.2-gke.3
 ](/anthos/gke/docs/on-prem/downloads#gkectl_latest) , which includes the patch
 for this vulnerability, as soon as possible.
@@ -303,10 +303,10 @@ privileges to access the resource in any namespace.
 
 ######  What should I do?
 
-We recommend that you [ upgrade ](/anthos/gke/docs/on-prem/how-
-to/upgrading#clusters) your clusters to version [ 1.0.2-gke.3
-](/anthos/gke/docs/on-prem/downloads#gkectl_latest) , which includes the patch
-for this vulnerability, as soon as possible.
+We recommend that you [ upgrade ](/anthos/gke/docs/on-prem/how-to/upgrading-
+clusters) your clusters to version [ 1.0.2-gke.3 ](/anthos/gke/docs/on-
+prem/downloads#gkectl_latest) , which includes the patch for this
+vulnerability, as soon as possible.
 
 ######  What vulnerability is addressed by this patch?
 
