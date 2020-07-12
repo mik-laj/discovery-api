@@ -12,6 +12,17 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/stackdriver-release-notes.xml `
 
+##  July 10, 2020
+
+**FEATURE:**
+
+SLO monitoring for microservices is now Generally Available in the Cloud
+Console. This feature lets you create service-level objectives (SLOs) and set
+up alerting policies to monitor their performance using auto-generated
+dashboards with metrics, logs, and alerts in a single place. For more
+information, see [ SLO monitoring
+](https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring) .
+
 ##  July 07, 2020
 
 **CHANGED:**
