@@ -12,6 +12,109 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  July 10, 2020
+
+**Anthos Service Mesh**
+
+**FIXED:**
+
+**1.6.5-asm.1, 1.5.8-asm.0, and 1.4.10-asm.4**
+
+Fixes the security issue, [ ISTIO-SECURITY-2020-008
+](https://istio.io/latest/news/security/istio-security-2020-008) , with the
+same fixes as Istio 1.6.5 and Istio 1.5.8. These fixes were backported to
+1.4.10-asm.4. For more information, see the Istio release notes:
+
+  * [ Istio 1.6.5 ](https://istio.io/latest/news/releases/1.6.x/announcing-1.6.5/)
+
+  * [ Istio 1.5.8 ](https://istio.io/latest/news/releases/1.5.x/announcing-1.5.8/)
+
+**Cloud Billing**
+
+**FEATURE:**
+
+The [ Cost Table report ](https://cloud.google.com/billing/docs/how-to/cost-
+table) functionality has been updated to add a **Table configuration**
+interface that replaces the previous _Group by_ and _Label_ selectors. Use the
+new **Table configuration** dialog to choose a **Label key** and select your
+**Group by** options. Additionally, the available **Group by** options have
+been enhanced to include a new **Custom grouping** option. Use custom grouping
+to view a [ nested cost table ](https://cloud.google.com/billing/docs/how-
+to/cost-table#nested_table_view) with your costs grouped by up to three
+dimensions that you choose, including label values. See the [ documentation
+](https://cloud.google.com/billing/docs/how-to/cost-table) for more details.
+
+**Cloud Functions**
+
+**FEATURE:**
+
+Cloud Functions is now available in the following regions:
+
+  * ` us-west2 ` (Los Angeles) 
+  * ` us-west4 `
+  * ` southamerica-east1 ` (Sao Paulo) 
+  * ` asia-northeast2 ` (Osaka) 
+
+See [ Cloud Functions Locations
+](https://cloud.google.com/functions/docs/locations) for details.
+
+**Cloud Monitoring**
+
+**FEATURE:**
+
+SLO monitoring for microservices is now Generally Available in the Cloud
+Console. This feature lets you create service-level objectives (SLOs) and set
+up alerting policies to monitor their performance using auto-generated
+dashboards with metrics, logs, and alerts in a single place. For more
+information, see [ SLO monitoring
+](https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring) .
+
+**Dataproc**
+
+**FEATURE:**
+
+Added --temp-bucket flag to ` gcloud dataproc clusters create ` and ` gcloud
+dataproc workflow-templates set-managed-cluster ` to allow users to configure
+a Cloud Storage bucket that stores ephemeral cluster and jobs data, such as
+Spark and MapReduce history files.
+
+**FEATURE:**
+
+Extended Jupyter to support notebooks stored on VM persistent disk. This
+change modifies the Jupyter contents manager to create two virtual top-level
+directories, named ` GCS ` , and ` Local Disk ` . The ` GCS ` directory points
+to the Cloud Storage location used by previous versions, and the ` Local Disk
+` directory points to the persistent disk of the VM running Jupyter.
+
+**FEATURE:**
+
+Dataproc images now include the [ oauth2l ](https://github.com/google/oauth2l)
+command line tool. The tool is installed in ` /usr/local/bin ` , which is
+available to all users in the VM.
+
+**CHANGED:**
+
+New [ sub-minor versions
+](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-
+versions#supported_dataproc_versions) of Dataproc images: 1.2.102-debian9,
+1.3.62-debian9, 1.4.33-debian9, 1.3.62-debian10, 1.4.33-debian10,
+1.5.8-debian10, 1.3.62-ubuntu18, 1.4.33-ubuntu18, 1.5.8-ubuntu18,
+2.0.0-RC4-debian10, 2.0.0-RC4-ubuntu18
+
+**FIXED:**
+
+  * Images 1.3 - 1.5: 
+
+    * Fixed [ HIVE-11920 ](https://issues.apache.org/jira/browse/HIVE-11920) : ADD JAR failing with URL schemes other than file/ivy/hdfs. 
+  * Images 1.3 - 2.0 preview: 
+
+    * Fixed [ TEZ-4108 ](https://issues.apache.org/jira/browse/TEZ-4108) : NullPointerException during speculative execution race condition. 
+
+**FIXED:**
+
+Fixed a race condition that could nondeterministically cause Hive-WebHCat to
+fail at startup when HBase is not enabled.
+
 ##  July 09, 2020
 
 **Cloud SQL for PostgreSQL**
@@ -742,6 +845,17 @@ stages) for the following integration:
 
 ##  June 25, 2020
 
+**Anthos**
+
+**FEATURE:**
+
+[ Anthos ](https://cloud.google.com/anthos) 1.4.0 is now available.
+
+**Updated components:**
+
+  * [ Anthos GKE on-prem release notes ](https://cloud.google.com/anthos/gke/docs/on-prem/release-notes)
+  * [ Anthos Config Management release notes ](https://cloud.google.com/anthos-config-management/docs/release-notes)
+
 **Anthos Config Management**
 
 **FEATURE:**
@@ -1385,235 +1499,4 @@ The Organization Policy for [ restricting peer IP addresses through a Cloud
 VPN tunnel ](https://cloud.google.com/network-
 connectivity/docs/vpn/concepts/overview#vpn-org-policy) has been launched into
 general availability.
-
-##  June 12, 2020
-
-**Cloud Build**
-
-**CHANGED:**
-
-Upgraded to Docker server version 19.03.8.
-
-**Cloud Functions**
-
-**FEATURE:**
-
-Cloud Functions is now available in the following regions:
-
-  * ` europe-west6 ` (Zurich) 
-  * ` us-west3 ` (Salt Lake City) 
-
-See [ Cloud Functions Locations
-](https://cloud.google.com/functions/docs/locations) for details.
-
-**Config Connector**
-
-**FEATURE:**
-
-  * Added ability to [ update streaming DataflowJobs ](https://cloud.google.com/dataflow/docs/guides/updating-a-pipeline) by updating its spec (e.g. ` spec.templateGcsPath ` ). Note that not all fields can be updated, and batch DataflowJobs don't support updates. 
-  * Added ` IAMPolicy ` to the output of ` config-connector `
-
-**Virtual Private Cloud**
-
-**FEATURE:**
-
-[ Firewall Rules Logging metadata controls
-](https://cloud.google.com/vpc/docs/firewall-rules-logging#log-format) is now
-available in **Beta** .
-
-##  June 11, 2020
-
-**AI Platform Deep Learning VM Image**
-
-**FEATURE:**
-
-**M49 release**
-
-TensorFlow Enterprise images updated to 1.15.3 and 2.1.1.
-
-The [ tensorflow-enterprise-addons ](https://pypi.org/project/tensorflow-
-enterprise-addons/) package is now available in all deep learning
-environments.
-
-XGBoost, MXNet, R, PyTorch, CNTK, and Caffe images have been updated with
-library upgrades and bug fixes.
-
-**Access Context Manager**
-
-**FEATURE:**
-
-General availability of the Access Context Manager Bulk API.
-
-Use the Access Context Manager Bulk API to replace all of your organization's
-access levels in one operation. For more information, see [ Making bulk
-changes to access levels ](https://cloud.google.com/access-context-
-manager/docs/bulk-operations) .
-
-**Anthos Service Mesh**
-
-**FIXED:**
-
-**1.5.5-asm.0 and 1.4.10-asm.1**
-
-Fixes the security issue, CVE-2020-11080, with the same fixes as [ OSS Istio
-1.5.5 ](https://istio.io/news/releases/1.5.x/announcing-1.5.5/) . The security
-fixes were backported to ASM 1.4.10.
-
-**Description**
-
-A vulnerability affecting the HTTP/2 library used by Envoy has been fixed and
-publicly disclosed (c.f. Denial of service: Overly large SETTINGS frames ).
-
-[ CVE-2020-11080 ](https://cve.mitre.org/cgi-
-bin/cvename.cgi?name=CVE-2020-11080) : By sending a specially crafted packet,
-an attacker could cause the CPU to spike at 100%. This could be sent to the
-ingress gateway or a sidecar.
-
-**Mitigation**
-
-HTTP/2 support could be disabled on the Ingress Gateway as a temporary
-workaround using the following configuration. HTTP/2 support at ingress can
-only be disabled if you are not exposing HTTP/2 services that cannot fallback
-to HTTP/1.1 through ingress. Note that gRPC services cannot fallback to
-HTTP/1.1.
-
-    
-    
-    apiVersion: networking.istio.io/v1alpha3
-    kind: EnvoyFilter
-    metadata:
-      name: disable-ingress-h2
-      namespace: istio-system
-    spec:
-      workloadSelector:
-        labels:
-          istio: ingressgateway
-      configPatches:
-      - applyTo: NETWORK_FILTER # http connection manager is a filter in Envoy
-        match:
-          context: GATEWAY
-          listener:
-            filterChain:
-              filter:
-                name: "envoy.http_connection_manager"
-        patch:
-          operation: MERGE
-          value:
-            typed_config:
-              "@type": type.googleapis.com/envoy.config.filter.network.http_connection_manager.v2.HttpConnectionManager
-              codec_type: HTTP1
-    
-
-For additional information, see [ ISTIO-SECURITY-2020-006
-](https://istio.io/news/security/istio-security-2020-006) .
-
-**App Engine standard environment Go**
-
-**FEATURE:**
-
-The [ Go 1.13 runtime
-](https://cloud.google.com/appengine/docs/standard/go/runtime) for the App
-Engine standard environment is now generally available.
-
-**Cloud Vision**
-
-**CHANGED:**
-
-**OCR legacy model access extension**
-
-Based on customer feedback, we have decided to extend support of the legacy `
-TEXT_DETECTION ` and ` DOCUMENT_TEXT_DETECTION ` models. These legacy models
-are accessed by specifying "builtin/legacy_20190601" in the [ ` model `
-](https://cloud.google.com/vision/docs/reference/rest/v1/Feature) of a `
-Feature ` object.
-
-These models will now be accessible until **November 15, 2020 (6 months from
-launch date)** to give customers more time to adapt and migrate to the new
-model.
-
-See the  May 15, 2020  release note for the original update announcement.
-
-**Dataproc**
-
-**FEATURE:**
-
-Users can now configure a [ ` tempBucket `
-](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#FIELDS.temp_bucket)
-in API calls. The temp bucket is a Cloud Storage bucket used to store
-ephemeral cluster and jobs data, such as Spark and MapReduce history files. If
-you do not specify a temp bucket, Dataproc will determine a Cloud Storage
-location (US, ASIA, or EU) for your cluster's temp bucket according to the
-Compute Engine zone where your cluster is deployed, and then create and manage
-this project-level, per-location bucket.
-
-**CHANGED:**
-
-  * New [ subminor image versions ](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_cloud_dataproc_versions) : 1.2.99-debian9, 1.3.59-debian9, 1.4.30-debian9, 1.3.59-debian10, 1.4.30-debian10, 1.5.5-debian10, 1.3.59-ubuntu18, 1.4.30-ubuntu18, and 1.5.5-ubuntu18. 
-
-  * New [ preview image 2.0.0-RC1-debian10, 2.0.0-RC1-ubuntu18 ](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_cloud_dataproc_versions) , with the following components: 
-
-    * Anaconda 2019.10 
-    * Atlas 2.0.0 
-    * Druid 0.18.1 
-    * Flink 1.10.1 
-    * Hadoop 3.2.1 
-    * HBase 2.2.4 
-    * Hive 3.1.2 (with LLAP support) 
-    * Hue 4.7.0 
-    * JupyterLab 2.1.0 
-    * Kafka 2.3.1 
-    * Miniconda3 4.8.3 
-    * Pig 0.18.0 
-    * Presto SQL 333 
-    * Oozie 5.2.0 
-    * R 3.6.0 
-    * Ranger 2.0.0 
-    * Solr 8.1.1 
-    * Spark 3.0.0 
-    * Sqoop 1.5.0 
-    * Zeppelin 0.9.0 
-
-**CHANGED:**
-
-  * Image 1.3+ 
-
-    * Patched [ HIVE-23496 ](https://issues.apache.org/jira/browse/HIVE-23496) Adding a flag to disable materialized views cache warm up. 
-
-**CHANGED:**
-
-Druid's Historical's and Broker's JVM and runtime properties are now
-calculated using server resources. Previously, only the Historical's and
-MiddleManager's ` MaxHeapSize ` property was calculated using server
-resources. This change modifies how new values for ` MaxHeapSize ` and `
-MaxDirectMemorySize ` properties are calculated for Broker and Historical
-processes. Also, new runtime properties ` druid.processing.numThreads ` and `
-druid.processing.numMergeBuffers ` are calculated using server resources.
-
-**CHANGED:**
-
-If the project-level staging bucket is manually deleted, it will be recreated
-when a cluster is created.
-
-**CHANGED:**
-
-Dataproc Job container logging now supports [ Dataproc Kerberized clusters
-](https://cloud.google.com/dataproc/docs/concepts/configuring-
-clusters/security#create_a_kerberos_cluster) .
-
-**FIXED:**
-
-Image 1.5:
-
-  * Fixed a bug that prevented users from logging on to the Presto UI when using Component Gateway. 
-
-**VPC Service Controls**
-
-**FEATURE:**
-
-General availability for bulk changes to service perimeters.
-
-Using Access Context Manager's Bulk API, you can replace all of your
-organization's service perimeters in one operation. For more information, see
-[ Making bulk changes to service perimeters ](https://cloud.google.com/vpc-
-service-controls/docs/bulk-operations) .
 
