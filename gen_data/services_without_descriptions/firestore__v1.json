@@ -389,6 +389,33 @@
                                         "https://www.googleapis.com/auth/datastore"
                                     ]
                                 },
+                                "batchWrite": {
+                                    "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents:batchWrite",
+                                    "httpMethod": "POST",
+                                    "id": "firestore.projects.databases.documents.batchWrite",
+                                    "parameterOrder": [
+                                        "database"
+                                    ],
+                                    "parameters": {
+                                        "database": {
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/databases/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+database}/documents:batchWrite",
+                                    "request": {
+                                        "$ref": "BatchWriteRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "BatchWriteResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/datastore"
+                                    ]
+                                },
                                 "beginTransaction": {
                                     "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents:beginTransaction",
                                     "httpMethod": "POST",
@@ -667,6 +694,33 @@
                                     },
                                     "response": {
                                         "$ref": "ListenResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/datastore"
+                                    ]
+                                },
+                                "partitionQuery": {
+                                    "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/documents/{documentsId}/{documentsId1}:partitionQuery",
+                                    "httpMethod": "POST",
+                                    "id": "firestore.projects.databases.documents.partitionQuery",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}:partitionQuery",
+                                    "request": {
+                                        "$ref": "PartitionQueryRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "PartitionQueryResponse"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform",
@@ -1044,6 +1098,42 @@
                 "transaction": {
                     "format": "byte",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "BatchWriteRequest": {
+            "id": "BatchWriteRequest",
+            "properties": {
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object"
+                },
+                "writes": {
+                    "items": {
+                        "$ref": "Write"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "BatchWriteResponse": {
+            "id": "BatchWriteResponse",
+            "properties": {
+                "status": {
+                    "items": {
+                        "$ref": "Status"
+                    },
+                    "type": "array"
+                },
+                "writeResults": {
+                    "items": {
+                        "$ref": "WriteResult"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -1937,6 +2027,41 @@
                 },
                 "field": {
                     "$ref": "FieldReference"
+                }
+            },
+            "type": "object"
+        },
+        "PartitionQueryRequest": {
+            "id": "PartitionQueryRequest",
+            "properties": {
+                "pageSize": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "pageToken": {
+                    "type": "string"
+                },
+                "partitionCount": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "structuredQuery": {
+                    "$ref": "StructuredQuery"
+                }
+            },
+            "type": "object"
+        },
+        "PartitionQueryResponse": {
+            "id": "PartitionQueryResponse",
+            "properties": {
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "partitions": {
+                    "items": {
+                        "$ref": "Cursor"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
