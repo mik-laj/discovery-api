@@ -71,13 +71,52 @@ V4.10 引入自动识别已迁移操作系统的功能，默认情况下，系�
 ](https://cloud.google.com/migrate/compute-
 engine/docs/4.10/reference/runbooks?hl=zh-cn) 。
 
-##  修正的问题
+##  4.10.1
+
+###  修正的问题
+
+**FIXED:**
+
+修复了某些卷结构的 Windows 分区检测问题。
+
+**FIXED:**
+
+新增了对超过 4 TB 的 Azure 磁盘的支持。
+
+##  4.10
+
+###  修正的问题
 
 **FIXED:**
 
 修复了 AWS ena 驱动程序导致迁移后 Windows 映像崩溃的问题。
 
-##  已知问题
+##  4.10
+
+###  已知问题
+
+**ISSUE:**
+
+**#160405343** ：由于 SUSE 激活流程的 [ 行为发生变化
+](https://www.suse.com/support/kb/doc/?id=000019633) ，在分离后配置 SUSE Enterprise
+Linux 实例上的代码库将失败。
+
+**解决方法** ：可以在分离之前（迁移之前或分离之前）使用以下解决方法。
+
+  1. 按照 [ https://www.suse.com/support/kb/doc/?id=000019633 ](https://www.suse.com/support/kb/doc/?id=000019633) 中情况 4 的说明，将 Compute Engine 所需的软件包下载为 tar.gz 文件。 
+  2. **对于 SLES 12.x** ，然后运行以下命令： 
+    
+        sha1sum late_instance_offline_update_gce_SLE12.tar.gz
+    tar -xf late_instance_offline_update_gce_SLE12.tar.gz
+    cd x86_64/
+    zypper --no-refresh --no-remote --non-interactive in *.rpm
+
+  3. **对于 SLES 15.x** ，然后运行以下命令： 
+    
+        sha1sum late_instance_offline_update_gce_SLE15.tar.gz
+    tar -xf late_instance_offline_update_gce_SLE15.tar.gz
+    cd x86_64/
+    zypper --no-refresh --no-remote --non-interactive in *.rpm
 
 **ISSUE:**
 
