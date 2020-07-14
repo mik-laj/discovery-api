@@ -15,6 +15,45 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/aiplatform-release-notes.xml `
 
+##  July 13, 2020
+
+**AI Platform Training**
+
+**FEATURE:**
+
+You can now configure a training job to run using a [ custom service account
+](https://cloud.google.com/ai-platform/training/docs/custom-service-account) .
+Using a custom service account can help you customize which Google Cloud
+resources your training code can access.
+
+This feature is available in beta.
+
+##  June 23, 2020
+
+**AI Platform Deep Learning VM Image**
+
+**FIXED:**
+
+**M50 release**
+
+Miscellaneous bug fixes.
+
+##  June 22, 2020
+
+**AI Platform Training**
+
+**CHANGED:**
+
+You can now [ use Cloud TPUs for training jobs ](https://cloud.google.com/ai-
+platform/training/docs/using-tpus) in the ` europe-west4 ` region. TPU v2
+accelerators are generally available, and TPU v3 accelerators are available in
+beta.
+
+Learn how to [ configure your training job to use TPUs
+](https://cloud.google.com/ai-platform/training/docs/using-
+tpus#configuring_a_custom_tpu_machine) , and read about [ TPU pricing on AI
+Platform Training ](https://cloud.google.com/ai-platform/training/pricing) .
+
 ##  June 15, 2020
 
 **AI Platform Training**
