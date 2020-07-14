@@ -1,3 +1,7 @@
+[ Node.js 12
+](https://cloud.google.com/appengine/docs/standard/nodejs/runtime?hl=zh-cn)
+现已正式发布。
+
 #  Node.js 版本说明
 
 您可以在 [ Google Cloud 版本说明 ](https://cloud.google.com/release-notes?hl=zh-cn)
