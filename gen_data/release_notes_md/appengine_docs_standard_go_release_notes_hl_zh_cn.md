@@ -1,3 +1,6 @@
+[ Go 1.13 ](https://cloud.google.com/appengine/docs/standard/go/runtime?hl=zh-
+cn) 现已正式发布。
+
 #  Go 1.12+ 版本说明
 
 您可以在 [ Google Cloud 版本说明 ](https://cloud.google.com/release-notes?hl=zh-cn)
