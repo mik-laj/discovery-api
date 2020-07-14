@@ -19,7 +19,7 @@ Eine Liste der Builds für diesen und andere Versionen finden Sie im [ Build-
 Verlauf ](https://cloud.google.com/migrate/compute-engine/docs/build-
 history?hl=de) .
 
-##  Anforderungen und Betriebssystemsupport
+##  Anforderungen und Betriebssystemunterstützung
 
 Weitere Informationen finden Sie unter [ Anforderungen
 ](https://cloud.google.com/migrate/compute-
@@ -34,7 +34,7 @@ engine/docs/4.10/reference/supported-os-versions?hl=de) .
 **FEATURE:**
 
 V4.10 lässt sich in die [ GCP Console ](https://cloud.google.com/cloud-
-console/?hl=de) einbinden, um die nahtlose Bereitstellung des
+console/?hl=de) integrieren, um eine nahtlose Bereitstellung des
 Migrationsmanagers sowie die Erstellung der erforderlichen Dienstkonten zu
 ermöglichen.
 
@@ -44,32 +44,32 @@ ermöglichen.
 
 V4.10 unterstützt die Bereitstellung in Umgebungen mit aktiviertem privatem
 API-Zugriff. In diesen Umgebungen wird das System ohne öffentliche IP-Adresse
-bereitgestellt und benötigt den privaten Zugriff auf Cloud APIs. Siehe [
-Migrationsmanager konfigurieren ](https://cloud.google.com/migrate/compute-
-engine/docs/4.10/how-to/configure-manager/configuring-migration-manager?hl=de)
-.
+bereitgestellt und benötigt für den Zugriff auf Cloud-APIs privaten Zugriff.
+Siehe [ Migrationsmanager konfigurieren
+](https://cloud.google.com/migrate/compute-engine/docs/4.10/how-to/configure-
+manager/configuring-migration-manager?hl=de) .
 
 ###  Optionale Bereitstellung des vCenter-Plug-ins
 
 **FEATURE:**
 
-In Version 4.10 wird die Option zur Bereitstellung in einer lokalen vCenter-
+In V4.10 wird die Option zur Bereitstellung in einer lokalen vCenter-
 Quellumgebung mit oder ohne Bereitstellung des vCenter-Plug-ins eingeführt.
-Durch die Bereitstellung ohne vCenter-Plug-in können Sie mehrere Migrate-
-Systeme mit derselben vCenter-Umgebung verbinden. Weitere Informationen finden
-Sie unter [ Registrieren der VMware in der vCenter-Umgebung
-](https://cloud.google.com/migrate/compute-engine/docs/4.10/how-to/configure-
-manager/configuring-vms-vm?hl=de#register_the_vmware_vcenter_environment) .
+Wenn Sie kein vCenter-Plug-in bereitstellen, können Sie mehrere Migrate-
+Systeme mit derselben vCenter-Umgebung verbinden. Siehe [ VMware vCenter-
+Umgebung registrieren ](https://cloud.google.com/migrate/compute-
+engine/docs/4.10/how-to/configure-manager/configuring-vms-
+vm?hl=de#register_the_vmware_vcenter_environment) .
 
 ###  Benutzerdefiniertes Skript von vorher/nachher beim Upgrade von Windows
 2008 auf 2012 unterstützen
 
 **FEATURE:**
 
-V4.10 unterstützt die Ausführung von benutzerdefinierten Skripts vor/nach dem
-Ausführen des Windows-Upgrades. Sie können der VM benutzerdefinierte Skripts
-hinzufügen. Weitere Informationen finden Sie unter [ "Windows Server-VMs
-aktualisieren" ](https://cloud.google.com/migrate/compute-
+In V4.10 wird die Unterstützung für die Ausführung benutzerdefinierter Skripts
+vor und nach der Einführung des Windows-Upgrades eingeführt. Sie können der VM
+benutzerdefinierte Skripts hinzufügen. Weitere Informationen finden Sie unter
+[ Windows Server-VMs aktualisieren ](https://cloud.google.com/migrate/compute-
 engine/docs/4.10/how-to/upgrading-vms/upgrading-windows-vms?hl=de) .
 
 ###  Unterstützung bei der Migration von Azure Gen2-Instanzen zu Compute
@@ -82,26 +82,68 @@ In Version 4.10 wird die Migration von einer [ Azure Gen2
 engine/docs/4.10/reference/supported-os-versions?hl=de) -Instanz zu einer
 Compute Engine-Instanz mit Unterstützung von UEFI unterstützt.
 
-###  Automatische O/S-Erkennung und Lizenzzuweisung
+###  Automatische Betriebssystemerkennung und Lizenzzuweisung
 
 **FEATURE:**
 
-In Version 4.10 wird das migrierte Betriebssystem automatisch identifiziert,
-wodurch der migrierten VM standardmäßig die richtige Lizenz zugewiesen wird.
-Wenn Sie VMs mit der Windows BYOL-Lizenz oder der Linux-Premium-Lizenz
-migrieren möchten, müssen Sie diese als Eingaben im Runbook bereitstellen.
-Weitere Informationen finden Sie im [ Abschnitt zur Lizenzierung
-](https://cloud.google.com/migrate/compute-
+Mit V4.10 wird die automatische Identifizierung des migrierten Betriebssystems
+eingeführt, das der migrierten VM standardmäßig die richtige Lizenz zuweist.
+In Szenarien, in denen Sie VMs mit der Windows BYOL-Lizenz oder der Linux
+Premium-Lizenz migrieren möchten, müssen Sie diese als Eingaben im Runbook
+bereitstellen. Weitere Informationen finden Sie im [ Abschnitt zur
+Lizenzierung ](https://cloud.google.com/migrate/compute-
 engine/docs/4.10/reference/runbooks?hl=de) in der Dokumentation.
 
-##  Behobene Probleme
+##  4.10.1
+
+###  Behobene Probleme
 
 **FIXED:**
 
-Ein Problem mit AWS-Ena-Treibern wurde behoben, durch das Windows-Images nach
-der Migration abstürzten.
+Ein Problem mit der Windows-Partitionserkennung für bestimmte Volume-
+Strukturen wurde behoben.
 
-##  Bekannte Probleme
+**FIXED:**
+
+Azure-Laufwerke über 4 TB werden jetzt unterstützt.
+
+##  4.10
+
+###  Behobene Probleme
+
+**FIXED:**
+
+Ein Problem mit AWS-ena-Treibern, die Windows-Images nach der Migration
+abstürzen ließen, wurde behoben.
+
+##  4.10
+
+###  Bekannte Probleme
+
+**ISSUE:**
+
+**#160405343:** Aufgrund einer [ Änderung des Verhaltens
+](https://www.suse.com/support/kb/doc/?id=000019633) im Aktivierungsablauf für
+SUSE schlägt die Konfiguration von Repositories auf SUSE Enterprise Linux-
+Instanzen jetzt nach dem Trennen fehl.
+
+**Problemumgehung** : Sie können die folgende Problemumgehung vor dem Trennen
+verwenden (entweder vor der Migration oder vor dem Trennen).
+
+  1. Befolgen Sie die Anleitung für Situation 4 unter [ https://www.suse.com/support/kb/doc/?id=000019633 ](https://www.suse.com/support/kb/doc/?id=000019633) , um die erforderlichen Pakete für Compute Engine als Tar.gz-Datei herunterzuladen. 
+  2. **Für SLES 12.x** führen Sie die folgenden Befehle aus: 
+    
+        sha1sum late_instance_offline_update_gce_SLE12.tar.gz
+    tar -xf late_instance_offline_update_gce_SLE12.tar.gz
+    cd x86_64/
+    zypper --no-refresh --no-remote --non-interactive in *.rpm
+
+  3. **Für SLES 15.x** führen Sie die folgenden Befehle aus: 
+    
+        sha1sum late_instance_offline_update_gce_SLE15.tar.gz
+    tar -xf late_instance_offline_update_gce_SLE15.tar.gz
+    cd x86_64/
+    zypper --no-refresh --no-remote --non-interactive in *.rpm
 
 **ISSUE:**
 
@@ -114,7 +156,7 @@ und fügen Sie die Netzwerkschnittstelle manuell mit DHCP hinzu.
 **ISSUE:**
 
 **#145086776:** In seltenen Fällen können ältere Versionen von RHEL7 während
-des Streamings hängen bleiben oder eine Kernel-Panik auslösen. Dieses Problem
+des Streamings hängen bleiben oder eine Kernel-Panic auslösen. Dieses Problem
 wurde in späteren Versionen von RHEL7 behoben.
 
 **Problemumgehung:** Führen Sie ` sudo yum update ` vor der Migration aus, um
@@ -143,11 +185,11 @@ eine Kernel-Panic.
 
 **ISSUE:**
 
-**#143262721:** Die Migration der VM von Azure schlägt fehl, wenn das
+**#143262721:** Die Migration einer VM von Azure schlägt fehl, wenn das
 Datenlaufwerk größer als 4 Terabyte ist.
 
 Derzeit unterstützt Migrate for Compute Engine die Migration von Azure-VMs mit
-Datenlaufwerken, die größer als 4 TB sind, nicht.
+Datenlaufwerken, die größer als 4 TB sind.
 
 **Problemumgehung:** Stellen Sie sicher, dass das Datenlaufwerk der VM kleiner
 als 4 TB ist.
@@ -170,10 +212,11 @@ Arbeitslast, um die SEP-Option zu entfernen.
 
 **ISSUE:**
 
-**#131614405:** Wenn der Velostrata Prep-RPM auf SUSE Linux Enterprise Server
-11 installiert wird, erhält die VM zusätzlich zu einer vorhandenen statischen
-IP-Konfiguration eine DHCP-IP-Adresse. Dieses Problem tritt auf, wenn die VM
-lokal in einem Subnetz gestartet wird, das mit DHCP-Diensten aktiviert ist.
+**#131614405:** Wenn das Velostrata-Vorbereitungspaket im RPM-Format auf SUSE
+Linux Enterprise Server 11 installiert ist, erhält die VM zusätzlich zur
+vorhandenen statischen IP-Konfiguration eine DHCP-IP-Adresse. Dieses Problem
+tritt auf, wenn die VM lokal in einem Subnetz gestartet wird, das mit DHCP-
+Diensten aktiviert ist.
 
 Hinweis: Das Problem tritt nicht auf, wenn das Subnetz keine DHCP-Dienste hat.
 Die Kommunikation mit der ursprünglichen statischen IP-Adresse hat keine
@@ -186,31 +229,32 @@ Ausführen des Cloud-Erweiterungsassistenten nach Abschluss des Vorgangs
 möglicherweise der Fehler "XXXXXXXXXX" angezeigt.
 
 **Problemumgehung:** Heben Sie die Registrierung des Velostrata-Plug-ins auf,
-starten Sie den vSphere Webclientdienst neu und registrieren Sie das Plug-in
-anschließend wieder. Wenden Sie sich an den Support, wenn das Problem
-weiterhin besteht.
+starten Sie den vSphere-Webclient neu und registrieren Sie dann das Plug-in
+noch einmal. Wenden Sie sich an den Support, wenn das Problem weiterhin
+besteht.
 
 **ISSUE:**
 
 **#131548730:** Wenn eine VM in Run-in-Cloud verschoben wird und eine
-Sicherungslösung auf Drittanbieterebene einen temporären Snapshot enthält,
-können die regelmäßigen Schreibvorgäänge von Migrate for Compute Engine selbst
-dann nicht abgeschlossen werden, wenn die Sicherungslösung den temporären
-Snapshot gelöscht hat. Der Zähler für nicht festgelegte Schreibvorgänge auf
-der VM wird größer und es wird kein lokaler Konsistenzprüfpunkt erstellt.
+Sicherungslösung auf VM-Ebene eines Drittanbieters einen temporären Snapshot
+enthält, werden die regelmäßigen Migrate for Compute Engine-
+Rückschreibvorgänge nicht abgeschlossen, selbst wenn die Sicherungslösung den
+temporären Snapshot gelöscht hat. Der Zähler für Schreibvorgänge ohne Commit
+auf der VM zeigt eine zunehmende Größe an. Es wird kein lokaler Prüfpunkt für
+die Konsistenz erstellt.
 
-**Problemumgehung:** Wählen Sie die Aktion "Run On-Premises" für die VM aus
+**Problemumgehung:** Wählen Sie die Aktion "Lokal ausführen" für die VM aus
 und warten Sie, bis die Aufgabe abgeschlossen ist. Dadurch werden alle
-ausstehenden Schreibvorgänge übernommen. Wählen Sie dann die Run-in-Cloud-
-Aktion noch einmal aus. Beachten Sie, dass das Commit für alle ausstehenden
+ausstehenden Schreibvorgänge übernommen. Wählen Sie dann noch einmal die Run-
+in-Cloud-Aktion aus. Beachten Sie, dass das Commit für alle ausstehenden
 Schreibvorgänge eine Weile dauern kann. Verwenden Sie nicht die Option
-"Erzwingen", da dies zum Verlust der nicht ausgeführten Schreibvorgänge führt.
+"Erzwingen", da dies zum Verlust der Schreibvorgänge ohne Commit führt.
 
 **ISSUE:**
 
-**#131605387:** Beim Neustart von vCenter werden Velostrata-Aufgaben in
-vCenter nicht mehr auf der Benutzeroberfläche angezeigt. Dies ist eine
-vCenter-Einschränkung.
+**#131605387:** Durch einen Neustart von vCenter werden Velostrata-Aufgaben in
+vCenter von der Benutzeroberfläche entfernt. Dies ist eine vCenter-
+Einschränkung.
 
 **Problemumgehung:** Verwenden Sie das Velostrata PowerShell-Modul, um
 verwaltete Velostrata-VMs oder Cloud-Erweiterungsaufgaben zu überwachen, die
@@ -232,16 +276,16 @@ den Run-in-Cloud-Vorgang.
 beim Erstellen des virtuellen Maschinen-Snapshots. Der Vorgang kann im
 aktuellen Status nicht ausgeführt werden (ausgeschaltet)".
 
-**Problemumgehung:** Die VMware-VM-Snapshot-Datei verweist möglicherweise auf
+**Problemumgehung:** Die VM-Snapshot-Datei von VM verweist möglicherweise auf
 einen nicht vorhandenen Snapshot. Wenden Sie sich an den Support, um
 Unterstützung zur Behebung des Problems zu erhalten.
 
 **ISSUE:**
 
-**#131534862:** In seltenen Fällen nach dem Ausführen einer Arbeitslast wieder
-lokal ausgeführt - Arbeitslast-VMDKs sind gesperrt. In bestimmten Fällen ist
-dies auf Netzwerkunterbrechungen zwischen der Velostrata Management Appliance
-und dem ESXi-Host zurückzuführen, auf dem die Arbeitslast ausgeführt wird.
+**#131534862:** In seltenen Fällen werden nach dem erneuten lokalen Ausführen
+einer Arbeitslast Workload VMDKs gesperrt. In bestimmten Fällen ist dies auf
+Netzwerkunterbrechungen zwischen der Velostrata Management Appliance und dem
+ESXi-Host zurückzuführen, auf dem die Arbeitslast ausgeführt wird.
 
 Hinweis: Das Problem behebt sich nach 1–2 Stunden von selbst.
 
@@ -288,8 +332,8 @@ einem beschädigten OVA.
 
 **#131647857:** In seltenen Fällen bleibt die Instanz ohne Tag, wenn eine
 Instanz einer Cloud-Komponente erstellt wird und das System ausfällt, bevor
-sie getaggt wird. Dies ermöglicht keine vollständige Bereinigung oder
-Reparatur des CE.
+sie getaggt wird. Eine vollständige Bereinigung oder Reparatur des CE ist
+nicht zulässig.
 
 **Problemumgehung:** Taggen Sie die Instanz manuell und führen Sie dann
 "Reparieren" aus.
@@ -352,7 +396,7 @@ eine NIC gelöscht wird, kann sie möglicherweise nicht automatisch erkannt und
 automatisch neu installiert werden.
 
 Problemumgehung: Der VM-Speicher kann an eine andere VM angehängt werden und
-der NIC Registry-Eintrag kann mithilfe einer ähnlichen VM manuell als Referenz
+der NIC-Registrierungseintrag kann manuell mit einer ähnlichen VM als Referenz
 importiert werden. Wenden Sie sich an den Support.
 
 **ISSUE:**
@@ -361,8 +405,8 @@ importiert werden. Wenden Sie sich an den Support.
 werden, kann es zu Fehlern beim sitzungsspezifischen Speicherzugriff kommen.
 Diese sind beim Streaming über iSCSI wahrscheinlicher.
 
-Problemumgehung: Aktualisieren Sie den Kernel. Das Problem wird auch nach der
-Trennung verringert.
+Problemumgehung: Aktualisieren Sie den Kernel. Das Problem wird nach der
+Trennung wahrscheinlich verringert.
 
 **ISSUE:**
 
@@ -370,8 +414,8 @@ Trennung verringert.
 dass Windows-VMs durch das Blockieren von iSCSI-Traffic in die Cloud
 verschoben werden.
 
-Problemumgehung: Deaktivieren Sie den betroffenen Dienst während der Migration
-und installieren Sie ihn nach der Trennung neu.
+Problemumgehung: Entfernen Sie den betroffenen Dienst während der Migration
+und installieren Sie ihn nach dem Trennen neu.
 
 **ISSUE:**
 
@@ -379,8 +423,8 @@ und installieren Sie ihn nach der Trennung neu.
 eines Windows-Updates dazu führen, dass das Update plötzlich beendet wird und
 nicht in der Cloud gestartet werden kann.
 
-Problemumgehung: Lassen Sie das System das Windows-Update abschließen und/oder
-Windows-Updates vor der Migration sperren.
+Problemumgehung: Erlauben Sie dem System, das Windows-Update abzuschließen
+und/oder sperren Sie Windows-Updates vor der Migration.
 
 **ISSUE:**
 
@@ -397,8 +441,8 @@ und VSphere
 Auswirkungen auf den Kunden: Die Run-In-Cloud-Aufgabe bleibt aufgrund eines
 fehlgeschlagenen Aufrufs von getReadSessions in VSphere hängen.
 
-**Problemumgehung** : Beheben Sie die Netzwerkverbindung. Wenn nicht, brechen
-Sie die Aufgabe ab und versuchen Sie es noch einmal.
+**Problemumgehung:** Stellen Sie die Netzwerkverbindung wieder her. Falls
+nicht, brechen Sie die Aufgabe ab und versuchen Sie es noch einmal.
 
 **ISSUE:**
 
