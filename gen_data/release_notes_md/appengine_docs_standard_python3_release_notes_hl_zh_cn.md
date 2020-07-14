@@ -1,3 +1,7 @@
+[ Python 3.8
+](https://cloud.google.com/appengine/docs/standard/python3/runtime?hl=zh_cn)
+现已正式发布。
+
 #  Python 3 版本说明
 
 您可以在 [ Google Cloud 版本说明 ](https://cloud.google.com/release-notes?hl=zh_cn)
