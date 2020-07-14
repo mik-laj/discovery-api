@@ -13,6 +13,14 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/secretmanager-release-notes.xml
 `
 
+##  July 13, 2020
+
+**FEATURE:**
+
+Secret Manager resources can now be stored in the ` australia-southeast1 `
+region. To learn more, see [ Locations ](https://cloud.google.com/secret-
+manager/docs/locations/) .
+
 ##  March 11, 2020
 
 **FEATURE:**
