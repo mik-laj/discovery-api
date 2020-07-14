@@ -12,6 +12,169 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  July 13, 2020
+
+**AI Platform Training**
+
+**FEATURE:**
+
+You can now configure a training job to run using a [ custom service account
+](https://cloud.google.com/ai-platform/training/docs/custom-service-account) .
+Using a custom service account can help you customize which Google Cloud
+resources your training code can access.
+
+This feature is available in beta.
+
+**App Engine standard environment Java**
+
+**CHANGED:**
+
+  * Updated Java SDK to version 1.9.81 
+
+**BigQuery**
+
+**FEATURE:**
+
+The Standard SQL statement [ ` ASSERT `
+](https://cloud.google.com/bigquery/docs/reference/standard-sql/debugging-
+statements) is now supported. You can use [ ` ASSERT `
+](https://cloud.google.com/bigquery/docs/reference/standard-sql/debugging-
+statements) to validate that data matches specified expectations.
+
+**Cloud Bigtable**
+
+**CHANGED:**
+
+The default data points used for CPU utilization charts on the [ Cloud
+Bigtable Monitoring ](https://cloud.google.com/bigtable/docs/monitoring-
+instance) page have changed. Previously, data points on the charts reflected
+the mean for a displayed alignment period. Now the data points reflect the
+maximum for the alignment period. This change ensures that charts clearly show
+the peaks that are important for monitoring the health of a Cloud Bigtable
+instance.
+
+**Cloud CDN**
+
+**CHANGED:**
+
+Added a new [ setup guide ](https://cloud.google.com/cdn/docs/setting-up-cdn-
+with-external-origin) for custom (external) origins with Cloud CDN and
+external HTTP(S) Load Balancing.
+
+**Cloud Load Balancing**
+
+**FEATURE:**
+
+Internal TCP/UDP load balancers now support [ regional health checks
+](https://cloud.google.com/compute/docs/reference/rest/v1/regionHealthChecks)
+. To configure, see [ Health checks for backend services
+](https://cloud.google.com/load-balancing/docs/health-checks#hc-to-bes) . This
+feature is supported in **General Availability** .
+
+**Dataprep by Trifacta**
+
+**FEATURE:**
+
+**Introducing Cloud Dataprep Premium by TRIFACTA INC. and Cloud Dataprep
+Standard by TRIFACTA INC.:** You can now upgrade your existing Cloud Dataprep
+by TRIFACTA INC. projects to unlock advanced features, such as broader API
+access and relational connectivity. To see the full set of new capabilities
+and use cases, see [ Google Cloud Dataprep by Trifacta Pricing
+](https://www.trifacta.com/products/pricing/cloud-dataprep/) .
+
+  * These two product tiers are available through the [ Google Cloud Platform Marketplace ](https://console.cloud.google.com/marketplace/details/trifacta/cloud-dataprep-editions) . 
+    * Cloud Dataprep Premium by TRIFACTA INC. enables Fine Grained Data Access Control, which requires additional permissions within the project. For more information on these permissions, see [ Required User Permissions ](https://cloud.google.com/dataprep/docs/html/Required-User-Permissions_158400598.html) . 
+    * For more information, see [ Getting Started with Cloud Dataprep ](https://cloud.google.com/dataprep/docs/html/Getting-Started-with-Cloud-Dataprep_158401056.html) . 
+  * **Important:** All existing Cloud Dataprep by TRIFACTA INC. projects are unchanged. You can upgrade individual projects through the GCP Marketplace to unlock the new functionality. 
+
+**FEATURE:**
+
+**Relational connectivity:** Connect to relational sources to import data and,
+where supported, write results.
+
+  * **Feature Availability:** This feature is available in Cloud Dataprep Premium by TRIFACTA INC. 
+  * The following relational connections are supported: 
+    * [ Create Oracle Connections ](https://cloud.google.com/dataprep/docs/html/Create-Oracle-Connections_158401064.html)
+    * [ Create PostgreSQL Connections ](https://cloud.google.com/dataprep/docs/html/Create-PostgreSQL-Connections_158401065.html)
+    * [ Create SQL Server Connections ](https://cloud.google.com/dataprep/docs/html/Create-SQL-Server-Connections_158401066.html)
+    * [ Create Salesforce Connections ](https://cloud.google.com/dataprep/docs/html/Create-Salesforce-Connections_158401069.html)
+  * For more information, see [ Connect ](https://cloud.google.com/dataprep/docs/html/Connect_158401062.html) . 
+
+**FEATURE:**
+
+**Advanced Cloud Dataflow execution options:** Specify additional job
+execution options at the project level or for individual jobs.
+
+  * **Feature Availability:** This feature is available in Cloud Dataprep Premium by TRIFACTA® INC. 
+  * Assign scaling algorithms for managing Google Compute Engine instances or define minimum and maximum workers to use. 
+  * Specify the service account and any billing labels to apply to your jobs. 
+  * For more information: 
+    * Project-level settings: see [ Project Settings Page ](https://cloud.google.com/dataprep/docs/html/Project-Settings-Page_136161418.html) . 
+    * Individual job executions: see [ Dataflow Execution Settings ](https://cloud.google.com/dataprep/docs/html/Dataflow-Execution-Settings_154091521.html) . 
+
+**FEATURE:**
+
+**Introducing plans:** A plan is a sequence of tasks on one or more flows that
+can be scheduled.
+
+  * **Feature Availability:** This feature is available in Cloud Dataprep Premium by TRIFACTA INC. 
+  * **NOTE:** In this release, the only type of task that is supported is Run Flow. 
+  * For more information on plans, see [ Plans Page ](https://cloud.google.com/dataprep/docs/html/Plans-Page_158401272.html) . 
+
+  * For more information on orchestration in general, see [ Overview of Operationalization ](https://cloud.google.com/dataprep/docs/html/Overview-of-Operationalization_151992519.html) . 
+
+**FEATURE:**
+
+* **_Dataflow execution in non-local VPC:_ ** * You can now execute your Cloud Dataflow jobs on a non-local or shared virtual private network (VPC). 
+
+  * **NOTE:** To accommodate a wider range of shared VPCs configuration, subnetworks must be specified by full URL. See Changes below. 
+  * Project owners can set these execution options for the entire project. See [ Project Settings Page ](https://cloud.google.com/dataprep/docs/html/Project-Settings-Page_136161418.html) . 
+
+**CHANGED:**
+
+**Subnetwork specified by URL:** When you are specifying the subnetwork where
+to execute your Cloud Dataflow jobs, you must now specify the subnetwork using
+a URL.
+
+  * **Tip:** This feature can be used when Cloud Dataprep by TRIFACTA INC. is configured to execute Cloud Dataflow jobs to run within a shared VPC hosted in a project other than the current project. 
+  * Previously, you could specify the subnetwork by name. However, non-local subnetwork values could not be specified in this manner. 
+  * For more information, see [ Dataflow Execution Settings ](https://cloud.google.com/dataprep/docs/html/Dataflow-Execution-Settings_154091521.html) . 
+
+**Google Cloud Marketplace**
+
+**CHANGED:**
+
+The IAM permissions required for purchasing the following solutions from
+Google Cloud Marketplace have changed:
+
+  * Apache Kafka® on Confluent Cloud™ 
+  * DataStax Astra for Apache Cassandra 
+  * Elasticsearch Service on Elastic Cloud 
+  * NetApp Cloud Volumes Service 
+  * Redis Enterprise Cloud 
+
+If you use [ custom roles ](https://cloud.google.com/iam/docs/understanding-
+custom-roles) to purchase these solutions, you must update the custom roles to
+include the permissions described in [ Access Control for Google Cloud
+Marketplace ](https://cloud.google.com/marketplace/docs/access-control) .
+
+Specifically, if your custom role includes the ` billing.subscriptions.create
+` permission, you must update it to include the `
+consumerprocurement.orders.place ` and the `
+consumerprocurement.accounts.create ` permissions.
+
+If you use the [ Billing Administrator
+](https://cloud.google.com/iam/docs/understanding-roles#billing-roles) role to
+purchase these solutions, you don't need to take any action.
+
+**Secret Manager**
+
+**FEATURE:**
+
+Secret Manager resources can now be stored in the ` australia-southeast1 `
+region. To learn more, see [ Locations ](https://cloud.google.com/secret-
+manager/docs/locations/) .
+
 ##  July 10, 2020
 
 **Anthos Service Mesh**
@@ -855,6 +1018,7 @@ stages) for the following integration:
 
   * [ Anthos GKE on-prem release notes ](https://cloud.google.com/anthos/gke/docs/on-prem/release-notes)
   * [ Anthos Config Management release notes ](https://cloud.google.com/anthos-config-management/docs/release-notes)
+  * See component and multi-cloud [ version and upgrade support ](https://cloud.google.com/anthos/docs/version-and-upgrade-support)
 
 **Anthos Config Management**
 
@@ -1223,6 +1387,20 @@ Cloud Armor is extended to July 31, 2020.
 
 ##  June 22, 2020
 
+**AI Platform Training**
+
+**CHANGED:**
+
+You can now [ use Cloud TPUs for training jobs ](https://cloud.google.com/ai-
+platform/training/docs/using-tpus) in the ` europe-west4 ` region. TPU v2
+accelerators are generally available, and TPU v3 accelerators are available in
+beta.
+
+Learn how to [ configure your training job to use TPUs
+](https://cloud.google.com/ai-platform/training/docs/using-
+tpus#configuring_a_custom_tpu_machine) , and read about [ TPU pricing on AI
+Platform Training ](https://cloud.google.com/ai-platform/training/pricing) .
+
 **Anthos Service Mesh**
 
 **FIXED:**
@@ -1480,8 +1658,9 @@ monitoring) for reference material.
 **FEATURE:**
 
 Cloud VPN now supports [ an org-level policy
-](https://cloud.google.com/vpn/docs/concepts/overview#vpn-org-policy) that
-restricts peer IP addresses through a Cloud VPN tunnel.
+](https://cloud.google.com/network-
+connectivity/docs/vpn/concepts/overview#vpn-org-policy) that restricts peer IP
+addresses through a Cloud VPN tunnel.
 
 **Compute Engine**
 
