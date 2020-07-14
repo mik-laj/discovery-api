@@ -12,6 +12,34 @@ Feedreader ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
 einfügen oder die Feed-URL direkt hinzufügen: `
 https://cloud.google.com/feeds/gcpmarketplace-release-notes.xml ` .
 
+##  July 13, 2020
+
+**CHANGED:**
+
+The IAM permissions required for purchasing the following solutions from
+Google Cloud Marketplace have changed:
+
+  * Apache Kafka® on Confluent Cloud™ 
+  * DataStax Astra for Apache Cassandra 
+  * Elasticsearch Service on Elastic Cloud 
+  * NetApp Cloud Volumes Service 
+  * Redis Enterprise Cloud 
+
+If you use [ custom roles ](https://cloud.google.com/iam/docs/understanding-
+custom-roles?hl=de) to purchase these solutions, you must update the custom
+roles to include the permissions described in [ Access Control for Google
+Cloud Marketplace ](https://cloud.google.com/marketplace/docs/access-
+control?hl=de) .
+
+Specifically, if your custom role includes the ` billing.subscriptions.create
+` permission, you must update it to include the `
+consumerprocurement.orders.place ` and the `
+consumerprocurement.accounts.create ` permissions.
+
+If you use the [ Billing Administrator
+](https://cloud.google.com/iam/docs/understanding-roles?hl=de#billing-roles)
+role to purchase these solutions, you don't need to take any action.
+
 ##  April 14, 2020
 
 **CHANGED:**
