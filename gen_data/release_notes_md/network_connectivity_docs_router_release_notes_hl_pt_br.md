@@ -26,50 +26,53 @@ br) .
 **CHANGED:**
 
 Added recommended settings for the Graceful Restart timer and the Stalepath
-timer to the [ Overview page
-](https://cloud.google.com/router/docs/concepts/overview?hl=pt-br#timer-
-settings) .
+timer to the [ Overview page ](https://cloud.google.com/network-
+connectivity/docs/router/concepts/overview?hl=pt-br#timer-settings) .
 
 ##  August 27, 2018
 
 **CHANGED:**
 
 Added a section on BGP timer settings to the [ Overview page
-](https://cloud.google.com/router/docs/concepts/overview?hl=pt-br#timer-
-settings) .
+](https://cloud.google.com/network-
+connectivity/docs/router/concepts/overview?hl=pt-br#timer-settings) .
 
 ##  March 14, 2018
 
 **FEATURE:**
 
 Specifying Cloud Router [ route advertisements
-](https://cloud.google.com/router/docs/concepts/overview?hl=pt-br#route-
-advertisement) is **Generally Available** .
+](https://cloud.google.com/network-
+connectivity/docs/router/concepts/overview?hl=pt-br#route-advertisement) is
+**Generally Available** .
 
 ##  January 12, 2018
 
 **FEATURE:**
 
 Specifying Cloud Router [ route advertisements
-](https://cloud.google.com/router/docs/concepts/overview?hl=pt-br#route-
-advertisement) is in **Beta** .
+](https://cloud.google.com/network-
+connectivity/docs/router/concepts/overview?hl=pt-br#route-advertisement) is in
+**Beta** .
 
 ##  October 19, 2017
 
 **FEATURE:**
 
 Setting a VPC network's [ dynamic routing mode
-](https://cloud.google.com/router/docs/concepts/overview?hl=pt-br#dynamic-
-routing-mode) is **Generally Available** .
+](https://cloud.google.com/network-
+connectivity/docs/router/concepts/overview?hl=pt-br#dynamic-routing-mode) is
+**Generally Available** .
 
 ##  August 17, 2017
 
 **FEATURE:**
 
 Setting a VPC network's [ dynamic routing mode
-](https://cloud.google.com/router/docs/concepts/overview?hl=pt-br#dynamic-
-routing-mode) is is in **Beta** . The VPC dynamic routing mode determines
-whether Cloud Router advertises and propagates routes globally or regionally.
+](https://cloud.google.com/network-
+connectivity/docs/router/concepts/overview?hl=pt-br#dynamic-routing-mode) is
+is in **Beta** . The VPC dynamic routing mode determines whether Cloud Router
+advertises and propagates routes globally or regionally.
 
 **CHANGED:**
 
