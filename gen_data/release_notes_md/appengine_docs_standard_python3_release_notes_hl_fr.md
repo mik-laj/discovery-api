@@ -1,3 +1,7 @@
+[ Python 38
+](https://cloud.google.com/appengine/docs/standard/python3/runtime?hl=fr) est
+désormais accessible à tous.
+
 #  Notes de version Python 3
 
 Vous pouvez consulter les dernières mises à jour de produits pour l'ensemble
