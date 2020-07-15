@@ -1,3 +1,7 @@
+[ Node.js 12
+](https://cloud.google.com/appengine/docs/standard/nodejs/runtime?hl=fr) est
+désormais accessible à tous.
+
 #  Notes de version de Node.js
 
 Vous pouvez consulter les dernières mises à jour de produits pour l'ensemble
