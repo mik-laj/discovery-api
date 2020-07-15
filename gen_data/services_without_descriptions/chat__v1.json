@@ -270,6 +270,32 @@
                                 "$ref": "Message"
                             }
                         }
+                    },
+                    "resources": {
+                        "attachments": {
+                            "methods": {
+                                "get": {
+                                    "flatPath": "v1/spaces/{spacesId}/messages/{messagesId}/attachments/{attachmentsId}",
+                                    "httpMethod": "GET",
+                                    "id": "chat.spaces.messages.attachments.get",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "location": "path",
+                                            "pattern": "^spaces/[^/]+/messages/[^/]+/attachments/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "response": {
+                                        "$ref": "Attachment"
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -327,6 +353,50 @@
                 },
                 "userMention": {
                     "$ref": "UserMentionMetadata"
+                }
+            },
+            "type": "object"
+        },
+        "Attachment": {
+            "id": "Attachment",
+            "properties": {
+                "attachmentDataRef": {
+                    "$ref": "AttachmentDataRef"
+                },
+                "contentName": {
+                    "type": "string"
+                },
+                "contentType": {
+                    "type": "string"
+                },
+                "downloadUri": {
+                    "type": "string"
+                },
+                "driveDataRef": {
+                    "$ref": "DriveDataRef"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "source": {
+                    "enum": [
+                        "SOURCE_UNSPECIFIED",
+                        "DRIVE_FILE",
+                        "UPLOADED_CONTENT"
+                    ],
+                    "type": "string"
+                },
+                "thumbnailUri": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AttachmentDataRef": {
+            "id": "AttachmentDataRef",
+            "properties": {
+                "resourceName": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -439,6 +509,15 @@
                 },
                 "user": {
                     "$ref": "User"
+                }
+            },
+            "type": "object"
+        },
+        "DriveDataRef": {
+            "id": "DriveDataRef",
+            "properties": {
+                "driveFileId": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -662,6 +741,12 @@
                 },
                 "argumentText": {
                     "type": "string"
+                },
+                "attachment": {
+                    "items": {
+                        "$ref": "Attachment"
+                    },
+                    "type": "array"
                 },
                 "cards": {
                     "items": {
