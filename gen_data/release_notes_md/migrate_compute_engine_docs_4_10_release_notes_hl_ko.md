@@ -3,8 +3,8 @@
 이 페이지에서는 Migrate for Compute Engine의 프로덕션 업데이트를 문서화합니다. 이 페이지를 정기적으로 확인하여 새로운
 기능이나 업데이트된 기능, 버그 수정, 알려진 문제, 지원 중단된 기능에 대한 공지를 볼 수 있습니다.
 
-[ Google Cloud 출시 노트 ](https://cloud.google.com/release-notes?hl=ko) 페이지에서 모든
-Google Cloud의 최신 제품 업데이트를 확인할 수 있습니다.
+[ Google Cloud 출시 노트 ](https://cloud.google.com/release-notes?hl=ko) 페이지에서
+Google Cloud의 모든 최신 제품 업데이트를 확인할 수 있습니다.
 
 최신 제품 업데이트를 받으려면 [ 피드 리더
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) 에 이 페이지의 URL을
@@ -34,8 +34,8 @@ V4.10은 [ GCP Console ](https://cloud.google.com/cloud-console/?hl=ko) 과 통�
 
 **FEATURE:**
 
-V4.10은 API 비공개 액세스가 사용 설정된 환경에 배포하는 것을 지원합니다. 이러한 환경에서는 시스템이 공개 IP 없이 배포되며
-Cloud APIs에 액세스하기 위해 비공개 액세스를 사용합니다. [ 마이그레이션 관리자 구성
+V4.10은 API 비공개 액세스가 사용 설정된 환경에 배포를 지원합니다. 이러한 환경에서는 시스템이 공개 IP 없이 배포되며 비공개
+액세스를 사용하여 Cloud API에 액세스합니다. [ 마이그레이션 관리자 구성
 ](https://cloud.google.com/migrate/compute-engine/docs/4.10/how-to/configure-
 manager/configuring-migration-manager?hl=ko) 을 참조하세요.
 
@@ -53,8 +53,8 @@ vm?hl=ko#register_the_vmware_vcenter_environment) 을 참조하세요.
 
 **FEATURE:**
 
-V4.10에서는 Windows 업그레이드를 사용할 때 사전/사후 커스텀 스크립트를 실행할 수 있도록 지원합니다. VM에 커스텀 스크립트를
-추가할 수 있습니다. 자세한 내용은 [ Windows Server VM 업그레이드
+V4.10은 Windows 업그레이드를 사용할 때 사전/사후 커스텀 스크립트 실행을 지원합니다. VM에 커스텀 스크립트를 추가할 수
+있습니다. 자세한 내용은 [ Windows Server VM 업그레이드
 ](https://cloud.google.com/migrate/compute-engine/docs/4.10/how-to/upgrading-
 vms/upgrading-windows-vms?hl=ko) 를 참조하세요.
 
@@ -70,18 +70,57 @@ Compute Engine 인스턴스로의 마이그레이션이 지원됩니다.
 
 **FEATURE:**
 
-V4.10에서는 마이그레이션된 OS의 자동 식별을 지원하여 기본적으로 마이그레이션된 VM에 올바른 라이선스를 할당합니다. Windows
-BYOL 라이선스 또는 Linux 프리미엄 라이선스를 사용하여 VM을 마이그레이션하려는 경우, 런북에 이를 입력으로 제공해야 합니다. 문서의
-[ 라이선스 섹션 ](https://cloud.google.com/migrate/compute-
+V4.10은 기본적으로 마이그레이션된 VM에 올바른 라이선스를 할당하는 마이그레이션된 OS를 자동으로 식별합니다. Windows BYOL
+라이선스 또는 Linux 프리미엄 라이선스를 사용하여 VM을 마이그레이션하려는 경우, 이를 런북에 입력으로 제공해야 합니다. 문서의 [
+라이선스 섹션 ](https://cloud.google.com/migrate/compute-
 engine/docs/4.10/reference/runbooks?hl=ko) 을 참조하세요.
 
-##  해결된 문제
+##  4.10.1
+
+###  해결된 문제
+
+**FIXED:**
+
+특정 볼륨 구조의 Windows 파티션 인식 문제가 해결되었습니다.
+
+**FIXED:**
+
+4TB를 초과하는 Azure 디스크 지원 기능이 추가되었습니다.
+
+##  4.10
+
+###  해결된 문제
 
 **FIXED:**
 
 마이그레이션 후에 Windows 이미지가 비정상 종료되는 AWS ena 드라이버 관련 문제가 수정되었습니다.
 
-##  알려진 문제
+##  4.10
+
+###  알려진 문제
+
+**ISSUE:**
+
+**#160405343:** SUSE의 활성화 과정에서 [ 동작 변경
+](https://www.suse.com/support/kb/doc/?id=000019633) 으로 인해 이제 분리 후 SUSE
+Enterprise Linux 인스턴스에서 저장소를 구성할 수 없습니다.
+
+**해결 방법:** 마이그레이션하기 전에 또는 분리하기 전에 다음 해결 방법을 사용할 수 있습니다.
+
+  1. [ https://www.suse.com/support/kb/doc/?id=000019633 ](https://www.suse.com/support/kb/doc/?id=000019633) 에서 Situation 4에 설명된 안내에 따라 Compute Engine에 필요한 패키지를 tar.gz 파일로 다운로드하세요. 
+  2. **SLES 12.x의 경우** , 다음 명령어를 실행합니다. 
+    
+        sha1sum late_instance_offline_update_gce_SLE12.tar.gz
+    tar -xf late_instance_offline_update_gce_SLE12.tar.gz
+    cd x86_64/
+    zypper --no-refresh --no-remote --non-interactive in *.rpm
+
+  3. **SLES 15.x의 경우** , 다음 명령어를 실행합니다. 
+    
+        sha1sum late_instance_offline_update_gce_SLE15.tar.gz
+    tar -xf late_instance_offline_update_gce_SLE15.tar.gz
+    cd x86_64/
+    zypper --no-refresh --no-remote --non-interactive in *.rpm
 
 **ISSUE:**
 
@@ -91,8 +130,8 @@ engine/docs/4.10/reference/runbooks?hl=ko) 을 참조하세요.
 
 **ISSUE:**
 
-**#145086776:** 드물지만 RHEL7의 이전 버전은 스트리밍하는 동안 중단되거나 커널 패닉이 발생할 수 있습니다. 이 문제는 이후
-RHEL7 버전에서 해결되었습니다.
+**#145086776:** 드물지만 RHEL7의 이전 버전이 스트리밍 중에 중단되거나 커널 패닉이 발생할 수 있습니다. 이 문제는 이후
+버전의 RHEL7에서 해결되었습니다.
 
 **해결 방법:** 마이그레이션 전에 ` sudo yum update ` 를 실행하여 시스템을 업데이트합니다.
 
@@ -118,7 +157,7 @@ RHEL7 버전에서 해결되었습니다.
 
 현재 Migrate for Compute Engine은 4TB 초과의 데이터 디스크가 있는 Azure VM 마이그레이션을 지원하지 않습니다.
 
-**해결 방법:** VM에 4TB보다 작은 데이터 디스크가 있는지 확인하세요.
+**해결 방법:** VM에 4TB 미만의 데이터 디스크가 있는지 확인합니다.
 
 **ISSUE:**
 
@@ -140,14 +179,14 @@ cloud) 및 마이그레이션 작업이 Windows Server 2016 워크로드에 실�
 VM은 기존의 고정 IP 구성 외에도 DHCP IP 주소를 가져옵니다. 이 문제는 VM이 DHCP 서비스가 사용 설정된 서브넷에서
 온프레미스로 시작될 때 발생합니다.
 
-참고: 서브넷에 DHCP 서비스가 없으면 문제가 발생하지 않습니다. 원래의 고정 IP 주소와의 통신에는 연결 영향이 없습니다.
+참고: 서브넷에 DHCP 서비스가 없으면 문제가 발생하지 않습니다. 원래의 고정 IP 주소와의 통신 연결에 영향을 미치지 않습니다.
 
 **ISSUE:**
 
 **#131637800:** Velostrata 플러그인을 등록한 후 Cloud Extension 마법사를 실행하면 'Finish(마침)'
 시 'XXXXXXXXXX' 오류가 발생할 수 있습니다.
 
-**해결 방법:** Velostrata 플러그인을 등록 취소하고 vSphere 웹 클라이언트 서비스를 다시 시작한 다음 플러그인을 다시
+**해결 방법:** Velostrata 플러그인을 등록 취소하고 vSphere Web Client 서비스를 다시 시작한 다음 플러그인을 다시
 등록합니다. 문제가 지속되면 지원팀에 문의하세요.
 
 **ISSUE:**
@@ -204,7 +243,7 @@ Velostrata 관리 어플라이언스와 워크로드가 실행 중인 ESXi 호�
 
 **#131650367:** 분리 작업 취소 후 분리를 수행할 때 작업이 실패할 수 있습니다.
 
-**해결 방법:** 작업을 다시 시도합니다.
+**해결 방법:** 작업을 재시도합니다.
 
 **ISSUE:**
 
@@ -287,7 +326,7 @@ Velostrata 관리 어플라이언스와 워크로드가 실행 중인 ESXi 호�
 **#131532666:** 커널 버전 2.6.32로 실행되는 Linux 버전에서 임시 스토리지 액세스 실패시 커널 패닉이 발생할 수
 있습니다. 이는 iSCSI를 통해 스트리밍할 때 발생할 가능성이 더 높습니다.
 
-해결 방법: 커널을 업그레이드합니다. 분리 후에도 이 문제가 줄어들 가능성이 높습니다.
+해결 방법: 커널을 업그레이드합니다. 분리 후에는 문제가 발생할 가능성도 줄어듭니다.
 
 **ISSUE:**
 
@@ -312,9 +351,9 @@ Importer를 시작하지 못한 경우 Velostrata에서 만든 리소스가 원�
 
 **#133137658:** 시나리오: 마이그레이션 관리자와 VSphere의 네트워크 연결이 없습니다.
 
-고객 영향: RunInCloud 작업이 VSphere에서 getReadSessions 호출 실패로 인해 중단됩니다.
+고객 영향: RunInCloud 작업은 VSphere에서 getReadSessions 호출 실패로 인해 처리되지 않습니다.
 
-**해결 방법** : 네트워크 연결을 수정합니다. 그렇지 않은 경우 작업을 취소하고 다시 시도하세요.
+**해결 방법** : 네트워크 연결을 수정합니다. 안된다면 작업을 취소하고 다시 시도합니다.
 
 **ISSUE:**
 
