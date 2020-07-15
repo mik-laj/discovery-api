@@ -23,8 +23,9 @@ Connectivity page ](https://cloud.google.com/network-connectivity/docs/?hl=ja)
 **FEATURE:**
 
 Cloud VPN now supports [ an org-level policy
-](https://cloud.google.com/vpn/docs/concepts/overview?hl=ja#vpn-org-policy)
-that restricts peer IP addresses through a Cloud VPN tunnel.
+](https://cloud.google.com/network-
+connectivity/docs/vpn/concepts/overview?hl=ja#vpn-org-policy) that restricts
+peer IP addresses through a Cloud VPN tunnel.
 
 ##  June 08, 2020
 
@@ -35,7 +36,7 @@ Cloud VPN is now available in [ region
 southeast2 (Jakarta, Indonesia).
 
 Pricing is available on the [ Cloud VPN pricing page
-](https://cloud.google.com/vpn/pricing?hl=ja) .
+](https://cloud.google.com/network-connectivity/vpn-pricing?hl=ja) .
 
 ##  April 20, 2020
 
@@ -46,7 +47,7 @@ Cloud VPN is now available in [ region
 west4 (Las Vegas, Nevada, USA).
 
 Pricing is available on the [ Cloud VPN pricing page
-](https://cloud.google.com/vpn/pricing?hl=ja) .
+](https://cloud.google.com/network-connectivity/vpn-pricing?hl=ja) .
 
 ##  February 24, 2020
 
@@ -57,7 +58,7 @@ Cloud VPN is now available in [ region
 west3 (Salt Lake City, Utah, USA).
 
 Pricing is available on the [ Cloud VPN pricing page
-](https://cloud.google.com/vpn/pricing?hl=ja) .
+](https://cloud.google.com/network-connectivity/vpn-pricing?hl=ja) .
 
 ##  January 24, 2020
 
@@ -68,7 +69,7 @@ Cloud VPN is now available in [ region
 northeast3 (Seoul).
 
 Pricing is available on the [ Cloud VPN pricing page
-](https://cloud.google.com/vpn/pricing?hl=ja) .
+](https://cloud.google.com/network-connectivity/vpn-pricing?hl=ja) .
 
 ##  October 30, 2019
 
@@ -84,8 +85,8 @@ These metrics now report an accurate count on a per tunnel basis.
 
 **FEATURE:**
 
-[ HA VPN ](https://cloud.google.com/vpn/docs/concepts/overview?hl=ja) is
-Generally Available.
+[ HA VPN ](https://cloud.google.com/network-
+connectivity/docs/vpn/concepts/overview?hl=ja) is Generally Available.
 
 **ISSUE:**
 
@@ -102,14 +103,16 @@ required for a working HA VPN connection.
 **ISSUE:**
 
 To view Monitoring metrics for HA VPN, you must use Metrics Explorer. See the
-[ Viewing logs and metrics page ](https://cloud.google.com/vpn/docs/how-
-to/viewing-logs-metrics?hl=ja#viewing-monitoring-dashboards) .
+[ Viewing logs and metrics page ](https://cloud.google.com/network-
+connectivity/docs/vpn/how-to/viewing-logs-metrics?hl=ja#viewing-monitoring-
+dashboards) .
 
 **ISSUE:**
 
 When setting up Cloud VPN tunnels to AWS, [ using IKEv2 and configuring fewer
-IKE transform sets ](https://cloud.google.com/vpn/docs/how-to/creating-ha-
-vpn?hl=ja#aws-known-issue) is required.
+IKE transform sets ](https://cloud.google.com/network-
+connectivity/docs/vpn/how-to/creating-ha-vpn?hl=ja#aws-known-issue) is
+required.
 
 ##  May 13, 2019
 
