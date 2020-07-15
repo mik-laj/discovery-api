@@ -12,6 +12,39 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  July 14, 2020
+
+**AI Platform Prediction**
+
+**FEATURE:**
+
+[ VPC Service Controls ](https://cloud.google.com/vpc-service-
+controls/docs/overview) now supports AI Platform Prediction. Learn [ how to
+use a service perimeter to protect online prediction
+](https://cloud.google.com/ai-platform/prediction/docs/vpc-service-controls) .
+This functionality is in beta.
+
+**Artifact Registry**
+
+**FEATURE:**
+
+You can now use Customer-Managed Encryption Keys (CMEK) to protect repository
+data in Artifact Registry. For more information, see [ Enabling customer-
+managed encryption keys ](https://cloud.google.com/artifact-
+registry/docs/cmek) .
+
+**Cloud Key Management Service**
+
+**FEATURE:**
+
+Cloud HSM resources are available in the ` us-west4 ` and ` asia-southeast2 `
+regions. Cloud KMS resources were already available in these regions.
+
+For information about which [ Cloud Locations
+](https://cloud.google.com/about/locations/) are supported by Cloud KMS, Cloud
+HSM, and Cloud EKM, see the [ Cloud KMS regional locations
+](https://cloud.google.com/kms/docs/locations#regional) .
+
 ##  July 13, 2020
 
 **AI Platform Training**
@@ -82,7 +115,7 @@ access and relational connectivity. To see the full set of new capabilities
 and use cases, see [ Google Cloud Dataprep by Trifacta Pricing
 ](https://www.trifacta.com/products/pricing/cloud-dataprep/) .
 
-  * These two product tiers are available through the [ Google Cloud Platform Marketplace ](https://console.cloud.google.com/marketplace/details/trifacta/cloud-dataprep-editions) . 
+  * These two product tiers are available through the [ Google Cloud Platform Marketplace ](https://console.cloud.google.com/marketplace/product/endpoints/cloud-dataprep-editions-v2) . 
     * Cloud Dataprep Premium by TRIFACTA INC. enables Fine Grained Data Access Control, which requires additional permissions within the project. For more information on these permissions, see [ Required User Permissions ](https://cloud.google.com/dataprep/docs/html/Required-User-Permissions_158400598.html) . 
     * For more information, see [ Getting Started with Cloud Dataprep ](https://cloud.google.com/dataprep/docs/html/Getting-Started-with-Cloud-Dataprep_158401056.html) . 
   * **Important:** All existing Cloud Dataprep by TRIFACTA INC. projects are unchanged. You can upgrade individual projects through the GCP Marketplace to unlock the new functionality. 
@@ -873,6 +906,23 @@ Cloud Run (fully managed) support for [ connecting to a VPC network
 Serverless VPC Access ](https://cloud.google.com/vpc/docs/configure-
 serverless-vpc-access) is now at general availability (GA).
 
+**Google Cloud VMware Engine**
+
+**FEATURE:**
+
+[ Google Cloud VMware Engine ](https://cloud.google.com/vmware-engine/) is
+**generally available** . This service delivers a fully managed VMware
+platform stack—VMware ESXi, vCenter, vSAN, NSX-T, and HCX—in a dedicated
+environment on Google Cloud's infrastructure to support your enterprise
+production workloads. Using VMware Engine, you can bring your on-premises
+workloads to Google Cloud by connecting to a dedicated VMware environment.
+
+You can run the service in the ` us-east4 ` (Ashburn, Northern Virginia) and `
+us-west2 ` (Los Angeles, California) regions.
+
+For more information, read the [ VMware Engine documentation
+](https://cloud.google.com/vmware-engine/docs/) .
+
 **VPC Service Controls**
 
 **FEATURE:**
@@ -1595,87 +1645,4 @@ Bug fixes
 [ Retry policies for Pub/Sub subscriptions
 ](https://cloud.google.com/pubsub/docs/admin#creating_subscriptions) are now
 available at the GA launch stage.
-
-##  June 15, 2020
-
-**AI Platform Training**
-
-**FEATURE:**
-
-AI Platform Training now supports [ private services access
-](https://cloud.google.com/vpc/docs/private-access-options#service-networking)
-in beta. You can use VPC Network Peering to create a private connection so
-that training jobs can connect to your network on private IP.
-
-Learn how to set up [ VPC Network Peering with AI Platform Training
-](https://cloud.google.com/ai-platform/training/docs/vpc-peering) .
-
-**Anthos Config Management**
-
-**ISSUE:**
-
-A regression in Anthos Config Management 1.3.2 results in unnecessary patches
-to the API server for the ` gatekeeper-system ` namespace and spurious logging
-for error ` KNV2005 ` . This "fight" results when the ` gatekeeper-system `
-namespace is managed in the Git repo, and two Anthos Config Management
-components (the operator and syncer) are both trying to reconcile the state of
-the namespace with the API server. The only workaround at this time is to [
-unmanage ](https://cloud.google.com/anthos-config-management/docs/how-
-to/managing-objects#unmanaged-namespaces) the ` gatekeeper-system ` namespace.
-The issue will be fixed in Anthos Config Management 1.4.1.
-
-**Anthos Service Mesh**
-
-**FIXED:**
-
-**1.5.5-asm.2**
-
-Fixes a bug in the ` istioctl ` ` HorizontalPodAutoscaling ` setting that
-caused Anthos Service Mesh installations to fail.
-
-**Cloud Data Loss Prevention**
-
-**FEATURE:**
-
-Added [ infoType detector ](https://cloud.google.com/dlp/docs/infotypes-
-reference) :
-
-  * VEHICLE_IDENTIFICATION_NUMBER 
-
-**Cloud Monitoring**
-
-**CHANGED:**
-
-The Service Monitoring API is now Generally Available. You can use this
-feature to create services, set service-level objectives (SLOs), and create
-alerting policies to monitor your SLOs. See [ Service monitoring
-](https://cloud.google.com/monitoring/service-monitoring/) for documentation,
-and [ ` services ` ](https://cloud.google.com/monitoring/api/v3/#service-
-monitoring) for reference material.
-
-**Cloud VPN**
-
-**FEATURE:**
-
-Cloud VPN now supports [ an org-level policy
-](https://cloud.google.com/network-
-connectivity/docs/vpn/concepts/overview#vpn-org-policy) that restricts peer IP
-addresses through a Cloud VPN tunnel.
-
-**Compute Engine**
-
-**FEATURE:**
-
-[ New sole-tenant node types (c2-node-60-240, n1-node-96-1433, and
-n2d-node-224-896) ](https://cloud.google.com/compute/docs/nodes#node_types)
-are available in **Beta** .
-
-**Resource Manager**
-
-**FEATURE:**
-
-The Organization Policy for [ restricting peer IP addresses through a Cloud
-VPN tunnel ](https://cloud.google.com/network-
-connectivity/docs/vpn/concepts/overview#vpn-org-policy) has been launched into
-general availability.
 
