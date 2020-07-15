@@ -15,9 +15,10 @@ página a tu [ lector de feeds
 directamente la URL del feed: ` https://cloud.google.com/feeds/migrate-for-
 compute-engine-release-notes.xml `
 
-Para obtener una lista de compilaciones de esta versión y otras, consulta el [
-Historial de compilación ](https://cloud.google.com/migrate/compute-
-engine/docs/build-history?hl=es-419) .
+Para obtener una lista de las compilaciones de esta versión y de otras,
+consulta el [ Historial de compilaciones
+](https://cloud.google.com/migrate/compute-engine/docs/build-
+history?hl=es-419) .
 
 ##  Requisitos y compatibilidad del SO
 
@@ -28,7 +29,7 @@ engine/docs/4.10/reference/supported-os-versions?hl=es-419) .
 
 ##  Nuevas funciones de la versión 4.10
 
-###  Integración en Cloud Console
+###  Integración de Cloud Console
 
 **FEATURE:**
 
@@ -37,14 +38,14 @@ console/?hl=es-419) para permitir la implementación sin problemas del
 administrador de migración junto con la creación de cuentas de servicio
 obligatorias.
 
-###  Implementación en entorno de acceso privado
+###  Implementación en el entorno de acceso privado
 
 **FEATURE:**
 
-V4.10 presenta compatibilidad con la implementación en entornos con acceso
-privado a la API habilitado. En estos entornos, el sistema se implementará sin
-una IP pública y dependerá del acceso privado para acceder a las API en la
-nube. Consulta [ Cómo configurar el administrador de migración
+La V4.10 presenta compatibilidad con la implementación en los entornos con el
+acceso privado a la API habilitado. En estos entornos, el sistema se
+implementará sin IP pública y dependerá del acceso privado para acceder a las
+API de Cloud. Consulta [ Configura el administrador de migración
 ](https://cloud.google.com/migrate/compute-engine/docs/4.10/how-to/configure-
 manager/configuring-migration-manager?hl=es-419) .
 
@@ -52,27 +53,28 @@ manager/configuring-migration-manager?hl=es-419) .
 
 **FEATURE:**
 
-V4.10 presenta la opción de implementación en un entorno de origen de vCenter
-local con o sin implementar el complemento de vCenter. La implementación sin
-el complemento de vCenter te permite conectar varios sistemas de Migrate al
-mismo entorno de vCenter. Consulta [ Registra el entorno de VMware vCenter
-](https://cloud.google.com/migrate/compute-engine/docs/4.10/how-to/configure-
-manager/configuring-vms-vm?hl=es-419#register_the_vmware_vcenter_environment)
-.
+La V4.10 presenta la opción de implementar en un entorno de vCenter de origen
+local con el complemento de vCenter implementado o sin implementar. La
+implementación sin el complemento de vCenter te permite conectar varios
+sistemas de Migrate al mismo entorno de vCenter. Consulta [ Registra el
+entorno de VMware vCenter ](https://cloud.google.com/migrate/compute-
+engine/docs/4.10/how-to/configure-manager/configuring-vms-
+vm?hl=es-419#register_the_vmware_vcenter_environment) .
 
 ###  Compatibilidad con secuencias de comandos personalizadas previas y
 posteriores cuando se actualiza Windows 2008 a 2012
 
 **FEATURE:**
 
-V4.10 introduce compatibilidad con la ejecución de secuencias de comandos
-personalizadas previas o posteriores cuando se usa la actualización de
+La V4.10 presenta la compatibilidad con la ejecución de secuencias de comandos
+personalizadas anteriores y posteriores cuando se usa la actualización de
 Windows. Puedes agregar secuencias de comandos personalizadas a la VM.
-Consulta [ Cómo actualizar las VM de Windows Server
+Consulta [ Actualiza las VM de Windows Server
 ](https://cloud.google.com/migrate/compute-engine/docs/4.10/how-to/upgrading-
 vms/upgrading-windows-vms?hl=es-419) para obtener más información.
 
-###  Admite la migración de instancias de Azure Gen2 a Compute Engine
+###  Compatibilidad con la migración de instancias de Azure Gen2 a Compute
+Engine
 
 **FEATURE:**
 
@@ -85,21 +87,64 @@ Compute Engine con compatibilidad con UEFI.
 
 **FEATURE:**
 
-V4.10 presenta una identificación automática del SO migrado, que, de forma
+La V4.10 presenta la identificación automática del SO migrado que, de forma
 predeterminada, asignará la licencia correcta a la VM migrada. En situaciones
-en las que deseas migrar VM con una licencia BYOL de Windows o una licencia
-premium de Linux, deberás proporcionarlas como entradas en el runbook.
-Consulta la [ sección de licencias ](https://cloud.google.com/migrate/compute-
+en las que deseas migrar VM mediante una licencia BYOL de Windows o una
+licencia premium de Linux, deberás proporcionarlas como entradas en el
+runbook. Consulta la [ sección de licencias
+](https://cloud.google.com/migrate/compute-
 engine/docs/4.10/reference/runbooks?hl=es-419) en la documentación.
 
-##  Problemas resueltos
+##  4.10.1
+
+###  Problemas resueltos
+
+**FIXED:**
+
+Se solucionó un problema con la detección de particiones de Windows para
+ciertas estructuras de volumen.
+
+**FIXED:**
+
+Se agregó compatibilidad con los discos de Azure de más de 4 TB.
+
+##  4.10
+
+###  Problemas resueltos
 
 **FIXED:**
 
 Se solucionó un problema con los controladores de ena de AWS que provocaba que
 las imágenes de Windows fallaran después de la migración.
 
-##  Problemas conocidos
+##  4.10
+
+###  Problemas conocidos
+
+**ISSUE:**
+
+**#160405343:** Debido a un [ cambio de comportamiento
+](https://www.suse.com/support/kb/doc/?id=000019633) en el flujo de activación
+de SUSE, ahora la configuración de repositorios en instancias de SUSE
+Enterprise Linux luego de la desconexión fallará.
+
+**Solución:** La siguiente solución puede usarse antes de la desconexión (ya
+sea antes de la migración o antes de la desconexión).
+
+  1. Sigue las instrucciones para la situación 4 que se describen en [ https://www.suse.com/support/kb/doc/?id=000019633 ](https://www.suse.com/support/kb/doc/?id=000019633) a fin de descargar los paquetes necesarios para Compute Engine como un archivo tar.gz. 
+  2. Luego, **para SLES 12.x** , ejecuta los siguientes comandos: 
+    
+        sha1sum late_instance_offline_update_gce_SLE12.tar.gz
+    tar -xf late_instance_offline_update_gce_SLE12.tar.gz
+    cd x86_64/
+    zypper --no-refresh --no-remote --non-interactive in *.rpm
+
+  3. Luego, **para SLES 15 x** , ejecuta los siguientes comandos: 
+    
+        sha1sum late_instance_offline_update_gce_SLE15.tar.gz
+    tar -xf late_instance_offline_update_gce_SLE15.tar.gz
+    cd x86_64/
+    zypper --no-refresh --no-remote --non-interactive in *.rpm
 
 **ISSUE:**
 
@@ -112,8 +157,8 @@ la interfaz de red con DHCP.
 **ISSUE:**
 
 **#145086776:** En casos excepcionales, es posible que las versiones
-anteriores de RHEL7 se bloqueen durante la transmisión o alcancen un error de
-kernel. Este problema se resolvió en versiones posteriores de RHEL7.
+anteriores de RHEL7 se bloqueen durante la transmisión o alcancen un kernel
+panic. Este problema se resolvió en las versiones posteriores de RHEL7.
 
 **Solución:** Ejecuta ` sudo yum update ` antes de migrar para actualizar el
 sistema.
@@ -151,10 +196,10 @@ Azure con discos de datos de más de 4 TB.
 
 **ISSUE:**
 
-**#131532690:** Las operaciones de ejecución en la nube y de migración pueden
-fallar para la carga de trabajo de Windows Server 2016 cuando se instala
-Symantec Endpoint Protection (SEP). Esto también puede ocurrir cuando SEP
-parece estar inhabilitado.
+**#131532690:** Las operaciones de migración y ejecución en la nube pueden
+fallar en la carga de trabajo de Windows Server 2016 cuando Symantec Endpoint
+Protection (SEP) está instalado. Esto también puede ocurrir cuando SEP parece
+estar inhabilitado.
 
 **Solución alternativa:** Modifica las vinculaciones de la interfaz de red de
 la carga de trabajo para quitar la opción SEP.
@@ -183,9 +228,9 @@ estática original.
 ejecución del asistente de extensión de Cloud puede generar un error
 "XXXXXXXXXX" cuando está “Finalizado”.
 
-**Solución:** Cancela el registro del complemento de Velostrata y reinicia el
-servicio de cliente web de vSphere, y vuelve a registrar el complemento.
-Comunícate con el equipo de asistencia si el problema persiste.
+**Solución:** Anula el registro del complemento de Velostrata, reinicia el
+servicio del cliente web de vSphere y, luego, vuelve a registrar el
+complemento. Comunícate con el equipo de asistencia si el problema persiste.
 
 **ISSUE:**
 
@@ -197,21 +242,20 @@ solución de copia de seguridad borra la instantánea temporal. El contador de
 escrituras no confirmadas en la VM mostrará un tamaño creciente, y no se
 creará ningún punto de control de coherencia local.
 
-**Solución:** Selecciona la acción de Ejecutar a nivel local para la VM y
-espera a que se complete la tarea, lo que confirmará todas las escrituras
-pendientes. Luego, vuelve a seleccionar la acción de ejecución en la nube. Ten
-en cuenta que la confirmación de muchas escrituras pendientes puede llevar un
-tiempo. No uses la opción Forzar, ya que esto provocará la pérdida de
-escrituras no confirmadas.
+**Solución:** Selecciona la acción de ejecución local para la VM y espera a
+que se complete la tarea, lo que confirmará todas las escrituras pendientes.
+Luego, vuelve a seleccionar la acción de ejecución en la nube. Ten en cuenta
+que la confirmación de muchas escrituras pendientes puede llevar un tiempo. No
+uses la opción de forzar, ya que se perderán las escrituras no confirmadas.
 
 **ISSUE:**
 
-**#131605387:** El reinicio de vCenter hace que las tareas de Velostrata
-desaparezcan de la IU. Esta es una limitación de vCenter.
+**#131358387:** El reinicio de vCenter hace que las tareas de Velostrata en
+vCenter desaparezcan de la IU. Esta es una limitación de vCenter.
 
 **Solución:** Usa el módulo de PowerShell de Velostrata para supervisar las VM
 administradas de Velostrata o las tareas de las extensiones de Cloud que se
-estén ejecutando actualmente.
+encuentran en ejecución en el momento.
 
 **ISSUE:**
 
@@ -228,9 +272,9 @@ de ejecución en la nube.
 se pudo crear una instantánea de máquina virtual. La operación que se intentó
 no se puede realizar en el estado actual (apagado)”.
 
-**Solución:** El archivo de instantánea de VM de VMware puede apuntar a una
-instantánea no existente. Comunícate con el equipo de asistencia para corregir
-el problema.
+**Solución:** El archivo de la instantánea de VM de VMware puede estar
+apuntando a una instantánea que no existe. Comunícate con el equipo de
+asistencia para que te ayuden a corregir el problema.
 
 **ISSUE:**
 
@@ -258,10 +302,10 @@ desconexión, es posible que la acción falle.
 
 **ISSUE:**
 
-**#131649978:** En caso de fallas del sistema, los componentes de Velostrata
-se desconectan de vCenter. En este caso, es posible que no se envíe un evento,
-por lo que la alarma no se configurará correctamente o no se borrará
-correctamente.
+**#131649978:** En el caso de ciertas fallas del sistema, los componentes de
+Velostrata se desconectan de vCenter. En este caso, es posible que no se envíe
+un evento, por lo que la alarma no se configurará correctamente o no se
+limpiará correctamente.
 
 **Solución:** Borra la alarma manualmente en vCenter.
 
@@ -313,7 +357,7 @@ subvolúmenes.
 Cloud, el uso de una dirección de proxy HTTP ilegal no generará un mensaje de
 advertencia.
 
-**Solución:** Borra el CE y, luego, crea el CE con una dirección proxy HTTP
+**Solución:** Borra el CE y, luego, crea el CE con una dirección de proxy HTTP
 válida.
 
 **ISSUE:**
@@ -392,7 +436,7 @@ migración y VSphere
 Impacto en el cliente: La tarea RunInCloud permanecerá detenida debido a una
 falla en la llamada a getReadSessions en VSphere.
 
-**Solución** : Corrige la conexión de red. Si no es así, cancela la tarea y
+**Solución:** Arregla la conexión de red. De lo contrario, cancela la tarea y
 vuelve a intentarlo.
 
 **ISSUE:**
