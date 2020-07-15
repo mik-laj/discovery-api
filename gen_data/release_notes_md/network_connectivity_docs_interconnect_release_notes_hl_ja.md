@@ -40,18 +40,19 @@ Support for 100G ports for Dedicated Interconnect is available in **Beta** .
 **FEATURE:**
 
 For Google Cloud Interconnect - Dedicated, setting a VLAN attachment's
-capacity and [ modifying ](https://cloud.google.com/interconnect/docs/how-
-to/dedicated/modifying-vlan-attachments?hl=ja) a VLAN attachment through
-Google Cloud Platform Console are **Generally Available** .
+capacity and [ modifying ](https://cloud.google.com/network-
+connectivity/docs/interconnect/how-to/dedicated/modifying-vlan-
+attachments?hl=ja) a VLAN attachment through Google Cloud Platform Console are
+**Generally Available** .
 
 ##  February 22, 2019
 
 **FEATURE:**
 
 For Google Cloud Interconnect - Dedicated, setting a VLAN attachment's
-capacity and [ modifying ](https://cloud.google.com/interconnect/docs/how-
-to/dedicated/modifying-vlan-attachments?hl=ja) a VLAN attachment are available
-in **Beta** .
+capacity and [ modifying ](https://cloud.google.com/network-
+connectivity/docs/interconnect/how-to/dedicated/modifying-vlan-
+attachments?hl=ja) a VLAN attachment are available in **Beta** .
 
 ##  June 11, 2018
 
