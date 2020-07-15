@@ -95,14 +95,56 @@ d'entrées dans le runbook. Veuillez consulter la [ section relative aux
 licences ](https://cloud.google.com/migrate/compute-
 engine/docs/4.10/reference/runbooks?hl=fr) de la documentation.
 
-##  Problèmes résolus
+##  4.10.1
+
+###  Problèmes résolus
+
+**FIXED:**
+
+Correction d'un problème de détection de partition Windows pour certaines
+structures de volume.
+
+**FIXED:**
+
+Compatibilité avec les disques Azure de plus de 4 To.
+
+##  4.10
+
+###  Problèmes résolus
 
 **FIXED:**
 
 Correction d'un problème lié aux pilotes AWS ena qui entraînait le plantage
 des images Windows après la migration.
 
-##  Problèmes connus
+##  4.10
+
+###  Problèmes connus
+
+**ISSUE:**
+
+**#160405343 :** En raison d'un [ changement de comportement
+](https://www.suse.com/support/kb/doc/?id=000019633) sur le flux d'activation
+de SUSE, la configuration des dépôts sur les instances SUSE Enterprise Linux
+après dissociation échoue.
+
+**Solution :** La solution suivante peut être utilisée avant la dissociation
+(avant la migration ou avant la dissociation).
+
+  1. Suivez les instructions décrites dans la situation 4 à l'adresse [ https://www.suse.com/support/kb/doc/?id=000019633 ](https://www.suse.com/support/kb/doc/?id=000019633) pour télécharger les packages requis pour Compute Engine en tant que fichier tar.gz. 
+  2. **Pour SLES 12x** , exécutez ensuite les commandes suivantes : 
+    
+        sha1sum late_instance_offline_update_gce_SLE12.tar.gz
+    tar -xf late_instance_offline_update_gce_SLE12.tar.gz
+    cd x86_64/
+    zypper --no-refresh --no-remote --non-interactive in *.rpm
+
+  3. **Pour SLES 15.x** , exécutez ensuite les commandes suivantes : 
+    
+        sha1sum late_instance_offline_update_gce_SLE15.tar.gz
+    tar -xf late_instance_offline_update_gce_SLE15.tar.gz
+    cd x86_64/
+    zypper --no-refresh --no-remote --non-interactive in *.rpm
 
 **ISSUE:**
 
