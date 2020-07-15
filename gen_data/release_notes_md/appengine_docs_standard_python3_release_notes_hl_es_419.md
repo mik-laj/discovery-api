@@ -1,3 +1,7 @@
+[ Python 38.8
+](https://cloud.google.com/appengine/docs/standard/python3/runtime?hl=es_419)
+ahora está disponible a nivel general.
+
 #  Notas de la versión de Python 3
 
 Puedes ver las últimas actualizaciones de productos de todo Google Cloud en la
