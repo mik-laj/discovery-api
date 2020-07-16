@@ -12,6 +12,15 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/vpc-sc-release-notes.xml `
 
+##  July 14, 2020
+
+**FEATURE:**
+
+[ Beta stage ](https://cloud.google.com/products/#product-launch-stages)
+support for the following integration:
+
+  * [ AI Platform Prediction ](https://cloud.google.com/vpc-service-controls/docs/supported-products#table_aip-prediction)
+
 ##  June 30, 2020
 
 **FEATURE:**
