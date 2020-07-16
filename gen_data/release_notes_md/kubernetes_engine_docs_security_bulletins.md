@@ -23,6 +23,54 @@ page to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/kubernetes-engine-security-
 bulletins.xml `
 
+##  GCP-2020-009
+
+**Published:** 2020-07-15  Description  |  Severity  |  Notes  
+---|---|---  
+  
+A privilege escalation vulnerability, [ CVE-2020-8559
+](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8559) , was recently
+discovered in Kubernetes. This vulnerability allows an attacker that has
+already compromised a node to execute a command in any Pod in the cluster. The
+attacker can thereby use the already compromised node to compromise other
+nodes and potentially read information, or cause destructive actions.
+
+Note that for an attacker to exploit this vulnerability, a node in your
+cluster must have already been compromised. This vulnerability, by itself,
+will not compromise any nodes in your cluster.
+
+####  What should I do?
+
+[ Upgrade ](/kubernetes-engine/docs/concepts/cluster-upgrades) your cluster to
+a patched version. Clusters will be auto-upgraded over the next weeks, and
+patched versions will be available by July 19, 2020 for an accelerated manual
+upgrade schedule. The following GKE control plane versions or newer contain
+the fix for this vulnerability:
+
+  * v1.14.10-gke.46 
+  * v1.15.12-gke.8 
+  * v1.16.9-gke.11 
+  * v1.16.10-gke.9 
+  * v1.16.11-gke.3+ 
+  * v1.17.7-gke.6+ 
+
+####  What vulnerability is addressed by this patch?
+
+These patches mitigate vulnerability CVE-2020-8559. This is rated as a Medium
+vulnerability for GKE, as it requires the attacker to have first hand
+information about the cluster, nodes, and workloads to effectively leverage
+this attack in addition to an existing compromised node. This vulnerability by
+itself will not provide an attacker with a compromised node.
+
+|
+
+Medium
+
+|
+
+[ CVE-2020-8559 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8559)  
+  
 ##  GCP-2020-007
 
 **Published:** 2020-06-01  
