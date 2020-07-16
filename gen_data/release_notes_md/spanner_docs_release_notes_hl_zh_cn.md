@@ -9,6 +9,15 @@
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/spanner-release-notes.xml `
 
+##  July 15, 2020
+
+**FEATURE:**
+
+You can now run SQL queries to retrieve [ read statistics
+](https://cloud.google.com/spanner/docs/introspection/read-
+statistics?hl=zh_cn) for your database over recent one-minute, 10-minute, and
+one-hour time periods.
+
 ##  June 08, 2020
 
 **FEATURE:**
