@@ -1,3 +1,7 @@
+[ Node.js 12
+](https://cloud.google.com/appengine/docs/standard/nodejs/runtime?hl=ko) 가 이제
+일반 안정화 버전으로 제공됩니다.
+
 #  Node.js 출시 노트
 
 [ Google Cloud 출시 노트 ](https://cloud.google.com/release-notes?hl=ko) 페이지에서 모든
