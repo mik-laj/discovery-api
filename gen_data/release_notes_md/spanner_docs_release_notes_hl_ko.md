@@ -11,6 +11,15 @@ Google Cloud의 최신 제품 업데이트를 확인할 수 있습니다.
 추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/spanner-
 release-notes.xml `
 
+##  July 15, 2020
+
+**FEATURE:**
+
+You can now run SQL queries to retrieve [ read statistics
+](https://cloud.google.com/spanner/docs/introspection/read-statistics?hl=ko)
+for your database over recent one-minute, 10-minute, and one-hour time
+periods.
+
 ##  June 08, 2020
 
 **FEATURE:**
