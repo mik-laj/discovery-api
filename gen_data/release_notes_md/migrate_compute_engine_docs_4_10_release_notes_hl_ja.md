@@ -78,13 +78,52 @@ BYOL ライセンスまたは Linux プレミアム ライセンスを使用し�
 ](https://cloud.google.com/migrate/compute-
 engine/docs/4.10/reference/runbooks?hl=ja) をご覧ください。
 
-##  解決済みの問題
+##  4.10.1
+
+###  解決済みの問題
+
+**FIXED:**
+
+特定のボリューム構造の Windows パーティション検出に関する問題を修正しました。
+
+**FIXED:**
+
+4 TB を超える Azure ディスクのサポートを追加しました。
+
+##  4.10
+
+###  解決済みの問題
 
 **FIXED:**
 
 移行後に Windows イメージがクラッシュする原因となる AWS ENA ドライバの問題を修正しました。
 
-##  既知の問題
+##  4.10
+
+###  既知の問題
+
+**ISSUE:**
+
+**#160405343:** SUSE のアクティベーション フローでの [ 動作の変更
+](https://www.suse.com/support/kb/doc/?id=000019633) により、SUSE Enterprise Linux
+インスタンスの接続解除後にリポジトリの構成が失敗するようになりました。
+
+**回避策:** 接続を解除する前（移行前または接続解除前）に次の回避策を使用します。
+
+  1. [ https://www.suse.com/support/kb/doc/?id=000019633 ](https://www.suse.com/support/kb/doc/?id=000019633) の状況 4 に記載された手順に従って、Compute Engine に必要なパッケージを tar.gz ファイルとしてダウンロードします。 
+  2. **SLES 12.x の場合** 、次のコマンドを実行します。 
+    
+        sha1sum late_instance_offline_update_gce_SLE12.tar.gz
+    tar -xf late_instance_offline_update_gce_SLE12.tar.gz
+    cd x86_64/
+    zypper --no-refresh --no-remote --non-interactive in *.rpm
+
+  3. **SLES 15.x の場合** 、次のコマンドを実行します。 
+    
+        sha1sum late_instance_offline_update_gce_SLE15.tar.gz
+    tar -xf late_instance_offline_update_gce_SLE15.tar.gz
+    cd x86_64/
+    zypper --no-refresh --no-remote --non-interactive in *.rpm
 
 **ISSUE:**
 
@@ -167,8 +206,8 @@ commit されます。次に、[クラウド内で実行] というアクショ�
 
 **ISSUE:**
 
-**#131605387:** vCenter を再起動することで、vCenter の Velostrata タスクが UI
-に表示されなくなる問題が発生します。これは vCenter の制限です。
+**＃131605387:** vCenter を再起動すると、vCenter の Velostrata タスクが UI に表示されなくなります。これは
+vCenter の制限です。
 
 **回避策:** Velostrata PowerShell モジュールを使用して、現在実行中の Velostrata マネージド VM または Cloud
 Extensions のタスクをモニタリングします。
