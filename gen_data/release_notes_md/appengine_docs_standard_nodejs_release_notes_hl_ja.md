@@ -1,3 +1,7 @@
+[ Node.js 12
+](https://cloud.google.com/appengine/docs/standard/nodejs/runtime?hl=ja)
+が一般提供になりました。
+
 #  Node.js リリースノート
 
 [ Google Cloud リリースノート ](https://cloud.google.com/release-notes?hl=ja)
