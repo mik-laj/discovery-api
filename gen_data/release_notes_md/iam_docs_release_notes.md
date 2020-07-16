@@ -1,12 +1,12 @@
 #  Release notes
 
-This page documents production updates to Cloud Identity and Access
-Management. Check this page for announcements about new or updated features,
-bug fixes, known issues, and deprecated functionality.
+This page documents production updates to Identity and Access Management.
+Check this page for announcements about new or updated features, bug fixes,
+known issues, and deprecated functionality.
 
-**Note:** To learn about changes to the Cloud IAM permissions for each Google
-Cloud service, see the [ permissions change log ](/iam/docs/permissions-
-change-log) .
+**Note:** To learn about changes to the IAM permissions for each Google Cloud
+service, see the [ permissions change log ](/iam/docs/permissions-change-log)
+.
 
 You can see the latest product updates for all of Google Cloud on the [ Google
 Cloud release notes ](/release-notes) page.
