@@ -1,3 +1,7 @@
+O [ Python 2.7
+](https://cloud.google.com/appengine/docs/standard/python3/runtime?hl=pt_br)
+já está disponível para todos os usuários.
+
 #  Notas da versão do Python 3
 
 Você pode ver as atualizações mais recentes de todos os produtos do Google
