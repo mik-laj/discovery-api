@@ -15,6 +15,15 @@ página a tu [ lector de feeds
 directamente la URL del feed: ` https://cloud.google.com/feeds/spanner-
 release-notes.xml `
 
+##  July 15, 2020
+
+**FEATURE:**
+
+You can now run SQL queries to retrieve [ read statistics
+](https://cloud.google.com/spanner/docs/introspection/read-
+statistics?hl=es_419) for your database over recent one-minute, 10-minute, and
+one-hour time periods.
+
 ##  June 08, 2020
 
 **FEATURE:**
