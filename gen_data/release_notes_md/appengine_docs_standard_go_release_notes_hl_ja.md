@@ -1,3 +1,6 @@
+[ Go 1.13 ](https://cloud.google.com/appengine/docs/standard/go/runtime?hl=ja)
+が一般提供になりました。
+
 #  Go 1.12+ リリースノート
 
 [ Google Cloud リリースノート ](https://cloud.google.com/release-notes?hl=ja)
