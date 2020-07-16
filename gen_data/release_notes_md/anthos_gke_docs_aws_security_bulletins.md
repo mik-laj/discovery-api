@@ -13,8 +13,48 @@ products and features may not be compatible with other pre-GA versions. For
 more information, see the [ launch stage descriptions ](/products#product-
 launch-stages) .
 
-Learn about security bulletins for Anthos GKE on AWS.
+Learn about security bulletins for Anthos GKE on AWS (GKE on AWS).
 
+##  GCP-2020-009
+
+**Published:** 2020-07-15  Description  |  Severity  |  Notes  
+---|---|---  
+  
+A privilege escalation vulnerability, [ CVE-2020-8559
+](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8559) , was recently
+discovered in Kubernetes. This vulnerability allows an attacker that has
+already compromised a node to execute a command in any Pod in the cluster. The
+attacker can thereby use the already compromised node to compromise other
+nodes and potentially read information, or cause destructive actions.
+
+Note that for an attacker to exploit this vulnerability, a node in your
+cluster must have already been compromised. This vulnerability, by itself,
+will not compromise any nodes in your cluster.
+
+####  What should I do?
+
+GKE on AWS GA (1.4.1, available end of July, 2020) or newer includes the patch
+for this vulnerability. If you are using a previous version, [ download a new
+version of the anthos-gke command line tool ](/anthos/gke/docs/aws/how-
+to/prerequisites) and recreate your management and user clusters.
+
+####  What vulnerability is addressed by this patch?
+
+These patches mitigate vulnerability CVE-2020-8559. This is rated as a Medium
+vulnerability for GKE, as it requires the attacker to have first hand
+information about the cluster, nodes, and workloads to effectively leverage
+this attack in addition to an existing compromised node. This vulnerability by
+itself will not provide an attacker with a compromised node.
+
+|
+
+Medium
+
+|
+
+[ CVE-2020-8559 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8559)  
+  
 ##  GCP-2020-007
 
 **Published:** 2020-06-01  
