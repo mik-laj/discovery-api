@@ -20,9 +20,12 @@ URL directly: ` https://cloud.google.com/feeds/composer-release-notes.xml `
 
   * **For Airflow 1.10.6 and later:** The Airflow config property ` [celery] pool ` is now blocked. 
 
+  * The ` [core]sql_alchemy_pool_recycle ` Airflow setting has been modified to improve SQL connection reliability. 
+
 **FIXED:**
 
   * Fixed an issue with Airflow 1.10.6 environments where task logs were not visible in the UI when DAG serialization was enabled. 
+  * It is now possible to upgrade from Composer versions 1.1.1, 1.2.0, 1.3.0, 1.4.0, 1.4.1, 1.4.2, 1.5.0, and 1.5.2 to the newest version. 
 
 ##  June 30, 2020
 
