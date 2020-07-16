@@ -2174,6 +2174,28 @@
             },
             "type": "object"
         },
+        "ContentRestriction": {
+            "id": "ContentRestriction",
+            "properties": {
+                "readOnly": {
+                    "type": "boolean"
+                },
+                "reason": {
+                    "type": "string"
+                },
+                "restrictingUser": {
+                    "$ref": "User"
+                },
+                "restrictionTime": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Drive": {
             "id": "Drive",
             "properties": {
@@ -2371,6 +2393,9 @@
                         "canModifyContent": {
                             "type": "boolean"
                         },
+                        "canModifyContentRestriction": {
+                            "type": "boolean"
+                        },
                         "canMoveChildrenOutOfDrive": {
                             "type": "boolean"
                         },
@@ -2453,6 +2478,12 @@
                         }
                     },
                     "type": "object"
+                },
+                "contentRestrictions": {
+                    "items": {
+                        "$ref": "ContentRestriction"
+                    },
+                    "type": "array"
                 },
                 "copyRequiresWriterPermission": {
                     "type": "boolean"
