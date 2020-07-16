@@ -1,3 +1,7 @@
+[ Python 3.8
+](https://cloud.google.com/appengine/docs/standard/python3/runtime?hl=ja)
+が一般提供になりました。
+
 #  Python 3 リリースノート
 
 [ Google Cloud リリースノート ](https://cloud.google.com/release-notes?hl=ja)
