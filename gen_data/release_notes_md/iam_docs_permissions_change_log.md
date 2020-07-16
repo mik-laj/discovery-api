@@ -1,14 +1,14 @@
 #  IAM permissions change log
 
-This page describes changes to the public Cloud IAM permissions for all
-Generally Available and Beta services on Google Cloud. This change log can
-help you maintain and troubleshoot your [ custom roles
-](/iam/docs/understanding-custom-roles) .
+This page describes changes to the public IAM permissions for all Generally
+Available and Beta services on Google Cloud. This change log can help you
+maintain and troubleshoot your [ custom roles ](/iam/docs/understanding-
+custom-roles) .
 
-When a permission is retired or is no longer supported in custom roles, Cloud
-IAM automatically removes the permission from your custom roles. In contrast,
-when a permission is added, Cloud IAM _does not_ automatically add the
-permission to your custom roles.
+When a permission is retired or is no longer supported in custom roles, IAM
+automatically removes the permission from your custom roles. In contrast, when
+a permission is added, IAM _does not_ automatically add the permission to your
+custom roles.
 
 You can see the latest product updates for all of Google Cloud on the [ Google
 Cloud release notes ](/release-notes) page.
