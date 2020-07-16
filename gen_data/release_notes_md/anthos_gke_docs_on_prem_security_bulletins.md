@@ -21,6 +21,48 @@ To get the latest security bulletins delivered to you, add the URL of this
 page to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) .
 
+##  GCP-2020-009
+
+**Published:** 2020-07-15  Description  |  Severity  |  Notes  
+---|---|---  
+  
+A privilege escalation vulnerability, [ CVE-2020-8559
+](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8559) , was recently
+discovered in Kubernetes. This vulnerability allows an attacker that has
+already compromised a node to execute a command in any Pod in the cluster. The
+attacker can thereby use the already compromised node to compromise other
+nodes and potentially read information, or cause destructive actions.
+
+Note that for an attacker to exploit this vulnerability, a node in your
+cluster must have already been compromised. This vulnerability, by itself,
+will not compromise any nodes in your cluster.
+
+####  What should I do?
+
+[ Upgrade ](/anthos/gke/docs/on-prem/how-to/upgrading) your cluster to a
+patched version. The following upcoming GKE on-prem versions or newer contain
+the fix for this vulnerability:
+
+  * Anthos 1.3.3 
+  * Anthos 1.4.1 
+
+####  What vulnerability is addressed by this patch?
+
+These patches mitigate vulnerability CVE-2020-8559. This is rated as a Medium
+vulnerability for GKE, as it requires the attacker to have first hand
+information about the cluster, nodes, and workloads to effectively leverage
+this attack in addition to an existing compromised node. This vulnerability by
+itself will not provide an attacker with a compromised node.
+
+|
+
+Medium
+
+|
+
+[ CVE-2020-8559 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8559)  
+  
 ##  GCP-2020-007
 
 **Published:** 2020-06-01  
@@ -227,9 +269,9 @@ access to your Kubernetes API servers.
 
 ######  What should I do?
 
-We recommend that you [ upgrade your clusters ](/anthos/gke/docs/on-prem/on-
-prem/how-to/upgrading#clusters) to a patch version containing the fix as soon
-as they are available.
+We recommend that you [ upgrade your clusters ](/anthos/gke/docs/on-prem/how-
+to/upgrading#clusters) to a patch version containing the fix as soon as they
+are available.
 
 The patch versions which will contain the fix are listed below:
 
@@ -272,7 +314,7 @@ affected:
 
 ######  What should I do?
 
-We recommend that you [ upgrade ](/anthos/gke/docs/on-prem/on-prem/how-
+We recommend that you [ upgrade ](/anthos/gke/docs/on-prem/how-
 to/upgrading#clusters) your clusters to version [ 1.0.2-gke.3
 ](/anthos/gke/docs/on-prem/downloads#gkectl_latest) , which includes the patch
 for this vulnerability, as soon as possible.
