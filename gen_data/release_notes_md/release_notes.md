@@ -12,6 +12,43 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  July 15, 2020
+
+**AutoML Vision Image Classification (ICN)**
+
+**CHANGED:**
+
+**TFLite Edge model update**
+
+TFLite edge models are now enhanced with metadata. Models trained in the next
+6 months will be backwards compatible as separate metadata and label files are
+included. TFLite models trained after this time may not be backwards
+compatible.
+
+For more information see:
+
+  * [ Metadata information and how to add metadata to a TFLite model ](https://www.tensorflow.org/lite/convert/metadata)
+  * [ Integrate models with metadata ](https://www.tensorflow.org/lite/guide/codegen)
+  * [ Process input and output data with the TensorFlow Lite Support Library ](https://www.tensorflow.org/lite/guide/lite_support)
+
+**Cloud Functions**
+
+**FEATURE:**
+
+Cloud Functions has added support for a new runtime, [ Node 12
+](https://cloud.google.com/functions/docs/concepts/nodejs-runtime) , in Beta.
+
+Cloud Functions has added support for a new runtime, [ Python 3.8
+](https://cloud.google.com/functions/docs/concepts/python-runtime) , in Beta.
+
+**Cloud Spanner**
+
+**FEATURE:**
+
+You can now run SQL queries to retrieve [ read statistics
+](https://cloud.google.com/spanner/docs/introspection/read-statistics) for
+your database over recent one-minute, 10-minute, and one-hour time periods.
+
 ##  July 14, 2020
 
 **AI Platform Prediction**
@@ -44,6 +81,15 @@ For information about which [ Cloud Locations
 ](https://cloud.google.com/about/locations/) are supported by Cloud KMS, Cloud
 HSM, and Cloud EKM, see the [ Cloud KMS regional locations
 ](https://cloud.google.com/kms/docs/locations#regional) .
+
+**VPC Service Controls**
+
+**FEATURE:**
+
+[ Beta stage ](https://cloud.google.com/products/#product-launch-stages)
+support for the following integration:
+
+  * [ AI Platform Prediction ](https://cloud.google.com/vpc-service-controls/docs/supported-products#table_aip-prediction)
 
 ##  July 13, 2020
 
@@ -510,9 +556,12 @@ This feature is available in Beta.
 
   * **For Airflow 1.10.6 and later:** The Airflow config property ` [celery] pool ` is now blocked. 
 
+  * The ` [core]sql_alchemy_pool_recycle ` Airflow setting has been modified to improve SQL connection reliability. 
+
 **FIXED:**
 
   * Fixed an issue with Airflow 1.10.6 environments where task logs were not visible in the UI when DAG serialization was enabled. 
+  * It is now possible to upgrade from Composer versions 1.1.1, 1.2.0, 1.3.0, 1.4.0, 1.4.1, 1.4.2, 1.5.0, and 1.5.2 to the newest version. 
 
 **Cloud Functions**
 
@@ -1562,87 +1611,4 @@ europe-north1 ` ), Hong Kong ( ` asia-east2 ` ), Jakarta ( ` asia-southeast2 `
 Mumbai ( ` asia-south1 ` ), Osaka ( ` asia-northeast2 ` ), Salt Lake City ( `
 us-west3 ` ), São Paulo ( ` southamerica-east1 ` ), Seoul ( ` asia-northeast3
 ` ), and Zurich ( ` europe-west6 ` ).
-
-##  June 16, 2020
-
-**BigQuery**
-
-**FEATURE:**
-
-[ ` INFORMATION_SCHEMA ` views for jobs
-](https://cloud.google.com/bigquery/docs/information-schema-jobs) are now [
-generally available (GA) ](https://cloud.google.com/products/?hl=EN#product-
-launch-stages) .
-
-**BigQuery Data Transfer Service**
-
-**FEATURE:**
-
-The [ Top Brands report ](https://cloud.google.com/bigquery-
-transfer/docs/merchant-center-top-brands-schema) for Google Merchant Center
-Best Sellers exports is now in [ beta
-](https://cloud.google.com/products/#product-launch-stages) .
-
-**BigQuery ML**
-
-**FEATURE:**
-
-BigQuery ML now supports [ beta ](https://cloud.google.com/products#product-
-launch-stages) integration with [ AI Platform ](https://cloud.google.com/ai-
-platform) . The following models are supported in [ beta
-](http://cloud/products#product-launch-stages) :
-
-  * AutoML Tables models. For more information, see [ CREATE MODEL statement for AutoML Tables models ](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create-automl) . 
-
-  * Boosted Tree models using XGBoost. For more information, see [ CREATE MODEL statement for Boosted Tree models ](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create-boosted-tree) . 
-
-  * Deep Neural Network (DNN) models. For more information, see [ CREATE MODEL statement for DNN models ](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create-dnn-models) . 
-
-**Cloud Interconnect**
-
-**CHANGED:**
-
-The public documentation for Cloud Interconnect is now located under the [
-Network Connectivity page ](https://cloud.google.com/network-
-connectivity/docs/) .
-
-**Cloud Router**
-
-**CHANGED:**
-
-The public documentation for Cloud Router is now located under the [ Network
-Connectivity page ](https://cloud.google.com/network-connectivity/docs/) .
-
-**Cloud Run**
-
-**FEATURE:**
-
-The Cloud Run user interface now allows you to copy a Cloud Run service.
-
-**Cloud VPN**
-
-**CHANGED:**
-
-The public documentation for Cloud VPN is now located under the [ Network
-Connectivity page ](https://cloud.google.com/network-connectivity/docs/) .
-
-**Config Connector**
-
-**FEATURE:**
-
-You can use ` config-connector ` tool to export Google Cloud resources into
-Config Connector: [ documentation ](https://cloud.google.com/config-
-connector/docs/how-to/importing-existing-resources)
-
-**FIXED:**
-
-Bug fixes
-
-**Pub/Sub**
-
-**FEATURE:**
-
-[ Retry policies for Pub/Sub subscriptions
-](https://cloud.google.com/pubsub/docs/admin#creating_subscriptions) are now
-available at the GA launch stage.
 
