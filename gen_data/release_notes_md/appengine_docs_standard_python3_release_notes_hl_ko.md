@@ -1,3 +1,7 @@
+[ Python 3.8
+](https://cloud.google.com/appengine/docs/standard/python3/runtime?hl=ko) 이 이제
+일반 안정화 버전으로 제공됩니다.
+
 #  Python 3 출시 노트
 
 [ Google Cloud 출시 노트 ](https://cloud.google.com/release-notes?hl=ko) 페이지에서 모든
