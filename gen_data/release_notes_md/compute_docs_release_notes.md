@@ -14,6 +14,22 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/compute-release-notes.xml `
 
+##  July 16, 2020
+
+**CHANGED:**
+
+SSD persistent disks on certain machine types now have a maximum write
+throughput of 1,200 MB/s. To learn more about the requirements to reach these
+limits, see [ Block storage performance
+](https://cloud.google.com/compute/docs/disks/performance#size_price_performance)
+.
+
+**FEATURE:**
+
+You can now [ suspend and resume
+](https://cloud.google.com/compute/docs/instances/suspend-resume-instance)
+your VM instances. This feature is available in **Beta** .
+
 ##  July 06, 2020
 
 **FEATURE:**
