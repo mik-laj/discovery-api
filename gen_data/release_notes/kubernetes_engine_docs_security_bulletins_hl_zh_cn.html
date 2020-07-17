@@ -39,6 +39,314 @@
     </code>
    </p>
    <section class="bulletins">
+    <h2 data-text="GCP-2020-007" id="gcp-2020-007" tabindex="0">
+     GCP-2020-007
+    </h2>
+    <strong>
+     发布日期：
+    </strong>
+    2020-06-01
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        说明
+       </th>
+       <th>
+        严重级别
+       </th>
+       <th>
+        备注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         近期在 Kubernetes 中发现了一个服务器端请求伪造 (SSRF) 漏洞 (
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555">
+          CVE-2020-8555
+         </a>
+         )，该漏洞会导致某些已获授权的用户从控制平面主机网络中泄露多达 500 字节的敏感信息。Google Kubernetes Engine (GKE) 控制平面使用的是 Kubernetes 的控制器，所有 Kubernetes Engine 节点都会受到此漏洞的影响，我们建议您将控制平面
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-container-cluster?hl=zh_cn">
+          升级
+         </a>
+         到最新的补丁程序版本，具体说明如下所述。不需要升级节点。
+         <br/>
+        </p>
+        <h4 data-text="我该怎么做？" id="what-should-i-do" tabindex="0">
+         我该怎么做？
+        </h4>
+        大多数客户无需执行任何额外操作。绝大多数集群已在运行修补版本。
+
+      以下 GKE 版本或更高版本包含针对此漏洞的修补程序：
+        <ul>
+         <li>
+          1.14.7-gke.39
+         </li>
+         <li>
+          1.14.8-gke.32
+         </li>
+         <li>
+          1.14.9-gke.17
+         </li>
+         <li>
+          1.14.10-gke.12
+         </li>
+         <li>
+          1.15.7-gke.17
+         </li>
+         <li>
+          1.16.4-gke.21
+         </li>
+         <li>
+          1.17.0-gke.0
+         </li>
+        </ul>
+        <p>
+         使用
+         <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels?hl=zh_cn">
+          发布渠道
+         </a>
+         的集群已在采取了缓解措施的控制平面版本上运行。
+        </p>
+        <h4 data-text="该补丁程序解决了哪一漏洞？" id="what-vulnerability-is-addressed-by-this-patch" tabindex="0">
+         该补丁程序解决了哪一漏洞？
+        </h4>
+        <p>
+         这些补丁程序解决了漏洞 CVE-2020-8555。此漏洞被评为 GKE 的中危漏洞，由于各种控制平面安全强化措施的实施而很难被利用。
+        </p>
+        <p>
+         有权创建内置了卷类型（GlusterFS、Quobyte、StorageFS、ScaleIO）的 Pod 的攻击者或有权创建 StorageClass 的攻击者可以使
+         <code dir="ltr" translate="no">
+          kube-controller-manager
+         </code>
+         发出
+         <code dir="ltr" translate="no">
+          GET
+         </code>
+         请求或
+         <code dir="ltr" translate="no">
+          POST
+         </code>
+         请求，而无需通过主实例的主机网络控制请求正文
+         <em>
+         </em>
+         。这些卷类型在 GKE 上很少使用，因此重新使用这些卷类型可能是一个有用的检测信号。
+        </p>
+        <p>
+         如果与重新向攻击者泄露
+         <code dir="ltr" translate="no">
+          GET/POST
+         </code>
+         结果的方法结合使用（例如通过日志），则可能会导致敏感信息被披露。我们更新了相关的存储驱动程序，以消除发生此类泄露的可能性。
+        </p>
+       </td>
+       <td>
+        <p>
+         中
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555">
+          CVE-2020-8555
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-006" id="gcp-2020-006" tabindex="0">
+     GCP-2020-006
+    </h2>
+    <strong>
+     发布日期：
+    </strong>
+    2020-06-01
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        说明
+       </th>
+       <th>
+        严重级别
+       </th>
+       <th>
+        备注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Kubernetes 披露了一个
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          漏洞
+         </a>
+         ，该漏洞允许特权容器将节点流量重定向至其他容器。此攻击无法读取或修改双向 TLS/SSH 流量（例如 kubelet 与 API 服务器之间的流量）或来自使用 mTLS 的应用的流量。所有 Google Kubernetes Engine (GKE) 节点都会受到此漏洞的影响，我们建议您
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=zh_cn">
+          升级
+         </a>
+         到最新的补丁程序版本，具体说明如下所述。
+        </p>
+        <h4 data-text="我该怎么做？" id="what-should-i-do_1" tabindex="0">
+         我该怎么做？
+        </h4>
+        要解决此漏洞，请
+        <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=zh_cn">
+         升级
+        </a>
+        您的控制平面，然后将您的节点升级为下面列出的一个修补版本。使用发布渠道的集群已同时在控制平面和节点上运行修补版本：
+        <ul>
+         <li>
+          1.14.10-gke.36
+         </li>
+         <li>
+          1.15.11-gke.15
+         </li>
+         <li>
+          1.16.8-gke.15
+         </li>
+        </ul>
+        <p>
+         通常，很少有容器需要
+         <code dir="ltr" translate="no">
+          CAP_NET_RAW
+         </code>
+         。默认情况下，应该通过
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=zh_cn">
+          PodSecurityPolicy
+         </a>
+         或
+         <a href="https://cloud.google.com/anthos-config-management/docs/concepts/policy-controller?hl=zh_cn">
+          Anthos 政策控制器
+         </a>
+         阻止此功能和其他强大的功能：
+        </p>
+        <ul>
+         <li>
+          从容器中删除
+          <code dir="ltr" translate="no">
+           CAP_NET_RAW
+          </code>
+          功能：
+         </li>
+         <ul>
+          <li>
+           使用以下命令，通过
+           <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=zh_cn">
+            PodSecurityPolicy
+           </a>
+           强制执行此操作：
+          </li>
+          <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Require dropping CAP_NET_RAW with a PSP
+apiversion: extensions/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: no-cap-net-raw
+spec:
+  requiredDropCapabilities:
+    -NET_RAW
+     ...
+     # Unrelated fields omitted
+</pre>
+         </ul>
+         <ul>
+          <li>
+           或者将 Anthos 政策控制器/Gatekeeper 与此
+           <a class="external" href="https://github.com/open-policy-agent/gatekeeper/blob/master/library/pod-security-policy/capabilities/template.yaml">
+            限制条件模板
+           </a>
+           结合使用，并加以应用，例如：
+          </li>
+          <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Dropping CAP_NET_RAW with Gatekeeper
+# (requires the K8sPSPCapabilities template)
+apiversion: constraints.gatekeeper.sh/v1beta1
+kind:  K8sPSPCapabilities
+metadata:
+  name: forbid-cap-net-raw
+spec:
+  match:
+    kinds:
+      - apiGroups: [""]
+      kinds: ["Pod"]
+    namespaces:
+      #List of namespaces to enforce this constraint on
+      - default
+    # If running gatekeeper &gt;= v3.1.0-beta.5,
+    # you can exclude namespaces rather than including them above.
+    excludedNamespaces:
+      - kube-system
+  parameters:
+    requiredDropCapabilities:
+      - "NET_RAW"
+</pre>
+         </ul>
+         <ul>
+          <li>
+           或者更新您的 Pod 规范：
+          </li>
+          <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Dropping CAP_NET_RAW from a Pod:
+apiVersion: v1
+kind: Pod
+metadata:
+  name: no-cap-net-raw
+spec:
+  containers:
+    -name: may-container
+     ...
+    securityContext:
+      capabilities:
+        drop:
+          -NET_RAW
+</pre>
+         </ul>
+        </ul>
+        <h4 data-text="该补丁程序解决了哪一漏洞？" id="what-vulnerability-is-addressed-by-this-patch_1" tabindex="0">
+         该补丁程序解决了哪一漏洞？
+        </h4>
+        <p>
+         该补丁程序解决了以下漏洞：
+        </p>
+        <p>
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          Kubernetes 问题 91507
+         </a>
+         中所述的漏洞
+         <code dir="ltr" translate="no">
+          CAP_NET_RAW
+         </code>
+         功能（包含在默认容器功能集中）会在节点上恶意配置 IPv6 堆栈，并将节点流量重定向至攻击者控制的容器。这样一来，攻击者就可以拦截/修改源自或发送至该节点的流量。此攻击无法读取或修改双向 TLS/SSH 流量（例如 kubelet 与 API 服务器之间）或来自使用 mTLS 的应用的流量。
+        </p>
+       </td>
+       <td>
+        <p>
+         中
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          Kubernetes 问题 91507
+         </a>
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
     <h2 data-text="GCP-2020-005" id="gcp-2020-005" tabindex="0">
      GCP-2020-005
     </h2>
@@ -81,7 +389,7 @@
         <p>
          运行 Container-Optimized OS 的节点不受影响。在 GKE On-Prem 上运行的节点不受影响。
         </p>
-        <h4 data-text="我该怎么做？" id="what-should-i-do" tabindex="0">
+        <h4 data-text="我该怎么做？" id="what-should-i-do_2" tabindex="0">
          我该怎么做？
         </h4>
         <p>
@@ -96,7 +404,7 @@
          </a>
          中可以跟踪这些补丁程序的提供情况。
         </p>
-        <h4 data-text="该补丁程序解决了哪一漏洞？" id="what-vulnerability-is-addressed-by-this-patch" tabindex="0">
+        <h4 data-text="该补丁程序解决了哪一漏洞？" id="what-vulnerability-is-addressed-by-this-patch_2" tabindex="0">
          该补丁程序解决了哪一漏洞？
         </h4>
         <p>
@@ -176,7 +484,7 @@
          </a>
          可缓解此漏洞。
         </p>
-        <h4 data-text="我该怎么做？" id="what-should-i-do_1" tabindex="0">
+        <h4 data-text="我该怎么做？" id="what-should-i-do_3" tabindex="0">
          我该怎么做？
         </h4>
         <p>
@@ -274,7 +582,7 @@
          </a>
          。
         </p>
-        <h4 data-text="我该怎么做？" id="what-should-i-do_2" tabindex="0">
+        <h4 data-text="我该怎么做？" id="what-should-i-do_4" tabindex="0">
          我该怎么做？
         </h4>
         <p>
@@ -540,7 +848,7 @@
          </strong>
          <br/>
          <strong>
-          此漏洞不会影响任何托管 GKE 组件
+          此漏洞不会影响任何代管 GKE 组件
          </strong>
          。
         如果您在运行 GKE 1.12 版或更高版本的
@@ -653,7 +961,7 @@
          </a>
          对照比较。
         </p>
-        <h4 data-text="我该怎么做？" id="what-should-i-do_3" tabindex="0">
+        <h4 data-text="我该怎么做？" id="what-should-i-do_5" tabindex="0">
          我该怎么做？
         </h4>
         <p>
@@ -816,7 +1124,7 @@
          <strong>
           2019 年 10 月 24 日更新
          </strong>
-         ：经过修补的版本现已在所有地区推出。
+         ：经过修补的版本现已在所有区域推出。
         </p>
         <hr/>
         <p>
@@ -841,11 +1149,11 @@
          </a>
          缓解此漏洞。
         </p>
-        <h6 data-text="我该怎么做？" id="what-should-i-do_4" tabindex="0">
+        <h6 data-text="我该怎么做？" id="what-should-i-do_6" tabindex="0">
          我该怎么做？
         </h6>
         <p>
-         我们建议您在包含修复方案的补丁程序版本发布后，尽快将集群升级到相应补丁程序版本。我们预计，它们将在 10 月 14 日那一周按计划发布的 GKE 版本中推出，届时将可供所有地区使用。
+         我们建议您在包含修复方案的补丁程序版本发布后，尽快将集群升级到相应补丁程序版本。我们预计，它们将在 10 月 14 日那一周按计划发布的 GKE 版本中推出，届时将可供所有区域使用。
         </p>
         <p>
          下面列出了将包含缓解措施的补丁程序版本：
@@ -937,7 +1245,7 @@
          </a>
          。
         </p>
-        <h6 data-text="我该怎么做？" id="what-should-i-do_5" tabindex="0">
+        <h6 data-text="我该怎么做？" id="what-should-i-do_7" tabindex="0">
          我该怎么做？
         </h6>
         <p>
@@ -945,7 +1253,7 @@
          <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=zh_cn#september_16_2019">
           发布时间表
          </a>
-         ，我们预计这些补丁程序版本将随下个 GKE 版本一起在所有地区推出。
+         ，我们预计这些补丁程序版本将随下个 GKE 版本一起在所有区域推出。
         </p>
         <p>
          下面列出了将包含缓解措施的补丁程序版本：
@@ -964,7 +1272,7 @@
           1.14.6-gke.1
          </li>
         </ul>
-        <h6 data-text="该补丁程序解决了哪一漏洞？" id="what-vulnerability-is-addressed-by-this-patch_1" tabindex="0">
+        <h6 data-text="该补丁程序解决了哪一漏洞？" id="what-vulnerability-is-addressed-by-this-patch_3" tabindex="0">
          该补丁程序解决了哪一漏洞？
         </h6>
         <p>
@@ -1105,7 +1413,7 @@
          </a>
          实例像存在于所有命名空间内的有命名空间对象一样得到处理。这意味着仅有命名空间级 RBAC 权限的用户和服务帐号可以与集群级自定义资源交互。利用此漏洞要求攻击者具有访问任意命名空间内资源的权限。
         </p>
-        <h6 data-text="我该怎么做？" id="what-should-i-do_6" tabindex="0">
+        <h6 data-text="我该怎么做？" id="what-should-i-do_8" tabindex="0">
          我该怎么做？
         </h6>
         <p>
@@ -1113,7 +1421,7 @@
          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=zh_cn">
           升级
          </a>
-         到该补丁程序版本。我们预计，它们将随下个 GKE 版本在所有地区提供。下面列出了将包含缓解措施的补丁程序版本：
+         到该补丁程序版本。我们预计，它们将随下个 GKE 版本在所有区域提供。下面列出了将包含缓解措施的补丁程序版本：
         </p>
         <ul>
          <li>
@@ -1133,7 +1441,7 @@
           ）
          </li>
         </ul>
-        <h6 data-text="该补丁程序解决了哪一漏洞？" id="what-vulnerability-is-addressed-by-this-patch_2" tabindex="0">
+        <h6 data-text="该补丁程序解决了哪一漏洞？" id="what-vulnerability-is-addressed-by-this-patch_4" tabindex="0">
          该补丁程序解决了哪一漏洞？
         </h6>
         <p>
@@ -1413,7 +1721,7 @@
          </code>
          配置实施缓解措施。
         </p>
-        <h5 data-text="我该怎么做？" id="what-should-i-do_7" tabindex="0">
+        <h5 data-text="我该怎么做？" id="what-should-i-do_9" tabindex="0">
          我该怎么做？
         </h5>
         <p>
@@ -1549,7 +1857,7 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
          </strong>
          即将推出的补丁程序版本将包含针对此漏洞的缓解措施。
         </p>
-        <h6 data-text="我该怎么做？" id="what-should-i-do_8" tabindex="0">
+        <h6 data-text="我该怎么做？" id="what-should-i-do_10" tabindex="0">
          我该怎么做？
         </h6>
         <p>
@@ -1580,7 +1888,7 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
          </a>
          中可以跟踪此补丁程序的可用情况。
         </p>
-        <h6 data-text="该补丁程序解决了哪一漏洞？" id="what-vulnerability-is-addressed-by-this-patch_3" tabindex="0">
+        <h6 data-text="该补丁程序解决了哪一漏洞？" id="what-vulnerability-is-addressed-by-this-patch_5" tabindex="0">
          该补丁程序解决了哪一漏洞？
         </h6>
         <p>
@@ -1655,7 +1963,7 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
          </code>
          的访问权限，因此该漏洞给 GKE 主实例造成的风险有限。
         </p>
-        <h5 data-text="我该怎么做？" id="what-should-i-do_9" tabindex="0">
+        <h5 data-text="我该怎么做？" id="what-should-i-do_11" tabindex="0">
          我该怎么做？
         </h5>
         <p>
@@ -1691,7 +1999,7 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
          </a>
          中可以跟踪这些补丁程序的可用情况。
         </p>
-        <h5 data-text="该补丁程序解决了哪一漏洞？" id="what-vulnerability-is-addressed-by-this-patch_4" tabindex="0">
+        <h5 data-text="该补丁程序解决了哪一漏洞？" id="what-vulnerability-is-addressed-by-this-patch_6" tabindex="0">
          该补丁程序解决了哪一漏洞？
         </h5>
         <p>
@@ -1829,7 +2137,7 @@ kubectl get nodes -o=jsonpath='{range .items[*]}'\
           的 Pod 不会以 UID 0 的身份启动，但在受此问题影响时无法正常启动。
          </li>
         </ul>
-        <h5 data-text="我该怎么做？" id="what-should-i-do_10" tabindex="0">
+        <h5 data-text="我该怎么做？" id="what-should-i-do_12" tabindex="0">
          我该怎么做？
         </h5>
         <p>
@@ -1943,7 +2251,7 @@ kubectl get nodes -o=jsonpath='{range .items[*]}'\
          </a>
          。
         </p>
-        <h4 data-text="我该怎么做？" id="what-should-i-do_11" tabindex="0">
+        <h4 data-text="我该怎么做？" id="what-should-i-do_13" tabindex="0">
          我该怎么做？
         </h4>
         <p>
@@ -2023,7 +2331,15 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
          </li>
         </ol>
         <aside class="note">
-         注意：如果节点启用了[安全启动](/kubernetes-engine/docs/how-to/shielded-gke-nodes#secure_boot)功能，则无法修改启动选项。如果已经启用安全启动功能，需要首先将其[停用](/kubernetes-engine/docs/how-to/shielded-gke-nodes#disabling)，然后才能创建 DaemonSet。
+         注意：如果节点启用了
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/shielded-gke-nodes?hl=zh_cn#secure_boot">
+          安全启动
+         </a>
+         功能，则启动选项无法修改。如果安全启动功能已经启用，需要首先将其
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/shielded-gke-nodes?hl=zh_cn#disabling">
+          停用
+         </a>
+         ，然后才能创建 DaemonSet。
         </aside>
         <p>
          您必须让 DaemonSet 在节点池上保持运行，从而使得池中创建的新节点可以自动应用更改。节点创建可由节点自动修复、手动升级或自动升级和自动扩缩触发。
@@ -2041,7 +2357,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         <p>
          在包含补丁程序的版本发布后，我们将更新此公告。
         </p>
-        <h4 data-text="该补丁程序解决了哪一漏洞？" id="what-vulnerability-is-addressed-by-this-patch_5" tabindex="0">
+        <h4 data-text="该补丁程序解决了哪一漏洞？" id="what-vulnerability-is-addressed-by-this-patch_7" tabindex="0">
          该补丁程序解决了哪一漏洞？
         </h4>
         <p>
@@ -2142,7 +2458,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
           在最新补丁程序版本发布后，我们建议您尽快将受影响的集群升级到这些补丁程序版本，并且升级您的 Istio 的 Sidecar（请参见下方说明）。
          </strong>
         </p>
-        <h4 data-text="我该怎么做？" id="what-should-i-do_12" tabindex="0">
+        <h4 data-text="我该怎么做？" id="what-should-i-do_14" tabindex="0">
          我该怎么做？
         </h4>
         <p>
@@ -2203,7 +2519,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
           1.13.4-gke.10
          </li>
         </ul>
-        <h4 data-text="该补丁程序解决了哪一漏洞？" id="what-vulnerability-is-addressed-by-this-patch_6" tabindex="0">
+        <h4 data-text="该补丁程序解决了哪一漏洞？" id="what-vulnerability-is-addressed-by-this-patch_8" tabindex="0">
          该补丁程序解决了哪一漏洞？
         </h4>
         <p>
@@ -2290,7 +2606,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
           所有 Google Kubernetes Engine (GKE) 主实例都会受到这些漏洞的影响。即将推出的补丁程序版本将包含针对此漏洞的缓解措施。我们将在未来几周内按常规升级节奏将集群主实例自动升级到修补后的版本。
          </strong>
         </p>
-        <h4 data-text="我该怎么做？" id="what-should-i-do_13" tabindex="0">
+        <h4 data-text="我该怎么做？" id="what-should-i-do_15" tabindex="0">
          我该怎么做？
         </h4>
         <p>
@@ -2306,7 +2622,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         <p>
          我们将更新本公告，列举包含补丁程序的版本。请注意，补丁程序仅可用于 1.11 及以上版本，不可用于 1.10 版本。
         </p>
-        <h4 data-text="该补丁程序解决了哪一漏洞？" id="what-vulnerability-is-addressed-by-this-patch_7" tabindex="0">
+        <h4 data-text="该补丁程序解决了哪一漏洞？" id="what-vulnerability-is-addressed-by-this-patch_9" tabindex="0">
          该补丁程序解决了哪一漏洞？
         </h4>
         <p>
@@ -2370,7 +2686,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
           到最新的补丁程序版本，具体说明如下所述。
          </strong>
         </p>
-        <h4 data-text="我该怎么做？" id="what-should-i-do_14" tabindex="0">
+        <h4 data-text="我该怎么做？" id="what-should-i-do_16" tabindex="0">
          我该怎么做？
         </h4>
         <p>
@@ -2386,7 +2702,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         <p>
          请注意，新版本的 runc 内存使用量更高，如果您先前设置了较低的内存限制 (&lt; 16MB)，则可能需要更新分配给容器的内存量。
         </p>
-        <h4 data-text="该补丁程序解决了哪一漏洞？" id="what-vulnerability-is-addressed-by-this-patch_8" tabindex="0">
+        <h4 data-text="该补丁程序解决了哪一漏洞？" id="what-vulnerability-is-addressed-by-this-patch_10" tabindex="0">
          该补丁程序解决了哪一漏洞？
         </h4>
         <p>
@@ -2458,7 +2774,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
           包含针对此漏洞的缓解措施。我们将在未来几周内按常规升级节奏将集群主实例自动升级到修补后的版本。
          </strong>
         </p>
-        <h4 data-text="我该怎么做？" id="what-should-i-do_15" tabindex="0">
+        <h4 data-text="我该怎么做？" id="what-should-i-do_17" tabindex="0">
          我该怎么做？
         </h4>
         <p>
@@ -2474,7 +2790,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         <p>
          GKE 1.10.12-gke.7、1.11.6-gke.11、1.11.7-gke.4、1.12.5-gke.5 及更新的版本中提供了此补丁程序。
         </p>
-        <h4 data-text="该补丁程序解决了哪一漏洞？" id="what-vulnerability-is-addressed-by-this-patch_9" tabindex="0">
+        <h4 data-text="该补丁程序解决了哪一漏洞？" id="what-vulnerability-is-addressed-by-this-patch_11" tabindex="0">
          该补丁程序解决了哪一漏洞？
         </h4>
         <p>
@@ -2533,7 +2849,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
           。您无需采取任何操作。
          </strong>
         </p>
-        <h4 data-text="我该怎么做？" id="what-should-i-do_16" tabindex="0">
+        <h4 data-text="我该怎么做？" id="what-should-i-do_18" tabindex="0">
          我该怎么做？
         </h4>
         <p>
@@ -2544,7 +2860,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         <p>
          GKE 1.9.7-gke.11、1.10.6-gke.11、1.10.7-gke.11、1.10.9-gke.5 和 1.11.2-gke.18 及更新的版本中提供了该补丁程序。
         </p>
-        <h4 data-text="该补丁程序解决了哪一漏洞？" id="what-vulnerability-is-addressed-by-this-patch_10" tabindex="0">
+        <h4 data-text="该补丁程序解决了哪一漏洞？" id="what-vulnerability-is-addressed-by-this-patch_12" tabindex="0">
          该补丁程序解决了哪一漏洞？
         </h4>
         <p>
@@ -2668,10 +2984,7 @@ networkpolicies.networking.k8s.io           [watch list]
      <tbody>
       <tr>
        <td>
-        <pre dir="ltr" translate="no">
-
-kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
-      </pre>
+        kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
        </td>
       </tr>
      </tbody>
@@ -3030,7 +3343,7 @@ NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.244.0.0/14")
         <p>
          所有 Kubernetes Engine 节点都受此漏洞的影响。
         </p>
-        <h4 data-text="我该怎么做？" id="what-should-i-do_17" tabindex="0">
+        <h4 data-text="我该怎么做？" id="what-should-i-do_19" tabindex="0">
          我该怎么做？
         </h4>
         <p>
@@ -3139,7 +3452,7 @@ spec:
          </a>
          到最新的补丁程序版本，具体说明如下所述。
         </p>
-        <h4 data-text="我该怎么做？" id="what-should-i-do_18" tabindex="0">
+        <h4 data-text="我该怎么做？" id="what-should-i-do_20" tabindex="0">
          我该怎么做？
         </h4>
         <p>
@@ -3239,7 +3552,7 @@ spec:
          </a>
          ，这些漏洞允许容器访问该容器之外的文件。所有 Kubernetes Engine 节点都会受到这些漏洞的影响，我们建议您尽快升级到最新的补丁程序版本，具体说明如下所述。
         </p>
-        <h4 data-text="我该怎么做？" id="what-should-i-do_19" tabindex="0">
+        <h4 data-text="我该怎么做？" id="what-should-i-do_21" tabindex="0">
          我该怎么做？
         </h4>
         <p>
@@ -3247,7 +3560,7 @@ spec:
          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-container-cluster?hl=zh_cn">
           手动升级
          </a>
-         您的节点。该补丁程序将于 3 月 16 日之前提供给所有客户，但根据您的集群所在的地区，您也可能会更早获得该补丁程序，具体请参照
+         您的节点。该补丁程序将于 3 月 16 日之前提供给所有客户，但根据您的集群所在的区域，您也可能会更早获得该补丁程序，具体请参照
          <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=zh_cn#march-12-2018">
           发布计划
          </a>
