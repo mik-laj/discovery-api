@@ -39,6 +39,312 @@
     </code>
    </p>
    <section class="bulletins">
+    <h2 data-text="GCP-2020-007" id="gcp-2020-007" tabindex="0">
+     GCP-2020-007
+    </h2>
+    <strong>
+     Yayınlanma tarihi:
+    </strong>
+    01.06.2020
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Kısa süre önce Kubernetes'te bazı yetkili kullanıcıların kontrol düzlemi ana makine ağından 500 bayta kadar hassas bilgiyi sızdırmasına olanak tanıyan Sunucu Taraflı İstek Sahtekarlığı (SSRF) (
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555">
+          CVE-2020-8555
+         </a>
+         ) güvenlik açığı keşfedildi. Google Kubernetes Engine (GKE) kontrol düzlemi, Kubernetes'teki denetleyicileri kullandığından bu güvenlik açığından etkilenmektedir. Kontrol düzlemini aşağıda belirttiğimiz en son yama sürümüne
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-container-cluster?hl=tr">
+          geçirmenizi
+         </a>
+         öneririz.
+      Düğüm yükseltmesine gerek yoktur.
+         <br/>
+        </p>
+        <h4 data-text="Ne yapmalıyım?" id="what-should-i-do" tabindex="0">
+         Ne yapmalıyım?
+        </h4>
+        Çoğu müşterinin herhangi bir işlem yapması gerekmez. Kümelerin büyük çoğunluğu zaten yama uygulanmış bir sürümü çalıştırmaktadır.
+
+      Aşağıdaki GKE sürümleri ve daha yeni sürümler bu güvenlik açığına yönelik düzeltmeyi içermektedir:
+        <ul>
+         <li>
+          1.14.7-gke.39
+         </li>
+         <li>
+          1.14.8-gke.32
+         </li>
+         <li>
+          1.14.9-gke.17
+         </li>
+         <li>
+          1.14.10-gke.12
+         </li>
+         <li>
+          1.15.7-gke.17
+         </li>
+         <li>
+          1.16.4-gke.21
+         </li>
+         <li>
+          1.17.0-gke.0
+         </li>
+        </ul>
+        <p>
+         <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels?hl=tr">
+          Sürüm kanallarını
+         </a>
+         kullanan kümeler zaten çözümün uygulandığı kontrol düzlemi sürümlerindedir.
+        </p>
+        <h4 data-text="Bu yama hangi güvenlik açığına yönelik? " id="what-vulnerability-is-addressed-by-this-patch" tabindex="0">
+         Bu yama hangi güvenlik açığına yönelik?
+        </h4>
+        <p>
+         Bu yamalar CVE-2020-8555 güvenlik açığının oluşturduğu riski azaltır. Çeşitli kontrol düzlemi sağlamlaştırma önlemleri, bu açığın kötüye kullanılmasını zorlaştırdığından GKE için Orta önem düzeyli bir güvenlik açığı olarak derecelendirilmiştir.
+        </p>
+        <p>
+         Belirli yerleşik Birim türlerine (GlusterFS, Quobyte, StorageFS, ScaleIO) sahip bir Kapsül veya StorageClass oluşturma izinleri olan bir saldırgan, ana makine ağından gelen, saldırgan kontrollü bir istek gövdesi
+         <em>
+          olmadan
+         </em>
+         <code dir="ltr" translate="no">
+          kube-controller-manager
+         </code>
+         öğesinin
+         <code dir="ltr" translate="no">
+          GET
+         </code>
+         veya
+         <code dir="ltr" translate="no">
+          POST
+         </code>
+         istekleri yapmasına yol açabilir. Bu birim türleri GKE'de nadiren kullanılır. Bu nedenle bu birim türlerinin yeni kullanımı güvenlik açığının tespit edilmesine yardımcı olabilir.
+        </p>
+        <p>
+         <code dir="ltr" translate="no">
+          GET/POST
+         </code>
+         sonuçları saldırgana geri sızdırılırsa (ör. günlükler aracılığıyla) bu durum hassas bilgilerin ifşa edilmesine yol açabilir. Bu tür sızıntılar yaşanması ihtimalini ortadan kaldırmak için söz konusu depolama alanı sürücülerini güncelledik.
+        </p>
+       </td>
+       <td>
+        <p>
+         Orta
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555">
+          CVE-2020-8555
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-006" id="gcp-2020-006" tabindex="0">
+     GCP-2020-006
+    </h2>
+    <strong>
+     Yayınlanma tarihi:
+    </strong>
+    01.06.2020
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Açıklama
+       </th>
+       <th>
+        Önem Düzeyi
+       </th>
+       <th>
+        Notlar
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Kubernetes, ayrıcalıklı bir container'ın, düğüm trafiğini başka bir container'a yönlendirmesine olanak tanıyan bir
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          güvenlik açığı
+         </a>
+         bulunduğunu açıkladı. Kubelet ile API sunucusu arasındaki trafik gibi karşılıklı TLS/SSH trafiği veya mTLS kullanan uygulamalardan gelen trafik bu saldırıyla okunamaz ve değiştirilemez. Tüm Google Kubernetes Engine (GKE) düğümleri bu güvenlik açığından etkilenmektedir. Bu nedenle,aşağıda belirttiğimiz en son yama sürümüne
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=tr">
+          geçmenizi
+         </a>
+         öneririz.
+        </p>
+        <h4 data-text="Ne yapmalıyım?" id="what-should-i-do_1" tabindex="0">
+         Ne yapmalıyım?
+        </h4>
+        Bu güvenlik açığının oluşturduğu riskleri azaltmak için kontrol düzleminizi
+        <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=tr">
+         yeni sürüme geçirin
+        </a>
+        , ardından düğümlerinizi aşağıda listelenmiş olan yamalı sürümlerden birine yükseltin. Sürüm kanallarındaki kümeler hem kontrol düzleminde hem de düğümlerde zaten yama uygulanmış bir sürüm çalıştırmaktadır:
+        <ul>
+         <li>
+          1.14.10-gke.36
+         </li>
+         <li>
+          1.15.11-gke.15
+         </li>
+         <li>
+          1.16.8-gke.15
+         </li>
+        </ul>
+        <p>
+         Genellikle çok az container için
+         <code dir="ltr" translate="no">
+          CAP_NET_RAW
+         </code>
+         gerekir. Bu ve diğer güçlü özellikler
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=tr">
+          PodSecurityPolicy
+         </a>
+         veya
+         <a href="https://cloud.google.com/anthos-config-management/docs/concepts/policy-controller?hl=tr">
+          Anthos Policy Controller
+         </a>
+         aracılığıyla varsayılan olarak engellenmelidir:
+        </p>
+        <ul>
+         <li>
+          <code dir="ltr" translate="no">
+           CAP_NET_RAW
+          </code>
+          özelliğini container'lardan çıkarın:
+         </li>
+         <ul>
+          <li>
+           Şu kod örneğini kullanıp
+           <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=tr">
+            PodSecurityPolicy
+           </a>
+           aracılığıyla zorunlu kılabilirsiniz:
+          </li>
+          <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Require dropping CAP_NET_RAW with a PSP
+apiversion: extensions/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: no-cap-net-raw
+spec:
+  requiredDropCapabilities:
+    -NET_RAW
+     ...
+     # Unrelated fields omitted
+</pre>
+         </ul>
+         <ul>
+          <li>
+           İsterseniz bu
+           <a class="external" href="https://github.com/open-policy-agent/gatekeeper/blob/master/library/pod-security-policy/capabilities/template.yaml">
+            kısıtlama şablonuyla
+           </a>
+           Anthos Policy Controller/Gatekeeper'ı kullanıp uygulayabilirsiniz. Örneğin:
+          </li>
+          <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Dropping CAP_NET_RAW with Gatekeeper
+# (requires the K8sPSPCapabilities template)
+apiversion: constraints.gatekeeper.sh/v1beta1
+kind:  K8sPSPCapabilities
+metadata:
+  name: forbid-cap-net-raw
+spec:
+  match:
+    kinds:
+      - apiGroups: [""]
+      kinds: ["Pod"]
+    namespaces:
+      #List of namespaces to enforce this constraint on
+      - default
+    # If running gatekeeper &gt;= v3.1.0-beta.5,
+    # you can exclude namespaces rather than including them above.
+    excludedNamespaces:
+      - kube-system
+  parameters:
+    requiredDropCapabilities:
+      - "NET_RAW"
+</pre>
+         </ul>
+         <ul>
+          <li>
+           Dilerseniz Kapsül özelliklerinizi güncelleyebilirsiniz:
+          </li>
+          <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Dropping CAP_NET_RAW from a Pod:
+apiVersion: v1
+kind: Pod
+metadata:
+  name: no-cap-net-raw
+spec:
+  containers:
+    -name: may-container
+     ...
+    securityContext:
+      capabilities:
+        drop:
+          -NET_RAW
+</pre>
+         </ul>
+        </ul>
+        <h4 data-text="Bu yama hangi güvenlik açığına yönelik? " id="what-vulnerability-is-addressed-by-this-patch_1" tabindex="0">
+         Bu yama hangi güvenlik açığına yönelik?
+        </h4>
+        <p>
+         Yamada aşağıdaki güvenlik açığının çözümü yer alır:
+        </p>
+        <p>
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          Kubernetes sorunu 91507
+         </a>
+         'de açıklanan, düğümdeki IPv6 yığınını kötü amaçlı olarak yapılandırmaya ve düğüm trafiğini saldırgan tarafından kontrol edilen container'a yönlendirmeye olanak tanıyan
+         <code dir="ltr" translate="no">
+          CAP_NET_RAW
+         </code>
+         özelliğiyle (varsayılan container özellikleri grubuna dahildir) ilgili güvenlik açığı. Bu güvenlik açığı, saldırganın düğümden gelen veya düğüme giden trafiği engellemesine/değiştirmesine olanak tanır. Kubelet ile API sunucusu arasındaki trafik gibi karşılıklı TLS/SSH trafiği veya mTLS kullanan uygulamalardan gelen trafik bu saldırıyla okunamaz ve değiştirilemez.
+        </p>
+       </td>
+       <td>
+        <p>
+         Orta
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          Kubernetes sorunu 91507
+         </a>
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
     <h2 data-text="GCP-2020-005" id="gcp-2020-005" tabindex="0">
      GCP-2020-005
     </h2>
@@ -81,7 +387,7 @@
         <p>
          Container-Optimized OS çalıştıran düğümler bu güvenlik açığından etkilenmez. GKE On-Prem çalıştıran düğümler etkilenmez.
         </p>
-        <h4 data-text="Ne yapmalıyım?" id="what-should-i-do" tabindex="0">
+        <h4 data-text="Ne yapmalıyım?" id="what-should-i-do_2" tabindex="0">
          Ne yapmalıyım?
         </h4>
         <p>
@@ -96,7 +402,7 @@
          </a>
          takip edebilirsiniz.
         </p>
-        <h4 data-text="Bu yama hangi güvenlik açığına yönelik?" id="what-vulnerability-is-addressed-by-this-patch" tabindex="0">
+        <h4 data-text="Bu yama hangi güvenlik açığına yönelik?" id="what-vulnerability-is-addressed-by-this-patch_2" tabindex="0">
          Bu yama hangi güvenlik açığına yönelik?
         </h4>
         <p>
@@ -175,7 +481,7 @@
          </a>
          kullanan GKE Kümeleri, bu güvenlik açığının risklerini azaltır.
         </p>
-        <h4 data-text="Ne yapmalıyım?" id="what-should-i-do_1" tabindex="0">
+        <h4 data-text="Ne yapmalıyım?" id="what-should-i-do_3" tabindex="0">
          Ne yapmalıyım?
         </h4>
         <p>
@@ -273,7 +579,7 @@
          </a>
          numaralı Kubernetes sorunlarını inceleyin.
         </p>
-        <h4 data-text="Ne yapmalıyım?" id="what-should-i-do_2" tabindex="0">
+        <h4 data-text="Ne yapmalıyım?" id="what-should-i-do_4" tabindex="0">
          Ne yapmalıyım?
         </h4>
         <p>
@@ -654,7 +960,7 @@
          </a>
          göre karşılaştırın.
         </p>
-        <h4 data-text="Ne yapmalıyım?" id="what-should-i-do_3" tabindex="0">
+        <h4 data-text="Ne yapmalıyım?" id="what-should-i-do_5" tabindex="0">
          Ne yapmalıyım?
         </h4>
         <p>
@@ -844,7 +1150,7 @@
          </a>
          kullanan GKE Kümeleri, bu güvenlik açığının zararlarını hafifletir.
         </p>
-        <h6 data-text="Ne yapmalıyım?" id="what-should-i-do_4" tabindex="0">
+        <h6 data-text="Ne yapmalıyım?" id="what-should-i-do_6" tabindex="0">
          Ne yapmalıyım?
         </h6>
         <p>
@@ -940,7 +1246,7 @@
          </a>
          göz atın.
         </p>
-        <h6 data-text="Ne yapmalıyım?" id="what-should-i-do_5" tabindex="0">
+        <h6 data-text="Ne yapmalıyım?" id="what-should-i-do_7" tabindex="0">
          Ne yapmalıyım?
         </h6>
         <p>
@@ -967,7 +1273,7 @@
           1.14.6-gke.1
          </li>
         </ul>
-        <h6 data-text="Bu yama hangi güvenlik açığına yönelik?" id="what-vulnerability-is-addressed-by-this-patch_1" tabindex="0">
+        <h6 data-text="Bu yama hangi güvenlik açığına yönelik?" id="what-vulnerability-is-addressed-by-this-patch_3" tabindex="0">
          Bu yama hangi güvenlik açığına yönelik?
         </h6>
         <p>
@@ -1107,7 +1413,7 @@ Bu bültende açıklanan güvenlik açığının çözümünün GKE'nin sonraki 
          </a>
          güvenlik açığını tespit etti. Bu, yalnızca ad alanı düzeyinde RBAC izinlerine sahip kullanıcı ve hizmet hesaplarının küme kapsamındaki özel kaynaklarla etkileşim kurabileceği anlamına gelir. Bu güvenlik açığının kötü amaçlı kullanılması için saldırganın herhangi bir ad alanındaki kaynağa erişim izinlerine sahip olması gerekir.
         </p>
-        <h6 data-text="Ne yapmalıyım?" id="what-should-i-do_6" tabindex="0">
+        <h6 data-text="Ne yapmalıyım?" id="what-should-i-do_8" tabindex="0">
          Ne yapmalıyım?
         </h6>
         <p>
@@ -1135,7 +1441,7 @@ Bu bültende açıklanan güvenlik açığının çözümünün GKE'nin sonraki 
           )
          </li>
         </ul>
-        <h6 data-text="Bu yama hangi güvenlik açığına yönelik?" id="what-vulnerability-is-addressed-by-this-patch_2" tabindex="0">
+        <h6 data-text="Bu yama hangi güvenlik açığına yönelik?" id="what-vulnerability-is-addressed-by-this-patch_4" tabindex="0">
          Bu yama hangi güvenlik açığına yönelik?
         </h6>
         <p>
@@ -1415,7 +1721,7 @@ Bu bültende açıklanan güvenlik açığının çözümünün GKE'nin sonraki 
          </code>
          yapılandırmasını değiştirerek çözüm uygulayan bir Kubernetes DaemonSet oluşturduk.
         </p>
-        <h5 data-text="Ne yapmalıyım?" id="what-should-i-do_7" tabindex="0">
+        <h5 data-text="Ne yapmalıyım?" id="what-should-i-do_9" tabindex="0">
          Ne yapmalıyım?
         </h5>
         <p>
@@ -1551,7 +1857,7 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
          </strong>
          Daha sonra kullanıma sunulacak bir yama sürümünde bu güvenlik açığı için bir çözüm sunulacaktır.
         </p>
-        <h6 data-text="Ne yapmalıyım?" id="what-should-i-do_8" tabindex="0">
+        <h6 data-text="Ne yapmalıyım?" id="what-should-i-do_10" tabindex="0">
          Ne yapmalıyım?
         </h6>
         <p>
@@ -1582,7 +1888,7 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
          </a>
          takip edebilirsiniz.
         </p>
-        <h6 data-text="Bu yama hangi güvenlik açığına yönelik?" id="what-vulnerability-is-addressed-by-this-patch_3" tabindex="0">
+        <h6 data-text="Bu yama hangi güvenlik açığına yönelik?" id="what-vulnerability-is-addressed-by-this-patch_5" tabindex="0">
          Bu yama hangi güvenlik açığına yönelik?
         </h6>
         <p>
@@ -1657,7 +1963,7 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
          </code>
          erişimi yoktur ve bu güvenlik açığının oluşturduğu risk GKE ana düğümleriyle sınırlıdır.
         </p>
-        <h5 data-text="Ne yapmalıyım?" id="what-should-i-do_9" tabindex="0">
+        <h5 data-text="Ne yapmalıyım?" id="what-should-i-do_11" tabindex="0">
          Ne yapmalıyım?
         </h5>
         <p>
@@ -1692,7 +1998,7 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
          </a>
          takip edebilirsiniz.
         </p>
-        <h5 data-text="Bu yama hangi güvenlik açığına yönelik?" id="what-vulnerability-is-addressed-by-this-patch_4" tabindex="0">
+        <h5 data-text="Bu yama hangi güvenlik açığına yönelik?" id="what-vulnerability-is-addressed-by-this-patch_6" tabindex="0">
          Bu yama hangi güvenlik açığına yönelik?
         </h5>
         <p>
@@ -1827,7 +2133,7 @@ kubectl get nodes -o=jsonpath='{range .items[*]}'\
           belirten kapsüller UID 0 olarak başlatılmaz ancak bu sorundan etkilendiklerinde başlatılamazlar.
          </li>
         </ul>
-        <h5 data-text="Ne yapmalıyım?" id="what-should-i-do_10" tabindex="0">
+        <h5 data-text="Ne yapmalıyım?" id="what-should-i-do_12" tabindex="0">
          Ne yapmalıyım?
         </h5>
         <p>
@@ -1941,7 +2247,7 @@ kubectl get nodes -o=jsonpath='{range .items[*]}'\
          </a>
          göz atın.
         </p>
-        <h4 data-text="Ne yapmalıyım?" id="what-should-i-do_11" tabindex="0">
+        <h4 data-text="Ne yapmalıyım?" id="what-should-i-do_13" tabindex="0">
          Ne yapmalıyım?
         </h4>
         <p>
@@ -2020,10 +2326,18 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
          </li>
         </ol>
         <aside class="note">
-         Not: Düğümde [Güvenli Başlatma](/kubernetes-engine/docs/how-to/shielded-gke-nodes#secure_boot) özelliği etkinleştirilmişse başlatma seçenekleri değiştirilemez. Güvenli Başlatma etkinleştirilmişse DaemonSet'in oluşturulabilmesi için bu özelliğin [devre dışı bırakılması](/kubernetes-engine/docs/how-to/shielded-gke-nodes#disabling) gerekir.
+         Not: Düğümde
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/shielded-gke-nodes?hl=tr#secure_boot">
+          Güvenli Başlatma
+         </a>
+         özelliği etkinleştirilmişse başlatma seçenekleri değiştirilemez. Güvenli Başlatma etkinleştirilmişse DaemonSet'in oluşturulabilmesi için bu özelliğin
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/shielded-gke-nodes?hl=tr#disabling">
+          devre dışı bırakılması
+         </a>
+         gerekir.
         </aside>
         <p>
-         Düğüm havuzlarında DaemonSet'i çalışır durumda tutmanız gerekir. Bu sayede, havuzda oluşturulan yeni düğümlere değişiklikler otomatik olarak uygulanır. Düğüm oluşturma işlemleri, otomatik düğüm onarımı, manuel veya otomatik yükseltme ve otomatik ölçeklendirme nedeniyle tetiklenebilir.
+         Düğüm havuzlarında DaemonSet'i çalışır durumda tutmanız gerekir. Bu sayede havuzda oluşturulan yeni düğümlere değişiklikler otomatik olarak uygulanır. Düğüm oluşturma işlemleri, otomatik düğüm onarımı, manuel veya otomatik yükseltme ve otomatik ölçeklendirme nedeniyle tetiklenebilir.
         </p>
         <p>
          Hyper-Threading'i yeniden etkinleştirmek için verilen DaemonSet'i dağıtmadan düğüm havuzunu yeniden oluşturmanız ve iş yüklerinizi yeni düğüm havuzuna taşımanız gerekir.
@@ -2038,7 +2352,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         <p>
          Yama kullanıma sunulduğunda bu bülten yamayı içeren sürümlerle güncellenecektir.
         </p>
-        <h4 data-text="Bu yama hangi güvenlik açığına yönelik?" id="what-vulnerability-is-addressed-by-this-patch_5" tabindex="0">
+        <h4 data-text="Bu yama hangi güvenlik açığına yönelik?" id="what-vulnerability-is-addressed-by-this-patch_7" tabindex="0">
          Bu yama hangi güvenlik açığına yönelik?
         </h4>
         <p>
@@ -2139,7 +2453,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
           Etkilenen kümelerinizi en kısa sürede en son yama sürümüne yükseltmenizi ve Istio yardımcı dosyalarınızı yükseltmenizi (talimatları aşağıda verilmiştir) öneririz.
          </strong>
         </p>
-        <h4 data-text="Ne yapmalıyım?" id="what-should-i-do_12" tabindex="0">
+        <h4 data-text="Ne yapmalıyım?" id="what-should-i-do_14" tabindex="0">
          Ne yapmalıyım?
         </h4>
         <p>
@@ -2199,7 +2513,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
           1.13.4-gke.10
          </li>
         </ul>
-        <h4 data-text="Bu yama hangi güvenlik açığına yönelik?" id="what-vulnerability-is-addressed-by-this-patch_6" tabindex="0">
+        <h4 data-text="Bu yama hangi güvenlik açığına yönelik?" id="what-vulnerability-is-addressed-by-this-patch_8" tabindex="0">
          Bu yama hangi güvenlik açığına yönelik?
         </h4>
         <p>
@@ -2283,7 +2597,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
           Bu güvenlik açıklarından tüm Google Kubernetes Engine (GKE) ana düğümleri etkilenir. Daha sonra kullanıma sunulacak bir yama sürümünde bu güvenlik açığı için bir çözüm sunulacaktır. Küme ana sistemleri, önümüzdeki haftalarda, düzenli yükseltme sıklığında yama uygulanmış sürüme otomatik olarak yükseltilecektir.
          </strong>
         </p>
-        <h4 data-text="Ne yapmalıyım?" id="what-should-i-do_13" tabindex="0">
+        <h4 data-text="Ne yapmalıyım?" id="what-should-i-do_15" tabindex="0">
          Ne yapmalıyım?
         </h4>
         <p>
@@ -2299,7 +2613,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         <p>
          Bu bülten, yama içeren sürümlerle güncellenecektir. Yamanın yalnızca 1.11 üzeri sürümlerde kullanıma sunulacağını, 1.10 sürümlerinde sunulmayacağını unutmayın.
         </p>
-        <h4 data-text="Bu yama hangi güvenlik açığına yönelik?" id="what-vulnerability-is-addressed-by-this-patch_7" tabindex="0">
+        <h4 data-text="Bu yama hangi güvenlik açığına yönelik?" id="what-vulnerability-is-addressed-by-this-patch_9" tabindex="0">
          Bu yama hangi güvenlik açığına yönelik?
         </h4>
         <p>
@@ -2364,7 +2678,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
           öneririz.
          </strong>
         </p>
-        <h4 data-text="Ne yapmalıyım?" id="what-should-i-do_14" tabindex="0">
+        <h4 data-text="Ne yapmalıyım?" id="what-should-i-do_16" tabindex="0">
          Ne yapmalıyım?
         </h4>
         <p>
@@ -2379,7 +2693,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         <p>
          Yeni runc sürümünün bellek kullanımını artırdığını ve düşük bellek sınırları (&lt; 16 MB) belirlediyseniz ayrılan belleğin güncellenmesi gerekebileceğini unutmayın.
         </p>
-        <h4 data-text="Bu yama hangi güvenlik açığına yönelik?" id="what-vulnerability-is-addressed-by-this-patch_8" tabindex="0">
+        <h4 data-text="Bu yama hangi güvenlik açığına yönelik?" id="what-vulnerability-is-addressed-by-this-patch_10" tabindex="0">
          Bu yama hangi güvenlik açığına yönelik?
         </h4>
         <p>
@@ -2451,7 +2765,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
           bu güvenlik açığına yönelik bir çözüm bulunur. Küme ana sistemleri, önümüzdeki haftalarda, düzenli yükseltme sıklığında yama uygulanmış sürüme otomatik olarak yükseltilecektir.
          </strong>
         </p>
-        <h4 data-text="Ne yapmalıyım?" id="what-should-i-do_15" tabindex="0">
+        <h4 data-text="Ne yapmalıyım?" id="what-should-i-do_17" tabindex="0">
          Ne yapmalıyım?
         </h4>
         <p>
@@ -2467,7 +2781,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         <p>
          Bu yama GKE 1.10.12-gke.7, 1.11.6-gke.11, 1.11.7-gke.4, 1.12.5-gke.5 ve daha yeni sürümlerde kullanılabilir.
         </p>
-        <h4 data-text="Bu yama hangi güvenlik açığına yönelik?" id="what-vulnerability-is-addressed-by-this-patch_9" tabindex="0">
+        <h4 data-text="Bu yama hangi güvenlik açığına yönelik?" id="what-vulnerability-is-addressed-by-this-patch_11" tabindex="0">
          Bu yama hangi güvenlik açığına yönelik?
         </h4>
         <p>
@@ -2527,7 +2841,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         Bu konuyla ilgili herhangi bir işlem yapmanıza gerek yoktur.
          </strong>
         </p>
-        <h4 data-text="Ne yapmalıyım?" id="what-should-i-do_16" tabindex="0">
+        <h4 data-text="Ne yapmalıyım?" id="what-should-i-do_18" tabindex="0">
          Ne yapmalıyım?
         </h4>
         <p>
@@ -2538,7 +2852,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         <p>
          Bu yama GKE 1.9.7-gke.11, 1.10.6-gke.11, 1.10.7-gke.11, 1.10.9-gke.5 ve 1.11.2-gke.18 ve daha yeni sürümler için kullanılabilir.
         </p>
-        <h4 data-text="Bu yama hangi güvenlik açığına yönelik?" id="what-vulnerability-is-addressed-by-this-patch_10" tabindex="0">
+        <h4 data-text="Bu yama hangi güvenlik açığına yönelik?" id="what-vulnerability-is-addressed-by-this-patch_12" tabindex="0">
          Bu yama hangi güvenlik açığına yönelik?
         </h4>
         <p>
@@ -2662,10 +2976,7 @@ networkpolicies.networking.k8s.io           [watch list]
      <tbody>
       <tr>
        <td>
-        <pre dir="ltr" translate="no">
-
-kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
-      </pre>
+        kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
        </td>
       </tr>
      </tbody>
@@ -3022,7 +3333,7 @@ NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.244.0.0/14")
         <p>
          Tüm Kubernetes Engine düğümleri savunmasızdır.
         </p>
-        <h4 data-text="Ne yapmalıyım?" id="what-should-i-do_17" tabindex="0">
+        <h4 data-text="Ne yapmalıyım?" id="what-should-i-do_19" tabindex="0">
          Ne yapmalıyım?
         </h4>
         <p>
@@ -3131,7 +3442,7 @@ spec:
          </a>
          işlemi yapmanızı öneririz.
         </p>
-        <h4 data-text="Ne yapmalıyım?" id="what-should-i-do_18" tabindex="0">
+        <h4 data-text="Ne yapmalıyım?" id="what-should-i-do_20" tabindex="0">
          Ne yapmalıyım?
         </h4>
         <p>
@@ -3231,7 +3542,7 @@ spec:
          </a>
          , container'ların container dışındaki dosyalara erişebilmesine imkan tanımaktadır. Tüm Kubernetes Engine düğümleri bu güvenlik açıklarından etkilenmiştir. Aşağıda ayrıntılarıyla açıklandığı şekilde en kısa sürede en yeni yama sürümüne yükseltme yapmanızı öneririz.
         </p>
-        <h4 data-text="Ne yapmalıyım?" id="what-should-i-do_19" tabindex="0">
+        <h4 data-text="Ne yapmalıyım?" id="what-should-i-do_21" tabindex="0">
          Ne yapmalıyım?
         </h4>
         <p>
