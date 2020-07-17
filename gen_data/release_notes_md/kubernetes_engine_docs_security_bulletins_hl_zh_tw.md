@@ -15,23 +15,222 @@ Isolation-at-different-layers-of-the-Kubernetes-stack.html) 一文。
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接新增以下動態消息網址： `
 https://cloud.google.com/feeds/kubernetes-engine-security-bulletins.xml `
 
-##  GCP-2020-003
+##  GCP-2020-007
 
+**發布日期：** 2020-06-01  
 說明  |  嚴重性  |  附註  
 ---|---|---  
   
+最近在 Kubernetes 中發現伺服器端偽造要求 (SSRF) 安全漏洞 [ CVE-2020-8555
+](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555)
+。這項漏洞會讓某些授權使用者將機密資訊 (最多 500 個位元組) 從控制層主機網路外流出去。由於 Google Kubernetes Engine
+(GKE) 控制層使用 Kubernetes 中的控制器，因此會受到這個安全漏洞影響。建議您按照下列步驟操作，將控制層 [ 升級
+](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
+container-cluster?hl=zh_tw) 至最新修補程式版本。節點則無須升級。  
+
+####  該如何解決這個問題？
+
+大多數的客戶無須採取進一步行動，大多數的叢集早已執行修補版本。以下 GKE 版本或更高版本均包含這個安全漏洞的修正措施：
+
+  * 1.14.7-gke.39 
+  * 1.14.8-gke.32 
+  * 1.14.9-gke.17 
+  * 1.14.10-gke.12 
+  * 1.15.7-gke.17 
+  * 1.16.4-gke.21 
+  * 1.17.0-gke.0 
+
+使用 [ 發布版本 ](https://cloud.google.com/kubernetes-engine/docs/concepts/release-
+channels?hl=zh_tw) 的叢集都已執行具有因應措施的控制層版本。
+
+####  這個修補程式修正了什麼安全漏洞？
+
+這些修補程式可降低安全漏洞 CVE-2020-8555 的風險。這個安全漏洞對於 GKE 的嚴重性為「中」，因為有各種控制層強化措施，所以不易進行漏洞攻擊。
+
+攻擊者若取得相關權限而獲准建立具有特定內建磁碟區類型 (GlusterFS、Quobyte、StorageFS, ScaleIO) 的 pod 或
+StorageClass，即便「沒有」 __ 控制要求主體，也可以透過主要執行個體的主機網路促使 ` kube-controller-manager `
+發出 ` GET ` 要求或 ` POST ` 要求。這些磁碟區類型很少在 GKE
+上使用，所以如果發現陌生使用者使用這些磁碟區類型，可以視為有用的偵測訊號。
+
+如果這類攻擊手段配合可將 ` GET/POST `
+的結果洩漏給攻擊者的途徑，例如透過記錄檔，就可能導致機密資訊外洩。因此，我們更新了相關的儲存空間驅動程式，以防止這類資料外洩的可能性。
+
+|
+
+中
+
+|
+
+[ CVE-2020-8555 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8555)  
+  
+##  GCP-2020-006
+
+**發布日期：** 2020-06-01  
+說明  |  嚴重性  |  附註  
+---|---|---  
+  
+Kubernetes 已揭露一項 [ 安全漏洞
+](https://github.com/kubernetes/kubernetes/issues/91507)
+。這項漏洞會讓有權限的容器將節點流量重新導向至另一個容器。這類攻擊無法讀取或修改雙向 TLS/SSH 流量 (例如在 kubelet 和 API
+伺服器之間) 或來自採用 mTLS 的應用程式的流量。所有的 Google Kubernetes Engine (GKE)
+節點都會受到這個安全漏洞的影響，建議您按照下列步驟操作， [ 升級 ](https://cloud.google.com/kubernetes-
+engine/docs/how-to/upgrading-a-cluster?hl=zh_tw) 至最新的修補程式版本。
+
+####  該如何解決這個問題？
+
+為了降低這個安全漏洞的風險，請 [ 升級 ](https://cloud.google.com/kubernetes-engine/docs/how-
+to/upgrading-a-cluster?hl=zh_tw)
+您的控制層，接著將節點升級至下列修補版本之一。使用發布版本的叢集已在控制層和節點上執行修補版本：
+
+  * 1.14.10-gke.36 
+  * 1.15.11-gke.15 
+  * 1.16.8-gke.15 
+
+一般來說，極少容器需要使用 ` CAP_NET_RAW ` 。依據預設，系統應該會透過 [ PodSecurityPolicy
+](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-
+policies?hl=zh_tw) 或 [ Anthos Policy Controller
+](https://cloud.google.com/anthos-config-management/docs/concepts/policy-
+controller?hl=zh_tw) 封鎖這項功能及其他強大的功能：
+
+  * 如要從容器捨棄 ` CAP_NET_RAW ` 功能，方法如下： 
+    * 使用以下指令碼透過 [ PodSecurityPolicy ](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=zh_tw) 強制執行： 
+        
+                
+        # Require dropping CAP_NET_RAW with a PSP
+        apiversion: extensions/v1beta1
+        kind: PodSecurityPolicy
+        metadata:
+          name: no-cap-net-raw
+        spec:
+          requiredDropCapabilities:
+            -NET_RAW
+             ...
+             # Unrelated fields omitted
+        
+
+    * 或者，使用 Anthos Policy Controller/Gatekeeper 搭配這個 [ 限制範本 ](https://github.com/open-policy-agent/gatekeeper/blob/master/library/pod-security-policy/capabilities/template.yaml) ，然後套用，例如： 
+        
+                
+        # Dropping CAP_NET_RAW with Gatekeeper
+        # (requires the K8sPSPCapabilities template)
+        apiversion: constraints.gatekeeper.sh/v1beta1
+        kind:  K8sPSPCapabilities
+        metadata:
+          name: forbid-cap-net-raw
+        spec:
+          match:
+            kinds:
+              - apiGroups: [""]
+              kinds: ["Pod"]
+            namespaces:
+              #List of namespaces to enforce this constraint on
+              - default
+            # If running gatekeeper >= v3.1.0-beta.5,
+            # you can exclude namespaces rather than including them above.
+            excludedNamespaces:
+              - kube-system
+          parameters:
+            requiredDropCapabilities:
+              - "NET_RAW"
+        
+
+    * 或者，更新您的 pod 規格： 
+        
+                
+        # Dropping CAP_NET_RAW from a Pod:
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          name: no-cap-net-raw
+        spec:
+          containers:
+            -name: may-container
+             ...
+            securityContext:
+              capabilities:
+                drop:
+                  -NET_RAW
+        
+
+####  這個修補程式修正了什麼安全漏洞？
+
+這個修補程式可有效降低下列安全漏洞的風險：
+
+[ Kubernetes 問題 91507 ](https://github.com/kubernetes/kubernetes/issues/91507)
+` CAP_NET_RAW ` 功能 (其包含在預設容器功能集) 中所述的安全漏洞，會在節點上惡意設定 IPv6
+堆疊，並將節點流量重新導向至攻擊者控制的容器，讓攻擊者可攔截/修改來自節點的流量或預定送至節點的流量。這類攻擊無法讀取或修改雙向 TLS/SSH 流量
+(例如在 kubelet 和 API 伺服器之間) 或來自採用 mTLS 的應用程式的流量。
+
+|
+
+中
+
+|
+
+[ Kubernetes 問題 91507 ](https://github.com/kubernetes/kubernetes/issues/91507)  
+  
+  
+##  GCP-2020-005
+
+**發布日期：** 2020-05-07  
+**更新日期：** 2020-05-07  說明  |  嚴重性  |  附註  
+---|---|---  
+  
+最近在 Linux 核心發現一個安全漏洞 (請參考 [ CVE-2020-8835 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8835) 中的說明)。這項漏洞會允許濫用容器逃逸，並獲得主機節點上的 Root 權限。
+
+執行 GKE 1.16 或 1.17 的 Google Kubernetes Engine (GKE) Ubuntu
+節點會受到這個安全漏洞的影響，建議您參考以下詳細說明，盡快升級至最新的修補程式版本。
+
+執行 Container-Optimized OS 的節點不受影響，在 GKE On-Prem 上運作的節點也不受影響。
+
+####  該如何解決這個問題？
+
+**大多數的客戶無須採取進一步行動，只有在 GKE 版本 1.16 或 1.17 中執行 Ubuntu 的節點受到影響。**
+
+如要升級節點，您必須先將主要執行個體升級至最新版本。Kubernetes 1.16.8-gke.12、1.17.4-gke.10
+及更高版本均包含了這個修補程式。您可以從 [ 版本資訊 ](https://cloud.google.com/kubernetes-
+engine/docs/release-notes?hl=zh_tw) 中得知該版本是否提供這些修補程式。
+
+####  這個修補程式修正了什麼安全漏洞？
+
+這個修補程式可有效降低下列安全漏洞的風險：
+
+[ CVE-2020-8835 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8835) 說明 Linux 核心版本 5.5.0
+及更高版本中存在一個安全漏洞。這項漏洞會將使用者以 exec
+形式操作的機率降至最低，允許惡意容器讀取和寫入核心記憶體，藉此在主機節點上執行根層級程式碼。這個安全漏洞的嚴重性為「高」。
+
+|
+
+高
+
+|
+
+[ CVE-2020-8835 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8835)  
+  
+  
+##  GCP-2020-003
+
+**發布日期：** 2020-03-31  
+**更新日期：** 2020-03-31  說明  |  嚴重性  |  附註  
+---|---|---  
+  
 最近在 Kubernetes 中發現一個安全漏洞 (請參考 [ CVE-2019-11254 ](https://cve.mitre.org/cgi-
-bin/cvename.cgi?name=CVE-2019-11254) 中的說明)，允許任何經授權可進行 POST 要求的使用者在 Kubernetes
-API 伺服器上執行遠端阻斷服務攻擊。您可以在 [ 這裡 ](https://groups.google.com/g/kubernetes-
-security-announce/c/wuwEwZigXBc?hl=zh_tw) 找到 Kubernetes Product Security
-Committee (PSC) 發布的相關安全漏洞資訊。
+bin/cvename.cgi?name=CVE-2019-11254) 中的說明)。這項漏洞會允許任何經授權可進行 POST 要求的使用者在
+Kubernetes API 伺服器上執行遠端阻斷服務攻擊。您可以在 [ 這裡
+](https://groups.google.com/forum/?hl=zh_tw#!topic/kubernetes-security-
+announce/wuwEwZigXBc) 找到 Kubernetes Product Security Committee (PSC)
+發布的相關安全漏洞資訊。
 
 無論是使用 [ 主要授權網路 ](https://cloud.google.com/kubernetes-engine/docs/how-
 to/authorized-networks?hl=zh_tw) 的 GKE 叢集或是 [ 無公開端點的私人叢集
 ](https://cloud.google.com/kubernetes-engine/docs/how-to/private-
 clusters?hl=zh_tw#private_master) ，都可以有效降低這個安全漏洞的風險。
 
-####  我該怎麼做？
+####  該如何解決這個問題？
 
 建議您將叢集升級至包含這個安全漏洞修正措施的修補程式版本。
 
@@ -61,7 +260,8 @@ bin/cvename.cgi?name=CVE-2019-11254)
   
 ##  GCP-2020-002
 
-說明  |  嚴重性  |  附註  
+**發布日期：** 2020-03-23  
+**更新日期：** 2020-03-23  說明  |  嚴重性  |  附註  
 ---|---|---  
   
 Kubernetes 已揭露 [ 兩個阻斷服務安全漏洞
@@ -70,7 +270,7 @@ announce/2UOlsba2g0s) ，其中一個會影響 API 伺服器，另一個會影�
 89377 ](https://github.com/kubernetes/kubernetes/issues/89377) 和 [ 89378
 ](https://github.com/kubernetes/kubernetes/issues/89378) 。
 
-####  我該怎麼做？
+####  該如何解決這個問題？
 
 所有 GKE 使用者都不會受到 CVE-2020-8551 的影響，除非未受信任的使用者可以在叢集內部網路傳送要求。使用 [ 主要授權網路
 ](https://cloud.google.com/kubernetes-engine/docs/how-to/authorized-
@@ -78,14 +278,14 @@ networks?hl=zh_tw) 也能有效降低 CVE-2020-8552 的安全風險。
 
 ####  這些安全漏洞何時可以得到修補？
 
-要修補 CVE-2020-8551 安全漏洞，您必須進行節點升級。以下是包含暫時解決措施的修補程式版本：
+要修補 CVE-2020-8551 安全漏洞，您必須進行節點升級。以下是包含因應措施的修補程式版本：
 
   * 1.15.10-gke.* 
   * 1.16.7-gke.* 
 
 注意：1.14.x 以下版本不會受到這個安全漏洞的影響，因此不需要修補程式。
 
-要修補 CVE-2020-8552 安全漏洞，您必須進行主要執行個體升級。以下是包含暫時解決措施的修補程式版本：
+要修補 CVE-2020-8552 安全漏洞，您必須進行主要執行個體升級。以下是包含因應措施的修補程式版本：
 
   * 1.14.10-gke.32 
   * 1.15.10-gke.* 
@@ -104,7 +304,8 @@ bin/cvename.cgi?name=CVE-2020-8552)
   
 ##  2020 年 1 月 21 日；上次更新日期：2020 年 1 月 24 日
 
-說明  |  嚴重性  |  附註  
+**發布日期：** 2020-01-21  
+**更新日期：** 2020-01-24  說明  |  嚴重性  |  附註  
 ---|---|---  
   
 **2020 年 1 月 24 日更新：** 提供可用修補版本的程序正在制訂中，預計在 2020 年 1 月 25 日完成。
@@ -115,7 +316,7 @@ Microsoft 已揭露 Windows Crypto API 及其橢圓曲線簽章的驗證機制�
 ](https://portal.msrc.microsoft.com/en-US/security-
 guidance/advisory/CVE-2020-0601) 。
 
-**我該怎麼做？**
+**該如何解決這個問題？**
 
 **大多數的客戶無須採取進一步行動，只有執行 Windows Server 的節點受到影響。**
 
@@ -133,7 +334,7 @@ guidance/advisory/CVE-2020-0601) 。
 
 您可以選擇屆時再將節點升級為修補 GKE 版本，也可以隨時使用 Windows Update 手動部署最新的 Windows 修補程式。
 
-下列修補程式版本將包含暫時解決措施：
+下列修補程式版本將包含因應措施：
 
   * 1.14.7-gke.40 
   * 1.14.8-gke.33 
@@ -164,7 +365,8 @@ bin/cvename.cgi?name=CVE-2020-0601)
   
 ##  2019 年 11 月 14 日
 
-說明  |  嚴重性  |  附註  
+**發布日期：** 2019-11-14  
+**更新日期：** 2019-11-14  說明  |  嚴重性  |  附註  
 ---|---|---  
   
 Kubernetes 已揭露 kubernetes-csi 補充元件 [ ` external-provisioner `
@@ -175,7 +377,7 @@ external-resizer ` ](https://github.com/kubernetes-csi/external-resizer)
 ](https://kubernetes-csi.github.io/docs/drivers.html) 中隨附補充元件的大多數版本。詳情請參閱 [
 Kubernetes 公告事項 ](https://github.com/kubernetes/kubernetes/issues/85233) 。
 
-**我該怎麼做？**  
+**該如何解決這個問題？**  
 **這個安全漏洞不影響任何代管的 GKE 元件** 。如果您在執行 GKE 1.12 以上版本的 [ GKE Alpha 版叢集
 ](https://cloud.google.com/kubernetes-engine/docs/concepts/alpha-
 clusters?hl=zh_tw) 中，是自行管理本身的 CSI 驅動程式，那就可能會受到影響。如果您屬於上述情況，請洽詢您的 CSI
@@ -203,7 +405,8 @@ bin/cvename.cgi?name=CVE-2019-11255)
   
 ##  2019 年 11 月 12 日
 
-說明  |  嚴重性  |  附註  
+**發布日期：** 2019-11-12  
+**更新日期：** 2019-11-12  說明  |  嚴重性  |  附註  
 ---|---|---  
   
 Intel 已揭露了多個 CVE，顯示可能允許推測性執行功能和微架構狀態經過交互作用後，公開資料。詳情請參閱 [ Intel 公告事項
@@ -217,7 +420,7 @@ platform-update-ipu/) 。
 ](https://blogs.intel.com/technology/2019/11/ipas-november-2019-intel-
 platform-update-ipu/) 相互比對。
 
-####  我該怎麼做？
+####  該如何解決這個問題？
 
 **只有當您使用 N2、M2 或 C2 節點的節點集區， _並且_ 這些節點在您自己的多用戶群 GKE
 叢集中執行不受信任的程式碼，才會受到影響，也才需要採取行動。 **
@@ -252,7 +455,8 @@ bulletins?hl=zh_tw#may-14-2019) 所使用的同一種微架構資料結構。
   
 ##  2019 年 10 月 22 日
 
-說明  |  嚴重性  |  附註  
+**發布日期：** 2019-10-22  
+**更新日期：** 2019-10-22  說明  |  嚴重性  |  附註  
 ---|---|---  
   
 最近在 Go 程式設計語言中發現一個安全漏洞，請參考 [ CVE-2019-16276 ](https://cve.mitre.org/cgi-
@@ -275,7 +479,8 @@ bin/cvename.cgi?name=CVE-2019-16276)
   
 ##  2019 年 10 月 16 日
 
-說明  |  嚴重性  |  附註  
+**發布日期：** 2019-10-16  
+**更新日期：** 2019-10-24  說明  |  嚴重性  |  附註  
 ---|---|---  
   
 **2019 年 10 月 24 日更新：** 修補完成的版本現在已可供所有區域使用。
@@ -294,11 +499,11 @@ to/authorized-networks?hl=zh_tw) 的 GKE 叢集或是 [ 無公開端點的私人
 ](https://cloud.google.com/kubernetes-engine/docs/how-to/private-
 clusters?hl=zh_tw#private_master) ，都可以有效降低這個安全漏洞的風險。
 
-######  我該怎麼做？
+######  該如何解決這個問題？
 
 含有相關修正的修補程式版本發布後，建議您盡快升級叢集。排定於 10 月 14 日當週發布的 GKE 版本，預期將隨附這類修補程式版本，所有區域皆可使用。
 
-下列修補程式版本將包含暫時解決措施：
+下列修補程式版本將包含因應措施：
 
   * 1.12.10-gke.15 
   * 1.13.11-gke.5 
@@ -323,7 +528,8 @@ bin/cvename.cgi?name=CVE-2019-11253)
   
 ##  2019 年 9 月 16 日
 
-說明  |  嚴重性  |  附註  
+**發布日期：** 2019-09-16  
+**更新日期：** 2019-10-16  說明  |  嚴重性  |  附註  
 ---|---|---  
   
 這則公告自最初發布後已經過更新。
@@ -336,13 +542,13 @@ CPU，降低叢集控制層的可用性。詳情請參閱 [ Go 程式設計語�
 ](https://groups.google.com/forum/?hl=zh_tw#!topic/golang-
 announce/65QixT3tcmg) 。
 
-######  我該怎麼做？
+######  該如何解決這個問題？
 
 一旦發布了最新修補程式版本，能有效降低此安全漏洞的風險之後，建議您盡快升級叢集。根據 [ 發布時間表
 ](https://cloud.google.com/kubernetes-engine/docs/release-
 notes?hl=zh_tw#september_16_2019) ，我們預計這類修補程式會在下次推出 GKE 時於所有區域提供。
 
-下列修補程式版本將包含暫時解決措施：
+下列修補程式版本將包含因應措施：
 
   * **2019 年 10 月 16 日更新：** 1.12.10-gke.15 
   * 1.13.10-gke.0 
@@ -371,9 +577,15 @@ bin/cvename.cgi?name=CVE-2019-9514)
   
 ##  2019 年 9 月 5 日
 
+**發布日期：** 2019-09-05  
+**更新日期：** 2019-09-05
+
 在  2019 年 5 月 31 日  公告中記錄的安全漏洞修正公告已更新。
 
 ##  2019 年 8 月 22 日
+
+**發布日期：** 2019-08-22  
+**更新日期：** 2019-08-22
 
 2019 年 8 月 5 日  的公告已更新。之前公告記錄的安全漏洞修正已 [ 推出
 ](https://cloud.google.com/kubernetes-engine/docs/release-
@@ -381,11 +593,15 @@ notes?hl=zh_tw#august_22_2019) 。
 
 ##  2019 年 8 月 8 日
 
+**發布日期：** 2019-08-08  
+**更新日期：** 2019-08-08
+
 2019 年 8 月 5 日  的公告已更新。我們預計該公告中記錄的安全漏洞修正會在下個 GKE 版本中提供。
 
 ##  2019 年 8 月 5 日
 
-說明  |  嚴重性  |  附註  
+**發布日期：** 2019-08-05  
+**更新日期：** 2019-08-09  說明  |  嚴重性  |  附註  
 ---|---|---  
   
 這則公告自最初發布後已經過更新。
@@ -396,11 +612,11 @@ bin/cvename.cgi?name=CVE-2019-11247) ，允許叢集範圍內的 [ 自訂資源
 resources/) 執行個體，當做所有命名空間中存在的命名空間物件處理。這表示，只具有命名空間層級 RBAC
 權限的使用者和服務帳戶，可與叢集範圍內的自訂資源互動。攻擊者如要利用這項安全漏洞，必須要能存取任何命名空間中的資源。
 
-######  我該怎麼做？
+######  該如何解決這個問題？
 
 一旦發布了最新修補程式版本，能有效降低此安全漏洞的風險之後，建議您盡快 [ 升級
 ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
-cluster?hl=zh_tw) 叢集。我們預計這類修補程式會在下次推出 GKE 時於所有區域提供。下列修補程式版本將包含暫時解決措施：
+cluster?hl=zh_tw) 叢集。我們預計這類修補程式會在下次推出 GKE 時於所有區域提供。下列修補程式版本將包含因應措施：
 
   * 1.11.10-gke.6 
   * 1.12.9-gke.13 
@@ -423,7 +639,8 @@ bin/cvename.cgi?name=CVE-2019-11247)
   
 ##  2019 年 7 月 3 日
 
-說明  |  嚴重性  |  附註  
+**發布日期：** 2019-07-03  
+**更新日期：** 2019-07-03  說明  |  嚴重性  |  附註  
 ---|---|---  
   
 可解決 CVE-2019-11246 的 ` kubectl ` 修補版本現已隨附 [ ` gcloud ` 253.0.0
@@ -443,7 +660,8 @@ bin/cvename.cgi?name=CVE-2018-15664)
   
 ##  2019 年 7 月 3 日
 
-說明  |  嚴重性  |  附註  
+**發布日期：** 2019-06-25  
+**更新日期：** 2019-07-03  說明  |  嚴重性  |  附註  
 ---|---|---  
   
 ######  2019 年 7 月 3 日更新
@@ -513,7 +731,7 @@ bulletins/blob/master/advisories/third-party/2019-001.md) 。
 我們另外準備了 Kubernetes DaemonSet，在永久性修正方案尚未出爐前，使用者也可以修改主機的 ` iptables `
 設定，做為降低漏洞風險的因應措施。
 
-#####  我該怎麼做？
+#####  該如何解決這個問題？
 
 執行下列指令，將 Kubernetes DaemonSet 套用到叢集中的所有節點。這會將 ` iptables ` 規則新增至節點上現有的 `
 iptables ` 規則，以降低這個安全漏洞的風險。 **請為每個 Google Cloud 專案的每個叢集執行指令一次。**
@@ -571,7 +789,7 @@ announce/NLs2TGbfPdo) 。
 **所有 Google Kubernetes Engine (GKE)` gcloud ` 版本都會受到此安全漏洞的影響，我們建議您在最新的 `
 gcloud ` 修補程式版本發布時進行升級。 ** 即將提供的修補程式版本會包含此安全漏洞的因應措施。
 
-######  我該怎麼做？
+######  該如何解決這個問題？
 
 下一版的 ` gcloud ` 將會提供 ` kubectl ` 的修補版本。您也可以自己 [ 直接升級 ` kubectl `
 ](https://kubernetes.io/docs/tasks/tools/install-kubectl/) 。
@@ -610,7 +828,7 @@ bin/cvename.cgi?name=CVE-2018-15664) ，允許可在容器內執行程式碼的�
 Docker，因此都會受到這個安全漏洞的影響。** 在 GKE，使用者無法存取主要執行個體上的 ` docker cp ` ，因此這個安全漏洞對 GKE
 主要執行個體，其實只會造成有限度的影響。
 
-#####  我該怎麼做？
+#####  該如何解決這個問題？
 
 只有執行 Docker 的節點會受到影響，且只有在發出可能遭到把持的 ` docker cp ` (或 API 相等) 指令時，才會出現問題。在
 Kubernetes 環境中，這是相當不尋常的情況。 執行 [ 含 Containerd 的 COS
@@ -683,7 +901,7 @@ Pod 設定` RunAsUser ` 。 **
   * 強制執行 ` runAsUser ` 設定的 PodSecurityPolicies 也不受影響，且會繼續運作如常。 
   * 指定 ` mustRunAsNonRoot:true ` 的 Pod 不會以 UID 0 的身分啟動，但受到這個問題影響時會無法啟動。 
 
-#####  我該怎麼做？
+#####  該如何解決這個問題？
 
 為叢集中不應以 UID 0 身分執行的所有 Pod，設定 [ RunAsUser 安全情境
 ](https://kubernetes.io/docs/tasks/configure-pod-container/security-
@@ -729,7 +947,7 @@ notes?hl=zh_tw)
 ](https://www.intel.com/content/www/us/en/security-center/advisory/intel-
 sa-00233.html) 。
 
-####  我該怎麼做？
+####  該如何解決這個問題？
 
 **除非您在自己的多用戶群 GKE 叢集內執行不受信任的程式碼，否則您不受影響。**
 
@@ -770,10 +988,15 @@ sa-00233.html) 。
     
     disable-smt-2xnnc   1/1       Running   0          6m
 
-  4. 請檢查 pod 中的記錄是否顯示「SMT has been disabled」(SMT 已停用)。 
+  4. 請檢查 pod 中的記錄檔是否顯示「SMT has been disabled」(SMT 已停用)。 
     
         
     kubectl logs disable-smt-2xnnc disable-smt -n kube-system
+
+附註：如果節點已啟用 [ 安全啟動 ](https://cloud.google.com/kubernetes-engine/docs/how-
+to/shielded-gke-nodes?hl=zh_tw#secure_boot) 功能，則無法修改開機選項。如果安全啟動功能已啟用，則必須先將該功能
+[ 停用 ](https://cloud.google.com/kubernetes-engine/docs/how-to/shielded-gke-
+nodes?hl=zh_tw#disabling) ，才能建立 DaemonSet。
 
 您必須讓 DaemonSet
 在節點集區中持續運作，如此在集區建立新節點時才會自動套用變更。而節點自動修復、手動或自動升級，以及自動調整資源配置等事件，都可能導致集區內建立節點。
@@ -820,7 +1043,7 @@ bin/cvename.cgi?name=CVE-2019-9900) 和 [ CVE-2019-9901
 如果您啟用 Google Kubernetes Engine (GKE) 上的 Istio，可能會受這些安全漏洞的影響。
 **建議您盡快將受影響的叢集升級至最新的修補程式版本，並升級 Istio 補充元件 (操作說明如下)。**
 
-####  我該怎麼做？
+####  該如何解決這個問題？
 
 **由於這些安全漏洞較為嚴重，無論您是否已啟用節點自動升級功能，我們都建議您：**
 
@@ -876,7 +1099,7 @@ patch」要求，以過度耗用 Kubernetes API 伺服器中的 CPU 和記憶體
 announce/vmUUNkYfG9g) 。 **所有 Google Kubernetes Engine (GKE)
 主要執行個體都受到這些安全漏洞的影響。即將提供的修補程式版本會包含此安全漏洞的因應措施。我們會依一般升級節奏，在未來幾週內自動將叢集主要執行個體升級至修補的版本。**
 
-####  我該怎麼做？
+####  該如何解決這個問題？
 
 **您不需要採取任何動作。GKE 主要執行個體會依一般升級節奏自動升級。** 如果您希望更快升級主要執行個體，可以 [ 手動啟動主要執行個體升級
 ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
@@ -909,7 +1132,7 @@ bin/cvename.cgi?name=CVE-2019-5736) ，允許濫用容器逃逸漏洞以獲得�
 ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
 cluster?hl=zh_tw) 至最新的修補程式版本。 **
 
-####  我該怎麼做？
+####  該如何解決這個問題？
 
 為了將節點升級，您必須先將主要執行個體升級至最新版本。Kubernetes 1.10.12-gke.7、1.11.6-gke.11、1.11.7-gke.4
 及 1.12.5-gke.5 以上版本包含了這個修補程式。您可以從 [ 版本資訊
@@ -952,7 +1175,7 @@ announce/mVeX35iXuSw) 。
 notes?hl=zh_tw#february-11-2019)
 含有此安全漏洞的因應措施。我們會依一般升級節奏，在未來幾週內自動將叢集主要執行個體升級至修補的版本。 **
 
-####  我該怎麼做？
+####  該如何解決這個問題？
 
 **您不需要採取任何動作。GKE 主要執行個體會依一般升級節奏自動升級。** 如果您希望更快升級主要執行個體，可以 [ 手動啟動主要執行個體升級
 ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
@@ -982,7 +1205,7 @@ announce/GVllWCg6L88) 。 **這些安全漏洞影響了所有的 Google Kubernet
 主要執行個體，我們已將叢集升級到[ 最新的修補程式版本 ](https://cloud.google.com/kubernetes-
 engine/docs/release-notes?hl=zh_tw#november-12-2018) 。您不需要採取任何動作。 **
 
-####  我該怎麼做？
+####  該如何解決這個問題？
 
 **您不需要採取任何動作。GKE 主要執行個體已升級。**
 
@@ -1051,13 +1274,10 @@ Calico 程式碼。
 在接下來的一週當中，我們會陸續撤銷所有可能受到影響的憑證。撤銷作業完成後，這則公告也會隨之更新， **因此您無須採取任何進一步行動** (相關輪替作業已於
 2018 年 11 月 16 日完成)。
 
-如果想要立即輪替這類憑證，請執行以下指令，系統會在幾秒內自動為服務帳戶重新建立新的密碼：  
-      
-    
-    
-    kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
-            
+如果想要立即輪替這類憑證，請執行以下指令，系統會在幾秒內自動為服務帳戶重新建立新的 Secret：  
   
+kubectl get sa --namespace kube-system calico -o template --template '{{(index
+.secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system  
 ---  
   
 ####  偵測
@@ -1246,7 +1466,7 @@ bin/cvename.cgi?name=CVE-2018-11235) 。
 
 所有 Kubernetes Engine 節點均會受到這個安全漏洞的影響。
 
-####  我該怎麼做？
+####  該如何解決這個問題？
 
 禁止使用 gitRepo 磁碟區類型。如要透過 PodSecurityPolicy 禁止任何人使用 gitRepo 磁碟區，請在
 PodSecurityPolicy 的 ` volumes ` 許可清單中省略 ` gitRepo ` 。
@@ -1309,7 +1529,7 @@ CVE-2018-1087 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1087)
 ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
 container-cluster?hl=zh_tw) 至最新修補程式版本。
 
-####  我該怎麼做？
+####  該如何解決這個問題？
 
 如要進行升級，您必須先將主要執行個體升級至最新版本。這個修補程式將會在 Kubernetes Engine 1.8.12-gke.1、Kubernetes
 Engine 1.9.7-gke.1 和 Kubernetes Engine 1.10.2-gke.1 中發布，以上版本均含有適用於 Container-
@@ -1357,7 +1577,7 @@ CVE-2017-1002102 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=2017-1002102) 。這兩個安全漏洞會允許容器存取位於該容器以外的檔案。所有 Kubernetes
 Engine 節點均會受到這些安全漏洞的影響，建議您盡快按照下列步驟操作，以升級至最新修補程式版本。
 
-####  我該怎麼做？
+####  該如何解決這個問題？
 
 由於這些安全漏洞較為嚴重，無論您是否已啟用節點自動升級功能，我們都建議您在修補程式發布後立即 [ 手動升級
 ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
