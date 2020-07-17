@@ -13,6 +13,43 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/configconnector-release-
 notes.xml `
 
+##  July 16, 2020
+
+**FEATURE:**
+
+Add support for allowing fields not specified by the user to be externally-
+managed (i.e. changeable outside of Config Connector). This feature can be
+enabled for a resource by enabling K8s server-side apply for the resource,
+which will be the default for all K8s resources starting in K8s 1.18. More
+detailed docs about the feature coming soon.
+
+**FEATURE:**
+
+Operator improvement: add support for cluster-mode set-ups, which allows users
+to use one Google Service Account for all namespaces in their cluster. This is
+very similar to the traditional "Workload Identity" installation set-up.
+
+**FIXED:**
+
+Fix ` ContainerCluster ` validation issue ( [ Issue #242
+](https://github.com/GoogleCloudPlatform/k8s-config-connector/issues/242) ).
+
+**FIXED:**
+
+Fix OOM issue for the ` cnrm-resource-stats-recorder ` pod ( [ Issue #239
+](https://github.com/GoogleCloudPlatform/k8s-config-connector/issues/239) ).
+
+**FEATURE:**
+
+Add support for ` projectViewer ` prefix for members in ` IAMPolicy ` and `
+IAMPolicyMember ` ( [ Issue #234
+](https://github.com/GoogleCloudPlatform/k8s-config-connector/issues/234) ).
+
+**CHANGED:**
+
+Reduce ` spec.revisionHistoryLimit ` for the ` cnrm-stats-recorder ` and `
+cnrm-webhook-manager ` Deployments from 10 (the default) to 1.
+
 ##  July 09, 2020
 
 **FEATURE:**
