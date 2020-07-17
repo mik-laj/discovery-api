@@ -15,6 +15,159 @@ Isolation-at-different-layers-of-the-Kubernetes-stack.html) 。
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/kubernetes-engine-security-bulletins.xml `
 
+##  GCP-2020-007
+
+**发布日期：** 2020-06-01  
+说明  |  严重级别  |  备注  
+---|---|---  
+  
+近期在 Kubernetes 中发现了一个服务器端请求伪造 (SSRF) 漏洞 ( [ CVE-2020-8555
+](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555)
+)，该漏洞会导致某些已获授权的用户从控制平面主机网络中泄露多达 500 字节的敏感信息。Google Kubernetes Engine (GKE)
+控制平面使用的是 Kubernetes 的控制器，所有 Kubernetes Engine 节点都会受到此漏洞的影响，我们建议您将控制平面 [ 升级
+](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
+container-cluster?hl=zh_cn) 到最新的补丁程序版本，具体说明如下所述。不需要升级节点。  
+
+####  我该怎么做？
+
+大多数客户无需执行任何额外操作。绝大多数集群已在运行修补版本。 以下 GKE 版本或更高版本包含针对此漏洞的修补程序：
+
+  * 1.14.7-gke.39 
+  * 1.14.8-gke.32 
+  * 1.14.9-gke.17 
+  * 1.14.10-gke.12 
+  * 1.15.7-gke.17 
+  * 1.16.4-gke.21 
+  * 1.17.0-gke.0 
+
+使用 [ 发布渠道 ](https://cloud.google.com/kubernetes-engine/docs/concepts/release-
+channels?hl=zh_cn) 的集群已在采取了缓解措施的控制平面版本上运行。
+
+####  该补丁程序解决了哪一漏洞？
+
+这些补丁程序解决了漏洞 CVE-2020-8555。此漏洞被评为 GKE 的中危漏洞，由于各种控制平面安全强化措施的实施而很难被利用。
+
+有权创建内置了卷类型（GlusterFS、Quobyte、StorageFS、ScaleIO）的 Pod 的攻击者或有权创建 StorageClass
+的攻击者可以使 ` kube-controller-manager ` 发出 ` GET ` 请求或 ` POST `
+请求，而无需通过主实例的主机网络控制请求正文 __ 。这些卷类型在 GKE 上很少使用，因此重新使用这些卷类型可能是一个有用的检测信号。
+
+如果与重新向攻击者泄露 ` GET/POST `
+结果的方法结合使用（例如通过日志），则可能会导致敏感信息被披露。我们更新了相关的存储驱动程序，以消除发生此类泄露的可能性。
+
+|
+
+中
+
+|
+
+[ CVE-2020-8555 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8555)  
+  
+##  GCP-2020-006
+
+**发布日期：** 2020-06-01  
+说明  |  严重级别  |  备注  
+---|---|---  
+  
+Kubernetes 披露了一个 [ 漏洞 ](https://github.com/kubernetes/kubernetes/issues/91507)
+，该漏洞允许特权容器将节点流量重定向至其他容器。此攻击无法读取或修改双向 TLS/SSH 流量（例如 kubelet 与 API
+服务器之间的流量）或来自使用 mTLS 的应用的流量。所有 Google Kubernetes Engine (GKE)
+节点都会受到此漏洞的影响，我们建议您 [ 升级 ](https://cloud.google.com/kubernetes-engine/docs/how-
+to/upgrading-a-cluster?hl=zh_cn) 到最新的补丁程序版本，具体说明如下所述。
+
+####  我该怎么做？
+
+要解决此漏洞，请 [ 升级 ](https://cloud.google.com/kubernetes-engine/docs/how-
+to/upgrading-a-cluster?hl=zh_cn)
+您的控制平面，然后将您的节点升级为下面列出的一个修补版本。使用发布渠道的集群已同时在控制平面和节点上运行修补版本：
+
+  * 1.14.10-gke.36 
+  * 1.15.11-gke.15 
+  * 1.16.8-gke.15 
+
+通常，很少有容器需要 ` CAP_NET_RAW ` 。默认情况下，应该通过 [ PodSecurityPolicy
+](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-
+policies?hl=zh_cn) 或 [ Anthos 政策控制器 ](https://cloud.google.com/anthos-config-
+management/docs/concepts/policy-controller?hl=zh_cn) 阻止此功能和其他强大的功能：
+
+  * 从容器中删除 ` CAP_NET_RAW ` 功能： 
+    * 使用以下命令，通过 [ PodSecurityPolicy ](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=zh_cn) 强制执行此操作： 
+        
+                
+        # Require dropping CAP_NET_RAW with a PSP
+        apiversion: extensions/v1beta1
+        kind: PodSecurityPolicy
+        metadata:
+          name: no-cap-net-raw
+        spec:
+          requiredDropCapabilities:
+            -NET_RAW
+             ...
+             # Unrelated fields omitted
+        
+
+    * 或者将 Anthos 政策控制器/Gatekeeper 与此 [ 限制条件模板 ](https://github.com/open-policy-agent/gatekeeper/blob/master/library/pod-security-policy/capabilities/template.yaml) 结合使用，并加以应用，例如： 
+        
+                
+        # Dropping CAP_NET_RAW with Gatekeeper
+        # (requires the K8sPSPCapabilities template)
+        apiversion: constraints.gatekeeper.sh/v1beta1
+        kind:  K8sPSPCapabilities
+        metadata:
+          name: forbid-cap-net-raw
+        spec:
+          match:
+            kinds:
+              - apiGroups: [""]
+              kinds: ["Pod"]
+            namespaces:
+              #List of namespaces to enforce this constraint on
+              - default
+            # If running gatekeeper >= v3.1.0-beta.5,
+            # you can exclude namespaces rather than including them above.
+            excludedNamespaces:
+              - kube-system
+          parameters:
+            requiredDropCapabilities:
+              - "NET_RAW"
+        
+
+    * 或者更新您的 Pod 规范： 
+        
+                
+        # Dropping CAP_NET_RAW from a Pod:
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          name: no-cap-net-raw
+        spec:
+          containers:
+            -name: may-container
+             ...
+            securityContext:
+              capabilities:
+                drop:
+                  -NET_RAW
+        
+
+####  该补丁程序解决了哪一漏洞？
+
+该补丁程序解决了以下漏洞：
+
+[ Kubernetes 问题 91507 ](https://github.com/kubernetes/kubernetes/issues/91507)
+中所述的漏洞 ` CAP_NET_RAW ` 功能（包含在默认容器功能集中）会在节点上恶意配置 IPv6
+堆栈，并将节点流量重定向至攻击者控制的容器。这样一来，攻击者就可以拦截/修改源自或发送至该节点的流量。此攻击无法读取或修改双向 TLS/SSH 流量（例如
+kubelet 与 API 服务器之间）或来自使用 mTLS 的应用的流量。
+
+|
+
+中
+
+|
+
+[ Kubernetes 问题 91507 ](https://github.com/kubernetes/kubernetes/issues/91507)  
+  
+  
 ##  GCP-2020-005
 
 **发布日期** ：2020 年 5 月 7 日  
@@ -221,7 +374,7 @@ csi.github.io/docs/drivers.html) 中捆绑的 Sidecar 的大多数版本。如�
 披露信息 ](https://github.com/kubernetes/kubernetes/issues/85233) 。
 
 **我该怎么做？**  
-**此漏洞不会影响任何托管 GKE 组件** 。 如果您在运行 GKE 1.12 版或更高版本的 [ GKE Alpha 版集群
+**此漏洞不会影响任何代管 GKE 组件** 。 如果您在运行 GKE 1.12 版或更高版本的 [ GKE Alpha 版集群
 ](https://cloud.google.com/kubernetes-engine/docs/concepts/alpha-
 clusters?hl=zh_cn) 中管理自己的 CSI 驱动程序，则可能会受此漏洞影响。如果您受到影响，请联系您的 CSI
 驱动程序供应商，以获得升级说明。
@@ -324,7 +477,7 @@ bin/cvename.cgi?name=CVE-2019-16276)
 **更新日期** ：2019 年 10 月 24 日  说明  |  严重级别  |  备注  
 ---|---|---  
   
-**2019 年 10 月 24 日更新** ：经过修补的版本现已在所有地区推出。
+**2019 年 10 月 24 日更新** ：经过修补的版本现已在所有区域推出。
 
 * * *
 
@@ -342,7 +495,7 @@ clusters?hl=zh_cn#private_master) 缓解此漏洞。
 ######  我该怎么做？
 
 我们建议您在包含修复方案的补丁程序版本发布后，尽快将集群升级到相应补丁程序版本。我们预计，它们将在 10 月 14 日那一周按计划发布的 GKE
-版本中推出，届时将可供所有地区使用。
+版本中推出，届时将可供所有区域使用。
 
 下面列出了将包含缓解措施的补丁程序版本：
 
@@ -387,7 +540,7 @@ announce/65QixT3tcmg) 。
 
 在包含针对此漏洞的缓解措施的最新补丁程序版本发布后，我们建议您尽快将集群升级到相应的补丁程序版本。根据 [ 发布时间表
 ](https://cloud.google.com/kubernetes-engine/docs/release-
-notes?hl=zh_cn#september_16_2019) ，我们预计这些补丁程序版本将随下个 GKE 版本一起在所有地区推出。
+notes?hl=zh_cn#september_16_2019) ，我们预计这些补丁程序版本将随下个 GKE 版本一起在所有区域推出。
 
 下面列出了将包含缓解措施的补丁程序版本：
 
@@ -457,7 +610,7 @@ resources/) 实例像存在于所有命名空间内的有命名空间对象一�
 
 在包含此漏洞缓解措施的最新补丁程序版本发布后，建议您尽快将集群 [ 升级 ](https://cloud.google.com/kubernetes-
 engine/docs/how-to/upgrading-a-cluster?hl=zh_cn) 到该补丁程序版本。我们预计，它们将随下个 GKE
-版本在所有地区提供。下面列出了将包含缓解措施的补丁程序版本：
+版本在所有区域提供。下面列出了将包含缓解措施的补丁程序版本：
 
   * 1.11.10-gke.6 
   * 1.12.9-gke.13 
@@ -833,9 +986,10 @@ sa-00233.html) 。
         
     kubectl logs disable-smt-2xnnc disable-smt -n kube-system
 
-注意：如果节点启用了[安全启动](/kubernetes-engine/docs/how-to/shielded-gke-
-nodes#secure_boot)功能，则无法修改启动选项。如果已经启用安全启动功能，需要首先将其[停用](/kubernetes-
-engine/docs/how-to/shielded-gke-nodes#disabling)，然后才能创建 DaemonSet。
+注意：如果节点启用了 [ 安全启动 ](https://cloud.google.com/kubernetes-engine/docs/how-
+to/shielded-gke-nodes?hl=zh_cn#secure_boot) 功能，则启动选项无法修改。如果安全启动功能已经启用，需要首先将其 [
+停用 ](https://cloud.google.com/kubernetes-engine/docs/how-to/shielded-gke-
+nodes?hl=zh_cn#disabling) ，然后才能创建 DaemonSet。
 
 您必须让 DaemonSet 在节点池上保持运行，从而使得池中创建的新节点可以自动应用更改。节点创建可由节点自动修复、手动升级或自动升级和自动扩缩触发。
 
@@ -1112,12 +1266,9 @@ Google 最近在 Calico Container Network Interface (CNI)
 16 日完成）
 
 如果您希望立即轮替这些令牌，则可运行以下命令，系统将在几秒钟内自动重新创建服务帐号的新密钥：  
-      
-    
-    
-    kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
-            
   
+kubectl get sa --namespace kube-system calico -o template --template '{{(index
+.secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system  
 ---  
   
 ####  检测
@@ -1422,7 +1573,7 @@ bin/cvename.cgi?name=2017-1002101) 和 [ CVE-2017-1002102
 鉴于这些漏洞的严重级别，无论您是否启用了节点自动升级，我们都建议您在补丁程序可用时立即 [ 手动升级
 ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
 container-cluster?hl=zh_cn) 您的节点。该补丁程序将于 3 月 16
-日之前提供给所有客户，但根据您的集群所在的地区，您也可能会更早获得该补丁程序，具体请参照 [ 发布计划
+日之前提供给所有客户，但根据您的集群所在的区域，您也可能会更早获得该补丁程序，具体请参照 [ 发布计划
 ](https://cloud.google.com/kubernetes-engine/docs/release-
 notes?hl=zh_cn#march-12-2018) 。
 
