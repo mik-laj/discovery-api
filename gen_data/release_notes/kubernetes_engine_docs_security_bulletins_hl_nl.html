@@ -14,7 +14,7 @@
     <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=nl">
      release-opmerkingen
     </a>
-    van GKE betrekking op 'beveiligingsupdates' totdat het embargo is opgeheven. Op dat moment worden de opmerkingen geüpdatet met de kwetsbaarheid die door de patch is aangepakt.
+    van GKE betrekking op 'beveiligingsupdates' totdat het embargo is opgeheven. Op dat moment worden de opmerkingen geüpdatet met de kwetsbaarheid die door de patch is verholpen.
    </p>
    <aside class="note">
     <strong>
@@ -33,12 +33,320 @@
     <a class="external" href="https://wikipedia.org/wiki/Comparison_of_feed_aggregators">
      feedlezer
     </a>
-    toe of voeg de feed-URL direct toe om de nieuwste beveiligingsbulletins te ontvangen:
+    toe of voeg de feed-URL rechtstreeks toe om de nieuwste beveiligingsbulletins te ontvangen:
     <code dir="ltr" translate="no">
      https://cloud.google.com/feeds/kubernetes-engine-security-bulletins.xml
     </code>
    </p>
    <section class="bulletins">
+    <h2 data-text="GCP-2020-007" id="gcp-2020-007" tabindex="0">
+     GCP-2020-007
+    </h2>
+    <strong>
+     Gepubliceerd:
+    </strong>
+    01-06-2020
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschrijving
+       </th>
+       <th>
+        Ernst
+       </th>
+       <th>
+        Opmerkingen
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Onlangs is in Kubernetes een kwetsbaarheid van het type Server Side Request Forgery (SSRF),
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555">
+          CVE-2020-8555
+         </a>
+         , ontdekt waardoor bepaalde gemachtigde gebruikers tot 500 bytes aan gevoelige informatie kunnen lekken van het hostnetwerk van het besturingsvlak. Het GKE-besturingsvlak (Google Kubernetes Engine) gebruikt controllers van Kubernetes en is dus getroffen door deze kwetsbaarheid. We raden u aan het besturingsvlak te
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-container-cluster?hl=nl">
+          upgraden
+         </a>
+         naar de nieuwste patchversie, zoals hieronder wordt beschreven.
+      Een node-upgrade is niet vereist.
+         <br/>
+        </p>
+        <h4 data-text="Wat moet ik doen?" id="what-should-i-do" tabindex="0">
+         Wat moet ik doen?
+        </h4>
+        De meeste klanten hoeven verder niets te doen. Het merendeel van de clusters heeft al een gepatchte versie.
+
+      De volgende GKE-versies of nieuwer bevatten de oplossing voor deze kwetsbaarheid:
+        <ul>
+         <li>
+          1.14.7-gke.39
+         </li>
+         <li>
+          1.14.8-gke.32
+         </li>
+         <li>
+          1.14.9-gke.17
+         </li>
+         <li>
+          1.14.10-gke.12
+         </li>
+         <li>
+          1.15.7-gke.17
+         </li>
+         <li>
+          1.16.4-gke.21
+         </li>
+         <li>
+          1.17.0-gke.0
+         </li>
+        </ul>
+        <p>
+         Clusters met
+         <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels?hl=nl">
+          releasekanalen
+         </a>
+         voeren al besturingsvlakversies met de oplossing uit.
+        </p>
+        <h4 data-text="Welke kwetsbaarheid wordt door deze patch verholpen? " id="what-vulnerability-is-addressed-by-this-patch" tabindex="0">
+         Welke kwetsbaarheid wordt door deze patch verholpen?
+        </h4>
+        <p>
+         Deze patches pakken de kwetsbaarheid CVE-2020-8555 aan. Dit wordt beoordeeld als een gemiddelde kwetsbaarheid voor GKE, omdat het moeilijk te misbruiken was vanwege de verschillende versterkingsmaatregelen voor het besturingsvlak.
+        </p>
+        <p>
+         Een aanvaller met toestemming om een pod met bepaalde ingebouwde volumetypen (GlusterFS, Quobyte, StorageFS, ScaleIO) of een StorageClass te maken, kan
+         <code dir="ltr" translate="no">
+          kube-controller-manager
+         </code>
+         <code dir="ltr" translate="no">
+          GET
+         </code>
+         -verzoeken of
+         <code dir="ltr" translate="no">
+          POST
+         </code>
+         -verzoeken laten uitvoeren
+         <em>
+          zonder
+         </em>
+         een door de aanvaller gecontroleerd tekstgedeelte van het verzoek van het hostnetwerk van de hoofdinstantie. Deze volumetypen worden zelden gebruikt op GKE, dus nieuw gebruik van deze volumetypen kan een nuttig detectiesignaal zijn.
+        </p>
+        <p>
+         In combinatie met de mogelijkheid om de resultaten van de
+         <code dir="ltr" translate="no">
+          GET/POST
+         </code>
+         terug naar de aanvaller te lekken, bijvoorbeeld via logboeken, kan dit leiden tot openbaarmaking van gevoelige informatie. We hebben de desbetreffende opslagdrivers geüpdatet om het potentiële risico op dergelijke lekken weg te nemen.
+        </p>
+       </td>
+       <td>
+        <p>
+         Gemiddeld
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555">
+          CVE-2020-8555
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-006" id="gcp-2020-006" tabindex="0">
+     GCP-2020-006
+    </h2>
+    <strong>
+     Gepubliceerd:
+    </strong>
+    01-06-2020
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschrijving
+       </th>
+       <th>
+        Ernst
+       </th>
+       <th>
+        Opmerkingen
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Kubernetes heeft bekendgemaakt dat er een
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          kwetsbaarheid
+         </a>
+         is waardoor een gemachtigde container node-verkeer kan omleiden naar een andere container. Wederzijds TLS/SSH-verkeer, zoals tussen de kubelet en de API-server of verkeer van apps die mTLS gebruiken, kunnen niet worden gelezen of gewijzigd door deze aanval. Deze kwetsbaarheid geldt voor alle GKE-nodes (Google Kubernetes Engine). We raden u aan een
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=nl">
+          upgrade
+         </a>
+         uit te voeren naar de nieuwste patchversie, zoals hieronder beschreven.
+        </p>
+        <h4 data-text=" Wat moet ik doen?" id="what-should-i-do_1" tabindex="0">
+         Wat moet ik doen?
+        </h4>
+        <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=nl">
+         Upgrade
+        </a>
+        uw besturingsvlak en vervolgens uw nodes naar een van de gepatchte versies hieronder om deze kwetsbaarheid op te lossen. Clusters op releasekanalen voeren al een gepatchte versie op het besturingsvlak en de nodes uit
+        <ul>
+         <li>
+          1.14.10-gke.36
+         </li>
+         <li>
+          1.15.11-gke.15
+         </li>
+         <li>
+          1.16.8-gke.15
+         </li>
+        </ul>
+        <p>
+         Voor zeer weinig containers is
+         <code dir="ltr" translate="no">
+          CAP_NET_RAW
+         </code>
+         vereist. Deze en andere krachtige functies moeten standaard worden geblokkeerd via
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=nl">
+          PodSecurityPolicy
+         </a>
+         of
+         <a href="https://cloud.google.com/anthos-config-management/docs/concepts/policy-controller?hl=nl">
+          Anthos Policy Controller
+         </a>
+         :
+        </p>
+        <ul>
+         <li>
+          Verwijder de
+          <code dir="ltr" translate="no">
+           CAP_NET_RAW
+          </code>
+          -functionaliteit uit containers:
+         </li>
+         <ul>
+          <li>
+           Door het af te dwingen via
+           <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=nl">
+            PodSecurityPolicy
+           </a>
+           met:
+          </li>
+          <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Require dropping CAP_NET_RAW with a PSP
+apiversion: extensions/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: no-cap-net-raw
+spec:
+  requiredDropCapabilities:
+    -NET_RAW
+     ...
+     # Unrelated fields omitted
+</pre>
+         </ul>
+         <ul>
+          <li>
+           Of door Anthos Policy Controller/Gatekeeper te gebruiken met deze
+           <a class="external" href="https://github.com/open-policy-agent/gatekeeper/blob/master/library/pod-security-policy/capabilities/template.yaml">
+            beperkingentemplate
+           </a>
+           en deze toe te passen. bijvoorbeeld:
+          </li>
+          <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Dropping CAP_NET_RAW with Gatekeeper
+# (requires the K8sPSPCapabilities template)
+apiversion: constraints.gatekeeper.sh/v1beta1
+kind:  K8sPSPCapabilities
+metadata:
+  name: forbid-cap-net-raw
+spec:
+  match:
+    kinds:
+      - apiGroups: [""]
+      kinds: ["Pod"]
+    namespaces:
+      #List of namespaces to enforce this constraint on
+      - default
+    # If running gatekeeper &gt;= v3.1.0-beta.5,
+    # you can exclude namespaces rather than including them above.
+    excludedNamespaces:
+      - kube-system
+  parameters:
+    requiredDropCapabilities:
+      - "NET_RAW"
+</pre>
+         </ul>
+         <ul>
+          <li>
+           Of door uw pod-specificaties te updaten:
+          </li>
+          <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Dropping CAP_NET_RAW from a Pod:
+apiVersion: v1
+kind: Pod
+metadata:
+  name: no-cap-net-raw
+spec:
+  containers:
+    -name: may-container
+     ...
+    securityContext:
+      capabilities:
+        drop:
+          -NET_RAW
+</pre>
+         </ul>
+        </ul>
+        <h4 data-text="Welke kwetsbaarheid wordt door deze patch verholpen? " id="what-vulnerability-is-addressed-by-this-patch_1" tabindex="0">
+         Welke kwetsbaarheid wordt door deze patch verholpen?
+        </h4>
+        <p>
+         De patch verhelpt de volgende kwetsbaarheid:
+        </p>
+        <p>
+         De kwetsbaarheid beschreven in
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          Kubernetes-probleem 91507
+         </a>
+         <code dir="ltr" translate="no">
+          CAP_NET_RAW
+         </code>
+         -functie (die is inbegrepen in de standaard functieset voor containers) om op schadelijke wijze de IPv6-stack op de node te configureren en node-verkeer naar de door de aanvaller beheerde container om te leiden. Hierdoor kan de aanvaller verkeer van of naar de node onderscheppen/aanpassen. Wederzijds TLS/SSH-verkeer, zoals tussen de kubelet en de API-server of verkeer van apps met mTLS, kunnen niet worden gelezen of aangepast door deze aanval.
+        </p>
+       </td>
+       <td>
+        <p>
+         Gemiddeld
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          Kubernetes-probleem 91507
+         </a>
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
     <h2 data-text="GCP-2020-005" id="gcp-2020-005" tabindex="0">
      GCP-2020-005
     </h2>
@@ -81,7 +389,7 @@
         <p>
          Nodes die Container-Optimized OS uitvoeren, worden niet beïnvloed. Nodes die op GKE On-Prem worden uitgevoerd, worden niet beïnvloed.
         </p>
-        <h4 data-text="Wat moet ik doen?" id="what-should-i-do" tabindex="0">
+        <h4 data-text="Wat moet ik doen?" id="what-should-i-do_2" tabindex="0">
          Wat moet ik doen?
         </h4>
         <p>
@@ -96,8 +404,8 @@
          </a>
          .
         </p>
-        <h4 data-text="Welke kwetsbaarheid wordt door deze patch aangepakt?" id="what-vulnerability-is-addressed-by-this-patch" tabindex="0">
-         Welke kwetsbaarheid wordt door deze patch aangepakt?
+        <h4 data-text="Welke kwetsbaarheid wordt door deze patch verholpen?" id="what-vulnerability-is-addressed-by-this-patch_2" tabindex="0">
+         Welke kwetsbaarheid wordt door deze patch verholpen?
         </h4>
         <p>
          De patch beperkt de volgende kwetsbaarheid:
@@ -159,7 +467,7 @@
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11254">
           CVE-2019-11254
          </a>
-         , waardoor gebruikers die gemachtigd zijn om POST-verzoeken in te dienen, op afstand een DoS-aanval (Denial of Service) op een Kubernetes API-server kunnen uitvoeren. Het Product Security Committee (PSC) van Kubernetes heeft aanvullende informatie over deze kwetsbaarheid vrijgegeven. Deze kunt u
+         , waardoor gebruikers die gemachtigd zijn om POST-verzoeken in te dienen, op afstand een DoS-aanval (denial of service) op een Kubernetes API-server kunnen uitvoeren. Het Product Security Committee (PSC) van Kubernetes heeft aanvullende informatie over deze kwetsbaarheid vrijgegeven. Deze kunt u
          <a href="https://groups.google.com/forum/?hl=nl#!topic/kubernetes-security-announce/wuwEwZigXBc">
           hier
          </a>
@@ -176,7 +484,7 @@
          </a>
          gebruiken, hebben geen last van deze kwetsbaarheid.
         </p>
-        <h4 data-text="Wat moet ik doen?" id="what-should-i-do_1" tabindex="0">
+        <h4 data-text="Wat moet ik doen?" id="what-should-i-do_3" tabindex="0">
          Wat moet ik doen?
         </h4>
         <p>
@@ -206,7 +514,7 @@
          Welke kwetsbaarheden worden door deze patch verholpen?
         </h4>
         <p>
-         Deze patch bevat de oplossing voor de volgende DoS-kwetsbaarheid (Denial of Service):
+         Deze patch bevat de oplossing voor de volgende DoS-kwetsbaarheid (denial of service):
         </p>
         <p>
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11254">
@@ -274,7 +582,7 @@
          </a>
          .
         </p>
-        <h4 data-text="Wat moet ik doen?" id="what-should-i-do_2" tabindex="0">
+        <h4 data-text="Wat moet ik doen?" id="what-should-i-do_4" tabindex="0">
          Wat moet ik doen?
         </h4>
         <p>
@@ -527,7 +835,7 @@
          </a>
          -sidecars dat van toepassing is op de meeste versies van de sidecars die zijn gebundeld in
          <a href="https://kubernetes-csi.github.io/docs/drivers.html">
-          Container Storage Interface (CSI)-stuurprogramma's
+          CSI-stuurprogramma's (Container Storage Interface)
          </a>
          . Bekijk de
          <a href="https://github.com/kubernetes/kubernetes/issues/85233">
@@ -581,7 +889,7 @@
          </a>
          -sidecars waardoor ongeoorloofde gegevenstoegang of -mutatie kan plaatsvinden. Dit is van toepassing op de meeste versies van de sidecars die zijn gebundeld in
          <a href="https://kubernetes-csi.github.io/docs/drivers.html">
-          CSI stuurprogramma's
+          CSI-stuurprogramma's
          </a>
          .
         </p>
@@ -655,7 +963,7 @@
          </a>
          .
         </p>
-        <h4 data-text="Wat moet ik doen?" id="what-should-i-do_3" tabindex="0">
+        <h4 data-text="Wat moet ik doen?" id="what-should-i-do_5" tabindex="0">
          Wat moet ik doen?
         </h4>
         <p>
@@ -705,7 +1013,7 @@
          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12207">
           CVE-2018-12207
          </a>
-         Dit is een DoS-kwetsbaarheid (Denial of Service) die van invloed is op de hosts van virtuele machines. Door deze kwetsbaarheid kunnen kwaadwillende outsiders een onbeschermde host laten crashen. Deze CVE staat ook bekend als 'Machine Check Error on Page Size Change'. Dit is niet van toepassing op GKE.
+         Dit is een DoS-kwetsbaarheid (denial of service) die van invloed is op de hosts van virtuele machines. Door deze kwetsbaarheid kunnen kwaadwillende outsiders een onbeschermde host laten crashen. Deze CVE staat ook bekend als 'Machine Check Error on Page Size Change'. Dit is niet van toepassing op GKE.
         </p>
        </td>
        <td>
@@ -829,7 +1137,7 @@
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11253">
           CVE-2019-11253
          </a>
-         , waardoor gebruikers die gemachtigd zijn om POST-verzoeken in te dienen, op afstand een DoS-aanval (Denial of Service) op een Kubernetes API-server kunnen uitvoeren. Het Kubernetes Product Security Committee (PSC) heeft aanvullende informatie over deze kwetsbaarheid vrijgegeven, die
+         , waardoor gebruikers die gemachtigd zijn om POST-verzoeken in te dienen, op afstand een DoS-aanval (denial of service) op een Kubernetes API-server kunnen uitvoeren. Het Kubernetes Product Security Committee (PSC) heeft aanvullende informatie over deze kwetsbaarheid vrijgegeven, die
          <a class="external" href="https://groups.google.com/forum/?hl=nl#!topic/kubernetes-security-announce/jk8polzSUxs">
           hier
          </a>
@@ -846,7 +1154,7 @@
          </a>
          lossen deze kwetsbaarheid op.
         </p>
-        <h6 data-text="Wat moet ik doen?" id="what-should-i-do_4" tabindex="0">
+        <h6 data-text="Wat moet ik doen?" id="what-should-i-do_6" tabindex="0">
          Wat moet ik doen?
         </h6>
         <p>
@@ -876,7 +1184,7 @@
          De patch beperkt de volgende kwetsbaarheden:
         </p>
         <p>
-         CVE-2019-11253 is een DoS-kwetsbaarheid (Denial of Service).
+         CVE-2019-11253 is een DoS-kwetsbaarheid (denial of service).
         </p>
        </td>
        <td>
@@ -936,13 +1244,13 @@
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9514">
           CVE-2019-9514
          </a>
-         ontdekt. Dit zijn DoS-kwetsbaarheden (Denial of Service). Hierdoor kunnen gebruikers in GKE kwaadwillende verzoeken indienen die buitensporige hoeveelheden CPU in de Kubernetes API-server verbruiken, waardoor de beschikbaarheid van het clusterbeheervlak mogelijk wordt verminderd. Bekijk de
+         ontdekt. Dit zijn DoS-kwetsbaarheden (denial of service). Hierdoor kunnen gebruikers in GKE kwaadwillende verzoeken indienen die buitensporige hoeveelheden CPU in de Kubernetes API-server verbruiken, waardoor de beschikbaarheid van het clusterbesturingsvlak mogelijk wordt verminderd. Bekijk de
          <a class="external" href="https://groups.google.com/forum/?hl=nl#!topic/golang-announce/65QixT3tcmg">
           kennisgeving van de programmeertaal Go
          </a>
          voor meer informatie.
         </p>
-        <h6 data-text="Wat moet ik doen?" id="what-should-i-do_5" tabindex="0">
+        <h6 data-text="Wat moet ik doen?" id="what-should-i-do_7" tabindex="0">
          Wat moet ik doen?
         </h6>
         <p>
@@ -969,8 +1277,8 @@
           1.14.6-gke.1
          </li>
         </ul>
-        <h6 data-text="Welke kwetsbaarheid wordt door deze patch aangepakt?" id="what-vulnerability-is-addressed-by-this-patch_1" tabindex="0">
-         Welke kwetsbaarheid wordt door deze patch aangepakt?
+        <h6 data-text="Welke kwetsbaarheid wordt door deze patch verholpen?" id="what-vulnerability-is-addressed-by-this-patch_3" tabindex="0">
+         Welke kwetsbaarheid wordt door deze patch verholpen?
         </h6>
         <p>
          De patch beperkt de volgende kwetsbaarheden:
@@ -983,7 +1291,7 @@
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9514">
           CVE-2019-9514
          </a>
-         zijn DoS-kwetsbaarheden (Denial of Service).
+         zijn DoS-kwetsbaarheden (denial of service).
         </p>
        </td>
        <td>
@@ -1112,7 +1420,7 @@ We verwachten dat de oplossing voor de kwetsbaarheid die in dat bulletin wordt b
          </a>
          kunnen worden benut als naamruimteobjecten die in alle naamruimten voorkomen. Dit betekent dat alle gebruikers- en serviceaccounts met alleen RBAC-rechten op naamruimteniveau interactie kunnen hebben met clustergewijze aangepaste resources. De aanvaller moet de juiste rechten hebben om toegang te krijgen tot de resource in een naamruimte om deze kwetsbaarheid uit te buiten.
         </p>
-        <h6 data-text="Wat moet ik doen?" id="what-should-i-do_6" tabindex="0">
+        <h6 data-text="Wat moet ik doen?" id="what-should-i-do_8" tabindex="0">
          Wat moet ik doen?
         </h6>
         <p>
@@ -1140,8 +1448,8 @@ We verwachten dat de oplossing voor de kwetsbaarheid die in dat bulletin wordt b
           )
          </li>
         </ul>
-        <h6 data-text="Welke kwetsbaarheid wordt door deze patch aangepakt?" id="what-vulnerability-is-addressed-by-this-patch_2" tabindex="0">
-         Welke kwetsbaarheid wordt door deze patch aangepakt?
+        <h6 data-text="Welke kwetsbaarheid wordt door deze patch verholpen?" id="what-vulnerability-is-addressed-by-this-patch_4" tabindex="0">
+         Welke kwetsbaarheid wordt door deze patch verholpen?
         </h6>
         <p>
          De patch lost de volgende kwetsbaarheid op:
@@ -1307,7 +1615,7 @@ We verwachten dat de oplossing voor de kwetsbaarheid die in dat bulletin wordt b
          Update 24 juni 2019
         </h6>
         <p>
-         Op 22-06-2019 21:40 UTC hebben we de volgende gepatchte versie van Kubernetes vrijgegeven. Hoofdinstanties tussen Kubernetes-versie 1.11.0 en 1.13.6 worden automatisch geüpdatet naar een gepatchte versie. Upgrade naar een compatibele hoofdversie (zie hieronder) voordat u uw nodes upgradet, als u een versie uitvoert die niet compatibel is met deze patch.
+         Op 22-06-2019 21:40 UTC hebben we de volgende gepatchte versie van Kubernetes vrijgegeven. Hoofdinstanties tussen Kubernetes-versie 1.11.0 en 1.13.6 worden automatisch geüpdatet naar een gepatchte versie. Upgrade naar een compatibele hoofdversie (zie hieronder) voordat u uw nodes upgradet, als u een versie uitvoert die niet  is met deze patch.
         </p>
         <p>
          <strong>
@@ -1419,7 +1727,7 @@ We verwachten dat de oplossing voor de kwetsbaarheid die in dat bulletin wordt b
          </code>
          -hostconfiguratie aan te passen.
         </p>
-        <h5 data-text="Wat moet ik doen?" id="what-should-i-do_7" tabindex="0">
+        <h5 data-text="Wat moet ik doen?" id="what-should-i-do_9" tabindex="0">
          Wat moet ik doen?
         </h5>
         <p>
@@ -1555,7 +1863,7 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
          </strong>
          Een aankomende patchversie bevat een oplossing voor deze kwetsbaarheid.
         </p>
-        <h6 data-text="Wat moet ik doen?" id="what-should-i-do_8" tabindex="0">
+        <h6 data-text="Wat moet ik doen?" id="what-should-i-do_10" tabindex="0">
          Wat moet ik doen?
         </h6>
         <p>
@@ -1586,8 +1894,8 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
          </a>
          .
         </p>
-        <h6 data-text="Welke kwetsbaarheid wordt door deze patch aangepakt?" id="what-vulnerability-is-addressed-by-this-patch_3" tabindex="0">
-         Welke kwetsbaarheid wordt door deze patch aangepakt?
+        <h6 data-text="Welke kwetsbaarheid wordt door deze patch verholpen?" id="what-vulnerability-is-addressed-by-this-patch_5" tabindex="0">
+         Welke kwetsbaarheid wordt door deze patch verholpen?
         </h6>
         <p>
          Door de kwetsbaarheid
@@ -1649,12 +1957,12 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
         </p>
         <p>
          <strong>
-          Deze kwetsbaarheid geldt voor alle Google Kubernetes Engine (GKE)-nodes die Docker uitvoeren. We raden u aan een upgrade uit te voeren naar de nieuwste patchversie, zodra deze beschikbaar is. Een aankomende patchversie bevat een oplossing voor deze kwetsbaarheid.
+          Deze kwetsbaarheid geldt voor alle GKE-nodes (Google Kubernetes Engine) die Docker uitvoeren. We raden u aan een upgrade uit te voeren naar de nieuwste patchversie, zodra deze beschikbaar is. Een aankomende patchversie bevat een oplossing voor deze kwetsbaarheid.
          </strong>
         </p>
         <p>
          <strong>
-          Alle Google Kubernetes Engine (GKE)-hoofdinstanties die ouder zijn dan versie 1.12.7 draaien op Docker en zijn getroffen door deze kwetsbaarheid.
+          Alle GKE-hoofdinstanties (Google Kubernetes Engine) die ouder zijn dan versie 1.12.7 draaien op Docker en zijn getroffen door deze kwetsbaarheid.
          </strong>
          Gebruikers op GKE hebben geen toegang tot
          <code dir="ltr" translate="no">
@@ -1662,7 +1970,7 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
          </code>
          op de hoofdinstantie. Het risico op deze kwetsbaarheid is dus beperkt voor GKE-hoofdinstanties.
         </p>
-        <h5 data-text="Wat moet ik doen?" id="what-should-i-do_9" tabindex="0">
+        <h5 data-text="Wat moet ik doen?" id="what-should-i-do_11" tabindex="0">
          Wat moet ik doen?
         </h5>
         <p>
@@ -1670,7 +1978,7 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
          <code dir="ltr" translate="no">
           docker cp
          </code>
-         (of API-equivalent)-opdracht uitgeven die kan worden gehackt.
+         -opdracht (of API-equivalent) uitgeven die kan worden gehackt.
       Dit is naar verwachting vrij ongebruikelijk in een Kubernetes-omgeving.
       Nodes die
          <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/using-containerd?hl=nl">
@@ -1698,8 +2006,8 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
          </a>
          .
         </p>
-        <h5 data-text="Welke kwetsbaarheid wordt door deze patch aangepakt?" id="what-vulnerability-is-addressed-by-this-patch_4" tabindex="0">
-         Welke kwetsbaarheid wordt door deze patch aangepakt?
+        <h5 data-text="Welke kwetsbaarheid wordt door deze patch verholpen?" id="what-vulnerability-is-addressed-by-this-patch_6" tabindex="0">
+         Welke kwetsbaarheid wordt door deze patch verholpen?
         </h5>
         <p>
          De patch beperkt de volgende kwetsbaarheid:
@@ -1767,7 +2075,7 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
          </code>
          -gebruiker toegewezen), zelfs als er in de container-image een andere gebruiker is opgegeven.
          <strong>
-          Als uw containers als een non-root gebruiker worden uitgevoerd en u node-versie 1.13.6-gke.0 tot en met 1.13.6-gke.6 uitvoert, raden we u aan
+          Als uw containers als een niet-root-gebruiker worden uitgevoerd en u node-versie 1.13.6-gke.0 tot en met 1.13.6-gke.6 uitvoert, raden we u aan
           <code dir="ltr" translate="no">
            RunAsUser
           </code>
@@ -1775,7 +2083,7 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
          </strong>
         </p>
         <p>
-         Als er een non-root
+         Als er een niet-root
          <code dir="ltr" translate="no">
           USER
          </code>
@@ -1811,15 +2119,15 @@ kubectl get nodes -o=jsonpath='{range .items[*]}'\
          Hoe weet ik of dit defect op mijn configuratie van toepassing is?
         </h5>
         <p>
-         Als uw containers als een non-root gebruiker worden uitgevoerd en u voert node-versie 1.13.6-gke.0 tot en met 1.13.6-gke.6 uit, is het defect op u van toepassing, met uitzondering van de volgende gevallen:
+         Als uw containers als een niet-root-gebruiker worden uitgevoerd en u voert node-versie 1.13.6-gke.0 tot en met 1.13.6-gke.6 uit, is het defect op u van toepassing, met uitzondering van de volgende gevallen:
         </p>
         <ul>
          <li>
-          Pods die een geldige non-root waarde voor de
+          Pods die een geldige niet-root-waarde voor de
           <code dir="ltr" translate="no">
            runAsUser
           </code>
-          -PodSecurityContext opgeven, worden niet beïnvloed en blijven gewoon werken.
+          -PodSecurityContext opgeven, worden niet beïnvloed en blijven werken zoals verwacht.
          </li>
          <li>
           PodSecurityPolicies die een
@@ -1836,7 +2144,7 @@ kubectl get nodes -o=jsonpath='{range .items[*]}'\
           opgeven, starten niet als UID 0, maar starten niet als ze door dit probleem worden beïnvloed.
          </li>
         </ul>
-        <h5 data-text="Wat moet ik doen?" id="what-should-i-do_10" tabindex="0">
+        <h5 data-text="Wat moet ik doen?" id="what-should-i-do_12" tabindex="0">
          Wat moet ik doen?
         </h5>
         <p>
@@ -1929,7 +2237,7 @@ kubectl get nodes -o=jsonpath='{range .items[*]}'\
          <strong>
           Voor klanten die niet-vertrouwde code uitvoeren in hun eigen multi-tenant services binnen Kubernetes-engine, is dit een ernstige kwetsbaarheid.
          </strong>
-         Schakel hyperthreading in uw nodes uit om dit in Kubernetes Engine op te lossen. Deze kwetsbaarheden zijn alleen van toepassing op Google Kubernetes Engine (GKE)-nodes die meerdere CPU's gebruiken.
+         Schakel hyperthreading in uw nodes uit om dit in Kubernetes Engine op te lossen. Deze kwetsbaarheden zijn alleen van toepassing op GKE-nodes (Google Kubernetes Engine) die meerdere CPU's gebruiken.
           n1-standard-1 (de GKE-standaard), g1-small en f1-micro VM's stellen slechts 1 vCPU beschikbaar aan de gastomgeving. Hyperthreading hoeft dus niet uitgeschakeld te worden.
         </p>
         <p>
@@ -1950,7 +2258,7 @@ kubectl get nodes -o=jsonpath='{range .items[*]}'\
          </a>
          .
         </p>
-        <h4 data-text="Wat moet ik doen?" id="what-should-i-do_11" tabindex="0">
+        <h4 data-text="Wat moet ik doen?" id="what-should-i-do_13" tabindex="0">
          Wat moet ik doen?
         </h4>
         <p>
@@ -2029,7 +2337,15 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
          </li>
         </ol>
         <aside class="note">
-         Opmerking: Opstartopties kunnen niet worden aangepast als de functie [Veilig opstarten](/kubernetes-engine/docs/how-to/shielded-gke-nodes#secure_boot) ingeschakeld is voor de node. Als 'Veilig opstarten' ingeschakeld is, moet deze functie worden [uitgeschakeld](/kubernetes-engine/docs/how-to/shielded-gke-nodes#disabling) voordat de DaemonSet wordt gemaakt.
+         Opmerking: Opstartfuncties kunnen niet worden aangepast als de functie
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/shielded-gke-nodes?hl=nl#secure_boot">
+          Veilig opstarten
+         </a>
+         ingeschakeld is voor de node. Als 'Veilig opstarten' ingeschakeld is, moet deze functie worden
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/shielded-gke-nodes?hl=nl#disabling">
+          uitgeschakeld
+         </a>
+         voordat de DaemonSet wordt gemaakt.
         </aside>
         <p>
          Zorg ervoor dat de DaemonSet actief blijft op de nodes, zodat de wijzigingen automatisch worden toegepast op de nieuwe nodes in de pool. Het maken van nodes kan worden geactiveerd door het automatisch herstellen, het handmatig of automatisch upgraden en het automatisch schalen van nodes.
@@ -2047,8 +2363,8 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         <p>
          We zullen dit bulletin updaten met de gepatchte versies zodra deze beschikbaar zijn.
         </p>
-        <h4 data-text="Welke kwetsbaarheid wordt door deze patch aangepakt?" id="what-vulnerability-is-addressed-by-this-patch_5" tabindex="0">
-         Welke kwetsbaarheid wordt door deze patch aangepakt?
+        <h4 data-text="Welke kwetsbaarheid wordt door deze patch verholpen?" id="what-vulnerability-is-addressed-by-this-patch_7" tabindex="0">
+         Welke kwetsbaarheid wordt door deze patch verholpen?
         </h4>
         <p>
          De patch beperkt de volgende kwetsbaarheden:
@@ -2148,7 +2464,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
           We raden u aan de getroffen clusters zo snel mogelijk te upgraden naar de nieuwste patchversie en uw Istio-sidecars te upgraden (instructies hieronder).
          </strong>
         </p>
-        <h4 data-text="Wat moet ik doen?" id="what-should-i-do_12" tabindex="0">
+        <h4 data-text="Wat moet ik doen?" id="what-should-i-do_14" tabindex="0">
          Wat moet ik doen?
         </h4>
         <p>
@@ -2208,8 +2524,8 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
           1.13.4-gke.10
          </li>
         </ul>
-        <h4 data-text="Welke kwetsbaarheid wordt door deze patch aangepakt?" id="what-vulnerability-is-addressed-by-this-patch_6" tabindex="0">
-         Welke kwetsbaarheid wordt door deze patch aangepakt?
+        <h4 data-text="Welke kwetsbaarheid wordt door deze patch verholpen?" id="what-vulnerability-is-addressed-by-this-patch_8" tabindex="0">
+         Welke kwetsbaarheid wordt door deze patch verholpen?
         </h4>
         <p>
          De patch beperkt de volgende kwetsbaarheden:
@@ -2284,16 +2600,16 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1002100">
           CVE-2019-1002100
          </a>
-         , waardoor een gebruiker die patchverzoeken mag indienen een kwaadaardig 'json-patch'-verzoek kan maken dat buitensporige hoeveelheden CPU en geheugen in de Kubernetes API-server verbruikt. Hierdoor wordt de beschikbaarheid van het clusterbeheervlak mogelijk verminderd. Bekijk de
+         , waardoor een gebruiker die patchverzoeken mag indienen een kwaadaardig 'json-patch'-verzoek kan maken dat buitensporige hoeveelheden CPU en geheugen in de Kubernetes API-server verbruikt. Hierdoor wordt de beschikbaarheid van het clusterbesturingsvlak mogelijk verminderd. Bekijk de
          <a href="https://groups.google.com/forum/?hl=nl#!topic/kubernetes-announce/vmUUNkYfG9g">
           kennisgeving van Kubernetes
          </a>
          voor meer informatie.
          <strong>
-          Deze kwetsbaarheden zijn van toepassing op alle Google Kubernetes Engine (GKE)-hoofdinstanties. Een aankomende patchversie bevat een oplossing voor deze kwetsbaarheid. We zullen de clusterhoofden in de komende weken automatisch upgraden naar de gepatchte versie volgens de gebruikelijke upgradefrequentie.
+          Deze kwetsbaarheden zijn van toepassing op alle GKE-hoofdinstanties (Google Kubernetes Engine). Een aankomende patchversie bevat een oplossing voor deze kwetsbaarheid. We zullen de clusterhoofden in de komende weken automatisch upgraden naar de gepatchte versie volgens de gebruikelijke upgradefrequentie.
          </strong>
         </p>
-        <h4 data-text="Wat moet ik doen?" id="what-should-i-do_13" tabindex="0">
+        <h4 data-text="Wat moet ik doen?" id="what-should-i-do_15" tabindex="0">
          Wat moet ik doen?
         </h4>
         <p>
@@ -2309,8 +2625,8 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         <p>
          We zullen dit bulletin updaten met de gepatchte versies. De patch is alleen beschikbaar in de versies 1.11+ en niet in 1.10.
         </p>
-        <h4 data-text="Welke kwetsbaarheid wordt door deze patch aangepakt?" id="what-vulnerability-is-addressed-by-this-patch_7" tabindex="0">
-         Welke kwetsbaarheid wordt door deze patch aangepakt?
+        <h4 data-text="Welke kwetsbaarheid wordt door deze patch verholpen?" id="what-vulnerability-is-addressed-by-this-patch_9" tabindex="0">
+         Welke kwetsbaarheid wordt door deze patch verholpen?
         </h4>
         <p>
          De patch beperkt de volgende kwetsbaarheid:
@@ -2320,7 +2636,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1002100">
           CVE-2019-1002100
          </a>
-         kan een gebruiker een 'json-patch'-patch maken die buitensporige hoeveelheden CPU in de Kubernetes API-server verbruikt. Hierdoor wordt mogelijk de beschikbaarheid van het clusterbeheervlak verminderd.
+         kan een gebruiker een 'json-patch'-patch maken die buitensporige hoeveelheden CPU in de Kubernetes API-server verbruikt. Hierdoor wordt mogelijk de beschikbaarheid van het clusterbesturingsvlak verminderd.
         </p>
        </td>
        <td>
@@ -2373,7 +2689,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
           naar de nieuwste patchversie, zoals hieronder beschreven.
          </strong>
         </p>
-        <h4 data-text="Wat moet ik doen?" id="what-should-i-do_14" tabindex="0">
+        <h4 data-text="Wat moet ik doen?" id="what-should-i-do_16" tabindex="0">
          Wat moet ik doen?
         </h4>
         <p>
@@ -2389,8 +2705,8 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         <p>
          De nieuwe versie van runc heeft het geheugenverbruik verhoogd. Mogelijk moet u het geheugen dat aan containers is toegewezen updaten als u lage geheugenlimieten heeft ingesteld (&lt; 16 MB).
         </p>
-        <h4 data-text="Welke kwetsbaarheid wordt door deze patch aangepakt?" id="what-vulnerability-is-addressed-by-this-patch_8" tabindex="0">
-         Welke kwetsbaarheid wordt door deze patch aangepakt?
+        <h4 data-text="Welke kwetsbaarheid wordt door deze patch verholpen?" id="what-vulnerability-is-addressed-by-this-patch_10" tabindex="0">
+         Welke kwetsbaarheid wordt door deze patch verholpen?
         </h4>
         <p>
          De patch beperkt de volgende kwetsbaarheid:
@@ -2445,7 +2761,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-6486">
           CVE-2019-6486
          </a>
-         . Dit is een DoS-kwetsbaarheid (Denial of Service) in de crypto-/elliptische implementaties van de elliptische krommen P-521 en P-384. Hierdoor kan een gebruiker in Google Kubernetes Engine (GKE) kwaadaardige verzoeken maken die buitensporig veel CPU verbruiken in de Kubernetes API-server, waardoor mogelijk de beschikbaarheid van het clusterbeheervlak wordt verminderd.
+         . Dit is een DoS-kwetsbaarheid (denial of service) in de crypto-/elliptische implementaties van de elliptische krommen P-521 en P-384. Hierdoor kan een gebruiker in Google Kubernetes Engine (GKE) kwaadaardige verzoeken maken die buitensporig veel CPU verbruiken in de Kubernetes API-server, waardoor mogelijk de beschikbaarheid van het clusterbesturingsvlak wordt verminderd.
         Bekijk de
          <a href="https://groups.google.com/forum/?hl=nl#!topic/golang-announce/mVeX35iXuSw">
           kennisgeving van de programmeertaal Go
@@ -2454,45 +2770,37 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         </p>
         <p>
          <strong>
-          Deze kwetsbaarheden zijn van toepassing op alle Google Kubernetes Engine (GKE)-hoofdinstanties. De
+          Deze kwetsbaarheden zijn van toepassing op alle GKE-hoofdinstanties (Google Kubernetes Engine). De
           <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=nl#february-11-2019">
            nieuwste patchversie
           </a>
           bevat een oplossing voor deze kwetsbaarheid. We upgraden de clusterhoofden in de komende weken automatisch naar de gepatchte versie volgens de gebruikelijke upgradefrequentie.
          </strong>
         </p>
-        <h4 data-text="Wat moet ik doen?" id="what-should-i-do_15" tabindex="0">
+        <h4 data-text="Wat moet ik doen?" id="what-should-i-do_17" tabindex="0">
          Wat moet ik doen?
         </h4>
         <p>
          <strong>
           U hoeft niets te doen. GKE-hoofdinstanties worden automatisch geüpgraded volgens de gebruikelijke upgradefrequentie.
-        Als u uw hoofdinstantie eerder wilt upgraden, kunt u
-          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=nl#upgrading_the_cluster">
-           handmatig een upgrade uitvoeren
-          </a>
-          .
          </strong>
+         Als u uw hoofdinstantie eerder wilt upgraden, kunt u
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=nl#upgrading_the_cluster">
+          handmatig een upgrade uitvoeren
+         </a>
+         .
         </p>
         <p>
-         <strong>
-          Deze patch is beschikbaar in GKE 1.10.12-gke.7, 1.11.6-gke.11, 1.11.7-gke.4, 1.12.5-gke.5 en nieuwere releases.
-         </strong>
+         Deze patch is beschikbaar in GKE 1.10.12-gke.7, 1.11.6-gke.11, 1.11.7-gke.4, 1.12.5-gke.5 en nieuwere releases.
         </p>
-        <h4 data-text="Welke kwetsbaarheid wordt door deze patch aangepakt?" id="what-vulnerability-is-addressed-by-this-patch_9" tabindex="0">
-         <strong>
-          Welke kwetsbaarheid wordt door deze patch aangepakt?
-         </strong>
+        <h4 data-text="Welke kwetsbaarheid wordt door deze patch verholpen?" id="what-vulnerability-is-addressed-by-this-patch_11" tabindex="0">
+         Welke kwetsbaarheid wordt door deze patch verholpen?
         </h4>
         <p>
-         <strong>
-          De patch beperkt de volgende kwetsbaarheid:
-         </strong>
+         De patch beperkt de volgende kwetsbaarheid:
         </p>
         <p>
-         <strong>
-          CVE-2019-6486 is een kwetsbaarheid in de crypto-/elliptische implementaties van de elliptische krommen P-521 en P-384. Hierdoor kan een gebruiker invoer maken die buitensporige hoeveelheden CPU verbruikt.
-         </strong>
+         CVE-2019-6486 is een kwetsbaarheid in de crypto-/elliptische implementaties van de elliptische krommen P-521 en P-384. Hierdoor kan een gebruiker invoer maken die buitensporige hoeveelheden CPU verbruikt.
         </p>
        </td>
        <td>
@@ -2545,7 +2853,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         U hoeft niets te doen.
          </strong>
         </p>
-        <h4 data-text="Wat moet ik doen?" id="what-should-i-do_16" tabindex="0">
+        <h4 data-text="Wat moet ik doen?" id="what-should-i-do_18" tabindex="0">
          Wat moet ik doen?
         </h4>
         <p>
@@ -2556,8 +2864,8 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         <p>
          Deze patch is beschikbaar in GKE 1.9.7-gke.11, 1.10.6-gke.11, 1.10.7-gke.11, 1.10.9-gke.5 en 1.11.2-gke.18 en nieuwere releases.
         </p>
-        <h4 data-text="Welke kwetsbaarheid wordt door deze patch aangepakt?" id="what-vulnerability-is-addressed-by-this-patch_10" tabindex="0">
-         Welke kwetsbaarheid wordt door deze patch aangepakt?
+        <h4 data-text="Welke kwetsbaarheid wordt door deze patch verholpen?" id="what-vulnerability-is-addressed-by-this-patch_12" tabindex="0">
+         Welke kwetsbaarheid wordt door deze patch verholpen?
         </h4>
         <p>
          De patch beperkt de volgende kwetsbaarheid:
@@ -2680,10 +2988,7 @@ networkpolicies.networking.k8s.io           [watch list]
      <tbody>
       <tr>
        <td>
-        <pre dir="ltr" translate="no">
-
-kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
-      </pre>
+        kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
        </td>
       </tr>
      </tbody>
@@ -2858,7 +3163,7 @@ NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.244.0.0/14")
          De infrastructuur waarop Kubernetes Engine wordt uitgevoerd en die klantclusters en nodes van elkaar isoleert, is beveiligd tegen bekende aanvallen.
         </p>
         <p>
-         Node-pools op Kubernetes Engine die Google's voor containers geoptimaliseerde OS-image gebruiken en
+         Node-pools op Kubernetes Engine die de voor containers geoptimaliseerde OS-image van Google gebruiken en
          <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/node-auto-upgrades?hl=nl">
           automatisch upgraden
          </a>
@@ -2932,7 +3237,7 @@ NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.244.0.0/14")
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390">
           CVE-2018-5390
          </a>
-         is dit een netwerkkwetsbaarheid op kernel-niveau die de effectiviteit van DoS-aanvallen (Denial of Service) op kwetsbare systemen verhoogt. Het belangrijkste verschil is dat CVE-2018-5391 kan worden gebruikt via IP-verbindingen. We hebben dit bulletin geüpdatet om beide kwetsbaarheden te behandelen.
+         is dit een netwerkkwetsbaarheid op kernel-niveau die de effectiviteit van DoS-aanvallen (denial of service) op kwetsbare systemen verhoogt. Het belangrijkste verschil is dat CVE-2018-5391 kan worden gebruikt via IP-verbindingen. We hebben dit bulletin geüpdatet om beide kwetsbaarheden te behandelen.
         </p>
         <h4 data-text="Beschrijving" id="description" tabindex="0">
          Beschrijving
@@ -2941,13 +3246,13 @@ NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.244.0.0/14")
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390">
           CVE-2018-5390
          </a>
-         ('SegmentSmack') beschrijft een netwerkkwetsbaarheid op kernel-niveau die de effectiviteit van DoS-aanvallen (Denial of Service) via TCP-verbindingen op kwetsbare systemen verhoogt.
+         ('SegmentSmack') beschrijft een netwerkkwetsbaarheid op kernel-niveau die de effectiviteit van DoS-aanvallen (denial of service) via TCP-verbindingen op kwetsbare systemen verhoogt.
         </p>
         <p>
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5391">
           CVE-2018-5391
          </a>
-         ('FragmentSmack') beschrijft een netwerkkwetsbaarheid op kernel-niveau die de effectiviteit van DoS-aanvallen (Denial of Service) via IP-verbindingen op kwetsbare systemen verhoogt.
+         ('FragmentSmack') beschrijft een netwerkkwetsbaarheid op kernel-niveau die de effectiviteit van DoS-aanvallen (denial of service) via IP-verbindingen op kwetsbare systemen verhoogt.
         </p>
         <h4 data-text="Gevolgen voor Google Kubernetes Engine" id="google-kubernetes-engine-impact_1" tabindex="0">
          Gevolgen voor Google Kubernetes Engine
@@ -3043,7 +3348,7 @@ NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.244.0.0/14")
         <p>
          Alle Kubernetes Engine-nodes zijn kwetsbaar.
         </p>
-        <h4 data-text="Wat moet ik doen?" id="what-should-i-do_17" tabindex="0">
+        <h4 data-text="Wat moet ik doen?" id="what-should-i-do_19" tabindex="0">
          Wat moet ik doen?
         </h4>
         <p>
@@ -3153,7 +3458,7 @@ spec:
          </a>
          naar de nieuwste patchversie, zoals hieronder wordt beschreven.
         </p>
-        <h4 data-text="Wat moet ik doen?" id="what-should-i-do_18" tabindex="0">
+        <h4 data-text="Wat moet ik doen?" id="what-should-i-do_20" tabindex="0">
          Wat moet ik doen?
         </h4>
         <p>
@@ -3256,7 +3561,7 @@ spec:
          </a>
          , waardoor containers toegang kunnen krijgen tot bestanden buiten de container. Alle Kubernetes Engine-nodes zijn gevoelig voor deze kwetsbaarheden en we raden u aan zo snel mogelijk een upgrade naar de nieuwste patch-versie uit te voeren, zoals hieronder wordt beschreven.
         </p>
-        <h4 data-text="Wat moet ik doen?" id="what-should-i-do_19" tabindex="0">
+        <h4 data-text="Wat moet ik doen?" id="what-should-i-do_21" tabindex="0">
          Wat moet ik doen?
         </h4>
         <p>
@@ -3266,12 +3571,12 @@ spec:
          </a>
          zodra de patch beschikbaar is, ongeacht of u de automatische upgrades voor nodes heeft ingeschakeld. De patch is vanaf 16 maart voor alle klanten beschikbaar, maar is mogelijk eerder beschikbaar op basis van de zone waarin uw cluster zich bevindt. Zie het
          <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=nl#march-12-2018">
-          release-schema
+          releaseschema
          </a>
          .
         </p>
         <p>
-         Upgrade eerst uw hoofdinstantie naar de nieuwste versie. Deze patch is beschikbaar in Kubernetes 1.9.4-gke.1, Kubernetes 1.8.9-gke.1 en Kubernetes 1.7.14-gke.1. Nieuwe clusters gebruiken de gepatchte versie standaard vanaf 30 maart. Als u eerder een nieuw cluster maakt, moet u de gepatchte versie opgeven zodat deze wordt gebruikt.
+         Upgrade eerst uw hoofdinstantie naar de nieuwste versie. Deze patch is beschikbaar in Kubernetes 1.9.4-gke.1, Kubernetes 1.8.9-gke.1 en Kubernetes 1.7.14-gke.1. Vanaf 30 maart gebruiken alle nieuwe clusters standaard de gepatchte versie. Als u eerder een nieuw cluster maakt, moet u de gepatchte versie opgeven zodat deze wordt gebruikt.
         </p>
         <p>
          Voor klanten die
@@ -3291,14 +3596,14 @@ spec:
          De patch beperkt de volgende kwetsbaarheden:
         </p>
         <p>
-         De kwetsbaarheid CVE-2017-1002101 geeft containers die
+         De kwetsbaarheid CVE-2017-1002101 geeft containers die middels volumeactivatie een
          <a class="external" href="https://kubernetes.io/docs/concepts/storage/volumes/#using-subpath">
           subpad
          </a>
-         -volumeactivaties gebruiken toegang tot bestanden buiten het volume. Dit betekent dat als u containertoegang tot hostpad-volumes blokkeert met PodSecurityPolicy, een aanvaller met de mogelijkheid om pods te updaten of te maken elk hostpad kan activeren met elk ander volumetype.
+         specificeren, toegang tot bestanden buiten het volume. Dit betekent dat als u containertoegang tot hostpadvolumes blokkeert met PodSecurityPolicy, een aanvaller met de mogelijkheid om pods te updaten of te maken elk hostpad kan activeren met elk ander volumetype.
         </p>
         <p>
-         Door de kwetsbaarheid CVE-2017-1002102 kunnen containers met bepaalde volumetypen (waaronder geheimen, Config Maps, geprojecteerde volumes of neerwaartse API-volumes) bestanden verwijderen buiten het volume. Als een container die een van deze volumetypen gebruikt, wordt gecompromitteerd of als u niet-vertrouwde gebruikers de mogelijkheid biedt om pods te maken, kan een aanvaller die container gebruiken om willekeurige bestanden op de host te verwijderen.
+         Door de kwetsbaarheid CVE-2017-1002102 kunnen containers met bepaalde volumetypen (waaronder geheimen, Config Maps, geprojecteerde volumes of neerwaartse API-volumes) bestanden verwijderen buiten het volume. Als een container die een van deze volumetypen gebruikt, wordt gehackt of als u niet-vertrouwde gebruikers de mogelijkheid biedt om pods te maken, kan een aanvaller die container gebruiken om willekeurige bestanden op de host te verwijderen.
         </p>
         <p>
          Lees de
