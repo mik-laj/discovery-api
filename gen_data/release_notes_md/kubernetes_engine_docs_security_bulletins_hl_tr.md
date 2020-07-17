@@ -23,6 +23,190 @@ okuyucunuza ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
 ekleyin veya feed URL'sini doğrudan ekleyin: `
 https://cloud.google.com/feeds/kubernetes-engine-security-bulletins.xml `
 
+##  GCP-2020-007
+
+**Yayınlanma tarihi:** 01.06.2020  
+Açıklama  |  Önem Düzeyi  |  Notlar  
+---|---|---  
+  
+Kısa süre önce Kubernetes'te bazı yetkili kullanıcıların kontrol düzlemi ana
+makine ağından 500 bayta kadar hassas bilgiyi sızdırmasına olanak tanıyan
+Sunucu Taraflı İstek Sahtekarlığı (SSRF) ( [ CVE-2020-8555
+](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555) ) güvenlik
+açığı keşfedildi. Google Kubernetes Engine (GKE) kontrol düzlemi,
+Kubernetes'teki denetleyicileri kullandığından bu güvenlik açığından
+etkilenmektedir. Kontrol düzlemini aşağıda belirttiğimiz en son yama sürümüne
+[ geçirmenizi ](https://cloud.google.com/kubernetes-engine/docs/how-
+to/upgrading-a-container-cluster?hl=tr) öneririz. Düğüm yükseltmesine gerek
+yoktur.  
+
+####  Ne yapmalıyım?
+
+Çoğu müşterinin herhangi bir işlem yapması gerekmez. Kümelerin büyük çoğunluğu
+zaten yama uygulanmış bir sürümü çalıştırmaktadır. Aşağıdaki GKE sürümleri ve
+daha yeni sürümler bu güvenlik açığına yönelik düzeltmeyi içermektedir:
+
+  * 1.14.7-gke.39 
+  * 1.14.8-gke.32 
+  * 1.14.9-gke.17 
+  * 1.14.10-gke.12 
+  * 1.15.7-gke.17 
+  * 1.16.4-gke.21 
+  * 1.17.0-gke.0 
+
+[ Sürüm kanallarını ](https://cloud.google.com/kubernetes-
+engine/docs/concepts/release-channels?hl=tr) kullanan kümeler zaten çözümün
+uygulandığı kontrol düzlemi sürümlerindedir.
+
+####  Bu yama hangi güvenlik açığına yönelik?
+
+Bu yamalar CVE-2020-8555 güvenlik açığının oluşturduğu riski azaltır. Çeşitli
+kontrol düzlemi sağlamlaştırma önlemleri, bu açığın kötüye kullanılmasını
+zorlaştırdığından GKE için Orta önem düzeyli bir güvenlik açığı olarak
+derecelendirilmiştir.
+
+Belirli yerleşik Birim türlerine (GlusterFS, Quobyte, StorageFS, ScaleIO)
+sahip bir Kapsül veya StorageClass oluşturma izinleri olan bir saldırgan, ana
+makine ağından gelen, saldırgan kontrollü bir istek gövdesi _olmadan_ ` kube-
+controller-manager ` öğesinin ` GET ` veya ` POST ` istekleri yapmasına yol
+açabilir. Bu birim türleri GKE'de nadiren kullanılır. Bu nedenle bu birim
+türlerinin yeni kullanımı güvenlik açığının tespit edilmesine yardımcı
+olabilir.
+
+` GET/POST ` sonuçları saldırgana geri sızdırılırsa (ör. günlükler
+aracılığıyla) bu durum hassas bilgilerin ifşa edilmesine yol açabilir. Bu tür
+sızıntılar yaşanması ihtimalini ortadan kaldırmak için söz konusu depolama
+alanı sürücülerini güncelledik.
+
+|
+
+Orta
+
+|
+
+[ CVE-2020-8555 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8555)  
+  
+##  GCP-2020-006
+
+**Yayınlanma tarihi:** 01.06.2020  
+Açıklama  |  Önem Düzeyi  |  Notlar  
+---|---|---  
+  
+Kubernetes, ayrıcalıklı bir container'ın, düğüm trafiğini başka bir
+container'a yönlendirmesine olanak tanıyan bir [ güvenlik açığı
+](https://github.com/kubernetes/kubernetes/issues/91507) bulunduğunu açıkladı.
+Kubelet ile API sunucusu arasındaki trafik gibi karşılıklı TLS/SSH trafiği
+veya mTLS kullanan uygulamalardan gelen trafik bu saldırıyla okunamaz ve
+değiştirilemez. Tüm Google Kubernetes Engine (GKE) düğümleri bu güvenlik
+açığından etkilenmektedir. Bu nedenle,aşağıda belirttiğimiz en son yama
+sürümüne [ geçmenizi ](https://cloud.google.com/kubernetes-engine/docs/how-
+to/upgrading-a-cluster?hl=tr) öneririz.
+
+####  Ne yapmalıyım?
+
+Bu güvenlik açığının oluşturduğu riskleri azaltmak için kontrol düzleminizi [
+yeni sürüme geçirin ](https://cloud.google.com/kubernetes-engine/docs/how-
+to/upgrading-a-cluster?hl=tr) , ardından düğümlerinizi aşağıda listelenmiş
+olan yamalı sürümlerden birine yükseltin. Sürüm kanallarındaki kümeler hem
+kontrol düzleminde hem de düğümlerde zaten yama uygulanmış bir sürüm
+çalıştırmaktadır:
+
+  * 1.14.10-gke.36 
+  * 1.15.11-gke.15 
+  * 1.16.8-gke.15 
+
+Genellikle çok az container için ` CAP_NET_RAW ` gerekir. Bu ve diğer güçlü
+özellikler [ PodSecurityPolicy ](https://cloud.google.com/kubernetes-
+engine/docs/how-to/pod-security-policies?hl=tr) veya [ Anthos Policy
+Controller ](https://cloud.google.com/anthos-config-
+management/docs/concepts/policy-controller?hl=tr) aracılığıyla varsayılan
+olarak engellenmelidir:
+
+  * ` CAP_NET_RAW ` özelliğini container'lardan çıkarın: 
+    * Şu kod örneğini kullanıp [ PodSecurityPolicy ](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=tr) aracılığıyla zorunlu kılabilirsiniz: 
+        
+                
+        # Require dropping CAP_NET_RAW with a PSP
+        apiversion: extensions/v1beta1
+        kind: PodSecurityPolicy
+        metadata:
+          name: no-cap-net-raw
+        spec:
+          requiredDropCapabilities:
+            -NET_RAW
+             ...
+             # Unrelated fields omitted
+        
+
+    * İsterseniz bu [ kısıtlama şablonuyla ](https://github.com/open-policy-agent/gatekeeper/blob/master/library/pod-security-policy/capabilities/template.yaml) Anthos Policy Controller/Gatekeeper'ı kullanıp uygulayabilirsiniz. Örneğin: 
+        
+                
+        # Dropping CAP_NET_RAW with Gatekeeper
+        # (requires the K8sPSPCapabilities template)
+        apiversion: constraints.gatekeeper.sh/v1beta1
+        kind:  K8sPSPCapabilities
+        metadata:
+          name: forbid-cap-net-raw
+        spec:
+          match:
+            kinds:
+              - apiGroups: [""]
+              kinds: ["Pod"]
+            namespaces:
+              #List of namespaces to enforce this constraint on
+              - default
+            # If running gatekeeper >= v3.1.0-beta.5,
+            # you can exclude namespaces rather than including them above.
+            excludedNamespaces:
+              - kube-system
+          parameters:
+            requiredDropCapabilities:
+              - "NET_RAW"
+        
+
+    * Dilerseniz Kapsül özelliklerinizi güncelleyebilirsiniz: 
+        
+                
+        # Dropping CAP_NET_RAW from a Pod:
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          name: no-cap-net-raw
+        spec:
+          containers:
+            -name: may-container
+             ...
+            securityContext:
+              capabilities:
+                drop:
+                  -NET_RAW
+        
+
+####  Bu yama hangi güvenlik açığına yönelik?
+
+Yamada aşağıdaki güvenlik açığının çözümü yer alır:
+
+[ Kubernetes sorunu 91507
+](https://github.com/kubernetes/kubernetes/issues/91507) 'de açıklanan,
+düğümdeki IPv6 yığınını kötü amaçlı olarak yapılandırmaya ve düğüm trafiğini
+saldırgan tarafından kontrol edilen container'a yönlendirmeye olanak tanıyan `
+CAP_NET_RAW ` özelliğiyle (varsayılan container özellikleri grubuna dahildir)
+ilgili güvenlik açığı. Bu güvenlik açığı, saldırganın düğümden gelen veya
+düğüme giden trafiği engellemesine/değiştirmesine olanak tanır. Kubelet ile
+API sunucusu arasındaki trafik gibi karşılıklı TLS/SSH trafiği veya mTLS
+kullanan uygulamalardan gelen trafik bu saldırıyla okunamaz ve değiştirilemez.
+
+|
+
+Orta
+
+|
+
+[ Kubernetes sorunu 91507
+](https://github.com/kubernetes/kubernetes/issues/91507)  
+  
+  
 ##  GCP-2020-005
 
 **Yayınlanma tarihi:** 07.05.2020  
@@ -1008,13 +1192,14 @@ Hyper-Threading devre dışıyken yeni düğüm havuzu oluşturmak için:
         
     kubectl logs disable-smt-2xnnc disable-smt -n kube-system
 
-Not: Düğümde [Güvenli Başlatma](/kubernetes-engine/docs/how-to/shielded-gke-
-nodes#secure_boot) özelliği etkinleştirilmişse başlatma seçenekleri
-değiştirilemez. Güvenli Başlatma etkinleştirilmişse DaemonSet'in
-oluşturulabilmesi için bu özelliğin [devre dışı bırakılması](/kubernetes-
-engine/docs/how-to/shielded-gke-nodes#disabling) gerekir.
+Not: Düğümde [ Güvenli Başlatma ](https://cloud.google.com/kubernetes-
+engine/docs/how-to/shielded-gke-nodes?hl=tr#secure_boot) özelliği
+etkinleştirilmişse başlatma seçenekleri değiştirilemez. Güvenli Başlatma
+etkinleştirilmişse DaemonSet'in oluşturulabilmesi için bu özelliğin [ devre
+dışı bırakılması ](https://cloud.google.com/kubernetes-engine/docs/how-
+to/shielded-gke-nodes?hl=tr#disabling) gerekir.
 
-Düğüm havuzlarında DaemonSet'i çalışır durumda tutmanız gerekir. Bu sayede,
+Düğüm havuzlarında DaemonSet'i çalışır durumda tutmanız gerekir. Bu sayede
 havuzda oluşturulan yeni düğümlere değişiklikler otomatik olarak uygulanır.
 Düğüm oluşturma işlemleri, otomatik düğüm onarımı, manuel veya otomatik
 yükseltme ve otomatik ölçeklendirme nedeniyle tetiklenebilir.
@@ -1372,12 +1557,9 @@ tamamlanmıştır)
 Bu jetonları derhal dönüştürmek isterseniz aşağıdaki komutu
 çalıştırabilirsiniz. Hizmet hesabı için yeni gizli anahtar birkaç saniye
 içinde otomatik olarak yeniden oluşturulacaktır:  
-      
-    
-    
-    kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
-            
   
+kubectl get sa --namespace kube-system calico -o template --template '{{(index
+.secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system  
 ---  
   
 ####  Algılama
