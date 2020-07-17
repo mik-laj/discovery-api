@@ -29,7 +29,7 @@
     </span>
    </aside>
    <p>
-    Para receber os boletins de segurança mais recentes, adicione o URL desta página ao
+    Para receber os boletins de segurança mais recentes, adicione o URL desta página ao seu
     <a class="external" href="https://wikipedia.org/wiki/Comparison_of_feed_aggregators">
      leitor de feeds
     </a>
@@ -39,6 +39,345 @@
     </code>
    </p>
    <section class="bulletins">
+    <h2 data-text="GCP-2020-007" id="gcp-2020-007" tabindex="0">
+     GCP-2020-007
+    </h2>
+    <strong>
+     Publicado:
+    </strong>
+    01/06/2020
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Descrição
+       </th>
+       <th>
+        Gravidade
+       </th>
+       <th>
+        Observações
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Uma vulnerabilidade de falsificação da solicitação no lado do servidor (SSRF, na sigla em inglês),
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555">
+          a CVE-2020-8555
+         </a>
+         (em inglês),
+      recentemente foi detectada no Kubernetes. Essa vulnerabilidade permite que certos usuários autorizados
+      vazem até 500 bytes de informações confidenciais da
+      rede do host no plano de controle. O plano de controle do Google Kubernetes Engine (GKE)
+      usa os controladores do Kubernetes e, portanto, foi afetado por essa
+      vulnerabilidade. Recomendamos que você faça
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-container-cluster?hl=pt_br">
+          o upgrade
+         </a>
+         do plano de controle para a última versão do patch, como detalhamos a seguir.
+      Um upgrade dos nós não é exigido.
+         <br/>
+        </p>
+        <h4 data-text="O que fazer?" id="what-should-i-do" tabindex="0">
+         O que fazer?
+        </h4>
+        Para quase todos os clientes, nenhuma ação é necessária. A grande
+      maioria dos clusters já executa uma versão com o patch.
+
+      As seguintes versões do GKE ou superiores contêm a solução para essa
+      vulnerabilidade:
+        <ul>
+         <li>
+          1.14.7-gke.39
+         </li>
+         <li>
+          1.14.8-gke.32
+         </li>
+         <li>
+          1.14.9-gke.17
+         </li>
+         <li>
+          1.14.10-gke.12
+         </li>
+         <li>
+          1.15.7-gke.17
+         </li>
+         <li>
+          1.16.4-gke.21
+         </li>
+         <li>
+          1.17.0-gke.0
+         </li>
+        </ul>
+        <p>
+         Os clusters que usam
+         <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels?hl=pt_br">
+          canais de lançamento
+         </a>
+         já estão nas versões do plano de controle com a mitigação.
+        </p>
+        <h4 data-text="Qual vulnerabilidade é corrigida pelo patch? " id="what-vulnerability-is-addressed-by-this-patch" tabindex="0">
+         Qual vulnerabilidade é corrigida pelo patch?
+        </h4>
+        <p>
+         Esses patches mitigam a vulnerabilidade CVE-2020-8555. Ela é classificada
+      como uma vulnerabilidade de gravidade média para o GKE, porque era difícil
+      explorá-la já que havia várias medidas de aumento de proteção do plano de controle.
+        </p>
+        <p>
+         Um invasor com permissões para criar um pod com determinados
+      tipos de volume integrado (GlusterFS, Quobyte, StorageFS e ScaleIO) ou
+      permissões para criar um StorageClass pode fazer com que
+         <code dir="ltr" translate="no">
+          kube-controller-manager
+         </code>
+         crie solicitações
+         <code dir="ltr" translate="no">
+          GET
+         </code>
+         ou
+         <code dir="ltr" translate="no">
+          POST
+         </code>
+         <em>
+          sem
+         </em>
+         um corpo de solicitação controlado pelo invasor
+      na rede do host do mestre. Esses tipos de volume raramente são usados no
+      GKE, então uma nova utilização deles pode ser um
+      sinal útil para detectar problemas.
+        </p>
+        <p>
+         Combinado com um meio de vazar os resultados de
+         <code dir="ltr" translate="no">
+          GET/POST
+         </code>
+         para o invasor, como por meio de registros, essa vulnerabilidade pode levar à divulgação
+      de informações confidenciais. Atualizamos os drivers de armazenamento em
+      questão para remover a possibilidade desses vazamentos acontecerem.
+        </p>
+       </td>
+       <td>
+        <p>
+         Média
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555">
+          CVE-2020-8555 (em inglês)
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-006" id="gcp-2020-006" tabindex="0">
+     GCP-2020-006
+    </h2>
+    <strong>
+     Publicado:
+    </strong>
+    01/06/2020
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Descrição
+       </th>
+       <th>
+        Gravidade
+       </th>
+       <th>
+        Observações
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         O Kubernetes divulgou
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          uma vulnerabilidade
+         </a>
+         (em inglês)
+        que permite a um contêiner privilegiado redirecionar o tráfego do nó para outro
+        contêiner. O tráfego mútuo TLS/SSH, como entre o kubelet e o servidor da API,
+        ou o tráfego de aplicativos que usam mTLS não pode ser lidos ou
+        modificado por essa invasão. Todos os nós do Google Kubernetes Engine (GKE) foram
+        afetados por essa vulnerabilidade, e recomendamos que você faça
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=pt_br">
+          o upgrade
+         </a>
+         para a última versão do patch, como detalhamos a seguir.
+        </p>
+        <h4 data-text=" O que fazer?" id="what-should-i-do_1" tabindex="0">
+         O que fazer?
+        </h4>
+        Para mitigar essa vulnerabilidade, faça
+        <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=pt_br">
+         o upgrade
+        </a>
+        do seu plano de controle e dos seus nós para uma das versões com patch listadas
+        a seguir. Os clusters nos canais de lançamento já estão executando uma versão com patch
+        no plano de controle e nos nós:
+        <ul>
+         <li>
+          1.14.10-gke.36
+         </li>
+         <li>
+          1.15.11-gke.15
+         </li>
+         <li>
+          1.16.8-gke.15
+         </li>
+        </ul>
+        <p>
+         Em geral, pouquíssimos contêineres exigem
+         <code dir="ltr" translate="no">
+          CAP_NET_RAW
+         </code>
+         . Essa
+        e outras capacidades poderosas deveriam estar bloqueadas por padrão
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=pt_br">
+          pela PodSecurityPolicy
+         </a>
+         ou o
+         <a href="https://cloud.google.com/anthos-config-management/docs/concepts/policy-controller?hl=pt_br">
+          Policy Controller do Anthos
+         </a>
+         :
+        </p>
+        <ul>
+         <li>
+          Remova a capacidade
+          <code dir="ltr" translate="no">
+           CAP_NET_RAW
+          </code>
+          dos contêineres:
+         </li>
+         <ul>
+          <li>
+           Por meio da
+           <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=pt_br">
+            PodSecurityPolicy
+           </a>
+           e usando:
+          </li>
+          <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Require dropping CAP_NET_RAW with a PSP
+apiversion: extensions/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: no-cap-net-raw
+spec:
+  requiredDropCapabilities:
+    -NET_RAW
+     ...
+     # Unrelated fields omitted
+</pre>
+         </ul>
+         <ul>
+          <li>
+           Ou ao utilizar e aplicar o Policy Controller/Gatekeeper do Anthos com este
+           <a class="external" href="https://github.com/open-policy-agent/gatekeeper/blob/master/library/pod-security-policy/capabilities/template.yaml">
+            modelo de restrição
+           </a>
+           (em inglês),
+           por exemplo:
+          </li>
+          <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Dropping CAP_NET_RAW with Gatekeeper
+# (requires the K8sPSPCapabilities template)
+apiversion: constraints.gatekeeper.sh/v1beta1
+kind:  K8sPSPCapabilities
+metadata:
+  name: forbid-cap-net-raw
+spec:
+  match:
+    kinds:
+      - apiGroups: [""]
+      kinds: ["Pod"]
+    namespaces:
+      #List of namespaces to enforce this constraint on
+      - default
+    # If running gatekeeper &gt;= v3.1.0-beta.5,
+    # you can exclude namespaces rather than including them above.
+    excludedNamespaces:
+      - kube-system
+  parameters:
+    requiredDropCapabilities:
+      - "NET_RAW"
+</pre>
+         </ul>
+         <ul>
+          <li>
+           Ou ao atualizar as especificações do pod:
+          </li>
+          <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Dropping CAP_NET_RAW from a Pod:
+apiVersion: v1
+kind: Pod
+metadata:
+  name: no-cap-net-raw
+spec:
+  containers:
+    -name: may-container
+     ...
+    securityContext:
+      capabilities:
+        drop:
+          -NET_RAW
+</pre>
+         </ul>
+        </ul>
+        <h4 data-text="Qual vulnerabilidade é corrigida pelo patch? " id="what-vulnerability-is-addressed-by-this-patch_1" tabindex="0">
+         Qual vulnerabilidade é corrigida pelo patch?
+        </h4>
+        <p>
+         O patch mitiga a seguinte vulnerabilidade:
+        </p>
+        <p>
+         A vulnerabilidade descrita na capacidade
+         <code dir="ltr" translate="no">
+          CAP_NET_RAW
+         </code>
+         do
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          problema 91507 do Kubernetes
+         </a>
+         (que está incluída no conjunto de capacidades de contêiner padrão) que envolve configurar de forma mal-intencionada a pilha do IPv6 no nó e redirecionar
+o tráfego do nó para o contêiner controlado pelo invasor. Isso permite que o invasor
+intercepte/modifique o tráfego que se origina do nó ou se destina a ele. O tráfego
+mútuo TLS/SSH, como entre o kubelet e o servidor da API, ou o tráfego de
+aplicativos que usam mTLS não pode ser lido ou modificado por essa invasão.
+        </p>
+       </td>
+       <td>
+        <p>
+         Média
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          Problema 91507 do Kubernetes
+         </a>
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
     <h2 data-text="GCP-2020-005" id="gcp-2020-005" tabindex="0">
      GCP-2020-005
     </h2>
@@ -61,7 +400,7 @@
         Gravidade
        </th>
        <th>
-        Notas
+        Observações
        </th>
       </tr>
      </thead>
@@ -84,9 +423,9 @@
         </p>
         <p>
          Os nós executando o SO otimizado para contêineres não foram afetados. Os nós
-        executando o GKE no local não foram afetados.
+        executando o GKE On-Prem não foram afetados.
         </p>
-        <h4 data-text="O que fazer?" id="what-should-i-do" tabindex="0">
+        <h4 data-text="O que fazer?" id="what-should-i-do_2" tabindex="0">
          O que fazer?
         </h4>
         <p>
@@ -107,7 +446,7 @@
          </a>
          .
         </p>
-        <h4 data-text="Qual vulnerabilidade é corrigida pelo patch?" id="what-vulnerability-is-addressed-by-this-patch" tabindex="0">
+        <h4 data-text="Qual vulnerabilidade é corrigida pelo patch?" id="what-vulnerability-is-addressed-by-this-patch_2" tabindex="0">
          Qual vulnerabilidade é corrigida por esse patch?
         </h4>
         <p>
@@ -165,7 +504,7 @@
         Gravidade
        </th>
        <th>
-        Notas
+        Observações
        </th>
       </tr>
      </thead>
@@ -194,7 +533,7 @@
          </a>
          reduzem essa vulnerabilidade.
         </p>
-        <h4 data-text="O que fazer?" id="what-should-i-do_1" tabindex="0">
+        <h4 data-text="O que fazer?" id="what-should-i-do_3" tabindex="0">
          O que fazer?
         </h4>
         <p>
@@ -271,7 +610,7 @@
         Gravidade
        </th>
        <th>
-        Notas
+        Observações
        </th>
       </tr>
      </thead>
@@ -293,7 +632,7 @@
          </a>
          (ambos em inglês).
         </p>
-        <h4 data-text="O que fazer?" id="what-should-i-do_2" tabindex="0">
+        <h4 data-text="O que fazer?" id="what-should-i-do_4" tabindex="0">
          O que fazer?
         </h4>
         <p>
@@ -378,7 +717,7 @@
         Gravidade
        </th>
        <th>
-        Notas
+        Observações
        </th>
       </tr>
      </thead>
@@ -521,7 +860,7 @@
         Gravidade
        </th>
        <th>
-        Notas
+        Observações
        </th>
       </tr>
      </thead>
@@ -646,7 +985,7 @@
         Gravidade
        </th>
        <th>
-        Notas
+        Observações
        </th>
       </tr>
      </thead>
@@ -677,7 +1016,7 @@
          </a>
          .
         </p>
-        <h4 data-text="O que fazer?" id="what-should-i-do_3" tabindex="0">
+        <h4 data-text="O que fazer?" id="what-should-i-do_5" tabindex="0">
          O que fazer?
         </h4>
         <p>
@@ -772,7 +1111,7 @@
         Gravidade
        </th>
        <th>
-        Notas
+        Observações
        </th>
       </tr>
      </thead>
@@ -833,7 +1172,7 @@
         Gravidade
        </th>
        <th>
-        Notas
+        Observações
        </th>
       </tr>
      </thead>
@@ -869,7 +1208,7 @@
          </a>
          reduzem essa vulnerabilidade.
         </p>
-        <h6 data-text="O que fazer?" id="what-should-i-do_4" tabindex="0">
+        <h6 data-text="O que fazer?" id="what-should-i-do_6" tabindex="0">
          O que fazer?
         </h6>
         <p>
@@ -940,7 +1279,7 @@
         Gravidade
        </th>
        <th>
-        Notas
+        Observações
        </th>
       </tr>
      </thead>
@@ -965,7 +1304,7 @@
          </a>
          .
         </p>
-        <h6 data-text="O que fazer?" id="what-should-i-do_5" tabindex="0">
+        <h6 data-text="O que fazer?" id="what-should-i-do_7" tabindex="0">
          O que fazer?
         </h6>
         <p>
@@ -992,7 +1331,7 @@
           1.14.6-gke.1
          </li>
         </ul>
-        <h6 data-text="Qual vulnerabilidade é corrigida pelo patch?" id="what-vulnerability-is-addressed-by-this-patch_1" tabindex="0">
+        <h6 data-text="Qual vulnerabilidade é corrigida pelo patch?" id="what-vulnerability-is-addressed-by-this-patch_3" tabindex="0">
          Qual vulnerabilidade é corrigida por esse patch?
         </h6>
         <p>
@@ -1115,7 +1454,7 @@ Esperamos que a correção da vulnerabilidade documentada naquele boletim esteja
         Gravidade
        </th>
        <th>
-        Notas
+        Observações
        </th>
       </tr>
      </thead>
@@ -1134,9 +1473,9 @@ Esperamos que a correção da vulnerabilidade documentada naquele boletim esteja
          <a class="external" href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">
           recursos personalizados
          </a>
-         com escopo no cluster sejam usadas como se fossem objetos de namespaces existentes em todos os namespaces. Isso significa que contas de usuários e de serviço com permissões apenas do RBAC de nível namespace podem interagir com recursos personalizados com escopo no cluster. A exploração dessa vulnerabilidade exige que o invasor tenha privilégios para acessar o recurso no namespace.
+         com escopo no cluster sejam usadas como se fossem objetos de namespaces existentes em todos os namespaces. Isso significa que contas de usuários e de serviço com permissões apenas do RBAC de nível do namespace podem interagir com recursos personalizados com escopo no cluster. A exploração dessa vulnerabilidade exige que o invasor tenha privilégios para acessar o recurso no namespace.
         </p>
-        <h6 data-text="O que fazer?" id="what-should-i-do_6" tabindex="0">
+        <h6 data-text="O que fazer?" id="what-should-i-do_8" tabindex="0">
          O que fazer?
         </h6>
         <p>
@@ -1164,7 +1503,7 @@ Esperamos que a correção da vulnerabilidade documentada naquele boletim esteja
           )
          </li>
         </ul>
-        <h6 data-text="Qual vulnerabilidade é corrigida pelo patch?" id="what-vulnerability-is-addressed-by-this-patch_2" tabindex="0">
+        <h6 data-text="Qual vulnerabilidade é corrigida pelo patch?" id="what-vulnerability-is-addressed-by-this-patch_4" tabindex="0">
          Qual vulnerabilidade é corrigida por esse patch?
         </h6>
         <p>
@@ -1212,7 +1551,7 @@ Esperamos que a correção da vulnerabilidade documentada naquele boletim esteja
         Gravidade
        </th>
        <th>
-        Notas
+        Observações
        </th>
       </tr>
      </thead>
@@ -1286,7 +1625,7 @@ Esperamos que a correção da vulnerabilidade documentada naquele boletim esteja
         Gravidade
        </th>
        <th>
-        Notas
+        Observações
        </th>
       </tr>
      </thead>
@@ -1443,7 +1782,7 @@ Esperamos que a correção da vulnerabilidade documentada naquele boletim esteja
          </code>
          do host.
         </p>
-        <h5 data-text="O que fazer?" id="what-should-i-do_7" tabindex="0">
+        <h5 data-text="O que fazer?" id="what-should-i-do_9" tabindex="0">
          O que fazer?
         </h5>
         <p>
@@ -1523,7 +1862,7 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
         Gravidade
        </th>
        <th>
-        Notas
+        Observações
        </th>
       </tr>
      </thead>
@@ -1580,7 +1919,7 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
          </strong>
          Uma futura versão de patch incluirá uma mitigação dessa vulnerabilidade.
         </p>
-        <h6 data-text="O que fazer?" id="what-should-i-do_8" tabindex="0">
+        <h6 data-text="O que fazer?" id="what-should-i-do_10" tabindex="0">
          O que fazer?
         </h6>
         <p>
@@ -1611,7 +1950,7 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
          </a>
          .
         </p>
-        <h6 data-text="Qual vulnerabilidade é corrigida pelo patch?" id="what-vulnerability-is-addressed-by-this-patch_3" tabindex="0">
+        <h6 data-text="Qual vulnerabilidade é corrigida pelo patch?" id="what-vulnerability-is-addressed-by-this-patch_5" tabindex="0">
          Qual vulnerabilidade é corrigida por esse patch?
         </h6>
         <p>
@@ -1654,7 +1993,7 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
         Gravidade
        </th>
        <th>
-        Notas
+        Observações
        </th>
       </tr>
      </thead>
@@ -1687,7 +2026,7 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
          </code>
          no mestre. Portanto, o risco dessa vulnerabilidade para mestres do GKE é limitado.
         </p>
-        <h5 data-text="O que fazer?" id="what-should-i-do_9" tabindex="0">
+        <h5 data-text="O que fazer?" id="what-should-i-do_11" tabindex="0">
          O que fazer?
         </h5>
         <p>
@@ -1695,7 +2034,7 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
          <code dir="ltr" translate="no">
           docker cp
          </code>
-         (ou equivalente da API) que possa ser sequestrado.
+         (ou equivalente da API) que possa ser invadido.
       Espera-se que isso seja bastante incomum em um ambiente do Kubernetes.
       Nós com o
          <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/using-containerd?hl=pt_br">
@@ -1723,7 +2062,7 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
          </a>
          .
         </p>
-        <h5 data-text="Qual vulnerabilidade é corrigida pelo patch?" id="what-vulnerability-is-addressed-by-this-patch_4" tabindex="0">
+        <h5 data-text="Qual vulnerabilidade é corrigida pelo patch?" id="what-vulnerability-is-addressed-by-this-patch_6" tabindex="0">
          Qual vulnerabilidade é corrigida por esse patch?
         </h5>
         <p>
@@ -1734,7 +2073,7 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-15664">
           CVE-2018-15664
          </a>
-         possibilita que um invasor capaz de executar um código dentro de um contêiner sequestre uma operação
+         possibilita que um invasor capaz de executar um código dentro de um contêiner invada uma operação
          <code dir="ltr" translate="no">
           docker
       cp
@@ -1763,7 +2102,7 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
         Gravidade
        </th>
        <th>
-        Notas
+        Observações
        </th>
       </tr>
      </thead>
@@ -1808,7 +2147,7 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
          <code dir="ltr" translate="no">
           USER
          </code>
-         em um Dockerfile), ocorrerá algum comportamento inesperado. Quando um contêiner é executado pela primeira vez em um nó, ele respeita corretamente o UID especificado. Contudo, devido a esse defeito, na segunda execução (e nas subsequentes) o contêiner é executado como UID 0 apesar do UID especificado. Em geral, isso é um privilégio escalonado indesejado, e pode levar a um comportamento inesperado do aplicativo.
+         em um Dockerfile), ocorrerá algum comportamento inesperado. Quando um contêiner é executado pela primeira vez em um nó, ele respeita corretamente o UID especificado. Contudo, devido a esse defeito, na segunda execução (e nas subsequentes) o contêiner é executado como UID 0 apesar do UID especificado. Em geral, isso é um privilégio escalonado indesejado e pode levar a um comportamento inesperado do aplicativo.
         </p>
         <h5 data-text="Como saber se tenho uma versão afetada?" id="how-do-i-know-if-im-running-an-impacted-version" tabindex="0">
          Como saber se tenho uma versão impactada?
@@ -1861,7 +2200,7 @@ kubectl get nodes -o=jsonpath='{range .items[*]}'\
           não iniciarão como UID 0, mas ocorrerá um erro ao iniciarem quando impactados por esse problema.
          </li>
         </ul>
-        <h5 data-text="O que fazer?" id="what-should-i-do_10" tabindex="0">
+        <h5 data-text="O que fazer?" id="what-should-i-do_12" tabindex="0">
          O que fazer?
         </h5>
         <p>
@@ -1900,7 +2239,7 @@ kubectl get nodes -o=jsonpath='{range .items[*]}'\
         Gravidade
        </th>
        <th>
-        Notas
+        Observações
        </th>
       </tr>
      </thead>
@@ -1939,7 +2278,7 @@ kubectl get nodes -o=jsonpath='{range .items[*]}'\
          </li>
         </ul>
         <p>
-         Elas são coletivamente denominadas "amostragem de dados de microarquitetura" (MDS). Essas vulnerabilidades têm potencial para possibilitar a exposição de dados por meio da interação da execução especulativa com o estado de microarquitetura. Para ver mais detalhes, consulte a
+         Elas são coletivamente denominadas "amostragem de dados de microarquitetura" (MDS). Essas vulnerabilidades possibilitam a exposição de dados por meio da interação da execução especulativa com o estado de microarquitetura. Para ver mais detalhes, consulte a
          <a class="external" href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00233.html">
           divulgação da Intel
          </a>
@@ -1969,13 +2308,13 @@ kubectl get nodes -o=jsonpath='{range .items[*]}'\
          </strong>
         </p>
         <p>
-         Se o GKE for executado no local, você poderá ser afetado dependendo do hardware utilizado. Consulte o
+         Se o GKE On-Prem for executado, você poderá ser afetado dependendo do hardware utilizado. Consulte o
          <a class="external" href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00233.html">
           anúncio da Intel
          </a>
          .
         </p>
-        <h4 data-text="O que fazer?" id="what-should-i-do_11" tabindex="0">
+        <h4 data-text="O que fazer?" id="what-should-i-do_13" tabindex="0">
          O que fazer?
         </h4>
         <p>
@@ -2047,18 +2386,22 @@ NAME                READY     STATUS    RESTARTS   AGE
 disable-smt-2xnnc   1/1       Running   0          6m</pre>
          </li>
          <li>
-          Verifique se "SMT has been disabled" [SMT foi desativada] aparece nos registros dos pods.
+          Verifique se a mensagem “SMT foi desativada” aparece nos registros dos pods.
           <pre dir="ltr" translate="no">
 
 kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
          </li>
         </ol>
         <aside class="note">
-         Observação: as opções de inicialização não poderão ser modificadas se o nó tiver o recurso
-       [Inicialização segura](/kubernetes-engine/docs/how-to/shielded-gke-nodes#secure_boot)
-       ativado. Se a Inicialização segura estiver ativada, ela precisará ser
-       [desativada](/kubernetes-engine/docs/how-to/shielded-gke-nodes#disabling)
-       antes de o DaemonSet ser criado.
+         Observação: as opções de inicialização não poderão ser modificadas se o recurso
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/shielded-gke-nodes?hl=pt_br#secure_boot">
+          Inicialização segura
+         </a>
+         estiver ativado. Se esse for o caso, você precisará
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/shielded-gke-nodes?hl=pt_br#disabling">
+          desativar essa funcionalidade
+         </a>
+         antes da criação do DaemonSet.
         </aside>
         <p>
          É necessário manter o DaemonSet em execução nos pools de nós para que as alterações sejam aplicadas automaticamente aos novos nós criados no pool. É possível acionar as criações de nós por meio do reparo automático de nós, do upgrade manual ou automático e do escalonamento automático.
@@ -2076,7 +2419,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         <p>
          Este boletim será atualizado com as versões com um patch assim que eles estiverem disponíveis.
         </p>
-        <h4 data-text="Qual vulnerabilidade é corrigida pelo patch?" id="what-vulnerability-is-addressed-by-this-patch_5" tabindex="0">
+        <h4 data-text="Qual vulnerabilidade é corrigida pelo patch?" id="what-vulnerability-is-addressed-by-this-patch_7" tabindex="0">
          Qual vulnerabilidade é corrigida por esse patch?
         </h4>
         <p>
@@ -2142,7 +2485,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         Gravidade
        </th>
        <th>
-        Notas
+        Observações
        </th>
       </tr>
      </thead>
@@ -2177,7 +2520,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
           É recomendável fazer upgrade dos clusters afetados para a versão de patch mais recente o mais rápido possível, bem como dos arquivos secundários do Istio (instruções abaixo).
          </strong>
         </p>
-        <h4 data-text="O que fazer?" id="what-should-i-do_12" tabindex="0">
+        <h4 data-text="O que fazer?" id="what-should-i-do_14" tabindex="0">
          O que fazer?
         </h4>
         <p>
@@ -2237,7 +2580,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
           1.13.4-gke.10
          </li>
         </ul>
-        <h4 data-text="Qual vulnerabilidade é corrigida pelo patch?" id="what-vulnerability-is-addressed-by-this-patch_6" tabindex="0">
+        <h4 data-text="Qual vulnerabilidade é corrigida pelo patch?" id="what-vulnerability-is-addressed-by-this-patch_8" tabindex="0">
          Qual vulnerabilidade é corrigida por esse patch?
         </h4>
         <p>
@@ -2290,7 +2633,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         Gravidade
        </th>
        <th>
-        Notas
+        Observações
        </th>
       </tr>
      </thead>
@@ -2321,7 +2664,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
           Todos os mestres do Google Kubernetes Engine (GKE) são afetados por essas vulnerabilidades. Uma futura versão de patch incluirá uma mitigação dessa vulnerabilidade. Faremos upgrade automático dos mestres do cluster para a versão com patch nas próximas semanas, no ritmo normal de upgrades.
          </strong>
         </p>
-        <h4 data-text="O que fazer?" id="what-should-i-do_13" tabindex="0">
+        <h4 data-text="O que fazer?" id="what-should-i-do_15" tabindex="0">
          O que fazer?
         </h4>
         <p>
@@ -2337,7 +2680,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         <p>
          Este boletim será atualizado com as versões com um patch assim que estiverem disponíveis. Observe que o patch estará disponível apenas nas versões 1.11+, não nas 1.10.
         </p>
-        <h4 data-text="Qual vulnerabilidade é corrigida pelo patch?" id="what-vulnerability-is-addressed-by-this-patch_7" tabindex="0">
+        <h4 data-text="Qual vulnerabilidade é corrigida pelo patch?" id="what-vulnerability-is-addressed-by-this-patch_9" tabindex="0">
          Qual vulnerabilidade é corrigida por esse patch?
         </h4>
         <p>
@@ -2375,7 +2718,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         Gravidade
        </th>
        <th>
-        Notas
+        Observações
        </th>
       </tr>
      </thead>
@@ -2402,7 +2745,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
           para a versão de patch mais recente assim que possível, conforme detalhado abaixo.
          </strong>
         </p>
-        <h4 data-text="O que fazer?" id="what-should-i-do_14" tabindex="0">
+        <h4 data-text="O que fazer?" id="what-should-i-do_16" tabindex="0">
          O que fazer?
         </h4>
         <p>
@@ -2418,7 +2761,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         <p>
          A nova versão do RunC tem uso maior de memória e pode exigir a atualização da memória alocada para contêineres se você tiver limites baixos (&lt; 16MB) configurados.
         </p>
-        <h4 data-text="Qual vulnerabilidade é corrigida pelo patch?" id="what-vulnerability-is-addressed-by-this-patch_8" tabindex="0">
+        <h4 data-text="Qual vulnerabilidade é corrigida pelo patch?" id="what-vulnerability-is-addressed-by-this-patch_10" tabindex="0">
          Qual vulnerabilidade é corrigida por esse patch?
         </h4>
         <p>
@@ -2457,7 +2800,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         Gravidade
        </th>
        <th>
-        Notas
+        Observações
        </th>
       </tr>
      </thead>
@@ -2491,7 +2834,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
           inclui uma mitigação dessa vulnerabilidade. Faremos upgrade automático dos clusters mestres para a versão com patch nas próximas semanas, no ritmo normal de atualização.
          </strong>
         </p>
-        <h4 data-text="O que fazer?" id="what-should-i-do_15" tabindex="0">
+        <h4 data-text="O que fazer?" id="what-should-i-do_17" tabindex="0">
          O que fazer?
         </h4>
         <p>
@@ -2507,7 +2850,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         <p>
          Esse patch está disponível nas versões 1.10.12-gke.7, 1.11.6-gke.11, 1.11.7-gke.4, 1.12.5-gke.5 e em versões posteriores.
         </p>
-        <h4 data-text="Qual vulnerabilidade é corrigida pelo patch?" id="what-vulnerability-is-addressed-by-this-patch_9" tabindex="0">
+        <h4 data-text="Qual vulnerabilidade é corrigida pelo patch?" id="what-vulnerability-is-addressed-by-this-patch_11" tabindex="0">
          Qual vulnerabilidade é corrigida por esse patch?
         </h4>
         <p>
@@ -2541,7 +2884,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         Gravidade
        </th>
        <th>
-        Notas
+        Observações
        </th>
       </tr>
      </thead>
@@ -2553,7 +2896,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1002105">
           CVE-2018-1002105
          </a>
-         , que permite a usuários com níveis de privilégio relativamente baixos ignorar a autorização de acesso às APIs do kubelet. Com isso, eles podem executar operações arbitrárias em qualquer pod e em qualquer nó do cluster. Para ver mais detalhes, consulte a
+         , que permite a usuários com níveis de privilégio relativamente baixos ignorarem a autorização de acesso às APIs do kubelet. Com isso, eles podem executar operações arbitrárias em qualquer pod e em qualquer nó do cluster. Para ver mais detalhes, consulte a
          <a class="external" href="https://groups.google.com/forum/?hl=pt_br#!topic/kubernetes-announce/GVllWCg6L88">
           divulgação do Kubernetes
          </a>
@@ -2567,7 +2910,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         Nenhuma ação é necessária.
          </strong>
         </p>
-        <h4 data-text="O que fazer?" id="what-should-i-do_16" tabindex="0">
+        <h4 data-text="O que fazer?" id="what-should-i-do_18" tabindex="0">
          O que fazer?
         </h4>
         <p>
@@ -2578,7 +2921,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         <p>
          Esse patch está disponível no GKE 1.9.7-gke.11, 1.10.6-gke.11, 1.10.7-gke.11, 1.10.9-gke.5, 1.11.2-gke.18 e nas versões mais recentes.
         </p>
-        <h4 data-text="Qual vulnerabilidade é corrigida pelo patch?" id="what-vulnerability-is-addressed-by-this-patch_10" tabindex="0">
+        <h4 data-text="Qual vulnerabilidade é corrigida pelo patch?" id="what-vulnerability-is-addressed-by-this-patch_12" tabindex="0">
          Qual vulnerabilidade é corrigida por esse patch?
         </h4>
         <p>
@@ -2688,7 +3031,7 @@ networkpolicies.networking.k8s.io           [watch list]
      Essa rotação foi concluída em 16/11/2018.
     </p>
     <p>
-     Se você quiser alternar esses tokens imediatamente, execute o comando a seguir. O novo secret da conta de serviço deverá ser recriado automaticamente em alguns segundos:
+     Se você quiser alternar esses tokens imediatamente, execute o comando a seguir. O novo secret da conta de serviço será recriado automaticamente em alguns segundos:
     </p>
     <table>
      <tbody>
@@ -2702,10 +3045,7 @@ networkpolicies.networking.k8s.io           [watch list]
      <tbody>
       <tr>
        <td>
-        <pre dir="ltr" translate="no">
-
-kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
-      </pre>
+        kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
        </td>
       </tr>
      </tbody>
@@ -2817,7 +3157,7 @@ NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.244.0.0/14")
         Gravidade
        </th>
        <th>
-        Notas
+        Observações
        </th>
       </tr>
      </thead>
@@ -2936,7 +3276,7 @@ NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.244.0.0/14")
         Gravidade
        </th>
        <th>
-        Notas
+        Observações
        </th>
       </tr>
      </thead>
@@ -3030,7 +3370,7 @@ NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.244.0.0/14")
         Gravidade
        </th>
        <th>
-        Notas
+        Observações
        </th>
       </tr>
      </thead>
@@ -3068,7 +3408,7 @@ NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.244.0.0/14")
         <p>
          Todos os nós do Kubernetes Engine estão vulneráveis.
         </p>
-        <h4 data-text="O que fazer?" id="what-should-i-do_17" tabindex="0">
+        <h4 data-text="O que fazer?" id="what-should-i-do_19" tabindex="0">
          O que fazer?
         </h4>
         <p>
@@ -3150,7 +3490,7 @@ spec:
         Gravidade
        </th>
        <th>
-        Notas
+        Observações
        </th>
       </tr>
      </thead>
@@ -3177,7 +3517,7 @@ spec:
          </a>
          para a versão de patch mais recente, conforme detalhado a seguir.
         </p>
-        <h4 data-text="O que fazer?" id="what-should-i-do_18" tabindex="0">
+        <h4 data-text="O que fazer?" id="what-should-i-do_20" tabindex="0">
          O que fazer?
         </h4>
         <p>
@@ -3255,7 +3595,7 @@ spec:
         Gravidade
        </th>
        <th>
-        Notas
+        Observações
        </th>
       </tr>
      </thead>
@@ -3277,7 +3617,7 @@ spec:
          </a>
          . Elas possibilitam que os contêineres acessem arquivos que não estão dentro deles. Todos os nós do Kubernetes Engine são afetados por essas vulnerabilidades. Recomendamos que você faça o upgrade para a versão com patch mais recente assim que possível.
         </p>
-        <h4 data-text="O que fazer?" id="what-should-i-do_19" tabindex="0">
+        <h4 data-text="O que fazer?" id="what-should-i-do_21" tabindex="0">
          O que fazer?
         </h4>
         <p>
