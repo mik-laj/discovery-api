@@ -19,15 +19,198 @@ trabalho, consulte [ Isolamento em camadas diferentes da pilha do Kubernetes
 Isolation-at-different-layers-of-the-Kubernetes-stack.html) (em inglês).
 
 Para receber os boletins de segurança mais recentes, adicione o URL desta
-página ao [ leitor de feeds
+página ao seu [ leitor de feeds
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ou adicione o URL
 do feed diretamente: ` https://cloud.google.com/feeds/kubernetes-engine-
 security-bulletins.xml `
 
+##  GCP-2020-007
+
+**Publicado:** 01/06/2020  
+Descrição  |  Gravidade  |  Observações  
+---|---|---  
+  
+Uma vulnerabilidade de falsificação da solicitação no lado do servidor (SSRF,
+na sigla em inglês), [ a CVE-2020-8555 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8555) (em inglês), recentemente foi detectada no
+Kubernetes. Essa vulnerabilidade permite que certos usuários autorizados vazem
+até 500 bytes de informações confidenciais da rede do host no plano de
+controle. O plano de controle do Google Kubernetes Engine (GKE) usa os
+controladores do Kubernetes e, portanto, foi afetado por essa vulnerabilidade.
+Recomendamos que você faça [ o upgrade ](https://cloud.google.com/kubernetes-
+engine/docs/how-to/upgrading-a-container-cluster?hl=pt_br) do plano de
+controle para a última versão do patch, como detalhamos a seguir. Um upgrade
+dos nós não é exigido.  
+
+####  O que fazer?
+
+Para quase todos os clientes, nenhuma ação é necessária. A grande maioria dos
+clusters já executa uma versão com o patch. As seguintes versões do GKE ou
+superiores contêm a solução para essa vulnerabilidade:
+
+  * 1.14.7-gke.39 
+  * 1.14.8-gke.32 
+  * 1.14.9-gke.17 
+  * 1.14.10-gke.12 
+  * 1.15.7-gke.17 
+  * 1.16.4-gke.21 
+  * 1.17.0-gke.0 
+
+Os clusters que usam [ canais de lançamento
+](https://cloud.google.com/kubernetes-engine/docs/concepts/release-
+channels?hl=pt_br) já estão nas versões do plano de controle com a mitigação.
+
+####  Qual vulnerabilidade é corrigida pelo patch?
+
+Esses patches mitigam a vulnerabilidade CVE-2020-8555. Ela é classificada como
+uma vulnerabilidade de gravidade média para o GKE, porque era difícil explorá-
+la já que havia várias medidas de aumento de proteção do plano de controle.
+
+Um invasor com permissões para criar um pod com determinados tipos de volume
+integrado (GlusterFS, Quobyte, StorageFS e ScaleIO) ou permissões para criar
+um StorageClass pode fazer com que ` kube-controller-manager ` crie
+solicitações ` GET ` ou ` POST ` _sem_ um corpo de solicitação controlado pelo
+invasor na rede do host do mestre. Esses tipos de volume raramente são usados
+no GKE, então uma nova utilização deles pode ser um sinal útil para detectar
+problemas.
+
+Combinado com um meio de vazar os resultados de ` GET/POST ` para o invasor,
+como por meio de registros, essa vulnerabilidade pode levar à divulgação de
+informações confidenciais. Atualizamos os drivers de armazenamento em questão
+para remover a possibilidade desses vazamentos acontecerem.
+
+|
+
+Média
+
+|
+
+[ CVE-2020-8555 (em inglês) ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8555)  
+  
+##  GCP-2020-006
+
+**Publicado:** 01/06/2020  
+Descrição  |  Gravidade  |  Observações  
+---|---|---  
+  
+O Kubernetes divulgou [ uma vulnerabilidade
+](https://github.com/kubernetes/kubernetes/issues/91507) (em inglês) que
+permite a um contêiner privilegiado redirecionar o tráfego do nó para outro
+contêiner. O tráfego mútuo TLS/SSH, como entre o kubelet e o servidor da API,
+ou o tráfego de aplicativos que usam mTLS não pode ser lidos ou modificado por
+essa invasão. Todos os nós do Google Kubernetes Engine (GKE) foram afetados
+por essa vulnerabilidade, e recomendamos que você faça [ o upgrade
+](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
+cluster?hl=pt_br) para a última versão do patch, como detalhamos a seguir.
+
+####  O que fazer?
+
+Para mitigar essa vulnerabilidade, faça [ o upgrade
+](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
+cluster?hl=pt_br) do seu plano de controle e dos seus nós para uma das versões
+com patch listadas a seguir. Os clusters nos canais de lançamento já estão
+executando uma versão com patch no plano de controle e nos nós:
+
+  * 1.14.10-gke.36 
+  * 1.15.11-gke.15 
+  * 1.16.8-gke.15 
+
+Em geral, pouquíssimos contêineres exigem ` CAP_NET_RAW ` . Essa e outras
+capacidades poderosas deveriam estar bloqueadas por padrão [ pela
+PodSecurityPolicy ](https://cloud.google.com/kubernetes-engine/docs/how-
+to/pod-security-policies?hl=pt_br) ou o [ Policy Controller do Anthos
+](https://cloud.google.com/anthos-config-management/docs/concepts/policy-
+controller?hl=pt_br) :
+
+  * Remova a capacidade ` CAP_NET_RAW ` dos contêineres: 
+    * Por meio da [ PodSecurityPolicy ](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=pt_br) e usando: 
+        
+                
+        # Require dropping CAP_NET_RAW with a PSP
+        apiversion: extensions/v1beta1
+        kind: PodSecurityPolicy
+        metadata:
+          name: no-cap-net-raw
+        spec:
+          requiredDropCapabilities:
+            -NET_RAW
+             ...
+             # Unrelated fields omitted
+        
+
+    * Ou ao utilizar e aplicar o Policy Controller/Gatekeeper do Anthos com este [ modelo de restrição ](https://github.com/open-policy-agent/gatekeeper/blob/master/library/pod-security-policy/capabilities/template.yaml) (em inglês), por exemplo: 
+        
+                
+        # Dropping CAP_NET_RAW with Gatekeeper
+        # (requires the K8sPSPCapabilities template)
+        apiversion: constraints.gatekeeper.sh/v1beta1
+        kind:  K8sPSPCapabilities
+        metadata:
+          name: forbid-cap-net-raw
+        spec:
+          match:
+            kinds:
+              - apiGroups: [""]
+              kinds: ["Pod"]
+            namespaces:
+              #List of namespaces to enforce this constraint on
+              - default
+            # If running gatekeeper >= v3.1.0-beta.5,
+            # you can exclude namespaces rather than including them above.
+            excludedNamespaces:
+              - kube-system
+          parameters:
+            requiredDropCapabilities:
+              - "NET_RAW"
+        
+
+    * Ou ao atualizar as especificações do pod: 
+        
+                
+        # Dropping CAP_NET_RAW from a Pod:
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          name: no-cap-net-raw
+        spec:
+          containers:
+            -name: may-container
+             ...
+            securityContext:
+              capabilities:
+                drop:
+                  -NET_RAW
+        
+
+####  Qual vulnerabilidade é corrigida pelo patch?
+
+O patch mitiga a seguinte vulnerabilidade:
+
+A vulnerabilidade descrita na capacidade ` CAP_NET_RAW ` do [ problema 91507
+do Kubernetes ](https://github.com/kubernetes/kubernetes/issues/91507) (que
+está incluída no conjunto de capacidades de contêiner padrão) que envolve
+configurar de forma mal-intencionada a pilha do IPv6 no nó e redirecionar o
+tráfego do nó para o contêiner controlado pelo invasor. Isso permite que o
+invasor intercepte/modifique o tráfego que se origina do nó ou se destina a
+ele. O tráfego mútuo TLS/SSH, como entre o kubelet e o servidor da API, ou o
+tráfego de aplicativos que usam mTLS não pode ser lido ou modificado por essa
+invasão.
+
+|
+
+Média
+
+|
+
+[ Problema 91507 do Kubernetes
+](https://github.com/kubernetes/kubernetes/issues/91507)  
+  
+  
 ##  GCP-2020-005
 
 **Publicação:** 07/05/2020  
-**Atualizado em:** 07/05/2020  Descrição  |  Gravidade  |  Notas  
+**Atualizado em:** 07/05/2020  Descrição  |  Gravidade  |  Observações  
 ---|---|---  
   
 Uma vulnerabilidade foi recentemente descoberta no kernel do Linux, descrita
@@ -41,7 +224,7 @@ upgrade para a versão de patch mais recente assim que possível, conforme
 detalhado abaixo.
 
 Os nós executando o SO otimizado para contêineres não foram afetados. Os nós
-executando o GKE no local não foram afetados.
+executando o GKE On-Prem não foram afetados.
 
 ####  O que fazer?
 
@@ -79,7 +262,7 @@ bin/cvename.cgi?name=CVE-2020-8835) (em inglês)
 ##  GCP-2020-003
 
 **Publicação:** 31/03/2020  
-**Atualizado em:** 31/03/2020  Descrição  |  Gravidade  |  Notas  
+**Atualizado em:** 31/03/2020  Descrição  |  Gravidade  |  Observações  
 ---|---|---  
   
 Uma vulnerabilidade foi descoberta no Kubernetes recentemente, descrita em [
@@ -130,7 +313,7 @@ bin/cvename.cgi?name=CVE-2019-11254)
 ##  GCP-2020-002
 
 **Publicação:** 23/03/2020  
-**Atualizado em:** 23/03/2020  Descrição  |  Gravidade  |  Notas  
+**Atualizado em:** 23/03/2020  Descrição  |  Gravidade  |  Observações  
 ---|---|---  
   
 O Kubernetes divulgou [ duas vulnerabilidades de negação de serviço
@@ -180,7 +363,7 @@ bin/cvename.cgi?name=CVE-2020-8552)
 ##  21 de janeiro de 2020. Última atualização em 24 de janeiro de 2020
 
 **Publicação:** 21/01/2020  
-**Atualizado em:** 24/01/2020  Descrição  |  Gravidade  |  Notas  
+**Atualizado em:** 24/01/2020  Descrição  |  Gravidade  |  Observações  
 ---|---|---  
   
 **Atualização de 24/01/2020:** o processo de disponibilização de versões com
@@ -251,7 +434,7 @@ bin/cvename.cgi?name=CVE-2020-0601)
 ##  14 de novembro de 2019
 
 **Publicação:** 14/11/2019  
-**Atualizado em:** 14/11/2019  Descrição  |  Gravidade  |  Notas  
+**Atualizado em:** 14/11/2019  Descrição  |  Gravidade  |  Observações  
 ---|---|---  
   
 O Kubernetes divulgou um problema de segurança nos arquivos secundários [ `
@@ -297,7 +480,7 @@ bin/cvename.cgi?name=CVE-2019-11255)
 ##  12 de novembro de 2019
 
 **Publicação:** 12/11/2019  
-**Atualizado em:** 12/11/2019  Descrição  |  Gravidade  |  Notas  
+**Atualizado em:** 12/11/2019  Descrição  |  Gravidade  |  Observações  
 ---|---|---  
   
 A Intel divulgou CVEs que potencialmente permitem interações entre a execução
@@ -364,7 +547,7 @@ Média
 ##  22 de outubro de 2019
 
 **Publicação:** 22/10/2019  
-**Atualizado em:** 22/10/2019  Descrição  |  Gravidade  |  Notas  
+**Atualizado em:** 22/10/2019  Descrição  |  Gravidade  |  Observações  
 ---|---|---  
   
 Uma vulnerabilidade foi descoberta recentemente na Linguagem de programação
@@ -391,7 +574,7 @@ bin/cvename.cgi?name=CVE-2019-16276)
 ##  16 de outubro de 2019
 
 **Publicação:** 16/10/2019  
-**Atualizado em:** 24/10/2019  Descrição  |  Gravidade  |  Notas  
+**Atualizado em:** 24/10/2019  Descrição  |  Gravidade  |  Observações  
 ---|---|---  
   
 **Atualização de 24/10/2019:** agora, versões com patch estão disponíveis em
@@ -447,7 +630,7 @@ bin/cvename.cgi?name=CVE-2019-11253)
 ##  16 de setembro de 2019
 
 **Publicação:** 16/09/2019  
-**Atualizado em:** 16/10/2019  Descrição  |  Gravidade  |  Notas  
+**Atualizado em:** 16/10/2019  Descrição  |  Gravidade  |  Observações  
 ---|---|---  
   
 Este boletim já foi atualizado desde a publicação original.
@@ -530,7 +713,7 @@ versão do GKE.
 ##  5 de agosto de 2019
 
 **Publicação:** 05/08/2019  
-**Atualizado em:** 09/08/2019  Descrição  |  Gravidade  |  Notas  
+**Atualizado em:** 09/08/2019  Descrição  |  Gravidade  |  Observações  
 ---|---|---  
   
 Este boletim já foi atualizado desde a publicação original.
@@ -541,10 +724,10 @@ possibilita que instâncias de [ recursos personalizados
 ](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-
 resources/) com escopo no cluster sejam usadas como se fossem objetos de
 namespaces existentes em todos os namespaces. Isso significa que contas de
-usuários e de serviço com permissões apenas do RBAC de nível namespace podem
-interagir com recursos personalizados com escopo no cluster. A exploração
-dessa vulnerabilidade exige que o invasor tenha privilégios para acessar o
-recurso no namespace.
+usuários e de serviço com permissões apenas do RBAC de nível do namespace
+podem interagir com recursos personalizados com escopo no cluster. A
+exploração dessa vulnerabilidade exige que o invasor tenha privilégios para
+acessar o recurso no namespace.
 
 ######  O que fazer?
 
@@ -576,7 +759,7 @@ bin/cvename.cgi?name=CVE-2019-11247)
 ##  3 de julho de 2019
 
 **Publicação:** 03/07/2019  
-**Atualizado em:** 03/07/2019  Descrição  |  Gravidade  |  Notas  
+**Atualizado em:** 03/07/2019  Descrição  |  Gravidade  |  Observações  
 ---|---|---  
   
 Uma versão de patch de ` kubectl ` para tratar da CVE-2019-11246 está
@@ -599,7 +782,7 @@ bin/cvename.cgi?name=CVE-2018-15664)
 ##  3 de julho de 2019
 
 **Publicação:** 25/06/2019  
-**Atualizado em:** 03/07/2019  Descrição  |  Gravidade  |  Notas  
+**Atualizado em:** 03/07/2019  Descrição  |  Gravidade  |  Observações  
 ---|---|---  
   
 ######  Atualização de 3 de julho de 2019
@@ -731,7 +914,7 @@ bin/cvename.cgi?name=CVE-2019-11479)
   
 ##  25 de junho de 2019
 
-Descrição  |  Gravidade  |  Notas  
+Descrição  |  Gravidade  |  Observações  
 ---|---|---  
   
 **Atualização de 03/07/2019:** Este patch está disponível na ` gcloud `
@@ -786,7 +969,7 @@ bin/cvename.cgi?name=CVE-2018-15664)
   
 ##  18 de junho de 2019
 
-Descrição  |  Gravidade  |  Notas  
+Descrição  |  Gravidade  |  Observações  
 ---|---|---  
   
 Recentemente, o Docker descobriu uma vulnerabilidade, a [ CVE-2018-15664
@@ -811,7 +994,7 @@ dessa vulnerabilidade para mestres do GKE é limitado.
 
 Apenas os nós com o Docker em execução são afetados, e somente quando for
 emitido um comando ` docker cp ` (ou equivalente da API) que possa ser
-sequestrado. Espera-se que isso seja bastante incomum em um ambiente do
+invadido. Espera-se que isso seja bastante incomum em um ambiente do
 Kubernetes. Nós com o [ Container-Optimized OS com containerd
 ](https://cloud.google.com/kubernetes-engine/docs/concepts/using-
 containerd?hl=pt_br) em execução não são afetados.
@@ -839,7 +1022,7 @@ O patch reduz os riscos da seguinte vulnerabilidade:
 
 A vulnerabilidade [ CVE-2018-15664 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2018-15664) possibilita que um invasor capaz de
-executar um código dentro de um contêiner sequestre uma operação ` docker cp `
+executar um código dentro de um contêiner invada uma operação ` docker cp `
 iniciada externamente. Essa exploração permite que um invasor altere o local
 onde um arquivo está sendo gravado para um local arbitrário no sistema de
 arquivos do host.
@@ -848,7 +1031,7 @@ arquivos do host.
   
 ##  31 de maio de 2019
 
-Descrição  |  Gravidade  |  Notas  
+Descrição  |  Gravidade  |  Observações  
 ---|---|---  
   
 Este boletim já foi atualizado desde a publicação original.
@@ -875,7 +1058,7 @@ inesperado. Quando um contêiner é executado pela primeira vez em um nó, ele
 respeita corretamente o UID especificado. Contudo, devido a esse defeito, na
 segunda execução (e nas subsequentes) o contêiner é executado como UID 0
 apesar do UID especificado. Em geral, isso é um privilégio escalonado
-indesejado, e pode levar a um comportamento inesperado do aplicativo.
+indesejado e pode levar a um comportamento inesperado do aplicativo.
 
 #####  Como saber se tenho uma versão impactada?
 
@@ -919,7 +1102,7 @@ bin/cvename.cgi?name=2019-11245)
   
 ##  14 de maio de 2019
 
-Descrição  |  Gravidade  |  Notas  
+Descrição  |  Gravidade  |  Observações  
 ---|---|---  
   
 **Atualização de 11/06/2019:** o patch está disponível nas versões
@@ -934,9 +1117,9 @@ A Intel divulgou as CVEs a seguir:
   * [ CVE-2019-11091 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11091)
 
 Elas são coletivamente denominadas "amostragem de dados de microarquitetura"
-(MDS). Essas vulnerabilidades têm potencial para possibilitar a exposição de
-dados por meio da interação da execução especulativa com o estado de
-microarquitetura. Para ver mais detalhes, consulte a [ divulgação da Intel
+(MDS). Essas vulnerabilidades possibilitam a exposição de dados por meio da
+interação da execução especulativa com o estado de microarquitetura. Para ver
+mais detalhes, consulte a [ divulgação da Intel
 ](https://www.intel.com/content/www/us/en/security-center/advisory/intel-
 sa-00233.html) .
 
@@ -961,8 +1144,8 @@ nós para a versão com patch nas próximas semanas, no ritmo normal de upgrades
 **Apenas o patch não é suficiente para mitigar a exposição a essa
 vulnerabilidade. Veja as ações recomendadas abaixo.**
 
-Se o GKE for executado no local, você poderá ser afetado dependendo do
-hardware utilizado. Consulte o [ anúncio da Intel
+Se o GKE On-Prem for executado, você poderá ser afetado dependendo do hardware
+utilizado. Consulte o [ anúncio da Intel
 ](https://www.intel.com/content/www/us/en/security-center/advisory/intel-
 sa-00233.html) .
 
@@ -1011,16 +1194,17 @@ Você receberá uma resposta semelhante a:
     
     disable-smt-2xnnc   1/1       Running   0          6m
 
-  4. Verifique se "SMT has been disabled" [SMT foi desativada] aparece nos registros dos pods. 
+  4. Verifique se a mensagem “SMT foi desativada” aparece nos registros dos pods. 
     
         
     kubectl logs disable-smt-2xnnc disable-smt -n kube-system
 
-Observação: as opções de inicialização não poderão ser modificadas se o nó
-tiver o recurso [Inicialização segura](/kubernetes-engine/docs/how-
-to/shielded-gke-nodes#secure_boot) ativado. Se a Inicialização segura estiver
-ativada, ela precisará ser [desativada](/kubernetes-engine/docs/how-
-to/shielded-gke-nodes#disabling) antes de o DaemonSet ser criado.
+Observação: as opções de inicialização não poderão ser modificadas se o
+recurso [ Inicialização segura ](https://cloud.google.com/kubernetes-
+engine/docs/how-to/shielded-gke-nodes?hl=pt_br#secure_boot) estiver ativado.
+Se esse for o caso, você precisará [ desativar essa funcionalidade
+](https://cloud.google.com/kubernetes-engine/docs/how-to/shielded-gke-
+nodes?hl=pt_br#disabling) antes da criação do DaemonSet.
 
 É necessário manter o DaemonSet em execução nos pools de nós para que as
 alterações sejam aplicadas automaticamente aos novos nós criados no pool. É
@@ -1064,7 +1248,7 @@ microarquitetura.  |  Média  |
   
 ##  5 de abril de 2019
 
-Descrição  |  Gravidade  |  Notas  
+Descrição  |  Gravidade  |  Observações  
 ---|---|---  
   
 Recentemente, as vulnerabilidades de segurança [ CVE-2019-9900
@@ -1129,7 +1313,7 @@ sobre elas no [ blog da Istio. ](https://istio.io/blog/2019/announcing-1.1.2)
   
 ##  1º de março de 2019
 
-Descrição  |  Gravidade  |  Notas  
+Descrição  |  Gravidade  |  Observações  
 ---|---|---  
   
 **Atualização de 22/03/2019:** esse patch está disponível no Kubernetes
@@ -1179,7 +1363,7 @@ bin/cvename.cgi?name=CVE-2019-1002100)
   
 ##  11 de fevereiro de 2019 (RunC)
 
-Descrição  |  Gravidade  |  Notas  
+Descrição  |  Gravidade  |  Observações  
 ---|---|---  
   
 Recentemente, a Open Containers Initiative (iniciativa que cria padrões para
@@ -1229,7 +1413,7 @@ bin/cvename.cgi?name=CVE-2019-5736)
   
 ##  11 de fevereiro de 2019 (Go)
 
-Descrição  |  Gravidade  |  Notas  
+Descrição  |  Gravidade  |  Observações  
 ---|---|---  
   
 **Atualização de 25/02/2019:** o patch não está disponível na versão
@@ -1279,13 +1463,13 @@ bin/cvename.cgi?name=CVE-2019-6486)
   
 ##  3 de dezembro de 2018
 
-Descrição  |  Gravidade  |  Notas  
+Descrição  |  Gravidade  |  Observações  
 ---|---|---  
   
 Recentemente, foi descoberta no Kubernetes uma nova vulnerabilidade de
 segurança, a [ CVE-2018-1002105 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2018-1002105) , que permite a usuários com níveis de
-privilégio relativamente baixos ignorar a autorização de acesso às APIs do
+privilégio relativamente baixos ignorarem a autorização de acesso às APIs do
 kubelet. Com isso, eles podem executar operações arbitrárias em qualquer pod e
 em qualquer nó do cluster. Para ver mais detalhes, consulte a [ divulgação do
 Kubernetes ](https://groups.google.com/forum/?hl=pt_br#!topic/kubernetes-
@@ -1378,14 +1562,11 @@ for concluída. **Não é necessária nenhuma ação da sua parte.** Essa rotaç
 foi concluída em 16/11/2018.
 
 Se você quiser alternar esses tokens imediatamente, execute o comando a
-seguir. O novo secret da conta de serviço deverá ser recriado automaticamente
-em alguns segundos:  
-      
-    
-    
-    kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
-            
+seguir. O novo secret da conta de serviço será recriado automaticamente em
+alguns segundos:  
   
+kubectl get sa --namespace kube-system calico -o template --template '{{(index
+.secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system  
 ---  
   
 ####  Detecção
@@ -1475,7 +1656,7 @@ necessárias de acordo com seu ambiente específico.
   
 ##  14 de agosto de 2018
 
-Descrição  |  Gravidade  |  Notas  
+Descrição  |  Gravidade  |  Observações  
 ---|---|---  
   
 A [ Intel divulgou ](https://www.intel.com/content/www/us/en/architecture-and-
@@ -1527,7 +1708,7 @@ patch da imagem do Container-Optimized OS.
   
 ##  6 de agosto de 2018. Última atualização: 5 de setembro de 2018
 
-Descrição  |  Gravidade  |  Notas  
+Descrição  |  Gravidade  |  Observações  
 ---|---|---  
   
 ####  Atualização de 05/09/2018
@@ -1580,7 +1761,7 @@ patch estiver disponível.
   
 ##  30 de maio de 2018
 
-Descrição  |  Gravidade  |  Notas  
+Descrição  |  Gravidade  |  Observações  
 ---|---|---  
   
 Recentemente foi descoberta no Git uma vulnerabilidade que possibilita a
@@ -1654,7 +1835,7 @@ a esta página em breve para mais detalhes.
   
 ##  21 de maio de 2018
 
-Descrição  |  Gravidade  |  Notas  
+Descrição  |  Gravidade  |  Observações  
 ---|---|---  
   
 Diversas vulnerabilidades foram descobertas recentemente no kernel do Linux.
@@ -1720,7 +1901,7 @@ Pontuação de Vulnerabilidades Comuns (CVSS, na sigla em inglês).
   
 ##  12 de março de 2018
 
-Descrição  |  Gravidade  |  Notas  
+Descrição  |  Gravidade  |  Observações  
 ---|---|---  
   
 O projeto Kubernetes [ divulgou recentemente
