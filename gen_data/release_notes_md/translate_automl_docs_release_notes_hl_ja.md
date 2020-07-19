@@ -13,6 +13,15 @@ api ](https://groups.google.com/forum/?hl=ja#!forum/google-translate-api)
 URL ディレクトリ ` https://cloud.google.com/feeds/automl-translate-release-notes.xml
 ` を直接追加します。
 
+##  July 17, 2020
+
+**FEATURE:**
+
+For test data, added support for the ` .tmx ` file type when evaluating
+existing models. For more information, see [ Evaluating models
+](https://cloud.google.com/translate/automl/docs/evaluate?hl=ja#evaluate_and_compare_models_using_a_new_test_set)
+.
+
 ##  April 03, 2020
 
 **CHANGED:**
