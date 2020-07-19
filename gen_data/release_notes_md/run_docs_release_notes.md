@@ -12,6 +12,14 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/run-release-notes.xml `
 
+##  July 13, 2020
+
+**FEATURE:**
+
+The Cloud Run user interface now allows you to easily [ set up Continuous
+Deployment from Git using Cloud Build
+](https://cloud.google.com/run/docs/continuous-deployment-with-cloud-build)
+
 ##  July 07, 2020
 
 **FEATURE:**
