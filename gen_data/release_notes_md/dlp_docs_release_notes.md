@@ -17,6 +17,15 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/dlp-release-notes.xml `
 
+##  July 15, 2020
+
+**CHANGED:**
+
+Added [ infoType detector ](https://cloud.google.com/dlp/docs/infotypes-
+reference) :
+
+  * ISRAEL_IDENTITY_CARD_NUMBER 
+
 ##  June 19, 2020
 
 **FEATURE:**
