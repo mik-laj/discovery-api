@@ -1,3 +1,6 @@
+[ Go 1.13 ](https://cloud.google.com/appengine/docs/standard/go/runtime?hl=fr)
+est désormais accessible à tous.
+
 #  Notes de version Go 1.12+
 
 Vous pouvez consulter les dernières mises à jour de produits pour l'ensemble
