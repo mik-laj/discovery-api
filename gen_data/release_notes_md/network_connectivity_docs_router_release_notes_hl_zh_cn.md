@@ -1,11 +1,11 @@
 #  版本说明
 
-本页面包含 Cloud Router 路由器特性和更新的版本说明。
+本页面包含关于 Cloud Router 特性和更新的版本说明。
 
 您可以在 [ Google Cloud 版本说明 ](https://cloud.google.com/release-notes?hl=zh-cn)
 页面上查看 Google Cloud 所有产品的最新产品动态。
 
-要接收最新产品动态，请将本页面的网址添加到您的 [ Feed 阅读器
+如需接收最新产品动态，请将本页面的网址添加到您的 [ Feed 阅读器
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/cloudrouter-release-notes.xml `
 
