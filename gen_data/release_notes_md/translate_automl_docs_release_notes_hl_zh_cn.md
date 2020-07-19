@@ -12,6 +12,15 @@
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/automl-translate-release-notes.xml `
 
+##  July 17, 2020
+
+**FEATURE:**
+
+For test data, added support for the ` .tmx ` file type when evaluating
+existing models. For more information, see [ Evaluating models
+](https://cloud.google.com/translate/automl/docs/evaluate?hl=zh_cn#evaluate_and_compare_models_using_a_new_test_set)
+.
+
 ##  April 03, 2020
 
 **CHANGED:**
