@@ -7,6 +7,12 @@
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/gaestd-java-release-notes.xml `
 
+##  July 17, 2020
+
+**CHANGED:**
+
+  * Updated Java SDK to version 1.9.81 
+
 ##  July 08, 2020
 
 **FEATURE:**
