@@ -1,6 +1,6 @@
 #  リリースノート
 
-このページには、Cloud Router の機能やアップデートに関するリリースノートが掲載されています。
+このページには、Cloud Router の機能とアップデートに関するリリースノートが掲載されています。
 
 [ Google Cloud リリースノート ](https://cloud.google.com/release-notes?hl=ja)
 のページで、Google Cloud の最新のプロダクト更新情報をすべて確認できます。
