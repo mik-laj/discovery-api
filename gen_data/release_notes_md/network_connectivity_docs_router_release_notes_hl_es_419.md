@@ -1,7 +1,7 @@
 #  Notas de la versión
 
 En esta página, se encuentran notas de la versión de funciones y
-actualizaciones de Cloud VPN.
+actualizaciones de Cloud Router.
 
 Puedes ver las últimas actualizaciones de productos de todo Google Cloud en la
 página [ Notas de la versión de Google Cloud
