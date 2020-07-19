@@ -1,6 +1,6 @@
 #  Versionshinweise
 
-Diese Seite enthält Versionshinweise zu Funktionen und Updates für den Cloud
+Diese Seite enthält Versionshinweise zu Features und Updates für den Cloud
 Router.
 
 Die neuesten Produktaktualisierungen für Google Cloud finden Sie auf der Seite
