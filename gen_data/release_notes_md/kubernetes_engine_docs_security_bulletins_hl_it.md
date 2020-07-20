@@ -25,9 +25,63 @@ pagina al tuo [ aggregatore di feed
 direttamente l'URL del feed: ` https://cloud.google.com/feeds/kubernetes-
 engine-security-bulletins.xml `
 
+##  GCP-2020-005
+
+**Pubblicato il:** 07/05/2020  
+**Ultimo aggiornamento:** 07/05/2020  Descrizione  |  Gravità  |  Note  
+---|---|---  
+  
+Recentemente è stata scoperta una vulnerabilità nel kernel Linux, descritta in
+[ CVE-2020-8835 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8835) , che consente di uscire dai limiti del
+container per ottenere privilegi di utente root sul nodo host.
+
+I nodi di Google Kubernetes Engine (GKE) Ubuntu che eseguono GKE 1.16 o 1.17
+sono interessati da questa vulnerabilità e consigliamo di eseguire l'upgrade
+alla versione più recente della patch il prima possibile, come descritto di
+seguito.
+
+I nodi che eseguono Container-Optimized OS non sono interessati. I nodi che
+eseguono GKE on-prem non sono interessati.
+
+####  Che cosa devo fare?
+
+**Per la maggior parte dei clienti non sono necessari ulteriori interventi.
+Solo i nodi che eseguono Ubuntu nelle versioni 1.16 o 1.17 di GKE sono
+interessati.**
+
+Per eseguire l'upgrade dei nodi, devi prima eseguire l'upgrade del master alla
+versione più recente. Questa patch sarà disponibile in Kubernetes
+1.16.8-gke.12, 1.17.4-gke.10 e release successive. Traccia la disponibilità di
+queste patch nelle [ note di rilascio ](https://cloud.google.com/kubernetes-
+engine/docs/release-notes?hl=it) .
+
+####  Quale vulnerabilità viene affrontata da questa patch?
+
+La patch attenua la seguente vulnerabilità:
+
+[ CVE-2020-8835 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8835) descrive una vulnerabilità nelle versioni
+kernel Linux 5.5.0 e successive che permette a un container dannoso di leggere
+e scrivere (con minima interazione dell'utente sotto forma di file eseguibile)
+la memoria del kernel, ottenendo così la possibilità di eseguire codice a
+livello di utente root sul nodo host. Questa è classificata come vulnerabilità
+di gravità "Alta".
+
+|
+
+Alta
+
+|
+
+[ CVE-2020-8835 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8835)  
+  
+  
 ##  GCP-2020-003
 
-Descrizione  |  Gravità  |  Note  
+**Pubblicato il:** 31/03/2020  
+**Ultimo aggiornamento:** 31/03/2020  Descrizione  |  Gravità  |  Note  
 ---|---|---  
   
 Di recente è stata scoperta una vulnerabilità in Kubernetes, descritta in [
@@ -36,8 +90,8 @@ bin/cvename.cgi?name=CVE-2019-11254) , che consente a qualsiasi utente
 autorizzato a inviare richieste POST di eseguire un attacco denial of service
 remoto contro un server API Kubernetes. Il Kubernetes Product Security
 Committee (PSC) ha pubblicato ulteriori informazioni su questa vulnerabilità,
-disponibili [ qui ](https://groups.google.com/g/kubernetes-security-
-announce/c/wuwEwZigXBc?hl=it) .
+disponibili [ qui ](https://groups.google.com/forum/?hl=it#!topic/kubernetes-
+security-announce/wuwEwZigXBc) .
 
 I cluster GKE che utilizzano [ reti autorizzate master
 ](https://cloud.google.com/kubernetes-engine/docs/how-to/authorized-
@@ -76,7 +130,8 @@ bin/cvename.cgi?name=CVE-2019-11254)
   
 ##  GCP-2020-002
 
-Descrizione  |  Gravità  |  Note  
+**Pubblicato il:** 23/03/2020  
+**Ultimo aggiornamento:** 23/03/2020  Descrizione  |  Gravità  |  Note  
 ---|---|---  
   
 Kubernetes ha divulgato [ due vulnerabilità denial of service
@@ -125,19 +180,19 @@ bin/cvename.cgi?name=CVE-2020-8552)
   
 ##  21 gennaio 2020; ultimo aggiornamento 24 gennaio 2020
 
-Descrizione  |  Gravità  |  Note  
+**Pubblicato il:** 21/01/2020  
+**Ultimo aggiornamento:** 24/01/2020  Descrizione  |  Gravità  |  Note  
 ---|---|---  
   
-**Aggiornamento del 24-01-2020:** la messa a disposizione di versioni con
-patch è già in corso e sarà completata entro il 25 gennaio 2020\.
+**Aggiornamento 24-01-2020:** la messa a disposizione di versioni con patch è
+già in corso e sarà completata entro il 25 gennaio 2020\.
 
 * * *
 
-Microsoft ha divulgato una vulnerabilità nell'API Windows Crypto relativa al
-modo in cui convalida le firme a curva ellittica. Per ulteriori informazioni,
-consulta la [ divulgazione di Microsoft
-](https://portal.msrc.microsoft.com/en-US/security-
-guidance/advisory/CVE-2020-0601) .
+Microsoft ha divulgato una vulnerabilità nell'API Windows Crypto e la sua
+convalida delle firme a curva ellittica. Per ulteriori informazioni, consulta
+la [ divulgazione di Microsoft ](https://portal.msrc.microsoft.com/en-
+US/security-guidance/advisory/CVE-2020-0601) .
 
 **Che cosa devo fare?**
 
@@ -200,7 +255,8 @@ bin/cvename.cgi?name=CVE-2020-0601)
   
 ##  14 novembre 2019
 
-Descrizione  |  Gravità  |  Note  
+**Pubblicato il:** 14/11/2019  
+**Ultimo aggiornamento:** 14/11/2019  Descrizione  |  Gravità  |  Note  
 ---|---|---  
   
 Kubernetes ha divulgato un problema di sicurezza nei file collaterali
@@ -219,7 +275,7 @@ divulgazione di Kubernetes
 riguardarti se gestisci i tuoi driver CSI in [ cluster GKE alpha
 ](https://cloud.google.com/kubernetes-engine/docs/concepts/alpha-
 clusters?hl=it) che eseguono GKE versione 1.12 o successiva. Se la
-vulnerabilità si applica al tuo caso, chiedi al tuo vendor di driver CSI le
+vulnerabilità si applica al tuo caso, chiedi al tuo fornitore di driver CSI le
 istruzioni per l'upgrade.
 
 **Quali vulnerabilità vengono affrontate da questa patch?**  
@@ -245,7 +301,8 @@ bin/cvename.cgi?name=CVE-2019-11255)
   
 ##  12 novembre 2019
 
-Descrizione  |  Gravità  |  Note  
+**Pubblicato il:** 12/11/2019  
+**Ultimo aggiornamento:** 12/11/2019  Descrizione  |  Gravità  |  Note  
 ---|---|---  
   
 Intel ha divulgato CVE che consentono potenziali interazioni tra esecuzione
@@ -308,7 +365,8 @@ Media
   
 ##  22 ottobre 2019
 
-Descrizione  |  Gravità  |  Note  
+**Pubblicato il:** 22/10/2019  
+**Ultimo aggiornamento:** 22/10/2019  Descrizione  |  Gravità  |  Note  
 ---|---|---  
   
 Di recente è stata scoperta una vulnerabilità nel linguaggio di programmazione
@@ -334,10 +392,11 @@ bin/cvename.cgi?name=CVE-2019-16276)
   
 ##  16 ottobre 2019
 
-Descrizione  |  Gravità  |  Note  
+**Pubblicato il:** 16/10/2019  
+**Ultimo aggiornamento:** 24/10/2019  Descrizione  |  Gravità  |  Note  
 ---|---|---  
   
-**Aggiornamento 24-10-2019:** le versioni con patch applicata sono ora
+**Aggiornamento 24/10/2019:** le versioni con patch applicata sono ora
 disponibili in tutte le zone.
 
 * * *
@@ -389,7 +448,8 @@ bin/cvename.cgi?name=CVE-2019-11253)
   
 ##  16 settembre 2019
 
-Descrizione  |  Gravità  |  Note  
+**Pubblicato il:** 16/09/2019  
+**Ultimo aggiornamento:** 16/10/2019  Descrizione  |  Gravità  |  Note  
 ---|---|---  
   
 Questo bollettino è stato aggiornato dopo la pubblicazione originale.
@@ -443,10 +503,16 @@ bin/cvename.cgi?name=CVE-2019-9514)
   
 ##  5 settembre 2019
 
+**Pubblicato il:** 05/09/2019  
+**Ultimo aggiornamento:** 05/09/2019
+
 Il bollettino per la correzione della vulnerabilità documentata nel bollettino
 del  31 maggio 2019  è aggiornato.
 
 ##  22 agosto 2019
+
+**Pubblicato il:** 22/08/2019  
+**Ultimo aggiornamento:** 22/08/2019
 
 Il bollettino per il  5 agosto 2019  è stato aggiornato. La correzione per la
 vulnerabilità documentata nel bollettino precedente è [ disponibile
@@ -455,13 +521,17 @@ notes?hl=it#august_22_2019) .
 
 ##  8 agosto 2019
 
+**Pubblicato il:** 08/08/2019  
+**Ultimo aggiornamento:** 08/08/2019
+
 Il bollettino per il  5 agosto 2019  è stato aggiornato. Prevediamo che la
 correzione per la vulnerabilità documentata nel bollettino sarà disponibile
 nella prossima release di GKE.
 
 ##  5 agosto 2019
 
-Descrizione  |  Gravità  |  Note  
+**Pubblicato il:** 05/08/2019  
+**Ultimo aggiornamento:** 09/08/2019  Descrizione  |  Gravità  |  Note  
 ---|---|---  
   
 Questo bollettino è stato aggiornato dopo la pubblicazione originale.
@@ -472,7 +542,7 @@ consente di agire su istanze di [ risorse personalizzate
 ](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-
 resources/) con ambito cluster come se fossero oggetti con spazio dei nomi
 esistenti in tutti gli spazi dei nomi. Ciò significa che gli account utente e
-servizio con autorizzazioni RBAC solo a livello di spazio dei nomi possono
+di servizio con autorizzazioni RBAC solo a livello di spazio dei nomi possono
 interagire con le risorse personalizzate con ambito cluster. Per sfruttare
 questa vulnerabilità, l'utente malintenzionato deve avere privilegi per
 accedere alla risorsa in qualsiasi spazio dei nomi.
@@ -507,7 +577,8 @@ bin/cvename.cgi?name=CVE-2019-11247)
   
 ##  3 luglio 2019
 
-Descrizione  |  Gravità  |  Note  
+**Pubblicato il:** 03/07/2019  
+**Ultimo aggiornamento:** 03/07/2019  Descrizione  |  Gravità  |  Note  
 ---|---|---  
   
 È ora disponibile una versione con patch di ` kubectl ` per risolvere
@@ -529,7 +600,8 @@ bin/cvename.cgi?name=CVE-2018-15664)
   
 ##  3 luglio 2019
 
-Descrizione  |  Gravità  |  Note  
+**Pubblicato il:** 25/06/2019  
+**Ultimo aggiornamento:** 03/07/2019  Descrizione  |  Gravità  |  Note  
 ---|---|---  
   
 ######  Aggiornamento 3 luglio 2019
@@ -589,7 +661,7 @@ Questi CVE vengono denominati collettivamente [ NFLX-2019-001
 ](https://github.com/Netflix/security-bulletins/blob/master/advisories/third-
 party/2019-001.md) .
 
-I kernel Linux senza patch possono essere vulnerabili a un attacco Denial of
+I kernel Linux senza patch possono essere vulnerabili a un attacco denial of
 service scatenato da remoto. **Sono interessati i nodi Google Kubernetes
 Engine che inviano o ricevono traffico di rete non attendibile e consigliamo
 di seguire la procedura di mitigazione riportata di seguito per proteggere i
@@ -665,7 +737,7 @@ bin/cvename.cgi?name=CVE-2019-11479)
 Descrizione  |  Gravità  |  Note  
 ---|---|---  
   
-**Aggiornamento 03-07-2019:** questa patch è disponibile in ` gcloud `
+**Aggiornamento 03/07/2019:** questa patch è disponibile in ` gcloud `
 253.0.0, per ` kubectl ` versioni 1.12.9, 1.13.6, 1.14.2 e release successive.
 
 **Nota:** la patch non è disponibile in 1.11.10.
@@ -941,10 +1013,16 @@ Dovresti ricevere una risposta analoga a:
     
     disable-smt-2xnnc   1/1       Running   0          6m
 
-  4. Controlla che nei log dei pod sia presente la dicitura “SMT has been disabled”. 
+  4. Controlla che nei log dei pod sia presente la dicitura "SMT has been disabled". 
     
         
     kubectl logs disable-smt-2xnnc disable-smt -n kube-system
+
+Nota: le opzioni di avvio non possono essere modificate se il nodo ha la
+funzione [Avvio protetto](/kubernetes-engine/docs/how-to/shielded-gke-
+nodes#secure_boot) attiva. Se la funzione Avvio protetto è attiva, deve essere
+[disattivata](/kubernetes-engine/docs/how-to/shielded-gke-nodes#disabling)
+prima della creazione del DaemonSet.
 
 Devi mantenere il DaemonSet in esecuzione sui pool di nodi per consentire
 l'applicazione automatica delle modifiche ai nuovi nodi creati nel pool. Le
@@ -1144,7 +1222,7 @@ bin/cvename.cgi?name=CVE-2019-5736) descrive una vulnerabilità in runc che
 permette a un container dannoso di sovrascrivere (con minima interazione
 dell'utente sotto forma di file eseguibile) il file binario runc dell'host,
 ottenendo così la possibilità di eseguire codice a livello di utente root sul
-nodo host. I contenitori non eseguiti come utente root non sono interessati.
+nodo host. I container non eseguiti come utente root non sono interessati.
 Questa è classificata come vulnerabilità di gravità "Alta".
 
 |  Alta  |  [ CVE-2019-5736 ](https://cve.mitre.org/cgi-
@@ -1158,7 +1236,7 @@ Descrizione  |  Gravità  |  Note
 **Aggiornamento 25/02/2019:** la patch non è disponibile in 1.11.7-gke.4 come
 comunicato in precedenza. Se esegui 1.11.7, puoi: eseguire il downgrade a
 1.11.6, eseguire l'upgrade a 1.12 o attendere fino alla prossima patch per
-1.11.7, disponibile nella settimana del 3/04/2019.
+1.11.7, disponibile nella settimana del 4/03/2019.
 
 Nel linguaggio di programmazione Go è stata recentemente scoperta una nuova
 vulnerabilità di sicurezza, [ CVE-2019-6486 ](https://cve.mitre.org/cgi-
@@ -1226,7 +1304,7 @@ notes?hl=it#november-12-2018) . Non è richiesta alcuna azione da parte tua. **
 stato eseguito.**
 
 Questa patch è disponibile in GKE 1.9.7-gke.11, 1.10.6-gke.11, 1.10.7-gke.11,
-1.10.9-gke.5, 1.11.2-gke.18 e versioni più recenti.
+1.10.9-gke.5, 1.11.2-gke.18 e release successive.
 
 ####  Quale vulnerabilità viene affrontata da questa patch?
 
@@ -1249,12 +1327,12 @@ bin/cvename.cgi?name=CVE-2018-1002105)
 Descrizione  
 ---  
   
-**Aggiornamento 16-11-2018:** la revoca e la rotazione di tutti i token
+**Aggiornamento 16/11/2018:** la revoca e la rotazione di tutti i token
 potenzialmente interessati è completa. Non sono necessarie ulteriori azioni.
 
 Recentemente Google ha rilevato un problema nel plug-in Container Network
 Interface (CNI) di Calico che può, in alcune configurazioni, registrare
-informazioni riservate. Questo problema è monitorato dal Tigera Technical
+informazioni sensibili. Questo problema è monitorato dal Tigera Technical
 Advisory [ TTA-2018-001 ](https://www.projectcalico.org/security-bulletins/) .
 
   * Quando si esegue la registrazione a livello di debug, il plug-in CNI di Calico scriverà la configurazione del client API di Kubernetes nei log. 
@@ -1301,7 +1379,7 @@ applicata la patch sarà eseguito in una versione successiva.
 Nel corso della prossima settimana, effettueremo una revoca progressiva di
 tutti i token potenzialmente interessati. Questo bollettino verrà aggiornato
 al termine della revoca. **Non sono richieste altre operazioni da parte tua.**
-(Questa rotazione è stata completata in data 16-11-2018)
+(Questa rotazione è stata completata in data 16/11/2018)
 
 Se desideri ruotare immediatamente questi token, puoi eseguire il comando
 riportato di seguito, il nuovo secret per l'account di servizio dovrebbe
@@ -1434,7 +1512,7 @@ Optimized OS di Google e che hanno l' [ upgrade automatico
 ](https://cloud.google.com/kubernetes-engine/docs/concepts/node-auto-
 upgrades?hl=it) attivato verranno automaticamente aggiornati alla versione con
 patch della nostra immagine COS non appena diventeranno disponibili a partire
-dalla settimana del 20-08-2018.
+dalla settimana del 20/08/2018.
 
 I pool di nodi di Kubernetes Engine che non hanno abilitato l' [ upgrade
 automatico ](https://cloud.google.com/kubernetes-engine/docs/concepts/node-
@@ -1456,7 +1534,7 @@ immagine COS diventano disponibili.
 Descrizione  |  Gravità  |  Note  
 ---|---|---  
   
-####  Aggiornamento 05-09-2018
+####  Aggiornamento 05/09/2018
 
 [ CVE-2018-5391 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2018-5391) è stato recentemente divulgato. Come con [
@@ -1483,13 +1561,13 @@ connessioni IP.
 
 ####  Impatto su Google Kubernetes Engine
 
-A partire dall'11-08-2018, tutti i master di Kubernetes Engine sono protetti
+A partire dall'11/08/2018, tutti i master di Kubernetes Engine sono protetti
 da entrambe le vulnerabilità. Inoltre, anche tutti i cluster di Kubernetes
 Engine che sono configurati per l'aggiornamento automatico sono protetti da
 entrambe le vulnerabilità. I pool di nodi di Kubernetes Engine che non sono
 configurati per l' [ aggiornamento automatico
 ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
-cluster?hl=it) e che sono stati aggiornati manualmente prima dell'11-08-2018
+cluster?hl=it) e che sono stati aggiornati manualmente prima dell'11/08/2018
 sono interessati da entrambe le vulnerabilità.
 
 ####  Versioni con patch
