@@ -1,5 +1,5 @@
 You are viewing documentation for Anthos Service Mesh 1.4. [ View the latest
-documentation ](/service-mesh/docs/) .
+documentation ](/service-mesh/docs) .
 
 #  Release notes
 
