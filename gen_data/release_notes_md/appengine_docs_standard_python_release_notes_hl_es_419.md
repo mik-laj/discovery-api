@@ -1,7 +1,7 @@
 Python 2 ya no es compatible con la comunidad. Te recomendamos que [ migres
 las apps de Python 2 a Python 3
 ](https://cloud.google.com/appengine/docs/standard/python/migrate-to-
-python3/?hl=es-419) .
+python3?hl=es-419) .
 
 #  Notas de la versión de Python 2.7
 
