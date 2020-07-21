@@ -1,6 +1,6 @@
 Python 2는 더 이상 커뮤니티에서 지원하지 않습니다. [ Python 2 앱을 Python 3로 마이그레이션
 ](https://cloud.google.com/appengine/docs/standard/python/migrate-to-
-python3/?hl=ko) 하는 것이 좋습니다.
+python3?hl=ko) 하는 것이 좋습니다.
 
 #  Python 2.7 출시 노트
 
