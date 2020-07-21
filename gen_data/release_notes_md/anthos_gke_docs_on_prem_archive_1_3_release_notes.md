@@ -1,5 +1,5 @@
 You are viewing documentation for a previous version of Anthos GKE on-prem. [
-View the latest documentation ](/anthos/gke/docs/on-prem/) .
+View the latest documentation ](/anthos/gke/docs/on-prem) .
 
 #  Release notes
 
