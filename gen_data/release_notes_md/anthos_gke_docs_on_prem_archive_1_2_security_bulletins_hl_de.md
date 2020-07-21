@@ -1,6 +1,6 @@
 Sie betrachten die Dokumentation für eine frühere Version von GKE On-Prem. [
 Sehen Sie sich die aktuelle Dokumentation an
-](https://cloud.google.com/anthos/gke/docs/on-prem/?hl=de) .
+](https://cloud.google.com/anthos/gke/docs/on-prem?hl=de) .
 
 #  Sicherheitsbulletins
 
