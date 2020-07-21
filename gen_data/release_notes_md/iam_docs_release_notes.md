@@ -16,6 +16,14 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/iam-release-notes.xml `
 
+##  July 20, 2020
+
+**CHANGED:**
+
+We are delaying the upcoming changes for [ deleted members that are bound to a
+role ](https://cloud.google.com/iam/docs/release-notes#July_01_2020) . These
+changes will take effect starting on August 31, 2020.
+
 ##  July 01, 2020
 
 **CHANGED:**
