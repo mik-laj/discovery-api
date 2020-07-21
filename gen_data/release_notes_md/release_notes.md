@@ -12,6 +12,199 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  July 20, 2020
+
+**AI Platform Training**
+
+**FEATURE:**
+
+[ Customer-managed encryption keys (CMEK) for AI Platform Training
+](https://cloud.google.com/ai-platform/training/docs/cmek) is now generally
+available.
+
+**FEATURE:**
+
+The [ VPC Service Controls integration with AI Platform Training
+](https://cloud.google.com/ai-platform/training/docs/vpc-service-controls) is
+now generally available.
+
+**FEATURE:**
+
+You can now train a PyTorch model on AI Platform Training by [ using a pre-
+built PyTorch container ](https://cloud.google.com/ai-
+platform/training/docs/getting-started-pytorch) .
+
+**Identity and Access Management**
+
+**CHANGED:**
+
+We are delaying the upcoming changes for [ deleted members that are bound to a
+role ](https://cloud.google.com/iam/docs/release-notes#July_01_2020) . These
+changes will take effect starting on August 31, 2020.
+
+##  July 17, 2020
+
+**App Engine standard environment Java**
+
+**CHANGED:**
+
+  * Updated Java SDK to version 1.9.81 
+
+**AutoML Translation**
+
+**FEATURE:**
+
+For test data, added support for the ` .tmx ` file type when evaluating
+existing models. For more information, see [ Evaluating models
+](https://cloud.google.com/translate/automl/docs/evaluate#evaluate_and_compare_models_using_a_new_test_set)
+.
+
+**Compute Engine**
+
+**FEATURE:**
+
+The Organization Policy for [ restricting protocol forwarding creation
+](https://cloud.google.com/compute/docs/protocol-
+forwarding#enforcing_protocol_forwarding_settings_across_a_project_folder_or_organization)
+has launched into **Beta** .
+
+**Dataproc**
+
+**FEATURE:**
+
+Dataproc now uses [ Shielded VMs ](https://cloud.google.com/security/shielded-
+cloud/shielded-vm) for Debian 10 and Ubuntu 18.04 clusters by default.
+
+**FEATURE:**
+
+The ` Proxy-Authorization ` header is accepted in place of ` Authorization `
+to authenticate to Component Gateway to the backend for programmatic API
+calls. If ` Proxy-Authorization ` is set to a bearer token, Component Gateway
+will forward the ` Authorization ` header if it does not contain a bearer
+token.
+
+For example, this allows setting both ` Proxy-Authorization: Bearer <google-
+access-token> ` as well as setting ` Authorization: Basic ... ` to
+authenticate to HiveServer2 with HTTP basic auth.
+
+**FEATURE:**
+
+Added support for Zeppelin Spark and shell interpreters in [ Kerberized
+clusters ](https://cloud.google.com/dataproc/docs/concepts/configuring-
+clusters/security) by default.
+
+**CHANGED:**
+
+New [ sub-minor versions
+](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-
+versions#supported_dataproc_versions) of Dataproc images: 1.3.63-debian10,
+1.3.63-ubuntu18, 1.4.34-debian10, 1.4.34-ubuntu18, 1.5.9-debian10,
+1.5.9-ubuntu18, 2.0.0-RC5-debian10, and 2.0.0-RC5-ubuntu18.
+
+**CHANGED:**
+
+Image 2.0 preview:
+
+  * Updated Pig ` 0.18.0-SNAPHOT ` to [ 0b2066a revision ](https://github.com/apache/pig/commit/0b2066a6fd9e2907210c5dff1c480f017889425b) to fix Hive 3.1 compatibility ( [ PIG-4764 ](https://issues.apache.org/jira/browse/PIG-4764) ). 
+
+**FIXED:**
+
+If a project's regional Dataproc [ staging bucket
+](https://cloud.google.com/dataproc/docs/concepts/configuring-
+clusters/staging-bucket) is manually deleted, it will be recreated
+automatically when a cluster is subsequently created in that region.
+
+##  July 16, 2020
+
+**BigQuery**
+
+**FEATURE:**
+
+BigQuery GIS now supports two new functions, ` ST_CONVEXHULL ` and ` ST_DUMP `
+:
+
+  * ` ST_CONVEXHULL ` returns the smallest convex ` GEOGRAPHY ` that covers the input. 
+  * ` ST_DUMP ` returns an ` ARRAY ` of simple ` GEOGRAPHY ` s where each element is a component of the input ` GEOGRAPHY ` . 
+
+For more information, see the [ ` ST_CONVEXHULL `
+](https://cloud.google.com/bigquery/docs/reference/standard-
+sql/geography_functions#st_convexhull) and [ ` ST_DUMP `
+](https://cloud.google.com/bigquery/docs/reference/standard-
+sql/geography_functions#st_dump) reference pages.
+
+**Cloud Data Fusion**
+
+**FEATURE:**
+
+Cloud Data Fusion version 6.1.3 is now available. This version includes
+performance improvements and minor bug fixes.
+
+  * Improved performance of Joiner plugins, aggregators, program startup, and previews. 
+  * Added support for custom images. You can select a custom Dataproc image by specifying the image URI. 
+  * Added support for rendering large schemas (>1000 fields) in the pipelines UI. 
+  * Added payload compression support to the messaging service. 
+
+**Cloud Load Balancing**
+
+**FEATURE:**
+
+The Organization Policy for [ restricting load balancer creation
+](https://cloud.google.com/load-balancing/docs/org-policy-constraints) has
+launched into **Beta** .
+
+**Compute Engine**
+
+**CHANGED:**
+
+SSD persistent disks on certain machine types now have a maximum write
+throughput of 1,200 MB/s. To learn more about the requirements to reach these
+limits, see [ Block storage performance
+](https://cloud.google.com/compute/docs/disks/performance#size_price_performance)
+.
+
+**FEATURE:**
+
+You can now [ suspend and resume
+](https://cloud.google.com/compute/docs/instances/suspend-resume-instance)
+your VM instances. This feature is available in **Beta** .
+
+**Config Connector**
+
+**FEATURE:**
+
+Add support for allowing fields not specified by the user to be externally-
+managed (i.e. changeable outside of Config Connector). This feature can be
+enabled for a resource by enabling K8s server-side apply for the resource,
+which will be the default for all K8s resources starting in K8s 1.18. More
+detailed docs about the feature coming soon.
+
+**FEATURE:**
+
+Operator improvement: add support for cluster-mode set-ups, which allows users
+to use one Google Service Account for all namespaces in their cluster. This is
+very similar to the traditional "Workload Identity" installation set-up.
+
+**FIXED:**
+
+Fix ` ContainerCluster ` validation issue ( [ Issue #242
+](https://github.com/GoogleCloudPlatform/k8s-config-connector/issues/242) ).
+
+**FIXED:**
+
+Fix OOM issue for the ` cnrm-resource-stats-recorder ` pod ( [ Issue #239
+](https://github.com/GoogleCloudPlatform/k8s-config-connector/issues/239) ).
+
+**FEATURE:**
+
+Add support for ` projectViewer ` prefix for members in ` IAMPolicy ` and `
+IAMPolicyMember ` ( [ Issue #234
+](https://github.com/GoogleCloudPlatform/k8s-config-connector/issues/234) ).
+
+**CHANGED:**
+
+Reduce ` spec.revisionHistoryLimit ` for the ` cnrm-stats-recorder ` and `
+cnrm-webhook-manager ` Deployments from 10 (the default) to 1.
+
 ##  July 15, 2020
 
 **AutoML Vision Image Classification (ICN)**
@@ -30,6 +223,23 @@ For more information see:
   * [ Metadata information and how to add metadata to a TFLite model ](https://www.tensorflow.org/lite/convert/metadata)
   * [ Integrate models with metadata ](https://www.tensorflow.org/lite/guide/codegen)
   * [ Process input and output data with the TensorFlow Lite Support Library ](https://www.tensorflow.org/lite/guide/lite_support)
+
+**BigQuery ML**
+
+**FEATURE:**
+
+Data split and validation options are now available for [ AutoML Table model
+training ](https://cloud.google.com/bigquery-ml/docs/reference/standard-
+sql/bigqueryml-syntax-create-automl) .
+
+**Cloud Data Loss Prevention**
+
+**CHANGED:**
+
+Added [ infoType detector ](https://cloud.google.com/dlp/docs/infotypes-
+reference) :
+
+  * ISRAEL_IDENTITY_CARD_NUMBER 
 
 **Cloud Functions**
 
@@ -104,12 +314,6 @@ resources your training code can access.
 
 This feature is available in beta.
 
-**App Engine standard environment Java**
-
-**CHANGED:**
-
-  * Updated Java SDK to version 1.9.81 
-
 **BigQuery**
 
 **FEATURE:**
@@ -149,6 +353,14 @@ Internal TCP/UDP load balancers now support [ regional health checks
 . To configure, see [ Health checks for backend services
 ](https://cloud.google.com/load-balancing/docs/health-checks#hc-to-bes) . This
 feature is supported in **General Availability** .
+
+**Cloud Run**
+
+**FEATURE:**
+
+The Cloud Run user interface now allows you to easily [ set up Continuous
+Deployment from Git using Cloud Build
+](https://cloud.google.com/run/docs/continuous-deployment-with-cloud-build)
 
 **Dataprep by Trifacta**
 
@@ -315,10 +527,10 @@ information, see [ SLO monitoring
 
 **FEATURE:**
 
-Added --temp-bucket flag to ` gcloud dataproc clusters create ` and ` gcloud
-dataproc workflow-templates set-managed-cluster ` to allow users to configure
-a Cloud Storage bucket that stores ephemeral cluster and jobs data, such as
-Spark and MapReduce history files.
+Added ` --temp-bucket ` flag to ` gcloud dataproc clusters create ` and `
+gcloud dataproc workflow-templates set-managed-cluster ` to allow users to
+configure a Cloud Storage bucket that stores ephemeral cluster and jobs data,
+such as Spark and MapReduce history files.
 
 **FEATURE:**
 
@@ -1556,59 +1768,4 @@ deprecated.
 
   * If you use the Cloud IAM API or its client libraries to sign JWTs or binary blobs, you must [ migrate to the Service Account Credentials API ](https://cloud.google.com/iam/docs/migrating-to-credentials-api) before July 1, 2021. 
   * If you use the ` gcloud ` command-line tool to sign JWTs, you must [ prepare for changes to the ` gcloud ` tool ](https://cloud.google.com/iam/docs/migrating-to-credentials-api#gcloud) before July 1, 2021. 
-
-##  June 19, 2020
-
-**Cloud Data Loss Prevention**
-
-**FEATURE:**
-
-Added support for location-based processing. Learn more:
-
-  * [ Cloud DLP locations ](https://cloud.google.com/dlp/docs/locations)
-  * [ Specifying processing locations ](https://cloud.google.com/dlp/docs/specifying-location)
-
-**Cloud Functions**
-
-**FEATURE:**
-
-Cloud Functions is now available in the following regions:
-
-  * ` australia-southeast1 ` (Sydney) 
-  * ` northamerica-northeast1 ` (Montreal) 
-
-See [ Cloud Functions Locations
-](https://cloud.google.com/functions/docs/locations) for details.
-
-**Cloud Run for Anthos**
-
-**FEATURE:**
-
-Cloud Run for Anthos on Google Cloud version [ 0.14.0-gke.5
-](https://github.com/knative/serving/releases/tag/v0.14.0) is now available
-for following cluster versions (and greater):
-
-  * 1.17.6-gke.4 
-
-##  June 17, 2020
-
-**Cloud Debugger**
-
-**FEATURE:**
-
-Cloud Debugger now lets you canary snapshots and logpoints on your Python
-applications. To learn more, see the [ Python page for setting up Cloud
-Debugger ](https://cloud.google.com/debugger/docs/setup/python) .
-
-**Memorystore for Memcached**
-
-**FEATURE:**
-
-Added new Memorystore for Memcached [ regions
-](https://cloud.google.com/memorystore/docs/memcached/regions) : Finland ( `
-europe-north1 ` ), Hong Kong ( ` asia-east2 ` ), Jakarta ( ` asia-southeast2 `
-), Las Vegas ( ` us-west4 ` ), Montréal ( ` northamerica-northeast1 ` ),
-Mumbai ( ` asia-south1 ` ), Osaka ( ` asia-northeast2 ` ), Salt Lake City ( `
-us-west3 ` ), São Paulo ( ` southamerica-east1 ` ), Seoul ( ` asia-northeast3
-` ), and Zurich ( ` europe-west6 ` ).
 
