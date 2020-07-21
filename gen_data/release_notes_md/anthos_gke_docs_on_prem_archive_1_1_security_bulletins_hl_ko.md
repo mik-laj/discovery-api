@@ -1,5 +1,5 @@
 이전 버전의 GKE On-Prem 문서를 보고 있습니다. [ 최신 문서 보기
-](https://cloud.google.com/anthos/gke/docs/on-prem/?hl=ko)
+](https://cloud.google.com/anthos/gke/docs/on-prem?hl=ko)
 
 #  보안 게시판
 
