@@ -15,6 +15,40 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/aiplatform-release-notes.xml `
 
+##  July 20, 2020
+
+**AI Platform Training**
+
+**FEATURE:**
+
+[ Customer-managed encryption keys (CMEK) for AI Platform Training
+](https://cloud.google.com/ai-platform/training/docs/cmek) is now generally
+available.
+
+**FEATURE:**
+
+The [ VPC Service Controls integration with AI Platform Training
+](https://cloud.google.com/ai-platform/training/docs/vpc-service-controls) is
+now generally available.
+
+**FEATURE:**
+
+You can now train a PyTorch model on AI Platform Training by [ using a pre-
+built PyTorch container ](https://cloud.google.com/ai-
+platform/training/docs/getting-started-pytorch) .
+
+##  July 14, 2020
+
+**AI Platform Prediction**
+
+**FEATURE:**
+
+[ VPC Service Controls ](https://cloud.google.com/vpc-service-
+controls/docs/overview) now supports AI Platform Prediction. Learn [ how to
+use a service perimeter to protect online prediction
+](https://cloud.google.com/ai-platform/prediction/docs/vpc-service-controls) .
+This functionality is in beta.
+
 ##  July 13, 2020
 
 **AI Platform Training**
