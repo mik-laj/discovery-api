@@ -1,6 +1,6 @@
 Python 2 不再受社区支持。我们建议您 [ 将 Python 2 应用迁移到 Python 3
 ](https://cloud.google.com/appengine/docs/standard/python/migrate-to-
-python3/?hl=zh-cn) 。
+python3?hl=zh-cn) 。
 
 #  Python 2.7 版本说明
 
