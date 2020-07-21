@@ -451,6 +451,23 @@
                 },
                 "patchConfig": {
                     "$ref": "PatchConfig"
+                },
+                "rollout": {
+                    "$ref": "PatchRollout"
+                }
+            },
+            "type": "object"
+        },
+        "FixedOrPercent": {
+            "id": "FixedOrPercent",
+            "properties": {
+                "fixed": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "percent": {
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -610,6 +627,9 @@
                 "recurringSchedule": {
                     "$ref": "RecurringSchedule"
                 },
+                "rollout": {
+                    "$ref": "PatchRollout"
+                },
                 "updateTime": {
                     "format": "google-datetime",
                     "type": "string"
@@ -700,6 +720,9 @@
                 "percentComplete": {
                     "format": "double",
                     "type": "number"
+                },
+                "rollout": {
+                    "$ref": "PatchRollout"
                 },
                 "state": {
                     "enum": [
@@ -822,6 +845,23 @@
                 },
                 "timedOutInstanceCount": {
                     "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PatchRollout": {
+            "id": "PatchRollout",
+            "properties": {
+                "disruptionBudget": {
+                    "$ref": "FixedOrPercent"
+                },
+                "mode": {
+                    "enum": [
+                        "MODE_UNSPECIFIED",
+                        "ZONE_BY_ZONE",
+                        "CONCURRENT_ZONES"
+                    ],
                     "type": "string"
                 }
             },
