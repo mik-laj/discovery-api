@@ -1,6 +1,6 @@
 Python 2 は、コミュニティでサポートを終了しました。 [ Python 2 アプリを Python 3 に移行する
 ](https://cloud.google.com/appengine/docs/standard/python/migrate-to-
-python3/?hl=ja) ことをおすすめします。
+python3?hl=ja) ことをおすすめします。
 
 #  Python 2.7 リリースノート
 
