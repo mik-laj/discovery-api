@@ -1,6 +1,6 @@
 You are viewing documentation for a previous version of GKE On-Prem. [ View
 the latest documentation ](https://cloud.google.com/anthos/gke/docs/on-
-prem/?hl=es-419) .
+prem?hl=es-419) .
 
 #  Boletines de seguridad
 
