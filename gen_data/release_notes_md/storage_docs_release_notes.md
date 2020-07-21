@@ -12,6 +12,13 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/storage-release-notes.xml `
 
+##  July 20, 2020
+
+**FEATURE:**
+
+[ Detailed audit logging mode ](https://cloud.google.com/storage/docs/org-
+policy-constraints#audit-logging) launched.
+
 ##  June 08, 2020
 
 **FEATURE:**
