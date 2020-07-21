@@ -1,5 +1,5 @@
 以前のバージョンの GKE On-Prem のドキュメントを表示しています。 [ 最新のドキュメントをご覧ください
-](https://cloud.google.com/anthos/gke/docs/on-prem/?hl=ja) 。
+](https://cloud.google.com/anthos/gke/docs/on-prem?hl=ja) 。
 
 #  セキュリティに関する情報
 
