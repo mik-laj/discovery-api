@@ -1,5 +1,5 @@
 You are viewing documentation for a previous version of GKE On-Prem. [ View
-the latest documentation ](/anthos/gke/docs/on-prem/) .
+the latest documentation ](/anthos/gke/docs/on-prem) .
 
 #  Security bulletins
 
