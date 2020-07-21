@@ -1,7 +1,7 @@
 Python 2 wird von der Community nicht mehr unterstützt. Wir empfehlen die [
 Migration von Python 2-Anwendungen zu Python 3
 ](https://cloud.google.com/appengine/docs/standard/python/migrate-to-
-python3/?hl=de) .
+python3?hl=de) .
 
 #  Python 2.7 – Versionshinweise
 
