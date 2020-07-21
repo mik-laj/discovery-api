@@ -1,6 +1,6 @@
 Python 2 is no longer supported by the community. We recommend that you [
 migrate Python 2 apps to Python 3 ](/appengine/docs/standard/python/migrate-
-to-python3/) .
+to-python3) .
 
 #  Python 2.7 release notes
 
