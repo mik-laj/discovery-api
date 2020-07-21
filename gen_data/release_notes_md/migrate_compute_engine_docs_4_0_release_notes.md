@@ -1,5 +1,5 @@
 This version is deprecated and its documentation will be removed soon. See the
-[ current version ](/migrate/compute-engine/docs/) for the latest
+[ current version ](/migrate/compute-engine/docs) for the latest
 documentation.
 
 #  Release Notes
