@@ -148,10 +148,10 @@ Stackdriver Trace.
 
 ###  New role and permissions for Endpoints Portal
 
-The [ Cloud Identity and Access Management (Cloud IAM) ](/iam/docs) role,
-**Endpoints Portal Admin** , and several new Cloud IAM permissions are now
-available. The new role and permissions allow you to control the degree of
-access that project members have to Endpoints Portal.
+The [ Identity and Access Management (IAM) ](/iam/docs) role, **Endpoints
+Portal Admin** , and several new IAM permissions are now available. The new
+role and permissions allow you to control the degree of access that project
+members have to Endpoints Portal.
 
 To learn more, see "Endpoints Portal permissions" in the documentation for
 your API implementation:
@@ -336,8 +336,8 @@ You will find a complete list of metrics in the [ Stackdriver metrics list
 
 ##  July 2017
 
-You can now programmatically grant access to individual APIs via the Cloud IAM
-API. See the "API Access Overview" page for your API implementation to find
+You can now programmatically grant access to individual APIs via the IAM API.
+See the "API Access Overview" page for your API implementation to find
 details.
 
   * [ Endpoints OpenAPI documentation ](/endpoints/docs/openapi/api-access-overview)
