@@ -12,6 +12,43 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  July 21, 2020
+
+**AutoML Video Intelligence Object Tracking**
+
+**CHANGED:**
+
+In April 2020, a model upgrade for the AutoML Video Object Tracking feature
+was released. This release is for non-downloadable models only. Models trained
+after April 2020 may show improvements in the evaluation results.
+
+**Compute Engine**
+
+**FEATURE:**
+
+You can now create _balanced persistent disks_ , in addition to standard and
+SSD persistent disks. Balanced persistent disks are an alternative to SSD
+persistent disks that balance performance and cost. For more information, see
+[ Persistent disk types
+](https://cloud.google.com/compute/docs/disks/index#disk-types) .
+
+**Istio on Google Kubernetes Engine**
+
+**FIXED:**
+
+**Istio 1.4.10-gke.4**
+
+Fixes known security issues with the same fixes as [ OSS Istio 1.4.10
+](https://istio.io/news/releases/1.4.x/announcing-1.4.10/)
+
+**Traffic Director**
+
+**FEATURE:**
+
+Traffic Director supports proxyless gRPC applications in General Availability.
+In this deployment model, gRPC applications can participate in a service mesh
+without needing a sidecar proxy.
+
 ##  July 20, 2020
 
 **AI Platform Training**
@@ -32,7 +69,15 @@ now generally available.
 
 You can now train a PyTorch model on AI Platform Training by [ using a pre-
 built PyTorch container ](https://cloud.google.com/ai-
-platform/training/docs/getting-started-pytorch) .
+platform/training/docs/getting-started-pytorch) . Pre-built PyTorch containers
+are available in beta.
+
+**Cloud Storage**
+
+**FEATURE:**
+
+[ Detailed audit logging mode ](https://cloud.google.com/storage/docs/org-
+policy-constraints#audit-logging) launched.
 
 **Identity and Access Management**
 
@@ -41,6 +86,26 @@ platform/training/docs/getting-started-pytorch) .
 We are delaying the upcoming changes for [ deleted members that are bound to a
 role ](https://cloud.google.com/iam/docs/release-notes#July_01_2020) . These
 changes will take effect starting on August 31, 2020.
+
+**Secret Manager**
+
+**FEATURE:**
+
+Secret Manager adds support for the following curated Cloud IAM roles:
+
+  * Secret Manager Secret Version Adder ( ` roles/secretmanager.secretVersionAdder ` ) 
+  * Secret Manager Secret Version Manager ( ` roles/secretmanager.secretVersionManager ` ) 
+
+To learn more, see [ IAM and access control ](https://cloud.google.com/secret-
+manager/docs/access-control) .
+
+**VPC Service Controls**
+
+**FEATURE:**
+
+General availability for the following integration:
+
+  * [ AI Platform Training ](https://cloud.google.com/ai-platform/training/docs/vpc-service-controls)
 
 ##  July 17, 2020
 
@@ -1695,77 +1760,4 @@ for a 1- or 3-year term. See the [ documentation
 
 [ Promotional pricing ](https://cloud.google.com/armor/pricing) for Google
 Cloud Armor is extended to July 31, 2020.
-
-##  June 22, 2020
-
-**AI Platform Training**
-
-**CHANGED:**
-
-You can now [ use Cloud TPUs for training jobs ](https://cloud.google.com/ai-
-platform/training/docs/using-tpus) in the ` europe-west4 ` region. TPU v2
-accelerators are generally available, and TPU v3 accelerators are available in
-beta.
-
-Learn how to [ configure your training job to use TPUs
-](https://cloud.google.com/ai-platform/training/docs/using-
-tpus#configuring_a_custom_tpu_machine) , and read about [ TPU pricing on AI
-Platform Training ](https://cloud.google.com/ai-platform/training/pricing) .
-
-**Anthos Service Mesh**
-
-**FIXED:**
-
-**1.5.6-asm.0 and 1.4.10.asm.2**
-
-Contains the same fixes as OSS Istio 1.5.6. Non-critical, minor improvements
-were also backported to ASM 1.4.10. See [ Announcing Istio 1.5.6
-](https://istio.io/latest/news/releases/1.5.x/announcing-1.5.6/) for more
-information.
-
-**Cloud Build**
-
-**FEATURE:**
-
-Cloud Build's substitution variables can now refer to other substitution
-variables, manipulate them using bash-style string operations, and pull
-information from a trigger event payload. To learn more, see [ Using bash-
-style string operations and payload bindings in substitutions
-](http://cloud.google.com/cloud-build/docs/configuring-builds/use-bash-and-
-bindings-in-substitutions) .
-
-**Cloud Key Management Service**
-
-**FEATURE:**
-
-Keys hosted by [ Thales
-](https://thalesdocs.com/dpod/services/key_management_services/ekms/ekms_setup_guide/index.html)
-are now supported in Cloud EKM. To learn more, see [ Cloud EKM
-](https://cloud.google.com/kms/docs/ekm) .
-
-**Compute Engine**
-
-**FEATURE:**
-
-N2D machine types are now available in Belgium, europe-west1, in all three
-zones. Read more information on the [ VM instance pricing
-](https://cloud.google.com/compute/vm-instance-pricing#n2d_machine_types)
-page.
-
-**Firestore**
-
-**FEATURE:**
-
-The Google Cloud console now includes a [ Firestore usage dashboard
-](https://cloud.google.com/firestore/docs/monitor-usage) .
-
-**Identity and Access Management**
-
-**DEPRECATED:**
-
-Using the Cloud IAM API to sign JSON Web Tokens (JWTs) or binary blobs is now
-deprecated.
-
-  * If you use the Cloud IAM API or its client libraries to sign JWTs or binary blobs, you must [ migrate to the Service Account Credentials API ](https://cloud.google.com/iam/docs/migrating-to-credentials-api) before July 1, 2021. 
-  * If you use the ` gcloud ` command-line tool to sign JWTs, you must [ prepare for changes to the ` gcloud ` tool ](https://cloud.google.com/iam/docs/migrating-to-credentials-api#gcloud) before July 1, 2021. 
 
