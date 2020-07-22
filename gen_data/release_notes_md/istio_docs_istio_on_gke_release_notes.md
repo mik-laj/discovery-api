@@ -12,6 +12,17 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/istio-release-notes.xml `
 
+##  July 21, 2020
+
+1.4.x
+
+**FIXED:**
+
+**Istio 1.4.10-gke.4**
+
+Fixes known security issues with the same fixes as [ OSS Istio 1.4.10
+](https://istio.io/news/releases/1.4.x/announcing-1.4.10/)
+
 ##  March 27, 2020
 
 1.4.x
