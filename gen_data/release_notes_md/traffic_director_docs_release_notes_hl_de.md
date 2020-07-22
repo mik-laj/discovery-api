@@ -12,6 +12,14 @@ Feedreader ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
 einfügen oder die Feed-URL direkt hinzufügen: `
 https://cloud.google.com/feeds/trafficdirector-release-notes.xml ` .
 
+##  July 21, 2020
+
+**FEATURE:**
+
+Traffic Director supports proxyless gRPC applications in General Availability.
+In this deployment model, gRPC applications can participate in a service mesh
+without needing a sidecar proxy.
+
 ##  July 07, 2020
 
 **FEATURE:**
