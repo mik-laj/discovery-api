@@ -12,6 +12,13 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/run-release-notes.xml `
 
+##  July 21, 2020
+
+**FEATURE:**
+
+Cloud Run resources are now available in [ Cloud Asset Inventory
+](https://cloud.google.com/asset-inventory/docs/overview)
+
 ##  July 13, 2020
 
 **FEATURE:**
