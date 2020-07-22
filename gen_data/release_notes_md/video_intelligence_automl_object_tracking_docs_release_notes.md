@@ -21,6 +21,14 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/automl-video-intelligence-
 object-tracking-release-notes.xml `
 
+##  July 21, 2020
+
+**CHANGED:**
+
+In April 2020, a model upgrade for the AutoML Video Object Tracking feature
+was released. This release is for non-downloadable models only. Models trained
+after April 2020 may show improvements in the evaluation results.
+
 ##  September 23, 2019
 
 **FEATURE:**
