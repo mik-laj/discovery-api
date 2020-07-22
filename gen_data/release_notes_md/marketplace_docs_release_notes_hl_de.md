@@ -1,7 +1,7 @@
 #  Versionshinweise
 
 Diese Seite enthält die neuesten Versionshinweise für Funktionen und Updates
-von Google Cloud Marketplace.
+von Cloud Marketplace.
 
 Die neuesten Produktaktualisierungen für Google Cloud finden Sie auf der Seite
 mit den [ Google Cloud-Versionshinweisen ](https://cloud.google.com/release-
