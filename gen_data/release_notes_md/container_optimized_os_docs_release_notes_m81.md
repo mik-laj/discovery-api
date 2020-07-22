@@ -12,13 +12,14 @@ Docker  |  v19.03.6
   
 ##  Changelog
 
-###  cos-81-12871-81-0
+###  cos-81-12871-181-0
 
 _Date: July 13, 2020_
 
   * Added rsync back into the image, which was removed in cos-dev-77-12293-0-0. 
   * Mount /var/lib/containerd with exec option. 
   * Fixed CVE-2019-9169. 
+  * Enabled support for Confidential VMs. 
 
 ###  cos-81-12871-148-0
 
