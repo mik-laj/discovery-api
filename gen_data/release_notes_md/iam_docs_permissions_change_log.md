@@ -19,7 +19,120 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloud-iam-permissions-change-
 log.xml `
 
-##  Upcoming Cloud IAM changes for the week of 2020-07-06
+##  Upcoming Cloud IAM changes for the week of 2020-07-20
+
+Service  |  Change  |  Description  
+---|---|---  
+Identity and Access Management  |  Role Updated  |
+
+The following permissions have been removed from the role `
+roles/iam.securityAdmin ` (Security Admin):
+
+` container.secrets.list `  
+  
+Identity and Access Management  |  Role Updated  |
+
+The following permissions have been removed from the role `
+roles/iam.securityReviewer ` (Security Reviewer):
+
+` container.secrets.list `  
+  
+  
+##  Cloud IAM changes as of 2020-07-17
+
+Service  |  Change  |  Description  
+---|---|---  
+GKE Hub  |  Now GA  |
+
+The role ` roles/gkehub.gatewayAdmin ` (Connect Gateway Admin) is now GA.  
+  
+Secret Manager  |  Now GA  |
+
+The role ` roles/secretmanager.secretVersionAdder ` (Secret Manager Secret
+Version Adder) is now GA.  
+  
+Secret Manager  |  Now GA  |
+
+The role ` roles/secretmanager.secretVersionManager ` (Secret Manager Secret
+Version Manager) is now GA.  
+  
+Cloud Bigtable  |  Added  |  ` bigtable.backups.create `  
+` bigtable.backups.delete `  
+` bigtable.backups.get `  
+` bigtable.backups.getIamPolicy `  
+` bigtable.backups.list `  
+` bigtable.backups.restore `  
+` bigtable.backups.setIamPolicy `  
+` bigtable.backups.update `  
+  
+Cloud Bigtable  |  Supported In Custom Roles  |  ` bigtable.backups.create `  
+` bigtable.backups.delete `  
+` bigtable.backups.get `  
+` bigtable.backups.getIamPolicy `  
+` bigtable.backups.list `  
+` bigtable.backups.restore `  
+` bigtable.backups.setIamPolicy `  
+` bigtable.backups.update `  
+  
+Cloud Bigtable  |  Now GA  |  ` bigtable.backups.create `  
+` bigtable.backups.delete `  
+` bigtable.backups.get `  
+` bigtable.backups.getIamPolicy `  
+` bigtable.backups.list `  
+` bigtable.backups.restore `  
+` bigtable.backups.setIamPolicy `  
+` bigtable.backups.update `  
+  
+Cloud Commerce Consumer Procurement  |  Added  |  `
+consumerprocurement.accounts.create `  
+` consumerprocurement.accounts.delete `  
+` consumerprocurement.accounts.get `  
+` consumerprocurement.accounts.list `  
+` consumerprocurement.entitlements.get `  
+` consumerprocurement.entitlements.list `  
+` consumerprocurement.freeTrials.create `  
+` consumerprocurement.freeTrials.get `  
+` consumerprocurement.freeTrials.list `  
+` consumerprocurement.orders.cancel `  
+` consumerprocurement.orders.get `  
+` consumerprocurement.orders.list `  
+` consumerprocurement.orders.modify `  
+` consumerprocurement.orders.place `  
+  
+Cloud Commerce Consumer Procurement  |  Supported In Custom Roles  |  `
+consumerprocurement.accounts.create `  
+` consumerprocurement.accounts.delete `  
+` consumerprocurement.accounts.get `  
+` consumerprocurement.accounts.list `  
+` consumerprocurement.entitlements.get `  
+` consumerprocurement.entitlements.list `  
+` consumerprocurement.freeTrials.create `  
+` consumerprocurement.freeTrials.get `  
+` consumerprocurement.freeTrials.list `  
+` consumerprocurement.orders.cancel `  
+` consumerprocurement.orders.get `  
+` consumerprocurement.orders.list `  
+` consumerprocurement.orders.modify `  
+` consumerprocurement.orders.place `  
+  
+GKE Hub  |  Added  |  ` gkehub.gateway.delete `  
+` gkehub.gateway.get `  
+` gkehub.gateway.getIamPolicy `  
+` gkehub.gateway.patch `  
+` gkehub.gateway.post `  
+` gkehub.gateway.put `  
+` gkehub.gateway.setIamPolicy `  
+  
+GKE Hub  |  Now GA  |  ` gkehub.gateway.delete `  
+` gkehub.gateway.get `  
+` gkehub.gateway.getIamPolicy `  
+` gkehub.gateway.patch `  
+` gkehub.gateway.post `  
+` gkehub.gateway.put `  
+` gkehub.gateway.setIamPolicy `  
+  
+  
+##  Cloud IAM changes as of 2020-07-10
 
 Service  |  Change  |  Description  
 ---|---|---  
@@ -1365,7 +1478,7 @@ The following permissions have been added to the role ` roles/editor `
 ` servicedirectory.locations.get `  
 ` servicedirectory.locations.list `  
   
-Cloud Identity and Access Management  |  Role Updated  |
+Identity and Access Management  |  Role Updated  |
 
 The following permissions have been added to the role `
 roles/iam.securityAdmin ` (Security Admin):
@@ -1374,7 +1487,7 @@ roles/iam.securityAdmin ` (Security Admin):
 ` identityplatform.workloadPools.list `  
 ` servicedirectory.locations.list `  
   
-Cloud Identity and Access Management  |  Role Updated  |
+Identity and Access Management  |  Role Updated  |
 
 The following permissions have been added to the role `
 roles/iam.securityReviewer ` (Security Reviewer):
@@ -1658,7 +1771,7 @@ Data Catalog  |  Supported In Custom Roles  |  ` datacatalog.entryGroups.list
 Cloud Healthcare API  |  Supported In Custom Roles  |  `
 healthcare.fhirStores.executeBundle `  
   
-Cloud Identity and Access Management  |  Supported In Custom Roles  |  `
+Identity and Access Management  |  Supported In Custom Roles  |  `
 iam.serviceAccounts.getOpenIdToken `  
   
 Cloud Spanner  |  Added  |  ` spanner.backupOperations.cancel `  
@@ -2241,7 +2354,7 @@ artifactregistry.files.get `
 ` artifactregistry.versions.get `  
 ` artifactregistry.versions.list `  
   
-Cloud Identity and Access Management  |  Added  |  `
+Identity and Access Management  |  Added  |  `
 iam.serviceAccounts.getOpenIdToken `  
   
 Security Command Center  |  Added  |  `
@@ -3159,7 +3272,7 @@ Actions API  |  Now GA  |  ` actions.agent.claimContentProvider `
 ` actions.agentVersions.deploy `  
 ` actions.agentVersions.list `  
   
-Cloud Identity and Access Management  |  Supported In Custom Roles  |  `
+Identity and Access Management  |  Supported In Custom Roles  |  `
 iam.serviceAccounts.actAs `  
 ` iam.serviceAccounts.getAccessToken `  
 ` iam.serviceAccounts.implicitDelegation `  
@@ -3195,7 +3308,7 @@ cloudasset.assets.exportAccessPolicy `
 ` cloudasset.feeds.list `  
 ` cloudasset.feeds.update `  
   
-Cloud Identity and Access Management  |  Supported In Custom Roles  |  `
+Identity and Access Management  |  Supported In Custom Roles  |  `
 iam.serviceAccountKeys.create `  
 ` iam.serviceAccountKeys.delete `  
 ` iam.serviceAccountKeys.get `  
@@ -3938,7 +4051,7 @@ Compute Engine  |  Now GA  |  ` compute.vpnGateways.create `
 
 Service  |  Change  |  Description  
 ---|---|---  
-Cloud Identity and Access Management  |  Now GA  |
+Identity and Access Management  |  Now GA  |
 
 The role ` roles/iam.workloadIdentityUser ` (Workload Identity User) is now
 GA.  
@@ -3978,7 +4091,7 @@ roles/datacatalog.admin ` (Data Catalog Admin):
 Migrate for Compute Engine  |  Added  |  `
 cloudmigration.velostrataendpoints.connect `  
   
-Cloud Identity and Access Management  |  Available In Custom Roles  |  `
+Identity and Access Management  |  Available In Custom Roles  |  `
 iam.serviceAccounts.actAs `  
 ` iam.serviceAccounts.getAccessToken `  
 ` iam.serviceAccounts.implicitDelegation `  
@@ -4063,7 +4176,7 @@ Dialogflow  |  Now GA  |  ` dialogflow.agents.create `
 
 Service  |  Change  |  Description  
 ---|---|---  
-Cloud Identity and Access Management  |  Now GA  |
+Identity and Access Management  |  Now GA  |
 
 The role ` roles/iam.securityAdmin ` (Security Admin) is now GA.  
   
@@ -4879,12 +4992,12 @@ The following permissions have been added to the role ` roles/file.viewer `
 ` file.snapshots.get `  
 ` file.snapshots.list `  
   
-Cloud Identity and Access Management  |  Now GA  |
+Identity and Access Management  |  Now GA  |
 
 The role ` roles/iam.serviceAccountCreator ` (Create Service Accounts) is now
 GA.  
   
-Cloud Identity and Access Management  |  Role Updated  |
+Identity and Access Management  |  Role Updated  |
 
 The following permissions have been added to the role `
 roles/iam.securityReviewer ` (Security Reviewer):
@@ -5058,7 +5171,7 @@ The following permissions have been added to the role ` roles/editor `
 ` dataproc.jobs.getIamPolicy `  
 ` dataproc.operations.getIamPolicy `  
   
-Cloud Identity and Access Management  |  Role Updated  |
+Identity and Access Management  |  Role Updated  |
 
 The following permissions have been added to the role `
 roles/iam.serviceAccountDeleter ` (Delete Service Accounts):
@@ -5572,7 +5685,7 @@ BigQuery  |  Now GA  |
 The role ` roles/bigquery.metadataViewer ` (BigQuery Metadata Viewer) is now
 GA.  
   
-Cloud Identity and Access Management  |  Now GA  |
+Identity and Access Management  |  Now GA  |
 
 The role ` roles/iam.serviceAccountDeleter ` (Delete Service Accounts) is now
 GA.  
@@ -6728,7 +6841,7 @@ Cloud TPU  |  Supported In Custom Roles  |  ` tpu.acceleratortypes.get `
 
 Service  |  Change  |  Description  
 ---|---|---  
-Cloud Identity and Access Management  |  Now GA  |  `
+Identity and Access Management  |  Now GA  |  `
 iam.serviceAccounts.implicitDelegation `  
   
   
@@ -7746,7 +7859,7 @@ errorreporting.applications.list `
 ` errorreporting.groupMetadata.update `  
 ` errorreporting.groups.list `  
   
-Cloud Identity and Access Management  |  Not Supported In Custom Roles  |  `
+Identity and Access Management  |  Not Supported In Custom Roles  |  `
 iam.serviceAccounts.actAs `  
 ` iam.serviceAccounts.getAccessToken `  
 ` iam.serviceAccounts.signBlob `  
@@ -8087,7 +8200,7 @@ Google Kubernetes Engine  |  Now GA  |  ` container.deployments.getScale `
 Dataprep by Trifacta  |  Supported In Custom Roles  |  ` dataprep.projects.use
 `  
   
-Cloud Identity and Access Management  |  Supported In Custom Roles  |  `
+Identity and Access Management  |  Supported In Custom Roles  |  `
 iam.roles.create `  
 ` iam.roles.delete `  
 ` iam.roles.get `  
