@@ -13,6 +13,14 @@ página a tu [ lector de feeds
 directamente la URL del feed: `
 https://cloud.google.com/feeds/trafficdirector-release-notes.xml `
 
+##  July 21, 2020
+
+**FEATURE:**
+
+Traffic Director supports proxyless gRPC applications in General Availability.
+In this deployment model, gRPC applications can participate in a service mesh
+without needing a sidecar proxy.
+
 ##  July 07, 2020
 
 **FEATURE:**
