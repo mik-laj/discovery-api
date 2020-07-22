@@ -14,6 +14,16 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/compute-release-notes.xml `
 
+##  July 21, 2020
+
+**FEATURE:**
+
+You can now create _balanced persistent disks_ , in addition to standard and
+SSD persistent disks. Balanced persistent disks are an alternative to SSD
+persistent disks that balance performance and cost. For more information, see
+[ Persistent disk types
+](https://cloud.google.com/compute/docs/disks/index#disk-types) .
+
 ##  July 17, 2020
 
 **FEATURE:**
