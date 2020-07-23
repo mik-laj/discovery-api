@@ -13,6 +13,15 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloudresourcemanager-release-
 notes.xml `
 
+##  July 17, 2020
+
+**FEATURE:**
+
+The Organization Policy for [ restricting protocol forwarding creation
+](https://cloud.google.com/compute/docs/protocol-
+forwarding#enforcing_protocol_forwarding_settings_across_a_project_folder_or_organization)
+has launched into public beta.
+
 ##  July 01, 2020
 
 **FEATURE:**
