@@ -1,6 +1,6 @@
 #  リリースノート
 
-このページでは、Google Cloud Marketplace の機能と更新に関する最新のリリースノートについて記載しています。
+このページには、Cloud Marketplace の機能とアップデートに関する最新のリリースノートが掲載されています。
 
 [ Google Cloud リリースノート ](https://cloud.google.com/release-notes?hl=ja)
 のページで、Google Cloud の最新のプロダクト更新情報をすべて確認できます。
