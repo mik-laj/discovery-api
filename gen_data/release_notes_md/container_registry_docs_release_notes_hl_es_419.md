@@ -22,10 +22,9 @@ registry-release-notes.xml `
 Artifact Registry, the evolution of Container Registry, is now available in
 beta. It includes support for Docker as well as Maven and npm package formats.
 
-If you currently use Container Registry, see [ Planning for the upgrade from
-Container Registry
-](https://cloud.google.com/artifacts/docs/upgrade?hl=es_419) for more
-information.
+If you currently use Container Registry, see [ Transitioning from Container
+Registry ](https://cloud.google.com/artifact-registry/docs/transition-from-
+gcr?hl=es_419) for more information.
 
 ##  September 20, 2019
 
