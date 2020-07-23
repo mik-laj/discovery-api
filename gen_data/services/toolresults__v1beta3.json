@@ -9,8 +9,8 @@
         }
     },
     "basePath": "",
-    "baseUrl": "https://www.googleapis.com/",
-    "batchPath": "batch/toolresults/v1beta3",
+    "baseUrl": "https://toolresults.googleapis.com/",
+    "batchPath": "batch",
     "canonicalName": "Tool Results",
     "description": "API to publish and access results from developer tools.",
     "discoveryVersion": "v1",
@@ -21,7 +21,7 @@
     },
     "id": "toolresults:v1beta3",
     "kind": "discovery#restDescription",
-    "mtlsRootUrl": "https://www.mtls.googleapis.com/",
+    "mtlsRootUrl": "https://toolresults.mtls.googleapis.com/",
     "name": "toolresults",
     "ownerDomain": "google.com",
     "ownerName": "Google",
@@ -1112,11 +1112,11 @@
                                                         "filter": {
                                                             "description": "Specify one or more PerfMetricType values such as CPU to filter the result",
                                                             "enum": [
-                                                                "PERF_METRIC_TYPE_UNSPECIFIED",
-                                                                "MEMORY",
-                                                                "CPU",
-                                                                "NETWORK",
-                                                                "GRAPHICS"
+                                                                "perfMetricTypeUnspecified",
+                                                                "memory",
+                                                                "cpu",
+                                                                "network",
+                                                                "graphics"
                                                             ],
                                                             "location": "query",
                                                             "repeated": true,
@@ -1456,7 +1456,7 @@
             }
         }
     },
-    "rootUrl": "https://www.googleapis.com/",
+    "rootUrl": "https://toolresults.googleapis.com/",
     "schemas": {
         "ANR": {
             "description": "Additional details for an ANR crash.",
@@ -1622,11 +1622,11 @@
             "properties": {
                 "perfMetricType": {
                     "enum": [
-                        "PERF_METRIC_TYPE_UNSPECIFIED",
-                        "MEMORY",
-                        "CPU",
-                        "NETWORK",
-                        "GRAPHICS"
+                        "perfMetricTypeUnspecified",
+                        "memory",
+                        "cpu",
+                        "network",
+                        "graphics"
                     ],
                     "enumDescriptions": [
                         "",
@@ -1639,12 +1639,12 @@
                 },
                 "perfUnit": {
                     "enum": [
-                        "PERF_UNIT_UNSPECIFIED",
-                        "KIBIBYTE",
-                        "PERCENT",
-                        "BYTES_PER_SECOND",
-                        "FRAMES_PER_SECOND",
-                        "BYTE"
+                        "perfUnitUnspecified",
+                        "kibibyte",
+                        "percent",
+                        "bytesPerSecond",
+                        "framesPerSecond",
+                        "byte"
                     ],
                     "enumDescriptions": [
                         "",
@@ -1658,19 +1658,19 @@
                 },
                 "sampleSeriesLabel": {
                     "enum": [
-                        "SAMPLE_SERIES_TYPE_UNSPECIFIED",
-                        "MEMORY_RSS_PRIVATE",
-                        "MEMORY_RSS_SHARED",
-                        "MEMORY_RSS_TOTAL",
-                        "MEMORY_TOTAL",
-                        "CPU_USER",
-                        "CPU_KERNEL",
-                        "CPU_TOTAL",
-                        "NT_BYTES_TRANSFERRED",
-                        "NT_BYTES_RECEIVED",
-                        "NETWORK_SENT",
-                        "NETWORK_RECEIVED",
-                        "GRAPHICS_FRAME_RATE"
+                        "sampleSeriesTypeUnspecified",
+                        "memoryRssPrivate",
+                        "memoryRssShared",
+                        "memoryRssTotal",
+                        "memoryTotal",
+                        "cpuUser",
+                        "cpuKernel",
+                        "cpuTotal",
+                        "ntBytesTransferred",
+                        "ntBytesReceived",
+                        "networkSent",
+                        "networkReceived",
+                        "graphicsFrameRate"
                     ],
                     "enumDescriptions": [
                         "",
@@ -1918,10 +1918,10 @@
                 "state": {
                     "description": "The initial state is IN_PROGRESS.\n\nThe only legal state transitions is from IN_PROGRESS to COMPLETE.\n\nA PRECONDITION_FAILED will be returned if an invalid transition is\nrequested.\n\nThe state can only be set to COMPLETE once. A FAILED_PRECONDITION will be\nreturned if the state is set to COMPLETE multiple times.\n\nIf the state is set to COMPLETE, all the in-progress steps within the\nexecution will be set as COMPLETE. If the outcome of the step is not set,\nthe outcome will be set to INCONCLUSIVE.\n\n- In response always set\n- In create/update request: optional",
                     "enum": [
-                        "UNKNOWN_STATE",
-                        "PENDING",
-                        "IN_PROGRESS",
-                        "COMPLETE"
+                        "unknownState",
+                        "pending",
+                        "inProgress",
+                        "complete"
                     ],
                     "enumDescriptions": [
                         "Should never be in this state. Exists for proto deserialization backward\ncompatibility.",
@@ -1950,6 +1950,10 @@
             "properties": {
                 "crashed": {
                     "description": "If the failure was severe because the system (app) under test crashed.",
+                    "type": "boolean"
+                },
+                "failedRoboscript": {
+                    "description": "If the Roboscript failed to complete successfully, e.g., because a\nRoboscript action or assertion failed or a Roboscript action could not be\nmatched during the entire crawl.",
                     "type": "boolean"
                 },
                 "notInstalled": {
@@ -2097,9 +2101,9 @@
                 "testPlatform": {
                     "description": "The platform of the test history.\n\n- In response: always set. Returns the platform of the last execution if\nunknown.",
                     "enum": [
-                        "UNKNOWN_PLATFORM",
-                        "ANDROID",
-                        "IOS"
+                        "unknownPlatform",
+                        "android",
+                        "ios"
                     ],
                     "enumDescriptions": [
                         "",
@@ -2181,12 +2185,12 @@
                 },
                 "outcomeSummary": {
                     "enum": [
-                        "UNSET",
-                        "SUCCESS",
-                        "FAILURE",
-                        "INCONCLUSIVE",
-                        "SKIPPED",
-                        "FLAKY"
+                        "unset",
+                        "success",
+                        "failure",
+                        "inconclusive",
+                        "skipped",
+                        "flaky"
                     ],
                     "enumDescriptions": [
                         "Do not use. For proto versioning only.",
@@ -2512,10 +2516,10 @@
                 "state": {
                     "description": "State of the resource",
                     "enum": [
-                        "UNKNOWN_STATE",
-                        "PENDING",
-                        "IN_PROGRESS",
-                        "COMPLETE"
+                        "unknownState",
+                        "pending",
+                        "inProgress",
+                        "complete"
                     ],
                     "enumDescriptions": [
                         "Should never be in this state. Exists for proto deserialization backward\ncompatibility.",
@@ -2715,12 +2719,12 @@
                 "summary": {
                     "description": "The simplest way to interpret a result.\n\nRequired",
                     "enum": [
-                        "UNSET",
-                        "SUCCESS",
-                        "FAILURE",
-                        "INCONCLUSIVE",
-                        "SKIPPED",
-                        "FLAKY"
+                        "unset",
+                        "success",
+                        "failure",
+                        "inconclusive",
+                        "skipped",
+                        "flaky"
                     ],
                     "enumDescriptions": [
                         "Do not use. For proto versioning only.",
@@ -2813,11 +2817,11 @@
                     ],
                     "items": {
                         "enum": [
-                            "PERF_METRIC_TYPE_UNSPECIFIED",
-                            "MEMORY",
-                            "CPU",
-                            "NETWORK",
-                            "GRAPHICS"
+                            "perfMetricTypeUnspecified",
+                            "memory",
+                            "cpu",
+                            "network",
+                            "graphics"
                         ],
                         "type": "string"
                     },
@@ -2913,12 +2917,12 @@
                 "rollUp": {
                     "description": "Rollup test status of multiple steps that were run with the same\nconfiguration as a group.",
                     "enum": [
-                        "UNSET",
-                        "SUCCESS",
-                        "FAILURE",
-                        "INCONCLUSIVE",
-                        "SKIPPED",
-                        "FLAKY"
+                        "unset",
+                        "success",
+                        "failure",
+                        "inconclusive",
+                        "skipped",
+                        "flaky"
                     ],
                     "enumDescriptions": [
                         "Do not use. For proto versioning only.",
@@ -3239,10 +3243,10 @@
                 "state": {
                     "description": "The initial state is IN_PROGRESS.\nThe only legal state transitions are\n* IN_PROGRESS -> COMPLETE\n\nA PRECONDITION_FAILED will be returned if an invalid transition is\nrequested.\n\nIt is valid to create Step with a state set to COMPLETE.\nThe state can only be set to COMPLETE once. A PRECONDITION_FAILED will be\nreturned if the state is set to COMPLETE multiple times.\n\n- In response: always set\n- In create/update request: optional",
                     "enum": [
-                        "UNKNOWN_STATE",
-                        "PENDING",
-                        "IN_PROGRESS",
-                        "COMPLETE"
+                        "unknownState",
+                        "pending",
+                        "inProgress",
+                        "complete"
                     ],
                     "enumDescriptions": [
                         "Should never be in this state. Exists for proto deserialization backward\ncompatibility.",
@@ -3315,11 +3319,11 @@
                 "category": {
                     "description": "Category in which these types of suggestions should appear.\nAlways set.",
                     "enum": [
-                        "UNKNOWN_CATEGORY",
-                        "CONTENT_LABELING",
-                        "TOUCH_TARGET_SIZE",
-                        "LOW_CONTRAST",
-                        "IMPLEMENTATION"
+                        "unknownCategory",
+                        "contentLabeling",
+                        "touchTargetSize",
+                        "lowContrast",
+                        "implementation"
                     ],
                     "enumDescriptions": [
                         "",
@@ -3354,10 +3358,10 @@
                 "priority": {
                     "description": "Relative importance of a suggestion.\nAlways set.",
                     "enum": [
-                        "UNKNOWN_PRIORITY",
-                        "ERROR",
-                        "WARNING",
-                        "INFO"
+                        "unknownPriority",
+                        "error",
+                        "warning",
+                        "info"
                     ],
                     "enumDescriptions": [
                         "",
@@ -3428,11 +3432,11 @@
                 "status": {
                     "description": "The status of the test case.\n\nRequired.",
                     "enum": [
-                        "PASSED",
-                        "FAILED",
-                        "ERROR",
-                        "SKIPPED",
-                        "FLAKY"
+                        "passed",
+                        "failed",
+                        "error",
+                        "skipped",
+                        "flaky"
                     ],
                     "enumDescriptions": [
                         "Test passed.",
@@ -3516,9 +3520,9 @@
                 "category": {
                     "description": "Category of issue.\nRequired.",
                     "enum": [
-                        "UNSPECIFIED_CATEGORY",
-                        "COMMON",
-                        "ROBO"
+                        "unspecifiedCategory",
+                        "common",
+                        "robo"
                     ],
                     "enumDescriptions": [
                         "Default unspecified category.\nDo not use. For versioning only.",
@@ -3534,11 +3538,11 @@
                 "severity": {
                     "description": "Severity of issue.\nRequired.",
                     "enum": [
-                        "UNSPECIFIED_SEVERITY",
-                        "INFO",
-                        "SUGGESTION",
-                        "WARNING",
-                        "SEVERE"
+                        "unspecifiedSeverity",
+                        "info",
+                        "suggestion",
+                        "warning",
+                        "severe"
                     ],
                     "enumDescriptions": [
                         "Default unspecified severity.\nDo not use. For versioning only.",
@@ -3556,35 +3560,35 @@
                 "type": {
                     "description": "Type of issue.\nRequired.",
                     "enum": [
-                        "UNSPECIFIED_TYPE",
-                        "FATAL_EXCEPTION",
-                        "NATIVE_CRASH",
-                        "ANR",
-                        "UNUSED_ROBO_DIRECTIVE",
-                        "COMPATIBLE_WITH_ORCHESTRATOR",
-                        "LAUNCHER_ACTIVITY_NOT_FOUND",
-                        "START_ACTIVITY_NOT_FOUND",
-                        "INCOMPLETE_ROBO_SCRIPT_EXECUTION",
-                        "COMPLETE_ROBO_SCRIPT_EXECUTION",
-                        "FAILED_TO_INSTALL",
-                        "AVAILABLE_DEEP_LINKS",
-                        "NON_SDK_API_USAGE_VIOLATION",
-                        "NON_SDK_API_USAGE_REPORT",
-                        "ENCOUNTERED_NON_ANDROID_UI_WIDGET_SCREEN",
-                        "ENCOUNTERED_LOGIN_SCREEN",
-                        "PERFORMED_GOOGLE_LOGIN",
-                        "IOS_EXCEPTION",
-                        "IOS_CRASH",
-                        "PERFORMED_MONKEY_ACTIONS",
-                        "USED_ROBO_DIRECTIVE",
-                        "USED_ROBO_IGNORE_DIRECTIVE",
-                        "INSUFFICIENT_COVERAGE",
-                        "IN_APP_PURCHASES",
-                        "CRASH_DIALOG_ERROR",
-                        "UI_ELEMENTS_TOO_DEEP",
-                        "BLANK_SCREEN",
-                        "OVERLAPPING_UI_ELEMENTS",
-                        "UNITY_EXCEPTION"
+                        "unspecifiedType",
+                        "fatalException",
+                        "nativeCrash",
+                        "anr",
+                        "unusedRoboDirective",
+                        "compatibleWithOrchestrator",
+                        "launcherActivityNotFound",
+                        "startActivityNotFound",
+                        "incompleteRoboScriptExecution",
+                        "completeRoboScriptExecution",
+                        "failedToInstall",
+                        "availableDeepLinks",
+                        "nonSdkApiUsageViolation",
+                        "nonSdkApiUsageReport",
+                        "encounteredNonAndroidUiWidgetScreen",
+                        "encounteredLoginScreen",
+                        "performedGoogleLogin",
+                        "iosException",
+                        "iosCrash",
+                        "performedMonkeyActions",
+                        "usedRoboDirective",
+                        "usedRoboIgnoreDirective",
+                        "insufficientCoverage",
+                        "inAppPurchases",
+                        "crashDialogError",
+                        "uiElementsTooDeep",
+                        "blankScreen",
+                        "overlappingUiElements",
+                        "unityException"
                     ],
                     "enumDescriptions": [
                         "Default unspecified type.\nDo not use. For versioning only.",
