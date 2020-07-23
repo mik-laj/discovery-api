@@ -1,0 +1,393 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <div background="teal" class="devsite-banner devsite-banner-announcement">
+   <div class="devsite-banner-message">
+    <div class="devsite-banner-message-text">
+     <p>
+      <strong>
+       NOTE:
+      </strong>
+      Some aspects of this product are in Beta. The hybrid installation options are GA. To join the Beta program, reach out to your Apigee representative.
+     </p>
+    </div>
+   </div>
+  </div>
+  <h1 class="devsite-page-title">
+   1.0.0 (GA) - Apigee hybrid runtime release notes
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <p>
+    On November 20, 2019, Google released Apigee hybrid runtime version 1.0.0. This section
+  describes bug fixes and known issues with version 1.0.0.
+   </p>
+   <aside class="note">
+    <strong>
+     NOTE:
+    </strong>
+    The Apigee APIs, Apigee hybrid UI, GCP integrated services, and integrated portal are in
+    <a href="https://cloud.google.com/products/#product-launch-stages">
+     Beta
+    </a>
+    . All other Apigee hybrid components are GA. For more information, see
+    <a href="/apigee/docs/hybrid/terminology">
+     Versioning and terminology
+    </a>
+    .
+   </aside>
+   <aside class="objective">
+    For more information, see the following resources:
+    <ul>
+     <li>
+      <em>
+       <a href="/apigee/docs/hybrid/what-is-hybrid">
+        Learn more about hybrid
+       </a>
+      </em>
+      or
+      <em>
+       <a href="/apigee/docs/hybrid/big-picture">
+        Start installing
+       </a>
+      </em>
+     </li>
+     <li>
+      <em>
+       Create a paid account:
+      </em>
+      Contact
+      <a href="https://pages.apigee.com/contact-sales-reg.html">
+       Apigee Sales
+      </a>
+     </li>
+     <li>
+      <em>
+       Questions or issues?
+      </em>
+      Contact
+      <a class="external" href="https://cloud.google.com/apigee/support/">
+       Apigee Support
+      </a>
+     </li>
+    </ul>
+   </aside>
+   <h3 data-text="
+  Known issues (GA)
+" id="known-issues-ga" tabindex="0">
+    Known issues (GA)
+   </h3>
+   <p>
+    The following table describes the known issues for this release:
+   </p>
+   <table class="purple">
+    <thead>
+     <tr>
+      <th width="20%">
+       Issue
+      </th>
+      <th>
+       Description
+      </th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td>
+       144886537
+      </td>
+      <td>
+       Base path routing is not working in Apigee hybrid v1.0.0.
+        When the overrides is setup to route to different environments with the same hostAlias,
+        the ingress does not route to the environment based on path.
+      </td>
+     </tr>
+     <tr>
+      <td>
+       144584813
+      </td>
+      <td>
+       If you create a debug session but the session does not yet have any transactions in it,
+          then the
+       <a href="https://cloud.google.com/hybrid/reference/apis/rest/v1/organizations.environments.apis.revisions.debugsessions/list">
+        List Debug Sessions API
+       </a>
+       does not include the session in this list. The API
+          only includes sessions in the response if the session contains at least one transaction.
+      </td>
+     </tr>
+     <tr>
+      <td>
+       144436206
+      </td>
+      <td>
+       In the
+       <strong>
+        Cache Performance
+       </strong>
+       view, the Cache Hit Ratio calculation is
+        incorrect.
+      </td>
+     </tr>
+     <tr>
+      <td>
+       144321491
+      </td>
+      <td>
+       Apigee hybrid logs "Creating missing cache" notifications that indicate a potential
+          performance degradation. These messages are expected and can be ignored.
+      </td>
+     </tr>
+     <tr>
+      <td>
+       144321144
+      </td>
+      <td>
+       Proxies with secure
+       <!-- TODO: ad, 131111865 -->
+       virtual hosts cannot be reloaded.
+      </td>
+     </tr>
+     <tr>
+      <td>
+       144286363
+      </td>
+      <td>
+       <p>
+        Debug mask in env.json does not mask response data.
+       </p>
+       <p>
+        The following API to update the env.json debug mask with a responseJSONPaths field does not work:
+       </p>
+       <pre dir="ltr" translate="no">PATCH /v1/organizations/org/environments/env/debugmask?replaceRepeatedFields=true
+{
+  "responseJSONPaths": ["$.maskedDataEnv"]
+}</pre>
+       <p>
+        To work around this issue with trace, you can delete an entire trace session in the UI,
+        or you can use the trace APIs to delete individual transactions within a session.
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td>
+       143774187
+      </td>
+      <td>
+       The hybrid UI displays the label "Company" in the Apps view.
+      </td>
+     </tr>
+     <tr>
+      <td>
+       143659917
+      </td>
+      <td>
+       <p>
+        The PopulateCache policy's expiration setting must be set to an explicit value
+          between 1 and 30. For example:
+       </p>
+       <pre class="prettyprint" dir="ltr" translate="no">&lt;ExpirySettings&gt;
+  &lt;TimeoutInSec&gt;30&lt;/TimeoutInSec&gt;
+&lt;/ExpirySettings&gt;</pre>
+      </td>
+     </tr>
+     <tr>
+      <td>
+       133192879
+      </td>
+      <td>
+       <p>
+        Summary: There is a very high latency when using the API or UI to get your
+          organization's deployment status. This latency can result in an
+        <code dir="ltr" translate="no">
+         HTTP 204 (No
+          Content)
+        </code>
+        or an
+        <code dir="ltr" translate="no">
+         HTTP 400 (Bad Request)
+        </code>
+        response.
+       </p>
+       <p>
+        Workaround: Refresh your browser (or resend the request).
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td>
+       123932912
+      </td>
+      <td>
+       With zero-downtime deployment, when deployment of a new revision fails, the original
+        revision is still undeployed. You will have to re-deploy the original revision in order to
+        restore its deployment status.
+      </td>
+     </tr>
+     <tr>
+      <td>
+       N/A
+      </td>
+      <td>
+       <p>
+        Invalid HTTP Header error: The Istio ingress switches all incoming target responses
+          to the HTTP2 protocol. Because the hybrid message processor only supports HTTP1, you
+          may see the following error when an API proxy is called:
+       </p>
+       <pre class="prettyprint" dir="ltr" translate="no">http2 error: Invalid HTTP header field was received: frame type: 1, stream: 1,
+   name: [:authority], value: [domain_name]</pre>
+       <p>
+        If you see this error, you can take either of the following actions to correct the
+          problem:
+       </p>
+       <ul>
+        <li>
+         Modify the target service to omit the Host header in the response.
+        </li>
+        <li>
+         Remove the Host header using the AssignMessage policy in your API proxy if
+            necessary.
+        </li>
+       </ul>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+   <h3 data-text="Bugs fixed" id="bugs-fixed" tabindex="0">
+    Bugs fixed
+   </h3>
+   <p>
+    The following issues listed in the Apigee hybrid Beta 2 release notes have been fixed:
+   </p>
+   <table class="cyan">
+    <thead>
+     <tr>
+      <th width="20%">
+       Issue
+      </th>
+      <th>
+       Description
+      </th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td>
+       <strong>
+        133444606
+       </strong>
+      </td>
+      <td>
+       <p>
+        The update developer apps API does not support all
+          documented input fields.
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td>
+       <strong>
+        133192879
+       </strong>
+      </td>
+      <td>
+       <p>
+        There is a very high latency when using the API or UI to get
+          your organization's deployment status. This latency can result in an
+        <code dir="ltr" translate="no">
+         HTTP 204
+          (No Content)
+        </code>
+        or an
+        <code dir="ltr" translate="no">
+         HTTP 400 (Bad Request)
+        </code>
+        response.
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td>
+       <strong>
+        131111865
+       </strong>
+      </td>
+      <td>
+       <p>
+        Synchronizer fails when file system gets too full. This is
+          due to the Kubernetes garbage collection process: it is not triggered until it reaches
+          85% by default.
+       </p>
+       <p>
+        Closed: Not reproducible.
+       </p>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+   <h2 data-text="Unsupported Apigee Edge features" id="unsupported-apigee-edge-features" tabindex="0">
+    Unsupported Apigee Edge features
+   </h2>
+   <p>
+    Google does
+    <em>
+     not
+    </em>
+    plan to support the following features in Apigee hybrid:
+   </p>
+   <ul>
+    <li>
+     APIs to:
+     <ul>
+      <li>
+       Manipulate KVM entries
+      </li>
+      <li>
+       Search for or revoke OAuth access tokens (because tokens are hashed)
+      </li>
+     </ul>
+     <li>
+      Developer portal development using Drupal 7
+     </li>
+     <li>
+      OAuth v1 or
+      <a href="/apigee/docs/api-platform/reference/policies/oauth-10-policy-policy">
+       OAuthv1.0a policy
+      </a>
+     </li>
+     <li>
+      <a href="/apigee/docs/api-platform/reference/policies/concurrent-rate-limit-policy">
+       ConcurrentRateLimit policy
+      </a>
+      rate limiting policy
+     </li>
+     <li>
+      Trireme (EOL'd on 10/10/2019)
+     </li>
+    </li>
+   </ul>
+   <p>
+    For a full comparision of features between hybrid and Edge, see
+    <a href="/apigee/docs/hybrid/compare-hybrid-edge">
+     Compare hybrid to Edge
+    </a>
+    .
+   </p>
+   <h2 data-text="Next step" id="next-step" tabindex="0">
+    Next step
+   </h2>
+   <ul>
+    <li>
+     <a href="/apigee/docs/hybrid/what-is-hybrid">
+      Learn more about hybrid
+     </a>
+    </li>
+    <li>
+     <a href="/apigee/docs/hybrid/big-picture">
+      Start installing
+     </a>
+    </li>
+   </ul>
+  </div>
+ </article>
+</article>
