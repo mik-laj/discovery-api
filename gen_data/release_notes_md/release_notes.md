@@ -12,6 +12,20 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  July 22, 2020
+
+**Anthos Service Mesh**
+
+**FEATURE:**
+
+**1.6.5-asm.7, 1.5.8-asm.7, and 1.4.10-asm.15 are now available**
+
+This release provides these features and fixes:
+
+  * Builds Istiod (Pilot), Citadel Agent, Pilot Agent, Galley, and Sidecar Injector with [ Go+BoringCrypto ](https://go.googlesource.com/go/+/refs/heads/dev.boringcrypto) . 
+  * Builds Istio Proxy (Envoy) with the [ \--define boringssl=fips ](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/security/ssl#fips-140-2) option. 
+  * Ensures the components listed above use FIPS-compliant algorithms. 
+
 ##  July 21, 2020
 
 **AutoML Video Intelligence Object Tracking**
@@ -21,6 +35,13 @@ URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 In April 2020, a model upgrade for the AutoML Video Object Tracking feature
 was released. This release is for non-downloadable models only. Models trained
 after April 2020 may show improvements in the evaluation results.
+
+**Cloud Run**
+
+**FEATURE:**
+
+Cloud Run resources are now available in [ Cloud Asset Inventory
+](https://cloud.google.com/asset-inventory/docs/overview)
 
 **Compute Engine**
 
@@ -32,6 +53,12 @@ persistent disks that balance performance and cost. For more information, see
 [ Persistent disk types
 ](https://cloud.google.com/compute/docs/disks/index#disk-types) .
 
+**Config Connector**
+
+**FIXED:**
+
+bug fixes and performance improvements
+
 **Istio on Google Kubernetes Engine**
 
 **FIXED:**
@@ -40,6 +67,52 @@ persistent disks that balance performance and cost. For more information, see
 
 Fixes known security issues with the same fixes as [ OSS Istio 1.4.10
 ](https://istio.io/news/releases/1.4.x/announcing-1.4.10/)
+
+**Recommendations AI**
+
+**FEATURE:**
+
+**Recommendations AI public beta**
+
+Recommendations AI is now in public beta.
+
+**CHANGED:**
+
+**New pricing available**
+
+Pricing for Recommendations AI has been updated for public beta. For new
+pricing and free trial details, see [ Pricing
+](https://cloud.google.com/recommendations-ai/pricing) .
+
+**FEATURE:**
+
+**UI redesign**
+
+The [ Recommendations AI console
+](https://console.cloud.google.com/recommendation/catalogs/default_catalog/dashboard)
+has a new look. You'll see a new layout, including a redesigned dashboard and
+improved [ alerts setup ](https://cloud.google.com/recommendations-
+ai/docs/monitor) .
+
+**FEATURE:**
+
+**New support resources**
+
+We have new support resources available:
+
+  * File bugs and feature requests on our [ public issue tracker ](https://issuetracker.google.com/issues/new?component=911831) . 
+  * Ask a question about Recommendations AI [ on Stack Overflow ](http://stackoverflow.com/questions/tagged/google-cloud-recommendations) , using the tag ` google-cloud-recommendations ` . 
+  * Join the [ cloud-recommendations-users ](https://groups.google.com/forum/#!forum/cloud-recommendations-users) Google group to discuss Recommendations AI and receive announcements and updates. 
+
+See [ Getting support ](https://cloud.google.com/recommendations-
+ai/docs/getting-support) for all support resources.
+
+**FEATURE:**
+
+**New FAQ page**
+
+A Frequently Asked Questions page is now available. [ See the FAQ here
+](https://cloud.google.com/recommendations-ai/docs/faq) .
 
 **Traffic Director**
 
@@ -178,6 +251,15 @@ If a project's regional Dataproc [ staging bucket
 ](https://cloud.google.com/dataproc/docs/concepts/configuring-
 clusters/staging-bucket) is manually deleted, it will be recreated
 automatically when a cluster is subsequently created in that region.
+
+**Resource Manager**
+
+**FEATURE:**
+
+The Organization Policy for [ restricting protocol forwarding creation
+](https://cloud.google.com/compute/docs/protocol-
+forwarding#enforcing_protocol_forwarding_settings_across_a_project_folder_or_organization)
+has launched into public beta.
 
 ##  July 16, 2020
 
@@ -1693,71 +1775,4 @@ and preview 2.0.0-RC2-ubuntu18.
 Fixed a quota validation bug where accelerator counts were squared before
 validation -- for example, previously if you requested 8 GPUs, Dataproc
 validated whether your project had quota for ` 8^2=64 ` GPUs.
-
-##  June 23, 2020
-
-**AI Platform Deep Learning VM Image**
-
-**FIXED:**
-
-**M50 release**
-
-Miscellaneous bug fixes.
-
-**Cloud Billing**
-
-**FEATURE:**
-
-Committed use discounts (CUDs) are now available to purchase for Cloud SQL.
-CUDs provide discounted prices in exchange for your commitment to use a
-minimum level of resources for a specified term. With spend-based committed
-use discounts for Cloud SQL, you can earn a deep discount off your cost of use
-in exchange for committing to continuously use database instances in a
-particular region for a 1- or 3-year term. See the [ blog
-](https://cloud.google.com/blog/products/databases/cloud-sql-database-
-instances-now-discounted) and [ documentation
-](https://cloud.google.com/docs/cuds) for more details.
-
-**Cloud SQL for MySQL**
-
-**FEATURE:**
-
-Committed use discounts (CUDs) are now available to purchase for Cloud SQL.
-CUDs provide discounted prices in exchange for your commitment to use a
-minimum level of resources for a specified term. With committed use discounts
-for Cloud SQL, you can earn a deep discount off your cost of use in exchange
-for committing to continuously use database instances in a particular region
-for a 1- or 3-year term. See the [ documentation
-](https://cloud.google.com/sql/docs/mysql/cud) for more details.
-
-**Cloud SQL for PostgreSQL**
-
-**FEATURE:**
-
-Committed use discounts (CUDs) are now available to purchase for Cloud SQL.
-CUDs provide discounted prices in exchange for your commitment to use a
-minimum level of resources for a specified term. With committed use discounts
-for Cloud SQL, you can earn a deep discount off your cost of use in exchange
-for committing to continuously use database instances in a particular region
-for a 1- or 3-year term. See the [ documentation
-](https://cloud.google.com/sql/docs/mysql/cud) for more details.
-
-**Cloud SQL for SQL Server**
-
-**FEATURE:**
-
-Committed use discounts (CUDs) are now available to purchase for Cloud SQL.
-CUDs provide discounted prices in exchange for your commitment to use a
-minimum level of resources for a specified term. With committed use discounts
-for Cloud SQL, you can earn a deep discount off your cost of use in exchange
-for committing to continuously use database instances in a particular region
-for a 1- or 3-year term. See the [ documentation
-](https://cloud.google.com/sql/docs/mysql/cud) for more details.
-
-**Google Cloud Armor**
-
-**CHANGED:**
-
-[ Promotional pricing ](https://cloud.google.com/armor/pricing) for Google
-Cloud Armor is extended to July 31, 2020.
 
