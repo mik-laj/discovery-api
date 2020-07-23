@@ -1,7 +1,7 @@
 #  Notas da versão
 
-Nesta página, veja as notas de versão mais recentes de recursos e atualizações
-do Google Cloud Marketplace.
+Esta página contém notas de lançamento mais recentes referentes a recursos e
+atualizações do Cloud Marketplace.
 
 É possível ver as atualizações mais recentes de todos os produtos do Google
 Cloud na página [ Notas da versão do Google Cloud
