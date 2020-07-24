@@ -40,6 +40,491 @@ For a comprehensive list, see the
    </section>
    <section class="releases">
     <section class="releases">
+     <h2 data-text="July 23, 2020" id="July_23_2020" tabindex="0">
+      July 23, 2020
+     </h2>
+     <strong class="release-note-product-title">
+      Anthos
+     </strong>
+     <div class="release-feature" id="2b8866df">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <a href="https://cloud.google.com/anthos">
+        Anthos
+       </a>
+       1.4.1 is now available.
+      </p>
+      <p>
+       <strong>
+        Updated components:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/release-notes">
+         Anthos GKE on-prem release notes
+        </a>
+       </li>
+       <li>
+        <a href="https://cloud.google.com/anthos-config-management/docs/release-notes">
+         Anthos Config Management release notes
+        </a>
+       </li>
+      </ul>
+     </div>
+     <strong class="release-note-product-title">
+      Anthos Config Management
+     </strong>
+     <div class="release-feature" id="8e2d02bd">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <a href="https://cloud.google.com/config-connector">
+        Config Connector
+       </a>
+       has been updated in Anthos Config Management to version 1.13.1.
+      </p>
+     </div>
+     <div class="release-feature" id="3cb15c61">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Anthos Config Management now includes Hierarchy Controller as a beta feature. For more information on this component, see the
+       <a href="https://cloud.google.com/anthos-config-management/docs/concepts/hierarchy-controller">
+        Hierarchy Controller overview
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="ef4ecbee">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Policy Controller users may now enable
+       <a href="https://github.com/open-policy-agent/gatekeeper/blob/master/README.md#log-denies">
+        --log-denies
+       </a>
+       to log all denies and dryrun failures. This is useful when trying to see what is being denied or fails dry-run and for keeping a log to debug cluster problems without looking through the status of all constraints. This is configured by setting
+       <code dir="ltr" translate="no">
+        spec.policyController.logDeniesEnabled: true
+       </code>
+       in the configuration file for the Operator. There is an example in the section on
+       <a href="https://cloud.google.com/anthos-config-management/docs/how-to/installing-policy-controller">
+        Installing Policy Controller
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="8bde51b4">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       This release includes several logging and performance improvements.
+      </p>
+     </div>
+     <div class="release-changed" id="9ff7abcf">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       This release includes several fixes and improvements for the
+       <code dir="ltr" translate="no">
+        nomos
+       </code>
+       command line utility.
+      </p>
+     </div>
+     <div class="release-changed" id="8d869714">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       The use of unsecured HTTP for GitHub repo connections or in an http_proxy is now discouraged, and support for unsecured HTTP will be removed in a future release.  HTTPS will continue to be supported for GitHub repo and local proxy connections.
+      </p>
+     </div>
+     <div class="release-changed" id="149b8ec9">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       This release improves the handling of GitHub repositories with very large histories.
+      </p>
+     </div>
+     <div class="release-changed" id="50a4b552">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Prior to this release, Config Sync and
+       <code dir="ltr" translate="no">
+        kubectl
+       </code>
+       controllers and processes used the same annotation (
+       <code dir="ltr" translate="no">
+        kubectl.kubernetes.io/last-applied-configuration
+       </code>
+       ) to calculate three-way merge patches. The shared annotation sometimes resulted in resource fights, causing unnecessary removal of each other's fields. Config Sync now uses its own annotation, which prevents resource clashes.
+      </p>
+      <p>
+       In most cases, this change will be transparent to you. However, there are two cases where some previously unspecified behavior will change.
+      </p>
+      <p>
+       The first case is when you have run
+       <code dir="ltr" translate="no">
+        kubectl apply
+       </code>
+       on an unmanaged resource in a cluster, and you later add that same resource to the GitHub repo. Previously, Config Sync would have pruned any fields that were previously applied but not declared in the GitHub repo. Now, Config Sync writes the declared fields to the resource and leaves undeclared fields in place. If you want to remove those fields, do one of the following:
+      </p>
+      <ul>
+       <li>
+        Get a local copy of the resource from GitHub and
+        <code dir="ltr" translate="no">
+         kubectl apply
+        </code>
+        it.
+       </li>
+       <li>
+        Use
+        <code dir="ltr" translate="no">
+         kubectl edit --save-config
+        </code>
+        to remove the fields directly.
+       </li>
+      </ul>
+      <p>
+       The second case is when you stop managing a resource on the cluster or even stop all of Config Sync on a cluster. In this case, if you want to prune fields from a previously managed resource, you will see different behavior. Previously, you could get a local copy of the resource from GitHub, remove the unwanted fields, and
+       <code dir="ltr" translate="no">
+        kubectl apply
+       </code>
+       it. Now,
+       <code dir="ltr" translate="no">
+        kubectl apply
+       </code>
+       no longer prunes the missing fields. If you want to remove those fields, do one of the following:
+      </p>
+      <ul>
+       <li>
+        Call
+        <code dir="ltr" translate="no">
+         kubectl apply set-last-applied
+        </code>
+        with the unmodified resource from GitHub, then remove unwanted fields and
+        <code dir="ltr" translate="no">
+         kubectl apply
+        </code>
+        it again without the
+        <code dir="ltr" translate="no">
+         set-last-applied
+        </code>
+        flag.
+       </li>
+       <li>
+        Use
+        <code dir="ltr" translate="no">
+         kubectl edit --save-config
+        </code>
+        to remove the fields directly.
+       </li>
+      </ul>
+     </div>
+     <div class="release-fixed" id="93bfeaf9">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       In error messages, links to error docs are now more concise.
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      Anthos GKE on-prem
+     </strong>
+     <div class="release-feature" id="92b9b1d6">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Anthos GKE on-prem 1.4.1-gke.1 is now available. To upgrade, see
+       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading">
+        Upgrading GKE on-prem
+       </a>
+       . GKE on-prem 1.4.1-gke.1 clusters run on Kubernetes 1.16.9-gke.14.
+      </p>
+     </div>
+     <div class="release-feature" id="ea2a1215">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <strong>
+        Anthos Identity Service LDAP authentication is now available in Alpha for GKE on-prem
+       </strong>
+      </p>
+      <p>
+       Contact support if you are interested in a trial of the LDAP authentication feature in GKE on-prem.
+      </p>
+     </div>
+     <div class="release-feature" id="d9b22538">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <strong>
+        Support for F5 BIG-IP load balancer credentials update
+       </strong>
+      </p>
+      <p>
+       This preview release enables customers to manage and update the F5 BIG-IP load balancer credentials by using the
+       <code dir="ltr" translate="no">
+        gkectl update credentials f5bigip
+       </code>
+       command.
+      </p>
+     </div>
+     <div class="release-changed" id="985fbff7">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <strong>
+        Functionality changes:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        The Ubuntu image is upgraded to include the newest packages.
+       </li>
+       <li>
+        Preflight checks are updated to validate that the
+        <code dir="ltr" translate="no">
+         gkectl
+        </code>
+        version matches the target cluster version for cluster creation and upgrade.
+       </li>
+       <li>
+        Preflight checks are updated to validate the Window OS version used for running
+        <code dir="ltr" translate="no">
+         gkeadm
+        </code>
+        . The
+        <code dir="ltr" translate="no">
+         gkeadm
+        </code>
+        command-line tool is only available for Linux, Windows 10, and Windows Server 2019.
+       </li>
+       <li>
+        <code dir="ltr" translate="no">
+         gkeadm
+        </code>
+        is updated to populate
+        <code dir="ltr" translate="no">
+         network.vCenter.networkName
+        </code>
+        in both
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/admin-cluster-configuration-file">
+         admin cluster
+        </a>
+        and
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/user-cluster-configuration-file">
+         user cluster
+        </a>
+        configuration files.
+       </li>
+      </ul>
+     </div>
+     <div class="release-fixed" id="edb76844">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       <strong>
+        Fixes:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        Removed the static IP used by admin workstation after upgrade from
+        <code dir="ltr" translate="no">
+         ~/.ssh/known_hosts
+        </code>
+        to avoid manual workaround.
+       </li>
+       <li>
+        Resolved a known issue that
+        <code dir="ltr" translate="no">
+         network.vCenter.networkName
+        </code>
+        is not populated in the user cluster configuration file during user cluster creation.
+       </li>
+       <li>
+        Resolved a user cluster upgrade–related issue to only wait for the machines and pods in the same namespace within the cluster to be ready to complete the cluster upgrade.
+       </li>
+       <li>
+        Updated the default value for
+        <code dir="ltr" translate="no">
+         ingressHTTPNodePort
+        </code>
+        and
+        <code dir="ltr" translate="no">
+         ingressHTTPSNodePort
+        </code>
+        in the
+        <code dir="ltr" translate="no">
+         loadBalancer.manualLB
+        </code>
+        section of the
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/admin-cluster-configuration-file">
+         admin cluster configuration
+        </a>
+        file.
+       </li>
+       <li>
+        Fixed
+        <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8558">
+         CVE-2020-8558
+        </a>
+        and
+        <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8559">
+         CVE-2020-8559
+        </a>
+        described in
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/security-bulletins#gcp-2020-009">
+         Security bulletins
+        </a>
+        .
+       </li>
+       <li>
+        Logging and monitoring: Resolved an issue that stackdriver-log-forwarder was not scheduled on the master node on the admin cluster.
+       </li>
+       <li>
+        Resolved the following known issues published in the 1.4.0 release notes:
+        <ul>
+         <li>
+          If a user cluster is created without any node pool named the same as the cluster, managing the node pools using
+          <code dir="ltr" translate="no">
+           gkectl update cluster
+          </code>
+          would fail. To avoid this issue, when creating a user cluster, you need to name one node pool the same as the cluster.
+         </li>
+         <li>
+          The
+          <code dir="ltr" translate="no">
+           gkectl
+          </code>
+          command might exit with panic when converting config from "/path/to/config.yaml" to v1 config files. When that occurs, you can resolve the issue by removing the unused bundled load balancer section ("loadbalancerconfig") in the config file.
+         </li>
+         <li>
+          When using gkeadm to upgrade an admin workstation on Windows, the info file filled out from this template needs to have the line endings converted to use Unix line endings (LF) instead of Windows line endings (CRLF). You can use Notepad++ to convert the line endings.
+         </li>
+         <li>
+          When running a preflight check for
+          <code dir="ltr" translate="no">
+           config.yaml
+          </code>
+          that contains both
+          <code dir="ltr" translate="no">
+           admincluster
+          </code>
+          and
+          <code dir="ltr" translate="no">
+           usercluster
+          </code>
+          sections, the "data disk" check in the "user cluster vCenter" category might fail with the message:
+          <code dir="ltr" translate="no">
+           [FAILURE] Data Disk: Data disk is not in a folder. Use a data disk in a folder when using vSAN datastore.
+          </code>
+          User clusters don't use data disks, and it's safe to ignore the failure.
+         </li>
+         <li>
+          When upgrading the admin cluster, the preflight check for the user cluster OS image validation will fail. The user cluster OS image is not used in this case, and it's safe to ignore the "User Cluster OS Image Exists"  failure in this case.
+         </li>
+         <li>
+          User cluster creation and upgrade might be stuck with the error:
+          <code dir="ltr" translate="no">
+           Failed to update machine status: no matches for kind "Machine" in version "cluster.k8s.io/v1alpha1".
+          </code>
+          To resolve this, you need to delete the clusterapi pod in the user cluster namespace in the admin cluster.
+         </li>
+        </ul>
+       </li>
+      </ul>
+     </div>
+     <div class="release-issue" id="2614d2b2">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        Known issues:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        During reboots, the data disk is not remounted on the admin workstation when using GKE on-prem 1.4.0 or 1.4.1 because the startup script is not run after the initial creation. To resolve this, you can run
+        <code dir="ltr" translate="no">
+         sudo mount /dev/sdb1 /home/ubuntu
+        </code>
+        .
+       </li>
+      </ul>
+     </div>
+     <strong class="release-note-product-title">
+      Dialogflow
+     </strong>
+     <div class="release-deprecated" id="0a7053c2">
+      <strong>
+       DEPRECATED:
+      </strong>
+      <p>
+       Amazon Alexa importer and exporter are no longer supported.
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      Network Intelligence Center
+     </strong>
+     <div class="release-feature" id="8494b257">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Network Topology includes two new metrics for connections between entities: packet loss and latency. Additionally,  you can now use a drop-down menu to select which metric Network Topology overlays on traffic paths. For more information, see
+       <a href="https://cloud.google.com/network-intelligence-center/docs/network-topology/how-to/using-network-topology#viewing_metrics_for_traffic_between_entities">
+        Viewing metrics for traffic between entities
+       </a>
+       and
+       <a href="https://cloud.google.com/network-intelligence-center/docs/network-topology/reference/metrics-reference">
+        Network Topology metrics reference
+       </a>
+       .
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      Virtual Private Cloud
+     </strong>
+     <div class="release-feature" id="ba095ee0">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <a href="https://cloud.google.com/vpc/docs/configure-serverless-vpc-access">
+        Serverless VPC Access
+       </a>
+       support for
+       <a href="https://cloud.google.com/vpc/docs/shared-vpc">
+        Shared VPC
+       </a>
+       is now available in
+       <strong>
+        Beta
+       </strong>
+       .
+      </p>
+     </div>
      <h2 data-text="July 22, 2020" id="July_22_2020" tabindex="0">
       July 22, 2020
      </h2>
@@ -77,6 +562,21 @@ For a comprehensive list, see the
         Ensures the components listed above use FIPS-compliant algorithms.
        </li>
       </ul>
+     </div>
+     <strong class="release-note-product-title">
+      Cloud Bigtable
+     </strong>
+     <div class="release-feature" id="42303586">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Cloud Bigtable's fully integrated
+       <a href="https://cloud.google.com/bigtable/docs/backups">
+        backups feature
+       </a>
+       is now generally available. Backups let you save a copy of a table's schema and data and restore the backup to a new table at a later time.
+      </p>
      </div>
      <h2 data-text="July 21, 2020" id="July_21_2020" tabindex="0">
       July 21, 2020
@@ -352,6 +852,21 @@ For a comprehensive list, see the
         deleted members that are bound to a role
        </a>
        . These changes will take effect starting on August 31, 2020.
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      Resource Manager
+     </strong>
+     <div class="release-feature" id="f5eba28b">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       The Organization Policy for
+       <a href="https://cloud.google.com/storage/docs/org-policy-constraints#audit-logging">
+        enabling detailed Cloud Audit Logs
+       </a>
+       has launched into general availability.
       </p>
      </div>
      <strong class="release-note-product-title">
@@ -4003,179 +4518,6 @@ described in
       </strong>
       <p>
        Fix an issue where config-connector would error on a Project resource.
-      </p>
-     </div>
-     <h2 data-text="June 24, 2020" id="June_24_2020" tabindex="0">
-      June 24, 2020
-     </h2>
-     <strong class="release-note-product-title">
-      Cloud Composer
-     </strong>
-     <div class="release-changed" id="cfb917e2">
-      <strong>
-       CHANGED:
-      </strong>
-      <ul>
-       <li>
-        <a href="https://cloud.google.com/composer/docs/concepts/versioning/composer-versions">
-         New versions
-        </a>
-        of Cloud Composer images:
-        <code dir="ltr" translate="no">
-         composer-1.10.5-airflow-1.10.2
-        </code>
-        ,
-        <code dir="ltr" translate="no">
-         composer-1.10.5-airflow-1.10.3
-        </code>
-        and
-        <code dir="ltr" translate="no">
-         composer-1.10.5-airflow-1.10.6
-        </code>
-        . The default is
-        <code dir="ltr" translate="no">
-         composer-1.10.5-airflow-1.10.3
-        </code>
-        . Upgrade your Cloud SDK to use features in this release.
-       </li>
-      </ul>
-     </div>
-     <div class="release-feature" id="4b9b3bc2">
-      <strong>
-       FEATURE:
-      </strong>
-      <ul>
-       <li>
-        Composer now uses the Kubernetes v1 API, and is compatible with GKE 1.16
-       </li>
-       <li>
-        An updated haproxy configuration for Composer increases the maximum number of connections to 2000, and changes load balancing to be based on the number of connections. These settings can be configured with environment variables.
-       </li>
-      </ul>
-     </div>
-     <div class="release-fixed" id="68e141a1">
-      <strong>
-       FIXED:
-      </strong>
-      <ul>
-       <li>
-        Error messages for
-        <code dir="ltr" translate="no">
-         TP_APP_ENGINE_CREATING
-        </code>
-        timeout and RPC delivery issues have been expanded.
-       </li>
-       <li>
-        Airflow Providers can now be installed inside Cloud Composer.
-       </li>
-       <li>
-        Error handling for rendering templates in the Airflow web server UI has been improved.
-       </li>
-       <li>
-        Fixed an issue with rendering task instance details (logs, task instance template, params) in the Airflow web server UI when DAG serialization is enabled.
-       </li>
-       <li>
-        Fixed an issue with
-        <code dir="ltr" translate="no">
-         DataFlowJavaOperator
-        </code>
-        , so it can now be used with Apache Beam 2.20.
-       </li>
-       <li>
-        Improved error reporting for failing operations.
-       </li>
-       <li>
-        Memory consumption of the
-        <code dir="ltr" translate="no">
-         gcs-syncd
-        </code>
-        container is now constrained to prevent system instability.
-       </li>
-      </ul>
-     </div>
-     <strong class="release-note-product-title">
-      Dataproc
-     </strong>
-     <div class="release-changed" id="45502c5e">
-      <strong>
-       CHANGED:
-      </strong>
-      <p>
-       New
-       <a href="https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_cloud_dataproc_versions">
-        subminor image versions
-       </a>
-       : 1.2.100-debian9, 1.3.60-debian9, 1.4.31-debian9, 1.3.60-debian10, 1.4.31-debian10, 1.5.6-debian10, 1.3.60-ubuntu18, 1.4.31-ubuntu18, 1.5.6-ubuntu18, preview 2.0.0-RC2-debian10, and preview 2.0.0-RC2-ubuntu18.
-      </p>
-     </div>
-     <div class="release-changed" id="ad84581b">
-      <strong>
-       CHANGED:
-      </strong>
-      <ul>
-       <li>
-        <p>
-         <strong>
-          Image 2.0 preview
-         </strong>
-         :
-        </p>
-        <ul>
-         <li>
-          <a href="https://issues.apache.org/jira/browse/SPARK-22404">
-           SPARK-22404
-          </a>
-          : set
-          <code dir="ltr" translate="no">
-           spark.yarn.unmanagedAM.enabled
-          </code>
-          property to
-          <code dir="ltr" translate="no">
-           true
-          </code>
-          on clusters where
-Kerberos is not enabled to run Spark Application Master in driver (not
-managed in YARN) to improve job execution time.
-         </li>
-         <li>
-          <p>
-           Updated R version to 3.6
-          </p>
-         </li>
-         <li>
-          <p>
-           Updated Spark to
-           <a href="https://spark.apache.org/releases/spark-release-3-0-0.html">
-            3.0.0 version
-           </a>
-          </p>
-         </li>
-        </ul>
-       </li>
-       <li>
-        <p>
-         <strong>
-          Image 1.5
-         </strong>
-        </p>
-        <ul>
-         <li>
-          Updated R version to 3.6
-         </li>
-        </ul>
-       </li>
-      </ul>
-     </div>
-     <div class="release-fixed" id="cb7dfb1f">
-      <strong>
-       FIXED:
-      </strong>
-      <p>
-       Fixed a quota validation bug where accelerator counts were squared before validation -- for example, previously if you requested 8 GPUs, Dataproc validated whether your project had quota for
-       <code dir="ltr" translate="no">
-        8^2=64
-       </code>
-       GPUs.
       </p>
      </div>
     </section>
