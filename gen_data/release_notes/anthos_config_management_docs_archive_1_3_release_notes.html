@@ -35,6 +35,176 @@ deprecated functionality.
    </section>
    <section class="releases">
     <section class="releases">
+     <h2 data-text="July 23, 2020" id="July_23_2020" tabindex="0">
+      July 23, 2020
+     </h2>
+     <div class="release-note-product-version-title">
+      1.4.1
+     </div>
+     <div class="release-feature" id="2fded534">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <a href="https://cloud.google.com/config-connector">
+        Config Connector
+       </a>
+       has been updated in Anthos Config Management to version 1.13.1.
+      </p>
+     </div>
+     <div class="release-feature" id="e93bc0a4">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Anthos Config Management now includes Hierarchy Controller as a beta feature. For more information on this component, see the
+       <a href="https://cloud.google.com/anthos-config-management/docs/concepts/hierarchy-controller">
+        Hierarchy Controller overview
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="c2a51696">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Policy Controller users may now enable
+       <a href="https://github.com/open-policy-agent/gatekeeper/blob/master/README.md#log-denies">
+        --log-denies
+       </a>
+       to log all denies and dryrun failures. This is useful when trying to see what is being denied or fails dry-run and for keeping a log to debug cluster problems without looking through the status of all constraints. This is configured by setting
+       <code dir="ltr" translate="no">
+        spec.policyController.logDeniesEnabled: true
+       </code>
+       in the configuration file for the Operator. There is an example in the section on
+       <a href="https://cloud.google.com/anthos-config-management/docs/how-to/installing-policy-controller">
+        Installing Policy Controller
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="f6042456">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       This release includes several logging and performance improvements.
+      </p>
+     </div>
+     <div class="release-changed" id="02d55a89">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       This release includes several fixes and improvements for the
+       <code dir="ltr" translate="no">
+        nomos
+       </code>
+       command line utility.
+      </p>
+     </div>
+     <div class="release-changed" id="7e2ac1f4">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       The use of unsecured HTTP for GitHub repo connections or in an http_proxy is now discouraged, and support for unsecured HTTP will be removed in a future release.  HTTPS will continue to be supported for GitHub repo and local proxy connections.
+      </p>
+     </div>
+     <div class="release-changed" id="bf4e9439">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       This release improves the handling of GitHub repositories with very large histories.
+      </p>
+     </div>
+     <div class="release-changed" id="e53c2a27">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Prior to this release, Config Sync and
+       <code dir="ltr" translate="no">
+        kubectl
+       </code>
+       controllers and processes used the same annotation (
+       <code dir="ltr" translate="no">
+        kubectl.kubernetes.io/last-applied-configuration
+       </code>
+       ) to calculate three-way merge patches. The shared annotation sometimes resulted in resource fights, causing unnecessary removal of each other's fields. Config Sync now uses its own annotation, which prevents resource clashes.
+      </p>
+      <p>
+       In most cases, this change will be transparent to you. However, there are two cases where some previously unspecified behavior will change.
+      </p>
+      <p>
+       The first case is when you have run
+       <code dir="ltr" translate="no">
+        kubectl apply
+       </code>
+       on an unmanaged resource in a cluster, and you later add that same resource to the GitHub repo. Previously, Config Sync would have pruned any fields that were previously applied but not declared in the GitHub repo. Now, Config Sync writes the declared fields to the resource and leaves undeclared fields in place. If you want to remove those fields, do one of the following:
+      </p>
+      <ul>
+       <li>
+        Get a local copy of the resource from GitHub and
+        <code dir="ltr" translate="no">
+         kubectl apply
+        </code>
+        it.
+       </li>
+       <li>
+        Use
+        <code dir="ltr" translate="no">
+         kubectl edit --save-config
+        </code>
+        to remove the fields directly.
+       </li>
+      </ul>
+      <p>
+       The second case is when you stop managing a resource on the cluster or even stop all of Config Sync on a cluster. In this case, if you want to prune fields from a previously managed resource, you will see different behavior. Previously, you could get a local copy of the resource from GitHub, remove the unwanted fields, and
+       <code dir="ltr" translate="no">
+        kubectl apply
+       </code>
+       it. Now,
+       <code dir="ltr" translate="no">
+        kubectl apply
+       </code>
+       no longer prunes the missing fields. If you want to remove those fields, do one of the following:
+      </p>
+      <ul>
+       <li>
+        Call
+        <code dir="ltr" translate="no">
+         kubectl apply set-last-applied
+        </code>
+        with the unmodified resource from GitHub, then remove unwanted fields and
+        <code dir="ltr" translate="no">
+         kubectl apply
+        </code>
+        it again without the
+        <code dir="ltr" translate="no">
+         set-last-applied
+        </code>
+        flag.
+       </li>
+       <li>
+        Use
+        <code dir="ltr" translate="no">
+         kubectl edit --save-config
+        </code>
+        to remove the fields directly.
+       </li>
+      </ul>
+     </div>
+     <div class="release-fixed" id="bcdf5388">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       In error messages, links to error docs are now more concise.
+      </p>
+     </div>
      <h2 data-text="June 25, 2020" id="June_25_2020" tabindex="0">
       June 25, 2020
      </h2>
