@@ -12,6 +12,189 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  July 23, 2020
+
+**Anthos**
+
+**FEATURE:**
+
+[ Anthos ](https://cloud.google.com/anthos) 1.4.1 is now available.
+
+**Updated components:**
+
+  * [ Anthos GKE on-prem release notes ](https://cloud.google.com/anthos/gke/docs/on-prem/release-notes)
+  * [ Anthos Config Management release notes ](https://cloud.google.com/anthos-config-management/docs/release-notes)
+
+**Anthos Config Management**
+
+**FEATURE:**
+
+[ Config Connector ](https://cloud.google.com/config-connector) has been
+updated in Anthos Config Management to version 1.13.1.
+
+**FEATURE:**
+
+Anthos Config Management now includes Hierarchy Controller as a beta feature.
+For more information on this component, see the [ Hierarchy Controller
+overview ](https://cloud.google.com/anthos-config-
+management/docs/concepts/hierarchy-controller) .
+
+**CHANGED:**
+
+Policy Controller users may now enable [ \--log-denies
+](https://github.com/open-policy-agent/gatekeeper/blob/master/README.md#log-
+denies) to log all denies and dryrun failures. This is useful when trying to
+see what is being denied or fails dry-run and for keeping a log to debug
+cluster problems without looking through the status of all constraints. This
+is configured by setting ` spec.policyController.logDeniesEnabled: true ` in
+the configuration file for the Operator. There is an example in the section on
+[ Installing Policy Controller ](https://cloud.google.com/anthos-config-
+management/docs/how-to/installing-policy-controller) .
+
+**CHANGED:**
+
+This release includes several logging and performance improvements.
+
+**CHANGED:**
+
+This release includes several fixes and improvements for the ` nomos ` command
+line utility.
+
+**CHANGED:**
+
+The use of unsecured HTTP for GitHub repo connections or in an http_proxy is
+now discouraged, and support for unsecured HTTP will be removed in a future
+release. HTTPS will continue to be supported for GitHub repo and local proxy
+connections.
+
+**CHANGED:**
+
+This release improves the handling of GitHub repositories with very large
+histories.
+
+**CHANGED:**
+
+Prior to this release, Config Sync and ` kubectl ` controllers and processes
+used the same annotation ( ` kubectl.kubernetes.io/last-applied-configuration
+` ) to calculate three-way merge patches. The shared annotation sometimes
+resulted in resource fights, causing unnecessary removal of each other's
+fields. Config Sync now uses its own annotation, which prevents resource
+clashes.
+
+In most cases, this change will be transparent to you. However, there are two
+cases where some previously unspecified behavior will change.
+
+The first case is when you have run ` kubectl apply ` on an unmanaged resource
+in a cluster, and you later add that same resource to the GitHub repo.
+Previously, Config Sync would have pruned any fields that were previously
+applied but not declared in the GitHub repo. Now, Config Sync writes the
+declared fields to the resource and leaves undeclared fields in place. If you
+want to remove those fields, do one of the following:
+
+  * Get a local copy of the resource from GitHub and ` kubectl apply ` it. 
+  * Use ` kubectl edit --save-config ` to remove the fields directly. 
+
+The second case is when you stop managing a resource on the cluster or even
+stop all of Config Sync on a cluster. In this case, if you want to prune
+fields from a previously managed resource, you will see different behavior.
+Previously, you could get a local copy of the resource from GitHub, remove the
+unwanted fields, and ` kubectl apply ` it. Now, ` kubectl apply ` no longer
+prunes the missing fields. If you want to remove those fields, do one of the
+following:
+
+  * Call ` kubectl apply set-last-applied ` with the unmodified resource from GitHub, then remove unwanted fields and ` kubectl apply ` it again without the ` set-last-applied ` flag. 
+  * Use ` kubectl edit --save-config ` to remove the fields directly. 
+
+**FIXED:**
+
+In error messages, links to error docs are now more concise.
+
+**Anthos GKE on-prem**
+
+**FEATURE:**
+
+Anthos GKE on-prem 1.4.1-gke.1 is now available. To upgrade, see [ Upgrading
+GKE on-prem ](https://cloud.google.com/anthos/gke/docs/on-prem/how-
+to/upgrading) . GKE on-prem 1.4.1-gke.1 clusters run on Kubernetes
+1.16.9-gke.14.
+
+**FEATURE:**
+
+**Anthos Identity Service LDAP authentication is now available in Alpha for
+GKE on-prem**
+
+Contact support if you are interested in a trial of the LDAP authentication
+feature in GKE on-prem.
+
+**FEATURE:**
+
+**Support for F5 BIG-IP load balancer credentials update**
+
+This preview release enables customers to manage and update the F5 BIG-IP load
+balancer credentials by using the ` gkectl update credentials f5bigip `
+command.
+
+**CHANGED:**
+
+**Functionality changes:**
+
+  * The Ubuntu image is upgraded to include the newest packages. 
+  * Preflight checks are updated to validate that the ` gkectl ` version matches the target cluster version for cluster creation and upgrade. 
+  * Preflight checks are updated to validate the Window OS version used for running ` gkeadm ` . The ` gkeadm ` command-line tool is only available for Linux, Windows 10, and Windows Server 2019. 
+  * ` gkeadm ` is updated to populate ` network.vCenter.networkName ` in both [ admin cluster ](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/admin-cluster-configuration-file) and [ user cluster ](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/user-cluster-configuration-file) configuration files. 
+
+**FIXED:**
+
+**Fixes:**
+
+  * Removed the static IP used by admin workstation after upgrade from ` ~/.ssh/known_hosts ` to avoid manual workaround. 
+  * Resolved a known issue that ` network.vCenter.networkName ` is not populated in the user cluster configuration file during user cluster creation. 
+  * Resolved a user cluster upgrade–related issue to only wait for the machines and pods in the same namespace within the cluster to be ready to complete the cluster upgrade. 
+  * Updated the default value for ` ingressHTTPNodePort ` and ` ingressHTTPSNodePort ` in the ` loadBalancer.manualLB ` section of the [ admin cluster configuration ](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/admin-cluster-configuration-file) file. 
+  * Fixed [ CVE-2020-8558 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8558) and [ CVE-2020-8559 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8559) described in [ Security bulletins ](https://cloud.google.com/anthos/gke/docs/on-prem/security-bulletins#gcp-2020-009) . 
+  * Logging and monitoring: Resolved an issue that stackdriver-log-forwarder was not scheduled on the master node on the admin cluster. 
+  * Resolved the following known issues published in the 1.4.0 release notes: 
+    * If a user cluster is created without any node pool named the same as the cluster, managing the node pools using ` gkectl update cluster ` would fail. To avoid this issue, when creating a user cluster, you need to name one node pool the same as the cluster. 
+    * The ` gkectl ` command might exit with panic when converting config from "/path/to/config.yaml" to v1 config files. When that occurs, you can resolve the issue by removing the unused bundled load balancer section ("loadbalancerconfig") in the config file. 
+    * When using gkeadm to upgrade an admin workstation on Windows, the info file filled out from this template needs to have the line endings converted to use Unix line endings (LF) instead of Windows line endings (CRLF). You can use Notepad++ to convert the line endings. 
+    * When running a preflight check for ` config.yaml ` that contains both ` admincluster ` and ` usercluster ` sections, the "data disk" check in the "user cluster vCenter" category might fail with the message: ` [FAILURE] Data Disk: Data disk is not in a folder. Use a data disk in a folder when using vSAN datastore. ` User clusters don't use data disks, and it's safe to ignore the failure. 
+    * When upgrading the admin cluster, the preflight check for the user cluster OS image validation will fail. The user cluster OS image is not used in this case, and it's safe to ignore the "User Cluster OS Image Exists" failure in this case. 
+    * User cluster creation and upgrade might be stuck with the error: ` Failed to update machine status: no matches for kind "Machine" in version "cluster.k8s.io/v1alpha1". ` To resolve this, you need to delete the clusterapi pod in the user cluster namespace in the admin cluster. 
+
+**ISSUE:**
+
+**Known issues:**
+
+  * During reboots, the data disk is not remounted on the admin workstation when using GKE on-prem 1.4.0 or 1.4.1 because the startup script is not run after the initial creation. To resolve this, you can run ` sudo mount /dev/sdb1 /home/ubuntu ` . 
+
+**Dialogflow**
+
+**DEPRECATED:**
+
+Amazon Alexa importer and exporter are no longer supported.
+
+**Network Intelligence Center**
+
+**FEATURE:**
+
+Network Topology includes two new metrics for connections between entities:
+packet loss and latency. Additionally, you can now use a drop-down menu to
+select which metric Network Topology overlays on traffic paths. For more
+information, see [ Viewing metrics for traffic between entities
+](https://cloud.google.com/network-intelligence-center/docs/network-
+topology/how-to/using-network-
+topology#viewing_metrics_for_traffic_between_entities) and [ Network Topology
+metrics reference ](https://cloud.google.com/network-intelligence-
+center/docs/network-topology/reference/metrics-reference) .
+
+**Virtual Private Cloud**
+
+**FEATURE:**
+
+[ Serverless VPC Access ](https://cloud.google.com/vpc/docs/configure-
+serverless-vpc-access) support for [ Shared VPC
+](https://cloud.google.com/vpc/docs/shared-vpc) is now available in **Beta** .
+
 ##  July 22, 2020
 
 **Anthos Service Mesh**
@@ -25,6 +208,15 @@ This release provides these features and fixes:
   * Builds Istiod (Pilot), Citadel Agent, Pilot Agent, Galley, and Sidecar Injector with [ Go+BoringCrypto ](https://go.googlesource.com/go/+/refs/heads/dev.boringcrypto) . 
   * Builds Istio Proxy (Envoy) with the [ \--define boringssl=fips ](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/security/ssl#fips-140-2) option. 
   * Ensures the components listed above use FIPS-compliant algorithms. 
+
+**Cloud Bigtable**
+
+**FEATURE:**
+
+Cloud Bigtable's fully integrated [ backups feature
+](https://cloud.google.com/bigtable/docs/backups) is now generally available.
+Backups let you save a copy of a table's schema and data and restore the
+backup to a new table at a later time.
 
 ##  July 21, 2020
 
@@ -159,6 +351,14 @@ policy-constraints#audit-logging) launched.
 We are delaying the upcoming changes for [ deleted members that are bound to a
 role ](https://cloud.google.com/iam/docs/release-notes#July_01_2020) . These
 changes will take effect starting on August 31, 2020.
+
+**Resource Manager**
+
+**FEATURE:**
+
+The Organization Policy for [ enabling detailed Cloud Audit Logs
+](https://cloud.google.com/storage/docs/org-policy-constraints#audit-logging)
+has launched into general availability.
 
 **Secret Manager**
 
@@ -1722,57 +1922,4 @@ ipConfiguration fields now support updates.
 **FIXED:**
 
 Fix an issue where config-connector would error on a Project resource.
-
-##  June 24, 2020
-
-**Cloud Composer**
-
-**CHANGED:**
-
-  * [ New versions ](https://cloud.google.com/composer/docs/concepts/versioning/composer-versions) of Cloud Composer images: ` composer-1.10.5-airflow-1.10.2 ` , ` composer-1.10.5-airflow-1.10.3 ` and ` composer-1.10.5-airflow-1.10.6 ` . The default is ` composer-1.10.5-airflow-1.10.3 ` . Upgrade your Cloud SDK to use features in this release. 
-
-**FEATURE:**
-
-  * Composer now uses the Kubernetes v1 API, and is compatible with GKE 1.16 
-  * An updated haproxy configuration for Composer increases the maximum number of connections to 2000, and changes load balancing to be based on the number of connections. These settings can be configured with environment variables. 
-
-**FIXED:**
-
-  * Error messages for ` TP_APP_ENGINE_CREATING ` timeout and RPC delivery issues have been expanded. 
-  * Airflow Providers can now be installed inside Cloud Composer. 
-  * Error handling for rendering templates in the Airflow web server UI has been improved. 
-  * Fixed an issue with rendering task instance details (logs, task instance template, params) in the Airflow web server UI when DAG serialization is enabled. 
-  * Fixed an issue with ` DataFlowJavaOperator ` , so it can now be used with Apache Beam 2.20. 
-  * Improved error reporting for failing operations. 
-  * Memory consumption of the ` gcs-syncd ` container is now constrained to prevent system instability. 
-
-**Dataproc**
-
-**CHANGED:**
-
-New [ subminor image versions
-](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-
-versions#supported_cloud_dataproc_versions) : 1.2.100-debian9, 1.3.60-debian9,
-1.4.31-debian9, 1.3.60-debian10, 1.4.31-debian10, 1.5.6-debian10,
-1.3.60-ubuntu18, 1.4.31-ubuntu18, 1.5.6-ubuntu18, preview 2.0.0-RC2-debian10,
-and preview 2.0.0-RC2-ubuntu18.
-
-**CHANGED:**
-
-  * **Image 2.0 preview** : 
-
-    * [ SPARK-22404 ](https://issues.apache.org/jira/browse/SPARK-22404) : set ` spark.yarn.unmanagedAM.enabled ` property to ` true ` on clusters where Kerberos is not enabled to run Spark Application Master in driver (not managed in YARN) to improve job execution time. 
-    * Updated R version to 3.6 
-
-    * Updated Spark to [ 3.0.0 version ](https://spark.apache.org/releases/spark-release-3-0-0.html)
-
-  * **Image 1.5**
-
-    * Updated R version to 3.6 
-
-**FIXED:**
-
-Fixed a quota validation bug where accelerator counts were squared before
-validation -- for example, previously if you requested 8 GPUs, Dataproc
-validated whether your project had quota for ` 8^2=64 ` GPUs.
 
