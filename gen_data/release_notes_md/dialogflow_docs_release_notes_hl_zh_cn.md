@@ -16,6 +16,12 @@ notes.pdf?hl=zh_cn) 。
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/dialogflow-release-notes.xml `
 
+##  July 23, 2020
+
+**DEPRECATED:**
+
+Amazon Alexa importer and exporter are no longer supported.
+
 ##  July 06, 2020
 
 **FEATURE:**
