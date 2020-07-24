@@ -22,6 +22,12 @@ página a tu [ lector de feeds
 directamente la URL del feed: ` https://cloud.google.com/feeds/dialogflow-
 release-notes.xml `
 
+##  July 23, 2020
+
+**DEPRECATED:**
+
+Amazon Alexa importer and exporter are no longer supported.
+
 ##  July 06, 2020
 
 **FEATURE:**
