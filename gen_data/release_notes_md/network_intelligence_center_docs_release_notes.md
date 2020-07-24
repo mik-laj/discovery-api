@@ -12,6 +12,20 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/networkintelligence-release-
 notes.xml `
 
+##  July 23, 2020
+
+**FEATURE:**
+
+Network Topology includes two new metrics for connections between entities:
+packet loss and latency. Additionally, you can now use a drop-down menu to
+select which metric Network Topology overlays on traffic paths. For more
+information, see [ Viewing metrics for traffic between entities
+](https://cloud.google.com/network-intelligence-center/docs/network-
+topology/how-to/using-network-
+topology#viewing_metrics_for_traffic_between_entities) and [ Network Topology
+metrics reference ](https://cloud.google.com/network-intelligence-
+center/docs/network-topology/reference/metrics-reference) .
+
 ##  July 01, 2020
 
 **FEATURE:**
