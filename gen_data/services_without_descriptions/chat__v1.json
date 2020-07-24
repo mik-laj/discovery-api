@@ -75,6 +75,31 @@
     },
     "protocol": "rest",
     "resources": {
+        "media": {
+            "methods": {
+                "download": {
+                    "flatPath": "v1/media/{mediaId}",
+                    "httpMethod": "GET",
+                    "id": "chat.media.download",
+                    "parameterOrder": [
+                        "resourceName"
+                    ],
+                    "parameters": {
+                        "resourceName": {
+                            "location": "path",
+                            "pattern": "^.*$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/media/{+resourceName}",
+                    "response": {
+                        "$ref": "Media"
+                    },
+                    "supportsMediaDownload": true
+                }
+            }
+        },
         "spaces": {
             "methods": {
                 "get": {
@@ -698,6 +723,15 @@
                         "$ref": "Space"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Media": {
+            "id": "Media",
+            "properties": {
+                "resourceName": {
+                    "type": "string"
                 }
             },
             "type": "object"
