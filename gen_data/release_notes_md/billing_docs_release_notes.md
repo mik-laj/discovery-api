@@ -12,6 +12,19 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/billing-release-notes.xml `
 
+##  July 23, 2020
+
+**FEATURE:**
+
+**Export your Cloud Billing account SKU prices to BigQuery.** You can now
+export your pricing information for Google Cloud and Google Maps Platform SKUs
+to BigQuery. Exporting your pricing data allows you to audit, analyze, and/or
+join your pricing data with your exported cost data. The pricing export
+includes list prices, pricing tiers, and, when applicable, any promotional or
+negotiated pricing. See the [ documentation
+](https://cloud.google.com/billing/docs/how-to/export-data-bigquery) for more
+details.
+
 ##  July 10, 2020
 
 **FEATURE:**
