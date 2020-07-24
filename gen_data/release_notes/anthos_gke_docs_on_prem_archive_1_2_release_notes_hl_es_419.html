@@ -56,6 +56,238 @@
    </section>
    <section class="releases">
     <section class="releases">
+     <h2 data-text="July 23, 2020" id="July_23_2020" tabindex="0">
+      July 23, 2020
+     </h2>
+     <div class="release-feature" id="bab62f13">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Anthos GKE on-prem 1.4.1-gke.1 is now available. To upgrade, see
+       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=es-419">
+        Upgrading GKE on-prem
+       </a>
+       . GKE on-prem 1.4.1-gke.1 clusters run on Kubernetes 1.16.9-gke.14.
+      </p>
+     </div>
+     <div class="release-feature" id="d9fc1f89">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <strong>
+        Anthos Identity Service LDAP authentication is now available in Alpha for GKE on-prem
+       </strong>
+      </p>
+      <p>
+       Contact support if you are interested in a trial of the LDAP authentication feature in GKE on-prem.
+      </p>
+     </div>
+     <div class="release-feature" id="72615558">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <strong>
+        Support for F5 BIG-IP load balancer credentials update
+       </strong>
+      </p>
+      <p>
+       This preview release enables customers to manage and update the F5 BIG-IP load balancer credentials by using the
+       <code dir="ltr" translate="no">
+        gkectl update credentials f5bigip
+       </code>
+       command.
+      </p>
+     </div>
+     <div class="release-changed" id="29a6cd97">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <strong>
+        Functionality changes:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        The Ubuntu image is upgraded to include the newest packages.
+       </li>
+       <li>
+        Preflight checks are updated to validate that the
+        <code dir="ltr" translate="no">
+         gkectl
+        </code>
+        version matches the target cluster version for cluster creation and upgrade.
+       </li>
+       <li>
+        Preflight checks are updated to validate the Window OS version used for running
+        <code dir="ltr" translate="no">
+         gkeadm
+        </code>
+        . The
+        <code dir="ltr" translate="no">
+         gkeadm
+        </code>
+        command-line tool is only available for Linux, Windows 10, and Windows Server 2019.
+       </li>
+       <li>
+        <code dir="ltr" translate="no">
+         gkeadm
+        </code>
+        is updated to populate
+        <code dir="ltr" translate="no">
+         network.vCenter.networkName
+        </code>
+        in both
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/admin-cluster-configuration-file?hl=es-419">
+         admin cluster
+        </a>
+        and
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/user-cluster-configuration-file?hl=es-419">
+         user cluster
+        </a>
+        configuration files.
+       </li>
+      </ul>
+     </div>
+     <div class="release-fixed" id="c691282a">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       <strong>
+        Fixes:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        Removed the static IP used by admin workstation after upgrade from
+        <code dir="ltr" translate="no">
+         ~/.ssh/known_hosts
+        </code>
+        to avoid manual workaround.
+       </li>
+       <li>
+        Resolved a known issue that
+        <code dir="ltr" translate="no">
+         network.vCenter.networkName
+        </code>
+        is not populated in the user cluster configuration file during user cluster creation.
+       </li>
+       <li>
+        Resolved a user cluster upgrade–related issue to only wait for the machines and pods in the same namespace within the cluster to be ready to complete the cluster upgrade.
+       </li>
+       <li>
+        Updated the default value for
+        <code dir="ltr" translate="no">
+         ingressHTTPNodePort
+        </code>
+        and
+        <code dir="ltr" translate="no">
+         ingressHTTPSNodePort
+        </code>
+        in the
+        <code dir="ltr" translate="no">
+         loadBalancer.manualLB
+        </code>
+        section of the
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/admin-cluster-configuration-file?hl=es-419">
+         admin cluster configuration
+        </a>
+        file.
+       </li>
+       <li>
+        Fixed
+        <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8558">
+         CVE-2020-8558
+        </a>
+        and
+        <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8559">
+         CVE-2020-8559
+        </a>
+        described in
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/security-bulletins?hl=es-419#gcp-2020-009">
+         Security bulletins
+        </a>
+        .
+       </li>
+       <li>
+        Logging and monitoring: Resolved an issue that stackdriver-log-forwarder was not scheduled on the master node on the admin cluster.
+       </li>
+       <li>
+        Resolved the following known issues published in the 1.4.0 release notes:
+        <ul>
+         <li>
+          If a user cluster is created without any node pool named the same as the cluster, managing the node pools using
+          <code dir="ltr" translate="no">
+           gkectl update cluster
+          </code>
+          would fail. To avoid this issue, when creating a user cluster, you need to name one node pool the same as the cluster.
+         </li>
+         <li>
+          The
+          <code dir="ltr" translate="no">
+           gkectl
+          </code>
+          command might exit with panic when converting config from "/path/to/config.yaml" to v1 config files. When that occurs, you can resolve the issue by removing the unused bundled load balancer section ("loadbalancerconfig") in the config file.
+         </li>
+         <li>
+          When using gkeadm to upgrade an admin workstation on Windows, the info file filled out from this template needs to have the line endings converted to use Unix line endings (LF) instead of Windows line endings (CRLF). You can use Notepad++ to convert the line endings.
+         </li>
+         <li>
+          When running a preflight check for
+          <code dir="ltr" translate="no">
+           config.yaml
+          </code>
+          that contains both
+          <code dir="ltr" translate="no">
+           admincluster
+          </code>
+          and
+          <code dir="ltr" translate="no">
+           usercluster
+          </code>
+          sections, the "data disk" check in the "user cluster vCenter" category might fail with the message:
+          <code dir="ltr" translate="no">
+           [FAILURE] Data Disk: Data disk is not in a folder. Use a data disk in a folder when using vSAN datastore.
+          </code>
+          User clusters don't use data disks, and it's safe to ignore the failure.
+         </li>
+         <li>
+          When upgrading the admin cluster, the preflight check for the user cluster OS image validation will fail. The user cluster OS image is not used in this case, and it's safe to ignore the "User Cluster OS Image Exists"  failure in this case.
+         </li>
+         <li>
+          User cluster creation and upgrade might be stuck with the error:
+          <code dir="ltr" translate="no">
+           Failed to update machine status: no matches for kind "Machine" in version "cluster.k8s.io/v1alpha1".
+          </code>
+          To resolve this, you need to delete the clusterapi pod in the user cluster namespace in the admin cluster.
+         </li>
+        </ul>
+       </li>
+      </ul>
+     </div>
+     <div class="release-issue" id="2b4ec957">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        Known issues:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        During reboots, the data disk is not remounted on the admin workstation when using GKE on-prem 1.4.0 or 1.4.1 because the startup script is not run after the initial creation. To resolve this, you can run
+        <code dir="ltr" translate="no">
+         sudo mount /dev/sdb1 /home/ubuntu
+        </code>
+        .
+       </li>
+      </ul>
+     </div>
      <h2 data-text="June 25, 2020" id="June_25_2020" tabindex="0">
       June 25, 2020
      </h2>
