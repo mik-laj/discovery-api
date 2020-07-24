@@ -13,6 +13,14 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloudresourcemanager-release-
 notes.xml `
 
+##  July 20, 2020
+
+**FEATURE:**
+
+The Organization Policy for [ enabling detailed Cloud Audit Logs
+](https://cloud.google.com/storage/docs/org-policy-constraints#audit-logging)
+has launched into general availability.
+
 ##  July 17, 2020
 
 **FEATURE:**
