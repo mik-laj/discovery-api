@@ -13,6 +13,92 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/anthosconfig-release-notes.xml
 `
 
+##  July 23, 2020
+
+1.4.1
+
+**FEATURE:**
+
+[ Config Connector ](https://cloud.google.com/config-connector) has been
+updated in Anthos Config Management to version 1.13.1.
+
+**FEATURE:**
+
+Anthos Config Management now includes Hierarchy Controller as a beta feature.
+For more information on this component, see the [ Hierarchy Controller
+overview ](https://cloud.google.com/anthos-config-
+management/docs/concepts/hierarchy-controller) .
+
+**CHANGED:**
+
+Policy Controller users may now enable [ \--log-denies
+](https://github.com/open-policy-agent/gatekeeper/blob/master/README.md#log-
+denies) to log all denies and dryrun failures. This is useful when trying to
+see what is being denied or fails dry-run and for keeping a log to debug
+cluster problems without looking through the status of all constraints. This
+is configured by setting ` spec.policyController.logDeniesEnabled: true ` in
+the configuration file for the Operator. There is an example in the section on
+[ Installing Policy Controller ](https://cloud.google.com/anthos-config-
+management/docs/how-to/installing-policy-controller) .
+
+**CHANGED:**
+
+This release includes several logging and performance improvements.
+
+**CHANGED:**
+
+This release includes several fixes and improvements for the ` nomos ` command
+line utility.
+
+**CHANGED:**
+
+The use of unsecured HTTP for GitHub repo connections or in an http_proxy is
+now discouraged, and support for unsecured HTTP will be removed in a future
+release. HTTPS will continue to be supported for GitHub repo and local proxy
+connections.
+
+**CHANGED:**
+
+This release improves the handling of GitHub repositories with very large
+histories.
+
+**CHANGED:**
+
+Prior to this release, Config Sync and ` kubectl ` controllers and processes
+used the same annotation ( ` kubectl.kubernetes.io/last-applied-configuration
+` ) to calculate three-way merge patches. The shared annotation sometimes
+resulted in resource fights, causing unnecessary removal of each other's
+fields. Config Sync now uses its own annotation, which prevents resource
+clashes.
+
+In most cases, this change will be transparent to you. However, there are two
+cases where some previously unspecified behavior will change.
+
+The first case is when you have run ` kubectl apply ` on an unmanaged resource
+in a cluster, and you later add that same resource to the GitHub repo.
+Previously, Config Sync would have pruned any fields that were previously
+applied but not declared in the GitHub repo. Now, Config Sync writes the
+declared fields to the resource and leaves undeclared fields in place. If you
+want to remove those fields, do one of the following:
+
+  * Get a local copy of the resource from GitHub and ` kubectl apply ` it. 
+  * Use ` kubectl edit --save-config ` to remove the fields directly. 
+
+The second case is when you stop managing a resource on the cluster or even
+stop all of Config Sync on a cluster. In this case, if you want to prune
+fields from a previously managed resource, you will see different behavior.
+Previously, you could get a local copy of the resource from GitHub, remove the
+unwanted fields, and ` kubectl apply ` it. Now, ` kubectl apply ` no longer
+prunes the missing fields. If you want to remove those fields, do one of the
+following:
+
+  * Call ` kubectl apply set-last-applied ` with the unmodified resource from GitHub, then remove unwanted fields and ` kubectl apply ` it again without the ` set-last-applied ` flag. 
+  * Use ` kubectl edit --save-config ` to remove the fields directly. 
+
+**FIXED:**
+
+In error messages, links to error docs are now more concise.
+
 ##  June 25, 2020
 
 1.4.0
