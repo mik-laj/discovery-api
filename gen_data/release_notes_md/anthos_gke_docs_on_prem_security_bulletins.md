@@ -21,6 +21,42 @@ To get the latest security bulletins delivered to you, add the URL of this
 page to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) .
 
+##  GCP-2020-011
+
+**Published:** 2020-07-24  
+Description  |  Severity  |  Notes  
+---|---|---  
+  
+A networking vulnerability, [ CVE-2020-8558
+](https://github.com/kubernetes/kubernetes/issues/92315) , was recently
+discovered in Kubernetes. Services sometimes communicate with other
+applications running inside the same Pod using the local loopback interface
+(127.0.0.1). This vulnerability allows an attacker with access to the
+cluster's network to send traffic to the loopback interface of adjacent Pods
+and nodes. Services that rely on the loopback interface not being accessible
+outside their Pod could be exploited.
+
+####  What should I do?
+
+To fix this vulnerability, [ upgrade ](/anthos/gke/docs/on-prem/how-
+to/upgrading) your cluster to a patched version. The following upcoming GKE
+on-prem versions or newer contain the fix for this vulnerability:
+
+  * GKE on-prem 1.4.1 
+
+####  What vulnerability is addressed by this patch?
+
+This patch fixes the following vulnerability: [ CVE-2020-8558
+](https://github.com/kubernetes/kubernetes/issues/92315) .
+
+|
+
+Medium
+
+|
+
+[ CVE-2020-8558 ](https://github.com/kubernetes/kubernetes/issues/92315)  
+  
 ##  GCP-2020-009
 
 **Published:** 2020-07-15  Description  |  Severity  |  Notes  
