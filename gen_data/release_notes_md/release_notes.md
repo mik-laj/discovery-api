@@ -12,6 +12,159 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  July 24, 2020
+
+**Anthos GKE on AWS**
+
+**CHANGED:**
+
+Anthos GKE on AWS is now generally available.
+
+**CHANGED:**
+
+Clusters support in-place upgrades, with the ability to upgrade the control
+plane and node pools separately.
+
+**CHANGED:**
+
+Clusters can be deployed in a high availability (HA) configuration, where
+control plane instances and node pools are spread across multiple availability
+zones.
+
+**CHANGED:**
+
+Clusters have been validated to support up to 200 nodes and 6000 pods.
+
+**CHANGED:**
+
+Allows the number of nodes to be scaled dynamically based on traffic volume to
+increase utilization and reduce cost, and improve performance
+
+**CHANGED:**
+
+Anthos can be deployed within existing AWS VPCs, leveraging existing security
+groups to secure those clusters. Customers can ingress traffic using NLB and
+ALBs. Additionally Anthos on AWS supports AWS IAM and OIDC. This makes
+deploying Anthos easy, eliminates the need to provision new accounts, and
+minimizes configuration of the environment.
+
+**CHANGED:**
+
+With Anthos Config Management enterprises can set policies on their AWS
+workloads and with Anthos Service Mesh, they can monitor, manage, and secure
+them.
+
+**CHANGED:**
+
+Kubernetes settings (flags and sysctl settings) have been updated to match
+GKE.
+
+**BREAKING:**
+
+Upgrades from beta versions are not supported. To install Anthos GKE on AWS,
+you must remove your user and management clusters, then reinstall them.
+
+**Anthos Service Mesh**
+
+**CHANGED:**
+
+Anthos Service Mesh on GKE on AWS is supported.
+
+For more information, see [ Installing Anthos Service Mesh on GKE on AWS
+](https://cloud.google.com/service-mesh/docs/gke-on-aws-install) .
+
+**BigQuery**
+
+**CHANGED:**
+
+BigQuery Data Transfer Service is now available in the following regions: [
+Montréal (northamerica-northeast1), Frankfurt (europe-west3), Mumbai (asia-
+south1), and Seoul (asia-northeast3) ](https://cloud.google.com/bigquery-
+transfer/docs/locations#regional-locations) .
+
+**BigQuery Data Transfer Service**
+
+**CHANGED:**
+
+BigQuery Data Transfer Service is now available in the following regions: [
+Montréal (northamerica-northeast1), Frankfurt (europe-west3), Mumbai (asia-
+south1), and Seoul (asia-northeast3) ](https://cloud.google.com/bigquery-
+transfer/docs/locations#regional-locations) .
+
+**Cloud Composer**
+
+**CHANGED:**
+
+  * [ New versions ](https://cloud.google.com/composer/docs/concepts/versioning/composer-versions) of Cloud Composer images: ` composer-1.11.0-airflow-1.10.2 ` , ` composer-1.11.0-airflow-1.10.3 ` , ` composer-1.11.0-airflow-1.10.6 ` , and ` composer-1.11.0-airflow-1.10.9 ` . The default is ` composer-1.11.0-airflow-1.10.3 ` . Upgrade your Cloud SDK to use features in this release. 
+
+**FEATURE:**
+
+  * Airflow 1.10.9 is now supported. 
+  * Environment upgrades have been enabled for the latest two Composer versions (1.11.0 and 1.10.6). 
+  * Added a retry feature to the Airflow CeleryExecutor (disabled by default). You can configure the number of times Celery will attempt to execute a task by setting the ` [celery] max_command_attempts ` property. The delay between each retry can also be adjusted with ` [celery] command_retry_wait_duration ` (default: 5 seconds). 
+
+**FIXED:**
+
+  * New PyPi packages have been added for Composer version ` composer-1.11.0-airflow-1.10.6 ` . These make it possible to install ` apache-airflow-backport-providers-google ` with no additional package upgrades. 
+  * The PyPi package ` google-cloud-datacatalog ` can now be installed on Composer environments running Airflow 1.10.6 and Python 3. 
+  * Fixed synchronization of environment variables to the web server. 
+  * Improved error reporting when PyPI package installation fails. 
+
+**DEPRECATED:**
+
+  * Composer versions 1.6.1, 1.7.0, and 1.7.1 are now deprecated. 
+
+**Compute Engine**
+
+**FEATURE:**
+
+  * NVIDIA® Tesla® T4 GPUs are now available in the following additional regions and zones: 
+
+    * Ashburn, Northern Virginia, USA: ` us-east4-b `
+
+For information about using T4 GPUs on Compute Engine, see [ GPUs on Compute
+Engine ](https://cloud.google.com/compute/docs/gpus/) .
+
+**FEATURE:**
+
+N2 machines are now available in Northern Virginia ` us-east4-c ` . Read more
+information on the [ VM instance pricing
+](https://cloud.google.com/compute/vm-instance-pricing#n2_machine_types) page.
+
+**Dataproc**
+
+**FEATURE:**
+
+Terminals started in Jupyter and JupyterLab now use login shells. The
+terminals behave as if you SSH'd into the cluster as ` root ` .
+
+**CHANGED:**
+
+Upgraded the ` jupyter-gcs-contents-manager ` package to the latest version.
+This upgrade includes a bug fix to a 404 (NOT FOUND) error message that was
+issued in response to an attempt to create a file in the virtual top-level
+directory instead of the expected 403 (PERMISSION DENIED) error message.
+
+**CHANGED:**
+
+New [ sub-minor versions
+](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-
+versions#supported_dataproc_versions) of Dataproc images: 1.3.64-debian10,
+1.3.64-ubuntu18, 1.4.35-debian10, 1.4.35-ubuntu18, 1.5.10-debian10,
+1.5.10-ubuntu18, 2.0.0-RC6-debian10, and 2.0.0-RC6-ubuntu18.
+
+**FIXED:**
+
+Fixed a bug in which the HDFS DataNode daemon was enabled on secondary workers
+but not started (except on VM reboot if started automatically by ` systemd `
+).
+
+**FIXED:**
+
+Fixed a bug in which ` StartLimitIntervalSec=0 ` appeared in the Service
+section instead of the Unit section for ` systemd ` services, which disabled
+rate limiting for retries when ` systemd ` restarted a service.
+
 ##  July 23, 2020
 
 **Anthos**
@@ -166,6 +319,19 @@ command.
 **Known issues:**
 
   * During reboots, the data disk is not remounted on the admin workstation when using GKE on-prem 1.4.0 or 1.4.1 because the startup script is not run after the initial creation. To resolve this, you can run ` sudo mount /dev/sdb1 /home/ubuntu ` . 
+
+**Cloud Billing**
+
+**FEATURE:**
+
+**Export your Cloud Billing account SKU prices to BigQuery.** You can now
+export your pricing information for Google Cloud and Google Maps Platform SKUs
+to BigQuery. Exporting your pricing data allows you to audit, analyze, and/or
+join your pricing data with your exported cost data. The pricing export
+includes list prices, pricing tiers, and, when applicable, any promotional or
+negotiated pricing. See the [ documentation
+](https://cloud.google.com/billing/docs/how-to/export-data-bigquery) for more
+details.
 
 **Dialogflow**
 
@@ -649,6 +815,14 @@ support for the following integration:
   * [ AI Platform Prediction ](https://cloud.google.com/vpc-service-controls/docs/supported-products#table_aip-prediction)
 
 ##  July 13, 2020
+
+**AI Platform Deep Learning VM Image**
+
+**FEATURE:**
+
+**M51 release**
+
+` sudo ` access removed from Deep Learning Containers.
 
 **AI Platform Training**
 
@@ -1618,308 +1792,4 @@ Cloud Run is now available in the following regions:
 The V1 API is in the process of a gradual shutdown. See the [ November 14,
 2019 release note ](https://cloud.google.com/dialogflow/docs/release-
 notes#November_14_2019) for details.
-
-##  June 26, 2020
-
-**App Engine standard environment Go**
-
-**FEATURE:**
-
-The [ Go 1.14 runtime Beta
-](https://cloud.google.com/appengine/docs/standard/go/runtime) for the App
-Engine standard environment is now available.
-
-**BigQuery**
-
-**FEATURE:**
-
-[ Region qualified ` INFORMATION_SCHEMA ` views
-](https://cloud.google.com/bigquery/docs/information-schema-intro#syntax) are
-now in [ beta ](https://cloud.google.com/products/#product-launch-stages) .
-
-**CHANGED:**
-
-Starting in mid-July, unqualified ` INFORMATION_SCHEMA ` queries for `
-SCHEMATA ` and ` SCHEMATA_OPTIONS ` views will default to returning metadata
-from the ` US ` multi-region. For information about how to specify a region,
-see [ region qualifier syntax
-](https://cloud.google.com/bigquery/docs/information-schema-
-intro#region_qualifier) .
-
-**Compute Engine**
-
-**FEATURE:**
-
-To support a wide variety of BYOL scenarios, you can now [ configure VMs to
-live migrate within a sole-tenant node group during host maintenance events
-](https://cloud.google.com/compute/docs/nodes/bringing-your-own-licenses) .
-This is **Generally Available** .
-
-**VPC Service Controls**
-
-**CHANGED:**
-
-[ Beta stage support ](https://cloud.google.com/products/#product-launch-
-stages) for the following integration:
-
-  * [ Binary Authorization ](https://cloud.google.com/binary-authorization/docs/securing-with-vpcsc)
-
-##  June 25, 2020
-
-**Anthos**
-
-**FEATURE:**
-
-[ Anthos ](https://cloud.google.com/anthos) 1.4.0 is now available.
-
-**Updated components:**
-
-  * [ Anthos GKE on-prem release notes ](https://cloud.google.com/anthos/gke/docs/on-prem/release-notes)
-  * [ Anthos Config Management release notes ](https://cloud.google.com/anthos-config-management/docs/release-notes)
-  * See component and multi-cloud [ version and upgrade support ](https://cloud.google.com/anthos/docs/version-and-upgrade-support)
-
-**Anthos Config Management**
-
-**FEATURE:**
-
-Anthos Config Management is now Generally Available on AKS (Kubernetes v1.16
-or higher) and EKS (Kubernetes v1.16 or higher).
-
-**ISSUE:**
-
-Config Connector is not currently supported on EKS or AKS, as it is unable to
-run on these providers.
-
-**CHANGED:**
-
-The following Policy Controller constraint templates have been added to the
-Default Template Library:
-
-  * allowedserviceportname 
-  * destinationruletlsenabled 
-  * disallowedauthzprefix 
-  * policystrictonly 
-  * sourcenotallauthz 
-
-The following constraint templates have been updated:
-
-  * k8sblockprocessnamespacesharing 
-  * k8sdisallowedrolebindingsubjects 
-  * k8semptydirhassizelimit 
-  * k8slocalstoragerequiresafetoevict 
-  * k8smemoryrequestequalslimit 
-  * k8snoexternalservices 
-  * k8spspallowedusers 
-  * k8spspallowprivilegeescalationcontainer 
-  * k8spspapparmor 
-  * k8spspcapabilities 
-  * k8spspflexvolumes 
-  * k8spspforbiddensysctls 
-  * k8spspfsgroup 
-  * k8spsphostfilesystem 
-  * k8spsphostnamespace 
-  * k8spsphostnetworkingports 
-  * k8spspprivilegedcontainer 
-  * k8spspprocmount 
-  * k8spspreadonlyrootfilesystem 
-  * k8spspseccomp 
-  * k8spspselinux 
-  * k8spspvolumetypes 
-
-See the [ Default Template Library documentation
-](https://cloud.google.com/anthos-config-management/docs/reference/constraint-
-template-library) for more information.
-
-**CHANGED:**
-
-Anthos Policy Controller has been updated to include a more recent build of
-OPA Gatekeeper (hash: [ 25ca799 ](https://github.com/open-policy-
-agent/gatekeeper/tree/25ca7993efb26079156e24d4c9bc8b8a2e83c3ef) ).
-
-This new build of OPA Gatekeeper includes a number of bug fixes and
-performance improvements, and adds three new monitoring metrics:
-
-  * gatekeeper_sync 
-  * gatekeeper_sync_duration_seconds 
-  * gatekeeper_sync_last_run_time 
-
-**FIXED:**
-
-The ` nomos ` CLI tool now supports the ` KUBECONFIG ` environment variable in
-a way that matches the [ ` kubectl ` behavior
-](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-
-kubeconfig/#the-kubeconfig-environment-variable) with multiple delimited
-configuration files.
-
-**FIXED:**
-
-Anthos Config Management no longer gets into a continuous ` PATCH ` loop when
-encountering unmanaged resources with config-management annotations and a
-missing ` last-applied-configuration ` annotation.
-
-**ISSUE:**
-
-Anthos Config Management is not issuing errors when it encounters certain
-types of malformed configurations in a resource definition. This may result in
-the Kubernetes API Server ignoring the malformed fields and applying the
-default value for the field instead.
-
-**ISSUE:**
-
-Policy Controller may fail to start successfully when synced resources are
-marked for deletion.
-
-This issue will be addressed in the upstream OPA Gatekeeper project in a
-future release. For more information see the [ relevant issue
-](https://github.com/open-policy-agent/gatekeeper/issues/660) in the
-Gatekeeper project.
-
-**CHANGED:**
-
-This release includes several logging and performance improvements.
-
-**Anthos GKE on-prem**
-
-**FEATURE:**
-
-Anthos GKE on-prem 1.4.0-gke.13 is now available. To upgrade, see [ Upgrading
-GKE on-prem ](https://cloud.google.com/anthos/gke/docs/on-prem/how-
-to/upgrading) . GKE on-prem 1.4.0-gke.13 clusters run on Kubernetes
-1.16.8-gke.6.
-
-**FEATURE:**
-
-**Updated to Kubernetes 1.16:**
-
-  * Please note that Kubernetes 1.16 has deprecated some of its APIs. For more information, see [ Kubernetes 1.16 deprecated APIs ](https://cloud.google.com/kubernetes-engine/docs/deprecations/apis-1-16) . 
-
-**FEATURE:**
-
-**Simplified upgrade:**
-
-  * This release provides a simplified upgrade experience via the following changes: 
-
-    * Automatically migrate information from the previous version of admin workstation using ` gkeadm ` . 
-    * Extend preflight checks to better prepare for upgrades. 
-    * Support skip version upgrade to enable users to upgrade the cluster from any patch release of a minor release to any patch release of the next minor release. For more information about the detailed upgrade procedure and limitations, see [ upgrading GKE on-prem ](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading) . 
-    * The [ alternate upgrade scenario for Common Vulnerabilities and Exposures ](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading) has been deprecated. All upgrades starting with version 1.3.2 need to upgrade the entire admin workstation. 
-    * The bundled load balancer is now automatically upgraded during cluster upgrade. 
-
-**FEATURE:**
-
-**Improved installation and cluster configuration:**
-
-  * The user cluster [ node pools ](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/user-cluster-basic#nodepoolsname) feature is now generally available. 
-  * This release improves the installation experience via the following changes: 
-
-    * Supports ` gkeadm ` for Windows OS. 
-    * Introduces a standalone command for creating admin clusters. 
-  * Introduce a new version of configuration files to separate admin and user cluster configurations and commands. This is designed to provide a consistent user experience and better configuration management. 
-
-**FEATURE:**
-
-**Improved disaster recovery capabilities:**
-
-  * This release provides enhanced disaster recovery functionality to [ support backup and restore ](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/backing-up#user_cluster_backups) HA user cluster with etcd. 
-  * This release also provides a manual process to recover a single etcd replica failure in a HA cluster without any data loss. 
-
-**FEATURE:**
-
-**Enhanced monitoring with Cloud Monitoring (formerly Stackdriver):**
-
-  * This release provides better product monitoring and resource usage management via the following changes: 
-
-    * Introduces a [ default monitoring dashboard ](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/logging-and-monitoring#dashboards) . 
-    * Enables vSphere resource metrics collection by default. 
-  * Ubuntu Image now conforms with PCI DSS, NIST Baseline High, and DoD SRG IL2 compliance configurations. 
-
-**CHANGED:**
-
-**Functionality changes:**
-
-  * Enabled Horizontal Pod Autoscaler (HPA) for the Istio ingress gateway. 
-  * Removed ingress controller from admin cluster. 
-  * Consolidated sysctl configs with Google Kubernetes Engine. 
-  * Added etcd defrag pod in admin cluster and user cluster, which will be responsible for monitoring etcd's database size and defragmenting it as needed. This helps reclaim etcd database size and recover etcd when its disk space is exceeded. 
-
-**CHANGED:**
-
-**Support for a vSphere folder (Preview):**
-
-  * This release allows customers to install GKE on-prem in a vSphere folder, reducing the scope of the permission required for the vSphere user. 
-
-**CHANGED:**
-
-**Improved scale:**
-
-  * This release improves the cluster scalability by supporting [ a maximum of 10 instead of 5 user clusters for each admin cluster ](https://cloud.google.com/anthos/gke/docs/on-prem/quotas) . 
-
-**FIXED:**
-
-**Fixes:**
-
-  * Fixed the issue of the user cluster's Kubernetes API server not being able to connect to kube-etcd after admin nodes and user cluster master reboot. In previous versions, kube-dns in admin clusters was configured through kubeadm. In 1.4, this configuration is moved from kubeadm to bundle, which enables deploying two kube-dns replicas on two admin nodes. As a result, a single admin node reboot/failure won't disrupt user cluster API access. 
-  * Fixed the issue that controllers such as calico-typha can't be scheduled on an admin cluster master node, when the admin cluster master node is under disk pressure. 
-  * Resolved pods failure with MatchNodeSelector on admin cluster master after node reboot or kubelet restart. 
-  * Tuned etcd quota limit settings based on the etcd data disk size and the settings in GKE Classic. 
-
-**ISSUE:**
-
-**Known issues:**
-
-  * If a user cluster is created without any node pool named the same as the cluster, managing the node pools using ` gkectl update cluster ` would fail. To avoid this issue, when creating a user cluster, you need to name one node pool the same as the cluster. 
-  * The ` gkectl ` command might exit with panic when converting config from "/path/to/config.yaml" to v1 config files. When that occurs, you can resolve the issue by removing the unused bundled load balancer section ("loadbalancerconfig") in the config file. 
-  * When using gkeadm to upgrade an admin workstation on Windows, the info file filled out from this template needs to have the line endings converted to use Unix line endings (LF) instead of Windows line endings (CRLF). You can use Notepad++ to convert the line endings. 
-  * After upgrading an admin workstation with a static IP using gkeadm, you need to run ` ssh-keygen -R <admin-workstation-ip> ` to remove the IP from the known hosts, because the host identification changed after VM re-creation. 
-  * We have added Horizontal Pod Autoscaler for istio-ingress and istio-pilot deployments. HPA can scale up unnecessarily for istio-ingress and istio-pilot deployments during cluster upgrades. This happens because the metrics server is not able to report usage of some pods (newly created and terminating; for more information, see [ this Kubernetes issue ](https://github.com/kubernetes/kubernetes/issues/72775) ). No actions are needed; scale down will happen five minutes after the upgrade finishes. 
-  * When running a preflight check for ` config.yaml ` that contains both ` admincluster ` and ` usercluster ` sections, the "data disk" check in the "user cluster vCenter" category might fail with the message: ` [FAILURE] Data Disk: Data disk is not in a folder. Use a data disk in a folder when using vSAN datastore. ` User clusters don't use data disks, and it's safe to ignore the failure. 
-  * When upgrading the admin cluster, the preflight check for the user cluster OS image validation will fail. The user cluster OS image is not used in this case, and it's safe to ignore the "User Cluster OS Image Exists" failure in this case. 
-  * A Calico-node pod might be stuck in an unready state after node IP changes. To resolve this issue, you need to delete any unready Calico-node pods. 
-  * The BIG-IP controller might fail to update F5 VIP after any admin cluster master IP changes. To resolve this, you need to use the admin cluster master node IP in kubeconfig and delete the bigip-controller pod from the admin master. 
-  * The stackdriver-prometheus-k8s pod could enter a crashloop after host failure. To resolve this, you need to remove any corrupted PersistentVolumes that the stackdriver-prometheus-k8s pod uses. 
-  * After node IP change, pods running with hostNetwork don't get podIP corrected until Kubelet restarts. To resolve this, you need to restart Kubelet or delete those pods using previous IPs. 
-  * An admin cluster fails after any admin cluster master node IP address changes. To avoid this, you should avoid changing the admin master IP address if possible by using a static IP or a non-expired DHCP lease instead. If you encounter this issue and need further assistance, please contact Google Support. 
-  * User cluster upgrade might be stuck with the error: ` Failed to update machine status: no matches for kind "Machine" in version "cluster.k8s.io/v1alpha1". ` To resolve this, you need to delete the clusterapi pod in the user cluster namespace in the admin cluster. 
-
-**ISSUE:**
-
-If your vSphere environment has fewer than three hosts, user cluster upgrade
-might fail. To resolve this, you need to disable ` antiAffinityGroups ` in the
-cluster config before upgrading the user cluster. For v1 config, please set `
-antiAffinityGroups.enabled = false ` ; for v0 config, please set `
-usercluster.antiaffinitygroups.enabled = false ` .
-
-**Note:** Disabling ` antiAffinityGroups ` in the cluster config during
-upgrade is only allowed for the 1.3.2 to 1.4. _x_ upgrade to resolve the
-upgrade issue; the support might be removed in the future.
-
-**Cloud Load Balancing**
-
-**CHANGED:**
-
-The introductory period during which you can use Internal HTTP(S) Load
-Balancing without charge is coming to an end. Starting on July 25, 2020, your
-usage of Internal HTTP(S) Load Balancing will be [ billed to your project
-](https://cloud.google.com/compute/network-pricing#internal-https-lb) .
-
-**Config Connector**
-
-**FEATURE:**
-
-Add an option, iam-format, to config-connector to control IAM output, options
-are policy, policymember, or none.
-
-**FEATURE:**
-
-ComputeForwardingRule's target field now supports referencing a
-ComputeTargetSSLProxy and ComputeTargetTCPProxy.
-
-**CHANGED:**
-
-DataFlowJob's serviceAccountEmail, network, subnetwork, machineType, and
-ipConfiguration fields now support updates.
-
-**FIXED:**
-
-Fix an issue where config-connector would error on a Project resource.
 
