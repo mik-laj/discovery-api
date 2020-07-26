@@ -4,6 +4,7 @@
             "scopes": {
                 "https://www.googleapis.com/auth/display-video": {},
                 "https://www.googleapis.com/auth/display-video-mediaplanning": {},
+                "https://www.googleapis.com/auth/display-video-user-management": {},
                 "https://www.googleapis.com/auth/doubleclickbidmanager": {}
             }
         }
@@ -86,6 +87,35 @@
     "resources": {
         "advertisers": {
             "methods": {
+                "audit": {
+                    "flatPath": "v1/advertisers/{advertisersId}:audit",
+                    "httpMethod": "GET",
+                    "id": "displayvideo.advertisers.audit",
+                    "parameterOrder": [
+                        "advertiserId"
+                    ],
+                    "parameters": {
+                        "advertiserId": {
+                            "format": "int64",
+                            "location": "path",
+                            "pattern": "^[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "readMask": {
+                            "format": "google-fieldmask",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/advertisers/{+advertiserId}:audit",
+                    "response": {
+                        "$ref": "AuditAdvertiserResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/display-video"
+                    ]
+                },
                 "bulkEditAdvertiserAssignedTargetingOptions": {
                     "flatPath": "v1/advertisers/{advertisersId}:bulkEditAdvertiserAssignedTargetingOptions",
                     "httpMethod": "POST",
@@ -3612,6 +3642,91 @@
             }
         },
         "partners": {
+            "methods": {
+                "bulkEditPartnerAssignedTargetingOptions": {
+                    "flatPath": "v1/partners/{partnersId}:bulkEditPartnerAssignedTargetingOptions",
+                    "httpMethod": "POST",
+                    "id": "displayvideo.partners.bulkEditPartnerAssignedTargetingOptions",
+                    "parameterOrder": [
+                        "partnerId"
+                    ],
+                    "parameters": {
+                        "partnerId": {
+                            "format": "int64",
+                            "location": "path",
+                            "pattern": "^[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/partners/{+partnerId}:bulkEditPartnerAssignedTargetingOptions",
+                    "request": {
+                        "$ref": "BulkEditPartnerAssignedTargetingOptionsRequest"
+                    },
+                    "response": {
+                        "$ref": "BulkEditPartnerAssignedTargetingOptionsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/display-video"
+                    ]
+                },
+                "get": {
+                    "flatPath": "v1/partners/{partnersId}",
+                    "httpMethod": "GET",
+                    "id": "displayvideo.partners.get",
+                    "parameterOrder": [
+                        "partnerId"
+                    ],
+                    "parameters": {
+                        "partnerId": {
+                            "format": "int64",
+                            "location": "path",
+                            "pattern": "^[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/partners/{+partnerId}",
+                    "response": {
+                        "$ref": "Partner"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/display-video"
+                    ]
+                },
+                "list": {
+                    "flatPath": "v1/partners",
+                    "httpMethod": "GET",
+                    "id": "displayvideo.partners.list",
+                    "parameterOrder": [],
+                    "parameters": {
+                        "filter": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "orderBy": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageSize": {
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/partners",
+                    "response": {
+                        "$ref": "ListPartnersResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/display-video"
+                    ]
+                }
+            },
             "resources": {
                 "channels": {
                     "methods": {
@@ -3951,6 +4066,332 @@
                             }
                         }
                     }
+                },
+                "targetingTypes": {
+                    "resources": {
+                        "assignedTargetingOptions": {
+                            "methods": {
+                                "create": {
+                                    "flatPath": "v1/partners/{partnersId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions",
+                                    "httpMethod": "POST",
+                                    "id": "displayvideo.partners.targetingTypes.assignedTargetingOptions.create",
+                                    "parameterOrder": [
+                                        "partnerId",
+                                        "targetingType"
+                                    ],
+                                    "parameters": {
+                                        "partnerId": {
+                                            "format": "int64",
+                                            "location": "path",
+                                            "pattern": "^[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "targetingType": {
+                                            "enum": [
+                                                "TARGETING_TYPE_UNSPECIFIED",
+                                                "TARGETING_TYPE_CHANNEL",
+                                                "TARGETING_TYPE_APP_CATEGORY",
+                                                "TARGETING_TYPE_APP",
+                                                "TARGETING_TYPE_URL",
+                                                "TARGETING_TYPE_DAY_AND_TIME",
+                                                "TARGETING_TYPE_AGE_RANGE",
+                                                "TARGETING_TYPE_REGIONAL_LOCATION_LIST",
+                                                "TARGETING_TYPE_PROXIMITY_LOCATION_LIST",
+                                                "TARGETING_TYPE_GENDER",
+                                                "TARGETING_TYPE_VIDEO_PLAYER_SIZE",
+                                                "TARGETING_TYPE_USER_REWARDED_CONTENT",
+                                                "TARGETING_TYPE_PARENTAL_STATUS",
+                                                "TARGETING_TYPE_CONTENT_INSTREAM_POSITION",
+                                                "TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION",
+                                                "TARGETING_TYPE_DEVICE_TYPE",
+                                                "TARGETING_TYPE_AUDIENCE_GROUP",
+                                                "TARGETING_TYPE_BROWSER",
+                                                "TARGETING_TYPE_HOUSEHOLD_INCOME",
+                                                "TARGETING_TYPE_ON_SCREEN_POSITION",
+                                                "TARGETING_TYPE_THIRD_PARTY_VERIFIER",
+                                                "TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION",
+                                                "TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION",
+                                                "TARGETING_TYPE_ENVIRONMENT",
+                                                "TARGETING_TYPE_CARRIER_AND_ISP",
+                                                "TARGETING_TYPE_OPERATING_SYSTEM",
+                                                "TARGETING_TYPE_DEVICE_MAKE_MODEL",
+                                                "TARGETING_TYPE_KEYWORD",
+                                                "TARGETING_TYPE_NEGATIVE_KEYWORD_LIST",
+                                                "TARGETING_TYPE_VIEWABILITY",
+                                                "TARGETING_TYPE_CATEGORY",
+                                                "TARGETING_TYPE_INVENTORY_SOURCE",
+                                                "TARGETING_TYPE_LANGUAGE",
+                                                "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS",
+                                                "TARGETING_TYPE_GEO_REGION",
+                                                "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
+                                                "TARGETING_TYPE_EXCHANGE",
+                                                "TARGETING_TYPE_SUB_EXCHANGE"
+                                            ],
+                                            "location": "path",
+                                            "pattern": "^[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions",
+                                    "request": {
+                                        "$ref": "AssignedTargetingOption"
+                                    },
+                                    "response": {
+                                        "$ref": "AssignedTargetingOption"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/display-video"
+                                    ]
+                                },
+                                "delete": {
+                                    "flatPath": "v1/partners/{partnersId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions/{assignedTargetingOptionsId}",
+                                    "httpMethod": "DELETE",
+                                    "id": "displayvideo.partners.targetingTypes.assignedTargetingOptions.delete",
+                                    "parameterOrder": [
+                                        "partnerId",
+                                        "targetingType",
+                                        "assignedTargetingOptionId"
+                                    ],
+                                    "parameters": {
+                                        "assignedTargetingOptionId": {
+                                            "location": "path",
+                                            "pattern": "^[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "partnerId": {
+                                            "format": "int64",
+                                            "location": "path",
+                                            "pattern": "^[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "targetingType": {
+                                            "enum": [
+                                                "TARGETING_TYPE_UNSPECIFIED",
+                                                "TARGETING_TYPE_CHANNEL",
+                                                "TARGETING_TYPE_APP_CATEGORY",
+                                                "TARGETING_TYPE_APP",
+                                                "TARGETING_TYPE_URL",
+                                                "TARGETING_TYPE_DAY_AND_TIME",
+                                                "TARGETING_TYPE_AGE_RANGE",
+                                                "TARGETING_TYPE_REGIONAL_LOCATION_LIST",
+                                                "TARGETING_TYPE_PROXIMITY_LOCATION_LIST",
+                                                "TARGETING_TYPE_GENDER",
+                                                "TARGETING_TYPE_VIDEO_PLAYER_SIZE",
+                                                "TARGETING_TYPE_USER_REWARDED_CONTENT",
+                                                "TARGETING_TYPE_PARENTAL_STATUS",
+                                                "TARGETING_TYPE_CONTENT_INSTREAM_POSITION",
+                                                "TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION",
+                                                "TARGETING_TYPE_DEVICE_TYPE",
+                                                "TARGETING_TYPE_AUDIENCE_GROUP",
+                                                "TARGETING_TYPE_BROWSER",
+                                                "TARGETING_TYPE_HOUSEHOLD_INCOME",
+                                                "TARGETING_TYPE_ON_SCREEN_POSITION",
+                                                "TARGETING_TYPE_THIRD_PARTY_VERIFIER",
+                                                "TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION",
+                                                "TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION",
+                                                "TARGETING_TYPE_ENVIRONMENT",
+                                                "TARGETING_TYPE_CARRIER_AND_ISP",
+                                                "TARGETING_TYPE_OPERATING_SYSTEM",
+                                                "TARGETING_TYPE_DEVICE_MAKE_MODEL",
+                                                "TARGETING_TYPE_KEYWORD",
+                                                "TARGETING_TYPE_NEGATIVE_KEYWORD_LIST",
+                                                "TARGETING_TYPE_VIEWABILITY",
+                                                "TARGETING_TYPE_CATEGORY",
+                                                "TARGETING_TYPE_INVENTORY_SOURCE",
+                                                "TARGETING_TYPE_LANGUAGE",
+                                                "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS",
+                                                "TARGETING_TYPE_GEO_REGION",
+                                                "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
+                                                "TARGETING_TYPE_EXCHANGE",
+                                                "TARGETING_TYPE_SUB_EXCHANGE"
+                                            ],
+                                            "location": "path",
+                                            "pattern": "^[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
+                                    "response": {
+                                        "$ref": "Empty"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/display-video"
+                                    ]
+                                },
+                                "get": {
+                                    "flatPath": "v1/partners/{partnersId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions/{assignedTargetingOptionsId}",
+                                    "httpMethod": "GET",
+                                    "id": "displayvideo.partners.targetingTypes.assignedTargetingOptions.get",
+                                    "parameterOrder": [
+                                        "partnerId",
+                                        "targetingType",
+                                        "assignedTargetingOptionId"
+                                    ],
+                                    "parameters": {
+                                        "assignedTargetingOptionId": {
+                                            "location": "path",
+                                            "pattern": "^[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "partnerId": {
+                                            "format": "int64",
+                                            "location": "path",
+                                            "pattern": "^[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "targetingType": {
+                                            "enum": [
+                                                "TARGETING_TYPE_UNSPECIFIED",
+                                                "TARGETING_TYPE_CHANNEL",
+                                                "TARGETING_TYPE_APP_CATEGORY",
+                                                "TARGETING_TYPE_APP",
+                                                "TARGETING_TYPE_URL",
+                                                "TARGETING_TYPE_DAY_AND_TIME",
+                                                "TARGETING_TYPE_AGE_RANGE",
+                                                "TARGETING_TYPE_REGIONAL_LOCATION_LIST",
+                                                "TARGETING_TYPE_PROXIMITY_LOCATION_LIST",
+                                                "TARGETING_TYPE_GENDER",
+                                                "TARGETING_TYPE_VIDEO_PLAYER_SIZE",
+                                                "TARGETING_TYPE_USER_REWARDED_CONTENT",
+                                                "TARGETING_TYPE_PARENTAL_STATUS",
+                                                "TARGETING_TYPE_CONTENT_INSTREAM_POSITION",
+                                                "TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION",
+                                                "TARGETING_TYPE_DEVICE_TYPE",
+                                                "TARGETING_TYPE_AUDIENCE_GROUP",
+                                                "TARGETING_TYPE_BROWSER",
+                                                "TARGETING_TYPE_HOUSEHOLD_INCOME",
+                                                "TARGETING_TYPE_ON_SCREEN_POSITION",
+                                                "TARGETING_TYPE_THIRD_PARTY_VERIFIER",
+                                                "TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION",
+                                                "TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION",
+                                                "TARGETING_TYPE_ENVIRONMENT",
+                                                "TARGETING_TYPE_CARRIER_AND_ISP",
+                                                "TARGETING_TYPE_OPERATING_SYSTEM",
+                                                "TARGETING_TYPE_DEVICE_MAKE_MODEL",
+                                                "TARGETING_TYPE_KEYWORD",
+                                                "TARGETING_TYPE_NEGATIVE_KEYWORD_LIST",
+                                                "TARGETING_TYPE_VIEWABILITY",
+                                                "TARGETING_TYPE_CATEGORY",
+                                                "TARGETING_TYPE_INVENTORY_SOURCE",
+                                                "TARGETING_TYPE_LANGUAGE",
+                                                "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS",
+                                                "TARGETING_TYPE_GEO_REGION",
+                                                "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
+                                                "TARGETING_TYPE_EXCHANGE",
+                                                "TARGETING_TYPE_SUB_EXCHANGE"
+                                            ],
+                                            "location": "path",
+                                            "pattern": "^[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
+                                    "response": {
+                                        "$ref": "AssignedTargetingOption"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/display-video"
+                                    ]
+                                },
+                                "list": {
+                                    "flatPath": "v1/partners/{partnersId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions",
+                                    "httpMethod": "GET",
+                                    "id": "displayvideo.partners.targetingTypes.assignedTargetingOptions.list",
+                                    "parameterOrder": [
+                                        "partnerId",
+                                        "targetingType"
+                                    ],
+                                    "parameters": {
+                                        "filter": {
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "orderBy": {
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "pageSize": {
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "pageToken": {
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "partnerId": {
+                                            "format": "int64",
+                                            "location": "path",
+                                            "pattern": "^[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "targetingType": {
+                                            "enum": [
+                                                "TARGETING_TYPE_UNSPECIFIED",
+                                                "TARGETING_TYPE_CHANNEL",
+                                                "TARGETING_TYPE_APP_CATEGORY",
+                                                "TARGETING_TYPE_APP",
+                                                "TARGETING_TYPE_URL",
+                                                "TARGETING_TYPE_DAY_AND_TIME",
+                                                "TARGETING_TYPE_AGE_RANGE",
+                                                "TARGETING_TYPE_REGIONAL_LOCATION_LIST",
+                                                "TARGETING_TYPE_PROXIMITY_LOCATION_LIST",
+                                                "TARGETING_TYPE_GENDER",
+                                                "TARGETING_TYPE_VIDEO_PLAYER_SIZE",
+                                                "TARGETING_TYPE_USER_REWARDED_CONTENT",
+                                                "TARGETING_TYPE_PARENTAL_STATUS",
+                                                "TARGETING_TYPE_CONTENT_INSTREAM_POSITION",
+                                                "TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION",
+                                                "TARGETING_TYPE_DEVICE_TYPE",
+                                                "TARGETING_TYPE_AUDIENCE_GROUP",
+                                                "TARGETING_TYPE_BROWSER",
+                                                "TARGETING_TYPE_HOUSEHOLD_INCOME",
+                                                "TARGETING_TYPE_ON_SCREEN_POSITION",
+                                                "TARGETING_TYPE_THIRD_PARTY_VERIFIER",
+                                                "TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION",
+                                                "TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION",
+                                                "TARGETING_TYPE_ENVIRONMENT",
+                                                "TARGETING_TYPE_CARRIER_AND_ISP",
+                                                "TARGETING_TYPE_OPERATING_SYSTEM",
+                                                "TARGETING_TYPE_DEVICE_MAKE_MODEL",
+                                                "TARGETING_TYPE_KEYWORD",
+                                                "TARGETING_TYPE_NEGATIVE_KEYWORD_LIST",
+                                                "TARGETING_TYPE_VIEWABILITY",
+                                                "TARGETING_TYPE_CATEGORY",
+                                                "TARGETING_TYPE_INVENTORY_SOURCE",
+                                                "TARGETING_TYPE_LANGUAGE",
+                                                "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS",
+                                                "TARGETING_TYPE_GEO_REGION",
+                                                "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
+                                                "TARGETING_TYPE_EXCHANGE",
+                                                "TARGETING_TYPE_SUB_EXCHANGE"
+                                            ],
+                                            "location": "path",
+                                            "pattern": "^[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions",
+                                    "response": {
+                                        "$ref": "ListPartnerAssignedTargetingOptionsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/display-video"
+                                    ]
+                                }
+                            }
+                        }
+                    }
                 }
             }
         },
@@ -4170,6 +4611,166 @@
                             ]
                         }
                     }
+                }
+            }
+        },
+        "users": {
+            "methods": {
+                "bulkEditAssignedUserRoles": {
+                    "flatPath": "v1/users/{usersId}:bulkEditAssignedUserRoles",
+                    "httpMethod": "POST",
+                    "id": "displayvideo.users.bulkEditAssignedUserRoles",
+                    "parameterOrder": [
+                        "userId"
+                    ],
+                    "parameters": {
+                        "userId": {
+                            "format": "int64",
+                            "location": "path",
+                            "pattern": "^[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/users/{+userId}:bulkEditAssignedUserRoles",
+                    "request": {
+                        "$ref": "BulkEditAssignedUserRolesRequest"
+                    },
+                    "response": {
+                        "$ref": "BulkEditAssignedUserRolesResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/display-video-user-management"
+                    ]
+                },
+                "create": {
+                    "flatPath": "v1/users",
+                    "httpMethod": "POST",
+                    "id": "displayvideo.users.create",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1/users",
+                    "request": {
+                        "$ref": "User"
+                    },
+                    "response": {
+                        "$ref": "User"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/display-video-user-management"
+                    ]
+                },
+                "delete": {
+                    "flatPath": "v1/users/{usersId}",
+                    "httpMethod": "DELETE",
+                    "id": "displayvideo.users.delete",
+                    "parameterOrder": [
+                        "userId"
+                    ],
+                    "parameters": {
+                        "userId": {
+                            "format": "int64",
+                            "location": "path",
+                            "pattern": "^[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/users/{+userId}",
+                    "response": {
+                        "$ref": "Empty"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/display-video-user-management"
+                    ]
+                },
+                "get": {
+                    "flatPath": "v1/users/{usersId}",
+                    "httpMethod": "GET",
+                    "id": "displayvideo.users.get",
+                    "parameterOrder": [
+                        "userId"
+                    ],
+                    "parameters": {
+                        "userId": {
+                            "format": "int64",
+                            "location": "path",
+                            "pattern": "^[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/users/{+userId}",
+                    "response": {
+                        "$ref": "User"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/display-video-user-management"
+                    ]
+                },
+                "list": {
+                    "flatPath": "v1/users",
+                    "httpMethod": "GET",
+                    "id": "displayvideo.users.list",
+                    "parameterOrder": [],
+                    "parameters": {
+                        "filter": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "orderBy": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageSize": {
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/users",
+                    "response": {
+                        "$ref": "ListUsersResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/display-video-user-management"
+                    ]
+                },
+                "patch": {
+                    "flatPath": "v1/users/{usersId}",
+                    "httpMethod": "PATCH",
+                    "id": "displayvideo.users.patch",
+                    "parameterOrder": [
+                        "userId"
+                    ],
+                    "parameters": {
+                        "updateMask": {
+                            "format": "google-fieldmask",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "userId": {
+                            "format": "int64",
+                            "location": "path",
+                            "pattern": "^[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/users/{+userId}",
+                    "request": {
+                        "$ref": "User"
+                    },
+                    "response": {
+                        "$ref": "User"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/display-video-user-management"
+                    ]
                 }
             }
         }
@@ -4741,6 +5342,41 @@
             },
             "type": "object"
         },
+        "AssignedUserRole": {
+            "id": "AssignedUserRole",
+            "properties": {
+                "advertiserId": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "assignedUserRoleId": {
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "partnerId": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "userRole": {
+                    "enum": [
+                        "USER_ROLE_UNSPECIFIED",
+                        "ADMIN",
+                        "ADMIN_PARTNER_CLIENT",
+                        "STANDARD",
+                        "STANDARD_PLANNER",
+                        "STANDARD_PLANNER_LIMITED",
+                        "STANDARD_PARTNER_CLIENT",
+                        "READ_ONLY",
+                        "REPORTING_ONLY",
+                        "LIMITED_REPORTING_ONLY",
+                        "CREATIVE",
+                        "CREATIVE_ADMIN"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "AudienceGroupAssignedTargetingOptionDetails": {
             "id": "AudienceGroupAssignedTargetingOptionDetails",
             "properties": {
@@ -4776,6 +5412,24 @@
                     "type": "string"
                 },
                 "seconds": {
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AuditAdvertiserResponse": {
+            "id": "AuditAdvertiserResponse",
+            "properties": {
+                "usedCampaignsCount": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "usedInsertionOrdersCount": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "usedLineItemsCount": {
                     "format": "int64",
                     "type": "string"
                 }
@@ -4956,6 +5610,36 @@
             },
             "type": "object"
         },
+        "BulkEditAssignedUserRolesRequest": {
+            "id": "BulkEditAssignedUserRolesRequest",
+            "properties": {
+                "createdAssignedUserRoles": {
+                    "items": {
+                        "$ref": "AssignedUserRole"
+                    },
+                    "type": "array"
+                },
+                "deletedAssignedUserRoles": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "BulkEditAssignedUserRolesResponse": {
+            "id": "BulkEditAssignedUserRolesResponse",
+            "properties": {
+                "createdAssignedUserRoles": {
+                    "items": {
+                        "$ref": "AssignedUserRole"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "BulkEditLineItemAssignedTargetingOptionsRequest": {
             "id": "BulkEditLineItemAssignedTargetingOptionsRequest",
             "properties": {
@@ -5010,6 +5694,36 @@
                 "negativeKeywords": {
                     "items": {
                         "$ref": "NegativeKeyword"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "BulkEditPartnerAssignedTargetingOptionsRequest": {
+            "id": "BulkEditPartnerAssignedTargetingOptionsRequest",
+            "properties": {
+                "createRequests": {
+                    "items": {
+                        "$ref": "CreateAssignedTargetingOptionsRequest"
+                    },
+                    "type": "array"
+                },
+                "deleteRequests": {
+                    "items": {
+                        "$ref": "DeleteAssignedTargetingOptionsRequest"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "BulkEditPartnerAssignedTargetingOptionsResponse": {
+            "id": "BulkEditPartnerAssignedTargetingOptionsResponse",
+            "properties": {
+                "createdAssignedTargetingOptions": {
+                    "items": {
+                        "$ref": "AssignedTargetingOption"
                     },
                     "type": "array"
                 }
@@ -6374,6 +7088,101 @@
             "id": "ExchangeAssignedTargetingOptionDetails",
             "properties": {
                 "targetingOptionId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ExchangeConfig": {
+            "id": "ExchangeConfig",
+            "properties": {
+                "enabledExchanges": {
+                    "items": {
+                        "$ref": "ExchangeConfigEnabledExchange"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ExchangeConfigEnabledExchange": {
+            "id": "ExchangeConfigEnabledExchange",
+            "properties": {
+                "exchange": {
+                    "enum": [
+                        "EXCHANGE_UNSPECIFIED",
+                        "EXCHANGE_GOOGLE_AD_MANAGER",
+                        "EXCHANGE_APPNEXUS",
+                        "EXCHANGE_BRIGHTROLL",
+                        "EXCHANGE_ADFORM",
+                        "EXCHANGE_ADMETA",
+                        "EXCHANGE_ADMIXER",
+                        "EXCHANGE_ADSMOGO",
+                        "EXCHANGE_ADSWIZZ",
+                        "EXCHANGE_BIDSWITCH",
+                        "EXCHANGE_BRIGHTROLL_DISPLAY",
+                        "EXCHANGE_CADREON",
+                        "EXCHANGE_DAILYMOTION",
+                        "EXCHANGE_FIVE",
+                        "EXCHANGE_FLUCT",
+                        "EXCHANGE_FREEWHEEL",
+                        "EXCHANGE_GENIEE",
+                        "EXCHANGE_GUMGUM",
+                        "EXCHANGE_IMOBILE",
+                        "EXCHANGE_IBILLBOARD",
+                        "EXCHANGE_IMPROVE_DIGITAL",
+                        "EXCHANGE_INDEX",
+                        "EXCHANGE_KARGO",
+                        "EXCHANGE_MICROAD",
+                        "EXCHANGE_MOPUB",
+                        "EXCHANGE_NEND",
+                        "EXCHANGE_ONE_BY_AOL_DISPLAY",
+                        "EXCHANGE_ONE_BY_AOL_MOBILE",
+                        "EXCHANGE_ONE_BY_AOL_VIDEO",
+                        "EXCHANGE_OOYALA",
+                        "EXCHANGE_OPENX",
+                        "EXCHANGE_PERMODO",
+                        "EXCHANGE_PLATFORMONE",
+                        "EXCHANGE_PLATFORMID",
+                        "EXCHANGE_PUBMATIC",
+                        "EXCHANGE_PULSEPOINT",
+                        "EXCHANGE_REVENUEMAX",
+                        "EXCHANGE_RUBICON",
+                        "EXCHANGE_SMARTCLIP",
+                        "EXCHANGE_SMARTRTB",
+                        "EXCHANGE_SMARTSTREAMTV",
+                        "EXCHANGE_SOVRN",
+                        "EXCHANGE_SPOTXCHANGE",
+                        "EXCHANGE_STROER",
+                        "EXCHANGE_TEADSTV",
+                        "EXCHANGE_TELARIA",
+                        "EXCHANGE_TVN",
+                        "EXCHANGE_UNITED",
+                        "EXCHANGE_YIELDLAB",
+                        "EXCHANGE_YIELDMO",
+                        "EXCHANGE_UNRULYX",
+                        "EXCHANGE_OPEN8",
+                        "EXCHANGE_TRITON",
+                        "EXCHANGE_TRIPLELIFT",
+                        "EXCHANGE_TABOOLA",
+                        "EXCHANGE_INMOBI",
+                        "EXCHANGE_SMAATO",
+                        "EXCHANGE_AJA",
+                        "EXCHANGE_NEXSTAR_DIGITAL",
+                        "EXCHANGE_WAZE"
+                    ],
+                    "type": "string"
+                },
+                "googleAdManagerAgencyId": {
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "googleAdManagerBuyerNetworkId": {
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "seatId": {
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -8024,6 +8833,36 @@
             },
             "type": "object"
         },
+        "ListPartnerAssignedTargetingOptionsResponse": {
+            "id": "ListPartnerAssignedTargetingOptionsResponse",
+            "properties": {
+                "assignedTargetingOptions": {
+                    "items": {
+                        "$ref": "AssignedTargetingOption"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListPartnersResponse": {
+            "id": "ListPartnersResponse",
+            "properties": {
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "partners": {
+                    "items": {
+                        "$ref": "Partner"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "ListSitesResponse": {
             "id": "ListSitesResponse",
             "properties": {
@@ -8048,6 +8887,21 @@
                 "targetingOptions": {
                     "items": {
                         "$ref": "TargetingOption"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ListUsersResponse": {
+            "id": "ListUsersResponse",
+            "properties": {
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "users": {
+                    "items": {
+                        "$ref": "User"
                     },
                     "type": "array"
                 }
@@ -8116,6 +8970,18 @@
                         "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED"
                     ],
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "MeasurementConfig": {
+            "id": "MeasurementConfig",
+            "properties": {
+                "dv360ToCmCostReportingEnabled": {
+                    "type": "boolean"
+                },
+                "dv360ToCmDataSharingEnabled": {
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -8414,6 +9280,62 @@
             },
             "type": "object"
         },
+        "Partner": {
+            "id": "Partner",
+            "properties": {
+                "adServerConfig": {
+                    "$ref": "PartnerAdServerConfig"
+                },
+                "dataAccessConfig": {
+                    "$ref": "PartnerDataAccessConfig"
+                },
+                "displayName": {
+                    "type": "string"
+                },
+                "entityStatus": {
+                    "enum": [
+                        "ENTITY_STATUS_UNSPECIFIED",
+                        "ENTITY_STATUS_ACTIVE",
+                        "ENTITY_STATUS_ARCHIVED",
+                        "ENTITY_STATUS_DRAFT",
+                        "ENTITY_STATUS_PAUSED",
+                        "ENTITY_STATUS_SCHEDULED_FOR_DELETION"
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "exchangeConfig": {
+                    "$ref": "ExchangeConfig"
+                },
+                "generalConfig": {
+                    "$ref": "PartnerGeneralConfig"
+                },
+                "name": {
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "partnerId": {
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "updateTime": {
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PartnerAdServerConfig": {
+            "id": "PartnerAdServerConfig",
+            "properties": {
+                "measurementConfig": {
+                    "$ref": "MeasurementConfig"
+                }
+            },
+            "type": "object"
+        },
         "PartnerCost": {
             "id": "PartnerCost",
             "properties": {
@@ -8474,6 +9396,27 @@
                         "PARTNER_COST_INVOICE_TYPE_DV360",
                         "PARTNER_COST_INVOICE_TYPE_PARTNER"
                     ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PartnerDataAccessConfig": {
+            "id": "PartnerDataAccessConfig",
+            "properties": {
+                "sdfConfig": {
+                    "$ref": "SdfConfig"
+                }
+            },
+            "type": "object"
+        },
+        "PartnerGeneralConfig": {
+            "id": "PartnerGeneralConfig",
+            "properties": {
+                "currencyCode": {
+                    "type": "string"
+                },
+                "timeZone": {
                     "type": "string"
                 }
             },
@@ -9148,6 +10091,33 @@
                     "type": "boolean"
                 },
                 "url": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "User": {
+            "id": "User",
+            "properties": {
+                "assignedUserRoles": {
+                    "items": {
+                        "$ref": "AssignedUserRole"
+                    },
+                    "type": "array"
+                },
+                "displayName": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "name": {
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "userId": {
+                    "format": "int64",
+                    "readOnly": true,
                     "type": "string"
                 }
             },
