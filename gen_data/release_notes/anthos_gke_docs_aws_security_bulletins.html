@@ -3,7 +3,7 @@
   <div background="google-blue" class="devsite-banner devsite-banner-announcement">
    <div class="devsite-banner-message">
     <div class="devsite-banner-message-text">
-     A new version of Anthos GKE on AWS was released on May 7. See the
+     A new version of Anthos GKE on AWS was released on July 24. See the
      <a href="/anthos/gke/docs/aws/release-notes">
       release notes
      </a>
@@ -17,31 +17,106 @@
   <devsite-toc class="devsite-nav" devsite-toc-embedded="">
   </devsite-toc>
   <div class="devsite-article-body clearfix">
-   <aside class="beta">
-    <p>
-     <strong>
-      Beta
-     </strong>
-    </p>
-    <p>
-     This product or feature is covered by the
-     <a href="/terms/service-terms#1">
-      Pre-GA Offerings Terms
-     </a>
-     of the Google Cloud Platform
-        Terms of Service. Pre-GA products and features may have limited support, and changes to
-        pre-GA products and features may not be compatible with other pre-GA versions.
-            For more information, see the
-     <a href="/products#product-launch-stages">
-      launch stage descriptions
-     </a>
-     .
-    </p>
-   </aside>
    <p>
     Learn about security bulletins for Anthos GKE on AWS (GKE on AWS).
    </p>
    <section class="bulletins">
+    <h2 data-text="GCP-2020-011" id="gcp-2020-011" tabindex="0">
+     GCP-2020-011
+    </h2>
+    <strong>
+     Published:
+    </strong>
+    2020-07-24
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Description
+       </th>
+       <th>
+        Severity
+       </th>
+       <th>
+        Notes
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         A networking vulnerability,
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/92315">
+          CVE-2020-8558
+         </a>
+         ,
+        was recently discovered in Kubernetes. Services sometimes communicate
+        with other applications running inside the same Pod using the local
+        loopback interface (127.0.0.1). This vulnerability allows an attacker
+        with access to the cluster's network to send traffic to the loopback
+        interface of adjacent Pods and nodes. Services that rely on the loopback
+        interface not being accessible outside their Pod could be exploited.
+        </p>
+        <p>
+         Exploiting this vulnerability on GKE on AWS clusters
+        requires an attacker to disable
+         <a class="external" href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_NAT_Instance.html">
+          source destination checks
+         </a>
+         on the EC2 instances in the cluster. This requires the attacker to have
+        AWS IAM permissions for
+         <code dir="ltr" translate="no">
+          ModifyInstanceAttribute
+         </code>
+         or
+         <code dir="ltr" translate="no">
+          ModifyNetworkInterfaceAttribute
+         </code>
+         on the EC2 instances. For
+        this reason, this vulnerability has been assigned a Low severity for
+        GKE on AWS.
+        </p>
+        <h4 data-text="What should I do?" id="what-should-i-do" tabindex="0">
+         What should I do?
+        </h4>
+        <p>
+         To fix this vulnerability, upgrade your cluster to a patched version.
+        The following upcoming GKE on AWS versions or newer are
+        expected to include the fix for this vulnerability:
+        </p>
+        <ul>
+         <li>
+          GKE on AWS 1.4.2
+         </li>
+        </ul>
+        <h4 data-text="What vulnerability is addressed by this patch?" id="what-vulnerability-is-addressed-by-this-patch" tabindex="0">
+         What vulnerability is addressed by this patch?
+        </h4>
+        <p>
+         This patch fixes the following vulnerability:
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/92315">
+          CVE-2020-8558
+         </a>
+         .
+        </p>
+       </td>
+       <td>
+        <p>
+         Low
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/92315">
+          CVE-2020-8558
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
     <h2 data-text="GCP-2020-009" id="gcp-2020-009" tabindex="0">
      GCP-2020-009
     </h2>
@@ -83,7 +158,7 @@
         cluster must have already been compromised. This vulnerability, by itself,
         will not compromise any nodes in your cluster.
         </p>
-        <h4 data-text="What should I do?" id="what-should-i-do" tabindex="0">
+        <h4 data-text="What should I do?" id="what-should-i-do_1" tabindex="0">
          What should I do?
         </h4>
         <p>
@@ -95,7 +170,7 @@
          </a>
          and recreate your management and user clusters.
         </p>
-        <h4 data-text="What vulnerability is addressed by this patch?" id="what-vulnerability-is-addressed-by-this-patch" tabindex="0">
+        <h4 data-text="What vulnerability is addressed by this patch?" id="what-vulnerability-is-addressed-by-this-patch_1" tabindex="0">
          What vulnerability is addressed by this patch?
         </h4>
         <p>
@@ -162,7 +237,7 @@
       A node upgrade is not required.
          <br/>
         </p>
-        <h4 data-text="What should I do?" id="what-should-i-do_1" tabindex="0">
+        <h4 data-text="What should I do?" id="what-should-i-do_2" tabindex="0">
          What should I do?
         </h4>
         <p>
@@ -173,7 +248,7 @@
          </a>
          and recreate your management and user clusters.
         </p>
-        <h4 data-text="What vulnerability is addressed by this patch? " id="what-vulnerability-is-addressed-by-this-patch_1" tabindex="0">
+        <h4 data-text="What vulnerability is addressed by this patch? " id="what-vulnerability-is-addressed-by-this-patch_2" tabindex="0">
          What vulnerability is addressed by this patch?
         </h4>
         <p>
@@ -266,7 +341,7 @@
         modified by this attack. All Google Kubernetes Engine (GKE) nodes are
         affected by this vulnerability, and we recommend that you upgrade
         to the latest patch version, as we detail below.
-          <h4 data-text=" What should I do?" id="what-should-i-do_2" tabindex="0">
+          <h4 data-text=" What should I do?" id="what-should-i-do_3" tabindex="0">
            What should I do?
           </h4>
           <p>
@@ -350,7 +425,7 @@ spec:
           -NET_RAW
 </pre>
           </ul>
-          <h4 data-text="What vulnerability is addressed by this patch? " id="what-vulnerability-is-addressed-by-this-patch_2" tabindex="0">
+          <h4 data-text="What vulnerability is addressed by this patch? " id="what-vulnerability-is-addressed-by-this-patch_3" tabindex="0">
            What vulnerability is addressed by this patch?
           </h4>
           <p>
