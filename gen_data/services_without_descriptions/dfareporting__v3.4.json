@@ -9126,6 +9126,47 @@
             },
             "type": "object"
         },
+        "ChannelGrouping": {
+            "id": "ChannelGrouping",
+            "properties": {
+                "fallbackName": {
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "dfareporting#channelGrouping",
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "rules": {
+                    "items": {
+                        "$ref": "ChannelGroupingRule"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ChannelGroupingRule": {
+            "id": "ChannelGroupingRule",
+            "properties": {
+                "disjunctiveMatchStatements": {
+                    "items": {
+                        "$ref": "DisjunctiveMatchStatement"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "dfareporting#channelGroupingRule",
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "CitiesListResponse": {
             "id": "CitiesListResponse",
             "properties": {
@@ -9273,6 +9314,12 @@
                 "kind": {
                     "default": "dfareporting#compatibleFields",
                     "type": "string"
+                },
+                "pathAttributionReportCompatibleFields": {
+                    "$ref": "PathReportCompatibleFields"
+                },
+                "pathReportCompatibleFields": {
+                    "$ref": "PathReportCompatibleFields"
                 },
                 "pathToConversionReportCompatibleFields": {
                     "$ref": "PathToConversionReportCompatibleFields"
@@ -11654,6 +11701,22 @@
             },
             "type": "object"
         },
+        "DisjunctiveMatchStatement": {
+            "id": "DisjunctiveMatchStatement",
+            "properties": {
+                "eventFilters": {
+                    "items": {
+                        "$ref": "EventFilter"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "dfareporting#disjunctiveMatchStatement",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "DynamicTargetingKey": {
             "id": "DynamicTargetingKey",
             "properties": {
@@ -11725,6 +11788,19 @@
                 },
                 "kind": {
                     "default": "dfareporting#encryptionInfo",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "EventFilter": {
+            "id": "EventFilter",
+            "properties": {
+                "dimensionFilter": {
+                    "$ref": "PathReportDimensionValue"
+                },
+                "kind": {
+                    "default": "dfareporting#eventFilter",
                     "type": "string"
                 }
             },
@@ -11993,6 +12069,9 @@
                 },
                 "advertiserIdDimensionValue": {
                     "$ref": "DimensionValue"
+                },
+                "attributionEnabled": {
+                    "type": "boolean"
                 },
                 "cacheBustingType": {
                     "enum": [
@@ -13400,6 +13479,99 @@
             },
             "type": "object"
         },
+        "PathFilter": {
+            "id": "PathFilter",
+            "properties": {
+                "eventFilters": {
+                    "items": {
+                        "$ref": "EventFilter"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "dfaReporting#pathFilter",
+                    "type": "string"
+                },
+                "pathMatchPosition": {
+                    "enum": [
+                        "ANY",
+                        "FIRST",
+                        "LAST",
+                        "PATH_MATCH_POSITION_UNSPECIFIED"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PathReportCompatibleFields": {
+            "id": "PathReportCompatibleFields",
+            "properties": {
+                "channelGroupings": {
+                    "items": {
+                        "$ref": "Dimension"
+                    },
+                    "type": "array"
+                },
+                "dimensions": {
+                    "items": {
+                        "$ref": "Dimension"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "dfareporting#pathReportCompatibleFields",
+                    "type": "string"
+                },
+                "metrics": {
+                    "items": {
+                        "$ref": "Metric"
+                    },
+                    "type": "array"
+                },
+                "pathFilters": {
+                    "items": {
+                        "$ref": "Dimension"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "PathReportDimensionValue": {
+            "id": "PathReportDimensionValue",
+            "properties": {
+                "dimensionName": {
+                    "type": "string"
+                },
+                "ids": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "dfareporting#pathReportDimensionValue",
+                    "type": "string"
+                },
+                "matchType": {
+                    "enum": [
+                        "BEGINS_WITH",
+                        "CONTAINS",
+                        "EXACT",
+                        "WILDCARD_EXPRESSION"
+                    ],
+                    "type": "string"
+                },
+                "values": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "PathToConversionReportCompatibleFields": {
             "id": "PathToConversionReportCompatibleFields",
             "properties": {
@@ -14648,6 +14820,82 @@
                     "format": "int64",
                     "type": "string"
                 },
+                "pathAttributionCriteria": {
+                    "properties": {
+                        "activityFilters": {
+                            "items": {
+                                "$ref": "DimensionValue"
+                            },
+                            "type": "array"
+                        },
+                        "customChannelGrouping": {
+                            "$ref": "ChannelGrouping"
+                        },
+                        "dateRange": {
+                            "$ref": "DateRange"
+                        },
+                        "dimensions": {
+                            "items": {
+                                "$ref": "SortedDimension"
+                            },
+                            "type": "array"
+                        },
+                        "floodlightConfigId": {
+                            "$ref": "DimensionValue"
+                        },
+                        "metricNames": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "pathFilters": {
+                            "items": {
+                                "$ref": "PathFilter"
+                            },
+                            "type": "array"
+                        }
+                    },
+                    "type": "object"
+                },
+                "pathCriteria": {
+                    "properties": {
+                        "activityFilters": {
+                            "items": {
+                                "$ref": "DimensionValue"
+                            },
+                            "type": "array"
+                        },
+                        "customChannelGrouping": {
+                            "$ref": "ChannelGrouping"
+                        },
+                        "dateRange": {
+                            "$ref": "DateRange"
+                        },
+                        "dimensions": {
+                            "items": {
+                                "$ref": "SortedDimension"
+                            },
+                            "type": "array"
+                        },
+                        "floodlightConfigId": {
+                            "$ref": "DimensionValue"
+                        },
+                        "metricNames": {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "pathFilters": {
+                            "items": {
+                                "$ref": "PathFilter"
+                            },
+                            "type": "array"
+                        }
+                    },
+                    "type": "object"
+                },
                 "pathToConversionCriteria": {
                     "properties": {
                         "activityFilters": {
@@ -14856,6 +15104,8 @@
                     "enum": [
                         "CROSS_DIMENSION_REACH",
                         "FLOODLIGHT",
+                        "PATH",
+                        "PATH_ATTRIBUTION",
                         "PATH_TO_CONVERSION",
                         "REACH",
                         "STANDARD"
@@ -15155,6 +15405,12 @@
                 "kind": {
                     "default": "dfareporting#siteVideoSettings",
                     "type": "string"
+                },
+                "obaEnabled": {
+                    "type": "boolean"
+                },
+                "obaSettings": {
+                    "$ref": "ObaIcon"
                 },
                 "orientation": {
                     "enum": [
@@ -16065,6 +16321,12 @@
                 "kind": {
                     "default": "dfareporting#videoSettings",
                     "type": "string"
+                },
+                "obaEnabled": {
+                    "type": "boolean"
+                },
+                "obaSettings": {
+                    "$ref": "ObaIcon"
                 },
                 "orientation": {
                     "enum": [
