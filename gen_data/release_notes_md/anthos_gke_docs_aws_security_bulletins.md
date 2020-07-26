@@ -1,20 +1,55 @@
-A new version of Anthos GKE on AWS was released on May 7. See the [ release
+A new version of Anthos GKE on AWS was released on July 24. See the [ release
 notes ](/anthos/gke/docs/aws/release-notes) for information on breaking
 changes.
 
 #  Security bulletins
 
-**Beta**
-
-This product or feature is covered by the [ Pre-GA Offerings Terms
-](/terms/service-terms#1) of the Google Cloud Platform Terms of Service. Pre-
-GA products and features may have limited support, and changes to pre-GA
-products and features may not be compatible with other pre-GA versions. For
-more information, see the [ launch stage descriptions ](/products#product-
-launch-stages) .
-
 Learn about security bulletins for Anthos GKE on AWS (GKE on AWS).
 
+##  GCP-2020-011
+
+**Published:** 2020-07-24  
+Description  |  Severity  |  Notes  
+---|---|---  
+  
+A networking vulnerability, [ CVE-2020-8558
+](https://github.com/kubernetes/kubernetes/issues/92315) , was recently
+discovered in Kubernetes. Services sometimes communicate with other
+applications running inside the same Pod using the local loopback interface
+(127.0.0.1). This vulnerability allows an attacker with access to the
+cluster's network to send traffic to the loopback interface of adjacent Pods
+and nodes. Services that rely on the loopback interface not being accessible
+outside their Pod could be exploited.
+
+Exploiting this vulnerability on GKE on AWS clusters requires an attacker to
+disable [ source destination checks
+](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_NAT_Instance.html) on
+the EC2 instances in the cluster. This requires the attacker to have AWS IAM
+permissions for ` ModifyInstanceAttribute ` or `
+ModifyNetworkInterfaceAttribute ` on the EC2 instances. For this reason, this
+vulnerability has been assigned a Low severity for GKE on AWS.
+
+####  What should I do?
+
+To fix this vulnerability, upgrade your cluster to a patched version. The
+following upcoming GKE on AWS versions or newer are expected to include the
+fix for this vulnerability:
+
+  * GKE on AWS 1.4.2 
+
+####  What vulnerability is addressed by this patch?
+
+This patch fixes the following vulnerability: [ CVE-2020-8558
+](https://github.com/kubernetes/kubernetes/issues/92315) .
+
+|
+
+Low
+
+|
+
+[ CVE-2020-8558 ](https://github.com/kubernetes/kubernetes/issues/92315)  
+  
 ##  GCP-2020-009
 
 **Published:** 2020-07-15  Description  |  Severity  |  Notes  
