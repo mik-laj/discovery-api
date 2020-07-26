@@ -12,6 +12,29 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/composer-release-notes.xml `
 
+##  July 24, 2020
+
+**CHANGED:**
+
+  * [ New versions ](https://cloud.google.com/composer/docs/concepts/versioning/composer-versions) of Cloud Composer images: ` composer-1.11.0-airflow-1.10.2 ` , ` composer-1.11.0-airflow-1.10.3 ` , ` composer-1.11.0-airflow-1.10.6 ` , and ` composer-1.11.0-airflow-1.10.9 ` . The default is ` composer-1.11.0-airflow-1.10.3 ` . Upgrade your Cloud SDK to use features in this release. 
+
+**FEATURE:**
+
+  * Airflow 1.10.9 is now supported. 
+  * Environment upgrades have been enabled for the latest two Composer versions (1.11.0 and 1.10.6). 
+  * Added a retry feature to the Airflow CeleryExecutor (disabled by default). You can configure the number of times Celery will attempt to execute a task by setting the ` [celery] max_command_attempts ` property. The delay between each retry can also be adjusted with ` [celery] command_retry_wait_duration ` (default: 5 seconds). 
+
+**FIXED:**
+
+  * New PyPi packages have been added for Composer version ` composer-1.11.0-airflow-1.10.6 ` . These make it possible to install ` apache-airflow-backport-providers-google ` with no additional package upgrades. 
+  * The PyPi package ` google-cloud-datacatalog ` can now be installed on Composer environments running Airflow 1.10.6 and Python 3. 
+  * Fixed synchronization of environment variables to the web server. 
+  * Improved error reporting when PyPI package installation fails. 
+
+**DEPRECATED:**
+
+  * Composer versions 1.6.1, 1.7.0, and 1.7.1 are now deprecated. 
+
 ##  July 07, 2020
 
 **CHANGED:**
