@@ -1451,6 +1451,57 @@
             },
             "type": "object"
         },
+        "ArimaForecastingMetrics": {
+            "id": "ArimaForecastingMetrics",
+            "properties": {
+                "arimaFittingMetrics": {
+                    "items": {
+                        "$ref": "ArimaFittingMetrics"
+                    },
+                    "type": "array"
+                },
+                "arimaSingleModelForecastingMetrics": {
+                    "items": {
+                        "$ref": "ArimaSingleModelForecastingMetrics"
+                    },
+                    "type": "array"
+                },
+                "hasDrift": {
+                    "items": {
+                        "type": "boolean"
+                    },
+                    "type": "array"
+                },
+                "nonSeasonalOrder": {
+                    "items": {
+                        "$ref": "ArimaOrder"
+                    },
+                    "type": "array"
+                },
+                "seasonalPeriods": {
+                    "items": {
+                        "enum": [
+                            "SEASONAL_PERIOD_TYPE_UNSPECIFIED",
+                            "NO_SEASONALITY",
+                            "DAILY",
+                            "WEEKLY",
+                            "MONTHLY",
+                            "QUARTERLY",
+                            "YEARLY"
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "timeSeriesId": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "ArimaModelInfo": {
             "id": "ArimaModelInfo",
             "properties": {
@@ -1528,6 +1579,39 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ArimaSingleModelForecastingMetrics": {
+            "id": "ArimaSingleModelForecastingMetrics",
+            "properties": {
+                "arimaFittingMetrics": {
+                    "$ref": "ArimaFittingMetrics"
+                },
+                "hasDrift": {
+                    "type": "boolean"
+                },
+                "nonSeasonalOrder": {
+                    "$ref": "ArimaOrder"
+                },
+                "seasonalPeriods": {
+                    "items": {
+                        "enum": [
+                            "SEASONAL_PERIOD_TYPE_UNSPECIFIED",
+                            "NO_SEASONALITY",
+                            "DAILY",
+                            "WEEKLY",
+                            "MONTHLY",
+                            "QUARTERLY",
+                            "YEARLY"
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "timeSeriesId": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2183,6 +2267,9 @@
         "EvaluationMetrics": {
             "id": "EvaluationMetrics",
             "properties": {
+                "arimaForecastingMetrics": {
+                    "$ref": "ArimaForecastingMetrics"
+                },
                 "binaryClassificationMetrics": {
                     "$ref": "BinaryClassificationMetrics"
                 },
@@ -3376,6 +3463,7 @@
                         "DNN_REGRESSOR",
                         "BOOSTED_TREE_REGRESSOR",
                         "BOOSTED_TREE_CLASSIFIER",
+                        "ARIMA",
                         "AUTOML_REGRESSOR",
                         "AUTOML_CLASSIFIER"
                     ],
@@ -3989,6 +4077,19 @@
             },
             "type": "object"
         },
+        "SnapshotDefinition": {
+            "id": "SnapshotDefinition",
+            "properties": {
+                "baseTableReference": {
+                    "$ref": "TableReference"
+                },
+                "snapshotTime": {
+                    "format": "date-time",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "StandardSqlDataType": {
             "id": "StandardSqlDataType",
             "properties": {
@@ -4143,6 +4244,9 @@
                 },
                 "selfLink": {
                     "type": "string"
+                },
+                "snapshotDefinition": {
+                    "$ref": "SnapshotDefinition"
                 },
                 "streamingBuffer": {
                     "$ref": "Streamingbuffer"
@@ -4476,8 +4580,24 @@
         "TrainingOptions": {
             "id": "TrainingOptions",
             "properties": {
+                "autoArima": {
+                    "type": "boolean"
+                },
                 "batchSize": {
                     "format": "int64",
+                    "type": "string"
+                },
+                "dataFrequency": {
+                    "enum": [
+                        "DATA_FREQUENCY_UNSPECIFIED",
+                        "AUTO_FREQUENCY",
+                        "YEARLY",
+                        "QUARTERLY",
+                        "MONTHLY",
+                        "WEEKLY",
+                        "DAILY",
+                        "HOURLY"
+                    ],
                     "type": "string"
                 },
                 "dataSplitColumn": {
@@ -4527,6 +4647,87 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "holidayRegion": {
+                    "enum": [
+                        "HOLIDAY_REGION_UNSPECIFIED",
+                        "GLOBAL",
+                        "NA",
+                        "JAPAC",
+                        "EMEA",
+                        "LAC",
+                        "AE",
+                        "AR",
+                        "AT",
+                        "AU",
+                        "BE",
+                        "BR",
+                        "CA",
+                        "CH",
+                        "CL",
+                        "CN",
+                        "CO",
+                        "CS",
+                        "CZ",
+                        "DE",
+                        "DK",
+                        "DZ",
+                        "EC",
+                        "EE",
+                        "EG",
+                        "ES",
+                        "FI",
+                        "FR",
+                        "GB",
+                        "GR",
+                        "HK",
+                        "HU",
+                        "ID",
+                        "IE",
+                        "IL",
+                        "IN",
+                        "IR",
+                        "IT",
+                        "JP",
+                        "KR",
+                        "LV",
+                        "MA",
+                        "MX",
+                        "MY",
+                        "NG",
+                        "NL",
+                        "NO",
+                        "NZ",
+                        "PE",
+                        "PH",
+                        "PK",
+                        "PL",
+                        "PT",
+                        "RO",
+                        "RS",
+                        "RU",
+                        "SA",
+                        "SE",
+                        "SG",
+                        "SI",
+                        "SK",
+                        "TH",
+                        "TR",
+                        "TW",
+                        "UA",
+                        "US",
+                        "VE",
+                        "VN",
+                        "ZA"
+                    ],
+                    "type": "string"
+                },
+                "horizon": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "includeDrift": {
+                    "type": "boolean"
                 },
                 "initialLearnRate": {
                     "format": "double",
@@ -4607,6 +4808,9 @@
                 "modelUri": {
                     "type": "string"
                 },
+                "nonSeasonalOrder": {
+                    "$ref": "ArimaOrder"
+                },
                 "numClusters": {
                     "format": "int64",
                     "type": "string"
@@ -4629,6 +4833,15 @@
                 "subsample": {
                     "format": "double",
                     "type": "number"
+                },
+                "timeSeriesDataColumn": {
+                    "type": "string"
+                },
+                "timeSeriesIdColumn": {
+                    "type": "string"
+                },
+                "timeSeriesTimestampColumn": {
+                    "type": "string"
                 },
                 "userColumn": {
                     "type": "string"
