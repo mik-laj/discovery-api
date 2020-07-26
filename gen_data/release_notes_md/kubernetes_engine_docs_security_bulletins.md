@@ -23,6 +23,51 @@ page to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/kubernetes-engine-security-
 bulletins.xml `
 
+##  GCP-2020-011
+
+**Published:** 2020-07-24  
+Description  |  Severity  |  Notes  
+---|---|---  
+  
+A networking vulnerability, [ CVE-2020-8558
+](https://github.com/kubernetes/kubernetes/issues/92315) , was recently
+discovered in Kubernetes. Services sometimes communicate with other
+applications running inside the same Pod using the local loopback interface
+(127.0.0.1). This vulnerability allows an attacker with access to the
+cluster's network to send traffic to the loopback interface of adjacent Pods
+and nodes. Services that rely on the loopback interface not being accessible
+outside their Pod could be exploited.
+
+Exploiting this vulnerability on GKE clusters requires an attacker to have
+network administrator privileges on the Google Cloud hosting the cluster's
+VPC. This vulnerability alone does not give an attacker network administrator
+privileges. For this reason, this vulnerability has been assigned a Low
+severity for GKE.
+
+####  What should I do?
+
+To fix this vulnerability, [ upgrade ](/kubernetes-
+engine/docs/concepts/cluster-upgrades) your cluster's node pools to the
+following GKE versions (and later):
+
+  * 1.17.7-gke.0 
+  * 1.16.11-gke.0 
+  * 1.16.10-gke.11 
+  * 1.16.9-gke.14 
+
+####  What vulnerability is addressed by this patch?
+
+This patch fixes the following vulnerability: [ CVE-2020-8558
+](https://github.com/kubernetes/kubernetes/issues/92315) .
+
+|
+
+Low
+
+|
+
+[ CVE-2020-8558 ](https://github.com/kubernetes/kubernetes/issues/92315)  
+  
 ##  GCP-2020-009
 
 **Published:** 2020-07-15  Description  |  Severity  |  Notes  
