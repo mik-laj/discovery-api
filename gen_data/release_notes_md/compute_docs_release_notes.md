@@ -14,6 +14,23 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/compute-release-notes.xml `
 
+##  July 24, 2020
+
+**FEATURE:**
+
+  * NVIDIA® Tesla® T4 GPUs are now available in the following additional regions and zones: 
+
+    * Ashburn, Northern Virginia, USA: ` us-east4-b `
+
+For information about using T4 GPUs on Compute Engine, see [ GPUs on Compute
+Engine ](https://cloud.google.com/compute/docs/gpus/) .
+
+**FEATURE:**
+
+N2 machines are now available in Northern Virginia ` us-east4-c ` . Read more
+information on the [ VM instance pricing
+](https://cloud.google.com/compute/vm-instance-pricing#n2_machine_types) page.
+
 ##  July 21, 2020
 
 **FEATURE:**
