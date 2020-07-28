@@ -11,6 +11,14 @@
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/gaestd-py-release-notes.xml `
 
+##  July 23, 2020
+
+**FEATURE:**
+
+[ Serverless VPC Access support for Shared VPC
+](https://cloud.google.com/appengine/docs/standard/python3/connecting-
+vpc?hl=zh_cn#shared-vpc) is now available in Beta.
+
 ##  July 08, 2020
 
 **FEATURE:**
