@@ -40,6 +40,716 @@ For a comprehensive list, see the
    </section>
    <section class="releases">
     <section class="releases">
+     <h2 data-text="July 27, 2020" id="July_27_2020" tabindex="0">
+      July 27, 2020
+     </h2>
+     <strong class="release-note-product-title">
+      BigQuery
+     </strong>
+     <div class="release-feature" id="2a9a0985">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <code dir="ltr" translate="no">
+        INFORMATION_SCHEMA
+       </code>
+       views for
+       <a href="https://cloud.google.com/bigquery/docs/information-schema-streaming">
+        streaming metadata
+       </a>
+       are now in
+       <a href="https://cloud.google.com/products/?hl=EN#product-launch-stages">
+        alpha
+       </a>
+       . You can use these views to retrieve historical
+and real-time information about streaming data into BigQuery.
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      Cloud Run
+     </strong>
+     <div class="release-feature" id="3d30a1d9">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Cloud Run is now available in
+       <code dir="ltr" translate="no">
+        asia-southeast1
+       </code>
+       (Singapore)
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      Dataflow
+     </strong>
+     <div class="release-feature" id="00f82846">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Dataflow now
+       <a href="https://cloud.google.com/dataflow/pricing#pricing_details">
+        supports
+       </a>
+       Dataflow Shuffle, Streaming Engine, FlexRS, and the following
+       <a href="https://cloud.google.com/dataflow/docs/concepts/regional-endpoints">
+        regional endpoints
+       </a>
+       in GA:
+      </p>
+      <ul>
+       <li>
+        <code dir="ltr" translate="no">
+         northamerica-northeast1
+        </code>
+        (Montréal)
+       </li>
+       <li>
+        <code dir="ltr" translate="no">
+         asia-southeast1
+        </code>
+        (Singapore)
+       </li>
+       <li>
+        <code dir="ltr" translate="no">
+         australia-southeast1
+        </code>
+        (Sydney)
+       </li>
+      </ul>
+     </div>
+     <strong class="release-note-product-title">
+      Dialogflow
+     </strong>
+     <div class="release-feature" id="5f875bb6">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Beta launch of
+       <a href="https://cloud.google.com/dialogflow/docs/integrations/dialogflow-messenger">
+        Dialogflow Messenger
+       </a>
+       . This new integration provides a customizable chat dialog for your agent that can be embedded in your website.
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      Security Command Center
+     </strong>
+     <div class="release-deprecated" id="a7d689e2">
+      <strong>
+       DEPRECATED:
+      </strong>
+      <p>
+       Security Command Center v1beta1 API will be disabled on Jan. 31, 2021. All users will be required to migrate to Security Command Center v1 API, which is now in general availability.
+      </p>
+      <ul>
+       <li>
+        Update to Google-provided v1 API
+        <a href="https://cloud.google.com/apis/docs/client-libraries-explained">
+         client libraries
+        </a>
+        .
+       </li>
+       <li>
+        Move your client libraries and
+        <a href="https://github.com/googleapis/googleapis/blob/master/google/api/http.proto">
+         HTTP/grpc calls
+        </a>
+        to v1 by following instructions in the reference documentation for
+        <a href="https://cloud.google.com/security-command-center/docs/reference/rest#service-endpoint_2">
+         service
+endpoints
+        </a>
+        and
+        <a href="https://cloud.google.com/security-command-center/docs/how-to-programmatic-access">
+         SDK
+configuration
+        </a>
+        .
+       </li>
+       <li>
+        If you call this service using your own libraries, follow the guidance in our
+        <a href="https://cloud.google.com/security-command-center/docs/reference/rest#service:-securitycenter.googleapis.com_2">
+         Security Command Center API
+Overview
+        </a>
+        when making API requests.
+       </li>
+       <li>
+        To use
+        <code dir="ltr" translate="no">
+         ListFindings
+        </code>
+        calls in the v1 API, update your response handling to respond to an extra layer of object nesting, as shown below:
+        <ul>
+         <li>
+          v1beta1:
+          <code dir="ltr" translate="no">
+           response.getFindings().forEach( x -&gt; ....)
+          </code>
+         </li>
+         <li>
+          v1:
+          <code dir="ltr" translate="no">
+           response.getListFindingsResults().forEach(x -&gt; { x.getFinding(); .... })
+          </code>
+         </li>
+        </ul>
+       </li>
+      </ul>
+      <p>
+       Additional changes to the v1 API are listed below. Learn more about
+       <a href="https://cloud.google.com/security-command-center/docs/how-to#using-the-security-command-center-api">
+        Using the Security Command Center API
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-breaking" id="8cd62549">
+      <strong>
+       BREAKING:
+      </strong>
+      <p>
+       The
+       <code dir="ltr" translate="no">
+        SeverityLevel
+       </code>
+       finding source property for all Security Health Analytics findings will be removed and replaced with a field named
+       <code dir="ltr" translate="no">
+        Severity
+       </code>
+       , which retains the same values.
+*
+       <strong>
+        Impact:
+       </strong>
+       Finding notification filters, post-processing, and alerting based on the
+       <code dir="ltr" translate="no">
+        SeverityLevel
+       </code>
+       finding source property will no longer be possible.
+*
+       <strong>
+        Recommendation:
+       </strong>
+       Replace the
+       <code dir="ltr" translate="no">
+        SeverityLevel
+       </code>
+       finding source property with the
+       <code dir="ltr" translate="no">
+        Severity
+       </code>
+       finding attribute property to retain existing functionality.
+      </p>
+     </div>
+     <div class="release-breaking" id="e05d2987">
+      <strong>
+       BREAKING:
+      </strong>
+      <p>
+       The
+       <code dir="ltr" translate="no">
+        nodePools
+       </code>
+       finding source property will be removed from the
+       <code dir="ltr" translate="no">
+        OVER_PRIVILEGED_SCOPES
+       </code>
+       findings and replaced with a source property named
+       <code dir="ltr" translate="no">
+        VulnerableNodePools
+       </code>
+       .
+*
+       <strong>
+        Impact:
+       </strong>
+       Finding notification filters, post-processing and alerting based on this finding source property may fail. 
+*
+       <strong>
+        Recommendation:
+       </strong>
+       Modify workflows as necessary to utilize the new
+       <code dir="ltr" translate="no">
+        VulnerableNodePools
+       </code>
+       source property.
+      </p>
+     </div>
+     <div class="release-breaking" id="d54270ec">
+      <strong>
+       BREAKING:
+      </strong>
+      <p>
+       The finding category of
+       <code dir="ltr" translate="no">
+        2SV_NOT_ENFORCED
+       </code>
+       is being renamed
+       <code dir="ltr" translate="no">
+        MFA_NOT_ENFORCED
+       </code>
+       .
+*
+       <strong>
+        Impact:
+       </strong>
+       Case-sensitive finding notification filters, post-processing, and alerting based on the previous finding category name may fail. 
+*
+       <strong>
+        Recommendation:
+       </strong>
+       Update any post-processing to use the new category name.
+      </p>
+     </div>
+     <div class="release-breaking" id="3b1b045b">
+      <strong>
+       BREAKING:
+      </strong>
+      <p>
+       The
+       <code dir="ltr" translate="no">
+        ExceptionInstructions
+       </code>
+       source property will be removed from all Security Health Analytics findings.
+*
+       <strong>
+        Impact:
+       </strong>
+       Finding notification filters, post-processing, and alerting based on the finding source property may fail.
+*
+       <strong>
+        In progress:
+       </strong>
+       A new property that will indicate the current state of findings is being developed.
+      </p>
+     </div>
+     <div class="release-breaking" id="50bf511b">
+      <strong>
+       BREAKING:
+      </strong>
+      <p>
+       The
+       <code dir="ltr" translate="no">
+        ProjectId
+       </code>
+       source property from all Security Health Analytics findings will be removed.
+*
+       <strong>
+        Impact:
+       </strong>
+       Finding notification filters, post-processing, and alerting based on the finding source property may fail.
+*
+       <strong>
+        Recommendation:
+       </strong>
+       Update workflows to utilize the project id in the
+       <code dir="ltr" translate="no">
+        resource.project_display_name
+       </code>
+       field of a
+       <code dir="ltr" translate="no">
+        ListFindingsResult
+       </code>
+       .
+      </p>
+     </div>
+     <div class="release-breaking" id="4fb85d02">
+      <strong>
+       BREAKING:
+      </strong>
+      <p>
+       The
+       <code dir="ltr" translate="no">
+        AssetSettings
+       </code>
+       finding source property from
+       <code dir="ltr" translate="no">
+        PUBLIC_SQL_INSTANCE
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        SQL_PUBLIC_IP
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        SSL_NOT_ENFORCED
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        AUTO_BACKUP_DISABLED
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        SQL_NO_ROOT_PASSWORD
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        SQL_WEAK_ROOT_PASSWORD
+       </code>
+       finding types will be removed, as it contains data duplicated from the asset entity.
+*
+       <strong>
+        Impact:
+       </strong>
+       Finding notification filters, post-processing, and alerting based on the finding source property will fail. 
+*
+       <strong>
+        Recommendation:
+       </strong>
+       Replacing the
+       <code dir="ltr" translate="no">
+        AssetSettings
+       </code>
+       finding source property with the
+       <code dir="ltr" translate="no">
+        Settings
+       </code>
+       resource property from the asset underlying the finding will retain existing functionality.
+      </p>
+     </div>
+     <div class="release-breaking" id="16a7955c">
+      <strong>
+       BREAKING:
+      </strong>
+      <p>
+       The
+       <code dir="ltr" translate="no">
+        Allowed
+       </code>
+       finding source property from
+       <code dir="ltr" translate="no">
+        OPEN_FIREWALL
+       </code>
+       findings will be replaced with changed a new field named
+       <code dir="ltr" translate="no">
+        ExternallyAccessibleProtocolsAndPorts
+       </code>
+       , which will contain a subset of the values from the
+       <code dir="ltr" translate="no">
+        Allowed
+       </code>
+       property.
+*
+       <strong>
+        Impact:
+       </strong>
+       Finding notification filters, post-processing, and alerting based on the finding source property will fail. 
+*
+       <strong>
+        Recommendation:
+       </strong>
+       Modify your workflows as necessary to utilize the new
+       <code dir="ltr" translate="no">
+        ExternallyAccessibleProtocolsAndPorts
+       </code>
+       source property.
+      </p>
+     </div>
+     <div class="release-breaking" id="a83cd073">
+      <strong>
+       BREAKING:
+      </strong>
+      <p>
+       The
+       <code dir="ltr" translate="no">
+        SourceRanges
+       </code>
+       finding source property from findings in OPEN_FIREWALL findings will be replaced with a new
+       <code dir="ltr" translate="no">
+        ExternalSourceRanges
+       </code>
+       , which will contain a subset of the values from the
+       <code dir="ltr" translate="no">
+        SourceRanges
+       </code>
+       property.
+*
+       <strong>
+        Impact:
+       </strong>
+       Finding notification filters, post-processing and alerting based on the finding source property will fail. 
+*
+       <strong>
+        Recommendation:
+       </strong>
+       Modify your workflows as necessary to utilize the new
+       <code dir="ltr" translate="no">
+        ExternalSourceRanges
+       </code>
+       source property.
+      </p>
+     </div>
+     <div class="release-breaking" id="4b54e1b5">
+      <strong>
+       BREAKING:
+      </strong>
+      <p>
+       As of Jan. 31, 2021, the
+       <code dir="ltr" translate="no">
+        UpdateFinding
+       </code>
+       API will no longer support storing string properties that are longer than 7,000 characters.
+*
+       <strong>
+        Impact:
+       </strong>
+       Calls to
+       <code dir="ltr" translate="no">
+        UpdateFinding
+       </code>
+       that seek to store string properties longer than 7,000 characters will be rejected with an invalid argument error.
+*
+       <strong>
+        Recommendation:
+       </strong>
+       Consider storing string properties longer than 7,000 characters as JSON structs or JSON lists. Learn more about
+       <a href="https://cloud.google.com/security-command-center/docs/reference/rest/v1/organizations.sources.findings#Finding">
+        writing findings
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-breaking" id="8fd24b5d">
+      <strong>
+       BREAKING:
+      </strong>
+      <p>
+       As of Sept. 1, 2020, the
+       <code dir="ltr" translate="no">
+        ListFindings
+       </code>
+       API will no longer support searching on finding properties that are longer than 7,000 characters.
+*
+       <strong>
+        Impact:
+       </strong>
+       Searches on strings that are longer than 7,000 characters will not return expected results. For example, if a partial string match filter has a match at the 7,005th character on a property in a finding, that finding will not be returned because that match is past the 7,000-character threshold. An exception will not be returned.
+*
+       <strong>
+        Recommendation:
+       </strong>
+       Customers can remove filter restrictions (e.g. x : "some-value") that are supposed to match very long properties. The results can then be filtered locally to remove findings whose strings do not match designated criteria. Learn more about
+       <a href="https://cloud.google.com/security-command-center/docs/how-to-api-list-findings#filtering_findings">
+        filtering findings
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="cae0a18c">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       The
+       <code dir="ltr" translate="no">
+        OffendingIamRoles
+       </code>
+       source property in extensions of IAM Scanner Configurations will use structured data instead of a JSON-formatted string.
+*
+       <strong>
+        Impact:
+       </strong>
+       Finding notification filters, post-processing, and alerting based on the finding source property will need to be updated to take advantage of the new data type on findings of the following categories:
+       <code dir="ltr" translate="no">
+        ADMIN_SERVICE_ACCOUNT
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        NON_ORG_IAM_MEMBER
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        PRIMITIVE_ROLES_USED
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        OVER_PRIVILEGED_SERVICE_ACCOUNT_USER
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        REDIS_ROLE_USED_ON_ORG
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        SERVICE_ACCOUNT_ROLE_SEPARATION
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        KMS_ROLE_SEPARATION
+       </code>
+       .
+*
+       <strong>
+        Recommendation:
+       </strong>
+       Update workflows to utilize the new data type.
+      </p>
+     </div>
+     <div class="release-changed" id="ef5ff24b">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       The
+       <code dir="ltr" translate="no">
+        QualifiedLogMetricNames
+       </code>
+       source property in specific
+       <code dir="ltr" translate="no">
+        Monitoring
+       </code>
+       findings from Security Health Analytics will use a list instead of a character-separated string value.
+*
+       <strong>
+        Impact:
+       </strong>
+       Finding notification filters, post-processing and alerting based on the finding source property will need to be updated to take advantage of the new data type for findings of the following categories:
+       <code dir="ltr" translate="no">
+        AUDIT_CONFIG_NOT_MONITORED
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        BUCKET_IAM_NOT_MONITORED
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        CUSTOM_ROLE_NOT_MONITORED
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        FIREWALL_NOT_MONITORED
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        NETWORK_NOT_MONITORED
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        OWNER_NOT_MONITORED
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        ROUTE_NOT_MONITORED
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        SQL_INSTANCE_NOT_MONITORED
+       </code>
+       .
+*
+       <strong>
+        Recommendation:
+       </strong>
+       Update workflows to utilize the new data type.
+      </p>
+     </div>
+     <div class="release-changed" id="ef2804ec">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       The
+       <code dir="ltr" translate="no">
+        AlertPolicyFailureReasons
+       </code>
+       source property in specific
+       <code dir="ltr" translate="no">
+        Monitoring
+       </code>
+       findings from Security Health Analytics will use a list instead of a character-separated string value.
+*
+       <strong>
+        Impact:
+       </strong>
+       Finding notification filters, post-processing and alerting based on the finding source property will need to be updated to take advantage of the new data type for findings of the following categories:
+       <code dir="ltr" translate="no">
+        AUDIT_CONFIG_NOT_MONITORED
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        BUCKET_IAM_NOT_MONITORED
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        CUSTOM_ROLE_NOT_MONITORED
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        FIREWALL_NOT_MONITORED
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        NETWORK_NOT_MONITORED
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        OWNER_NOT_MONITORED
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        ROUTE_NOT_MONITORED
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        SQL_INSTANCE_NOT_MONITORED
+       </code>
+       .
+*
+       <strong>
+        Recommendation:
+       </strong>
+       Update workflows to utilize the new data type.
+      </p>
+     </div>
+     <div class="release-changed" id="aa1dceac">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       The
+       <code dir="ltr" translate="no">
+        CompatibleFeatures
+       </code>
+       source property in
+       <code dir="ltr" translate="no">
+        WEAK_SSL_POLICY
+       </code>
+       findings will use a list instead of a character-separated string value.
+*
+       <strong>
+        Impact:
+       </strong>
+       Finding notification filters, post-processing, and alerting based on the finding source property will need to be updated to take advantage of the new data type for findings.
+*
+       <strong>
+        Recommendation:
+       </strong>
+       Update workflows to utilize the new data type.
+      </p>
+     </div>
+     <h2 data-text="July 25, 2020" id="July_25_2020" tabindex="0">
+      July 25, 2020
+     </h2>
+     <strong class="release-note-product-title">
+      Cloud Load Balancing
+     </strong>
+     <div class="release-changed" id="85cab8e9">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       The introductory period during which you could use Internal HTTP(S) Load Balancing without charge has ended. Starting July 25, 2020, your usage of Internal HTTP(S) Load Balancing will be
+       <a href="https://cloud.google.com/vpc/network-pricing#internal-https-lb">
+        billed to your project
+       </a>
+       .
+      </p>
+     </div>
      <h2 data-text="July 24, 2020" id="July_24_2020" tabindex="0">
       July 24, 2020
      </h2>
@@ -819,6 +1529,112 @@ regions and zones:
       </ul>
      </div>
      <strong class="release-note-product-title">
+      App Engine standard environment Go
+     </strong>
+     <div class="release-feature" id="265e6eda">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <a href="https://cloud.google.com/appengine/docs/standard/go/connecting-vpc#shared-vpc">
+        Serverless VPC Access support for Shared VPC
+       </a>
+       is now available in Beta.
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      App Engine standard environment Java
+     </strong>
+     <div class="release-feature" id="f12da1a1">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <a href="https://cloud.google.com/appengine/docs/standard/java/connecting-vpc#shared-vpc">
+        Serverless VPC Access support for Shared VPC
+       </a>
+       is now available in Beta.
+      </p>
+     </div>
+     <div class="release-feature" id="d60f03f0">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <a href="https://cloud.google.com/appengine/docs/standard/java11/connecting-vpc#shared-vpc">
+        Serverless VPC Access support for Shared VPC
+       </a>
+       is now available in Beta.
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      App Engine standard environment Node.js
+     </strong>
+     <div class="release-feature" id="19bccf5b">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <a href="https://cloud.google.com/appengine/docs/standard/nodejs/connecting-vpc#shared-vpc">
+        Serverless VPC Access support for Shared VPC
+       </a>
+       is now available in Beta.
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      App Engine standard environment PHP
+     </strong>
+     <div class="release-feature" id="b445f1fc">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <a href="https://cloud.google.com/appengine/docs/standard/php7/connecting-vpc#shared-vpc">
+        Serverless VPC Access support for Shared VPC
+       </a>
+       is now available in Beta.
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      App Engine standard environment Python
+     </strong>
+     <div class="release-feature" id="f4d3b222">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <a href="https://cloud.google.com/appengine/docs/standard/python/connecting-vpc#shared-vpc">
+        Serverless VPC Access support for Shared VPC
+       </a>
+       is now available in Beta.
+      </p>
+     </div>
+     <div class="release-feature" id="d7a1e6c9">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <a href="https://cloud.google.com/appengine/docs/standard/python3/connecting-vpc#shared-vpc">
+        Serverless VPC Access support for Shared VPC
+       </a>
+       is now available in Beta.
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      App Engine standard environment Ruby
+     </strong>
+     <div class="release-feature" id="c3a0f813">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <a href="https://cloud.google.com/appengine/docs/standard/ruby/connecting-vpc#shared-vpc">
+        Serverless VPC Access support for Shared VPC
+       </a>
+       is now available in Beta.
+      </p>
+     </div>
+     <strong class="release-note-product-title">
       Cloud Billing
      </strong>
      <div class="release-feature" id="8f7b6148">
@@ -834,6 +1650,20 @@ regions and zones:
         documentation
        </a>
        for more details.
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      Cloud Run
+     </strong>
+     <div class="release-feature" id="9de06489">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <a href="https://cloud.google.com/run/docs/configuring/connecting-vpc#shared-vpc">
+        Serverless VPC Access support for Shared VPC
+       </a>
+       is now available in Beta.
       </p>
      </div>
      <strong class="release-note-product-title">
