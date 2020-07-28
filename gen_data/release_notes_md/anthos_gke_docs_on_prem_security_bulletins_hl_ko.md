@@ -40,13 +40,13 @@ Kubernetes Engine(GKE) 제어 영역은 Kubernetes의 컨트롤러를 사용하�
 
 ####  이 패치로 어떤 취약점이 해결되나요?
 
-이러한 패치는 CVE-2020-8555 취약점을 완화합니다. 여러 제어 영역 강화 조치로 인해 악용이 어렵기 때문에 이 문제는 GKE에서
-'보통' 등급의 취약점으로 분류됩니다.
+이러한 패치는 CVE-2020-8555 취약점을 완화합니다. 악용을 방지하기 위한 여러 제어 영역 강화 조치로 이 문제는 GKE에서 '보통'
+등급의 취약점으로 분류됩니다.
 
-특정 볼륨 유형(GlusterFS, Quobyte, StorageFS, ScaleIO)이 내장된 Pod를 생성할 수 있는 권한이나
-StorageClass를 생성할 수 있는 권한을 보유한 공격자는 마스터의 호스트 네트워크에서 요청 본문을 제어하지 _않아도_ ` kube-
-controller-manager ` 에서 ` GET ` 요청 또는 ` POST ` 요청을 보내도록 만들 수 있습니다. 이러한 볼륨은
-GKE에서 거의 사용되지 않으므로 이러한 볼륨이 새로 사용되는 것을 감지 신호로 보면 유용합니다.
+특정 볼륨 유형(GlusterFS, Quobyte, StorageFS, ScaleIO)이 내장된 Pod 생성 또는 StorageClass
+생성 권한을 보유한 공격자는 마스터의 호스트 네트워크에서 요청 본문을 제어하지 _않아도_ ` kube-controller-manager `
+에서 ` GET ` 요청 또는 ` POST ` 요청을 보내도록 만들 수 있습니다. 이러한 볼륨은 GKE에서 거의 사용되지 않으므로 이러한
+볼륨이 새로 사용된 것은 유용한 감지 신호일 수 있습니다.
 
 로그처럼 ` GET/POST ` 의 결과를 공격자에게 반환하는 수단과 결합되면 민감한 정보 공개로 이어질 수 있습니다. 문제가 되는 스토리지
 드라이버를 업데이트하여 이러한 유출 가능성을 제거했습니다.
@@ -135,7 +135,7 @@ management/docs/concepts/policy-controller?hl=ko) 를 통해 기본적으로 또
 이 패치로 다음의 취약점이 완화됩니다.
 
 [ Kubernetes 문제 91507 ](https://github.com/kubernetes/kubernetes/issues/91507)
-에는 노드에서 IPv6 스택을 악의적으로 구성하고 노드 트래픽을 공격자가 제어하는 컨테이너로 리디렉션할 수 있는 ` CAP_NET_RAW `
+에는 노드에서 악성 IPv6 스택을 구성하고 노드 트래픽을 공격자가 제어하는 컨테이너로 리디렉션할 수 있는 ` CAP_NET_RAW `
 기능(기본 컨테이너 기능 모음에 포함되어 있음)의 취약점이 설명되어 있습니다. 공격자는 이 취약점을 이용해 노드에서 송/수신되는 트래픽을
 가로채거나 수정할 수 있습니다. 이 공격을 받으면 상호 TLS/SSH 트래픽(예: Kubelet과 API 서버 사이 또는 mTLS를 사용하는
 애플리케이션의 트래픽)을 읽거나 수정할 수 없습니다.
@@ -204,8 +204,8 @@ Kubernetes API 서버에 대한 네트워크 액세스 권한을 갖는 클라�
 ######  어떻게 해야 하나요?
 
 수정사항이 포함된 패치 버전이 제공되는 즉시 [ 클러스터를 업그레이드
-](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading-
-clusters?hl=ko) 하는 것이 좋습니다.
+](https://cloud.google.com/anthos/gke/docs/on-prem/how-
+to/upgrading?hl=ko#clusters) 하는 것이 좋습니다.
 
 수정사항이 포함된 패치 버전은 아래와 같습니다.
 
@@ -249,8 +249,8 @@ bin/cvename.cgi?name=CVE-2019-11253)
 가능한 빨리 이 취약점에 대한 패치가 포함된 [ 1.0.2-gke.3
 ](https://cloud.google.com/anthos/gke/docs/on-
 prem/downloads?hl=ko#gkectl_latest) 버전으로 [ 업그레이드
-](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading-
-clusters?hl=ko) 하는 것이 좋습니다.
+](https://cloud.google.com/anthos/gke/docs/on-prem/how-
+to/upgrading?hl=ko#clusters) 하는 것이 좋습니다.
 
 |
 
@@ -278,8 +278,8 @@ resources/) 인스턴스가 모든 네임스페이스에 존재하는 네임스�
 가능한 빨리 이 취약점에 대한 패치가 포함된 [ 1.0.2-gke.3
 ](https://cloud.google.com/anthos/gke/docs/on-
 prem/downloads?hl=ko#gkectl_latest) 버전으로 [ 업그레이드
-](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading-
-clusters?hl=ko) 하는 것이 좋습니다.
+](https://cloud.google.com/anthos/gke/docs/on-prem/how-
+to/upgrading?hl=ko#clusters) 하는 것이 좋습니다.
 
 ######  이 패치로 어떤 취약점이 해결되나요?
 
