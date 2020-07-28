@@ -12,6 +12,14 @@ python3?hl=ja) ことをおすすめします。
 URL ディレクトリ ` https://cloud.google.com/feeds/gaestd-py-release-notes.xml `
 を直接追加します。
 
+##  July 23, 2020
+
+**FEATURE:**
+
+[ Serverless VPC Access support for Shared VPC
+](https://cloud.google.com/appengine/docs/standard/python/connecting-
+vpc?hl=ja#shared-vpc) is now available in Beta.
+
 ##  July 08, 2020
 
 **FEATURE:**
