@@ -21,6 +21,15 @@ Feedreader ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
 einfügen oder die Feed-URL direkt hinzufügen: `
 https://cloud.google.com/feeds/dialogflow-release-notes.xml ` .
 
+##  July 27, 2020
+
+**FEATURE:**
+
+Beta launch of [ Dialogflow Messenger
+](https://cloud.google.com/dialogflow/docs/integrations/dialogflow-
+messenger?hl=de) . This new integration provides a customizable chat dialog
+for your agent that can be embedded in your website.
+
 ##  July 23, 2020
 
 **DEPRECATED:**
