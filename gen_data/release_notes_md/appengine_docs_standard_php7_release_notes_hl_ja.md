@@ -8,6 +8,14 @@
 URL ディレクトリ ` https://cloud.google.com/feeds/gaestd-php-release-notes.xml `
 を直接追加します。
 
+##  July 23, 2020
+
+**FEATURE:**
+
+[ Serverless VPC Access support for Shared VPC
+](https://cloud.google.com/appengine/docs/standard/php7/connecting-
+vpc?hl=ja#shared-vpc) is now available in Beta.
+
 ##  July 08, 2020
 
 **FEATURE:**
