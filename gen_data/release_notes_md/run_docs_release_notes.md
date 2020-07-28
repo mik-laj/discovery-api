@@ -12,6 +12,20 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/run-release-notes.xml `
 
+##  July 27, 2020
+
+**FEATURE:**
+
+Cloud Run is now available in ` asia-southeast1 ` (Singapore)
+
+##  July 23, 2020
+
+**FEATURE:**
+
+[ Serverless VPC Access support for Shared VPC
+](https://cloud.google.com/run/docs/configuring/connecting-vpc#shared-vpc) is
+now available in Beta.
+
 ##  July 21, 2020
 
 **FEATURE:**
