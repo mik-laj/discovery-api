@@ -10,6 +10,14 @@ página a tu [ lector de feeds
 directamente la URL del feed: ` https://cloud.google.com/feeds/gaestd-java-
 release-notes.xml `
 
+##  July 23, 2020
+
+**FEATURE:**
+
+[ Serverless VPC Access support for Shared VPC
+](https://cloud.google.com/appengine/docs/standard/java/connecting-
+vpc?hl=es-419#shared-vpc) is now available in Beta.
+
 ##  July 17, 2020
 
 **CHANGED:**
