@@ -10,6 +10,14 @@ cn) 现已正式发布。
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/gaestd-go-release-notes.xml `
 
+##  July 23, 2020
+
+**FEATURE:**
+
+[ Serverless VPC Access support for Shared VPC
+](https://cloud.google.com/appengine/docs/standard/go/connecting-vpc?hl=zh-
+cn#shared-vpc) is now available in Beta.
+
 ##  July 08, 2020
 
 **FEATURE:**
