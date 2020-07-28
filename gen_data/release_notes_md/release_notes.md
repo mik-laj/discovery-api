@@ -12,6 +12,224 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  July 27, 2020
+
+**BigQuery**
+
+**FEATURE:**
+
+` INFORMATION_SCHEMA ` views for [ streaming metadata
+](https://cloud.google.com/bigquery/docs/information-schema-streaming) are now
+in [ alpha ](https://cloud.google.com/products/?hl=EN#product-launch-stages) .
+You can use these views to retrieve historical and real-time information about
+streaming data into BigQuery.
+
+**Cloud Run**
+
+**FEATURE:**
+
+Cloud Run is now available in ` asia-southeast1 ` (Singapore)
+
+**Dataflow**
+
+**FEATURE:**
+
+Dataflow now [ supports
+](https://cloud.google.com/dataflow/pricing#pricing_details) Dataflow Shuffle,
+Streaming Engine, FlexRS, and the following [ regional endpoints
+](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) in GA:
+
+  * ` northamerica-northeast1 ` (Montréal) 
+  * ` asia-southeast1 ` (Singapore) 
+  * ` australia-southeast1 ` (Sydney) 
+
+**Dialogflow**
+
+**FEATURE:**
+
+Beta launch of [ Dialogflow Messenger
+](https://cloud.google.com/dialogflow/docs/integrations/dialogflow-messenger)
+. This new integration provides a customizable chat dialog for your agent that
+can be embedded in your website.
+
+**Security Command Center**
+
+**DEPRECATED:**
+
+Security Command Center v1beta1 API will be disabled on Jan. 31, 2021. All
+users will be required to migrate to Security Command Center v1 API, which is
+now in general availability.
+
+  * Update to Google-provided v1 API [ client libraries ](https://cloud.google.com/apis/docs/client-libraries-explained) . 
+  * Move your client libraries and [ HTTP/grpc calls ](https://github.com/googleapis/googleapis/blob/master/google/api/http.proto) to v1 by following instructions in the reference documentation for [ service endpoints ](https://cloud.google.com/security-command-center/docs/reference/rest#service-endpoint_2) and [ SDK configuration ](https://cloud.google.com/security-command-center/docs/how-to-programmatic-access) . 
+  * If you call this service using your own libraries, follow the guidance in our [ Security Command Center API Overview ](https://cloud.google.com/security-command-center/docs/reference/rest#service:-securitycenter.googleapis.com_2) when making API requests. 
+  * To use ` ListFindings ` calls in the v1 API, update your response handling to respond to an extra layer of object nesting, as shown below: 
+    * v1beta1: ` response.getFindings().forEach( x -> ....) `
+    * v1: ` response.getListFindingsResults().forEach(x -> { x.getFinding(); .... }) `
+
+Additional changes to the v1 API are listed below. Learn more about [ Using
+the Security Command Center API ](https://cloud.google.com/security-command-
+center/docs/how-to#using-the-security-command-center-api) .
+
+**BREAKING:**
+
+The ` SeverityLevel ` finding source property for all Security Health
+Analytics findings will be removed and replaced with a field named ` Severity
+` , which retains the same values. * **Impact:** Finding notification filters,
+post-processing, and alerting based on the ` SeverityLevel ` finding source
+property will no longer be possible. * **Recommendation:** Replace the `
+SeverityLevel ` finding source property with the ` Severity ` finding
+attribute property to retain existing functionality.
+
+**BREAKING:**
+
+The ` nodePools ` finding source property will be removed from the `
+OVER_PRIVILEGED_SCOPES ` findings and replaced with a source property named `
+VulnerableNodePools ` . * **Impact:** Finding notification filters, post-
+processing and alerting based on this finding source property may fail. *
+**Recommendation:** Modify workflows as necessary to utilize the new `
+VulnerableNodePools ` source property.
+
+**BREAKING:**
+
+The finding category of ` 2SV_NOT_ENFORCED ` is being renamed `
+MFA_NOT_ENFORCED ` . * **Impact:** Case-sensitive finding notification
+filters, post-processing, and alerting based on the previous finding category
+name may fail. * **Recommendation:** Update any post-processing to use the new
+category name.
+
+**BREAKING:**
+
+The ` ExceptionInstructions ` source property will be removed from all
+Security Health Analytics findings. * **Impact:** Finding notification
+filters, post-processing, and alerting based on the finding source property
+may fail. * **In progress:** A new property that will indicate the current
+state of findings is being developed.
+
+**BREAKING:**
+
+The ` ProjectId ` source property from all Security Health Analytics findings
+will be removed. * **Impact:** Finding notification filters, post-processing,
+and alerting based on the finding source property may fail. *
+**Recommendation:** Update workflows to utilize the project id in the `
+resource.project_display_name ` field of a ` ListFindingsResult ` .
+
+**BREAKING:**
+
+The ` AssetSettings ` finding source property from ` PUBLIC_SQL_INSTANCE ` , `
+SQL_PUBLIC_IP ` , ` SSL_NOT_ENFORCED ` , ` AUTO_BACKUP_DISABLED ` , `
+SQL_NO_ROOT_PASSWORD ` , ` SQL_WEAK_ROOT_PASSWORD ` finding types will be
+removed, as it contains data duplicated from the asset entity. * **Impact:**
+Finding notification filters, post-processing, and alerting based on the
+finding source property will fail. * **Recommendation:** Replacing the `
+AssetSettings ` finding source property with the ` Settings ` resource
+property from the asset underlying the finding will retain existing
+functionality.
+
+**BREAKING:**
+
+The ` Allowed ` finding source property from ` OPEN_FIREWALL ` findings will
+be replaced with changed a new field named `
+ExternallyAccessibleProtocolsAndPorts ` , which will contain a subset of the
+values from the ` Allowed ` property. * **Impact:** Finding notification
+filters, post-processing, and alerting based on the finding source property
+will fail. * **Recommendation:** Modify your workflows as necessary to utilize
+the new ` ExternallyAccessibleProtocolsAndPorts ` source property.
+
+**BREAKING:**
+
+The ` SourceRanges ` finding source property from findings in OPEN_FIREWALL
+findings will be replaced with a new ` ExternalSourceRanges ` , which will
+contain a subset of the values from the ` SourceRanges ` property. *
+**Impact:** Finding notification filters, post-processing and alerting based
+on the finding source property will fail. * **Recommendation:** Modify your
+workflows as necessary to utilize the new ` ExternalSourceRanges ` source
+property.
+
+**BREAKING:**
+
+As of Jan. 31, 2021, the ` UpdateFinding ` API will no longer support storing
+string properties that are longer than 7,000 characters. * **Impact:** Calls
+to ` UpdateFinding ` that seek to store string properties longer than 7,000
+characters will be rejected with an invalid argument error. *
+**Recommendation:** Consider storing string properties longer than 7,000
+characters as JSON structs or JSON lists. Learn more about [ writing findings
+](https://cloud.google.com/security-command-
+center/docs/reference/rest/v1/organizations.sources.findings#Finding) .
+
+**BREAKING:**
+
+As of Sept. 1, 2020, the ` ListFindings ` API will no longer support searching
+on finding properties that are longer than 7,000 characters. * **Impact:**
+Searches on strings that are longer than 7,000 characters will not return
+expected results. For example, if a partial string match filter has a match at
+the 7,005th character on a property in a finding, that finding will not be
+returned because that match is past the 7,000-character threshold. An
+exception will not be returned. * **Recommendation:** Customers can remove
+filter restrictions (e.g. x : "some-value") that are supposed to match very
+long properties. The results can then be filtered locally to remove findings
+whose strings do not match designated criteria. Learn more about [ filtering
+findings ](https://cloud.google.com/security-command-center/docs/how-to-api-
+list-findings#filtering_findings) .
+
+**CHANGED:**
+
+The ` OffendingIamRoles ` source property in extensions of IAM Scanner
+Configurations will use structured data instead of a JSON-formatted string. *
+**Impact:** Finding notification filters, post-processing, and alerting based
+on the finding source property will need to be updated to take advantage of
+the new data type on findings of the following categories: `
+ADMIN_SERVICE_ACCOUNT ` , ` NON_ORG_IAM_MEMBER ` , ` PRIMITIVE_ROLES_USED ` ,
+` OVER_PRIVILEGED_SERVICE_ACCOUNT_USER ` , ` REDIS_ROLE_USED_ON_ORG ` , `
+SERVICE_ACCOUNT_ROLE_SEPARATION ` , ` KMS_ROLE_SEPARATION ` . *
+**Recommendation:** Update workflows to utilize the new data type.
+
+**CHANGED:**
+
+The ` QualifiedLogMetricNames ` source property in specific ` Monitoring `
+findings from Security Health Analytics will use a list instead of a
+character-separated string value. * **Impact:** Finding notification filters,
+post-processing and alerting based on the finding source property will need to
+be updated to take advantage of the new data type for findings of the
+following categories: ` AUDIT_CONFIG_NOT_MONITORED ` , `
+BUCKET_IAM_NOT_MONITORED ` , ` CUSTOM_ROLE_NOT_MONITORED ` , `
+FIREWALL_NOT_MONITORED ` , ` NETWORK_NOT_MONITORED ` , ` OWNER_NOT_MONITORED `
+, ` ROUTE_NOT_MONITORED ` , ` SQL_INSTANCE_NOT_MONITORED ` . *
+**Recommendation:** Update workflows to utilize the new data type.
+
+**CHANGED:**
+
+The ` AlertPolicyFailureReasons ` source property in specific ` Monitoring `
+findings from Security Health Analytics will use a list instead of a
+character-separated string value. * **Impact:** Finding notification filters,
+post-processing and alerting based on the finding source property will need to
+be updated to take advantage of the new data type for findings of the
+following categories: ` AUDIT_CONFIG_NOT_MONITORED ` , `
+BUCKET_IAM_NOT_MONITORED ` , ` CUSTOM_ROLE_NOT_MONITORED ` , `
+FIREWALL_NOT_MONITORED ` , ` NETWORK_NOT_MONITORED ` , ` OWNER_NOT_MONITORED `
+, ` ROUTE_NOT_MONITORED ` , ` SQL_INSTANCE_NOT_MONITORED ` . *
+**Recommendation:** Update workflows to utilize the new data type.
+
+**CHANGED:**
+
+The ` CompatibleFeatures ` source property in ` WEAK_SSL_POLICY ` findings
+will use a list instead of a character-separated string value. * **Impact:**
+Finding notification filters, post-processing, and alerting based on the
+finding source property will need to be updated to take advantage of the new
+data type for findings. * **Recommendation:** Update workflows to utilize the
+new data type.
+
+##  July 25, 2020
+
+**Cloud Load Balancing**
+
+**CHANGED:**
+
+The introductory period during which you could use Internal HTTP(S) Load
+Balancing without charge has ended. Starting July 25, 2020, your usage of
+Internal HTTP(S) Load Balancing will be [ billed to your project
+](https://cloud.google.com/vpc/network-pricing#internal-https-lb) .
+
 ##  July 24, 2020
 
 **Anthos GKE on AWS**
@@ -320,6 +538,66 @@ command.
 
   * During reboots, the data disk is not remounted on the admin workstation when using GKE on-prem 1.4.0 or 1.4.1 because the startup script is not run after the initial creation. To resolve this, you can run ` sudo mount /dev/sdb1 /home/ubuntu ` . 
 
+**App Engine standard environment Go**
+
+**FEATURE:**
+
+[ Serverless VPC Access support for Shared VPC
+](https://cloud.google.com/appengine/docs/standard/go/connecting-vpc#shared-
+vpc) is now available in Beta.
+
+**App Engine standard environment Java**
+
+**FEATURE:**
+
+[ Serverless VPC Access support for Shared VPC
+](https://cloud.google.com/appengine/docs/standard/java/connecting-vpc#shared-
+vpc) is now available in Beta.
+
+**FEATURE:**
+
+[ Serverless VPC Access support for Shared VPC
+](https://cloud.google.com/appengine/docs/standard/java11/connecting-
+vpc#shared-vpc) is now available in Beta.
+
+**App Engine standard environment Node.js**
+
+**FEATURE:**
+
+[ Serverless VPC Access support for Shared VPC
+](https://cloud.google.com/appengine/docs/standard/nodejs/connecting-
+vpc#shared-vpc) is now available in Beta.
+
+**App Engine standard environment PHP**
+
+**FEATURE:**
+
+[ Serverless VPC Access support for Shared VPC
+](https://cloud.google.com/appengine/docs/standard/php7/connecting-vpc#shared-
+vpc) is now available in Beta.
+
+**App Engine standard environment Python**
+
+**FEATURE:**
+
+[ Serverless VPC Access support for Shared VPC
+](https://cloud.google.com/appengine/docs/standard/python/connecting-
+vpc#shared-vpc) is now available in Beta.
+
+**FEATURE:**
+
+[ Serverless VPC Access support for Shared VPC
+](https://cloud.google.com/appengine/docs/standard/python3/connecting-
+vpc#shared-vpc) is now available in Beta.
+
+**App Engine standard environment Ruby**
+
+**FEATURE:**
+
+[ Serverless VPC Access support for Shared VPC
+](https://cloud.google.com/appengine/docs/standard/ruby/connecting-vpc#shared-
+vpc) is now available in Beta.
+
 **Cloud Billing**
 
 **FEATURE:**
@@ -332,6 +610,14 @@ includes list prices, pricing tiers, and, when applicable, any promotional or
 negotiated pricing. See the [ documentation
 ](https://cloud.google.com/billing/docs/how-to/export-data-bigquery) for more
 details.
+
+**Cloud Run**
+
+**FEATURE:**
+
+[ Serverless VPC Access support for Shared VPC
+](https://cloud.google.com/run/docs/configuring/connecting-vpc#shared-vpc) is
+now available in Beta.
 
 **Dialogflow**
 
