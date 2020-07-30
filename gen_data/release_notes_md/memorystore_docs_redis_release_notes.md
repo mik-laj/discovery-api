@@ -12,6 +12,14 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/memorystore-release-notes.xml `
 
+##  July 28, 2020
+
+**FEATURE:**
+
+Support for [ VPC Service Controls on Memorystore for Redis
+](https://cloud.google.com/memorystore/docs/redis/using-vpc-service-controls)
+is now Generally Available.
+
 ##  June 08, 2020
 
 **FEATURE:**
