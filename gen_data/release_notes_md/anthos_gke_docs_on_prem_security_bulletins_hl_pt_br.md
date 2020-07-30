@@ -25,7 +25,7 @@ página ao seu [ leitor de feeds
 
 ##  GCP-2020-007
 
-**Publicado em:** 01/06/2020  
+**Publicado:** 01/06/2020  
 Descrição  |  Gravidade  |  Notas  
 ---|---|---  
   
@@ -53,19 +53,19 @@ para uma versão que contenha a correção.
 ####  Qual vulnerabilidade é corrigida pelo patch?
 
 Esses patches mitigam a vulnerabilidade CVE-2020-8555. Ela é classificada como
-uma vulnerabilidade de gravidade média para o GKE devido à dificuldade de
-explorá-la, já que havia várias medidas de aumento de proteção do plano de
-controle.
+uma vulnerabilidade de gravidade média para o GKE, porque era difícil explorá-
+la já que havia várias medidas de aumento de proteção do plano de controle.
 
 Um invasor com permissões para criar um pod com determinados tipos de volume
 integrado (GlusterFS, Quobyte, StorageFS e ScaleIO) ou permissões para criar
 um StorageClass pode fazer com que ` kube-controller-manager ` crie
 solicitações ` GET ` ou ` POST ` _sem_ um corpo de solicitação controlado pelo
 invasor na rede do host do mestre. Esses tipos de volume raramente são usados
-no GKE, portanto, a reutilização deles pode ser um sinal de detecção útil.
+no GKE, então uma nova utilização deles pode ser um sinal útil para detectar
+problemas.
 
-Combinada com um vazamento dos resultados de ` GET/POST ` para o invasor (como
-por meio de registros), essa vulnerabilidade pode levar à divulgação de
+Combinado com um meio de vazar os resultados de ` GET/POST ` para o invasor,
+como por meio de registros, essa vulnerabilidade pode levar à divulgação de
 informações confidenciais. Atualizamos os drivers de armazenamento em questão
 para remover a possibilidade desses vazamentos acontecerem.
 
@@ -80,7 +80,7 @@ bin/cvename.cgi?name=CVE-2020-8555)
   
 ##  GCP-2020-006
 
-**Publicado em:** 01/06/2020  
+**Publicado:** 01/06/2020  
 Descrição  |  Gravidade  |  Notas  
 ---|---|---  
   
@@ -156,14 +156,15 @@ especificações de pod:
 
 O patch mitiga a seguinte vulnerabilidade:
 
-A vulnerabilidade descrita no recurso ` CAP_NET_RAW ` do [ problema 91507 do
-Kubernetes ](https://github.com/kubernetes/kubernetes/issues/91507) (em
-inglês), incluída no conjunto de recursos de contêiner padrão, que envolve
-configurar de forma mal-intencionada a pilha IPv6 no nó e redirecionar o
+A vulnerabilidade descrita na capacidade ` CAP_NET_RAW ` do [ problema 91507
+do Kubernetes ](https://github.com/kubernetes/kubernetes/issues/91507) (que
+está incluída no conjunto de capacidades de contêiner padrão) que envolve
+configurar de forma mal-intencionada a pilha do IPv6 no nó e redirecionar o
 tráfego do nó para o contêiner controlado pelo invasor. Isso permite que o
-invasor intercepte/modifique o tráfego proveniente do nó ou destinado a ele. O
-tráfego TLS/SSH mútuo, como entre o kubelet e o servidor da API, ou o tráfego
-de aplicativos que usam mTLS, não pode ser lido ou modificado por esse ataque.
+invasor intercepte/modifique o tráfego que se origina do nó ou se destina a
+ele. O tráfego mútuo TLS/SSH, como entre o kubelet e o servidor da API, ou o
+tráfego de aplicativos que usam mTLS não pode ser lido ou modificado por essa
+invasão.
 
 |
 
@@ -177,7 +178,7 @@ Média
   
 ##  GCP-2020-004
 
-Descrição  |  Gravidade  |  Notas  
+Descrição  |  Gravidade  |  Observações  
 ---|---|---  
   
 Uma vulnerabilidade foi descoberta no Kubernetes recentemente, descrita na [
@@ -239,9 +240,9 @@ rede aos servidores da API Kubernetes.
 ######  O que fazer?
 
 Recomendamos fazer [ upgrade do cluster
-](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading-
-clusters?hl=pt-br) para uma versão de patch com a correção assim que ela
-estiver disponível.
+](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=pt-
+br#clusters) para uma versão de patch com a correção assim que ela estiver
+disponível.
 
 As versões de patch que contêm a correção estão listadas abaixo:
 
@@ -285,7 +286,7 @@ seguintes componentes foram afetados:
 ######  O que fazer?
 
 Recomendamos [ fazer upgrade ](https://cloud.google.com/anthos/gke/docs/on-
-prem/how-to/upgrading-clusters?hl=pt-br) dos clusters para a versão [
+prem/how-to/upgrading?hl=pt-br#clusters) dos clusters para a versão [
 1.0.2-gke.3 ](https://cloud.google.com/anthos/gke/docs/on-
 prem/downloads?hl=pt-br#gkectl_latest) , que inclui o patch dessa
 vulnerabilidade, o mais rápido possível.
@@ -310,15 +311,15 @@ possibilita que instâncias de [ recursos personalizados
 ](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-
 resources/) com escopo no cluster sejam usadas como se fossem objetos de
 namespaces existentes em todos os namespaces. Isso significa que contas de
-usuários e de serviço com permissões apenas do RBAC de nível namespace podem
-interagir com recursos personalizados com escopo no cluster. A exploração
-dessa vulnerabilidade exige que o invasor tenha privilégios para acessar o
-recurso no namespace.
+usuários e de serviço com permissões apenas do RBAC de nível do namespace
+podem interagir com recursos personalizados com escopo no cluster. A
+exploração dessa vulnerabilidade exige que o invasor tenha privilégios para
+acessar o recurso no namespace.
 
 ######  O que fazer?
 
 Recomendamos [ fazer upgrade ](https://cloud.google.com/anthos/gke/docs/on-
-prem/how-to/upgrading-clusters?hl=pt-br) dos clusters para a versão [
+prem/how-to/upgrading?hl=pt-br#clusters) dos clusters para a versão [
 1.0.2-gke.3 ](https://cloud.google.com/anthos/gke/docs/on-
 prem/downloads?hl=pt-br#gkectl_latest) , que inclui o patch dessa
 vulnerabilidade, o mais rápido possível.
