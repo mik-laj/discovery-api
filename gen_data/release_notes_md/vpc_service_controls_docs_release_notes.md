@@ -12,6 +12,14 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/vpc-sc-release-notes.xml `
 
+##  July 28, 2020
+
+**FEATURE:**
+
+General availability for the following integration:
+
+  * [ Memorystore for Redis ](https://cloud.google.com/memorystore/docs/redis)
+
 ##  July 20, 2020
 
 **FEATURE:**
