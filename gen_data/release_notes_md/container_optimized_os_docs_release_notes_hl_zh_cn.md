@@ -2,12 +2,12 @@
 
 ##  当前活跃版本
 
-目前， ` cos-cloud ` 映像项目中提供了以下映像：  稳定版  |  Beta 版  |  开发版  
+目前， ` cos-cloud ` 映像项目中提供了以下映像：  稳定版  |  测试版  |  开发版  
 ---|---|---  
       
     
     
-    **cos-stable-81-12871-148-0**
+    **cos-stable-81-12871-181-0**
     Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/1d5bc45f886bc0308010614cdcdf658f5fb44a25)
     Kubernetes:     v1.17.6
     Docker:         v19.03.6
@@ -29,8 +29,8 @@
     
     
     
-    **cos-dev-85-13288-0-0**
-    Kernel:         [COS-4.19.127](https://cos.googlesource.com/third_party/kernel/+/f8649a7408c63f53937e33b0e8379679b0434849)
+    **cos-dev-86-15053-0-0**
+    Kernel:         [COS-5.4.49](https://cos.googlesource.com/third_party/kernel/+/43149c67d9eab8c02ce6958ec7867caba58b0af8)
     Kubernetes:     v1.18.3
     Docker:         v19.03.9
       
@@ -85,6 +85,130 @@ notes/m69?hl=zh-cn) |  2018 年 9 月 11 日  |  2019 年 12 月 11 日
 56  |  2017 年 1 月 31 日  |  2017 年 4 月 13 日  
   
 ##  更新日志
+
+###  cos-rc-85-13310-1015-0
+
+    
+    
+    Date:           Jul 15, 2020
+    Kernel:         [COS-5.4.49](https://cos.googlesource.com/third_party/kernel/+/43149c67d9eab8c02ce6958ec7867caba58b0af8)
+    Kubernetes:     v1.18.3
+    Docker:         v19.03.9
+    Changelog (vs 85-13310-12-0):
+        * Update tcp_keepalive_time to 300 seconds.
+    
+
+###  cos-stable-81-12871-181-0
+
+    
+    
+    Date:           Jul 13, 2020
+    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/1d5bc45f886bc0308010614cdcdf658f5fb44a25)
+    Kubernetes:     v1.17.6
+    Docker:         v19.03.6
+    Changelog (vs 81-12871-148-0):
+        * Added rsync back into the image, which was removed in
+    cos-dev-77-12293-0-0.
+        * Mount /var/lib/containerd with exec option.
+        * Fixed CVE-2019-9169.
+        * Enabled support for Confidential VMs.
+    
+
+###  cos-stable-77-12371-326-0
+
+    
+    
+    Date:           Jul 13, 2020
+    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/5d4ffd91281840f7a118143d77fbefb02e87943c)
+    Kubernetes:     v1.15.3
+    Docker:         v19.03.1
+    Changelog (vs 77-12371-296-0):
+        * Added rsync back into the image, which was removed in
+    cos-dev-77-12293-0-0.
+        * Mount /var/lib/containerd with exec option.
+        * Moved Kernel source to cos.googlesource.com.
+        * Fixed CVE-2019-9169.
+    
+
+###  cos-stable-73-11647-600-0
+
+    
+    
+    Date:           Jul 13, 2020
+    Kernel:         [COS-4.14.174](https://cos.googlesource.com/third_party/kernel/+/828d247eb816d42392dfcdbf0ec63b8e845f50bd)
+    Kubernetes:     v1.13.3
+    Docker:         v18.09.7
+    Changelog (vs 73-11647-559-0):
+        * Moved Kernel source to cos.googlesource.com.
+        * Mounted /var/lib/containerd with exec option.
+        * Fixed incorrect bprm->vma_pages prevent capturing all stack pages.
+    
+
+###  cos-dev-86-15053-0-0
+
+    
+    
+    Date:           Jul 09, 2020
+    Kernel:         [COS-5.4.49](https://cos.googlesource.com/third_party/kernel/+/43149c67d9eab8c02ce6958ec7867caba58b0af8)
+    Kubernetes:     v1.18.3
+    Docker:         v19.03.9
+    Changelog (vs 85-13288-0-0):
+        * Disabled CONFIG_PPP to mitigate Linux Kernel CVE-2020-14416.
+        * Enabled INIT_STACK_ALL kernel hardening option.
+        * Made /proc/self/mem readonly.
+        * Integrated KTD LSM into 5.4 kernel.
+        * Disabled hung_task_panic by default.
+        * Upgraded Konlet to v0.10.0
+        * Added rsync back into the image, which was removed in cos-dev-77-12293-0-0.
+        * Upgraded docker-credential-gcr to 2.0.1.
+        * Added FUSE userspace utilities.
+        * Added the cos-extensions-manager package.
+        * Updated tcp_keepalive_time to 300 seconds.
+        * Increased kdump memory reservation to 256M for 8G-16G instances.
+        * Enabled DEVTMFS_SAFE, which automounts devtmpfs with nosuid and noexec.
+        * Added sys-apps/nvme-cli package.
+        * Upgraded oslogin to v20200507.00.
+        * Made chrony the default NTP client.
+        * Added Google OS Config Agent.
+        * Upgraded the Linux kernel to v5.4.49.
+        * Mount /var/lib/containerd with exec option.
+        * Upgraded compute-image-packages to v20191210.
+        * Addressed CVE-2020-12049 in dbus.
+        * Fixed a bug that caused OS login to use excessive amounts of memory.
+        * Enabled support for Confidential VMs.
+    
+
+###  cos-rc-85-13310-12-0
+
+    
+    
+    Date:           Jul 09, 2020
+    Kernel:         [COS-5.4.49](https://cos.googlesource.com/third_party/kernel/+/43149c67d9eab8c02ce6958ec7867caba58b0af8)
+    Kubernetes:     v1.18.3
+    Docker:         v19.03.9
+    Changelog (vs 85-13288-0-0):
+        * Upgraded oslogin to v20200507.00.
+        * Mount /var/lib/containerd with exec option.
+        * Upgraded docker-credential-gcr to 2.0.1.
+        * Upgraded the Linux kernel to v5.4.49.
+        * Enabled INIT_STACK_ALL kernel hardening option.
+        * Made /proc/self/mem readonly.
+        * Upgraded compute-image-packages to v20191210.
+        * Added the cos-extensions-manager package.
+        * Added rsync back into the image, which was removed in cos-dev-77-12293-0-0.
+        * Added sys-apps/nvme-cli package.
+        * Integrated KTD LSM into 5.4 kernel.
+        * Upgraded Konlet to v0.10.0.
+        * Disabled hung_task_panic by default.
+        * Enabled DEVTMFS_SAFE, which automounts devtmpfs with nosuid and noexec.
+        * Increased kdump memory reservation to 256M for 8G-16G instances.
+        * Added FUSE userspace utilities.
+        * Added Google OS Config Agent.
+        * Made chrony the default NTP client.
+        * Addressed CVE-2020-12049 in dbus.
+        * Fixed a bug that caused OS login to use excessive amounts of memory.
+        * Enabled support for Confidential VMs.
+    
 
 ###  cos-dev-85-13288-0-0
 
