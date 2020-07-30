@@ -34,9 +34,9 @@ Kubernetes Engine（GKE）コントロール プレーンでは、Kubernetes
 
   * Anthos 1.3.0 
 
-以前のバージョンを使用している場合は、修正を含むバージョンに [ 既存のクラスタをアップグレード
+以前のバージョンを使用している場合は、修正が含まれているバージョンに [ 既存のクラスタをアップグレード
 ](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=ja)
-します。
+してください。
 
 ####  このパッチで対処される脆弱性
 
@@ -209,8 +209,8 @@ Kubernetes API サーバーにネットワーク アクセスできるクライ�
 ######  必要な対策
 
 修正を含むパッチ バージョンが公開されたら、直ちに [ クラスタをそのバージョンにアップグレード
-](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading-
-clusters?hl=ja) することをおすすめします。
+](https://cloud.google.com/anthos/gke/docs/on-prem/how-
+to/upgrading?hl=ja#clusters) することをおすすめします。
 
 この修正が含まれるパッチ バージョンは次のとおりです。
 
@@ -253,8 +253,8 @@ bin/cvename.cgi?name=CVE-2019-11253)
 
 クラスタをバージョン [ 1.0.2-gke.3 ](https://cloud.google.com/anthos/gke/docs/on-
 prem/downloads?hl=ja#gkectl_latest) に、できる限り早く [ アップグレード
-](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading-
-clusters?hl=ja) することをおすすめします。これには、この脆弱性に対するパッチが含まれています。
+](https://cloud.google.com/anthos/gke/docs/on-prem/how-
+to/upgrading?hl=ja#clusters) することをおすすめします。これには、この脆弱性に対するパッチが含まれています。
 
 |
 
@@ -282,8 +282,8 @@ Namespace のリソースにアクセスする権限が必要です。
 
 クラスタをバージョン [ 1.0.2-gke.3 ](https://cloud.google.com/anthos/gke/docs/on-
 prem/downloads?hl=ja#gkectl_latest) に、できる限り早く [ アップグレード
-](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading-
-clusters?hl=ja) することをおすすめします。これには、この脆弱性に対するパッチが含まれています。
+](https://cloud.google.com/anthos/gke/docs/on-prem/how-
+to/upgrading?hl=ja#clusters) することをおすすめします。これには、この脆弱性に対するパッチが含まれています。
 
 ######  このパッチで対処される脆弱性
 
