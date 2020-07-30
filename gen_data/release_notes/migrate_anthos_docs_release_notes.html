@@ -7,7 +7,8 @@
   </devsite-toc>
   <div class="devsite-article-body clearfix">
    <section class="intro">
-    This page documents production updates to Migrate for Anthos. You can
+    This page documents production updates to Migrate for Anthos.
+You can
 periodically check this page for announcements about new or updated features,
 bug fixes, known issues, and deprecated functionality.
    </section>
@@ -40,6 +41,443 @@ bug fixes, known issues, and deprecated functionality.
      </head>
      <body>
       <section class="releases">
+       <h2 data-text="July 28, 2020" id="July_06_2020" tabindex="0">
+        July 28, 2020
+       </h2>
+       <p>
+        On July 28, 2020 we released Migrate for Anthos 1.4.
+       </p>
+       <p>
+        For instructions on upgrading from version 1.3, see
+        <a href="/migrate/anthos/docs/upgrade">
+         Upgrading Migrate for Anthos to 1.4
+        </a>
+        .
+       </p>
+       <div class="release-feature" id="c2865f3c">
+        <strong>
+         FEATURE:
+        </strong>
+        <p>
+         Added support for Anthos GKE on-prem clusters running on VMware. On-prem support lets you migrate source VM workloads in a vCenter/vSphere environment to a GKE on-prem cluster running in the same vCenter/vSphere environment. See
+         <a href="/migrate/anthos/docs/migration-prerequisites-on-prem">
+          Prerequisites for migrating Linux VMs on-prem
+         </a>
+         for the requirements for on-prem migration.
+        </p>
+       </div>
+       <div class="release-feature" id="3d3db2fc">
+        <strong>
+         FEATURE:
+        </strong>
+        <p>
+         The
+         <a href="https://console.cloud.google.com/" target="console">
+          Google Cloud Console
+         </a>
+         provides a web-based, graphical user interface that you can use to manage your
+Google Cloud Console(GCP) projects and resources. Migrate for Anthos now supports the migration of
+workloads by using the
+         <a href="https://console.cloud.google.com/" target="console">
+          Google Cloud Console
+         </a>
+         . See
+         <a href="/migrate/anthos/docs/dev-env-overview">
+          Migrate for Anthos management interfaces
+         </a>
+         .
+        </p>
+        <p>
+         In this release, the Migrate for Anthos
+         <a href="https://console.cloud.google.com/" target="console">
+          Google Cloud Console
+         </a>
+         does not support migrations for Windows or for on-prem, including monitoring Windows or on-prem migrations.
+        </p>
+       </div>
+       <div class="release-feature" id="e7517713">
+        <strong>
+         FEATURE:
+        </strong>
+        <p>
+         You can use Migrate for Anthos to migrate Windows VMs to workloads on GKE. This process clones
+your Compute Engine VM disks and uses the clone to generate artifacts (including a Dockerfile and a
+zip archive with extracted workload files and settings) you can use to build a deployable container image.
+This feature is currently in Beta. See
+         <a href="/migrate/anthos/docs/windows/migrating-win-vm-overview">
+          Adding a Windows migration source
+         </a>
+         .
+        </p>
+       </div>
+       <div class="release-feature" id="cf6a3e4a">
+        <strong>
+         FEATURE:
+        </strong>
+        <p>
+         Migrate for Anthos now includes
+         <a class="external" href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/" target="_blank">
+          Custom Resource Definitions (CRDs)
+         </a>
+         that enable you to easily create and manage migrations using an API automation solution or code.
+For example, you can use these CRDs to build your own automated tools.
+        </p>
+        <p>
+         For more on the Migrate for Anthos CRDs, see
+         <a href="/migrate/anthos/docs/crd-overview">
+          CRD overview
+         </a>
+         .
+        </p>
+       </div>
+       <div class="release-feature" id="6db86860">
+        <strong>
+         FEATURE:
+        </strong>
+        <p>
+         Added the new
+         <code dir="ltr" translate="no">
+          --json-key sa.json
+         </code>
+         option to the
+         <code dir="ltr" translate="no">
+          migctl source create ce
+         </code>
+         command to create a migration for Compute Engine, where
+         <code dir="ltr" translate="no">
+          sa.json
+         </code>
+         specifies a service account. See
+         <a href="/migrate/anthos/docs/config-dev-env#optionally_creating_a_service_account_when_using_as_a_migration_source">
+          Optionally creating a service account when using Compute Engine as a migration source
+         </a>
+         for more.
+        </p>
+       </div>
+       <div class="release-feature" id="d8dc6e26">
+        <strong>
+         FEATURE:
+        </strong>
+        <p>
+         To edit the migration plan, you must now use the
+         <code dir="ltr" translate="no">
+          migctl migration get my-migration
+         </code>
+         command to download the plan. After you are done editing the plan, you have to upload it by using the
+         <code dir="ltr" translate="no">
+          migctl migration update my-migration
+         </code>
+         command. See
+         <a href="/migrate/anthos/docs/customizing-a-migration-plan">
+          Customizing a migration plan
+         </a>
+         for more.
+        </p>
+       </div>
+       <div class="release-feature" id="91db4254">
+        <strong>
+         FEATURE:
+        </strong>
+        <p>
+         Added the
+         <code dir="ltr" translate="no">
+          node-selectors
+         </code>
+         and
+         <code dir="ltr" translate="no">
+          tolerations
+         </code>
+         options to the
+         <code dir="ltr" translate="no">
+          migctl setup install
+         </code>
+         installation command that lets you install Migrate for Anthos  on a specific set of nodes or node pools in a cluster. See
+         <a href="/migrate/anthos/docs/installing-migrate-components">
+          Installing Migrate for Anthos
+         </a>
+         .
+        </p>
+       </div>
+       <div class="release-deprecated" id="4a3a9946">
+        <strong>
+         DEPRECATED:
+        </strong>
+        <p>
+         The
+         <code dir="ltr" translate="no">
+          migctl migration cleanup
+         </code>
+         command has been removed and is no longer necessary.
+        </p>
+       </div>
+       <div class="release-deprecated" id="3666dbe7">
+        <strong>
+         DEPRECATED:
+        </strong>
+        <p>
+         In previous releases, you used a command in the form:
+         <code dir="ltr" translate="no">
+          migctl source create ce my-ce-src --project my-project --zone zone
+         </code>
+         to create a migration for Compute Engine. The
+         <code dir="ltr" translate="no">
+          --zone
+         </code>
+         option has been removed when creating a Compute Engine migration. Using the
+         <code dir="ltr" translate="no">
+          --zone
+         </code>
+         option in this release causes an error.
+        </p>
+       </div>
+       <div class="release-deprecated" id="6e93d40f">
+        <strong>
+         DEPRECATED:
+        </strong>
+        <p>
+         The
+         <code dir="ltr" translate="no">
+          migctl migration logs
+         </code>
+         command has been removed. You now use the Google Console to view logs.
+        </p>
+       </div>
+       <div class="release-deprecated" id="d55da184">
+        <strong>
+         DEPRECATED:
+        </strong>
+        <p>
+         By default Migrate for Anthos installs to and performs migrations
+in the
+         <code dir="ltr" translate="no">
+          v2k-system
+         </code>
+         namespace. In previous releases, you could specify the namespace.
+The option to specify a namespace has been removed.
+        </p>
+       </div>
+       <div class="release-fixed" id="95090ad3">
+        <strong>
+         FIXED:
+        </strong>
+        <p>
+         <strong>
+          GKE on-prem preview:
+         </strong>
+         If a source was created with
+         <code dir="ltr" translate="no">
+          migctl source create
+         </code>
+         using the wrong credentials, you could not delete the migration with
+         <code dir="ltr" translate="no">
+          migctl migration delete
+         </code>
+         . This issue has been fixed in the GA release of on-prem support.
+        </p>
+       </div>
+       <div class="release-issue" id="4e03fb47">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         <strong>
+          160309992:
+         </strong>
+         Editing a migration plan from the GUI console might fail if it was also edited using
+         <code dir="ltr" translate="no">
+          migctl
+         </code>
+         .
+        </p>
+       </div>
+       <div class="release-issue" id="cd8327d1">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         <strong>
+          161135630:
+         </strong>
+         Attempting multiple migrations of the same remote VM (from VMware, AWS or Azure) simultaneously, might result in a stuck migration process.
+        </p>
+        <p>
+         <strong>
+          Workaround:
+         </strong>
+         Delete the stuck migration.
+        </p>
+       </div>
+       <div class="release-issue" id="1c37b26f">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         <strong>
+          161214397:
+         </strong>
+         For Anthos on-prem, in case of a missing service-account to upload container images to the Container Registry,
+the migration might get stuck.
+        </p>
+        <p>
+         <strong>
+          Workaround:
+         </strong>
+         Add the service-account. If you are using the Migrate for Anthos CRD API,
+delete the GenerateArtifactsTask object using
+         <code dir="ltr" translate="no">
+          kubectl
+         </code>
+         and recreate it either using the CRD or re-running
+         <code dir="ltr" translate="no">
+          migctl migration generate-artifacts
+         </code>
+         . Alternatively, you can use
+         <code dir="ltr" translate="no">
+          migctl
+         </code>
+         to delete the migration and recreate it. You can first download the migration YAML using
+         <code dir="ltr" translate="no">
+          migctl migration get
+         </code>
+         to backup any customizations you have made.
+        </p>
+       </div>
+       <div class="release-issue" id="db76862d">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         <strong>
+          161110816:
+         </strong>
+         <code dir="ltr" translate="no">
+          migctl migration create
+         </code>
+         with a source that doesn't exist fails with a non-informative error message:
+         <code dir="ltr" translate="no">
+          request was denied
+         </code>
+         .
+        </p>
+       </div>
+       <div class="release-issue" id="48b13b36">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         <strong>
+          161104564:
+         </strong>
+         Creating a Linux migration with wrong
+         <code dir="ltr" translate="no">
+          os-type
+         </code>
+         specification causes the migration process to get stuck until deleted.
+        </p>
+       </div>
+       <div class="release-issue" id="f450dfb1">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         <strong>
+          160858543, 160836394, 160844377, 154430477, 154403665, 153241390,153239696, 152408818, 151516642, 132002453:
+         </strong>
+         Unstable network in Migrate for Compute Engine infrastructure, or a GKE node restart, might cause migration to get stuck.
+        </p>
+        <p>
+         <strong>
+          Workaround:
+         </strong>
+         Delete the migration and re-create it.
+If recreating the migration does not solve the issue, please contact
+         <a href="https://cloud.google.com/support-hub#migrate-for-compute-engine-formerly-velostrata">
+          support
+         </a>
+         .
+        </p>
+       </div>
+       <div class="release-issue" id="ca588926">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         <strong>
+          161787358:
+         </strong>
+         In some cases, upgrading from version v1.3 to v1.4 might fail with
+         <code dir="ltr" translate="no">
+          Failed to convert source
+         </code>
+         message.
+        </p>
+        <p>
+         <strong>
+          Workaround:
+         </strong>
+         Re-run the upgrade command.
+        </p>
+       </div>
+       <div class="release-issue" id="75aa5722">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         <strong>
+          153811691, 153439420:
+         </strong>
+         Migrate for Anthos support for older Java does not handle
+OpenJDK 7 and 8 CPU resource calculations.
+        </p>
+       </div>
+       <div class="release-issue" id="b7c58a3c">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         <strong>
+          152974631:
+         </strong>
+         Using GKE nodes with CPU and Memory configurations below the recommended values might cause migrations to get stuck.
+        </p>
+       </div>
+       <div class="release-issue" id="2a0a2aa7">
+        <strong>
+         ISSUE:
+        </strong>
+        <p>
+         <strong>
+          157890913, 160082702, 161125635, 159693579
+         </strong>
+         :A migration might continue to indicate that it is running,
+while an issue encountered prevents further processing.
+        </p>
+        <p>
+         <strong>
+          Workaround:
+         </strong>
+         Check event messages on the migration object using the verbose
+         <code dir="ltr" translate="no">
+          migctl
+         </code>
+         status command:
+         <code dir="ltr" translate="no">
+          migclt migration status migration_name  -v
+         </code>
+         .
+You might be able to correct the issue to allow the migration to continue or the migration should
+be deleted and recreated if an Error event is listed without further retries.
+        </p>
+        <p>
+         An example is when creating a Windows migration on a cluster with no Windows nodes.
+In this case the event message will show:
+        </p>
+        <p>
+         <code dir="ltr" translate="no">
+          Warning FailedScheduling 10s Pod discover-xyz 0/1 nodes are available: 1 node(s) didn't match node selector.
+         </code>
+        </p>
+       </div>
        <h2 data-text="March 30, 2020" id="March_30_2020" tabindex="0">
         March 30, 2020
        </h2>
@@ -121,32 +559,6 @@ correct resource allocations in the container's /proc file system.
           Processing migrations in Anthos on-prem.
          </li>
         </ul>
-       </div>
-       <div class="release-issue" id="a39bea02">
-        <strong>
-         ISSUE:
-        </strong>
-        <p>
-         <strong>
-          151505531, 150052607:
-         </strong>
-         In some cases, migration can be stuck with no progress. When running
-         <code dir="ltr" translate="no">
-          migctl migration status migration-name --verbose
-         </code>
-         , you might see an event such as this:
-        </p>
-        <pre class="lang-sh" dir="ltr" translate="no">could not find attached GC⁣E PD</pre>
-        <p>
-         <strong>
-          Workaround:
-         </strong>
-         Delete the migration using
-         <code dir="ltr" translate="no">
-          migctl migration delete
-         </code>
-         and re-create it.
-        </p>
        </div>
        <div class="release-issue" id="9eb2bd94">
         <strong>
@@ -349,7 +761,7 @@ my-vm-01   generate-artifacts   createSourceSnapshots   TERMINATING   [2/13]</pr
         </p>
         <p>
          An error message now is now displayed to request that you update to
-         <a href="https://cloud.google.com/migrate/anthos/docs/yaml-reference">
+         <a href="/migrate/anthos/docs/yaml-reference">
           the latest definition
          </a>
          .
@@ -443,7 +855,7 @@ my-vm-01   generate-artifacts   createSourceSnapshots   TERMINATING   [2/13]</pr
         </strong>
         <p>
          Migrate for Anthos supports migrating existing VMware, Amazon EC2, Azure, and Compute Engine VMs to containers on Google Kubernetes Engine. For more information, see
-         <a href="https://cloud.google.com/migrate/anthos/docs/anthos-migrate-benefits">
+         <a href="/migrate/anthos/docs/anthos-migrate-benefits">
           Benefits of Migrate for Anthos
          </a>
          .
@@ -459,7 +871,7 @@ my-vm-01   generate-artifacts   createSourceSnapshots   TERMINATING   [2/13]</pr
           kubectl
          </code>
          . For more information, see
-         <a href="https://cloud.google.com/migrate/anthos/docs/export-storage">
+         <a href="/migrate/anthos/docs/export-storage">
           Exporting streaming PVs to permanent storage
          </a>
          .
@@ -475,7 +887,7 @@ my-vm-01   generate-artifacts   createSourceSnapshots   TERMINATING   [2/13]</pr
           ConfigMap
          </code>
          , you can have content from application log files you specify written to Stackdriver Logging (a default list is included). For more, see
-         <a href="https://cloud.google.com/migrate/anthos/docs/configuring-stackdriver-logging">
+         <a href="/migrate/anthos/docs/configuring-stackdriver-logging">
           Configuring logging to Stackdriver Logging
          </a>
          .
@@ -487,7 +899,7 @@ my-vm-01   generate-artifacts   createSourceSnapshots   TERMINATING   [2/13]</pr
         </strong>
         <p>
          For information on operating systems supported by Migrate for Anthos, see
-         <a href="https://cloud.google.com/migrate/anthos/docs/compatible-os-versions">
+         <a href="/migrate/anthos/docs/compatible-os-versions">
           Compatible VM operating systems
          </a>
          .
@@ -507,7 +919,7 @@ my-vm-01   generate-artifacts   createSourceSnapshots   TERMINATING   [2/13]</pr
         </strong>
         <p>
          For known issues and workarounds, see
-         <a href="https://cloud.google.com/migrate/anthos/docs/troubleshooting">
+         <a href="/migrate/anthos/docs/troubleshooting">
           Troubleshooting Migrate for Anthos
          </a>
          .
@@ -608,7 +1020,7 @@ my-vm-01   generate-artifacts   createSourceSnapshots   TERMINATING   [2/13]</pr
         </p>
         <p>
          To work around this, update your YAML file to conform to
-         <a href="https://cloud.google.com/migrate/anthos/docs/yaml-reference">
+         <a href="/migrate/anthos/docs/yaml-reference">
           the latest definition
          </a>
          .
