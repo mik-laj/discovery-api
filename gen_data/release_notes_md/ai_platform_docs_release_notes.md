@@ -35,7 +35,8 @@ now generally available.
 
 You can now train a PyTorch model on AI Platform Training by [ using a pre-
 built PyTorch container ](https://cloud.google.com/ai-
-platform/training/docs/getting-started-pytorch) .
+platform/training/docs/getting-started-pytorch) . Pre-built PyTorch containers
+are available in beta.
 
 ##  July 14, 2020
 
@@ -50,6 +51,18 @@ use a service perimeter to protect online prediction
 This functionality is in beta.
 
 ##  July 13, 2020
+
+**AI Platform Deep Learning VM Image**
+
+**FEATURE:**
+
+**M51 release**
+
+Allow removing ` sudo ` access from Deep Learning Containers.
+
+Debian-10-based images are released. You can create [ Shielded VM instances
+](https://cloud.google.com/security/shielded-cloud/shielded-vm) from these
+images.
 
 **AI Platform Training**
 
