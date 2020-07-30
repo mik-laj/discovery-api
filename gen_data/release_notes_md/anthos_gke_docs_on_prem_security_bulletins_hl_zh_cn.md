@@ -193,8 +193,8 @@ announce/jk8polzSUxs) 。
 ######  该怎么做？
 
 我们建议您在包含修复方案的补丁程序版本发布后，尽快将 [ 集群升级
-](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading-
-clusters?hl=zh-cn) 到相应补丁程序版本。
+](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=zh-
+cn#clusters) 到相应补丁程序版本。
 
 包含此修复的补丁程序版本如下所示：
 
@@ -235,7 +235,7 @@ bin/cvename.cgi?name=CVE-2019-11253)
 ######  该怎么做？
 
 我们建议您尽快将集群 [ 升级 ](https://cloud.google.com/anthos/gke/docs/on-prem/how-
-to/upgrading-clusters?hl=zh-cn) 到版本 [ 1.0.2-gke.3
+to/upgrading?hl=zh-cn#clusters) 到版本 [ 1.0.2-gke.3
 ](https://cloud.google.com/anthos/gke/docs/on-prem/downloads?hl=zh-
 cn#gkectl_latest) ，其中包含此漏洞的补丁程序。
 
@@ -262,7 +262,7 @@ resources/) 实例像存在于所有命名空间内的有命名空间对象一�
 ######  该怎么做？
 
 我们建议您尽快将集群 [ 升级 ](https://cloud.google.com/anthos/gke/docs/on-prem/how-
-to/upgrading-clusters?hl=zh-cn) 到版本 [ 1.0.2-gke.3
+to/upgrading?hl=zh-cn#clusters) 到版本 [ 1.0.2-gke.3
 ](https://cloud.google.com/anthos/gke/docs/on-prem/downloads?hl=zh-
 cn#gkectl_latest) ，其中包含此漏洞的补丁程序。
 
