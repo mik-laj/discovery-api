@@ -833,6 +833,7 @@
                     "type": "string"
                 },
                 "formattedType": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "formattedValue": {
@@ -936,6 +937,25 @@
             },
             "type": "object"
         },
+        "CalendarUrl": {
+            "id": "CalendarUrl",
+            "properties": {
+                "formattedType": {
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "FieldMetadata"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ContactGroup": {
             "id": "ContactGroup",
             "properties": {
@@ -943,6 +963,7 @@
                     "type": "string"
                 },
                 "formattedName": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "groupType": {
@@ -951,20 +972,24 @@
                         "USER_CONTACT_GROUP",
                         "SYSTEM_CONTACT_GROUP"
                     ],
+                    "readOnly": true,
                     "type": "string"
                 },
                 "memberCount": {
                     "format": "int32",
+                    "readOnly": true,
                     "type": "integer"
                 },
                 "memberResourceNames": {
                     "items": {
                         "type": "string"
                     },
+                    "readOnly": true,
                     "type": "array"
                 },
                 "metadata": {
-                    "$ref": "ContactGroupMetadata"
+                    "$ref": "ContactGroupMetadata",
+                    "readOnly": true
                 },
                 "name": {
                     "type": "string"
@@ -979,6 +1004,7 @@
             "id": "ContactGroupMembership",
             "properties": {
                 "contactGroupId": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "contactGroupResourceName": {
@@ -991,10 +1017,12 @@
             "id": "ContactGroupMetadata",
             "properties": {
                 "deleted": {
+                    "readOnly": true,
                     "type": "boolean"
                 },
                 "updateTime": {
                     "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -1108,6 +1136,7 @@
                     "type": "string"
                 },
                 "formattedType": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "metadata": {
@@ -1134,12 +1163,32 @@
                     "$ref": "Date"
                 },
                 "formattedType": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "metadata": {
                     "$ref": "FieldMetadata"
                 },
                 "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ExternalId": {
+            "id": "ExternalId",
+            "properties": {
+                "formattedType": {
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "FieldMetadata"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "value": {
                     "type": "string"
                 }
             },
@@ -1155,6 +1204,7 @@
                     "$ref": "Source"
                 },
                 "verified": {
+                    "readOnly": true,
                     "type": "boolean"
                 }
             },
@@ -1179,6 +1229,7 @@
                     "type": "string"
                 },
                 "formattedValue": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "metadata": {
@@ -1206,9 +1257,11 @@
             "id": "ImClient",
             "properties": {
                 "formattedProtocol": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "formattedType": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "metadata": {
@@ -1341,7 +1394,8 @@
                     "$ref": "ContactGroupMembership"
                 },
                 "domainMembership": {
-                    "$ref": "DomainMembership"
+                    "$ref": "DomainMembership",
+                    "readOnly": true
                 },
                 "metadata": {
                     "$ref": "FieldMetadata"
@@ -1389,9 +1443,11 @@
             "id": "Name",
             "properties": {
                 "displayName": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "displayNameLastFirst": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "familyName": {
@@ -1488,6 +1544,7 @@
                     "$ref": "Date"
                 },
                 "formattedType": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "jobDescription": {
@@ -1536,12 +1593,14 @@
                         "EIGHTEEN_TO_TWENTY",
                         "TWENTY_ONE_OR_OLDER"
                     ],
+                    "readOnly": true,
                     "type": "string"
                 },
                 "ageRanges": {
                     "items": {
                         "$ref": "AgeRangeType"
                     },
+                    "readOnly": true,
                     "type": "array"
                 },
                 "biographies": {
@@ -1562,10 +1621,17 @@
                     },
                     "type": "array"
                 },
+                "calendarUrls": {
+                    "items": {
+                        "$ref": "CalendarUrl"
+                    },
+                    "type": "array"
+                },
                 "coverPhotos": {
                     "items": {
                         "$ref": "CoverPhoto"
                     },
+                    "readOnly": true,
                     "type": "array"
                 },
                 "emailAddresses": {
@@ -1580,6 +1646,12 @@
                 "events": {
                     "items": {
                         "$ref": "Event"
+                    },
+                    "type": "array"
+                },
+                "externalIds": {
+                    "items": {
+                        "$ref": "ExternalId"
                     },
                     "type": "array"
                 },
@@ -1620,7 +1692,8 @@
                     "type": "array"
                 },
                 "metadata": {
-                    "$ref": "PersonMetadata"
+                    "$ref": "PersonMetadata",
+                    "readOnly": true
                 },
                 "names": {
                     "items": {
@@ -1656,6 +1729,7 @@
                     "items": {
                         "$ref": "Photo"
                     },
+                    "readOnly": true,
                     "type": "array"
                 },
                 "relations": {
@@ -1668,12 +1742,14 @@
                     "items": {
                         "$ref": "RelationshipInterest"
                     },
+                    "readOnly": true,
                     "type": "array"
                 },
                 "relationshipStatuses": {
                     "items": {
                         "$ref": "RelationshipStatus"
                     },
+                    "readOnly": true,
                     "type": "array"
                 },
                 "residences": {
@@ -1701,6 +1777,7 @@
                     "items": {
                         "$ref": "Tagline"
                     },
+                    "readOnly": true,
                     "type": "array"
                 },
                 "urls": {
@@ -1722,12 +1799,14 @@
             "id": "PersonMetadata",
             "properties": {
                 "deleted": {
+                    "readOnly": true,
                     "type": "boolean"
                 },
                 "linkedPeopleResourceNames": {
                     "items": {
                         "type": "string"
                     },
+                    "readOnly": true,
                     "type": "array"
                 },
                 "objectType": {
@@ -1736,12 +1815,14 @@
                         "PERSON",
                         "PAGE"
                     ],
+                    "readOnly": true,
                     "type": "string"
                 },
                 "previousResourceNames": {
                     "items": {
                         "type": "string"
                     },
+                    "readOnly": true,
                     "type": "array"
                 },
                 "sources": {
@@ -1776,9 +1857,11 @@
             "id": "PhoneNumber",
             "properties": {
                 "canonicalForm": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "formattedType": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "metadata": {
@@ -1817,6 +1900,7 @@
                         "PERSON",
                         "PAGE"
                     ],
+                    "readOnly": true,
                     "type": "string"
                 },
                 "userTypes": {
@@ -1829,6 +1913,7 @@
                         ],
                         "type": "string"
                     },
+                    "readOnly": true,
                     "type": "array"
                 }
             },
@@ -1838,6 +1923,7 @@
             "id": "Relation",
             "properties": {
                 "formattedType": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "metadata": {
@@ -1856,6 +1942,7 @@
             "id": "RelationshipInterest",
             "properties": {
                 "formattedValue": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "metadata": {
@@ -1871,6 +1958,7 @@
             "id": "RelationshipStatus",
             "properties": {
                 "formattedValue": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "metadata": {
@@ -1920,6 +2008,7 @@
             "id": "SipAddress",
             "properties": {
                 "formattedType": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "metadata": {
@@ -1956,7 +2045,8 @@
                     "type": "string"
                 },
                 "profileMetadata": {
-                    "$ref": "ProfileMetadata"
+                    "$ref": "ProfileMetadata",
+                    "readOnly": true
                 },
                 "type": {
                     "enum": [
@@ -1972,6 +2062,7 @@
                 },
                 "updateTime": {
                     "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -2059,6 +2150,7 @@
             "id": "Url",
             "properties": {
                 "formattedType": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "metadata": {
