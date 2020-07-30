@@ -46,15 +46,16 @@ Fehlerkorrektur für diese Sicherheitslücke:
 
   * Anthos 1.3.0 
 
-Wenn Sie eine Vorgängerversion verwenden, [ aktualisieren Sie den vorhandenen
+Wenn Sie eine frühere Version verwenden, [ aktualisieren Sie Ihren vorhandenen
 Cluster ](https://cloud.google.com/anthos/gke/docs/on-prem/how-
-to/upgrading?hl=de) auf eine Version, die die Fehlerbehebung enthält.
+to/upgrading?hl=de) auf eine Version, die das Update enthält.
 
 ####  Welche Sicherheitslücke wird mit diesem Patch behoben?
 
-Diese Patches verringern die Sicherheitslücke CVE-2020-8555. Dies wird als
-mittlere Sicherheitslücke für GKE eingestuft, da es aufgrund verschiedener
-Härtungsmaßnahmen auf Steuerungsebene schwierig auszunutzen war.
+Diese Patches beheben die Sicherheitslücke CVE-2020-8555. Diese
+Sicherheitslücke wird in GKE mit dem Schweregrad "Mittel" bewertet, da sie
+aufgrund verschiedener Härtungsmaßnahmen der Steuerungsebene nur schwer
+ausgenutzt werden konnte.
 
 Ein Angreifer mit Berechtigungen zum Erstellen eines Pods mit bestimmten
 integrierten Volume-Typen (GlusterFS, Quobyte, StorageFS, ScaleIO) oder
@@ -240,9 +241,9 @@ Clients Netzwerkzugriff auf Ihre Kubernetes API-Server haben.
 ######  Was soll ich tun?
 
 Wir empfehlen ein [ Upgrade Ihrer Cluster
-](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading-
-clusters?hl=de) auf eine Patchversion, die den Fehler behebt, sobald sie
-verfügbar ist.
+](https://cloud.google.com/anthos/gke/docs/on-prem/how-
+to/upgrading?hl=de#clusters) auf eine Patchversion, die den Fehler behebt,
+sobald sie verfügbar ist.
 
 Die Patchversionen, die das Update enthalten, sind unten aufgeführt:
 
@@ -286,8 +287,8 @@ Clusternetzwerks verfügbar. Die folgenden Komponenten waren betroffen:
 ######  Was soll ich tun?
 
 Wir empfehlen Ihnen, [ ein Upgrade
-](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading-
-clusters?hl=de) Ihrer Cluster auf Version [ 1.0.2-gke.3
+](https://cloud.google.com/anthos/gke/docs/on-prem/how-
+to/upgrading?hl=de#clusters) Ihrer Cluster auf Version [ 1.0.2-gke.3
 ](https://cloud.google.com/anthos/gke/docs/on-
 prem/downloads?hl=de#gkectl_latest) auszuführen, die den Patch für diese
 Sicherheitslücke so schnell wie möglich enthält.
@@ -321,8 +322,8 @@ einem Namespace.
 ######  Was soll ich tun?
 
 Wir empfehlen Ihnen, [ ein Upgrade
-](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading-
-clusters?hl=de) Ihrer Cluster auf Version [ 1.0.2-gke.3
+](https://cloud.google.com/anthos/gke/docs/on-prem/how-
+to/upgrading?hl=de#clusters) Ihrer Cluster auf Version [ 1.0.2-gke.3
 ](https://cloud.google.com/anthos/gke/docs/on-
 prem/downloads?hl=de#gkectl_latest) auszuführen, die den Patch für diese
 Sicherheitslücke so schnell wie möglich enthält.
@@ -334,7 +335,7 @@ Der Patch entschärft die Sicherheitslücke [ CVE-2019-11247
 
 |
 
-Mittelgroß
+Mittel
 
 |
 
