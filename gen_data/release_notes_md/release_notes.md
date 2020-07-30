@@ -12,6 +12,208 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  July 28, 2020
+
+**Compute Engine**
+
+**CHANGED:**
+
+Improved validation checks will be introduced on API calls to `
+compute.googleapis.com ` starting on August 3, 2020 to increase reliability
+and REST API compliance of the Compute Engine platform for all users. Learn
+how to [ Validate API Requests
+](https://cloud.google.com/compute/docs/api/how-tos/api-requests-
+responses#validating_api_requests) to ensure your requests are properly
+formed.
+
+**Memorystore for Redis**
+
+**FEATURE:**
+
+Support for [ VPC Service Controls on Memorystore for Redis
+](https://cloud.google.com/memorystore/docs/redis/using-vpc-service-controls)
+is now Generally Available.
+
+**Migrate for Anthos**
+
+**DEPRECATED:**
+
+The ` migctl migration cleanup ` command has been removed and is no longer
+necessary.
+
+**DEPRECATED:**
+
+In previous releases, you used a command in the form: ` migctl source create
+ce my-ce-src --project my-project --zone zone ` to create a migration for
+Compute Engine. The ` --zone ` option has been removed when creating a Compute
+Engine migration. Using the ` --zone ` option in this release causes an error.
+
+**DEPRECATED:**
+
+The ` migctl migration logs ` command has been removed. You now use the Google
+Console to view logs.
+
+**FEATURE:**
+
+Added the new ` --json-key sa.json ` option to the ` migctl source create ce `
+command to create a migration for Compute Engine, where ` sa.json ` specifies
+a service account. See [ Optionally creating a service account when using
+Compute Engine as a migration source ](/release-notes/config-dev-
+env#optionally_creating_a_service_account_when_using_as_a_migration_source)
+for more.
+
+**FEATURE:**
+
+To edit the migration plan, you must now use the ` migctl migration get my-
+migration ` command to download the plan. After you are done editing the plan,
+you have to upload it by using the ` migctl migration update my-migration `
+command. See [ Customizing a migration plan ](/release-notes/customizing-a-
+migration-plan) for more.
+
+**FEATURE:**
+
+Added support for Anthos GKE on-prem clusters running on VMware. On-prem
+support lets you migrate source VM workloads in a vCenter/vSphere environment
+to a GKE on-prem cluster running in the same vCenter/vSphere environment. See
+[ Migration prerequisites ](/release-notes/migration-prerequisites) for the
+requirements for on-prem migration.
+
+**FEATURE:**
+
+The Google Cloud Console provides a web-based, graphical user interface that
+you can use to manage your Google Cloud Console projects and resources.
+Migrate for Anthos now supports the migration of workloads by using the Google
+Cloud Console.
+
+In this release, the Migrate for Anthos on the Cloud Consoledoes not support
+migrations for Windows or for on-prem, including monitoring Windows or on-prem
+migrations.
+
+**FEATURE:**
+
+Migrate for Anthos now includes [ Custom Resource Definitions (CRDs)
+](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-
+resources/) that enable you to easily create and manage migrations using an
+API. For example, you can use these CRDs to build your own automated tools.
+
+**FEATURE:**
+
+Added the ` node-selectors ` and ` tolerations ` options to the ` migctl setup
+install ` installation command that lets you install Migrate for Anthos on a
+specific set of nodes or node pools in a cluster. See [ Installing Migrate for
+Anthos ](https://cloud.google.com/migrate/anthos/docs/installing-migrate-
+components) .
+
+**FEATURE:**
+
+You can use Migrate for Anthos to migrate Windows VMs to workloads on GKE.
+This process clones your Compute Engine VM disks and uses the clone to
+generate artifacts (including a Dockerfile and a zip archive with extracted
+workload files and settings) you can use to build a deployable GKE image. See
+[ Adding a Windows migration source ](/release-notes/windows/migrating-win-vm-
+overview) .
+
+**ISSUE:**
+
+**160309992:** Editing a migration plan from the GUI console might fail if it
+was also edited using ` migctl ` .
+
+**ISSUE:**
+
+**161135630:** Attempting multiple migrations of the same remote VM (from
+VMware, AWS or Azure) simultaneously, might result in a stuck migration
+process.
+
+**Workaround:** Delete the stuck migration.
+
+**ISSUE:**
+
+**161214397:** For Anthos on-prem, in case of a missing service-account to
+upload container images to the Container Registry, the migration might get
+stuck.
+
+**Workaround:** Add the service-account. If you are using the Migrate for
+Anthos CRD API, delete the GenerateArtifactsTask and recreate it. If using the
+` migctl ` CLI tool, delete the migration and recreate it. You can first
+download the migration YAML using ` migctl migration get ` to back up any
+customizations you have made.
+
+**ISSUE:**
+
+**161110816:** ` migctl migration create ` with a source that doesn't exist
+fails with a non-informative error message: ` request was denied ` .
+
+**ISSUE:**
+
+**161104564:** Creating a Linux migration with wrong ` os-type ` specification
+causes the migration process to get stuck until deleted.
+
+**ISSUE:**
+
+**160858543, 160836394, 160844377, 154430477, 154403665, 153241390, 153239696,
+152408818, 151516642, 132002453:** Unstable network in Migrate for Anthos
+infrastructure, or a GKE node restart, might cause migration to get stuck.
+
+**Workaround:** Delete the migration and re-create it. If recreating the
+migration does not solve the issue, please contact [ support
+](https://cloud.google.com/support-hub#migrate-for-compute-engine-formerly-
+velostrata) .
+
+**ISSUE:**
+
+**161787358:** In some cases, upgrading from version v1.3 to v1.4 might fail
+with ` Failed to convert source ` message.
+
+**Workaround:** Re-run the upgrade command.
+
+**ISSUE:**
+
+**153811691, 153439420:** Migrate for Anthos support for older Java does not
+handle OpenJDK 7 and 8 CPU resource calculations.
+
+**ISSUE:**
+
+**152974631:** Using GKE nodes with CPU and Memory configurations below the
+recommended values might cause migrations to get stuck.
+
+**FIXED:**
+
+**GKE on-prem preview:** If a source was created with ` migctl source create `
+using the wrong credentials, you could not delete the migration with ` migctl
+migration delete ` . This issue has been fixed in the GA release of on-prem
+support.
+
+**DEPRECATED:**
+
+In version 1.4, by default Migrate for Anthos installs to and performs
+migrations in the ` v2k-system ` namespace. In previous release, you could
+specify the namespace. The option to specify a namespace has been removed.
+
+**ISSUE:**
+
+**157890913, 160082702, 161125635, 159693579** : A migration might continue to
+indicate that it is running, while an issue encountered prevents further
+processing.
+
+**Workaround** : Check event messages on the migration object using the
+verbose ` migctl ` status command: ` migclt migration status migration_name -v
+` . You might be able to correct the issue to allow the migration to continue
+or the migration should be deleted and recreated if an Error event is listed
+without further retries.
+
+An example is when creating a Windows migration on a cluster with no Windows
+nodes. In this case the event message will show: ` Warning FailedScheduling
+10s Pod discover-xyz 0/1 nodes are available: 1 node(s) didn't match node
+selector. `
+
+**VPC Service Controls**
+
+**FEATURE:**
+
+General availability for the following integration:
+
+  * [ Memorystore for Redis ](https://cloud.google.com/memorystore/docs/redis)
+
 ##  July 27, 2020
 
 **BigQuery**
@@ -611,6 +813,14 @@ negotiated pricing. See the [ documentation
 ](https://cloud.google.com/billing/docs/how-to/export-data-bigquery) for more
 details.
 
+**Cloud Functions**
+
+**FEATURE:**
+
+[ Serverless VPC Access support for Shared VPC
+](https://cloud.google.com/functions/docs/networking/connecting-vpc#shared-
+vpc) is now available in Beta.
+
 **Cloud Run**
 
 **FEATURE:**
@@ -1108,7 +1318,11 @@ support for the following integration:
 
 **M51 release**
 
-` sudo ` access removed from Deep Learning Containers.
+Allow removing ` sudo ` access from Deep Learning Containers.
+
+Debian-10-based images are released. You can create [ Shielded VM instances
+](https://cloud.google.com/security/shielded-cloud/shielded-vm) from these
+images.
 
 **AI Platform Training**
 
@@ -1814,268 +2028,4 @@ new service accounts ](https://cloud.google.com/resource-
 manager/docs/organization-policy/restricting-service-
 accounts#disable_service_account_default_grants) has launched into general
 availability.
-
-##  June 30, 2020
-
-**Anthos Service Mesh**
-
-**FEATURE:**
-
-1.6.4-asm.9 is now available.
-
-**FEATURE:**
-
-ASM 1.6 is compatible with and has the feature set of Istio 1.6 (see [ Istio
-release notes ](https://istio.io/latest/news/releases/1.6.x/announcing-1.6/)
-), subject to the list of [ ASM Supported Features
-](https://cloud.google.com/service-mesh/docs/supported-features) .
-
-**FIXED:**
-
-1.5.7-asm.0 and 1.4.10-asm.3
-
-Fixes the security issue, [ ISTIO-SECURITY-2020-007
-](https://istio.io/latest/news/security/istio-security-2020-007/) , with the
-same fixes as Istio 1.6.4. For information, see the [ Istio release notes
-](https://istio.io/latest/news/releases/1.6.x/announcing-1.6.4/) .
-
-**Description**
-
-The vulnerability affects Anthos Service Mesh (ASM) versions 1.4.0 to 1.4.10,
-1.5.0 to 1.5.5, and 1.6.4 whether running in Anthos GKE on-prem or on GKE,
-potentially exposing your application to Denial of Service (DOS) attacks. This
-vulnerability is referenced in these publicly disclosed Istio security
-bulletins:
-
-  * [ ISTIO-SECURITY-2020-007 ](https://istio.io/news/security/istio-security-2020-007/) : 
-    * CVE-2020-12603 (CVSS score 7.0, High): Envoy through 1.14.1 may consume excessive amounts of memory when proxying HTTP/2 requests or responses with many small (e.g., 1 byte) data frames. 
-    * CVE-2020-12605 (CVSS score 7.0, High): Envoy through 1.14.1 may consume excessive amounts of memory when processing HTTP/1.1 headers with long field names or requests with long URLs. 
-    * CVE-2020-8663 (CVSS score 7.0, High): Envoy version 1.14.1 or earlier may exhaust file descriptors and/or memory when accepting too many connections. 
-    * CVE-2020-12604 (CVSS score 7.0, High): Envoy through 1.14.1 is susceptible to increased memory usage in the case where an HTTP/2 client requests a large payload but does not send enough window updates to consume the entire stream and does not reset the stream. The attacker can cause data associated with many streams to be buffered forever. 
-
-**Mitigation**
-
-If you use ASM 1.6.4: * Apply the additional configuration changes specified
-in [ ISTIO-SECURITY-2020-007 ](https://istio.io/latest/news/security/istio-
-security-2020-007/) to prevent Denial of Service (DOS) attacks on your mesh.
-
-If you use ASM 1.4.0 to 1.4.10 or 1.5.0 to 1.5.5: * Upgrade your clusters to
-ASM 1.4.10-asm.3 or ASM 1.5.7-asm.0 as soon as possible and apply the
-additional configuration changes specified in [ ISTIO-SECURITY-2020-007
-](https://istio.io/latest/news/security/istio-security-2020-007/) to prevent
-Denial of Service (DOS) attacks on your mesh.
-
-  * See the following documentation for how to upgrade your Anthos Service Mesh. 
-
-    * ASM 1.5 for GKE and on-premises, respectively: 
-    * [ Upgrading Anthos Service Mesh on GKE ](https://cloud.google.com/service-mesh/docs/upgrading-gke)
-    * [ Upgrading Anthos Service Mesh on-prem ](https://cloud.google.com/service-mesh/docs/gke-on-prem-upgrading)
-
-    * ASM 1.4 for GKE and on-premises, respectively: 
-
-    * [ Upgrading Anthos Service Mesh on GKE ](https://cloud.google.com/service-mesh/docs/archive/1.4/docs/upgrading-gke-1-4)
-
-    * [ Upgrading Anthos Service Mesh on-prem ](https://cloud.google.com/service-mesh/docs/archive/1.4/docs/gke-on-prem-upgrading-1-4)
-
-**FEATURE:**
-
-Anthos Service Mesh now supports multi-cluster meshes (beta) when running on
-GKE on Google Cloud.
-
-**FEATURE:**
-
-Users that configure multiple clusters in their mesh can now see unified,
-multi-cluster views of their services in the Anthos Service Mesh pages in the
-Cloud Console. Note that multi-cluster support is in Beta and not all UI
-features are supported in multi-cluster mode.
-
-**FEATURE:**
-
-ASM 1.6 is supported in a single cluster configuration in Anthos Attached
-Clusters in the following environments: Amazon Elastic Kubernetes Service
-(EKS) and Microsoft Azure Kubernetes Service (AKS).
-
-**CHANGED:**
-
-The profile to install ASM in GKE has been renamed from ` asm ` to ` asm-gcp `
-, see [ Upgrading Anthos Service Mesh on GKE
-](https://cloud.google.com/service-mesh/docs/upgrading-gke) . The profile to
-install ASM in GKE on-premise clusters has been renamed from ` asm-onprem ` to
-` asm-multicloud ` , see [ Upgrading Anthos Service Mesh on premises
-](https://cloud.google.com/service-mesh/docs/gke-on-prem-upgrading) .
-
-**FEATURE:**
-
-In the ` asm-multicloud ` profile, ASM now installs a complete observability
-stack (Prometheus, Grafana and Kiali).
-
-**FEATURE:**
-
-Support for cross-cluster load balancing (beta) for your [ multi-cluster mesh
-](https://cloud.google.com/service-mesh/docs/gke-install-multi-cluster) for
-GKE on Google Cloud.
-
-**FEATURE:**
-
-New installation guides: [ Installing Anthos Service Mesh on attached clusters
-](https://cloud.google.com/service-mesh/docs/attached-clusters-install) and [
-Adding clusters to an Anthos Service Mesh ](https://cloud.google.com/service-
-mesh/docs/gke-install-multi-cluster) .
-
-**FEATURE:**
-
-Anthos Service Mesh now supports cross-cluster security policies (beta) for
-your [ multi-cluster mesh ](https://cloud.google.com/service-mesh/docs/gke-
-install-multi-cluster) when running on GKE on Google Cloud.
-
-**FEATURE:**
-
-Upgrade from ASM 1.5 to ASM 1.6 without downtime using a [ dual control plane
-upgrade ](https://istio.io/latest/blog/2020/multiple-control-planes/) .
-
-**BREAKING:**
-
-Known Issue: If you upgrade from Istio to ASM 1.6 and have set SLOs on your
-service metrics, those SLOs might be lost and need to be recreated after the
-upgrade.
-
-**Cloud Build**
-
-**FEATURE:**
-
-Cloud Build now provides open-source notifiers for [ Slack
-](https://cloud.google.com/cloud-build/docs/configuring-
-notifications/configure-slack) and [ SMTP ](https://cloud.google.com/cloud-
-build/docs/configuring-notifications/configure-smtp) . These notifiers can be
-configured to securely alert users about build status.
-
-**Cloud Composer**
-
-**FEATURE:**
-
-Cloud Composer support for [ VPC Service Controls
-](https://cloud.google.com/composer/docs/configuring-vpc-sc) is now in Beta.
-
-**Cloud Logging**
-
-**FEATURE:**
-
-Cloud Logging now contains a Logs Dashboard page that provides a high-level
-overview into the health of your systems running within a project. To learn
-more, see [ Logs Dashboard
-](https://cloud.google.com/logging/docs/view/dashboard) .
-
-**Cloud Run**
-
-**CHANGED:**
-
-Cloud Run (fully managed) support for [ connecting to a VPC network
-](https://cloud.google.com/run/docs/configuring/connecting-vpc) with [
-Serverless VPC Access ](https://cloud.google.com/vpc/docs/configure-
-serverless-vpc-access) is now at general availability (GA).
-
-**Google Cloud VMware Engine**
-
-**FEATURE:**
-
-[ Google Cloud VMware Engine ](https://cloud.google.com/vmware-engine/) is
-**generally available** . This service delivers a fully managed VMware
-platform stack—VMware ESXi, vCenter, vSAN, NSX-T, and HCX—in a dedicated
-environment on Google Cloud's infrastructure to support your enterprise
-production workloads. Using VMware Engine, you can bring your on-premises
-workloads to Google Cloud by connecting to a dedicated VMware environment.
-
-You can run the service in the ` us-east4 ` (Ashburn, Northern Virginia) and `
-us-west2 ` (Los Angeles, California) regions.
-
-For more information, read the [ VMware Engine documentation
-](https://cloud.google.com/vmware-engine/docs/) .
-
-**VPC Service Controls**
-
-**FEATURE:**
-
-General availability of dry run mode for service perimeters.
-
-This release introduces dry run configurations for your service perimeters,
-allowing you to test changes to perimeters before enforcing the changes. For
-more information, [ read about dry run mode ](https://cloud.google.com/vpc-
-service-controls/docs/dry-run-mode) .
-
-**FEATURE:**
-
-Beta release of the VPC Service Controls Troubleshooter.
-
-The VPC Service Controls Troubleshooter allows you to use the unique
-identifiers generated by VPC Service Controls errors to understand and resolve
-common denials to services in your perimeters.
-
-During the beta period, the following error types are supported:
-
-  * ` NO_MATCHING_ACCESS_LEVEL `
-  * ` NETWORK_NOT_IN_SAME_SERVICE_PERIMETER `
-  * ` NO_MATCHING_ACCESS_LEVEL `
-
-For more information, read about [ the VPC Service Controls Troubleshooter
-](https://cloud.google.com/vpc-service-controls/docs/troubleshooter) .
-
-**FEATURE:**
-
-[ Beta stage ](https://cloud.google.com/products/#product-launch-stages)
-support for the following integrations:
-
-  * [ Cloud Composer ](https://cloud.google.com/vpc-service-controls/docs/supported-products#table_composer)
-  * [ Cloud Healthcare API ](https://cloud.google.com/vpc-service-controls/docs/supported-products#table_healthcare)
-
-##  June 29, 2020
-
-**BigQuery**
-
-**FEATURE:**
-
-[ Flex slots ](https://cloud.google.com/bigquery/docs/reservations-
-concepts#commitment_plans) are now [ generally available (GA)
-](https://cloud.google.com/products/?hl=EN#product-launch-stages) .
-
-**CHANGED:**
-
-The [ BigQuery SLA ](https://cloud.google.com/bigquery/sla) has been updated
-to >= 99.99% Monthly Uptime Percentage for all users.
-
-**Cloud Debugger**
-
-**FEATURE:**
-
-Cloud Debugger now lets you canary snapshots and logpoints on your Node.js
-applications. To learn more, see the [ Node.js page for setting up Cloud
-Debugger ](https://cloud.google.com/debugger/docs/setup/nodejs) .
-
-**Cloud Load Balancing**
-
-**FEATURE:**
-
-You can now [ create an internal HTTP(S) load balancer in a Shared VPC
-_service_ project ](https://cloud.google.com/load-
-balancing/docs/l7-internal#shared_vpc) .
-
-This feature is available in **Alpha** . Please contact your Google account
-team to get access to this feature.
-
-**Cloud Run**
-
-**FEATURE:**
-
-Cloud Run is now available in the following regions:
-
-  * ` asia-northeast2 ` (Osaka) 
-  * ` australia-southeast1 ` (Sydney) 
-  * ` northamerica-northeast1 ` (Montréal) 
-
-**Dialogflow**
-
-**DEPRECATED:**
-
-The V1 API is in the process of a gradual shutdown. See the [ November 14,
-2019 release note ](https://cloud.google.com/dialogflow/docs/release-
-notes#November_14_2019) for details.
 
