@@ -12,6 +12,12 @@ Docker  |  v19.03.6
   
 ##  Changelog
 
+###  cos-81-12871-1160-0
+
+_Date: July 24, 2020_
+
+  * Updated node problem detector to 0.8.1 
+
 ###  cos-81-12871-181-0
 
 _Date: July 13, 2020_
