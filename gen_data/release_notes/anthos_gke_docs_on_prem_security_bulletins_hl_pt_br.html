@@ -40,7 +40,7 @@
      GCP-2020-007
     </h2>
     <strong>
-     Publicado em:
+     Publicado:
     </strong>
     01/06/2020
     <br/>
@@ -95,10 +95,14 @@
          Qual vulnerabilidade é corrigida pelo patch?
         </h4>
         <p>
-         Esses patches mitigam a vulnerabilidade CVE-2020-8555. Ela é classificada como uma vulnerabilidade de gravidade média para o GKE devido à dificuldade de explorá-la, já que havia várias medidas de aumento de proteção do plano de controle.
+         Esses patches mitigam a vulnerabilidade CVE-2020-8555. Ela é classificada
+      como uma vulnerabilidade de gravidade média para o GKE, porque era difícil
+      explorá-la já que havia várias medidas de aumento de proteção do plano de controle.
         </p>
         <p>
-         Um invasor com permissões para criar um pod com determinados tipos de volume integrado (GlusterFS, Quobyte, StorageFS e ScaleIO) ou permissões para criar um StorageClass pode fazer com que
+         Um invasor com permissões para criar um pod com determinados
+      tipos de volume integrado (GlusterFS, Quobyte, StorageFS e ScaleIO) ou
+      permissões para criar um StorageClass pode fazer com que
          <code dir="ltr" translate="no">
           kube-controller-manager
          </code>
@@ -113,14 +117,19 @@
          <em>
           sem
          </em>
-         um corpo de solicitação controlado pelo invasor na rede do host do mestre. Esses tipos de volume raramente são usados no GKE, portanto, a reutilização deles pode ser um sinal de detecção útil.
+         um corpo de solicitação controlado pelo invasor
+      na rede do host do mestre. Esses tipos de volume raramente são usados no
+      GKE, então uma nova utilização deles pode ser um
+      sinal útil para detectar problemas.
         </p>
         <p>
-         Combinada com um vazamento dos resultados de
+         Combinado com um meio de vazar os resultados de
          <code dir="ltr" translate="no">
           GET/POST
          </code>
-         para o invasor (como por meio de registros), essa vulnerabilidade pode levar à divulgação de informações confidenciais. Atualizamos os drivers de armazenamento em questão para remover a possibilidade desses vazamentos acontecerem.
+         para o invasor, como por meio de registros, essa vulnerabilidade pode levar à divulgação
+      de informações confidenciais. Atualizamos os drivers de armazenamento em
+      questão para remover a possibilidade desses vazamentos acontecerem.
         </p>
        </td>
        <td>
@@ -142,7 +151,7 @@
      GCP-2020-006
     </h2>
     <strong>
-     Publicado em:
+     Publicado:
     </strong>
     01/06/2020
     <br/>
@@ -173,7 +182,7 @@
         e o tráfego de aplicativos que usam mTLS não podem ser lidos ou
         modificados por esse ataque. Todos os nós do Google Kubernetes Engine (GKE) são afetados por essa vulnerabilidade, portanto, recomendamos um upgrade para a versão mais recente do patch, conforme detalhado abaixo.
         </p>
-        <h4 data-text="O que fazer?" id="what-should-i-do_1" tabindex="0">
+        <h4 data-text=" O que fazer?" id="what-should-i-do_1" tabindex="0">
          O que fazer?
         </h4>
         Para mitigar essa vulnerabilidade no Anthos GKE On-Prem (GKE On-Prem), faça
@@ -269,7 +278,7 @@ spec:
          O patch mitiga a seguinte vulnerabilidade:
         </p>
         <p>
-         A vulnerabilidade descrita no recurso
+         A vulnerabilidade descrita na capacidade
          <code dir="ltr" translate="no">
           CAP_NET_RAW
          </code>
@@ -277,7 +286,11 @@ spec:
          <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
           problema 91507 do Kubernetes
          </a>
-         (em inglês), incluída no conjunto de recursos de contêiner padrão, que envolve configurar de forma mal-intencionada a pilha IPv6 no nó e redirecionar o tráfego do nó para o contêiner controlado pelo invasor. Isso permite que o invasor intercepte/modifique o tráfego proveniente do nó ou destinado a ele. O tráfego TLS/SSH mútuo, como entre o kubelet e o servidor da API, ou o tráfego de aplicativos que usam mTLS, não pode ser lido ou modificado por esse ataque.
+         (que está incluída no conjunto de capacidades de contêiner padrão) que envolve configurar de forma mal-intencionada a pilha do IPv6 no nó e redirecionar
+o tráfego do nó para o contêiner controlado pelo invasor. Isso permite que o invasor
+intercepte/modifique o tráfego que se origina do nó ou se destina a ele. O tráfego
+mútuo TLS/SSH, como entre o kubelet e o servidor da API, ou o tráfego de
+aplicativos que usam mTLS não pode ser lido ou modificado por essa invasão.
         </p>
        </td>
        <td>
@@ -309,7 +322,7 @@ spec:
         Gravidade
        </th>
        <th>
-        Notas
+        Observações
        </th>
       </tr>
      </thead>
@@ -411,7 +424,7 @@ spec:
         </h6>
         <p>
          Recomendamos fazer
-         <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading-clusters?hl=pt-br">
+         <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=pt-br#clusters">
           upgrade do cluster
          </a>
          para uma versão de patch com a correção assim que ela estiver disponível.
@@ -527,7 +540,7 @@ spec:
         </h6>
         <p>
          Recomendamos
-         <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading-clusters?hl=pt-br">
+         <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=pt-br#clusters">
           fazer upgrade
          </a>
          dos clusters para a versão
@@ -581,14 +594,14 @@ spec:
          <a class="external" href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">
           recursos personalizados
          </a>
-         com escopo no cluster sejam usadas como se fossem objetos de namespaces existentes em todos os namespaces. Isso significa que contas de usuários e de serviço com permissões apenas do RBAC de nível namespace podem interagir com recursos personalizados com escopo no cluster. A exploração dessa vulnerabilidade exige que o invasor tenha privilégios para acessar o recurso no namespace.
+         com escopo no cluster sejam usadas como se fossem objetos de namespaces existentes em todos os namespaces. Isso significa que contas de usuários e de serviço com permissões apenas do RBAC de nível do namespace podem interagir com recursos personalizados com escopo no cluster. A exploração dessa vulnerabilidade exige que o invasor tenha privilégios para acessar o recurso no namespace.
         </p>
         <h6 data-text="O que fazer?" id="what-should-i-do_5" tabindex="0">
          O que fazer?
         </h6>
         <p>
          Recomendamos
-         <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading-clusters?hl=pt-br">
+         <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=pt-br#clusters">
           fazer upgrade
          </a>
          dos clusters para a versão
