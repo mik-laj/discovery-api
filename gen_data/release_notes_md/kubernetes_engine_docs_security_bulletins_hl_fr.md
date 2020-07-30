@@ -24,13 +24,202 @@ Pour recevoir les derniers bulletins de sécurité, ajoutez l'URL de cette page
 à votre [ lecteur de flux
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) . Vous pouvez
 également ajouter l'URL du flux directement : `
-https://cloud.google.com/feeds/kubernetes-engine-security-bulletins.xml `
+https://cloud.google.com/feeds/kubernetes-engine-security-bulletins.xml ` .
 
+##  GCP-2020-007
+
+**Date de publication** : 2020-06-01  
+Description  |  Niveau de gravité  |  Remarques  
+---|---|---  
+  
+La faille SSRF (Server Side Request Forgery) [ CVE-2020-8555
+](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555) a été détectée
+dans Kubernetes. Elle permet à certains utilisateurs autorisés de divulguer
+jusqu'à 500 octets d'informations sensibles à partir du plan de contrôle du
+réseau hôte. Le plan de contrôle de Google Kubernetes Engine (GKE) utilise des
+contrôleurs Kubernetes. Il est donc concerné par cette faille. Nous vous
+recommandons de [ mettre à jour ](https://cloud.google.com/kubernetes-
+engine/docs/how-to/upgrading-a-container-cluster?hl=fr) le plan de contrôle en
+installant la dernière version du correctif, conformément à la procédure
+expliquée ci-dessous. Il n'est pas nécessaire de mettre à niveau le nœud.  
+
+####  Que dois-je faire ?
+
+Pour la plupart des clients, aucune action n'est requise. La grande majorité
+des clusters exécutent déjà une version corrigée. Les versions de GKE
+suivantes, ainsi que les versions ultérieures, contiennent le correctif de
+cette faille :
+
+  * 1.14.7-gke.39 
+  * 1.14.8-gke.32 
+  * 1.14.9-gke.17 
+  * 1.14.10-gke.12 
+  * 1.15.7-gke.17 
+  * 1.16.4-gke.21 
+  * 1.17.0-gke.0 
+
+Les clusters qui ont recours à des [ canaux de publication
+](https://cloud.google.com/kubernetes-engine/docs/concepts/release-
+channels?hl=fr) utilisent déjà les versions du plan de contrôle permettant de
+réduire les risques liés à la faille.
+
+####  Quelle faille ce correctif permet-il de résoudre ?
+
+Ce correctif réduit les risques liés à la faille CVE-2020-8555. La gravité de
+cette faille est évaluée comme moyenne pour GKE, car elle était difficile à
+exploiter en raison des diverses mesures de renforcement des plans de
+contrôle.
+
+Un pirate informatique autorisé à créer un pod avec certains types de volumes
+intégrés (comme GlusterFS, Quobyte, StorageFS ou ScaleIO) ou à créer un objet
+StorageClass, peut activer l'envoi de requêtes ` GET ` ou ` POST ` par ` kube-
+controller-manager ` _sans_ que le corps de la requête contrôlée par le pirate
+provienne du réseau hôte du maître. Ces types de volumes étant rarement
+employés sur GKE, leur utilisation récente constitue un bon signal de
+détection.
+
+Associés à des moyens permettant de partager les résultats de la commande `
+GET/POST ` avec le pirate (via des journaux, par exemple), ils peuvent
+entraîner la divulgation d'informations sensibles. Nous avons mis à jour les
+pilotes de stockage concernés afin de supprimer les risques de telles
+divulgations.
+
+|
+
+Moyen
+
+|
+
+[ CVE-2020-8555 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8555)  
+  
+##  GCP-2020-006
+
+**Date de publication** : 2020-06-01  
+Description  |  Niveau de gravité  |  Remarques  
+---|---|---  
+  
+Kubernetes a révélé la présence d'une [ faille
+](https://github.com/kubernetes/kubernetes/issues/91507) autorisant un
+conteneur privilégié à rediriger le trafic des nœuds vers un autre conteneur.
+Le trafic TLS/SSH mutuel (entre le kubelet et le serveur d'API, ou en
+provenance d'applications via le protocole mTLS) ne peut pas être lu ni
+modifié par cette attaque. Tous les nœuds Google Kubernetes Engine (GKE) sont
+affectés par cette faille. Par conséquent, nous vous recommandons de procéder
+à la [ mise à niveau ](https://cloud.google.com/kubernetes-engine/docs/how-
+to/upgrading-a-cluster?hl=fr) en installant la dernière version du correctif,
+conformément à la procédure expliquée ci-dessous.
+
+####  Que dois-je faire ?
+
+Pour réduire les risques liés à cette faille, [ mettez
+](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
+cluster?hl=fr) votre plan de contrôle, puis vos nœuds en installant l'une des
+versions corrigées répertoriées ci-dessous. Les clusters situés sur des canaux
+de publication exécutent déjà une version corrigée aussi bien sur le plan de
+contrôle que sur les nœuds :
+
+  * 1.14.10-gke.36 
+  * 1.15.11-gke.15 
+  * 1.16.8-gke.15 
+
+Très peu de conteneurs nécessitent généralement ` CAP_NET_RAW ` . Il faut donc
+la bloquer par défaut, ainsi que d'autres fonctionnalités puissantes, via [
+PodSecurityPolicy ](https://cloud.google.com/kubernetes-engine/docs/how-
+to/pod-security-policies?hl=fr) ou [ Anthos Policy Controller
+](https://cloud.google.com/anthos-config-management/docs/concepts/policy-
+controller?hl=fr) :
+
+  * Supprimez la fonctionnalité ` CAP_NET_RAW ` des conteneurs : 
+    * En appliquant cette mesure via [ PodSecurityPolicy ](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=fr) à l'aide de la commande ci-dessous : 
+        
+                
+        # Require dropping CAP_NET_RAW with a PSP
+        apiversion: extensions/v1beta1
+        kind: PodSecurityPolicy
+        metadata:
+          name: no-cap-net-raw
+        spec:
+          requiredDropCapabilities:
+            -NET_RAW
+             ...
+             # Unrelated fields omitted
+        
+
+    * Ou en utilisant Anthos Policy Controller/Gatekeeper, avec ce [ modèle de contrainte ](https://github.com/open-policy-agent/gatekeeper/blob/master/library/pod-security-policy/capabilities/template.yaml) et en appliquant ce dernier. Exemple : 
+        
+                
+        # Dropping CAP_NET_RAW with Gatekeeper
+        # (requires the K8sPSPCapabilities template)
+        apiversion: constraints.gatekeeper.sh/v1beta1
+        kind:  K8sPSPCapabilities
+        metadata:
+          name: forbid-cap-net-raw
+        spec:
+          match:
+            kinds:
+              - apiGroups: [""]
+              kinds: ["Pod"]
+            namespaces:
+              #List of namespaces to enforce this constraint on
+              - default
+            # If running gatekeeper >= v3.1.0-beta.5,
+            # you can exclude namespaces rather than including them above.
+            excludedNamespaces:
+              - kube-system
+          parameters:
+            requiredDropCapabilities:
+              - "NET_RAW"
+        
+
+    * Ou en mettant à jour les spécifications du pod : 
+        
+                
+        # Dropping CAP_NET_RAW from a Pod:
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          name: no-cap-net-raw
+        spec:
+          containers:
+            -name: may-container
+             ...
+            securityContext:
+              capabilities:
+                drop:
+                  -NET_RAW
+        
+
+####  Quelle faille ce correctif permet-il de résoudre ?
+
+Ce correctif réduit les risques liés à la faille suivante :
+
+La faille décrite dans l'article [ Problème Kubernetes 91507
+](https://github.com/kubernetes/kubernetes/issues/91507) est liée à la
+fonctionnalité ` CAP_NET_RAW ` (qui fait partie de l'ensemble de
+fonctionnalités par défaut du conteneur). Elle configure de manière
+malveillante la pile IPv6 sur le nœud, et redirige le trafic de nœuds vers le
+conteneur contrôlé par le pirate. Cela permet au pirate d'intercepter ou de
+modifier le trafic en provenance du nœud ou à destination de celui-ci. Le
+trafic TLS/SSH mutuel (entre le kubelet et le serveur d'API, ou en provenance
+d'applications via le protocole mTLS) ne peut pas être lu ni modifié par cette
+attaque.
+
+|
+
+Moyen
+
+|
+
+[ Problème Kubernetes 91507
+](https://github.com/kubernetes/kubernetes/issues/91507)  
+  
+  
 ##  GCP-2020-005
 
 **Date de publication** : 07-05-2020  
 **Dernière mise à jour** : 07-05-2020  Description  |  Niveau de gravité  |
-Notes  
+Remarques  
 ---|---|---  
   
 La faille [ CVE-2020-8835 ](https://cve.mitre.org/cgi-
@@ -40,8 +229,8 @@ Linux. Elle permet de "s'échapper d'un conteneur" pour obtenir un accès root
 
 Cette faille affecte les nœuds Ubuntu exécutant Google Kubernetes Engine (GKE)
 version 1.16 ou 1.17. Nous vous recommandons donc d'effectuer dès que possible
-une mise à niveau vers la dernière version du correctif, conformément à la
-procédure décrite ci-dessous.
+une mise à niveau en installant la dernière version du correctif, conformément
+à la procédure décrite ci-dessous.
 
 Les nœuds exécutant Container-Optimized OS ne sont pas concernés, ni ceux
 exécutant GKE On-Prem.
@@ -1064,10 +1253,11 @@ Vous devriez recevoir une réponse semblable à celle-ci :
     kubectl logs disable-smt-2xnnc disable-smt -n kube-system
 
 Remarque : Les options de démarrage ne peuvent pas être modifiées si la
-fonctionnalité de [démarrage sécurisé](/kubernetes-engine/docs/how-
-to/shielded-gke-nodes#secure_boot) est activée sur le nœud. Si le démarrage
-sécurisé est activé, il doit être [désactivé](/kubernetes-engine/docs/how-
-to/shielded-gke-nodes#disabling) avant que le DaemonSet soit créé.
+fonctionnalité de [ démarrage sécurisé ](https://cloud.google.com/kubernetes-
+engine/docs/how-to/shielded-gke-nodes?hl=fr#secure_boot) est activée sur le
+nœud. Si le démarrage sécurisé est activé, il doit être [ désactivé
+](https://cloud.google.com/kubernetes-engine/docs/how-to/shielded-gke-
+nodes?hl=fr#disabling) avant que le DaemonSet soit créé.
 
 Le DaemonSet doit rester en cours d'exécution sur le pool de nœuds pour que
 les modifications soient automatiquement appliquées aux nœuds qui seront créés
@@ -1436,11 +1626,10 @@ progressive de tous les jetons potentiellement impactés. Ce bulletin sera mis
 votre part n'est nécessaire.** (Cette rotation est terminée depuis le 16
 novembre 2018.)
 
-Si vous souhaitez révoquer ces jetons immédiatement, vous pouvez exécuter la
+Si vous souhaitez alterner ces jetons immédiatement, vous pouvez exécuter la
 commande ci-dessous. Le nouveau secret du compte de service devrait être
 recréé automatiquement en quelques secondes :  
       
-    
     
     kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
             
