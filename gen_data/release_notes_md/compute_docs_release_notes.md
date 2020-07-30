@@ -14,6 +14,18 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/compute-release-notes.xml `
 
+##  July 28, 2020
+
+**CHANGED:**
+
+Improved validation checks will be introduced on API calls to `
+compute.googleapis.com ` starting on August 3, 2020 to increase reliability
+and REST API compliance of the Compute Engine platform for all users. Learn
+how to [ Validate API Requests
+](https://cloud.google.com/compute/docs/api/how-tos/api-requests-
+responses#validating_api_requests) to ensure your requests are properly
+formed.
+
 ##  July 24, 2020
 
 **FEATURE:**
