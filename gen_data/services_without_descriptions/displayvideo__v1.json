@@ -2892,6 +2892,86 @@
                 }
             }
         },
+        "customBiddingAlgorithms": {
+            "methods": {
+                "get": {
+                    "flatPath": "v1/customBiddingAlgorithms/{customBiddingAlgorithmsId}",
+                    "httpMethod": "GET",
+                    "id": "displayvideo.customBiddingAlgorithms.get",
+                    "parameterOrder": [
+                        "customBiddingAlgorithmId"
+                    ],
+                    "parameters": {
+                        "advertiserId": {
+                            "format": "int64",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "customBiddingAlgorithmId": {
+                            "format": "int64",
+                            "location": "path",
+                            "pattern": "^[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "partnerId": {
+                            "format": "int64",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/customBiddingAlgorithms/{+customBiddingAlgorithmId}",
+                    "response": {
+                        "$ref": "CustomBiddingAlgorithm"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/display-video"
+                    ]
+                },
+                "list": {
+                    "flatPath": "v1/customBiddingAlgorithms",
+                    "httpMethod": "GET",
+                    "id": "displayvideo.customBiddingAlgorithms.list",
+                    "parameterOrder": [],
+                    "parameters": {
+                        "advertiserId": {
+                            "format": "int64",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "filter": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "orderBy": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageSize": {
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "partnerId": {
+                            "format": "int64",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/customBiddingAlgorithms",
+                    "response": {
+                        "$ref": "ListCustomBiddingAlgorithmsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/display-video"
+                    ]
+                }
+            }
+        },
         "customLists": {
             "methods": {
                 "get": {
@@ -6559,6 +6639,51 @@
             },
             "type": "object"
         },
+        "CustomBiddingAlgorithm": {
+            "id": "CustomBiddingAlgorithm",
+            "properties": {
+                "advertiserId": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "customBiddingAlgorithmId": {
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "customBiddingAlgorithmType": {
+                    "enum": [
+                        "CUSTOM_BIDDING_ALGORITHM_TYPE_UNSPECIFIED",
+                        "SCRIPT_BASED",
+                        "ADS_DATA_HUB_BASED"
+                    ],
+                    "type": "string"
+                },
+                "displayName": {
+                    "type": "string"
+                },
+                "entityStatus": {
+                    "enum": [
+                        "ENTITY_STATUS_UNSPECIFIED",
+                        "ENTITY_STATUS_ACTIVE",
+                        "ENTITY_STATUS_ARCHIVED",
+                        "ENTITY_STATUS_DRAFT",
+                        "ENTITY_STATUS_PAUSED",
+                        "ENTITY_STATUS_SCHEDULED_FOR_DELETION"
+                    ],
+                    "type": "string"
+                },
+                "name": {
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "partnerId": {
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "CustomList": {
             "id": "CustomList",
             "properties": {
@@ -8668,6 +8793,21 @@
             },
             "type": "object"
         },
+        "ListCustomBiddingAlgorithmsResponse": {
+            "id": "ListCustomBiddingAlgorithmsResponse",
+            "properties": {
+                "customBiddingAlgorithms": {
+                    "items": {
+                        "$ref": "CustomBiddingAlgorithm"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ListCustomListsResponse": {
             "id": "ListCustomListsResponse",
             "properties": {
@@ -8955,6 +9095,10 @@
         "MaximizeSpendBidStrategy": {
             "id": "MaximizeSpendBidStrategy",
             "properties": {
+                "customBiddingAlgorithmId": {
+                    "format": "int64",
+                    "type": "string"
+                },
                 "maxAverageCpmBidAmountMicros": {
                     "format": "int64",
                     "type": "string"
@@ -8965,6 +9109,7 @@
                         "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA",
                         "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC",
                         "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM",
+                        "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO",
                         "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA",
                         "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN",
                         "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED"
@@ -9474,6 +9619,10 @@
         "PerformanceGoalBidStrategy": {
             "id": "PerformanceGoalBidStrategy",
             "properties": {
+                "customBiddingAlgorithmId": {
+                    "format": "int64",
+                    "type": "string"
+                },
                 "maxAverageCpmBidAmountMicros": {
                     "format": "int64",
                     "type": "string"
@@ -9488,6 +9637,7 @@
                         "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA",
                         "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC",
                         "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM",
+                        "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO",
                         "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA",
                         "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN",
                         "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED"
