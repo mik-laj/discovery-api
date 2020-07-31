@@ -12,6 +12,109 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  July 30, 2020
+
+**Anthos**
+
+**FEATURE:**
+
+[ Anthos ](https://cloud.google.com/anthos) 1.3.3 is now available.
+
+**Updated components:**
+
+  * [ Anthos GKE on-prem release notes ](https://cloud.google.com/anthos/gke/docs/on-prem/release-notes)
+
+**Anthos GKE on-prem**
+
+**FEATURE:**
+
+Anthos GKE on-prem 1.3.3-gke.0 is now available. To upgrade, see [ Upgrading
+GKE on-prem ](https://cloud.google.com/anthos/gke/docs/on-prem/how-
+to/upgrading) . GKE on-prem 1.3.3-gke.0 clusters run on Kubernetes
+1.15.12-gke.9.
+
+**FIXED:**
+
+**Fixes:**
+
+  * Fixed [ CVE-2020-8559 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8559) described in [ Security bulletins ](https://cloud.google.com/anthos/gke/docs/on-prem/security-bulletins#gcp-2020-009) . 
+  * Updated the git-sync image to fix security vulnerability [ CVE-2019-5482 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5482) . 
+  * Updated the kindest/node image to fix security vulnerability [ CVE-2020-13777 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-13777) . 
+
+**Cloud Logging**
+
+**CHANGED:**
+
+The Logs field explorer panel is now generally available (GA). To learn more,
+see the [ Logs field explorer section on Logs Viewer (Preview) interface page
+](https://cloud.google.com/logging/docs/view/logs-viewer-interface#logs-field-
+panel) .
+
+**Cloud Run**
+
+**FEATURE:**
+
+You can now tag Cloud Run revisions. Tagged revisions get a dedicated URL
+allowing developers to reach these specific revisions without needing to
+allocate traffic to it.
+
+**Cloud Spanner**
+
+**FEATURE:**
+
+The Cloud Spanner emulator is now [ generally available
+](https://cloud.google.com/products/#product-launch-stages) , enabling you to
+develop and test applications locally. For more information, see [ Using the
+Cloud Spanner Emulator ](https://cloud.google.com/spanner/docs/emulator) .
+
+**Compute Engine**
+
+**FEATURE:**
+
+When creating patch jobs, you can now choose whether to deploy zones
+concurrently or one at a time. You can also now specify a disruption budget
+for your VMs. For more information, see [ Patch rollout options
+](https://cloud.google.com/compute/docs/os-patch-management/create-patch-
+job#rollout-options) .
+
+**FEATURE:**
+
+N2 machines are now available in Sao Paulo ` southamerica-southeast1 ` in all
+three zones. For more information, see [ VM instance pricing
+](https://cloud.google.com/compute/vm-instance-pricing#n2_machine_types) .
+
+**FEATURE:**
+
+You can access ` m2-megamem ` memory-optimized machine types in all zones that
+already have ` m2-ultramem ` memory-optimized machine types. These two machine
+types have also been added to ` asia-south1-b ` . You can use ` m1-ultramem `
+machine types in ` asia-south1-a ` . To learn more, read [ Memory-optimized
+machine type family ](https://cloud.google.com/compute/vm-instance-
+pricing#memory-optimized) .
+
+**Dialogflow**
+
+**FEATURE:**
+
+GA (general availability) launch of [ mega agents
+](https://cloud.google.com/dialogflow/docs/agents-mega) .
+
+**FEATURE:**
+
+Beta launch of the [ Facebook Workplace integration
+](https://cloud.google.com/dialogflow/docs/integrations/workplace) .
+
+**Network Intelligence Center**
+
+**DEPRECATED:**
+
+Network Topology no longer supports [ infrastructure segments
+](https://cloud.google.com/network-intelligence-center/docs/network-
+topology/how-to/using-network-topology#defining-infra-segment) . This feature
+is deprecated and will be completely removed after 90 days. If you have any
+questions, see [ Getting support ](https://cloud.google.com/network-
+intelligence-center/docs/network-topology/support/getting-support) .
+
 ##  July 28, 2020
 
 **Compute Engine**
@@ -1936,96 +2039,4 @@ change.
 
 See the [ product documentation ](https://cloud.google.com/solutions/document-
 ai/docs/process-invoices) for more information.
-
-##  July 01, 2020
-
-**BigQuery ML**
-
-**FEATURE:**
-
-BigQuery ML now supports time series models as a [ beta
-](https://cloud.google.com/products#product-launch-stages) release. For more
-information, see [ CREATE MODEL statement for time series models
-](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-
-syntax-create-time-series) .
-
-**Config Connector**
-
-**FEATURE:**
-
-Config Connector now supports [ ` --server-dry-run `
-](https://kubernetes.io/blog/2019/01/14/apiserver-dry-run-and-kubectl-diff/)
-for resource CRDs.
-
-**FIXED:**
-
-Fix a bug for the BigtableInstance resource that causes constant
-reconciliation.
-
-**CHANGED:**
-
-Deprecate BigtableInstance's spec.deletionProtection field.
-
-**Identity and Access Management**
-
-**CHANGED:**
-
-The organization policy constraint to [ prevent automatic role grants to Cloud
-IAM service accounts ](https://cloud.google.com/resource-
-manager/docs/organization-policy/restricting-service-
-accounts#disable_service_account_default_grants) is now [ generally available
-](https://cloud.google.com/products/#product-launch-stages) . To improve
-security, we strongly recommend that you enable this constraint.
-
-**CHANGED:**
-
-Starting on July 27, 2020, IAM policies will identify deleted members that are
-bound to a role. Deleted members have the prefix ` deleted: ` and the suffix `
-?uid=  numeric-id  ` .
-
-For example, if you delete the account for the user ` tamika@example.com ` ,
-and a policy binds that user to a role, the policy shows an identifier similar
-to ` deleted:user:tamika@example.com?uid=123456789012345678901 ` .
-
-For ` SetIamPolicy ` requests, you can use this new syntax starting on July
-27. For ` GetIamPolicy ` and ` SetIamPolicy ` responses, you might see the new
-prefix and suffix in some, but not all, responses until we finish rolling out
-the change. We expect to complete the rollout by July 31, 2020.
-
-See the documentation for a [ detailed example
-](https://cloud.google.com/iam/docs/policies#example-deleted-member) , as well
-as guidance on [ updating policies that contain deleted members
-](https://cloud.google.com/iam/docs/policies#handle-deleted-members) .
-
-**ISSUE:**
-
-Starting on July 27, 2020, if a binding in a policy refers to a deleted member
-(for example, ` deleted:user:tamika@example.com?uid=123456789012345678901 ` ),
-you cannot add a binding for a newly created member with the same name (in
-this case, ` user:tamika@example.com ` ). If you try to add a binding for the
-newly created member, IAM will apply the binding to the deleted member
-instead.
-
-To resolve this issue, see our guidance on [ updating policies that contain
-deleted members ](https://cloud.google.com/iam/docs/policies#handle-deleted-
-members) .
-
-**Network Intelligence Center**
-
-**FEATURE:**
-
-Connectivity Tests now supports [ running tests
-](https://cloud.google.com/network-intelligence-center/docs/connectivity-
-tests/how-to/running-connectivity-tests) from the **Network interface details
-screen** of a Compute Engine VM instance in the Google Cloud Console.
-
-**Resource Manager**
-
-**FEATURE:**
-
-The Organization Policy for [ restricting automatic IAM permission grants to
-new service accounts ](https://cloud.google.com/resource-
-manager/docs/organization-policy/restricting-service-
-accounts#disable_service_account_default_grants) has launched into general
-availability.
 
