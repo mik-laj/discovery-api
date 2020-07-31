@@ -19,7 +19,763 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloud-iam-permissions-change-
 log.xml `
 
-##  Upcoming Cloud IAM changes for the week of 2020-07-20
+##  Upcoming Cloud IAM changes for the week of 2020-07-27
+
+Service  |  Change  |  Description  
+---|---|---  
+Apigee API  |  Now GA  |
+
+The role ` roles/apigee.admin ` (Apigee Organization Admin) is now GA.  
+  
+Apigee API  |  Now GA  |
+
+The role ` roles/apigee.analyticsAgent ` (Apigee Analytics Agent) is now GA.  
+  
+Apigee API  |  Now GA  |
+
+The role ` roles/apigee.analyticsEditor ` (Apigee Analytics Editor) is now GA.  
+  
+Apigee API  |  Now GA  |
+
+The role ` roles/apigee.analyticsViewer ` (Apigee Analytics Viewer) is now GA.  
+  
+Apigee API  |  Now GA  |
+
+The role ` roles/apigee.apiCreator ` (Apigee API Creator) is now GA.  
+  
+Apigee API  |  Now GA  |
+
+The role ` roles/apigee.deployer ` (Apigee Deployer) is now GA.  
+  
+Apigee API  |  Now GA  |
+
+The role ` roles/apigee.developerAdmin ` (Apigee Developer Admin) is now GA.  
+  
+Apigee API  |  Now GA  |
+
+The role ` roles/apigee.readOnlyAdmin ` (Apigee Read-only Admin) is now GA.  
+  
+Apigee API  |  Now GA  |
+
+The role ` roles/apigee.runtimeAgent ` (Apigee Runtime Agent) is now GA.  
+  
+Apigee API  |  Now GA  |
+
+The role ` roles/apigee.synchronizerManager ` (Apigee Synchronizer Manager) is
+now GA.  
+  
+Apigee Connect  |  Now GA  |
+
+The role ` roles/apigeeconnect.Admin ` (Apigee Connect Admin) is now GA.  
+  
+Apigee Connect  |  Now GA  |
+
+The role ` roles/apigeeconnect.Agent ` (Apigee Connect Agent) is now GA.  
+  
+Google Cloud Game Servers  |  Now GA  |
+
+The role ` roles/gameservices.admin ` (Game Services API Admin) is now GA.  
+  
+Google Cloud Game Servers  |  Now GA  |
+
+The role ` roles/gameservices.viewer ` (Game Services API Viewer) is now GA.  
+  
+Identity and Access Management  |  Role Updated  |
+
+The following permissions have been removed from the role `
+roles/iam.securityAdmin ` (Security Admin):
+
+` container.secrets.list `  
+  
+Identity and Access Management  |  Role Updated  |
+
+The following permissions have been removed from the role `
+roles/iam.securityReviewer ` (Security Reviewer):
+
+` container.secrets.list `  
+  
+AI Platform Notebooks  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/notebooks.admin
+` (Notebooks Admin):
+
+` compute.acceleratorTypes.get `  
+` compute.addresses.get `  
+` compute.addresses.list `  
+` compute.autoscalers.get `  
+` compute.autoscalers.list `  
+` compute.backendBuckets.get `  
+` compute.backendBuckets.list `  
+` compute.backendServices.get `  
+` compute.backendServices.list `  
+` compute.commitments.get `  
+` compute.commitments.list `  
+` compute.diskTypes.get `  
+` compute.disks.get `  
+` compute.disks.getIamPolicy `  
+` compute.disks.list `  
+` compute.externalVpnGateways.get `  
+` compute.externalVpnGateways.list `  
+` compute.firewalls.get `  
+` compute.firewalls.list `  
+` compute.forwardingRules.get `  
+` compute.forwardingRules.list `  
+` compute.globalAddresses.get `  
+` compute.globalAddresses.list `  
+` compute.globalForwardingRules.get `  
+` compute.globalForwardingRules.list `  
+` compute.globalOperations.get `  
+` compute.globalOperations.getIamPolicy `  
+` compute.globalOperations.list `  
+` compute.globalPublicDelegatedPrefixes.get `  
+` compute.globalPublicDelegatedPrefixes.list `  
+` compute.healthChecks.get `  
+` compute.healthChecks.list `  
+` compute.httpHealthChecks.get `  
+` compute.httpHealthChecks.list `  
+` compute.httpsHealthChecks.get `  
+` compute.httpsHealthChecks.list `  
+` compute.images.get `  
+` compute.images.getFromFamily `  
+` compute.images.getIamPolicy `  
+` compute.images.list `  
+` compute.instanceGroupManagers.get `  
+` compute.instanceGroupManagers.list `  
+` compute.instanceGroups.get `  
+` compute.instanceGroups.list `  
+` compute.instanceTemplates.get `  
+` compute.instanceTemplates.getIamPolicy `  
+` compute.instanceTemplates.list `  
+` compute.instances.get `  
+` compute.instances.getEffectiveFirewalls `  
+` compute.instances.getGuestAttributes `  
+` compute.instances.getIamPolicy `  
+` compute.instances.getScreenshot `  
+` compute.instances.getSerialPortOutput `  
+` compute.instances.getShieldedInstanceIdentity `  
+` compute.instances.getShieldedVmIdentity `  
+` compute.instances.list `  
+` compute.instances.listReferrers `  
+` compute.interconnectAttachments.get `  
+` compute.interconnectAttachments.list `  
+` compute.interconnectLocations.get `  
+` compute.interconnectLocations.list `  
+` compute.interconnects.get `  
+` compute.interconnects.list `  
+` compute.licenseCodes.get `  
+` compute.licenseCodes.getIamPolicy `  
+` compute.licenseCodes.list `  
+` compute.licenses.get `  
+` compute.licenses.getIamPolicy `  
+` compute.licenses.list `  
+` compute.machineTypes.get `  
+` compute.maintenancePolicies.get `  
+` compute.maintenancePolicies.getIamPolicy `  
+` compute.maintenancePolicies.list `  
+` compute.networkEndpointGroups.get `  
+` compute.networkEndpointGroups.getIamPolicy `  
+` compute.networkEndpointGroups.list `  
+` compute.networks.get `  
+` compute.networks.getEffectiveFirewalls `  
+` compute.networks.list `  
+` compute.networks.listPeeringRoutes `  
+` compute.nodeGroups.get `  
+` compute.nodeGroups.getIamPolicy `  
+` compute.nodeGroups.list `  
+` compute.nodeTemplates.get `  
+` compute.nodeTemplates.getIamPolicy `  
+` compute.nodeTemplates.list `  
+` compute.nodeTypes.get `  
+` compute.nodeTypes.list `  
+` compute.organizations.listAssociations `  
+` compute.projects.get `  
+` compute.publicAdvertisedPrefixes.get `  
+` compute.publicAdvertisedPrefixes.list `  
+` compute.publicDelegatedPrefixes.get `  
+` compute.publicDelegatedPrefixes.list `  
+` compute.regionBackendServices.get `  
+` compute.regionBackendServices.list `  
+` compute.regionHealthCheckServices.get `  
+` compute.regionHealthCheckServices.list `  
+` compute.regionNotificationEndpoints.get `  
+` compute.regionNotificationEndpoints.list `  
+` compute.regionOperations.get `  
+` compute.regionOperations.getIamPolicy `  
+` compute.regionOperations.list `  
+` compute.regions.get `  
+` compute.regions.list `  
+` compute.reservations.get `  
+` compute.reservations.list `  
+` compute.resourcePolicies.get `  
+` compute.resourcePolicies.list `  
+` compute.routers.get `  
+` compute.routers.list `  
+` compute.routes.get `  
+` compute.routes.list `  
+` compute.securityPolicies.get `  
+` compute.securityPolicies.getIamPolicy `  
+` compute.securityPolicies.list `  
+` compute.snapshots.get `  
+` compute.snapshots.getIamPolicy `  
+` compute.snapshots.list `  
+` compute.sslCertificates.get `  
+` compute.sslCertificates.list `  
+` compute.sslPolicies.get `  
+` compute.sslPolicies.list `  
+` compute.sslPolicies.listAvailableFeatures `  
+` compute.subnetworks.get `  
+` compute.subnetworks.getIamPolicy `  
+` compute.targetHttpProxies.get `  
+` compute.targetHttpProxies.list `  
+` compute.targetHttpsProxies.get `  
+` compute.targetHttpsProxies.list `  
+` compute.targetInstances.get `  
+` compute.targetInstances.list `  
+` compute.targetPools.get `  
+` compute.targetPools.list `  
+` compute.targetSslProxies.get `  
+` compute.targetSslProxies.list `  
+` compute.targetTcpProxies.get `  
+` compute.targetTcpProxies.list `  
+` compute.targetVpnGateways.get `  
+` compute.targetVpnGateways.list `  
+` compute.urlMaps.get `  
+` compute.urlMaps.list `  
+` compute.urlMaps.validate `  
+` compute.vpnGateways.get `  
+` compute.vpnGateways.list `  
+` compute.vpnTunnels.get `  
+` compute.vpnTunnels.list `  
+` compute.zoneOperations.get `  
+` compute.zoneOperations.getIamPolicy `  
+` compute.zoneOperations.list `  
+` compute.zones.get `  
+` compute.zones.list `  
+` serviceusage.quotas.get `  
+` serviceusage.services.get `  
+` serviceusage.services.list `  
+  
+AI Platform Notebooks  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/notebooks.runner
+` (Notebooks Runner):
+
+` compute.acceleratorTypes.get `  
+` compute.addresses.get `  
+` compute.addresses.list `  
+` compute.autoscalers.get `  
+` compute.autoscalers.list `  
+` compute.backendBuckets.get `  
+` compute.backendBuckets.list `  
+` compute.backendServices.get `  
+` compute.backendServices.list `  
+` compute.commitments.get `  
+` compute.commitments.list `  
+` compute.diskTypes.get `  
+` compute.disks.get `  
+` compute.disks.getIamPolicy `  
+` compute.disks.list `  
+` compute.externalVpnGateways.get `  
+` compute.externalVpnGateways.list `  
+` compute.firewalls.get `  
+` compute.firewalls.list `  
+` compute.forwardingRules.get `  
+` compute.forwardingRules.list `  
+` compute.globalAddresses.get `  
+` compute.globalAddresses.list `  
+` compute.globalForwardingRules.get `  
+` compute.globalForwardingRules.list `  
+` compute.globalOperations.get `  
+` compute.globalOperations.getIamPolicy `  
+` compute.globalOperations.list `  
+` compute.globalPublicDelegatedPrefixes.get `  
+` compute.globalPublicDelegatedPrefixes.list `  
+` compute.healthChecks.get `  
+` compute.healthChecks.list `  
+` compute.httpHealthChecks.get `  
+` compute.httpHealthChecks.list `  
+` compute.httpsHealthChecks.get `  
+` compute.httpsHealthChecks.list `  
+` compute.images.get `  
+` compute.images.getFromFamily `  
+` compute.images.getIamPolicy `  
+` compute.images.list `  
+` compute.instanceGroupManagers.get `  
+` compute.instanceGroupManagers.list `  
+` compute.instanceGroups.get `  
+` compute.instanceGroups.list `  
+` compute.instanceTemplates.get `  
+` compute.instanceTemplates.getIamPolicy `  
+` compute.instanceTemplates.list `  
+` compute.instances.get `  
+` compute.instances.getEffectiveFirewalls `  
+` compute.instances.getGuestAttributes `  
+` compute.instances.getIamPolicy `  
+` compute.instances.getScreenshot `  
+` compute.instances.getSerialPortOutput `  
+` compute.instances.getShieldedInstanceIdentity `  
+` compute.instances.getShieldedVmIdentity `  
+` compute.instances.list `  
+` compute.instances.listReferrers `  
+` compute.interconnectAttachments.get `  
+` compute.interconnectAttachments.list `  
+` compute.interconnectLocations.get `  
+` compute.interconnectLocations.list `  
+` compute.interconnects.get `  
+` compute.interconnects.list `  
+` compute.licenseCodes.get `  
+` compute.licenseCodes.getIamPolicy `  
+` compute.licenseCodes.list `  
+` compute.licenses.get `  
+` compute.licenses.getIamPolicy `  
+` compute.licenses.list `  
+` compute.machineTypes.get `  
+` compute.maintenancePolicies.get `  
+` compute.maintenancePolicies.getIamPolicy `  
+` compute.maintenancePolicies.list `  
+` compute.networkEndpointGroups.get `  
+` compute.networkEndpointGroups.getIamPolicy `  
+` compute.networkEndpointGroups.list `  
+` compute.networks.get `  
+` compute.networks.getEffectiveFirewalls `  
+` compute.networks.list `  
+` compute.networks.listPeeringRoutes `  
+` compute.nodeGroups.get `  
+` compute.nodeGroups.getIamPolicy `  
+` compute.nodeGroups.list `  
+` compute.nodeTemplates.get `  
+` compute.nodeTemplates.getIamPolicy `  
+` compute.nodeTemplates.list `  
+` compute.nodeTypes.get `  
+` compute.nodeTypes.list `  
+` compute.organizations.listAssociations `  
+` compute.projects.get `  
+` compute.publicAdvertisedPrefixes.get `  
+` compute.publicAdvertisedPrefixes.list `  
+` compute.publicDelegatedPrefixes.get `  
+` compute.publicDelegatedPrefixes.list `  
+` compute.regionBackendServices.get `  
+` compute.regionBackendServices.list `  
+` compute.regionHealthCheckServices.get `  
+` compute.regionHealthCheckServices.list `  
+` compute.regionNotificationEndpoints.get `  
+` compute.regionNotificationEndpoints.list `  
+` compute.regionOperations.get `  
+` compute.regionOperations.getIamPolicy `  
+` compute.regionOperations.list `  
+` compute.regions.get `  
+` compute.regions.list `  
+` compute.reservations.get `  
+` compute.reservations.list `  
+` compute.resourcePolicies.get `  
+` compute.resourcePolicies.list `  
+` compute.routers.get `  
+` compute.routers.list `  
+` compute.routes.get `  
+` compute.routes.list `  
+` compute.securityPolicies.get `  
+` compute.securityPolicies.getIamPolicy `  
+` compute.securityPolicies.list `  
+` compute.snapshots.get `  
+` compute.snapshots.getIamPolicy `  
+` compute.snapshots.list `  
+` compute.sslCertificates.get `  
+` compute.sslCertificates.list `  
+` compute.sslPolicies.get `  
+` compute.sslPolicies.list `  
+` compute.sslPolicies.listAvailableFeatures `  
+` compute.subnetworks.get `  
+` compute.subnetworks.getIamPolicy `  
+` compute.targetHttpProxies.get `  
+` compute.targetHttpProxies.list `  
+` compute.targetHttpsProxies.get `  
+` compute.targetHttpsProxies.list `  
+` compute.targetInstances.get `  
+` compute.targetInstances.list `  
+` compute.targetPools.get `  
+` compute.targetPools.list `  
+` compute.targetSslProxies.get `  
+` compute.targetSslProxies.list `  
+` compute.targetTcpProxies.get `  
+` compute.targetTcpProxies.list `  
+` compute.targetVpnGateways.get `  
+` compute.targetVpnGateways.list `  
+` compute.urlMaps.get `  
+` compute.urlMaps.list `  
+` compute.urlMaps.validate `  
+` compute.vpnGateways.get `  
+` compute.vpnGateways.list `  
+` compute.vpnTunnels.get `  
+` compute.vpnTunnels.list `  
+` compute.zoneOperations.get `  
+` compute.zoneOperations.getIamPolicy `  
+` compute.zoneOperations.list `  
+` compute.zones.get `  
+` compute.zones.list `  
+` serviceusage.quotas.get `  
+` serviceusage.services.get `  
+` serviceusage.services.list `  
+  
+AI Platform Notebooks  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/notebooks.viewer
+` (Notebooks Viewer):
+
+` compute.acceleratorTypes.get `  
+` compute.addresses.get `  
+` compute.addresses.list `  
+` compute.autoscalers.get `  
+` compute.autoscalers.list `  
+` compute.backendBuckets.get `  
+` compute.backendBuckets.list `  
+` compute.backendServices.get `  
+` compute.backendServices.list `  
+` compute.commitments.get `  
+` compute.commitments.list `  
+` compute.diskTypes.get `  
+` compute.disks.get `  
+` compute.disks.getIamPolicy `  
+` compute.disks.list `  
+` compute.externalVpnGateways.get `  
+` compute.externalVpnGateways.list `  
+` compute.firewalls.get `  
+` compute.firewalls.list `  
+` compute.forwardingRules.get `  
+` compute.forwardingRules.list `  
+` compute.globalAddresses.get `  
+` compute.globalAddresses.list `  
+` compute.globalForwardingRules.get `  
+` compute.globalForwardingRules.list `  
+` compute.globalOperations.get `  
+` compute.globalOperations.getIamPolicy `  
+` compute.globalOperations.list `  
+` compute.globalPublicDelegatedPrefixes.get `  
+` compute.globalPublicDelegatedPrefixes.list `  
+` compute.healthChecks.get `  
+` compute.healthChecks.list `  
+` compute.httpHealthChecks.get `  
+` compute.httpHealthChecks.list `  
+` compute.httpsHealthChecks.get `  
+` compute.httpsHealthChecks.list `  
+` compute.images.get `  
+` compute.images.getFromFamily `  
+` compute.images.getIamPolicy `  
+` compute.images.list `  
+` compute.instanceGroupManagers.get `  
+` compute.instanceGroupManagers.list `  
+` compute.instanceGroups.get `  
+` compute.instanceGroups.list `  
+` compute.instanceTemplates.get `  
+` compute.instanceTemplates.getIamPolicy `  
+` compute.instanceTemplates.list `  
+` compute.instances.get `  
+` compute.instances.getEffectiveFirewalls `  
+` compute.instances.getGuestAttributes `  
+` compute.instances.getIamPolicy `  
+` compute.instances.getScreenshot `  
+` compute.instances.getSerialPortOutput `  
+` compute.instances.getShieldedInstanceIdentity `  
+` compute.instances.getShieldedVmIdentity `  
+` compute.instances.list `  
+` compute.instances.listReferrers `  
+` compute.interconnectAttachments.get `  
+` compute.interconnectAttachments.list `  
+` compute.interconnectLocations.get `  
+` compute.interconnectLocations.list `  
+` compute.interconnects.get `  
+` compute.interconnects.list `  
+` compute.licenseCodes.get `  
+` compute.licenseCodes.getIamPolicy `  
+` compute.licenseCodes.list `  
+` compute.licenses.get `  
+` compute.licenses.getIamPolicy `  
+` compute.licenses.list `  
+` compute.machineTypes.get `  
+` compute.maintenancePolicies.get `  
+` compute.maintenancePolicies.getIamPolicy `  
+` compute.maintenancePolicies.list `  
+` compute.networkEndpointGroups.get `  
+` compute.networkEndpointGroups.getIamPolicy `  
+` compute.networkEndpointGroups.list `  
+` compute.networks.get `  
+` compute.networks.getEffectiveFirewalls `  
+` compute.networks.list `  
+` compute.networks.listPeeringRoutes `  
+` compute.nodeGroups.get `  
+` compute.nodeGroups.getIamPolicy `  
+` compute.nodeGroups.list `  
+` compute.nodeTemplates.get `  
+` compute.nodeTemplates.getIamPolicy `  
+` compute.nodeTemplates.list `  
+` compute.nodeTypes.get `  
+` compute.nodeTypes.list `  
+` compute.organizations.listAssociations `  
+` compute.projects.get `  
+` compute.publicAdvertisedPrefixes.get `  
+` compute.publicAdvertisedPrefixes.list `  
+` compute.publicDelegatedPrefixes.get `  
+` compute.publicDelegatedPrefixes.list `  
+` compute.regionBackendServices.get `  
+` compute.regionBackendServices.list `  
+` compute.regionHealthCheckServices.get `  
+` compute.regionHealthCheckServices.list `  
+` compute.regionNotificationEndpoints.get `  
+` compute.regionNotificationEndpoints.list `  
+` compute.regionOperations.get `  
+` compute.regionOperations.getIamPolicy `  
+` compute.regionOperations.list `  
+` compute.regions.get `  
+` compute.regions.list `  
+` compute.reservations.get `  
+` compute.reservations.list `  
+` compute.resourcePolicies.get `  
+` compute.resourcePolicies.list `  
+` compute.routers.get `  
+` compute.routers.list `  
+` compute.routes.get `  
+` compute.routes.list `  
+` compute.securityPolicies.get `  
+` compute.securityPolicies.getIamPolicy `  
+` compute.securityPolicies.list `  
+` compute.snapshots.get `  
+` compute.snapshots.getIamPolicy `  
+` compute.snapshots.list `  
+` compute.sslCertificates.get `  
+` compute.sslCertificates.list `  
+` compute.sslPolicies.get `  
+` compute.sslPolicies.list `  
+` compute.sslPolicies.listAvailableFeatures `  
+` compute.subnetworks.get `  
+` compute.subnetworks.getIamPolicy `  
+` compute.targetHttpProxies.get `  
+` compute.targetHttpProxies.list `  
+` compute.targetHttpsProxies.get `  
+` compute.targetHttpsProxies.list `  
+` compute.targetInstances.get `  
+` compute.targetInstances.list `  
+` compute.targetPools.get `  
+` compute.targetPools.list `  
+` compute.targetSslProxies.get `  
+` compute.targetSslProxies.list `  
+` compute.targetTcpProxies.get `  
+` compute.targetTcpProxies.list `  
+` compute.targetVpnGateways.get `  
+` compute.targetVpnGateways.list `  
+` compute.urlMaps.get `  
+` compute.urlMaps.list `  
+` compute.urlMaps.validate `  
+` compute.vpnGateways.get `  
+` compute.vpnGateways.list `  
+` compute.vpnTunnels.get `  
+` compute.vpnTunnels.list `  
+` compute.zoneOperations.get `  
+` compute.zoneOperations.getIamPolicy `  
+` compute.zoneOperations.list `  
+` compute.zones.get `  
+` compute.zones.list `  
+` serviceusage.quotas.get `  
+` serviceusage.services.get `  
+` serviceusage.services.list `  
+  
+Apigee API  |  Now GA  |  ` apigee.apiproductattributes.createOrUpdateAll `  
+` apigee.apiproductattributes.delete `  
+` apigee.apiproductattributes.get `  
+` apigee.apiproductattributes.list `  
+` apigee.apiproductattributes.update `  
+` apigee.apiproducts.create `  
+` apigee.apiproducts.delete `  
+` apigee.apiproducts.get `  
+` apigee.apiproducts.list `  
+` apigee.apiproducts.update `  
+` apigee.appkeys.create `  
+` apigee.appkeys.delete `  
+` apigee.appkeys.get `  
+` apigee.appkeys.manage `  
+` apigee.apps.get `  
+` apigee.apps.list `  
+` apigee.deployments.create `  
+` apigee.deployments.delete `  
+` apigee.deployments.get `  
+` apigee.deployments.list `  
+` apigee.deployments.update `  
+` apigee.developerappattributes.createOrUpdateAll `  
+` apigee.developerappattributes.delete `  
+` apigee.developerappattributes.get `  
+` apigee.developerappattributes.list `  
+` apigee.developerappattributes.update `  
+` apigee.developerapps.create `  
+` apigee.developerapps.delete `  
+` apigee.developerapps.get `  
+` apigee.developerapps.list `  
+` apigee.developerapps.manage `  
+` apigee.developerattributes.createOrUpdateAll `  
+` apigee.developerattributes.delete `  
+` apigee.developerattributes.get `  
+` apigee.developerattributes.list `  
+` apigee.developerattributes.update `  
+` apigee.developers.create `  
+` apigee.developers.delete `  
+` apigee.developers.get `  
+` apigee.developers.list `  
+` apigee.developers.update `  
+` apigee.environments.create `  
+` apigee.environments.delete `  
+` apigee.environments.get `  
+` apigee.environments.getDataLocation `  
+` apigee.environments.getIamPolicy `  
+` apigee.environments.getStats `  
+` apigee.environments.list `  
+` apigee.environments.manageRuntime `  
+` apigee.environments.setIamPolicy `  
+` apigee.environments.update `  
+` apigee.flowhooks.attachSharedFlow `  
+` apigee.flowhooks.detachSharedFlow `  
+` apigee.flowhooks.getSharedFlow `  
+` apigee.flowhooks.list `  
+` apigee.keystorealiases.create `  
+` apigee.keystorealiases.delete `  
+` apigee.keystorealiases.exportCertificate `  
+` apigee.keystorealiases.generateCSR `  
+` apigee.keystorealiases.get `  
+` apigee.keystorealiases.list `  
+` apigee.keystorealiases.update `  
+` apigee.keystores.create `  
+` apigee.keystores.delete `  
+` apigee.keystores.export `  
+` apigee.keystores.get `  
+` apigee.keystores.list `  
+` apigee.keyvaluemaps.create `  
+` apigee.keyvaluemaps.delete `  
+` apigee.keyvaluemaps.list `  
+` apigee.maskconfigs.get `  
+` apigee.maskconfigs.update `  
+` apigee.organizations.create `  
+` apigee.organizations.get `  
+` apigee.organizations.list `  
+` apigee.organizations.update `  
+` apigee.proxies.create `  
+` apigee.proxies.delete `  
+` apigee.proxies.get `  
+` apigee.proxies.list `  
+` apigee.proxyrevisions.delete `  
+` apigee.proxyrevisions.deploy `  
+` apigee.proxyrevisions.get `  
+` apigee.proxyrevisions.list `  
+` apigee.proxyrevisions.undeploy `  
+` apigee.proxyrevisions.update `  
+` apigee.queries.create `  
+` apigee.queries.get `  
+` apigee.queries.list `  
+` apigee.references.create `  
+` apigee.references.delete `  
+` apigee.references.get `  
+` apigee.references.list `  
+` apigee.references.update `  
+` apigee.reports.create `  
+` apigee.reports.delete `  
+` apigee.reports.get `  
+` apigee.reports.list `  
+` apigee.reports.update `  
+` apigee.resourcefiles.create `  
+` apigee.resourcefiles.delete `  
+` apigee.resourcefiles.get `  
+` apigee.resourcefiles.list `  
+` apigee.resourcefiles.update `  
+` apigee.sharedflowrevisions.delete `  
+` apigee.sharedflowrevisions.deploy `  
+` apigee.sharedflowrevisions.get `  
+` apigee.sharedflowrevisions.list `  
+` apigee.sharedflowrevisions.undeploy `  
+` apigee.sharedflowrevisions.update `  
+` apigee.sharedflows.create `  
+` apigee.sharedflows.delete `  
+` apigee.sharedflows.get `  
+` apigee.sharedflows.list `  
+` apigee.targetservers.create `  
+` apigee.targetservers.delete `  
+` apigee.targetservers.get `  
+` apigee.targetservers.list `  
+` apigee.targetservers.update `  
+` apigee.tracesessions.create `  
+` apigee.tracesessions.delete `  
+` apigee.tracesessions.get `  
+` apigee.tracesessions.list `  
+  
+Apigee Connect  |  Now GA  |  ` apigeeconnect.connections.list `  
+` apigeeconnect.endpoints.connect `  
+  
+Recommendations AI  |  Added  |  ` automlrecommendations.events.rejoin `  
+` automlrecommendations.placements.create `  
+` automlrecommendations.placements.delete `  
+` automlrecommendations.recommendations.create `  
+` automlrecommendations.recommendations.delete `  
+` automlrecommendations.recommendations.pause `  
+` automlrecommendations.recommendations.resume `  
+` automlrecommendations.recommendations.update `  
+  
+Recommendations AI  |  Supported In Custom Roles  |  `
+automlrecommendations.events.rejoin `  
+` automlrecommendations.placements.create `  
+` automlrecommendations.placements.delete `  
+` automlrecommendations.placements.list `  
+` automlrecommendations.recommendations.create `  
+` automlrecommendations.recommendations.delete `  
+` automlrecommendations.recommendations.pause `  
+` automlrecommendations.recommendations.resume `  
+` automlrecommendations.recommendations.update `  
+  
+BigQuery  |  Supported In Custom Roles  |  ` bigquery.tables.setCategory `  
+  
+Google Cloud Game Servers  |  Now GA  |  `
+gameservices.gameServerClusters.create `  
+` gameservices.gameServerClusters.delete `  
+` gameservices.gameServerClusters.get `  
+` gameservices.gameServerClusters.list `  
+` gameservices.gameServerClusters.update `  
+` gameservices.gameServerConfigs.create `  
+` gameservices.gameServerConfigs.delete `  
+` gameservices.gameServerConfigs.get `  
+` gameservices.gameServerConfigs.list `  
+` gameservices.gameServerDeployments.create `  
+` gameservices.gameServerDeployments.delete `  
+` gameservices.gameServerDeployments.get `  
+` gameservices.gameServerDeployments.list `  
+` gameservices.gameServerDeployments.rollout `  
+` gameservices.gameServerDeployments.update `  
+` gameservices.locations.get `  
+` gameservices.locations.list `  
+` gameservices.operations.cancel `  
+` gameservices.operations.delete `  
+` gameservices.operations.get `  
+` gameservices.operations.list `  
+` gameservices.realms.create `  
+` gameservices.realms.delete `  
+` gameservices.realms.get `  
+` gameservices.realms.list `  
+` gameservices.realms.update `  
+  
+Cloud Healthcare API  |  Added  |  ` healthcare.hl7V2Stores.import `  
+` healthcare.locations.get `  
+` healthcare.locations.list `  
+  
+Identity and Access Management  |  Added  |  ` iam.serviceAccounts.disable `  
+` iam.serviceAccounts.enable `  
+` iam.serviceAccounts.undelete `  
+  
+Identity and Access Management  |  Available In Custom Roles  |  `
+iam.serviceAccounts.undelete `  
+  
+AI Platform Notebooks  |  Added  |  ` notebooks.instances.checkUpgradability `  
+` notebooks.instances.reset `  
+` notebooks.instances.setAccelerator `  
+` notebooks.instances.setLabels `  
+` notebooks.instances.setMachineType `  
+` notebooks.instances.start `  
+` notebooks.instances.stop `  
+` notebooks.instances.upgrade `  
+  
+  
+##  Cloud IAM changes as of 2020-07-24
 
 Service  |  Change  |  Description  
 ---|---|---  
