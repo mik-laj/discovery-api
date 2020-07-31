@@ -15,6 +15,16 @@ de cette page à votre [ lecteur de flux
 du flux directement : ` https://cloud.google.com/feeds/spanner-release-
 notes.xml `
 
+##  July 30, 2020
+
+**FEATURE:**
+
+The Cloud Spanner emulator is now [ generally available
+](https://cloud.google.com/products/?hl=fr#product-launch-stages) , enabling
+you to develop and test applications locally. For more information, see [
+Using the Cloud Spanner Emulator
+](https://cloud.google.com/spanner/docs/emulator?hl=fr) .
+
 ##  July 15, 2020
 
 **FEATURE:**
