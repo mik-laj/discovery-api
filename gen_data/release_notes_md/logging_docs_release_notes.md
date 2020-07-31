@@ -12,6 +12,15 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/stackdriver-release-notes.xml `
 
+##  July 30, 2020
+
+**CHANGED:**
+
+The Logs field explorer panel is now generally available (GA). To learn more,
+see the [ Logs field explorer section on Logs Viewer (Preview) interface page
+](https://cloud.google.com/logging/docs/view/logs-viewer-interface#logs-field-
+panel) .
+
 ##  June 30, 2020
 
 **FEATURE:**
