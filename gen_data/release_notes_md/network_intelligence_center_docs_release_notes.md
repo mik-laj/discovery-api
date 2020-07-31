@@ -12,6 +12,17 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/networkintelligence-release-
 notes.xml `
 
+##  July 30, 2020
+
+**DEPRECATED:**
+
+Network Topology no longer supports [ infrastructure segments
+](https://cloud.google.com/network-intelligence-center/docs/network-
+topology/how-to/using-network-topology#defining-infra-segment) . This feature
+is deprecated and will be completely removed after 90 days. If you have any
+questions, see [ Getting support ](https://cloud.google.com/network-
+intelligence-center/docs/network-topology/support/getting-support) .
+
 ##  July 23, 2020
 
 **FEATURE:**
