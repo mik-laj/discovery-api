@@ -18,6 +18,18 @@ notes.pdf?hl=ja) も閲覧できます。
 URL ディレクトリ ` https://cloud.google.com/feeds/dialogflow-release-notes.xml `
 を直接追加します。
 
+##  July 30, 2020
+
+**FEATURE:**
+
+GA (general availability) launch of [ mega agents
+](https://cloud.google.com/dialogflow/docs/agents-mega?hl=ja) .
+
+**FEATURE:**
+
+Beta launch of the [ Facebook Workplace integration
+](https://cloud.google.com/dialogflow/docs/integrations/workplace?hl=ja) .
+
 ##  July 27, 2020
 
 **FEATURE:**
