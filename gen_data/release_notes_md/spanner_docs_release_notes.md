@@ -12,6 +12,15 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/spanner-release-notes.xml `
 
+##  July 30, 2020
+
+**FEATURE:**
+
+The Cloud Spanner emulator is now [ generally available
+](https://cloud.google.com/products/#product-launch-stages) , enabling you to
+develop and test applications locally. For more information, see [ Using the
+Cloud Spanner Emulator ](https://cloud.google.com/spanner/docs/emulator) .
+
 ##  July 15, 2020
 
 **FEATURE:**
