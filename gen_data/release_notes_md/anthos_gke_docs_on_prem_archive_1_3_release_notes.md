@@ -21,6 +21,23 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gkeonprem-release-notes.xml `
 
+##  July 30, 2020
+
+**FEATURE:**
+
+Anthos GKE on-prem 1.3.3-gke.0 is now available. To upgrade, see [ Upgrading
+GKE on-prem ](https://cloud.google.com/anthos/gke/docs/on-prem/how-
+to/upgrading) . GKE on-prem 1.3.3-gke.0 clusters run on Kubernetes
+1.15.12-gke.9.
+
+**FIXED:**
+
+**Fixes:**
+
+  * Fixed [ CVE-2020-8559 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8559) described in [ Security bulletins ](https://cloud.google.com/anthos/gke/docs/on-prem/security-bulletins#gcp-2020-009) . 
+  * Updated the git-sync image to fix security vulnerability [ CVE-2019-5482 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5482) . 
+  * Updated the kindest/node image to fix security vulnerability [ CVE-2020-13777 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-13777) . 
+
 ##  July 23, 2020
 
 **FEATURE:**
