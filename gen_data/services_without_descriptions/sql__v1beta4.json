@@ -8,8 +8,8 @@
         }
     },
     "basePath": "",
-    "baseUrl": "https://sqladmin.googleapis.com/",
-    "batchPath": "batch",
+    "baseUrl": "https://www.googleapis.com/",
+    "batchPath": "batch/sql",
     "canonicalName": "SQL Admin",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/cloud-sql/",
@@ -19,7 +19,7 @@
     },
     "id": "sql:v1beta4",
     "kind": "discovery#restDescription",
-    "mtlsRootUrl": "https://sqladmin.mtls.googleapis.com/",
+    "mtlsRootUrl": "https://www.mtls.googleapis.com/",
     "name": "sql",
     "ownerDomain": "google.com",
     "ownerName": "Google",
@@ -1634,7 +1634,7 @@
             }
         }
     },
-    "rootUrl": "https://sqladmin.googleapis.com/",
+    "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AclEntry": {
             "id": "AclEntry",
@@ -1701,6 +1701,14 @@
         "BackupRun": {
             "id": "BackupRun",
             "properties": {
+                "backupKind": {
+                    "enum": [
+                        "SQL_BACKUP_KIND_UNSPECIFIED",
+                        "SNAPSHOT",
+                        "PHYSICAL"
+                    ],
+                    "type": "string"
+                },
                 "diskEncryptionConfiguration": {
                     "$ref": "DiskEncryptionConfiguration"
                 },
@@ -2147,9 +2155,6 @@
                 },
                 "kind": {
                     "type": "string"
-                },
-                "offload": {
-                    "type": "boolean"
                 },
                 "sqlExportOptions": {
                     "properties": {
@@ -2850,6 +2855,9 @@
                 "backupConfiguration": {
                     "$ref": "BackupConfiguration"
                 },
+                "collation": {
+                    "type": "string"
+                },
                 "crashSafeReplicationEnabled": {
                     "type": "boolean"
                 },
@@ -2945,7 +2953,14 @@
                         "INSUFFICIENT_PRIVILEGE",
                         "UNSUPPORTED_MIGRATION_TYPE",
                         "NO_PGLOGICAL_INSTALLED",
-                        "PGLOGICAL_NODE_ALREADY_EXISTS"
+                        "PGLOGICAL_NODE_ALREADY_EXISTS",
+                        "INVALID_WAL_LEVEL",
+                        "INVALID_SHARED_PRELOAD_LIBRARY",
+                        "INSUFFICIENT_MAX_REPLICATION_SLOTS",
+                        "INSUFFICIENT_MAX_WAL_SENDERS",
+                        "INSUFFICIENT_MAX_WORKER_PROCESSES",
+                        "UNSUPPORTED_EXTENSIONS",
+                        "INVALID_RDS_LOGICAL_REPLICATION"
                     ],
                     "type": "string"
                 }
