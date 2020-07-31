@@ -16,6 +16,18 @@ notes.pdf?hl=zh_cn) 。
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/dialogflow-release-notes.xml `
 
+##  July 30, 2020
+
+**FEATURE:**
+
+GA (general availability) launch of [ mega agents
+](https://cloud.google.com/dialogflow/docs/agents-mega?hl=zh_cn) .
+
+**FEATURE:**
+
+Beta launch of the [ Facebook Workplace integration
+](https://cloud.google.com/dialogflow/docs/integrations/workplace?hl=zh_cn) .
+
 ##  July 27, 2020
 
 **FEATURE:**
