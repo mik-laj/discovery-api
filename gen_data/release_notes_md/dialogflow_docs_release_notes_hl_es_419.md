@@ -22,6 +22,18 @@ página a tu [ lector de feeds
 directamente la URL del feed: ` https://cloud.google.com/feeds/dialogflow-
 release-notes.xml `
 
+##  July 30, 2020
+
+**FEATURE:**
+
+GA (general availability) launch of [ mega agents
+](https://cloud.google.com/dialogflow/docs/agents-mega?hl=es_419) .
+
+**FEATURE:**
+
+Beta launch of the [ Facebook Workplace integration
+](https://cloud.google.com/dialogflow/docs/integrations/workplace?hl=es_419) .
+
 ##  July 27, 2020
 
 **FEATURE:**
