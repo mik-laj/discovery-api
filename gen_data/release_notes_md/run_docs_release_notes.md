@@ -12,6 +12,14 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/run-release-notes.xml `
 
+##  July 30, 2020
+
+**FEATURE:**
+
+You can now tag Cloud Run revisions. Tagged revisions get a dedicated URL
+allowing developers to reach these specific revisions without needing to
+allocate traffic to it.
+
 ##  July 27, 2020
 
 **FEATURE:**
