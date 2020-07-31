@@ -8,6 +8,10 @@ This section provides release notes for Apigee and hybrid. For previous
 versions and other products, see [ Legacy Apigee Release Notes
 ](https://docs.apigee.com/release/notes/legacy-apigee-release-notes) .
 
+##  Apigee Adapter for Envoy releases
+
+  * [ 1.0.0 ](/apigee/docs/release/notes/100-envoy-adapter-release-notes)
+
 ##  Apigee releases
 
 ###  July 19, 2020
