@@ -11,6 +11,16 @@
 URL ディレクトリ ` https://cloud.google.com/feeds/spanner-release-notes.xml `
 を直接追加します。
 
+##  July 30, 2020
+
+**FEATURE:**
+
+The Cloud Spanner emulator is now [ generally available
+](https://cloud.google.com/products/?hl=ja#product-launch-stages) , enabling
+you to develop and test applications locally. For more information, see [
+Using the Cloud Spanner Emulator
+](https://cloud.google.com/spanner/docs/emulator?hl=ja) .
+
 ##  July 15, 2020
 
 **FEATURE:**
