@@ -14,6 +14,31 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/compute-release-notes.xml `
 
+##  July 30, 2020
+
+**FEATURE:**
+
+When creating patch jobs, you can now choose whether to deploy zones
+concurrently or one at a time. You can also now specify a disruption budget
+for your VMs. For more information, see [ Patch rollout options
+](https://cloud.google.com/compute/docs/os-patch-management/create-patch-
+job#rollout-options) .
+
+**FEATURE:**
+
+N2 machines are now available in Sao Paulo ` southamerica-southeast1 ` in all
+three zones. For more information, see [ VM instance pricing
+](https://cloud.google.com/compute/vm-instance-pricing#n2_machine_types) .
+
+**FEATURE:**
+
+You can access ` m2-megamem ` memory-optimized machine types in all zones that
+already have ` m2-ultramem ` memory-optimized machine types. These two machine
+types have also been added to ` asia-south1-b ` . You can use ` m1-ultramem `
+machine types in ` asia-south1-a ` . To learn more, read [ Memory-optimized
+machine type family ](https://cloud.google.com/compute/vm-instance-
+pricing#memory-optimized) .
+
 ##  July 28, 2020
 
 **CHANGED:**
