@@ -202,6 +202,26 @@ The following table describes the known issues for this release:
 
 Issue  |  Description  
 ---|---  
+161658025  |
+
+Inaccurate deployment status for Shared Flows
+
+For Shared Flows, the deployment status is not being reported correctly to the
+UI, resulting in an indefinitely spinning deployment icon. If you have
+deployed a Shared Flow and see the spinning deployment icon, you must assume
+that the deployment has in fact failed.
+
+To obtain the correct deployment status, use the [
+v1.organizations.environments.sharedflows.revisions.deployments
+](/apigee/docs/reference/apis/apigee/rest#rest-
+resource:-v1.organizations.environments.sharedflows.revisions.deployments)
+API. For example:
+
+    
+    
+    curl -s -H "$AUTH" \
+    "https://apigee.googleapis.com/v1/o/$ORG/e/$ENV/sharedflows/$FLOW/revisions/$REV/deployments"  
+  
 N/A  |
 
 Invalid HTTP Header error: The Istio ingress switches all incoming target
