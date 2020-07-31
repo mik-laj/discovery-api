@@ -8,7 +8,7 @@ https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
 
 **Note:** Cloud SDK introduced support for Python 3 in release 274.0.0 and
 users are strongly encouraged to migrate to Python 3. Support for Python 2
-will be deprecated on July 31, 2020. See also [ Python 2 Sunset
+will be deprecated on September 30, 2020. See also [ Python 2 Sunset
 ](https://cloud.google.com/python/docs/python2-sunset/) and [ Using Python 3
 ](https://cloud.google.com/sdk/gcloud/reference/topic/startup) .
 
@@ -60,7 +60,7 @@ https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
 
 **Note:** Cloud SDK introduced support for Python 3 in release 274.0.0 and
 users are strongly encouraged to migrate to Python 3. Support for Python 2
-will be deprecated on July 31, 2020. See also [ Python 2 Sunset
+will be deprecated on September 30, 2020. See also [ Python 2 Sunset
 ](https://cloud.google.com/python/docs/python2-sunset/) and [ Using Python 3
 ](https://cloud.google.com/sdk/gcloud/reference/topic/startup) .
 
@@ -138,7 +138,7 @@ https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
 
 **Note:** Cloud SDK introduced support for Python 3 in release 274.0.0 and
 users are strongly encouraged to migrate to Python 3. Support for Python 2
-will be deprecated on July 31, 2020. See also [ Python 2 Sunset
+will be deprecated on September 30, 2020. See also [ Python 2 Sunset
 ](https://cloud.google.com/python/docs/python2-sunset/) and [ Using Python 3
 ](https://cloud.google.com/sdk/gcloud/reference/topic/startup) .
 
@@ -180,7 +180,7 @@ https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
 
 **Note:** Cloud SDK introduced support for Python 3 in release 274.0.0 and
 users are strongly encouraged to migrate to Python 3. Support for Python 2
-will be deprecated on July 31, 2020. See also [ Python 2 Sunset
+will be deprecated on September 30, 2020. See also [ Python 2 Sunset
 ](https://cloud.google.com/python/docs/python2-sunset/) and [ Using Python 3
 ](https://cloud.google.com/sdk/gcloud/reference/topic/startup) .
 
@@ -227,7 +227,7 @@ https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
 
 **Note:** Cloud SDK introduced support for Python 3 in release 274.0.0 and
 users are strongly encouraged to migrate to Python 3. Support for Python 2
-will be deprecated on July 31, 2020. See also [ Python 2 Sunset
+will be deprecated on September 30, 2020. See also [ Python 2 Sunset
 ](https://cloud.google.com/python/docs/python2-sunset/) and [ Using Python 3
 ](https://cloud.google.com/sdk/gcloud/reference/topic/startup) .
 
@@ -285,7 +285,7 @@ https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
 
 **Note:** Cloud SDK introduced support for Python 3 in release 274.0.0 and
 users are strongly encouraged to migrate to Python 3. Support for Python 2
-will be deprecated on July 31, 2020. See also [ Python 2 Sunset
+will be deprecated on September 30, 2020. See also [ Python 2 Sunset
 ](https://cloud.google.com/python/docs/python2-sunset/) and [ Using Python 3
 ](https://cloud.google.com/sdk/gcloud/reference/topic/startup) .
 
@@ -335,7 +335,7 @@ https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
 
 **Note:** Cloud SDK introduced support for Python 3 in release 274.0.0 and
 users are strongly encouraged to migrate to Python 3. Support for Python 2
-will be deprecated on July 31, 2020. See also [ Python 2 Sunset
+will be deprecated on September 30, 2020. See also [ Python 2 Sunset
 ](https://cloud.google.com/python/docs/python2-sunset/) and [ Using Python 3
 ](https://cloud.google.com/sdk/gcloud/reference/topic/startup) .
 
@@ -366,7 +366,7 @@ https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
 
 **Note:** Cloud SDK introduced support for Python 3 in release 274.0.0 and
 users are strongly encouraged to migrate to Python 3. Support for Python 2
-will be deprecated on July 31, 2020. See also [ Python 2 Sunset
+will be deprecated on September 30, 2020. See also [ Python 2 Sunset
 ](https://cloud.google.com/python/docs/python2-sunset/) and [ Using Python 3
 ](https://cloud.google.com/sdk/gcloud/reference/topic/startup) .
 
@@ -425,7 +425,7 @@ https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
 
 **Note:** Cloud SDK introduced support for Python 3 in release 274.0.0 and
 users are strongly encouraged to migrate to Python 3. Support for Python 2
-will be deprecated on July 31, 2020. See also [ Python 2 Sunset
+will be deprecated on September 30, 2020. See also [ Python 2 Sunset
 ](https://cloud.google.com/python/docs/python2-sunset/) and [ Using Python 3
 ](https://cloud.google.com/sdk/gcloud/reference/topic/startup) .
 
@@ -467,7 +467,7 @@ https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
 
 **Note:** Cloud SDK introduced support for Python 3 in release 274.0.0 and
 users are strongly encouraged to migrate to Python 3. Support for Python 2
-will be deprecated on July 31, 2020. See also [ Python 2 Sunset
+will be deprecated on September 30, 2020. See also [ Python 2 Sunset
 ](https://cloud.google.com/python/docs/python2-sunset/) and [ Using Python 3
 ](https://cloud.google.com/sdk/gcloud/reference/topic/startup) .
 
