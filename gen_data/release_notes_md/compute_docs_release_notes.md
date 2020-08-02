@@ -14,6 +14,15 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/compute-release-notes.xml `
 
+##  July 31, 2020
+
+**FEATURE:**
+
+N2D machine types are now available in ` asia-east1 ` in all three zones. For
+more information, see the [ VM instance pricing
+](https://cloud.google.com/compute/vm-instance-pricing#n2d_machine_types)
+page.
+
 ##  July 30, 2020
 
 **FEATURE:**
