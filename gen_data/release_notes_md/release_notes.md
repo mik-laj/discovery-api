@@ -12,6 +12,110 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  July 31, 2020
+
+**BigQuery**
+
+**CHANGED:**
+
+Updated version of [ Magnitude Simba ODBC
+](https://cloud.google.com/bigquery/providers/simba-drivers) driver includes
+performance improvements and bug fixes.
+
+**Cloud Functions**
+
+**FEATURE:**
+
+Cloud Functions is now available in the following regions:
+
+  * ` asia-south1 ` (Mumbai) 
+  * ` asia-southeast2 ` (Jakarta) 
+  * ` asia-northeast3 ` (Seoul) 
+
+See [ Cloud Functions Locations
+](https://cloud.google.com/functions/docs/locations) for details.
+
+**Compute Engine**
+
+**FEATURE:**
+
+N2D machine types are now available in ` asia-east1 ` in all three zones. For
+more information, see the [ VM instance pricing
+](https://cloud.google.com/compute/vm-instance-pricing#n2d_machine_types)
+page.
+
+**Dataproc**
+
+**FEATURE:**
+
+**Enabled[ Kerberos
+](https://cloud.google.com/dataproc/docs/concepts/configuring-
+clusters/security) automatic-configuration feature. ** When creating a
+cluster, users can enable Kerberos by setting the `
+dataproc:kerberos.beta.automatic-config.enable ` [ cluster property
+](https://cloud.google.com/dataproc/docs/concepts/configuring-
+clusters/cluster-properties#service_properties) to ` true ` . When using this
+feature, users do not need to specify the Kerberos root principal password
+with the ` --kerberos-root-principal-password ` and ` --kerberos-kms-key-uri `
+flags.
+
+**CHANGED:**
+
+New [ sub-minor versions
+](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-
+versions#supported_dataproc_versions) of Dataproc images: 1.3.65-debian10,
+1.3.65-ubuntu18, 1.4.36-debian10, 1.4.36-ubuntu18, 1.5.11-debian10,
+1.5.11-ubuntu18, 2.0.0-RC7-debian10, and 2.0.0-RC7-ubuntu18.
+
+**CHANGED:**
+
+1.3+ images (includes Preview image):
+
+  * [ HADOOP-16984 ](https://issues.apache.org/jira/browse/HADOOP-16984) : Added support to read history files only from the done directory. 
+
+  * [ MAPREDUCE-7279 ](https://issues.apache.org/jira/browse/MAPREDUCE-7279) : Display the Resource Manager name on the HistoryServer web page. 
+
+  * [ SPARK-32135 ](https://issues.apache.org/jira/browse/SPARK-32135) : Show the Spark driver name on the Spark history web page. 
+
+  * [ SPARK-32097 ](https://issues.apache.org/jira/browse/SPARK-32097) : Allow reading Spark history log files via the Spark history server from multiple directories. 
+
+**CHANGED:**
+
+Images 1.3 - 1.5:
+
+  * [ HIVE-20600 ](https://issues.apache.org/jira/browse/HIVE-20600) : Fixed Hive Metastore connection leak. 
+
+**CHANGED:**
+
+Images 1.5 - 2.0 preview:
+
+  * Upgraded the [ Cloud Storage connector ](https://cloud.google.com/dataproc/docs/concepts/connectors/cloud-storage) to version 2.1.4 (see the GitHub [ change notes ](https://github.com/GoogleCloudDataproc/hadoop-connectors/releases/tag/v2.1.4) ). 
+
+**FIXED:**
+
+Fixed an issue where optional components that depend on HDFS failed on single
+node clusters.
+
+**FIXED:**
+
+Fixed an issue that caused workflows to be stuck in the RUNNING state when
+managed clusters (created by the workflow) were deleted while the workflow was
+running.
+
+**Identity and Access Management**
+
+**CHANGED:**
+
+We are delaying the upcoming changes for [ deleted members that are bound to a
+role ](https://cloud.google.com/iam/docs/release-notes#July_01_2020) . These
+changes will take effect starting on September 14, 2020.
+
+**Storage Transfer Service**
+
+**FEATURE:**
+
+Transfers from Microsoft Azure Blob Storage are now generally available.
+
 ##  July 30, 2020
 
 **Anthos**
