@@ -13,6 +13,12 @@ Feedreader ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
 einfügen oder die Feed-URL direkt hinzufügen: `
 https://cloud.google.com/feeds/storagetransfer-release-notes.xml ` .
 
+##  July 31, 2020
+
+**FEATURE:**
+
+Transfers from Microsoft Azure Blob Storage are now generally available.
+
 ##  March 31, 2020
 
 **FEATURE:**
