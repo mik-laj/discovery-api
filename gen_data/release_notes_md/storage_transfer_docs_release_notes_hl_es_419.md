@@ -15,6 +15,12 @@ página a tu [ lector de feeds
 directamente la URL del feed: `
 https://cloud.google.com/feeds/storagetransfer-release-notes.xml `
 
+##  July 31, 2020
+
+**FEATURE:**
+
+Transfers from Microsoft Azure Blob Storage are now generally available.
+
 ##  March 31, 2020
 
 **FEATURE:**
