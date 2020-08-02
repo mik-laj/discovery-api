@@ -10,6 +10,12 @@
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/storagetransfer-release-notes.xml `
 
+##  July 31, 2020
+
+**FEATURE:**
+
+Transfers from Microsoft Azure Blob Storage are now generally available.
+
 ##  March 31, 2020
 
 **FEATURE:**
