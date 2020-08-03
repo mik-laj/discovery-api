@@ -2125,22 +2125,3 @@ The Dialogflow Console has been upgraded with an improved [ Analytics page
 ](https://cloud.google.com/dialogflow/docs/analytics) (Beta) that provides new
 metrics and data views.
 
-##  July 04, 2020
-
-**Document AI**
-
-**CHANGED:**
-
-**Invoice Parsing Beta model upgrade**
-
-The Invoice Parsing Beta model has been upgraded. This model upgrade results
-in higher quality results for the [ entities
-](https://cloud.google.com/document-
-ai/docs/reference/rest/v1beta2/Document#Entity) and [ entityRelations
-](https://cloud.google.com/document-
-ai/docs/reference/rest/v1beta2/Document#EntityRelation) . There is no API
-change.
-
-See the [ product documentation ](https://cloud.google.com/solutions/document-
-ai/docs/process-invoices) for more information.
-
