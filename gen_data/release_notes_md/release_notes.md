@@ -12,6 +12,67 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  August 03, 2020
+
+**Anthos GKE on AWS**
+
+**ISSUE:**
+
+Anthos GKE on AWS 1.4.1 clusters will experience a memory leak that results in
+an unresponsive cluster. A fix for this issue is in development.
+
+If you are planning to deploy an Anthos GKE on AWS cluster, wait until the fix
+is ready.
+
+**Cloud Asset Inventory**
+
+**DEPRECATED:**
+
+k8s.io/Node fields deprecation
+
+The following two fields for assets of ` k8s.io/Node ` are now deprecated in
+the exported output of Cloud Storage and BigQuery.
+
+  * ` metadata.resourceVersion `
+  * ` status.conditions.lastHeartbeatTime `
+
+**Cloud Composer**
+
+**CHANGED:**
+
+  * [ New versions ](https://cloud.google.com/composer/docs/concepts/versioning/composer-versions) of Cloud Composer images: ` composer-1.11.1-airflow-1.10.3 ` , ` composer-1.11.1-airflow-1.10.6 ` , and ` composer-1.11.1-airflow-1.10.9 ` . The default is ` composer-1.11.1-airflow-1.10.6 ` . Upgrade your Cloud SDK to use features in this release. 
+  * Composer now enforces ` iam.serviceAccounts.actAs ` permission checks on the service account specified during Composer environment creation. See [ Creating environments ](https://cloud.google.com/composer/docs/how-to/managing/creating#access-control) for details. 
+
+**FEATURE:**
+
+  * Private IP environments can now be creating using non-rfc 1918 CGN ranges (100.64.0.0/10) 
+  * New PyPi packages have been added for Composer version composer-1.11.0-airflow-1.10.6. These make it possible to install apache-airflow-backport-providers-google with no additional package upgrades. 
+  * The PyPi package ` google-cloud-datacatalog ` can now be installed on Composer environments running Airflow 1.10.6 and Python 3. 
+  * Cloud Composer 1.11.1+: Backport providers are installed by default for Airflow 1.10.6 and 1.10.9. 
+  * You can now use the ` label.worker_id ` filter in Cloud Monitoring logs to see logs sent out of a specific Airflow worker Pod. 
+  * With the Composer Beta API, you can now upgrade an environment to any of the three latest Composer versions (instead of just the latest). 
+  * You can now modify these previously blocked Airflow configurations: ` [scheduler] scheduler_heartbeat_sec ` , ` [scheduler] job_heartbeat_sec ` , ` [scheduler] run_duration `
+
+**FIXED:**
+
+  * A more informative error message was added for environment creation failures caused by issues with Cloud SQL instance creation. 
+  * Improved error reporting has been added for update operations that change the web server image in cases where the error occurs before the new web server image is created. 
+  * The Airflow-worker liveness check has been changed so that a task just added to a queue will not fire an alert. 
+  * Reduced the amount of non-informative logs thrown by the environment in Composer 1.10.6. 
+  * Improved the syncing procedure for env_var.json in Airflow 1.10.9 (it should no longer throw "missing file:" errors). 
+  * Airflow-worker and airflow-scheduler will no longer throw "missing env_var.json" errors in Airflow 1.10.6. 
+  * Added validation in the v1 API to provide meaningful error messages when creating an environment with domain restricted sharing. 
+
+**Compute Engine**
+
+**FEATURE:**
+
+You can now access C2 machine types in the following zones: Taiwan: ` asia-
+east1-a ` , Singapore: ` asia-southeast1-a ` , Sao Paulo: ` southamerica-
+east1-b,c ` , and Oregon: ` us-west1-b ` . For more information, see [ VM
+instance pricing ](https://cloud.google.com/compute/vm-instance-
+pricing#c2_machine_types) .
+
 ##  July 31, 2020
 
 **BigQuery**
@@ -43,6 +104,33 @@ N2D machine types are now available in ` asia-east1 ` in all three zones. For
 more information, see the [ VM instance pricing
 ](https://cloud.google.com/compute/vm-instance-pricing#n2d_machine_types)
 page.
+
+**Config Connector**
+
+**FEATURE:**
+
+Add support for ` ArtifactRegistryRepository `
+
+**FEATURE:**
+
+Changes ` DataflowJob ` to allow for ` spec.parameters ` and `
+spec.ipConfiguration ` to be updateable
+
+**FIXED:**
+
+Fixes issue that was causing ` ContainerNodePool ` and ` SQLDatabase ` to
+display ` UpdateFailed ` due to the referenced ` ContainerCluster ` or `
+SQLDatabase ` not being ready
+
+**FIXED:**
+
+Fixes issue preventing the creation of BigQuery resources that read from
+Google Drive files due to insufficient OAuth 2.0 scopes
+
+**FIXED:**
+
+Fixes issue causing ` SourceRepoRepository ` to constantly update even when
+there were no changes
 
 **Dataproc**
 
@@ -144,6 +232,12 @@ to/upgrading) . GKE on-prem 1.3.3-gke.0 clusters run on Kubernetes
   * Fixed [ CVE-2020-8559 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8559) described in [ Security bulletins ](https://cloud.google.com/anthos/gke/docs/on-prem/security-bulletins#gcp-2020-009) . 
   * Updated the git-sync image to fix security vulnerability [ CVE-2019-5482 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5482) . 
   * Updated the kindest/node image to fix security vulnerability [ CVE-2020-13777 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-13777) . 
+
+**Cloud Composer**
+
+**FEATURE:**
+
+Cloud Composer is now available in Osaka ( ` asia-northeast2 ` ).
 
 **Cloud Logging**
 
