@@ -12,6 +12,39 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/composer-release-notes.xml `
 
+##  August 03, 2020
+
+**CHANGED:**
+
+  * [ New versions ](https://cloud.google.com/composer/docs/concepts/versioning/composer-versions) of Cloud Composer images: ` composer-1.11.1-airflow-1.10.3 ` , ` composer-1.11.1-airflow-1.10.6 ` , and ` composer-1.11.1-airflow-1.10.9 ` . The default is ` composer-1.11.1-airflow-1.10.6 ` . Upgrade your Cloud SDK to use features in this release. 
+  * Composer now enforces ` iam.serviceAccounts.actAs ` permission checks on the service account specified during Composer environment creation. See [ Creating environments ](https://cloud.google.com/composer/docs/how-to/managing/creating#access-control) for details. 
+
+**FEATURE:**
+
+  * Private IP environments can now be creating using non-rfc 1918 CGN ranges (100.64.0.0/10) 
+  * New PyPi packages have been added for Composer version composer-1.11.0-airflow-1.10.6. These make it possible to install apache-airflow-backport-providers-google with no additional package upgrades. 
+  * The PyPi package ` google-cloud-datacatalog ` can now be installed on Composer environments running Airflow 1.10.6 and Python 3. 
+  * Cloud Composer 1.11.1+: Backport providers are installed by default for Airflow 1.10.6 and 1.10.9. 
+  * You can now use the ` label.worker_id ` filter in Cloud Monitoring logs to see logs sent out of a specific Airflow worker Pod. 
+  * With the Composer Beta API, you can now upgrade an environment to any of the three latest Composer versions (instead of just the latest). 
+  * You can now modify these previously blocked Airflow configurations: ` [scheduler] scheduler_heartbeat_sec ` , ` [scheduler] job_heartbeat_sec ` , ` [scheduler] run_duration `
+
+**FIXED:**
+
+  * A more informative error message was added for environment creation failures caused by issues with Cloud SQL instance creation. 
+  * Improved error reporting has been added for update operations that change the web server image in cases where the error occurs before the new web server image is created. 
+  * The Airflow-worker liveness check has been changed so that a task just added to a queue will not fire an alert. 
+  * Reduced the amount of non-informative logs thrown by the environment in Composer 1.10.6. 
+  * Improved the syncing procedure for env_var.json in Airflow 1.10.9 (it should no longer throw "missing file:" errors). 
+  * Airflow-worker and airflow-scheduler will no longer throw "missing env_var.json" errors in Airflow 1.10.6. 
+  * Added validation in the v1 API to provide meaningful error messages when creating an environment with domain restricted sharing. 
+
+##  July 30, 2020
+
+**FEATURE:**
+
+Cloud Composer is now available in Osaka ( ` asia-northeast2 ` ).
+
 ##  July 24, 2020
 
 **CHANGED:**
