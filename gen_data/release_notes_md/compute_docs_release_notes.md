@@ -14,6 +14,16 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/compute-release-notes.xml `
 
+##  August 03, 2020
+
+**FEATURE:**
+
+You can now access C2 machine types in the following zones: Taiwan: ` asia-
+east1-a ` , Singapore: ` asia-southeast1-a ` , Sao Paulo: ` southamerica-
+east1-b,c ` , and Oregon: ` us-west1-b ` . For more information, see [ VM
+instance pricing ](https://cloud.google.com/compute/vm-instance-
+pricing#c2_machine_types) .
+
 ##  July 31, 2020
 
 **FEATURE:**
