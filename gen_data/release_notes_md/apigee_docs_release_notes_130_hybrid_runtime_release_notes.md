@@ -14,12 +14,6 @@ For more information, see the following resources:
 
 ####  Help & notifications
 
-**Private Cloud customers** : Is this cloud release included in your Private
-Cloud version? See your version's release notes to see which cloud releases it
-contains. Also, see [ About release numbering ](/apigee/docs/release/apigee-
-edge-release-process#aboutreleasenumbering) to understand how you can figure
-it out by comparing release numbers.
-
 **Questions or issues?** [ Get help here
 ](https://cloud.google.com/apigee/support/) .
 
@@ -232,6 +226,11 @@ The following table describes the known issues for this release:
 
 Issue  |  Description  
 ---|---  
+162759110  |  Base paths beginning with " ` / ` " will fail.
+
+Begin base paths with a letter or number rather than " ` / ` ". For example `
+v1/customers/123 ` instead of ` /v1/customers/123 `  
+  
 161658025  |  Inaccurate deployment status for Shared Flows
 
 For Shared Flows, the deployment status is not being reported correctly to the
