@@ -40,6 +40,202 @@ For a comprehensive list, see the
    </section>
    <section class="releases">
     <section class="releases">
+     <h2 data-text="August 03, 2020" id="August_03_2020" tabindex="0">
+      August 03, 2020
+     </h2>
+     <strong class="release-note-product-title">
+      Anthos GKE on AWS
+     </strong>
+     <div class="release-issue" id="b3d52fde">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       Anthos GKE on AWS 1.4.1 clusters will experience a memory leak that results in an unresponsive cluster. A fix for this issue is in development.
+      </p>
+      <p>
+       If you are planning to deploy an Anthos GKE on AWS cluster, wait until the fix is ready.
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      Cloud Asset Inventory
+     </strong>
+     <div class="release-deprecated" id="e94c0dea">
+      <strong>
+       DEPRECATED:
+      </strong>
+      <p>
+       k8s.io/Node fields deprecation
+      </p>
+      <p>
+       The following two fields for assets of
+       <code dir="ltr" translate="no">
+        k8s.io/Node
+       </code>
+       are now deprecated in the exported output of Cloud Storage and BigQuery.
+      </p>
+      <ul>
+       <li>
+        <code dir="ltr" translate="no">
+         metadata.resourceVersion
+        </code>
+       </li>
+       <li>
+        <code dir="ltr" translate="no">
+         status.conditions.lastHeartbeatTime
+        </code>
+       </li>
+      </ul>
+     </div>
+     <strong class="release-note-product-title">
+      Cloud Composer
+     </strong>
+     <div class="release-changed" id="b101dbcb">
+      <strong>
+       CHANGED:
+      </strong>
+      <ul>
+       <li>
+        <a href="https://cloud.google.com/composer/docs/concepts/versioning/composer-versions">
+         New versions
+        </a>
+        of Cloud Composer images:
+        <code dir="ltr" translate="no">
+         composer-1.11.1-airflow-1.10.3
+        </code>
+        ,
+        <code dir="ltr" translate="no">
+         composer-1.11.1-airflow-1.10.6
+        </code>
+        , and
+        <code dir="ltr" translate="no">
+         composer-1.11.1-airflow-1.10.9
+        </code>
+        . The default is
+        <code dir="ltr" translate="no">
+         composer-1.11.1-airflow-1.10.6
+        </code>
+        . Upgrade your Cloud SDK to use features in this release.
+       </li>
+       <li>
+        Composer now enforces
+        <code dir="ltr" translate="no">
+         iam.serviceAccounts.actAs
+        </code>
+        permission checks on the service account specified during Composer environment creation. See
+        <a href="https://cloud.google.com/composer/docs/how-to/managing/creating#access-control">
+         Creating environments
+        </a>
+        for details.
+       </li>
+      </ul>
+     </div>
+     <div class="release-feature" id="2c6c7325">
+      <strong>
+       FEATURE:
+      </strong>
+      <ul>
+       <li>
+        Private IP environments can now be creating using non-rfc 1918 CGN ranges (100.64.0.0/10)
+       </li>
+       <li>
+        New PyPi packages have been added for Composer version composer-1.11.0-airflow-1.10.6. These make it possible to install apache-airflow-backport-providers-google with no additional package upgrades.
+       </li>
+       <li>
+        The PyPi package
+        <code dir="ltr" translate="no">
+         google-cloud-datacatalog
+        </code>
+        can now be installed on Composer environments running Airflow 1.10.6 and Python 3.
+       </li>
+       <li>
+        Cloud Composer 1.11.1+: Backport providers are installed by default for Airflow 1.10.6 and 1.10.9.
+       </li>
+       <li>
+        You can now use the
+        <code dir="ltr" translate="no">
+         label.worker_id
+        </code>
+        filter in Cloud Monitoring logs to see logs sent out of a specific Airflow worker Pod.
+       </li>
+       <li>
+        With the Composer Beta API, you can now upgrade an environment to any of the three latest Composer versions (instead of just the latest).
+       </li>
+       <li>
+        You can now modify these previously blocked Airflow configurations:
+        <code dir="ltr" translate="no">
+         [scheduler] scheduler_heartbeat_sec
+        </code>
+        ,
+        <code dir="ltr" translate="no">
+         [scheduler] job_heartbeat_sec
+        </code>
+        ,
+        <code dir="ltr" translate="no">
+         [scheduler] run_duration
+        </code>
+       </li>
+      </ul>
+     </div>
+     <div class="release-fixed" id="a1c18e44">
+      <strong>
+       FIXED:
+      </strong>
+      <ul>
+       <li>
+        A more informative error message was added for environment creation failures caused by issues with Cloud SQL instance creation.
+       </li>
+       <li>
+        Improved error reporting has been added for update operations that change the web server image in cases where the error occurs before the new web server image is created.
+       </li>
+       <li>
+        The Airflow-worker liveness check has been changed so that a task just added to a queue will not fire an alert.
+       </li>
+       <li>
+        Reduced the amount of non-informative logs thrown by the environment in Composer 1.10.6.
+       </li>
+       <li>
+        Improved the syncing procedure for env_var.json in Airflow 1.10.9 (it should no longer throw "missing file:" errors).
+       </li>
+       <li>
+        Airflow-worker and airflow-scheduler will no longer throw "missing env_var.json" errors in Airflow 1.10.6.
+       </li>
+       <li>
+        Added validation in the v1 API to provide meaningful error messages when creating an environment with domain restricted sharing.
+       </li>
+      </ul>
+     </div>
+     <strong class="release-note-product-title">
+      Compute Engine
+     </strong>
+     <div class="release-feature" id="efe6ef3e">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       You can now access C2 machine types in the following zones: Taiwan:
+       <code dir="ltr" translate="no">
+        asia-east1-a
+       </code>
+       , Singapore:
+       <code dir="ltr" translate="no">
+        asia-southeast1-a
+       </code>
+       , Sao Paulo:
+       <code dir="ltr" translate="no">
+        southamerica-east1-b,c
+       </code>
+       , and Oregon:
+       <code dir="ltr" translate="no">
+        us-west1-b
+       </code>
+       . For more information, see
+       <a href="https://cloud.google.com/compute/vm-instance-pricing#c2_machine_types">
+        VM instance pricing
+       </a>
+       .
+      </p>
+     </div>
      <h2 data-text="July 31, 2020" id="July_31_2020" tabindex="0">
       July 31, 2020
      </h2>
@@ -113,6 +309,88 @@ For a comprehensive list, see the
         VM instance pricing
        </a>
        page.
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      Config Connector
+     </strong>
+     <div class="release-feature" id="228c2be6">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Add support for
+       <code dir="ltr" translate="no">
+        ArtifactRegistryRepository
+       </code>
+      </p>
+     </div>
+     <div class="release-feature" id="8ced4a90">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Changes
+       <code dir="ltr" translate="no">
+        DataflowJob
+       </code>
+       to allow for
+       <code dir="ltr" translate="no">
+        spec.parameters
+       </code>
+       and
+       <code dir="ltr" translate="no">
+        spec.ipConfiguration
+       </code>
+       to be updateable
+      </p>
+     </div>
+     <div class="release-fixed" id="b76c1761">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixes issue that was causing
+       <code dir="ltr" translate="no">
+        ContainerNodePool
+       </code>
+       and
+       <code dir="ltr" translate="no">
+        SQLDatabase
+       </code>
+       to display
+       <code dir="ltr" translate="no">
+        UpdateFailed
+       </code>
+       due to the referenced
+       <code dir="ltr" translate="no">
+        ContainerCluster
+       </code>
+       or
+       <code dir="ltr" translate="no">
+        SQLDatabase
+       </code>
+       not being ready
+      </p>
+     </div>
+     <div class="release-fixed" id="97d6c8aa">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixes issue preventing the creation of BigQuery resources that read from Google Drive files due to insufficient OAuth 2.0 scopes
+      </p>
+     </div>
+     <div class="release-fixed" id="e57238db">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixes issue causing
+       <code dir="ltr" translate="no">
+        SourceRepoRepository
+       </code>
+       to constantly update even when there were no changes
       </p>
      </div>
      <strong class="release-note-product-title">
@@ -365,6 +643,21 @@ For a comprehensive list, see the
         .
        </li>
       </ul>
+     </div>
+     <strong class="release-note-product-title">
+      Cloud Composer
+     </strong>
+     <div class="release-feature" id="3197f27d">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Cloud Composer is now available in Osaka (
+       <code dir="ltr" translate="no">
+        asia-northeast2
+       </code>
+       ).
+      </p>
      </div>
      <strong class="release-note-product-title">
       Cloud Logging
