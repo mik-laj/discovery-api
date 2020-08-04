@@ -13,6 +13,33 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/configconnector-release-
 notes.xml `
 
+##  July 31, 2020
+
+**FEATURE:**
+
+Add support for ` ArtifactRegistryRepository `
+
+**FEATURE:**
+
+Changes ` DataflowJob ` to allow for ` spec.parameters ` and `
+spec.ipConfiguration ` to be updateable
+
+**FIXED:**
+
+Fixes issue that was causing ` ContainerNodePool ` and ` SQLDatabase ` to
+display ` UpdateFailed ` due to the referenced ` ContainerCluster ` or `
+SQLDatabase ` not being ready
+
+**FIXED:**
+
+Fixes issue preventing the creation of BigQuery resources that read from
+Google Drive files due to insufficient OAuth 2.0 scopes
+
+**FIXED:**
+
+Fixes issue causing ` SourceRepoRepository ` to constantly update even when
+there were no changes
+
 ##  July 21, 2020
 
 **FIXED:**
