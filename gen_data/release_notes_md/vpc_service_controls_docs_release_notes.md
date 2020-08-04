@@ -60,7 +60,7 @@ During the beta period, the following error types are supported:
 
   * ` NO_MATCHING_ACCESS_LEVEL `
   * ` NETWORK_NOT_IN_SAME_SERVICE_PERIMETER `
-  * ` NO_MATCHING_ACCESS_LEVEL `
+  * ` RESOURCES_NOT_IN_SAME_SERVICE_PERIMETER `
 
 For more information, read about [ the VPC Service Controls Troubleshooter
 ](https://cloud.google.com/vpc-service-controls/docs/troubleshooter) .
