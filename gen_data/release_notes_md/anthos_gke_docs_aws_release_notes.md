@@ -11,6 +11,16 @@ deprecated functionality.
 You can see the latest product updates for all of Google Cloud on the [ Google
 Cloud release notes ](/release-notes) page.
 
+##  August 03, 2020
+
+**ISSUE:**
+
+Anthos GKE on AWS 1.4.1 clusters will experience a memory leak that results in
+an unresponsive cluster. A fix for this issue is in development.
+
+If you are planning to deploy an Anthos GKE on AWS cluster, wait until the fix
+is ready.
+
 ##  July 24, 2020
 
 **CHANGED:**
