@@ -14,6 +14,15 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/compute-release-notes.xml `
 
+##  August 04, 2020
+
+**CHANGED:**
+
+You can attach a maximum of 24 local SSD partitions for 9 TB per instance.
+This is **generally available** on instances with N1 machine types. For more
+information, see [ Local SSDs
+](https://cloud.google.com/compute/docs/disks#localssds) .
+
 ##  August 03, 2020
 
 **FEATURE:**
