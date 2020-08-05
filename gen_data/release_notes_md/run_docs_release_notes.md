@@ -12,6 +12,17 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/run-release-notes.xml `
 
+##  August 03, 2020
+
+**FEATURE:**
+
+When [ setting up Continuous Deployment
+](https://cloud.google.com/run/docs/continuous-deployment-with-cloud-build) in
+the Cloud Run user interface, you can now select a repository that contains
+Go, Node.js, Python Java or .NET Core code. It will be built using [ Google
+Cloud Buildpacks ](https://github.com/GoogleCloudPlatform/buildpacks) without
+needing a Dockerfile.
+
 ##  July 30, 2020
 
 **FEATURE:**
