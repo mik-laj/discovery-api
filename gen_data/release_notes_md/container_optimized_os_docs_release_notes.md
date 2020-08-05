@@ -7,7 +7,7 @@ project:  Stable  |  Beta  |  Dev
 ---|---|---  
       
     
-    **cos-stable-81-12871-1160-0**
+    **cos-stable-81-12871-1174-0**
     Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/1d5bc45f886bc0308010614cdcdf658f5fb44a25)
     Kubernetes:     v1.17.6
     Docker:         v19.03.6
@@ -27,8 +27,8 @@ project:  Stable  |  Beta  |  Dev
 
     
     
-    **cos-dev-86-15053-0-0**
-    Kernel:         [COS-5.4.49](https://cos.googlesource.com/third_party/kernel/+/43149c67d9eab8c02ce6958ec7867caba58b0af8)
+    **cos-dev-86-15078-0-0**
+    Kernel:         [COS-5.4.53](https://cos.googlesource.com/third_party/kernel/+/48984bff1c15494f12cfefe2ac2f8db73e60bf58)
     Kubernetes:     v1.18.3
     Docker:         v19.03.9
       
@@ -42,7 +42,6 @@ cluster using a Container-Optimized OS image.
 
   * [ cos-81-lts ](/container-optimized-os/docs/release-notes/m81)
   * [ cos-77-lts ](/container-optimized-os/docs/release-notes/m77)
-  * [ cos-73-lts ](/container-optimized-os/docs/release-notes/m73)
 
 ##  Release Schedule
 
