@@ -37,17 +37,15 @@ This section describes the new features and enhancements in this release.
 Apigee hybrid requires **cert-manager v0.14.2** to manage and verify
 certificates. You can use ` kubectl ` to install and configure cert-manager
 directly from _github > jetstack > cert-manager _ . See [ Download and install
-cert-manager
-](https://cloud.devsite.corp.google.com/apigee/docs/hybrid/v1.3/install-
-download-cert-manager-istio#download-and-install-cert-manager) .
+cert-manager ](/apigee/docs/hybrid/v1.3/install-download-cert-manager-
+istio#download-and-install-cert-manager) .
 
 ####  Anthos Service Mesh
 
 Apigee hybrid uses the Istio distribution provided with Anthos Service Mesh
 (ASM) version 1.5.x to create and manage the runtime ingress gateway. See [
-Download and install ASM
-](https://cloud.devsite.corp.google.com/apigee/docs/hybrid/v1.3/install-
-download-cert-manager-istio#download-and-install-asm) .
+Download and install ASM ](/apigee/docs/hybrid/v1.3/install-download-cert-
+manager-istio#download-and-install-asm) .
 
 ###  Environment groups
 
@@ -60,15 +58,13 @@ choose.
 Environment groups provide the same routing features provided by the `
 virtualHosts ` property in Apigee hybrid version 1.2.
 
-See [ About environment groups
-](https://cloud.devsite.corp.google.com/apigee/docs/hybrid/v1.3/environment-
-groups-about) .
+See [ About environment groups ](/apigee/docs/hybrid/v1.3/environment-groups-
+about) .
 
 ###  New CLI command
 
-The following new commands were added to the apigeectl CLI. For more
-information about each command, see [ apigeectl
-](https://cloud.devsite.corp.google.com/apigee/docs/hybrid/v1.3/cli-reference)
+The following new command was added to the apigeectl CLI. For more information
+about each command, see [ apigeectl ](/apigee/docs/hybrid/v1.3/cli-reference)
 .
 
 Command  |  Description  
@@ -80,8 +76,7 @@ organization.
 ###  CLI flag changes
 
 The following new flags were added to the apigeectl CLI. For more information
-about each command, see [ apigeectl
-](https://cloud.devsite.corp.google.com/apigee/docs/hybrid/v1.3/cli-reference)
+about each command, see [ apigeectl ](/apigee/docs/hybrid/v1.3/cli-reference)
 .
 
 Flag  |  Status  |  Description  
@@ -126,28 +121,23 @@ command. For example:
       apigee-udca-hybrid-example-example-env-9e87e2d
     $
 
-See [ apigeectl
-](https://cloud.devsite.corp.google.com/apigee/docs/hybrid/v1.3/cli-reference)
-.
+See [ apigeectl ](/apigee/docs/hybrid/v1.3/cli-reference) .
 
 ###  New axHashSalt configuration property
 
 A new org-level configuration property, axHashSalt, was added. This property
 lets you specify the name of a Kubernetes secret that contains a hashing salt
 value used to encrypt [ obfuscated user data
-](https://cloud.devsite.corp.google.com/apigee/docs/hybrid/v1.3/obfuscate-
-userdata-for-analytics) sent to Apigee analytics. For more information, see
-the [ Configuration property reference
-](https://cloud.devsite.corp.google.com/apigee/docs/hybrid/v1.3/config-prop-
-ref) .
+](/apigee/docs/hybrid/v1.3/obfuscate-userdata-for-analytics) sent to Apigee
+analytics. For more information, see the [ Configuration property reference
+](/apigee/docs/hybrid/v1.3/config-prop-ref) .
 
 ###  Added support for mTLS on the Istio ingress
 
 You can configure [ mTLS
 ](https://en.wikipedia.org/wiki/Mutual_authentication) . on the Istio ingress.
 For more information, see [ Configuring mTLS
-](https://cloud.devsite.corp.google.com/apigee/docs/hybrid/v1.3/ingress-
-tls#configuring-mtls) .
+](/apigee/docs/hybrid/v1.3/ingress-tls#configuring-mtls) .
 
 ###  Watcher
 
@@ -160,12 +150,9 @@ Watcher introduces:
   * New role: Apigee Runtime Agent 
   * New configuration property: watcher 
 
-See [ Create service accounts
-](https://cloud.devsite.corp.google.com/apigee/docs/hybrid/v1.3/install-
-download-install#create-service-accounts) and the [ Configuration properties
-reference
-](https://cloud.devsite.corp.google.com/apigee/docs/hybrid/v1.3/config-prop-
-ref#watcher) .
+See [ Create service accounts ](/apigee/docs/hybrid/v1.3/install-download-
+install#create-service-accounts) and the [ Configuration properties reference
+](/apigee/docs/hybrid/v1.3/config-prop-ref#watcher) .
 
 ###  GA of the OASValidation policy
 
@@ -174,25 +161,19 @@ The OASValidation policy is now GA.
 ###  Apigee Connect enabled by default
 
 Apigee Connect is now GA and is enabled by default for all new Apigee
-installs. See [ Apigee Connect
-](https://cloud.devsite.corp.google.com/apigee/docs/hybrid/v1.3/apigee-
-connect) .
+installs. See [ Apigee Connect ](/apigee/docs/hybrid/v1.3/apigee-connect) .
 
 ###  Metrics enabled by default
 
 Metrics are enabled by default for all new Apigee hybrid installations. See [
-Configure metrics collection
-](https://cloud.devsite.corp.google.com/apigee/docs/hybrid/v1.3/metrics-
-enable) .
+Configure metrics collection ](/apigee/docs/hybrid/v1.3/metrics-enable) .
 
 ###  Changes to the ` virtualHosts ` configuration property
 
 Use environment groups to configure routing rules. This replaces the
 virtualHosts:routingRules property. See [ Configuring virtual hosts
-](https://cloud.devsite.corp.google.com/apigee/docs/hybrid/v1.3/base-path-
-routing) and [ About environment groups
-](https://cloud.devsite.corp.google.com/apigee/docs/hybrid/v1.3/environment-
-groups-about) .
+](/apigee/docs/hybrid/v1.3/base-path-routing) and [ About environment groups
+](/apigee/docs/hybrid/v1.3/environment-groups-about) .
 
 ###  Changes to product limits
 
@@ -226,10 +207,14 @@ The following table describes the known issues for this release:
 
 Issue  |  Description  
 ---|---  
-162759110  |  Base paths beginning with " ` / ` " will fail.
+162759110  |  Base paths consisting of only " ` / ` " will fail. You must
+include a path after the " ` / ` ".
 
-Begin base paths with a letter or number rather than " ` / ` ". For example `
-v1/customers/123 ` instead of ` /v1/customers/123 `  
+For example:
+
+  * ` /123 `
+  * ` /v1/customers/123 `
+
   
 161658025  |  Inaccurate deployment status for Shared Flows
 
@@ -240,7 +225,7 @@ that the deployment has in fact failed.
 
 To obtain the correct deployment status, use the [
 v1.organizations.environments.sharedflows.revisions.deployments
-](https://cloud.devsite.corp.google.com/apigee/docs/reference/apis/apigee/rest#rest-
+](/apigee/docs/reference/apis/apigee/rest#rest-
 resource:-v1.organizations.environments.sharedflows.revisions.deployments)
 API. For example:
 
