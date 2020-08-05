@@ -15,6 +15,18 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/aiplatform-release-notes.xml `
 
+##  August 04, 2020
+
+**AI Platform Training**
+
+**FEATURE:**
+
+Read a new guide to [ distributed PyTorch training
+](https://cloud.google.com/ai-platform/training/docs/distributed-pytorch) .
+You can use this guide with [ pre-built PyTorch containers
+](https://cloud.google.com/ai-platform/training/docs/getting-started-
+pytorch#pytorch_containers) , which are in beta.
+
 ##  July 20, 2020
 
 **AI Platform Training**
