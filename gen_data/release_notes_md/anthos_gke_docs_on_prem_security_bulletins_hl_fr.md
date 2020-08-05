@@ -248,9 +248,9 @@ réseau à vos serveurs API Kubernetes.
 ######  Que dois-je faire ?
 
 Nous vous recommandons de [ mettre à jour votre cluster
-](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading-
-clusters?hl=fr) vers une version du correctif permettant de remédier à cette
-faille dès sa mise à disposition.
+](https://cloud.google.com/anthos/gke/docs/on-prem/how-
+to/upgrading?hl=fr#clusters) vers une version du correctif permettant de
+remédier à cette faille dès sa mise à disposition.
 
 Les versions du correctif correspondantes sont indiquées ci-dessous :
 
@@ -294,8 +294,8 @@ réseau de cluster interne. Les composants suivants ont été affectés :
 ######  Que dois-je faire ?
 
 Nous vous recommandons de [ mettre à jour
-](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading-
-clusters?hl=fr) vos clusters vers la version [ 1.0.2-gke.3
+](https://cloud.google.com/anthos/gke/docs/on-prem/how-
+to/upgrading?hl=fr#clusters) vos clusters vers la version [ 1.0.2-gke.3
 ](https://cloud.google.com/anthos/gke/docs/on-
 prem/downloads?hl=fr#gkectl_latest) , qui inclut le correctif de cette faille,
 dès que possible.
@@ -330,8 +330,8 @@ noms.
 ######  Que dois-je faire ?
 
 Nous vous recommandons de [ mettre à jour
-](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading-
-clusters?hl=fr) vos clusters vers la version [ 1.0.2-gke.3
+](https://cloud.google.com/anthos/gke/docs/on-prem/how-
+to/upgrading?hl=fr#clusters) vos clusters vers la version [ 1.0.2-gke.3
 ](https://cloud.google.com/anthos/gke/docs/on-
 prem/downloads?hl=fr#gkectl_latest) , qui inclut le correctif de cette faille,
 dès que possible.
