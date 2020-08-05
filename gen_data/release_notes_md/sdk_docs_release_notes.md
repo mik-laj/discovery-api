@@ -12,6 +12,52 @@ will be deprecated on September 30, 2020. See also [ Python 2 Sunset
 ](https://cloud.google.com/python/docs/python2-sunset/) and [ Using Python 3
 ](https://cloud.google.com/sdk/gcloud/reference/topic/startup) .
 
+##  304.0.0 (2020-08-04)
+
+###  Cloud Build
+
+  * Modifed the command group ` gcloud beta builds worker-pools ` such that all underlying commands now use a regional Cloud Build API endpoint (instead of the global one). 
+  * Modifed the command group ` gcloud builds ` such that all underlying commands may optionally use a regional Cloud Build API endpoint (instead of the global one). This is controlled by the new flag ` --region ` , as well as the configuration of submitted builds. 
+
+###  Cloud Composer
+
+  * Fixed a bug where an argument added to ` backfill ` subcommand of ` gcloud composer environments run ` fails in older Airflow versions. 
+  * Added ` --web-server-machine-type ` flag to ` gcloud beta composer environments ` commands to specify the machine type used by the Airflow web server. 
+
+###  Cloud IAM
+
+  * Promoted ` gcloud iam service-accounts keys upload ` to GA. 
+
+###  Compute Engine
+
+  * Added ` gcloud beta compute os-config os-upgrade ` to enable major OS version updates on support distributions. 
+  * Promoted ` gcloud compute diagnose export-logs ` to GA. 
+
+###  Firebase Test Lab
+
+  * Added the command ` gcloud [alpha|beta] firebase test ip-blocks list ` , which retrieves a catalog of IP blocks used by Firebase Test Lab devices. 
+
+###  Kubernetes Engine
+
+  * Added ` --node-group ` to ` gcloud container node-pools create ` . This flag is used to enable the Compute Engine sole tenant node feature on Kubernetes Engine node pools. 
+
+###  Secret Manager
+
+  * Updated the following commands to better support IAM Conditions: 
+    * ` gcloud secrets get-iam-policy ` outputs conditions associated with each binding. 
+    * ` gcloud secrets set-iam-policy ` accepts policies with conditional bindings. 
+    * ` gcloud secrets <add|remove>-iam-policy-binding ` accepts conditional bindings. 
+
+Subscribe to these release notes at [
+https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
+](https://groups.google.com/forum/#!forum/google-cloud-sdk-announce) .
+
+**Note:** Cloud SDK introduced support for Python 3 in release 274.0.0 and
+users are strongly encouraged to migrate to Python 3. Support for Python 2
+will be deprecated on September 30, 2020. See also [ Python 2 Sunset
+](https://cloud.google.com/python/docs/python2-sunset/) and [ Using Python 3
+](https://cloud.google.com/sdk/gcloud/reference/topic/startup) .
+
 ##  303.0.0 (2020-07-28)
 
 ###  AI Platform
