@@ -12,14 +12,35 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  August 04, 2020
+
+**AI Platform Training**
+
+**FEATURE:**
+
+Read a new guide to [ distributed PyTorch training
+](https://cloud.google.com/ai-platform/training/docs/distributed-pytorch) .
+You can use this guide with [ pre-built PyTorch containers
+](https://cloud.google.com/ai-platform/training/docs/getting-started-
+pytorch#pytorch_containers) , which are in beta.
+
+**Compute Engine**
+
+**CHANGED:**
+
+You can attach a maximum of 24 local SSD partitions for 9 TB per instance.
+This is **generally available** on instances with N1 machine types. For more
+information, see [ Local SSDs
+](https://cloud.google.com/compute/docs/disks#localssds) .
+
 ##  August 03, 2020
 
 **Anthos GKE on AWS**
 
 **ISSUE:**
 
-Anthos GKE on AWS 1.4.1 clusters will experience a memory leak that results in
-an unresponsive cluster. A fix for this issue is in development.
+Anthos GKE on AWS 1.4.1-gke.15 clusters will experience a memory leak that
+results in an unresponsive cluster. A fix for this issue is in development.
 
 If you are planning to deploy an Anthos GKE on AWS cluster, wait until the fix
 is ready.
@@ -63,6 +84,17 @@ the exported output of Cloud Storage and BigQuery.
   * Airflow-worker and airflow-scheduler will no longer throw "missing env_var.json" errors in Airflow 1.10.6. 
   * Added validation in the v1 API to provide meaningful error messages when creating an environment with domain restricted sharing. 
 
+**Cloud Run**
+
+**FEATURE:**
+
+When [ setting up Continuous Deployment
+](https://cloud.google.com/run/docs/continuous-deployment-with-cloud-build) in
+the Cloud Run user interface, you can now select a repository that contains
+Go, Node.js, Python Java or .NET Core code. It will be built using [ Google
+Cloud Buildpacks ](https://github.com/GoogleCloudPlatform/buildpacks) without
+needing a Dockerfile.
+
 **Compute Engine**
 
 **FEATURE:**
@@ -72,6 +104,23 @@ east1-a ` , Singapore: ` asia-southeast1-a ` , Sao Paulo: ` southamerica-
 east1-b,c ` , and Oregon: ` us-west1-b ` . For more information, see [ VM
 instance pricing ](https://cloud.google.com/compute/vm-instance-
 pricing#c2_machine_types) .
+
+**Dataproc**
+
+**CHANGED:**
+
+Dataproc users are required to have [ service account ActAs permission
+](https://cloud.google.com/iam/docs/service-accounts-actas) to deploy Dataproc
+resources, for example, to create clusters and submit jobs. See [ Managing
+service account impersonation
+](https://cloud.google.com/iam/docs/impersonating-service-accounts) for more
+information.
+
+**Opt-in for existing Dataproc customers:** This change does not automatically
+apply to current Dataproc customers without ` ActAs ` permission. To opt in,
+see [ Securing Dataproc, Dataflow, and Cloud Data Fusion
+](https://cloud.google.com/iam/docs/service-accounts-actas#dataproc-dataflow-
+datafusion) .
 
 ##  July 31, 2020
 
@@ -2166,56 +2215,4 @@ Traffic Director now provides the option of automated Envoy deployment.
 
 Traffic Director now supports automated Envoy deployments for Google Compute
 Engine VMs in Beta.
-
-##  July 06, 2020
-
-**App Engine standard environment Node.js**
-
-**FEATURE:**
-
-The [ Node.js 12 runtime
-](https://cloud.google.com/appengine/docs/standard/nodejs/runtime) for the App
-Engine standard environment is now generally available.
-
-**App Engine standard environment Python**
-
-**FEATURE:**
-
-The [ Python 3.8 runtime
-](https://cloud.google.com/appengine/docs/standard/python3/runtime) for the
-App Engine standard environment is now generally available.
-
-**App Engine standard environment Ruby**
-
-**FEATURE:**
-
-The [ Ruby 2.6 and 2.7 runtime Betas
-](https://cloud.google.com/appengine/docs/standard/ruby/runtime) for the App
-Engine standard environment are now available.
-
-**BigQuery**
-
-**CHANGED:**
-
-Updated version of [ Magnitude Simba ODBC
-](https://cloud.google.com/bigquery/providers/simba-drivers) driver. This
-version includes some performance improvements and bug fixes, and it catches
-up with the JDBC driver by adding support for user defined functions and
-variable time zones using the connection string.
-
-**Compute Engine**
-
-**FEATURE:**
-
-E2 machine types now offer up to 32 vCPUs. See [ E2 machine types
-](https://cloud.google.com/compute/docs/machine-types#e2_machine_types) for
-more information.
-
-**Dialogflow**
-
-**FEATURE:**
-
-The Dialogflow Console has been upgraded with an improved [ Analytics page
-](https://cloud.google.com/dialogflow/docs/analytics) (Beta) that provides new
-metrics and data views.
 
