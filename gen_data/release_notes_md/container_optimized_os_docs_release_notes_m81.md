@@ -12,6 +12,12 @@ Docker  |  v19.03.6
   
 ##  Changelog
 
+###  cos-81-12871-1174-0
+
+_Date: July 30, 2020_
+
+  * Removed the metrics daemon to address an issue where it would periodically cause CPU usage spikes in some cases. 
+
 ###  cos-81-12871-1160-0
 
 _Date: July 24, 2020_
