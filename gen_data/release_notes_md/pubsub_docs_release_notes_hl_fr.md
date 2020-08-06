@@ -23,6 +23,15 @@ de cette page à votre [ lecteur de flux
 du flux directement : ` https://cloud.google.com/feeds/pubsub-release-
 notes.xml `
 
+##  August 05, 2020
+
+**FEATURE:**
+
+Pub/Sub [ message ordering
+](https://cloud.google.com/pubsub/docs/ordering?hl=fr) is now available at the
+[ beta launch stage ](https://cloud.google.com/products/?hl=fr#product-launch-
+stages) .
+
 ##  June 16, 2020
 
 **FEATURE:**
