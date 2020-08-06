@@ -18,6 +18,15 @@ Google Cloud의 최신 제품 업데이트를 확인할 수 있습니다.
 추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/pubsub-
 release-notes.xml `
 
+##  August 05, 2020
+
+**FEATURE:**
+
+Pub/Sub [ message ordering
+](https://cloud.google.com/pubsub/docs/ordering?hl=ko) is now available at the
+[ beta launch stage ](https://cloud.google.com/products/?hl=ko#product-launch-
+stages) .
+
 ##  June 16, 2020
 
 **FEATURE:**
