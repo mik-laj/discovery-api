@@ -1,4 +1,4 @@
-A new version of Anthos GKE on AWS was released on July 24. See the [ release
+A new version of Anthos GKE on AWS was released on August 5. See the [ release
 notes ](/anthos/gke/docs/aws/release-notes) for information on breaking
 changes.
 
@@ -11,12 +11,29 @@ deprecated functionality.
 You can see the latest product updates for all of Google Cloud on the [ Google
 Cloud release notes ](/release-notes) page.
 
+##  August 04, 2020
+
+**FIXED:**
+
+Anthos GKE on AWS 1.4.1-gke.17 is released. This release fixes a memory leak
+that causes clusters to become unresponsive.
+
+To upgrade your clusters, perform the following steps:
+
+  1. Restart your [ control plane instances ](https://cloud.google.com/anthos/gke/docs/aws/troubleshooting#rebooting_your_control_plane) . 
+  2. Upgrade your [ management service ](http://cloud.google.com/anthos/gke/docs/aws/how-to/upgrading-management) to aws-1.4.1-gke.17. 
+  3. Upgrade your [ user cluster's ](http://cloud.google.com/anthos/gke/docs/aws/how-to/upgrading-user-cluster) AWSCluster and AWSNodePools to 1.16.9-gke.15. 
+
+**CHANGED:**
+
+Use version 1.16.9-gke.15 for creating new clusters.
+
 ##  August 03, 2020
 
 **ISSUE:**
 
-Anthos GKE on AWS 1.4.1 clusters will experience a memory leak that results in
-an unresponsive cluster. A fix for this issue is in development.
+Anthos GKE on AWS 1.4.1-gke.15 clusters will experience a memory leak that
+results in an unresponsive cluster. A fix for this issue is in development.
 
 If you are planning to deploy an Anthos GKE on AWS cluster, wait until the fix
 is ready.
