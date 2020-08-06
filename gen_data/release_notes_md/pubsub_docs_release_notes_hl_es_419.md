@@ -23,6 +23,15 @@ página a tu [ lector de feeds
 directamente la URL del feed: ` https://cloud.google.com/feeds/pubsub-release-
 notes.xml `
 
+##  August 05, 2020
+
+**FEATURE:**
+
+Pub/Sub [ message ordering
+](https://cloud.google.com/pubsub/docs/ordering?hl=es-419) is now available at
+the [ beta launch stage
+](https://cloud.google.com/products/?hl=es-419#product-launch-stages) .
+
 ##  June 16, 2020
 
 **FEATURE:**
