@@ -4,21 +4,12 @@ representative.
 
 #  Apigee Release Notes
 
-This section provides release notes for Apigee and hybrid. For previous
-versions and other products, see [ Legacy Apigee Release Notes
-](https://docs.apigee.com/release/notes/legacy-apigee-release-notes) .
-
-##  Apigee Adapter for Envoy releases
-
-  * [ 1.0.0 ](/apigee/docs/release/notes/100-envoy-adapter-release-notes)
+This section provides release notes for Apigee and Apigee hybrid.
 
 ##  Apigee releases
 
-###  July 19, 2020
-
-**FEATURE:**
-
-Apigee Beta release.
+  * July 19, 2020 - **Apigee Beta release**
+  * [ 20.08.05 Integrated portal ](/apigee/docs/release/notes/200805-apigee-integrated-portal-release-notes)
 
 ##  Apigee hybrid releases
 
@@ -28,4 +19,8 @@ See the following information for information about each hybrid release:
   * [ 1.1.1 (Runtime) ](/apigee/docs/release/notes/111-hybrid-runtime-release-notes)
   * [ 1.1.0 (Runtime) ](/apigee/docs/release/notes/110-hybrid-runtime-release-notes)
   * [ 1.0.0 (Runtime) ](/apigee/docs/release/notes/100-hybrid-runtime-release-notes)
+
+##  Apigee Adapter for Envoy releases
+
+  * [ 1.0.0 ](/apigee/docs/release/notes/100-envoy-adapter-release-notes)
 
