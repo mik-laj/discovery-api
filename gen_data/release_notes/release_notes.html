@@ -40,6 +40,202 @@ For a comprehensive list, see the
    </section>
    <section class="releases">
     <section class="releases">
+     <h2 data-text="August 05, 2020" id="August_05_2020" tabindex="0">
+      August 05, 2020
+     </h2>
+     <strong class="release-note-product-title">
+      Anthos GKE on-prem
+     </strong>
+     <div class="release-issue" id="f278257c">
+      <strong>
+       ISSUE:
+      </strong>
+      <h3 data-text="Stackdriver monitor error condition" id="stackdriver_monitor_error_condition" tabindex="0">
+       Stackdriver monitor error condition
+      </h3>
+      <p>
+       Under certain conditions, the default Stackdriver monitoring pod, deployed by default in each new cluster, can become unresponsive. When clusters are upgraded, for example, storage data can become corrupted when pods in
+       <code dir="ltr" translate="no">
+        statefulset/prometheus-stackdriver-k8s
+       </code>
+       are restarted.
+      </p>
+      <p>
+       Specifically, monitoring pod
+       <code dir="ltr" translate="no">
+        stackdriver-prometheus-k8s-0
+       </code>
+       can be caught in a loop when corrupted data prevents
+       <code dir="ltr" translate="no">
+        prometheus-stackdriver-sidecar
+       </code>
+       writing to the cluster storage PersistentVolume.
+      </p>
+      <p>
+       The error can be manually diagnosed and recovered following the steps below.
+      </p>
+      <h3 data-text="Diagnosing the Stackdriver pod failure" id="diagnosing_the_stackdriver_pod_failure" tabindex="0">
+       Diagnosing the Stackdriver pod failure
+      </h3>
+      <p>
+       When the Stackdriver monitoring pod has failed, the logs will report the following:
+      </p>
+      <p>
+       <code dir="ltr" translate="no">
+        {"log":"level=warn ts=2020-04-08T22:15:44.557Z caller=queue_manager.go:534 component=queue_manager msg=\"Unrecoverable error sending samples to remote storage\" err=\"rpc error: code = InvalidArgument desc = One or more TimeSeries could not be written: One or more points were written more frequently than the maximum sampling period configured for the metric.: timeSeries[0-114]; Unknown metric: kubernetes.io/anthos/scheduler_pending_pods: timeSeries[196-198]\"\n","stream":"stderr","time":"2020-04-08T22:15:44.558246866Z"}
+       </code>
+      </p>
+      <p>
+       <code dir="ltr" translate="no">
+        {"log":"level=info ts=2020-04-08T22:15:44.656Z caller=queue_manager.go:229 component=queue_manager msg=\"Remote storage stopped.\"\n","stream":"stderr","time":"2020-04-08T22:15:44.656798666Z"}
+       </code>
+      </p>
+      <p>
+       <code dir="ltr" translate="no">
+        {"log":"level=error ts=2020-04-08T22:15:44.663Z caller=main.go:603 err=\"corruption after 29032448 bytes: unexpected non-zero byte in padded page\"\n","stream":"stderr","time":"2020-04-08T22:15:44.663707748Z"}
+{"log":"level=info ts=2020-04-08T22:15:44.663Z caller=main.go:605 msg=\"See you next time!\"\n","stream":"stderr","time":"2020-04-08T22:15:44.664000941Z"}
+       </code>
+      </p>
+      <h3 data-text="Recovering the Stackdriver monitor" id="recovering_the_stackdriver_monitor" tabindex="0">
+       Recovering the Stackdriver monitor
+      </h3>
+      <p>
+       To recover the Stackdriver monitor manually:
+      </p>
+      <ol>
+       <li>
+        <p>
+         Stop cluster monitoring. Scale down the stackdriver operator to prevent monitoring reconciliation:
+         <br/>
+         <code dir="ltr" translate="no">
+          kubectl --kubeconfig /ADMIN_CLUSTER_KUBCONFIG --namespace kube-system scale deployment stackdriver-operator --replicas 0
+         </code>
+        </p>
+       </li>
+       <li>
+        <p>
+         Delete the monitoring pipeline workloads:
+         <code dir="ltr" translate="no">
+          kubectl --kubeconfig /ADMIN_CLUSTER_KUBCONFIG --namespace kube-system delete statefulset stackdriver-prometheus-k8s
+         </code>
+        </p>
+       </li>
+       <li>
+        <p>
+         Delete the monitoring pipeline PersistentVolumeClaims (PVCs)
+         <code dir="ltr" translate="no">
+          kubectl --kubeconfig /ADMIN_CLUSTER_KUBCONFIG --namespace kube-system delete pvc -l app=stackdriver-prometheus-k8s
+         </code>
+        </p>
+       </li>
+       <li>
+        <p>
+         Restart cluster monitoring. Scale up the Stackdriver operator to reinstall a new monitoring pipeline and resume reconciliation:
+         <code dir="ltr" translate="no">
+          kubectl --kubeconfig /ADMIN_CLUSTER_KUBCONFIG --namespace kube-system scale deployment stackdriver-operator --replicas=1
+         </code>
+        </p>
+       </li>
+      </ol>
+     </div>
+     <div class="release-issue" id="0e65891c">
+      <strong>
+       ISSUE:
+      </strong>
+      <h3 data-text="Installer fails when creating vSphere datadisk" id="installer_fails_when_creating_vsphere_datadisk" tabindex="0">
+       Installer fails when creating vSphere datadisk
+      </h3>
+      <p>
+       The GKE on-prem installer can fail if custom roles are bound at the wrong permissions level.
+      </p>
+      <p>
+       When the role binding is incorrect, creating a vSphere datadisk with
+       <code dir="ltr" translate="no">
+        govc
+       </code>
+       hangs.  The installer creates a datadisk in the vSphere datastore of zero bytes, which causes the failure.
+      </p>
+      <p>
+       To fix the issue, you should bind the custom role at the vSphere
+       <code dir="ltr" translate="no">
+        vcenter
+       </code>
+       level (root).
+      </p>
+      <p>
+       If you want to bind the custom role at the DC level (or lower than root), you also need to to bind the read-only role to the user at the root
+       <code dir="ltr" translate="no">
+        vcenter
+       </code>
+       level.
+      </p>
+      <p>
+       For more information on role creation, see: https://cloud.google.com/anthos/gke/docs/on-prem/how-to/vsphere-requirements-basic?hl=en#vcenter-user-account-privileges
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      Cloud Functions
+     </strong>
+     <div class="release-feature" id="03b02112">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Cloud Functions Java 11, Python 3.7 or 3.8, and Go 1.13 runtimes now build container images in the user's project, providing direct access to build logs and removing the preset build-time quota.
+      </p>
+      <p>
+       See
+       <a href="https://cloud.google.com/functions/docs/building">
+        Building Cloud Functions
+       </a>
+       for details.
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      Istio on Google Kubernetes Engine
+     </strong>
+     <div class="release-feature" id="5e6baf42">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Starting with version 1.6, the Istio on GKE add-on uses the Istio
+Operator for installation and configuration. When you upgrade your cluster to
+1.17.7-gke.8+, 1.17.8-gke.6+, or higher, the Istio 1.6 Operator and control
+plane are installed alongside the existing 1.4.x Istio control plane. The
+upgrade requires user action and follows the
+       <a href="https://istio.io/latest/blog/2020/multiple-control-planes/">
+        dual control plane upgrade
+       </a>
+       process (referred to as canary upgrades in the Istio documentation). With a
+dual control plane upgrade, you can migrate to the 1.6 version by setting a
+label on your workloads to point to the new control plane and performing a
+rolling restart. To learn more, see
+       <a href="https://cloud.google.com/istio/docs/istio-on-gke/upgrade-with-operator">
+        Upgrading to Istio 1.6 with Operator
+       </a>
+       .
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      Pub/Sub
+     </strong>
+     <div class="release-feature" id="650a9f17">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Pub/Sub
+       <a href="https://cloud.google.com/pubsub/docs/ordering">
+        message ordering
+       </a>
+       is now available at the
+       <a href="https://cloud.google.com/products/#product-launch-stages">
+        beta launch stage
+       </a>
+       .
+      </p>
+     </div>
      <h2 data-text="August 04, 2020" id="August_04_2020" tabindex="0">
       August 04, 2020
      </h2>
@@ -60,6 +256,51 @@ For a comprehensive list, see the
         pre-built PyTorch containers
        </a>
        , which are in beta.
+      </p>
+     </div>
+     <strong class="release-note-product-title">
+      Anthos GKE on AWS
+     </strong>
+     <div class="release-fixed" id="63de0059">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Anthos GKE on AWS 1.4.1-gke.17 is released. This release fixes a memory leak that causes clusters to become unresponsive.
+      </p>
+      <p>
+       To upgrade your clusters, perform the following steps:
+      </p>
+      <ol>
+       <li>
+        Restart your
+        <a href="https://cloud.google.com/anthos/gke/docs/aws/troubleshooting#rebooting_your_control_plane">
+         control plane instances
+        </a>
+        .
+       </li>
+       <li>
+        Upgrade your
+        <a href="http://cloud.google.com/anthos/gke/docs/aws/how-to/upgrading-management">
+         management service
+        </a>
+        to aws-1.4.1-gke.17.
+       </li>
+       <li>
+        Upgrade your
+        <a href="http://cloud.google.com/anthos/gke/docs/aws/how-to/upgrading-user-cluster">
+         user cluster's
+        </a>
+        AWSCluster and AWSNodePools to 1.16.9-gke.15.
+       </li>
+      </ol>
+     </div>
+     <div class="release-changed" id="e391ee14">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Use version 1.16.9-gke.15 for creating new clusters.
       </p>
      </div>
      <strong class="release-note-product-title">
@@ -684,6 +925,21 @@ For a comprehensive list, see the
         </a>
        </li>
       </ul>
+     </div>
+     <strong class="release-note-product-title">
+      Anthos Config Management
+     </strong>
+     <div class="release-fixed" id="0529a64a">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Updated the git-sync image to fix security vulnerability
+       <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5482">
+        CVE-2019-5482
+       </a>
+       .
+      </p>
      </div>
      <strong class="release-note-product-title">
       Anthos GKE on-prem
@@ -5177,200 +5433,6 @@ described in
        with App Engine.
        <br/>
        This feature is available in Beta.
-      </p>
-     </div>
-     <h2 data-text="July 07, 2020" id="July_07_2020" tabindex="0">
-      July 07, 2020
-     </h2>
-     <strong class="release-note-product-title">
-      Cloud Composer
-     </strong>
-     <div class="release-changed" id="ac166317">
-      <strong>
-       CHANGED:
-      </strong>
-      <ul>
-       <li>
-        <p>
-         <a href="https://cloud.google.com/composer/docs/concepts/versioning/composer-versions">
-          New versions
-         </a>
-         of Cloud Composer images:
-         <code dir="ltr" translate="no">
-          composer-1.10.6-airflow-1.10.2
-         </code>
-         ,
-         <code dir="ltr" translate="no">
-          composer-1.10.6-airflow-1.10.3
-         </code>
-         and
-         <code dir="ltr" translate="no">
-          composer-1.10.6-airflow-1.10.6
-         </code>
-         . The default is
-         <code dir="ltr" translate="no">
-          composer-1.10.6-airflow-1.10.3
-         </code>
-         . Upgrade your Cloud SDK to use features in this release.
-        </p>
-       </li>
-       <li>
-        <p>
-         <strong>
-          For Airflow 1.10.6 and later:
-         </strong>
-         The Airflow config property
-         <code dir="ltr" translate="no">
-          [celery] pool
-         </code>
-         is now blocked.
-        </p>
-       </li>
-       <li>
-        <p>
-         The
-         <code dir="ltr" translate="no">
-          [core]sql_alchemy_pool_recycle
-         </code>
-         Airflow setting has been modified to improve SQL connection reliability.
-        </p>
-       </li>
-      </ul>
-     </div>
-     <div class="release-fixed" id="5d94f88e">
-      <strong>
-       FIXED:
-      </strong>
-      <ul>
-       <li>
-        Fixed an issue with Airflow 1.10.6 environments where task logs were not visible in the UI when DAG serialization was enabled.
-       </li>
-       <li>
-        It is now possible to upgrade from Composer versions 1.1.1, 1.2.0, 1.3.0, 1.4.0, 1.4.1, 1.4.2, 1.5.0, and 1.5.2 to the newest version.
-       </li>
-      </ul>
-     </div>
-     <strong class="release-note-product-title">
-      Cloud Functions
-     </strong>
-     <div class="release-feature" id="b6846237">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       External HTTP(S) Load Balancing is now supported for Google Cloud Functions via
-       <a href="https://cloud.google.com/load-balancing/docs/negs/setting-up-serverless-negs">
-        Serverless network endpoint groups
-       </a>
-       .
-      </p>
-      <p>
-       Notably, this feature allows you to use
-       <a href="https://cloud.google.com/cdn">
-        Cloud CDN
-       </a>
-       and
-       <a href="https://cloud.google.com/armor">
-        Cloud Armor
-       </a>
-       with Google Cloud Functions.
-      </p>
-      <p>
-       This feature is available in Beta.
-      </p>
-     </div>
-     <strong class="release-note-product-title">
-      Cloud Load Balancing
-     </strong>
-     <div class="release-feature" id="a8e97c11">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       External HTTP(S) Load Balancing is now supported for App Engine, Cloud Functions, and Cloud Run services. To configure this, you will need to use a new type of network endpoint group (NEG) called a
-       <a href="https://cloud.google.com/load-balancing/docs/negs/setting-up-serverless-negs">
-        Serverless NEG
-       </a>
-       .
-      </p>
-      <p>
-       This feature is available in Beta.
-      </p>
-     </div>
-     <strong class="release-note-product-title">
-      Cloud Monitoring
-     </strong>
-     <div class="release-changed" id="3530dfe7">
-      <strong>
-       CHANGED:
-      </strong>
-      <p>
-       Monitoring Query Language (MQL) is now Generally Available. MQL is an expressive, text-based interface to Cloud Monitoring time-series data. With MQL, you can create charts you can't create any other way. You can access MQL from both the Cloud Console and the Monitoring API. For more information, see
-       <a href="https://cloud.google.com/monitoring/mql/">
-        Introduction to Monitoring Query Language
-       </a>
-       .
-      </p>
-     </div>
-     <strong class="release-note-product-title">
-      Cloud Run
-     </strong>
-     <div class="release-feature" id="d334e63d">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       External HTTP(S) Load Balancing is now supported for Cloud Run services via
-       <a href="https://cloud.google.com/load-balancing/docs/negs/setting-up-serverless-negs">
-        Serverless network endpoint groups
-       </a>
-       .
-       <br/>
-       Notably, this feature allows you to use
-       <a href="https://cloud.google.com/cdn">
-        Cloud CDN
-       </a>
-       and multi-region load balancing.
-       <br/>
-       This feature is available in Beta.
-      </p>
-     </div>
-     <strong class="release-note-product-title">
-      Dataproc
-     </strong>
-     <div class="release-feature" id="15eacfbe">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       Announcing the
-       <a href="https://cloud.google.com/products#product-launch-stages">
-        General Availability (GA)
-       </a>
-       release of
-       <a href="https://cloud.google.com/dataproc/docs/concepts/accessing/dataproc-gateways">
-        Dataproc Component Gateway
-       </a>
-       , which provides secure access to web endpoints for Dataproc default and optional components.
-      </p>
-     </div>
-     <strong class="release-note-product-title">
-      Traffic Director
-     </strong>
-     <div class="release-feature" id="2232a453">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       Traffic Director now provides the option of automated Envoy deployment.
-      </p>
-     </div>
-     <div class="release-feature" id="f436dfd4">
-      <strong>
-       FEATURE:
-      </strong>
-      <p>
-       Traffic Director now supports automated Envoy deployments for Google Compute Engine VMs in Beta.
       </p>
      </div>
     </section>
