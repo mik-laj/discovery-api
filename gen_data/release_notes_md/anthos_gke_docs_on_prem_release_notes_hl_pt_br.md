@@ -20,6 +20,85 @@ página ao [ leitor de feeds
 do feed diretamente: ` https://cloud.google.com/feeds/gkeonprem-release-
 notes.xml `
 
+##  August 05, 2020
+
+**ISSUE:**
+
+###  Stackdriver monitor error condition
+
+Under certain conditions, the default Stackdriver monitoring pod, deployed by
+default in each new cluster, can become unresponsive. When clusters are
+upgraded, for example, storage data can become corrupted when pods in `
+statefulset/prometheus-stackdriver-k8s ` are restarted.
+
+Specifically, monitoring pod ` stackdriver-prometheus-k8s-0 ` can be caught in
+a loop when corrupted data prevents ` prometheus-stackdriver-sidecar ` writing
+to the cluster storage PersistentVolume.
+
+The error can be manually diagnosed and recovered following the steps below.
+
+###  Diagnosing the Stackdriver pod failure
+
+When the Stackdriver monitoring pod has failed, the logs will report the
+following:
+
+` {"log":"level=warn ts=2020-04-08T22:15:44.557Z caller=queue_manager.go:534
+component=queue_manager msg=\"Unrecoverable error sending samples to remote
+storage\" err=\"rpc error: code = InvalidArgument desc = One or more
+TimeSeries could not be written: One or more points were written more
+frequently than the maximum sampling period configured for the metric.:
+timeSeries[0-114]; Unknown metric:
+kubernetes.io/anthos/scheduler_pending_pods:
+timeSeries[196-198]\"\n","stream":"stderr","time":"2020-04-08T22:15:44.558246866Z"}
+`
+
+` {"log":"level=info ts=2020-04-08T22:15:44.656Z caller=queue_manager.go:229
+component=queue_manager msg=\"Remote storage
+stopped.\"\n","stream":"stderr","time":"2020-04-08T22:15:44.656798666Z"} `
+
+` {"log":"level=error ts=2020-04-08T22:15:44.663Z caller=main.go:603
+err=\"corruption after 29032448 bytes: unexpected non-zero byte in padded
+page\"\n","stream":"stderr","time":"2020-04-08T22:15:44.663707748Z"}
+{"log":"level=info ts=2020-04-08T22:15:44.663Z caller=main.go:605 msg=\"See
+you next time!\"\n","stream":"stderr","time":"2020-04-08T22:15:44.664000941Z"}
+`
+
+###  Recovering the Stackdriver monitor
+
+To recover the Stackdriver monitor manually:
+
+  1. Stop cluster monitoring. Scale down the stackdriver operator to prevent monitoring reconciliation:   
+` kubectl --kubeconfig /ADMIN_CLUSTER_KUBCONFIG --namespace kube-system scale
+deployment stackdriver-operator --replicas 0 `
+
+  2. Delete the monitoring pipeline workloads: ` kubectl --kubeconfig /ADMIN_CLUSTER_KUBCONFIG --namespace kube-system delete statefulset stackdriver-prometheus-k8s `
+
+  3. Delete the monitoring pipeline PersistentVolumeClaims (PVCs) ` kubectl --kubeconfig /ADMIN_CLUSTER_KUBCONFIG --namespace kube-system delete pvc -l app=stackdriver-prometheus-k8s `
+
+  4. Restart cluster monitoring. Scale up the Stackdriver operator to reinstall a new monitoring pipeline and resume reconciliation: ` kubectl --kubeconfig /ADMIN_CLUSTER_KUBCONFIG --namespace kube-system scale deployment stackdriver-operator --replicas=1 `
+
+**ISSUE:**
+
+###  Installer fails when creating vSphere datadisk
+
+The GKE on-prem installer can fail if custom roles are bound at the wrong
+permissions level.
+
+When the role binding is incorrect, creating a vSphere datadisk with ` govc `
+hangs. The installer creates a datadisk in the vSphere datastore of zero
+bytes, which causes the failure.
+
+To fix the issue, you should bind the custom role at the vSphere ` vcenter `
+level (root).
+
+If you want to bind the custom role at the DC level (or lower than root), you
+also need to to bind the read-only role to the user at the root ` vcenter `
+level.
+
+For more information on role creation, see:
+https://cloud.google.com/anthos/gke/docs/on-prem/how-to/vsphere-requirements-
+basic?hl=en#vcenter-user-account-privileges
+
 ##  July 30, 2020
 
 **FEATURE:**
