@@ -19,6 +19,15 @@
 URL ディレクトリ ` https://cloud.google.com/feeds/pubsub-release-notes.xml `
 を直接追加します。
 
+##  August 05, 2020
+
+**FEATURE:**
+
+Pub/Sub [ message ordering
+](https://cloud.google.com/pubsub/docs/ordering?hl=ja) is now available at the
+[ beta launch stage ](https://cloud.google.com/products/?hl=ja#product-launch-
+stages) .
+
 ##  June 16, 2020
 
 **FEATURE:**
