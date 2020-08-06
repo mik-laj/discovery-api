@@ -12,6 +12,122 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  August 05, 2020
+
+**Anthos GKE on-prem**
+
+**ISSUE:**
+
+###  Stackdriver monitor error condition
+
+Under certain conditions, the default Stackdriver monitoring pod, deployed by
+default in each new cluster, can become unresponsive. When clusters are
+upgraded, for example, storage data can become corrupted when pods in `
+statefulset/prometheus-stackdriver-k8s ` are restarted.
+
+Specifically, monitoring pod ` stackdriver-prometheus-k8s-0 ` can be caught in
+a loop when corrupted data prevents ` prometheus-stackdriver-sidecar ` writing
+to the cluster storage PersistentVolume.
+
+The error can be manually diagnosed and recovered following the steps below.
+
+###  Diagnosing the Stackdriver pod failure
+
+When the Stackdriver monitoring pod has failed, the logs will report the
+following:
+
+` {"log":"level=warn ts=2020-04-08T22:15:44.557Z caller=queue_manager.go:534
+component=queue_manager msg=\"Unrecoverable error sending samples to remote
+storage\" err=\"rpc error: code = InvalidArgument desc = One or more
+TimeSeries could not be written: One or more points were written more
+frequently than the maximum sampling period configured for the metric.:
+timeSeries[0-114]; Unknown metric:
+kubernetes.io/anthos/scheduler_pending_pods:
+timeSeries[196-198]\"\n","stream":"stderr","time":"2020-04-08T22:15:44.558246866Z"}
+`
+
+` {"log":"level=info ts=2020-04-08T22:15:44.656Z caller=queue_manager.go:229
+component=queue_manager msg=\"Remote storage
+stopped.\"\n","stream":"stderr","time":"2020-04-08T22:15:44.656798666Z"} `
+
+` {"log":"level=error ts=2020-04-08T22:15:44.663Z caller=main.go:603
+err=\"corruption after 29032448 bytes: unexpected non-zero byte in padded
+page\"\n","stream":"stderr","time":"2020-04-08T22:15:44.663707748Z"}
+{"log":"level=info ts=2020-04-08T22:15:44.663Z caller=main.go:605 msg=\"See
+you next time!\"\n","stream":"stderr","time":"2020-04-08T22:15:44.664000941Z"}
+`
+
+###  Recovering the Stackdriver monitor
+
+To recover the Stackdriver monitor manually:
+
+  1. Stop cluster monitoring. Scale down the stackdriver operator to prevent monitoring reconciliation:   
+` kubectl --kubeconfig /ADMIN_CLUSTER_KUBCONFIG --namespace kube-system scale
+deployment stackdriver-operator --replicas 0 `
+
+  2. Delete the monitoring pipeline workloads: ` kubectl --kubeconfig /ADMIN_CLUSTER_KUBCONFIG --namespace kube-system delete statefulset stackdriver-prometheus-k8s `
+
+  3. Delete the monitoring pipeline PersistentVolumeClaims (PVCs) ` kubectl --kubeconfig /ADMIN_CLUSTER_KUBCONFIG --namespace kube-system delete pvc -l app=stackdriver-prometheus-k8s `
+
+  4. Restart cluster monitoring. Scale up the Stackdriver operator to reinstall a new monitoring pipeline and resume reconciliation: ` kubectl --kubeconfig /ADMIN_CLUSTER_KUBCONFIG --namespace kube-system scale deployment stackdriver-operator --replicas=1 `
+
+**ISSUE:**
+
+###  Installer fails when creating vSphere datadisk
+
+The GKE on-prem installer can fail if custom roles are bound at the wrong
+permissions level.
+
+When the role binding is incorrect, creating a vSphere datadisk with ` govc `
+hangs. The installer creates a datadisk in the vSphere datastore of zero
+bytes, which causes the failure.
+
+To fix the issue, you should bind the custom role at the vSphere ` vcenter `
+level (root).
+
+If you want to bind the custom role at the DC level (or lower than root), you
+also need to to bind the read-only role to the user at the root ` vcenter `
+level.
+
+For more information on role creation, see:
+https://cloud.google.com/anthos/gke/docs/on-prem/how-to/vsphere-requirements-
+basic?hl=en#vcenter-user-account-privileges
+
+**Cloud Functions**
+
+**FEATURE:**
+
+Cloud Functions Java 11, Python 3.7 or 3.8, and Go 1.13 runtimes now build
+container images in the user's project, providing direct access to build logs
+and removing the preset build-time quota.
+
+See [ Building Cloud Functions
+](https://cloud.google.com/functions/docs/building) for details.
+
+**Istio on Google Kubernetes Engine**
+
+**FEATURE:**
+
+Starting with version 1.6, the Istio on GKE add-on uses the Istio Operator for
+installation and configuration. When you upgrade your cluster to
+1.17.7-gke.8+, 1.17.8-gke.6+, or higher, the Istio 1.6 Operator and control
+plane are installed alongside the existing 1.4.x Istio control plane. The
+upgrade requires user action and follows the [ dual control plane upgrade
+](https://istio.io/latest/blog/2020/multiple-control-planes/) process
+(referred to as canary upgrades in the Istio documentation). With a dual
+control plane upgrade, you can migrate to the 1.6 version by setting a label
+on your workloads to point to the new control plane and performing a rolling
+restart. To learn more, see [ Upgrading to Istio 1.6 with Operator
+](https://cloud.google.com/istio/docs/istio-on-gke/upgrade-with-operator) .
+
+**Pub/Sub**
+
+**FEATURE:**
+
+Pub/Sub [ message ordering ](https://cloud.google.com/pubsub/docs/ordering) is
+now available at the [ beta launch stage
+](https://cloud.google.com/products/#product-launch-stages) .
+
 ##  August 04, 2020
 
 **AI Platform Training**
@@ -23,6 +139,23 @@ Read a new guide to [ distributed PyTorch training
 You can use this guide with [ pre-built PyTorch containers
 ](https://cloud.google.com/ai-platform/training/docs/getting-started-
 pytorch#pytorch_containers) , which are in beta.
+
+**Anthos GKE on AWS**
+
+**FIXED:**
+
+Anthos GKE on AWS 1.4.1-gke.17 is released. This release fixes a memory leak
+that causes clusters to become unresponsive.
+
+To upgrade your clusters, perform the following steps:
+
+  1. Restart your [ control plane instances ](https://cloud.google.com/anthos/gke/docs/aws/troubleshooting#rebooting_your_control_plane) . 
+  2. Upgrade your [ management service ](http://cloud.google.com/anthos/gke/docs/aws/how-to/upgrading-management) to aws-1.4.1-gke.17. 
+  3. Upgrade your [ user cluster's ](http://cloud.google.com/anthos/gke/docs/aws/how-to/upgrading-user-cluster) AWSCluster and AWSNodePools to 1.16.9-gke.15. 
+
+**CHANGED:**
+
+Use version 1.16.9-gke.15 for creating new clusters.
 
 **Compute Engine**
 
@@ -264,6 +397,13 @@ Transfers from Microsoft Azure Blob Storage are now generally available.
 **Updated components:**
 
   * [ Anthos GKE on-prem release notes ](https://cloud.google.com/anthos/gke/docs/on-prem/release-notes)
+
+**Anthos Config Management**
+
+**FIXED:**
+
+Updated the git-sync image to fix security vulnerability [ CVE-2019-5482
+](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5482) .
 
 **Anthos GKE on-prem**
 
@@ -2128,91 +2268,4 @@ Serverless network endpoint groups ](https://cloud.google.com//load-
 balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
 you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
 This feature is available in Beta.
-
-##  July 07, 2020
-
-**Cloud Composer**
-
-**CHANGED:**
-
-  * [ New versions ](https://cloud.google.com/composer/docs/concepts/versioning/composer-versions) of Cloud Composer images: ` composer-1.10.6-airflow-1.10.2 ` , ` composer-1.10.6-airflow-1.10.3 ` and ` composer-1.10.6-airflow-1.10.6 ` . The default is ` composer-1.10.6-airflow-1.10.3 ` . Upgrade your Cloud SDK to use features in this release. 
-
-  * **For Airflow 1.10.6 and later:** The Airflow config property ` [celery] pool ` is now blocked. 
-
-  * The ` [core]sql_alchemy_pool_recycle ` Airflow setting has been modified to improve SQL connection reliability. 
-
-**FIXED:**
-
-  * Fixed an issue with Airflow 1.10.6 environments where task logs were not visible in the UI when DAG serialization was enabled. 
-  * It is now possible to upgrade from Composer versions 1.1.1, 1.2.0, 1.3.0, 1.4.0, 1.4.1, 1.4.2, 1.5.0, and 1.5.2 to the newest version. 
-
-**Cloud Functions**
-
-**FEATURE:**
-
-External HTTP(S) Load Balancing is now supported for Google Cloud Functions
-via [ Serverless network endpoint groups ](https://cloud.google.com/load-
-balancing/docs/negs/setting-up-serverless-negs) .
-
-Notably, this feature allows you to use [ Cloud CDN
-](https://cloud.google.com/cdn) and [ Cloud Armor
-](https://cloud.google.com/armor) with Google Cloud Functions.
-
-This feature is available in Beta.
-
-**Cloud Load Balancing**
-
-**FEATURE:**
-
-External HTTP(S) Load Balancing is now supported for App Engine, Cloud
-Functions, and Cloud Run services. To configure this, you will need to use a
-new type of network endpoint group (NEG) called a [ Serverless NEG
-](https://cloud.google.com/load-balancing/docs/negs/setting-up-serverless-
-negs) .
-
-This feature is available in Beta.
-
-**Cloud Monitoring**
-
-**CHANGED:**
-
-Monitoring Query Language (MQL) is now Generally Available. MQL is an
-expressive, text-based interface to Cloud Monitoring time-series data. With
-MQL, you can create charts you can't create any other way. You can access MQL
-from both the Cloud Console and the Monitoring API. For more information, see
-[ Introduction to Monitoring Query Language
-](https://cloud.google.com/monitoring/mql/) .
-
-**Cloud Run**
-
-**FEATURE:**
-
-External HTTP(S) Load Balancing is now supported for Cloud Run services via [
-Serverless network endpoint groups ](https://cloud.google.com/load-
-balancing/docs/negs/setting-up-serverless-negs) .  
-Notably, this feature allows you to use [ Cloud CDN
-](https://cloud.google.com/cdn) and multi-region load balancing.  
-This feature is available in Beta.
-
-**Dataproc**
-
-**FEATURE:**
-
-Announcing the [ General Availability (GA)
-](https://cloud.google.com/products#product-launch-stages) release of [
-Dataproc Component Gateway
-](https://cloud.google.com/dataproc/docs/concepts/accessing/dataproc-gateways)
-, which provides secure access to web endpoints for Dataproc default and
-optional components.
-
-**Traffic Director**
-
-**FEATURE:**
-
-Traffic Director now provides the option of automated Envoy deployment.
-
-**FEATURE:**
-
-Traffic Director now supports automated Envoy deployments for Google Compute
-Engine VMs in Beta.
 
