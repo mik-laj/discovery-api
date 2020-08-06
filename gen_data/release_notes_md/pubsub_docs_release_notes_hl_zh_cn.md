@@ -17,6 +17,15 @@ go/releases) 、 [ Java ](https://github.com/googleapis/java-pubsub/releases) �
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/pubsub-release-notes.xml `
 
+##  August 05, 2020
+
+**FEATURE:**
+
+Pub/Sub [ message ordering
+](https://cloud.google.com/pubsub/docs/ordering?hl=zh-cn) is now available at
+the [ beta launch stage ](https://cloud.google.com/products/?hl=zh-cn#product-
+launch-stages) .
+
 ##  June 16, 2020
 
 **FEATURE:**
