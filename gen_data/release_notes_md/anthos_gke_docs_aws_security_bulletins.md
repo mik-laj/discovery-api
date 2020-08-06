@@ -1,4 +1,4 @@
-A new version of Anthos GKE on AWS was released on July 24. See the [ release
+A new version of Anthos GKE on AWS was released on August 5. See the [ release
 notes ](/anthos/gke/docs/aws/release-notes) for information on breaking
 changes.
 
