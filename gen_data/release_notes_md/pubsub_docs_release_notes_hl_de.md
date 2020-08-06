@@ -21,6 +21,15 @@ Feedreader ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
 einfügen oder die Feed-URL direkt hinzufügen: `
 https://cloud.google.com/feeds/pubsub-release-notes.xml ` .
 
+##  August 05, 2020
+
+**FEATURE:**
+
+Pub/Sub [ message ordering
+](https://cloud.google.com/pubsub/docs/ordering?hl=de) is now available at the
+[ beta launch stage ](https://cloud.google.com/products/?hl=de#product-launch-
+stages) .
+
 ##  June 16, 2020
 
 **FEATURE:**
