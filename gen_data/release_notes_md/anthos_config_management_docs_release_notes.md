@@ -13,6 +13,15 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/anthosconfig-release-notes.xml
 `
 
+##  July 30, 2020
+
+1.3.3
+
+**FIXED:**
+
+Updated the git-sync image to fix security vulnerability [ CVE-2019-5482
+](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5482) .
+
 ##  July 23, 2020
 
 1.4.1
