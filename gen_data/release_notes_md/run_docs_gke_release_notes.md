@@ -12,13 +12,40 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/runanthos-release-notes.xml `
 
+##  July 13, 2020
+
+**CHANGED:**
+
+Cloud Run for Anthos on Google Cloud version [ 0.15.0-gke.3
+](https://github.com/knative/serving/releases/tag/v0.15.0) is now available
+for the following versions (and greater)
+
+  * 1.17.7-gke.15 
+
+And it now supports [ Managed TLS GA
+](https://cloud.google.com/run/docs/gke/managed-tls) .
+
+##  July 07, 2020
+
+**CHANGED:**
+
+Cloud Run for Anthos on Google Cloud version 0.14.0-gke.10 is now available
+for following cluster versions (and greater):
+
+  * 1.15.12-gke.6 
+  * 1.16.10-gke.8 
+  * 1.17.6-gke.11 
+
+Fixes CVE-2020-11080 affecting [ HTTP2 library used by Envoy in Istio
+](https://istio.io/latest/news/security/istio-security-2020-006/) .
+
 ##  June 19, 2020
 
 **FEATURE:**
 
 Cloud Run for Anthos on Google Cloud version [ 0.14.0-gke.5
 ](https://github.com/knative/serving/releases/tag/v0.14.0) is now available
-for following cluster versions (and greater): * 1.17.6-gke.4
+for the 1.17.6-gke.4+ cluster version.
 
 ##  April 27, 2020
 
