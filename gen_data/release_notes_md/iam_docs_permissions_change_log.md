@@ -19,7 +19,188 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloud-iam-permissions-change-
 log.xml `
 
-##  Upcoming Cloud IAM changes for the week of 2020-07-27
+##  Upcoming Cloud IAM changes for the week of 2020-08-03
+
+Service  |  Change  |  Description  
+---|---|---  
+Cloud Composer  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/composer.worker
+` (Composer Worker):
+
+` artifactregistry.packages.delete `  
+` artifactregistry.repositories.create `  
+` artifactregistry.repositories.delete `  
+` artifactregistry.repositories.deleteArtifacts `  
+` artifactregistry.repositories.getIamPolicy `  
+` artifactregistry.repositories.setIamPolicy `  
+` artifactregistry.repositories.update `  
+` artifactregistry.tags.delete `  
+` artifactregistry.versions.delete `  
+  
+GKE Hub  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/gkehub.viewer `
+(GKE Hub Viewer):
+
+` gkehub.features.getIamPolicy `  
+` gkehub.gateway.get `  
+` gkehub.gateway.getIamPolicy `  
+  
+Cloud Logging  |  Now GA  |
+
+The role ` roles/logging.bucketWriter ` (Logs Bucket Writer) is now GA.  
+  
+Cloud Logging  |  Now GA  |
+
+The role ` roles/logging.viewAccessor ` (Logs View Accessor) is now GA.  
+  
+Cloud Logging  |  Role Updated  |
+
+The following permissions have been added to the role `
+roles/logging.privateLogViewer ` (Private Logs Viewer):
+
+` logging.views.access `  
+  
+Compute Engine  |  Now GA  |  ` compute.instances.getScreenshot `  
+  
+Identity and Access Management  |  Supported In Custom Roles  |  `
+iam.serviceAccounts.disable `  
+` iam.serviceAccounts.enable `  
+` iam.serviceAccounts.undelete `  
+  
+Identity and Access Management  |  Now GA  |  ` iam.serviceAccounts.disable `  
+` iam.serviceAccounts.enable `  
+` iam.serviceAccounts.undelete `  
+  
+Cloud Logging  |  Added  |  ` logging.buckets.create `  
+` logging.buckets.delete `  
+` logging.buckets.undelete `  
+` logging.buckets.write `  
+` logging.views.access `  
+  
+Cloud Logging  |  Supported In Custom Roles  |  ` logging.buckets.create `  
+` logging.buckets.delete `  
+` logging.buckets.undelete `  
+` logging.buckets.write `  
+` logging.views.access `  
+  
+Cloud Logging  |  Now GA  |  ` logging.buckets.create `  
+` logging.buckets.delete `  
+` logging.buckets.undelete `  
+` logging.buckets.write `  
+` logging.views.access `  
+  
+OAuthConfig  |  Added  |  ` oauthconfig.clientpolicy.get `  
+` oauthconfig.testusers.get `  
+` oauthconfig.testusers.update `  
+` oauthconfig.verification.get `  
+` oauthconfig.verification.submit `  
+` oauthconfig.verification.update `  
+  
+OAuthConfig  |  Supported In Custom Roles  |  ` oauthconfig.clientpolicy.get `  
+` oauthconfig.testusers.get `  
+` oauthconfig.testusers.update `  
+` oauthconfig.verification.get `  
+` oauthconfig.verification.submit `  
+` oauthconfig.verification.update `  
+  
+OAuthPolicyMetadata  |  Added  |  `
+oauthpolicymetadata.brandpolicy.createOrUpdate `  
+` oauthpolicymetadata.brandpolicy.get `  
+` oauthpolicymetadata.brandpolicy.submitVerification `  
+` oauthpolicymetadata.clientpolicy.get `  
+  
+OAuthPolicyMetadata  |  Supported In Custom Roles  |  `
+oauthpolicymetadata.brandpolicy.createOrUpdate `  
+` oauthpolicymetadata.brandpolicy.get `  
+` oauthpolicymetadata.brandpolicy.submitVerification `  
+` oauthpolicymetadata.clientpolicy.get `  
+  
+OAuthTestApp  |  Added  |  ` oauthtestapp.userwhitelist.read `  
+` oauthtestapp.userwhitelist.write `  
+  
+OAuthTestApp  |  Supported In Custom Roles  |  `
+oauthtestapp.userwhitelist.read `  
+` oauthtestapp.userwhitelist.write `  
+  
+Certificate Authority Service  |  Added  |  `
+privateca.certificateAuthorities.create `  
+` privateca.certificateAuthorities.delete `  
+` privateca.certificateAuthorities.get `  
+` privateca.certificateAuthorities.getIamPolicy `  
+` privateca.certificateAuthorities.list `  
+` privateca.certificateAuthorities.setIamPolicy `  
+` privateca.certificateAuthorities.update `  
+` privateca.certificateRevocationLists.create `  
+` privateca.certificateRevocationLists.get `  
+` privateca.certificateRevocationLists.getIamPolicy `  
+` privateca.certificateRevocationLists.list `  
+` privateca.certificateRevocationLists.setIamPolicy `  
+` privateca.certificateRevocationLists.update `  
+` privateca.certificates.create `  
+` privateca.certificates.get `  
+` privateca.certificates.getIamPolicy `  
+` privateca.certificates.list `  
+` privateca.certificates.setIamPolicy `  
+` privateca.certificates.update `  
+` privateca.locations.get `  
+` privateca.locations.list `  
+` privateca.operations.cancel `  
+` privateca.operations.delete `  
+` privateca.operations.get `  
+` privateca.operations.list `  
+` privateca.reusableConfigs.create `  
+` privateca.reusableConfigs.delete `  
+` privateca.reusableConfigs.get `  
+` privateca.reusableConfigs.getIamPolicy `  
+` privateca.reusableConfigs.list `  
+` privateca.reusableConfigs.setIamPolicy `  
+` privateca.reusableConfigs.update `  
+  
+Certificate Authority Service  |  Supported In Custom Roles  |  `
+privateca.certificateAuthorities.create `  
+` privateca.certificateAuthorities.delete `  
+` privateca.certificateAuthorities.get `  
+` privateca.certificateAuthorities.getIamPolicy `  
+` privateca.certificateAuthorities.list `  
+` privateca.certificateAuthorities.setIamPolicy `  
+` privateca.certificateAuthorities.update `  
+` privateca.certificateRevocationLists.create `  
+` privateca.certificateRevocationLists.get `  
+` privateca.certificateRevocationLists.getIamPolicy `  
+` privateca.certificateRevocationLists.list `  
+` privateca.certificateRevocationLists.setIamPolicy `  
+` privateca.certificateRevocationLists.update `  
+` privateca.certificates.create `  
+` privateca.certificates.get `  
+` privateca.certificates.getIamPolicy `  
+` privateca.certificates.list `  
+` privateca.certificates.setIamPolicy `  
+` privateca.certificates.update `  
+` privateca.locations.get `  
+` privateca.locations.list `  
+` privateca.operations.cancel `  
+` privateca.operations.delete `  
+` privateca.operations.get `  
+` privateca.operations.list `  
+` privateca.reusableConfigs.create `  
+` privateca.reusableConfigs.delete `  
+` privateca.reusableConfigs.get `  
+` privateca.reusableConfigs.getIamPolicy `  
+` privateca.reusableConfigs.list `  
+` privateca.reusableConfigs.setIamPolicy `  
+` privateca.reusableConfigs.update `  
+  
+Recommender  |  Added  |  ` recommender.commitmentUtilizationInsights.get `  
+` recommender.commitmentUtilizationInsights.list `  
+` recommender.commitmentUtilizationInsights.update `  
+` recommender.usageCommitmentRecommendations.get `  
+` recommender.usageCommitmentRecommendations.list `  
+` recommender.usageCommitmentRecommendations.update `  
+  
+  
+##  Cloud IAM changes as of 2020-07-31
 
 Service  |  Change  |  Description  
 ---|---|---  
