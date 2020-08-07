@@ -13,6 +13,15 @@ Feedreader ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
 einfügen oder die Feed-URL direkt hinzufügen: `
 https://cloud.google.com/feeds/spanner-release-notes.xml ` .
 
+##  August 06, 2020
+
+**FEATURE:**
+
+A new [ multi-region instance configuration
+](https://cloud.google.com/spanner/docs/instances?hl=de#available-
+configurations-multi-region) is now available in North America - ` nam10 `
+(Iowa/Salt Lake).
+
 ##  July 30, 2020
 
 **FEATURE:**
