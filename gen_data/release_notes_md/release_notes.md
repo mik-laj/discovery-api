@@ -18,23 +18,22 @@ URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
 **ISSUE:**
 
-###  Stackdriver monitor error condition
+###  Cloud Monitoring error condition
 
-Under certain conditions, the default Stackdriver monitoring pod, deployed by
+Under certain conditions, the default Cloud Monitoring pod, deployed by
 default in each new cluster, can become unresponsive. When clusters are
 upgraded, for example, storage data can become corrupted when pods in `
 statefulset/prometheus-stackdriver-k8s ` are restarted.
 
 Specifically, monitoring pod ` stackdriver-prometheus-k8s-0 ` can be caught in
 a loop when corrupted data prevents ` prometheus-stackdriver-sidecar ` writing
-to the cluster storage PersistentVolume.
+to the cluster storage ` PersistentVolume. `
 
 The error can be manually diagnosed and recovered following the steps below.
 
-###  Diagnosing the Stackdriver pod failure
+###  Diagnosing the Cloud Monitoring failure
 
-When the Stackdriver monitoring pod has failed, the logs will report the
-following:
+When the monitoring pod has failed, the logs will report the following:
 
 ` {"log":"level=warn ts=2020-04-08T22:15:44.557Z caller=queue_manager.go:534
 component=queue_manager msg=\"Unrecoverable error sending samples to remote
@@ -57,9 +56,9 @@ page\"\n","stream":"stderr","time":"2020-04-08T22:15:44.663707748Z"}
 you next time!\"\n","stream":"stderr","time":"2020-04-08T22:15:44.664000941Z"}
 `
 
-###  Recovering the Stackdriver monitor
+###  Recovering Cloud Monitoring
 
-To recover the Stackdriver monitor manually:
+To recover Cloud Monitoring manually:
 
   1. Stop cluster monitoring. Scale down the stackdriver operator to prevent monitoring reconciliation:   
 ` kubectl --kubeconfig /ADMIN_CLUSTER_KUBCONFIG --namespace kube-system scale
@@ -79,19 +78,18 @@ The GKE on-prem installer can fail if custom roles are bound at the wrong
 permissions level.
 
 When the role binding is incorrect, creating a vSphere datadisk with ` govc `
-hangs. The installer creates a datadisk in the vSphere datastore of zero
-bytes, which causes the failure.
+hangs and the disk is created with a size equal to 0.
 
 To fix the issue, you should bind the custom role at the vSphere ` vcenter `
 level (root).
 
 If you want to bind the custom role at the DC level (or lower than root), you
-also need to to bind the read-only role to the user at the root ` vcenter `
+also need to to bind the read-only role to the user at the root ` vCenter `
 level.
 
-For more information on role creation, see:
-https://cloud.google.com/anthos/gke/docs/on-prem/how-to/vsphere-requirements-
-basic?hl=en#vcenter-user-account-privileges
+For more information on role creation, see [ vCenter user account privileges
+](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/vsphere-
+requirements-basic?hl=en#vcenter-user-account-privileges) .
 
 **Cloud Functions**
 
@@ -2104,168 +2102,4 @@ Added support for ` SecretManagerSecret `
 
 The [ Managed Microsoft AD SLA ](https://cloud.google.com/managed-microsoft-
 ad/sla) has been published.
-
-##  July 08, 2020
-
-**App Engine flexible environment .NET**
-
-**FEATURE:**
-
-External HTTP(S) Load Balancing is now supported for App Engine via [
-Serverless network endpoint groups ](https://cloud.google.com//load-
-balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
-you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
-This feature is available in Beta.
-
-**App Engine flexible environment Go**
-
-**FEATURE:**
-
-External HTTP(S) Load Balancing is now supported for App Engine via [
-Serverless network endpoint groups ](https://cloud.google.com//load-
-balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
-you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
-This feature is available in Beta.
-
-**App Engine flexible environment Java**
-
-**FEATURE:**
-
-External HTTP(S) Load Balancing is now supported for App Engine via [
-Serverless network endpoint groups ](https://cloud.google.com//load-
-balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
-you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
-This feature is available in Beta.
-
-**App Engine flexible environment Node.js**
-
-**FEATURE:**
-
-External HTTP(S) Load Balancing is now supported for App Engine via [
-Serverless network endpoint groups ](https://cloud.google.com//load-
-balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
-you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
-This feature is available in Beta.
-
-**App Engine flexible environment PHP**
-
-**FEATURE:**
-
-External HTTP(S) Load Balancing is now supported for App Engine via [
-Serverless network endpoint groups ](https://cloud.google.com//load-
-balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
-you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
-This feature is available in Beta.
-
-**App Engine flexible environment Ruby**
-
-**FEATURE:**
-
-External HTTP(S) Load Balancing is now supported for App Engine via [
-Serverless network endpoint groups ](https://cloud.google.com//load-
-balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
-you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
-This feature is available in Beta.
-
-**App Engine flexible environment custom runtimes**
-
-**FEATURE:**
-
-External HTTP(S) Load Balancing is now supported for App Engine via [
-Serverless network endpoint groups ](https://cloud.google.com//load-
-balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
-you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
-This feature is available in Beta.
-
-**App Engine standard environment Go**
-
-**FEATURE:**
-
-External HTTP(S) Load Balancing is now supported for App Engine via [
-Serverless network endpoint groups ](https://cloud.google.com//load-
-balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
-you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
-This feature is available in Beta.
-
-**FEATURE:**
-
-External HTTP(S) Load Balancing is now supported for App Engine via [
-Serverless network endpoint groups ](https://cloud.google.com//load-
-balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
-you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
-This feature is available in Beta.
-
-**App Engine standard environment Java**
-
-**FEATURE:**
-
-External HTTP(S) Load Balancing is now supported for App Engine via [
-Serverless network endpoint groups ](https://cloud.google.com//load-
-balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
-you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
-This feature is available in Beta.
-
-**FEATURE:**
-
-External HTTP(S) Load Balancing is now supported for App Engine via [
-Serverless network endpoint groups ](https://cloud.google.com//load-
-balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
-you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
-This feature is available in Beta.
-
-**App Engine standard environment Node.js**
-
-**FEATURE:**
-
-External HTTP(S) Load Balancing is now supported for App Engine via [
-Serverless network endpoint groups ](https://cloud.google.com//load-
-balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
-you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
-This feature is available in Beta.
-
-**App Engine standard environment PHP**
-
-**FEATURE:**
-
-External HTTP(S) Load Balancing is now supported for App Engine via [
-Serverless network endpoint groups ](https://cloud.google.com//load-
-balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
-you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
-This feature is available in Beta.
-
-**FEATURE:**
-
-External HTTP(S) Load Balancing is now supported for App Engine via [
-Serverless network endpoint groups ](https://cloud.google.com//load-
-balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
-you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
-This feature is available in Beta.
-
-**App Engine standard environment Python**
-
-**FEATURE:**
-
-External HTTP(S) Load Balancing is now supported for App Engine via [
-Serverless network endpoint groups ](https://cloud.google.com//load-
-balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
-you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
-This feature is available in Beta.
-
-**FEATURE:**
-
-External HTTP(S) Load Balancing is now supported for App Engine via [
-Serverless network endpoint groups ](https://cloud.google.com//load-
-balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
-you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
-This feature is available in Beta.
-
-**App Engine standard environment Ruby**
-
-**FEATURE:**
-
-External HTTP(S) Load Balancing is now supported for App Engine via [
-Serverless network endpoint groups ](https://cloud.google.com//load-
-balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
-you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
-This feature is available in Beta.
 
