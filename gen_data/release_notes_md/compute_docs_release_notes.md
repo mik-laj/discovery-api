@@ -14,6 +14,16 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/compute-release-notes.xml `
 
+##  August 07, 2020
+
+**FEATURE:**
+
+You can now update multiple instance properties using a single request from
+the command-line tool or the Compute Engine API to update multiple instance
+properties. For more information, see [ Updating instance properties
+](https://cloud.google.com/compute/docs/instances/update-instance-properties)
+.
+
 ##  August 04, 2020
 
 **CHANGED:**
