@@ -15,6 +15,17 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/aiplatform-release-notes.xml `
 
+##  August 06, 2020
+
+**AI Platform Deep Learning VM Image**
+
+**FEATURE:**
+
+**M53 release**
+
+TensorFlow Enterprise 2.3 images, including images that support CUDA 11.0, are
+now available.
+
 ##  August 04, 2020
 
 **AI Platform Training**
