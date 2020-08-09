@@ -12,6 +12,25 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/billing-release-notes.xml `
 
+##  August 06, 2020
+
+**FEATURE:**
+
+If you have a **negotiated pricing contract** associated with your Cloud
+Billing account, **starting with your July 2020 invoice** , the [ **Cloud
+Billing report** ](https://cloud.google.com/billing/docs/how-to/reports) and
+the [ **Cost Breakdown report** ](https://cloud.google.com/billing/docs/how-
+to/cost-breakdown) now support displaying your costs calculated using list
+prices, displaying your **negotiated savings** as a separate credit. This view
+helps you see how much money you are saving on your Google Cloud costs because
+of your negotiated pricing contract.
+
+For information on how to view your list costs and negotiated savings in
+reports, see the documentation:
+
+  * [ Learn more about viewing negotiated savings in your **Cloud Billing report** ](https://cloud.google.com/billing/docs/how-to/reports#contract-pricing) . 
+  * [ Learn more about viewing negotiated savings in your **Cost Breakdown report** ](https://cloud.google.com/billing/docs/how-to/cost-breakdown#negotiated-savings) . 
+
 ##  July 23, 2020
 
 **FEATURE:**
