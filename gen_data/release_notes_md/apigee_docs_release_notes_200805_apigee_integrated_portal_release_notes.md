@@ -29,6 +29,13 @@ following (which could be ignored) when activating/deactivating a developer
 account:  
 ` Unable to update user status `  
   
+161985144  |  Integrated Portal  |
+
+**External spec URLs do not support redirects**
+
+When importing an OpenAPI Specification using a URL redirects will not be
+followed.  
+  
 161421338  |  Integrated Portal  |
 
 **Duplicate developer programs created and unable to delete**
