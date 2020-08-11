@@ -13,6 +13,16 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/configconnector-release-
 notes.xml `
 
+##  August 08, 2020
+
+**FEATURE:**
+
+Added support for ` BigtableTable `
+
+**FIXED:**
+
+Fix a bug where a CRD would be marked as uninstalling on a dryrun delete
+
 ##  July 31, 2020
 
 **FEATURE:**
