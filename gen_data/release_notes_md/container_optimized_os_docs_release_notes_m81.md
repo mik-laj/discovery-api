@@ -12,6 +12,15 @@ Docker  |  v19.03.6
   
 ##  Changelog
 
+###  cos-81-12871-1185-0
+
+_Date: Aug 07, 2020_
+
+  * Fixed CVE-2020-14308, CVE-2020-14311 and CVE-2020-15705 in grub. 
+  * Disabled CONFIG_PPP to mitigate Linux Kernel CVE-2020-14416. 
+  * Added the cos-extensions-manager package. Click [ here ](https://cloud.google.com/container-optimized-os/docs/how-to/run-gpus) to learn more about cos-extensions. 
+  * Updated docker-credential-gcr to v2.0.2. 
+
 ###  cos-81-12871-1174-0
 
 _Date: July 30, 2020_
