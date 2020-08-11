@@ -213,7 +213,6 @@ the exported output of Cloud Storage and BigQuery.
   * Reduced the amount of non-informative logs thrown by the environment in Composer 1.10.6. 
   * Improved the syncing procedure for env_var.json in Airflow 1.10.9 (it should no longer throw "missing file:" errors). 
   * Airflow-worker and airflow-scheduler will no longer throw "missing env_var.json" errors in Airflow 1.10.6. 
-  * Added validation in the v1 API to provide meaningful error messages when creating an environment with domain restricted sharing. 
 
 **Cloud Run**
 
