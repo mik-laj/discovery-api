@@ -19,7 +19,45 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloud-iam-permissions-change-
 log.xml `
 
-##  Upcoming Cloud IAM changes for the week of 2020-08-03
+##  Upcoming Cloud IAM changes for the week of 2020-08-10
+
+Service  |  Change  |  Description  
+---|---|---  
+Private Catalog  |  Role Updated  |
+
+The following permissions have been added to the role `
+roles/cloudprivatecatalog.consumer ` (Catalog Consumer):
+
+` resourcemanager.projects.get `  
+` resourcemanager.projects.list `  
+  
+Private Catalog  |  Role Updated  |
+
+The following permissions have been added to the role `
+roles/cloudprivatecatalogproducer.admin ` (Catalog Admin):
+
+` cloudprivatecatalog.targets.get `  
+` cloudprivatecatalogproducer.targets.associate `  
+` cloudprivatecatalogproducer.targets.unassociate `  
+` resourcemanager.projects.get `  
+` resourcemanager.projects.list `  
+  
+Private Catalog  |  Role Updated  |
+
+The following permissions have been added to the role `
+roles/cloudprivatecatalogproducer.manager ` (Catalog Manager):
+
+` resourcemanager.projects.get `  
+` resourcemanager.projects.list `  
+  
+Dialogflow  |  Added  |  ` dialogflow.fulfillments.get `  
+` dialogflow.fulfillments.update `  
+  
+Dialogflow  |  Now GA  |  ` dialogflow.fulfillments.get `  
+` dialogflow.fulfillments.update `  
+  
+  
+##  Cloud IAM changes as of 2020-08-07
 
 Service  |  Change  |  Description  
 ---|---|---  
