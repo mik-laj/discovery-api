@@ -12,6 +12,24 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/composer-release-notes.xml `
 
+##  August 10, 2020
+
+**CHANGED:**
+
+  * [ New versions ](https://cloud.google.com/composer/docs/concepts/versioning/composer-versions) of Cloud Composer images: ` composer-1.11.2-airflow-1.10.3 ` , ` composer-1.11.2-airflow-1.10.6 ` , and ` composer-1.11.2-airflow-1.10.9 ` . The default is ` composer-1.11.2-airflow-1.10.6 ` . Upgrade your Cloud SDK to use features in this release. 
+
+**FEATURE:**
+
+  * **Airflow 1.10.6 and 1.10.9:** You can now specify a location argument when creating a ` BigQueryCheckOperator ` to use it in a different region from the Composer environment. 
+
+**FIXED:**
+
+  * Fixed GKE setting incompatibilities that broke environment creation for Composer versions between 1.7.2 and 1.8.3. 
+  * When DAG serialization is on, plugins and DAGs are no longer synced when the Airflow web server starts up. This fixes web server failures when plugins use custom PyPI packages. 
+  * Fixed intermittent failures when triggering a DAG from the Airflow Web UI with DAG serialization turned on. 
+  * Fixed update operations (installing Python dependencies and upgrading environments) for domain-scoped projects. 
+  * Fixed a broken link to the Airflow documentation in Airflow 1.10.9. 
+
 ##  August 03, 2020
 
 **CHANGED:**
@@ -37,7 +55,6 @@ URL directly: ` https://cloud.google.com/feeds/composer-release-notes.xml `
   * Reduced the amount of non-informative logs thrown by the environment in Composer 1.10.6. 
   * Improved the syncing procedure for env_var.json in Airflow 1.10.9 (it should no longer throw "missing file:" errors). 
   * Airflow-worker and airflow-scheduler will no longer throw "missing env_var.json" errors in Airflow 1.10.6. 
-  * Added validation in the v1 API to provide meaningful error messages when creating an environment with domain restricted sharing. 
 
 ##  July 30, 2020
 
