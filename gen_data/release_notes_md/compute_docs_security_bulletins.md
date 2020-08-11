@@ -33,7 +33,7 @@ default group memberships, were identified for Compute Engine images:
 All Compute Engine public images created after ` v20200506 ` are patched.
 
 If you need to fix this issue without updating to a later version of your
-image, you can edit the ` /etc/group/security.conf ` file and remove the ` adm
+image, you can edit the ` /etc/security/group.conf ` file and remove the ` adm
 ` , ` lxd ` and ` docker ` users from the default OS Login entry.
 
 |  High  |
