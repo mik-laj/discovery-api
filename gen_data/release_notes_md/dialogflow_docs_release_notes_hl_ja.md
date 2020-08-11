@@ -18,6 +18,13 @@ notes.pdf?hl=ja) も閲覧できます。
 URL ディレクトリ ` https://cloud.google.com/feeds/dialogflow-release-notes.xml `
 を直接追加します。
 
+##  August 10, 2020
+
+**FEATURE:**
+
+Beta launch of [ regionalization and data residency
+](https://cloud.google.com/dialogflow/docs/how/region?hl=ja) .
+
 ##  July 30, 2020
 
 **FEATURE:**
