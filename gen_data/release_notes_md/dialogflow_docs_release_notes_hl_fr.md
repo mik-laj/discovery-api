@@ -22,6 +22,13 @@ de cette page à votre [ lecteur de flux
 du flux directement : ` https://cloud.google.com/feeds/dialogflow-release-
 notes.xml `
 
+##  August 10, 2020
+
+**FEATURE:**
+
+Beta launch of [ regionalization and data residency
+](https://cloud.google.com/dialogflow/docs/how/region?hl=fr) .
+
 ##  July 30, 2020
 
 **FEATURE:**
