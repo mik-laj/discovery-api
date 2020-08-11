@@ -18,6 +18,13 @@ Google Cloud의 모든 최신 제품 업데이트를 확인할 수 있습니다.
 추가하거나 다음의 피드 URL을 직접 추가하세요. ` https://cloud.google.com/feeds/dialogflow-
 release-notes.xml `
 
+##  August 10, 2020
+
+**FEATURE:**
+
+Beta launch of [ regionalization and data residency
+](https://cloud.google.com/dialogflow/docs/how/region?hl=ko) .
+
 ##  July 30, 2020
 
 **FEATURE:**
