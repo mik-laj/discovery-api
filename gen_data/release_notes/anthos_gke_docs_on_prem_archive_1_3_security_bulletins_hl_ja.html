@@ -1,0 +1,628 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <div background="google-blue" class="devsite-banner devsite-banner-announcement">
+   <div class="devsite-banner-message">
+    <div class="devsite-banner-message-text">
+     You are viewing documentation for a previous version of Anthos GKE on-prem.
+     <a href="https://cloud.google.com/anthos/gke/docs/on-prem?hl=ja">
+      View the latest documentation
+     </a>
+     .
+    </div>
+   </div>
+  </div>
+  <h1 class="devsite-page-title">
+   セキュリティに関する情報
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <p>
+    このトピックでは、Anthos GKE On-Prem（GKE On-Prem）のすべてのセキュリティ情報を説明します。
+   </p>
+   <p>
+    脆弱性に関する情報は多くの場合、影響を受けた当事者が対処するまで、情報制限により非公開となります。この場合、GKE On-Prem の
+    <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.3/release-notes?hl=ja">
+     リリースノート
+    </a>
+    には、情報制限が解除されるまで「セキュリティ更新」への参照が記載されます。リリースノートは情報制限が解除された時点で更新され、パッチによって対処された脆弱性の情報が反映されます。
+   </p>
+   <aside class="note">
+    <strong>
+     注:
+    </strong>
+    <span>
+     GKE On-Prem でマルチテナント ワークロードを実行する場合、上記の情報には特に注意してください。これらの脆弱性はマルチテナント ワークロードに影響を及ぼす可能性が高くなります。GKE On-Prem のセキュリティ境界とそれらによるワークロードへの影響に関する技術的説明については、
+     <a href="https://cloudplatform.googleblog.com/2018/05/Exploring-container-security-Isolation-at-different-layers-of-the-Kubernetes-stack.html">
+      Kubernetes スタックのさまざまなレイヤでの隔離
+     </a>
+     をご覧ください。
+    </span>
+   </aside>
+   <p>
+    最新のセキュリティ情報を入手するには、このページの URL を
+    <a class="external" href="https://wikipedia.org/wiki/Comparison_of_feed_aggregators">
+     フィード リーダー
+    </a>
+    に追加します。
+   </p>
+   <section class="bulletins">
+    <h2 data-text="GCP-2020-007" id="gcp-2020-007" tabindex="0">
+     GCP-2020-007
+    </h2>
+    <strong>
+     公開日:
+    </strong>
+    2020 年 6 月 1 日
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         最近、Kubernetes でサーバー側のリクエスト フォージェリ（SSRF）の脆弱性
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555">
+          CVE-2020-8555
+         </a>
+         が検出され、特定の承認済みユーザーがコントロール プレーン ホスト ネットワークから最大 500 バイトの機密情報を漏洩する可能性が生じました。Google Kubernetes Engine（GKE）コントロール プレーンは、Kubernetes のコントローラを使用するため、この脆弱性の影響を受けます。以下で説明するように、コントロール プレーンを最新のパッチ バージョンにアップグレードすることをおすすめします。ノードのアップグレードは不要です。
+         <br/>
+        </p>
+        <h4 data-text="必要な対策" id="what-should-i-do" tabindex="0">
+         必要な対策
+        </h4>
+        <p>
+         次の Anthos GKE On-Prem（GKE On-Prem）以降のバージョンには、この脆弱性に対する修正が含まれています。
+        </p>
+        <ul>
+         <li>
+          Anthos 1.3.0
+         </li>
+        </ul>
+        <p>
+         以前のバージョンを使用している場合は、修正が含まれているバージョンに
+         <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.3/how-to/upgrading?hl=ja">
+          既存のクラスタをアップグレード
+         </a>
+         してください。
+        </p>
+        <h4 data-text="このパッチで対処される脆弱性" id="what-vulnerability-is-addressed-by-this-patch" tabindex="0">
+         このパッチで対処される脆弱性
+        </h4>
+        <p>
+         これらのパッチは、脆弱性 CVE-2020-8555 を緩和します。さまざまなコントロール プレーンの強化対策により、悪用が困難であるため、GKE の脆弱性の重大度評価は「中」と判断されています。
+        </p>
+        <p>
+         攻撃者が特定の組み込み Volume タイプ（GlusterFS、Quobyte、StorageFS、ScaleIO）で Pod を作成する権限や、StorageClass を作成する権限を持つ場合、マスターのホスト ネットワークから攻撃者が制御するリクエスト本文を使用せずに
+         <code dir="ltr" translate="no">
+          kube-controller-manager
+         </code>
+         に
+         <code dir="ltr" translate="no">
+          GET
+         </code>
+         リクエストや
+         <code dir="ltr" translate="no">
+          POST
+         </code>
+         リクエストを発行させる可能性があります。
+         <em>
+         </em>
+         これらの Volume タイプは GKE ではほとんど使用されないため、新たに使用された場合は、それが攻撃の検出シグナルとなります。
+        </p>
+        <p>
+         <code dir="ltr" translate="no">
+          GET/POST
+         </code>
+         の結果を攻撃者に返す手段（ログを通じてなど）と組み合わせることで、機密情報の漏洩につながる可能性があります。このような漏洩の可能性を排除するために、対象となるストレージ ドライバを更新しました。
+        </p>
+       </td>
+       <td>
+        <p>
+         中
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555">
+          CVE-2020-8555
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-006" id="gcp-2020-006" tabindex="0">
+     GCP-2020-006
+    </h2>
+    <strong>
+     公開日:
+    </strong>
+    2020 年 6 月 1 日
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Kubernetes は、特権コンテナでノード トラフィックを別のコンテナにリダイレクトできるようになる
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          脆弱性
+         </a>
+         を公表しました。kubelet と API サーバーの間の相互 TLS / SSH トラフィックや、mTLS を使用するアプリケーションからのトラフィックは、この攻撃によって読み取ることも変更することもできません。この脆弱性は、すべての Google Kubernetes Engine（GKE）ノードに影響を及ぼします。下記に示すように、最新のパッチ バージョンにアップグレードすることをおすすめします。
+        </p>
+        <h4 data-text="必要な対策" id="what-should-i-do_1" tabindex="0">
+         必要な対策
+        </h4>
+        Anthos GKE On-Prem（GKE On-Prem）のこの脆弱性を緩和するには、次のバージョン以降に
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.3/how-to/upgrading?hl=ja">
+         クラスタをアップグレード
+        </a>
+        します。
+        <ul>
+         <li>
+          Anthos 1.3.2
+         </li>
+        </ul>
+        <p>
+         通常、
+         <code dir="ltr" translate="no">
+          CAP_NET_RAW
+         </code>
+         を必要とするコンテナはほとんどありません。この機能やその他の強力な機能は、
+         <a href="https://cloud.google.com/anthos-config-management/docs/concepts/policy-controller?hl=ja">
+          Anthos Policy Controller
+         </a>
+         を使用するか、Pod 仕様を更新して、デフォルトでブロックする必要があります。
+        </p>
+        <ul>
+         <li>
+          <code dir="ltr" translate="no">
+           CAP_NET_RAW
+          </code>
+          機能をコンテナから次の方法で削除します。
+         </li>
+         <ul>
+         </ul>
+         <ul>
+          <li>
+           Anthos Policy Controller / Gatekeeper をこの
+           <a class="external" href="https://github.com/open-policy-agent/gatekeeper/blob/master/library/pod-security-policy/capabilities/template.yaml">
+            制約テンプレート
+           </a>
+           で使用して、適用する方法。たとえば、次のようにします。
+          </li>
+          <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Dropping CAP_NET_RAW with Gatekeeper
+# (requires the K8sPSPCapabilities template)
+apiversion: constraints.gatekeeper.sh/v1beta1
+kind:  K8sPSPCapabilities
+metadata:
+  name: forbid-cap-net-raw
+spec:
+  match:
+    kinds:
+      - apiGroups: [""]
+      kinds: ["Pod"]
+    namespaces:
+      #List of namespaces to enforce this constraint on
+      - default
+    # If running gatekeeper &gt;= v3.1.0-beta.5,
+    # you can exclude namespaces rather than including them above.
+    excludedNamespaces:
+      - kube-system
+  parameters:
+    requiredDropCapabilities:
+      - "NET_RAW"
+</pre>
+         </ul>
+         <ul>
+          <li>
+           Pod の仕様を次のように更新する方法。
+          </li>
+          <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Dropping CAP_NET_RAW from a Pod:
+apiVersion: v1
+kind: Pod
+metadata:
+  name: no-cap-net-raw
+spec:
+  containers:
+    -name: may-container
+     ...
+    securityContext:
+      capabilities:
+        drop:
+          -NET_RAW
+</pre>
+         </ul>
+        </ul>
+        <h4 data-text="このパッチで対処される脆弱性" id="what-vulnerability-is-addressed-by-this-patch_1" tabindex="0">
+         このパッチで対処される脆弱性
+        </h4>
+        <p>
+         このパッチで緩和される脆弱性は以下のとおりです。
+        </p>
+        <p>
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          Kubernetes の問題 91507
+         </a>
+         に記載された脆弱性。この脆弱性では、
+         <code dir="ltr" translate="no">
+          CAP_NET_RAW
+         </code>
+         機能（デフォルトのコンテナ機能セットに含まれています）がノード上で IPv6 スタックを不正に構成して、攻撃者によって制御されるコンテナにノード トラフィックをリダイレクトします。これにより、攻撃者はノードからのトラフィックやノードを宛先とするトラフィックをインターセプトして変更することが可能になります。kubelet と API サーバーの間の相互 TLS/SSH トラフィックや、mTLS を使用するアプリケーションからのトラフィックは、この攻撃によって読み取ることも変更することもできません。
+        </p>
+       </td>
+       <td>
+        <p>
+         中
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          Kubernetes の問題 91507
+         </a>
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-004" id="gcp-2020-004" tabindex="0">
+     GCP-2020-004
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         先ごろ、Kubernetes で
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11254">
+          CVE-2019-11254
+         </a>
+         に記載された脆弱性が発見されました。これは、POST リクエストの発行を許可された任意のユーザーが Kubernetes API サーバーへのリモート サービス拒否攻撃を実行できるというものです。Kubernetes 製品セキュリティ委員会（PSC）から発表されたこの脆弱性に関する追加情報は、
+         <a href="https://groups.google.com/g/kubernetes-security-announce/c/wuwEwZigXBc?hl=ja">
+          こちら
+         </a>
+         から確認できます。
+        </p>
+        <p>
+         Kubernetes API サーバーにネットワーク アクセスできるクライアントを制限することで、この脆弱性を緩和できます。
+        </p>
+        <h4 data-text="必要な対策" id="what-should-i-do_2" tabindex="0">
+         必要な対策
+        </h4>
+        <p>
+         この脆弱性に対する修正を含むパッチ バージョンが公開されたら、直ちにクラスタをアップグレードすることをおすすめします。
+        </p>
+        <p>
+         この修正が含まれるパッチ バージョンは次のとおりです。
+        </p>
+        <ul>
+         <li>
+          Kubernetes バージョン 1.15.7-gke.32 を実行する Anthos 1.3.0
+         </li>
+        </ul>
+        <h4 data-text="このパッチで対処される脆弱性" id="what-vulnerabilities-are-addressed-by-this-patch" tabindex="0">
+         このパッチで対処される脆弱性
+        </h4>
+        <p>
+         このパッチは次のサービス拒否攻撃（DoS）の脆弱性を修正します。
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11254">
+          CVE-2019-11254
+         </a>
+         .
+        </p>
+       </td>
+       <td>
+        <p>
+         中
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11254">
+          CVE-2019-11254
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="2019 年 10 月 16 日" id="october-16-2019" tabindex="0">
+     2019 年 10 月 16 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         先ごろ、Kubernetes で
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11253">
+          CVE-2019-11253
+         </a>
+         に記載された脆弱性が発見されました。これは、POST リクエストの発行を許可された任意のユーザーが Kubernetes API サーバーへのリモート サービス拒否攻撃を実行できるというものです。Kubernetes 製品セキュリティ委員会（PSC）から発表されたこの脆弱性に関する追加情報は、
+         <a href="https://groups.google.com/forum/?hl=ja#!topic/kubernetes-security-announce/jk8polzSUxs">
+          こちら
+         </a>
+         から確認できます。
+        </p>
+        <p>
+         Kubernetes API サーバーにネットワーク アクセスできるクライアントを制限することで、この脆弱性を緩和できます。
+        </p>
+        <h6 data-text="必要な対策" id="what-should-i-do_3" tabindex="0">
+         必要な対策
+        </h6>
+        <p>
+         修正を含むパッチ バージョンが公開されたら、直ちに
+         <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.3/how-to/upgrading-clusters?hl=ja">
+          クラスタをアップグレード
+         </a>
+         することをおすすめします。
+        </p>
+        <p>
+         この修正が含まれるパッチ バージョンは次のとおりです。
+        </p>
+        <ul>
+         <li>
+          Kubernetes バージョン 1.13.7-gke.30 を実行する Anthos 1.1.1
+         </li>
+        </ul>
+        <h6 data-text="このパッチで対処される脆弱性" id="what-vulnerability-is-addressed-by-this-patch_2" tabindex="0">
+         このパッチで対処される脆弱性
+        </h6>
+        <p>
+         このパッチにより、次の脆弱性が緩和されます。
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11253">
+          CVE-2019-11253
+         </a>
+         。
+        </p>
+       </td>
+       <td>
+        <p>
+         高
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11253">
+          CVE-2019-11253
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="2019 年 8 月 23 日" id="august-23-2019" tabindex="0">
+     2019 年 8 月 23 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         先ごろ、エンドポイントのセキュリティ モニタリングに使用される RBAC プロキシがユーザーを正しく承認しないという脆弱性が発見され、緩和されました。そのため、認証されていないユーザーが、一部のコンポーネントの指標を内部クラスタ ネットワーク内から利用できる状態になっています。影響を受けたコンポーネントは以下のとおりです。
+        </p>
+        <ul>
+         <li>
+          <code dir="ltr" translate="no">
+           etcd
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           etcd-events
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           kube-apiserver
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           kube-controller-manager
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           kube-scheduler
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           node-exporter
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           kube-state-metrics
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           prometheus
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           alertmanager
+          </code>
+         </li>
+        </ul>
+        <h6 data-text="必要な対策" id="what-should-i-do_4" tabindex="0">
+         必要な対策
+        </h6>
+        <p>
+         クラスタをバージョン
+         <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.3/downloads?hl=ja#gkectl_latest">
+          1.0.2-gke.3
+         </a>
+         に、できるだけ早く
+         <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.3/how-to/upgrading-clusters?hl=ja">
+          アップグレード
+         </a>
+         することをおすすめします。これには、この脆弱性に対するパッチが含まれています。
+        </p>
+       </td>
+       <td>
+        <p>
+         中
+        </p>
+       </td>
+       <td>
+        <p>
+         <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.3/downloads?hl=ja#gkectl_latest">
+          Anthos GKE On-Prem のリリース
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="2019 年 8 月 22 日" id="august-22-2019" tabindex="0">
+     2019 年 8 月 22 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         先ごろ、Kubernetes で脆弱性
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11247">
+          CVE-2019-11247
+         </a>
+         が発見されました。これは、クラスタ スコープの
+         <a class="external" href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">
+          カスタム リソース
+         </a>
+         インスタンスを、あたかもすべての Namespace に存在する名前空間オブジェクトであるかのように動作させることができるというものです。つまり、名前空間レベルの RBAC 権限しか持たないユーザー アカウントまたはサービス アカウントでも、クラスタ スコープのカスタム リソースとやり取りできてしまいます。攻撃者がこの脆弱性を悪用するためには、任意の Namespace のリソースにアクセスする権限が必要です。
+        </p>
+        <h6 data-text="必要な対策" id="what-should-i-do_5" tabindex="0">
+         必要な対策
+        </h6>
+        <p>
+         クラスタをバージョン
+         <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.3/downloads?hl=ja#gkectl_latest">
+          1.0.2-gke.3
+         </a>
+         に、できるだけ早く
+         <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.3/how-to/upgrading-clusters?hl=ja">
+          アップグレード
+         </a>
+         することをおすすめします。これには、この脆弱性に対するパッチが含まれています。
+        </p>
+        <h6 data-text="このパッチで対処される脆弱性" id="what-vulnerability-is-addressed-by-this-patch_3" tabindex="0">
+         このパッチで対処される脆弱性
+        </h6>
+        <p>
+         このパッチにより、次の脆弱性が緩和されます。
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11247">
+          CVE-2019-11247
+         </a>
+         。
+        </p>
+       </td>
+       <td>
+        <p>
+         中
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11247">
+          CVE-2019-11247
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+   </section>
+  </div>
+ </article>
+</article>
