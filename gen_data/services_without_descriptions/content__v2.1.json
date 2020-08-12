@@ -168,6 +168,14 @@
                             "location": "path",
                             "required": true,
                             "type": "string"
+                        },
+                        "view": {
+                            "enum": [
+                                "css",
+                                "merchant"
+                            ],
+                            "location": "query",
+                            "type": "string"
                         }
                     },
                     "path": "{merchantId}/accounts/{accountId}",
@@ -242,6 +250,11 @@
                         "merchantId"
                     ],
                     "parameters": {
+                        "label": {
+                            "format": "uint64",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "maxResults": {
                             "format": "uint32",
                             "location": "query",
@@ -254,6 +267,14 @@
                             "type": "string"
                         },
                         "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "view": {
+                            "enum": [
+                                "css",
+                                "merchant"
+                            ],
                             "location": "query",
                             "type": "string"
                         }
@@ -331,6 +352,38 @@
                     },
                     "response": {
                         "$ref": "Account"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/content"
+                    ]
+                },
+                "updatelabels": {
+                    "httpMethod": "POST",
+                    "id": "content.accounts.updatelabels",
+                    "parameterOrder": [
+                        "merchantId",
+                        "accountId"
+                    ],
+                    "parameters": {
+                        "accountId": {
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "merchantId": {
+                            "format": "uint64",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{merchantId}/accounts/{accountId}/updatelabels",
+                    "request": {
+                        "$ref": "AccountsUpdateLabelsRequest"
+                    },
+                    "response": {
+                        "$ref": "AccountsUpdateLabelsResponse"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/content"
@@ -3299,6 +3352,10 @@
                 "businessInformation": {
                     "$ref": "AccountBusinessInformation"
                 },
+                "cssId": {
+                    "format": "uint64",
+                    "type": "string"
+                },
                 "googleMyBusinessLink": {
                     "$ref": "AccountGoogleMyBusinessLink"
                 },
@@ -3314,6 +3371,13 @@
                 "kind": {
                     "default": "content#account",
                     "type": "string"
+                },
+                "labelIds": {
+                    "items": {
+                        "format": "uint64",
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "name": {
                     "annotations": {
@@ -3726,6 +3790,9 @@
                 },
                 "overwrite": {
                     "type": "boolean"
+                },
+                "view": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -3852,6 +3919,29 @@
                         "$ref": "Account"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "AccountsUpdateLabelsRequest": {
+            "id": "AccountsUpdateLabelsRequest",
+            "properties": {
+                "labelIds": {
+                    "items": {
+                        "format": "uint64",
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "AccountsUpdateLabelsResponse": {
+            "id": "AccountsUpdateLabelsResponse",
+            "properties": {
+                "kind": {
+                    "default": "content#accountsUpdateLabelsResponse",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -8171,8 +8261,26 @@
         "ProductStatusDestinationStatus": {
             "id": "ProductStatusDestinationStatus",
             "properties": {
+                "approvedCountrys": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "destination": {
                     "type": "string"
+                },
+                "disapprovedCountrys": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "pendingCountrys": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "status": {
                     "type": "string"
@@ -8183,6 +8291,12 @@
         "ProductStatusItemLevelIssue": {
             "id": "ProductStatusItemLevelIssue",
             "properties": {
+                "applicableCountrys": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "attributeName": {
                     "type": "string"
                 },
