@@ -1,9 +1,8 @@
 #  版本说明
 
-本页面记录了 Dialogflow 的正式版更新。我们建议 Dialogflow 开发者定期查看此列表，以便及时获知新公告。重大更新还将通过以下方式公布：
-
-  * [ Dialogflow Enterprise 邮寄名单 ](https://groups.google.com/forum/?hl=zh_cn#!forum/dialogflow-enterprise-edition-users)
-  * [ Cloud 博客：AI 和机器学习 ](https://cloud.google.com/blog/products/ai-machine-learning?hl=zh_cn)
+本页面记录了 Dialogflow 的正式版更新。我们建议 Dialogflow 开发者定期查看此列表，以便及时获知新公告。对于重大更新，我们还将通过 [
+Cloud 博客：AI 和机器学习 ](https://cloud.google.com/blog/products/ai-machine-
+learning?hl=zh_cn) 发布公告。
 
 **注意** ：您还可以阅读 2017 年 11 月 16 日之前的 [ 历史版本说明
 ](https://cloud.google.com/dialogflow/docs/data/historic-release-
@@ -12,7 +11,7 @@ notes.pdf?hl=zh_cn) 。
 您可以在 [ Google Cloud 版本说明 ](https://cloud.google.com/release-notes?hl=zh_cn)
 页面上查看 Google Cloud 所有产品的最新产品动态。
 
-要接收最新产品动态，请将本页面的网址添加到您的 [ Feed 阅读器
+如需接收最新产品动态，请将本页面的网址添加到您的 [ Feed 阅读器
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/dialogflow-release-notes.xml `
 
