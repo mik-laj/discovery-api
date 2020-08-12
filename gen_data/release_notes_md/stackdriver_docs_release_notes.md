@@ -23,6 +23,20 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/stackdriver-release-notes.xml `
 
+##  August 03, 2020
+
+**Cloud Logging**
+
+**FEATURE:**
+
+Alpha release: You can now use Logs Buckets to centralize or divide your logs
+based on your needs. For information about this feature, refer to the [
+Managing logs buckets ](https://cloud.google.com/logging/docs/buckets) guide.
+To participate in the alpha or to get notified when Logs Buckets goes beta,
+fill out the [ sign up form
+](https://docs.google.com/forms/d/e/1FAIpQLSeBVpNBivnTAAd4G3rdait9t94uG9TWc07oGwNRGcE071TeCA/viewform)
+.
+
 ##  July 30, 2020
 
 **Cloud Logging**
