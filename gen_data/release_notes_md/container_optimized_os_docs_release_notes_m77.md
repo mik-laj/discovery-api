@@ -12,6 +12,13 @@ Docker  |  v19.03.1
   
 ##  Changelog
 
+###  cos-77-12371-1072-0
+
+_Date: Aug 10, 2020_
+
+  * Disabled CONFIG_PPP to mitigate Linux Kernel CVE-2020-14416. 
+  * Fixed CVE-2020-15705 in grub. 
+
 ###  cos-77-12371-1064-0
 
 _Date: July 30, 2020_
