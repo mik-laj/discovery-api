@@ -12,6 +12,19 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/billing-release-notes.xml `
 
+##  August 07, 2020
+
+**FEATURE:**
+
+You can now view a summary of all your spend-based committed use discounts
+(CUD) and purchase new commitments in the [ commitment dashboard
+](https://cloud.google.com/docs/cuds-spend-based#view_commitment_dashboard) .
+The dashboard lists the **type** of commitment, **region** it's located,
+current **active** commitments, **term** length, and the **start** and **end**
+dates for the commitment. See [ the documentation
+](https://cloud.google.com/docs/cuds-spend-based#view_commitment_dashboard)
+for more details.
+
 ##  August 06, 2020
 
 **FEATURE:**
