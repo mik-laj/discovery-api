@@ -12,6 +12,18 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/billing-release-notes.xml `
 
+##  August 12, 2020
+
+**FEATURE:**
+
+Recommendations for Compute Engine committed use discounts are now available
+in **beta** . Recommendations provide you opportunities to optimize your
+compute costs by analyzing your VM spending trends and recommending committed
+use discount contracts. For understanding and purchasing committed use
+discount recommendations, see [ the documentation
+](https://cloud.google.com/billing/docs/how-to/cud-analysis-resource-
+based#understanding_commitment_recommendations) .
+
 ##  August 07, 2020
 
 **FEATURE:**
