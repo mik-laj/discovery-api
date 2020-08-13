@@ -38,8 +38,8 @@ register/unregister ` .
 
 **FIXED:**
 
-Fixed an issue that prevented updates to Connect Agent in registered Anthos
-GKE on-prem clusters.
+Fixed an issue that prevented updates to Connect Agent in registered GKE on-
+prem clusters.
 
 **FIXED:**
 
