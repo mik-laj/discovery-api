@@ -15,6 +15,24 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/aiplatform-release-notes.xml `
 
+##  August 10, 2020
+
+**AI Platform Deep Learning VM Image**
+
+**FEATURE:**
+
+**M54 release**
+
+  * Added support for the europe-west3 region 
+  * Updated the Explainable AI sdk and added explainers 
+  * Fixed llvm-openmp support 
+  * Added support for instance auto upgrade 
+  * Made Deep Learning VM images and Deep Learning Containers more consistent for TPU 
+  * Updated NCCL to 2.7.6 in CU110 images 
+  * Added the scikit-learn package and container 
+  * Added JRE to R images 
+  * Limited custom container memory utilization 
+
 ##  August 06, 2020
 
 **AI Platform Deep Learning VM Image**
