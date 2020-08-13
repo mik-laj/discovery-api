@@ -566,8 +566,8 @@ workloads. Unless you are running untrusted code inside your own multi-tenant
 GKE clusters _and_ using N2, M2 or C2 nodes, no further action is required. **
 For GKE instances on N1 nodes, no new action is required.
 
-If you are running Anthos GKE on-prem, exposure is hardware dependent. Please
-compare your infrastructure with the [ Intel disclosure
+If you are running GKE on-prem, exposure is hardware dependent. Please compare
+your infrastructure with the [ Intel disclosure
 ](https://blogs.intel.com/technology/2019/11/ipas-november-2019-intel-
 platform-update-ipu/) .
 
