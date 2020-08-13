@@ -1,8 +1,8 @@
 #  Release Notes
 
-This page documents production updates to Anthos GKE on-prem. You can
-periodically check this page for announcements about new or updated features,
-bug fixes, known issues, and deprecated functionality.
+This page documents production updates to GKE on-prem. You can periodically
+check this page for announcements about new or updated features, bug fixes,
+known issues, and deprecated functionality.
 
 See also:
 
@@ -565,7 +565,7 @@ command, the ` --admin-ssh-key-path ` parameter is now optional.
 On May 8, 2019, we introduced a change to Connect, the service that enables
 you to interact with your GKE on-prem clusters using Cloud Console. To use the
 new Connect agent, you must re-register your clusters with Cloud Console, or
-you must upgrade to Anthos GKE on-prem beta-1.4.
+you must upgrade to GKE on-prem beta-1.4.
 
 Your GKE on-prem clusters and the workloads running on them will continue to
 operate uninterrupted. However, your clusters will not be visible in Cloud
@@ -592,7 +592,7 @@ the old role:
           --member="serviceAccount:[SERVICE_ACCOUNT_NAME]@[PROJECT_ID].iam.gserviceaccount.com" \
           --role="roles/clusterregistry.connect"
 
-Re-register you cluster, or upgrade to Anthos GKE on-prem beta-1.4.
+Re-register you cluster, or upgrade to GKE on-prem beta-1.4.
 
 To [ re-register your cluster ](/kubernetes-engine/connect/updating-agent) :
 
@@ -605,7 +605,7 @@ To [ re-register your cluster ](/kubernetes-engine/connect/updating-agent) :
           --project=[PROJECT_ID]
           
 
-To [ upgrade to Anthos GKE on-prem beta-1.4 ](/anthos/gke/docs/on-
+To [ upgrade to GKE on-prem beta-1.4 ](/anthos/gke/docs/on-
 prem/archive/1.1/beta-1.4/how-to/administration/upgrading-a-cluster) :
 
     
@@ -688,7 +688,7 @@ command, the ` --admin-ssh-key-path ` parameter is now optional.
 On May 8, 2019, we introduced a change to Connect, the service that enables
 you to interact with your GKE on-prem clusters using Cloud Console. To use the
 new Connect agent, you must re-register your clusters with Cloud Console, or
-you must upgrade to Anthos GKE on-prem beta-1.4.
+you must upgrade to GKE on-prem beta-1.4.
 
 Your GKE on-prem clusters and the workloads running on them will continue to
 operate uninterrupted. However, your clusters will not be visible in Cloud
@@ -715,7 +715,7 @@ old role:
           --member="serviceAccount:[SERVICE_ACCOUNT_NAME]@[PROJECT_ID].iam.gserviceaccount.com" \
           --role="roles/clusterregistry.connect"
 
-Re-register you cluster, or upgrade to Anthos GKE on-prem beta-1.4.
+Re-register you cluster, or upgrade to GKE on-prem beta-1.4.
 
 To [ re-register your cluster ](/kubernetes-engine/connect/updating-agent) :
 
@@ -728,7 +728,7 @@ To [ re-register your cluster ](/kubernetes-engine/connect/updating-agent) :
           --project=[PROJECT_ID]
           
 
-To [ upgrade to Anthos GKE on-prem beta-1.4 ](/anthos/gke/docs/on-
+To [ upgrade to GKE on-prem beta-1.4 ](/anthos/gke/docs/on-
 prem/archive/1.1/beta-1.4/how-to/administration/upgrading-a-cluster) :
 
     
