@@ -12,6 +12,18 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/stackdriver-release-notes.xml `
 
+##  August 12, 2020
+
+**FEATURE:**
+
+Enhancements to the pre-configured Compute Engine **VM Instances** dashboard.
+The inventory table now includes a **Monitoring Agent Status** column, and the
+Monitoring agent can be installed by using a UI workflow from the table. The
+**Explore** tab gives an overview of additional metrics being sent (including
+agent metrics, custom metrics, and logs-based metrics) as well as a set of
+quick links to learn more about each type of metric. You can also use the
+**Recommended Alerts** button on the dashboard to configure fleet-wide alerts.
+
 ##  July 10, 2020
 
 **FEATURE:**
