@@ -4,7 +4,7 @@ changes.
 
 #  Security bulletins
 
-Learn about security bulletins for Anthos GKE on AWS (GKE on AWS).
+Learn about security bulletins for GKE on AWS.
 
 ##  GCP-2020-011
 
@@ -107,10 +107,10 @@ required.
 
 ####  What should I do?
 
-Anthos GKE on AWS (GKE on AWS) v0.2.0 or newer already includes the patch for
-this vulnerability. If you are using a previous version, [ download a new
-version of the anthos-gke command line tool ](/anthos/gke/docs/aws/how-
-to/prerequisites) and recreate your management and user clusters.
+GKE on AWS v0.2.0 or newer already includes the patch for this vulnerability.
+If you are using a previous version, [ download a new version of the anthos-
+gke command line tool ](/anthos/gke/docs/aws/how-to/prerequisites) and
+recreate your management and user clusters.
 
 ####  What vulnerability is addressed by this patch?
 
