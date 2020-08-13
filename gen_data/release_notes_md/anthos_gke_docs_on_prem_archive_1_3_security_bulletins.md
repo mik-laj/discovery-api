@@ -3,8 +3,7 @@ View the latest documentation ](/anthos/gke/docs/on-prem) .
 
 #  Security bulletins
 
-All security bulletins for Anthos GKE on-prem (GKE on-prem) are described in
-this topic.
+All security bulletins for GKE on-prem are described in this topic.
 
 Vulnerabilities are often kept secret under embargos until affected parties
 have had a chance to address them. In these cases, GKE on-prem's [ Release
@@ -41,8 +40,8 @@ required.
 
 ####  What should I do?
 
-The following Anthos GKE on-prem (GKE on-prem) versions or newer contain the
-fix for this vulnerability:
+The following GKE on-prem versions or newer contain the fix for this
+vulnerability:
 
   * Anthos 1.3.0 
 
@@ -93,9 +92,9 @@ recommend that you upgrade to the latest patch version, as we detail below.
 
 ####  What should I do?
 
-To mitigate this vulnerability for Anthos GKE on-prem (GKE on-prem), [ upgrade
-your clusters ](/anthos/gke/docs/on-prem/archive/1.3/how-to/upgrading) to the
-following version or newer:
+To mitigate this vulnerability for GKE on-prem, [ upgrade your clusters
+](/anthos/gke/docs/on-prem/archive/1.3/how-to/upgrading) to the following
+version or newer:
 
   * Anthos 1.3.2 
 
@@ -287,7 +286,7 @@ Medium
 
 |
 
-[ Anthos GKE on-prem releases ](/anthos/gke/docs/on-
+[ GKE on-prem releases ](/anthos/gke/docs/on-
 prem/archive/1.3/downloads#gkectl_latest)  
   
 ##  August 22, 2019
