@@ -23,6 +23,39 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/stackdriver-release-notes.xml `
 
+##  August 12, 2020
+
+**Cloud Monitoring**
+
+**FEATURE:**
+
+Enhancements to the pre-configured Compute Engine **VM Instances** dashboard.
+The inventory table now includes a **Monitoring Agent Status** column, and the
+Monitoring agent can be installed by using a UI workflow from the table. The
+**Explore** tab gives an overview of additional metrics being sent (including
+agent metrics, custom metrics, and logs-based metrics) as well as a set of
+quick links to learn more about each type of metric. You can also use the
+**Recommended Alerts** button on the dashboard to configure fleet-wide alerts.
+
+##  August 11, 2020
+
+**Cloud Logging**
+
+**CHANGED:**
+
+Users now manage logs exclusions through logs sinks. As a result, custom roles
+that have the ` logging.sinks.* ` permissions can now control the volume of
+logs ingested into Cloud Logging through logs sinks.
+
+We recommend that you review any custom roles with the ` logging.sinks.* `
+permissions so that you can make adjustments as needed.
+
+**FEATURE:**
+
+Beta release: You can now use Logs Buckets to centralize or divide your logs
+based on your needs. For information about this feature, refer to the [
+Managing logs buckets ](https://cloud.google.com/logging/docs/buckets) guide.
+
 ##  August 03, 2020
 
 **Cloud Logging**
