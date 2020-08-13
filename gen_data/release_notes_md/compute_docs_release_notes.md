@@ -14,6 +14,37 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/compute-release-notes.xml `
 
+##  August 12, 2020
+
+**FEATURE:**
+
+Compute Engine [ Committed use discount recommendations
+](https://cloud.google.com/compute/docs/instances/signing-up-committed-use-
+discounts#recommendations) are available in beta. Committed use
+recommendations give you opportunities to optimize your compute costs by
+analyzing your VM spending trends. For additional information, see [
+Understanding commitment recommendations
+](https://cloud.google.com/billing/docs/how-to/cud-analysis-resource-
+based#understanding_commitment_recommendations) .
+
+**CHANGED:**
+
+[ CPU overcommit on sole-tenant nodes
+](https://cloud.google.com/compute/docs/nodes/overcommitting-cpus-sole-tenant-
+vms) lets you overprovision sole-tenant node resources and schedule more VM
+CPUs on a sole-tenant node than are normally available. This feature is
+**Generally Available** .
+
+**FEATURE:**
+
+Key metrics for persistent disks in the new disk-level Monitoring tab are now
+**Generally Available** . Select any persistent disk attached to a single VM
+from [ Disks ](https://console.cloud.google.com/compute/disks) to see mean
+throughput, peak throughput, mean operations, and peak operations. You can
+also open each metric in [ Monitoring
+](https://console.cloud.google.com/monitoring) for querying, browsing, adding
+to a dashboard, or configuring alerts.
+
 ##  August 07, 2020
 
 **FEATURE:**
