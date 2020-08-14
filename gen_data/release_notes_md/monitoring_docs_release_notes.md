@@ -12,6 +12,16 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/stackdriver-release-notes.xml `
 
+##  August 13, 2020
+
+**FEATURE:**
+
+The new, out-of-the-box **Infrastructure Summary** dashboard for Compute
+Engine VMs provides a single-pane-of-glass view into your VM fleet and load
+balancers. At a glance, you can see the top 5 VMs across a variety of key
+metrics including memory, CPU, sent/received traffic, latency, disk
+read/write, and more.
+
 ##  August 12, 2020
 
 **FEATURE:**
