@@ -11,6 +11,13 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/vpc-release-notes.xml `
 
+##  August 13, 2020
+
+**FEATURE:**
+
+[ GRE support ](https://cloud.google.com/vpc/docs/vpc#specifications) for VPC
+networks is now available in **Beta** .
+
 ##  July 23, 2020
 
 **FEATURE:**
