@@ -12,6 +12,45 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  August 13, 2020
+
+**BigQuery**
+
+**CHANGED:**
+
+The [ exports per day ](https://cloud.google.com/bigquery/quotas#export_jobs)
+(Extract Bytes) default quota has been raised from 10 TB to 50 TB per day.
+
+**Cloud Monitoring**
+
+**FEATURE:**
+
+The new, out-of-the-box **Infrastructure Summary** dashboard for Compute
+Engine VMs provides a single-pane-of-glass view into your VM fleet and load
+balancers. At a glance, you can see the top 5 VMs across a variety of key
+metrics including memory, CPU, sent/received traffic, latency, disk
+read/write, and more.
+
+**Google Cloud Marketplace Partners**
+
+**FEATURE:**
+
+Google Cloud Marketplace supports filters, called Category IDs, that are
+available to customers within the Google Cloud console. When you add a
+Category ID, your solution shows up in the filtered view for that category
+when customers search for solutions in Cloud Marketplace. You can select up to
+two categories for each of your solutions.
+
+To add or modify categories, go to the **Solutions Details** page and edit the
+**Category ID** section.
+
+**Virtual Private Cloud**
+
+**FEATURE:**
+
+[ GRE support ](https://cloud.google.com/vpc/docs/vpc#specifications) for VPC
+networks is now available in **Beta** .
+
 ##  August 12, 2020
 
 **Cloud Billing**
@@ -2243,58 +2282,4 @@ IAMPolicyMember ` ( [ Issue #234
 
 Reduce ` spec.revisionHistoryLimit ` for the ` cnrm-stats-recorder ` and `
 cnrm-webhook-manager ` Deployments from 10 (the default) to 1.
-
-##  July 15, 2020
-
-**AutoML Vision Image Classification (ICN)**
-
-**CHANGED:**
-
-**TFLite Edge model update**
-
-TFLite edge models are now enhanced with metadata. Models trained in the next
-6 months will be backwards compatible as separate metadata and label files are
-included. TFLite models trained after this time may not be backwards
-compatible.
-
-For more information see:
-
-  * [ Metadata information and how to add metadata to a TFLite model ](https://www.tensorflow.org/lite/convert/metadata)
-  * [ Integrate models with metadata ](https://www.tensorflow.org/lite/guide/codegen)
-  * [ Process input and output data with the TensorFlow Lite Support Library ](https://www.tensorflow.org/lite/guide/lite_support)
-
-**BigQuery ML**
-
-**FEATURE:**
-
-Data split and validation options are now available for [ AutoML Table model
-training ](https://cloud.google.com/bigquery-ml/docs/reference/standard-
-sql/bigqueryml-syntax-create-automl) .
-
-**Cloud Data Loss Prevention**
-
-**CHANGED:**
-
-Added [ infoType detector ](https://cloud.google.com/dlp/docs/infotypes-
-reference) :
-
-  * ISRAEL_IDENTITY_CARD_NUMBER 
-
-**Cloud Functions**
-
-**FEATURE:**
-
-Cloud Functions has added support for a new runtime, [ Node 12
-](https://cloud.google.com/functions/docs/concepts/nodejs-runtime) , in Beta.
-
-Cloud Functions has added support for a new runtime, [ Python 3.8
-](https://cloud.google.com/functions/docs/concepts/python-runtime) , in Beta.
-
-**Cloud Spanner**
-
-**FEATURE:**
-
-You can now run SQL queries to retrieve [ read statistics
-](https://cloud.google.com/spanner/docs/introspection/read-statistics) for
-your database over recent one-minute, 10-minute, and one-hour time periods.
 
