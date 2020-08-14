@@ -12,6 +12,19 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/gcp-marketplace-partners-
 release-notes.xml `
 
+##  August 13, 2020
+
+**FEATURE:**
+
+Google Cloud Marketplace supports filters, called Category IDs, that are
+available to customers within the Google Cloud console. When you add a
+Category ID, your solution shows up in the filtered view for that category
+when customers search for solutions in Cloud Marketplace. You can select up to
+two categories for each of your solutions.
+
+To add or modify categories, go to the **Solutions Details** page and edit the
+**Category ID** section.
+
 ##  April 16, 2020
 
 **FEATURE:**
