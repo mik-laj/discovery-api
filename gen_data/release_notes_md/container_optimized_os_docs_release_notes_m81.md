@@ -26,6 +26,7 @@ _Date: Aug 07, 2020_
 _Date: July 30, 2020_
 
   * Removed the metrics daemon to address an issue where it would periodically cause CPU usage spikes in some cases. 
+  * Changed kernel command line to enforce kernel module must be signed. 
 
 ###  cos-81-12871-1160-0
 
