@@ -520,7 +520,7 @@ organization resources, log exports of folder-level and organization-level
 logs (including aggregate logs) do not support service perimeters.
 
 Aggregated Stackdriver Logging logs can access data protected by a service
-perimeter. Cloud IAM should be used to control access to that data.
+perimeter. IAM should be used to control access to that data.
 
 For more information, read about [ Logging limitations
 ](https://cloud.google.com/vpc-service-controls/docs/supported-
