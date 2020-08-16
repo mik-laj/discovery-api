@@ -515,8 +515,8 @@ more information.
 
 **CHANGED:**
 
-If you are using custom Cloud IAM roles, any roles that load Stackdriver
-Monitoring dashboards now require additional IAM permissions. The `
+If you are using custom IAM roles, any roles that load Stackdriver Monitoring
+dashboards now require additional IAM permissions. The `
 monitoring.dashboards.* ` and ` monitoring.publicWidgets.* ` permissions are
 now public, and custom roles used to load dashboards must now include them.
 See [ Stackdriver Monitoring Access Control
