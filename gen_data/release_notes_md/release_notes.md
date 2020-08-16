@@ -12,6 +12,86 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  August 14, 2020
+
+**Anthos Service Mesh**
+
+**FIXED:**
+
+**1.6.8-asm.0 and 1.5.9-asm.0**
+
+Fixes the security issue, [ ISTIO-SECURITY-2020-009
+](https://istio.io/latest/news/security/istio-security-2020-009) , with the
+same fixes as Istio 1.6.8 and Istio 1.5.9. For more information, see the Istio
+release notes:
+
+  * [ Istio 1.6.8 release notes ](https://istio.io/latest/news/releases/1.6.x/announcing-1.6.8/)
+
+  * [ Istio 1.5.9 release notes ](https://istio.io/latest/news/releases/1.5.x/announcing-1.5.9/)
+
+**Dataproc**
+
+**CHANGED:**
+
+Dataproc quotas are now regional: each region now has its own quota, which can
+be separately adjusted. All existing quota overrides have been migrated;
+customer action is not required.
+
+**CHANGED:**
+
+Enabled Spark SQL parquet metadata cache (removed `
+spark.sql.parquet.cacheMetadata=false ` from Spark default configuration).
+
+**CHANGED:**
+
+New [ sub minor versions
+](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-
+versions#supported_dataproc_versions) of Dataproc images: 1.3.66-debian10,
+1.3.66-ubuntu18, 1.4.37-debian10, 1.4.37-ubuntu18, 1.5.12-debian10,
+1.5.12-ubuntu18, 2.0.0-RC8-debian10, and 2.0.0-RC8-ubuntu18.
+
+**CHANGED:**
+
+Image 1.4:
+
+  * Fixed a bug in Spark EFM HCFS shuffle where failures after partial commits are not recoverable. 
+  * Upgraded Spark to [ 2.4.6 version ](http://spark.apache.org/news/spark-2-4-6.html) . 
+
+**CHANGED:**
+
+Image 1.5:
+
+  * Fixed a bug in Spark EFM HCFS shuffle where failures after partial commits are not recoverable. 
+  * Upgraded Spark to [ 2.4.6 version ](http://spark.apache.org/news/spark-2-4-6.html) . 
+  * Upgraded Zeppelin to [ 0.9.0-preview2 version ](https://zeppelin.apache.org/docs/0.9.0-preview2/) . 
+  * Included all plugins in Zeppelin installation by default. 
+
+**CHANGED:**
+
+Image 2.0 preview:
+
+  * Upgraded Zeppelin to [ 0.9.0-preview2 version ](https://zeppelin.apache.org/docs/0.9.0-preview2/) . 
+  * Included all plugins in Zeppelin installation by default. 
+  * Upgraded HBase to [ 2.2.5 version ](https://downloads.apache.org/hbase/2.2.5/RELEASENOTES.md) . 
+
+**Identity and Access Management**
+
+**FEATURE:**
+
+You can now use an organization policy to [ extend the maximum lifetime for
+OAuth 2.0 access tokens ](https://cloud.google.com/iam/docs/creating-short-
+lived-service-account-credentials#sa-credentials-oauth) that you create for a
+service account.
+
+**Resource Manager**
+
+**FEATURE:**
+
+The Organization Policy for [ extending the maximum lifetime for OAuth 2.0
+access tokens ](https://cloud.google.com/iam/docs/creating-short-lived-
+service-account-credentials#sa-credentials-oauth) that you create for a
+service account has been launched into general availability.
+
 ##  August 13, 2020
 
 **BigQuery**
@@ -2095,7 +2175,7 @@ has launched into general availability.
 
 **FEATURE:**
 
-Secret Manager adds support for the following curated Cloud IAM roles:
+Secret Manager adds support for the following curated IAM roles:
 
   * Secret Manager Secret Version Adder ( ` roles/secretmanager.secretVersionAdder ` ) 
   * Secret Manager Secret Version Manager ( ` roles/secretmanager.secretVersionManager ` ) 
@@ -2110,176 +2190,4 @@ manager/docs/access-control) .
 General availability for the following integration:
 
   * [ AI Platform Training ](https://cloud.google.com/ai-platform/training/docs/vpc-service-controls)
-
-##  July 17, 2020
-
-**App Engine standard environment Java**
-
-**CHANGED:**
-
-  * Updated Java SDK to version 1.9.81 
-
-**AutoML Translation**
-
-**FEATURE:**
-
-For test data, added support for the ` .tmx ` file type when evaluating
-existing models. For more information, see [ Evaluating models
-](https://cloud.google.com/translate/automl/docs/evaluate#evaluate_and_compare_models_using_a_new_test_set)
-.
-
-**Compute Engine**
-
-**FEATURE:**
-
-The Organization Policy for [ restricting protocol forwarding creation
-](https://cloud.google.com/compute/docs/protocol-
-forwarding#enforcing_protocol_forwarding_settings_across_a_project_folder_or_organization)
-has launched into **Beta** .
-
-**Dataproc**
-
-**FEATURE:**
-
-Dataproc now uses [ Shielded VMs ](https://cloud.google.com/security/shielded-
-cloud/shielded-vm) for Debian 10 and Ubuntu 18.04 clusters by default.
-
-**FEATURE:**
-
-The ` Proxy-Authorization ` header is accepted in place of ` Authorization `
-to authenticate to Component Gateway to the backend for programmatic API
-calls. If ` Proxy-Authorization ` is set to a bearer token, Component Gateway
-will forward the ` Authorization ` header if it does not contain a bearer
-token.
-
-For example, this allows setting both ` Proxy-Authorization: Bearer <google-
-access-token> ` as well as setting ` Authorization: Basic ... ` to
-authenticate to HiveServer2 with HTTP basic auth.
-
-**FEATURE:**
-
-Added support for Zeppelin Spark and shell interpreters in [ Kerberized
-clusters ](https://cloud.google.com/dataproc/docs/concepts/configuring-
-clusters/security) by default.
-
-**CHANGED:**
-
-New [ sub-minor versions
-](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-
-versions#supported_dataproc_versions) of Dataproc images: 1.3.63-debian10,
-1.3.63-ubuntu18, 1.4.34-debian10, 1.4.34-ubuntu18, 1.5.9-debian10,
-1.5.9-ubuntu18, 2.0.0-RC5-debian10, and 2.0.0-RC5-ubuntu18.
-
-**CHANGED:**
-
-Image 2.0 preview:
-
-  * Updated Pig ` 0.18.0-SNAPHOT ` to [ 0b2066a revision ](https://github.com/apache/pig/commit/0b2066a6fd9e2907210c5dff1c480f017889425b) to fix Hive 3.1 compatibility ( [ PIG-4764 ](https://issues.apache.org/jira/browse/PIG-4764) ). 
-
-**FIXED:**
-
-If a project's regional Dataproc [ staging bucket
-](https://cloud.google.com/dataproc/docs/concepts/configuring-
-clusters/staging-bucket) is manually deleted, it will be recreated
-automatically when a cluster is subsequently created in that region.
-
-**Resource Manager**
-
-**FEATURE:**
-
-The Organization Policy for [ restricting protocol forwarding creation
-](https://cloud.google.com/compute/docs/protocol-
-forwarding#enforcing_protocol_forwarding_settings_across_a_project_folder_or_organization)
-has launched into public beta.
-
-##  July 16, 2020
-
-**BigQuery**
-
-**FEATURE:**
-
-BigQuery GIS now supports two new functions, ` ST_CONVEXHULL ` and ` ST_DUMP `
-:
-
-  * ` ST_CONVEXHULL ` returns the smallest convex ` GEOGRAPHY ` that covers the input. 
-  * ` ST_DUMP ` returns an ` ARRAY ` of simple ` GEOGRAPHY ` s where each element is a component of the input ` GEOGRAPHY ` . 
-
-For more information, see the [ ` ST_CONVEXHULL `
-](https://cloud.google.com/bigquery/docs/reference/standard-
-sql/geography_functions#st_convexhull) and [ ` ST_DUMP `
-](https://cloud.google.com/bigquery/docs/reference/standard-
-sql/geography_functions#st_dump) reference pages.
-
-**Cloud Data Fusion**
-
-**FEATURE:**
-
-Cloud Data Fusion version 6.1.3 is now available. This version includes
-performance improvements and minor bug fixes.
-
-  * Improved performance of Joiner plugins, aggregators, program startup, and previews. 
-  * Added support for custom images. You can select a custom Dataproc image by specifying the image URI. 
-  * Added support for rendering large schemas (>1000 fields) in the pipelines UI. 
-  * Added payload compression support to the messaging service. 
-
-**Cloud Load Balancing**
-
-**FEATURE:**
-
-The Organization Policy for [ restricting load balancer creation
-](https://cloud.google.com/load-balancing/docs/org-policy-constraints) has
-launched into **Beta** .
-
-**Compute Engine**
-
-**CHANGED:**
-
-SSD persistent disks on certain machine types now have a maximum write
-throughput of 1,200 MB/s. To learn more about the requirements to reach these
-limits, see [ Block storage performance
-](https://cloud.google.com/compute/docs/disks/performance#size_price_performance)
-.
-
-**FEATURE:**
-
-You can now [ suspend and resume
-](https://cloud.google.com/compute/docs/instances/suspend-resume-instance)
-your VM instances. This feature is available in **Beta** .
-
-**Config Connector**
-
-**FEATURE:**
-
-Add support for allowing fields not specified by the user to be externally-
-managed (i.e. changeable outside of Config Connector). This feature can be
-enabled for a resource by enabling K8s server-side apply for the resource,
-which will be the default for all K8s resources starting in K8s 1.18. More
-detailed docs about the feature coming soon.
-
-**FEATURE:**
-
-Operator improvement: add support for cluster-mode set-ups, which allows users
-to use one Google Service Account for all namespaces in their cluster. This is
-very similar to the traditional "Workload Identity" installation set-up.
-
-**FIXED:**
-
-Fix ` ContainerCluster ` validation issue ( [ Issue #242
-](https://github.com/GoogleCloudPlatform/k8s-config-connector/issues/242) ).
-
-**FIXED:**
-
-Fix OOM issue for the ` cnrm-resource-stats-recorder ` pod ( [ Issue #239
-](https://github.com/GoogleCloudPlatform/k8s-config-connector/issues/239) ).
-
-**FEATURE:**
-
-Add support for ` projectViewer ` prefix for members in ` IAMPolicy ` and `
-IAMPolicyMember ` ( [ Issue #234
-](https://github.com/GoogleCloudPlatform/k8s-config-connector/issues/234) ).
-
-**CHANGED:**
-
-Reduce ` spec.revisionHistoryLimit ` for the ` cnrm-stats-recorder ` and `
-cnrm-webhook-manager ` Deployments from 10 (the default) to 1.
 
