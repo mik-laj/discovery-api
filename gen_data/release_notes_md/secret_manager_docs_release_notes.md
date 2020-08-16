@@ -17,7 +17,7 @@ URL directly: ` https://cloud.google.com/feeds/secretmanager-release-notes.xml
 
 **FEATURE:**
 
-Secret Manager adds support for the following curated Cloud IAM roles:
+Secret Manager adds support for the following curated IAM roles:
 
   * Secret Manager Secret Version Adder ( ` roles/secretmanager.secretVersionAdder ` ) 
   * Secret Manager Secret Version Manager ( ` roles/secretmanager.secretVersionManager ` ) 
