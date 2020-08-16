@@ -47,7 +47,7 @@ Las Vegas region ( ` us-west4 ` ) launched.
 
 **CHANGED:**
 
-[ Cloud IAM Conditions for Cloud Storage
+[ IAM Conditions for Cloud Storage
 ](https://cloud.google.com/storage/docs/access-control/using-iam-
 permissions#conditions-iam) is now in GA.
 
@@ -79,10 +79,10 @@ Archive Storage now available.
 
 **FEATURE:**
 
-Cloud IAM Conditions  BETA  for Cloud Storage is now available.
+IAM Conditions  BETA  for Cloud Storage is now available.
 
-  * [ Cloud IAM Conditions ](https://cloud.google.com/iam/docs/conditions-overview) allows you to grant permissions for a specified period of time, or to a subset of objects in your buckets. 
-  * See [ Using Cloud IAM Conditions on buckets ](https://cloud.google.com/storage/docs/access-control/using-iam-permissions#conditions-iam) for step-by-step instructions. 
+  * [ IAM Conditions ](https://cloud.google.com/iam/docs/conditions-overview) allows you to grant permissions for a specified period of time, or to a subset of objects in your buckets. 
+  * See [ Using IAM Conditions on buckets ](https://cloud.google.com/storage/docs/access-control/using-iam-permissions#conditions-iam) for step-by-step instructions. 
 
 ##  November 18, 2019
 
