@@ -2,11 +2,9 @@
 
 Auf dieser Seite werden Produktionsaktualisierungen von Dialogflow
 dokumentiert. Wir empfehlen Dialogflow-Entwicklern, diese Liste regelmäßig auf
-neue Ankündigungen zu prüfen. Wichtige Änderungen werden auch bekannt gegeben
-über:
-
-  * [ Die Dialogflow Enterprise-Mailingliste ](https://groups.google.com/forum/?hl=de#!forum/dialogflow-enterprise-edition-users)
-  * [ Den Cloud-Blog zu KI und maschinellem Lernen ](https://cloud.google.com/blog/products/ai-machine-learning?hl=de)
+neue Ankündigungen zu prüfen. Wesentliche Änderungen werden auch im [ Cloud
+Blog: AI & Machine Learning ](https://cloud.google.com/blog/products/ai-
+machine-learning?hl=de) angekündigt.
 
 **Hinweis:** Sie können auch die [ alten Versionshinweise
 ](https://cloud.google.com/dialogflow/docs/data/historic-release-
