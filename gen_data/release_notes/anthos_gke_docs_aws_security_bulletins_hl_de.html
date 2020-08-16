@@ -1,0 +1,420 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <div background="google-blue" class="devsite-banner devsite-banner-announcement">
+   <div class="devsite-banner-message">
+    <div class="devsite-banner-message-text">
+     A new version of Anthos GKE on AWS was released on August 5. See the
+     <a href="https://cloud.google.com/anthos/gke/docs/aws/release-notes?hl=de">
+      release notes
+     </a>
+     for information on breaking changes.
+    </div>
+   </div>
+  </div>
+  <h1 class="devsite-page-title">
+   Sicherheitsbulletins
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <p>
+    Informationen zu Sicherheitsbulletins für Anthos GKE on AWS (GKE on AWS)
+   </p>
+   <section class="bulletins">
+    <h2 data-text="GCP-2020-011" id="gcp-2020-011" tabindex="0">
+     GCP-2020-011
+    </h2>
+    <strong>
+     Veröffentlicht:
+    </strong>
+    24.7.2020
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschreibung
+       </th>
+       <th>
+        Schweregrad
+       </th>
+       <th>
+        Hinweise
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Bei Kubernetes wurde vor Kurzem eine Sicherheitslücke im Netzwerk,
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/92315">
+          CVE-2020-8558
+         </a>
+         , entdeckt. Dienste kommunizieren manchmal über die lokale Loopback-Schnittstelle (127.0.0.1) mit anderen Anwendungen, die im gleichen Pod ausgeführt werden. Diese Sicherheitslücke ermöglicht einem Angreifer mit Zugriff auf das Netzwerk des Clusters, Traffic an die Loopback-Schnittstelle von angrenzenden Pods und Knoten zu senden. Dienste, die darauf angewiesen sind, dass die Loopback-Schnittstelle außerhalb ihres Pods nicht zugänglich ist, könnten ausgenutzt werden.
+        </p>
+        <p>
+         Damit diese Sicherheitslücke in Clustern von GKE on AWS ausgenutzt wird, muss ein Angreifer die
+         <a class="external" href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_NAT_Instance.html">
+          Quell-Ziel-Prüfungen
+         </a>
+         auf den EC2-Instanzen im Cluster deaktivieren. Dazu muss der Angreifer auf den EC2-Instanzen AWS-IAM-Berechtigungen für
+         <code dir="ltr" translate="no">
+          ModifyInstanceAttribute
+         </code>
+         oder
+         <code dir="ltr" translate="no">
+          ModifyNetworkInterfaceAttribute
+         </code>
+         haben. Aus diesem Grund wurde dieser Sicherheitslücke von GKE on AWS ein niedriger Schweregrad zugewiesen.
+        </p>
+        <h4 data-text="Was soll ich tun?" id="what-should-i-do" tabindex="0">
+         Was soll ich tun?
+        </h4>
+        <p>
+         Aktualisieren Sie Ihren Cluster auf eine Patchversion, um diese Sicherheitslücke zu schließen.
+        Bei den folgenden geplanten Versionen von GKE on AWS oder neueren Versionen soll diese Sicherheitslücke behoben werden:
+        </p>
+        <ul>
+         <li>
+          GKE on AWS 1.4.2
+         </li>
+        </ul>
+        <h4 data-text="Welche Sicherheitslücke wird mit diesem Patch behoben?" id="what-vulnerability-is-addressed-by-this-patch" tabindex="0">
+         Welche Sicherheitslücke wird mit diesem Patch behoben?
+        </h4>
+        <p>
+         Mit diesem Patch wird die folgende Sicherheitslücke behoben:
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/92315">
+          CVE-2020-8558
+         </a>
+         .
+        </p>
+       </td>
+       <td>
+        <p>
+         Niedrig
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/92315">
+          CVE-2020-8558
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-009" id="gcp-2020-009" tabindex="0">
+     GCP-2020-009
+    </h2>
+    <strong>
+     Veröffentlicht:
+    </strong>
+    15.7.2020
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschreibung
+       </th>
+       <th>
+        Schweregrad
+       </th>
+       <th>
+        Hinweise
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Vor Kurzem wurde in Kubernetes eine Sicherheitslücke zur Rechteausweitung,
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8559">
+          CVE-2020-8559
+         </a>
+         , entdeckt. Diese Sicherheitslücke ermöglicht es einem Angreifer, der bereits einen Knoten manipuliert hat, in jedem Pod im Cluster einen Befehl auszuführen. Der Angreifer kann dadurch mit dem bereits manipulierten Knoten andere Knoten manipulieren und potenziell Informationen lesen oder destruktive Aktionen ausführen.
+        </p>
+        <p>
+         Damit ein Angreifer diese Sicherheitslücke ausnutzen kann, muss bereits ein Knoten im Cluster manipuliert worden sein. Diese Sicherheitslücke allein lässt also nicht die Manipulation von Knoten in Ihrem Cluster zu.
+        </p>
+        <h4 data-text="Was soll ich tun?" id="what-should-i-do_1" tabindex="0">
+         Was soll ich tun?
+        </h4>
+        <p>
+         GKE on AWS GA (1.4.1, verfügbar ab Ende Juli 2020) oder höher enthält den Patch für diese Sicherheitslücke. Wenn Sie eine ältere Version verwenden,
+         <a href="https://cloud.google.com/anthos/gke/docs/aws/how-to/prerequisites?hl=de">
+          laden Sie eine neue Version des anthos-gke-Befehlszeilentools herunter
+         </a>
+         und erstellen Sie Ihre Verwaltungs- und Nutzercluster neu.
+        </p>
+        <h4 data-text="Welche Sicherheitslücke wird mit diesem Patch behoben?" id="what-vulnerability-is-addressed-by-this-patch_1" tabindex="0">
+         Welche Sicherheitslücke wird mit diesem Patch behoben?
+        </h4>
+        <p>
+         Diese Patches beheben die Sicherheitslücke CVE-2020-8559. Diese Sicherheitslücke von GKE wird mit dem Schweregrad "Mittel" eingestuft, da der Angreifer Informationen aus erster Hand über den Cluster, die Knoten und Arbeitslasten benötigt, um diesen Angriff wirksam zu nutzen, wenn bereits ein anderer Knoten manipuliert wurde. Diese Sicherheitslücke selbst bietet dem Angreifer keinen manipulierten Knoten.
+        </p>
+       </td>
+       <td>
+        <p>
+         Mittel
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8559">
+          CVE-2020-8559
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-007" id="gcp-2020-007" tabindex="0">
+     GCP-2020-007
+    </h2>
+    <strong>
+     Veröffentlicht:
+    </strong>
+    01.06.2020
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschreibung
+       </th>
+       <th>
+        Schweregrad
+       </th>
+       <th>
+        Hinweise
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Serverseitige Anfragefälschung (Server Side Request Forgery, SSRF),
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555">
+          CVE-2020-8555
+         </a>
+         , wurde kürzlich in Kubernetes entdeckt und ermöglicht bestimmten autorisierten Nutzern, bis zu 500 Byte vertraulicher Informationen aus dem Hostnetzwerk der Steuerungsebene abzurufen. Die Google Kubernetes Engine-Steuerungsebene (GKE) verwendet Controller von Kubernetes und ist daher von dieser Sicherheitslücke betroffen. Wir empfehlen Ihnen, die Steuerungsebene wie unten beschrieben auf die neueste Patchversion zu aktualisieren.
+      Ein Knotenupgrade ist nicht erforderlich.
+         <br/>
+        </p>
+        <h4 data-text="Was soll ich tun?" id="what-should-i-do_2" tabindex="0">
+         Was soll ich tun?
+        </h4>
+        <p>
+         Anthos GKE on AWS (GKE on AWS) v0.2.0 oder höher enthält bereits den Patch für diese Sicherheitslücke. Wenn Sie eine ältere Version verwenden,
+         <a href="https://cloud.google.com/anthos/gke/docs/aws/how-to/prerequisites?hl=de">
+          laden Sie eine neue Version des anthos-gke-Befehlszeilentools herunter
+         </a>
+         und erstellen Sie Ihre Verwaltungs- und Nutzercluster neu.
+        </p>
+        <h4 data-text="Welche Sicherheitslücke wird mit diesem Patch behoben?" id="what-vulnerability-is-addressed-by-this-patch_2" tabindex="0">
+         Welche Sicherheitslücke wird mit diesem Patch behoben?
+        </h4>
+        <p>
+         Diese Patches beheben die Sicherheitslücke CVE-2020-8555. Diese Sicherheitslücke wird in GKE mit dem Schweregrad "Mittel" bewertet, da sie aufgrund verschiedener Härtungsmaßnahmen der Steuerungsebene nur schwer ausgenutzt werden konnte.
+        </p>
+        <p>
+         Ein Angreifer mit Berechtigungen zum Erstellen eines Pods mit bestimmten integrierten Volume-Typen (GlusterFS, Quobyte, StorageFS, ScaleIO) oder Berechtigungen zum Erstellen einer StorageClass kann
+         <code dir="ltr" translate="no">
+          kube-controller-manager
+         </code>
+         dazu veranlassen,
+         <code dir="ltr" translate="no">
+          GET
+         </code>
+         -Anfragen oder
+         <code dir="ltr" translate="no">
+          POST
+         </code>
+         -Anfragen
+         <em>
+          ohne
+         </em>
+         von ihm kontrolliertem Anfragetext über das Master-Hostnetzwerk zu senden. Diese Volume-Typen werden selten auf GKE verwendet. Neue Nutzungsfälle dieser Volume-Typen können also ein hilfreiches Signal zur Angriffserkennung sein.
+        </p>
+        <p>
+         Wird der Angriff mit einer Methode kombiniert, um die Ergebnisse von
+         <code dir="ltr" translate="no">
+          GET/POST
+         </code>
+         beispielsweise durch Logs zurück an den Angreifer zu senden, kann das zur Offenlegung von vertraulichen Informationen führen. Wir haben die entsprechenden Speichertreiber aktualisiert, um das Risiko von Schwachstellen zu beheben.
+        </p>
+       </td>
+       <td>
+        <p>
+         Mittel
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555">
+          CVE-2020-8555
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-006" id="gcp-2020-006" tabindex="0">
+     GCP-2020-006
+    </h2>
+    <strong>
+     Veröffentlicht:
+    </strong>
+    01.06.2020
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Beschreibung
+       </th>
+       <th>
+        Schweregrad
+       </th>
+       <th>
+        Hinweise
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Kubernetes hat eine
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          Sicherheitslücke
+         </a>
+         entdeckt, die es einem berechtigten Container ermöglicht, Knoten-Traffic an einen anderen Container weiterzuleiten. Gegenseitiger TLS/SSH-Traffic, z. B. zwischen dem Kubelet und dem API-Server oder Traffic von Anwendungen, die mTLS verwenden, kann durch diesen Angriff nicht gelesen oder geändert werden. Alle GKE-Knoten (Google Kubernetes Engine) sind von dieser Sicherheitslücke betroffen. Wir empfehlen Ihnen, wie unten beschrieben ein Upgrade auf die neueste Patchversion durchzuführen.
+        </p>
+        <h4 data-text="Was soll ich tun?" id="what-should-i-do_3" tabindex="0">
+         Was soll ich tun?
+        </h4>
+        <p>
+         <a href="https://cloud.google.com/anthos/gke/docs/aws/how-to/prerequisites?hl=de">
+          Laden Sie das anthos-gke-Befehlszeilentool herunter
+         </a>
+         , das die folgende Version oder eine neuere Version enthält und erstellen Sie Ihre Verwaltungs- und Nutzercluster neu:
+        </p>
+        <ul>
+         <li>
+          aws-0.2.1-gke.7
+         </li>
+        </ul>
+        <p>
+         Sehr wenige Container benötigen normalerweise
+         <code dir="ltr" translate="no">
+          CAP_NET_RAW
+         </code>
+         . Diese und andere leistungsstarke Funktionen sollten standardmäßig über
+         <a href="https://cloud.google.com/anthos-config-management/docs/concepts/policy-controller?hl=de">
+          Anthos Policy Controller
+         </a>
+         oder durch Aktualisieren Ihrer Pod-Spezifikationen blockiert werden:
+        </p>
+        So entfernen Sie die
+        <code dir="ltr" translate="no">
+         CAP_NET_RAW
+        </code>
+        -Funktion aus Containern:
+        <ul>
+         <li>
+          Durch Verwendung von Anthos Policy Controller/Gatekeeper mit dieser
+          <a class="external" href="https://github.com/open-policy-agent/gatekeeper/blob/master/library/pod-security-policy/capabilities/template.yaml">
+           Einschränkungsvorlage
+          </a>
+          und Anwendung der Vorlage. Beispiel:
+         </li>
+         <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Dropping CAP_NET_RAW with Gatekeeper
+# (requires the K8sPSPCapabilities template)
+apiversion: constraints.gatekeeper.sh/v1beta1
+kind:  K8sPSPCapabilities
+metadata:
+  name: forbid-cap-net-raw
+spec:
+  match:
+    kinds:
+      - apiGroups: [""]
+      kinds: ["Pod"]
+    namespaces:
+      #List of namespaces to enforce this constraint on
+      - default
+    # If running gatekeeper &gt;= v3.1.0-beta.5,
+    # you can exclude namespaces rather than including them above.
+    excludedNamespaces:
+      - kube-system
+  parameters:
+    requiredDropCapabilities:
+      - "NET_RAW"
+</pre>
+        </ul>
+        <ul>
+         <li>
+          Durch Aktualisieren der Pod-Spezifikationen:
+         </li>
+         <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Dropping CAP_NET_RAW from a Pod:
+apiVersion: v1
+kind: Pod
+metadata:
+  name: no-cap-net-raw
+spec:
+  containers:
+    -name: may-container
+     ...
+    securityContext:
+      capabilities:
+        drop:
+          -NET_RAW
+</pre>
+        </ul>
+        <h4 data-text="Welche Sicherheitslücke wird mit diesem Patch behoben?" id="what-vulnerability-is-addressed-by-this-patch_3" tabindex="0">
+         Welche Sicherheitslücke wird mit diesem Patch behoben?
+        </h4>
+        <p>
+         Dieser Patch dient zur Entschärfung der folgenden Sicherheitslücke:
+        </p>
+        <p>
+         Die Sicherheitslücke, die unter
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          Kubernetes-Problem 91507
+         </a>
+         beschrieben ist. Dabei kann die
+         <code dir="ltr" translate="no">
+          CAP_NET_RAW
+         </code>
+         -Funktion (im standardmäßigen Container-Funktionsset enthalten) den IPv6-Stack auf dem Knoten schädlich konfigurieren und den Knoten-Traffic an den vom Angreifer kontrollierten Container weiterleiten. Dadurch kann der Angreifer ausgehenden und eingehenden Traffic des Knotens abfangen und ändern. Gegenseitiger TLS/SSH-Traffic, z. B. zwischen dem Kubelet und dem API-Server oder Traffic von Anwendungen, die mTLS verwenden, kann durch diesen Angriff nicht gelesen oder geändert werden.
+        </p>
+       </td>
+       <td>
+        <p>
+         Mittel
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          Kubernetes-Problem 91507
+         </a>
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+   </section>
+  </div>
+ </article>
+</article>
