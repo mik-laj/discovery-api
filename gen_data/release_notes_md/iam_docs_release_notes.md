@@ -16,6 +16,21 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/iam-release-notes.xml `
 
+##  August 14, 2020
+
+**FEATURE:**
+
+You can now use Cloud Monitoring to [ check when your service accounts and
+service account keys were used ](https://cloud.google.com/iam/docs/service-
+account-monitoring) . This feature is available in beta.
+
+**FEATURE:**
+
+You can now use an organization policy to [ extend the maximum lifetime for
+OAuth 2.0 access tokens ](https://cloud.google.com/iam/docs/creating-short-
+lived-service-account-credentials#sa-credentials-oauth) that you create for a
+service account.
+
 ##  July 31, 2020
 
 **CHANGED:**
@@ -36,8 +51,8 @@ changes will take effect starting on August 31, 2020.
 
 **CHANGED:**
 
-The organization policy constraint to [ prevent automatic role grants to Cloud
-IAM service accounts ](https://cloud.google.com/resource-
+The organization policy constraint to [ prevent automatic role grants to IAM
+service accounts ](https://cloud.google.com/resource-
 manager/docs/organization-policy/restricting-service-
 accounts#disable_service_account_default_grants) is now [ generally available
 ](https://cloud.google.com/products/#product-launch-stages) . To improve
@@ -80,17 +95,17 @@ members) .
 
 **DEPRECATED:**
 
-Using the Cloud IAM API to sign JSON Web Tokens (JWTs) or binary blobs is now
+Using the IAM API to sign JSON Web Tokens (JWTs) or binary blobs is now
 deprecated.
 
-  * If you use the Cloud IAM API or its client libraries to sign JWTs or binary blobs, you must [ migrate to the Service Account Credentials API ](https://cloud.google.com/iam/docs/migrating-to-credentials-api) before July 1, 2021. 
+  * If you use the IAM API or its client libraries to sign JWTs or binary blobs, you must [ migrate to the Service Account Credentials API ](https://cloud.google.com/iam/docs/migrating-to-credentials-api) before July 1, 2021. 
   * If you use the ` gcloud ` command-line tool to sign JWTs, you must [ prepare for changes to the ` gcloud ` tool ](https://cloud.google.com/iam/docs/migrating-to-credentials-api#gcloud) before July 1, 2021. 
 
 ##  May 18, 2020
 
 **CHANGED:**
 
-Recommendations from the [ Cloud IAM recommender
+Recommendations from the [ IAM recommender
 ](https://cloud.google.com/iam/docs/recommender-overview) can now include [
 suggestions to create custom roles
 ](https://cloud.google.com/iam/docs/recommender-overview#custom-roles) .
@@ -109,11 +124,11 @@ was used.
 **CHANGED:**
 
 [ Forwarding rule attributes ](https://cloud.google.com/iam/docs/conditions-
-attribute-reference#forwarding-rule) for Cloud IAM Conditions are now [
-generally available ](https://cloud.google.com/products/#product-launch-
-stages) . You can use these attributes to specify the types of [ forwarding
-rules ](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts)
-that a member can create.
+attribute-reference#forwarding-rule) for IAM Conditions are now [ generally
+available ](https://cloud.google.com/products/#product-launch-stages) . You
+can use these attributes to specify the types of [ forwarding rules
+](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts) that
+a member can create.
 
 ##  March 05, 2020
 
@@ -128,39 +143,37 @@ can use.
 
 **CHANGED:**
 
-[ Cloud IAM Conditions ](https://cloud.google.com/iam/docs/conditions-
-overview) are now [ generally available
-](https://cloud.google.com/products/#product-launch-stages) . You can use
-Cloud IAM Conditions to define and enforce conditional, attribute-based access
-control for Google Cloud resources.
+[ IAM Conditions ](https://cloud.google.com/iam/docs/conditions-overview) are
+now [ generally available ](https://cloud.google.com/products/#product-launch-
+stages) . You can use IAM Conditions to define and enforce conditional,
+attribute-based access control for Google Cloud resources.
 
 **FEATURE:**
 
-For Cloud IAM Conditions, you can now use the ` extract() ` function to [
-extract a value from a resource name
-](https://cloud.google.com/iam/docs/conditions-attribute-reference#extract) .
-This function enables condition expressions to refer to an arbitrary part of
-the resource name.
+For IAM Conditions, you can now use the ` extract() ` function to [ extract a
+value from a resource name ](https://cloud.google.com/iam/docs/conditions-
+attribute-reference#extract) . This function enables condition expressions to
+refer to an arbitrary part of the resource name.
 
 ##  February 21, 2020
 
 **CHANGED:**
 
-A version 1 [ Cloud IAM policy ](https://cloud.google.com/iam/docs/policies)
-can now include [ conditional role bindings
+A version 1 [ IAM policy ](https://cloud.google.com/iam/docs/policies) can now
+include [ conditional role bindings
 ](https://cloud.google.com/iam/docs/conditions-overview) . The role name in
 these bindings includes the string ` withcond ` , followed by a hash value.
 For example: ` roles/iam.serviceAccountAdmin_withcond_2b17cc25d2cd9e2c54d8 `
 
-If you see the string ` withcond ` in a Cloud IAM policy, follow the steps in
-the [ troubleshooting guide
-](https://cloud.google.com/iam/docs/troubleshooting-withcond) .
+If you see the string ` withcond ` in an IAM policy, follow the steps in the [
+troubleshooting guide ](https://cloud.google.com/iam/docs/troubleshooting-
+withcond) .
 
 ##  February 18, 2020
 
 **CHANGED:**
 
-You can now learn about [ Cloud IAM audit logging for service accounts
+You can now learn about [ IAM audit logging for service accounts
 ](https://cloud.google.com/iam/docs/audit-logging/) and see [ examples of
 audit logs for service accounts ](https://cloud.google.com/iam/docs/audit-
 logging/examples-service-accounts) .
@@ -169,9 +182,9 @@ logging/examples-service-accounts) .
 
 **CHANGED:**
 
-The [ Cloud IAM recommender ](https://cloud.google.com/iam/docs/recommender-
+The [ IAM recommender ](https://cloud.google.com/iam/docs/recommender-
 overview) is now [ generally available
-](https://cloud.google.com/products/#product-launch-stages) . The Cloud IAM
+](https://cloud.google.com/products/#product-launch-stages) . The IAM
 recommender helps you enforce the principle of least privilege by ensuring
 that members have only the permissions that they actually use.
 
@@ -179,7 +192,7 @@ that members have only the permissions that they actually use.
 
 **FEATURE:**
 
-Cloud IAM Conditions now supports [ forwarding rule attributes
+IAM Conditions now supports [ forwarding rule attributes
 ](https://cloud.google.com/iam/docs/conditions-attribute-reference#forwarding-
 rule) , currently in beta. You can use these attributes to specify the types
 of [ forwarding rules ](https://cloud.google.com/load-
@@ -200,26 +213,24 @@ have permission to call an API.
 **CHANGED:**
 
 On December 9, we [ announced ](https://cloud.google.com/iam/docs/release-
-notes#December_09_2019) that Cloud IAM policies would now identify deleted
-members. We have temporarily reverted this change. Cloud IAM policies no
-longer identify deleted members.
+notes#December_09_2019) that IAM policies would now identify deleted members.
+We have temporarily reverted this change. IAM policies no longer identify
+deleted members.
 
 ##  December 12, 2019
 
 **FEATURE:**
 
-[ Cloud IAM Conditions ](https://cloud.google.com/iam/docs/conditions-
-overview) are now available in public beta. You can use Cloud IAM Conditions
-to define and enforce conditional, attribute-based access control for Google
-Cloud resources.
+[ IAM Conditions ](https://cloud.google.com/iam/docs/conditions-overview) are
+now available in public beta. You can use IAM Conditions to define and enforce
+conditional, attribute-based access control for Google Cloud resources.
 
 ##  December 09, 2019
 
 **CHANGED:**
 
-Cloud IAM policies now identify deleted members that are bound to a role.
-Deleted members have the prefix ` deleted: ` and the suffix ` ?uid=
-[NUMERIC_ID]  ` .
+IAM policies now identify deleted members that are bound to a role. Deleted
+members have the prefix ` deleted: ` and the suffix ` ?uid=  [NUMERIC_ID]  ` .
 
 For example, if you delete the account for the user ` bob@example.com ` , and
 a policy binds that user to a role, the policy shows an identifier similar to
@@ -236,16 +247,16 @@ If a binding in a policy refers to a deleted member (for example, `
 deleted:user:bob@example.com?uid=123456789012345678901 ` ), you cannot add a
 binding for a newly created member with the same name (in this case, `
 user:bob@example.com ` ). If you try to add a binding for the newly created
-member, Cloud IAM will apply the binding to the deleted member instead.
+member, IAM will apply the binding to the deleted member instead.
 
 ##  September 23, 2019
 
 **FEATURE:**
 
-The [ Cloud IAM recommender ](https://cloud.google.com/iam/docs/recommender-
-overview) is now available in beta. The Cloud IAM recommender helps you
-enforce the principle of least privilege by ensuring that members have only
-the permissions that they actually use.
+The [ IAM recommender ](https://cloud.google.com/iam/docs/recommender-
+overview) is now available in beta. The IAM recommender helps you enforce the
+principle of least privilege by ensuring that members have only the
+permissions that they actually use.
 
 ##  September 18, 2019
 
@@ -288,8 +299,8 @@ credentials) with the Service Account Credentials API, available in beta.
 
 **CHANGED:**
 
-You can now learn how to [ configure Cloud IAM roles to facilitate audit
-logging ](https://cloud.google.com/iam/docs/roles-audit-logging) .
+You can now learn how to [ configure IAM roles to facilitate audit logging
+](https://cloud.google.com/iam/docs/roles-audit-logging) .
 
 ##  January 31, 2018
 
@@ -297,7 +308,7 @@ logging ](https://cloud.google.com/iam/docs/roles-audit-logging) .
 
 [ Custom roles ](https://cloud.google.com/iam/docs/understanding-custom-roles)
 are now [ generally available ](https://cloud.google.com/products/#product-
-launch-stages) . You can create a custom Cloud IAM role with one or more
+launch-stages) . You can create a custom IAM role with one or more
 permissions, then grant that custom role to users in your organization.
 
 For more information, see the following topics:
@@ -312,8 +323,8 @@ For more information, see the following topics:
 **CHANGED:**
 
 [ Custom roles ](https://cloud.google.com/iam/docs/understanding-custom-roles)
-are now available in beta. You can create a custom Cloud IAM role with one or
-more permissions, then grant that custom role to users in your organization.
+are now available in beta. You can create a custom IAM role with one or more
+permissions, then grant that custom role to users in your organization.
 
 ##  September 14, 2017
 
@@ -336,8 +347,8 @@ functions ](https://cloud.google.com/iam/docs/job-functions/networking) .
 **CHANGED:**
 
 [ Custom roles ](https://cloud.google.com/iam/docs/understanding-custom-roles)
-are now available in a public alpha. You can create a custom Cloud IAM role
-with one or more permissions, then grant that custom role to users in your
+are now available in a public alpha. You can create a custom IAM role with one
+or more permissions, then grant that custom role to users in your
 organization.
 
 ##  May 24, 2017
@@ -352,16 +363,16 @@ functions ](https://cloud.google.com/iam/docs/job-functions/billing) .
 **FEATURE:**
 
 [ Custom roles ](https://cloud.google.com/iam/docs/understanding-custom-roles)
-are now available in a private alpha. You can create a custom Cloud IAM role
-with one or more permissions, then grant that custom role to users in your
+are now available in a private alpha. You can create a custom IAM role with
+one or more permissions, then grant that custom role to users in your
 organization.
 
 ##  May 10, 2016
 
 **CHANGED:**
 
-Cloud IAM is now [ generally available
-](https://cloud.google.com/products/#product-launch-stages) .
+IAM is now [ generally available ](https://cloud.google.com/products/#product-
+launch-stages) .
 
 ##  March 28, 2016
 
@@ -375,5 +386,5 @@ IAM securely ](https://cloud.google.com/iam/docs/using-iam-securely) .
 
 **FEATURE:**
 
-Cloud IAM is now available in beta.
+IAM is now available in beta.
 
