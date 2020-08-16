@@ -1,14 +1,13 @@
 #  출시 노트
 
 이 페이지에서는 Dialogflow의 프로덕션 업데이트에 대해 설명합니다. Dialogflow 개발자는 이 목록을 주기적으로 참고하여 새로운
-공지사항을 확인하는 것이 좋습니다. 주요 변경사항은 다음 항목을 통해서도 공지됩니다.
+공지사항을 확인하는 것이 좋습니다. 주요 변경사항은 [ Cloud 블로그: AI 및 머신러닝
+](https://cloud.google.com/blog/products/ai-machine-learning?hl=ko) 을 통해서도
+공지됩니다.
 
-  * [ Dialogflow Enterprise 메일링 리스트 ](https://groups.google.com/forum/?hl=ko#!forum/dialogflow-enterprise-edition-users)
-  * [ Cloud 블로그: AI 및 머신러닝 ](https://cloud.google.com/blog/products/ai-machine-learning?hl=ko)
-
-**참고:** 2017년 11월 16일 이전의 [ 과거 출시 노트
+**** 참고:  [ 2017년 11월 16일 이전의
 ](https://cloud.google.com/dialogflow/docs/data/historic-release-
-notes.pdf?hl=ko) 도 읽을 수 있습니다.
+notes.pdf?hl=ko) 과거 출시 노트  도 읽을 수 있습니다.
 
 [ Google Cloud 출시 노트 ](https://cloud.google.com/release-notes?hl=ko) 페이지에서
 Google Cloud의 모든 최신 제품 업데이트를 확인할 수 있습니다.
