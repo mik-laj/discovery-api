@@ -32,10 +32,9 @@ vulnerability has been assigned a Low severity for GKE on AWS.
 ####  What should I do?
 
 To fix this vulnerability, upgrade your cluster to a patched version. The
-following upcoming GKE on AWS versions or newer are expected to include the
-fix for this vulnerability:
+following GKE on AWS versions or newer include the fix for this vulnerability:
 
-  * GKE on AWS 1.4.2 
+  * GKE on AWS 1.4.1-gke.17 
 
 ####  What vulnerability is addressed by this patch?
 
