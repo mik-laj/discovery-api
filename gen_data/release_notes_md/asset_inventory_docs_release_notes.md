@@ -52,7 +52,7 @@ more information.
 Resource and policy search beta release
 
 You can now [ search resource metadata ](https://cloud.google.com/asset-
-inventory/docs/searching-resources) and [ Cloud IAM policies
+inventory/docs/searching-resources) and [ IAM policies
 ](https://cloud.google.com/asset-inventory/docs/searching-iam-policies) in
 your project, folder or organization.
 
