@@ -2,11 +2,10 @@
 
 Nesta página, você verá as atualizações de produção do Dialogflow.
 Recomendamos que os desenvolvedores do Dialogflow consultem esta lista
-periodicamente para saber das novidades. Grandes mudanças também serão
-anunciadas por meio de:
-
-  * [ Lista de e-mails do Dialogflow Enterprise ](https://groups.google.com/forum/?hl=pt_br#!forum/dialogflow-enterprise-edition-users)
-  * [ Blog do Cloud: IA e machine learning ](https://cloud.google.com/blog/products/ai-machine-learning?hl=pt_br)
+periodicamente para saber das novidades. As principais mudanças também serão
+anunciadas no [ Cloud Blog: IA e aprendizado de máquina
+](https://cloud.google.com/blog/products/ai-machine-learning?hl=pt_br) (em
+inglês).
 
 **Observação:** é possível ler as [ notas da versão de histórico
 ](https://cloud.google.com/dialogflow/docs/data/historic-release-
