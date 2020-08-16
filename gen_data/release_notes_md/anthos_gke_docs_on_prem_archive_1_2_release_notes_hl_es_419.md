@@ -752,7 +752,7 @@ available.
 
 From the admin workstation, gcloud now requires that you log in to gcloud with
 a Google Cloud user account. The user account should have at least the Viewer
-Cloud IAM role in all Google Cloud projects associated with your clusters.
+IAM role in all Google Cloud projects associated with your clusters.
 
 **CHANGED:**
 
