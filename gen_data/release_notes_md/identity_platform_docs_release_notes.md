@@ -13,6 +13,12 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/identityplatform-release-
 notes.xml `
 
+##  August 14, 2020
+
+**FEATURE:**
+
+Multi-factor authentication (MFA) is now GA!
+
 ##  November 18, 2019
 
 **FEATURE:**
