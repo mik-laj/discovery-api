@@ -15,6 +15,21 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/aiplatform-release-notes.xml `
 
+##  August 14, 2020
+
+**AI Platform Training**
+
+**FEATURE:**
+
+The [ TabNet ](https://arxiv.org/abs/1908.07442) built-in algorithm is now
+available in Beta. You can train models on tabular data for classification and
+regression problems, and also get feature attributions to help explain the
+model's behavior.
+
+Try the [ TabNet built-in algorithm introductory tutorial
+](https://cloud.google.com/ai-platform/training/docs/algorithms/tab-net-start)
+.
+
 ##  August 10, 2020
 
 **AI Platform Deep Learning VM Image**
@@ -468,10 +483,10 @@ AI Platform Notebooks is now [ Generally Available
 ](https://cloud.google.com/products#product-launch-stages) . Some integrations
 with and specific features of AI Platform Notebooks are still in beta, such as
 [ Virtual Private Cloud Service Controls ](https://cloud.google.com/ai-
-platform/notebooks/docs/service-perimeter) , [ Cloud Identity and Access
-Management (Cloud IAM) ](https://cloud.google.com/ai-
-platform/notebooks/docs/iam) roles, and [ AI Platform Notebooks API
-](https://cloud.google.com/ai-platform/notebooks/docs/reference/rest) .
+platform/notebooks/docs/service-perimeter) , [ Identity and Access Management
+(IAM) ](https://cloud.google.com/ai-platform/notebooks/docs/iam) roles, and [
+AI Platform Notebooks API ](https://cloud.google.com/ai-
+platform/notebooks/docs/reference/rest) .
 
 ##  March 27, 2020
 
