@@ -38,8 +38,8 @@ outside their Pod could be exploited.
 ####  What should I do?
 
 To fix this vulnerability, [ upgrade ](/anthos/gke/docs/on-prem/how-
-to/upgrading) your cluster to a patched version. The following upcoming GKE
-on-prem versions or newer contain the fix for this vulnerability:
+to/upgrading) your cluster to a patched version. The following GKE on-prem
+versions or newer contain the fix for this vulnerability:
 
   * GKE on-prem 1.4.1 
 
