@@ -1,0 +1,419 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <div background="google-blue" class="devsite-banner devsite-banner-announcement">
+   <div class="devsite-banner-message">
+    <div class="devsite-banner-message-text">
+     A new version of Anthos GKE on AWS was released on August 5. See the
+     <a href="https://cloud.google.com/anthos/gke/docs/aws/release-notes?hl=fr">
+      release notes
+     </a>
+     for information on breaking changes.
+    </div>
+   </div>
+  </div>
+  <h1 class="devsite-page-title">
+   Bulletins de sécurité
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <p>
+    Découvrez les bulletins de sécurité pour Anthos GKE sur AWS (GKE sur AWS).
+   </p>
+   <section class="bulletins">
+    <h2 data-text="GCP-2020-011" id="gcp-2020-011" tabindex="0">
+     GCP-2020-011
+    </h2>
+    <strong>
+     Date de publication :
+    </strong>
+    2020-07-24
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Description
+       </th>
+       <th>
+        Niveau de gravité
+       </th>
+       <th>
+        Notes
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Une faille réseau,
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/92315">
+          CVE-2020-8558
+         </a>
+         , a été récemment détectée dans Kubernetes. Les services communiquent parfois avec d'autres applications s'exécutant dans le même pod à l'aide de l'interface de rebouclage local (127.0.0.1). Cette faille permet à un pirate informatique ayant accès au réseau du cluster d'envoyer du trafic à l'interface de rebouclage des pods et nœuds adjacents. Les services reposant sur l'interface de rebouclage et non accessibles en dehors de leur pod peuvent être exploités.
+        </p>
+        <p>
+         Pour exploiter cette faille sur des clusters GKE sur AWS, un pirate doit désactiver les
+         <a class="external" href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_NAT_Instance.html">
+          vérifications source/destination
+         </a>
+         sur les instances EC2 du cluster. Pour ce faire, le pirate informatique doit disposer des autorisations AWS IAM pour
+         <code dir="ltr" translate="no">
+          ModifyInstanceAttribute
+         </code>
+         ou
+         <code dir="ltr" translate="no">
+          ModifyNetworkInterfaceAttribute
+         </code>
+         sur les instances EC2. Par conséquent, la gravité de cette faille a été évaluée comme moyenne pour GKE sur AWS.
+        </p>
+        <h4 data-text="Que dois-je faire ?" id="what-should-i-do" tabindex="0">
+         Que dois-je faire ?
+        </h4>
+        <p>
+         Pour résoudre cette faille, mettez à niveau votre cluster vers une version incluant le correctif.
+        Les versions suivantes de GKE sur AWS et les versions ultérieures devraient inclure le correctif de cette faille :
+        </p>
+        <ul>
+         <li>
+          GKE sur AWS 1.4.2
+         </li>
+        </ul>
+        <h4 data-text="Quelle faille ce correctif permet-il de résoudre ?" id="what-vulnerability-is-addressed-by-this-patch" tabindex="0">
+         Quelle faille ce correctif permet-il de résoudre ?
+        </h4>
+        <p>
+         Ce correctif résout la faille suivante :
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/92315">
+          CVE-2020-8558
+         </a>
+         .
+        </p>
+       </td>
+       <td>
+        <p>
+         Faible
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/92315">
+          CVE-2020-8558
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-009" id="gcp-2020-009" tabindex="0">
+     GCP-2020-009
+    </h2>
+    <strong>
+     Date de publication :
+    </strong>
+    2020-07-15
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Description
+       </th>
+       <th>
+        Niveau de gravité
+       </th>
+       <th>
+        Notes
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Une faille d'élévation des privilèges,
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8559">
+          CVE-2020-8559
+         </a>
+         , a été récemment détectée dans Kubernetes. Cette faille permet à un pirate informatique ayant déjà compromis un nœud d'exécuter une commande dans n'importe quel pod du cluster. Le pirate peut ainsi utiliser le nœud déjà compromis pour en compromettre d'autres et potentiellement lire des informations, ou provoquer des actions de destruction.
+        </p>
+        <p>
+         Notez que pour qu'un pirate informatique puisse exploiter cette faille, un nœud de votre cluster doit déjà avoir été compromis. Cette faille, en elle-même, ne compromettra pas les nœuds de votre cluster.
+        </p>
+        <h4 data-text="Que dois-je faire ?" id="what-should-i-do_1" tabindex="0">
+         Que dois-je faire ?
+        </h4>
+        <p>
+         La version en disponibilité générale de GKE sur AWS (1.4.1, disponible fin juillet 2020) ou version ultérieure inclut le correctif de cette faille. Si vous utilisez une version précédente,
+         <a href="https://cloud.google.com/anthos/gke/docs/aws/how-to/prerequisites?hl=fr">
+          téléchargez une nouvelle version de l'outil de ligne de commande anthos-gke
+         </a>
+         , puis recréez vos clusters de gestion et d'utilisateur.
+        </p>
+        <h4 data-text="Quelle faille ce correctif permet-il de résoudre ?" id="what-vulnerability-is-addressed-by-this-patch_1" tabindex="0">
+         Quelle faille ce correctif permet-il de résoudre ?
+        </h4>
+        <p>
+         Ce correctif réduit les risques liés à la faille CVE-2020-8559. La gravité de cette faille est évaluée comme moyenne pour GKE, car elle nécessite que le pirate informatique ait préalablement reçu des informations personnelles sur le cluster, les nœuds et les charges de travail pour réaliser efficacement cette attaque en plus de disposer d'un nœud compromis. Cette faille en elle-même ne fournit pas un nœud compromis au pirate informatique.
+        </p>
+       </td>
+       <td>
+        <p>
+         Moyen
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8559">
+          CVE-2020-8559
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-007" id="gcp-2020-007" tabindex="0">
+     GCP-2020-007
+    </h2>
+    <strong>
+     Date de publication
+    </strong>
+    : 2020-06-01
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Description
+       </th>
+       <th>
+        Niveau de gravité
+       </th>
+       <th>
+        Notes
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         La faille SSRF (Server Side Request Forgery, falsification de requête côté serveur)
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555">
+          CVE-2020-8555
+         </a>
+         a été récemment détectée dans Kubernetes. Elle permet à certains utilisateurs autorisés de divulguer jusqu'à 500 octets d'informations sensibles depuis le réseau hôte du plan de contrôle. Le plan de contrôle de Google Kubernetes Engine (GKE) utilise des contrôleurs Kubernetes. Il est donc concerné par cette faille. Nous vous recommandons de mettre à jour le plan de contrôle en installant la dernière version du correctif, conformément à la procédure expliquée ci-dessous.
+      Il n'est pas nécessaire de mettre à niveau le nœud.
+         <br/>
+        </p>
+        <h4 data-text="Que dois-je faire ?" id="what-should-i-do_2" tabindex="0">
+         Que dois-je faire ?
+        </h4>
+        <p>
+         Anthos GKE sur AWS (GKE sous AWS) v0.2.0 ou version ultérieure inclut déjà le correctif de cette faille. Si vous utilisez une version précédente,
+         <a href="https://cloud.google.com/anthos/gke/docs/aws/how-to/prerequisites?hl=fr">
+          téléchargez une nouvelle version de l'outil de ligne de commande anthos-gke
+         </a>
+         , puis recréez vos clusters de gestion et d'utilisateur.
+        </p>
+        <h4 data-text="Quelle faille ce correctif permet-il de résoudre ?" id="what-vulnerability-is-addressed-by-this-patch_2" tabindex="0">
+         Quelle faille ce correctif permet-il de résoudre ?
+        </h4>
+        <p>
+         Ce correctif réduit les risques liés à la faille CVE-2020-8555. La gravité de cette faille est évaluée comme moyenne pour GKE, car elle était difficile à exploiter en raison des diverses mesures de renforcement des plans de contrôle.
+        </p>
+        <p>
+         Un pirate informatique autorisé à créer un pod avec certains types de volumes intégrés (comme GlusterFS, Quobyte, StorageFS ou ScaleIO) ou à créer un objet StorageClass, peut activer l'envoi de requêtes
+         <code dir="ltr" translate="no">
+          GET
+         </code>
+         ou
+         <code dir="ltr" translate="no">
+          POST
+         </code>
+         par
+         <code dir="ltr" translate="no">
+          kube-controller-manager
+         </code>
+         <em>
+          sans
+         </em>
+         que le corps de la requête contrôlée par le pirate provienne du réseau hôte du maître. Ces types de volumes étant rarement employés sur GKE, leur utilisation récente constitue un bon signal de détection.
+        </p>
+        <p>
+         Associés à des moyens permettant de partager les résultats de la commande
+         <code dir="ltr" translate="no">
+          GET/POST
+         </code>
+         avec le pirate (via des journaux, par exemple), ils peuvent entraîner la divulgation d'informations sensibles. Nous avons mis à jour les pilotes de stockage concernés afin de supprimer les risques de telles divulgations.
+        </p>
+       </td>
+       <td>
+        <p>
+         Moyen
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555">
+          CVE-2020-8555
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-006" id="gcp-2020-006" tabindex="0">
+     GCP-2020-006
+    </h2>
+    <strong>
+     Date de publication
+    </strong>
+    : 2020-06-01
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Description
+       </th>
+       <th>
+        Niveau de gravité
+       </th>
+       <th>
+        Notes
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Kubernetes a divulgué une
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          faille
+         </a>
+         qui permet à un conteneur privilégié de rediriger le trafic de nœuds vers un autre conteneur. Le trafic TLS/SSH mutuel (entre le kubelet et le serveur d'API, ou en provenance d'applications via le protocole mTLS) ne peut pas être lu ni modifié par cette attaque. Tous les nœuds Google Kubernetes Engine (GKE) sont affectés par cette faille. Par conséquent, nous vous recommandons de procéder à la mise à niveau en installant la dernière version du correctif, conformément à la procédure expliquée ci-dessous.
+        </p>
+        <h4 data-text="Que dois-je faire ?" id="what-should-i-do_3" tabindex="0">
+         Que dois-je faire ?
+        </h4>
+        <p>
+         <a href="https://cloud.google.com/anthos/gke/docs/aws/how-to/prerequisites?hl=fr">
+          Téléchargez l'outil de ligne de commande anthos-gke
+         </a>
+         avec la version suivante ou ultérieure, puis recréez vos clusters de gestion et d'utilisateur :
+        </p>
+        <ul>
+         <li>
+          aws-0.2.1-gke.7
+         </li>
+        </ul>
+        <p>
+         Très peu de conteneurs nécessitent généralement
+         <code dir="ltr" translate="no">
+          CAP_NET_RAW
+         </code>
+         . Il faut donc la bloquer par défaut, ainsi que d'autres fonctionnalités puissantes, via
+         <a href="https://cloud.google.com/anthos-config-management/docs/concepts/policy-controller?hl=fr">
+          Anthos Policy Controller
+         </a>
+         ou en mettant à jour les spécifications du pod :
+        </p>
+        Supprimez la fonctionnalité
+        <code dir="ltr" translate="no">
+         CAP_NET_RAW
+        </code>
+        des conteneurs :
+        <ul>
+         <li>
+          En utilisant Anthos Policy Controller/Gatekeeper, avec ce
+          <a class="external" href="https://github.com/open-policy-agent/gatekeeper/blob/master/library/pod-security-policy/capabilities/template.yaml">
+           modèle de contrainte
+          </a>
+          et en l'appliquant. Exemple :
+         </li>
+         <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Dropping CAP_NET_RAW with Gatekeeper
+# (requires the K8sPSPCapabilities template)
+apiversion: constraints.gatekeeper.sh/v1beta1
+kind:  K8sPSPCapabilities
+metadata:
+  name: forbid-cap-net-raw
+spec:
+  match:
+    kinds:
+      - apiGroups: [""]
+      kinds: ["Pod"]
+    namespaces:
+      #List of namespaces to enforce this constraint on
+      - default
+    # If running gatekeeper &gt;= v3.1.0-beta.5,
+    # you can exclude namespaces rather than including them above.
+    excludedNamespaces:
+      - kube-system
+  parameters:
+    requiredDropCapabilities:
+      - "NET_RAW"
+</pre>
+        </ul>
+        <ul>
+         <li>
+          Ou en mettant à jour les spécifications du pod :
+         </li>
+         <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Dropping CAP_NET_RAW from a Pod:
+apiVersion: v1
+kind: Pod
+metadata:
+  name: no-cap-net-raw
+spec:
+  containers:
+    -name: may-container
+     ...
+    securityContext:
+      capabilities:
+        drop:
+          -NET_RAW
+</pre>
+        </ul>
+        <h4 data-text="Quelle faille ce correctif permet-il de résoudre ?" id="what-vulnerability-is-addressed-by-this-patch_3" tabindex="0">
+         Quelle faille ce correctif permet-il de résoudre ?
+        </h4>
+        <p>
+         Ce correctif réduit les risques liés à la faille suivante :
+        </p>
+        <p>
+         La faille décrite dans l'article
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          Problème Kubernetes 91507
+         </a>
+         est liée à la fonctionnalité
+         <code dir="ltr" translate="no">
+          CAP_NET_RAW
+         </code>
+         (qui fait partie de l'ensemble de fonctionnalités par défaut du conteneur). Elle configure de manière malveillante la pile IPv6 sur le nœud, et redirige le trafic de nœuds vers le conteneur contrôlé par le pirate. Cela permet au pirate d'intercepter ou de modifier le trafic en provenance du nœud ou à destination de celui-ci. Le trafic TLS/SSH mutuel (entre le kubelet et le serveur d'API, ou en provenance d'applications via le protocole mTLS) ne peut pas être lu ni modifié par cette attaque.
+        </p>
+       </td>
+       <td>
+        <p>
+         Moyen
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          Problème Kubernetes 91507
+         </a>
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+   </section>
+  </div>
+ </article>
+</article>
