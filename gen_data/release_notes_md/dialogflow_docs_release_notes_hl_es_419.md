@@ -3,12 +3,11 @@
 En esta página, se documentan las actualizaciones de producción de Dialogflow.
 Recomendamos que los desarrolladores de Dialogflow verifiquen esta lista de
 forma periódica para consultar los anuncios nuevos. Los cambios importantes
-también se anunciarán por los siguientes medios:
+también se anunciarán mediante el [ Blog de Cloud: la IA y el aprendizaje
+automático ](https://cloud.google.com/blog/products/ai-machine-
+learning?hl=es_419) .
 
-  * [ Lista de distribución de Dialogflow Enterprise ](https://groups.google.com/forum/?hl=es_419#!forum/dialogflow-enterprise-edition-users)
-  * [ Blog de Cloud: IA y aprendizaje automático ](https://cloud.google.com/blog/products/ai-machine-learning?hl=es_419)
-
-**Nota:** También puedes leer el [ historial de notas de la versión
+**Note:** También puedes leer las [ el historial de notas de la versión
 ](https://cloud.google.com/dialogflow/docs/data/historic-release-
 notes.pdf?hl=es_419) anterior al 16 de noviembre de 2017.
 
