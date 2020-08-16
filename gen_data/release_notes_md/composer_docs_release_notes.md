@@ -941,7 +941,7 @@ Fixed the following Airflow issues:
     * Exposed the Airflow worker and scheduler container logs in Stackdriver Logging, including exceptions and stderr. 
     * Disabled Logging for Google Kubernetes Engine to avoid duplicate logging in Stackdriver Logging. 
     * The log format for some raw Airflow logs stored in Cloud Storage now include the delimiter string, dag-id, task-id, and execution date. 
-  * Added new [ Cloud Identity and Access Management roles ](https://cloud.google.com/composer/docs/how-to/access-control#roles) . 
+  * Added new [ Identity and Access Management roles ](https://cloud.google.com/composer/docs/how-to/access-control#roles) . 
     * The ` composer.environmentAndStorageObjectAdmin ` and ` composer.environmentAndStorageObjectViewer ` roles provide users the permissions necessary to access environments and objects in Cloud Storage buckets. 
     * The ` composer.worker ` role provides service accounts the permissions necessary to run a Cloud Composer VM. 
   * Added the following Airflow updates: 
