@@ -1,12 +1,11 @@
 #  リリースノート
 
 このページには、Dialogflow に関する更新内容が記載されています。Dialogflow
-のデベロッパーの方には、ここにリストされる発表内容を定期的に確認されることをおすすめします。重要な変更については、以下の方法でもお知らせいたします。
+のデベロッパーの方には、ここにリストされる発表内容を定期的に確認されることをおすすめします。重要な変更については、 [ Cloud ブログ: AI
+と機械学習 ](https://cloud.google.com/blog/products/ai-machine-learning?hl=ja)
+でもお知らせいたします。
 
-  * [ Dialogflow Enterprise メーリング リスト ](https://groups.google.com/forum/?hl=ja#!forum/dialogflow-enterprise-edition-users)
-  * [ Cloud 公式ブログ: AI と機械学習 ](https://cloud.google.com/blog/products/ai-machine-learning?hl=ja)
-
-**注:** 2017 年 11 月 16 日以前の [ 履歴リリースノート
+**注:** 2017 年 11 月 16 日より前の [ 過去のリリースノート
 ](https://cloud.google.com/dialogflow/docs/data/historic-release-
 notes.pdf?hl=ja) も閲覧できます。
 
