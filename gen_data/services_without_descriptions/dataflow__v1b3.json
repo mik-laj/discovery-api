@@ -1026,6 +1026,43 @@
                                         "https://www.googleapis.com/auth/userinfo.email"
                                     ]
                                 },
+                                "getExecutionDetails": {
+                                    "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/executionDetails",
+                                    "httpMethod": "GET",
+                                    "id": "dataflow.projects.locations.jobs.getExecutionDetails",
+                                    "parameterOrder": [
+                                        "projectId",
+                                        "location",
+                                        "jobId"
+                                    ],
+                                    "parameters": {
+                                        "jobId": {
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "location": {
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "projectId": {
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/executionDetails",
+                                    "response": {
+                                        "$ref": "JobExecutionDetails"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/compute",
+                                        "https://www.googleapis.com/auth/compute.readonly",
+                                        "https://www.googleapis.com/auth/userinfo.email"
+                                    ]
+                                },
                                 "getMetrics": {
                                     "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/metrics",
                                     "httpMethod": "GET",
@@ -1397,6 +1434,72 @@
                                             "path": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/snapshots",
                                             "response": {
                                                 "$ref": "ListSnapshotsResponse"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/compute",
+                                                "https://www.googleapis.com/auth/compute.readonly",
+                                                "https://www.googleapis.com/auth/userinfo.email"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "stages": {
+                                    "methods": {
+                                        "getExecutionDetails": {
+                                            "flatPath": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/stages/{stageId}/executionDetails",
+                                            "httpMethod": "GET",
+                                            "id": "dataflow.projects.locations.jobs.stages.getExecutionDetails",
+                                            "parameterOrder": [
+                                                "projectId",
+                                                "location",
+                                                "jobId",
+                                                "stageId"
+                                            ],
+                                            "parameters": {
+                                                "endTime": {
+                                                    "format": "google-datetime",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "jobId": {
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "location": {
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "pageSize": {
+                                                    "format": "int32",
+                                                    "location": "query",
+                                                    "type": "integer"
+                                                },
+                                                "pageToken": {
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "projectId": {
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "stageId": {
+                                                    "location": "path",
+                                                    "required": true,
+                                                    "type": "string"
+                                                },
+                                                "startTime": {
+                                                    "format": "google-datetime",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/stages/{stageId}/executionDetails",
+                                            "response": {
+                                                "$ref": "StageExecutionDetails"
                                             },
                                             "scopes": [
                                                 "https://www.googleapis.com/auth/cloud-platform",
@@ -3118,6 +3221,18 @@
             },
             "type": "object"
         },
+        "JobExecutionDetails": {
+            "id": "JobExecutionDetails",
+            "properties": {
+                "stages": {
+                    "items": {
+                        "$ref": "StageSummary"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "JobExecutionInfo": {
             "id": "JobExecutionInfo",
             "properties": {
@@ -3875,6 +3990,20 @@
             },
             "type": "object"
         },
+        "Point": {
+            "id": "Point",
+            "properties": {
+                "time": {
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "value": {
+                    "format": "double",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
         "Position": {
             "id": "Position",
             "properties": {
@@ -3897,6 +4026,22 @@
                 },
                 "shufflePosition": {
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ProgressTimeseries": {
+            "id": "ProgressTimeseries",
+            "properties": {
+                "currentProgress": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "dataPoints": {
+                    "items": {
+                        "$ref": "Point"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -4085,6 +4230,9 @@
                     "type": "object"
                 },
                 "bypassTempDirValidation": {
+                    "type": "boolean"
+                },
+                "enableStreamingEngine": {
                     "type": "boolean"
                 },
                 "ipConfiguration": {
@@ -4626,6 +4774,21 @@
             },
             "type": "object"
         },
+        "StageExecutionDetails": {
+            "id": "StageExecutionDetails",
+            "properties": {
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "workers": {
+                    "items": {
+                        "$ref": "WorkerDetails"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "StageSource": {
             "id": "StageSource",
             "properties": {
@@ -4640,6 +4803,43 @@
                     "type": "string"
                 },
                 "userName": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "StageSummary": {
+            "id": "StageSummary",
+            "properties": {
+                "endTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "metrics": {
+                    "items": {
+                        "$ref": "MetricUpdate"
+                    },
+                    "type": "array"
+                },
+                "progress": {
+                    "$ref": "ProgressTimeseries"
+                },
+                "stageId": {
+                    "type": "string"
+                },
+                "startTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "state": {
+                    "enum": [
+                        "EXECUTION_STATE_UNKNOWN",
+                        "EXECUTION_STATE_NOT_STARTED",
+                        "EXECUTION_STATE_RUNNING",
+                        "EXECUTION_STATE_SUCCEEDED",
+                        "EXECUTION_STATE_FAILED",
+                        "EXECUTION_STATE_CANCELLED"
+                    ],
                     "type": "string"
                 }
             },
@@ -5175,6 +5375,46 @@
             },
             "type": "object"
         },
+        "WorkItemDetails": {
+            "id": "WorkItemDetails",
+            "properties": {
+                "attemptId": {
+                    "type": "string"
+                },
+                "endTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "metrics": {
+                    "items": {
+                        "$ref": "MetricUpdate"
+                    },
+                    "type": "array"
+                },
+                "progress": {
+                    "$ref": "ProgressTimeseries"
+                },
+                "startTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "state": {
+                    "enum": [
+                        "EXECUTION_STATE_UNKNOWN",
+                        "EXECUTION_STATE_NOT_STARTED",
+                        "EXECUTION_STATE_RUNNING",
+                        "EXECUTION_STATE_SUCCEEDED",
+                        "EXECUTION_STATE_FAILED",
+                        "EXECUTION_STATE_CANCELLED"
+                    ],
+                    "type": "string"
+                },
+                "taskId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "WorkItemServiceState": {
             "id": "WorkItemServiceState",
             "properties": {
@@ -5275,6 +5515,21 @@
                     "type": "number"
                 },
                 "workItemId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "WorkerDetails": {
+            "id": "WorkerDetails",
+            "properties": {
+                "workItems": {
+                    "items": {
+                        "$ref": "WorkItemDetails"
+                    },
+                    "type": "array"
+                },
+                "workerName": {
                     "type": "string"
                 }
             },
