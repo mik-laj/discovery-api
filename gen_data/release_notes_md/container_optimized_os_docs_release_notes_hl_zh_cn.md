@@ -7,7 +7,7 @@
       
     
     
-    **cos-stable-81-12871-181-0**
+    **cos-stable-81-12871-1174-0**
     Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/1d5bc45f886bc0308010614cdcdf658f5fb44a25)
     Kubernetes:     v1.17.6
     Docker:         v19.03.6
@@ -29,8 +29,8 @@
     
     
     
-    **cos-dev-86-15053-0-0**
-    Kernel:         [COS-5.4.49](https://cos.googlesource.com/third_party/kernel/+/43149c67d9eab8c02ce6958ec7867caba58b0af8)
+    **cos-dev-86-15078-0-0**
+    Kernel:         [COS-5.4.53](https://cos.googlesource.com/third_party/kernel/+/48984bff1c15494f12cfefe2ac2f8db73e60bf58)
     Kubernetes:     v1.18.3
     Docker:         v19.03.9
       
@@ -42,7 +42,6 @@ Kubectl 版本。此外，在使用 Container-Optimized OS 映像运行 GKE 集�
 
   * [ cos-81-lts ](https://cloud.google.com/container-optimized-os/docs/release-notes/m81?hl=zh-cn)
   * [ cos-77-lts ](https://cloud.google.com/container-optimized-os/docs/release-notes/m77?hl=zh-cn)
-  * [ cos-73-lts ](https://cloud.google.com/container-optimized-os/docs/release-notes/m73?hl=zh-cn)
 
 ##  发布时间表
 
@@ -53,12 +52,13 @@ Kubectl 版本。此外，在使用 Container-Optimized OS 映像运行 GKE 集�
 85 [LTS]  |  2020 年 9 月 1 日  
 81 [LTS]  |  2020 年 3 月 24 日  
 77 [LTS]  |  2019 年 9 月 17 日  
-73 [LTS]  |  2019 年 3 月 19 日  
   
 ####  旧版本
 
 里程碑版  |  下列日期后转为稳定版  |  下列日期后弃用  
 ---|---|---  
+[ 73 [LTS] ](https://cloud.google.com/container-optimized-os/docs/release-
+notes/m73?hl=zh-cn) |  2019 年 3 月 19 日  |  2020 年 6 月 19  
 [ 69 [LTS] ](https://cloud.google.com/container-optimized-os/docs/release-
 notes/m69?hl=zh-cn) |  2018 年 9 月 11 日  |  2019 年 12 月 11 日  
 80  |  2020 年 2 月 11 日  |  2020 年 3 月 20 日  
@@ -85,6 +85,88 @@ notes/m69?hl=zh-cn) |  2018 年 9 月 11 日  |  2019 年 12 月 11 日
 56  |  2017 年 1 月 31 日  |  2017 年 4 月 13 日  
   
 ##  更新日志
+
+###  cos-dev-86-15078-0-0
+
+    
+    
+    Date:           Jul 30, 2020
+    Kernel:         [COS-5.4.53](https://cos.googlesource.com/third_party/kernel/+/48984bff1c15494f12cfefe2ac2f8db73e60bf58)
+    Kubernetes:     v1.18.3
+    Docker:         v19.03.9
+    Changelog (vs 86-15053-0-0):
+        * Removed the metrics daemon to address an issue where it would
+          periodically cause CPU usage spikes in some cases.
+        * Updated the Linux kernel to v5.4.53.
+        * Updated toolbox to version 20200715-00.
+        * Added support for LSM and SELinux checks.
+        * Fixed CVE-2020-14155 by updating libpcre to version 8.44.
+    
+
+###  cos-rc-85-13310-1023-0
+
+    
+    
+    Date:           Jul 30, 2020
+    Kernel:         [COS-5.4.49](https://cos.googlesource.com/third_party/kernel/+/b240ea2fe1f1c2384fbd5ea8d269ae34c859ef29)
+    Kubernetes:     v1.18.3
+    Docker:         v19.03.9
+    Changelog (vs 85-13310-1019-0):
+        * Removed the metrics daemon to address an issue where it would
+          periodically cause CPU usage spikes in some cases.
+    
+
+###  cos-81-12871-1174-0
+
+    
+    
+    Date:           Jul 30, 2020
+    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/1d5bc45f886bc0308010614cdcdf658f5fb44a25)
+    Kubernetes:     v1.17.6
+    Docker:         v19.03.6
+    Changelog (vs 81-12871-1160-0):
+        * Removed the metrics daemon to address an issue where it would
+          periodically cause CPU usage spikes in some cases.
+    
+
+###  cos-77-12371-1064-0
+
+    
+    
+    Date:           Jul 30, 2020
+    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/5d4ffd91281840f7a118143d77fbefb02e87943c)
+    Kubernetes:     v1.15.3
+    Docker:         v19.03.1
+    Changelog (vs 77-12371-326-0):
+        * Removed the metrics daemon to address an issue where it would
+          periodically cause CPU usage spikes in some cases.
+    
+
+###  cos-rc-85-13310-1019-0
+
+    
+    
+    Date:           Jul 24, 2020
+    Kernel:         [COS-5.4.49](https://cos.googlesource.com/third_party/kernel/+/b240ea2fe1f1c2384fbd5ea8d269ae34c859ef29)
+    Kubernetes:     v1.18.3
+    Docker:         v19.03.9
+    Changelog (vs 85-13310-1015-0):
+        * Backport upstream patch 'perf_event: support for LSM and SELinux check'.
+        * Disable CONFIG_PPP to mitigate Linux Kernel CVE-2020-14416.
+        * Updated toolbox tag to 20200715-00.
+    
+
+###  cos-stable-81-12871-1160-0
+
+    
+    
+    Date:           Jul 24, 2020
+    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/1d5bc45f886bc0308010614cdcdf658f5fb44a25)
+    Kubernetes:     v1.17.6
+    Docker:         v19.03.6
+    Changelog (vs 81-12871-181-0):
+        * Updated node problem detector to 0.8.1
+    
 
 ###  cos-rc-85-13310-1015-0
 
