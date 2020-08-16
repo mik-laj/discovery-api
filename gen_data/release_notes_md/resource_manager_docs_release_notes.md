@@ -13,6 +13,15 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloudresourcemanager-release-
 notes.xml `
 
+##  August 14, 2020
+
+**FEATURE:**
+
+The Organization Policy for [ extending the maximum lifetime for OAuth 2.0
+access tokens ](https://cloud.google.com/iam/docs/creating-short-lived-
+service-account-credentials#sa-credentials-oauth) that you create for a
+service account has been launched into general availability.
+
 ##  July 20, 2020
 
 **FEATURE:**
@@ -118,8 +127,8 @@ Cloud Platform Console.
 Organization setup wizard beta release
 
 The organization setup wizard UI makes it easier for you to delegate setup and
-management of Organization resources to other users, assign fundamental Cloud
-IAM roles to users, and import existing projects and billing accounts to your
+management of Organization resources to other users, assign fundamental IAM
+roles to users, and import existing projects and billing accounts to your
 organization.
 
 ##  July 12, 2018
@@ -131,7 +140,7 @@ manager/docs/organization-policy/restricting-service-accounts) organization
 policy constraint beta release
 
 The service account restriction constraint can be used to limit the usage of
-Cloud Identity and Access Management service accounts.
+Identity and Access Management service accounts.
 
 ##  July 09, 2018
 
@@ -141,8 +150,8 @@ Domain restriction organization policy constraint beta release
 
 The [ domain restriction ](https://cloud.google.com/resource-
 manager/docs/organization-policy/restricting-domains) constraint can be used
-to restrict the set of identities that can be used in Cloud Identity and
-Access Management policies.
+to restrict the set of identities that can be used in Identity and Access
+Management policies.
 
 ##  March 12, 2018
 
