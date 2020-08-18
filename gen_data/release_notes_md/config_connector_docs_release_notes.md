@@ -13,6 +13,19 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/configconnector-release-
 notes.xml `
 
+##  August 13, 2020
+
+**FEATURE:**
+
+The Config Connector [ GKE Add-on ](https://cloud.google.com/config-
+connector/docs/how-to/install-upgrade-uninstall#installing_kcc) is launched to
+GA. Users can now enable the GKE Add-on on cluster creation with the ` gcloud
+` CLI or on the Cloud Console.
+
+**FEATURE:**
+
+Add support for ` BigtableAppProfile `
+
 ##  August 08, 2020
 
 **FEATURE:**
