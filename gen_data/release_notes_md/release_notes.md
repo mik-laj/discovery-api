@@ -12,7 +12,91 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  August 17, 2020
+
+**Artifact Registry**
+
+**FEATURE:**
+
+You can now use Pub/Sub to configure notifications for changes in Docker
+repositories. For more information, see [ Configuring Pub/Sub notifications
+](https://cloud.google.com/artifact-registry/docs/configure-notifications) .
+
+**BigQuery ML**
+
+**FEATURE:**
+
+Matrix Factorization model support is now [ Generally Available
+](https://cloud.google.com/products/#product-launch-stages) (GA). For more
+information, see the following documentation:
+
+  * [ ` CREATE MODEL ` statement for Matrix Factorization ](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create-matrix-factorization)
+
+  * [ ` ML.RECOMMEND ` function ](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-recommend)
+
+  * [ Using BigQuery ML to predict movie recommendations ](https://cloud.google.com/bigquery-ml/docs/bigqueryml-mf-explicit-tutorial)
+
+  * [ Using BigQuery ML to predict website content for visitors ](https://cloud.google.com/bigquery-ml/docs/bigqueryml-mf-implicit-tutorial)
+
+**Cloud Build**
+
+**FEATURE:**
+
+The Cloud Build GitHub App now allows users to [ view triggers by name
+](https://cloud.google.com/cloud-build/docs/create-github-app-
+triggers#data_sharing) on [ GitHub ](https://github.com/) , including in pull
+requests. Note that required status checks may need to be updated on GitHub
+after enabling this feature.
+
+**Cloud Load Balancing**
+
+**FEATURE:**
+
+[ Setting up Internal HTTP(S) Load Balancing in a Shared VPC _service_ project
+](https://cloud.google.com/load-balancing/docs/l7-internal/l7-internal-shared-
+vpc) is now available in **General Availability** .
+
+**Cloud Logging**
+
+**FEATURE:**
+
+To help you explore your logs more efficiently, Cloud Logging now provides
+suggested queries based on the context of your Google Cloud project. For more
+information, go to [ Suggested queries
+](https://cloud.google.com/logging/docs/view/building-
+queries#suggested_queries) .
+
+**Cloud Trace**
+
+**FEATURE:**
+
+The Cloud Trace viewer now supports search by the trace ID. For more
+information, see [ Viewing Trace Details
+](https://cloud.google.com/trace/docs/viewing-details) .
+
+**Dataproc**
+
+**FEATURE:**
+
+Launched new [ Personal Cluster Authentication
+](https://cloud.google.com/dataproc/docs/concepts/iam/personal-auth) feature,
+which allows the creation of single-user clusters that can access Cloud
+Storage using the user's own credentials instead of a VM service account.
+
 ##  August 14, 2020
+
+**AI Platform Training**
+
+**FEATURE:**
+
+The [ TabNet ](https://arxiv.org/abs/1908.07442) built-in algorithm is now
+available in Beta. You can train models on tabular data for classification and
+regression problems, and also get feature attributions to help explain the
+model's behavior.
+
+Try the [ TabNet built-in algorithm introductory tutorial
+](https://cloud.google.com/ai-platform/training/docs/algorithms/tab-net-start)
+.
 
 **Anthos Service Mesh**
 
@@ -28,6 +112,15 @@ release notes:
   * [ Istio 1.6.8 release notes ](https://istio.io/latest/news/releases/1.6.x/announcing-1.6.8/)
 
   * [ Istio 1.5.9 release notes ](https://istio.io/latest/news/releases/1.5.x/announcing-1.5.9/)
+
+**Cloud Functions**
+
+**CHANGED:**
+
+Cloud Functions now supports [ Java 11
+](https://cloud.google.com/functions/docs/concepts/java-runtime) at the [
+General Availability release level
+](https://cloud.google.com/products/#product-launch-stages) .
 
 **Dataproc**
 
@@ -74,7 +167,19 @@ Image 2.0 preview:
   * Included all plugins in Zeppelin installation by default. 
   * Upgraded HBase to [ 2.2.5 version ](https://downloads.apache.org/hbase/2.2.5/RELEASENOTES.md) . 
 
+**Identity Platform**
+
+**FEATURE:**
+
+Multi-factor authentication (MFA) is now GA!
+
 **Identity and Access Management**
+
+**FEATURE:**
+
+You can now use Cloud Monitoring to [ check when your service accounts and
+service account keys were used ](https://cloud.google.com/iam/docs/service-
+account-monitoring) . This feature is available in beta.
 
 **FEATURE:**
 
@@ -110,6 +215,19 @@ Engine VMs provides a single-pane-of-glass view into your VM fleet and load
 balancers. At a glance, you can see the top 5 VMs across a variety of key
 metrics including memory, CPU, sent/received traffic, latency, disk
 read/write, and more.
+
+**Config Connector**
+
+**FEATURE:**
+
+The Config Connector [ GKE Add-on ](https://cloud.google.com/config-
+connector/docs/how-to/install-upgrade-uninstall#installing_kcc) is launched to
+GA. Users can now enable the GKE Add-on on cluster creation with the ` gcloud
+` CLI or on the Cloud Console.
+
+**FEATURE:**
+
+Add support for ` BigtableAppProfile `
 
 **Google Cloud Marketplace Partners**
 
