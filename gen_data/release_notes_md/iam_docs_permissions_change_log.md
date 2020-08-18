@@ -19,7 +19,269 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloud-iam-permissions-change-
 log.xml `
 
-##  Upcoming Cloud IAM changes for the week of 2020-08-10
+##  Upcoming Cloud IAM changes for the week of 2020-08-17
+
+Service  |  Change  |  Description  
+---|---|---  
+Dialogflow  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/dialogflow.admin
+` (Dialogflow API Admin):
+
+` dialogflow.environments.lookupHistory `  
+` dialogflow.versions.load `  
+  
+Dialogflow  |  Role Updated  |
+
+The following permissions have been added to the role `
+roles/dialogflow.consoleAgentEditor ` (Dialogflow Console Agent Editor):
+
+` dialogflow.environments.lookupHistory `  
+` dialogflow.versions.load `  
+  
+Primitive Role  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/editor `
+(Editor):
+
+` dialogflow.environments.lookupHistory `  
+` dialogflow.versions.load `  
+  
+Primitive Role  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/owner ` (Owner):
+
+` dialogflow.environments.lookupHistory `  
+` dialogflow.versions.load `  
+  
+Primitive Role  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/viewer `
+(Viewer):
+
+` dialogflow.environments.lookupHistory `  
+  
+Apigee API  |  Added  |  ` apigee.caches.delete `  
+` apigee.caches.list `  
+` apigee.canaryevaluations.create `  
+` apigee.canaryevaluations.get `  
+` apigee.datacollectors.create `  
+` apigee.datacollectors.delete `  
+` apigee.datacollectors.get `  
+` apigee.datacollectors.list `  
+` apigee.datacollectors.update `  
+` apigee.datastores.create `  
+` apigee.datastores.delete `  
+` apigee.datastores.get `  
+` apigee.datastores.list `  
+` apigee.datastores.update `  
+` apigee.envgroupattachments.create `  
+` apigee.envgroupattachments.delete `  
+` apigee.envgroupattachments.get `  
+` apigee.envgroupattachments.list `  
+` apigee.envgroups.create `  
+` apigee.envgroups.delete `  
+` apigee.envgroups.get `  
+` apigee.envgroups.list `  
+` apigee.envgroups.update `  
+` apigee.exports.create `  
+` apigee.exports.get `  
+` apigee.exports.list `  
+` apigee.hostqueries.create `  
+` apigee.hostqueries.get `  
+` apigee.hostqueries.list `  
+` apigee.hoststats.get `  
+` apigee.ingressconfigs.get `  
+` apigee.instanceattachments.create `  
+` apigee.instanceattachments.delete `  
+` apigee.instanceattachments.get `  
+` apigee.instanceattachments.list `  
+` apigee.instances.create `  
+` apigee.instances.delete `  
+` apigee.instances.get `  
+` apigee.instances.list `  
+` apigee.instances.reportStatus `  
+` apigee.operations.get `  
+` apigee.operations.list `  
+` apigee.projects.update `  
+  
+Apigee API  |  Supported In Custom Roles  |  ` apigee.datastores.create `  
+` apigee.datastores.delete `  
+` apigee.datastores.get `  
+` apigee.datastores.list `  
+` apigee.datastores.update `  
+` apigee.exports.create `  
+` apigee.exports.get `  
+` apigee.exports.list `  
+  
+Apigee API  |  Now GA  |  ` apigee.caches.delete `  
+` apigee.caches.list `  
+` apigee.canaryevaluations.create `  
+` apigee.canaryevaluations.get `  
+` apigee.datacollectors.create `  
+` apigee.datacollectors.delete `  
+` apigee.datacollectors.get `  
+` apigee.datacollectors.list `  
+` apigee.datacollectors.update `  
+` apigee.datastores.create `  
+` apigee.datastores.delete `  
+` apigee.datastores.get `  
+` apigee.datastores.list `  
+` apigee.datastores.update `  
+` apigee.envgroupattachments.create `  
+` apigee.envgroupattachments.delete `  
+` apigee.envgroupattachments.get `  
+` apigee.envgroupattachments.list `  
+` apigee.envgroups.create `  
+` apigee.envgroups.delete `  
+` apigee.envgroups.get `  
+` apigee.envgroups.list `  
+` apigee.envgroups.update `  
+` apigee.exports.create `  
+` apigee.exports.get `  
+` apigee.exports.list `  
+` apigee.hostqueries.create `  
+` apigee.hostqueries.get `  
+` apigee.hostqueries.list `  
+` apigee.hoststats.get `  
+` apigee.ingressconfigs.get `  
+` apigee.instanceattachments.create `  
+` apigee.instanceattachments.delete `  
+` apigee.instanceattachments.get `  
+` apigee.instanceattachments.list `  
+` apigee.instances.create `  
+` apigee.instances.delete `  
+` apigee.instances.get `  
+` apigee.instances.list `  
+` apigee.instances.reportStatus `  
+` apigee.operations.get `  
+` apigee.operations.list `  
+` apigee.projects.update `  
+  
+Compute Engine  |  Now GA  |  ` compute.images.update `  
+  
+Dialogflow  |  Added  |  ` dialogflow.agents.list `  
+` dialogflow.agents.validate `  
+` dialogflow.environments.create `  
+` dialogflow.environments.delete `  
+` dialogflow.environments.get `  
+` dialogflow.environments.getHistory `  
+` dialogflow.environments.list `  
+` dialogflow.environments.lookupHistory `  
+` dialogflow.environments.update `  
+` dialogflow.flows.create `  
+` dialogflow.flows.delete `  
+` dialogflow.flows.get `  
+` dialogflow.flows.list `  
+` dialogflow.flows.train `  
+` dialogflow.flows.update `  
+` dialogflow.flows.validate `  
+` dialogflow.pages.create `  
+` dialogflow.pages.delete `  
+` dialogflow.pages.get `  
+` dialogflow.pages.list `  
+` dialogflow.pages.update `  
+` dialogflow.transitionRouteGroups.create `  
+` dialogflow.transitionRouteGroups.delete `  
+` dialogflow.transitionRouteGroups.get `  
+` dialogflow.transitionRouteGroups.list `  
+` dialogflow.transitionRouteGroups.update `  
+` dialogflow.versions.create `  
+` dialogflow.versions.delete `  
+` dialogflow.versions.get `  
+` dialogflow.versions.list `  
+` dialogflow.versions.load `  
+` dialogflow.versions.update `  
+` dialogflow.webhooks.create `  
+` dialogflow.webhooks.delete `  
+` dialogflow.webhooks.get `  
+` dialogflow.webhooks.list `  
+` dialogflow.webhooks.update `  
+  
+Dialogflow  |  Supported In Custom Roles  |  ` dialogflow.environments.create
+`  
+` dialogflow.environments.delete `  
+` dialogflow.environments.get `  
+` dialogflow.environments.getHistory `  
+` dialogflow.environments.list `  
+` dialogflow.environments.update `  
+` dialogflow.versions.create `  
+` dialogflow.versions.delete `  
+` dialogflow.versions.get `  
+` dialogflow.versions.list `  
+` dialogflow.versions.update `  
+  
+Dialogflow  |  Now GA  |  ` dialogflow.agents.list `  
+` dialogflow.agents.validate `  
+` dialogflow.environments.create `  
+` dialogflow.environments.delete `  
+` dialogflow.environments.get `  
+` dialogflow.environments.getHistory `  
+` dialogflow.environments.list `  
+` dialogflow.environments.update `  
+` dialogflow.flows.create `  
+` dialogflow.flows.delete `  
+` dialogflow.flows.get `  
+` dialogflow.flows.list `  
+` dialogflow.flows.train `  
+` dialogflow.flows.update `  
+` dialogflow.flows.validate `  
+` dialogflow.pages.create `  
+` dialogflow.pages.delete `  
+` dialogflow.pages.get `  
+` dialogflow.pages.list `  
+` dialogflow.pages.update `  
+` dialogflow.transitionRouteGroups.create `  
+` dialogflow.transitionRouteGroups.delete `  
+` dialogflow.transitionRouteGroups.get `  
+` dialogflow.transitionRouteGroups.list `  
+` dialogflow.transitionRouteGroups.update `  
+` dialogflow.versions.create `  
+` dialogflow.versions.delete `  
+` dialogflow.versions.get `  
+` dialogflow.versions.list `  
+` dialogflow.versions.update `  
+` dialogflow.webhooks.create `  
+` dialogflow.webhooks.delete `  
+` dialogflow.webhooks.get `  
+` dialogflow.webhooks.list `  
+` dialogflow.webhooks.update `  
+  
+Cloud Healthcare API  |  Added  |  ` healthcare.annotationStores.create `  
+` healthcare.annotationStores.delete `  
+` healthcare.annotationStores.evaluate `  
+` healthcare.annotationStores.export `  
+` healthcare.annotationStores.get `  
+` healthcare.annotationStores.getIamPolicy `  
+` healthcare.annotationStores.import `  
+` healthcare.annotationStores.list `  
+` healthcare.annotationStores.setIamPolicy `  
+` healthcare.annotationStores.update `  
+` healthcare.annotations.create `  
+` healthcare.annotations.delete `  
+` healthcare.annotations.get `  
+` healthcare.annotations.list `  
+` healthcare.annotations.update `  
+  
+Cloud Healthcare API  |  Supported In Custom Roles  |  `
+healthcare.annotationStores.create `  
+` healthcare.annotationStores.delete `  
+` healthcare.annotationStores.evaluate `  
+` healthcare.annotationStores.export `  
+` healthcare.annotationStores.get `  
+` healthcare.annotationStores.getIamPolicy `  
+` healthcare.annotationStores.import `  
+` healthcare.annotationStores.list `  
+` healthcare.annotationStores.setIamPolicy `  
+` healthcare.annotationStores.update `  
+` healthcare.annotations.create `  
+` healthcare.annotations.delete `  
+` healthcare.annotations.get `  
+` healthcare.annotations.list `  
+` healthcare.annotations.update `  
+  
+  
+##  Cloud IAM changes as of 2020-08-14
 
 Service  |  Change  |  Description  
 ---|---|---  
