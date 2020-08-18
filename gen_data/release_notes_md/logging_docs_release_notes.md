@@ -12,6 +12,16 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/stackdriver-release-notes.xml `
 
+##  August 17, 2020
+
+**FEATURE:**
+
+To help you explore your logs more efficiently, Cloud Logging now provides
+suggested queries based on the context of your Google Cloud project. For more
+information, go to [ Suggested queries
+](https://cloud.google.com/logging/docs/view/building-
+queries#suggested_queries) .
+
 ##  August 11, 2020
 
 **CHANGED:**
