@@ -13,6 +13,14 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/artifactregistry-release-
 notes.xml `
 
+##  August 17, 2020
+
+**FEATURE:**
+
+You can now use Pub/Sub to configure notifications for changes in Docker
+repositories. For more information, see [ Configuring Pub/Sub notifications
+](https://cloud.google.com/artifact-registry/docs/configure-notifications) .
+
 ##  July 14, 2020
 
 **FEATURE:**
