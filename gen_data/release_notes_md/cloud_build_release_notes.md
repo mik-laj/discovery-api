@@ -12,6 +12,16 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/cloudbuild-release-notes.xml `
 
+##  August 17, 2020
+
+**FEATURE:**
+
+The Cloud Build GitHub App now allows users to [ view triggers by name
+](https://cloud.google.com/cloud-build/docs/create-github-app-
+triggers#data_sharing) on [ GitHub ](https://github.com/) , including in pull
+requests. Note that required status checks may need to be updated on GitHub
+after enabling this feature.
+
 ##  June 30, 2020
 
 **FEATURE:**
