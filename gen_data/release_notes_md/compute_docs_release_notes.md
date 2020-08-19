@@ -14,6 +14,22 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/compute-release-notes.xml `
 
+##  August 18, 2020
+
+**FEATURE:**
+
+N2D machine types are now available in ` us-central1-c ` . For more
+information, see the [ VM instance pricing
+](https://cloud.google.com/compute/vm-instance-pricing#n2d_machine_types)
+page.
+
+**FEATURE:**
+
+N2D machine types are now available in Northern Virginia ` us-east4-a,b ` .
+For more information, see the [ VM instance pricing
+](https://cloud.google.com/compute/vm-instance-pricing#n2d_machine_types)
+page.
+
 ##  August 12, 2020
 
 **FEATURE:**
