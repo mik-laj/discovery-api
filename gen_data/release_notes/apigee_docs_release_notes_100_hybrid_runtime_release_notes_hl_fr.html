@@ -1,0 +1,380 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <div background="teal" class="devsite-banner devsite-banner-announcement">
+   <div class="devsite-banner-message">
+    <div class="devsite-banner-message-text">
+     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+      <p>
+       <strong>
+        REMARQUE
+       </strong>
+       : Certains aspects de ce produit sont en version bêta. Les options d'installation hybride sont en disponibilité générale. Pour rejoindre le programme bêta, contactez votre représentant Apigee.
+      </p>
+     </meta>
+    </div>
+   </div>
+  </div>
+  <h1 class="devsite-page-title">
+   1.0.0 (disponibilité générale) - Notes de publication de l'environnement d'exécution hybride Apigee
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <p>
+    Le 20 novembre 2019, Google a lancé la version 1.0.0 de l'environnement d'exécution hybride Apigee. Cette section décrit les corrections de bugs et les problèmes connus liés à la version 1.0.0.
+   </p>
+   <aside class="note">
+    <strong>
+     REMARQUE
+    </strong>
+    : Les API Apigee, l'interface utilisateur Apigee Apigee, les services intégrés GCP et le portail intégré sont disponibles en
+    <a href="https://cloud.google.com/products/?hl=fr#product-launch-stages">
+     version bêta
+    </a>
+    . Tous les autres composants hybrides Apigee sont disponibles dans Google Analytics. Pour en savoir plus, consultez la page
+    <a href="https://cloud.google.com/apigee/docs/hybrid/terminology?hl=fr">
+     Gestion des versions et terminologie
+    </a>
+    .
+   </aside>
+   <aside class="objective">
+    Pour en savoir plus, consultez les ressources suivantes :
+    <ul>
+     <li>
+      <em>
+       <a href="https://cloud.google.com/apigee/docs/hybrid/what-is-hybrid?hl=fr">
+        En savoir plus sur les environnements hybrides
+       </a>
+      </em>
+      ou
+      <em>
+       <a href="https://cloud.google.com/apigee/docs/hybrid/big-picture?hl=fr">
+        Commencer l'installation
+       </a>
+      </em>
+     </li>
+     <li>
+      <em>
+       Créer un compte payant
+      </em>
+      : contactez le
+      <a href="https://pages.apigee.com/contact-sales-reg.html?hl=fr">
+       service commercial d'Apigee
+      </a>
+     </li>
+     <li>
+      <em>
+       Questions ou problèmes ?
+      </em>
+      Contacter l'
+      <a class="external" href="https://cloud.google.com/apigee/support/?hl=fr">
+       assistance Apigee
+      </a>
+     </li>
+    </ul>
+   </aside>
+   <h3 data-text="Problèmes connus (disponibilité générale)" id="known-issues-ga" tabindex="0">
+    Problèmes connus (disponibilité générale)
+   </h3>
+   <p>
+    Le tableau suivant décrit les problèmes connus de cette version:
+   </p>
+   <table class="purple">
+    <thead>
+     <tr>
+      <th width="20%">
+       Problème
+      </th>
+      <th>
+       Description
+      </th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td>
+       144886537
+      </td>
+      <td>
+       Le routage de chemin de base ne fonctionne pas dans la version hybride 1.0.0 de Apigee.
+        Lorsque les remplacements sont configurés pour acheminer le trafic vers différents environnements avec le même hôte hostAliase, l'entrée n'est pas acheminé vers l'environnement en fonction du chemin.
+      </td>
+     </tr>
+     <tr>
+      <td>
+       144584813
+      </td>
+      <td>
+       Si vous créez une session de débogage, mais que la session ne contient encore aucune transaction, l'
+       <a href="https://cloud.google.com/hybrid/reference/apis/rest/v1/organizations.environments.apis.revisions.debugsessions/list?hl=fr">
+        API List Debug Sessions
+       </a>
+       n'inclut pas la session dans cette liste. L'API n'inclut des sessions dans la réponse que si la session contient au moins une transaction.
+      </td>
+     </tr>
+     <tr>
+      <td>
+       144436206
+      </td>
+      <td>
+       Dans la vue
+       <strong>
+        Performances du cache
+       </strong>
+       , le calcul du taux d'accès au cache est incorrect.
+      </td>
+     </tr>
+     <tr>
+      <td>
+       144321491
+      </td>
+      <td>
+       Apigee hybride enregistre les notifications "Création de cache manquant" indiquant une dégradation potentielle des performances. Ces messages sont attendus et peuvent être ignorés.
+      </td>
+     </tr>
+     <tr>
+      <td>
+       144321144
+      </td>
+      <td>
+       Les proxys avec des hôtes virtuels sécurisés
+       <!-- TODO: ad, 131111865 -->
+       ne peuvent pas être actualisés.
+      </td>
+     </tr>
+     <tr>
+      <td>
+       144286363
+      </td>
+      <td>
+       <p>
+        Le masque de débogage dans env.json ne masque pas les données de réponse.
+       </p>
+       <p>
+        L'API suivante ne permet pas de mettre à jour le masque de débogage "env.json" avec un champ "responseJSONPaths" :
+       </p>
+       <pre dir="ltr" translate="no">
+
+PATCH /v1/organizations/org/environments/env/debugmask?replaceRepeatedFields=true
+{
+  "responseJSONPaths": ["$.maskedDataEnv"]
+}</pre>
+       <p>
+        Pour contourner ce problème avec la trace, vous pouvez supprimer une session de trace entière dans l'interface utilisateur ou utiliser les API de trace pour supprimer des transactions individuelles au sein d'une session.
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td>
+       143774187
+      </td>
+      <td>
+       L'interface utilisateur hybride affiche le libellé "Company" (Entreprise) dans la vue "Apps" (Applications).
+      </td>
+     </tr>
+     <tr>
+      <td>
+       143659917
+      </td>
+      <td>
+       <p>
+        Le paramètre d'expiration de la règle PopuleCache doit être défini sur une valeur explicite comprise entre 1 et 30. Exemple :
+       </p>
+       <pre class="prettyprint" dir="ltr" translate="no">
+
+&lt;ExpirySettings&gt;
+  &lt;TimeoutInSec&gt;30&lt;/TimeoutInSec&gt;
+&lt;/ExpirySettings&gt;</pre>
+      </td>
+     </tr>
+     <tr>
+      <td>
+       133192879
+      </td>
+      <td>
+       <p>
+        Résumé : il existe une latence très élevée lorsque vous utilisez l'API ou l'interface utilisateur pour obtenir l'état de déploiement de votre organisation. Cette latence peut entraîner une réponse
+        <code dir="ltr" translate="no">
+         HTTP 204 (No
+          Content)
+        </code>
+        ou
+        <code dir="ltr" translate="no">
+         HTTP 400 (Bad Request)
+        </code>
+        .
+       </p>
+       <p>
+        Solution : actualisez votre navigateur (ou renvoyez la requête).
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td>
+       123932912
+      </td>
+      <td>
+       Avec un déploiement sans interruption, lorsque le déploiement d'une nouvelle révision échoue, la révision d'origine n'est toujours pas déployée. Vous devrez redéployer la révision d'origine pour restaurer son état de déploiement.
+      </td>
+     </tr>
+     <tr>
+      <td>
+       ND
+      </td>
+      <td>
+       <p>
+        Erreur d'en-tête HTTP non valide : l'entrée Istio bascule toutes les réponses cibles entrantes vers le protocole HTTP2. Comme le processeur de messages hybride n'accepte que HTTP1, le message d'erreur suivant peut s'afficher lorsqu'un proxy API est appelé:
+       </p>
+       <pre class="prettyprint" dir="ltr" translate="no">
+
+http2 error: Invalid HTTP header field was received: frame type: 1, stream: 1,
+   name: [:authority], value: [domain_name]</pre>
+       <p>
+        Si cette erreur s'affiche, vous pouvez effectuer l'une des actions suivantes pour corriger le problème :
+       </p>
+       <ul>
+        <li>
+         Modifiez le service cible pour omettre l'en-tête "Host" dans la réponse.
+        </li>
+        <li>
+         Supprimez l'en-tête "Host" à l'aide de la stratégie "AssignMessage" dans votre proxy d'API, si nécessaire.
+        </li>
+       </ul>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+   <h3 data-text="Bugs résolus" id="bugs-fixed" tabindex="0">
+    Bugs résolus
+   </h3>
+   <p>
+    Les problèmes suivants répertoriés dans les notes de version d'Apigee hybride bêta 2 ont été résolus :
+   </p>
+   <table class="cyan">
+    <thead>
+     <tr>
+      <th width="20%">
+       Problème
+      </th>
+      <th>
+       Description
+      </th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td>
+       <strong>
+        133444606
+       </strong>
+      </td>
+      <td>
+       <p>
+        L'API de mise à jour des applications pour les développeurs n'accepte pas tous les champs d'entrée documentés.
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td>
+       <strong>
+        133192879
+       </strong>
+      </td>
+      <td>
+       <p>
+        Il existe une latence très élevée lorsque vous utilisez l'API ou l'interface utilisateur pour obtenir l'état de déploiement de votre organisation. Cette latence peut entraîner une réponse
+        <code dir="ltr" translate="no">
+         HTTP 204
+          (No Content)
+        </code>
+        ou
+        <code dir="ltr" translate="no">
+         HTTP 400 (Bad Request)
+        </code>
+        .
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td>
+       <strong>
+        131111865
+       </strong>
+      </td>
+      <td>
+       <p>
+        L'outil de synchronisation échoue lorsque le système de fichiers est trop saturé. Cela est dû au processus de récupération de mémoire de Kubernetes : il n'est déclenché qu'à atteindre 85 % par défaut.
+       </p>
+       <p>
+        Fermée : non reproductible.
+       </p>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+   <h2 data-text="Fonctionnalités Apigee Edge non compatibles" id="unsupported-apigee-edge-features" tabindex="0">
+    Fonctionnalités Apigee Edge non compatibles
+   </h2>
+   <p>
+    Google
+    <em>
+     ne prévoit pas
+    </em>
+    de prendre en charge les fonctionnalités suivantes dans Apigee hybride:
+   </p>
+   <ul>
+    <li>
+     API vers :
+     <ul>
+      <li>
+       Manipuler les entrées KVM
+      </li>
+      <li>
+       Rechercher ou révoquer des jetons d'accès OAuth (car les jetons sont hachés)
+      </li>
+     </ul>
+    </li>
+    <li>
+     Développement du portail des développeurs avec Drupal 7
+    </li>
+    <li>
+     OAuth v1 ou
+     <a href="https://cloud.google.com/apigee/docs/api-platform/reference/policies/oauth-10-policy-policy?hl=fr">
+      stratégie OAuthv1.0a
+     </a>
+    </li>
+    <li>
+     Règle de limitation du débit de
+     <a href="https://cloud.google.com/apigee/docs/api-platform/reference/policies/concurrent-rate-limit-policy?hl=fr">
+      ConcurrentRateLimit
+     </a>
+    </li>
+    <li>
+     Trireme (fin de vie le 10/10/2019)
+    </li>
+   </ul>
+   <p>
+    Pour une comparaison complète des fonctionnalités entre hybride et Edge, consultez la section
+    <a href="https://cloud.google.com/apigee/docs/hybrid/compare-hybrid-edge?hl=fr">
+     Comparer hybride et Edge
+    </a>
+    .
+   </p>
+   <h2 data-text="Étape suivante" id="next-step" tabindex="0">
+    Étape suivante
+   </h2>
+   <ul>
+    <li>
+     <a href="https://cloud.google.com/apigee/docs/hybrid/what-is-hybrid?hl=fr">
+      En savoir plus sur les environnements hybrides
+     </a>
+    </li>
+    <li>
+     <a href="https://cloud.google.com/apigee/docs/hybrid/big-picture?hl=fr">
+      Commencer l'installation
+     </a>
+    </li>
+   </ul>
+  </div>
+ </article>
+</article>
