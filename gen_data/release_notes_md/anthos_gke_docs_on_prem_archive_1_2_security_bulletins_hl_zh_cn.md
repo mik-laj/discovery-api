@@ -1,4 +1,4 @@
-您正在查看 GKE On-Prem 以前版本的文档。 [ 查看最新文档
+您正在查看旧版 GKE On-Prem 的文档。 [ 查看最新文档
 ](https://cloud.google.com/anthos/gke/docs/on-prem?hl=zh-cn) 。
 
 #  安全公告
