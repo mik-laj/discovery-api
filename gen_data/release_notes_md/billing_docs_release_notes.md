@@ -37,6 +37,24 @@ dates for the commitment. See [ the documentation
 ](https://cloud.google.com/docs/cuds-spend-based#view_commitment_dashboard)
 for more details.
 
+**FEATURE:**
+
+**New columns added to Cost Table report: Credit ID and Credit name.**
+Starting with your **July 2020** invoice month, the [ cost table report
+](https://cloud.google.com/billing/docs/how-to/cost-table) now includes
+columns for ` Credit ID ` and ` Credit name ` . Including credit details in
+the cost table report is especially useful for understanding project-level
+credits, or for analyzing the source of multiple credits of the same type,
+earned during the same invoice period (such as sustained usage discounts
+earned as usage increases).
+
+When you first load the cost table report, the credit columns are hidden by
+default. You can use the [ column selector to customize the columns
+](https://cloud.google.com/billing/docs/how-to/cost-
+table#columns_in_the_cost_table) you view in the report as well as the columns
+you download to CSV. See the [ documentation
+](https://cloud.google.com/billing/docs/how-to/cost-table) for more details.
+
 ##  August 06, 2020
 
 **FEATURE:**
