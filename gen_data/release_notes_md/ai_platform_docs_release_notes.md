@@ -15,6 +15,72 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/aiplatform-release-notes.xml `
 
+##  August 18, 2020
+
+**AI Platform Prediction**
+
+**CHANGED:**
+
+[ Compute Engine (N1) machine types for online prediction
+](https://cloud.google.com/ai-platform/prediction/docs/machine-types-online-
+prediction) are now generally available. They are available on all [ regional
+endpoints ](https://cloud.google.com/ai-platform/prediction/docs/regional-
+endpoints) .
+
+The [ AI Platform Training and Prediction Service Level Agreement
+](https://cloud.google.com/ai-platform/training-and-prediction/sla) does not
+apply to [ model versions that use a Compute Engine (N1) machine type and
+fewer than two prediction nodes ](https://cloud.google.com/ai-
+platform/prediction/docs/machine-types-online-prediction#scaling) .
+
+**CHANGED:**
+
+[ GPUs for online prediction ](https://cloud.google.com/ai-
+platform/prediction/docs/machine-types-online-prediction#gpus) are now
+generally available. You can use GPUs to serve predictions when you create a
+TensorFlow model version that uses a [ Compute Engine (N1) machine type
+](https://cloud.google.com/ai-platform/prediction/docs/machine-types-online-
+prediction) .
+
+Learn [ which types of GPU are available on each regional endpoint
+](https://cloud.google.com/ai-
+platform/prediction/docs/regions#using_gpus_for_online_prediction) .
+
+**CHANGED:**
+
+The following [ regional endpoints for online prediction
+](https://cloud.google.com/ai-platform/prediction/docs/regional-endpoints) are
+now generally available:
+
+  * ` us-central1-ml.googleapis.com `
+  * ` europe-west4-ml.googleapis.com `
+  * ` asia-east1-ml.googleapis.com `
+
+**DEPRECATED:**
+
+Using [ Compute Engine (N1) machine types ](https://cloud.google.com/ai-
+platform/prediction/docs/machine-types-online-prediction) on the global API
+endpoint ( ` ml.googleapis.com ` ) is deprecated. This functionality was
+previously available in beta in the ` us-central1 ` region.
+
+To continue to use Compute Engine (N1) machine types in the ` us-central1 `
+region, create a model on the ` us-central1-ml.googleapis.com ` [ regional
+endpoint ](https://cloud.google.com/ai-platform/prediction/docs/regional-
+endpoints) , and then create model versions using that model.
+
+##  August 17, 2020
+
+**AI Platform Training**
+
+**FEATURE:**
+
+You can now set a maximum time that you are willing to wait between the moment
+when you create a training job and the moment when AI Platform Training starts
+running the job. If your training job has not started running after this
+duration, AI Platform Training cancels the job. Set the maximum wait time by
+specifying the [ ` scheduling.maxWaitTime ` ](https://cloud.google.com/ai-
+platform/training/docs/reference/rest/v1/projects.jobs#scheduling) field.
+
 ##  August 14, 2020
 
 **AI Platform Training**
