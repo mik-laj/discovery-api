@@ -12,7 +12,96 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  August 18, 2020
+
+**AI Platform Prediction**
+
+**CHANGED:**
+
+[ Compute Engine (N1) machine types for online prediction
+](https://cloud.google.com/ai-platform/prediction/docs/machine-types-online-
+prediction) are now generally available. They are available on all [ regional
+endpoints ](https://cloud.google.com/ai-platform/prediction/docs/regional-
+endpoints) .
+
+The [ AI Platform Training and Prediction Service Level Agreement
+](https://cloud.google.com/ai-platform/training-and-prediction/sla) does not
+apply to [ model versions that use a Compute Engine (N1) machine type and
+fewer than two prediction nodes ](https://cloud.google.com/ai-
+platform/prediction/docs/machine-types-online-prediction#scaling) .
+
+**CHANGED:**
+
+[ GPUs for online prediction ](https://cloud.google.com/ai-
+platform/prediction/docs/machine-types-online-prediction#gpus) are now
+generally available. You can use GPUs to serve predictions when you create a
+TensorFlow model version that uses a [ Compute Engine (N1) machine type
+](https://cloud.google.com/ai-platform/prediction/docs/machine-types-online-
+prediction) .
+
+Learn [ which types of GPU are available on each regional endpoint
+](https://cloud.google.com/ai-
+platform/prediction/docs/regions#using_gpus_for_online_prediction) .
+
+**CHANGED:**
+
+The following [ regional endpoints for online prediction
+](https://cloud.google.com/ai-platform/prediction/docs/regional-endpoints) are
+now generally available:
+
+  * ` us-central1-ml.googleapis.com `
+  * ` europe-west4-ml.googleapis.com `
+  * ` asia-east1-ml.googleapis.com `
+
+**DEPRECATED:**
+
+Using [ Compute Engine (N1) machine types ](https://cloud.google.com/ai-
+platform/prediction/docs/machine-types-online-prediction) on the global API
+endpoint ( ` ml.googleapis.com ` ) is deprecated. This functionality was
+previously available in beta in the ` us-central1 ` region.
+
+To continue to use Compute Engine (N1) machine types in the ` us-central1 `
+region, create a model on the ` us-central1-ml.googleapis.com ` [ regional
+endpoint ](https://cloud.google.com/ai-platform/prediction/docs/regional-
+endpoints) , and then create model versions using that model.
+
+**BigQuery**
+
+**FEATURE:**
+
+You can now explicitly assign projects to use on-demand pricing with
+Reservations. See [ Assign a project to None
+](https://cloud.google.com/bigquery/docs/reservations-tasks#assign-project-to-
+none) .
+
+**Compute Engine**
+
+**FEATURE:**
+
+N2D machine types are now available in ` us-central1-c ` . For more
+information, see the [ VM instance pricing
+](https://cloud.google.com/compute/vm-instance-pricing#n2d_machine_types)
+page.
+
+**FEATURE:**
+
+N2D machine types are now available in Northern Virginia ` us-east4-a,b ` .
+For more information, see the [ VM instance pricing
+](https://cloud.google.com/compute/vm-instance-pricing#n2d_machine_types)
+page.
+
 ##  August 17, 2020
+
+**AI Platform Training**
+
+**FEATURE:**
+
+You can now set a maximum time that you are willing to wait between the moment
+when you create a training job and the moment when AI Platform Training starts
+running the job. If your training job has not started running after this
+duration, AI Platform Training cancels the job. Set the maximum wait time by
+specifying the [ ` scheduling.maxWaitTime ` ](https://cloud.google.com/ai-
+platform/training/docs/reference/rest/v1/projects.jobs#scheduling) field.
 
 **Artifact Registry**
 
@@ -762,6 +851,24 @@ current **active** commitments, **term** length, and the **start** and **end**
 dates for the commitment. See [ the documentation
 ](https://cloud.google.com/docs/cuds-spend-based#view_commitment_dashboard)
 for more details.
+
+**FEATURE:**
+
+**New columns added to Cost Table report: Credit ID and Credit name.**
+Starting with your **July 2020** invoice month, the [ cost table report
+](https://cloud.google.com/billing/docs/how-to/cost-table) now includes
+columns for ` Credit ID ` and ` Credit name ` . Including credit details in
+the cost table report is especially useful for understanding project-level
+credits, or for analyzing the source of multiple credits of the same type,
+earned during the same invoice period (such as sustained usage discounts
+earned as usage increases).
+
+When you first load the cost table report, the credit columns are hidden by
+default. You can use the [ column selector to customize the columns
+](https://cloud.google.com/billing/docs/how-to/cost-
+table#columns_in_the_cost_table) you view in the report as well as the columns
+you download to CSV. See the [ documentation
+](https://cloud.google.com/billing/docs/how-to/cost-table) for more details.
 
 **Compute Engine**
 
@@ -2235,77 +2342,4 @@ A Frequently Asked Questions page is now available. [ See the FAQ here
 Traffic Director supports proxyless gRPC applications in General Availability.
 In this deployment model, gRPC applications can participate in a service mesh
 without needing a sidecar proxy.
-
-##  July 20, 2020
-
-**AI Platform Training**
-
-**FEATURE:**
-
-[ Customer-managed encryption keys (CMEK) for AI Platform Training
-](https://cloud.google.com/ai-platform/training/docs/cmek) is now generally
-available.
-
-**FEATURE:**
-
-The [ VPC Service Controls integration with AI Platform Training
-](https://cloud.google.com/ai-platform/training/docs/vpc-service-controls) is
-now generally available.
-
-**FEATURE:**
-
-You can now train a PyTorch model on AI Platform Training by [ using a pre-
-built PyTorch container ](https://cloud.google.com/ai-
-platform/training/docs/getting-started-pytorch) . Pre-built PyTorch containers
-are available in beta.
-
-**Cloud Storage**
-
-**FEATURE:**
-
-[ Detailed audit logging mode ](https://cloud.google.com/storage/docs/org-
-policy-constraints#audit-logging) launched.
-
-**Data Catalog**
-
-**FEATURE:**
-
-Data Catalog is now available in Salt Lake City ( ` us-west3 ` ) and Las Vegas
-( ` us-west4 ` ).
-
-**Identity and Access Management**
-
-**CHANGED:**
-
-We are delaying the upcoming changes for [ deleted members that are bound to a
-role ](https://cloud.google.com/iam/docs/release-notes#July_01_2020) . These
-changes will take effect starting on August 31, 2020.
-
-**Resource Manager**
-
-**FEATURE:**
-
-The Organization Policy for [ enabling detailed Cloud Audit Logs
-](https://cloud.google.com/storage/docs/org-policy-constraints#audit-logging)
-has launched into general availability.
-
-**Secret Manager**
-
-**FEATURE:**
-
-Secret Manager adds support for the following curated IAM roles:
-
-  * Secret Manager Secret Version Adder ( ` roles/secretmanager.secretVersionAdder ` ) 
-  * Secret Manager Secret Version Manager ( ` roles/secretmanager.secretVersionManager ` ) 
-
-To learn more, see [ IAM and access control ](https://cloud.google.com/secret-
-manager/docs/access-control) .
-
-**VPC Service Controls**
-
-**FEATURE:**
-
-General availability for the following integration:
-
-  * [ AI Platform Training ](https://cloud.google.com/ai-platform/training/docs/vpc-service-controls)
 
