@@ -6,7 +6,7 @@
 ](https://cloud.google.com/anthos/gke/docs/on-prem/release-notes?hl=zh-cn)
 会在保密期结束前使用“安全更新”来泛指这些漏洞。保密期结束后，我们会更新版本说明，以阐明补丁程序所解决的漏洞。
 
-**注意** ：如果您在 GKE On-Prem 上运行多租户工作负载，请特别注意这些公告。这些漏洞更有可能影响到多租户工作负载。有关 GKE On-
+**注意** ：如果您在 GKE On-Prem 上运行多租户工作负载，请特别注意这些公告。这些漏洞更有可能影响到多租户工作负载。如需了解 GKE On-
 Prem 中安全边界的技术说明以及这些安全边界对工作负载的影响，请参阅 [ Kubernetes 堆栈中不同层的隔离
 ](https://cloudplatform.googleblog.com/2018/05/Exploring-container-security-
 Isolation-at-different-layers-of-the-Kubernetes-stack.html) 。
@@ -14,6 +14,70 @@ Isolation-at-different-layers-of-the-Kubernetes-stack.html) 。
 如需接收最新安全公告，请将本页面的网址添加到您的 [ Feed 阅读器
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) 。
 
+##  GCP-2020-011
+
+**发布日期** ：2020-07-24  
+说明  |  严重级别  |  备注  
+---|---|---  
+  
+最近在 Kubernetes 中发现了一个网络漏洞 [ CVE-2020-8558
+](https://github.com/kubernetes/kubernetes/issues/92315) 。服务有时会使用本地环回接口
+(127.0.0.1) 与同一 pod 中运行的其他应用通信。利用此漏洞，有权访问集群网络的攻击者能够将流量发送到相邻 pod
+和节点的环回接口。如果服务依赖于无法在其 pod 之外访问的环回接口，则攻击者可以利用这些服务。
+
+####  我该怎么做？
+
+如需修复此漏洞，请将您的集群 [ 升级 ](https://cloud.google.com/anthos/gke/docs/on-prem/how-
+to/upgrading?hl=zh-cn) 到修补后的版本。以下即将推出的 GKE On-Prem 版本或更新版本包含针对此漏洞的修补程序：
+
+  * GKE On-Prem 1.4.1 
+
+####  该补丁程序解决了哪一漏洞？
+
+此补丁程序修复了以下漏洞： [ CVE-2020-8558
+](https://github.com/kubernetes/kubernetes/issues/92315) 。
+
+|
+
+中
+
+|
+
+[ CVE-2020-8558 ](https://github.com/kubernetes/kubernetes/issues/92315)  
+  
+##  GCP-2020-009
+
+**发布日期** ：2020-07-15  说明  |  严重级别  |  备注  
+---|---|---  
+  
+最近在 Kubernetes 中发现了一个提权漏洞 [ CVE-2020-8559 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8559) 。利用此漏洞，已破解节点的攻击者能够在集群中的任何 pod
+中执行命令。因此，攻击者可以使用已被破解的节点来破解其他节点并且可能读取信息，或者导致破坏性操作。
+
+请注意，集群中的某个节点必须已被破解，攻击者才能利用此漏洞。此漏洞本身不会破解集群中的任何节点。
+
+####  我该怎么做？
+
+将集群 [ 升级 ](https://cloud.google.com/anthos/gke/docs/on-prem/how-
+to/upgrading?hl=zh-cn) 到修补后的版本。以下即将推出的 GKE On-Prem 版本或更新版本包含针对此漏洞的修补程序：
+
+  * Anthos 1.3.3 
+  * Anthos 1.4.1 
+
+####  该补丁程序解决了哪一漏洞？
+
+这些补丁程序解决了漏洞 CVE-2020-8559。此漏洞被评为 GKE
+的中危漏洞，因为除了现有已遭破解的节点之外，攻击者还需要拥有集群、节点和工作负载的第一手信息，才能有效利用此攻击。此漏洞本身不会为攻击者提供已遭破解的节点。
+
+|
+
+中
+
+|
+
+[ CVE-2020-8559 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8559)  
+  
 ##  GCP-2020-007
 
 **发布日期：** 2020-06-01  
@@ -23,20 +87,20 @@ Isolation-at-different-layers-of-the-Kubernetes-stack.html) 。
 技术人员最近在 Kubernetes 中发现了服务器端请求伪造 (SSRF) 漏洞 [ CVE-2020-8555
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555)
 ，该漏洞允许某些授权用户从控制层面主机网络泄露高达 500 字节的敏感信息。Google Kubernetes Engine (GKE) 控制层面会使用
-Kubernetes 中的控制器，因此会受到此漏洞的影响。我们建议您将控制平面升级到最新的补丁程序版本，具体说明如下所述。节点不需要升级。  
+Kubernetes 中的控制器，因此会受到此漏洞的影响。我们建议您将控制层面升级到最新的补丁程序版本，具体说明如下所述。节点不需要升级。  
 
-####  该怎么做？
+####  我该怎么做？
 
-以下 Anthos GKE On-Prem (GKE On-Prem) 版本或更新版本包含针对此漏洞的修补程序：
+以下 Anthos GKE On-Prem (GKE On-Prem) 版本或更新版本包含针对此漏洞的修复：
 
   * Anthos 1.3.0 
 
-如果您使用的是早期版本，请 [ 将现有集群升级 ](https://cloud.google.com/anthos/gke/docs/on-
-prem/how-to/upgrading?hl=zh-cn) 到包含该修补程序的版本。
+如果您使用的是以前的版本，请 [ 将现有集群升级 ](https://cloud.google.com/anthos/gke/docs/on-
+prem/how-to/upgrading?hl=zh-cn) 到包含该修复的版本。
 
 ####  该补丁程序解决了哪一漏洞？
 
-这些补丁程序解决了漏洞 CVE-2020-8555。此漏洞被评为 GKE 的中危漏洞，由于各种控制平面安全强化措施的实施而很难被利用。
+这些补丁程序解决了漏洞 CVE-2020-8555。此漏洞被评为 GKE 的中危漏洞，由于各种控制层面安全强化措施的实施而很难被利用。
 
 有权创建内置了卷类型（GlusterFS、Quobyte、StorageFS、ScaleIO）的 Pod 的攻击者或有权创建 StorageClass
 的攻击者可以使 ` kube-controller-manager ` 发出 ` GET ` 请求或 ` POST `
@@ -67,7 +131,7 @@ Kubernetes 披露了一种 [ 漏洞 ](https://github.com/kubernetes/kubernetes/i
 
 ####  我该怎么做？
 
-要缓解 Anthos GKE On-Prem (GKE On-Prem) 的此漏洞所带来的影响，请 [ 将集群升级
+如需缓解 Anthos GKE On-Prem (GKE On-Prem) 的此漏洞所带来的影响，请 [ 将集群升级
 ](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=zh-cn)
 到以下版本或更新版本：
 
@@ -151,15 +215,15 @@ Kubernetes API 服务器执行远程拒绝服务攻击。Kubernetes 产品安全
 ](https://groups.google.com/g/kubernetes-security-
 announce/c/wuwEwZigXBc?hl=zh-cn) 。
 
-您可以通过限制哪些客户端可以访问您的 Kubernetes API 服务器来缓解此漏洞。
+您可以通过限制哪些客户端能够经由网络访问您的 Kubernetes API 服务器来缓解此漏洞。
 
-####  该怎么做？
+####  我该怎么做？
 
 我们建议您尽快将集群升级为包含此漏洞修复的补丁程序版本。
 
-包含此修补程序的版本如下所示：
+下面列出了包含此修复的补丁程序版本：
 
-  * Anthos 1.3.0（运行 Kubernetes 版本 1.15.7-gke.32） 
+  * Anthos 1.3.0（运行 Kubernetes 1.15.7-gke.32 版） 
 
 ####  该补丁程序解决了哪些漏洞？
 
@@ -188,17 +252,17 @@ Kubernetes API 服务器执行远程拒绝服务攻击。Kubernetes 产品安全
 ](https://groups.google.com/forum/?hl=zh-cn#!topic/kubernetes-security-
 announce/jk8polzSUxs) 。
 
-您可以通过限制哪些客户端可以访问您的 Kubernetes API 服务器来缓解此漏洞。
+您可以通过限制哪些客户端能够经由网络访问您的 Kubernetes API 服务器来缓解此漏洞。
 
-######  该怎么做？
+######  我该怎么做？
 
-我们建议您在包含修复方案的补丁程序版本发布后，尽快将 [ 集群升级
+我们建议您在包含修复方案的补丁程序版本发布后，尽快 [ 将集群升级
 ](https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=zh-
 cn#clusters) 到相应补丁程序版本。
 
-包含此修复的补丁程序版本如下所示：
+下面列出了将包含此修复的补丁程序版本：
 
-  * Anthos 1.1.1（运行 Kubernetes 版本 1.13.7-gke.30） 
+  * Anthos 1.1.1（运行 Kubernetes 1.13.7-gke.30 版） 
 
 ######  该补丁程序解决了哪一漏洞？
 
@@ -232,12 +296,12 @@ bin/cvename.cgi?name=CVE-2019-11253)
   * ` prometheus `
   * ` alertmanager `
 
-######  该怎么做？
+######  我该怎么做？
 
 我们建议您尽快将集群 [ 升级 ](https://cloud.google.com/anthos/gke/docs/on-prem/how-
-to/upgrading?hl=zh-cn#clusters) 到版本 [ 1.0.2-gke.3
+to/upgrading?hl=zh-cn#clusters) 到 [ 1.0.2-gke.3
 ](https://cloud.google.com/anthos/gke/docs/on-prem/downloads?hl=zh-
-cn#gkectl_latest) ，其中包含此漏洞的补丁程序。
+cn#gkectl_latest) 版，其中包含此漏洞的补丁程序。
 
 |
 
@@ -259,12 +323,12 @@ bin/cvename.cgi?name=CVE-2019-11247) )，该漏洞允许集群级的 [ 自定义
 resources/) 实例像存在于所有命名空间内的有命名空间对象一样得到处理。这意味着仅有命名空间级 RBAC
 权限的用户和服务帐号可以与集群级自定义资源交互。利用此漏洞要求攻击者具有访问任意命名空间内资源的权限。
 
-######  该怎么做？
+######  我该怎么做？
 
 我们建议您尽快将集群 [ 升级 ](https://cloud.google.com/anthos/gke/docs/on-prem/how-
-to/upgrading?hl=zh-cn#clusters) 到版本 [ 1.0.2-gke.3
+to/upgrading-clusters?hl=zh-cn) 到 [ 1.0.2-gke.3
 ](https://cloud.google.com/anthos/gke/docs/on-prem/downloads?hl=zh-
-cn#gkectl_latest) ，其中包含此漏洞的补丁程序。
+cn#gkectl_latest) 版，其中包含此漏洞的补丁程序。
 
 ######  该补丁程序解决了哪一漏洞？
 
