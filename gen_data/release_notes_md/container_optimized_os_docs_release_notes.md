@@ -27,8 +27,8 @@ project:  Stable  |  Beta  |  Dev
 
     
     
-    **cos-dev-86-15103-0-0**
-    Kernel:         [COS-5.4.57](https://cos.googlesource.com/third_party/kernel/+/f626365d32849ebb87f2788cb8e1c8e037dafad8)
+    **cos-dev-86-15119-0-0**
+    Kernel:         [COS-5.4.58](https://cos.googlesource.com/third_party/kernel/+/b191651b3e04ed25282778c3907cdb07e0ce83f2)
     Kubernetes:     v1.18.3
     Docker:         v19.03.9
       
