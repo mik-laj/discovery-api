@@ -13,6 +13,27 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/configconnector-release-
 notes.xml `
 
+##  August 19, 2020
+
+**FEATURE:**
+
+Add support for configuring Bigtable garbage collection policies with the `
+BigtableGCPolicy ` resource
+
+**FIXED:**
+
+Fixes issue where ` SQLUser ` would constantly update despite there being no
+changes.
+
+**FIXED:**
+
+Fix issue where Deletion Defender would sometimes panic during uninstallation
+of Config Connector, preventing uninstallation to complete.
+
+**FIXED:**
+
+Performance improvements.
+
 ##  August 13, 2020
 
 **FEATURE:**
