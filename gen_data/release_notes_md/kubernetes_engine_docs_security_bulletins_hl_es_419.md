@@ -21,12 +21,109 @@ la pila de Kubernetes)
 ](https://cloudplatform.googleblog.com/2018/05/Exploring-container-security-
 Isolation-at-different-layers-of-the-Kubernetes-stack.html) .
 
-Para recibir los boletines de seguridad más recientes, agrega la URL de esta
-página a tu [ lector de feeds
+Para recibir los últimos boletines de seguridad, agrega la URL de esta página
+a tu [ lector de feeds
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) o agrega
 directamente la URL del feed: ` https://cloud.google.com/feeds/kubernetes-
 engine-security-bulletins.xml ` .
 
+##  GCP-2020-011
+
+**Publicada:** 24-07-2020  
+Descripción  |  Gravedad  |  Notas  
+---|---|---  
+  
+Una vulnerabilidad de Herramientas de redes, [ CVE-2020-8558
+](https://github.com/kubernetes/kubernetes/issues/92315) , se descubrió
+recientemente en Kubernetes. A veces, los servicios se comunican con otras
+aplicaciones que se ejecutan dentro del mismo pod mediante la interfaz de
+bucle invertido local (127.0.0.1). Esta vulnerabilidad permite que un atacante
+con acceso a la red del clúster envíe tráfico a la interfaz de bucle invertido
+de pods y nodos adyacentes. Los servicios que dependen de la interfaz de bucle
+invertido al que no se puede acceder fuera del pod pueden explotarse.
+
+Para aprovechar esta vulnerabilidad en los clústeres de GKE, un atacante debe
+tener privilegios de administrador de red en Google Cloud que aloja la VPC del
+clúster. Esta vulnerabilidad por sí sola no otorga privilegios de
+administrador de red a un atacante. Por esta razón, a esta vulnerabilidad se
+le asignó una gravedad baja para GKE.
+
+####  ¿Qué debo hacer?
+
+Para solucionar esta vulnerabilidad, [ actualiza
+](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-
+upgrades?hl=es_419) los grupos de nodos de tu clúster a las siguientes
+versiones de GKE (y posteriores):
+
+  * 1.17.7-gke.0 
+  * 1.16.11-gke.0 
+  * 1.16.10-gke.11 
+  * 1.16.9-gke.14 
+
+####  ¿Qué vulnerabilidad trata este parche?
+
+Este parche corrige la siguiente vulnerabilidad: [ CVE-2020-8558
+](https://github.com/kubernetes/kubernetes/issues/92315) .
+
+|
+
+Baja
+
+|
+
+[ CVE-2020-8558 ](https://github.com/kubernetes/kubernetes/issues/92315)  
+  
+##  GCP-2020-009
+
+**Publicada:** 15-07-2020  Descripción  |  Gravedad  |  Notas  
+---|---|---  
+  
+Una vulnerabilidad de elevación de privilegios, [ CVE-2020-8559
+](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8559) , se descubrió
+recientemente en Kubernetes. Esta vulnerabilidad permite que un atacante que
+ya vulneró un nodo ejecute un comando en cualquier pod en el clúster. Por lo
+tanto, el atacante puede usar el nodo ya vulnerado para poner en riesgo otros
+nodos y puede leer información o realizar acciones destructivas.
+
+Ten en cuenta que, para que un atacante aproveche esta vulnerabilidad, un nodo
+de tu clúster ya debe estar vulnerado. Esta vulnerabilidad, por sí sola, no
+comprometerá ningún nodo de tu clúster.
+
+####  ¿Qué debo hacer?
+
+[ Actualiza ](https://cloud.google.com/kubernetes-
+engine/docs/concepts/cluster-upgrades?hl=es_419) tu clúster a una versión con
+parche. Los clústeres se actualizarán de manera automática durante las
+próximas semanas. Las versiones con parches estarán disponibles a partir del
+19 de julio de 2020 para programar una actualización manual acelerada. Las
+siguientes versiones del plano de control de GKE o una versión más reciente
+contienen la solución para esta vulnerabilidad:
+
+  * v1.14.10-gke.46 
+  * v1.15.12-gke.8 
+  * v1.16.9-gke.11 
+  * v1.16.10-gke.9 
+  * v1.16.11-gke.3+ 
+  * v1.17.7-gke.6+ 
+
+####  ¿Qué vulnerabilidad trata este parche?
+
+Estos parches mitigan la vulnerabilidad CVE-2020-8559. Esto se considera como
+una vulnerabilidad media para GKE, ya que requiere que el atacante tenga
+información de primera mano sobre el clúster, los nodos y las cargas de
+trabajo, a fin de aprovechar este ataque de forma eficaz, además de una nodo
+vulnerado. Esta vulnerabilidad por sí sola no proporcionará a un atacante un
+nodo vulnerado.
+
+|
+
+Medio
+
+|
+
+[ CVE-2020-8559 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8559)  
+  
 ##  GCP-2020-007
 
 **Fecha de publicación:** 1 de junio de 2020  
@@ -85,7 +182,7 @@ cuestión para evitar la posibilidad de que ocurran tales fugas.
 
 |
 
-Media
+Medio
 
 |
 
@@ -205,7 +302,7 @@ tráfico de aplicaciones con mTLS.
 
 |
 
-Media
+Medio
 
 |
 
@@ -244,7 +341,7 @@ Kubernetes 1.16.8-gke.12, 1.17.4-gke.10 y en versiones más recientes. Haz un
 seguimiento de la disponibilidad de estos parches en las [ notas de la versión
 ](https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=es_419) .
 
-####  ¿Qué vulnerabilidad corrige este parche?
+####  ¿Qué vulnerabilidad trata este parche?
 
 Este parche mitiga la siguiente vulnerabilidad:
 
@@ -311,7 +408,7 @@ bin/cvename.cgi?name=CVE-2019-11254)
 
 |
 
-Media
+Medio
 
 |
 
@@ -361,7 +458,7 @@ principales. Estas son las versiones de parche que incluirán la mitigación:
 
 |
 
-Media
+Medio
 
 |
 
@@ -486,7 +583,7 @@ archivos adicionales en paquetes de [ controladores de CSI
 
 |
 
-Media
+Medio
 
 |
 
@@ -552,7 +649,7 @@ verificación de máquina en el cambio de tamaño de página”. No afecta a GKE
 
 |
 
-Media
+Medio
 
 |
 
@@ -669,8 +766,8 @@ Te recomendamos actualizar tu clúster a la versión más reciente del parche,
 que contenga la mitigación para esta vulnerabilidad en cuanto esté disponible.
 Esperamos que esté disponibles en todas las zonas con la próxima actualización
 de GKE, según el [ programa de actualización
-](https://cloud.google.com/kubernetes-engine/docs/release-
-notes?hl=es_419#september_16_2019) .
+](https://cloud.google.com/kubernetes-engine/docs/release-notes-
+archive?hl=es_419#september_16_2019) .
 
 Las versiones de parche que contendrán la mitigación son las siguientes:
 
@@ -678,7 +775,7 @@ Las versiones de parche que contendrán la mitigación son las siguientes:
   * 1.13.10-gke.0 
   * 1.14.6-gke.1 
 
-######  ¿Qué vulnerabilidad corrige este parche?
+######  ¿Qué vulnerabilidad trata este parche?
 
 Este parche mitiga las siguientes vulnerabilidades:
 
@@ -714,8 +811,8 @@ en la edición del  31 de mayo de 2019  .
 
 Se actualizó el boletín del  5 de agosto de 2019  . La corrección de la
 vulnerabilidad documentada en el boletín anterior está [ disponible
-](https://cloud.google.com/kubernetes-engine/docs/release-
-notes?hl=es_419#august_22_2019) .
+](https://cloud.google.com/kubernetes-engine/docs/release-notes-
+archive?hl=es_419#august_22_2019) .
 
 ##  8 de agosto de 2019
 
@@ -760,14 +857,14 @@ mitigación se mencionan a continuación:
   * 1.13.7-gke.19 
   * 1.14.3-gke.10 ( [ Canal rápido ](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels?hl=es_419) ) 
 
-######  ¿Qué vulnerabilidad corrige este parche?
+######  ¿Qué vulnerabilidad trata este parche?
 
 El parche mitiga la siguiente vulnerabilidad: [ CVE-2019-11247
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11247) .
 
 |
 
-Media
+Medio
 
 |
 
@@ -975,7 +1072,7 @@ Haz un seguimiento de la disponibilidad de este parche en las [ notas de la
 versión de ` gcloud ` ](https://cloud.google.com/sdk/docs/release-
 notes?hl=es_419) .
 
-######  ¿Qué vulnerabilidad corrige este parche?
+######  ¿Qué vulnerabilidad trata este parche?
 
 La vulnerabilidad [ CVE-2019-11246 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2019-11246) permite que un atacante con acceso a una
@@ -1042,7 +1139,7 @@ que estén disponibles. Haz un seguimiento de la disponibilidad de estos
 parches en las [ notas de la versión ](https://cloud.google.com/kubernetes-
 engine/docs/release-notes?hl=es_419) .
 
-#####  ¿Qué vulnerabilidad corrige este parche?
+#####  ¿Qué vulnerabilidad trata este parche?
 
 Este parche mitiga la siguiente vulnerabilidad:
 
@@ -1257,7 +1354,7 @@ automática a la frecuencia de actualización habitual.
 Actualizaremos este boletín con las versiones que contengan el parche cuando
 estén disponibles.
 
-####  ¿Qué vulnerabilidad corrige este parche?
+####  ¿Qué vulnerabilidad trata este parche?
 
 Este parche mitiga las siguientes vulnerabilidades:
 
@@ -1303,7 +1400,7 @@ las actualizaciones automáticas de nodos o no, te recomendamos hacer lo
 siguiente:**
 
   1. **[ Actualiza de forma manual ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=es_419) tu clúster apenas el parche esté disponible. **
-  2. **Sigue las instrucciones de la[ documentación para actualizar archivos adicionales ](https://istio.io/docs/setup/kubernetes/upgrade/steps/#sidecar-upgrade) a fin de realizar este proceso. **
+  2. **Sigue las instrucciones de la[ documentación para actualizar archivos adicionales ](https://archive.istio.io/v1.5/docs/setup/upgrade/cni-helm-upgrade/#control-plane-upgrade) a fin de realizar este proceso. **
 
 Las versiones con parche estarán disponibles para todos los proyectos de GKE
 antes de las 7:00 p.m. PDT de hoy.
@@ -1328,7 +1425,7 @@ Versiones con parches:
   * 1.12.6-gke.10 
   * 1.13.4-gke.10 
 
-####  ¿Qué vulnerabilidad corrige este parche?
+####  ¿Qué vulnerabilidad trata este parche?
 
 Este parche mitiga las siguientes vulnerabilidades:
 
@@ -1354,8 +1451,8 @@ Descripción  |  Gravedad  |  Notas
 de Kubernetes 1.11.8-gke.4, 1.13.4-gke.1 y en las más recientes. El parche aún
 no está disponible en la versión 1.12. Haz un seguimiento de la disponibilidad
 de estos parches en las [ notas de la versión
-](https://cloud.google.com/kubernetes-engine/docs/release-
-notes?hl=es_419#march_19_2019) .
+](https://cloud.google.com/kubernetes-engine/docs/release-notes-
+archive?hl=es_419#march_19_2019) .
 
 Hace poco tiempo, se descubrió una vulnerabilidad nueva de denegación del
 servicio en Kubernetes, [ CVE-2019-1002100 ](https://cve.mitre.org/cgi-
@@ -1386,7 +1483,7 @@ Actualizaremos este boletín con las versiones que contienen un parche. Ten en
 cuenta que el parche solo estará disponible en las versiones 1.11 y
 superiores, no en la versión 1.10.
 
-####  ¿Qué vulnerabilidad corrige este parche?
+####  ¿Qué vulnerabilidad trata este parche?
 
 Este parche mitiga la siguiente vulnerabilidad:
 
@@ -1424,7 +1521,7 @@ versión más reciente. Este parche está disponible en Kubernetes 1.10.12-gke.7
 1.11.6-gke.11, 1.11.7-gke.4, 1.12.5-gke.5 y actualizaciones más recientes.
 Puedes hacer un seguimiento de la disponibilidad de estos parches en las [
 notas de la versión ](https://cloud.google.com/kubernetes-engine/docs/release-
-notes?hl=es_419#february-11-2019) .
+notes-archive?hl=es_419#february-11-2019) .
 
 Ten en cuenta que la vulnerabilidad solo afecta a los nodos de GKE que
 ejecutan Ubuntu y no a los que ejecutan COS.
@@ -1433,7 +1530,7 @@ Ten en cuenta que la versión nueva de runc consume más memoria, por lo que es
 posible que debas actualizar la cantidad de memoria asignada a los
 contenedores si configuraste límites de memoria bajos (menores que 16 MB).
 
-####  ¿Qué vulnerabilidad corrige este parche?
+####  ¿Qué vulnerabilidad trata este parche?
 
 Este parche mitiga la siguiente vulnerabilidad:
 
@@ -1474,8 +1571,8 @@ announce/mVeX35iXuSw) .
 
 **Esta vulnerabilidad afecta a todas las instancias principales de Google
 Kubernetes Engine (GKE). La[ versión más reciente del parche
-](https://cloud.google.com/kubernetes-engine/docs/release-
-notes?hl=es_419#february-11-2019) incluye una mitigación contra esta
+](https://cloud.google.com/kubernetes-engine/docs/release-notes-
+archive?hl=es_419#february-11-2019) incluye una mitigación contra esta
 vulnerabilidad. Actualizaremos las instancias principales de los clústeres a
 la versión que incluye el parche de manera automática durante las próximas
 semanas según la frecuencia de actualización habitual. **
@@ -1492,7 +1589,7 @@ cluster?hl=es_419#upgrading_the_cluster) .
 Este parche está disponible en GKE 1.10.12-gke.7, 1.11.6-gke.11, 1.11.7-gke.4,
 1.12.5-gke.5 y actualizaciones más recientes.
 
-####  ¿Qué vulnerabilidad corrige este parche?
+####  ¿Qué vulnerabilidad trata este parche?
 
 Este parche mitiga la siguiente vulnerabilidad:
 
@@ -1519,8 +1616,8 @@ divulgación de Kubernetes
 announce/GVllWCg6L88) . **Todas las instancias principales de Google
 Kubernetes Engine (GKE) se vieron afectadas por estas vulnerabilidades, y ya
 hemos actualizado los clústeres a las[ versiones más recientes del parche
-](https://cloud.google.com/kubernetes-engine/docs/release-
-notes?hl=es_419#november-12-2018) . No es necesario que realices ninguna
+](https://cloud.google.com/kubernetes-engine/docs/release-notes-
+archive?hl=es_419#november-12-2018) . No es necesario que realices ninguna
 acción. **
 
 ####  ¿Qué debo hacer?
@@ -1531,7 +1628,7 @@ instancias principales de GKE.**
 Este parche está disponible en GKE 1.9.7-gke.11, 1.10.6-gke.11, 1.10.7-gke.11,
 1.10.9-gke.5, 1.11.2-gke.18 y las versiones más recientes.
 
-####  ¿Qué vulnerabilidad corrige este parche?
+####  ¿Qué vulnerabilidad trata este parche?
 
 Este parche mitiga la siguiente vulnerabilidad:
 
@@ -1875,7 +1972,7 @@ un repositorio de Git en un volumen EmptyDir de un initContainer:
 Se incluirá un parche en una próxima versión de Kubernetes Engine. Vuelve a
 visitar este sitio para obtener más detalles.
 
-|  Media  |
+|  Medio  |
 
   * [ CVE-2018-11235 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-11235)
 
@@ -1970,8 +2067,8 @@ to/upgrading-a-container-cluster?hl=es_419) tus nodos ni bien esté disponible
 el parche. Este parche estará disponible para todos los clientes a partir del
 16 de marzo, pero puede que esté disponible para ti antes, según la zona en la
 que se encuentra tu clúster, en función del [ programa de actualizaciones
-](https://cloud.google.com/kubernetes-engine/docs/release-
-notes?hl=es_419#march-12-2018) .
+](https://cloud.google.com/kubernetes-engine/docs/release-notes-
+archive?hl=es_419#march-12-2018) .
 
 Para poder llevar a cabo la actualización, primero debes actualizar tu
 instancia principal a la versión más reciente. Este parche estará disponible
