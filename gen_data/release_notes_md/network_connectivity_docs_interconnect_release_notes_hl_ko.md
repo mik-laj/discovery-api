@@ -10,6 +10,18 @@ Google Cloud의 최신 제품 업데이트를 확인할 수 있습니다.
 추가하거나 피드 URL을 다음과 같이 직접 추가하세요. `
 https://cloud.google.com/feeds/cloudinterconnect-release-notes.xml `
 
+##  August 19, 2020
+
+**FEATURE:**
+
+Organization policy constraints for Cloud Interconnect is available in
+**Beta** .
+
+To control which VPC networks can use Cloud Interconnect, you can set an
+organization policy. For more information, see [ Restricting Cloud
+Interconnect usage ](https://cloud.google.com/network-
+connectivity/docs/interconnect/how-to/restricting-usage?hl=ko) .
+
 ##  June 16, 2020
 
 **CHANGED:**
