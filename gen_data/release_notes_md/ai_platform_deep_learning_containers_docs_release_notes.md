@@ -14,6 +14,13 @@ URL directly: `
 https://cloud.google.com/feeds/aiplatformdeeplearningcontainers-release-
 notes.xml `
 
+##  August 17, 2020
+
+**FEATURE:**
+
+TensorFlow Enterprise 2.3 environments are now available. These environments
+include support for A100 GPU accelerators, CUDA 11, and TensorFloat-32 (TF32).
+
 ##  January 08, 2020
 
 **FEATURE:**
