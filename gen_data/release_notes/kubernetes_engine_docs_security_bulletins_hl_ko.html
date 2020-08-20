@@ -39,6 +39,178 @@
     </code>
    </p>
    <section class="bulletins">
+    <h2 data-text="GCP-2020-011" id="gcp-2020-011" tabindex="0">
+     GCP-2020-011
+    </h2>
+    <strong>
+     게시:
+    </strong>
+    2020년 7월 24일
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        설명
+       </th>
+       <th>
+        심각도
+       </th>
+       <th>
+        참고
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         네트워킹 취약점
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/92315">
+          CVE-2020-8558
+         </a>
+         이 최근 Kubernetes에서 발견되었습니다. 서비스는 로컬 루프백 인터페이스(127.0.0.1)를 사용하여 동일한 pod 내에서 실행되는 다른 애플리케이션과 통신하는 경우도 있습니다. 이 취약점은 클러스터 네트워크에 액세스할 수 있는 공격자가 인접한 pod 및 노드의 루프백 인터페이스로 트래픽을 전송할 수 있게 해줍니다. 루프백 인터페이스에 의존하는 서비스는 pod 외부에서 액세스할 수 없습니다.
+        </p>
+        <p>
+         GKE 클러스터의 이 취약점을 악용하려면 공격자가 클러스터의 VPC를 호스팅하는 Google Cloud에 네트워크 관리자 권한이 있어야 합니다. 이 취약점만으로는 공격자가 네트워크 관리자 권한을 부여하지 않습니다. 이러한 이유로 이 취약점에는 GKE에 대한 낮은 심각도가 할당되었습니다.
+        </p>
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do" tabindex="0">
+         어떻게 해야 하나요?
+        </h4>
+        <p>
+         이 취약점을 해결하려면 클러스터의 노드 풀을 다음 GKE 버전(및 이상)으로
+         <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-upgrades?hl=ko">
+          업그레이드
+         </a>
+         하세요.
+        </p>
+        <ul>
+         <li>
+          1.17.7-gke.0
+         </li>
+         <li>
+          1.16.11-gke.0
+         </li>
+         <li>
+          1.16.10-gke.11
+         </li>
+         <li>
+          1.16.9-gke.14
+         </li>
+        </ul>
+        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch" tabindex="0">
+         이 패치로 어떤 취약점이 해결되나요?
+        </h4>
+        <p>
+         이 패치는
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/92315">
+          CVE-2020-8558
+         </a>
+         취약점을 해결합니다.
+        </p>
+       </td>
+       <td>
+        <p>
+         낮음
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/92315">
+          CVE-2020-8558
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-009" id="gcp-2020-009" tabindex="0">
+     GCP-2020-009
+    </h2>
+    <strong>
+     게시:
+    </strong>
+    2020년 7월 15일
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        설명
+       </th>
+       <th>
+        심각도
+       </th>
+       <th>
+        참고
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Kubernetes에서 권한 에스컬레이션 취약점
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8559">
+          CVE-2020-8559
+         </a>
+         가 최근에 발견되었습니다. 이 취약점을 통해 노드가 이미 손상된 공격자가 클러스터의 모든 pod에서 명령어를 실행할 수 있습니다. 따라서 공격자는 이미 도용된 노드를 사용하여 다른 노드를 손상시킬 수 있으며 정보를 읽거나 파괴적인 작업을 유발할 수 있습니다.
+        </p>
+        <p>
+         공격자가 이 취약점을 악용하려는 경우, 클러스터의 노드는 이미 손상되었을 것입니다. 이 취약점 자체는 클러스터에 있는 노드를 손상시키지 않습니다.
+        </p>
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_1" tabindex="0">
+         어떻게 해야 하나요?
+        </h4>
+        <p>
+         클러스터를 패치된 버전으로
+         <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-upgrades?hl=ko">
+          업그레이드
+         </a>
+         합니다. 클러스터는 다음 주에 걸쳐 자동으로 업그레이드되고 패치 버전이 2020년 7월 19일까지 가속화된 수동 업그레이드 일정에 따라 제공됩니다.
+        다음 GKE 제어 영역 버전 또는 더 최신 버전에는 이 취약점에 대한 수정사항이 포함되어 있습니다.
+        </p>
+        <ul>
+         <li>
+          v1.14.10-gke.46
+         </li>
+         <li>
+          v1.15.12-gke.8
+         </li>
+         <li>
+          v1.16.9-gke.11
+         </li>
+         <li>
+          v1.16.10-gke.9
+         </li>
+         <li>
+          v1.16.11-gke.3+
+         </li>
+         <li>
+          v1.17.7-gke.6+
+         </li>
+        </ul>
+        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_1" tabindex="0">
+         이 패치로 어떤 취약점이 해결되나요?
+        </h4>
+        <p>
+         이러한 패치는 CVE-2020-8559 취약점을 완화합니다. 이것은 GKE에서 '보통' 등급의 취약점으로 분류됩니다. 공격자가 클러스터, 노드, 워크로드에 대한 직접적인 정보를 제공하여 기존의 손상된 노드 외에 이 공격을 효과적으로 이용해야 하기 때문입니다. 이 취약점 자체는 공격자에게 손상된 노드를 제공하지 않습니다.
+        </p>
+       </td>
+       <td>
+        <p>
+         보통
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8559">
+          CVE-2020-8559
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
     <h2 data-text="GCP-2020-007" id="gcp-2020-007" tabindex="0">
      GCP-2020-007
     </h2>
@@ -77,7 +249,7 @@
       노드 업그레이드는 필요하지 않습니다.
          <br/>
         </p>
-        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do" tabindex="0">
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_2" tabindex="0">
          어떻게 해야 하나요?
         </h4>
         대부분 고객의 경우 추가 조치는 필요하지 않습니다. 대다수의 클러스터가 이미 패치 버전을 실행하고 있습니다.
@@ -112,14 +284,14 @@
          </a>
          을 사용하는 클러스터는 이미 완화책이 적용된 제어 영역 버전으로 업그레이드되었습니다.
         </p>
-        <h4 data-text="이 패치로 어떤 취약점이 해결되나요? " id="what-vulnerability-is-addressed-by-this-patch" tabindex="0">
+        <h4 data-text="이 패치로 어떤 취약점이 해결되나요? " id="what-vulnerability-is-addressed-by-this-patch_2" tabindex="0">
          이 패치로 어떤 취약점이 해결되나요?
         </h4>
         <p>
          이러한 패치는 CVE-2020-8555 취약점을 완화합니다. 악용을 방지하기 위한 여러 제어 영역 강화 조치로 이 문제는 GKE에서 '보통' 등급의 취약점으로 분류됩니다.
         </p>
         <p>
-         특정 볼륨 유형(GlusterFS, Quobyte, StorageFS, ScaleIO)이 내장된 Pod 생성 또는 StorageClass 생성 권한을 보유한 공격자는 마스터의 호스트 네트워크에서 요청 본문을 제어하지
+         특정 볼륨 유형(GlusterFS, Quobyte, StorageFS, ScaleIO)이 내장된 pod 생성 또는 StorageClass 생성 권한을 보유한 공격자는 마스터의 호스트 네트워크에서 요청 본문을 제어하지
          <em>
           않아도
          </em>
@@ -195,7 +367,7 @@
          </a>
          하는 것이 좋습니다.
         </p>
-        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_1" tabindex="0">
+        <h4 data-text=" 어떻게 해야 하나요? " id="what-should-i-do_3" tabindex="0">
          어떻게 해야 하나요?
         </h4>
         이 취약점을 완화하려면 제어 영역을
@@ -294,7 +466,7 @@ spec:
          </ul>
          <ul>
           <li>
-           또는 Pod 사양을 업데이트합니다.
+           또는 pod 사양을 업데이트합니다.
           </li>
           <pre class="devsite-click-to-copy" dir="ltr" translate="no">
 
@@ -314,7 +486,7 @@ spec:
 </pre>
          </ul>
         </ul>
-        <h4 data-text="이 패치로 어떤 취약점이 해결되나요? " id="what-vulnerability-is-addressed-by-this-patch_1" tabindex="0">
+        <h4 data-text="이 패치로 어떤 취약점이 해결되나요? " id="what-vulnerability-is-addressed-by-this-patch_3" tabindex="0">
          이 패치로 어떤 취약점이 해결되나요?
         </h4>
         <p>
@@ -388,7 +560,7 @@ spec:
         <p>
          Container-Optimized OS를 실행하는 노드는 영향을 받지 않습니다. GKE On-Prem을 실행하는 노드는 영향을 받지 않습니다.
         </p>
-        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_2" tabindex="0">
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_4" tabindex="0">
          어떻게 해야 하나요?
         </h4>
         <p>
@@ -403,7 +575,7 @@ spec:
          </a>
          에서 이 패치의 가용성을 추적할 수 있습니다.
         </p>
-        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_2" tabindex="0">
+        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_4" tabindex="0">
          이 패치로 어떤 취약점이 해결되나요?
         </h4>
         <p>
@@ -481,7 +653,7 @@ spec:
          </a>
          를 사용하는 GKE 클러스터는 이 취약점을 완화합니다.
         </p>
-        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_3" tabindex="0">
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_5" tabindex="0">
          어떻게 해야 하나요?
         </h4>
         <p>
@@ -578,7 +750,7 @@ spec:
          </a>
          을 참조하세요.
         </p>
-        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_4" tabindex="0">
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_6" tabindex="0">
          어떻게 해야 하나요?
         </h4>
         <p>
@@ -959,7 +1131,7 @@ spec:
          </a>
          와 인프라를 비교해 보세요.
         </p>
-        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_5" tabindex="0">
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_7" tabindex="0">
          어떻게 해야 하나요?
         </h4>
         <p>
@@ -1149,7 +1321,7 @@ spec:
          </a>
          를 사용하는 GKE 클러스터는 이 취약점을 완화합니다.
         </p>
-        <h6 data-text="어떻게 해야 하나요?" id="what-should-i-do_6" tabindex="0">
+        <h6 data-text="어떻게 해야 하나요?" id="what-should-i-do_8" tabindex="0">
          어떻게 해야 하나요?
         </h6>
         <p>
@@ -1245,7 +1417,7 @@ spec:
          </a>
          를 참조하세요.
         </p>
-        <h6 data-text="어떻게 해야 하나요?" id="what-should-i-do_7" tabindex="0">
+        <h6 data-text="어떻게 해야 하나요?" id="what-should-i-do_9" tabindex="0">
          어떻게 해야 하나요?
         </h6>
         <p>
@@ -1272,7 +1444,7 @@ spec:
           1.14.6-gke.1
          </li>
         </ul>
-        <h6 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_3" tabindex="0">
+        <h6 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_5" tabindex="0">
          이 패치로 어떤 취약점이 해결되나요?
         </h6>
         <p>
@@ -1412,7 +1584,7 @@ spec:
          </a>
          인스턴스가 모든 네임스페이스에 존재하는 네임스페이스화된 객체인 것처럼 처리될 수 있다는 문제가 있습니다. 즉, 사용자 및 서비스 계정은 네임스페이스 수준의 RBAC 권한만 있어도 클러스터 범위의 커스텀 리소스와 상호작용할 수 있습니다. 공격자에게 네임스페이스의 리소스에 액세스할 권한이 있으면 이 취약점을 악용할 수 있습니다.
         </p>
-        <h6 data-text="어떻게 해야 하나요?" id="what-should-i-do_8" tabindex="0">
+        <h6 data-text="어떻게 해야 하나요?" id="what-should-i-do_10" tabindex="0">
          어떻게 해야 하나요?
         </h6>
         <p>
@@ -1440,7 +1612,7 @@ spec:
           )
          </li>
         </ul>
-        <h6 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_4" tabindex="0">
+        <h6 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_6" tabindex="0">
          이 패치로 어떤 취약점이 해결되나요?
         </h6>
         <p>
@@ -1448,6 +1620,7 @@ spec:
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11247">
           CVE-2019-11247
          </a>
+         .
         </p>
        </td>
        <td>
@@ -1717,7 +1890,7 @@ spec:
          </code>
          구성을 수정하여 완화 방법을 구현하는 Kubernetes DaemonSet가 제공됩니다.
         </p>
-        <h5 data-text="어떻게 해야 하나요?" id="what-should-i-do_9" tabindex="0">
+        <h5 data-text="어떻게 해야 하나요?" id="what-should-i-do_11" tabindex="0">
          어떻게 해야 하나요?
         </h5>
         <p>
@@ -1853,7 +2026,7 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
          </strong>
          예정된 패치 버전에 이 취약점의 완화 방법이 포함됩니다.
         </p>
-        <h6 data-text="어떻게 해야 하나요?" id="what-should-i-do_10" tabindex="0">
+        <h6 data-text="어떻게 해야 하나요?" id="what-should-i-do_12" tabindex="0">
          어떻게 해야 하나요?
         </h6>
         <p>
@@ -1883,7 +2056,7 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
          </a>
          에서 이 패치의 가용성을 추적할 수 있습니다.
         </p>
-        <h6 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_5" tabindex="0">
+        <h6 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_7" tabindex="0">
          이 패치로 어떤 취약점이 해결되나요?
         </h6>
         <p>
@@ -1959,7 +2132,7 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
          </code>
          에 액세스할 수 없으므로 이 취약점의 위험은 GKE 마스터로 한정됩니다.
         </p>
-        <h5 data-text="어떻게 해야 하나요?" id="what-should-i-do_11" tabindex="0">
+        <h5 data-text="어떻게 해야 하나요?" id="what-should-i-do_13" tabindex="0">
          어떻게 해야 하나요?
         </h5>
         <p>
@@ -1994,7 +2167,7 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
          </a>
          에서 이 패치의 가용성을 추적할 수 있습니다.
         </p>
-        <h5 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_6" tabindex="0">
+        <h5 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_8" tabindex="0">
          이 패치로 어떤 취약점이 해결되나요?
         </h5>
         <p>
@@ -2063,7 +2236,7 @@ https://raw.githubusercontent.com/GoogleCloudPlatform\
          </code>
          사용자에 매핑)으로 실행될 수 있습니다.
          <strong>
-          컨테이너가 루트가 아닌 사용자로 실행되고 노드 버전 1.13.6-gke.0~1.13.6-gke.6을 실행하고 있다면 컨테이너가 UID 0으로 실행되어서는 안 되는 클러스터의 모든 Pod에
+          컨테이너가 루트가 아닌 사용자로 실행되고 노드 버전 1.13.6-gke.0~1.13.6-gke.6을 실행하고 있다면 컨테이너가 UID 0으로 실행되어서는 안 되는 클러스터의 모든 pod에
           <code dir="ltr" translate="no">
            RunAsUser
           </code>
@@ -2130,11 +2303,11 @@ kubectl get nodes -o=jsonpath='{range .items[*]}'\
           를 지정하는 pod는 UID 0으로 시작하지 않지만 이 문제의 영향을 받을 경우 시작할 수 없습니다.
          </li>
         </ul>
-        <h5 data-text="어떻게 해야 하나요?" id="what-should-i-do_12" tabindex="0">
+        <h5 data-text="어떻게 해야 하나요?" id="what-should-i-do_14" tabindex="0">
          어떻게 해야 하나요?
         </h5>
         <p>
-         UID 0으로 실행하면 안 되는 클러스터의 모든 Pod에서
+         UID 0으로 실행하면 안 되는 클러스터의 모든 pod에서
          <a class="external" href="https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod">
           RunAsUser Security Context
          </a>
@@ -2244,7 +2417,7 @@ kubectl get nodes -o=jsonpath='{range .items[*]}'\
          </a>
          를 참조하세요.
         </p>
-        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_13" tabindex="0">
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_15" tabindex="0">
          어떻게 해야 하나요?
         </h4>
         <p>
@@ -2315,7 +2488,7 @@ NAME                READY     STATUS    RESTARTS   AGE
 disable-smt-2xnnc   1/1       Running   0          6m</pre>
          </li>
          <li>
-          Pod의 로그에 'SMT가 사용 중지됨'이 표시되는지 확인합니다.
+          pod의 로그에 'SMT가 사용 중지됨'이 표시되는지 확인합니다.
           <pre dir="ltr" translate="no">
 
 kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
@@ -2348,7 +2521,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         <p>
          패치가 제공되면 패치가 포함된 버전으로 이 게시판이 업데이트됩니다.
         </p>
-        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_7" tabindex="0">
+        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_9" tabindex="0">
          이 패치로 어떤 취약점이 해결되나요?
         </h4>
         <p>
@@ -2449,7 +2622,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
           영향을 받는 클러스터를 최신 패치 버전으로 최대한 빨리 업그레이드하고 Istio 사이드카도 업그레이드하는 것이 좋습니다(아래 안내 참조).
          </strong>
         </p>
-        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_14" tabindex="0">
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_16" tabindex="0">
          어떻게 해야 하나요?
         </h4>
         <p>
@@ -2509,7 +2682,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
           1.13.4-gke.10
          </li>
         </ul>
-        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_8" tabindex="0">
+        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_10" tabindex="0">
          이 패치로 어떤 취약점이 해결되나요?
         </h4>
         <p>
@@ -2594,7 +2767,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
           이 취약점은 모든 Google Kubernetes Engine(GKE) 마스터에 영향을 미칩니다. 예정된 패치 버전에 이 취약점의 완화 방법이 포함됩니다. 몇 주 후 정기적인 업그레이드 주기에 따라 클러스터 마스터가 패치 버전으로 자동 업그레이드됩니다.
          </strong>
         </p>
-        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_15" tabindex="0">
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_17" tabindex="0">
          어떻게 해야 하나요?
         </h4>
         <p>
@@ -2610,7 +2783,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         <p>
          패치가 포함된 버전으로 이 게시판이 업데이트됩니다. 이 패치는 버전 1.10이 아닌 버전 1.11+에서만 사용할 수 있습니다.
         </p>
-        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_9" tabindex="0">
+        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_11" tabindex="0">
          이 패치로 어떤 취약점이 해결되나요?
         </h4>
         <p>
@@ -2675,7 +2848,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
           하는 것이 좋습니다.
          </strong>
         </p>
-        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_16" tabindex="0">
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_18" tabindex="0">
          어떻게 해야 하나요?
         </h4>
         <p>
@@ -2691,7 +2864,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         <p>
          새로운 버전의 runc는 메모리 사용량이 증가했으며 메모리 제한이 낮게(16MB 미만) 설정된 경우 컨테이너에 할당된 메모리를 업데이트해야 할 수 있습니다.
         </p>
-        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_10" tabindex="0">
+        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_12" tabindex="0">
          이 패치로 어떤 취약점이 해결되나요?
         </h4>
         <p>
@@ -2757,13 +2930,13 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         <p>
          <strong>
           이 취약점은 모든 Google Kubernetes Engine(GKE) 마스터에 영향을 미칩니다.
-          <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=ko#february-11-2019">
+          <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes-archive?hl=ko#february-11-2019">
            최신 패치 버전
           </a>
           에 이 취약점의 완화 방법이 포함됩니다. 몇 주 후 정기적인 업그레이드 주기에 따라 클러스터 마스터가 패치 버전으로 자동 업그레이드됩니다
          </strong>
         </p>
-        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_17" tabindex="0">
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_19" tabindex="0">
          어떻게 해야 하나요?
         </h4>
         <p>
@@ -2779,7 +2952,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         <p>
          이 패치는 GKE 1.10.12-gke.7, 1.11.6-gke.11, 1.11.7-gke.4, 1.12.5-gke.5 및 그 이상의 출시 버전에서 제공됩니다.
         </p>
-        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_11" tabindex="0">
+        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_13" tabindex="0">
          이 패치로 어떤 취약점이 해결되나요?
         </h4>
         <p>
@@ -2839,7 +3012,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         별도의 조치를 취할 필요가 없습니다.
          </strong>
         </p>
-        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_18" tabindex="0">
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_20" tabindex="0">
          어떻게 해야 하나요?
         </h4>
         <p>
@@ -2850,7 +3023,7 @@ kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
         <p>
          이 패치는 GKE 1.9.7-gke.11, 1.10.6-gke.11, 1.10.7-gke.11, 1.10.9-gke.5, 1.11.2-gke.18 및 그 이상의 출시 버전에서 제공됩니다.
         </p>
-        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_12" tabindex="0">
+        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_14" tabindex="0">
          이 패치로 어떤 취약점이 해결되나요?
         </h4>
         <p>
@@ -2974,7 +3147,7 @@ networkpolicies.networking.k8s.io           [watch list]
      <tbody>
       <tr>
        <td>
-        kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}x' | xargs kubectl delete secret --namespace kube-system
+        kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
        </td>
       </tr>
      </tbody>
@@ -3301,7 +3474,7 @@ NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.244.0.0/14")
       <tr>
        <td>
         <p>
-         Git에서 최근 발견된 취약점은 권한 없는 사용자가 gitRepo 볼륨이 포함된 Pod를 생성할 수 있을 경우 Kubernetes 내의 권한 에스컬레이션이 가능할 수도 있다는 문제를 안고 있습니다. 이 CVE는
+         Git에서 최근 발견된 취약점은 권한 없는 사용자가 gitRepo 볼륨이 포함된 pod를 생성할 수 있을 경우 Kubernetes 내의 권한 에스컬레이션이 가능할 수도 있다는 문제를 안고 있습니다. 이 CVE는
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-11235">
           CVE-2018-11235
          </a>
@@ -3315,7 +3488,7 @@ NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.244.0.0/14")
         </p>
         <ul>
          <li>
-          신뢰할 수 없는 사용자가 Pod를 생성하거나 Pod 생성을 트리거할 수 있습니다.
+          신뢰할 수 없는 사용자가 pod를 생성하거나 pod 생성을 트리거할 수 있습니다.
          </li>
          <li>
           신뢰할 수 없는 사용자가 생성한 pod에 호스트 루트 액세스를 방지하는 제한이 있습니다(예:
@@ -3332,7 +3505,7 @@ pod가 gitRepo 볼륨 유형을 사용할 수 있습니다.
         <p>
          모든 Kubernetes Engine 노드가 취약합니다.
         </p>
-        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_19" tabindex="0">
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_21" tabindex="0">
          어떻게 해야 하나요?
         </h4>
         <p>
@@ -3441,7 +3614,7 @@ spec:
          </a>
          하는 것이 좋습니다.
         </p>
-        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_20" tabindex="0">
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_22" tabindex="0">
          어떻게 해야 하나요?
         </h4>
         <p>
@@ -3541,7 +3714,7 @@ spec:
          </a>
          는 컨테이너가 컨테이너 외부 파일에 액세스할 수 있다는 문제를 안고 있습니다. 이 취약점은 모든 Kubernetes Engine 노드에 영향을 미치므로 아래의 세부정보를 참고하여 최대한 빨리 최신 패치 버전으로 업그레이드하는 것이 좋습니다.
         </p>
-        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_21" tabindex="0">
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_23" tabindex="0">
          어떻게 해야 하나요?
         </h4>
         <p>
