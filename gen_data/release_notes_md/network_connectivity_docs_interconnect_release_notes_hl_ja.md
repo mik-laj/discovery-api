@@ -10,6 +10,18 @@
 URL ディレクトリ ` https://cloud.google.com/feeds/cloudinterconnect-release-
 notes.xml ` を直接追加します。
 
+##  August 19, 2020
+
+**FEATURE:**
+
+Organization policy constraints for Cloud Interconnect is available in
+**Beta** .
+
+To control which VPC networks can use Cloud Interconnect, you can set an
+organization policy. For more information, see [ Restricting Cloud
+Interconnect usage ](https://cloud.google.com/network-
+connectivity/docs/interconnect/how-to/restricting-usage?hl=ja) .
+
 ##  June 16, 2020
 
 **CHANGED:**
