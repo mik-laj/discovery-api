@@ -18,6 +18,88 @@ Isolation-at-different-layers-of-the-Kubernetes-stack.html) 를 참조하세요.
 추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/kubernetes-
 engine-security-bulletins.xml `
 
+##  GCP-2020-011
+
+**게시:** 2020년 7월 24일  
+설명  |  심각도  |  참고  
+---|---|---  
+  
+네트워킹 취약점 [ CVE-2020-8558
+](https://github.com/kubernetes/kubernetes/issues/92315) 이 최근 Kubernetes에서
+발견되었습니다. 서비스는 로컬 루프백 인터페이스(127.0.0.1)를 사용하여 동일한 pod 내에서 실행되는 다른 애플리케이션과 통신하는
+경우도 있습니다. 이 취약점은 클러스터 네트워크에 액세스할 수 있는 공격자가 인접한 pod 및 노드의 루프백 인터페이스로 트래픽을 전송할 수
+있게 해줍니다. 루프백 인터페이스에 의존하는 서비스는 pod 외부에서 액세스할 수 없습니다.
+
+GKE 클러스터의 이 취약점을 악용하려면 공격자가 클러스터의 VPC를 호스팅하는 Google Cloud에 네트워크 관리자 권한이 있어야
+합니다. 이 취약점만으로는 공격자가 네트워크 관리자 권한을 부여하지 않습니다. 이러한 이유로 이 취약점에는 GKE에 대한 낮은 심각도가
+할당되었습니다.
+
+####  어떻게 해야 하나요?
+
+이 취약점을 해결하려면 클러스터의 노드 풀을 다음 GKE 버전(및 이상)으로 [ 업그레이드
+](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-
+upgrades?hl=ko) 하세요.
+
+  * 1.17.7-gke.0 
+  * 1.16.11-gke.0 
+  * 1.16.10-gke.11 
+  * 1.16.9-gke.14 
+
+####  이 패치로 어떤 취약점이 해결되나요?
+
+이 패치는 [ CVE-2020-8558 ](https://github.com/kubernetes/kubernetes/issues/92315)
+취약점을 해결합니다.
+
+|
+
+낮음
+
+|
+
+[ CVE-2020-8558 ](https://github.com/kubernetes/kubernetes/issues/92315)  
+  
+##  GCP-2020-009
+
+**게시:** 2020년 7월 15일  설명  |  심각도  |  참고  
+---|---|---  
+  
+Kubernetes에서 권한 에스컬레이션 취약점 [ CVE-2020-8559 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8559) 가 최근에 발견되었습니다. 이 취약점을 통해 노드가 이미 손상된 공격자가
+클러스터의 모든 pod에서 명령어를 실행할 수 있습니다. 따라서 공격자는 이미 도용된 노드를 사용하여 다른 노드를 손상시킬 수 있으며 정보를
+읽거나 파괴적인 작업을 유발할 수 있습니다.
+
+공격자가 이 취약점을 악용하려는 경우, 클러스터의 노드는 이미 손상되었을 것입니다. 이 취약점 자체는 클러스터에 있는 노드를 손상시키지
+않습니다.
+
+####  어떻게 해야 하나요?
+
+클러스터를 패치된 버전으로 [ 업그레이드 ](https://cloud.google.com/kubernetes-
+engine/docs/concepts/cluster-upgrades?hl=ko) 합니다. 클러스터는 다음 주에 걸쳐 자동으로 업그레이드되고
+패치 버전이 2020년 7월 19일까지 가속화된 수동 업그레이드 일정에 따라 제공됩니다. 다음 GKE 제어 영역 버전 또는 더 최신 버전에는
+이 취약점에 대한 수정사항이 포함되어 있습니다.
+
+  * v1.14.10-gke.46 
+  * v1.15.12-gke.8 
+  * v1.16.9-gke.11 
+  * v1.16.10-gke.9 
+  * v1.16.11-gke.3+ 
+  * v1.17.7-gke.6+ 
+
+####  이 패치로 어떤 취약점이 해결되나요?
+
+이러한 패치는 CVE-2020-8559 취약점을 완화합니다. 이것은 GKE에서 '보통' 등급의 취약점으로 분류됩니다. 공격자가 클러스터,
+노드, 워크로드에 대한 직접적인 정보를 제공하여 기존의 손상된 노드 외에 이 공격을 효과적으로 이용해야 하기 때문입니다. 이 취약점 자체는
+공격자에게 손상된 노드를 제공하지 않습니다.
+
+|
+
+보통
+
+|
+
+[ CVE-2020-8559 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8559)  
+  
 ##  GCP-2020-007
 
 **게시:** 2020년 6월 1일  
@@ -52,7 +134,7 @@ channels?hl=ko) 을 사용하는 클러스터는 이미 완화책이 적용된 �
 이러한 패치는 CVE-2020-8555 취약점을 완화합니다. 악용을 방지하기 위한 여러 제어 영역 강화 조치로 이 문제는 GKE에서 '보통'
 등급의 취약점으로 분류됩니다.
 
-특정 볼륨 유형(GlusterFS, Quobyte, StorageFS, ScaleIO)이 내장된 Pod 생성 또는 StorageClass
+특정 볼륨 유형(GlusterFS, Quobyte, StorageFS, ScaleIO)이 내장된 pod 생성 또는 StorageClass
 생성 권한을 보유한 공격자는 마스터의 호스트 네트워크에서 요청 본문을 제어하지 _않아도_ ` kube-controller-manager `
 에서 ` GET ` 요청 또는 ` POST ` 요청을 보내도록 만들 수 있습니다. 이러한 볼륨은 GKE에서 거의 사용되지 않으므로 이러한
 볼륨이 새로 사용된 것은 유용한 감지 신호일 수 있습니다.
@@ -140,7 +222,7 @@ controller?hl=ko) 를 통해 이 기능과 기타 강력한 기능을 기본적�
               - "NET_RAW"
         
 
-    * 또는 Pod 사양을 업데이트합니다. 
+    * 또는 pod 사양을 업데이트합니다. 
         
                 
         # Dropping CAP_NET_RAW from a Pod:
@@ -646,7 +728,7 @@ cluster?hl=ko) 하는 것이 좋습니다. 패치 버전은 다음 GKE 출시를
 ######  이 패치로 어떤 취약점이 해결되나요?
 
 이 패치로 다음의 취약점이 완화됩니다. [ CVE-2019-11247 ](https://cve.mitre.org/cgi-
-bin/cvename.cgi?name=CVE-2019-11247)
+bin/cvename.cgi?name=CVE-2019-11247) .
 
 |
 
@@ -898,7 +980,7 @@ Kubernetes 프로젝트에서 공개한 kubelet v1.13.6 및 v1.14.2의 취약점
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11245) 로 인해 컨테이너 이미지에 다른
 사용자가 지정되었더라도 컨테이너가 UID 0(일반적으로 ` root ` 사용자에 매핑)으로 실행될 수 있습니다. **컨테이너가 루트가 아닌
 사용자로 실행되고 노드 버전 1.13.6-gke.0~1.13.6-gke.6을 실행하고 있다면 컨테이너가 UID 0으로 실행되어서는 안 되는
-클러스터의 모든 Pod에` RunAsUser ` 를 설정하는 것이 좋습니다. **
+클러스터의 모든 pod에` RunAsUser ` 를 설정하는 것이 좋습니다. **
 
 루트가 아닌 ` USER ` 값이 지정되면(예: Dockerfile에서 ` USER ` 값 설정) 예상치 못한 동작이 발생합니다. 컨테이너가
 노드에서 처음 실행될 때는 지정된 UID를 올바르게 고려합니다. 그러나, 이 결함으로 인해 두 번째 실행 이후에는 지정된 UID와 관계없이
@@ -932,7 +1014,7 @@ Kubernetes 프로젝트에서 공개한 kubelet v1.13.6 및 v1.14.2의 취약점
 
 #####  어떻게 해야 하나요?
 
-UID 0으로 실행하면 안 되는 클러스터의 모든 Pod에서 [ RunAsUser Security Context
+UID 0으로 실행하면 안 되는 클러스터의 모든 pod에서 [ RunAsUser Security Context
 ](https://kubernetes.io/docs/tasks/configure-pod-container/security-
 context/#set-the-security-context-for-a-pod) 를 설정합니다. [ PodSecurityPolicy
 ](https://kubernetes.io/docs/concepts/policy/pod-security-policy/) 를 사용하여 이
@@ -1021,7 +1103,7 @@ n1-standard-1, g1-small, f1-micro VM은 1개의 vCPU만 게스트 환경에 노�
     
     disable-smt-2xnnc   1/1       Running   0          6m
 
-  4. Pod의 로그에 'SMT가 사용 중지됨'이 표시되는지 확인합니다. 
+  4. pod의 로그에 'SMT가 사용 중지됨'이 표시되는지 확인합니다. 
     
         
     kubectl logs disable-smt-2xnnc disable-smt -n kube-system
@@ -1213,8 +1295,8 @@ bin/cvename.cgi?name=CVE-2019-6486) 은 P-521 및 P-384 타원 곡선의 암호�
 announce/mVeX35iXuSw) 를 참조하세요.
 
 **이 취약점은 모든 Google Kubernetes Engine(GKE) 마스터에 영향을 미칩니다.[ 최신 패치 버전
-](https://cloud.google.com/kubernetes-engine/docs/release-
-notes?hl=ko#february-11-2019) 에 이 취약점의 완화 방법이 포함됩니다. 몇 주 후 정기적인 업그레이드 주기에 따라
+](https://cloud.google.com/kubernetes-engine/docs/release-notes-
+archive?hl=ko#february-11-2019) 에 이 취약점의 완화 방법이 포함됩니다. 몇 주 후 정기적인 업그레이드 주기에 따라
 클러스터 마스터가 패치 버전으로 자동 업그레이드됩니다 **
 
 ####  어떻게 해야 하나요?
@@ -1324,7 +1406,7 @@ Google은 수정 배포를 통해 Calico CNI 플러그인을 마이그레이션�
 이러한 토큰은 다음의 명령어를 실행해 즉시 순환할 수 있으며, 서비스 계정의 신규 보안 비밀이 몇 초 이내에 자동으로 재생성됩니다.  
   
 kubectl get sa --namespace kube-system calico -o template --template '{{(index
-.secrets 0).name}}x' | xargs kubectl delete secret --namespace kube-system  
+.secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system  
 ---  
   
 ####  감지
@@ -1502,7 +1584,7 @@ cluster?hl=ko#upgrading-nodes) 하는 것이 좋습니다.
 설명  |  심각도  |  참고  
 ---|---|---  
   
-Git에서 최근 발견된 취약점은 권한 없는 사용자가 gitRepo 볼륨이 포함된 Pod를 생성할 수 있을 경우 Kubernetes 내의 권한
+Git에서 최근 발견된 취약점은 권한 없는 사용자가 gitRepo 볼륨이 포함된 pod를 생성할 수 있을 경우 Kubernetes 내의 권한
 에스컬레이션이 가능할 수도 있다는 문제를 안고 있습니다. 이 CVE는 [ CVE-2018-11235
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-11235) 태그로 식별됩니다.
 
@@ -1510,7 +1592,7 @@ Git에서 최근 발견된 취약점은 권한 없는 사용자가 gitRepo 볼�
 
 다음 항목이 모두 해당된다면 이 취약점의 영향을 받는 것입니다.
 
-  * 신뢰할 수 없는 사용자가 Pod를 생성하거나 Pod 생성을 트리거할 수 있습니다. 
+  * 신뢰할 수 없는 사용자가 pod를 생성하거나 pod 생성을 트리거할 수 있습니다. 
   * 신뢰할 수 없는 사용자가 생성한 pod에 호스트 루트 액세스를 방지하는 제한이 있습니다(예: [ PodSecurityPolicy ](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=ko) 를 통해 설정한 경우). 
   * 신뢰할 수 없는 사용자가 생성한 pod가 gitRepo 볼륨 유형을 사용할 수 있습니다. 
 
