@@ -12,6 +12,14 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/run-release-notes.xml `
 
+##  August 18, 2020
+
+**FEATURE:**
+
+You can now [ allocate up to 4GiB of memory
+](https://cloud.google.com/run/docs/configuring/memory-limits) to your Cloud
+Run (fully managed) services.
+
 ##  August 03, 2020
 
 **FEATURE:**
