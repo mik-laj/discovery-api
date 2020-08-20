@@ -19,15 +19,111 @@ trabalho, consulte [ Isolamento em camadas diferentes da pilha do Kubernetes
 Isolation-at-different-layers-of-the-Kubernetes-stack.html) (em inglês).
 
 Para receber os boletins de segurança mais recentes, adicione o URL desta
-página ao seu [ leitor de feeds
+página ao [ leitor de feeds
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ou adicione o URL
 do feed diretamente: ` https://cloud.google.com/feeds/kubernetes-engine-
 security-bulletins.xml `
 
+##  GCP-2020-011
+
+**Publicado em:** 2020-07-24  
+Descrição  |  Gravidade  |  Observações  
+---|---|---  
+  
+Uma vulnerabilidade de rede, [ CVE-2020-8558
+](https://github.com/kubernetes/kubernetes/issues/92315) , foi descoberta
+recentemente no Kubernetes. Às vezes, os serviços se comunicam com outros
+aplicativos em execução no mesmo pod usando a interface de loopback local
+(127.0.0.1). Essa vulnerabilidade permite que um invasor com acesso à rede do
+cluster envie tráfego para a interface de loopback de pods e nós adjacentes.
+Os serviços que dependem da interface de loopback e não são acessados fora do
+pod podem ser explorados.
+
+A exploração dessa vulnerabilidade nos clusters do GKE requer que um invasor
+tenha privilégios de administrador de rede no Google Cloud que hospede a VPC
+do cluster. Por si só, essa vulnerabilidade não concede privilégios de
+administrador de rede a invasores. Por esse motivo, essa vulnerabilidade foi
+atribuída a uma gravidade baixa para o GKE.
+
+####  O que fazer?
+
+Para corrigir essa vulnerabilidade, [ faça upgrade
+](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-
+upgrades?hl=pt_br) dos pools de nós do cluster para as seguintes versões do
+GKE (e posteriores):
+
+  * 1.17.7-gke.0 
+  * 1.16.11-gke.0 
+  * 1.16.10-gke.11 
+  * 1.16.9-gke.14 
+
+####  Qual vulnerabilidade é corrigida por esse patch?
+
+Esse patch corrige a seguinte vulnerabilidade: [ CVE-2020-8558
+](https://github.com/kubernetes/kubernetes/issues/92315) .
+
+|
+
+Baixa
+
+|
+
+[ CVE-2020-8558 ](https://github.com/kubernetes/kubernetes/issues/92315)  
+  
+##  GCP-2020-009
+
+**Publicado em:** 2020-07-15  Descrição  |  Gravidade  |  Observações  
+---|---|---  
+  
+Uma vulnerabilidade de escalonamento de privilégios, [ CVE-2020-8559
+](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8559) , foi
+descoberta recentemente no Kubernetes. Essa vulnerabilidade permite que um
+invasor que já tenha comprometido um nó execute um comando em qualquer pod do
+cluster. Dessa forma, o invasor pode usar o nó já comprometido para
+comprometer outros nós e possivelmente ler informações ou causar ações
+destrutivas.
+
+Observe que, para que um invasor explore essa vulnerabilidade, é preciso que
+um nó do cluster já tenha sido comprometido. Essa vulnerabilidade, por si só,
+não comprometerá os nós do cluster.
+
+####  O que fazer?
+
+[ Faça upgrade ](https://cloud.google.com/kubernetes-
+engine/docs/concepts/cluster-upgrades?hl=pt_br) do cluster para uma versão com
+patch. Os clusters serão atualizados automaticamente nas próximas semanas, e
+as versões com patch estarão disponíveis até 19 de julho de 2020 para uma
+programação acelerada por upgrade manual. As seguintes versões do plano de
+controle do GKE ou mais recentes contêm a correção dessa vulnerabilidade:
+
+  * v1.14.10-gke.46 
+  * v1.15.12-gke.8 
+  * v1.16.9-gke.11 
+  * v1.16.10-gke.9 
+  * v1.16.11-gke.3+ 
+  * v1.17.7-gke.6+ 
+
+####  Qual vulnerabilidade é corrigida por esse patch?
+
+Esses patches mitigam a vulnerabilidade CVE-2020-8559. Isso é classificado
+como uma vulnerabilidade média do GKE, porque exige que o invasor tenha
+informações em primeira mão sobre o cluster, os nós e as cargas de trabalho
+para aproveitar esse ataque de forma eficaz, além de um nó comprometido. Essa
+vulnerabilidade em si não fornece a um invasor um nó comprometido.
+
+|
+
+Média
+
+|
+
+[ CVE-2020-8559 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8559)  
+  
 ##  GCP-2020-007
 
 **Publicado:** 01/06/2020  
-Descrição  |  Gravidade  |  Observações  
+Descrição  |  Gravidade  |  Notas  
 ---|---|---  
   
 Uma vulnerabilidade de falsificação da solicitação no lado do servidor (SSRF,
@@ -91,7 +187,7 @@ bin/cvename.cgi?name=CVE-2020-8555)
 ##  GCP-2020-006
 
 **Publicado:** 01/06/2020  
-Descrição  |  Gravidade  |  Observações  
+Descrição  |  Gravidade  |  Notas  
 ---|---|---  
   
 O Kubernetes divulgou [ uma vulnerabilidade
@@ -653,8 +749,8 @@ Recomendamos fazer upgrade do cluster para a versão de patch mais recente com
 a mitigação dessa vulnerabilidade assim que ela estiver disponível. Esperamos
 que ela esteja disponível em todas as zonas com o próximo lançamento do GKE,
 de acordo com a [ programação de lançamento
-](https://cloud.google.com/kubernetes-engine/docs/release-
-notes?hl=pt_br#september_16_2019) .
+](https://cloud.google.com/kubernetes-engine/docs/release-notes-
+archive?hl=pt_br#september_16_2019) .
 
 As versões de patch com a mitigação são:
 
@@ -698,8 +794,8 @@ maio de 2019  foi atualizado.
 
 O boletim de  5 de agosto de 2019  foi atualizado. A correção da
 vulnerabilidade documentada no boletim anterior está [ disponível
-](https://cloud.google.com/kubernetes-engine/docs/release-
-notes?hl=pt_br#august_22_2019) .
+](https://cloud.google.com/kubernetes-engine/docs/release-notes-
+archive?hl=pt_br#august_22_2019) .
 
 ##  8 de agosto de 2019
 
@@ -1272,7 +1368,7 @@ dos arquivos secundários do Istio (instruções abaixo).**
 automático de nós, é recomendável:**
 
   1. **[ Fazer upgrade manual ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=pt_br) do cluster assim que o patch estiver disponível. **
-  2. **Fazer upgrade dos seus arquivos secundários seguindo a[ documentação de upgrade de arquivos secundários ](https://istio.io/docs/setup/kubernetes/upgrade/steps/#sidecar-upgrade) . **
+  2. **Fazer upgrade dos seus arquivos secundários seguindo a[ documentação de upgrade de arquivos secundários ](https://archive.istio.io/v1.5/docs/setup/upgrade/cni-helm-upgrade/#control-plane-upgrade) . **
 
 As versões com patch serão disponibilizadas para todos os projetos do GKE
 hoje, antes das 19h00 PDT.
@@ -1320,7 +1416,7 @@ Descrição  |  Gravidade  |  Observações
 versões 1.11.8-gke.4, 1.13.4-gke.1 e posteriores. O patch ainda não está
 disponível na versão 1.12. Acompanhe a disponibilidade desses patches nas [
 notas de lançamento ](https://cloud.google.com/kubernetes-engine/docs/release-
-notes?hl=pt_br#march_19_2019) .
+notes-archive?hl=pt_br#march_19_2019) .
 
 Recentemente, o Kubernetes descobriu uma vulnerabilidade de negação de serviço
 [ CVE-2019-1002100 ](https://cve.mitre.org/cgi-
@@ -1386,8 +1482,8 @@ Para fazer upgrade dos seus nós, primeiro você precisa fazer o upgrade do
 mestre para a versão mais recente. Esse patch está disponível para Kubernetes
 1.10.12-gke.7, 1.11.6-gke.11, 1.11.7-gke.4, 1.12.5-gke.5 e para as versões
 mais recentes. Acompanhe a disponibilidade desses patches nas [ notas de
-lançamento ](https://cloud.google.com/kubernetes-engine/docs/release-
-notes?hl=pt_br#february-11-2019) .
+lançamento ](https://cloud.google.com/kubernetes-engine/docs/release-notes-
+archive?hl=pt_br#february-11-2019) .
 
 Apenas os nós do Ubuntu no GKE são afetados. Nós que executam COS não são
 afetados.
@@ -1435,8 +1531,8 @@ announce/mVeX35iXuSw) .
 
 **Todos os mestres do Google Kubernetes Engine (GKE) são afetados por essas
 vulnerabilidades. A[ versão de patch mais recente
-](https://cloud.google.com/kubernetes-engine/docs/release-
-notes?hl=pt_br#february-11-2019) inclui uma mitigação dessa vulnerabilidade.
+](https://cloud.google.com/kubernetes-engine/docs/release-notes-
+archive?hl=pt_br#february-11-2019) inclui uma mitigação dessa vulnerabilidade.
 Faremos upgrade automático dos clusters mestres para a versão com patch nas
 próximas semanas, no ritmo normal de atualização. **
 
@@ -1476,8 +1572,8 @@ Kubernetes ](https://groups.google.com/forum/?hl=pt_br#!topic/kubernetes-
 announce/GVllWCg6L88) . **Todas as instâncias mestras do Google Kubernetes
 Engine (GKE) foram afetadas por essas vulnerabilidades. O upgrade dos clusters
 para[ as versões de patch mais recentes ](https://cloud.google.com/kubernetes-
-engine/docs/release-notes?hl=pt_br#november-12-2018) já foi feito. Nenhuma
-ação é necessária. **
+engine/docs/release-notes-archive?hl=pt_br#november-12-2018) já foi feito.
+Nenhuma ação é necessária. **
 
 ####  O que fazer?
 
@@ -1922,9 +2018,9 @@ upgrades automáticos, recomendamos que faça o [ upgrade manual
 ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
 container-cluster?hl=pt_br) dos seus nós assim que o patch estiver disponível.
 Isso deve acontecer até 16 de março, mas, de acordo com a [ programação de
-lançamento ](https://cloud.google.com/kubernetes-engine/docs/release-
-notes?hl=pt_br#march-12-2018) , talvez você tenha acesso a ele antes com base
-na zona do seu cluster.
+lançamento ](https://cloud.google.com/kubernetes-engine/docs/release-notes-
+archive?hl=pt_br#march-12-2018) , talvez você tenha acesso a ele antes com
+base na zona do seu cluster.
 
 Para fazer o upgrade, primeiro você precisa atualizar sua instância mestra
 para a versão mais recente. Esse patch está disponível no Kubernetes versões
