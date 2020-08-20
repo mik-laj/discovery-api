@@ -24,7 +24,7 @@ changed features and related product information.
 
 ##  March 2020
 
-  * **Feature** : Cloud Volumes Service is available in the ` australia-southeast1 ` region. See [ Regional availability for Cloud Volumes Service ](/solutions/partners/netapp-cloud-volumes/regional-availability) . 
+  * **Feature** : Cloud Volumes Service is available in the ` australia-southeast1 ` (Sydney, Australia) region. See [ Regional availability for Cloud Volumes Service ](/solutions/partners/netapp-cloud-volumes/regional-availability) . 
 
 ##  February 2020
 
