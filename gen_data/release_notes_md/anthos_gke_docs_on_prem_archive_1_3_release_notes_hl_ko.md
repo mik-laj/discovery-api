@@ -1,6 +1,5 @@
-You are viewing documentation for a previous version of Anthos GKE on-prem. [
-View the latest documentation ](https://cloud.google.com/anthos/gke/docs/on-
-prem?hl=ko) .
+이전 버전의 Anthos GKE On-Prem 문서를 보고 있습니다. [ 최신 문서 보기
+](https://cloud.google.com/anthos/gke/docs/on-prem?hl=ko)
 
 #  출시 노트
 
