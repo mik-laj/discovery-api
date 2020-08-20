@@ -12,6 +12,100 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  August 19, 2020
+
+**AI Platform Prediction**
+
+**CHANGED:**
+
+You can now use [ runtime version 2.1 ](https://cloud.google.com/ai-
+platform/prediction/docs/runtime-version-list) to serve online predictions
+using scikit-learn 0.22.1 and XGBoost 0.90.
+
+**BigQuery**
+
+**FEATURE:**
+
+When using consecutive ` ON ` / ` USING ` clauses, parentheses are now
+optional and can be omitted. For example, you can use either of the following
+statements:
+
+  * ` FROM A JOIN (B JOIN C ON B.x = C.y) USING (z) `
+  * ` FROM A JOIN B JOIN C ON B.x = C.y USING (z) `
+
+**Cloud Interconnect**
+
+**FEATURE:**
+
+Organization policy constraints for Cloud Interconnect is available in
+**Beta** .
+
+To control which VPC networks can use Cloud Interconnect, you can set an
+organization policy. For more information, see [ Restricting Cloud
+Interconnect usage ](https://cloud.google.com/network-
+connectivity/docs/interconnect/how-to/restricting-usage) .
+
+**Cloud Load Balancing**
+
+**FEATURE:**
+
+The Organization policy constraint for [ restricting Cloud Load Balancing
+creation ](https://cloud.google.com/load-balancing/docs/org-policy-
+constraints) is now available in **General Availability** .
+
+**Cloud NAT**
+
+**FEATURE:**
+
+[ Organization policy constraints for Cloud NAT
+](https://cloud.google.com/nat/docs/org-policy-constraints) is available in
+**Beta** .
+
+**Cloud TPU**
+
+**CHANGED:**
+
+Cloud TPU now supports Shared VPC in Beta.
+
+Shared VPC allows an organization to connect resources from multiple projects
+to a common VPC network to communicate with each other securely and
+efficiently using internal IPs from that network. This release enables
+connecting to Cloud TPU Nodes from Shared VPC networks.
+
+**Config Connector**
+
+**FEATURE:**
+
+Add support for configuring Bigtable garbage collection policies with the `
+BigtableGCPolicy ` resource
+
+**FIXED:**
+
+Fixes issue where ` SQLUser ` would constantly update despite there being no
+changes.
+
+**FIXED:**
+
+Fix issue where Deletion Defender would sometimes panic during uninstallation
+of Config Connector, preventing uninstallation to complete.
+
+**FIXED:**
+
+Performance improvements.
+
+**Game Servers**
+
+**FEATURE:**
+
+**General availability release** Game Servers is generally available with
+release version v1.
+
+**FEATURE:**
+
+[ VPC Service Controls ](https://cloud.google.com/vpc-service-
+controls/docs/overview) provide additional security for Game Servers
+resources.
+
 ##  August 18, 2020
 
 **AI Platform Prediction**
@@ -74,6 +168,14 @@ Reservations. See [ Assign a project to None
 ](https://cloud.google.com/bigquery/docs/reservations-tasks#assign-project-to-
 none) .
 
+**Cloud Run**
+
+**FEATURE:**
+
+You can now [ allocate up to 4GiB of memory
+](https://cloud.google.com/run/docs/configuring/memory-limits) to your Cloud
+Run (fully managed) services.
+
 **Compute Engine**
 
 **FEATURE:**
@@ -91,6 +193,13 @@ For more information, see the [ VM instance pricing
 page.
 
 ##  August 17, 2020
+
+**AI Platform Deep Learning Containers**
+
+**FEATURE:**
+
+TensorFlow Enterprise 2.3 environments are now available. These environments
+include support for A100 GPU accelerators, CUDA 11, and TensorFloat-32 (TF32).
 
 **AI Platform Training**
 
@@ -2246,100 +2355,4 @@ Cloud Bigtable's fully integrated [ backups feature
 ](https://cloud.google.com/bigtable/docs/backups) is now generally available.
 Backups let you save a copy of a table's schema and data and restore the
 backup to a new table at a later time.
-
-##  July 21, 2020
-
-**AutoML Video Intelligence Object Tracking**
-
-**CHANGED:**
-
-In April 2020, a model upgrade for the AutoML Video Object Tracking feature
-was released. This release is for non-downloadable models only. Models trained
-after April 2020 may show improvements in the evaluation results.
-
-**Cloud Run**
-
-**FEATURE:**
-
-Cloud Run resources are now available in [ Cloud Asset Inventory
-](https://cloud.google.com/asset-inventory/docs/overview)
-
-**Compute Engine**
-
-**FEATURE:**
-
-You can now create _balanced persistent disks_ , in addition to standard and
-SSD persistent disks. Balanced persistent disks are an alternative to SSD
-persistent disks that balance performance and cost. For more information, see
-[ Persistent disk types
-](https://cloud.google.com/compute/docs/disks/index#disk-types) .
-
-**Config Connector**
-
-**FIXED:**
-
-bug fixes and performance improvements
-
-**Istio on Google Kubernetes Engine**
-
-**FIXED:**
-
-**Istio 1.4.10-gke.4**
-
-Fixes known security issues with the same fixes as [ OSS Istio 1.4.10
-](https://istio.io/news/releases/1.4.x/announcing-1.4.10/)
-
-**Recommendations AI**
-
-**FEATURE:**
-
-**Recommendations AI public beta**
-
-Recommendations AI is now in public beta.
-
-**CHANGED:**
-
-**New pricing available**
-
-Pricing for Recommendations AI has been updated for public beta. For new
-pricing and free trial details, see [ Pricing
-](https://cloud.google.com/recommendations-ai/pricing) .
-
-**FEATURE:**
-
-**UI redesign**
-
-The [ Recommendations AI console
-](https://console.cloud.google.com/recommendation/catalogs/default_catalog/dashboard)
-has a new look. You'll see a new layout, including a redesigned dashboard and
-improved [ alerts setup ](https://cloud.google.com/recommendations-
-ai/docs/monitor) .
-
-**FEATURE:**
-
-**New support resources**
-
-We have new support resources available:
-
-  * File bugs and feature requests on our [ public issue tracker ](https://issuetracker.google.com/issues/new?component=911831) . 
-  * Ask a question about Recommendations AI [ on Stack Overflow ](http://stackoverflow.com/questions/tagged/google-cloud-recommendations) , using the tag ` google-cloud-recommendations ` . 
-  * Join the [ cloud-recommendations-users ](https://groups.google.com/forum/#!forum/cloud-recommendations-users) Google group to discuss Recommendations AI and receive announcements and updates. 
-
-See [ Getting support ](https://cloud.google.com/recommendations-
-ai/docs/getting-support) for all support resources.
-
-**FEATURE:**
-
-**New FAQ page**
-
-A Frequently Asked Questions page is now available. [ See the FAQ here
-](https://cloud.google.com/recommendations-ai/docs/faq) .
-
-**Traffic Director**
-
-**FEATURE:**
-
-Traffic Director supports proxyless gRPC applications in General Availability.
-In this deployment model, gRPC applications can participate in a service mesh
-without needing a sidecar proxy.
 
