@@ -13,7 +13,24 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloud-game-servers-release-
 notes.xml `
 
+##  August 19, 2020
+
+v1
+
+**FEATURE:**
+
+**General availability release** Game Servers is generally available with
+release version v1.
+
+**FEATURE:**
+
+[ VPC Service Controls ](https://cloud.google.com/vpc-service-
+controls/docs/overview) provide additional security for Game Servers
+resources.
+
 ##  May 18, 2020
+
+v1beta
 
 **CHANGED:**
 
@@ -25,6 +42,8 @@ to/updating-rollout) . You can now create, view, update, and delete game
 server configs, deployments, and rollouts from the Cloud Console.
 
 ##  March 23, 2020
+
+v1beta
 
 **FEATURE:**
 
