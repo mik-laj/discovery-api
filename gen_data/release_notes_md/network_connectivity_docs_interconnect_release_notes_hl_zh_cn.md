@@ -9,6 +9,18 @@
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/cloudinterconnect-release-notes.xml `
 
+##  August 19, 2020
+
+**FEATURE:**
+
+Organization policy constraints for Cloud Interconnect is available in
+**Beta** .
+
+To control which VPC networks can use Cloud Interconnect, you can set an
+organization policy. For more information, see [ Restricting Cloud
+Interconnect usage ](https://cloud.google.com/network-
+connectivity/docs/interconnect/how-to/restricting-usage?hl=zh-cn) .
+
 ##  June 16, 2020
 
 **CHANGED:**
