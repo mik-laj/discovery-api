@@ -12,6 +12,17 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/tpu-release-notes.xml `
 
+##  August 19, 2020
+
+**CHANGED:**
+
+Cloud TPU now supports Shared VPC in Beta.
+
+Shared VPC allows an organization to connect resources from multiple projects
+to a common VPC network to communicate with each other securely and
+efficiently using internal IPs from that network. This release enables
+connecting to Cloud TPU Nodes from Shared VPC networks.
+
 ##  May 29, 2020
 
 **CHANGED:**
