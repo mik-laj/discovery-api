@@ -12,6 +12,16 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/istio-release-notes.xml `
 
+##  August 20, 2020
+
+1.4.x
+
+**FIXED:**
+
+**Istio 1.4.10-gke.5**
+
+Fixes an issue with protocol detection connection timeouts.
+
 ##  August 05, 2020
 
 1.4.x
