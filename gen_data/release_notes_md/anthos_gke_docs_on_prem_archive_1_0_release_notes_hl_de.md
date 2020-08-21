@@ -1,6 +1,6 @@
 #  Versionshinweise
 
-Auf dieser Seite werden die Produktionsaktualisierungen von GKE On-Prem
+Auf dieser Seite werden Produktionsaktualisierungen von GKE On-Prem
 dokumentiert. Prüfen Sie diese Seite regelmäßig auf Hinweise zu neuen oder
 aktualisierten Funktionen, Fehlerkorrekturen, bekannten Problemen und
 verworfenen Funktionen.
@@ -272,9 +272,9 @@ to/administration/diagnose?hl=de#capture_admin) -Befehl ist der Parameter `
 
 Am 8. Mai 2019 haben wir eine Änderung an Connect eingeführt, dem Dienst, mit
 dem Sie über die Cloud Console mit Ihren GKE On-Prem-Clustern interagieren
-können. Wenn Sie den neuen Connect-Agent verwenden möchten, müssen Sie Ihre
-Cluster noch einmal in der Cloud Console registrieren oder ein Upgrade auf
-Anthos GKE On-Prem Beta-1.4 durchführen.
+können. Damit Sie den neuen Connect-Agent verwenden können, müssen Sie Ihre
+Cluster noch einmal mit der Cloud Console registrieren oder ein Upgrade auf
+GKE On-Pre-Beta-1.4 ausführen.
 
 Ihre GKE On-Prem-Cluster und die darauf ausgeführten Arbeitslasten
 funktionieren weiterhin ohne Unterbrechung. Ihre Cluster sind jedoch erst in
@@ -303,8 +303,8 @@ Sie die alte Rolle:
           --member="serviceAccount:[SERVICE_ACCOUNT_NAME]@[PROJECT_ID].iam.gserviceaccount.com" \
           --role="roles/clusterregistry.connect"
 
-Registrieren Sie den Cluster neu oder führen Sie ein Upgrade auf Anthos GKE on
--sein Beta-1.4 durch.
+Registrieren Sie den Cluster neu oder führen Sie ein Upgrade auf GKE On-Prem
+Beta-1.4 aus.
 
 So [ registrieren Sie den Cluster erneut
 ](https://cloud.google.com/kubernetes-engine/connect/updating-agent?hl=de) :
@@ -317,7 +317,7 @@ So [ registrieren Sie den Cluster erneut
           --kubeconfig-file=[KUBECONFIG_PATH] \
           --project=[PROJECT_ID]
 
-[ Upgrade auf Anthos GKE on-premale Betaversion 1.4:
+[ Upgrade auf Anthos GKE On-Prem Beta-1.4:
 ](https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.0/beta-1.4/how-
 to/administration/upgrading-a-cluster?hl=de) :
 
@@ -403,9 +403,9 @@ ssh-key-path ` jetzt optional.
 
 Am 8. Mai 2019 haben wir eine Änderung an Connect eingeführt, dem Dienst, mit
 dem Sie über die Cloud Console mit Ihren GKE On-Prem-Clustern interagieren
-können. Wenn Sie den neuen Connect-Agent verwenden möchten, müssen Sie Ihre
-Cluster noch einmal in der Cloud Console registrieren oder ein Upgrade auf
-Anthos GKE On-Prem Beta-1.4 durchführen.
+können. Damit Sie den neuen Connect-Agent verwenden können, müssen Sie Ihre
+Cluster noch einmal mit der Cloud Console registrieren oder ein Upgrade auf
+GKE On-Pre-Beta-1.4 ausführen.
 
 Ihre GKE On-Prem-Cluster und die darauf ausgeführten Arbeitslasten
 funktionieren weiterhin ohne Unterbrechung. Ihre Cluster sind jedoch erst in
@@ -434,8 +434,8 @@ Sie die alte Rolle:
           --member="serviceAccount:[SERVICE_ACCOUNT_NAME]@[PROJECT_ID].iam.gserviceaccount.com" \
           --role="roles/clusterregistry.connect"
 
-Registrieren Sie den Cluster neu oder führen Sie ein Upgrade auf Anthos GKE on
--sein Beta-1.4 durch.
+Registrieren Sie den Cluster neu oder führen Sie ein Upgrade auf GKE On-Prem
+Beta-1.4 aus.
 
 So [ registrieren Sie den Cluster erneut
 ](https://cloud.google.com/kubernetes-engine/connect/updating-agent?hl=de) :
@@ -448,7 +448,7 @@ So [ registrieren Sie den Cluster erneut
           --kubeconfig-file=[KUBECONFIG_PATH] \
           --project=[PROJECT_ID]
 
-[ Upgrade auf Anthos GKE on-premale Betaversion 1.4:
+[ Upgrade auf Anthos GKE On-Prem Beta-1.4:
 ](https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.0/beta-1.4/how-
 to/administration/upgrading-a-cluster?hl=de) :
 
