@@ -8,6 +8,12 @@
 URL ディレクトリ ` https://cloud.google.com/feeds/gaestd-java-release-notes.xml `
 を直接追加します。
 
+##  August 20, 2020
+
+**CHANGED:**
+
+Updated Java SDK to version 1.9.82.
+
 ##  July 23, 2020
 
 **FEATURE:**
