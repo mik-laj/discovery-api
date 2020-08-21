@@ -11,6 +11,15 @@
 URL ディレクトリ ` https://cloud.google.com/feeds/spanner-release-notes.xml `
 を直接追加します。
 
+##  August 20, 2020
+
+**FEATURE:**
+
+A new [ multi-region instance configuration
+](https://cloud.google.com/spanner/docs/instances?hl=ja#available-
+configurations-multi-region) is now available in North America - ` nam11 `
+(Iowa/South Carolina).
+
 ##  August 06, 2020
 
 **FEATURE:**
