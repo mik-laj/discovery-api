@@ -13,6 +13,23 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloudresourcemanager-release-
 notes.xml `
 
+##  August 19, 2020
+
+**FEATURE:**
+
+The Organization Policies for [ restricting Cloud Interconnect usage
+](https://cloud.google.com/network-connectivity/docs/interconnect/how-
+to/restricting-usage) have launched into beta.
+
+The Organization Policy for [ restricting protocol forwarding creation
+](https://cloud.google.com/compute/docs/protocol-
+forwarding#enforcing_protocol_forwarding_settings_across_a_project_folder_or_organization)
+has launched into general availability.
+
+The Organization policy for [ restricting Cloud Load Balancing creation
+](https://cloud.google.com/load-balancing/docs/org-policy-constraints) has
+launched into general availability.
+
 ##  August 14, 2020
 
 **FEATURE:**
