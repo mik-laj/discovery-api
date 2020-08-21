@@ -12,6 +12,163 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-release-notes.xml `
 
+##  August 20, 2020
+
+**Anthos**
+
+**FEATURE:**
+
+[ Anthos ](https://cloud.google.com/anthos) 1.4.2 is now available.
+
+**Updated components:**
+
+  * [ Anthos GKE on-prem release notes ](https://cloud.google.com/anthos/gke/docs/on-prem/release-notes)
+  * [ Anthos Config Management release notes ](https://cloud.google.com/anthos-config-management/docs/release-notes)
+
+**Anthos Config Management**
+
+**FEATURE:**
+
+Anthos Config Management now includes [ Config Connector
+](https://cloud.google.com/config-connector) v1.15.1.
+
+**FEATURE:**
+
+Anthos Policy Controller has been updated to include a more recent build of
+OPA Gatekeeper ( [ hash: 1de87b6 ](https://github.com/open-policy-
+agent/gatekeeper/commit/1de87b6d3c2ed3609e69b789d722e28285873861) ).
+
+**CHANGED:**
+
+This release includes several logging and performance improvements.
+
+**ISSUE:**
+
+An issue with git submodule support is preventing syncing of configuration
+stored in submodule repositories. If this affects you, please [ contact
+support ](https://cloud.google.com/support-hub) so we can suggest ways to
+handle your required use cases.
+
+**Anthos GKE on-prem**
+
+**FEATURE:**
+
+Anthos GKE on-prem 1.4.2-gke.3 is now available. To upgrade, see [ Upgrading
+GKE on-prem ](https://cloud.google.comanthos/gke/docs/on-prem/how-
+to/upgrading) . GKE on-prem 1.4.2-gke.3 clusters run on Kubernetes
+1.16.11-gke.11.
+
+**FEATURE:**
+
+GPU support (beta solution in collaboration with Nvidia)
+
+[ In partnership with Nvidia
+](https://cloud.google.com/blog/products/compute/anthos-supports-nvidia-gpus)
+, users can now manually attach a GPU to a worker node VM to run GPU
+workloads. This requires using the [ open source Nvidia GPU operator
+](https://github.com/NVIDIA/gpu-operator) .
+
+**Note:** Manually attached GPUs do not persist through node lifecycle events.
+You must manually re-attach them. This is a beta solution and can be used for
+evaluation and proof of concept.
+
+**CHANGED:**
+
+The Ubuntu image is upgraded to include the newest packages.
+
+**CHANGED:**
+
+` gkectl delete loadbalancer ` is updated to support the new version of
+configuration files for admin and user clusters.
+
+**FIXED:**
+
+**Fixes:**
+
+  * Resolved a few incorrect Kubelet Metrics' names collected by Prometheus. 
+  * Updated restarting machines process during admin cluster upgrade to make the upgrade process more resilient to transient connection issues. 
+  * Resolved a preflight check OS image validation error when using a non-default vSphere folder for cluster creation; the OS image template is expected to be in that folder. 
+  * Resolved a ` gkectl upgrade loadbalancer ` issue to avoid validating the upgraded SeesawGroup. This fix lets the existing SeesawGroup config be updated without negatively affecting the upgrade process. 
+  * Resolved an issue where ClientConfig CRD is deleted when the upgrade to the latest version is run multiple times. 
+  * Resolved a ` gkectl update credentials vsphere ` issue where the vsphere-metrics-exporter was using the old credentials even after updating the credentials. 
+  * Resolved an issue where the VIP preflight check reported a user cluster add-on load balancer IP false positive. 
+  * Fixed ` gkeadm ` updating config after upgrading on Windows, specifically for the ` gkeOnPremVersion ` and ` bundlePath ` fields. 
+  * Automatically mount the data disk after rebooting on admin workstations created using ` gkeadm ` 1.4.0 and later. 
+  * Reverted thin disk provisioning change for boot disks in 1.4.0 and 1.4.1 on all normal (excludes test VMs) cluster nodes. 
+  * Removed vCenter Server access check from user cluster nodes. 
+
+**App Engine standard environment Java**
+
+**CHANGED:**
+
+Updated Java SDK to version 1.9.82.
+
+**Cloud Spanner**
+
+**FEATURE:**
+
+A new [ multi-region instance configuration
+](https://cloud.google.com/spanner/docs/instances#available-configurations-
+multi-region) is now available in North America - ` nam11 ` (Iowa/South
+Carolina).
+
+**Cloud TPU**
+
+**FEATURE:**
+
+#  PyTorch/XLA 1.6 Release (GA)
+
+##  Highlights
+
+Cloud TPUs now support the [ PyTorch 1.6 release
+](https://github.com/pytorch/pytorch/releases/tag/v1.6.0) , via PyTorch/XLA
+integration. With this release we mark our general availability (GA) with the
+models such as ResNet, FairSeq Transformer and RoBERTa, and HuggingFace GLUE
+task models that have been rigorously tested and optimized.
+
+In addition, with our PyTorch/XLA 1.6 release, you no longer need to run the [
+env-setup.py ](https://github.com/pytorch/xla/blob/master/contrib/scripts/env-
+setup.py) script on Colab/Kaggle as those are now compatible with native `
+torch ` wheels. You can still continue to use that script if you would like to
+run with our latest unstable releases.
+
+##  New Features
+
+  * XLA RNG state checkpointing/loading (https://github.com/pytorch/xla/pull/2096) 
+  * Device Memory XRT API (https://github.com/pytorch/xla/pull/2295) 
+  * [Kaggle/Colab] Small host VM memory environment utility (https://github.com/pytorch/xla/pull/2025) 
+  * [Advanced User] XLA Builder Support (https://github.com/pytorch/xla/pull/2125) 
+  * New op supported on PyTorch/XLA 
+    * Hardsigmoid (https://github.com/pytorch/xla/pull/1940) 
+    * true_divide (https://github.com/pytorch/xla/pull/1782) 
+    * max_unpool2d (https://github.com/pytorch/xla/pull/2188) 
+    * max_unpool3d (https://github.com/pytorch/xla/pull/2188) 
+    * Replication_pad1d (https://github.com/pytorch/xla/pull/2188) 
+    * Replication_pad2d (https://github.com/pytorch/xla/pull/2188) 
+  * Dynamic shape support on XLA:CPU and XLA:GPU (experimental) 
+
+##  Bug Fixes
+
+  * RNG Fix (proper dropout) 
+  * Manual all-reduce in backward pass (https://github.com/pytorch/xla/pull/2325) 
+
+**Compute Engine**
+
+**FEATURE:**
+
+The Organization Policy for [ restricting protocol forwarding creation
+](https://cloud.google.com/compute/docs/protocol-
+forwarding#enforcing_protocol_forwarding_settings_across_a_project_folder_or_organization)
+has launched into general availability.
+
+**Istio on Google Kubernetes Engine**
+
+**FIXED:**
+
+**Istio 1.4.10-gke.5**
+
+Fixes an issue with protocol detection connection timeouts.
+
 ##  August 19, 2020
 
 **AI Platform Prediction**
@@ -63,7 +220,7 @@ constraints) is now available in **General Availability** .
 
 **Cloud TPU**
 
-**CHANGED:**
+**FEATURE:**
 
 Cloud TPU now supports Shared VPC in Beta.
 
@@ -105,6 +262,23 @@ release version v1.
 [ VPC Service Controls ](https://cloud.google.com/vpc-service-
 controls/docs/overview) provide additional security for Game Servers
 resources.
+
+**Resource Manager**
+
+**FEATURE:**
+
+The Organization Policies for [ restricting Cloud Interconnect usage
+](https://cloud.google.com/network-connectivity/docs/interconnect/how-
+to/restricting-usage) have launched into beta.
+
+The Organization Policy for [ restricting protocol forwarding creation
+](https://cloud.google.com/compute/docs/protocol-
+forwarding#enforcing_protocol_forwarding_settings_across_a_project_folder_or_organization)
+has launched into general availability.
+
+The Organization policy for [ restricting Cloud Load Balancing creation
+](https://cloud.google.com/load-balancing/docs/org-policy-constraints) has
+launched into general availability.
 
 ##  August 18, 2020
 
@@ -2332,27 +2506,4 @@ center/docs/network-topology/reference/metrics-reference) .
 [ Serverless VPC Access ](https://cloud.google.com/vpc/docs/configure-
 serverless-vpc-access) support for [ Shared VPC
 ](https://cloud.google.com/vpc/docs/shared-vpc) is now available in **Beta** .
-
-##  July 22, 2020
-
-**Anthos Service Mesh**
-
-**FEATURE:**
-
-**1.6.5-asm.7, 1.5.8-asm.7, and 1.4.10-asm.15 are now available**
-
-This release provides these features and fixes:
-
-  * Builds Istiod (Pilot), Citadel Agent, Pilot Agent, Galley, and Sidecar Injector with [ Go+BoringCrypto ](https://go.googlesource.com/go/+/refs/heads/dev.boringcrypto) . 
-  * Builds Istio Proxy (Envoy) with the [ \--define boringssl=fips ](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/security/ssl#fips-140-2) option. 
-  * Ensures the components listed above use FIPS-compliant algorithms. 
-
-**Cloud Bigtable**
-
-**FEATURE:**
-
-Cloud Bigtable's fully integrated [ backups feature
-](https://cloud.google.com/bigtable/docs/backups) is now generally available.
-Backups let you save a copy of a table's schema and data and restore the
-backup to a new table at a later time.
 
