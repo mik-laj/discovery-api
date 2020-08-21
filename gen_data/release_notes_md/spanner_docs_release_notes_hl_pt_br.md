@@ -14,6 +14,15 @@ página ao [ leitor de feeds
 do feed diretamente: ` https://cloud.google.com/feeds/spanner-release-
 notes.xml `
 
+##  August 20, 2020
+
+**FEATURE:**
+
+A new [ multi-region instance configuration
+](https://cloud.google.com/spanner/docs/instances?hl=pt_br#available-
+configurations-multi-region) is now available in North America - ` nam11 `
+(Iowa/South Carolina).
+
 ##  August 06, 2020
 
 **FEATURE:**
