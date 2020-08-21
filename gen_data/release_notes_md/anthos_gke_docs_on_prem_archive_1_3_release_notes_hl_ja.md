@@ -1,6 +1,5 @@
-You are viewing documentation for a previous version of Anthos GKE on-prem. [
-View the latest documentation ](https://cloud.google.com/anthos/gke/docs/on-
-prem?hl=ja) .
+Anthos GKE On-Prem の以前のバージョンのドキュメントを表示しています [ 最新のドキュメントはこちらをご覧ください
+](https://cloud.google.com/anthos/gke/docs/on-prem?hl=ja) 。
 
 #  リリースノート
 
@@ -20,6 +19,54 @@ prem?hl=ja) .
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) に追加するか、またはフィード
 URL ディレクトリ ` https://cloud.google.com/feeds/gkeonprem-release-notes.xml `
 を直接追加します。
+
+##  August 20, 2020
+
+**FEATURE:**
+
+Anthos GKE on-prem 1.4.2-gke.3 is now available. To upgrade, see [ Upgrading
+GKE on-prem ](https://cloud.google.comanthos/gke/docs/on-prem/how-
+to/upgrading) . GKE on-prem 1.4.2-gke.3 clusters run on Kubernetes
+1.16.11-gke.11.
+
+**FEATURE:**
+
+GPU support (beta solution in collaboration with Nvidia)
+
+[ In partnership with Nvidia
+](https://cloud.google.com/blog/products/compute/anthos-supports-nvidia-
+gpus?hl=ja) , users can now manually attach a GPU to a worker node VM to run
+GPU workloads. This requires using the [ open source Nvidia GPU operator
+](https://github.com/NVIDIA/gpu-operator) .
+
+**Note:** Manually attached GPUs do not persist through node lifecycle events.
+You must manually re-attach them. This is a beta solution and can be used for
+evaluation and proof of concept.
+
+**CHANGED:**
+
+The Ubuntu image is upgraded to include the newest packages.
+
+**CHANGED:**
+
+` gkectl delete loadbalancer ` is updated to support the new version of
+configuration files for admin and user clusters.
+
+**FIXED:**
+
+**Fixes:**
+
+  * Resolved a few incorrect Kubelet Metrics' names collected by Prometheus. 
+  * Updated restarting machines process during admin cluster upgrade to make the upgrade process more resilient to transient connection issues. 
+  * Resolved a preflight check OS image validation error when using a non-default vSphere folder for cluster creation; the OS image template is expected to be in that folder. 
+  * Resolved a ` gkectl upgrade loadbalancer ` issue to avoid validating the upgraded SeesawGroup. This fix lets the existing SeesawGroup config be updated without negatively affecting the upgrade process. 
+  * Resolved an issue where ClientConfig CRD is deleted when the upgrade to the latest version is run multiple times. 
+  * Resolved a ` gkectl update credentials vsphere ` issue where the vsphere-metrics-exporter was using the old credentials even after updating the credentials. 
+  * Resolved an issue where the VIP preflight check reported a user cluster add-on load balancer IP false positive. 
+  * Fixed ` gkeadm ` updating config after upgrading on Windows, specifically for the ` gkeOnPremVersion ` and ` bundlePath ` fields. 
+  * Automatically mount the data disk after rebooting on admin workstations created using ` gkeadm ` 1.4.0 and later. 
+  * Reverted thin disk provisioning change for boot disks in 1.4.0 and 1.4.1 on all normal (excludes test VMs) cluster nodes. 
+  * Removed vCenter Server access check from user cluster nodes. 
 
 ##  July 30, 2020
 
