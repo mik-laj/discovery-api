@@ -15,6 +15,7 @@ This section provides release notes for Apigee and Apigee hybrid.
 
 See the following information for information about each hybrid release:
 
+  * [ 1.3.0 (Runtime) ](/apigee/docs/release/notes/130-hybrid-runtime-release-notes)
   * [ 1.2.0 (Runtime) ](/apigee/docs/release/notes/120-hybrid-runtime-release-notes)
   * [ 1.1.1 (Runtime) ](/apigee/docs/release/notes/111-hybrid-runtime-release-notes)
   * [ 1.1.0 (Runtime) ](/apigee/docs/release/notes/110-hybrid-runtime-release-notes)
