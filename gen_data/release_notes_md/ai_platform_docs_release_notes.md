@@ -15,6 +15,16 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/aiplatform-release-notes.xml `
 
+##  August 19, 2020
+
+**AI Platform Prediction**
+
+**CHANGED:**
+
+You can now use [ runtime version 2.1 ](https://cloud.google.com/ai-
+platform/prediction/docs/runtime-version-list) to serve online predictions
+using scikit-learn 0.22.1 and XGBoost 0.90.
+
 ##  August 18, 2020
 
 **AI Platform Prediction**
@@ -69,6 +79,13 @@ endpoint ](https://cloud.google.com/ai-platform/prediction/docs/regional-
 endpoints) , and then create model versions using that model.
 
 ##  August 17, 2020
+
+**AI Platform Deep Learning Containers**
+
+**FEATURE:**
+
+TensorFlow Enterprise 2.3 environments are now available. These environments
+include support for A100 GPU accelerators, CUDA 11, and TensorFloat-32 (TF32).
 
 **AI Platform Training**
 
