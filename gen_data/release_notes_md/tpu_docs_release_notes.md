@@ -12,9 +12,49 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/tpu-release-notes.xml `
 
+##  August 20, 2020
+
+**FEATURE:**
+
+#  PyTorch/XLA 1.6 Release (GA)
+
+##  Highlights
+
+Cloud TPUs now support the [ PyTorch 1.6 release
+](https://github.com/pytorch/pytorch/releases/tag/v1.6.0) , via PyTorch/XLA
+integration. With this release we mark our general availability (GA) with the
+models such as ResNet, FairSeq Transformer and RoBERTa, and HuggingFace GLUE
+task models that have been rigorously tested and optimized.
+
+In addition, with our PyTorch/XLA 1.6 release, you no longer need to run the [
+env-setup.py ](https://github.com/pytorch/xla/blob/master/contrib/scripts/env-
+setup.py) script on Colab/Kaggle as those are now compatible with native `
+torch ` wheels. You can still continue to use that script if you would like to
+run with our latest unstable releases.
+
+##  New Features
+
+  * XLA RNG state checkpointing/loading (https://github.com/pytorch/xla/pull/2096) 
+  * Device Memory XRT API (https://github.com/pytorch/xla/pull/2295) 
+  * [Kaggle/Colab] Small host VM memory environment utility (https://github.com/pytorch/xla/pull/2025) 
+  * [Advanced User] XLA Builder Support (https://github.com/pytorch/xla/pull/2125) 
+  * New op supported on PyTorch/XLA 
+    * Hardsigmoid (https://github.com/pytorch/xla/pull/1940) 
+    * true_divide (https://github.com/pytorch/xla/pull/1782) 
+    * max_unpool2d (https://github.com/pytorch/xla/pull/2188) 
+    * max_unpool3d (https://github.com/pytorch/xla/pull/2188) 
+    * Replication_pad1d (https://github.com/pytorch/xla/pull/2188) 
+    * Replication_pad2d (https://github.com/pytorch/xla/pull/2188) 
+  * Dynamic shape support on XLA:CPU and XLA:GPU (experimental) 
+
+##  Bug Fixes
+
+  * RNG Fix (proper dropout) 
+  * Manual all-reduce in backward pass (https://github.com/pytorch/xla/pull/2325) 
+
 ##  August 19, 2020
 
-**CHANGED:**
+**FEATURE:**
 
 Cloud TPU now supports Shared VPC in Beta.
 
