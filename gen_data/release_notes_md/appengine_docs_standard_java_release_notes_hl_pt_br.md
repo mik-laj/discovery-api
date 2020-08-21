@@ -10,6 +10,12 @@ página ao [ leitor de feeds
 do feed diretamente: ` https://cloud.google.com/feeds/gaestd-java-release-
 notes.xml `
 
+##  August 20, 2020
+
+**CHANGED:**
+
+Updated Java SDK to version 1.9.82.
+
 ##  July 23, 2020
 
 **FEATURE:**
