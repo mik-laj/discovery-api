@@ -1,6 +1,5 @@
-A new version of Anthos GKE on AWS was released on August 5. See the [ release
-notes ](https://cloud.google.com/anthos/gke/docs/aws/release-notes?hl=ko) for
-information on breaking changes.
+Anthos GKE on AWS의 새 버전이 7월 24일 출시되었습니다. 새로운 변경사항에 대한 자세한 내용은 [ 출시 노트
+](https://cloud.google.com/anthos/gke/docs/aws/release-notes?hl=ko) 를 참조하세요.
 
 #  보안 게시판
 
