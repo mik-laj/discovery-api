@@ -14,6 +14,15 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/compute-release-notes.xml `
 
+##  August 20, 2020
+
+**FEATURE:**
+
+The Organization Policy for [ restricting protocol forwarding creation
+](https://cloud.google.com/compute/docs/protocol-
+forwarding#enforcing_protocol_forwarding_settings_across_a_project_folder_or_organization)
+has launched into general availability.
+
 ##  August 18, 2020
 
 **FEATURE:**
