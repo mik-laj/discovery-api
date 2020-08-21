@@ -7,28 +7,48 @@
             }
         }
     },
-    "basePath": "/admin/reports/v1/",
-    "baseUrl": "https://www.googleapis.com/admin/reports/v1/",
+    "basePath": "",
+    "baseUrl": "https://www.googleapis.com/",
     "batchPath": "batch/admin/reports_v1",
     "canonicalName": "reports",
     "discoveryVersion": "v1",
-    "documentationLink": "/admin-sdk/reports/",
+    "documentationLink": "http://developers.google.com/admin-sdk/",
+    "fullyEncodeReservedExpansion": true,
     "icons": {
-        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
-        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+        "x16": "http://www.google.com/images/icons/product/search-16.gif",
+        "x32": "http://www.google.com/images/icons/product/search-32.gif"
     },
     "id": "admin:reports_v1",
     "kind": "discovery#restDescription",
+    "mtlsRootUrl": "https://www.mtls.googleapis.com/",
     "name": "admin",
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "packagePath": "admin",
     "parameters": {
+        "$.xgafv": {
+            "enum": [
+                "1",
+                "2"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "location": "query",
+            "type": "string"
+        },
         "alt": {
             "default": "json",
             "enum": [
-                "json"
+                "json",
+                "media",
+                "proto"
             ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
             "location": "query",
             "type": "string"
         },
@@ -53,7 +73,11 @@
             "location": "query",
             "type": "string"
         },
-        "userIp": {
+        "uploadType": {
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
             "location": "query",
             "type": "string"
         }
@@ -63,6 +87,7 @@
         "activities": {
             "methods": {
                 "list": {
+                    "flatPath": "admin/reports/v1/activity/users/{userKey}/applications/{applicationName}",
                     "httpMethod": "GET",
                     "id": "reports.activities.list",
                     "parameterOrder": [
@@ -76,6 +101,7 @@
                         },
                         "applicationName": {
                             "enum": [
+                                "application_name_undefined",
                                 "access_transparency",
                                 "admin",
                                 "calendar",
@@ -92,10 +118,12 @@
                                 "rules",
                                 "saml",
                                 "token",
-                                "user_accounts"
+                                "user_accounts",
+                                "context_aware_access",
+                                "chrome"
                             ],
                             "location": "path",
-                            "pattern": "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)|(user_accounts)|(access_transparency)|(groups_enterprise)|(gcp)",
+                            "pattern": "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)|(user_accounts)|(access_transparency)|(groups_enterprise)|(gcp)|(context_aware_access)|(data_studio)|(chrome)",
                             "required": true,
                             "type": "string"
                         },
@@ -147,16 +175,16 @@
                             "type": "string"
                         }
                     },
-                    "path": "activity/users/{userKey}/applications/{applicationName}",
+                    "path": "admin/reports/v1/activity/users/{userKey}/applications/{applicationName}",
                     "response": {
                         "$ref": "Activities"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/admin.reports.audit.readonly"
-                    ],
-                    "supportsSubscription": true
+                    ]
                 },
                 "watch": {
+                    "flatPath": "admin/reports/v1/activity/users/{userKey}/applications/{applicationName}/watch",
                     "httpMethod": "POST",
                     "id": "reports.activities.watch",
                     "parameterOrder": [
@@ -170,6 +198,7 @@
                         },
                         "applicationName": {
                             "enum": [
+                                "application_name_unspecified",
                                 "access_transparency",
                                 "admin",
                                 "calendar",
@@ -186,10 +215,12 @@
                                 "rules",
                                 "saml",
                                 "token",
-                                "user_accounts"
+                                "user_accounts",
+                                "context_aware_access",
+                                "chrome"
                             ],
                             "location": "path",
-                            "pattern": "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)|(user_accounts)|(access_transparency)|(groups_enterprise)|(gcp)",
+                            "pattern": "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)|(user_accounts)|(access_transparency)|(groups_enterprise)|(gcp)|(context_aware_access)|(data_studio)|(chrome)",
                             "required": true,
                             "type": "string"
                         },
@@ -241,30 +272,30 @@
                             "type": "string"
                         }
                     },
-                    "path": "activity/users/{userKey}/applications/{applicationName}/watch",
+                    "path": "admin/reports/v1/activity/users/{userKey}/applications/{applicationName}/watch",
                     "request": {
-                        "$ref": "Channel",
-                        "parameterName": "resource"
+                        "$ref": "Channel"
                     },
                     "response": {
                         "$ref": "Channel"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/admin.reports.audit.readonly"
-                    ],
-                    "supportsSubscription": true
+                    ]
                 }
             }
         },
         "channels": {
             "methods": {
                 "stop": {
+                    "flatPath": "admin/reports_v1/channels/stop",
                     "httpMethod": "POST",
                     "id": "admin.channels.stop",
-                    "path": "/admin/reports_v1/channels/stop",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "admin/reports_v1/channels/stop",
                     "request": {
-                        "$ref": "Channel",
-                        "parameterName": "resource"
+                        "$ref": "Channel"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/admin.reports.audit.readonly"
@@ -275,6 +306,7 @@
         "customerUsageReports": {
             "methods": {
                 "get": {
+                    "flatPath": "admin/reports/v1/usage/dates/{date}",
                     "httpMethod": "GET",
                     "id": "reports.customerUsageReports.get",
                     "parameterOrder": [
@@ -302,7 +334,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "usage/dates/{date}",
+                    "path": "admin/reports/v1/usage/dates/{date}",
                     "response": {
                         "$ref": "UsageReports"
                     },
@@ -315,6 +347,7 @@
         "entityUsageReports": {
             "methods": {
                 "get": {
+                    "flatPath": "admin/reports/v1/usage/{entityType}/{entityKey}/dates/{date}",
                     "httpMethod": "GET",
                     "id": "reports.entityUsageReports.get",
                     "parameterOrder": [
@@ -336,6 +369,7 @@
                         },
                         "entityKey": {
                             "enum": [
+                                "entityKeyUndefined",
                                 "all",
                                 "entityKey"
                             ],
@@ -345,6 +379,7 @@
                         },
                         "entityType": {
                             "enum": [
+                                "entity_type_undefined",
                                 "gplus_communities"
                             ],
                             "location": "path",
@@ -375,7 +410,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "usage/{entityType}/{entityKey}/dates/{date}",
+                    "path": "admin/reports/v1/usage/{entityType}/{entityKey}/dates/{date}",
                     "response": {
                         "$ref": "UsageReports"
                     },
@@ -388,6 +423,7 @@
         "userUsageReport": {
             "methods": {
                 "get": {
+                    "flatPath": "admin/reports/v1/usage/users/{userKey}/dates/{date}",
                     "httpMethod": "GET",
                     "id": "reports.userUsageReport.get",
                     "parameterOrder": [
@@ -440,7 +476,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "usage/users/{userKey}/dates/{date}",
+                    "path": "admin/reports/v1/usage/users/{userKey}/dates/{date}",
                     "response": {
                         "$ref": "UsageReports"
                     },
@@ -816,7 +852,7 @@
             "type": "object"
         }
     },
-    "servicePath": "admin/reports/v1/",
-    "title": "Admin Reports API",
+    "servicePath": "",
+    "title": "Admin SDK",
     "version": "reports_v1"
 }
