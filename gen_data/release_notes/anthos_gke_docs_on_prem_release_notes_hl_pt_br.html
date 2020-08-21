@@ -57,6 +57,133 @@
    </section>
    <section class="releases">
     <section class="releases">
+     <h2 data-text="August 20, 2020" id="August_20_2020" tabindex="0">
+      August 20, 2020
+     </h2>
+     <div class="release-feature" id="cc2c2e62">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Anthos GKE on-prem 1.4.2-gke.3 is now available. To upgrade, see
+       <a href="https://cloud.google.comanthos/gke/docs/on-prem/how-to/upgrading">
+        Upgrading GKE on-prem
+       </a>
+       . GKE on-prem 1.4.2-gke.3 clusters run on Kubernetes 1.16.11-gke.11.
+      </p>
+     </div>
+     <div class="release-feature" id="367a7ff5">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GPU support (beta solution in collaboration with Nvidia)
+      </p>
+      <p>
+       <a href="https://cloud.google.com/blog/products/compute/anthos-supports-nvidia-gpus?hl=pt-br">
+        In partnership with Nvidia
+       </a>
+       , users can now manually attach a GPU to a worker node VM to run GPU workloads. This requires using the
+       <a href="https://github.com/NVIDIA/gpu-operator">
+        open source Nvidia GPU operator
+       </a>
+       .
+      </p>
+      <p>
+       <strong>
+        Note:
+       </strong>
+       Manually attached GPUs do not persist through node lifecycle events. You must manually re-attach them. This is a beta solution and can be used for evaluation and proof of concept.
+      </p>
+     </div>
+     <div class="release-changed" id="d6408e7d">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       The Ubuntu image is upgraded to include the newest packages.
+      </p>
+     </div>
+     <div class="release-changed" id="270371fb">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <code dir="ltr" translate="no">
+        gkectl delete loadbalancer
+       </code>
+       is updated to support the new version of configuration files for admin and user clusters.
+      </p>
+     </div>
+     <div class="release-fixed" id="69546256">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       <strong>
+        Fixes:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        Resolved a few incorrect Kubelet Metrics' names collected by Prometheus.
+       </li>
+       <li>
+        Updated restarting machines process during admin cluster upgrade to make the upgrade process more resilient to transient connection issues.
+       </li>
+       <li>
+        Resolved a preflight check OS image validation error when using a non-default vSphere folder for cluster creation; the OS image template is expected to be in that folder.
+       </li>
+       <li>
+        Resolved a
+        <code dir="ltr" translate="no">
+         gkectl upgrade loadbalancer
+        </code>
+        issue to avoid validating the upgraded SeesawGroup. This fix lets the existing SeesawGroup config be updated without negatively affecting the upgrade process.
+       </li>
+       <li>
+        Resolved an issue where ClientConfig CRD is deleted when the upgrade to the latest version is run multiple times.
+       </li>
+       <li>
+        Resolved a
+        <code dir="ltr" translate="no">
+         gkectl update credentials vsphere
+        </code>
+        issue where the vsphere-metrics-exporter was using the old credentials even after updating the credentials.
+       </li>
+       <li>
+        Resolved an issue where the VIP preflight check reported a user cluster add-on load balancer IP false positive.
+       </li>
+       <li>
+        Fixed
+        <code dir="ltr" translate="no">
+         gkeadm
+        </code>
+        updating config after upgrading on Windows, specifically for the
+        <code dir="ltr" translate="no">
+         gkeOnPremVersion
+        </code>
+        and
+        <code dir="ltr" translate="no">
+         bundlePath
+        </code>
+        fields.
+       </li>
+       <li>
+        Automatically mount the data disk after rebooting on admin workstations created using
+        <code dir="ltr" translate="no">
+         gkeadm
+        </code>
+        1.4.0 and later.
+       </li>
+       <li>
+        Reverted thin disk provisioning change for boot disks in 1.4.0 and 1.4.1 on all normal (excludes test VMs) cluster nodes.
+       </li>
+       <li>
+        Removed vCenter Server access check from user cluster nodes.
+       </li>
+      </ul>
+     </div>
      <h2 data-text="July 30, 2020" id="July_30_2020" tabindex="0">
       July 30, 2020
      </h2>
