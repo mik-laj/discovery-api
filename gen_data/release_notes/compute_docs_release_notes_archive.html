@@ -2602,7 +2602,7 @@ restarted. For more information, see
        generally available
       </strong>
       for select countries. You can now also
-      <a href="/compute/docs/instances/stopping-or-deleting-an-instance">
+      <a href="/compute/docs/instances/stop-start-instance">
        stop an instance
       </a>
       with a persistent disk that is encrypted with your own key. Compute Engine
@@ -3837,11 +3837,11 @@ into
       </strong>
       . Additionally, stopped instances no longer
 count towards your CPU resource quotas. See
-      <a href="/compute/docs/instances/stopping-or-deleting-an-instance">
+      <a href="/compute/docs/instances/stop-start-instance#stopping_an_instance">
        Stopping an instance
       </a>
       and
-      <a href="/compute/docs/instances/restarting-an-instance">
+      <a href="/compute/docs/instances/stop-start-instance#starting_a_stopped_instance">
        Restarting a stopped instance
       </a>
       for more information.
@@ -4093,7 +4093,7 @@ See
        Beta
       </strong>
       . For more information, see the
-      <a href="/vpn/docs/concepts/overview">
+      <a href="/network-connectivity/docs/vpn/concepts/overview">
        VPN documentation
       </a>
       .
@@ -4233,11 +4233,11 @@ can be used by all projects and users.
         Beta
        </strong>
        . See
-       <a href="/compute/docs/instances/stopping-or-deleting-an-instance">
+       <a href="/compute/docs/instances/stop-start-instance#stopping_an_instance">
         Stopping an instance
        </a>
        and
-       <a href="/compute/docs/instances/restarting-an-instance">
+       <a href="/compute/docs/instances/stop-start-instance#starting_a_stopped_instance">
         Restarting a stopped instance
        </a>
        for more information.
@@ -4311,6 +4311,13 @@ with your instance or disk creation request:
       </p>
       <pre class="prettyprint" dir="ltr" translate="no"><code dir="ltr" translate="no">--image windows-2008-r2
 </code></pre>
+      <p>
+       For more information, see
+       <a href="/compute/docs/instances/windows#starting_a_new_windows_virtual_machine_instance">
+        Starting a new Windows virtual machine instance
+       </a>
+       .
+      </p>
      </li>
     </ul>
     <p>
@@ -4352,10 +4359,29 @@ added support for
        local SSD
       </a>
       in all zones,
-      <strong>
+      <em>
        except
-      </strong>
-      us-central1-b and europe-west1-a (which is deprecated).
+      </em>
+      <code dir="ltr" translate="no">
+       us-central1-b
+      </code>
+      and
+      <code dir="ltr" translate="no">
+       europe-west1-a
+      </code>
+      , which are deprecated. For more
+information, see
+      <a href="/compute/docs/instances/stop-start-instance#resetting_an_instance">
+       Resetting an instance
+      </a>
+      or the
+      <a href="/compute/docs/reference/latest/instances/reset">
+       <code dir="ltr" translate="no">
+        instances().reset
+       </code>
+       method
+      </a>
+      .
      </li>
     </ul>
     <h2 data-text="November 2014" id="november_2014" tabindex="0">
@@ -4434,7 +4460,7 @@ information.
      </li>
      <li>
       Lowered network pricing. See
-      <a href="/compute/network-pricing">
+      <a href="/vpc/network-pricing">
        Network pricing
       </a>
       for more information.
@@ -6795,18 +6821,18 @@ a list of kernels and their deprecation states, run the following command:
       for more information.
      </li>
      <li>
-      Added ability to reset an instance through the API. Review the
-      <a href="/compute/docs/instances/restarting-an-instance#resetting_an_instance">
-       documentation for resetting instances
+      Added ability to reset an instance through the API. For more information, see
+      <a href="/compute/docs/instances/stop-start-instance#resetting_an_instance">
+       Resetting an instance
       </a>
-      for more
-information, or review the
+      or the
       <a href="/compute/docs/reference/latest/instances/reset">
        <code dir="ltr" translate="no">
         instances().reset
        </code>
+       method
       </a>
-      reference documentation.
+      .
      </li>
      <li>
       Released gcutil 1.8.2.
@@ -7047,7 +7073,7 @@ resources
            to access regional resources,
 in the form:
           </p>
-          <pre class="prettyprint" dir="ltr" translate="no"><code dir="ltr" translate="no">    https://compute.googleapis.com/compute/v1beta15/project/&lt;project-id&gt;/regions/&lt;region-name&gt;/&lt;resource-type&gt;/&lt;resource-name&gt;
+          <pre class="prettyprint" dir="ltr" translate="no"><code dir="ltr" translate="no">    https://www.googleapis.com/compute/v1beta15/project/&lt;project-id&gt;/regions/&lt;region-name&gt;/&lt;resource-type&gt;/&lt;resource-name&gt;
 </code></pre>
           <p>
            For example, to access
@@ -7058,7 +7084,7 @@ IPs
            , use
 the following regional URI:
           </p>
-          <pre class="prettyprint" dir="ltr" translate="no"><code dir="ltr" translate="no">    https://compute.googleapis.com/compute/v1beta15/project/example.com:myproject/regions/example-region/addresses
+          <pre class="prettyprint" dir="ltr" translate="no"><code dir="ltr" translate="no">    https://www.googleapis.com/compute/v1beta15/project/example.com:myproject/regions/example-region/addresses
 </code></pre>
          </li>
          <li>
@@ -7096,7 +7122,7 @@ manually request one. For more information, see the
          To use a machine type, you must now specify the zone in which that
 machine type lives:
         </p>
-        <pre class="prettyprint" dir="ltr" translate="no"><code dir="ltr" translate="no">https://compute.googleapis.com/compute/v1beta15/project/example.com:myproject/zones/example-zone/machineTypes/machineTypeName
+        <pre class="prettyprint" dir="ltr" translate="no"><code dir="ltr" translate="no">https://www.googleapis.com/compute/v1beta15/project/example.com:myproject/zones/example-zone/machineTypes/machineTypeName
 </code></pre>
        </li>
        <li>
@@ -7111,7 +7137,7 @@ on the Disk resource.
 following URI:
         </p>
         <p>
-         https://compute.googleapis.com/compute/v1beta15/projects/PROJECT_ID/zones/ZONE/disks/DISK/createSnapshot
+         https://www.googleapis.com/compute/v1beta15/projects/PROJECT_ID/zones/ZONE/disks/DISK/createSnapshot
         </p>
         <p>
          Snapshots are still accessible by making requests to the Snapshot
@@ -7188,7 +7214,7 @@ lists for the following resources:
          For example, you can list instances across all zones by making a
 request to the following URI:
         </p>
-        <pre class="prettyprint" dir="ltr" translate="no"><code dir="ltr" translate="no">https://compute.googleapis.com/compute/v1beta15/project/example.com:myproject/aggregated/instances
+        <pre class="prettyprint" dir="ltr" translate="no"><code dir="ltr" translate="no">https://www.googleapis.com/compute/v1beta15/project/example.com:myproject/aggregated/instances
 </code></pre>
        </li>
        <li>
@@ -7885,13 +7911,13 @@ resources
            to access per-zone
 resources, in the form:
           </p>
-          <pre class="prettyprint" dir="ltr" translate="no"><code dir="ltr" translate="no">    https://compute.googleapis.com/compute/v1beta14/projects/&lt;project-id&gt;/zones/&lt;zone&gt;/&lt;resource-type&gt;/&lt;resource-name&gt;
+          <pre class="prettyprint" dir="ltr" translate="no"><code dir="ltr" translate="no">    https://www.googleapis.com/compute/v1beta14/projects/&lt;project-id&gt;/zones/&lt;zone&gt;/&lt;resource-type&gt;/&lt;resource-name&gt;
 </code></pre>
           <p>
            For example, accessing a Disk resource requires the following
   per-zone URI:
           </p>
-          <pre class="prettyprint" dir="ltr" translate="no"><code dir="ltr" translate="no">    https://compute.googleapis.com/compute/v1beta14/project/example.com:myproject/zones/some-example-zone/disks/mydisk
+          <pre class="prettyprint" dir="ltr" translate="no"><code dir="ltr" translate="no">    https://www.googleapis.com/compute/v1beta14/project/example.com:myproject/zones/some-example-zone/disks/mydisk
 </code></pre>
          </li>
         </ul>
@@ -7904,13 +7930,13 @@ the form:
          </em>
          *
         </p>
-        <pre class="prettyprint" dir="ltr" translate="no"><code dir="ltr" translate="no">https://compute.googleapis.com/compute/v1beta14/projects/&lt;project-id&gt;/&lt;resource-type&gt;/&lt;resource-name&gt;
+        <pre class="prettyprint" dir="ltr" translate="no"><code dir="ltr" translate="no">https://www.googleapis.com/compute/v1beta14/projects/&lt;project-id&gt;/&lt;resource-type&gt;/&lt;resource-name&gt;
 </code></pre>
         <p>
          For example, accessing a Machine Type resource requires the
 following global URI:
         </p>
-        <pre class="prettyprint" dir="ltr" translate="no"><code dir="ltr" translate="no">https://compute.googleapis.com/compute/v1beta14/project/example.com:myproject/global/machineTypes/somemachinetype
+        <pre class="prettyprint" dir="ltr" translate="no"><code dir="ltr" translate="no">https://www.googleapis.com/compute/v1beta14/project/example.com:myproject/global/machineTypes/somemachinetype
 </code></pre>
        </li>
        <li>
@@ -8463,7 +8489,7 @@ until after the resource has been completely torn down
          </code>
          . For example:
         </p>
-        <pre dir="ltr" translate="no">https://compute.googleapis.com/compute/<strong>v1beta13</strong>/disks</pre>
+        <pre dir="ltr" translate="no">https://www.googleapis.com/compute/<strong>v1beta13</strong>/disks</pre>
        </li>
        <li>
         <p>

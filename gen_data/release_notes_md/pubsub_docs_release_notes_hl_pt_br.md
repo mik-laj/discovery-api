@@ -7,17 +7,59 @@ biblioteca de cliente
 Pub/Sub para cada linguagem, acesse os links a seguir: [ C#
 ](https://github.com/googleapis/google-cloud-dotnet/releases) , [ Go
 ](https://github.com/googleapis/google-cloud-go/releases) , [ Java
-](https://github.com/googleapis/google-cloud-java/releases) , [ Node.js
+](https://github.com/googleapis/java-pubsub/releases) , [ Node.js
 ](https://github.com/googleapis/nodejs-pubsub/releases) , [ PHP
 ](https://github.com/googleapis/google-cloud-php/releases) , [ Python
-](https://github.com/googleapis/google-cloud-python/releases) e [ Ruby
+](https://github.com/googleapis/python-pubsub/releases) e [ Ruby
 ](https://github.com/googleapis/google-cloud-ruby/releases) .
+
+É possível ver as atualizações mais recentes de todos os produtos do Google
+Cloud na página [ Notas da versão do Google Cloud
+](https://cloud.google.com/release-notes?hl=pt-br) .
 
 Para receber as atualizações de produtos mais recentes, adicione o URL desta
 página ao [ leitor de feeds
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ou adicione o URL
-do feed diretamente: ` https://cloud.google.com/feeds/cloud-pub-sub-release-
-notes.xml `
+do feed diretamente: ` https://cloud.google.com/feeds/pubsub-release-notes.xml
+`
+
+##  August 05, 2020
+
+**FEATURE:**
+
+Pub/Sub [ message ordering
+](https://cloud.google.com/pubsub/docs/ordering?hl=pt-br) is now available at
+the [ beta launch stage ](https://cloud.google.com/products/?hl=pt-br#product-
+launch-stages) .
+
+##  June 16, 2020
+
+**FEATURE:**
+
+[ Retry policies for Pub/Sub subscriptions
+](https://cloud.google.com/pubsub/docs/admin?hl=pt-br#creating_subscriptions)
+are now available at the GA launch stage.
+
+##  June 08, 2020
+
+**FEATURE:**
+
+Pub/Sub is now available in the ` asia-southeast2 ` region (Jakarta).
+
+**FEATURE:**
+
+Pub/Sub [ message filtering
+](https://cloud.google.com/pubsub/docs/filtering?hl=pt-br) is now available at
+the [ beta launch stage ](https://cloud.google.com/products/?hl=pt-br#product-
+launch-stages) .
+
+##  May 26, 2020
+
+**FEATURE:**
+
+[ Pub/Sub Lite ](https://cloud.google.com/pubsub/docs/choosing-pubsub-or-
+lite?hl=pt-br) is now available at the [ beta launch stage
+](https://cloud.google.com/products/?hl=pt-br#product-launch-stages) .
 
 ##  April 20, 2020
 

@@ -1109,6 +1109,38 @@
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         }
+                                    },
+                                    "resources": {
+                                        "enumValues": {
+                                            "methods": {
+                                                "rename": {
+                                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/tagTemplates/{tagTemplatesId}/fields/{fieldsId}/enumValues/{enumValuesId}:rename",
+                                                    "httpMethod": "POST",
+                                                    "id": "datacatalog.projects.locations.tagTemplates.fields.enumValues.rename",
+                                                    "parameterOrder": [
+                                                        "name"
+                                                    ],
+                                                    "parameters": {
+                                                        "name": {
+                                                            "location": "path",
+                                                            "pattern": "^projects/[^/]+/locations/[^/]+/tagTemplates/[^/]+/fields/[^/]+/enumValues/[^/]+$",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "path": "v1beta1/{+name}:rename",
+                                                    "request": {
+                                                        "$ref": "GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest"
+                                                    },
+                                                    "response": {
+                                                        "$ref": "GoogleCloudDatacatalogV1beta1TagTemplateField"
+                                                    },
+                                                    "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-platform"
+                                                    ]
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -1675,13 +1707,16 @@
             "id": "GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec",
             "properties": {
                 "dataset": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "shardCount": {
                     "format": "int64",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "tablePrefix": {
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -1694,8 +1729,10 @@
                     "enum": [
                         "TABLE_SOURCE_TYPE_UNSPECIFIED",
                         "BIGQUERY_VIEW",
-                        "BIGQUERY_TABLE"
+                        "BIGQUERY_TABLE",
+                        "BIGQUERY_MATERIALIZED_VIEW"
                     ],
+                    "readOnly": true,
                     "type": "string"
                 },
                 "tableSpec": {
@@ -1749,6 +1786,7 @@
                         "BIGQUERY",
                         "CLOUD_PUBSUB"
                     ],
+                    "readOnly": true,
                     "type": "string"
                 },
                 "linkedResource": {
@@ -1761,7 +1799,8 @@
                     "$ref": "GoogleCloudDatacatalogV1beta1Schema"
                 },
                 "sourceSystemTimestamps": {
-                    "$ref": "GoogleCloudDatacatalogV1beta1SystemTimestamps"
+                    "$ref": "GoogleCloudDatacatalogV1beta1SystemTimestamps",
+                    "readOnly": true
                 },
                 "type": {
                     "enum": [
@@ -1786,7 +1825,8 @@
             "id": "GoogleCloudDatacatalogV1beta1EntryGroup",
             "properties": {
                 "dataCatalogTimestamps": {
-                    "$ref": "GoogleCloudDatacatalogV1beta1SystemTimestamps"
+                    "$ref": "GoogleCloudDatacatalogV1beta1SystemTimestamps",
+                    "readOnly": true
                 },
                 "displayName": {
                     "type": "string"
@@ -1856,10 +1896,12 @@
                     "type": "string"
                 },
                 "gcsTimestamps": {
-                    "$ref": "GoogleCloudDatacatalogV1beta1SystemTimestamps"
+                    "$ref": "GoogleCloudDatacatalogV1beta1SystemTimestamps",
+                    "readOnly": true
                 },
                 "sizeBytes": {
                     "format": "int64",
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -1878,6 +1920,7 @@
                     "items": {
                         "$ref": "GoogleCloudDatacatalogV1beta1GcsFileSpec"
                     },
+                    "readOnly": true,
                     "type": "array"
                 }
             },
@@ -1998,15 +2041,26 @@
                     "items": {
                         "type": "string"
                     },
+                    "readOnly": true,
                     "type": "array"
                 },
                 "displayName": {
                     "type": "string"
                 },
                 "name": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "parentPolicyTag": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest": {
+            "id": "GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest",
+            "properties": {
+                "newEnumValueDisplayName": {
                     "type": "string"
                 }
             },
@@ -2169,6 +2223,7 @@
                 },
                 "expireTime": {
                     "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "updateTime": {
@@ -2182,6 +2237,7 @@
             "id": "GoogleCloudDatacatalogV1beta1TableSpec",
             "properties": {
                 "groupedEntry": {
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -2206,6 +2262,7 @@
                     "type": "string"
                 },
                 "templateDisplayName": {
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -2218,6 +2275,7 @@
                     "type": "boolean"
                 },
                 "displayName": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "doubleValue": {
@@ -2229,6 +2287,7 @@
                 },
                 "order": {
                     "format": "int32",
+                    "readOnly": true,
                     "type": "integer"
                 },
                 "stringValue": {
@@ -2278,6 +2337,7 @@
                     "type": "boolean"
                 },
                 "name": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "order": {
@@ -2307,6 +2367,7 @@
                     "type": "string"
                 },
                 "name": {
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -2316,6 +2377,7 @@
             "id": "GoogleCloudDatacatalogV1beta1ViewSpec",
             "properties": {
                 "viewQuery": {
+                    "readOnly": true,
                     "type": "string"
                 }
             },

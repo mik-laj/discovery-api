@@ -1,10 +1,62 @@
+O [ Python 2.7
+](https://cloud.google.com/appengine/docs/standard/python3/runtime?hl=pt_br)
+já está disponível para todos os usuários.
+
 #  Notas da versão do Python 3
+
+Você pode ver as atualizações mais recentes de todos os produtos do Google
+Cloud na página [ Notas de versão do Google Cloud
+](https://cloud.google.com/release-notes?hl=pt_br) .
 
 Para receber as atualizações de produtos mais recentes, adicione o URL desta
 página ao [ leitor de feeds
-](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) (em inglês) ou
-adicione o URL do feed diretamente: ` https://cloud.google.com/feeds/gaestd-
-py-release-notes.xml `
+](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ou adicione o URL
+do feed diretamente: ` https://cloud.google.com/feeds/gaestd-py-release-
+notes.xml `
+
+##  July 23, 2020
+
+**FEATURE:**
+
+[ Serverless VPC Access support for Shared VPC
+](https://cloud.google.com/appengine/docs/standard/python3/connecting-
+vpc?hl=pt_br#shared-vpc) is now available in Beta.
+
+##  July 08, 2020
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for App Engine via [
+Serverless network endpoint groups ](https://cloud.google.com//load-
+balancing/docs/negs/setting-up-serverless-negs?hl=pt_br) . Notably, this
+feature allows you to use [ Cloud CDN ](https://cloud.google.com/cdn?hl=pt_br)
+with App Engine.  
+This feature is available in Beta.
+
+##  July 06, 2020
+
+**FEATURE:**
+
+The [ Python 3.8 runtime
+](https://cloud.google.com/appengine/docs/standard/python3/runtime?hl=pt_br)
+for the App Engine standard environment is now generally available.
+
+##  June 08, 2020
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
+##  May 14, 2020
+
+**FEATURE:**
+
+To get a fine-grained view of billing data for each resource used by your App
+Engine services, you can apply labels to the services, export your billing
+data to BigQuery, and run queries. For more information, see [ Labeling App
+Engine resources
+](https://cloud.google.com/appengine/docs/standard/python3/labeling-
+resources?hl=pt_br) .
 
 ##  April 20, 2020
 

@@ -1785,6 +1785,11 @@
                         "resource"
                     ],
                     "parameters": {
+                        "optionsRequestedPolicyVersion": {
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
                         "project": {
                             "location": "path",
                             "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
@@ -4490,6 +4495,11 @@
                         "resource"
                     ],
                     "parameters": {
+                        "optionsRequestedPolicyVersion": {
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
                         "project": {
                             "location": "path",
                             "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
@@ -4947,6 +4957,44 @@
                         "https://www.googleapis.com/auth/compute"
                     ]
                 },
+                "deletePerInstanceConfigs": {
+                    "httpMethod": "POST",
+                    "id": "compute.instanceGroupManagers.deletePerInstanceConfigs",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "instanceGroupManager"
+                    ],
+                    "parameters": {
+                        "instanceGroupManager": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/deletePerInstanceConfigs",
+                    "request": {
+                        "$ref": "InstanceGroupManagersDeletePerInstanceConfigsReq"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
                 "get": {
                     "httpMethod": "GET",
                     "id": "compute.instanceGroupManagers.get",
@@ -5178,6 +5226,61 @@
                         "https://www.googleapis.com/auth/compute.readonly"
                     ]
                 },
+                "listPerInstanceConfigs": {
+                    "httpMethod": "POST",
+                    "id": "compute.instanceGroupManagers.listPerInstanceConfigs",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "instanceGroupManager"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "instanceGroupManager": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "500",
+                            "format": "uint32",
+                            "location": "query",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
+                        "orderBy": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "zone": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/listPerInstanceConfigs",
+                    "response": {
+                        "$ref": "InstanceGroupManagersListPerInstanceConfigsResp"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
                 "patch": {
                     "httpMethod": "PATCH",
                     "id": "compute.instanceGroupManagers.patch",
@@ -5211,6 +5314,48 @@
                     "path": "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}",
                     "request": {
                         "$ref": "InstanceGroupManager"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "patchPerInstanceConfigs": {
+                    "httpMethod": "POST",
+                    "id": "compute.instanceGroupManagers.patchPerInstanceConfigs",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "instanceGroupManager"
+                    ],
+                    "parameters": {
+                        "instanceGroupManager": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "requestId": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "zone": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/patchPerInstanceConfigs",
+                    "request": {
+                        "$ref": "InstanceGroupManagersPatchPerInstanceConfigsReq"
                     },
                     "response": {
                         "$ref": "Operation"
@@ -5383,6 +5528,48 @@
                     "path": "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/setTargetPools",
                     "request": {
                         "$ref": "InstanceGroupManagersSetTargetPoolsRequest"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "updatePerInstanceConfigs": {
+                    "httpMethod": "POST",
+                    "id": "compute.instanceGroupManagers.updatePerInstanceConfigs",
+                    "parameterOrder": [
+                        "project",
+                        "zone",
+                        "instanceGroupManager"
+                    ],
+                    "parameters": {
+                        "instanceGroupManager": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "requestId": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "zone": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/updatePerInstanceConfigs",
+                    "request": {
+                        "$ref": "InstanceGroupManagersUpdatePerInstanceConfigsReq"
                     },
                     "response": {
                         "$ref": "Operation"
@@ -5864,6 +6051,11 @@
                         "resource"
                     ],
                     "parameters": {
+                        "optionsRequestedPolicyVersion": {
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
                         "project": {
                             "location": "path",
                             "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
@@ -6454,6 +6646,11 @@
                         "resource"
                     ],
                     "parameters": {
+                        "optionsRequestedPolicyVersion": {
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
                         "project": {
                             "location": "path",
                             "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
@@ -8496,6 +8693,11 @@
                         "resource"
                     ],
                     "parameters": {
+                        "optionsRequestedPolicyVersion": {
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
                         "project": {
                             "location": "path",
                             "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
@@ -9812,6 +10014,11 @@
                         "resource"
                     ],
                     "parameters": {
+                        "optionsRequestedPolicyVersion": {
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
                         "project": {
                             "location": "path",
                             "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
@@ -10300,6 +10507,11 @@
                         "resource"
                     ],
                     "parameters": {
+                        "optionsRequestedPolicyVersion": {
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
                         "project": {
                             "location": "path",
                             "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
@@ -12334,6 +12546,49 @@
                         "https://www.googleapis.com/auth/compute.readonly"
                     ]
                 },
+                "getIamPolicy": {
+                    "httpMethod": "GET",
+                    "id": "compute.regionDisks.getIamPolicy",
+                    "parameterOrder": [
+                        "project",
+                        "region",
+                        "resource"
+                    ],
+                    "parameters": {
+                        "optionsRequestedPolicyVersion": {
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "resource": {
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/disks/{resource}/getIamPolicy",
+                    "response": {
+                        "$ref": "Policy"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
                 "insert": {
                     "httpMethod": "POST",
                     "id": "compute.regionDisks.insert",
@@ -12513,6 +12768,46 @@
                         "https://www.googleapis.com/auth/compute"
                     ]
                 },
+                "setIamPolicy": {
+                    "httpMethod": "POST",
+                    "id": "compute.regionDisks.setIamPolicy",
+                    "parameterOrder": [
+                        "project",
+                        "region",
+                        "resource"
+                    ],
+                    "parameters": {
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "resource": {
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/disks/{resource}/setIamPolicy",
+                    "request": {
+                        "$ref": "RegionSetPolicyRequest"
+                    },
+                    "response": {
+                        "$ref": "Policy"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
                 "setLabels": {
                     "httpMethod": "POST",
                     "id": "compute.regionDisks.setLabels",
@@ -12596,6 +12891,217 @@
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/compute",
                         "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                }
+            }
+        },
+        "regionHealthCheckServices": {
+            "methods": {
+                "delete": {
+                    "httpMethod": "DELETE",
+                    "id": "compute.regionHealthCheckServices.delete",
+                    "parameterOrder": [
+                        "project",
+                        "region",
+                        "healthCheckService"
+                    ],
+                    "parameters": {
+                        "healthCheckService": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "requestId": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/healthCheckServices/{healthCheckService}",
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "get": {
+                    "httpMethod": "GET",
+                    "id": "compute.regionHealthCheckServices.get",
+                    "parameterOrder": [
+                        "project",
+                        "region",
+                        "healthCheckService"
+                    ],
+                    "parameters": {
+                        "healthCheckService": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/healthCheckServices/{healthCheckService}",
+                    "response": {
+                        "$ref": "HealthCheckService"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "insert": {
+                    "httpMethod": "POST",
+                    "id": "compute.regionHealthCheckServices.insert",
+                    "parameterOrder": [
+                        "project",
+                        "region"
+                    ],
+                    "parameters": {
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "requestId": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/healthCheckServices",
+                    "request": {
+                        "$ref": "HealthCheckService"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "list": {
+                    "httpMethod": "GET",
+                    "id": "compute.regionHealthCheckServices.list",
+                    "parameterOrder": [
+                        "project",
+                        "region"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "500",
+                            "format": "uint32",
+                            "location": "query",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
+                        "orderBy": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/healthCheckServices",
+                    "response": {
+                        "$ref": "HealthCheckServicesList"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "patch": {
+                    "httpMethod": "PATCH",
+                    "id": "compute.regionHealthCheckServices.patch",
+                    "parameterOrder": [
+                        "project",
+                        "region",
+                        "healthCheckService"
+                    ],
+                    "parameters": {
+                        "healthCheckService": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "requestId": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/healthCheckServices/{healthCheckService}",
+                    "request": {
+                        "$ref": "HealthCheckService"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
                     ]
                 }
             }
@@ -13063,6 +13569,44 @@
                         "https://www.googleapis.com/auth/compute"
                     ]
                 },
+                "deletePerInstanceConfigs": {
+                    "httpMethod": "POST",
+                    "id": "compute.regionInstanceGroupManagers.deletePerInstanceConfigs",
+                    "parameterOrder": [
+                        "project",
+                        "region",
+                        "instanceGroupManager"
+                    ],
+                    "parameters": {
+                        "instanceGroupManager": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/deletePerInstanceConfigs",
+                    "request": {
+                        "$ref": "RegionInstanceGroupManagerDeleteInstanceConfigReq"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
                 "get": {
                     "httpMethod": "GET",
                     "id": "compute.regionInstanceGroupManagers.get",
@@ -13294,6 +13838,61 @@
                         "https://www.googleapis.com/auth/compute.readonly"
                     ]
                 },
+                "listPerInstanceConfigs": {
+                    "httpMethod": "POST",
+                    "id": "compute.regionInstanceGroupManagers.listPerInstanceConfigs",
+                    "parameterOrder": [
+                        "project",
+                        "region",
+                        "instanceGroupManager"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "instanceGroupManager": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "500",
+                            "format": "uint32",
+                            "location": "query",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
+                        "orderBy": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/listPerInstanceConfigs",
+                    "response": {
+                        "$ref": "RegionInstanceGroupManagersListInstanceConfigsResp"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
                 "patch": {
                     "httpMethod": "PATCH",
                     "id": "compute.regionInstanceGroupManagers.patch",
@@ -13327,6 +13926,48 @@
                     "path": "{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}",
                     "request": {
                         "$ref": "InstanceGroupManager"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "patchPerInstanceConfigs": {
+                    "httpMethod": "POST",
+                    "id": "compute.regionInstanceGroupManagers.patchPerInstanceConfigs",
+                    "parameterOrder": [
+                        "project",
+                        "region",
+                        "instanceGroupManager"
+                    ],
+                    "parameters": {
+                        "instanceGroupManager": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "requestId": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/patchPerInstanceConfigs",
+                    "request": {
+                        "$ref": "RegionInstanceGroupManagerPatchInstanceConfigReq"
                     },
                     "response": {
                         "$ref": "Operation"
@@ -13500,6 +14141,48 @@
                     "path": "{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/setTargetPools",
                     "request": {
                         "$ref": "RegionInstanceGroupManagersSetTargetPoolsRequest"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "updatePerInstanceConfigs": {
+                    "httpMethod": "POST",
+                    "id": "compute.regionInstanceGroupManagers.updatePerInstanceConfigs",
+                    "parameterOrder": [
+                        "project",
+                        "region",
+                        "instanceGroupManager"
+                    ],
+                    "parameters": {
+                        "instanceGroupManager": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "requestId": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/updatePerInstanceConfigs",
+                    "request": {
+                        "$ref": "RegionInstanceGroupManagerUpdateInstanceConfigReq"
                     },
                     "response": {
                         "$ref": "Operation"
@@ -13696,6 +14379,340 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/compute"
+                    ]
+                }
+            }
+        },
+        "regionNetworkEndpointGroups": {
+            "methods": {
+                "delete": {
+                    "httpMethod": "DELETE",
+                    "id": "compute.regionNetworkEndpointGroups.delete",
+                    "parameterOrder": [
+                        "project",
+                        "region",
+                        "networkEndpointGroup"
+                    ],
+                    "parameters": {
+                        "networkEndpointGroup": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "requestId": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/networkEndpointGroups/{networkEndpointGroup}",
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "get": {
+                    "httpMethod": "GET",
+                    "id": "compute.regionNetworkEndpointGroups.get",
+                    "parameterOrder": [
+                        "project",
+                        "region",
+                        "networkEndpointGroup"
+                    ],
+                    "parameters": {
+                        "networkEndpointGroup": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/networkEndpointGroups/{networkEndpointGroup}",
+                    "response": {
+                        "$ref": "NetworkEndpointGroup"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "insert": {
+                    "httpMethod": "POST",
+                    "id": "compute.regionNetworkEndpointGroups.insert",
+                    "parameterOrder": [
+                        "project",
+                        "region"
+                    ],
+                    "parameters": {
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "requestId": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/networkEndpointGroups",
+                    "request": {
+                        "$ref": "NetworkEndpointGroup"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "list": {
+                    "httpMethod": "GET",
+                    "id": "compute.regionNetworkEndpointGroups.list",
+                    "parameterOrder": [
+                        "project",
+                        "region"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "500",
+                            "format": "uint32",
+                            "location": "query",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
+                        "orderBy": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/networkEndpointGroups",
+                    "response": {
+                        "$ref": "NetworkEndpointGroupList"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                }
+            }
+        },
+        "regionNotificationEndpoints": {
+            "methods": {
+                "delete": {
+                    "httpMethod": "DELETE",
+                    "id": "compute.regionNotificationEndpoints.delete",
+                    "parameterOrder": [
+                        "project",
+                        "region",
+                        "notificationEndpoint"
+                    ],
+                    "parameters": {
+                        "notificationEndpoint": {
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "requestId": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/notificationEndpoints/{notificationEndpoint}",
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "get": {
+                    "httpMethod": "GET",
+                    "id": "compute.regionNotificationEndpoints.get",
+                    "parameterOrder": [
+                        "project",
+                        "region",
+                        "notificationEndpoint"
+                    ],
+                    "parameters": {
+                        "notificationEndpoint": {
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/notificationEndpoints/{notificationEndpoint}",
+                    "response": {
+                        "$ref": "NotificationEndpoint"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "insert": {
+                    "httpMethod": "POST",
+                    "id": "compute.regionNotificationEndpoints.insert",
+                    "parameterOrder": [
+                        "project",
+                        "region"
+                    ],
+                    "parameters": {
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "requestId": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/notificationEndpoints",
+                    "request": {
+                        "$ref": "NotificationEndpoint"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "list": {
+                    "httpMethod": "GET",
+                    "id": "compute.regionNotificationEndpoints.list",
+                    "parameterOrder": [
+                        "project",
+                        "region"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "500",
+                            "format": "uint32",
+                            "location": "query",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
+                        "orderBy": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "region": {
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/regions/{region}/notificationEndpoints",
+                    "response": {
+                        "$ref": "NotificationEndpointList"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
                     ]
                 }
             }
@@ -15019,6 +16036,11 @@
                         "resource"
                     ],
                     "parameters": {
+                        "optionsRequestedPolicyVersion": {
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
                         "project": {
                             "location": "path",
                             "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
@@ -15399,6 +16421,11 @@
                         "resource"
                     ],
                     "parameters": {
+                        "optionsRequestedPolicyVersion": {
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
                         "project": {
                             "location": "path",
                             "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
@@ -16619,6 +17646,11 @@
                         "resource"
                     ],
                     "parameters": {
+                        "optionsRequestedPolicyVersion": {
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
                         "project": {
                             "location": "path",
                             "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
@@ -17376,6 +18408,11 @@
                         "resource"
                     ],
                     "parameters": {
+                        "optionsRequestedPolicyVersion": {
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
                         "project": {
                             "location": "path",
                             "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
@@ -17707,6 +18744,185 @@
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/compute",
                         "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                }
+            }
+        },
+        "targetGrpcProxies": {
+            "methods": {
+                "delete": {
+                    "httpMethod": "DELETE",
+                    "id": "compute.targetGrpcProxies.delete",
+                    "parameterOrder": [
+                        "project",
+                        "targetGrpcProxy"
+                    ],
+                    "parameters": {
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "requestId": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "targetGrpcProxy": {
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/global/targetGrpcProxies/{targetGrpcProxy}",
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "get": {
+                    "httpMethod": "GET",
+                    "id": "compute.targetGrpcProxies.get",
+                    "parameterOrder": [
+                        "project",
+                        "targetGrpcProxy"
+                    ],
+                    "parameters": {
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "targetGrpcProxy": {
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/global/targetGrpcProxies/{targetGrpcProxy}",
+                    "response": {
+                        "$ref": "TargetGrpcProxy"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "insert": {
+                    "httpMethod": "POST",
+                    "id": "compute.targetGrpcProxies.insert",
+                    "parameterOrder": [
+                        "project"
+                    ],
+                    "parameters": {
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "requestId": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/global/targetGrpcProxies",
+                    "request": {
+                        "$ref": "TargetGrpcProxy"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
+                    ]
+                },
+                "list": {
+                    "httpMethod": "GET",
+                    "id": "compute.targetGrpcProxies.list",
+                    "parameterOrder": [
+                        "project"
+                    ],
+                    "parameters": {
+                        "filter": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "maxResults": {
+                            "default": "500",
+                            "format": "uint32",
+                            "location": "query",
+                            "minimum": "0",
+                            "type": "integer"
+                        },
+                        "orderBy": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/global/targetGrpcProxies",
+                    "response": {
+                        "$ref": "TargetGrpcProxyList"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute",
+                        "https://www.googleapis.com/auth/compute.readonly"
+                    ]
+                },
+                "patch": {
+                    "httpMethod": "PATCH",
+                    "id": "compute.targetGrpcProxies.patch",
+                    "parameterOrder": [
+                        "project",
+                        "targetGrpcProxy"
+                    ],
+                    "parameters": {
+                        "project": {
+                            "location": "path",
+                            "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "requestId": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "targetGrpcProxy": {
+                            "location": "path",
+                            "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{project}/global/targetGrpcProxies/{targetGrpcProxy}",
+                    "request": {
+                        "$ref": "TargetGrpcProxy"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/compute"
                     ]
                 }
             }
@@ -21185,6 +22401,7 @@
                         "DNS_RESOLVER",
                         "GCE_ENDPOINT",
                         "NAT_AUTO",
+                        "SHARED_LOADBALANCER_VIP",
                         "VPC_PEERING"
                     ],
                     "type": "string"
@@ -21472,6 +22689,13 @@
                     "type": "array"
                 },
                 "machineType": {
+                    "type": "string"
+                },
+                "maintenanceInterval": {
+                    "enum": [
+                        "AS_NEEDED",
+                        "PERIODIC"
+                    ],
                     "type": "string"
                 },
                 "minCpuPlatform": {
@@ -21905,6 +23129,7 @@
                         "MISSING_CUSTOM_METRIC_DATA_POINTS",
                         "MISSING_LOAD_BALANCING_DATA_POINTS",
                         "MODE_OFF",
+                        "MODE_ONLY_SCALE_OUT",
                         "MODE_ONLY_UP",
                         "MORE_THAN_ONE_BACKEND_SERVICE",
                         "NOT_ENOUGH_QUOTA_AVAILABLE",
@@ -22012,9 +23237,13 @@
                     "enum": [
                         "OFF",
                         "ON",
+                        "ONLY_SCALE_OUT",
                         "ONLY_UP"
                     ],
                     "type": "string"
+                },
+                "scaleInControl": {
+                    "$ref": "AutoscalingPolicyScaleInControl"
                 }
             },
             "type": "object"
@@ -22056,6 +23285,19 @@
                 "utilizationTarget": {
                     "format": "double",
                     "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "AutoscalingPolicyScaleInControl": {
+            "id": "AutoscalingPolicyScaleInControl",
+            "properties": {
+                "maxScaledInReplicas": {
+                    "$ref": "FixedOrPercent"
+                },
+                "timeWindowSec": {
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -22341,6 +23583,7 @@
                 },
                 "protocol": {
                     "enum": [
+                        "GRPC",
                         "HTTP",
                         "HTTP2",
                         "HTTPS",
@@ -22491,6 +23734,12 @@
         "BackendServiceGroupHealth": {
             "id": "BackendServiceGroupHealth",
             "properties": {
+                "annotations": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object"
+                },
                 "healthStatus": {
                     "items": {
                         "$ref": "HealthStatus"
@@ -22767,6 +24016,14 @@
         "Commitment": {
             "id": "Commitment",
             "properties": {
+                "category": {
+                    "enum": [
+                        "CATEGORY_UNSPECIFIED",
+                        "LICENSE",
+                        "MACHINE"
+                    ],
+                    "type": "string"
+                },
                 "creationTimestamp": {
                     "type": "string"
                 },
@@ -22780,6 +24037,9 @@
                 "kind": {
                     "default": "compute#commitment",
                     "type": "string"
+                },
+                "licenseResource": {
+                    "$ref": "LicenseResourceCommitment"
                 },
                 "name": {
                     "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
@@ -23050,6 +24310,7 @@
                         "ATTRIBUTION",
                         "AUTHORITY",
                         "CREDENTIALS_TYPE",
+                        "CREDS_ASSERTION",
                         "JUSTIFICATION_TYPE",
                         "NO_ATTR",
                         "SECURITY_REALM"
@@ -23321,6 +24582,12 @@
                 },
                 "sizeGb": {
                     "format": "int64",
+                    "type": "string"
+                },
+                "sourceDisk": {
+                    "type": "string"
+                },
+                "sourceDiskId": {
                     "type": "string"
                 },
                 "sourceImage": {
@@ -24431,6 +25698,13 @@
             "properties": {
                 "enable": {
                     "type": "boolean"
+                },
+                "metadata": {
+                    "enum": [
+                        "EXCLUDE_ALL_METADATA",
+                        "INCLUDE_ALL_METADATA"
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -24787,6 +26061,30 @@
             },
             "type": "object"
         },
+        "GRPCHealthCheck": {
+            "id": "GRPCHealthCheck",
+            "properties": {
+                "grpcServiceName": {
+                    "type": "string"
+                },
+                "port": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "portName": {
+                    "type": "string"
+                },
+                "portSpecification": {
+                    "enum": [
+                        "USE_FIXED_PORT",
+                        "USE_NAMED_PORT",
+                        "USE_SERVING_PORT"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GlobalNetworkEndpointGroupsAttachEndpointsRequest": {
             "id": "GlobalNetworkEndpointGroupsAttachEndpointsRequest",
             "properties": {
@@ -24906,6 +26204,7 @@
                         "FEATURE_TYPE_UNSPECIFIED",
                         "MULTI_IP_SUBNET",
                         "SECURE_BOOT",
+                        "SEV_CAPABLE",
                         "UEFI_COMPATIBLE",
                         "VIRTIO_SCSI_MULTIQUEUE",
                         "WINDOWS"
@@ -25036,6 +26335,9 @@
                 "creationTimestamp": {
                     "type": "string"
                 },
+                "grpcHealthCheck": {
+                    "$ref": "GRPCHealthCheck"
+                },
                 "healthyThreshold": {
                     "format": "int32",
                     "type": "integer"
@@ -25079,6 +26381,7 @@
                 },
                 "type": {
                     "enum": [
+                        "GRPC",
                         "HTTP",
                         "HTTP2",
                         "HTTPS",
@@ -25175,6 +26478,146 @@
             "properties": {
                 "healthCheck": {
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "HealthCheckService": {
+            "id": "HealthCheckService",
+            "properties": {
+                "creationTimestamp": {
+                    "type": "string"
+                },
+                "fingerprint": {
+                    "format": "byte",
+                    "type": "string"
+                },
+                "healthChecks": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "healthStatusAggregationPolicy": {
+                    "enum": [
+                        "AND",
+                        "NO_AGGREGATION"
+                    ],
+                    "type": "string"
+                },
+                "id": {
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "compute#healthCheckService",
+                    "type": "string"
+                },
+                "name": {
+                    "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    "type": "string"
+                },
+                "networkEndpointGroups": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "notificationEndpoints": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "region": {
+                    "type": "string"
+                },
+                "selfLink": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "HealthCheckServiceReference": {
+            "id": "HealthCheckServiceReference",
+            "properties": {
+                "healthCheckService": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "HealthCheckServicesList": {
+            "id": "HealthCheckServicesList",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "items": {
+                    "items": {
+                        "$ref": "HealthCheckService"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "compute#healthCheckServicesList",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "selfLink": {
+                    "type": "string"
+                },
+                "warning": {
+                    "properties": {
+                        "code": {
+                            "enum": [
+                                "CLEANUP_FAILED",
+                                "DEPRECATED_RESOURCE_USED",
+                                "DEPRECATED_TYPE_USED",
+                                "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                "EXPERIMENTAL_TYPE_USED",
+                                "EXTERNAL_API_WARNING",
+                                "FIELD_VALUE_OVERRIDEN",
+                                "INJECTED_KERNELS_DEPRECATED",
+                                "MISSING_TYPE_DEPENDENCY",
+                                "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+                                "NEXT_HOP_CANNOT_IP_FORWARD",
+                                "NEXT_HOP_INSTANCE_NOT_FOUND",
+                                "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+                                "NEXT_HOP_NOT_RUNNING",
+                                "NOT_CRITICAL_ERROR",
+                                "NO_RESULTS_ON_PAGE",
+                                "REQUIRED_TOS_AGREEMENT",
+                                "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+                                "RESOURCE_NOT_DELETED",
+                                "SCHEMA_VALIDATION_IGNORED",
+                                "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+                                "UNDECLARED_PROPERTIES",
+                                "UNREACHABLE"
+                            ],
+                            "type": "string"
+                        },
+                        "data": {
+                            "items": {
+                                "properties": {
+                                    "key": {
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "message": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
                 }
             },
             "type": "object"
@@ -25319,6 +26762,12 @@
         "HealthStatus": {
             "id": "HealthStatus",
             "properties": {
+                "annotations": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object"
+                },
                 "healthState": {
                     "enum": [
                         "HEALTHY",
@@ -25350,6 +26799,9 @@
                 },
                 "healthCheck": {
                     "$ref": "HealthCheckReference"
+                },
+                "healthCheckService": {
+                    "$ref": "HealthCheckServiceReference"
                 },
                 "healthState": {
                     "enum": [
@@ -26240,6 +27692,14 @@
                     },
                     "type": "array"
                 },
+                "privateIpv6GoogleAccess": {
+                    "enum": [
+                        "ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE",
+                        "ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE",
+                        "INHERIT_FROM_SUBNETWORK"
+                    ],
+                    "type": "string"
+                },
                 "reservationAffinity": {
                     "$ref": "ReservationAffinity"
                 },
@@ -26644,6 +28104,9 @@
                 "selfLink": {
                     "type": "string"
                 },
+                "statefulPolicy": {
+                    "$ref": "StatefulPolicy"
+                },
                 "status": {
                     "$ref": "InstanceGroupManagerStatus"
                 },
@@ -26892,8 +28355,32 @@
                 "isStable": {
                     "type": "boolean"
                 },
+                "stateful": {
+                    "$ref": "InstanceGroupManagerStatusStateful"
+                },
                 "versionTarget": {
                     "$ref": "InstanceGroupManagerStatusVersionTarget"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceGroupManagerStatusStateful": {
+            "id": "InstanceGroupManagerStatusStateful",
+            "properties": {
+                "hasStatefulConfig": {
+                    "type": "boolean"
+                },
+                "perInstanceConfigs": {
+                    "$ref": "InstanceGroupManagerStatusStatefulPerInstanceConfigs"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceGroupManagerStatusStatefulPerInstanceConfigs": {
+            "id": "InstanceGroupManagerStatusStatefulPerInstanceConfigs",
+            "properties": {
+                "allEffective": {
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -27030,6 +28517,18 @@
             },
             "type": "object"
         },
+        "InstanceGroupManagersDeletePerInstanceConfigsReq": {
+            "id": "InstanceGroupManagersDeletePerInstanceConfigsReq",
+            "properties": {
+                "names": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "InstanceGroupManagersListErrorsResponse": {
             "id": "InstanceGroupManagersListErrorsResponse",
             "properties": {
@@ -27056,6 +28555,83 @@
                 },
                 "nextPageToken": {
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceGroupManagersListPerInstanceConfigsResp": {
+            "id": "InstanceGroupManagersListPerInstanceConfigsResp",
+            "properties": {
+                "items": {
+                    "items": {
+                        "$ref": "PerInstanceConfig"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "warning": {
+                    "properties": {
+                        "code": {
+                            "enum": [
+                                "CLEANUP_FAILED",
+                                "DEPRECATED_RESOURCE_USED",
+                                "DEPRECATED_TYPE_USED",
+                                "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                "EXPERIMENTAL_TYPE_USED",
+                                "EXTERNAL_API_WARNING",
+                                "FIELD_VALUE_OVERRIDEN",
+                                "INJECTED_KERNELS_DEPRECATED",
+                                "MISSING_TYPE_DEPENDENCY",
+                                "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+                                "NEXT_HOP_CANNOT_IP_FORWARD",
+                                "NEXT_HOP_INSTANCE_NOT_FOUND",
+                                "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+                                "NEXT_HOP_NOT_RUNNING",
+                                "NOT_CRITICAL_ERROR",
+                                "NO_RESULTS_ON_PAGE",
+                                "REQUIRED_TOS_AGREEMENT",
+                                "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+                                "RESOURCE_NOT_DELETED",
+                                "SCHEMA_VALIDATION_IGNORED",
+                                "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+                                "UNDECLARED_PROPERTIES",
+                                "UNREACHABLE"
+                            ],
+                            "type": "string"
+                        },
+                        "data": {
+                            "items": {
+                                "properties": {
+                                    "key": {
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "message": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceGroupManagersPatchPerInstanceConfigsReq": {
+            "id": "InstanceGroupManagersPatchPerInstanceConfigsReq",
+            "properties": {
+                "perInstanceConfigs": {
+                    "items": {
+                        "$ref": "PerInstanceConfig"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -27153,6 +28729,18 @@
                 "targetPools": {
                     "items": {
                         "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "InstanceGroupManagersUpdatePerInstanceConfigsReq": {
+            "id": "InstanceGroupManagersUpdatePerInstanceConfigsReq",
+            "properties": {
+                "perInstanceConfigs": {
+                    "items": {
+                        "$ref": "PerInstanceConfig"
                     },
                     "type": "array"
                 }
@@ -27607,6 +29195,14 @@
                         "$ref": "NetworkInterface"
                     },
                     "type": "array"
+                },
+                "privateIpv6GoogleAccess": {
+                    "enum": [
+                        "ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE",
+                        "ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE",
+                        "INHERIT_FROM_SUBNETWORK"
+                    ],
+                    "type": "string"
                 },
                 "reservationAffinity": {
                     "$ref": "ReservationAffinity"
@@ -28934,6 +30530,22 @@
             },
             "type": "object"
         },
+        "LicenseResourceCommitment": {
+            "id": "LicenseResourceCommitment",
+            "properties": {
+                "amount": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "coresPerLicense": {
+                    "type": "string"
+                },
+                "license": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "LicenseResourceRequirements": {
             "id": "LicenseResourceRequirements",
             "properties": {
@@ -29097,6 +30709,21 @@
         "MachineType": {
             "id": "MachineType",
             "properties": {
+                "accelerators": {
+                    "items": {
+                        "properties": {
+                            "guestAcceleratorCount": {
+                                "format": "int32",
+                                "type": "integer"
+                            },
+                            "guestAcceleratorType": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
                 "creationTimestamp": {
                     "type": "string"
                 },
@@ -29419,6 +31046,12 @@
                 "lastAttempt": {
                     "$ref": "ManagedInstanceLastAttempt"
                 },
+                "preservedStateFromConfig": {
+                    "$ref": "PreservedState"
+                },
+                "preservedStateFromPolicy": {
+                    "$ref": "PreservedState"
+                },
                 "version": {
                     "$ref": "ManagedInstanceVersion"
                 }
@@ -29628,6 +31261,12 @@
         "NetworkEndpoint": {
             "id": "NetworkEndpoint",
             "properties": {
+                "annotations": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object"
+                },
                 "fqdn": {
                     "type": "string"
                 },
@@ -29647,6 +31286,21 @@
         "NetworkEndpointGroup": {
             "id": "NetworkEndpointGroup",
             "properties": {
+                "annotations": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object"
+                },
+                "appEngine": {
+                    "$ref": "NetworkEndpointGroupAppEngine"
+                },
+                "cloudFunction": {
+                    "$ref": "NetworkEndpointGroupCloudFunction"
+                },
+                "cloudRun": {
+                    "$ref": "NetworkEndpointGroupCloudRun"
+                },
                 "creationTimestamp": {
                     "type": "string"
                 },
@@ -29672,8 +31326,13 @@
                     "enum": [
                         "GCE_VM_IP_PORT",
                         "INTERNET_FQDN_PORT",
-                        "INTERNET_IP_PORT"
+                        "INTERNET_IP_PORT",
+                        "NON_GCP_PRIVATE_IP_PORT",
+                        "SERVERLESS"
                     ],
+                    "type": "string"
+                },
+                "region": {
                     "type": "string"
                 },
                 "selfLink": {
@@ -29763,6 +31422,48 @@
                         }
                     },
                     "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "NetworkEndpointGroupAppEngine": {
+            "id": "NetworkEndpointGroupAppEngine",
+            "properties": {
+                "service": {
+                    "type": "string"
+                },
+                "urlMask": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "NetworkEndpointGroupCloudFunction": {
+            "id": "NetworkEndpointGroupCloudFunction",
+            "properties": {
+                "function": {
+                    "type": "string"
+                },
+                "urlMask": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "NetworkEndpointGroupCloudRun": {
+            "id": "NetworkEndpointGroupCloudRun",
+            "properties": {
+                "service": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                },
+                "urlMask": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -30045,6 +31746,9 @@
                 },
                 "fingerprint": {
                     "format": "byte",
+                    "type": "string"
+                },
+                "ipv6Address": {
                     "type": "string"
                 },
                 "kind": {
@@ -30469,6 +32173,14 @@
         "NodeGroupNode": {
             "id": "NodeGroupNode",
             "properties": {
+                "cpuOvercommitType": {
+                    "enum": [
+                        "CPU_OVERCOMMIT_TYPE_UNSPECIFIED",
+                        "ENABLED",
+                        "NONE"
+                    ],
+                    "type": "string"
+                },
                 "instances": {
                     "items": {
                         "type": "string"
@@ -30671,6 +32383,14 @@
         "NodeTemplate": {
             "id": "NodeTemplate",
             "properties": {
+                "cpuOvercommitType": {
+                    "enum": [
+                        "CPU_OVERCOMMIT_TYPE_UNSPECIFIED",
+                        "ENABLED",
+                        "NONE"
+                    ],
+                    "type": "string"
+                },
                 "creationTimestamp": {
                     "type": "string"
                 },
@@ -31151,6 +32871,133 @@
                         "$ref": "NodeType"
                     },
                     "type": "array"
+                },
+                "warning": {
+                    "properties": {
+                        "code": {
+                            "enum": [
+                                "CLEANUP_FAILED",
+                                "DEPRECATED_RESOURCE_USED",
+                                "DEPRECATED_TYPE_USED",
+                                "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                "EXPERIMENTAL_TYPE_USED",
+                                "EXTERNAL_API_WARNING",
+                                "FIELD_VALUE_OVERRIDEN",
+                                "INJECTED_KERNELS_DEPRECATED",
+                                "MISSING_TYPE_DEPENDENCY",
+                                "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+                                "NEXT_HOP_CANNOT_IP_FORWARD",
+                                "NEXT_HOP_INSTANCE_NOT_FOUND",
+                                "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+                                "NEXT_HOP_NOT_RUNNING",
+                                "NOT_CRITICAL_ERROR",
+                                "NO_RESULTS_ON_PAGE",
+                                "REQUIRED_TOS_AGREEMENT",
+                                "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+                                "RESOURCE_NOT_DELETED",
+                                "SCHEMA_VALIDATION_IGNORED",
+                                "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+                                "UNDECLARED_PROPERTIES",
+                                "UNREACHABLE"
+                            ],
+                            "type": "string"
+                        },
+                        "data": {
+                            "items": {
+                                "properties": {
+                                    "key": {
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "message": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "NotificationEndpoint": {
+            "id": "NotificationEndpoint",
+            "properties": {
+                "creationTimestamp": {
+                    "type": "string"
+                },
+                "grpcSettings": {
+                    "$ref": "NotificationEndpointGrpcSettings"
+                },
+                "id": {
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "compute#notificationEndpoint",
+                    "type": "string"
+                },
+                "name": {
+                    "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    "type": "string"
+                },
+                "region": {
+                    "type": "string"
+                },
+                "selfLink": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "NotificationEndpointGrpcSettings": {
+            "id": "NotificationEndpointGrpcSettings",
+            "properties": {
+                "authority": {
+                    "type": "string"
+                },
+                "endpoint": {
+                    "type": "string"
+                },
+                "payloadName": {
+                    "type": "string"
+                },
+                "resendInterval": {
+                    "$ref": "Duration"
+                },
+                "retryDurationSec": {
+                    "format": "uint32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "NotificationEndpointList": {
+            "id": "NotificationEndpointList",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "items": {
+                    "items": {
+                        "$ref": "NotificationEndpoint"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "compute#notificationEndpointList",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "selfLink": {
+                    "type": "string"
                 },
                 "warning": {
                     "properties": {
@@ -32041,6 +33888,20 @@
                 },
                 "name": {
                     "type": "string"
+                },
+                "preservedState": {
+                    "$ref": "PreservedState"
+                },
+                "status": {
+                    "enum": [
+                        "APPLYING",
+                        "DELETING",
+                        "EFFECTIVE",
+                        "NONE",
+                        "UNAPPLIED",
+                        "UNAPPLIED_DELETION"
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -32088,6 +33949,47 @@
                         "$ref": "WafExpressionSet"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "PreservedState": {
+            "id": "PreservedState",
+            "properties": {
+                "disks": {
+                    "additionalProperties": {
+                        "$ref": "PreservedStatePreservedDisk"
+                    },
+                    "type": "object"
+                },
+                "metadata": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "PreservedStatePreservedDisk": {
+            "id": "PreservedStatePreservedDisk",
+            "properties": {
+                "autoDelete": {
+                    "enum": [
+                        "NEVER",
+                        "ON_PERMANENT_INSTANCE_DELETION"
+                    ],
+                    "type": "string"
+                },
+                "mode": {
+                    "enum": [
+                        "READ_ONLY",
+                        "READ_WRITE"
+                    ],
+                    "type": "string"
+                },
+                "source": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -32218,18 +34120,22 @@
                 },
                 "metric": {
                     "enum": [
+                        "A2_CPUS",
                         "AFFINITY_GROUPS",
                         "AUTOSCALERS",
                         "BACKEND_BUCKETS",
                         "BACKEND_SERVICES",
                         "C2_CPUS",
                         "COMMITMENTS",
+                        "COMMITTED_A2_CPUS",
                         "COMMITTED_C2_CPUS",
                         "COMMITTED_CPUS",
                         "COMMITTED_LICENSES",
                         "COMMITTED_LOCAL_SSD_TOTAL_GB",
+                        "COMMITTED_MEMORY_OPTIMIZED_CPUS",
                         "COMMITTED_N2D_CPUS",
                         "COMMITTED_N2_CPUS",
+                        "COMMITTED_NVIDIA_A100_GPUS",
                         "COMMITTED_NVIDIA_K80_GPUS",
                         "COMMITTED_NVIDIA_P100_GPUS",
                         "COMMITTED_NVIDIA_P4_GPUS",
@@ -32238,6 +34144,8 @@
                         "CPUS",
                         "CPUS_ALL_REGIONS",
                         "DISKS_TOTAL_GB",
+                        "EXTERNAL_NETWORK_LB_FORWARDING_RULES",
+                        "EXTERNAL_PROTOCOL_FORWARDING_RULES",
                         "EXTERNAL_VPN_GATEWAYS",
                         "FIREWALLS",
                         "FORWARDING_RULES",
@@ -32254,18 +34162,23 @@
                         "INTERCONNECT_ATTACHMENTS_TOTAL_MBPS",
                         "INTERCONNECT_TOTAL_GBPS",
                         "INTERNAL_ADDRESSES",
+                        "INTERNAL_TRAFFIC_DIRECTOR_FORWARDING_RULES",
                         "IN_PLACE_SNAPSHOTS",
                         "IN_USE_ADDRESSES",
                         "IN_USE_BACKUP_SCHEDULES",
                         "IN_USE_SNAPSHOT_SCHEDULES",
                         "LOCAL_SSD_TOTAL_GB",
+                        "M1_CPUS",
+                        "M2_CPUS",
                         "MACHINE_IMAGES",
                         "N2D_CPUS",
                         "N2_CPUS",
                         "NETWORKS",
                         "NETWORK_ENDPOINT_GROUPS",
+                        "NETWORK_FIREWALL_POLICIES",
                         "NODE_GROUPS",
                         "NODE_TEMPLATES",
+                        "NVIDIA_A100_GPUS",
                         "NVIDIA_K80_GPUS",
                         "NVIDIA_P100_GPUS",
                         "NVIDIA_P100_VWS_GPUS",
@@ -32277,6 +34190,7 @@
                         "PACKET_MIRRORINGS",
                         "PREEMPTIBLE_CPUS",
                         "PREEMPTIBLE_LOCAL_SSD_GB",
+                        "PREEMPTIBLE_NVIDIA_A100_GPUS",
                         "PREEMPTIBLE_NVIDIA_K80_GPUS",
                         "PREEMPTIBLE_NVIDIA_P100_GPUS",
                         "PREEMPTIBLE_NVIDIA_P100_VWS_GPUS",
@@ -32648,6 +34562,18 @@
             },
             "type": "object"
         },
+        "RegionInstanceGroupManagerDeleteInstanceConfigReq": {
+            "id": "RegionInstanceGroupManagerDeleteInstanceConfigReq",
+            "properties": {
+                "names": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "RegionInstanceGroupManagerList": {
             "id": "RegionInstanceGroupManagerList",
             "properties": {
@@ -32719,6 +34645,30 @@
                         }
                     },
                     "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "RegionInstanceGroupManagerPatchInstanceConfigReq": {
+            "id": "RegionInstanceGroupManagerPatchInstanceConfigReq",
+            "properties": {
+                "perInstanceConfigs": {
+                    "items": {
+                        "$ref": "PerInstanceConfig"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "RegionInstanceGroupManagerUpdateInstanceConfigReq": {
+            "id": "RegionInstanceGroupManagerUpdateInstanceConfigReq",
+            "properties": {
+                "perInstanceConfigs": {
+                    "items": {
+                        "$ref": "PerInstanceConfig"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -32800,6 +34750,71 @@
                 },
                 "nextPageToken": {
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RegionInstanceGroupManagersListInstanceConfigsResp": {
+            "id": "RegionInstanceGroupManagersListInstanceConfigsResp",
+            "properties": {
+                "items": {
+                    "items": {
+                        "$ref": "PerInstanceConfig"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "warning": {
+                    "properties": {
+                        "code": {
+                            "enum": [
+                                "CLEANUP_FAILED",
+                                "DEPRECATED_RESOURCE_USED",
+                                "DEPRECATED_TYPE_USED",
+                                "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                "EXPERIMENTAL_TYPE_USED",
+                                "EXTERNAL_API_WARNING",
+                                "FIELD_VALUE_OVERRIDEN",
+                                "INJECTED_KERNELS_DEPRECATED",
+                                "MISSING_TYPE_DEPENDENCY",
+                                "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+                                "NEXT_HOP_CANNOT_IP_FORWARD",
+                                "NEXT_HOP_INSTANCE_NOT_FOUND",
+                                "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+                                "NEXT_HOP_NOT_RUNNING",
+                                "NOT_CRITICAL_ERROR",
+                                "NO_RESULTS_ON_PAGE",
+                                "REQUIRED_TOS_AGREEMENT",
+                                "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+                                "RESOURCE_NOT_DELETED",
+                                "SCHEMA_VALIDATION_IGNORED",
+                                "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+                                "UNDECLARED_PROPERTIES",
+                                "UNREACHABLE"
+                            ],
+                            "type": "string"
+                        },
+                        "data": {
+                            "items": {
+                                "properties": {
+                                    "key": {
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "message": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
                 }
             },
             "type": "object"
@@ -34826,6 +36841,10 @@
                 "automaticRestart": {
                     "type": "boolean"
                 },
+                "minNodeCpus": {
+                    "format": "int32",
+                    "type": "integer"
+                },
                 "nodeAffinities": {
                     "items": {
                         "$ref": "SchedulingNodeAffinity"
@@ -35880,6 +37899,40 @@
             },
             "type": "object"
         },
+        "StatefulPolicy": {
+            "id": "StatefulPolicy",
+            "properties": {
+                "preservedState": {
+                    "$ref": "StatefulPolicyPreservedState"
+                }
+            },
+            "type": "object"
+        },
+        "StatefulPolicyPreservedState": {
+            "id": "StatefulPolicyPreservedState",
+            "properties": {
+                "disks": {
+                    "additionalProperties": {
+                        "$ref": "StatefulPolicyPreservedStateDiskDevice"
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "StatefulPolicyPreservedStateDiskDevice": {
+            "id": "StatefulPolicyPreservedStateDiskDevice",
+            "properties": {
+                "autoDelete": {
+                    "enum": [
+                        "NEVER",
+                        "ON_PERMANENT_INSTANCE_DELETION"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Subnetwork": {
             "id": "Subnetwork",
             "properties": {
@@ -35903,6 +37956,9 @@
                 "ipCidrRange": {
                     "type": "string"
                 },
+                "ipv6CidrRange": {
+                    "type": "string"
+                },
                 "kind": {
                     "default": "compute#subnetwork",
                     "type": "string"
@@ -35919,6 +37975,14 @@
                 },
                 "privateIpGoogleAccess": {
                     "type": "boolean"
+                },
+                "privateIpv6GoogleAccess": {
+                    "enum": [
+                        "DISABLE_GOOGLE_ACCESS",
+                        "ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE",
+                        "ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE"
+                    ],
+                    "type": "string"
                 },
                 "purpose": {
                     "enum": [
@@ -36286,6 +38350,123 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "TargetGrpcProxy": {
+            "id": "TargetGrpcProxy",
+            "properties": {
+                "creationTimestamp": {
+                    "type": "string"
+                },
+                "fingerprint": {
+                    "format": "byte",
+                    "type": "string"
+                },
+                "id": {
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "compute#targetGrpcProxy",
+                    "type": "string"
+                },
+                "name": {
+                    "annotations": {
+                        "required": [
+                            "compute.targetGrpcProxies.insert"
+                        ]
+                    },
+                    "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "type": "string"
+                },
+                "selfLinkWithId": {
+                    "type": "string"
+                },
+                "urlMap": {
+                    "type": "string"
+                },
+                "validateForProxyless": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "TargetGrpcProxyList": {
+            "id": "TargetGrpcProxyList",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "items": {
+                    "items": {
+                        "$ref": "TargetGrpcProxy"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "default": "compute#targetGrpcProxyList",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "selfLink": {
+                    "type": "string"
+                },
+                "warning": {
+                    "properties": {
+                        "code": {
+                            "enum": [
+                                "CLEANUP_FAILED",
+                                "DEPRECATED_RESOURCE_USED",
+                                "DEPRECATED_TYPE_USED",
+                                "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+                                "EXPERIMENTAL_TYPE_USED",
+                                "EXTERNAL_API_WARNING",
+                                "FIELD_VALUE_OVERRIDEN",
+                                "INJECTED_KERNELS_DEPRECATED",
+                                "MISSING_TYPE_DEPENDENCY",
+                                "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+                                "NEXT_HOP_CANNOT_IP_FORWARD",
+                                "NEXT_HOP_INSTANCE_NOT_FOUND",
+                                "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+                                "NEXT_HOP_NOT_RUNNING",
+                                "NOT_CRITICAL_ERROR",
+                                "NO_RESULTS_ON_PAGE",
+                                "REQUIRED_TOS_AGREEMENT",
+                                "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+                                "RESOURCE_NOT_DELETED",
+                                "SCHEMA_VALIDATION_IGNORED",
+                                "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+                                "UNDECLARED_PROPERTIES",
+                                "UNREACHABLE"
+                            ],
+                            "type": "string"
+                        },
+                        "data": {
+                            "items": {
+                                "properties": {
+                                    "key": {
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "message": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
                 }
             },
             "type": "object"

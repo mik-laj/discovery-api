@@ -14,43 +14,439 @@
     <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=es">
      notas de la versión
     </a>
-    de
-    GKE harán referencia a "actualizaciones de seguridad"
-    hasta que se apruebe la divulgación. Llegado ese momento,
-    las notas se actualizan para hacer referencia a la vulnerabilidad que se ha mitigado con el parche.
+    de GKE harán referencia a "actualizaciones de seguridad" hasta que se apruebe la divulgación. Llegado ese momento, las notas se actualizan para hacer referencia a la vulnerabilidad que se ha mitigado con el parche.
    </p>
    <aside class="note">
     <strong>
      Nota:
     </strong>
     <span>
-     Si ejecutas cargas de trabajo de varios propietarios en GKE,
-     presta especial atención a estos boletines. Lo más probable es que estas
-    vulnerabilidades afecten a las cargas de trabajo de varios propietarios. En esta
+     Si ejecutas cargas de trabajo de varios propietarios en GKE, presta especial atención a estos boletines. Lo más probable es que estas vulnerabilidades afecten a las cargas de trabajo de varios propietarios. En
      <a href="https://cloudplatform.googleblog.com/2018/05/Exploring-container-security-Isolation-at-different-layers-of-the-Kubernetes-stack.html">
-      entrada del blog sobre
-    el aislamiento en diferentes capas de la pila de Kubernetes
+      esta entrada de blog sobre el aislamiento en diferentes capas de la pila de Kubernetes
      </a>
-     ,
-    encontrarás
-    una descripción técnica de los límites de seguridad de GKE e información sobre cómo pueden afectar a tus cargas de trabajo.
+     , encontrarás una descripción técnica de los límites de seguridad de GKE e información sobre cómo pueden afectar a tus cargas de trabajo.
     </span>
    </aside>
    <p>
-    Si quieres recibir los últimos boletines de seguridad que tienes a tu disposición, añade la URL de esta página a tu
+    Si quieres recibir los últimos boletines de seguridad, añade la URL de esta página a tu
     <a class="external" href="https://wikipedia.org/wiki/Comparison_of_feed_aggregators">
      lector de feeds
     </a>
-    o añade la URL del feed directamente:
+    o incluye la URL del feed directamente:
     <code dir="ltr" translate="no">
      https://cloud.google.com/feeds/kubernetes-engine-security-bulletins.xml
     </code>
-    .
    </p>
    <section class="bulletins">
+    <h2 data-text="GCP-2020-007" id="gcp-2020-007" tabindex="0">
+     GCP-2020-007
+    </h2>
+    <strong>
+     Publicación:
+    </strong>
+    01/06/2020
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Descripción
+       </th>
+       <th>
+        Gravedad
+       </th>
+       <th>
+        Notas
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Hace poco se ha descubierto una vulnerabilidad de falsificación de solicitud del servidor (SSRF) en Kubernetes, descrita en la
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555">
+          CVE-2020-8555
+         </a>
+         , que permite a ciertos usuarios autorizados filtrar hasta 500 bytes de información sensible desde la red de host del plano de control. El plano de control de Google Kubernetes Engine (GKE) utiliza controladores de Kubernetes y, por lo tanto, se ve afectado por esta vulnerabilidad. Te recomendamos que
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-container-cluster?hl=es">
+          actualices
+         </a>
+         el plano de control a la versión más reciente del parche como se indica a continuación.
+      No hace falta actualizar el nodo.
+         <br/>
+        </p>
+        <h4 data-text="¿Qué debo hacer?" id="what-should-i-do" tabindex="0">
+         ¿Qué debo hacer?
+        </h4>
+        En el caso de la mayor parte de los clientes, no es necesario realizar ninguna otra acción. La gran mayoría de los clústeres ya utilizan una versión con parche.
+
+      Las versiones de GKE que se indican a continuación o las que sean más recientes contienen la mitigación de esta vulnerabilidad:
+        <ul>
+         <li>
+          1.14.7-gke.39
+         </li>
+         <li>
+          1.14.8-gke.32
+         </li>
+         <li>
+          1.14.9-gke.17
+         </li>
+         <li>
+          1.14.10-gke.12
+         </li>
+         <li>
+          1.15.7-gke.17
+         </li>
+         <li>
+          1.16.4-gke.21
+         </li>
+         <li>
+          1.17.0-gke.0
+         </li>
+        </ul>
+        <p>
+         Los clústeres que usan
+         <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels?hl=es">
+          canales de versiones
+         </a>
+         ya utilizan una versión del plano de control con la mitigación.
+        </p>
+        <h4 data-text="¿Qué vulnerabilidad trata este parche?" id="what-vulnerability-is-addressed-by-this-patch" tabindex="0">
+         ¿Qué vulnerabilidad trata este parche?
+        </h4>
+        <p>
+         Estos parches mitigan la vulnerabilidad CVE-2020-8555. Se considera una vulnerabilidad media de GKE, ya que fue difícil aprovecharse de ella gracias a diversas medidas de endurecimiento del plano de control.
+        </p>
+        <p>
+         Un atacante con permiso para crear un recurso StorageClass o un pod con ciertos tipos de volúmenes integrados (GlusterFS, Quobyte, StorageFS o ScaleIO) puede provocar que
+         <code dir="ltr" translate="no">
+          kube-controller-manager
+         </code>
+         haga solicitudes
+         <code dir="ltr" translate="no">
+          GET
+         </code>
+         o
+         <code dir="ltr" translate="no">
+          POST
+         </code>
+         <em>
+         </em>
+         sin necesidad de controlar el cuerpo de la solicitud desde la red de host de la instancia maestra. Esos tipos de volúmenes no se suelen utilizar en GKE, así que un nuevo uso de cualquiera de ellos puede servir para detectar un posible ataque.
+        </p>
+        <p>
+         Si se combina la vulnerabilidad con una forma de filtrar los resultados de la solicitud
+         <code dir="ltr" translate="no">
+          GET/POST
+         </code>
+         al atacante (por ejemplo, mediante registros), es posible divulgar información sensible. Hemos actualizado los controladores de almacenamiento afectados para reducir las posibilidades de que se produzcan filtraciones.
+        </p>
+       </td>
+       <td>
+        <p>
+         Media
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555">
+          CVE-2020-8555
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-006" id="gcp-2020-006" tabindex="0">
+     GCP-2020-006
+    </h2>
+    <strong>
+     Publicación:
+    </strong>
+    01/06/2020
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Descripción
+       </th>
+       <th>
+        Gravedad
+       </th>
+       <th>
+        Notas
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         En Kubernetes, se ha descubierto una
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          vulnerabilidad
+         </a>
+         que permite que un contenedor con privilegios redirija el tráfico de nodos a otro contenedor. El tráfico TLS/SSH mutuo, como el que transcurre entre el kubelet y el servidor de la API o el procedente de aplicaciones mediante mTLS, no se puede leer ni modificar mediante este ataque. Esta vulnerabilidad afecta a todos los nodos de Google Kubernetes Engine (GKE), así que te recomendamos que
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=es">
+          actualices
+         </a>
+         a la versión más reciente del parche como se indica a continuación.
+        </p>
+        <h4 data-text="¿Qué debo hacer?" id="what-should-i-do-1" tabindex="0">
+         ¿Qué debo hacer?
+        </h4>
+        Para mitigar esta vulnerabilidad,
+        <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=es">
+         actualiza
+        </a>
+        primero tu plano de control y luego los nodos a una de las versiones con parche que se indican a continuación. Los clústeres que usan canales de versiones ya utilizan una versión con parche tanto en el plano de control como en los nodos:
+        <ul>
+         <li>
+          1.14.10-gke.36
+         </li>
+         <li>
+          1.15.11-gke.15
+         </li>
+         <li>
+          1.16.8-gke.15
+         </li>
+        </ul>
+        <p>
+         Muy pocos contenedores suelen requerir
+         <code dir="ltr" translate="no">
+          CAP_NET_RAW
+         </code>
+         . Esta y otras potentes características deberían estar bloqueadas de forma predeterminada mediante
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=es">
+          PodSecurityPolicy
+         </a>
+         o
+         <a href="https://cloud.google.com/anthos-config-management/docs/concepts/policy-controller?hl=es">
+          Anthos Policy Controller
+         </a>
+         :
+        </p>
+        <ul>
+         <li>
+          Inhabilita la característica
+          <code dir="ltr" translate="no">
+           CAP_NET_RAW
+          </code>
+          de los contenedores:
+         </li>
+         <ul>
+          <li>
+           Haciendo obligatoria su inhabilitación mediante
+           <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=es">
+            PodSecurityPolicy
+           </a>
+           con el siguiente código:
+          </li>
+          <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Require dropping CAP_NET_RAW with a PSP
+apiversion: extensions/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: no-cap-net-raw
+spec:
+  requiredDropCapabilities:
+    -NET_RAW
+     ...
+     # Unrelated fields omitted
+</pre>
+         </ul>
+         <ul>
+          <li>
+           O aplicando esta
+           <a class="external" href="https://github.com/open-policy-agent/gatekeeper/blob/master/library/pod-security-policy/capabilities/template.yaml">
+            plantilla de restricción
+           </a>
+           de Anthos Policy Controller/Gatekeeper. Puedes hacerlo de esta forma:
+          </li>
+          <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Dropping CAP_NET_RAW with Gatekeeper
+# (requires the K8sPSPCapabilities template)
+apiversion: constraints.gatekeeper.sh/v1beta1
+kind:  K8sPSPCapabilities
+metadata:
+  name: forbid-cap-net-raw
+spec:
+  match:
+    kinds:
+      - apiGroups: [""]
+      kinds: ["Pod"]
+    namespaces:
+      #List of namespaces to enforce this constraint on
+      - default
+    # If running gatekeeper &gt;= v3.1.0-beta.5,
+    # you can exclude namespaces rather than including them above.
+    excludedNamespaces:
+      - kube-system
+  parameters:
+    requiredDropCapabilities:
+      - "NET_RAW"
+</pre>
+         </ul>
+         <ul>
+          <li>
+           O actualizando las especificaciones de tu pod:
+          </li>
+          <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Dropping CAP_NET_RAW from a Pod:
+apiVersion: v1
+kind: Pod
+metadata:
+  name: no-cap-net-raw
+spec:
+  containers:
+    -name: may-container
+     ...
+    securityContext:
+      capabilities:
+        drop:
+          -NET_RAW
+</pre>
+         </ul>
+        </ul>
+        <h4 data-text="¿Qué vulnerabilidad trata este parche?" id="what-vulnerability-is-addressed-by-this-patch_1" tabindex="0">
+         ¿Qué vulnerabilidad trata este parche?
+        </h4>
+        <p>
+         El parche mitiga la siguiente vulnerabilidad:
+        </p>
+        <p>
+         La vulnerabilidad que se describe en el
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          error 91507 de Kubernetes
+         </a>
+         con la característica
+         <code dir="ltr" translate="no">
+          CAP_NET_RAW
+         </code>
+         (que se incluye en el conjunto de características predeterminadas del contenedor) para configurar de forma malintencionada la pila IPv6 del nodo y redirigir el tráfico al contenedor controlado por el atacante. De esa forma, el atacante puede interceptar o modificar el tráfico que se origine en el nodo o que lo tenga como destino. El tráfico TLS/SSH mutuo, como el que transcurre entre el kubelet y el servidor de la API o el procedente de aplicaciones mediante mTLS, no se puede leer ni modificar mediante este ataque.
+        </p>
+       </td>
+       <td>
+        <p>
+         Media
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          Error 91507 de Kubernetes
+         </a>
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-005" id="gcp-2020-005" tabindex="0">
+     GCP-2020-005
+    </h2>
+    <strong>
+     Publicación:
+    </strong>
+    07/05/2020
+    <br/>
+    <strong>
+     Última actualización:
+    </strong>
+    07/05/2020
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Descripción
+       </th>
+       <th>
+        Gravedad
+       </th>
+       <th>
+        Notas
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Hace poco se ha descubierto una vulnerabilidad en el kernel de Linux, descrita en la
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8835">
+          CVE-2020-8835
+         </a>
+         , que permite usar el escape de contenedores para obtener privilegios de raíz en el nodo del host.
+        </p>
+        <p>
+         Esta vulnerabilidad afecta a los nodos de Ubuntu en Google Kubernetes Engine (GKE) que ejecuten la versión 1.16 o 1.17 de GKE. Por ello, recomendamos actualizar cuanto antes a la versión más reciente del parche como se indica a continuación.
+        </p>
+        <p>
+         No se ven afectados los nodos que ejecutan Container-Optimized OS (COS) ni los que se ejecutan en GKE On-Prem.
+        </p>
+        <h4 data-text="¿Qué debo hacer?" id="what-should-i-do-2" tabindex="0">
+         ¿Qué debo hacer?
+        </h4>
+        <p>
+         <strong>
+          En el caso de la mayor parte de los clientes, no es necesario realizar ninguna otra acción. Solo se ven afectados los nodos que ejecutan Ubuntu en las versiones 1.16 o 1.17 de GKE.
+         </strong>
+        </p>
+        <p>
+         Para actualizar tus nodos, primero debes actualizar tu instancia maestra a la versión más reciente. Este parche estará disponible para Kubernetes 1.16.8-gke.12, 1.17.4-gke.10 y versiones posteriores. Consulta la disponibilidad de estos parches en las
+         <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=es">
+          notas de la versión
+         </a>
+         .
+        </p>
+        <h4 data-text="¿Qué vulnerabilidad trata este parche?" id="what-vulnerability-is-addressed-by-this-patch_2" tabindex="0">
+         ¿Qué vulnerabilidad trata este parche?
+        </h4>
+        <p>
+         Este parche mitiga la siguiente vulnerabilidad:
+        </p>
+        <p>
+         La
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8835">
+          CVE-2020-8835
+         </a>
+         describe una vulnerabilidad en la versión 5.5.0 y posteriores del kernel de Linux que permite que un contenedor malicioso (con una interacción mínima del usuario en forma de un ejecutable) lea y escriba la memoria del kernel y, de ese modo, pueda ejecutar código a nivel raíz en el nodo del host. Se considera una vulnerabilidad de alta gravedad.
+        </p>
+       </td>
+       <td>
+        <p>
+         Alta
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8835">
+          CVE-2020-8835
+         </a>
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
     <h2 data-text="GCP-2020-003" id="gcp-2020-003" tabindex="0">
      GCP-2020-003
     </h2>
+    <strong>
+     Publicación:
+    </strong>
+    31/03/2020
+    <br/>
+    <strong>
+     Última actualización:
+    </strong>
+    31/03/2020
     <table>
      <thead>
       <tr>
@@ -74,7 +470,7 @@
           CVE-2019-11254
          </a>
          , que permite que cualquier usuario autorizado envíe solicitudes POST para ejecutar un ataque remoto de denegación de servicio en un servidor de API de Kubernetes. El Comité de Seguridad de Producto (PSC) de Kubernetes ha publicado
-         <a href="https://groups.google.com/g/kubernetes-security-announce/c/wuwEwZigXBc?hl=es">
+         <a href="https://groups.google.com/forum/?hl=es#!topic/kubernetes-security-announce/wuwEwZigXBc">
           información adicional sobre esta vulnerabilidad
          </a>
          .
@@ -90,7 +486,7 @@
          </a>
          mitigan esta vulnerabilidad.
         </p>
-        <h4 data-text="What should I do?" id="what-should-i-do" tabindex="0">
+        <h4 data-text="¿Qué debo hacer?" id="what-should-i-do-3" tabindex="0">
          ¿Qué debo hacer?
         </h4>
         <p>
@@ -116,8 +512,8 @@
           1.16.6-gke.1
          </li>
         </ul>
-        <h4 data-text="What vulnerabilities are addressed by this patch?" id="what-vulnerabilities-are-addressed-by-this-patch" tabindex="0">
-         ¿Qué vulnerabilidades mitiga este parche?
+        <h4 data-text="¿Qué vulnerabilidades trata este parche?" id="what-vulnerabilities-are-addressed-by-this-patch" tabindex="0">
+         ¿Qué vulnerabilidades trata este parche?
         </h4>
         <p>
          El parche mitiga una vulnerabilidad de denegación de servicio (DoS):
@@ -146,6 +542,15 @@
     <h2 data-text="GCP-2020-002" id="gcp-2020-002" tabindex="0">
      GCP-2020-002
     </h2>
+    <strong>
+     Publicación:
+    </strong>
+    23/03/2020
+    <br/>
+    <strong>
+     Última actualización:
+    </strong>
+    23/03/2020
     <table>
      <thead>
       <tr>
@@ -178,18 +583,18 @@
          </a>
          .
         </p>
-        <h4 data-text="What should I do?" id="what-should-i-do_1" tabindex="0">
+        <h4 data-text="¿Qué debo hacer?" id="what-should-i-do-4" tabindex="0">
          ¿Qué debo hacer?
         </h4>
         <p>
          En GKE, todos los usuarios están protegidos ante la vulnerabilidad CVE-2020-8551, a menos que los usuarios que no son de confianza puedan enviar solicitudes en la red interna del clúster.
-            Si se utilizan
+        Si se utilizan
          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/authorized-networks?hl=es">
           redes maestras autorizadas
          </a>
          , también se mitiga la vulnerabilidad CVE-2020-8552.
         </p>
-        <h4 data-text="When will these be patched?" id="when-will-these-be-patched" tabindex="0">
+        <h4 data-text="¿Cuándo se les aplicarán parches a estas vulnerabilidades?" id="when-will-these-be-patched" tabindex="0">
          ¿Cuándo se les aplicarán parches a estas vulnerabilidades?
         </h4>
         <p>
@@ -240,9 +645,18 @@
       </tr>
      </tbody>
     </table>
-    <h2 data-text="January 21, 2020; last updated January 24, 2020" id="january_21_2020" tabindex="0">
-     21 de enero del 2020; última actualización: 24 de enero del 2020
+    <h2 data-text="21 de enero del 2020 (última actualización: 24 de enero del 2020)" id="january-21-2020" tabindex="0">
+     21 de enero del 2020 (última actualización: 24 de enero del 2020)
     </h2>
+    <strong>
+     Publicación:
+    </strong>
+    21/01/2020
+    <br/>
+    <strong>
+     Última actualización:
+    </strong>
+    24/01/2020
     <table>
      <thead>
       <tr>
@@ -264,15 +678,11 @@
          <strong>
           Actualización del 24 de enero del 2020:
          </strong>
-         el proceso para que
-          las versiones parcheadas estén disponibles está aún en marcha y se completará el
-          25 de enero del 2020.
+         el proceso para que las versiones parcheadas estén disponibles está aún en marcha y se completará el 25 de enero del 2020.
         </p>
         <hr/>
         <p>
-         Microsoft ha revelado una vulnerabilidad en la API de Windows Crypto y
-          su validación de firmas curvas elípticas. Para obtener más información,
-          consulta el
+         Microsoft ha revelado una vulnerabilidad en la API de Windows Crypto y su validación de firmas curvas elípticas. Para obtener más información, consulta el
          <a class="external" href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2020-0601">
           aviso de Microsoft
          </a>
@@ -285,14 +695,11 @@
         </p>
         <p>
          <strong>
-          En el caso de la mayor parte de los clientes, no es necesario realizar ninguna acción adicional. Solo afecta a los
-          nodos que ejecutan Windows Server.
+          En el caso de la mayor parte de los clientes, no es necesario realizar ninguna otra acción. Solo afecta a los nodos que ejecutan Windows Server.
          </strong>
         </p>
         <p>
-         En el caso de los clientes que usan nodos de Windows Server, los nodos
-          y las cargas de trabajo en contenedores que se ejecuten en dichos nodos deben actualizarse a
-          versiones parcheadas para reducir esa vulnerabilidad.
+         En el caso de los clientes que usan nodos de Windows Server, los nodos y las cargas de trabajo en contenedores que se ejecuten en dichos nodos deben actualizarse a versiones parcheadas para reducir esa vulnerabilidad.
         </p>
         <p>
          <strong>
@@ -316,17 +723,13 @@
          </strong>
         </p>
         <p>
-         El proceso de disponibilidad de las versiones parcheadas está aún en marcha y
-          se completará el 24 de enero del 2020.
+         El proceso de disponibilidad de las versiones parcheadas está aún en marcha y se completará el 24 de enero del 2020.
         </p>
         <p>
-         Tendrás que esperar hasta esa fecha y actualizar el nodo a una
-          versión de GKE parcheada, o usar Windows Update para desplegar manualmente el
-          parche de Windows más reciente en cualquier momento.
+         Tendrás que esperar hasta esa fecha y actualizar el nodo a una versión de GKE parcheada o usar Windows Update para desplegar manualmente el parche de Windows más reciente en cualquier momento.
         </p>
         <p>
-         A continuación se indican las versiones de parches que
-          contendrán la mitigación:
+         A continuación se indican las versiones de parches que contendrán la mitigación:
         </p>
         <ul>
          <li>
@@ -360,15 +763,11 @@
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-0601">
           CVE-2020-0601
          </a>
-         - Esta vulnerabilidad también se conoce como
+         : esta vulnerabilidad también se conoce como
          <a class="external" href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2020-0601">
-          vulnerabilidad de spoofing de la API de
-          Windows Crypto
+          vulnerabilidad de spoofing de la API de Windows Crypto
          </a>
-         y se puede activar para que
-          los archivos ejecutables maliciosos parezcan de confianza o para permitir al atacante realizar
-          ataques de intermediario y descifrar información confidencial sobre las conexiones de TLS
-          en el software afectado.
+         y se puede activar para que los archivos ejecutables maliciosos parezcan de confianza o para permitir al atacante realizar ataques de intermediario y descifrar información confidencial sobre las conexiones de TLS en el software afectado.
         </p>
        </td>
        <td>
@@ -387,9 +786,18 @@
       </tr>
      </tbody>
     </table>
-    <h2 data-text="November 14, 2019" id="november_14_2019" tabindex="0">
+    <h2 data-text="14 de noviembre del 2019" id="november-14-2019" tabindex="0">
      14 de noviembre del 2019
     </h2>
+    <strong>
+     Publicación:
+    </strong>
+    14/11/2019
+    <br/>
+    <strong>
+     Última actualización:
+    </strong>
+    14/11/2019
     <table>
      <thead>
       <tr>
@@ -408,9 +816,7 @@
       <tr>
        <td>
         <p>
-         En Kubernetes, se ha descubierto un problema
-            de seguridad en los
-            contenedores adicionales
+         En Kubernetes, se ha descubierto un problema de seguridad en los contenedores adicionales
          <a href="https://github.com/kubernetes-csi/external-provisioner">
           <code dir="ltr" translate="no">
            external-provisioner
@@ -428,9 +834,7 @@
            external-resizer
           </code>
          </a>
-         de kubernetes-csi que
-            afecta a la mayoría de las versiones de los contenedores adicionales incluidos en
-            los
+         de kubernetes-csi que afecta a la mayoría de las versiones de los contenedores adicionales incluidos en los
          <a href="https://kubernetes-csi.github.io/docs/drivers.html">
           controladores de Container Storage Interface (CSI)
          </a>
@@ -449,13 +853,11 @@
           Esta vulnerabilidad no afecta a ningún componente de GKE gestionado
          </strong>
          .
-            Es posible que te afecte si gestionas tus propios controladores de CSI en
+        Es posible que te afecte si gestionas tus propios controladores de CSI en
          <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/alpha-clusters?hl=es">
           clústeres alfa de GKE
          </a>
-         con la versión
-            1.12 de GKE o una posterior. Si tienes este problema,
-            ponte en contacto con tu proveedor de controladores de CSI para que te indique cómo llevar a cabo la actualización.
+         con la versión 1.12 de GKE o una posterior. Si tienes este problema, ponte en contacto con tu proveedor de controladores de CSI para que te indique cómo llevar a cabo la actualización.
         </p>
         <p>
          <strong>
@@ -465,9 +867,7 @@
          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11255">
           CVE-2019-11255
          </a>
-         :
-            esta CVE es una vulnerabilidad de los contenedores
-              adicionales
+         : esta CVE es una vulnerabilidad de los contenedores adicionales
          <code dir="ltr" translate="no">
           kubernetes-csi
          </code>
@@ -488,12 +888,7 @@
            external-resizer
           </code>
          </a>
-         que puede permitir el acceso o
-            la
-              modificación
-            de datos sin autorización. Esto
-            afecta a la mayoría de las
-            versiones de contenedores adicionales incluidos en
+         que puede permitir el acceso o la modificación de datos sin autorización. Esto afecta a la mayoría de las versiones de contenedores adicionales incluidos en
          <a href="https://kubernetes-csi.github.io/docs/drivers.html">
           controladores de CSI
          </a>
@@ -516,9 +911,18 @@
       </tr>
      </tbody>
     </table>
-    <h2 data-text="November 12, 2019" id="november_12_2019" tabindex="0">
+    <h2 data-text="12 de noviembre del 2019" id="november-12-2019" tabindex="0">
      12 de noviembre del 2019
     </h2>
+    <strong>
+     Publicación:
+    </strong>
+    12/11/2019
+    <br/>
+    <strong>
+     Última actualización:
+    </strong>
+    12/11/2019
     <table>
      <thead>
       <tr>
@@ -537,8 +941,7 @@
       <tr>
        <td>
         <p>
-         Intel ha descubierto varias CVE que pueden permitir interacciones entre la ejecución
-            especulativa y el estado de microarquitectura para exponer datos. Para obtener más información, consulta el
+         Intel ha descubierto varias CVE que pueden permitir interacciones entre la ejecución especulativa y el estado de microarquitectura para exponer datos. Para obtener más información, consulta el
          <a href="https://blogs.intel.com/technology/2019/11/ipas-november-2019-intel-platform-update-ipu/">
           aviso
          </a>
@@ -546,16 +949,12 @@
         </p>
         <p>
          <strong>
-          La infraestructura del host que ejecuta
-            Kubernetes Engine aísla las cargas de trabajo de los clientes. No es necesario que tomes ninguna medida,
-            salvo si ejecutas código no fiable en tus propios clústeres de varios propietarios
-            de GKE
+          La infraestructura del host que ejecuta Kubernetes Engine aísla las cargas de trabajo de los clientes. No es necesario que tomes ninguna medida, salvo si ejecutas código no fiable en tus propios clústeres de varios propietarios de GKE
           <em>
           </em>
           y usas nodos N2, M2 o C2.
          </strong>
-         Si usas instancias de GKE en nodos N1,
-            tampoco deberás tomar ninguna medida adicional.
+         Si usas instancias de GKE en nodos N1, tampoco deberás tomar ninguna medida adicional.
         </p>
         <p>
          Si utilizas GKE On‑Prem de Anthos, la exposición dependerá del hardware. Compara tu infraestructura con la que se detalla en el
@@ -564,26 +963,22 @@
          </a>
          .
         </p>
-        <h4 data-text="What should I do?" id="what-should-i-do_2" tabindex="0">
+        <h4 data-text="¿Qué debo hacer?" id="what-should-i-do-5" tabindex="0">
          ¿Qué debo hacer?
         </h4>
         <p>
          <strong>
-          Esta situación te afectará únicamente si usas grupos
-            de nodos N2, M2 o C2 y
+          Esta situación te afectará únicamente si usas grupos de nodos N2, M2 o C2
           <em>
           </em>
-          estos ejecutan código no fiable dentro de tus propios clústeres de varios propietarios de GKE.
+          y estos ejecutan código no fiable dentro de tus propios clústeres de varios propietarios de GKE.
          </strong>
         </p>
         <p>
          <strong>
           Reinicia los nodos para que se aplique el parche.
          </strong>
-         La forma más sencilla de
-            reiniciar todos los nodos de
-            tu grupo de nodos es
-            usar la operación de
+         La forma más sencilla de reiniciar todos los nodos de tu grupo de nodos es usar la operación de
          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=es#upgrade_nodes">
           actualización
          </a>
@@ -591,15 +986,14 @@
          <br/>
         </p>
         <aside class="note">
-         Nota: No tienes que cambiar de versión durante una actualización. Puedes iniciar
-            una actualización a la misma versión de nodo con la marca
+         Nota: No tienes que cambiar de versión durante una actualización. Puedes iniciar una actualización a la misma versión de nodo con la marca
          <code dir="ltr" translate="no">
           cluster-version
          </code>
          .
         </aside>
-        <h4 data-text="What vulnerabilities are addressed by this patch?" id="what-vulnerabilities-are-addressed-by-this-patch_1" tabindex="0">
-         ¿Qué vulnerabilidades mitiga este parche?
+        <h4 data-text="¿Qué vulnerabilidades trata este parche?" id="what-vulnerabilities-are-addressed-by-this-patch_1" tabindex="0">
+         ¿Qué vulnerabilidades trata este parche?
         </h4>
         <p>
          Este parche mitiga las siguientes vulnerabilidades:
@@ -608,11 +1002,7 @@
          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11135">
           CVE-2019-11135
          </a>
-         :
-            esta CVE también se denomina TSX Async Abort (TAA). TAA proporciona otra vía para
-            la filtración externa de datos usando las mismas estructuras de datos de
-            microarquitectura
-            que fueron vulnerables ante el
+         : esta CVE también se denomina TSX Async Abort (TAA). TAA proporciona otra vía para la filtración externa de datos usando las mismas estructuras de datos de microarquitectura que fueron vulnerables ante el
          <a href="https://cloud.google.com/kubernetes-engine/docs/security-bulletins?hl=es#may-14-2019">
           muestreo de datos de microarquitectura (MDS)
          </a>
@@ -622,11 +1012,7 @@
          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12207">
           CVE-2018-12207
          </a>
-         :
-            es una vulnerabilidad de denegación de servicio (DoS) que afecta a los hosts
-            de máquinas virtuales y hace que un invitado malicioso provoque un fallo en un host que no está protegido. Esta CVE
-            también se denomina "Machine Check Error on Page Size Change" (Error de comprobación de máquina al cambiar el tamaño de página) y no afecta a
-            GKE.
+         : es una vulnerabilidad de denegación de servicio (DoS) que afecta a los hosts de máquinas virtuales y hace que un invitado malicioso provoque un fallo en un host que no está protegido. Esta CVE también se denomina "Machine Check Error on Page Size Change" (Error de comprobación de máquina al cambiar el tamaño de página) y no afecta a GKE.
         </p>
        </td>
        <td>
@@ -648,9 +1034,18 @@
       </tr>
      </tbody>
     </table>
-    <h2 data-text="October 22, 2019" id="october_22_2019" tabindex="0">
+    <h2 data-text="22 de octubre del 2019" id="october-22-2019" tabindex="0">
      22 de octubre del 2019
     </h2>
+    <strong>
+     Publicación:
+    </strong>
+    22/10/2019
+    <br/>
+    <strong>
+     Última actualización:
+    </strong>
+    22/10/2019
     <table>
      <thead>
       <tr>
@@ -669,22 +1064,19 @@
       <tr>
        <td>
         <p>
-         Hace poco se ha descubierto una vulnerabilidad en el lenguaje de programación Go,
-            descrita en la
+         Hace poco se ha descubierto una vulnerabilidad en el lenguaje de programación Go, descrita en la
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-16276">
           CVE-2019-16276
          </a>
          .
-            Puede afectar a las configuraciones de Kubernetes que usan
-            un proxy de autenticación. Para obtener más información, consulta el
+        Puede afectar a las configuraciones de Kubernetes que usan un proxy de autenticación. Para obtener más información, consulta el
          <a class="external" href="https://groups.google.com/forum/?hl=es#!topic/kubernetes-security-announce/PtsUCqFi4h4">
           aviso
          </a>
          que ha publicado Kubernetes al respecto.
         </p>
         <p>
-         Kubernetes Engine no permite configurar un proxy de autenticación,
-            por lo que no se ve afectado por esta vulnerabilidad.
+         Kubernetes Engine no permite configurar un proxy de autenticación, por lo que no se ve afectado por esta vulnerabilidad.
         </p>
        </td>
        <td>
@@ -703,9 +1095,18 @@
       </tr>
      </tbody>
     </table>
-    <h2 data-text="October 16, 2019" id="october_16_2019" tabindex="0">
+    <h2 data-text="16 de octubre del 2019" id="october-16-2019" tabindex="0">
      16 de octubre del 2019
     </h2>
+    <strong>
+     Publicación:
+    </strong>
+    16/10/2019
+    <br/>
+    <strong>
+     Última actualización:
+    </strong>
+    24/10/2019
     <table>
      <thead>
       <tr>
@@ -725,9 +1126,9 @@
        <td>
         <p>
          <strong>
-          Actualización del 24 de octubre del 2019:
+          Actualización del 24/10/2019:
          </strong>
-         las versiones con parche ya están disponibles en todas las zonas.
+         Las versiones con parche ya están disponibles en todas las zonas.
         </p>
         <hr/>
         <p>
@@ -735,13 +1136,9 @@
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11253">
           CVE-2019-11253
          </a>
-         ,
-            que permite que cualquier usuario autorizado envíe solicitudes POST para ejecutar un
-            ataque remoto de denegación de servicio en un servidor de API de Kubernetes. El
-            Comité de Seguridad de Producto (PSC) de Kubernetes ha publicado
+         , que permite que cualquier usuario autorizado envíe solicitudes POST para ejecutar un ataque remoto de denegación de servicio en un servidor de API de Kubernetes. El Comité de Seguridad de Producto (PSC) de Kubernetes ha publicado
          <a class="external" href="https://groups.google.com/forum/?hl=es#!topic/kubernetes-security-announce/jk8polzSUxs">
-          información adicional
-            sobre esta vulnerabilidad
+          información adicional sobre esta vulnerabilidad
          </a>
          .
         </p>
@@ -752,18 +1149,15 @@
          </a>
          y
          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters?hl=es#private_master">
-          clústeres privados
-            sin punto de conexión público
+          clústeres privados sin punto de conexión público
          </a>
          mitigan esta vulnerabilidad.
         </p>
-        <h6 data-text="What should I do?" id="what-should-i-do_3" tabindex="0">
+        <h6 data-text="¿Qué debo hacer?" id="what-should-i-do-6" tabindex="0">
          ¿Qué debo hacer?
         </h6>
         <p>
-         Te recomendamos que actualices tu clúster en cuanto haya disponible una versión
-            del parche que contenga la corrección. Está previsto
-            que el parche esté disponible en todas las zonas con el lanzamiento de la versión de GKE programado para la semana del 14 de octubre.
+         Te recomendamos que actualices tu clúster en cuanto haya disponible una versión del parche que contenga la corrección. Está previsto que el parche esté disponible en todas las zonas con el lanzamiento de la versión de GKE programado para la semana del 14 de octubre.
         </p>
         <p>
          A continuación se indican las versiones de parches que contendrán la mitigación:
@@ -782,8 +1176,8 @@
           1.15.4-gke.15
          </li>
         </ul>
-        <h6 data-text="What vulnerabilities are addressed by this patch?" id="what-vulnerabilities-are-addressed-by-this-patch_2" tabindex="0">
-         ¿Qué vulnerabilidades mitiga este parche?
+        <h6 data-text="¿Qué vulnerabilidades trata este parche?" id="what-vulnerabilities-are-addressed-by-this-patch_2" tabindex="0">
+         ¿Qué vulnerabilidades trata este parche?
         </h6>
         <p>
          Este parche mitiga las siguientes vulnerabilidades:
@@ -808,9 +1202,18 @@
       </tr>
      </tbody>
     </table>
-    <h2 data-text="September 16, 2019" id="september_16_2019" tabindex="0">
+    <h2 data-text="16 de septiembre del 2019" id="september-16-2019" tabindex="0">
      16 de septiembre del 2019
     </h2>
+    <strong>
+     Publicación:
+    </strong>
+    16/09/2019
+    <br/>
+    <strong>
+     Última actualización:
+    </strong>
+    16/10/2019
     <table>
      <thead>
       <tr>
@@ -832,10 +1235,7 @@
          Este boletín se ha actualizado desde su publicación original.
         </p>
         <p>
-         Hace poco se han descubierto nuevas vulnerabilidades de denegación de servicio (DoS) con
-            el lenguaje de
-            programación Go:
-            las
+         Hace poco se han descubierto nuevas vulnerabilidades de denegación de servicio (DoS) con el lenguaje de programación Go: las
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9512">
           CVE-2019-9512
          </a>
@@ -843,30 +1243,21 @@
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9514">
           CVE-2019-9514
          </a>
-         . En GKE,
-            estas vulnerabilidades podrían permitir que un usuario cree solicitudes maliciosas
-            que usen excesivamente la CPU en el servidor de API de Kubernetes,
-            lo que puede reducir la disponibilidad del plano de control del clúster. Para obtener más información,
-            consulta el
+         . En GKE, estas vulnerabilidades podrían permitir que un usuario cree solicitudes maliciosas que usen excesivamente la CPU en el servidor de API de Kubernetes, lo que puede reducir la disponibilidad del plano de control del clúster. Para obtener más información, consulta el
          <a class="external" href="https://groups.google.com/forum/?hl=es#!topic/golang-announce/65QixT3tcmg">
           aviso
          </a>
-         del lenguaje de
-            programación Go que se ha publicado al respecto.
+         del lenguaje de programación Go que se ha publicado al respecto.
         </p>
-        <h6 data-text="What should I do?" id="what-should-i-do_4" tabindex="0">
+        <h6 data-text="¿Qué debo hacer?" id="what-should-i-do-7" tabindex="0">
          ¿Qué debo hacer?
         </h6>
         <p>
-         Te recomendamos que actualices tu clúster a la versión más reciente del parche en cuanto esté disponible,
-            ya que contiene
-            la mitigación a esta vulnerabilidad. De acuerdo con el
+         Te recomendamos que actualices el clúster a la versión más reciente del parche en cuanto esté disponible, ya que contiene la mitigación de esta vulnerabilidad. De acuerdo con el
          <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=es#september_16_2019">
           calendario de actualizaciones
          </a>
-         , está
-            previsto
-            que el parche esté disponible en todas las zonas con la próxima versión de GKE.
+         , está previsto que el parche esté disponible en todas las zonas con la próxima versión de GKE.
         </p>
         <p>
          A continuación se indican las versiones de parches que contendrán la mitigación:
@@ -885,7 +1276,7 @@
           1.14.6-gke.1
          </li>
         </ul>
-        <h6 data-text="What vulnerability is addressed by this patch?" id="what-vulnerability-is-addressed-by-this-patch" tabindex="0">
+        <h6 data-text="¿Qué vulnerabilidad trata este parche?" id="what-vulnerability-is-addressed-by-this-patch_3" tabindex="0">
          ¿Qué vulnerabilidad trata este parche?
         </h6>
         <p>
@@ -900,8 +1291,7 @@
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9514">
           CVE-2019-9514
          </a>
-         son vulnerabilidades
-            de denegación de servicio (DoS).
+         son vulnerabilidades de denegación de servicio (DoS).
         </p>
        </td>
        <td>
@@ -924,47 +1314,81 @@
       </tr>
      </tbody>
     </table>
-    <h2 data-text="September 5, 2019" id="may-31-2019-update" tabindex="0">
+    <h2 data-text="5 de septiembre del 2019" id="may-31-2019-update" tabindex="0">
      5 de septiembre del 2019
     </h2>
+    <strong>
+     Publicación:
+    </strong>
+    05/09/2019
+    <br/>
+    <strong>
+     Última actualización:
+    </strong>
+    05/09/2019
     <p>
-     Se ha actualizado el boletín
-    sobre la corrección de la vulnerabilidad que se publicó el
+     Se ha actualizado el boletín sobre la corrección de la vulnerabilidad que se publicó el
      <a href="#may-31-2019">
       31 de mayo del 2019
      </a>
      .
     </p>
-    <h2 data-text="August 22, 2019" id="august-05-2019-update2" tabindex="0">
+    <h2 data-text="22 de agosto del 2019" id="august-05-2019-update2" tabindex="0">
      22 de agosto del 2019
     </h2>
+    <strong>
+     Publicación:
+    </strong>
+    22/08/2019
+    <br/>
+    <strong>
+     Última actualización:
+    </strong>
+    22/08/2019
     <p>
      Se ha actualizado el boletín del
      <a href="#august-05-2019">
       5 de agosto del 2019
      </a>
      .
-    Ya está disponible
+Ya está disponible
      <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=es#august_22_2019">
       la corrección de la vulnerabilidad que se mencionaba en el boletín anterior
      </a>
      .
     </p>
-    <h2 data-text="August 8, 2019" id="august-05-2019-update" tabindex="0">
+    <h2 data-text="8 de agosto del 2019" id="august-05-2019-update" tabindex="0">
      8 de agosto del 2019
     </h2>
+    <strong>
+     Publicación:
+    </strong>
+    08/08/2019
+    <br/>
+    <strong>
+     Última actualización:
+    </strong>
+    08/08/2019
     <p>
      Se ha actualizado el boletín del
      <a href="#august-05-2019">
       5 de agosto del 2019
      </a>
      .
-    Está previsto que la corrección de la vulnerabilidad incluida
-    en dicho boletín esté disponible en la próxima versión de GKE.
+Está previsto que la corrección de la vulnerabilidad incluida en dicho boletín esté disponible en la próxima versión de GKE.
     </p>
-    <h2 data-text="August 5, 2019" id="august-05-2019" tabindex="0">
+    <h2 data-text="5 de agosto del 2019" id="august-05-2019" tabindex="0">
      5 de agosto del 2019
     </h2>
+    <strong>
+     Publicación:
+    </strong>
+    05/08/2019
+    <br/>
+    <strong>
+     Última actualización:
+    </strong>
+    09/08/2019
     <table>
      <thead>
       <tr>
@@ -986,24 +1410,17 @@
          Este boletín se ha actualizado desde su publicación original.
         </p>
         <p>
-         Hace poco se ha descubierto una vulnerabilidad en
-          Kubernetes, la
+         Hace poco se ha descubierto una vulnerabilidad en Kubernetes, la
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11247">
           CVE-2019-11247
          </a>
-         ,
-          que permite que las instancias de
+         , que permite que las instancias de
          <a class="external" href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">
           recursos personalizados
          </a>
-         con permiso de clúster se
-          utilicen como si fueran objetos espaciados
-          por nombre en todos los espacios de nombres. Esto quiere decir que las cuentas de usuario y de servicio
-          que cuenten únicamente con permisos para controlar el acceso basado en
-          roles a nivel de espacio de nombres pueden interactuar con recursos personalizados que tengan permiso de clúster. Para que el atacante pueda
-          aprovechar esta vulnerabilidad, es necesario que cuente con privilegios para acceder al recurso en cualquier espacio de nombres.
+         con permiso de clúster se utilicen como si fueran objetos espaciados por nombre en todos los espacios de nombres. Esto quiere decir que las cuentas de usuario y de servicio que cuenten únicamente con permisos para controlar el acceso basado en roles a nivel de espacio de nombres pueden interactuar con recursos personalizados que tengan permiso de clúster. Para que el atacante pueda aprovechar esta vulnerabilidad, es necesario que cuente con privilegios para acceder al recurso en cualquier espacio de nombres.
         </p>
-        <h6 data-text="What should I do?" id="what-should-i-do_5" tabindex="0">
+        <h6 data-text="¿Qué debo hacer?" id="what-should-i-do-8" tabindex="0">
          ¿Qué debo hacer?
         </h6>
         <p>
@@ -1011,10 +1428,7 @@
          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=es">
           actualices
          </a>
-         tu clúster a la versión más reciente del parche en cuanto esté disponible,
-          ya que contiene la mitigación a esta vulnerabilidad. Está previsto que el
-          parche esté disponible en todas las zonas con la próxima versión de GKE. A continuación
-          se indican las versiones de parches que contendrán la mitigación:
+         tu clúster a la versión más reciente del parche en cuanto esté disponible, ya que contiene la mitigación a esta vulnerabilidad. Está previsto que el parche esté disponible en todas las zonas con la próxima versión de GKE. A continuación se indican las versiones de parches que contendrán la mitigación:
         </p>
         <ul>
          <li>
@@ -1034,7 +1448,7 @@
           )
          </li>
         </ul>
-        <h6 data-text="What vulnerability is addressed by this patch?" id="what-vulnerability-is-addressed-by-this-patch_1" tabindex="0">
+        <h6 data-text="¿Qué vulnerabilidad trata este parche?" id="what-vulnerability-is-addressed-by-this-patch_4" tabindex="0">
          ¿Qué vulnerabilidad trata este parche?
         </h6>
         <p>
@@ -1060,9 +1474,18 @@
       </tr>
      </tbody>
     </table>
-    <h2 data-text="July 3, 2019" id="july-03-2019-2" tabindex="0">
+    <h2 data-text="3 de julio del 2019" id="july-03-2019-2" tabindex="0">
      3 de julio del 2019
     </h2>
+    <strong>
+     Publicación:
+    </strong>
+    03/07/2019
+    <br/>
+    <strong>
+     Última actualización:
+    </strong>
+    03/07/2019
     <table>
      <thead>
       <tr>
@@ -1081,8 +1504,7 @@
       <tr>
        <td>
         <p>
-         Ya hay disponible una versión con parche
-          de
+         Ya hay disponible una versión con parche de
          <code dir="ltr" translate="no">
           kubectl
          </code>
@@ -1094,7 +1516,7 @@
           253.0.0
          </a>
          para tratar la CVE-2019-11246.
-          Consulta el
+      Consulta el
          <a href="#june-25-2019">
           boletín de seguridad del 25 de junio del 2019
          </a>
@@ -1104,7 +1526,7 @@
          <strong>
           Nota:
          </strong>
-         El parche no está disponible en la versión
+         El parche no está disponible en
          <code dir="ltr" translate="no">
           kubectl
          </code>
@@ -1126,9 +1548,18 @@
       </tr>
      </tbody>
     </table>
-    <h2 data-text="July 3, 2019" id="july-03-2019" tabindex="0">
+    <h2 data-text="3 de julio del 2019" id="july-03-2019" tabindex="0">
      3 de julio del 2019
     </h2>
+    <strong>
+     Publicación:
+    </strong>
+    25/06/2019
+    <br/>
+    <strong>
+     Última actualización:
+    </strong>
+    03/07/2019
     <table>
      <thead>
       <tr>
@@ -1146,37 +1577,28 @@
      <tbody>
       <tr>
        <td>
-        <h6 data-text="July 3, 2019 Update" id="july-3-2019-update" tabindex="0">
+        <h6 data-text="Actualización del 3 de julio del 2019" id="july-3,-2019-update" tabindex="0">
          Actualización del 3 de julio del 2019
         </h6>
         <p>
-         Cuando publicamos la última actualización,
-          todavía no estaban disponibles los parches de las versiones 1.11.9 y 1.11.10. Ya hemos lanzado la versión 1.11.10-gke.5 como
-          actualización de ambas versiones 1.11.
+         Cuando publicamos la última actualización, todavía no estaban disponibles los parches de las versiones 1.11.9 y 1.11.10. Ya hemos lanzado la versión 1.11.10-gke.5 como actualización de ambas versiones 1.11.
         </p>
         <p>
-         En este momento, se han aplicado parches a las instancias maestras de
-          GKE y
-          la infraestructura de Google que ejecuta Kubernetes Engine está protegida frente a esta vulnerabilidad.
+         En este momento, se han aplicado parches a las instancias maestras de GKE y la infraestructura de Google que ejecuta Kubernetes Engine está protegida frente a esta vulnerabilidad.
         </p>
         <p>
-         En poco tiempo, las instancias maestras 1.11 dejarán de estar disponibles y
-          se han programado actualizaciones automáticas a la versión 1.12 en la semana del 8 de julio del 2019. Puedes elegir cualquiera de las siguientes
-          opciones para obtener nodos con una versión con parche:
+         En poco tiempo, las instancias maestras 1.11 dejarán de estar disponibles y se han programado actualizaciones automáticas a la versión 1.12 en la semana del 8 de julio del 2019. Puedes elegir cualquiera de las siguientes opciones para obtener nodos con una versión con parche:
         </p>
         <ul>
          <li>
-          Lleva a cabo la actualización de los nodos a la versión 1.11.10-gke.5 a partir del 8 de julio del 2019. Después de esa fecha,
-            se empezarán a
-            eliminar las versiones 1.11 de la lista disponible de objetivos de actualización.
+          Actualiza los nodos a la versión 1.11.10-gke.5 a partir del 8 de julio del 2019. Después de esa fecha, se empezarán a eliminar las versiones 1.11 de la lista disponible de objetivos de actualización.
          </li>
          <li>
           Habilita las
           <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-upgrades?hl=es">
            actualizaciones automáticas
           </a>
-          en los nodos de la versión 1.11 y permite que puedan actualizarse a la
-            versión 1.12 cuando lo hagan las instancias maestras.
+          en los nodos de la versión 1.11 y permite que puedan actualizarse a la versión 1.12 cuando lo hagan las instancias maestras.
          </li>
          <li>
           <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=es">
@@ -1189,26 +1611,19 @@
          El boletín original del 24 de junio del 2019 es el siguiente:
         </p>
         <hr/>
-        <h6 data-text="June 24, 2019 Update" id="june-24-2019-update" tabindex="0">
+        <h6 data-text="Actualización del 24 de junio del 2019" id="june-24,-2019-update" tabindex="0">
          Actualización del 24 de junio del 2019
         </h6>
         <p>
-         Hemos lanzado las siguientes versiones con parches de Kubernetes el
-          22 de junio del 2019 a las 21:40 (UTC). Las instancias maestras entre las versiones de Kubernetes 1.11.0 y 1.13.6
-          se actualizarán automáticamente a una versión con parche. Si no estás ejecutando
-          una versión compatible con este parche, actualiza a una versión de instancia
-          maestra compatible (se enumeran más adelante) antes de actualizar tus nodos.
+         El 22 de junio del 2019 a las 21:40 (UTC), lanzamos las siguientes versiones con parches de Kubernetes. Las instancias maestras entre las versiones de Kubernetes 1.11.0 y 1.13.6 se actualizarán automáticamente a una versión con parche. Si no estás ejecutando una versión compatible con este parche, actualiza a una versión de instancia maestra compatible (se enumeran más adelante) antes de actualizar tus nodos.
         </p>
         <p>
          <strong>
-          Debido a la gravedad de estas vulnerabilidades, y tengas o no
-           habilitadas las actualizaciones automáticas de nodos,
-          te recomendamos que
+          Debido a la gravedad de estas vulnerabilidades, y tengas o no habilitadas las actualizaciones automáticas de nodos, te recomendamos que
           <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-container-cluster?hl=es">
            actualices manualmente
           </a>
-          tus nodos e instancias maestras
-          a una de estas versiones en cuanto estén disponibles.
+          tus nodos e instancias maestras a una de estas versiones en cuanto estén disponibles.
          </strong>
         </p>
         <p>
@@ -1255,20 +1670,17 @@
         <p>
          A estas CVE se las conoce conjuntamente como
          <a class="external" href="https://github.com/Netflix/security-bulletins/blob/master/advisories/third-party/2019-001.md">
-          NFLX-2019-001
+          NFLX‑2019‑001
          </a>
          .
         </p>
         <p>
-         Es posible que los kernels de Linux sin parches sean vulnerables a un ataque de denegación de servicio
-          activado de forma remota.
+         Es posible que los kernels de Linux sin parches sean vulnerables a un ataque de denegación de servicio activado de forma remota.
          <strong>
-          Se ven afectados los nodos de Google Kubernetes Engine que envían o reciben tráfico de redes
-          no fiables, así que te recomendamos que sigas estos
-          pasos de mitigación para proteger tus cargas de trabajo.
+          Los nodos de Google Kubernetes Engine que envían o reciben tráfico de redes no fiables se ven afectados, así que te recomendamos que sigas estos pasos de mitigación para proteger tus cargas de trabajo.
          </strong>
         </p>
-        <h6 data-text="Kubernetes masters" id="kubernetes-masters" tabindex="0">
+        <h6 data-text="Instancias maestras de Kubernetes" id="kubernetes-masters" tabindex="0">
          Instancias maestras de Kubernetes
         </h6>
         <ul>
@@ -1283,23 +1695,19 @@
          </li>
          <li>
           <p>
-           En los próximos días,
-          se aplicará automáticamente el parche a las instancias maestras de los clústeres de GKE que gestiona Google. No hace falta
-          que el cliente realice ninguna acción.
+           En los próximos días, se aplicará automáticamente el parche a las instancias maestras de los clústeres de GKE que gestiona Google. No hace falta que el cliente realice ninguna acción.
           </p>
          </li>
         </ul>
-        <h6 data-text="Kubernetes nodes" id="kubernetes-nodes" tabindex="0">
+        <h6 data-text="Nodos de Kubernetes" id="kubernetes-nodes" tabindex="0">
          Nodos de Kubernetes
         </h6>
         <p>
-         Los nodos que limitan el tráfico a las redes fiables no se ven afectados. Se trataría de clústeres
-          con las siguientes características:
+         Los nodos que limitan el tráfico a las redes fiables no se ven afectados. Se trataría de clústeres con las siguientes características:
         </p>
         <ul>
          <li>
-          Nodos con cortafuegos que protegen frente a redes no fiables o que no
-          tienen direcciones IP públicas (
+          Nodos con cortafuegos que protegen frente a redes no fiables o que no tienen direcciones IP públicas (
           <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters?hl=es">
            clústeres privados
           </a>
@@ -1310,26 +1718,20 @@
          </li>
         </ul>
         <p>
-         Google está preparando una mitigación permanente de estas vulnerabilidades que
-          estará disponible en una nueva versión de nodo. Actualizaremos este
-          boletín y enviaremos un correo electrónico a
-          todos los clientes de GKE cuando esté disponible la corrección permanente.
+         Google está preparando una mitigación permanente de estas vulnerabilidades que estará disponible en una nueva versión de nodo. Actualizaremos este boletín y enviaremos un correo electrónico a todos los clientes de GKE cuando esté disponible la corrección permanente.
         </p>
         <p>
-         Hasta entonces, hemos creado un DaemonSet de Kubernetes
-          que modifica la configuración de
+         Hasta entonces, hemos creado un DaemonSet de Kubernetes que modifica la configuración de
          <code dir="ltr" translate="no">
           iptables
          </code>
-         del host para
-          implementar las mitigaciones.
+         del host para implementar las mitigaciones.
         </p>
-        <h5 data-text="What should I do?" id="what-should-i-do_6" tabindex="0">
+        <h5 data-text="¿Qué debo hacer?" id="what-should-i-do-9" tabindex="0">
          ¿Qué debo hacer?
         </h5>
         <p>
-         Ejecuta el siguiente comando para
-          aplicar el DaemonSet de Kubernetes a todos los nodos de tu clúster. De esta forma, se añade una regla
+         Ejecuta el siguiente comando para aplicar el DaemonSet de Kubernetes a todos los nodos de tu clúster. De esta forma, se añade una regla
          <code dir="ltr" translate="no">
           iptables
          </code>
@@ -1337,39 +1739,34 @@
          <code dir="ltr" translate="no">
           iptables
          </code>
-         actuales del nodo para
-          mitigar la vulnerabilidad.
+         actuales del nodo para mitigar la vulnerabilidad.
          <strong>
-          Ejecuta el comando una vez por
-          clúster en cada proyecto de Google Cloud.
+          Ejecuta el comando una vez por clúster en cada proyecto de Google Cloud.
          </strong>
         </p>
         <pre class="devsite-click-to-copy" dir="ltr" translate="no">
 
 kubectl apply -f \
-    https://raw.githubusercontent.com/GoogleCloudPlatform\
-    /k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
-          </pre>
+https://raw.githubusercontent.com/GoogleCloudPlatform\
+/k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
+      </pre>
         <aside class="note">
          <p>
           No es necesario añadir ninguna regla ip6tables porque Ipv6 no es compatible con GKE.
          </p>
         </aside>
         <p>
-         Una vez que haya disponible una versión del nodo con parche y hayas actualizado
-          todos los nodos que puedan haberse visto afectados, usa el siguiente
-          comando para eliminar el DaemonSet.
+         Una vez que haya disponible una versión del nodo con parche y hayas actualizado todos los nodos que puedan haberse visto afectados, usa el siguiente comando para eliminar el DaemonSet.
          <strong>
-          Ejecuta el comando una vez por
-          clúster en cada proyecto de Google Cloud.
+          Ejecuta el comando una vez por clúster en cada proyecto de Google Cloud.
          </strong>
         </p>
         <pre class="devsite-click-to-copy" dir="ltr" translate="no">
 
 kubectl delete -f \
-    https://raw.githubusercontent.com/GoogleCloudPlatform\
-    /k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
-          </pre>
+https://raw.githubusercontent.com/GoogleCloudPlatform\
+/k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
+      </pre>
        </td>
        <td>
         Alta
@@ -1396,7 +1793,7 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="June 25, 2019" id="june-25-2019" tabindex="0">
+    <h2 data-text="25 de junio del 2019" id="june-25-2019" tabindex="0">
      25 de junio del 2019
     </h2>
     <table id="june-24-2019">
@@ -1418,7 +1815,7 @@ kubectl delete -f \
        <td>
         <p>
          <strong>
-          Actualización del 3 de julio del 2019:
+          Actualización del 03/07/2019:
          </strong>
          este parche está disponible en
          <code dir="ltr" translate="no">
@@ -1428,8 +1825,7 @@ kubectl delete -f \
          <code dir="ltr" translate="no">
           kubectl
          </code>
-         1.12.9, 1.13.6, 1.14.2
-          y versiones posteriores.
+         1.12.9, 1.13.6, 1.14.2 y versiones posteriores.
         </p>
         <p>
          <strong>
@@ -1439,19 +1835,15 @@ kubectl delete -f \
         </p>
         <hr/>
         <p>
-         Hace poco, Kubernetes descubrió la vulnerabilidad
+         Hace poco se ha descubierto una vulnerabilidad en Kubernetes, la
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11246">
           CVE-2019-11246
          </a>
-         ,
-          que permite que un atacante con acceso a una
-          operación
+         , que permite que un atacante con acceso a una operación
          <code dir="ltr" translate="no">
           kubectl cp
          </code>
-         y a la ejecución de código dentro de un contenedor modifique archivos en el host. Es posible que
-          esta vulnerabilidad permita que un atacante sustituya
-          o cree un archivo en el sistema de archivos del host. Para obtener más información, consulta el
+         y a la ejecución de código dentro de un contenedor modifique archivos en el host. Es posible que esta vulnerabilidad permita que un atacante sustituya o cree un archivo en el sistema de archivos del host. Para obtener más información, consulta el
          <a class="external" href="https://groups.google.com/forum/?hl=es#!topic/kubernetes-security-announce/NLs2TGbfPdo">
           aviso
          </a>
@@ -1459,23 +1851,19 @@ kubectl delete -f \
         </p>
         <p>
          <strong>
-          Esta vulnerabilidad
-          afecta a todas las versiones
+          Esta vulnerabilidad afecta a todas las versiones
           <code dir="ltr" translate="no">
            gcloud
           </code>
-          de Google Kubernetes Engine (GKE),
-          así que te recomendamos actualizar a la versión más reciente
-          del parche de
+          de Google Kubernetes Engine (GKE), así que te recomendamos actualizar a la versión más reciente del parche de
           <code dir="ltr" translate="no">
            gcloud
           </code>
           cuando esté disponible.
          </strong>
-         Próximamente habrá una versión del
-          parche que incluya una mitigación de esta vulnerabilidad.
+         Próximamente habrá una versión del parche que incluya una mitigación de esta vulnerabilidad.
         </p>
-        <h6 data-text="What should I do?" id="what-should-i-do_7" tabindex="0">
+        <h6 data-text="¿Qué debo hacer?" id="what-should-i-do-10" tabindex="0">
          ¿Qué debo hacer?
         </h6>
         <p>
@@ -1507,7 +1895,7 @@ kubectl delete -f \
          </a>
          .
         </p>
-        <h6 data-text="What vulnerability is addressed by this patch?" id="what-vulnerability-is-addressed-by-this-patch_2" tabindex="0">
+        <h6 data-text="¿Qué vulnerabilidad trata este parche?" id="what-vulnerability-is-addressed-by-this-patch_5" tabindex="0">
          ¿Qué vulnerabilidad trata este parche?
         </h6>
         <p>
@@ -1537,7 +1925,7 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="June 18, 2019" id="june-18-2019" tabindex="0">
+    <h2 data-text="18 de junio del 2019" id="june-18-2019" tabindex="0">
      18 de junio del 2019
     </h2>
     <table>
@@ -1562,51 +1950,40 @@ kubectl delete -f \
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-15664">
           CVE-2018-15664
          </a>
-         , que permite
-          que un atacante que puede ejecutar código en un contenedor intercepte una operación
+         , que permite que un atacante que puede ejecutar código en un contenedor intercepte una operación
          <code dir="ltr" translate="no">
           docker cp
          </code>
-         iniciada de forma externa. Es posible que esta vulnerabilidad permita
-          que un atacante cambie el lugar en el que se escribe un archivo a una ubicación
-          arbitraria en el sistema de archivos del host.
+         iniciada de forma externa. Es posible que esta vulnerabilidad permita que un atacante cambie el lugar en el que se escribe un archivo a una ubicación arbitraria en el sistema de archivos del host.
         </p>
         <p>
          <strong>
-          Esta vulnerabilidad afecta a todos los nodos que ejecutan Docker en
-          Google Kubernetes Engine (GKE), así que te recomendamos actualizar
-          a la versión más reciente del parche cuando esté disponible. Próximamente habrá
-          una versión del parche que incluya una mitigación de esta vulnerabilidad.
+          Esta vulnerabilidad afecta a todos los nodos que ejecutan Docker en Google Kubernetes Engine (GKE), así que te recomendamos actualizar a la versión más reciente del parche cuando esté disponible. Próximamente habrá una versión del parche que incluya una mitigación de esta vulnerabilidad.
          </strong>
         </p>
         <p>
          <strong>
-          Esta vulnerabilidad afecta a todas las instancias maestras que ejecutan
-          Docker en Google Kubernetes Engine (GKE) y que son anteriores a la versión 1.12.7.
+          Esta vulnerabilidad afecta a todas las instancias maestras que ejecutan Docker en Google Kubernetes Engine (GKE) y que son anteriores a la versión 1.12.7.
          </strong>
          En GKE, los usuarios no tienen acceso a
          <code dir="ltr" translate="no">
           docker cp
          </code>
-         en la instancia
-          maestra, por lo que el riesgo de esta vulnerabilidad se ve limitado en las instancias maestras de este entorno.
+         en la instancia maestra, por lo que el riesgo de esta vulnerabilidad se ve limitado en las instancias maestras de este entorno.
         </p>
-        <h5 data-text="What should I do?" id="what-should-i-do_8" tabindex="0">
+        <h5 data-text="¿Qué debo hacer?" id="what-should-i-do-11" tabindex="0">
          ¿Qué debo hacer?
         </h5>
         <p>
-         Solo se ven afectados los nodos que ejecutan Docker y
-          únicamente cuando se emite un comando
+         Solo se ven afectados los nodos que ejecutan Docker y únicamente cuando se emite un comando
          <code dir="ltr" translate="no">
           docker cp
          </code>
-         (o uno equivalente con una API)
-          que pueda ser interceptado.
-          Se prevé que sea una situación bastante inusual en un entorno de Kubernetes.
-          No se ven afectados los nodos que ejecutan
+         (o uno equivalente con una API) que pueda ser interceptado.
+      Se prevé que sea una situación bastante inusual en un entorno de Kubernetes.
+      No se ven afectados los nodos que ejecutan
          <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/using-containerd?hl=es">
-          Container-Optimized OS (COS)
-          con containerd
+          Container-Optimized OS (COS) con containerd
          </a>
          .
         </p>
@@ -1615,28 +1992,22 @@ kubectl delete -f \
          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=es#upgrading_the_cluster">
           actualizar tus instancias maestras
          </a>
-         a
-          la versión con parche. Cuando el parche esté disponible, podrás iniciar la actualización de la instancia maestra o esperar a que Google lo haga automáticamente. Dicho parche se incluirá en Docker 18.09.7,
-          como parte de un próximo parche de GKE.
+         a la versión con parche. Cuando el parche esté disponible, podrás iniciar la actualización de la instancia maestra o esperar a que Google lo haga automáticamente. Dicho parche se incluirá en Docker 18.09.7 como parte de un próximo parche de GKE.
          <strong>
-          Este parche solo estará disponible en GKE 1.13
-          y versiones posteriores.
+          Este parche solo estará disponible en GKE 1.13 y versiones posteriores.
          </strong>
         </p>
         <p>
-         Actualizaremos automáticamente las instancias maestras del
-          clúster a la versión con parche según la programación habitual. También puedes iniciar la actualización de las
-          instancias maestras por tu cuenta cuando la versión con parche esté disponible.
+         Actualizaremos automáticamente las instancias maestras del clúster a la versión con parche según la programación habitual. También puedes iniciar la actualización de las instancias maestras por tu cuenta cuando la versión con parche esté disponible.
         </p>
         <p>
-         Actualizaremos este boletín
-          cuando dispongamos de las versiones que contienen un parche. Consulta la disponibilidad de estos parches en las
+         Actualizaremos este boletín cuando dispongamos de las versiones que contienen un parche. Consulta la disponibilidad de estos parches en las
          <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=es">
           notas de la versión
          </a>
          .
         </p>
-        <h5 data-text="What vulnerability is addressed by this patch?" id="what-vulnerability-is-addressed-by-this-patch_3" tabindex="0">
+        <h5 data-text="¿Qué vulnerabilidad trata este parche?" id="what-vulnerability-is-addressed-by-this-patch_6" tabindex="0">
          ¿Qué vulnerabilidad trata este parche?
         </h5>
         <p>
@@ -1647,15 +2018,12 @@ kubectl delete -f \
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-15664">
           CVE-2018-15664
          </a>
-         permite que un atacante que pueda ejecutar
-          código en un contenedor intercepte una operación
+         permite que un atacante que pueda ejecutar código en un contenedor intercepte una operación
          <code dir="ltr" translate="no">
           docker
-          cp
+      cp
          </code>
-         iniciada de forma externa. Es posible que esta vulnerabilidad
-          permita que un atacante cambie el lugar en el que se escribe un
-          archivo a una ubicación arbitraria en el sistema de archivos del host.
+         iniciada de forma externa. Es posible que esta vulnerabilidad permita que un atacante cambie el lugar en el que se ha escrito un archivo a una ubicación arbitraria en el sistema de archivos del host.
         </p>
        </td>
        <td>
@@ -1666,7 +2034,7 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="May 31, 2019" id="may-31-2019" tabindex="0">
+    <h2 data-text="31 de mayo del 2019" id="may-31-2019" tabindex="0">
      31 de mayo del 2019
     </h2>
     <table>
@@ -1689,14 +2057,11 @@ kubectl delete -f \
         <p>
          Este boletín se ha actualizado desde su publicación original.
         </p>
-        <h6 data-text="August 2, 2019 Update" id="august-2-2019-update" tabindex="0">
+        <h6 data-text="Actualización del 2 de agosto del 2019" id="august-2,-2019-update" tabindex="0">
          Actualización del 2 de agosto del 2019
         </h6>
         <p>
-         Cuando se lanzó el boletín inicial, solo se veían
-          afectadas las versiones de la 1.13.6-gke.0 a la 1.13.6-gke.5. Debido a una regresión,
-          ahora se ven afectadas todas las versiones 1.13.6.x. Si utilizas la versión 1.13.6, actualízala a la 1.13.7
-          cuanto antes.
+         Cuando se lanzó el boletín inicial, solo se veían afectadas las versiones de la 1.13.6-gke.0 a la 1.13.6-gke.5. Debido a una regresión, ahora se ven afectadas todas las versiones 1.13.6.x. Si utilizas la versión 1.13.6, actualízala a la 1.13.7 cuanto antes.
         </p>
         <p>
         </p>
@@ -1705,17 +2070,13 @@ kubectl delete -f \
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11245">
           CVE-2019-11245
          </a>
-         en kubelet v. 1.13.6 y v. 1.14.2, que puede provocar que los contenedores
-          se ejecuten como UID 0 (normalmente se asigna al usuario
+         en kubelet v. 1.13.6 y v. 1.14.2, que puede provocar que los contenedores se ejecuten como UID 0 (normalmente se asigna al usuario
          <code dir="ltr" translate="no">
           root
          </code>
-         ),
-          aunque se haya especificado un usuario diferente en la imagen de contenedor.
+         ), aunque se haya especificado un usuario diferente en la imagen de contenedor.
          <strong>
-          Si tus contenedores se
-          ejecutan como un usuario no raíz y utilizas una versión de nodo entre la
-          1.13.6-gke.0 y la 1.13.6-gke.6, te recomendamos que establezcas
+          Si tus contenedores se ejecutan como un usuario no raíz y utilizas una versión de nodo entre la 1.13.6-gke.0 y la 1.13.6-gke.6, te recomendamos que establezcas
           <code dir="ltr" translate="no">
            RunAsUser
           </code>
@@ -1731,15 +2092,9 @@ kubectl delete -f \
          <code dir="ltr" translate="no">
           USER
          </code>
-         en un Dockerfile),
-          se puede producir un
-          comportamiento inesperado. Cuando un contenedor se ejecuta por
-          primera vez en un nodo, respeta correctamente el UID especificado. No obstante, debido a este defecto,
-          en la segunda ejecución (y en las posteriores) el contenedor se ejecuta como
-          UID 0 independientemente del UID especificado. Se trata normalmente de un privilegio de
-          mayor prioridad no deseado, y puede conllevar un comportamiento inesperado de la aplicación.
+         en un Dockerfile), se puede producir un comportamiento inesperado. Cuando un contenedor se ejecuta por primera vez en un nodo, respeta correctamente el UID especificado. No obstante, debido a este defecto, en la segunda ejecución (y en las posteriores) el contenedor se ejecuta como UID 0 independientemente del UID especificado. Se trata normalmente de un privilegio de mayor prioridad no deseado, y puede conllevar un comportamiento inesperado de la aplicación.
         </p>
-        <h5 data-text="How do I know if I'm running an impacted version?" id="how-do-i-know-if-im-running-an-impacted-version" tabindex="0">
+        <h5 data-text="¿Cómo puedo saber si estoy utilizando una versión afectada?" id="how-do-i-know-if-im-running-an-impacted-version" tabindex="0">
          ¿Cómo puedo saber si estoy utilizando una versión afectada?
         </h5>
         <p>
@@ -1747,32 +2102,29 @@ kubectl delete -f \
         </p>
         <pre class="devsite-click-to-copy prettyprint" dir="ltr" suppresswarning="" translate="no">
 
-    kubectl get nodes -o=jsonpath='{range .items[*]}'\
-    '{.status.nodeInfo.machineID}'\
-    '{"\t"}{.status.nodeInfo.kubeletVersion}{"\n"}{end}'</pre>
+kubectl get nodes -o=jsonpath='{range .items[*]}'\
+'{.status.nodeInfo.machineID}'\
+'{"\t"}{.status.nodeInfo.kubeletVersion}{"\n"}{end}'</pre>
         <p>
          Si el resultado muestra las versiones de kubelet que se indican a continuación, eso significa que tus nodos se ven afectados:
         </p>
         <ul>
          <li>
-          v1.13.6
+          v. 1.13.6
          </li>
          <li>
-          v1.14.2
+          v. 1.14.2
          </li>
         </ul>
-        <h5 data-text="How do I know if my specific configuration is affected?" id="how-do-i-know-if-my-specific-configuration-is-affected" tabindex="0">
+        <h5 data-text="¿Cómo puedo saber si mi configuración específica se ve afectada?" id="how-do-i-know-if-my-specific-configuration-is-affected" tabindex="0">
          ¿Cómo puedo saber si mi configuración específica se ve afectada?
         </h5>
         <p>
-         Si tus contenedores se ejecutan como un usuario no raíz y utilizas una versión de nodo
-          entre la 1.13.6-gke.0 y la 1.13.6-gke.6, tu configuración se verá afectada
-          salvo en los siguientes casos:
+         Si tus contenedores se ejecutan como un usuario no raíz y utilizas una versión de nodo entre la 1.13.6-gke.0 y la 1.13.6-gke.6, tu configuración se verá afectada salvo en los siguientes casos:
         </p>
         <ul>
          <li>
-          Los pods que especifican un valor no raíz válido
-            para el PodSecurityContext de
+          Los pods que especifican un valor no raíz válido para el PodSecurityContext de
           <code dir="ltr" translate="no">
            runAsUser
           </code>
@@ -1790,11 +2142,10 @@ kubectl delete -f \
           <code dir="ltr" translate="no">
            mustRunAsNonRoot:true
           </code>
-          no se iniciarán como
-            UID 0, pero no se podrán iniciar cuando se vean afectados por este problema.
+          no se iniciarán como UID 0, pero no se podrán iniciar cuando se vean afectados por este problema.
          </li>
         </ul>
-        <h5 data-text="What should I do?" id="what-should-i-do_9" tabindex="0">
+        <h5 data-text="¿Qué debo hacer?" id="what-should-i-do-12" tabindex="0">
          ¿Qué debo hacer?
         </h5>
         <p>
@@ -1806,8 +2157,7 @@ kubectl delete -f \
          <a class="external" href="https://kubernetes.io/docs/concepts/policy/pod-security-policy/">
           PodSecurityPolicy
          </a>
-         para aplicar
-          esta configuración.
+         para aplicar esta configuración.
         </p>
        </td>
        <td>
@@ -1821,7 +2171,7 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="May 14, 2019" id="may-14-2019" tabindex="0">
+    <h2 data-text="14 de mayo del 2019" id="may-14-2019" tabindex="0">
      14 de mayo del 2019
     </h2>
     <table>
@@ -1843,10 +2193,9 @@ kubectl delete -f \
        <td>
         <p>
          <strong>
-          Actualización del 11 de junio del 2019:
+          Actualización del 11/06/2019:
          </strong>
-         el parche está disponible en las versiones 1.11.10-gke.4, 1.12.8-gke.6 y 1.13.6-gke.5
-            lanzadas la semana del 28 de mayo del 2019, así como en las versiones posteriores.
+         el parche está disponible en las versiones 1.11.10-gke.4, 1.12.8-gke.6 y 1.13.6-gke.5 lanzadas la semana del 28/05/2019, así como en las versiones posteriores.
         </p>
         <p>
          Intel ha divulgado las siguientes CVE:
@@ -1874,10 +2223,7 @@ kubectl delete -f \
          </li>
         </ul>
         <p>
-         A estas CVE se las conoce conjuntamente como
-            muestreo de datos de microarquitectura (MDS). Estas vulnerabilidades podrían permitir que los datos se expusieran por medio de
-            la interacción de la ejecución
-            especulativa y el estado de microarquitectura. Para obtener más información, consulta el
+         A estas CVE se las conoce conjuntamente como muestreo de datos de microarquitectura (MDS). Estas vulnerabilidades podrían permitir que los datos se expusieran por medio de la interacción de la ejecución especulativa y el estado de microarquitectura. Para obtener más información, consulta el
          <a class="external" href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00233.html">
           aviso
          </a>
@@ -1885,67 +2231,49 @@ kubectl delete -f \
         </p>
         <p>
          <strong>
-          La infraestructura del host que ejecuta
-            Kubernetes Engine aísla las cargas de trabajo de los clientes entre sí. No te afectará a menos
-            que ejecutes código no fiable en tus propios clústeres de varios propietarios de GKE.
+          La infraestructura del host que ejecuta Kubernetes Engine aísla las cargas de trabajo de los clientes entre sí. No te afectará a menos que ejecutes código no fiable en tus propios clústeres de varios propietarios de GKE.
          </strong>
         </p>
         <p>
          <strong>
-          En el caso de los clientes que ejecuten
-              código no fiable en sus propios servicios de varios propietarios de
-              Kubernetes Engine, se trata de una vulnerabilidad considerablemente grave.
+          Para los clientes que ejecuten código no fiable en sus propios servicios de varios propietarios de Kubernetes Engine, se trata de una vulnerabilidad considerablemente grave.
          </strong>
-         Para mitigarla en Kubernetes Engine,
-              inhabilita Hyper-Threading en tus nodos. Estas vulnerabilidades afectan
-              únicamente a los nodos que usan varias CPU en Google Kubernetes Engine (GKE).
-              Ten en cuenta que las máquinas virtuales n1-standard-1 (la predeterminada de GKE),
-              g1-small y f1-micro exponen únicamente 1 vCPU al entorno de invitado,
-              de modo que no es necesario inhabilitar Hyper-Threading.
+         Para mitigarla en Kubernetes Engine, inhabilita Hyper-Threading en tus nodos. Estas vulnerabilidades afectan únicamente a los nodos que usan varias CPU en Google Kubernetes Engine (GKE).
+          Ten en cuenta que las máquinas virtuales n1-standard-1 (la predeterminada de GKE), g1-small y f1-micro exponen únicamente 1 vCPU al entorno de invitado, de modo que no es necesario inhabilitar Hyper-Threading.
         </p>
         <p>
-         Se incluirán protecciones adicionales que habiliten
-            la funcionalidad de vaciado en una próxima
+         Se incluirán protecciones adicionales que habiliten la funcionalidad de vaciado en una próxima
          <a href="https://cloud.google.com/kubernetes-engine/release-notes?hl=es">
           versión del parche
          </a>
          .
-            En las próximas semanas, actualizaremos las
-              instancias maestras y los nodos a las versiones con parche actualizadas
-              automáticamente según la programación habitual.
+        En las próximas semanas, actualizaremos las instancias maestras y los nodos a las versiones con parche actualizadas automáticamente según la programación habitual.
          <strong>
-          El parche no es suficiente por sí solo para mitigar
-              la exposición a esta vulnerabilidad. Consulta las siguientes acciones recomendadas.
+          El parche no es suficiente por sí solo para mitigar la exposición a esta vulnerabilidad. Consulta las siguientes acciones recomendadas.
          </strong>
         </p>
         <p>
-         Si utilizas GKE On-Prem,
-           puedes verte afectado en función del hardware que emplees. Consulta el
+         Si utilizas GKE On-Prem, la vulnerabilidad podría afectarte en función del hardware que emplees. Consulta el
          <a class="external" href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00233.html">
           aviso
          </a>
          que ha publicado Intel al respecto.
         </p>
-        <h4 data-text="What should I do?" id="what-should-i-do_10" tabindex="0">
+        <h4 data-text="¿Qué debo hacer?" id="what-should-i-do-13" tabindex="0">
          ¿Qué debo hacer?
         </h4>
         <p>
          <strong>
-          No te afectará a menos que ejecutes código no
-             fiable en tus propios clústeres de varios propietarios de GKE.
+          No te afectará a menos que ejecutes código no fiable en tus propios clústeres de varios propietarios de GKE.
          </strong>
         </p>
         <p>
          <strong>
-          En el caso de los nodos de Kubernetes Engine,
-           crea grupos de nodos con la opción Hyper-Threading inhabilitada y
-           reprograma tus cargas de trabajo en ellos.
+          En el caso de los nodos de Kubernetes Engine, crea grupos de nodos con la opción Hyper-Threading inhabilitada y reprograma tus cargas de trabajo en ellos.
          </strong>
-         .
         </p>
         <p>
-         Ten en cuenta que las máquinas virtuales n1-standard-1, g1-small y f1-micro exponen 1 vCPU
-             al entorno de invitado, de modo que no es necesario inhabilitar Hyper-Threading.
+         Ten en cuenta que las máquinas virtuales n1-standard-1, g1-small y f1-micro exponen 1 vCPU al entorno de invitado, de modo que no es necesario inhabilitar Hyper-Threading.
         </p>
         <div class="warning">
          <strong>
@@ -1953,17 +2281,11 @@ kubectl delete -f \
          </strong>
          <ul>
           <li>
-           Inhabilitar Hyper-Threading podría afectar considerablemente
-                al rendimiento de tus clústeres y tu aplicación. Asegúrate de que eso te
-                parece bien antes de aplicar la medida en tus clústeres de producción.
+           Inhabilitar Hyper-Threading podría afectar considerablemente al rendimiento de tus clústeres y tu aplicación. Asegúrate de que eso te parece bien antes de aplicar la medida en tus clústeres de producción.
           </li>
           <li>
-           Hyper-Threading se puede inhabilitar a nivel de grupo de nodos
-                de GKE desplegando un DaemonSet. No obstante, al desplegar dicho DaemonSet,
-                todos los nodos del grupo se reiniciarán a la vez.
-                Por tanto, te recomendamos que crees un grupo de nodos en tu clúster,
-                despliegues el DaemonSet para inhabilitar Hyper-Threading en
-                dicho grupo de nodos y, a continuación, migres ahí tus cargas de trabajo.
+           Hyper-Threading se puede inhabilitar a nivel de grupo de nodos de GKE desplegando un DaemonSet. No obstante, al desplegar dicho DaemonSet, todos los nodos del grupo de nodos se reiniciarán a la vez.
+            Por tanto, te recomendamos que crees un grupo de nodos en tu clúster, despliegues el DaemonSet para inhabilitar Hyper-Threading en dicho grupo de nodos y, entonces, migres ahí tus cargas de trabajo.
           </li>
          </ul>
         </div>
@@ -1979,69 +2301,70 @@ kubectl delete -f \
           :
           <pre dir="ltr" translate="no">
 
-    gcloud container node-pools create smt-disabled --cluster=[CLUSTER_NAME] \
-        --node-labels=cloud.google.com/gke-smt-disabled=true</pre>
+gcloud container node-pools create smt-disabled --cluster=[CLUSTER_NAME] \
+    --node-labels=cloud.google.com/gke-smt-disabled=true</pre>
          </li>
          <li>
-          Despliega el DaemonSet en el nuevo grupo de nodos. El DaemonSet se ejecutará solamente
-              en los nodos con la etiqueta
+          Despliega el DaemonSet en el nuevo grupo de nodos. El DaemonSet se ejecutará solamente en los nodos con la etiqueta
           <code dir="ltr" translate="no">
            cloud.google.com/gke-smt-disabled=true
           </code>
-          . Inhabilitará
-              Hyper-Threading y, a continuación, reiniciará el nodo.
+          . Inhabilitará Hyper-Threading y, a continuación, reiniciará el nodo.
           <pre dir="ltr" translate="no">
 
-    kubectl create -f \
-    https://raw.githubusercontent.com/GoogleCloudPlatform/\
-    k8s-node-tools/master/disable-smt/gke/disable-smt.yaml</pre>
+kubectl create -f \
+https://raw.githubusercontent.com/GoogleCloudPlatform/\
+k8s-node-tools/master/disable-smt/gke/disable-smt.yaml</pre>
          </li>
          <li>
           Asegúrate de que los pods de DaemonSet están ejecutándose.
           <pre dir="ltr" translate="no">
 
-    kubectl get pods --selector=name=disable-smt -n kube-system</pre>
+kubectl get pods --selector=name=disable-smt -n kube-system</pre>
           <p>
            Deberías obtener una respuesta similar a esta:
           </p>
           <pre dir="ltr" translate="no">
 
-    NAME                READY     STATUS    RESTARTS   AGE
+NAME                READY     STATUS    RESTARTS   AGE
 
-    disable-smt-2xnnc   1/1       Running   0          6m</pre>
+disable-smt-2xnnc   1/1       Running   0          6m</pre>
          </li>
          <li>
-          Comprueba que aparece “SMT has been disabled” (Se ha inhabilitado SMT)
-              en los registros de los pods.
+          Comprueba que aparece "SMT has been disabled" (Se ha inhabilitado SMT) en los registros de los pods.
           <pre dir="ltr" translate="no">
 
-    kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
+kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
          </li>
         </ol>
+        <aside class="note">
+         Nota: Las opciones de arranque no se pueden modificar si el nodo tiene habilitada la función
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/shielded-gke-nodes?hl=es#secure_boot">
+          Arranque seguro
+         </a>
+         . Si esta función está habilitada, será necesario
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/shielded-gke-nodes?hl=es#disabling">
+          inhabilitarla
+         </a>
+         antes de crear el DaemonSet.
+        </aside>
         <p>
-         Debes mantener el DaemonSet en ejecución en los grupos de nodos para
-           que los cambios se apliquen automáticamente a los nodos que crees. Las creaciones
-           de nodos se pueden activar durante la actualización manual o automática del nodo,
-           la reparación automática y el autoescalado.
+         Debes mantener el DaemonSet en ejecución en los grupos de nodos para que los cambios se apliquen automáticamente a los nodos que crees. Las creaciones de nodos se pueden activar durante la actualización manual o automática de la versión, la reparación automática y el autoescalado.
         </p>
         <p>
-         Para habilitar Hyper-Threading de nuevo, tendrás que volver a crear
-           el grupo de nodos sin desplegar
-           el DaemonSet proporcionado y migrar ahí tus cargas de trabajo.
+         Para habilitar Hyper-Threading de nuevo, tendrás que volver a crear el grupo de nodos sin desplegar el DaemonSet proporcionado y migrar ahí tus cargas de trabajo.
         </p>
         <p>
-         También te recomendamos que
-          actualices manualmente tus nodos cuando el parche esté disponible. Antes de ello, deberás
+         También te recomendamos que actualices manualmente tus nodos cuando el parche esté disponible. Antes de ello, deberás
          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=es#upgrading_the_cluster">
           actualizar tu instancia maestra
          </a>
-         a la versión más reciente. Las instancias maestras de GKE se actualizarán
-          automáticamente según la programación habitual.
+         a la versión más reciente. Las instancias maestras de GKE se actualizarán automáticamente según la programación habitual.
         </p>
         <p>
          Actualizaremos este boletín con las versiones que contienen un parche en cuanto estén disponibles.
         </p>
-        <h4 data-text="What vulnerability is addressed by this patch?" id="what-vulnerability-is-addressed-by-this-patch_4" tabindex="0">
+        <h4 data-text="¿Qué vulnerabilidad trata este parche?" id="what-vulnerability-is-addressed-by-this-patch_7" tabindex="0">
          ¿Qué vulnerabilidad trata este parche?
         </h4>
         <p>
@@ -2063,13 +2386,7 @@ kubectl delete -f \
         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11091">
          CVE-2019-11091
         </a>
-        son vulnerabilidades
-            que aprovechan
-            la ejecución
-             especulativa. A estas CVE se las conoce
-            conjuntamente como muestreo de datos de microarquitectura. Estas
-            vulnerabilidades podrían permitir que los datos se expusieran
-            por medio de la interacción de la ejecución especulativa y el estado de microarquitectura.
+        son vulnerabilidades que aprovechan la ejecución especulativa. A estas CVE se las conoce conjuntamente como muestreo de datos de microarquitectura. Estas vulnerabilidades podrían permitir que se expongan datos por medio de la interacción de la ejecución especulativa y el estado de microarquitectura.
        </td>
        <td>
         Media
@@ -2101,7 +2418,7 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="April 5, 2019" id="april-05-2019" tabindex="0">
+    <h2 data-text="5 de abril del 2019" id="april-05-2019" tabindex="0">
      5 de abril del 2019
     </h2>
     <table>
@@ -2122,8 +2439,7 @@ kubectl delete -f \
       <tr>
        <td>
         <p>
-         Hace poco se han descubierto las vulnerabilidades
-            de seguridad
+         Hace poco se han descubierto las vulnerabilidades de seguridad
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9900">
           CVE-2019-9900
          </a>
@@ -2141,25 +2457,20 @@ kubectl delete -f \
          <a class="external" href="https://istio.io/">
           Istio
          </a>
-         inserta Envoy, y estas vulnerabilidades permiten que se omita la
-            política de Istio en algunos casos.
+         inserta Envoy, y estas vulnerabilidades permiten que se omita la política de Istio en algunos casos.
         </p>
         <p>
-         Si has habilitado Istio en Google Kubernetes Engine (GKE), puede que te afecten
-            estas vulnerabilidades.
+         Si has habilitado Istio en Google Kubernetes Engine (GKE), puede que te afecten estas vulnerabilidades.
          <strong>
-          Te recomendamos que actualices
-            cuanto antes los clústeres afectados a la versión más reciente del parche, así
-            como tus contenedores adicionales de Istio (las instrucciones se indican más abajo).
+          Te recomendamos que actualices cuanto antes los clústeres afectados a la versión más reciente del parche, así como tus contenedores adicionales de Istio (las instrucciones se indican más abajo).
          </strong>
         </p>
-        <h4 data-text="What should I do?" id="what-should-i-do_11" tabindex="0">
+        <h4 data-text="¿Qué debo hacer?" id="what-should-i-do-14" tabindex="0">
          ¿Qué debo hacer?
         </h4>
         <p>
          <strong>
-          Debido a la gravedad de estas
-            vulnerabilidades, tanto si tienes nodos con la actualización automática habilitada como si no, te recomendamos que sigas los siguientes pasos:
+          Debido a la gravedad de estas vulnerabilidades, tanto si tienes nodos con la actualización automática habilitada como si no, te recomendamos que sigas los siguientes pasos:
          </strong>
         </p>
         <ol>
@@ -2173,8 +2484,7 @@ kubectl delete -f \
          </li>
          <li>
           <strong>
-           Actualiza tus contenedores adicionales
-                tal y como se indica en esta
+           Actualiza tus contenedores adicionales tal y como se indica en esta
            <a class="external" href="https://istio.io/docs/setup/kubernetes/upgrade/steps/#sidecar-upgrade">
             documentación
            </a>
@@ -2186,16 +2496,11 @@ kubectl delete -f \
          Las versiones con parche estarán disponibles en todos los proyectos de GKE antes de las 19:00 (PDT) de hoy.
         </p>
         <p>
-         Este parche estará disponible en las versiones de GKE que se indican más abajo. Los nuevos clústeres
-            usarán la versión con parche de forma predeterminada cuando se anuncie
-            en la página de boletines de seguridad de GKE, lo que está previsto para el
-            15 de abril del 2019.
-            Si has creado un clúster antes de esa fecha, deberás indicar la versión con parche que debe utilizar. Para los clientes de GKE que tienen las
+         Este parche estará disponible en las versiones de GKE que se indican más abajo. Los nuevos clústeres usarán la versión con parche de forma predeterminada cuando se anuncie en la página de boletines de seguridad de GKE, lo que está previsto para el 15 de abril del 2019. Si has creado un clúster antes de esa fecha, deberás indicar la versión con parche que debe utilizar. Para los clientes de GKE que tienen las
          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-upgrades?hl=es">
           actualizaciones automáticas de los nodos
          </a>
-         habilitadas y no realicen la actualización manualmente, sus nodos
-            se actualizarán automáticamente a las versiones con parche durante la semana siguiente.
+         habilitadas y no realicen la actualización manualmente, sus nodos se actualizarán automáticamente a las versiones con parche durante la semana siguiente.
         </p>
         <p>
          Versiones con parche:
@@ -2220,7 +2525,7 @@ kubectl delete -f \
           1.13.4-gke.10
          </li>
         </ul>
-        <h4 data-text="What vulnerability is addressed by this patch?" id="what-vulnerability-is-addressed-by-this-patch_5" tabindex="0">
+        <h4 data-text="¿Qué vulnerabilidad trata este parche?" id="what-vulnerability-is-addressed-by-this-patch_8" tabindex="0">
          ¿Qué vulnerabilidad trata este parche?
         </h4>
         <p>
@@ -2236,7 +2541,7 @@ kubectl delete -f \
           CVE-2019-9901
          </a>
          .
-            Puedes obtener más información en el
+        Puedes obtener más información en el
          <a class="external" href="https://istio.io/blog/2019/announcing-1.1.2">
           blog de Istio
          </a>
@@ -2263,7 +2568,7 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="March 1, 2019" id="march-01-2019" tabindex="0">
+    <h2 data-text="1 de marzo del 2019" id="march-01-2019" tabindex="0">
      1 de marzo del 2019
     </h2>
     <table>
@@ -2285,46 +2590,34 @@ kubectl delete -f \
        <td>
         <p>
          <strong>
-          Actualización del 22 de marzo del 2019:
+          Actualización del 22/03/2019:
          </strong>
-         este parche está disponible para Kubernetes
-            1.11.8-gke.4, 1.13.4-gke.1 y
-            versiones posteriores. El parche aún no está disponible en la versión 1.12. Consulta la disponibilidad
-            de estos parches en las
+         este parche está disponible para Kubernetes 1.11.8-gke.4, 1.13.4-gke.1 y versiones posteriores. El parche aún no está disponible en la versión 1.12. Consulta la disponibilidad de estos parches en las
          <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=es#march_19_2019">
           notas de la versión
          </a>
          .
         </p>
         <p>
-         Hace poco se ha descubierto una nueva vulnerabilidad de
-            denegación de servicio en Kubernetes,
-            la
+         Hace poco se ha descubierto una nueva vulnerabilidad de denegación de servicio en Kubernetes, la
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1002100">
           CVE-2019-1002100
          </a>
-         , que permite que un usuario autorizado para enviar solicitudes de parche cree solicitudes
-            "json-patch" maliciosas que consumen excesivamente la CPU y
-            la memoria en el servidor de API de Kubernetes, lo que puede reducir
-            la disponibilidad del plano de control del clúster. Para obtener más información, consulta el
+         , que permite que un usuario autorizado para enviar solicitudes de parche cree solicitudes "json-patch" maliciosas que consumen excesivamente la CPU y la memoria en el servidor de API de Kubernetes, lo que puede reducir la disponibilidad del plano de control del clúster. Para obtener más información, consulta el
          <a href="https://groups.google.com/forum/?hl=es#!topic/kubernetes-announce/vmUUNkYfG9g">
           aviso
          </a>
          que ha publicado Kubernetes al respecto.
          <strong>
-          Las vulnerabilidades anteriores afectan a todas las instancias maestras de
-            Google Kubernetes Engine (GKE). Próximamente habrá una versión del parche que
-            incluya una mitigación de esta vulnerabilidad. En las próximas semanas, actualizaremos
-            automáticamente las instancias maestras del clúster a la versión con parche según la programación habitual.
+          Las vulnerabilidades anteriores afectan a todas las instancias maestras de Google Kubernetes Engine (GKE). Próximamente habrá una versión del parche que incluya una mitigación de esta vulnerabilidad. En las próximas semanas, actualizaremos automáticamente las instancias maestras del clúster a la versión con parche según la programación habitual.
          </strong>
         </p>
-        <h4 data-text="What should I do?" id="what-should-i-do_12" tabindex="0">
+        <h4 data-text="¿Qué debo hacer?" id="what-should-i-do-15" tabindex="0">
          ¿Qué debo hacer?
         </h4>
         <p>
          <strong>
-          No tienes que hacer nada. Las instancias maestras de GKE se
-            actualizarán automáticamente según la programación habitual.
+          No tienes que hacer nada. Las instancias maestras de GKE se actualizarán automáticamente según la programación habitual.
          </strong>
          Si quieres actualizar tu instancia maestra con antelación, puedes
          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=es#upgrading_the_cluster">
@@ -2333,11 +2626,9 @@ kubectl delete -f \
          .
         </p>
         <p>
-         Actualizaremos este boletín con las versiones que contengan un parche. Ten en cuenta
-            que el parche solo estará
-            disponible en las versiones 1.11+, pero no en las versiones 1.10.
+         Actualizaremos este boletín con las versiones que contengan un parche. Ten en cuenta que el parche solo estará disponible en las versiones 1.11+, pero no en las versiones 1.10.
         </p>
-        <h4 data-text="What vulnerability is addressed by this patch?" id="what-vulnerability-is-addressed-by-this-patch_6" tabindex="0">
+        <h4 data-text="¿Qué vulnerabilidad trata este parche?" id="what-vulnerability-is-addressed-by-this-patch_9" tabindex="0">
          ¿Qué vulnerabilidad trata este parche?
         </h4>
         <p>
@@ -2348,9 +2639,7 @@ kubectl delete -f \
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1002100">
           CVE-2019-1002100
          </a>
-         permite que un usuario cree especialmente un parche de tipo "json-patch" que
-            consume excesivamente la CPU en el servidor de API de Kubernetes,
-            lo que puede reducir la disponibilidad del plano de control del clúster.
+         permite que un usuario cree especialmente un parche de tipo "json-patch" que consume excesivamente la CPU en el servidor de API de Kubernetes, lo que puede reducir la disponibilidad del plano de control del clúster.
         </p>
        </td>
        <td>
@@ -2364,7 +2653,7 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="February 11, 2019 (runc)" id="february-11-2019-runc" tabindex="0">
+    <h2 data-text="11 de febrero del 2019 (runc)" id="february-11-2019-runc" tabindex="0">
      11 de febrero del 2019 (runc)
     </h2>
     <table>
@@ -2389,49 +2678,38 @@ kubectl delete -f \
          <a class="external" href="https://groups.google.com/a/opencontainers.org/forum/m/?hl=es#!topic/dev/Tc1ELm-8oDI">
           ha descubierto hace poco
          </a>
-         una nueva vulnerabilidad
-          de seguridad en runc,
-          la
+         una nueva vulnerabilidad de seguridad en runc, la
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5736">
           CVE-2019-5736
          </a>
-         ,
-          que permite usar el escape de contenedores para obtener privilegios de raíz en el nodo del host.
+         , que permite usar el escape de contenedores para obtener privilegios de raíz en el nodo del host.
         </p>
         <p>
          <strong>
-          Estas vulnerabilidades afectan
-          a tus nodos de Ubuntu en Google Kubernetes Engine (GKE),
-          así que te recomendamos
+          Estas vulnerabilidades afectan a tus nodos de Ubuntu en Google Kubernetes Engine (GKE), así que te recomendamos
           <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=es">
            actualizar
           </a>
           cuanto antes a la versión más reciente del parche como se indica a continuación.
          </strong>
         </p>
-        <h4 data-text="What should I do?" id="what-should-i-do_13" tabindex="0">
+        <h4 data-text="¿Qué debo hacer?" id="what-should-i-do-16" tabindex="0">
          ¿Qué debo hacer?
         </h4>
         <p>
-         Para actualizar tus nodos, primero debes actualizar tu instancia maestra a la
-          versión más reciente. Este parche está disponible para Kubernetes 1.10.12-gke.7,
-          1.11.6-gke.11, 1.11.7-gke.4, 1.12.5-gke.5 y versiones posteriores. Consulta la disponibilidad
-          de estos parches en las
+         Para actualizar tus nodos, primero debes actualizar tu instancia maestra a la versión más reciente. Este parche está disponible para Kubernetes 1.10.12-gke.7, 1.11.6-gke.11, 1.11.7-gke.4, 1.12.5-gke.5 y versiones posteriores. Consulta la disponibilidad de estos parches en las
          <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=es#february-11-2019">
           notas de la versión
          </a>
          .
         </p>
         <p>
-         Ten en cuenta que solamente se ven afectados los nodos de Ubuntu en GKE. Los nodos que ejecutan COS
-          no se ven afectados.
+         Ten en cuenta que solamente se ven afectados los nodos de Ubuntu en GKE. Los nodos que ejecutan COS no se ven afectados.
         </p>
         <p>
-         Ten en cuenta que en la nueva versión de runc ha aumentado el uso de memoria,
-          por lo que es posible que debas actualizar la memoria asignada a
-          los contenedores si has establecido los límites de memoria en un nivel bajo (menos de 16 MB).
+         Ten en cuenta que en la nueva versión de runc ha aumentado el uso de memoria, por lo que es posible que debas actualizar la memoria asignada a los contenedores si has establecido los límites de memoria en un nivel bajo (menos de 16 MB).
         </p>
-        <h4 data-text="What vulnerability is addressed by this patch?" id="what-vulnerability-is-addressed-by-this-patch_7" tabindex="0">
+        <h4 data-text="¿Qué vulnerabilidad trata este parche?" id="what-vulnerability-is-addressed-by-this-patch_10" tabindex="0">
          ¿Qué vulnerabilidad trata este parche?
         </h4>
         <p>
@@ -2442,10 +2720,8 @@ kubectl delete -f \
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5736">
           CVE-2019-5736
          </a>
-         describe una vulnerabilidad en runc que permite que un contenedor malicioso (con una interacción mínima del usuario en forma de un ejecutable)
-          sobrescriba el binario runc del host y, de este modo, pueda ejecutar código a nivel raíz en el nodo del host.
-          No se ven afectados los contenedores que se ejecutan como raíz. Se considera una vulnerabilidad
-          de alta gravedad.
+         describe una vulnerabilidad en runc que permite que un contenedor malicioso (con una interacción mínima del usuario en forma de un ejecutable) sobrescriba el binario runc del host y, de este modo, pueda ejecutar código a nivel raíz en el nodo del host.
+      No se ven afectados los contenedores que se ejecutan como raíz. Se considera una vulnerabilidad de alta gravedad.
         </p>
        </td>
        <td>
@@ -2459,7 +2735,7 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="February 11, 2019 (Go)" id="february-11-2019-go" tabindex="0">
+    <h2 data-text="11 de febrero del 2019 (Go)" id="february-11-2019-go" tabindex="0">
      11 de febrero del 2019 (Go)
     </h2>
     <table>
@@ -2481,49 +2757,37 @@ kubectl delete -f \
        <td>
         <p>
          <strong>
-          Actualización del 25 de febrero del 2019:
+          Actualización del 25/02/2019:
          </strong>
-         el parche no está disponible en 1.11.7-gke.4 como se había anunciado anteriormente. Si utilizas la versión 1.11.7,
-            puedes cambiar a la versión inferior 1.11.6, actualizar a la versión 1.12 o esperar
-            hasta que esté disponible el próximo parche de 1.11.7 la semana del 04 de marzo del 2019.
+         el parche no está disponible en 1.11.7-gke.4 como se había anunciado anteriormente. Si utilizas la versión 1.11.7, puedes cambiar a la versión inferior 1.11.6, actualizar a la versión 1.12 o esperar hasta que esté disponible el próximo parche de 1.11.7 la semana del 04/03/2019.
         </p>
         <p>
-         Hace poco se ha descubierto una nueva vulnerabilidad de seguridad en el lenguaje de programación Go,
-            la
+         Hace poco se ha descubierto una nueva vulnerabilidad de seguridad en el lenguaje de programación Go, la
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-6486">
           CVE-2019-6486
          </a>
-         .
-            Se trata de una vulnerabilidad de denegación de servicio (DoS) en las implementaciones de criptografía de curva elíptica
-            de las curvas elípticas P-521 y P-384. En Google Kubernetes Engine (GKE), esta
-            podría permitir que un usuario cree solicitudes maliciosas que consumen
-            excesivamente la CPU en
-            el servidor de API de Kubernetes, lo que puede reducir la disponibilidad del plano de control del clúster.
-            Para obtener más información, consulta el
+         . Se trata de una vulnerabilidad de denegación de servicio (DoS) en las implementaciones de criptografía de curva elíptica de las curvas elípticas P-521 y P-384. En Google Kubernetes Engine (GKE), esta podría permitir que un usuario cree solicitudes maliciosas que consumen excesivamente la CPU en el servidor de API de Kubernetes, lo que puede reducir la disponibilidad del plano de control del clúster.
+        Para saber más, consulta el
          <a href="https://groups.google.com/forum/?hl=es#!topic/golang-announce/mVeX35iXuSw">
           aviso
          </a>
-         del lenguaje de programación Go que se ha publicado al respecto.
+         sobre el lenguaje de programación Go que se ha publicado al respecto.
         </p>
         <p>
          <strong>
-          Las vulnerabilidades anteriores afectan a todas las instancias maestras de
-            Google Kubernetes Engine (GKE). Habrá una
+          Las vulnerabilidades anteriores afectan a todas las instancias maestras de Google Kubernetes Engine (GKE). Habrá una
           <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=es#february-11-2019">
            nueva versión del parche
           </a>
-          que incluya una mitigación
-            de esta vulnerabilidad. En las próximas semanas, actualizaremos
-            automáticamente las instancias maestras del clúster a la versión con parche según la programación habitual.
+          que incluya una mitigación para esta vulnerabilidad. En las próximas semanas, actualizaremos automáticamente las instancias maestras del clúster a la versión con parche según la programación habitual.
          </strong>
         </p>
-        <h4 data-text="What should I do?" id="what-should-i-do_14" tabindex="0">
+        <h4 data-text="¿Qué debo hacer?" id="what-should-i-do-17" tabindex="0">
          ¿Qué debo hacer?
         </h4>
         <p>
          <strong>
-          No tienes que hacer nada. Las instancias maestras de GKE se actualizarán automáticamente
-            según la programación habitual.
+          No tienes que hacer nada. Las instancias maestras de GKE se actualizarán automáticamente según la programación habitual.
          </strong>
          Si quieres actualizar tu instancia maestra con antelación, puedes
          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=es#upgrading_the_cluster">
@@ -2532,19 +2796,16 @@ kubectl delete -f \
          .
         </p>
         <p>
-         Este parche está disponible en GKE 1.10.12-gke.7, 1.11.6-gke.11, 1.11.7-gke.4,
-            1.12.5-gke.5 y versiones posteriores.
+         Este parche está disponible en GKE 1.10.12-gke.7, 1.11.6-gke.11, 1.11.7-gke.4, 1.12.5-gke.5 y versiones posteriores.
         </p>
-        <h4 data-text="What vulnerability is addressed by this patch?" id="what-vulnerability-is-addressed-by-this-patch_8" tabindex="0">
+        <h4 data-text="¿Qué vulnerabilidad trata este parche?" id="what-vulnerability-is-addressed-by-this-patch_11" tabindex="0">
          ¿Qué vulnerabilidad trata este parche?
         </h4>
         <p>
          Este parche mitiga la siguiente vulnerabilidad:
         </p>
         <p>
-         La CVE-2019-6486
-            es una vulnerabilidad en las implementaciones de criptografía de curva elíptica de las curvas elípticas P-521 y P-384. Permite que un usuario cree
-            entradas que consumen excesivamente la CPU.
+         La CVE-2019-6486 es una vulnerabilidad en las implementaciones de criptografía de curva elíptica de las curvas elípticas P-521 y P-384. Permite que un usuario cree entradas que consumen excesivamente la CPU.
         </p>
        </td>
        <td>
@@ -2558,7 +2819,7 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="December 3, 2018" id="december-3-2018" tabindex="0">
+    <h2 data-text="3 de diciembre del 2018" id="december-3-2018" tabindex="0">
      3 de diciembre del 2018
     </h2>
     <table>
@@ -2579,30 +2840,25 @@ kubectl delete -f \
       <tr>
        <td>
         <p>
-         Recientemente se ha encontrado una nueva vulnerabilidad
-            en la seguridad de Kubernetes, la
+         En los últimos días, se ha encontrado una nueva vulnerabilidad en la seguridad de Kubernetes, la
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1002105">
           CVE‑2018‑1002105
          </a>
-         ,
-            por la que usuarios con privilegios de un nivel relativamente
-            bajo pueden saltarse la autorización de las API de kubelet. En consecuencia,
-            pueden ejecutar operaciones arbitrarias para cualquier pod y en cualquier nodo del clúster. Para obtener más información, consulta el
+         , por la que usuarios con privilegios de un nivel relativamente bajo pueden saltarse la autorización de las API de kubelet. En consecuencia, pueden ejecutar operaciones arbitrarias para cualquier pod y en cualquier nodo del clúster. Para obtener más información, consulta el
          <a class="external" href="https://groups.google.com/forum/?hl=es#!topic/kubernetes-announce/GVllWCg6L88">
           aviso
          </a>
          que ha publicado Kubernetes al respecto.
          <strong>
-          Las vulnerabilidades anteriores han afectado a todas las instancias maestras en Google Kubernetes Engine (GKE)
-            y ya hemos actualizado los clústeres a la
+          Las vulnerabilidades anteriores han afectado a todas las instancias maestras en Google Kubernetes Engine (GKE) y ya hemos actualizado los clústeres a la
           <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=es#november-12-2018">
            versión más reciente del parche
           </a>
           .
-            No tienes que hacer nada.
+        No tienes que hacer nada.
          </strong>
         </p>
-        <h4 data-text="What should I do?" id="what-should-i-do_15" tabindex="0">
+        <h4 data-text="¿Qué debo hacer?" id="what-should-i-do-18" tabindex="0">
          ¿Qué debo hacer?
         </h4>
         <p>
@@ -2611,23 +2867,16 @@ kubectl delete -f \
          </strong>
         </p>
         <p>
-         El parche está disponible en GKE 1.9.7‑gke.11, 1.10.6‑gke.11, 1.10.7‑gke.11, 1.10.9‑gke.5 y 1.11.2‑gke.18,
-            así como en las últimas versiones.
+         El parche está disponible en GKE 1.9.7‑gke.11, 1.10.6‑gke.11, 1.10.7‑gke.11, 1.10.9‑gke.5 y 1.11.2‑gke.18, así como en las últimas versiones.
         </p>
-        <h4 data-text="What vulnerability is addressed by this patch?" id="what-vulnerability-is-addressed-by-this-patch_9" tabindex="0">
+        <h4 data-text="¿Qué vulnerabilidad trata este parche?" id="what-vulnerability-is-addressed-by-this-patch_12" tabindex="0">
          ¿Qué vulnerabilidad trata este parche?
         </h4>
         <p>
          Este parche mitiga la siguiente vulnerabilidad:
         </p>
         <p>
-         La vulnerabilidad CVE-2018-1002105 permite que un usuario con privilegios de un
-            nivel relativamente bajo pueda saltarse la autorización de las API de kubelet. Como consecuencia,
-            puede enviar solicitudes de actualización de mayor prioridad y realizar
-            llamadas arbitrarias a cualquier API de kubelet. Se considera una vulnerabilidad
-            crítica en Kubernetes. Sin embargo, se ha considerado una vulnerabilidad alta porque algunos detalles de la implementación
-            de GKE impidieron
-            escalar sin autenticar.
+         La vulnerabilidad CVE-2018-1002105 permite que un usuario con privilegios de un nivel relativamente bajo pueda saltarse la autorización de las API de kubelet. Como consecuencia, puede enviar solicitudes de actualización de mayor prioridad y realizar llamadas arbitrarias a cualquier API de kubelet. Se considera una vulnerabilidad crítica en Kubernetes. Sin embargo, se ha considerado una vulnerabilidad alta porque algunos detalles de la implementación de GKE impidieron escalar sin autenticar.
         </p>
        </td>
        <td>
@@ -2641,8 +2890,8 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="November 13, 2018" id="november-13-2018" tabindex="0">
-     13 de noviembre del 2018
+    <h2 data-text="13 de noviembre del 2018" id="november-13-2018" tabindex="0">
+     13 de noviembre del 2018
     </h2>
     <table>
      <thead>
@@ -2657,17 +2906,12 @@ kubectl delete -f \
        <td>
         <p>
          <strong>
-          Actualización del 16 de noviembre del 2018:
+          Actualización del 16/11/2018:
          </strong>
-         se ha completado
-           la revocación y rotación de todos los tokens que podrían haberse visto afectados. No hace falta que hagas nada más.
+         Se ha completado la revocación y rotación de todos los tokens que podrían haberse visto afectados. No hace falta que hagas nada más.
         </p>
         <p>
-         Recientemente, Google descubrió un problema en el complemento Container Network Interface (CNI)
-            de Calico que puede incluir información
-            sensible en los registros con algunas configuraciones. El seguimiento de este problema
-            lo está realizando
-            Tigera Technical Advisory
+         Recientemente, Google descubrió un problema en el complemento Container Network Interface (CNI) de Calico que puede incluir información sensible en los registros con algunas configuraciones. El seguimiento de este problema lo está realizando Tigera Technical Advisory
          <a href="https://www.projectcalico.org/security-bulletins/">
           TTA‑2018‑001
          </a>
@@ -2675,20 +2919,13 @@ kubectl delete -f \
         </p>
         <ul>
          <li>
-          Al ejecutar el complemento CNI de Calico con el registro de nivel de depuración, este escribe la
-            configuración del cliente de la API de Kubernetes en los registros.
+          Al ejecutar el complemento CNI de Calico con el registro de nivel de depuración, este escribe la configuración del cliente de la API de Kubernetes en los registros.
          </li>
          <li>
-          El complemento CNI de Calico también escribe el token de la API de Kubernetes
-            en los registros de nivel de información si el campo "k8s_auth_token"
-            se ha establecido en la configuración de red de CNI.
+          El complemento CNI de Calico también escribe el token de la API de Kubernetes en los registros de nivel de información si el campo "k8s_auth_token" se ha establecido en la configuración de red de CNI.
          </li>
          <li>
-          Además, al ejecutarse con el registro de nivel de depuración, si se establece de forma explícita el token de la
-            cuenta de servicio, ya sea en el archivo de configuración de Calico
-            leído por Calico o como variables del entorno usadas por Calico,
-            los componentes de Calico (calico/nodo, felix, CNI)
-            escriben esta información en los archivos de registro.
+          Además, al ejecutarse con el registro de nivel de depuración, si se establece de forma explícita el token de la cuenta de servicio, ya sea en el archivo de configuración de Calico leído por Calico o como variables del entorno usadas por Calico, los componentes de Calico (calico/nodo, felix, CNI) escriben esta información en los archivos de registro.
          </li>
         </ul>
         <p>
@@ -2704,54 +2941,45 @@ kubectl delete -f \
        <td>
         <pre dir="ltr" translate="no">
 
-    bgpconfigurations.crd.projectcalico.org     [create get list update watch]
-    bgppeers.crd.projectcalico.org              [create get list update watch]
-    clusterinformations.crd.projectcalico.org   [create get list update watch]
-    felixconfigurations.crd.projectcalico.org   [create get list update watch]
-    globalbgpconfigs.crd.projectcalico.org      [create get list update watch]
-    globalfelixconfigs.crd.projectcalico.org    [create get list update watch]
-    globalnetworkpolicies.crd.projectcalico.org [create get list update watch]
-    globalnetworksets.crd.projectcalico.org     [create get list update watch]
-    hostendpoints.crd.projectcalico.org         [create get list update watch]
-    ippools.crd.projectcalico.org               [create get list update watch]
-    networkpolicies.crd.projectcalico.org       [create get list update watch]
-    nodes                                       [get list update watch]
-    pods                                        [get list watch patch]
-    namespaces                                  [get list watch]
-    networkpolicies.extensions                  [get list watch]
-    endpoints                                   [get]
-    services                                    [get]
-    pods/status                                 [update]
-    networkpolicies.networking.k8s.io           [watch list]
-          </pre>
+bgpconfigurations.crd.projectcalico.org     [create get list update watch]
+bgppeers.crd.projectcalico.org              [create get list update watch]
+clusterinformations.crd.projectcalico.org   [create get list update watch]
+felixconfigurations.crd.projectcalico.org   [create get list update watch]
+globalbgpconfigs.crd.projectcalico.org      [create get list update watch]
+globalfelixconfigs.crd.projectcalico.org    [create get list update watch]
+globalnetworkpolicies.crd.projectcalico.org [create get list update watch]
+globalnetworksets.crd.projectcalico.org     [create get list update watch]
+hostendpoints.crd.projectcalico.org         [create get list update watch]
+ippools.crd.projectcalico.org               [create get list update watch]
+networkpolicies.crd.projectcalico.org       [create get list update watch]
+nodes                                       [get list update watch]
+pods                                        [get list watch patch]
+namespaces                                  [get list watch]
+networkpolicies.extensions                  [get list watch]
+endpoints                                   [get]
+services                                    [get]
+pods/status                                 [update]
+networkpolicies.networking.k8s.io           [watch list]
+      </pre>
        </td>
       </tr>
      </tbody>
     </table>
     <p>
-     Los clústeres de Google Kubernetes Engine con una política de red de clúster y Stackdriver Logging
-            habilitado han registrado tokens de cuenta de servicio de Calico
-            en Stackdriver. Los clústeres que no tienen habilitada la política de red no se han visto afectados.
+     Los clústeres de Google Kubernetes Engine con una política de red de clúster y Stackdriver Logging habilitado han registrado tokens de cuenta de servicio de Calico en Stackdriver. Los clústeres que no tienen habilitada la política de red no se han visto afectados.
     </p>
     <p>
-     Hemos implementado una solución que migra el complemento CNI de Calico
-            para que solo acceda en el nivel de advertencia y utilice una nueva cuenta de servicio. El código de Calico
-            con el parche se implementará en una versión posterior.
+     Hemos implementado una solución que migra el complemento CNI de Calico para que solo acceda en el nivel de advertencia y utilice una nueva cuenta de servicio. El código de Calico con el parche se implementará en una versión posterior.
     </p>
     <p>
-     Durante la próxima semana, llevaremos a cabo una revocación
-            progresiva de todos los tokens que puedan estar afectados. Este boletín se actualizará cuando se haya
-            completado la revocación.
+     Durante la próxima semana, llevaremos a cabo una revocación progresiva de todos los tokens que puedan estar afectados. Este boletín se actualizará cuando se haya completado la revocación.
      <strong>
-      No hace falta que hagas
-            nada más.
+      No hace falta que hagas nada más.
      </strong>
-     (Esta rotación se completó el 16 de noviembre del 2018).
+     (Esta rotación se completó el 16/11/2018).
     </p>
     <p>
-     Si quieres rotar estos tokens de forma inmediata, puedes ejecutar el siguiente comando;
-            el nuevo secreto correspondiente a la cuenta de servicio debería
-            volver a crearse automáticamente en unos segundos:
+     Si quieres rotar estos tokens de forma inmediata, puedes ejecutar el siguiente comando; el nuevo secreto correspondiente a la cuenta de servicio debería volver a crearse automáticamente en unos segundos:
     </p>
     <table>
      <tbody>
@@ -2765,10 +2993,7 @@ kubectl delete -f \
      <tbody>
       <tr>
        <td>
-        <pre dir="ltr" translate="no">
-
-    kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
-          </pre>
+        kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
        </td>
       </tr>
      </tbody>
@@ -2777,15 +3002,11 @@ kubectl delete -f \
      <tbody>
       <tr>
        <td>
-        <h4 data-text="Detection" id="detection" tabindex="0">
+        <h4 data-text="Detección" id="detection" tabindex="0">
          Detección
         </h4>
         <p>
-         GKE registra todos los accesos al servidor de la API. Para saber si se utilizó un token de Calico
-            fuera del intervalo de IPs esperado de Google Cloud, puedes ejecutar
-            la siguiente consulta de Stackdriver. Solo se mostrarán los registros de llamadas
-            realizadas desde fuera de la red de Google Cloud Platform (GCP) y te recomendamos que la
-            personalices según las necesidades de tu entorno específico.
+         GKE registra todos los accesos al servidor de la API. Para saber si se utilizó un token de Calico fuera del intervalo de IPs esperado de Google Cloud, puedes ejecutar la siguiente consulta de Stackdriver. Solo se mostrarán los registros de llamadas realizadas desde fuera de la red de Google Cloud Platform (GCP) y te recomendamos que la personalices según las necesidades de tu entorno específico.
         </p>
        </td>
       </tr>
@@ -2797,82 +3018,82 @@ kubectl delete -f \
        <td>
         <pre dir="ltr" translate="no">
 
-    resource.type="k8s_cluster"
-    protoPayload.authenticationInfo.principalEmail="system:serviceaccount:kube-system:calico"
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.34.208.0/20")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.192.0/21")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.200.0/23")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.59.80.0/20")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.192.0/20")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.208.0/21")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.216.0/22")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.220.0/23")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.222.0/24")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.224.0.0/13")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.216.148.0/22")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.222.176.0/21")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "173.255.112.0/20")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "192.158.28.0/22")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.192.112.0/22")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.232.0/22")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.236.0/23")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.236.48.0/20")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.251.128.0/19")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.204.0.0/14")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.208.0.0/13")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.167.160.0/19")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.178.192.0/18")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.2.0/23")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.4.0/22")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.8.0/21")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.16.0/20")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.32.0/19")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.64.0/18")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.0.0/17")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.128.0/18")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.192.0/19")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.240.0/20")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.8.0/21")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.16.0/20")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.32.0/19")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.64.0/18")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.128.0/17")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.154.0.0/15")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.196.0.0/14")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "208.68.108.0/23")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.184.0.0/14")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.188.0.0/15")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.202.0.0/16")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.0.0/17")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.128.0/18")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.192.0/19")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.224.0/20")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.192.0.0/14")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.196.0.0/15")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.198.0.0/16")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.0.0/17")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.128.0/18")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.200.0.0/15")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "2600:1900::/35")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.224.0/20")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.232.0.0/15")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.234.0.0/16")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.0.0/17")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.192.0/20")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.236.0.0/14")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.240.0.0/15")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.232.0/21")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.4.0/22")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.220.0.0/14")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.242.0.0/15")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.244.0.0/14")
-          </pre>
+resource.type="k8s_cluster"
+protoPayload.authenticationInfo.principalEmail="system:serviceaccount:kube-system:calico"
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.34.208.0/20")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.192.0/21")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.200.0/23")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.59.80.0/20")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.192.0/20")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.208.0/21")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.216.0/22")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.220.0/23")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.222.0/24")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.224.0.0/13")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.216.148.0/22")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.222.176.0/21")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "173.255.112.0/20")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "192.158.28.0/22")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.192.112.0/22")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.232.0/22")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.236.0/23")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.236.48.0/20")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.251.128.0/19")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.204.0.0/14")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.208.0.0/13")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.167.160.0/19")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.178.192.0/18")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.2.0/23")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.4.0/22")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.8.0/21")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.16.0/20")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.32.0/19")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.64.0/18")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.0.0/17")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.128.0/18")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.192.0/19")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.240.0/20")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.8.0/21")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.16.0/20")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.32.0/19")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.64.0/18")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.128.0/17")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.154.0.0/15")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.196.0.0/14")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "208.68.108.0/23")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.184.0.0/14")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.188.0.0/15")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.202.0.0/16")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.0.0/17")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.128.0/18")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.192.0/19")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.224.0/20")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.192.0.0/14")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.196.0.0/15")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.198.0.0/16")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.0.0/17")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.128.0/18")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.200.0.0/15")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "2600:1900::/35")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.224.0/20")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.232.0.0/15")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.234.0.0/16")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.0.0/17")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.192.0/20")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.236.0.0/14")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.240.0.0/15")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.232.0/21")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.4.0/22")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.220.0.0/14")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.242.0.0/15")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.244.0.0/14")
+      </pre>
        </td>
       </tr>
      </tbody>
     </table>
-    <h2 data-text="August 14, 2018" id="august-14-2018" tabindex="0">
-     14 de agosto del 2018
+    <h2 data-text="14 de agosto del 2018" id="august-14-2018" tabindex="0">
+     14 de agosto del 2018
     </h2>
     <table>
      <thead>
@@ -2926,44 +3147,34 @@ kubectl delete -f \
          </li>
         </ul>
         <p>
-         A estas CVE se las conoce conjuntamente como
-          "L1 Terminal Fault (L1TF)".
+         A estas CVE se las conoce conjuntamente como "L1 Terminal Fault (L1TF)".
         </p>
         <p>
-         Las vulnerabilidades de L1TF llevan a cabo la
-          ejecución especulativa por medio de ataques a la configuración de las estructuras de datos en el procesador.
-          "L1" hace referencia a la caché Level‑1 Data (L1D), un pequeño recurso del
-          núcleo que se utiliza para acelerar el acceso a la memoria.
+         Las vulnerabilidades de L1TF llevan a cabo la ejecución especulativa por medio de ataques a la configuración de las estructuras de datos en el procesador.
+      "L1" hace referencia a la caché Level‑1 Data (L1D), un pequeño recurso del núcleo que se utiliza para acelerar el acceso a la memoria.
         </p>
         <p>
          Consulta esta
          <a href="https://cloud.google.com/blog/products/gcp/protecting-against-the-new-l1tf-speculative-vulnerabilities?hl=es">
           entrada del blog de Google Cloud
          </a>
-         para obtener más información sobre estas vulnerabilidades y las medidas
-          de mitigación de Compute Engine.
+         para obtener más información sobre estas vulnerabilidades y las medidas de mitigación de Compute Engine.
         </p>
-        <h4 data-text="Google Kubernetes Engine impact" id="google-kubernetes-engine-impact" tabindex="0">
-         El impacto en Google Kubernetes Engine
+        <h4 data-text="Impacto en Google Kubernetes Engine" id="google-kubernetes-engine-impact" tabindex="0">
+         Impacto en Google Kubernetes Engine
         </h4>
         <p>
-         La infraestructura que ejecuta Kubernetes Engine y aísla los nodos y
-            clústeres del cliente entre sí está protegida frente a ataques conocidos.
+         La infraestructura que ejecuta Kubernetes Engine y aísla los nodos y clústeres del cliente entre sí está protegida frente a ataques conocidos.
         </p>
         <p>
-         Los grupos de nodos de Kubernetes Engine que utilizan una imagen de Container‑Optimized OS de Google
-            y tienen habilitada la
+         Los grupos de nodos de Kubernetes Engine que utilizan una imagen de Container‑Optimized OS de Google y tienen habilitada la
          <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/node-auto-upgrades?hl=es">
           actualización automática
          </a>
-         se
-            actualizarán automáticamente
-            a las versiones con parche de nuestra imagen de COS tan pronto como
-            estén disponibles a partir de la semana del 20 de agosto del 2018.
+         se actualizarán automáticamente a las versiones con parche de nuestra imagen de COS tan pronto como estén disponibles a partir de la semana del 20/08/2018.
         </p>
         <p>
-         Los grupos de nodos de Kubernetes Engine
-            que no tengan habilitada la
+         Los grupos de nodos de Kubernetes Engine que no tengan habilitada la
          <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/node-auto-upgrades?hl=es">
           actualización automática
          </a>
@@ -2971,8 +3182,7 @@ kubectl delete -f \
          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-container-cluster?hl=es">
           actualizarse manualmente
          </a>
-         cuando las versiones con parche
-            de nuestra imagen de COS estén disponibles.
+         cuando las versiones con parche de nuestra imagen de COS estén disponibles.
         </p>
        </td>
        <td>
@@ -3000,7 +3210,7 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="August 6, 2018; last updated: September 5th, 2018" id="august-6-2018" tabindex="0">
+    <h2 data-text="6 de agosto del 2018 (última actualización: 5 de septiembre del 2018)" id="august-6-2018" tabindex="0">
      6 de agosto del 2018 (última actualización: 5 de septiembre del 2018)
     </h2>
     <table>
@@ -3020,8 +3230,8 @@ kubectl delete -f \
      <tbody>
       <tr>
        <td>
-        <h4 data-text="2018-09-05 Update" id="2018-09-05-update" tabindex="0">
-         Actualización del 5 de septiembre del 2018
+        <h4 data-text="Actualización del 05/09/2018" id="2018-09-05-update" tabindex="0">
+         Actualización del 05/09/2018
         </h4>
         <p>
          La
@@ -3032,14 +3242,9 @@ kubectl delete -f \
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390">
           CVE‑2018‑5390
          </a>
-         ,
-          se trata de una vulnerabilidad de la red a nivel del kernel que aumenta
-          la efectividad de los ataques de denegación de servicio (DoS)
-          contra sistemas vulnerables. La principal diferencia de la CVE‑2018‑5391
-          es que puede aprovecharse a través de conexiones IP. Actualizamos este boletín para que
-          abarque ambas vulnerabilidades.
+         , se trata de una vulnerabilidad de la red a nivel del kernel que aumenta la efectividad de los ataques de denegación de servicio (DoS) contra sistemas vulnerables. La principal diferencia de la CVE‑2018‑5391 es que puede realizarse a través de conexiones IP. Actualizamos este boletín para que abarque ambas vulnerabilidades.
         </p>
-        <h4 data-text="Description" id="description" tabindex="0">
+        <h4 data-text="Descripción" id="description" tabindex="0">
          Descripción
         </h4>
         <p>
@@ -3047,39 +3252,28 @@ kubectl delete -f \
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390">
           CVE‑2018‑5390
          </a>
-         ("SegmentSmack")
-            describe una vulnerabilidad de la red a nivel del kernel
-            que aumenta la efectividad de los ataques de denegación de
-            servicio (DoS) contra sistemas vulnerables a través de conexiones TCP.
+         ("SegmentSmack") describe una vulnerabilidad de la red a nivel del kernel que aumenta la efectividad de los ataques de denegación de servicio (DoS) contra sistemas vulnerables a través de conexiones TCP.
         </p>
         <p>
          La
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5391">
           CVE‑2018‑5391
          </a>
-         ("FragmentSmack")
-            describe una vulnerabilidad de la red a nivel del kernel que
-            aumenta la efectividad de los ataques de denegación de servicio (DoS)
-            contra sistemas vulnerables a través de conexiones IP.
+         ("FragmentSmack") describe una vulnerabilidad de la red a nivel del kernel que aumenta la efectividad de los ataques de denegación de servicio (DoS) contra sistemas vulnerables a través de conexiones IP.
         </p>
-        <h4 data-text="Google Kubernetes Engine impact" id="google-kubernetes-engine-impact_1" tabindex="0">
-         El impacto en Google Kubernetes Engine
+        <h4 data-text="Impacto en Google Kubernetes Engine" id="google-kubernetes-engine-impact_1" tabindex="0">
+         Impacto en Google Kubernetes Engine
         </h4>
         <p>
-         Desde el 11 de agosto del 2018, todas las instancias maestras de
-            Kubernetes Engine están protegidas contra ambas vulnerabilidades. Además, todos los clústeres de Kubernetes Engine
-            configurados para actualizarse automáticamente están protegidos
-            contra ambas vulnerabilidades.
+         Desde el 11/08/2018, todas las instancias maestras de Kubernetes Engine están protegidas contra ambas vulnerabilidades. Además, todos los clústeres de Kubernetes Engine configurados para actualizarse automáticamente están protegidos contra ambas vulnerabilidades.
 
-            No obstante, estas afectan a los grupos de nodos de Kubernetes Engine que no estén
-            configurados para
+        No obstante, estas afectan a los grupos de nodos de Kubernetes Engine que no estén configurados para
          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=es">
           actualizarse automáticamente
          </a>
-         y que se hayan actualizado manualmente
-            por última vez antes del 11 de agosto del 2018.
+         y que se hayan actualizado manualmente por última vez antes del 11/08/2018.
         </p>
-        <h4 data-text="Patched versions" id="patched-versions" tabindex="0">
+        <h4 data-text="Versiones con parche" id="patched-versions" tabindex="0">
          Versiones con parche
         </h4>
         <p>
@@ -3110,7 +3304,7 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="May 30, 2018" id="may-30-2018" tabindex="0">
+    <h2 data-text="30 de mayo del 2018" id="may-30-2018" tabindex="0">
      30 de mayo del 2018
     </h2>
     <table>
@@ -3131,15 +3325,13 @@ kubectl delete -f \
       <tr>
        <td>
         <p>
-         Hace poco se descubrió una vulnerabilidad en Git que podría permitir la elevación
-            de privilegios en Kubernetes si los usuarios sin privilegios obtienen
-            permisos para crear pods con volúmenes gitRepo. La CVE se identifica con la etiqueta
+         Hace poco se descubrió una vulnerabilidad en Git que podría permitir la elevación de privilegios en Kubernetes si los usuarios sin privilegios obtienen permisos para crear pods con volúmenes gitRepo. La CVE se identifica con la etiqueta
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-11235">
           CVE‑2018‑11235
          </a>
          .
         </p>
-        <h4 data-text="Am I affected?" id="am-i-affected" tabindex="0">
+        <h4 data-text="¿Me afecta esta vulnerabilidad?" id="am-i-affected" tabindex="0">
          ¿Me afecta esta vulnerabilidad?
         </h4>
         <p>
@@ -3150,28 +3342,24 @@ kubectl delete -f \
           Los usuarios que no son de confianza pueden crear pods (o activar su creación).
          </li>
          <li>
-          Los pods creados por usuarios que no son de confianza tienen restricciones
-            que impiden
-            el acceso raíz al host (por ejemplo, mediante
+          Los pods creados por usuarios que no son de confianza tienen restricciones que impiden el acceso raíz al host (por ejemplo, mediante
           <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=es">
            PodSecurityPolicy
           </a>
           ).
          </li>
          <li>
-          Los pods creados por usuarios que no son de confianza
-            pueden usar el tipo de volumen gitRepo.
+          Los pods creados por usuarios que no son de confianza pueden usar el tipo de volumen gitRepo.
          </li>
         </ul>
         <p>
          Todos los nodos de Kubernetes Engine son vulnerables.
         </p>
-        <h4 data-text="What should I do?" id="what-should-i-do_16" tabindex="0">
+        <h4 data-text="¿Qué debo hacer?" id="what-should-i-do-19" tabindex="0">
          ¿Qué debo hacer?
         </h4>
         <p>
-         Prohibir el uso del tipo de volumen gitRepo. Para prohibir los volúmenes gitRepo
-            con PodSecurityPolicy, quita
+         Prohibir el uso del tipo de volumen gitRepo. Para prohibir los volúmenes gitRepo con PodSecurityPolicy, quita
          <code dir="ltr" translate="no">
           gitRepo
          </code>
@@ -3182,44 +3370,43 @@ kubectl delete -f \
          de tu PodSecurityPolicy.
         </p>
         <p>
-         Es posible
-            tener un comportamiento equivalente al volumen gitRepo si se clona un repositorio de Git en un volumen EmptyDir desde un initContainer:
+         Es posible tener un comportamiento equivalente al volumen gitRepo si se clona un repositorio de Git en un volumen EmptyDir desde un initContainer:
         </p>
         <pre class="notranslate" dir="ltr" translate="no">
 
 <code dir="ltr" translate="no">apiVersion: v1
-    kind: Pod
-    metadata:
-      name: git-repo-example
-    spec:
-      initContainers:
-        # This container clones the desired git repo to the EmptyDir volume.
-        - name: git-clone
-          image: alpine/git # Any image with git will do
-          args:
-            - clone
-            - --single-branch
-            - --
-            - https://github.com/kubernetes/kubernetes # Your repo
-            - /repo # Put it in the volume
-          securityContext:
-            runAsUser: 1 # Any non-root user will do. Match to the workload.
-            allowPrivilegeEscalation: false
-            readOnlyRootFilesystem: true
-          volumeMounts:
-            - name: git-repo
-              mountPath: /repo
-      containers:
-        ...
-      volumes:
+kind: Pod
+metadata:
+  name: git-repo-example
+spec:
+  initContainers:
+    # This container clones the desired git repo to the EmptyDir volume.
+    - name: git-clone
+      image: alpine/git # Any image with git will do
+      args:
+        - clone
+        - --single-branch
+        - --
+        - https://github.com/kubernetes/kubernetes # Your repo
+        - /repo # Put it in the volume
+      securityContext:
+        runAsUser: 1 # Any non-root user will do. Match to the workload.
+        allowPrivilegeEscalation: false
+        readOnlyRootFilesystem: true
+      volumeMounts:
         - name: git-repo
-          emptyDir: {}</code></pre>
-        <h4 data-text="What patch addresses this vulnerability?" id="what-patch-addresses-this-vulnerability" tabindex="0">
+          mountPath: /repo
+  containers:
+    ...
+  volumes:
+    - name: git-repo
+      emptyDir: {}</code></pre>
+        <h4 data-text="¿Qué parche trata esta vulnerabilidad?" id="what-patch-addresses-this-vulnerability" tabindex="0">
          ¿Qué parche trata esta vulnerabilidad?
         </h4>
         <p>
          Se incluirá un parche en una futura versión de Kubernetes Engine.
-            Vuelve a visitar los boletines de seguridad próximamente para obtener más información.
+        Vuelve a visitar los boletines de seguridad próximamente para obtener más información.
         </p>
        </td>
        <td>
@@ -3237,7 +3424,7 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="May 21, 2018" id="may-21-2018" tabindex="0">
+    <h2 data-text="21 de mayo del 2018" id="may-21-2018" tabindex="0">
      21 de mayo del 2018
     </h2>
     <table>
@@ -3258,10 +3445,7 @@ kubectl delete -f \
       <tr>
        <td>
         <p>
-         Recientemente, se descubrieron diferentes vulnerabilidades
-            en el kernel de Linux que podrían permitir la elevación de privilegios o la denegación de servicio (mediante
-            el fallo del kernel) desde un proceso sin privilegios. Estas CVE se identifican con las
-            etiquetas.
+         Recientemente, se descubrieron diferentes vulnerabilidades en el kernel de Linux que podrían permitir la elevación de privilegios o la denegación de servicio (mediante el fallo del kernel) desde un proceso sin privilegios. Estas CVE se identifican con las etiquetas
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1000199">
           CVE‑2018‑1000199
          </a>
@@ -3273,69 +3457,51 @@ kubectl delete -f \
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1087">
           CVE‑2018‑1087
          </a>
-         Estas vulnerabilidades afectan a todos los nodos de Kubernetes Engine, por lo que te
-            recomendamos
+         .
+        Estas vulnerabilidades afectan a todos los nodos de Kubernetes Engine, por lo que te recomendamos
          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-container-cluster?hl=es">
           actualizar
          </a>
-         a la versión más reciente
-            del parche como se indica a continuación.
+         a la versión más reciente del parche como se indica a continuación.
         </p>
-        <h4 data-text="What should I do?" id="what-should-i-do_17" tabindex="0">
+        <h4 data-text="¿Qué debo hacer?" id="what-should-i-do-20" tabindex="0">
          ¿Qué debo hacer?
         </h4>
         <p>
-         Antes de ello, deberás actualizar tu instancia maestra a la
-            versión más reciente. El parche está disponible en Kubernetes Engine 1.8.12‑gke.1,
-            Kubernetes Engine 1.9.7‑gke.1 y Kubernetes Engine 1.10.2‑gke.1.
-            Estas versiones incluyen parches para imágenes de
-            Container‑Optimized OS y Ubuntu.
+         En primer lugar, debes actualizar tu instancia maestra a la versión más reciente. El parche está disponible en Kubernetes Engine 1.8.12‑gke.1, Kubernetes Engine 1.9.7‑gke.1 y Kubernetes Engine 1.10.2‑gke.1.
+        Estas versiones incluyen parches para imágenes de Container‑Optimized OS y Ubuntu.
         </p>
         <p>
-         Si creas un clúster antes,
-            tendrás que especificar la versión con parche que debe usar. A los clientes que tengan habilitadas las
+         Si creas un clúster antes, tendrás que especificar la versión con parche que debe usar. A los clientes que tengan habilitadas las
          <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/node-auto-upgrades?hl=es">
           actualizaciones de nodo automáticas
          </a>
-         y no realicen la actualización manualmente se les actualizarán los nodos a las versiones
-            con parche en las próximas semanas.
+         y no actualicen manualmente se les actualizarán los nodos a las versiones con parche en las próximas semanas.
         </p>
-        <h4 data-text="What vulnerabilities are addressed by this patch?" id="what-vulnerabilities-are-addressed-by-this-patch_3" tabindex="0">
-         ¿Qué vulnerabilidades mitiga este parche?
+        <h4 data-text="¿Qué vulnerabilidades trata este parche?" id="what-vulnerabilities-are-addressed-by-this-patch_3" tabindex="0">
+         ¿Qué vulnerabilidades trata este parche?
         </h4>
         <p>
          Este parche mitiga las siguientes vulnerabilidades:
         </p>
         <p>
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1000199">
-          CVE-2018-1000199
+          CVE‑2018‑1000199
          </a>
-         :
-            esta vulnerabilidad afecta al kernel de Linux. Permite que un usuario o proceso sin privilegios
-            cause un fallo en el kernel del sistema,
-            lo que provoca un ataque DoS o una apropiación de privilegios. Se considera una vulnerabilidad alta,
-            con una puntuación de 7,8 en el sistema CVSS.
+         : esta vulnerabilidad afecta al kernel de Linux. Permite que un usuario o proceso sin privilegios cause un fallo en el kernel del sistema, lo que provoca un ataque DoS o una apropiación de privilegios. Se considera una vulnerabilidad alta, con una puntuación de 7,8 en el sistema CVSS.
         </p>
         <p>
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-8897">
-          CVE-2018-8897
+          CVE‑2018‑8897
          </a>
-         :
-            esta vulnerabilidad afecta al kernel de Linux. Permite que un usuario o proceso sin privilegios
-            cause un fallo en el kernel del sistema, lo que provoca un ataque DoS.
-            Se considera una vulnerabilidad media, con una puntuación de 6,5 en el sistema CVSS.
+         : esta vulnerabilidad afecta al kernel de Linux. Permite que un usuario o proceso sin privilegios cause un fallo en el kernel del sistema, lo que provoca un ataque DoS.
+        Se considera una vulnerabilidad media, con una puntuación de 6,5 en el sistema CVSS.
         </p>
         <p>
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1087">
           CVE‑2018‑1087
          </a>
-         :
-            Esta vulnerabilidad afecta al hipervisor KVM del kernel de Linux. Permite que un proceso
-            sin privilegios cause un fallo en
-            el kernel invitado o que pueda adquirir privilegios. La vulnerabilidad tiene un parche
-            en la infraestructura sobre la que se
-            ejecuta Kubernetes Engine, por lo que este no se ve afectado. Se considera una vulnerabilidad alta,
-            con una puntuación de 8,0 en el sistema CVSS.
+         : esta vulnerabilidad afecta al hipervisor KVM del kernel de Linux. Permite que un proceso sin privilegios cause un fallo en el kernel invitado o que pueda adquirir privilegios. La vulnerabilidad tiene un parche en la infraestructura sobre la que se ejecuta Kubernetes Engine, por lo que este no se ve afectado. Se considera una vulnerabilidad alta, con una puntuación de 8,0 en el sistema CVSS.
         </p>
        </td>
        <td>
@@ -3363,7 +3529,7 @@ kubectl delete -f \
       </tr>
      </tbody>
     </table>
-    <h2 data-text="March 12, 2018" id="march-12-2018" tabindex="0">
+    <h2 data-text="12 de marzo del 2018" id="march-12-2018" tabindex="0">
      12 de marzo del 2018
     </h2>
     <table id="20180312">
@@ -3386,9 +3552,7 @@ kubectl delete -f \
         <p>
          Hace poco
          <a class="external" href="https://groups.google.com/forum/?hl=es#!topic/kubernetes-security-announce/P7lBjbjDKd8">
-          se han descubierto
-            las nuevas vulnerabilidades de
-            seguridad
+          se han descubierto las nuevas vulnerabilidades de seguridad
          </a>
          en Kubernetes
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2017-1002101">
@@ -3398,21 +3562,13 @@ kubectl delete -f \
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2017-1002102">
           CVE‑2017‑1002102
          </a>
-         ,
-            que permiten que los
-            contenedores
-            accedan a archivos externos. Todos los nodos
-            de Kubernetes Engine
-            se ven afectados por estas vulnerabilidades, así que te recomendamos actualizar
-            cuanto antes a la versión más reciente del parche como se indica a continuación.
+         , que permiten que los contenedores accedan a archivos externos. Todos los nodos de Kubernetes Engine se ven afectados por estas vulnerabilidades, así que te recomendamos actualizar cuanto antes a la versión más reciente del parche como se indica a continuación.
         </p>
-        <h4 data-text="What should I do?" id="what-should-i-do_18" tabindex="0">
+        <h4 data-text="¿Qué debo hacer?" id="what-should-i-do-21" tabindex="0">
          ¿Qué debo hacer?
         </h4>
         <p>
-         Debido a la gravedad de estas vulnerabilidades, tengas o no
-            habilitadas las actualizaciones automáticas de nodos,
-            te recomendamos que
+         Debido a la gravedad de estas vulnerabilidades, tengas o no habilitadas las actualizaciones automáticas de nodos, te recomendamos que
          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-container-cluster?hl=es">
           actualices manualmente
          </a>
@@ -3420,37 +3576,24 @@ kubectl delete -f \
          <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=es#march-12-2018">
           calendario de actualizaciones
          </a>
-         ,
-            este parche estará disponible para todos los clientes a partir del 16 de marzo,
-            pero es posible que lo tengas
-            antes a tu disposición en función de la zona en la que se encuentra tu clúster.
+         , este parche estará disponible para todos los clientes a partir del 16 de marzo, pero es posible que lo tengas antes a tu disposición en función de la zona en la que se encuentre tu clúster.
         </p>
         <p>
-         Antes de ello, deberás actualizar tu instancia maestra a la
-            versión más reciente. Este parche estará disponible en Kubernetes 1.9.4‑gke.1,
-            Kubernetes 1.8.9‑gke.1 y Kubernetes 1.7.14‑gke.1. Los nuevos clústeres usarán
-            la versión con parche de forma predeterminada antes del 30 de marzo; si creas un
-            clúster nuevo antes, tendrás que especificar la versión con parche
-            que debe usar.
+         En primer lugar, debes actualizar tu instancia maestra a la versión más reciente. Este parche estará disponible en Kubernetes 1.9.4‑gke.1, Kubernetes 1.8.9‑gke.1 y Kubernetes 1.7.14‑gke.1. Los nuevos clústeres usarán la versión con parche de forma predeterminada antes del 30 de marzo; si creas un clúster nuevo antes, tendrás que especificar la versión con parche que debe usar.
         </p>
         <p>
-         A los clientes de Kubernetes Engine que tengan
-            habilitadas las
+         A los clientes de Kubernetes Engine que tengan habilitadas las
          <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/node-auto-upgrades?hl=es">
-          actualizaciones automáticas
-            de nodos
+          actualizaciones automáticas de nodos
          </a>
-         y no realicen la actualización manualmente se les actualizarán los
-            nodos a las versiones con parche antes del 23 de abril. Sin embargo, debido a la gravedad de estas vulnerabilidades, te recomendamos que
+         y no actualicen manualmente se les actualizarán los nodos a las versiones con parche antes del 23 de abril. Sin embargo, debido a la gravedad de estas vulnerabilidades, te recomendamos que
          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-container-cluster?hl=es">
           actualices manualmente
          </a>
-         tus nodos en
-            cuanto esté disponible
-            el parche.
+         tus nodos en cuanto esté disponible el parche.
         </p>
-        <h4 data-text="What vulnerabilities are addressed by this patch?" id="what-vulnerabilities-are-addressed-by-this-patch_4" tabindex="0">
-         ¿Qué vulnerabilidades mitiga este parche?
+        <h4 data-text="¿Qué vulnerabilidades trata este parche?" id="what-vulnerabilities-are-addressed-by-this-patch_4" tabindex="0">
+         ¿Qué vulnerabilidades trata este parche?
         </h4>
         <p>
          Este parche mitiga las dos vulnerabilidades siguientes:
@@ -3460,22 +3603,13 @@ kubectl delete -f \
          <a class="external" href="https://kubernetes.io/docs/concepts/storage/volumes/#using-subpath">
           subPath
          </a>
-         tengan acceso a archivos externos al volumen. Por tanto, si estás bloqueando el
-            acceso de los contenedores a volúmenes hostPath con
-            PodSecurityPolicy, un atacante con la capacidad para actualizar o
-            crear pods puede activar cualquier hostPath con cualquier otro tipo de volumen.
+         tengan acceso a archivos externos al volumen. Por tanto, si estás bloqueando el acceso de los contenedores a volúmenes hostPath con PodSecurityPolicy, un atacante con la capacidad para actualizar o crear pods puede activar cualquier hostPath con cualquier otro tipo de volumen.
         </p>
         <p>
-         La vulnerabilidad CVE‑2017‑1002102
-            permite que los contenedores que usan determinados tipos de volúmenes
-            (incluidos los secretos, mapas de configuración, volúmenes proyectados o volúmenes de la API Downward) borren archivos externos al volumen. Por tanto,
-            si se vulnera un contenedor que utiliza uno de estos tipos de volúmenes o
-            si permites que usuarios que no son de confianza creen pods, un atacante
-            podría usar ese contenedor para borrar archivos arbitrarios en el host.
+         La vulnerabilidad CVE‑2017‑1002102 permite que los contenedores que usan determinados tipos de volúmenes (incluidos los secretos, mapas de configuración, volúmenes proyectados o volúmenes de la API Downward) borren archivos externos al volumen. Por tanto, si se vulnera un contenedor que utiliza uno de estos tipos de volúmenes o si permites que usuarios que no son de confianza creen pods, un atacante podría usar ese contenedor para borrar archivos al azar en el host.
         </p>
         <p>
-         Para obtener más información sobre la solución,
-            consulta la
+         Para obtener más información sobre la solución, consulta la
          <a class="external" href="https://kubernetes.io/blog/2018/04/04/fixing-subpath-volume-vulnerability/">
           entrada del blog de Kubernetes
          </a>

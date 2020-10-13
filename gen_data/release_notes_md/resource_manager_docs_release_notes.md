@@ -1,4 +1,4 @@
-#  Release Notes
+#  Release notes
 
 This page documents production updates to Resource Manager. You can
 periodically check this page for announcements about new or updated features,
@@ -12,6 +12,68 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/cloudresourcemanager-release-
 notes.xml `
+
+##  August 19, 2020
+
+**FEATURE:**
+
+The Organization Policies for [ restricting Cloud Interconnect usage
+](https://cloud.google.com/network-connectivity/docs/interconnect/how-
+to/restricting-usage) have launched into beta.
+
+The Organization Policy for [ restricting protocol forwarding creation
+](https://cloud.google.com/compute/docs/protocol-
+forwarding#enforcing_protocol_forwarding_settings_across_a_project_folder_or_organization)
+has launched into general availability.
+
+The Organization policy for [ restricting Cloud Load Balancing creation
+](https://cloud.google.com/load-balancing/docs/org-policy-constraints) has
+launched into general availability.
+
+##  August 14, 2020
+
+**FEATURE:**
+
+The Organization Policy for [ extending the maximum lifetime for OAuth 2.0
+access tokens ](https://cloud.google.com/iam/docs/creating-short-lived-
+service-account-credentials#sa-credentials-oauth) that you create for a
+service account has been launched into general availability.
+
+##  July 20, 2020
+
+**FEATURE:**
+
+The Organization Policy for [ enabling detailed Cloud Audit Logs
+](https://cloud.google.com/storage/docs/org-policy-constraints#audit-logging)
+has launched into general availability.
+
+##  July 17, 2020
+
+**FEATURE:**
+
+The Organization Policy for [ restricting protocol forwarding creation
+](https://cloud.google.com/compute/docs/protocol-
+forwarding#enforcing_protocol_forwarding_settings_across_a_project_folder_or_organization)
+has launched into public beta.
+
+##  July 01, 2020
+
+**FEATURE:**
+
+The Organization Policy for [ restricting automatic IAM permission grants to
+new service accounts ](https://cloud.google.com/resource-
+manager/docs/organization-policy/restricting-service-
+accounts#disable_service_account_default_grants) has launched into general
+availability.
+
+##  June 15, 2020
+
+**FEATURE:**
+
+The Organization Policy for [ restricting peer IP addresses through a Cloud
+VPN tunnel ](https://cloud.google.com/network-
+connectivity/docs/vpn/concepts/overview#vpn-org-policy) has been launched into
+general availability.
 
 ##  April 10, 2020
 
@@ -82,8 +144,8 @@ Cloud Platform Console.
 Organization setup wizard beta release
 
 The organization setup wizard UI makes it easier for you to delegate setup and
-management of Organization resources to other users, assign fundamental Cloud
-IAM roles to users, and import existing projects and billing accounts to your
+management of Organization resources to other users, assign fundamental IAM
+roles to users, and import existing projects and billing accounts to your
 organization.
 
 ##  July 12, 2018
@@ -95,7 +157,7 @@ manager/docs/organization-policy/restricting-service-accounts) organization
 policy constraint beta release
 
 The service account restriction constraint can be used to limit the usage of
-Cloud Identity and Access Management service accounts.
+Identity and Access Management service accounts.
 
 ##  July 09, 2018
 
@@ -105,8 +167,8 @@ Domain restriction organization policy constraint beta release
 
 The [ domain restriction ](https://cloud.google.com/resource-
 manager/docs/organization-policy/restricting-domains) constraint can be used
-to restrict the set of identities that can be used in Cloud Identity and
-Access Management policies.
+to restrict the set of identities that can be used in Identity and Access
+Management policies.
 
 ##  March 12, 2018
 

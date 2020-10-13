@@ -1,0 +1,472 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <div background="google-blue" class="devsite-banner devsite-banner-announcement">
+   <div class="devsite-banner-message">
+    <div class="devsite-banner-message-text">
+     A new version of Anthos GKE on AWS was released on August 5. See the
+     <a href="https://cloud.google.com/anthos/gke/docs/aws/release-notes?hl=pt-br">
+      release notes
+     </a>
+     for information on breaking changes.
+    </div>
+   </div>
+  </div>
+  <h1 class="devsite-page-title">
+   Boletins de segurança
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <p>
+    Saiba mais sobre os boletins de segurança do Anthos GKE na AWS (GKE na AWS).
+   </p>
+   <section class="bulletins">
+    <h2 data-text="GCP-2020-011" id="gcp-2020-011" tabindex="0">
+     GCP-2020-011
+    </h2>
+    <strong>
+     Publicado:
+    </strong>
+    24/07/2020
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Descrição
+       </th>
+       <th>
+        Gravidade
+       </th>
+       <th>
+        Observações
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Uma vulnerabilidade de rede,
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/92315">
+          CVE-2020-8558
+         </a>
+         (em inglês),
+        foi descoberta recentemente no Kubernetes. Às vezes, os serviços se comunicam
+        com outros aplicativos em execução no mesmo pod usando a interface de
+        loopback local (127.0.0.1). Essa vulnerabilidade permite que um invasor
+        com acesso à rede do cluster envie tráfego para a interface de loopback
+        de pods e nós adjacentes. Os serviços que dependem da interface de
+        loopback e não são acessados fora do pod podem ser explorados.
+        </p>
+        <p>
+         A exploração dessa vulnerabilidade nos clusters do GKE na AWS
+       exige que um invasor desative as
+         <a class="external" href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_NAT_Instance.html">
+          verificações de destino de origem
+         </a>
+         nas instâncias do EC2 no cluster. Isso exige que o invasor tenha
+       permissões do IAM da AWS para
+         <code dir="ltr" translate="no">
+          ModifyInstanceAttribute
+         </code>
+         ou
+         <code dir="ltr" translate="no">
+          ModifyNetworkInterfaceAttribute
+         </code>
+         nas instâncias do EC2. Por
+       esse motivo, essa vulnerabilidade recebeu uma gravidade baixa para
+       o GKE na AWS.
+        </p>
+        <h4 data-text="O que fazer?" id="what-should-i-do" tabindex="0">
+         O que fazer?
+        </h4>
+        <p>
+         Para corrigir essa vulnerabilidade, faça upgrade do cluster para uma versão com patch.
+        As próximas versões do GKE na AWS ou mais recentes
+       precisam incluir a correção para essa vulnerabilidade:
+        </p>
+        <ul>
+         <li>
+          GKE na AWS 1.4.2
+         </li>
+        </ul>
+        <h4 data-text="Qual vulnerabilidade é corrigida por esse patch?" id="what-vulnerability-is-addressed-by-this-patch" tabindex="0">
+         Qual vulnerabilidade é corrigida por esse patch?
+        </h4>
+        <p>
+         Esse patch corrige a seguinte vulnerabilidade:
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/92315">
+          CVE-2020-8558
+         </a>
+         (em inglês).
+        </p>
+       </td>
+       <td>
+        <p>
+         Baixa
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/92315">
+          CVE-2020-8558
+         </a>
+         (em inglês)
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-009" id="gcp-2020-009" tabindex="0">
+     GCP-2020-009
+    </h2>
+    <strong>
+     Publicado:
+    </strong>
+    15/07/2020
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Descrição
+       </th>
+       <th>
+        Gravidade
+       </th>
+       <th>
+        Observações
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Uma vulnerabilidade de escalonamento de privilégios,
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8559">
+          CVE-2020-8559
+         </a>
+         (em inglês),
+       foi descoberta recentemente no Kubernetes. Essa vulnerabilidade permite que um
+        invasor que já tenha comprometido um nó execute um comando em qualquer
+        pod do cluster. Dessa forma, o invasor pode usar o nó já comprometido
+       para comprometer outros nós e possivelmente ler informações ou
+       causar ações destrutivas.
+        </p>
+        <p>
+         Observe que, para que um invasor explore essa vulnerabilidade, é preciso que um nó do
+       cluster já tenha sido comprometido. Essa vulnerabilidade, por si só,
+       não comprometerá os nós do cluster.
+        </p>
+        <h4 data-text="O que fazer?" id="what-should-i-do_1" tabindex="0">
+         O que fazer?
+        </h4>
+        <p>
+         O GKE na AWS GA (1.4.1, disponível no final de julho de 2020) ou
+       mais recente inclui o patch para essa vulnerabilidade. Se você estiver usando uma
+       versão anterior,
+         <a href="https://cloud.google.com/anthos/gke/docs/aws/how-to/prerequisites?hl=pt-br">
+          faça o download de uma nova versão da ferramenta de linha de comando anthos-gke
+         </a>
+         e recrie seus clusters de gerenciamento e usuário.
+        </p>
+        <h4 data-text="Qual vulnerabilidade é corrigida por esse patch?" id="what-vulnerability-is-addressed-by-this-patch_1" tabindex="0">
+         Qual vulnerabilidade é corrigida por esse patch?
+        </h4>
+        <p>
+         Esses patches mitigam a vulnerabilidade CVE-2020-8559. Isso é classificado como uma
+        vulnerabilidade média do GKE, porque exige que o invasor
+        tenha informações em primeira mão sobre o cluster, os nós e as cargas de trabalho
+        para aproveitar esse ataque de forma eficaz, além de um
+        nó comprometido. Essa vulnerabilidade em si não fornece um nó
+        comprometido a um invasor.
+        </p>
+       </td>
+       <td>
+        <p>
+         Média
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8559">
+          CVE-2020-8559
+         </a>
+         (em inglês)
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-007" id="gcp-2020-007" tabindex="0">
+     GCP-2020-007
+    </h2>
+    <strong>
+     Publicado:
+    </strong>
+    01/06/2020
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Descrição
+       </th>
+       <th>
+        Gravidade
+       </th>
+       <th>
+        Observações
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         A vulnerabilidade de falsificação de solicitação do lado do servidor (SSRF, na sigla em inglês)
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555">
+          CVE-2020-8555
+         </a>
+         foi descoberta recentemente no Kubernetes. Ela permite que determinados usuários autorizados
+      vazem até 500 bytes de informações confidenciais da
+      rede do host do plano de controle. O plano de controle do Google Kubernetes Engine (GKE)
+      usa os controladores do Kubernetes e, portanto, foi afetado por essa
+      vulnerabilidade. Recomendamos que você faça o upgrade
+      do plano de controle para a última versão do patch, como detalhamos a seguir.
+      Não é necessário fazer upgrade do nó.
+         <br/>
+        </p>
+        <h4 data-text="O que fazer?" id="what-should-i-do_2" tabindex="0">
+         O que fazer?
+        </h4>
+        <p>
+         O Anthos GKE na AWS (GKE na AWS) v0.2.0 ou mais recente já inclui
+     o patch para essa vulnerabilidade. Se você estiver usando uma versão anterior,
+         <a href="https://cloud.google.com/anthos/gke/docs/aws/how-to/prerequisites?hl=pt-br">
+          faça o download de uma nova versão da ferramenta de linha de comando anthos-gke
+         </a>
+         e recrie seus clusters de gerenciamento e usuário.
+        </p>
+        <h4 data-text="Qual vulnerabilidade é corrigida por esse patch? " id="what-vulnerability-is-addressed-by-this-patch_2" tabindex="0">
+         Qual vulnerabilidade é corrigida por esse patch?
+        </h4>
+        <p>
+         Esses patches mitigam a vulnerabilidade CVE-2020-8555. Ela é classificada
+      como uma vulnerabilidade de gravidade média para o GKE, porque era difícil
+      explorá-la já que havia várias medidas de aumento de proteção do plano de controle.
+        </p>
+        <p>
+         Um invasor com permissões para criar um pod com determinados
+      tipos de volume integrado (GlusterFS, Quobyte, StorageFS e ScaleIO) ou
+      permissões para criar um StorageClass pode fazer com que
+         <code dir="ltr" translate="no">
+          kube-controller-manager
+         </code>
+         crie solicitações
+         <code dir="ltr" translate="no">
+          GET
+         </code>
+         ou
+         <code dir="ltr" translate="no">
+          POST
+         </code>
+         <em>
+          sem
+         </em>
+         um corpo de solicitação controlado pelo invasor
+      na rede do host do mestre. Esses tipos de volume raramente são usados no
+      GKE, então uma nova utilização deles pode ser um
+      sinal útil para detectar problemas.
+        </p>
+        <p>
+         Combinado com um meio de vazar os resultados de
+         <code dir="ltr" translate="no">
+          GET/POST
+         </code>
+         para o invasor, como por meio de registros, essa vulnerabilidade pode levar à divulgação
+      de informações confidenciais. Atualizamos os drivers de armazenamento em
+      questão para remover a possibilidade desses vazamentos acontecerem.
+        </p>
+       </td>
+       <td>
+        <p>
+         Média
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555">
+          CVE-2020-8555 (em inglês)
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-006" id="gcp-2020-006" tabindex="0">
+     GCP-2020-006
+    </h2>
+    <strong>
+     Publicado:
+    </strong>
+    01/06/2020
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Descrição
+       </th>
+       <th>
+        Gravidade
+       </th>
+       <th>
+        Observações
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         O Kubernetes divulgou uma
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          vulnerabilidade
+         </a>
+         que permite que um contêiner com privilégios redirecione o tráfego do nó para outro
+        contêiner. O tráfego TLS/SSH mútuo, como entre o kubelet e o servidor da API,
+        e o tráfego de aplicativos que usam mTLS não podem ser lidos ou
+        modificados por esse ataque. Todos os nós do Google Kubernetes Engine (GKE) foram
+        afetados por essa vulnerabilidade, e recomendamos que você faça o upgrade
+        para a última versão do patch, como detalhamos a seguir.
+        </p>
+        <h4 data-text=" O que fazer?" id="what-should-i-do_3" tabindex="0">
+         O que fazer?
+        </h4>
+        <p>
+         <a href="https://cloud.google.com/anthos/gke/docs/aws/how-to/prerequisites?hl=pt-br">
+          Faça o download da ferramenta de linha de comando anthos-gke
+         </a>
+         com a seguinte versão ou mais recente e recrie seus clusters de gerenciamento e usuário:
+        </p>
+        <ul>
+         <li>
+          aws-0.2.1-gke.7
+         </li>
+        </ul>
+        <p>
+         Em geral, pouquíssimos contêineres exigem
+         <code dir="ltr" translate="no">
+          CAP_NET_RAW
+         </code>
+         . Esse
+        e outros recursos avançados precisam ser bloqueados, por padrão, usando o
+         <a href="https://cloud.google.com/anthos-config-management/docs/concepts/policy-controller?hl=pt-br">
+          Anthos Policy Controller
+         </a>
+         ou atualizando as especificações de pod:
+        </p>
+        Remova a capacidade
+        <code dir="ltr" translate="no">
+         CAP_NET_RAW
+        </code>
+        dos contêineres:
+        <ul>
+         <li>
+          Usando e aplicando o Anthos Policy Controller/Gatekeeper com este
+          <a class="external" href="https://github.com/open-policy-agent/gatekeeper/blob/master/library/pod-security-policy/capabilities/template.yaml">
+           modelo de restrição
+          </a>
+          (em inglês), por exemplo:
+         </li>
+         <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Dropping CAP_NET_RAW with Gatekeeper
+# (requires the K8sPSPCapabilities template)
+apiversion: constraints.gatekeeper.sh/v1beta1
+kind:  K8sPSPCapabilities
+metadata:
+  name: forbid-cap-net-raw
+spec:
+  match:
+    kinds:
+      - apiGroups: [""]
+      kinds: ["Pod"]
+    namespaces:
+      #List of namespaces to enforce this constraint on
+      - default
+    # If running gatekeeper &gt;= v3.1.0-beta.5,
+    # you can exclude namespaces rather than including them above.
+    excludedNamespaces:
+      - kube-system
+  parameters:
+    requiredDropCapabilities:
+      - "NET_RAW"
+</pre>
+        </ul>
+        <ul>
+         <li>
+          Ou ao atualizar as especificações do pod:
+         </li>
+         <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Dropping CAP_NET_RAW from a Pod:
+apiVersion: v1
+kind: Pod
+metadata:
+  name: no-cap-net-raw
+spec:
+  containers:
+    -name: may-container
+     ...
+    securityContext:
+      capabilities:
+        drop:
+          -NET_RAW
+</pre>
+        </ul>
+        <h4 data-text="Qual vulnerabilidade é corrigida por esse patch? " id="what-vulnerability-is-addressed-by-this-patch_3" tabindex="0">
+         Qual vulnerabilidade é corrigida por esse patch?
+        </h4>
+        <p>
+         O patch mitiga a seguinte vulnerabilidade:
+        </p>
+        <p>
+         A vulnerabilidade descrita na capacidade
+         <code dir="ltr" translate="no">
+          CAP_NET_RAW
+         </code>
+         do
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          problema 91507 do Kubernetes
+         </a>
+         (que está incluída no conjunto de capacidades de contêiner padrão) que envolve configurar de forma mal-intencionada a pilha do IPv6 no nó e redirecionar
+o tráfego do nó para o contêiner controlado pelo invasor. Isso permite que o invasor
+intercepte/modifique o tráfego que se origina do nó ou se destina a ele. O tráfego
+mútuo TLS/SSH, como entre o kubelet e o servidor da API, ou o tráfego de
+aplicativos que usam mTLS não pode ser lido ou modificado por essa invasão.
+        </p>
+       </td>
+       <td>
+        <p>
+         Média
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          Problema 91507 do Kubernetes
+         </a>
+         (em inglês)
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+   </section>
+  </div>
+ </article>
+</article>

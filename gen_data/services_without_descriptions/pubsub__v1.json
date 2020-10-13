@@ -386,6 +386,30 @@
                                 "https://www.googleapis.com/auth/pubsub"
                             ]
                         },
+                        "detach": {
+                            "flatPath": "v1/projects/{projectsId}/subscriptions/{subscriptionsId}:detach",
+                            "httpMethod": "POST",
+                            "id": "pubsub.projects.subscriptions.detach",
+                            "parameterOrder": [
+                                "subscription"
+                            ],
+                            "parameters": {
+                                "subscription": {
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/subscriptions/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+subscription}:detach",
+                            "response": {
+                                "$ref": "DetachSubscriptionResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/pubsub"
+                            ]
+                        },
                         "get": {
                             "flatPath": "v1/projects/{projectsId}/subscriptions/{subscriptionsId}",
                             "httpMethod": "GET",
@@ -1051,6 +1075,11 @@
             },
             "type": "object"
         },
+        "DetachSubscriptionResponse": {
+            "id": "DetachSubscriptionResponse",
+            "properties": {},
+            "type": "object"
+        },
         "Empty": {
             "id": "Empty",
             "properties": {},
@@ -1265,6 +1294,9 @@
                 "messageId": {
                     "type": "string"
                 },
+                "orderingKey": {
+                    "type": "string"
+                },
                 "publishTime": {
                     "format": "google-datetime",
                     "type": "string"
@@ -1331,6 +1363,20 @@
             },
             "type": "object"
         },
+        "RetryPolicy": {
+            "id": "RetryPolicy",
+            "properties": {
+                "maximumBackoff": {
+                    "format": "google-duration",
+                    "type": "string"
+                },
+                "minimumBackoff": {
+                    "format": "google-duration",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "SeekRequest": {
             "id": "SeekRequest",
             "properties": {
@@ -1390,6 +1436,12 @@
                 "deadLetterPolicy": {
                     "$ref": "DeadLetterPolicy"
                 },
+                "detached": {
+                    "type": "boolean"
+                },
+                "enableMessageOrdering": {
+                    "type": "boolean"
+                },
                 "expirationPolicy": {
                     "$ref": "ExpirationPolicy"
                 },
@@ -1414,6 +1466,9 @@
                 },
                 "retainAckedMessages": {
                     "type": "boolean"
+                },
+                "retryPolicy": {
+                    "$ref": "RetryPolicy"
                 },
                 "topic": {
                     "type": "string"

@@ -23,9 +23,274 @@ page to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/kubernetes-engine-security-
 bulletins.xml `
 
+##  GCP-2020-011
+
+**Published:** 2020-07-24  
+Description  |  Severity  |  Notes  
+---|---|---  
+  
+A networking vulnerability, [ CVE-2020-8558
+](https://github.com/kubernetes/kubernetes/issues/92315) , was recently
+discovered in Kubernetes. Services sometimes communicate with other
+applications running inside the same Pod using the local loopback interface
+(127.0.0.1). This vulnerability allows an attacker with access to the
+cluster's network to send traffic to the loopback interface of adjacent Pods
+and nodes. Services that rely on the loopback interface not being accessible
+outside their Pod could be exploited.
+
+Exploiting this vulnerability on GKE clusters requires an attacker to have
+network administrator privileges on the Google Cloud hosting the cluster's
+VPC. This vulnerability alone does not give an attacker network administrator
+privileges. For this reason, this vulnerability has been assigned a Low
+severity for GKE.
+
+####  What should I do?
+
+To fix this vulnerability, [ upgrade ](/kubernetes-
+engine/docs/concepts/cluster-upgrades) your cluster's node pools to the
+following GKE versions (and later):
+
+  * 1.17.7-gke.0 
+  * 1.16.11-gke.0 
+  * 1.16.10-gke.11 
+  * 1.16.9-gke.14 
+
+####  What vulnerability is addressed by this patch?
+
+This patch fixes the following vulnerability: [ CVE-2020-8558
+](https://github.com/kubernetes/kubernetes/issues/92315) .
+
+|
+
+Low
+
+|
+
+[ CVE-2020-8558 ](https://github.com/kubernetes/kubernetes/issues/92315)  
+  
+##  GCP-2020-009
+
+**Published:** 2020-07-15  Description  |  Severity  |  Notes  
+---|---|---  
+  
+A privilege escalation vulnerability, [ CVE-2020-8559
+](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8559) , was recently
+discovered in Kubernetes. This vulnerability allows an attacker that has
+already compromised a node to execute a command in any Pod in the cluster. The
+attacker can thereby use the already compromised node to compromise other
+nodes and potentially read information, or cause destructive actions.
+
+Note that for an attacker to exploit this vulnerability, a node in your
+cluster must have already been compromised. This vulnerability, by itself,
+will not compromise any nodes in your cluster.
+
+####  What should I do?
+
+[ Upgrade ](/kubernetes-engine/docs/concepts/cluster-upgrades) your cluster to
+a patched version. Clusters will be auto-upgraded over the next weeks, and
+patched versions will be available by July 19, 2020 for an accelerated manual
+upgrade schedule. The following GKE control plane versions or newer contain
+the fix for this vulnerability:
+
+  * v1.14.10-gke.46 
+  * v1.15.12-gke.8 
+  * v1.16.9-gke.11 
+  * v1.16.10-gke.9 
+  * v1.16.11-gke.3+ 
+  * v1.17.7-gke.6+ 
+
+####  What vulnerability is addressed by this patch?
+
+These patches mitigate vulnerability CVE-2020-8559. This is rated as a Medium
+vulnerability for GKE, as it requires the attacker to have first hand
+information about the cluster, nodes, and workloads to effectively leverage
+this attack in addition to an existing compromised node. This vulnerability by
+itself will not provide an attacker with a compromised node.
+
+|
+
+Medium
+
+|
+
+[ CVE-2020-8559 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8559)  
+  
+##  GCP-2020-007
+
+**Published:** 2020-06-01  
+Description  |  Severity  |  Notes  
+---|---|---  
+  
+Server Side Request Forgery (SSRF) vulnerability, [ CVE-2020-8555
+](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555) , was recently
+discovered in Kubernetes, allowing certain authorized users to leak up to 500
+bytes of sensitive information from the control plane host network. The Google
+Kubernetes Engine (GKE) control plane uses controllers from Kubernetes and is
+thus affected by this vulnerability. We recommend that you [ upgrade
+](/kubernetes-engine/docs/how-to/upgrading-a-container-cluster) the control
+plane to the latest patch version, as we detail below. A node upgrade is not
+required.  
+
+####  What should I do?
+
+For most customers, no further action is required. The vast majority of
+clusters are already running a patched version. The following GKE versions or
+newer contain the fix for this vulnerability:
+
+  * 1.14.7-gke.39 
+  * 1.14.8-gke.32 
+  * 1.14.9-gke.17 
+  * 1.14.10-gke.12 
+  * 1.15.7-gke.17 
+  * 1.16.4-gke.21 
+  * 1.17.0-gke.0 
+
+Clusters using [ release channels ](/kubernetes-engine/docs/concepts/release-
+channels) are already on control plane versions with the mitigation.
+
+####  What vulnerability is addressed by this patch?
+
+These patches mitigate vulnerability CVE-2020-8555. This is rated as a Medium
+vulnerability for GKE as it was difficult to exploit due to various control
+plane hardening measures.
+
+An attacker with permissions to create a Pod with certain built-in Volume
+types (GlusterFS, Quobyte, StorageFS, ScaleIO) or permissions to create a
+StorageClass can cause ` kube-controller-manager ` to make ` GET ` requests or
+` POST ` requests _without_ an attacker controlled request body from the
+master's host network. These volume types are rarely used on GKE, so new use
+of these volume types may be a useful detection signal.
+
+Combined with a means to leak the results of the ` GET/POST ` back to the
+attacker, such as through logs, this can lead to disclosure of sensitive
+information. We have updated the storage drivers in question to remove the
+potential for such leaks.
+
+|
+
+Medium
+
+|
+
+[ CVE-2020-8555 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8555)  
+  
+##  GCP-2020-006
+
+**Published:** 2020-06-01  
+Description  |  Severity  |  Notes  
+---|---|---  
+  
+Kubernetes has disclosed a [ vulnerability
+](https://github.com/kubernetes/kubernetes/issues/91507) that allows a
+privileged container to redirect node traffic to another container. Mutual
+TLS/SSH traffic, such as between the kubelet and API server or traffic from
+applications using mTLS cannot be read or modified by this attack. All Google
+Kubernetes Engine (GKE) nodes are affected by this vulnerability, and we
+recommend that you [ upgrade ](/kubernetes-engine/docs/how-to/upgrading-a-
+cluster) to the latest patch version, as we detail below.
+
+####  What should I do?
+
+To mitigate this vulnerability, [ upgrade ](/kubernetes-engine/docs/how-
+to/upgrading-a-cluster) your control plane, and then your nodes to one of the
+patched versions listed below. Clusters on release channels are already
+running a patched version on both control plane and nodes:
+
+  * 1.14.10-gke.36 
+  * 1.15.11-gke.15 
+  * 1.16.8-gke.15 
+
+Very few containers typically require ` CAP_NET_RAW ` . This and other
+powerful capabilities should be blocked by default through [ PodSecurityPolicy
+](/kubernetes-engine/docs/how-to/pod-security-policies) or [ Anthos Policy
+Controller ](/anthos-config-management/docs/concepts/policy-controller) :
+
+  * Drop the ` CAP_NET_RAW ` capability from containers: 
+    * By enforcing it through [ PodSecurityPolicy ](/kubernetes-engine/docs/how-to/pod-security-policies) using: 
+        
+                # Require dropping CAP_NET_RAW with a PSP
+        apiversion: extensions/v1beta1
+        kind: PodSecurityPolicy
+        metadata:
+          name: no-cap-net-raw
+        spec:
+          requiredDropCapabilities:
+            -NET_RAW
+             ...
+             # Unrelated fields omitted
+        
+
+    * Or by using Anthos Policy Controller/Gatekeeper with this [ constraint template ](https://github.com/open-policy-agent/gatekeeper/blob/master/library/pod-security-policy/capabilities/template.yaml) and applying it, for example: 
+        
+                # Dropping CAP_NET_RAW with Gatekeeper
+        # (requires the K8sPSPCapabilities template)
+        apiversion: constraints.gatekeeper.sh/v1beta1
+        kind:  K8sPSPCapabilities
+        metadata:
+          name: forbid-cap-net-raw
+        spec:
+          match:
+            kinds:
+              - apiGroups: [""]
+              kinds: ["Pod"]
+            namespaces:
+              #List of namespaces to enforce this constraint on
+              - default
+            # If running gatekeeper >= v3.1.0-beta.5,
+            # you can exclude namespaces rather than including them above.
+            excludedNamespaces:
+              - kube-system
+          parameters:
+            requiredDropCapabilities:
+              - "NET_RAW"
+        
+
+    * Or by updating your Pod specs: 
+        
+                # Dropping CAP_NET_RAW from a Pod:
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          name: no-cap-net-raw
+        spec:
+          containers:
+            -name: may-container
+             ...
+            securityContext:
+              capabilities:
+                drop:
+                  -NET_RAW
+        
+
+####  What vulnerability is addressed by this patch?
+
+The patch mitigate the following vulnerability:
+
+The vulnerability described in [ Kubernetes issue 91507
+](https://github.com/kubernetes/kubernetes/issues/91507) ` CAP_NET_RAW `
+capability (which is included in the default container capability set) to
+maliciously configure the IPv6 stack on the node and redirect node traffic to
+the attacker controlled container. This will allow the attacker to
+intercept/modify traffic originating from or destined for the node. Mutual
+TLS/SSH traffic, such as between the kubelet and API server or traffic from
+applications using mTLS cannot be read or modified by this attack.
+
+|
+
+Medium
+
+|
+
+[ Kubernetes issue 91507
+](https://github.com/kubernetes/kubernetes/issues/91507)  
+  
+  
 ##  GCP-2020-005
 
-Description  |  Severity  |  Notes  
+**Published:** 2020-05-07  
+**Updated:** 2020-05-07  Description  |  Severity  |  Notes  
 ---|---|---  
   
 A vulnerability was recently discovered in the Linux kernel, described in [
@@ -72,7 +337,8 @@ bin/cvename.cgi?name=CVE-2020-8835)
   
 ##  GCP-2020-003
 
-Description  |  Severity  |  Notes  
+**Published:** 2020-03-31  
+**Updated:** 2020-03-31  Description  |  Severity  |  Notes  
 ---|---|---  
   
 A vulnerability was recently discovered in Kubernetes, described in [
@@ -81,8 +347,8 @@ bin/cvename.cgi?name=CVE-2019-11254) , which allows any user authorized to
 make POST requests to execute a remote Denial-of-Service attack on a
 Kubernetes API server. The Kubernetes Product Security Committee (PSC)
 released additional information on this vulnerability which can be found [
-here ](https://groups.google.com/g/kubernetes-security-announce/c/wuwEwZigXBc)
-.
+here ](https://groups.google.com/forum/#!topic/kubernetes-security-
+announce/wuwEwZigXBc) .
 
 GKE Clusters that use [ Master Authorized Networks ](/kubernetes-
 engine/docs/how-to/authorized-networks) and [ Private clusters with no public
@@ -120,7 +386,8 @@ bin/cvename.cgi?name=CVE-2019-11254)
   
 ##  GCP-2020-002
 
-Description  |  Severity  |  Notes  
+**Published:** 2020-03-23  
+**Updated:** 2020-03-23  Description  |  Severity  |  Notes  
 ---|---|---  
   
 Kubernetes has disclosed [ two denial of service vulnerabilities
@@ -168,7 +435,8 @@ bin/cvename.cgi?name=CVE-2020-8552)
   
 ##  January 21, 2020; last updated January 24, 2020
 
-Description  |  Severity  |  Notes  
+**Published:** 2020-01-21  
+**Updated:** 2020-01-24  Description  |  Severity  |  Notes  
 ---|---|---  
   
 **2020-01-24 Update:** The process of making patched versions available is
@@ -240,7 +508,8 @@ bin/cvename.cgi?name=CVE-2020-0601)
   
 ##  November 14, 2019
 
-Description  |  Severity  |  Notes  
+**Published:** 2019-11-14  
+**Updated:** 2019-11-14  Description  |  Severity  |  Notes  
 ---|---|---  
   
 Kubernetes has disclosed a security issue in the kubernetes-csi [ ` external-
@@ -282,7 +551,8 @@ bin/cvename.cgi?name=CVE-2019-11255)
   
 ##  November 12, 2019
 
-Description  |  Severity  |  Notes  
+**Published:** 2019-11-12  
+**Updated:** 2019-11-12  Description  |  Severity  |  Notes  
 ---|---|---  
   
 Intel has disclosed CVEs that potentially allow interactions between
@@ -296,8 +566,8 @@ workloads. Unless you are running untrusted code inside your own multi-tenant
 GKE clusters _and_ using N2, M2 or C2 nodes, no further action is required. **
 For GKE instances on N1 nodes, no new action is required.
 
-If you are running Anthos GKE on-prem, exposure is hardware dependent. Please
-compare your infrastructure with the [ Intel disclosure
+If you are running GKE on-prem, exposure is hardware dependent. Please compare
+your infrastructure with the [ Intel disclosure
 ](https://blogs.intel.com/technology/2019/11/ipas-november-2019-intel-
 platform-update-ipu/) .
 
@@ -344,7 +614,8 @@ Medium
   
 ##  October 22, 2019
 
-Description  |  Severity  |  Notes  
+**Published:** 2019-10-22  
+**Updated:** 2019-10-22  Description  |  Severity  |  Notes  
 ---|---|---  
   
 A vulnerability was recently discovered in the Go programming language,
@@ -370,7 +641,8 @@ bin/cvename.cgi?name=CVE-2019-16276)
   
 ##  October 16, 2019
 
-Description  |  Severity  |  Notes  
+**Published:** 2019-10-16  
+**Updated:** 2019-10-24  Description  |  Severity  |  Notes  
 ---|---|---  
   
 **2019-10-24 Update:** Patched versions are now available in all zones.
@@ -422,7 +694,8 @@ bin/cvename.cgi?name=CVE-2019-11253)
   
 ##  September 16, 2019
 
-Description  |  Severity  |  Notes  
+**Published:** 2019-09-16  
+**Updated:** 2019-10-16  Description  |  Severity  |  Notes  
 ---|---|---  
   
 This bulletin has been updated since its original publication.
@@ -442,8 +715,8 @@ further details, see the [ Go programming language disclosure
 We recommend that you upgrade your cluster to the latest patch version, which
 contains the mitigation to this vulnerability, as soon as they are available.
 We expect them to be available in all zones with the next GKE release,
-according to the [ release schedule ](/kubernetes-engine/docs/release-
-notes#september_16_2019) .
+according to the [ release schedule ](/kubernetes-engine/docs/release-notes-
+archive#september_16_2019) .
 
 The patch versions which will contain the mitigation are listed below:
 
@@ -474,16 +747,25 @@ bin/cvename.cgi?name=CVE-2019-9514)
   
 ##  September 5, 2019
 
+**Published:** 2019-09-05  
+**Updated:** 2019-09-05
+
 The bulletin for the fix for the vulnerability documented in the bulletin of
 May 31, 2019  is updated.
 
 ##  August 22, 2019
 
+**Published:** 2019-08-22  
+**Updated:** 2019-08-22
+
 The bulletin for  August 5, 2019  has been updated. The fix for the
 vulnerability documented in the earlier bulletin is [ available ](/kubernetes-
-engine/docs/release-notes#august_22_2019) .
+engine/docs/release-notes-archive#august_22_2019) .
 
 ##  August 8, 2019
+
+**Published:** 2019-08-08  
+**Updated:** 2019-08-08
 
 The bulletin for  August 5, 2019  has been updated. We expect the fix for the
 vulnerability documented in that bulletin to be available in the next release
@@ -491,7 +773,8 @@ of GKE.
 
 ##  August 5, 2019
 
-Description  |  Severity  |  Notes  
+**Published:** 2019-08-05  
+**Updated:** 2019-08-09  Description  |  Severity  |  Notes  
 ---|---|---  
   
 This bulletin has been updated since its original publication.
@@ -536,7 +819,8 @@ bin/cvename.cgi?name=CVE-2019-11247)
   
 ##  July 3, 2019
 
-Description  |  Severity  |  Notes  
+**Published:** 2019-07-03  
+**Updated:** 2019-07-03  Description  |  Severity  |  Notes  
 ---|---|---  
   
 A patched version of ` kubectl ` to address CVE-2019-11246 is now available
@@ -557,7 +841,8 @@ bin/cvename.cgi?name=CVE-2018-15664)
   
 ##  July 3, 2019
 
-Description  |  Severity  |  Notes  
+**Published:** 2019-06-25  
+**Updated:** 2019-07-03  Description  |  Severity  |  Notes  
 ---|---|---  
   
 ######  July 3, 2019 Update
@@ -946,9 +1231,9 @@ You should get a response similar to:
     
         kubectl logs disable-smt-2xnnc disable-smt -n kube-system
 
-Note: Boot options cannot be modified if the node has [Secure
-Boot](/kubernetes-engine/docs/how-to/shielded-gke-nodes#secure_boot) feature
-enabled. If Secure Boot is enabled, it needs to be [disabled](/kubernetes-
+Note: Boot options cannot be modified if the node has [ Secure Boot
+](/kubernetes-engine/docs/how-to/shielded-gke-nodes#secure_boot) feature
+enabled. If Secure Boot is enabled, it needs to be [ disabled ](/kubernetes-
 engine/docs/how-to/shielded-gke-nodes#disabling) before the DaemonSet is
 created.
 
@@ -1014,7 +1299,7 @@ Istio sidecars (instructions below).**
 upgrades enabled or not, we recommend that you:
 
   1. [ Manually upgrade ](/kubernetes-engine/docs/how-to/upgrading-a-cluster) your cluster as soon as the patch becomes available. 
-  2. Upgrade your sidecars by following the [ sidecar upgrade documentation ](https://istio.io/docs/setup/kubernetes/upgrade/steps/#sidecar-upgrade) . 
+  2. Upgrade your sidecars by following the [ sidecar upgrade documentation ](https://archive.istio.io/v1.5/docs/setup/upgrade/cni-helm-upgrade/#control-plane-upgrade) . 
 
 **
 
@@ -1063,7 +1348,7 @@ Description  |  Severity  |  Notes
 **2019-03-22 Update:** This patch is available in Kubernetes 1.11.8-gke.4,
 1.13.4-gke.1, and newer releases. The patch is not yet available in 1.12.
 Track the availability of these patches in the [ release notes ](/kubernetes-
-engine/docs/release-notes#march_19_2019) .
+engine/docs/release-notes-archive#march_19_2019) .
 
 Kubernetes recently discovered a new denial of service vulnerability [
 CVE-2019-1002100 ](https://cve.mitre.org/cgi-
@@ -1123,7 +1408,7 @@ In order to upgrade your nodes, you must first upgrade your master to the
 newest version. This patch is available in Kubernetes 1.10.12-gke.7,
 1.11.6-gke.11, 1.11.7-gke.4, 1.12.5-gke.5 and newer releases. Track the
 availability of these patches in the [ release notes ](/kubernetes-
-engine/docs/release-notes#february-11-2019) .
+engine/docs/release-notes-archive#february-11-2019) .
 
 Note that only Ubuntu nodes in GKE are affected. Nodes running COS are not
 affected.
@@ -1168,9 +1453,9 @@ Go programming language disclosure
 
 **All Google Kubernetes Engine (GKE) masters are affected by these
 Vulnerabilities. The[ latest patch version ](/kubernetes-engine/docs/release-
-notes#february-11-2019) Includes a mitigation for this vulnerability. We will
-upgrade cluster masters to the patched version automatically in the coming
-weeks, at the regular upgrade cadence. **
+notes-archive#february-11-2019) Includes a mitigation for this vulnerability.
+We will upgrade cluster masters to the patched version automatically in the
+coming weeks, at the regular upgrade cadence. **
 
 ####  What should I do?
 
@@ -1206,8 +1491,8 @@ node in the cluster. For further details, see the [ Kubernetes disclosure
 ](https://groups.google.com/forum/#!topic/kubernetes-announce/GVllWCg6L88) .
 **All Google Kubernetes Engine (GKE) masters were affected by these
 vulnerabilities, and we have already upgraded clusters to the[ latest patch
-versions ](/kubernetes-engine/docs/release-notes#november-12-2018) . No action
-is required. **
+versions ](/kubernetes-engine/docs/release-notes-archive#november-12-2018) .
+No action is required. **
 
 ####  What should I do?
 
@@ -1289,11 +1574,9 @@ was completed on 2018-11-16)
 If you wish to rotate these tokens immediately you can run the following
 command, the new secret for the service account should be re-created
 automatically within a few seconds:  
-      
-    
-    kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
-            
   
+kubectl get sa --namespace kube-system calico -o template --template '{{(index
+.secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system  
 ---  
   
 ####  Detection
@@ -1631,7 +1914,7 @@ upgrades enabled or not, we recommend that you [ manually upgrade
 soon as the patch becomes available. The patch will be available for all
 customers by March 16th, but it may be available for you sooner based on the
 zone your cluster is in, according to the [ release schedule ](/kubernetes-
-engine/docs/release-notes#march-12-2018) .
+engine/docs/release-notes-archive#march-12-2018) .
 
 In order to upgrade, you must first upgrade your master to the newest version.
 This patch will be available in Kubernetes 1.9.4-gke.1, Kubernetes

@@ -261,6 +261,11 @@
                                         "PRESERVE_RESET_PROTECTION_DATA",
                                         "WIPE_EXTERNAL_STORAGE"
                                     ],
+                                    "enumDescriptions": [
+                                        "This value is ignored.",
+                                        "Preserve the factory reset protection data on the device.",
+                                        "Additionally wipe the device's external storage (such as SD cards)."
+                                    ],
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -1095,6 +1100,20 @@
                     },
                     "type": "array"
                 },
+                "connectedWorkAndPersonalApp": {
+                    "description": "Controls whether the app can communicate with itself across a device\u2019s work and personal profiles, subject to user consent.",
+                    "enum": [
+                        "CONNECTED_WORK_AND_PERSONAL_APP_UNSPECIFIED",
+                        "CONNECTED_WORK_AND_PERSONAL_APP_DISALLOWED",
+                        "CONNECTED_WORK_AND_PERSONAL_APP_ALLOWED"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified. Defaults to CONNECTED_WORK_AND_PERSONAL_APPS_DISALLOWED.",
+                        "Default. Prevents the app from communicating cross-profile.",
+                        "Allows the app to communicate across profiles after receiving user consent."
+                    ],
+                    "type": "string"
+                },
                 "defaultPermissionPolicy": {
                     "description": "The default policy for all permissions requested by the app. If specified, this overrides the policy-level default_permission_policy which applies to all apps. It does not override the permission_grants which applies to all apps.",
                     "enum": [
@@ -1131,6 +1150,15 @@
                             "PERMISSION_GRANT",
                             "PACKAGE_ACCESS",
                             "ENABLE_SYSTEM_APP"
+                        ],
+                        "enumDescriptions": [
+                            "No delegation scope specified.",
+                            "Grants access to certificate installation and management.",
+                            "Grants access to managed configurations management.",
+                            "Grants access to blocking uninstallation.",
+                            "Grants access to permission policy and permission grant state.",
+                            "Grants access to package access state.",
+                            "Grants access for enabling system apps."
                         ],
                         "type": "string"
                     },
@@ -1171,7 +1199,7 @@
                         "description": "Properties of the object.",
                         "type": "any"
                     },
-                    "description": "Managed configuration applied to the app. The format for the configuration is dictated by the ManagedProperty values supported by the app. Each field name in the managed configuration must match the key field of the ManagedProperty. The field value must be compatible with the type of the ManagedProperty: <table> <tr><td><i>type</i></td><td><i>JSON value</i></td></tr> <tr><td>BOOL</td><td>true or false</td></tr> <tr><td>STRING</td><td>string</td></tr> <tr><td>INTEGER</td><td>number</td></tr> <tr><td>CHOICE</td><td>string</td></tr> <tr><td>MULTISELECT</td><td>array of strings</td></tr> <tr><td>HIDDEN</td><td>string</td></tr> <tr><td>BUNDLE_ARRAY</td><td>array of objects</td></tr> </table>",
+                    "description": "Managed configuration applied to the app. The format for the configuration is dictated by the ManagedProperty values supported by the app. Each field name in the managed configuration must match the key field of the ManagedProperty. The field value must be compatible with the type of the ManagedProperty: *type* *JSON value* BOOL true or false STRING string INTEGER number CHOICE string MULTISELECT array of strings HIDDEN string BUNDLE_ARRAY array of objects ",
                     "type": "object"
                 },
                 "managedConfigurationTemplate": {
@@ -1299,6 +1327,20 @@
                     "description": "Number of days the policy is non-compliant before the device or work profile is blocked. To block access immediately, set to 0. blockAfterDays must be less than wipeAfterDays.",
                     "format": "int32",
                     "type": "integer"
+                },
+                "blockScope": {
+                    "description": "Specifies the scope of this BlockAction. Only applicable to devices that are company-owned.",
+                    "enum": [
+                        "BLOCK_SCOPE_UNSPECIFIED",
+                        "BLOCK_SCOPE_WORK_PROFILE",
+                        "BLOCK_SCOPE_DEVICE"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified. Defaults to BLOCK_SCOPE_WORK_PROFILE.",
+                        "Block action is only applied to apps in the work profile. Apps in the personal profile are unaffected.",
+                        "Block action is applied to the entire device, including apps in the personal profile."
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1378,6 +1420,12 @@
                             "DO_NOT_ASK_CREDENTIALS_ON_BOOT",
                             "LOCK_NOW"
                         ],
+                        "enumDescriptions": [
+                            "This value is ignored.",
+                            "Don't allow other admins to change the password again until the user has entered it.",
+                            "Don't ask for user credentials on device boot.",
+                            "Lock the device after password reset."
+                        ],
                         "type": "string"
                     },
                     "type": "array"
@@ -1432,7 +1480,7 @@
             "type": "object"
         },
         "Date": {
-            "description": "Represents a whole or partial calendar date, e.g. a birthday. The time of day and time zone are either specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. This can represent:\nA full date, with non-zero year, month and day values\nA month and day value, with a zero year, e.g. an anniversary\nA year on its own, with zero month and day values\nA year and month value, with a zero day, e.g. a credit card expiration dateRelated types are google.type.TimeOfDay and google.protobuf.Timestamp.",
+            "description": "Represents a whole or partial calendar date, e.g. a birthday. The time of day and time zone are either specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. This can represent: A full date, with non-zero year, month and day values A month and day value, with a zero year, e.g. an anniversary A year on its own, with zero month and day values A year and month value, with a zero day, e.g. a credit card expiration dateRelated types are google.type.TimeOfDay and google.protobuf.Timestamp.",
             "id": "Date",
             "properties": {
                 "day": {
@@ -1589,6 +1637,20 @@
                         "$ref": "NonComplianceDetail"
                     },
                     "type": "array"
+                },
+                "ownership": {
+                    "description": "Ownership of the managed device.",
+                    "enum": [
+                        "OWNERSHIP_UNSPECIFIED",
+                        "COMPANY_OWNED",
+                        "PERSONALLY_OWNED"
+                    ],
+                    "enumDescriptions": [
+                        "Ownership is unspecified.",
+                        "Device is company-owned.",
+                        "Device is personally-owned."
+                    ],
+                    "type": "string"
                 },
                 "policyCompliant": {
                     "description": "Whether the device is compliant with its policy.",
@@ -1764,7 +1826,7 @@
             "type": "object"
         },
         "Empty": {
-            "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance:\nservice Foo {\n  rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n}\nThe JSON representation for Empty is empty JSON object {}.",
+            "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for Empty is empty JSON object {}.",
             "id": "Empty",
             "properties": {},
             "type": "object"
@@ -1775,6 +1837,20 @@
             "properties": {
                 "additionalData": {
                     "description": "Optional, arbitrary data associated with the enrollment token. This could contain, for example, the ID of an org unit the device is assigned to after enrollment. After a device enrolls with the token, this data will be exposed in the enrollment_token_data field of the Device resource. The data must be 1024 characters or less; otherwise, the creation request will fail.",
+                    "type": "string"
+                },
+                "allowPersonalUsage": {
+                    "description": "Controls personal usage on devices provisioned using this enrollment token.",
+                    "enum": [
+                        "ALLOW_PERSONAL_USAGE_UNSPECIFIED",
+                        "PERSONAL_USAGE_ALLOWED",
+                        "PERSONAL_USAGE_DISALLOWED"
+                    ],
+                    "enumDescriptions": [
+                        "Personal usage restriction is not specified",
+                        "Personal usage is allowed",
+                        "Personal usage is disallowed"
+                    ],
                     "type": "string"
                 },
                 "duration": {
@@ -1838,6 +1914,13 @@
                             "COMPLIANCE_REPORT",
                             "STATUS_REPORT",
                             "COMMAND"
+                        ],
+                        "enumDescriptions": [
+                            "This value is ignored.",
+                            "A notification sent when a device enrolls.",
+                            "Deprecated.",
+                            "A notification sent when a device issues a status report.",
+                            "A notification sent when a device command has completed."
                         ],
                         "type": "string"
                     },
@@ -2281,7 +2364,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Optional, a map containing <key, value> configuration variables defined for the configuration.",
+                    "description": "Optional, a map containing configuration variables defined for the configuration.",
                     "type": "object"
                 },
                 "templateId": {
@@ -2455,7 +2538,7 @@
                     "type": "any"
                 },
                 "fieldPath": {
-                    "description": "For settings with nested fields, if a particular nested field is out of compliance, this specifies the full path to the offending field. The path is formatted in the same way the policy JSON field would be referenced in JavaScript, that is: 1) For object-typed fields, the field name is followed by a dot then by a  subfield name. 2) For array-typed fields, the field name is followed by the array index  enclosed in brackets. For example, to indicate a problem with the url field in the externalData field in the 3rd application, the path would be applications[2].externalData.url",
+                    "description": "For settings with nested fields, if a particular nested field is out of compliance, this specifies the full path to the offending field. The path is formatted in the same way the policy JSON field would be referenced in JavaScript, that is: 1) For object-typed fields, the field name is followed by a dot then by a subfield name. 2) For array-typed fields, the field name is followed by the array index enclosed in brackets. For example, to indicate a problem with the url field in the externalData field in the 3rd application, the path would be applications[2].externalData.url",
                     "type": "string"
                 },
                 "installationFailureReason": {
@@ -2483,7 +2566,7 @@
                         "The app has new permissions that have not been accepted by the admin.",
                         "The app is not available in the user's country.",
                         "There are no licenses available to assign to the user.",
-                        "The enterprise is no longer enrolled with managed Play or the admin has not accepted the latest managed Play terms of service.",
+                        "The enterprise is no longer enrolled with Managed Google Play or the admin has not accepted the latest Managed Google Play Terms of Service.",
                         "The user is no longer valid. The user may have been deleted or disabled."
                     ],
                     "type": "string"
@@ -2523,7 +2606,7 @@
                     "type": "string"
                 },
                 "settingName": {
-                    "description": "The name of the policy setting. This is the JSON field name of a top-level Policy  field.",
+                    "description": "The name of the policy setting. This is the JSON field name of a top-level Policy field.",
                     "type": "string"
                 }
             },
@@ -2784,6 +2867,75 @@
             },
             "type": "object"
         },
+        "PersonalApplicationPolicy": {
+            "description": "Policies for apps on the personal profile of a Corporate Owned Personally Enabled device.",
+            "id": "PersonalApplicationPolicy",
+            "properties": {
+                "installType": {
+                    "description": "The type of installation to perform.",
+                    "enum": [
+                        "INSTALL_TYPE_UNSPECIFIED",
+                        "BLOCKED"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified. The default behavior is that all installs are allowed.",
+                        "The app is blocked and can't be installed."
+                    ],
+                    "type": "string"
+                },
+                "packageName": {
+                    "description": "The package name of the application.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PersonalUsagePolicies": {
+            "description": "Policies controlling personal usage on a Corporate Owned Personally Enabled device.",
+            "id": "PersonalUsagePolicies",
+            "properties": {
+                "accountTypesWithManagementDisabled": {
+                    "description": "Account types that can't be managed by the user.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "cameraDisabled": {
+                    "description": "Whether camera is disabled.",
+                    "type": "boolean"
+                },
+                "maxDaysWithWorkOff": {
+                    "description": "Controls how long the work profile can stay off.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "personalApplications": {
+                    "description": "Policy applied to applications on the personal profile.",
+                    "items": {
+                        "$ref": "PersonalApplicationPolicy"
+                    },
+                    "type": "array"
+                },
+                "personalPlayStoreMode": {
+                    "description": "Controls how apps on the personal profile are allowed or blocked.",
+                    "enum": [
+                        "PLAY_STORE_MODE_UNSPECIFIED",
+                        "BLACKLIST"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified. Default behavior is to allow all installs.",
+                        "All Play Store apps are available, except those whose install_type is BLOCKED in PersonalApplicationPolicy."
+                    ],
+                    "type": "string"
+                },
+                "screenCaptureDisabled": {
+                    "description": "Whether screen capture is disabled.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "Policy": {
             "description": "A policy resource represents a group of settings that govern the behavior of a managed device and the apps installed on it.",
             "id": "Policy",
@@ -2823,6 +2975,11 @@
                             "APP_TRACK_UNSPECIFIED",
                             "PRODUCTION",
                             "BETA"
+                        ],
+                        "enumDescriptions": [
+                            "This value is ignored.",
+                            "The production track, which provides the latest stable release.",
+                            "The beta track, which provides the latest beta release."
                         ],
                         "type": "string"
                     },
@@ -3005,6 +3162,19 @@
                             "BIOMETRICS",
                             "ALL_FEATURES"
                         ],
+                        "enumDescriptions": [
+                            "This value is ignored.",
+                            "Disable the camera on secure keyguard screens (e.g. PIN).",
+                            "Disable showing all notifications on secure keyguard screens.",
+                            "Disable unredacted notifications on secure keyguard screens.",
+                            "Ignore trust agent state on secure keyguard screens.",
+                            "Disable fingerprint sensor on secure keyguard screens.",
+                            "Disable text entry into notifications on secure keyguard screens.",
+                            "Disable face authentication on secure keyguard screens.",
+                            "Disable iris authentication on secure keyguard screens.",
+                            "Disable all biometric authentication on secure keyguard screens.",
+                            "Disable all current and future keyguard customizations."
+                        ],
                         "type": "string"
                     },
                     "type": "array"
@@ -3122,6 +3292,10 @@
                     },
                     "type": "array"
                 },
+                "personalUsagePolicies": {
+                    "$ref": "PersonalUsagePolicies",
+                    "description": "Policies managing personal usage on a company-owned device."
+                },
                 "playStoreMode": {
                     "description": "This mode controls which apps are available to the user in the Play Store and the behavior on the device when apps are removed from the policy.",
                     "enum": [
@@ -3216,6 +3390,12 @@
                             "AC",
                             "USB",
                             "WIRELESS"
+                        ],
+                        "enumDescriptions": [
+                            "This value is ignored.",
+                            "Power source is an AC charger.",
+                            "Power source is a USB port.",
+                            "Power source is wireless."
                         ],
                         "type": "string"
                     },
@@ -3433,6 +3613,20 @@
             "description": "A resource containing sign in details for an enterprise.",
             "id": "SigninDetail",
             "properties": {
+                "allowPersonalUsage": {
+                    "description": "Controls whether personal usage is allowed on a device provisioned with this enrollment token.For company-owned devices: Enabling personal usage allows the user to set up a work profile on the device. Disabling personal usage requires the user provision the device as a fully managed device.For personally-owned devices: Enabling personal usage allows the user to set up a work profile on the device. Disabling personal usage will prevent the device from provisioning. Personal usage cannot be disabled on personally-owned device.",
+                    "enum": [
+                        "ALLOW_PERSONAL_USAGE_UNSPECIFIED",
+                        "PERSONAL_USAGE_ALLOWED",
+                        "PERSONAL_USAGE_DISALLOWED"
+                    ],
+                    "enumDescriptions": [
+                        "Personal usage restriction is not specified",
+                        "Personal usage is allowed",
+                        "Personal usage is disallowed"
+                    ],
+                    "type": "string"
+                },
                 "qrCode": {
                     "description": "A JSON string whose UTF-8 representation can be used to generate a QR code to enroll a device with this enrollment token. To enroll a device using NFC, the NFC record must contain a serialized java.util.Properties representation of the properties in the JSON. This is a read-only field generated by the server.",
                     "type": "string"
@@ -3442,7 +3636,7 @@
                     "type": "string"
                 },
                 "signinUrl": {
-                    "description": "Sign-in URL for authentication when device is provisioned with a sign-in enrollment token. The sign-in endpoint should finish authentication flow with a URL in the form of https://enterprise.google.com/android/enroll?et=<token> for a successful login, or https://enterprise.google.com/android/enroll/invalid for a failed login.",
+                    "description": "Sign-in URL for authentication when device is provisioned with a sign-in enrollment token. The sign-in endpoint should finish authentication flow with a URL in the form of https://enterprise.google.com/android/enroll?et= for a successful login, or https://enterprise.google.com/android/enroll/invalid for a failed login.",
                     "type": "string"
                 }
             },
@@ -3664,7 +3858,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "A map containing <locale, message> pairs, where locale is a well-formed BCP 47 language (https://www.w3.org/International/articles/language-tags/) code, such as en-US, es-ES, or fr.",
+                    "description": "A map containing pairs, where locale is a well-formed BCP 47 language (https://www.w3.org/International/articles/language-tags/) code, such as en-US, es-ES, or fr.",
                     "type": "object"
                 }
             },
@@ -3722,7 +3916,7 @@
             "id": "WebAppIcon",
             "properties": {
                 "imageData": {
-                    "description": "The actual bytes of the image in a base64url encoded string (c.f. RFC4648, section 5 \"Base 64 Encoding with URL and Filename Safe Alphabet\"). <ul> <li>The image type can be png or jpg. <li>The image should ideally be square. <li>The image should ideally have a size of 512x512. </ul>",
+                    "description": "The actual bytes of the image in a base64url encoded string (c.f. RFC4648, section 5 \"Base 64 Encoding with URL and Filename Safe Alphabet\"). - The image type can be png or jpg. - The image should ideally be square. - The image should ideally have a size of 512x512. ",
                     "type": "string"
                 }
             },
@@ -3733,7 +3927,7 @@
             "id": "WebToken",
             "properties": {
                 "enabledFeatures": {
-                    "description": "The features to enable. Use this if you want to control exactly which feature(s) will be activated; leave empty to allow all features.Restrictions / things to note: <ul> <li> If no features are listed here, all features are enabled \u2014 this is the  default behavior where you give access to all features to your admins. <li> This must not contain any FEATURE_UNSPECIFIED values. <li> Repeated values are ignored </ul>",
+                    "description": "The features to enable. Use this if you want to control exactly which feature(s) will be activated; leave empty to allow all features.Restrictions / things to note: - If no features are listed here, all features are enabled \u2014 this is the default behavior where you give access to all features to your admins. - This must not contain any FEATURE_UNSPECIFIED values. - Repeated values are ignored ",
                     "enumDescriptions": [
                         "Unspecified feature.",
                         "The Managed Play search apps page (https://developers.google.com/android/management/apps#search-apps).",
@@ -3750,6 +3944,14 @@
                             "WEB_APPS",
                             "STORE_BUILDER",
                             "MANAGED_CONFIGURATIONS"
+                        ],
+                        "enumDescriptions": [
+                            "Unspecified feature.",
+                            "The Managed Play search apps page (https://developers.google.com/android/management/apps#search-apps).",
+                            "The private apps page (https://developers.google.com/android/management/apps#private-apps).",
+                            "The Web Apps page (https://developers.google.com/android/management/apps#web-apps).",
+                            "The organize apps page (https://developers.google.com/android/management/apps#organize-apps).",
+                            "The managed configurations page (https://developers.google.com/android/management/managed-configurations-iframe)."
                         ],
                         "type": "string"
                     },
@@ -3773,6 +3975,10 @@
                         "enum": [
                             "WEB_TOKEN_PERMISSION_UNSPECIFIED",
                             "APPROVE_APPS"
+                        ],
+                        "enumDescriptions": [
+                            "This value is ignored.",
+                            "The permission to approve apps for the enterprise."
                         ],
                         "type": "string"
                     },

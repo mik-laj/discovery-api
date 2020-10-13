@@ -7,13 +7,54 @@ dotnet/releases) , [ Go ](https://github.com/googleapis/google-cloud-
 go/releases) , [ 자바 ](https://github.com/googleapis/java-pubsub/releases) , [
 Node.js ](https://github.com/googleapis/nodejs-pubsub/releases) , [ PHP
 ](https://github.com/googleapis/google-cloud-php/releases) , [ Python
-](https://github.com/googleapis/python-pubsub/releases) , [ Ruby
+](https://github.com/googleapis/python-pubsub/releases) 및 [ Ruby
 ](https://github.com/googleapis/google-cloud-ruby/releases) .
+
+[ Google Cloud 출시 노트 ](https://cloud.google.com/release-notes?hl=ko) 페이지에서 모든
+Google Cloud의 최신 제품 업데이트를 확인할 수 있습니다.
 
 최신 제품 업데이트를 받으려면 [ 피드 리더
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) 에 이 페이지의 URL을
 추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/pubsub-
 release-notes.xml `
+
+##  August 05, 2020
+
+**FEATURE:**
+
+Pub/Sub [ message ordering
+](https://cloud.google.com/pubsub/docs/ordering?hl=ko) is now available at the
+[ beta launch stage ](https://cloud.google.com/products/?hl=ko#product-launch-
+stages) .
+
+##  June 16, 2020
+
+**FEATURE:**
+
+[ Retry policies for Pub/Sub subscriptions
+](https://cloud.google.com/pubsub/docs/admin?hl=ko#creating_subscriptions) are
+now available at the GA launch stage.
+
+##  June 08, 2020
+
+**FEATURE:**
+
+Pub/Sub is now available in the ` asia-southeast2 ` region (Jakarta).
+
+**FEATURE:**
+
+Pub/Sub [ message filtering
+](https://cloud.google.com/pubsub/docs/filtering?hl=ko) is now available at
+the [ beta launch stage ](https://cloud.google.com/products/?hl=ko#product-
+launch-stages) .
+
+##  May 26, 2020
+
+**FEATURE:**
+
+[ Pub/Sub Lite ](https://cloud.google.com/pubsub/docs/choosing-pubsub-or-
+lite?hl=ko) is now available at the [ beta launch stage
+](https://cloud.google.com/products/?hl=ko#product-launch-stages) .
 
 ##  April 20, 2020
 

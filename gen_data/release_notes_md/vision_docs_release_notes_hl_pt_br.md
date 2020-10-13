@@ -1,14 +1,70 @@
-#  Notas da versão
+#  Notas de lançamento
 
 Nesta página, documentamos as atualizações de produção da API Vision.
 Recomendamos que os desenvolvedores da API Vision consultem periodicamente
 esta lista para verificar se há novos anúncios.
+
+É possível ver as atualizações mais recentes de todos os produtos do Google
+Cloud na página [ Notas da versão do Google Cloud
+](https://cloud.google.com/release-notes?hl=pt_br) .
 
 Para receber as atualizações de produtos mais recentes, adicione o URL desta
 página ao [ leitor de feeds
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ou adicione o URL
 do feed diretamente: ` https://cloud.google.com/feeds/vision-release-notes.xml
 `
+
+##  June 11, 2020
+
+**CHANGED:**
+
+**OCR legacy model access extension**
+
+Based on customer feedback, we have decided to extend support of the legacy `
+TEXT_DETECTION ` and ` DOCUMENT_TEXT_DETECTION ` models. These legacy models
+are accessed by specifying "builtin/legacy_20190601" in the [ ` model `
+](https://cloud.google.com/vision/docs/reference/rest/v1/Feature?hl=pt_br) of
+a ` Feature ` object.
+
+These models will now be accessible until **November 15, 2020 (6 months from
+launch date)** to give customers more time to adapt and migrate to the new
+model.
+
+See the  May 15, 2020  release note for the original update announcement.
+
+##  June 04, 2020
+
+**FEATURE:**
+
+**Access Transparency GA**
+
+Access Transparency logging is now Generally Available. If you want to enable
+Access Transparency logs, see [ Enabling Access Transparency
+](https://cloud.google.com/logging/docs/audit/access-transparency-
+overview?hl=pt_br#enabling) .
+
+##  May 15, 2020
+
+**CHANGED:**
+
+**OCR model upgrades**
+
+_**Note** : As per the  June 11, 2020  release note, the legacy models are
+accessible through November 15, 2020. _
+
+The ` TEXT_DETECTION ` and ` DOCUMENT_TEXT_DETECTION ` models have been
+upgraded to newer versions. The API interface and client library will be the
+same as previous version. The API follows the same [ Service Level Agreement
+](https://cloud.google.com/vision/sla?hl=pt_br) .
+
+The legacy models can still be accessed until June 30, 2020. Specify
+"builtin/legacy_20190601" in the [ ` model `
+](https://cloud.google.com/vision/docs/reference/rest/v1/Feature?hl=pt_br)
+field of a ` Feature ` object to get the old model results. After June 30,
+2020 the old models will not longer be offered.
+
+For more information, see the [ product documentation
+](https://cloud.google.com/vision/docs/ocr?hl=pt_br) .
 
 ##  April 11, 2020
 

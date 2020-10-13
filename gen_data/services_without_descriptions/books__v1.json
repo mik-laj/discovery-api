@@ -6,26 +6,45 @@
             }
         }
     },
-    "basePath": "/books/v1/",
-    "baseUrl": "https://www.googleapis.com/books/v1/",
+    "basePath": "",
+    "baseUrl": "https://www.googleapis.com/",
     "batchPath": "batch/books/v1",
     "discoveryVersion": "v1",
-    "documentationLink": "https://developers.google.com/books/docs/v1/getting_started",
+    "documentationLink": "https://code.google.com/apis/books/docs/v1/getting_started.html",
     "icons": {
-        "x16": "https://www.google.com/images/icons/product/ebooks-16.png",
-        "x32": "https://www.google.com/images/icons/product/ebooks-32.png"
+        "x16": "http://www.google.com/images/icons/product/search-16.gif",
+        "x32": "http://www.google.com/images/icons/product/search-32.gif"
     },
     "id": "books:v1",
     "kind": "discovery#restDescription",
+    "mtlsRootUrl": "https://www.mtls.googleapis.com/",
     "name": "books",
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "$.xgafv": {
+            "enum": [
+                "1",
+                "2"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "location": "query",
+            "type": "string"
+        },
         "alt": {
             "default": "json",
             "enum": [
-                "json"
+                "json",
+                "media",
+                "proto"
             ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
             "location": "query",
             "type": "string"
         },
@@ -50,7 +69,11 @@
             "location": "query",
             "type": "string"
         },
-        "userIp": {
+        "uploadType": {
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
             "location": "query",
             "type": "string"
         }
@@ -60,6 +83,7 @@
         "bookshelves": {
             "methods": {
                 "get": {
+                    "flatPath": "books/v1/users/{userId}/bookshelves/{shelf}",
                     "httpMethod": "GET",
                     "id": "books.bookshelves.get",
                     "parameterOrder": [
@@ -82,7 +106,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "users/{userId}/bookshelves/{shelf}",
+                    "path": "books/v1/users/{userId}/bookshelves/{shelf}",
                     "response": {
                         "$ref": "Bookshelf"
                     },
@@ -91,6 +115,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "books/v1/users/{userId}/bookshelves",
                     "httpMethod": "GET",
                     "id": "books.bookshelves.list",
                     "parameterOrder": [
@@ -107,7 +132,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "users/{userId}/bookshelves",
+                    "path": "books/v1/users/{userId}/bookshelves",
                     "response": {
                         "$ref": "Bookshelves"
                     },
@@ -120,6 +145,7 @@
                 "volumes": {
                     "methods": {
                         "list": {
+                            "flatPath": "books/v1/users/{userId}/bookshelves/{shelf}/volumes",
                             "httpMethod": "GET",
                             "id": "books.bookshelves.volumes.list",
                             "parameterOrder": [
@@ -130,7 +156,6 @@
                                 "maxResults": {
                                     "format": "uint32",
                                     "location": "query",
-                                    "minimum": "0",
                                     "type": "integer"
                                 },
                                 "shelf": {
@@ -149,7 +174,6 @@
                                 "startIndex": {
                                     "format": "uint32",
                                     "location": "query",
-                                    "minimum": "0",
                                     "type": "integer"
                                 },
                                 "userId": {
@@ -158,7 +182,7 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "users/{userId}/bookshelves/{shelf}/volumes",
+                            "path": "books/v1/users/{userId}/bookshelves/{shelf}/volumes",
                             "response": {
                                 "$ref": "Volumes"
                             },
@@ -173,8 +197,10 @@
         "cloudloading": {
             "methods": {
                 "addBook": {
+                    "flatPath": "books/v1/cloudloading/addBook",
                     "httpMethod": "POST",
                     "id": "books.cloudloading.addBook",
+                    "parameterOrder": [],
                     "parameters": {
                         "drive_document_id": {
                             "location": "query",
@@ -193,7 +219,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "cloudloading/addBook",
+                    "path": "books/v1/cloudloading/addBook",
                     "response": {
                         "$ref": "BooksCloudloadingResource"
                     },
@@ -202,27 +228,31 @@
                     ]
                 },
                 "deleteBook": {
+                    "flatPath": "books/v1/cloudloading/deleteBook",
                     "httpMethod": "POST",
                     "id": "books.cloudloading.deleteBook",
-                    "parameterOrder": [
-                        "volumeId"
-                    ],
+                    "parameterOrder": [],
                     "parameters": {
                         "volumeId": {
                             "location": "query",
-                            "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "cloudloading/deleteBook",
+                    "path": "books/v1/cloudloading/deleteBook",
+                    "response": {
+                        "$ref": "Empty"
+                    },
                     "scopes": [
                         "https://www.googleapis.com/auth/books"
                     ]
                 },
                 "updateBook": {
+                    "flatPath": "books/v1/cloudloading/updateBook",
                     "httpMethod": "POST",
                     "id": "books.cloudloading.updateBook",
-                    "path": "cloudloading/updateBook",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "books/v1/cloudloading/updateBook",
                     "request": {
                         "$ref": "BooksCloudloadingResource"
                     },
@@ -238,19 +268,17 @@
         "dictionary": {
             "methods": {
                 "listOfflineMetadata": {
+                    "flatPath": "books/v1/dictionary/listOfflineMetadata",
                     "httpMethod": "GET",
                     "id": "books.dictionary.listOfflineMetadata",
-                    "parameterOrder": [
-                        "cpksver"
-                    ],
+                    "parameterOrder": [],
                     "parameters": {
                         "cpksver": {
                             "location": "query",
-                            "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "dictionary/listOfflineMetadata",
+                    "path": "books/v1/dictionary/listOfflineMetadata",
                     "response": {
                         "$ref": "Metadata"
                     },
@@ -263,15 +291,17 @@
         "familysharing": {
             "methods": {
                 "getFamilyInfo": {
+                    "flatPath": "books/v1/familysharing/getFamilyInfo",
                     "httpMethod": "GET",
                     "id": "books.familysharing.getFamilyInfo",
+                    "parameterOrder": [],
                     "parameters": {
                         "source": {
                             "location": "query",
                             "type": "string"
                         }
                     },
-                    "path": "familysharing/getFamilyInfo",
+                    "path": "books/v1/familysharing/getFamilyInfo",
                     "response": {
                         "$ref": "FamilyInfo"
                     },
@@ -280,8 +310,10 @@
                     ]
                 },
                 "share": {
+                    "flatPath": "books/v1/familysharing/share",
                     "httpMethod": "POST",
                     "id": "books.familysharing.share",
+                    "parameterOrder": [],
                     "parameters": {
                         "docId": {
                             "location": "query",
@@ -296,14 +328,19 @@
                             "type": "string"
                         }
                     },
-                    "path": "familysharing/share",
+                    "path": "books/v1/familysharing/share",
+                    "response": {
+                        "$ref": "Empty"
+                    },
                     "scopes": [
                         "https://www.googleapis.com/auth/books"
                     ]
                 },
                 "unshare": {
+                    "flatPath": "books/v1/familysharing/unshare",
                     "httpMethod": "POST",
                     "id": "books.familysharing.unshare",
+                    "parameterOrder": [],
                     "parameters": {
                         "docId": {
                             "location": "query",
@@ -318,7 +355,10 @@
                             "type": "string"
                         }
                     },
-                    "path": "familysharing/unshare",
+                    "path": "books/v1/familysharing/unshare",
+                    "response": {
+                        "$ref": "Empty"
+                    },
                     "scopes": [
                         "https://www.googleapis.com/auth/books"
                     ]
@@ -328,6 +368,7 @@
         "layers": {
             "methods": {
                 "get": {
+                    "flatPath": "books/v1/volumes/{volumeId}/layersummary/{summaryId}",
                     "httpMethod": "GET",
                     "id": "books.layers.get",
                     "parameterOrder": [
@@ -354,7 +395,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "volumes/{volumeId}/layersummary/{summaryId}",
+                    "path": "books/v1/volumes/{volumeId}/layersummary/{summaryId}",
                     "response": {
                         "$ref": "Layersummary"
                     },
@@ -363,6 +404,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "books/v1/volumes/{volumeId}/layersummary",
                     "httpMethod": "GET",
                     "id": "books.layers.list",
                     "parameterOrder": [
@@ -376,8 +418,6 @@
                         "maxResults": {
                             "format": "uint32",
                             "location": "query",
-                            "maximum": "200",
-                            "minimum": "0",
                             "type": "integer"
                         },
                         "pageToken": {
@@ -394,7 +434,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "volumes/{volumeId}/layersummary",
+                    "path": "books/v1/volumes/{volumeId}/layersummary",
                     "response": {
                         "$ref": "Layersummaries"
                     },
@@ -407,13 +447,13 @@
                 "annotationData": {
                     "methods": {
                         "get": {
+                            "flatPath": "books/v1/volumes/{volumeId}/layers/{layerId}/data/{annotationDataId}",
                             "httpMethod": "GET",
                             "id": "books.layers.annotationData.get",
                             "parameterOrder": [
                                 "volumeId",
                                 "layerId",
-                                "annotationDataId",
-                                "contentVersion"
+                                "annotationDataId"
                             ],
                             "parameters": {
                                 "allowWebDefinitions": {
@@ -427,7 +467,6 @@
                                 },
                                 "contentVersion": {
                                     "location": "query",
-                                    "required": true,
                                     "type": "string"
                                 },
                                 "h": {
@@ -447,7 +486,6 @@
                                 "scale": {
                                     "format": "int32",
                                     "location": "query",
-                                    "minimum": "0",
                                     "type": "integer"
                                 },
                                 "source": {
@@ -465,21 +503,21 @@
                                     "type": "integer"
                                 }
                             },
-                            "path": "volumes/{volumeId}/layers/{layerId}/data/{annotationDataId}",
+                            "path": "books/v1/volumes/{volumeId}/layers/{layerId}/data/{annotationDataId}",
                             "response": {
-                                "$ref": "Annotationdata"
+                                "$ref": "DictionaryAnnotationdata"
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/books"
                             ]
                         },
                         "list": {
+                            "flatPath": "books/v1/volumes/{volumeId}/layers/{layerId}/data",
                             "httpMethod": "GET",
                             "id": "books.layers.annotationData.list",
                             "parameterOrder": [
                                 "volumeId",
-                                "layerId",
-                                "contentVersion"
+                                "layerId"
                             ],
                             "parameters": {
                                 "annotationDataId": {
@@ -489,7 +527,6 @@
                                 },
                                 "contentVersion": {
                                     "location": "query",
-                                    "required": true,
                                     "type": "string"
                                 },
                                 "h": {
@@ -509,8 +546,6 @@
                                 "maxResults": {
                                     "format": "uint32",
                                     "location": "query",
-                                    "maximum": "200",
-                                    "minimum": "0",
                                     "type": "integer"
                                 },
                                 "pageToken": {
@@ -520,7 +555,6 @@
                                 "scale": {
                                     "format": "int32",
                                     "location": "query",
-                                    "minimum": "0",
                                     "type": "integer"
                                 },
                                 "source": {
@@ -546,7 +580,7 @@
                                     "type": "integer"
                                 }
                             },
-                            "path": "volumes/{volumeId}/layers/{layerId}/data",
+                            "path": "books/v1/volumes/{volumeId}/layers/{layerId}/data",
                             "response": {
                                 "$ref": "Annotationsdata"
                             },
@@ -559,6 +593,7 @@
                 "volumeAnnotations": {
                     "methods": {
                         "get": {
+                            "flatPath": "books/v1/volumes/{volumeId}/layers/{layerId}/annotations/{annotationId}",
                             "httpMethod": "GET",
                             "id": "books.layers.volumeAnnotations.get",
                             "parameterOrder": [
@@ -591,7 +626,7 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "volumes/{volumeId}/layers/{layerId}/annotations/{annotationId}",
+                            "path": "books/v1/volumes/{volumeId}/layers/{layerId}/annotations/{annotationId}",
                             "response": {
                                 "$ref": "Volumeannotation"
                             },
@@ -600,17 +635,16 @@
                             ]
                         },
                         "list": {
+                            "flatPath": "books/v1/volumes/{volumeId}/layers/{layerId}",
                             "httpMethod": "GET",
                             "id": "books.layers.volumeAnnotations.list",
                             "parameterOrder": [
                                 "volumeId",
-                                "layerId",
-                                "contentVersion"
+                                "layerId"
                             ],
                             "parameters": {
                                 "contentVersion": {
                                     "location": "query",
-                                    "required": true,
                                     "type": "string"
                                 },
                                 "endOffset": {
@@ -633,8 +667,6 @@
                                 "maxResults": {
                                     "format": "uint32",
                                     "location": "query",
-                                    "maximum": "200",
-                                    "minimum": "0",
                                     "type": "integer"
                                 },
                                 "pageToken": {
@@ -675,7 +707,7 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "volumes/{volumeId}/layers/{layerId}",
+                            "path": "books/v1/volumes/{volumeId}/layers/{layerId}",
                             "response": {
                                 "$ref": "Volumeannotations"
                             },
@@ -690,9 +722,17 @@
         "myconfig": {
             "methods": {
                 "getUserSettings": {
+                    "flatPath": "books/v1/myconfig/getUserSettings",
                     "httpMethod": "GET",
                     "id": "books.myconfig.getUserSettings",
-                    "path": "myconfig/getUserSettings",
+                    "parameterOrder": [],
+                    "parameters": {
+                        "country": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "books/v1/myconfig/getUserSettings",
                     "response": {
                         "$ref": "Usersettings"
                     },
@@ -701,16 +741,13 @@
                     ]
                 },
                 "releaseDownloadAccess": {
+                    "flatPath": "books/v1/myconfig/releaseDownloadAccess",
                     "httpMethod": "POST",
                     "id": "books.myconfig.releaseDownloadAccess",
-                    "parameterOrder": [
-                        "volumeIds",
-                        "cpksver"
-                    ],
+                    "parameterOrder": [],
                     "parameters": {
                         "cpksver": {
                             "location": "query",
-                            "required": true,
                             "type": "string"
                         },
                         "locale": {
@@ -724,11 +761,10 @@
                         "volumeIds": {
                             "location": "query",
                             "repeated": true,
-                            "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "myconfig/releaseDownloadAccess",
+                    "path": "books/v1/myconfig/releaseDownloadAccess",
                     "response": {
                         "$ref": "DownloadAccesses"
                     },
@@ -737,22 +773,18 @@
                     ]
                 },
                 "requestAccess": {
+                    "flatPath": "books/v1/myconfig/requestAccess",
                     "httpMethod": "POST",
                     "id": "books.myconfig.requestAccess",
-                    "parameterOrder": [
-                        "source",
-                        "volumeId",
-                        "nonce",
-                        "cpksver"
-                    ],
+                    "parameterOrder": [],
                     "parameters": {
                         "cpksver": {
                             "location": "query",
-                            "required": true,
                             "type": "string"
                         },
                         "licenseTypes": {
                             "enum": [
+                                "LICENSE_TYPES_UNDEFINED",
                                 "BOTH",
                                 "CONCURRENT",
                                 "DOWNLOAD"
@@ -766,44 +798,38 @@
                         },
                         "nonce": {
                             "location": "query",
-                            "required": true,
                             "type": "string"
                         },
                         "source": {
                             "location": "query",
-                            "required": true,
                             "type": "string"
                         },
                         "volumeId": {
                             "location": "query",
-                            "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "myconfig/requestAccess",
+                    "path": "books/v1/myconfig/requestAccess",
                     "response": {
-                        "$ref": "RequestAccess"
+                        "$ref": "RequestAccessData"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/books"
                     ]
                 },
                 "syncVolumeLicenses": {
+                    "flatPath": "books/v1/myconfig/syncVolumeLicenses",
                     "httpMethod": "POST",
                     "id": "books.myconfig.syncVolumeLicenses",
-                    "parameterOrder": [
-                        "source",
-                        "nonce",
-                        "cpksver"
-                    ],
+                    "parameterOrder": [],
                     "parameters": {
                         "cpksver": {
                             "location": "query",
-                            "required": true,
                             "type": "string"
                         },
                         "features": {
                             "enum": [
+                                "FEATURES_UNDEFINED",
                                 "RENTALS"
                             ],
                             "location": "query",
@@ -820,7 +846,6 @@
                         },
                         "nonce": {
                             "location": "query",
-                            "required": true,
                             "type": "string"
                         },
                         "showPreorders": {
@@ -829,7 +854,6 @@
                         },
                         "source": {
                             "location": "query",
-                            "required": true,
                             "type": "string"
                         },
                         "volumeIds": {
@@ -838,7 +862,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "myconfig/syncVolumeLicenses",
+                    "path": "books/v1/myconfig/syncVolumeLicenses",
                     "response": {
                         "$ref": "Volumes"
                     },
@@ -847,9 +871,12 @@
                     ]
                 },
                 "updateUserSettings": {
+                    "flatPath": "books/v1/myconfig/updateUserSettings",
                     "httpMethod": "POST",
                     "id": "books.myconfig.updateUserSettings",
-                    "path": "myconfig/updateUserSettings",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "books/v1/myconfig/updateUserSettings",
                     "request": {
                         "$ref": "Usersettings"
                     },
@@ -867,6 +894,7 @@
                 "annotations": {
                     "methods": {
                         "delete": {
+                            "flatPath": "books/v1/mylibrary/annotations/{annotationId}",
                             "httpMethod": "DELETE",
                             "id": "books.mylibrary.annotations.delete",
                             "parameterOrder": [
@@ -883,14 +911,19 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "mylibrary/annotations/{annotationId}",
+                            "path": "books/v1/mylibrary/annotations/{annotationId}",
+                            "response": {
+                                "$ref": "Empty"
+                            },
                             "scopes": [
                                 "https://www.googleapis.com/auth/books"
                             ]
                         },
                         "insert": {
+                            "flatPath": "books/v1/mylibrary/annotations",
                             "httpMethod": "POST",
                             "id": "books.mylibrary.annotations.insert",
+                            "parameterOrder": [],
                             "parameters": {
                                 "annotationId": {
                                     "location": "query",
@@ -909,7 +942,7 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "mylibrary/annotations",
+                            "path": "books/v1/mylibrary/annotations",
                             "request": {
                                 "$ref": "Annotation"
                             },
@@ -921,8 +954,10 @@
                             ]
                         },
                         "list": {
+                            "flatPath": "books/v1/mylibrary/annotations",
                             "httpMethod": "GET",
                             "id": "books.mylibrary.annotations.list",
+                            "parameterOrder": [],
                             "parameters": {
                                 "contentVersion": {
                                     "location": "query",
@@ -940,8 +975,6 @@
                                 "maxResults": {
                                     "format": "uint32",
                                     "location": "query",
-                                    "maximum": "40",
-                                    "minimum": "0",
                                     "type": "integer"
                                 },
                                 "pageToken": {
@@ -969,7 +1002,7 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "mylibrary/annotations",
+                            "path": "books/v1/mylibrary/annotations",
                             "response": {
                                 "$ref": "Annotations"
                             },
@@ -978,26 +1011,22 @@
                             ]
                         },
                         "summary": {
+                            "flatPath": "books/v1/mylibrary/annotations/summary",
                             "httpMethod": "POST",
                             "id": "books.mylibrary.annotations.summary",
-                            "parameterOrder": [
-                                "layerIds",
-                                "volumeId"
-                            ],
+                            "parameterOrder": [],
                             "parameters": {
                                 "layerIds": {
                                     "location": "query",
                                     "repeated": true,
-                                    "required": true,
                                     "type": "string"
                                 },
                                 "volumeId": {
                                     "location": "query",
-                                    "required": true,
                                     "type": "string"
                                 }
                             },
-                            "path": "mylibrary/annotations/summary",
+                            "path": "books/v1/mylibrary/annotations/summary",
                             "response": {
                                 "$ref": "AnnotationsSummary"
                             },
@@ -1006,6 +1035,7 @@
                             ]
                         },
                         "update": {
+                            "flatPath": "books/v1/mylibrary/annotations/{annotationId}",
                             "httpMethod": "PUT",
                             "id": "books.mylibrary.annotations.update",
                             "parameterOrder": [
@@ -1022,7 +1052,7 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "mylibrary/annotations/{annotationId}",
+                            "path": "books/v1/mylibrary/annotations/{annotationId}",
                             "request": {
                                 "$ref": "Annotation"
                             },
@@ -1038,15 +1068,16 @@
                 "bookshelves": {
                     "methods": {
                         "addVolume": {
+                            "flatPath": "books/v1/mylibrary/bookshelves/{shelf}/addVolume",
                             "httpMethod": "POST",
                             "id": "books.mylibrary.bookshelves.addVolume",
                             "parameterOrder": [
-                                "shelf",
-                                "volumeId"
+                                "shelf"
                             ],
                             "parameters": {
                                 "reason": {
                                     "enum": [
+                                        "REASON_UNDEFINED",
                                         "IOS_PREX",
                                         "IOS_SEARCH",
                                         "ONBOARDING"
@@ -1065,16 +1096,19 @@
                                 },
                                 "volumeId": {
                                     "location": "query",
-                                    "required": true,
                                     "type": "string"
                                 }
                             },
-                            "path": "mylibrary/bookshelves/{shelf}/addVolume",
+                            "path": "books/v1/mylibrary/bookshelves/{shelf}/addVolume",
+                            "response": {
+                                "$ref": "Empty"
+                            },
                             "scopes": [
                                 "https://www.googleapis.com/auth/books"
                             ]
                         },
                         "clearVolumes": {
+                            "flatPath": "books/v1/mylibrary/bookshelves/{shelf}/clearVolumes",
                             "httpMethod": "POST",
                             "id": "books.mylibrary.bookshelves.clearVolumes",
                             "parameterOrder": [
@@ -1091,12 +1125,16 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "mylibrary/bookshelves/{shelf}/clearVolumes",
+                            "path": "books/v1/mylibrary/bookshelves/{shelf}/clearVolumes",
+                            "response": {
+                                "$ref": "Empty"
+                            },
                             "scopes": [
                                 "https://www.googleapis.com/auth/books"
                             ]
                         },
                         "get": {
+                            "flatPath": "books/v1/mylibrary/bookshelves/{shelf}",
                             "httpMethod": "GET",
                             "id": "books.mylibrary.bookshelves.get",
                             "parameterOrder": [
@@ -1113,7 +1151,7 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "mylibrary/bookshelves/{shelf}",
+                            "path": "books/v1/mylibrary/bookshelves/{shelf}",
                             "response": {
                                 "$ref": "Bookshelf"
                             },
@@ -1122,15 +1160,17 @@
                             ]
                         },
                         "list": {
+                            "flatPath": "books/v1/mylibrary/bookshelves",
                             "httpMethod": "GET",
                             "id": "books.mylibrary.bookshelves.list",
+                            "parameterOrder": [],
                             "parameters": {
                                 "source": {
                                     "location": "query",
                                     "type": "string"
                                 }
                             },
-                            "path": "mylibrary/bookshelves",
+                            "path": "books/v1/mylibrary/bookshelves",
                             "response": {
                                 "$ref": "Bookshelves"
                             },
@@ -1139,12 +1179,11 @@
                             ]
                         },
                         "moveVolume": {
+                            "flatPath": "books/v1/mylibrary/bookshelves/{shelf}/moveVolume",
                             "httpMethod": "POST",
                             "id": "books.mylibrary.bookshelves.moveVolume",
                             "parameterOrder": [
-                                "shelf",
-                                "volumeId",
-                                "volumePosition"
+                                "shelf"
                             ],
                             "parameters": {
                                 "shelf": {
@@ -1158,31 +1197,33 @@
                                 },
                                 "volumeId": {
                                     "location": "query",
-                                    "required": true,
                                     "type": "string"
                                 },
                                 "volumePosition": {
                                     "format": "int32",
                                     "location": "query",
-                                    "required": true,
                                     "type": "integer"
                                 }
                             },
-                            "path": "mylibrary/bookshelves/{shelf}/moveVolume",
+                            "path": "books/v1/mylibrary/bookshelves/{shelf}/moveVolume",
+                            "response": {
+                                "$ref": "Empty"
+                            },
                             "scopes": [
                                 "https://www.googleapis.com/auth/books"
                             ]
                         },
                         "removeVolume": {
+                            "flatPath": "books/v1/mylibrary/bookshelves/{shelf}/removeVolume",
                             "httpMethod": "POST",
                             "id": "books.mylibrary.bookshelves.removeVolume",
                             "parameterOrder": [
-                                "shelf",
-                                "volumeId"
+                                "shelf"
                             ],
                             "parameters": {
                                 "reason": {
                                     "enum": [
+                                        "REASON_UNDEFINED",
                                         "ONBOARDING"
                                     ],
                                     "location": "query",
@@ -1199,11 +1240,13 @@
                                 },
                                 "volumeId": {
                                     "location": "query",
-                                    "required": true,
                                     "type": "string"
                                 }
                             },
-                            "path": "mylibrary/bookshelves/{shelf}/removeVolume",
+                            "path": "books/v1/mylibrary/bookshelves/{shelf}/removeVolume",
+                            "response": {
+                                "$ref": "Empty"
+                            },
                             "scopes": [
                                 "https://www.googleapis.com/auth/books"
                             ]
@@ -1213,6 +1256,7 @@
                         "volumes": {
                             "methods": {
                                 "list": {
+                                    "flatPath": "books/v1/mylibrary/bookshelves/{shelf}/volumes",
                                     "httpMethod": "GET",
                                     "id": "books.mylibrary.bookshelves.volumes.list",
                                     "parameterOrder": [
@@ -1226,13 +1270,13 @@
                                         "maxResults": {
                                             "format": "uint32",
                                             "location": "query",
-                                            "minimum": "0",
                                             "type": "integer"
                                         },
                                         "projection": {
                                             "enum": [
-                                                "full",
-                                                "lite"
+                                                "PROJECTION_UNDEFINED",
+                                                "FULL",
+                                                "LITE"
                                             ],
                                             "location": "query",
                                             "type": "string"
@@ -1257,11 +1301,10 @@
                                         "startIndex": {
                                             "format": "uint32",
                                             "location": "query",
-                                            "minimum": "0",
                                             "type": "integer"
                                         }
                                     },
-                                    "path": "mylibrary/bookshelves/{shelf}/volumes",
+                                    "path": "books/v1/mylibrary/bookshelves/{shelf}/volumes",
                                     "response": {
                                         "$ref": "Volumes"
                                     },
@@ -1276,6 +1319,7 @@
                 "readingpositions": {
                     "methods": {
                         "get": {
+                            "flatPath": "books/v1/mylibrary/readingpositions/{volumeId}",
                             "httpMethod": "GET",
                             "id": "books.mylibrary.readingpositions.get",
                             "parameterOrder": [
@@ -1296,7 +1340,7 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "mylibrary/readingpositions/{volumeId}",
+                            "path": "books/v1/mylibrary/readingpositions/{volumeId}",
                             "response": {
                                 "$ref": "ReadingPosition"
                             },
@@ -1305,16 +1349,16 @@
                             ]
                         },
                         "setPosition": {
+                            "flatPath": "books/v1/mylibrary/readingpositions/{volumeId}/setPosition",
                             "httpMethod": "POST",
                             "id": "books.mylibrary.readingpositions.setPosition",
                             "parameterOrder": [
-                                "volumeId",
-                                "timestamp",
-                                "position"
+                                "volumeId"
                             ],
                             "parameters": {
                                 "action": {
                                     "enum": [
+                                        "ACTION_UNDEFINED",
                                         "bookmark",
                                         "chapter",
                                         "next-page",
@@ -1335,7 +1379,6 @@
                                 },
                                 "position": {
                                     "location": "query",
-                                    "required": true,
                                     "type": "string"
                                 },
                                 "source": {
@@ -1344,7 +1387,6 @@
                                 },
                                 "timestamp": {
                                     "location": "query",
-                                    "required": true,
                                     "type": "string"
                                 },
                                 "volumeId": {
@@ -1353,7 +1395,10 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "mylibrary/readingpositions/{volumeId}/setPosition",
+                            "path": "books/v1/mylibrary/readingpositions/{volumeId}/setPosition",
+                            "response": {
+                                "$ref": "Empty"
+                            },
                             "scopes": [
                                 "https://www.googleapis.com/auth/books"
                             ]
@@ -1365,11 +1410,10 @@
         "notification": {
             "methods": {
                 "get": {
+                    "flatPath": "books/v1/notification/get",
                     "httpMethod": "GET",
                     "id": "books.notification.get",
-                    "parameterOrder": [
-                        "notification_id"
-                    ],
+                    "parameterOrder": [],
                     "parameters": {
                         "locale": {
                             "location": "query",
@@ -1377,7 +1421,6 @@
                         },
                         "notification_id": {
                             "location": "query",
-                            "required": true,
                             "type": "string"
                         },
                         "source": {
@@ -1385,7 +1428,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "notification/get",
+                    "path": "books/v1/notification/get",
                     "response": {
                         "$ref": "Notification"
                     },
@@ -1398,15 +1441,17 @@
         "onboarding": {
             "methods": {
                 "listCategories": {
+                    "flatPath": "books/v1/onboarding/listCategories",
                     "httpMethod": "GET",
                     "id": "books.onboarding.listCategories",
+                    "parameterOrder": [],
                     "parameters": {
                         "locale": {
                             "location": "query",
                             "type": "string"
                         }
                     },
-                    "path": "onboarding/listCategories",
+                    "path": "books/v1/onboarding/listCategories",
                     "response": {
                         "$ref": "Category"
                     },
@@ -1415,8 +1460,10 @@
                     ]
                 },
                 "listCategoryVolumes": {
+                    "flatPath": "books/v1/onboarding/listCategoryVolumes",
                     "httpMethod": "GET",
                     "id": "books.onboarding.listCategoryVolumes",
+                    "parameterOrder": [],
                     "parameters": {
                         "categoryId": {
                             "location": "query",
@@ -1429,7 +1476,8 @@
                         },
                         "maxAllowedMaturityRating": {
                             "enum": [
-                                "mature",
+                                "MAX_ALLOWED_MATURITY_RATING_UNDEFINED",
+                                "MATURE",
                                 "not-mature"
                             ],
                             "location": "query",
@@ -1445,7 +1493,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "onboarding/listCategoryVolumes",
+                    "path": "books/v1/onboarding/listCategoryVolumes",
                     "response": {
                         "$ref": "Volume2"
                     },
@@ -1458,8 +1506,10 @@
         "personalizedstream": {
             "methods": {
                 "get": {
+                    "flatPath": "books/v1/personalizedstream/get",
                     "httpMethod": "GET",
                     "id": "books.personalizedstream.get",
+                    "parameterOrder": [],
                     "parameters": {
                         "locale": {
                             "location": "query",
@@ -1467,7 +1517,8 @@
                         },
                         "maxAllowedMaturityRating": {
                             "enum": [
-                                "mature",
+                                "MAX_ALLOWED_MATURITY_RATING_UNDEFINED",
+                                "MATURE",
                                 "not-mature"
                             ],
                             "location": "query",
@@ -1478,7 +1529,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "personalizedstream/get",
+                    "path": "books/v1/personalizedstream/get",
                     "response": {
                         "$ref": "Discoveryclusters"
                     },
@@ -1491,8 +1542,10 @@
         "promooffer": {
             "methods": {
                 "accept": {
+                    "flatPath": "books/v1/promooffer/accept",
                     "httpMethod": "POST",
                     "id": "books.promooffer.accept",
+                    "parameterOrder": [],
                     "parameters": {
                         "androidId": {
                             "location": "query",
@@ -1527,14 +1580,19 @@
                             "type": "string"
                         }
                     },
-                    "path": "promooffer/accept",
+                    "path": "books/v1/promooffer/accept",
+                    "response": {
+                        "$ref": "Empty"
+                    },
                     "scopes": [
                         "https://www.googleapis.com/auth/books"
                     ]
                 },
                 "dismiss": {
+                    "flatPath": "books/v1/promooffer/dismiss",
                     "httpMethod": "POST",
                     "id": "books.promooffer.dismiss",
+                    "parameterOrder": [],
                     "parameters": {
                         "androidId": {
                             "location": "query",
@@ -1565,14 +1623,19 @@
                             "type": "string"
                         }
                     },
-                    "path": "promooffer/dismiss",
+                    "path": "books/v1/promooffer/dismiss",
+                    "response": {
+                        "$ref": "Empty"
+                    },
                     "scopes": [
                         "https://www.googleapis.com/auth/books"
                     ]
                 },
                 "get": {
+                    "flatPath": "books/v1/promooffer/get",
                     "httpMethod": "GET",
                     "id": "books.promooffer.get",
+                    "parameterOrder": [],
                     "parameters": {
                         "androidId": {
                             "location": "query",
@@ -1599,7 +1662,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "promooffer/get",
+                    "path": "books/v1/promooffer/get",
                     "response": {
                         "$ref": "Offers"
                     },
@@ -1612,20 +1675,18 @@
         "series": {
             "methods": {
                 "get": {
+                    "flatPath": "books/v1/series/get",
                     "httpMethod": "GET",
                     "id": "books.series.get",
-                    "parameterOrder": [
-                        "series_id"
-                    ],
+                    "parameterOrder": [],
                     "parameters": {
                         "series_id": {
                             "location": "query",
                             "repeated": true,
-                            "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "series/get",
+                    "path": "books/v1/series/get",
                     "response": {
                         "$ref": "Series"
                     },
@@ -1638,11 +1699,10 @@
                 "membership": {
                     "methods": {
                         "get": {
+                            "flatPath": "books/v1/series/membership/get",
                             "httpMethod": "GET",
                             "id": "books.series.membership.get",
-                            "parameterOrder": [
-                                "series_id"
-                            ],
+                            "parameterOrder": [],
                             "parameters": {
                                 "page_size": {
                                     "format": "uint32",
@@ -1655,11 +1715,10 @@
                                 },
                                 "series_id": {
                                     "location": "query",
-                                    "required": true,
                                     "type": "string"
                                 }
                             },
-                            "path": "series/membership/get",
+                            "path": "books/v1/series/membership/get",
                             "response": {
                                 "$ref": "Seriesmembership"
                             },
@@ -1674,6 +1733,7 @@
         "volumes": {
             "methods": {
                 "get": {
+                    "flatPath": "books/v1/volumes/{volumeId}",
                     "httpMethod": "GET",
                     "id": "books.volumes.get",
                     "parameterOrder": [
@@ -1694,8 +1754,9 @@
                         },
                         "projection": {
                             "enum": [
-                                "full",
-                                "lite"
+                                "PROJECTION_UNDEFINED",
+                                "FULL",
+                                "LITE"
                             ],
                             "location": "query",
                             "type": "string"
@@ -1714,7 +1775,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "volumes/{volumeId}",
+                    "path": "books/v1/volumes/{volumeId}",
                     "response": {
                         "$ref": "Volume"
                     },
@@ -1723,21 +1784,22 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "books/v1/volumes",
                     "httpMethod": "GET",
                     "id": "books.volumes.list",
-                    "parameterOrder": [
-                        "q"
-                    ],
+                    "parameterOrder": [],
                     "parameters": {
                         "download": {
                             "enum": [
-                                "epub"
+                                "DOWNLOAD_UNDEFINED",
+                                "EPUB"
                             ],
                             "location": "query",
                             "type": "string"
                         },
                         "filter": {
                             "enum": [
+                                "FILTER_UNDEFINED",
                                 "ebooks",
                                 "free-ebooks",
                                 "full",
@@ -1753,6 +1815,7 @@
                         },
                         "libraryRestrict": {
                             "enum": [
+                                "LIBRARY_RESTRICT_UNDEFINED",
                                 "my-library",
                                 "no-restrict"
                             ],
@@ -1761,7 +1824,8 @@
                         },
                         "maxAllowedMaturityRating": {
                             "enum": [
-                                "mature",
+                                "MAX_ALLOWED_MATURITY_RATING_UNDEFINED",
+                                "MATURE",
                                 "not-mature"
                             ],
                             "location": "query",
@@ -1770,12 +1834,11 @@
                         "maxResults": {
                             "format": "uint32",
                             "location": "query",
-                            "maximum": "40",
-                            "minimum": "0",
                             "type": "integer"
                         },
                         "orderBy": {
                             "enum": [
+                                "ORDER_BY_UNDEFINED",
                                 "newest",
                                 "relevance"
                             ],
@@ -1788,24 +1851,25 @@
                         },
                         "printType": {
                             "enum": [
-                                "all",
-                                "books",
-                                "magazines"
+                                "PRINT_TYPE_UNDEFINED",
+                                "ALL",
+                                "BOOKS",
+                                "MAGAZINES"
                             ],
                             "location": "query",
                             "type": "string"
                         },
                         "projection": {
                             "enum": [
-                                "full",
-                                "lite"
+                                "PROJECTION_UNDEFINED",
+                                "FULL",
+                                "LITE"
                             ],
                             "location": "query",
                             "type": "string"
                         },
                         "q": {
                             "location": "query",
-                            "required": true,
                             "type": "string"
                         },
                         "showPreorders": {
@@ -1819,11 +1883,10 @@
                         "startIndex": {
                             "format": "uint32",
                             "location": "query",
-                            "minimum": "0",
                             "type": "integer"
                         }
                     },
-                    "path": "volumes",
+                    "path": "books/v1/volumes",
                     "response": {
                         "$ref": "Volumes"
                     },
@@ -1836,6 +1899,7 @@
                 "associated": {
                     "methods": {
                         "list": {
+                            "flatPath": "books/v1/volumes/{volumeId}/associated",
                             "httpMethod": "GET",
                             "id": "books.volumes.associated.list",
                             "parameterOrder": [
@@ -1844,6 +1908,7 @@
                             "parameters": {
                                 "association": {
                                     "enum": [
+                                        "ASSOCIATION_UNDEFINED",
                                         "end-of-sample",
                                         "end-of-volume",
                                         "related-for-play"
@@ -1857,7 +1922,8 @@
                                 },
                                 "maxAllowedMaturityRating": {
                                     "enum": [
-                                        "mature",
+                                        "MAX_ALLOWED_MATURITY_RATING_UNDEFINED",
+                                        "MATURE",
                                         "not-mature"
                                     ],
                                     "location": "query",
@@ -1873,7 +1939,7 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "volumes/{volumeId}/associated",
+                            "path": "books/v1/volumes/{volumeId}/associated",
                             "response": {
                                 "$ref": "Volumes"
                             },
@@ -1886,11 +1952,14 @@
                 "mybooks": {
                     "methods": {
                         "list": {
+                            "flatPath": "books/v1/volumes/mybooks",
                             "httpMethod": "GET",
                             "id": "books.volumes.mybooks.list",
+                            "parameterOrder": [],
                             "parameters": {
                                 "acquireMethod": {
                                     "enum": [
+                                        "ACQUIRE_METHOD_UNDEFINED",
                                         "FAMILY_SHARED",
                                         "PREORDERED",
                                         "PREVIOUSLY_RENTED",
@@ -1915,12 +1984,11 @@
                                 "maxResults": {
                                     "format": "uint32",
                                     "location": "query",
-                                    "maximum": "100",
-                                    "minimum": "0",
                                     "type": "integer"
                                 },
                                 "processingState": {
                                     "enum": [
+                                        "PROCESSING_STATE_UNDEFINED",
                                         "COMPLETED_FAILED",
                                         "COMPLETED_SUCCESS",
                                         "RUNNING"
@@ -1936,11 +2004,10 @@
                                 "startIndex": {
                                     "format": "uint32",
                                     "location": "query",
-                                    "minimum": "0",
                                     "type": "integer"
                                 }
                             },
-                            "path": "volumes/mybooks",
+                            "path": "books/v1/volumes/mybooks",
                             "response": {
                                 "$ref": "Volumes"
                             },
@@ -1953,8 +2020,10 @@
                 "recommended": {
                     "methods": {
                         "list": {
+                            "flatPath": "books/v1/volumes/recommended",
                             "httpMethod": "GET",
                             "id": "books.volumes.recommended.list",
+                            "parameterOrder": [],
                             "parameters": {
                                 "locale": {
                                     "location": "query",
@@ -1962,7 +2031,8 @@
                                 },
                                 "maxAllowedMaturityRating": {
                                     "enum": [
-                                        "mature",
+                                        "MAX_ALLOWED_MATURITY_RATING_UNDEFINED",
+                                        "MATURE",
                                         "not-mature"
                                     ],
                                     "location": "query",
@@ -1973,7 +2043,7 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "volumes/recommended",
+                            "path": "books/v1/volumes/recommended",
                             "response": {
                                 "$ref": "Volumes"
                             },
@@ -1982,12 +2052,10 @@
                             ]
                         },
                         "rate": {
+                            "flatPath": "books/v1/volumes/recommended/rate",
                             "httpMethod": "POST",
                             "id": "books.volumes.recommended.rate",
-                            "parameterOrder": [
-                                "rating",
-                                "volumeId"
-                            ],
+                            "parameterOrder": [],
                             "parameters": {
                                 "locale": {
                                     "location": "query",
@@ -1995,11 +2063,11 @@
                                 },
                                 "rating": {
                                     "enum": [
+                                        "RATING_UNDEFINED",
                                         "HAVE_IT",
                                         "NOT_INTERESTED"
                                     ],
                                     "location": "query",
-                                    "required": true,
                                     "type": "string"
                                 },
                                 "source": {
@@ -2008,11 +2076,10 @@
                                 },
                                 "volumeId": {
                                     "location": "query",
-                                    "required": true,
                                     "type": "string"
                                 }
                             },
-                            "path": "volumes/recommended/rate",
+                            "path": "books/v1/volumes/recommended/rate",
                             "response": {
                                 "$ref": "BooksVolumesRecommendedRateResponse"
                             },
@@ -2025,8 +2092,10 @@
                 "useruploaded": {
                     "methods": {
                         "list": {
+                            "flatPath": "books/v1/volumes/useruploaded",
                             "httpMethod": "GET",
                             "id": "books.volumes.useruploaded.list",
+                            "parameterOrder": [],
                             "parameters": {
                                 "locale": {
                                     "location": "query",
@@ -2035,12 +2104,11 @@
                                 "maxResults": {
                                     "format": "uint32",
                                     "location": "query",
-                                    "maximum": "40",
-                                    "minimum": "0",
                                     "type": "integer"
                                 },
                                 "processingState": {
                                     "enum": [
+                                        "PROCESSING_STATE_UNDEFINED",
                                         "COMPLETED_FAILED",
                                         "COMPLETED_SUCCESS",
                                         "RUNNING"
@@ -2056,7 +2124,6 @@
                                 "startIndex": {
                                     "format": "uint32",
                                     "location": "query",
-                                    "minimum": "0",
                                     "type": "integer"
                                 },
                                 "volumeId": {
@@ -2065,7 +2132,7 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "volumes/useruploaded",
+                            "path": "books/v1/volumes/useruploaded",
                             "response": {
                                 "$ref": "Volumes"
                             },
@@ -2110,7 +2177,6 @@
                     "type": "object"
                 },
                 "created": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "currentVersionRanges": {
@@ -2146,7 +2212,6 @@
                     "type": "string"
                 },
                 "kind": {
-                    "default": "books#annotation",
                     "type": "string"
                 },
                 "layerId": {
@@ -2181,43 +2246,6 @@
                     "type": "string"
                 },
                 "updated": {
-                    "format": "date-time",
-                    "type": "string"
-                },
-                "volumeId": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Annotationdata": {
-            "id": "Annotationdata",
-            "properties": {
-                "annotationType": {
-                    "type": "string"
-                },
-                "data": {
-                    "type": "any"
-                },
-                "encoded_data": {
-                    "format": "byte",
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
-                },
-                "kind": {
-                    "default": "books#annotationdata",
-                    "type": "string"
-                },
-                "layerId": {
-                    "type": "string"
-                },
-                "selfLink": {
-                    "type": "string"
-                },
-                "updated": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "volumeId": {
@@ -2236,7 +2264,6 @@
                     "type": "array"
                 },
                 "kind": {
-                    "default": "books#annotations",
                     "type": "string"
                 },
                 "nextPageToken": {
@@ -2253,7 +2280,6 @@
             "id": "AnnotationsSummary",
             "properties": {
                 "kind": {
-                    "default": "books#annotationsSummary",
                     "type": "string"
                 },
                 "layers": {
@@ -2274,7 +2300,6 @@
                                 "type": "integer"
                             },
                             "updated": {
-                                "format": "date-time",
                                 "type": "string"
                             }
                         },
@@ -2290,12 +2315,11 @@
             "properties": {
                 "items": {
                     "items": {
-                        "$ref": "Annotationdata"
+                        "$ref": "GeoAnnotationdata"
                     },
                     "type": "array"
                 },
                 "kind": {
-                    "default": "books#annotationsdata",
                     "type": "string"
                 },
                 "nextPageToken": {
@@ -2344,26 +2368,6 @@
             },
             "type": "object"
         },
-        "BooksSubscriptionReleaseInfo": {
-            "id": "BooksSubscriptionReleaseInfo",
-            "properties": {
-                "amountInMicros": {
-                    "format": "int64",
-                    "type": "string"
-                },
-                "currencyCode": {
-                    "type": "string"
-                },
-                "releaseNumber": {
-                    "type": "string"
-                },
-                "releaseTimestampUs": {
-                    "format": "int64",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "BooksVolumesRecommendedRateResponse": {
             "id": "BooksVolumesRecommendedRateResponse",
             "properties": {
@@ -2380,7 +2384,6 @@
                     "type": "string"
                 },
                 "created": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "id": {
@@ -2388,7 +2391,6 @@
                     "type": "integer"
                 },
                 "kind": {
-                    "default": "books#bookshelf",
                     "type": "string"
                 },
                 "selfLink": {
@@ -2398,7 +2400,6 @@
                     "type": "string"
                 },
                 "updated": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "volumeCount": {
@@ -2406,7 +2407,6 @@
                     "type": "integer"
                 },
                 "volumesLastUpdated": {
-                    "format": "date-time",
                     "type": "string"
                 }
             },
@@ -2422,7 +2422,6 @@
                     "type": "array"
                 },
                 "kind": {
-                    "default": "books#bookshelves",
                     "type": "string"
                 }
             },
@@ -2449,7 +2448,6 @@
                     "type": "array"
                 },
                 "kind": {
-                    "default": "onboarding#category",
                     "type": "string"
                 }
             },
@@ -2462,7 +2460,6 @@
                     "type": "boolean"
                 },
                 "kind": {
-                    "default": "books#concurrentAccessRestriction",
                     "type": "string"
                 },
                 "maxConcurrentDevices": {
@@ -2490,6 +2487,40 @@
                 "timeWindowSeconds": {
                     "format": "int32",
                     "type": "integer"
+                },
+                "volumeId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DictionaryAnnotationdata": {
+            "id": "DictionaryAnnotationdata",
+            "properties": {
+                "annotationType": {
+                    "type": "string"
+                },
+                "data": {
+                    "$ref": "Dictlayerdata"
+                },
+                "encodedData": {
+                    "format": "byte",
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "kind": {
+                    "type": "string"
+                },
+                "layerId": {
+                    "type": "string"
+                },
+                "selfLink": {
+                    "type": "string"
+                },
+                "updated": {
+                    "type": "string"
                 },
                 "volumeId": {
                     "type": "string"
@@ -2688,7 +2719,6 @@
                     "type": "object"
                 },
                 "kind": {
-                    "default": "books#dictlayerdata",
                     "type": "string"
                 }
             },
@@ -2748,7 +2778,6 @@
                     "type": "array"
                 },
                 "kind": {
-                    "default": "books#discovery#clusters",
                     "type": "string"
                 },
                 "totalClusters": {
@@ -2772,7 +2801,6 @@
                     "type": "boolean"
                 },
                 "kind": {
-                    "default": "books#downloadAccessRestriction",
                     "type": "string"
                 },
                 "maxDownloadDevices": {
@@ -2813,17 +2841,20 @@
                     "type": "array"
                 },
                 "kind": {
-                    "default": "books#downloadAccesses",
                     "type": "string"
                 }
             },
+            "type": "object"
+        },
+        "Empty": {
+            "id": "Empty",
+            "properties": {},
             "type": "object"
         },
         "FamilyInfo": {
             "id": "FamilyInfo",
             "properties": {
                 "kind": {
-                    "default": "books#familyInfo",
                     "type": "string"
                 },
                 "membership": {
@@ -2845,6 +2876,40 @@
                         }
                     },
                     "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "GeoAnnotationdata": {
+            "id": "GeoAnnotationdata",
+            "properties": {
+                "annotationType": {
+                    "type": "string"
+                },
+                "data": {
+                    "$ref": "Geolayerdata"
+                },
+                "encodedData": {
+                    "format": "byte",
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "kind": {
+                    "type": "string"
+                },
+                "layerId": {
+                    "type": "string"
+                },
+                "selfLink": {
+                    "type": "string"
+                },
+                "updated": {
+                    "type": "string"
+                },
+                "volumeId": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2876,20 +2941,7 @@
                     "properties": {
                         "boundary": {
                             "items": {
-                                "items": {
-                                    "properties": {
-                                        "latitude": {
-                                            "format": "uint32",
-                                            "type": "integer"
-                                        },
-                                        "longitude": {
-                                            "format": "uint32",
-                                            "type": "integer"
-                                        }
-                                    },
-                                    "type": "object"
-                                },
-                                "type": "array"
+                                "type": "string"
                             },
                             "type": "array"
                         },
@@ -2949,7 +3001,6 @@
                     "type": "object"
                 },
                 "kind": {
-                    "default": "books#geolayerdata",
                     "type": "string"
                 }
             },
@@ -2965,7 +3016,6 @@
                     "type": "array"
                 },
                 "kind": {
-                    "default": "books#layersummaries",
                     "type": "string"
                 },
                 "totalItems": {
@@ -3005,7 +3055,6 @@
                     "type": "string"
                 },
                 "kind": {
-                    "default": "books#layersummary",
                     "type": "string"
                 },
                 "layerId": {
@@ -3015,7 +3064,6 @@
                     "type": "string"
                 },
                 "updated": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "volumeAnnotationsVersion": {
@@ -3056,7 +3104,6 @@
                     "type": "array"
                 },
                 "kind": {
-                    "default": "dictionary#metadata",
                     "type": "string"
                 }
             },
@@ -3091,7 +3138,6 @@
                     "type": "boolean"
                 },
                 "kind": {
-                    "default": "books#notification",
                     "type": "string"
                 },
                 "notificationGroup": {
@@ -3166,7 +3212,6 @@
                     "type": "array"
                 },
                 "kind": {
-                    "default": "promooffer#offers",
                     "type": "string"
                 }
             },
@@ -3185,14 +3230,12 @@
                     "type": "string"
                 },
                 "kind": {
-                    "default": "books#readingPosition",
                     "type": "string"
                 },
                 "pdfPosition": {
                     "type": "string"
                 },
                 "updated": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "volumeId": {
@@ -3201,8 +3244,8 @@
             },
             "type": "object"
         },
-        "RequestAccess": {
-            "id": "RequestAccess",
+        "RequestAccessData": {
+            "id": "RequestAccessData",
             "properties": {
                 "concurrentAccess": {
                     "$ref": "ConcurrentAccessRestriction"
@@ -3211,7 +3254,6 @@
                     "$ref": "DownloadAccessRestriction"
                 },
                 "kind": {
-                    "default": "books#requestAccess",
                     "type": "string"
                 }
             },
@@ -3238,7 +3280,6 @@
                     "type": "string"
                 },
                 "kind": {
-                    "default": "books#review",
                     "type": "string"
                 },
                 "rating": {
@@ -3271,7 +3312,6 @@
             "id": "Series",
             "properties": {
                 "kind": {
-                    "default": "books#series",
                     "type": "string"
                 },
                 "series": {
@@ -3297,15 +3337,44 @@
                             },
                             "seriesSubscriptionReleaseInfo": {
                                 "properties": {
-                                    "cancellationTimestampUs": {
-                                        "format": "int64",
+                                    "cancelTime": {
                                         "type": "string"
                                     },
                                     "currentReleaseInfo": {
-                                        "$ref": "BooksSubscriptionReleaseInfo"
+                                        "properties": {
+                                            "amountInMicros": {
+                                                "format": "double",
+                                                "type": "number"
+                                            },
+                                            "currencyCode": {
+                                                "type": "string"
+                                            },
+                                            "releaseNumber": {
+                                                "type": "string"
+                                            },
+                                            "releaseTime": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
                                     },
                                     "nextReleaseInfo": {
-                                        "$ref": "BooksSubscriptionReleaseInfo"
+                                        "properties": {
+                                            "amountInMicros": {
+                                                "format": "double",
+                                                "type": "number"
+                                            },
+                                            "currencyCode": {
+                                                "type": "string"
+                                            },
+                                            "releaseNumber": {
+                                                "type": "string"
+                                            },
+                                            "releaseTime": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
                                     },
                                     "seriesSubscriptionType": {
                                         "type": "string"
@@ -3334,7 +3403,6 @@
             "id": "Seriesmembership",
             "properties": {
                 "kind": {
-                    "default": "books#series#membership",
                     "type": "string"
                 },
                 "member": {
@@ -3353,7 +3421,6 @@
             "id": "Usersettings",
             "properties": {
                 "kind": {
-                    "default": "books#usersettings",
                     "type": "string"
                 },
                 "notesExport": {
@@ -3494,7 +3561,6 @@
                     "type": "string"
                 },
                 "kind": {
-                    "default": "books#volume",
                     "type": "string"
                 },
                 "layerInfo": {
@@ -3599,7 +3665,6 @@
                             "type": "array"
                         },
                         "onSaleDate": {
-                            "format": "date-time",
                             "type": "string"
                         },
                         "retailPrice": {
@@ -3634,7 +3699,6 @@
                 "userInfo": {
                     "properties": {
                         "acquiredTime": {
-                            "format": "date-time",
                             "type": "string"
                         },
                         "acquisitionType": {
@@ -3655,7 +3719,6 @@
                                     "type": "integer"
                                 },
                                 "updated": {
-                                    "format": "date-time",
                                     "type": "string"
                                 }
                             },
@@ -3726,7 +3789,6 @@
                             "$ref": "Review"
                         },
                         "updated": {
-                            "format": "date-time",
                             "type": "string"
                         },
                         "userUploadedVolumeInfo": {
@@ -3875,7 +3937,15 @@
                             "type": "integer"
                         },
                         "readingModes": {
-                            "type": "any"
+                            "properties": {
+                                "image": {
+                                    "type": "boolean"
+                                },
+                                "text": {
+                                    "type": "boolean"
+                                }
+                            },
+                            "type": "object"
                         },
                         "samplePageCount": {
                             "format": "int32",
@@ -3906,7 +3976,6 @@
                     "type": "array"
                 },
                 "kind": {
-                    "default": "onboarding#volume",
                     "type": "string"
                 },
                 "nextPageToken": {
@@ -3954,7 +4023,6 @@
                     "type": "string"
                 },
                 "kind": {
-                    "default": "books#volumeannotation",
                     "type": "string"
                 },
                 "layerId": {
@@ -3973,7 +4041,6 @@
                     "type": "string"
                 },
                 "updated": {
-                    "format": "date-time",
                     "type": "string"
                 },
                 "volumeId": {
@@ -3992,7 +4059,6 @@
                     "type": "array"
                 },
                 "kind": {
-                    "default": "books#volumeannotations",
                     "type": "string"
                 },
                 "nextPageToken": {
@@ -4018,7 +4084,6 @@
                     "type": "array"
                 },
                 "kind": {
-                    "default": "books#volumes",
                     "type": "string"
                 },
                 "totalItems": {
@@ -4035,7 +4100,6 @@
                     "type": "string"
                 },
                 "kind": {
-                    "default": "books#volume_series_info",
                     "type": "string"
                 },
                 "shortSeriesBookTitle": {
@@ -4078,7 +4142,8 @@
             "type": "object"
         }
     },
-    "servicePath": "books/v1/",
+    "servicePath": "",
     "title": "Books API",
-    "version": "v1"
+    "version": "v1",
+    "version_module": true
 }

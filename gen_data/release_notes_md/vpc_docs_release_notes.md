@@ -11,6 +11,60 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/vpc-release-notes.xml `
 
+##  August 13, 2020
+
+**FEATURE:**
+
+[ GRE support ](https://cloud.google.com/vpc/docs/vpc#specifications) for VPC
+networks is now available in **Beta** .
+
+##  July 23, 2020
+
+**FEATURE:**
+
+[ Serverless VPC Access ](https://cloud.google.com/vpc/docs/configure-
+serverless-vpc-access) support for [ Shared VPC
+](https://cloud.google.com/vpc/docs/shared-vpc) is now available in **Beta** .
+
+##  June 12, 2020
+
+**FEATURE:**
+
+[ Firewall Rules Logging metadata controls
+](https://cloud.google.com/vpc/docs/firewall-rules-logging#log-format) is now
+available in **Beta** .
+
+##  June 08, 2020
+
+**FEATURE:**
+
+For auto mode VPC networks, added a new subnet ` 10.184.0.0/20 ` for the
+Jakarta ` asia-southeast2 ` region. For more information, see [ Auto mode IP
+ranges ](https://cloud.google.com/vpc/docs/vpc#ip-ranges) .
+
+##  June 03, 2020
+
+**FEATURE:**
+
+[ Hierarchical firewall policies ](https://cloud.google.com/vpc/docs/firewall-
+policies) are now available in **Beta** .
+
+##  May 29, 2020
+
+**FEATURE:**
+
+GKE annotations and advanced controls for [ VPC Flow Logs
+](https://cloud.google.com/vpc/docs/using-flow-logs) is now available in
+**General Availability** .
+
+##  May 18, 2020
+
+**FEATURE:**
+
+Subnets in VPC networks now support IP addresses other than RFC 1918
+addresses. For more information, see [ Subnet ranges
+](https://cloud.google.com/vpc/docs/vpc#manually_created_subnet_ip_ranges) .
+
 ##  April 29, 2020
 
 **CHANGED:**
@@ -40,7 +94,7 @@ Vegas ` us-west4 ` region. For more information, see [ Auto mode IP ranges
 
 **CHANGED:**
 
-[ Packet Mirroring pricing ](https://cloud.google.com/compute/network-
+[ Packet Mirroring pricing ](https://cloud.google.com/vpc/network-
 pricing#packet-mirroring) will come into effect from June 20, 2020. There is
 no charge for Packet Mirroring until that time.
 
@@ -73,8 +127,7 @@ For auto mode VPC networks, added a new subnet ` 10.178.0.0/20 ` for the Seoul
 
 Google now charges for static external IPv4 addresses that are in use, except
 for ones that are used by forwarding rules. For more information, see the [
-Network pricing ](https://cloud.google.com/compute/network-pricing#ipaddress)
-.
+Network pricing ](https://cloud.google.com/vpc/network-pricing#ipaddress) .
 
 ##  December 19, 2019
 
@@ -473,7 +526,7 @@ For more information, read the [ IAM
 **CHANGED:**
 
 Lowered network pricing. See [ Network pricing
-](https://cloud.google.com/compute/network-pricing) for more information.
+](https://cloud.google.com/vpc/network-pricing) for more information.
 
 ##  May 05, 2014
 

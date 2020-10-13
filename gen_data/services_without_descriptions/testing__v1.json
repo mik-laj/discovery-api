@@ -212,7 +212,8 @@
                                 "ANDROID",
                                 "IOS",
                                 "NETWORK_CONFIGURATION",
-                                "PROVIDED_SOFTWARE"
+                                "PROVIDED_SOFTWARE",
+                                "DEVICE_IP_BLOCKS"
                             ],
                             "location": "path",
                             "required": true,
@@ -381,7 +382,8 @@
                     "enum": [
                         "DEVICE_FORM_UNSPECIFIED",
                         "VIRTUAL",
-                        "PHYSICAL"
+                        "PHYSICAL",
+                        "EMULATOR"
                     ],
                     "type": "string"
                 },
@@ -695,6 +697,39 @@
                 },
                 "regularFile": {
                     "$ref": "RegularFile"
+                }
+            },
+            "type": "object"
+        },
+        "DeviceIpBlock": {
+            "id": "DeviceIpBlock",
+            "properties": {
+                "addedDate": {
+                    "$ref": "Date"
+                },
+                "block": {
+                    "type": "string"
+                },
+                "form": {
+                    "enum": [
+                        "DEVICE_FORM_UNSPECIFIED",
+                        "VIRTUAL",
+                        "PHYSICAL",
+                        "EMULATOR"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DeviceIpBlockCatalog": {
+            "id": "DeviceIpBlockCatalog",
+            "properties": {
+                "ipBlocks": {
+                    "items": {
+                        "$ref": "DeviceIpBlock"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -1258,6 +1293,9 @@
                 "androidDeviceCatalog": {
                     "$ref": "AndroidDeviceCatalog"
                 },
+                "deviceIpBlockCatalog": {
+                    "$ref": "DeviceIpBlockCatalog"
+                },
                 "iosDeviceCatalog": {
                     "$ref": "IosDeviceCatalog"
                 },
@@ -1441,6 +1479,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "dontAutograntPermissions": {
+                    "type": "boolean"
                 },
                 "environmentVariables": {
                     "items": {

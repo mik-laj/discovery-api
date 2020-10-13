@@ -1,0 +1,5166 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <h1 class="devsite-page-title">
+   Notes de version
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <section class="intro">
+    <p>
+     Cette page documente les mises à jour en production d'Anthos GKE On-Prem. Consultez-la régulièrement pour obtenir des informations sur les fonctionnalités nouvelles ou mises à jour, les corrections de bugs, les problèmes connus et les fonctionnalités obsolètes.
+    </p>
+    <p>
+     Voir également :
+    </p>
+    <ul>
+     <li>
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/downloads?hl=fr">
+       Téléchargements
+      </a>
+     </li>
+     <li>
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/versioning-and-upgrades?hl=fr">
+       Gestion des versions et mises à jour
+      </a>
+     </li>
+     <li>
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=fr">
+       Mettre à jour GKE On-Prem
+      </a>
+     </li>
+    </ul>
+    <p>
+    </p>
+   </section>
+   <section>
+    <p>
+     Vous pouvez consulter les dernières mises à jour de produits pour l'ensemble de Google Cloud sur la page
+     <a href="https://cloud.google.com/release-notes?hl=fr">
+      Notes de version de Google Cloud
+     </a>
+     .
+    </p>
+   </section>
+   <section class="xml">
+    <p>
+     Pour recevoir les dernières mises à jour concernant ce produit, ajoutez l'URL de cette page à votre
+     <a class="external" href="https://wikipedia.org/wiki/Comparison_of_feed_aggregators">
+      lecteur de flux
+     </a>
+     ou ajoutez l'URL du flux directement :
+     <code dir="ltr" translate="no">
+      https://cloud.google.com/feeds/gkeonprem-release-notes.xml
+     </code>
+    </p>
+   </section>
+   <section class="releases">
+    <section class="releases">
+     <h2 data-text="August 20, 2020" id="August_20_2020" tabindex="0">
+      August 20, 2020
+     </h2>
+     <div class="release-feature" id="cc2c2e62">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Anthos GKE on-prem 1.4.2-gke.3 is now available. To upgrade, see
+       <a href="https://cloud.google.comanthos/gke/docs/on-prem/how-to/upgrading">
+        Upgrading GKE on-prem
+       </a>
+       . GKE on-prem 1.4.2-gke.3 clusters run on Kubernetes 1.16.11-gke.11.
+      </p>
+     </div>
+     <div class="release-feature" id="367a7ff5">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GPU support (beta solution in collaboration with Nvidia)
+      </p>
+      <p>
+       <a href="https://cloud.google.com/blog/products/compute/anthos-supports-nvidia-gpus?hl=fr">
+        In partnership with Nvidia
+       </a>
+       , users can now manually attach a GPU to a worker node VM to run GPU workloads. This requires using the
+       <a href="https://github.com/NVIDIA/gpu-operator">
+        open source Nvidia GPU operator
+       </a>
+       .
+      </p>
+      <p>
+       <strong>
+        Note:
+       </strong>
+       Manually attached GPUs do not persist through node lifecycle events. You must manually re-attach them. This is a beta solution and can be used for evaluation and proof of concept.
+      </p>
+     </div>
+     <div class="release-changed" id="d6408e7d">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       The Ubuntu image is upgraded to include the newest packages.
+      </p>
+     </div>
+     <div class="release-changed" id="270371fb">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <code dir="ltr" translate="no">
+        gkectl delete loadbalancer
+       </code>
+       is updated to support the new version of configuration files for admin and user clusters.
+      </p>
+     </div>
+     <div class="release-fixed" id="69546256">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       <strong>
+        Fixes:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        Resolved a few incorrect Kubelet Metrics' names collected by Prometheus.
+       </li>
+       <li>
+        Updated restarting machines process during admin cluster upgrade to make the upgrade process more resilient to transient connection issues.
+       </li>
+       <li>
+        Resolved a preflight check OS image validation error when using a non-default vSphere folder for cluster creation; the OS image template is expected to be in that folder.
+       </li>
+       <li>
+        Resolved a
+        <code dir="ltr" translate="no">
+         gkectl upgrade loadbalancer
+        </code>
+        issue to avoid validating the upgraded SeesawGroup. This fix lets the existing SeesawGroup config be updated without negatively affecting the upgrade process.
+       </li>
+       <li>
+        Resolved an issue where ClientConfig CRD is deleted when the upgrade to the latest version is run multiple times.
+       </li>
+       <li>
+        Resolved a
+        <code dir="ltr" translate="no">
+         gkectl update credentials vsphere
+        </code>
+        issue where the vsphere-metrics-exporter was using the old credentials even after updating the credentials.
+       </li>
+       <li>
+        Resolved an issue where the VIP preflight check reported a user cluster add-on load balancer IP false positive.
+       </li>
+       <li>
+        Fixed
+        <code dir="ltr" translate="no">
+         gkeadm
+        </code>
+        updating config after upgrading on Windows, specifically for the
+        <code dir="ltr" translate="no">
+         gkeOnPremVersion
+        </code>
+        and
+        <code dir="ltr" translate="no">
+         bundlePath
+        </code>
+        fields.
+       </li>
+       <li>
+        Automatically mount the data disk after rebooting on admin workstations created using
+        <code dir="ltr" translate="no">
+         gkeadm
+        </code>
+        1.4.0 and later.
+       </li>
+       <li>
+        Reverted thin disk provisioning change for boot disks in 1.4.0 and 1.4.1 on all normal (excludes test VMs) cluster nodes.
+       </li>
+       <li>
+        Removed vCenter Server access check from user cluster nodes.
+       </li>
+      </ul>
+     </div>
+     <h2 data-text="July 30, 2020" id="July_30_2020" tabindex="0">
+      July 30, 2020
+     </h2>
+     <div class="release-feature" id="c63e2f9e">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Anthos GKE on-prem 1.3.3-gke.0 is now available. To upgrade, see
+       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=fr">
+        Upgrading GKE on-prem
+       </a>
+       . GKE on-prem 1.3.3-gke.0 clusters run on Kubernetes 1.15.12-gke.9.
+      </p>
+     </div>
+     <div class="release-fixed" id="f4a0ff0b">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       <strong>
+        Fixes:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        Fixed
+        <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8559">
+         CVE-2020-8559
+        </a>
+        described in
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/security-bulletins?hl=fr#gcp-2020-009">
+         Security bulletins
+        </a>
+        .
+       </li>
+       <li>
+        Updated the git-sync image to fix security vulnerability
+        <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5482">
+         CVE-2019-5482
+        </a>
+        .
+       </li>
+       <li>
+        Updated the kindest/node image to fix security vulnerability
+        <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-13777">
+         CVE-2020-13777
+        </a>
+        .
+       </li>
+      </ul>
+     </div>
+     <h2 data-text="July 23, 2020" id="July_23_2020" tabindex="0">
+      July 23, 2020
+     </h2>
+     <div class="release-feature" id="bab62f13">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Anthos GKE on-prem 1.4.1-gke.1 is now available. To upgrade, see
+       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=fr">
+        Upgrading GKE on-prem
+       </a>
+       . GKE on-prem 1.4.1-gke.1 clusters run on Kubernetes 1.16.9-gke.14.
+      </p>
+     </div>
+     <div class="release-feature" id="d9fc1f89">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <strong>
+        Anthos Identity Service LDAP authentication is now available in Alpha for GKE on-prem
+       </strong>
+      </p>
+      <p>
+       Contact support if you are interested in a trial of the LDAP authentication feature in GKE on-prem.
+      </p>
+     </div>
+     <div class="release-feature" id="72615558">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <strong>
+        Support for F5 BIG-IP load balancer credentials update
+       </strong>
+      </p>
+      <p>
+       This preview release enables customers to manage and update the F5 BIG-IP load balancer credentials by using the
+       <code dir="ltr" translate="no">
+        gkectl update credentials f5bigip
+       </code>
+       command.
+      </p>
+     </div>
+     <div class="release-changed" id="29a6cd97">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <strong>
+        Functionality changes:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        The Ubuntu image is upgraded to include the newest packages.
+       </li>
+       <li>
+        Preflight checks are updated to validate that the
+        <code dir="ltr" translate="no">
+         gkectl
+        </code>
+        version matches the target cluster version for cluster creation and upgrade.
+       </li>
+       <li>
+        Preflight checks are updated to validate the Window OS version used for running
+        <code dir="ltr" translate="no">
+         gkeadm
+        </code>
+        . The
+        <code dir="ltr" translate="no">
+         gkeadm
+        </code>
+        command-line tool is only available for Linux, Windows 10, and Windows Server 2019.
+       </li>
+       <li>
+        <code dir="ltr" translate="no">
+         gkeadm
+        </code>
+        is updated to populate
+        <code dir="ltr" translate="no">
+         network.vCenter.networkName
+        </code>
+        in both
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/admin-cluster-configuration-file?hl=fr">
+         admin cluster
+        </a>
+        and
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/user-cluster-configuration-file?hl=fr">
+         user cluster
+        </a>
+        configuration files.
+       </li>
+      </ul>
+     </div>
+     <div class="release-fixed" id="c691282a">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       <strong>
+        Fixes:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        Removed the static IP used by admin workstation after upgrade from
+        <code dir="ltr" translate="no">
+         ~/.ssh/known_hosts
+        </code>
+        to avoid manual workaround.
+       </li>
+       <li>
+        Resolved a known issue that
+        <code dir="ltr" translate="no">
+         network.vCenter.networkName
+        </code>
+        is not populated in the user cluster configuration file during user cluster creation.
+       </li>
+       <li>
+        Resolved a user cluster upgrade–related issue to only wait for the machines and pods in the same namespace within the cluster to be ready to complete the cluster upgrade.
+       </li>
+       <li>
+        Updated the default value for
+        <code dir="ltr" translate="no">
+         ingressHTTPNodePort
+        </code>
+        and
+        <code dir="ltr" translate="no">
+         ingressHTTPSNodePort
+        </code>
+        in the
+        <code dir="ltr" translate="no">
+         loadBalancer.manualLB
+        </code>
+        section of the
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/admin-cluster-configuration-file?hl=fr">
+         admin cluster configuration
+        </a>
+        file.
+       </li>
+       <li>
+        Fixed
+        <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8558">
+         CVE-2020-8558
+        </a>
+        and
+        <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8559">
+         CVE-2020-8559
+        </a>
+        described in
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/security-bulletins?hl=fr#gcp-2020-009">
+         Security bulletins
+        </a>
+        .
+       </li>
+       <li>
+        Logging and monitoring: Resolved an issue that stackdriver-log-forwarder was not scheduled on the master node on the admin cluster.
+       </li>
+       <li>
+        Resolved the following known issues published in the 1.4.0 release notes:
+        <ul>
+         <li>
+          If a user cluster is created without any node pool named the same as the cluster, managing the node pools using
+          <code dir="ltr" translate="no">
+           gkectl update cluster
+          </code>
+          would fail. To avoid this issue, when creating a user cluster, you need to name one node pool the same as the cluster.
+         </li>
+         <li>
+          The
+          <code dir="ltr" translate="no">
+           gkectl
+          </code>
+          command might exit with panic when converting config from "/path/to/config.yaml" to v1 config files. When that occurs, you can resolve the issue by removing the unused bundled load balancer section ("loadbalancerconfig") in the config file.
+         </li>
+         <li>
+          When using gkeadm to upgrade an admin workstation on Windows, the info file filled out from this template needs to have the line endings converted to use Unix line endings (LF) instead of Windows line endings (CRLF). You can use Notepad++ to convert the line endings.
+         </li>
+         <li>
+          When running a preflight check for
+          <code dir="ltr" translate="no">
+           config.yaml
+          </code>
+          that contains both
+          <code dir="ltr" translate="no">
+           admincluster
+          </code>
+          and
+          <code dir="ltr" translate="no">
+           usercluster
+          </code>
+          sections, the "data disk" check in the "user cluster vCenter" category might fail with the message:
+          <code dir="ltr" translate="no">
+           [FAILURE] Data Disk: Data disk is not in a folder. Use a data disk in a folder when using vSAN datastore.
+          </code>
+          User clusters don't use data disks, and it's safe to ignore the failure.
+         </li>
+         <li>
+          When upgrading the admin cluster, the preflight check for the user cluster OS image validation will fail. The user cluster OS image is not used in this case, and it's safe to ignore the "User Cluster OS Image Exists"  failure in this case.
+         </li>
+         <li>
+          User cluster creation and upgrade might be stuck with the error:
+          <code dir="ltr" translate="no">
+           Failed to update machine status: no matches for kind "Machine" in version "cluster.k8s.io/v1alpha1".
+          </code>
+          To resolve this, you need to delete the clusterapi pod in the user cluster namespace in the admin cluster.
+         </li>
+        </ul>
+       </li>
+      </ul>
+     </div>
+     <div class="release-issue" id="2b4ec957">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        Known issues:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        During reboots, the data disk is not remounted on the admin workstation when using GKE on-prem 1.4.0 or 1.4.1 because the startup script is not run after the initial creation. To resolve this, you can run
+        <code dir="ltr" translate="no">
+         sudo mount /dev/sdb1 /home/ubuntu
+        </code>
+        .
+       </li>
+      </ul>
+     </div>
+     <h2 data-text="June 25, 2020" id="June_25_2020" tabindex="0">
+      June 25, 2020
+     </h2>
+     <div class="release-feature" id="6d5edfc9">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Anthos GKE on-prem 1.4.0-gke.13 is now available. To upgrade, see
+       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=fr">
+        Upgrading GKE on-prem
+       </a>
+       . GKE on-prem 1.4.0-gke.13 clusters run on Kubernetes 1.16.8-gke.6.
+      </p>
+     </div>
+     <div class="release-feature" id="20e8bc12">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <strong>
+        Updated to Kubernetes 1.16:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        Please note that Kubernetes 1.16 has deprecated some of its APIs. For more information, see
+        <a href="https://cloud.google.com/kubernetes-engine/docs/deprecations/apis-1-16?hl=fr">
+         Kubernetes 1.16 deprecated APIs
+        </a>
+        .
+       </li>
+      </ul>
+     </div>
+     <div class="release-feature" id="1ce044f0">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <strong>
+        Simplified upgrade:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        <p>
+         This release provides a simplified upgrade experience via the following changes:
+        </p>
+        <ul>
+         <li>
+          Automatically migrate information from the previous version of admin workstation using
+          <code dir="ltr" translate="no">
+           gkeadm
+          </code>
+          .
+         </li>
+         <li>
+          Extend preflight checks to better prepare for upgrades.
+         </li>
+         <li>
+          Support skip version upgrade to enable users to upgrade the cluster from any patch release of a minor release to any patch release of the next minor release. For more information about the detailed upgrade procedure and limitations, see
+          <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=fr">
+           upgrading GKE on-prem
+          </a>
+          .
+         </li>
+         <li>
+          The
+          <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=fr">
+           alternate upgrade scenario for Common Vulnerabilities and Exposures
+          </a>
+          has been deprecated. All upgrades starting with version 1.3.2 need to upgrade the entire admin workstation.
+         </li>
+         <li>
+          The bundled load balancer is now automatically upgraded during cluster upgrade.
+         </li>
+        </ul>
+       </li>
+      </ul>
+     </div>
+     <div class="release-feature" id="872b803b">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <strong>
+        Improved installation and cluster configuration:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        The user cluster
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/user-cluster-basic?hl=fr#nodepoolsname">
+         node pools
+        </a>
+        feature is now generally available.
+       </li>
+       <li>
+        <p>
+         This release improves the installation experience via the following changes:
+        </p>
+        <ul>
+         <li>
+          Supports
+          <code dir="ltr" translate="no">
+           gkeadm
+          </code>
+          for Windows OS.
+         </li>
+         <li>
+          Introduces a standalone command for creating admin clusters.
+         </li>
+        </ul>
+       </li>
+       <li>
+        <p>
+         Introduce a new version of configuration files to separate admin and user cluster configurations and commands. This is designed to provide a consistent user experience and better configuration management.
+        </p>
+       </li>
+      </ul>
+     </div>
+     <div class="release-feature" id="90e2b4c5">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <strong>
+        Improved disaster recovery capabilities:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        This release provides enhanced disaster recovery functionality to
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/backing-up?hl=fr#user_cluster_backups">
+         support backup and restore
+        </a>
+        HA user cluster with etcd.
+       </li>
+       <li>
+        This release also provides a manual process to recover a single etcd replica failure in a HA cluster without any data loss.
+       </li>
+      </ul>
+     </div>
+     <div class="release-feature" id="b7bb2217">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <strong>
+        Enhanced monitoring with Cloud Monitoring (formerly Stackdriver):
+       </strong>
+      </p>
+      <ul>
+       <li>
+        <p>
+         This release provides better product monitoring and resource usage management via the following changes:
+        </p>
+        <ul>
+         <li>
+          Introduces a
+          <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/logging-and-monitoring?hl=fr#dashboards">
+           default monitoring dashboard
+          </a>
+          .
+         </li>
+         <li>
+          Enables vSphere resource metrics collection by default.
+         </li>
+        </ul>
+       </li>
+       <li>
+        <p>
+         Ubuntu Image now conforms with PCI DSS, NIST Baseline High, and DoD SRG IL2 compliance configurations.
+        </p>
+       </li>
+      </ul>
+     </div>
+     <div class="release-changed" id="2e1bba1b">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <strong>
+        Functionality changes:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        Enabled Horizontal Pod Autoscaler (HPA) for the Istio ingress gateway.
+       </li>
+       <li>
+        Removed ingress controller from admin cluster.
+       </li>
+       <li>
+        Consolidated sysctl configs with Google Kubernetes Engine.
+       </li>
+       <li>
+        Added etcd defrag pod in admin cluster and user cluster, which will be responsible for monitoring etcd's database size and defragmenting it as needed. This helps reclaim etcd database size and recover etcd when its disk space is exceeded.
+       </li>
+      </ul>
+     </div>
+     <div class="release-changed" id="08498e2d">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <strong>
+        Support for a vSphere folder (Preview):
+       </strong>
+      </p>
+      <ul>
+       <li>
+        This release allows customers to install GKE on-prem in a vSphere folder, reducing the scope of the permission required for the vSphere user.
+       </li>
+      </ul>
+     </div>
+     <div class="release-changed" id="90ae9b46">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <strong>
+        Improved scale:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        This release improves the cluster scalability by supporting
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/quotas?hl=fr">
+         a maximum of 10 instead of 5 user clusters for each admin cluster
+        </a>
+        .
+       </li>
+      </ul>
+     </div>
+     <div class="release-fixed" id="33ed1474">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       <strong>
+        Fixes:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        Fixed the issue of the user cluster's Kubernetes API server not being able to connect to kube-etcd after admin nodes and user cluster master reboot. In previous versions, kube-dns in admin clusters was configured through kubeadm. In 1.4, this configuration is moved from kubeadm to bundle, which enables deploying two kube-dns replicas on two admin nodes. As a result, a single admin node reboot/failure won't disrupt user cluster API access.
+       </li>
+       <li>
+        Fixed the issue that controllers such as calico-typha can't be scheduled on an admin cluster master node, when the admin cluster master node is under disk pressure.
+       </li>
+       <li>
+        Resolved pods failure with MatchNodeSelector on admin cluster master after node reboot or kubelet restart.
+       </li>
+       <li>
+        Tuned etcd quota limit settings based on the etcd data disk size and the settings in GKE Classic.
+       </li>
+      </ul>
+     </div>
+     <div class="release-issue" id="ddd737da">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        Known issues:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        If a user cluster is created without any node pool named the same as the cluster, managing the node pools using
+        <code dir="ltr" translate="no">
+         gkectl update cluster
+        </code>
+        would fail. To avoid this issue, when creating a user cluster, you need to name one node pool the same as the cluster.
+       </li>
+       <li>
+        The
+        <code dir="ltr" translate="no">
+         gkectl
+        </code>
+        command might exit with panic when converting config from "/path/to/config.yaml" to v1 config files. When that occurs, you can resolve the issue by removing the unused bundled load balancer section ("loadbalancerconfig") in the config file.
+       </li>
+       <li>
+        When using gkeadm to upgrade an admin workstation on Windows, the info file filled out from this template needs to have the line endings converted to use Unix line endings (LF) instead of Windows line endings (CRLF). You can use Notepad++ to convert the line endings.
+       </li>
+       <li>
+        After upgrading an admin workstation with a static IP using gkeadm, you need to run
+        <code dir="ltr" translate="no">
+         ssh-keygen -R &lt;admin-workstation-ip&gt;
+        </code>
+        to remove the IP from the known hosts, because the host identification changed after VM re-creation.
+       </li>
+       <li>
+        We have added Horizontal Pod Autoscaler for istio-ingress and istio-pilot deployments. HPA can scale up unnecessarily for istio-ingress and istio-pilot deployments during cluster upgrades. This happens because the metrics server is not able to report usage of some pods (newly created and terminating; for more information, see
+        <a href="https://github.com/kubernetes/kubernetes/issues/72775">
+         this Kubernetes issue
+        </a>
+        ). No actions are needed; scale down will happen five minutes after the upgrade finishes.
+       </li>
+       <li>
+        When running a preflight check for
+        <code dir="ltr" translate="no">
+         config.yaml
+        </code>
+        that contains both
+        <code dir="ltr" translate="no">
+         admincluster
+        </code>
+        and
+        <code dir="ltr" translate="no">
+         usercluster
+        </code>
+        sections, the "data disk" check in the "user cluster vCenter" category might fail with the message:
+        <code dir="ltr" translate="no">
+         [FAILURE] Data Disk: Data disk is not in a folder. Use a data disk in a folder when using vSAN datastore.
+        </code>
+        User clusters don't use data disks, and it's safe to ignore the failure.
+       </li>
+       <li>
+        When upgrading the admin cluster, the preflight check for the user cluster OS image validation will fail. The user cluster OS image is not used in this case, and it's safe to ignore the "User Cluster OS Image Exists"  failure in this case.
+       </li>
+       <li>
+        A Calico-node pod might be stuck in an unready state after node IP changes. To resolve this issue, you need to delete any unready Calico-node pods.
+       </li>
+       <li>
+        The BIG-IP controller might fail to update F5 VIP after any admin cluster master IP changes. To resolve this, you need to use the admin cluster master node IP in kubeconfig and delete the bigip-controller pod from the admin master.
+       </li>
+       <li>
+        The stackdriver-prometheus-k8s pod could enter a crashloop after host failure. To resolve this, you need to remove any corrupted PersistentVolumes that the stackdriver-prometheus-k8s pod uses.
+       </li>
+       <li>
+        After node IP change, pods running with hostNetwork don't get podIP corrected until Kubelet restarts. To resolve this, you need to restart Kubelet or delete those pods using previous IPs.
+       </li>
+       <li>
+        An admin cluster fails after any admin cluster master node IP address changes. To avoid this, you should avoid changing the admin master IP address if possible by using a static IP or a non-expired DHCP lease instead. If you encounter this issue and need further assistance, please contact Google Support.
+       </li>
+       <li>
+        User cluster upgrade might be stuck with the error:
+        <code dir="ltr" translate="no">
+         Failed to update machine status: no matches for kind "Machine" in version "cluster.k8s.io/v1alpha1".
+        </code>
+        To resolve this, you need to delete the clusterapi pod in the user cluster namespace in the admin cluster.
+       </li>
+      </ul>
+     </div>
+     <div class="release-issue" id="40c10ea4">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       If your vSphere environment has fewer than three hosts, user cluster upgrade might fail. To resolve this, you need to disable
+       <code dir="ltr" translate="no">
+        antiAffinityGroups
+       </code>
+       in the cluster config before upgrading the user cluster. For v1 config, please set
+       <code dir="ltr" translate="no">
+        antiAffinityGroups.enabled = false
+       </code>
+       ; for v0 config, please set
+       <code dir="ltr" translate="no">
+        usercluster.antiaffinitygroups.enabled = false
+       </code>
+       .
+      </p>
+      <p>
+       <strong>
+        Note:
+       </strong>
+       Disabling
+       <code dir="ltr" translate="no">
+        antiAffinityGroups
+       </code>
+       in the cluster config during upgrade is only allowed for the 1.3.2 to 1.4.
+       <em>
+        x
+       </em>
+       upgrade to resolve the upgrade issue; the support might be removed in the future.
+      </p>
+     </div>
+     <h2 data-text="May 21, 2020" id="May_21_2020" tabindex="0">
+      May 21, 2020
+     </h2>
+     <div class="release-feature" id="540f5e71">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Workload Identity is now available in Alpha for GKE on-prem. Please contact support if you are interested in a trial of Workload Identity in GKE on-prem.
+      </p>
+     </div>
+     <div class="release-changed" id="840cbab5">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Preflight check for VM internet and Docker Registry access validation is updated.
+      </p>
+     </div>
+     <div class="release-changed" id="77455072">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Preflight check for internet validation is updated to not follow redirect. If your organization requires outbound traffic to pass through a proxy server, you no longer need to whitelist the following addresses in your proxy server:
+      </p>
+      <ul>
+       <li>
+        console.cloud.google.com
+       </li>
+       <li>
+        cloud.google.com
+       </li>
+      </ul>
+     </div>
+     <div class="release-changed" id="117739f6">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       The Ubuntu image is upgraded to include the newest packages.
+      </p>
+     </div>
+     <div class="release-fixed" id="f404adb4">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Upgraded the Istio image to version 1.4.7 to fix a security vulnerability.
+      </p>
+     </div>
+     <div class="release-fixed" id="1289239e">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Some ConfigMaps in the admin cluster were refactored to Secrets to allow for more granular access control of sensitive configuration data.
+      </p>
+     </div>
+     <h2 data-text="April 23, 2020" id="April_23_2020" tabindex="0">
+      April 23, 2020
+     </h2>
+     <div class="release-changed" id="9fcf2293">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Preflight check in
+       <code dir="ltr" translate="no">
+        gkeadm
+       </code>
+       for access to the Cloud Storage bucket that holds the admin workstation OVA.
+      </p>
+     </div>
+     <div class="release-changed" id="578e7cdf">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Preflight check for internet access includes additional URL
+       <code dir="ltr" translate="no">
+        www.googleapis.com
+       </code>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="8fa85b8a">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Preflight check for test VM DNS availability.
+      </p>
+     </div>
+     <div class="release-changed" id="6cc513e1">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Preflight check for test VM NTP availability.
+      </p>
+     </div>
+     <div class="release-changed" id="26f6f0f8">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Preflight check for test VM F5 access.
+      </p>
+     </div>
+     <div class="release-changed" id="0c9ba469">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Before downloading and creating VM templates from OVAs, GKE on-prem checks if the VM template already exists in vCenter.
+      </p>
+     </div>
+     <div class="release-changed" id="1cda866e">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Rename
+       <code dir="ltr" translate="no">
+        gkeadm
+       </code>
+       ’s automatically created service accounts.
+      </p>
+     </div>
+     <div class="release-changed" id="745bf2cc">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       OVA download  displays download progress.
+      </p>
+     </div>
+     <div class="release-changed" id="cdb304bd">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <code dir="ltr" translate="no">
+        gkeadm
+       </code>
+       prepopulates
+       <code dir="ltr" translate="no">
+        bundlepath
+       </code>
+       in the seed config on the admin workstation.
+      </p>
+     </div>
+     <div class="release-changed" id="cc2202f0">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Fix for Docker failed DNS resolution on admin workstation at startup.
+      </p>
+     </div>
+     <div class="release-changed" id="6f0ecc5c">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Admin workstation provisioned by
+       <code dir="ltr" translate="no">
+        gkeadm
+       </code>
+       uses thin disk provisioning.
+      </p>
+     </div>
+     <div class="release-changed" id="ee943c01">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Improved user cluster Istio ingress gateway reliability.
+      </p>
+     </div>
+     <div class="release-changed" id="746cf857">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Ubuntu image is upgraded to include newest packages.
+      </p>
+     </div>
+     <div class="release-changed" id="cf838a47">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Update the vCenter credentials for your clusters using the preview command
+       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/updating-cluster-credentials?hl=fr">
+        <code dir="ltr" translate="no">
+         gkectl update credentials vsphere
+        </code>
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-fixed" id="803ba998">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       The
+       <code dir="ltr" translate="no">
+        gkeadm
+       </code>
+       configuration file,
+       <code dir="ltr" translate="no">
+        admin-ws-config.yaml
+       </code>
+       , accepts paths that are prefixed with
+       <code dir="ltr" translate="no">
+        ~/
+       </code>
+       for the Certificate Authority (CA) certificate.
+      </p>
+     </div>
+     <div class="release-fixed" id="8bb07527">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Test VMs wait until the network is ready before starting preflight checks.
+      </p>
+     </div>
+     <div class="release-fixed" id="e43d5497">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Improve the error message in preflight check failure for F5 BIG-IP.
+      </p>
+     </div>
+     <div class="release-fixed" id="dae1eaae">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Skip VIP check in preflight check in manual load balancing mode.
+      </p>
+     </div>
+     <div class="release-fixed" id="257fc464">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Upgraded Calico to version 3.8.8 to fix several security vulnerabilities.
+      </p>
+     </div>
+     <div class="release-fixed" id="69abd7f8">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Upgraded F5 BIG-IP Controller Docker image to version 1.14.0 to fix a security vulnerability.
+      </p>
+     </div>
+     <div class="release-fixed" id="471f63fd">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixed
+       <code dir="ltr" translate="no">
+        gkeadm
+       </code>
+       admin workstation
+       <code dir="ltr" translate="no">
+        gcloud
+       </code>
+       proxy username and password configuration.
+      </p>
+     </div>
+     <div class="release-fixed" id="45f9b52f">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixed the bug that was preventing
+       <code dir="ltr" translate="no">
+        gkectl check-config
+       </code>
+       from automatically using the proxy that you set in your configuration file when running the full set of
+       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/preflight-checks?hl=fr">
+        preflight validation checks
+       </a>
+       with any GKE on-prem
+       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/downloads?hl=fr#bundle-latest">
+        download image
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-fixed" id="54e94a29">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixed an admin workstation upgrade failure when the upgrade process was unable to retrieve SSH keys, which would cause a Golang segmentation fault.
+      </p>
+     </div>
+     <h2 data-text="April 01, 2020" id="April_01_2020" tabindex="0">
+      April 01, 2020
+     </h2>
+     <div class="release-issue" id="c0fc9368">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       When upgrading from version 1.2.2 to 1.3.0 by using the Bundle download in the
+       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=fr#alternate_upgrade_scenario">
+        alternate upgrade method
+       </a>
+       , a timeout might occur that will cause your user cluster upgrade to fail. To avoid this issue, you must perform the
+       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=fr">
+        full upgrade process
+       </a>
+       that includes upgrading your admin workstation with the OVA file.
+      </p>
+     </div>
+     <h2 data-text="March 23, 2020" id="March_23_2020" tabindex="0">
+      March 23, 2020
+     </h2>
+     <div class="release-feature" id="8d8b24b0">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Anthos GKE on-prem 1.3.0-gke.16 is now available. To upgrade, see
+       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=fr">
+        Upgrading GKE on-prem
+       </a>
+       .
+      </p>
+      <p>
+       GKE on-prem 1.3.0-gke.16 clusters run on Kubernetes 1.15.7-gke.32.
+      </p>
+     </div>
+     <div class="release-feature" id="ea235145">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       A new installer helps you
+       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/admin-workstation?hl=fr">
+        create and prepare the admin workstation
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-feature" id="84c5d445">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Support for
+       <a href="https://docs.vmware.com/en/VMware-vSAN/index.html">
+        vSAN
+       </a>
+       datastore on your admin and user clusters.
+      </p>
+     </div>
+     <div class="release-feature" id="bb7ecd6a">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       In bundled load balancing mode, GKE on-prem provides and manages the
+       <a href="https://github.com/google/seesaw">
+        Seesaw load balancer
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-feature" id="d1d7ccd6">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       The
+       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/oidc?hl=fr">
+        Authentication Plugin for Anthos
+       </a>
+       has been integrated into and replaced with the Google Cloud command-line interface, which improves the authentication process and provides the user consent flow through
+       <code dir="ltr" translate="no">
+        gcloud
+       </code>
+       commands.
+      </p>
+     </div>
+     <div class="release-feature" id="d01ac07d">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Added support for up to
+       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/quotas?hl=fr">
+        100 nodes per user cluster
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-feature" id="78ec2234">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       The Cluster CA now signs the TLS certificates that the Kubelet API serves, and the TLS certificates are auto-rotated.
+      </p>
+     </div>
+     <div class="release-feature" id="81169c50">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       vSphere credential rotation is enabled. Users can now use Solution User Certificates to authenticate to GKE deployed on-prem.
+      </p>
+     </div>
+     <div class="release-feature" id="f64e8817">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <code dir="ltr" translate="no">
+        gkectl
+       </code>
+       automatically uses the proxy URL from
+       <code dir="ltr" translate="no">
+        config.yaml
+       </code>
+       to configure the proxy on the admin workstation.
+      </p>
+     </div>
+     <div class="release-feature" id="ef77785f">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Preview Feature: Introducing User cluster Nodepools. A
+       <em>
+        node pool
+       </em>
+       is a group of nodes within a cluster that all have the same configuration. In GKE on-prem 1.3.0, node pools are a preview feature in the user clusters. This feature lets users create multiple node pools in a cluster, and update them as needed.
+      </p>
+     </div>
+     <div class="release-changed" id="4b0d08f6">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       The metric
+       <code dir="ltr" translate="no">
+        kubelet_containers_per_pod_count
+       </code>
+       is changed to a
+       <a href="https://prometheus.io/docs/concepts/metric_types/#histogram">
+        histogram metric
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-fixed" id="5bbe6e1e">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixed an issue in the vSphere storage plugin that prevented vSphere storage policies from working.
+       <a href="https://github.com/kubernetes/examples/blob/master/staging/volumes/vsphere/vsphere-volume-spbm-policy.yaml">
+        This is an example
+       </a>
+       of how you might use this feature.
+      </p>
+     </div>
+     <div class="release-issue" id="3e6a58c4">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       Prometheus + Grafana: two graphs on the
+       <strong>
+        Machine
+       </strong>
+       dashboard don't work because of missing metrics:
+       <strong>
+        Disk Usage
+       </strong>
+       and
+       <strong>
+        Disk Available
+       </strong>
+       .
+      </p>
+     </div>
+     <div class="release-issue" id="a2622d03">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       All OOM events for containers trigger a SystemOOM event, even if they are container/pod OOM events. To check whether an OOM is actually a SystemOOM, check the kernel log for a message
+       <code dir="ltr" translate="no">
+        oom-kill:…
+       </code>
+       . If
+       <code dir="ltr" translate="no">
+        oom_memcg=/
+       </code>
+       (instead of
+       <code dir="ltr" translate="no">
+        oom_memcg=/kubepods/…
+       </code>
+       ), then it's a SystemOOM.  If it's not a SystemOOM, it's safe to ignore.
+      </p>
+     </div>
+     <div class="release-issue" id="bae855a2">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        Affected versions: 1.3.0-gke.16
+       </strong>
+      </p>
+      <p>
+       If you configured a proxy in the
+       <code dir="ltr" translate="no">
+        config.yaml
+       </code>
+       and also used a bundle other than the full bundle
+  (
+       <a href="http://cloud.google.com/anthos/gke/docs/on-prem/how-to/install-static-ips?hl=fr#bundlepath">
+        static IP
+       </a>
+       |
+       <a href="http://cloud.google.com/anthos/gke/docs/on-prem/how-to/install-dhcp?hl=fr#bundlepath">
+        DHCP
+       </a>
+       ), you must append the
+       <code dir="ltr" translate="no">
+        --fast
+       </code>
+       flag to run
+       <code dir="ltr" translate="no">
+        gkectl check-config
+       </code>
+       . For example:
+       <code dir="ltr" translate="no">
+        gkectl check-config --config config.yaml --fast
+       </code>
+       .
+      </p>
+     </div>
+     <div class="release-issue" id="ce8327b4">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       Running the 1.3 version of the
+       <a href="http://cloud.google.com/anthos/gke/docs/on-prem/reference/gkectl/diagnose?hl=fr">
+        <code dir="ltr" translate="no">
+         gkectl diagnose
+        </code>
+       </a>
+       command might fail if your clusters:
+      </p>
+      <ul>
+       <li>
+        Are older than Anthos GKE on-prem version 1.3.
+       </li>
+       <li>
+        Include manually installed add-ons in the
+        <code dir="ltr" translate="no">
+         kube-system
+        </code>
+        namespace.
+       </li>
+      </ul>
+     </div>
+     <h2 data-text="February 21, 2020" id="February_21_2020" tabindex="0">
+      February 21, 2020
+     </h2>
+     <div class="release-feature" id="7fd4f11f">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GKE on-prem version 1.2.2-gke.2 is now available. To upgrade, see
+       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=fr">
+        Upgrading GKE on-prem
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="81e3d8e0">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Improved
+       <code dir="ltr" translate="no">
+        gkectl check-config
+       </code>
+       to validate any valid Google Cloud service accounts regardless of whether an IAM role is set.
+      </p>
+     </div>
+     <div class="release-changed" id="3013e8f5">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       You need to use vSphere provider version 1.15 when using
+       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/admin-workstation?hl=fr#copy_terraform">
+        Terraform to create the admin workstation
+       </a>
+       . vSphere provider version 1.16 introduces
+       <a href="https://github.com/terraform-providers/terraform-provider-vsphere/issues/966">
+        breaking changes
+       </a>
+       that would affect all Anthos versions.
+      </p>
+     </div>
+     <div class="release-changed" id="a8ad7633">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Skip the preflight check when resuming cluster creation/upgrade.
+      </p>
+     </div>
+     <div class="release-fixed" id="8cee39d6">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Resolved a known issue of cluster upgrade when using a vSAN datastore associated with a GKE on-prem version before 1.2
+      </p>
+     </div>
+     <div class="release-fixed" id="50d523f8">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Resolved the following warning when uploading an OS image with the
+       <a href="https://www.vmware.com/support/orchestrator/doc/vro-vsphere65-api/html/VcVirtualMachineVideoCard.html">
+        enableMPTSupport
+       </a>
+       configuration flag set. This flag is used to indicate whether the virtual video card supports mediated passthrough.
+      </p>
+      <p>
+       <code dir="ltr" translate="no">
+        Warning: Line 102: Unable to parse 'enableMPTSupport' for attribute 'key' on element 'Config'.
+       </code>
+      </p>
+     </div>
+     <div class="release-fixed" id="7b2408ef">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixed the BigQuery API service name for the preflight check service requirements validation.
+      </p>
+     </div>
+     <div class="release-fixed" id="4b919b9b">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixed the preflight check to correctly validate the default resource pool in the case where the
+       <code dir="ltr" translate="no">
+        resourcepool
+       </code>
+       field in the GKE on-prem configuration file is empty.
+      </p>
+     </div>
+     <div class="release-fixed" id="061bc799">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixed a comment about the
+       <code dir="ltr" translate="no">
+        workernode.replicas
+       </code>
+       field in the GKE on-prem
+       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/reference/config?hl=fr">
+        configuration file
+       </a>
+       to say that the minimum number of worker nodes is three.
+      </p>
+     </div>
+     <div class="release-fixed" id="c4aafeb2">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixed
+       <code dir="ltr" translate="no">
+        gktctl prepare
+       </code>
+       to skip checking the data disk.
+      </p>
+     </div>
+     <div class="release-fixed" id="3d46ee0d">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixed
+       <code dir="ltr" translate="no">
+        gktctl check-config
+       </code>
+       so that it cleans up F5 BIG-IP resources on exit.
+      </p>
+     </div>
+     <h2 data-text="January 31, 2020" id="January_31_2020" tabindex="0">
+      January 31, 2020
+     </h2>
+     <div class="release-feature" id="dd84e2b8">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GKE on-prem version 1.2.1-gke.4 is now available. To upgrade, see
+       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=fr">
+        Upgrading GKE on-prem
+       </a>
+       .
+      </p>
+      <p>
+       This patch version includes the following changes:
+      </p>
+     </div>
+     <div class="release-feature" id="3c9be85f">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Adds
+       <code dir="ltr" translate="no">
+        searchdomainsfordns
+       </code>
+       field to static IPs host configuration file.
+       <code dir="ltr" translate="no">
+        searchdomainsfordns
+       </code>
+       is an array of DNS search domains to use in the cluster. These domains are used as part of a domain search list.
+      </p>
+     </div>
+     <div class="release-feature" id="0ae1e005">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Adds a
+       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/preflight-checks?hl=fr#list">
+        preflight check
+       </a>
+       that validates an NTP server is available.
+      </p>
+     </div>
+     <div class="release-feature" id="e4ae2621">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <code dir="ltr" translate="no">
+        gkectl check-config
+       </code>
+       now automatically uploads GKE on-prem's node OS image to vSphere. You no longer need to run
+       <code dir="ltr" translate="no">
+        gkectl prepare
+       </code>
+       before
+       <code dir="ltr" translate="no">
+        gkectl check-config
+       </code>
+       .
+      </p>
+     </div>
+     <div class="release-feature" id="7e7a58bd">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Adds a
+       <code dir="ltr" translate="no">
+        --cleanup
+       </code>
+       flag for
+       <code dir="ltr" translate="no">
+        gkectl check-config
+       </code>
+       . The flag's default value is
+       <code dir="ltr" translate="no">
+        true
+       </code>
+       .
+      </p>
+      <p>
+       Passing in
+       <code dir="ltr" translate="no">
+        --cleanup=false
+       </code>
+       preserves the test VM and associated SSH keys that
+       <code dir="ltr" translate="no">
+        gkectl check-config
+       </code>
+       creates for its preflight checks. Preserving the VM can be helpful for debugging.
+      </p>
+     </div>
+     <div class="release-fixed" id="7be59fc4">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixes a
+       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/preflight-checks?hl=fr#known_issue">
+        known issue
+       </a>
+       from 1.2.0-gke.6 that prevented
+       <code dir="ltr" translate="no">
+        gkectl check-config
+       </code>
+       from performing all of its validations against clusters in nested resource pools or the default resource pool.
+      </p>
+     </div>
+     <div class="release-fixed" id="974735b4">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixes an issue that caused F5 BIG-IP VIP validation to fail due to timing out. The timeout window for F5 BIG-IP VIP validation is now longer.
+      </p>
+     </div>
+     <div class="release-fixed" id="32bfb010">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixes an issue that caused cluster upgrades to overwrite changes to add-on configurations.
+      </p>
+     </div>
+     <div class="release-fixed" id="42a54260">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixes the
+       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/release-notes?hl=fr#January_28_2020">
+        known issue
+       </a>
+       from 1.2.0-gke.6 that affects routing updates due to the route reflector configuration.
+      </p>
+     </div>
+     <h2 data-text="January 28, 2020" id="January_28_2020" tabindex="0">
+      January 28, 2020
+     </h2>
+     <div class="release-issue" id="86ad0cee">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        Affected versions:
+       </strong>
+       1.2.0-gke.6
+      </p>
+      <p>
+       In some cases, certain nodes in a user cluster fail to get routing updates from the route reflector. Consequently Pods on a node may not be able to communicate with Pods on other nodes. One possible symptom is a
+       <code dir="ltr" translate="no">
+        kube-dns
+       </code>
+       resolution error.
+      </p>
+      <p>
+       To work around this issue, follow these steps to create a BGPPeer object in your user cluster.
+      </p>
+      <p>
+       Save the following BGPPeer manifest as
+       <code dir="ltr" translate="no">
+        full-mesh.yaml
+       </code>
+       :
+      </p>
+      <pre class="prettyprint" dir="ltr" translate="no"><code dir="ltr" translate="no">apiVersion: crd.projectcalico.org/v1
+kind: BGPPeer
+metadata:
+  name: full-mesh
+spec:
+  nodeSelector: "!has(route-reflector)"
+  peerSelector: "!has(route-reflector)" 
+</code></pre>
+      <p>
+       Create the BGPPeer in your user cluster:
+      </p>
+      <p>
+       <code dir="ltr" translate="no">
+        kubectl --kubeconfig [USER_CLUSTER_KUBECONFIG] apply -f full-mesh.yaml
+       </code>
+      </p>
+      <p>
+       Verify that the
+       <code dir="ltr" translate="no">
+        full-mesh
+       </code>
+       BGPPeer was created:
+      </p>
+      <p>
+       <code dir="ltr" translate="no">
+        kubectl --kubeconfig [USER_CLUSTER_KUBECONFIG] get bgppeer
+       </code>
+      </p>
+      <p>
+       The output shows
+       <code dir="ltr" translate="no">
+        full-mesh
+       </code>
+       in the list of BGPPeers:
+      </p>
+      <pre class="prettyprint" dir="ltr" translate="no"><code dir="ltr" translate="no">NAME            AGE
+  full-mesh       61s
+  gke-group-1     3d21h
+  ...
+</code></pre>
+      <p>
+       This issue will be fixed in version 1.2.1.
+      </p>
+     </div>
+     <h2 data-text="January 03, 2020" id="January_03_2020" tabindex="0">
+      January 03, 2020
+     </h2>
+     <div class="release-issue" id="6ae4b71a">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        Affected versions:
+       </strong>
+       1.1.0-gke.6 and later
+      </p>
+      <p>
+       Starting with
+       <a href="https://cloud.google.com/gke-on-prem/docs/release-notes?hl=fr#september_26_2019">
+        version 1.1.0-gke.6
+       </a>
+       , the
+       <code dir="ltr" translate="no">
+        gkeconnect.proxy
+       </code>
+       field is no longer in the GKE on-prem
+       <a href="https://cloud.google.com/gke-on-prem/docs/reference/config?hl=fr">
+        configuration file
+       </a>
+       .
+      </p>
+      <p>
+       If you include
+       <code dir="ltr" translate="no">
+        gkeconnect.proxy
+       </code>
+       in the configuration file, the
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/preflight-checks?hl=fr">
+        <code dir="ltr" translate="no">
+         gkectl check-config
+        </code>
+       </a>
+       command can fail with this error:
+      </p>
+      <pre class="prettyprint" dir="ltr" translate="no"><code dir="ltr" translate="no">[FAILURE] Config: Could not parse config file: error unmarshaling JSON: 
+while decoding JSON: json: unknown field "proxy"
+</code></pre>
+      <p>
+       To correct this issue, remove
+       <code dir="ltr" translate="no">
+        gkeconnect.proxy
+       </code>
+       from the configuration file.
+      </p>
+      <p>
+       In versions prior to 1.1.0-gke.6, the Connect Agent used the proxy server specified in
+       <code dir="ltr" translate="no">
+        gkeconnect.proxy
+       </code>
+       . Starting with version 1.1.0-gke.6, the Connect Agent uses the proxy server specified in the global
+       <code dir="ltr" translate="no">
+        proxy
+       </code>
+       field.
+      </p>
+     </div>
+     <h2 data-text="December 20, 2019" id="December_20_2019" tabindex="0">
+      December 20, 2019
+     </h2>
+     <div class="release-changed" id="5b63ef6f">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <strong>
+        Warning:
+       </strong>
+       If you installed GKE on-prem versions before 1.2, and you use a vSAN datastore, you should contact Google Support before attempting an upgrade to 1.2.0-gke.6.
+      </p>
+      <p>
+       GKE on-prem version 1.2.0-gke.6 is now available. To upgrade, see
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/upgrading?hl=fr">
+        Upgrading GKE on-prem
+       </a>
+       .
+      </p>
+      <p>
+       This minor version includes the following changes:
+      </p>
+     </div>
+     <div class="release-feature" id="a432036f">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       The default Kubernetes version for cluster nodes is now version 1.14.7-gke.24 (previously 1.13.7-gke.20).
+      </p>
+     </div>
+     <div class="release-feature" id="2abacf1f">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GKE on-prem now supports vSphere 6.7 Update 3.
+       <a href="https://docs.vmware.com/en/VMware-vSphere/6.7/rn/vsphere-vcenter-server-67u3-release-notes.html">
+        Read its release notes.
+       </a>
+      </p>
+     </div>
+     <div class="release-feature" id="e6dd3d08">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GKE on-prem now supports
+       <a href="https://cloud.google.com/gke-on-prem/docs/concepts/networking?hl=fr#support_for_vmware_nsx-t">
+        VMware NSX-T version 2.4.2
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-feature" id="b736fc06">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Any user cluster, even your first use cluster, can now use a datastore that is separate from the admin cluster's datastore. If you specify a separate datastore for a user cluster, the user cluster nodes, PersistentVolumes (PVs) for the user cluster nodes, user control plane VMs, and PVs for the user control plane VMs all use the separate datastore.
+      </p>
+     </div>
+     <div class="release-feature" id="cfdb7bbf">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Expanded
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/preflight-checks?hl=fr">
+        preflight checks
+       </a>
+       for validating your GKE on-prem configuration file before your create your clusters. These new checks can validate that your Google Cloud project, vSphere network, and other elements of your environment are correctly configured.
+      </p>
+     </div>
+     <div class="release-feature" id="bb197fb5">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Published
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/install-overview-basic?hl=fr">
+        basic installation
+       </a>
+       workflow. This workflow offers a simplified workflow for quickly installing GKE on-prem using static IPs.
+      </p>
+     </div>
+     <div class="release-feature" id="f6026935">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Published guidelines for
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/install-csi-driver?hl=fr">
+        installing Container Storage Interface
+       </a>
+       (CSI) drivers. CSI enables using storage devices not natively supported by Kubernetes.
+      </p>
+     </div>
+     <div class="release-feature" id="e61f01fc">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Updated documentation for
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/oidc?hl=fr">
+        authenticating using OpenID Connect (OIDC)
+       </a>
+       with the Anthos Plugin for Kubectl. GKE on-prem's OIDC integration is now generally available.
+      </p>
+     </div>
+     <div class="release-changed" id="64e655fd">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       From the admin workstation, gcloud now requires that you log in to gcloud with a Google Cloud user account. The user account should have at least the Viewer IAM role in all Google Cloud projects associated with your clusters.
+      </p>
+     </div>
+     <div class="release-changed" id="a25cf7e9">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       You can now create admin and user clusters separately from one another.
+      </p>
+     </div>
+     <div class="release-fixed" id="37603b40">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixes an issue that prevented resuming cluster creation for HA user clusters.
+      </p>
+     </div>
+     <div class="release-issue" id="5cdb5db6">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        Affected versions:
+       </strong>
+       1.1.0-gke.6, 1.2.0-gke.6
+      </p>
+      <p>
+       The
+       <code dir="ltr" translate="no">
+        stackdriver.proxyconfigsecretname
+       </code>
+       field was removed in version 1.1.0-gke.6. GKE on-prem's preflight checks will return an error if the field is present in your configuration file.
+      </p>
+      <p>
+       To work around this, before you install or upgrade to 1.2.0-gke.6, delete the
+       <code dir="ltr" translate="no">
+        proxyconfigsecretname
+       </code>
+       field from your configuration file.
+      </p>
+     </div>
+     <div class="release-issue" id="28e7294a">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        Affected versions:
+       </strong>
+       1.2.0-6-gke.6
+      </p>
+      <p>
+       In user clusters, Prometheus and Grafana get automatically disabled during upgrade. However, the configuration and metrics data are not lost. In admin clusters, Prometheus and Grafana stay enabled.
+      </p>
+      <p>
+       To work around this issue, after the upgrade, open
+       <code dir="ltr" translate="no">
+        monitoring-sample
+       </code>
+       for editing and set
+       <code dir="ltr" translate="no">
+        enablePrometheus
+       </code>
+       to
+       <code dir="ltr" translate="no">
+        true
+       </code>
+       :
+      </p>
+      <p>
+       1.
+       <code dir="ltr" translate="no">
+        kubectl edit monitoring --kubeconfig [USER_CLUSTER_KUBECONFIG] \ -n kube-system monitoring-sample
+       </code>
+      </p>
+      <p>
+       2.
+Set the field
+       <code dir="ltr" translate="no">
+        enablePrometheus
+       </code>
+       to
+       <code dir="ltr" translate="no">
+        true
+       </code>
+       .
+      </p>
+     </div>
+     <div class="release-issue" id="c7f2f63d">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        Affected versions:
+       </strong>
+       All versions
+      </p>
+      <p>
+       Before version 1.2.0-gke.6, a known issue prevents Stackdriver from updating its configuration after cluster upgrades. Stackdriver still references an old version, which prevents Stackdriver from receiving the latest features of its telemetry pipeline. This issue can make it difficult for Google Support to troubleshoot clusters.
+      </p>
+      <p>
+       After you upgrade clusters to 1.2.0-gke.6, run the following command against admin and user clusters:
+      </p>
+      <pre class="prettyprint" dir="ltr" translate="no"><code dir="ltr" translate="no">kubectl --kubeconfig=[KUBECONFIG] \
+-n kube-system --type=json patch stackdrivers stackdriver \
+-p '[{"op":"remove","path":"/spec/version"}]'
+</code></pre>
+      <p>
+       where
+       <strong>
+        [KUBECONFIG]
+       </strong>
+       is the path to the cluster's kubeconfig file.
+      </p>
+     </div>
+     <h2 data-text="November 19, 2019" id="November_19_2019" tabindex="0">
+      November 19, 2019
+     </h2>
+     <div class="release-feature" id="80aae480">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GKE On-Prem version 1.1.2-gke.0 is now available. To download version 1.1.2-gke.0's OVA,
+       <code dir="ltr" translate="no">
+        gkectl
+       </code>
+       , and upgrade bundle, see
+       <a href="https://cloud.google.com/gke-on-prem/docs/downloads?hl=fr#latest">
+        Downloads
+       </a>
+       . Then, see
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/upgrading?hl=fr">
+        Upgrading admin workstation
+       </a>
+       and
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/upgrading?hl=fr">
+        Upgrading clusters
+       </a>
+       .
+      </p>
+      <p>
+       This patch version includes the following changes:
+      </p>
+     </div>
+     <div class="release-feature" id="419e7680">
+      <strong>
+       FEATURE:
+      </strong>
+      <h3 data-text="New Features" id="new_features" tabindex="0">
+       New Features
+      </h3>
+     </div>
+     <div class="release-feature" id="baba9d5d">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Published
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/security/hardening-your-cluster?hl=fr">
+        Hardening your cluster
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-feature" id="8528e36d">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Published
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/administration/managing-clusters?hl=fr">
+        Managing clusters
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-fixed" id="ef880a8e">
+      <strong>
+       FIXED:
+      </strong>
+      <h3 data-text="Fixes" id="fixes" tabindex="0">
+       Fixes
+      </h3>
+     </div>
+     <div class="release-fixed" id="54842f31">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixed the known issue from
+       <a href="#vsan-datadisk-issue">
+        November 5
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-fixed" id="62706d83">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixed the known issue from
+       <a href="#docker-registry-issue">
+        November 8
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-issue" id="6dc7f301">
+      <strong>
+       ISSUE:
+      </strong>
+      <h3 data-text="Known Issues" id="known_issues" tabindex="0">
+       Known Issues
+      </h3>
+     </div>
+     <div class="release-issue" id="39fa81f3">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       If you are running multiple data centers in vSphere, running
+       <code dir="ltr" translate="no">
+        gkectl diagnose cluster
+       </code>
+       might return the following error, which you can safely ignore:
+      </p>
+      <p>
+       <code dir="ltr" translate="no">
+        Checking storage...FAIL
+path '*' resolves to multiple datacenters
+       </code>
+      </p>
+     </div>
+     <div class="release-issue" id="dc5977fd">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       If you are running a vSAN datastore, running
+       <code dir="ltr" translate="no">
+        gkectl diagnose cluster
+       </code>
+       might return the following error, which you can safely ignore:
+      </p>
+      <p>
+       <code dir="ltr" translate="no">
+        PersistentVolume [NAME]: virtual disk "[[DATASTORE_NAME]]
+[PVC]" IS NOT attached to machine "[MACHINE_NAME]" but IS listed in the Node.Status
+       </code>
+      </p>
+     </div>
+     <h2 data-text="November 08, 2019" id="November_08_2019" tabindex="0">
+      November 08, 2019
+     </h2>
+     <div class="release-issue" id="78918d80">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       In GKE On-Prem version 1.1.1-gke.2, a known issue prevents creation of clusters configured to use a Docker registry. You configure a Docker registry by populating the GKE On-Prem configuration file's
+       <code dir="ltr" translate="no">
+        privateregistryconfig
+       </code>
+       field. Cluster creation fails with an error such as
+       <code dir="ltr" translate="no">
+        Failed to create root cluster: could not create external client: could not create external control plane: docker run error: exit status 125
+       </code>
+      </p>
+      <p>
+       A fix is targeted for version 1.1.2. In the meantime, if you want to create a cluster configured to use a Docker registry, pass in the
+       <code dir="ltr" translate="no">
+        --skip-validation-docker
+       </code>
+       flag to
+       <code dir="ltr" translate="no">
+        gkectl create cluster
+       </code>
+       .
+      </p>
+     </div>
+     <h2 data-text="November 05, 2019" id="November_05_2019" tabindex="0">
+      November 05, 2019
+     </h2>
+     <div class="release-issue" id="42245398">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       GKE On-Prem's configuration file has a field,
+       <code dir="ltr" translate="no">
+        vcenter.datadisk
+       </code>
+       , which looks for a path to a virtual machine disk (VMDK) file. During installation, you choose a name for the VMDK. By default, GKE On-Prem creates a VMDK and saves it to the root of your vSphere datastore.
+      </p>
+      <p>
+       If you are using a vSAN datastore, you need to create a folder in the datastore in which to save the VMDK. You provide the full path to the field—for example,
+       <code dir="ltr" translate="no">
+        datadisk: gke-on-prem/datadisk.vmdk
+       </code>
+       —and GKE On-Prem saves the VMDK in that folder.
+      </p>
+      <p>
+       When you create the folder, vSphere assigns the folder a universally unique identifier (UUID). Although you provide the folder path to the GKE On-Prem config, the vSphere API looks for the folder's UUID. Currently, this mismatch can cause cluster creation and upgrades to fail.
+      </p>
+      <p>
+       A fix is targeted for version 1.1.2. In the meantime, you need to provide the folder's UUID instead of the folder's path. Follow the workaround instructions currently available in the
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/administration/upgrading-clusters?hl=fr#admin_datadisk_folder">
+        upgrading clusters
+       </a>
+       and installation topics.
+      </p>
+     </div>
+     <h2 data-text="October 25, 2019" id="October_25_2019" tabindex="0">
+      October 25, 2019
+     </h2>
+     <div class="release-feature" id="d109355a">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GKE On-Prem version 1.1.1-gke.2 is now available. To download version 1.1.1-gke.2's OVA,
+       <code dir="ltr" translate="no">
+        gkectl
+       </code>
+       , and upgrade bundle, see
+       <a href="https://cloud.google.com/gke-on-prem/docs/downloads?hl=fr#latest">
+        Downloads
+       </a>
+       . Then, see
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/upgrading?hl=fr">
+        Upgrading admin workstation
+       </a>
+       and
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/upgrading?hl=fr">
+        Upgrading clusters
+       </a>
+       .
+      </p>
+      <p>
+       This patch version includes the following changes:
+      </p>
+     </div>
+     <div class="release-feature" id="9e1a14ea">
+      <strong>
+       FEATURE:
+      </strong>
+      <h3 data-text="New Features" id="new_features" tabindex="0">
+       New Features
+      </h3>
+     </div>
+     <div class="release-feature" id="d625bdbd">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <strong>
+        Action required:
+       </strong>
+       This version upgrades the minimum
+       <code dir="ltr" translate="no">
+        gcloud
+       </code>
+       version on the admin workstation to 256.0.0. You should
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/administration/upgrading-admin-workstation?hl=fr">
+        upgrade your admin workstation
+       </a>
+       . Then, you should
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/administration/upgrading-clusters?hl=fr">
+        upgrade your clusters
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-feature" id="7b7b3b5d">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       The open source
+       <a href="https://github.com/coreos/toolbox">
+        CoreOS toolbox
+       </a>
+       is now included in all GKE On-Prem cluster nodes. This suite of tools is useful for troubleshooting node issues. See
+       <a href="https://cloud.google.com/gke-on-prem/docs/support/toolbox?hl=fr">
+        Debugging node issues using toolbox
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-fixed" id="5293242b">
+      <strong>
+       FIXED:
+      </strong>
+      <h3 data-text="Fixes" id="fixes" tabindex="0">
+       Fixes
+      </h3>
+     </div>
+     <div class="release-fixed" id="1c3cfeb2">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixed an issue that prevented clusters configured with OIDC from being upgraded.
+      </p>
+     </div>
+     <div class="release-fixed" id="35214f21">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixed
+       <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11253">
+        CVE-2019-11253
+       </a>
+       described in
+       <a href="https://cloud.google.com/gke-on-prem/docs/security-bulletins?hl=fr#october-16-2019">
+        Security bulletins
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-fixed" id="8460efd4">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixed an issue that caused cluster metrics to be lost due to a lost connection to Google Cloud. When a GKE On-Prem cluster's connection to Google Cloud is lost for a period of time, that cluster's metrics are now fully recovered.
+      </p>
+     </div>
+     <div class="release-fixed" id="60959082">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixed an issue that caused ingestion of admin cluster metrics to be slower than ingesting user cluster metrics.
+      </p>
+     </div>
+     <div class="release-issue" id="82817114">
+      <strong>
+       ISSUE:
+      </strong>
+      <h3 data-text="Known Issues" id="known_issues" tabindex="0">
+       Known Issues
+      </h3>
+     </div>
+     <div class="release-issue" id="2f45f3c0">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       For user clusters that are using static IPs and a different network than their admin cluster: If you overwrite the user cluster's network configuration, the user control plane might not be able to start. This occurs because it's using the user cluster's network, but allocates an IP address and gateway from the admin cluster.
+      </p>
+      <p>
+       As a workaround, you can update each user control plane's MachineDeployment specification to use the correct network. Then, delete each user control plane Machine, causing the MachineDeployment to create new Machines:
+      </p>
+      <ol>
+       <li>
+        <h4 data-text="List MachineDeployments in the admin cluster" id="list_machinedeployments_in_the_admin_cluster" tabindex="0">
+         List MachineDeployments in the admin cluster
+        </h4>
+        <pre class="prettyprint" dir="ltr" translate="no"><code dir="ltr" translate="no">kubectl get machinedeployments --kubeconfig [ADMIN_CLUSTER_KUBECONFIG]
+</code></pre>
+       </li>
+       <li>
+        <h4 data-text="Update a user control plane MachineDeployment from your shell" id="update_a_user_control_plane_machinedeployment_from_your_shell" tabindex="0">
+         Update a user control plane MachineDeployment from your shell
+        </h4>
+        <pre class="prettyprint" dir="ltr" translate="no"><code dir="ltr" translate="no">kubectl edit machinedeployment --kubeconfig [ADMIN_CLUSTER_KUBECONFIG] [MACHINEDEPLOYMENT_NAME]
+</code></pre>
+       </li>
+       <li>
+        <h4 data-text="List Machines in the admin cluster" id="list_machines_in_the_admin_cluster" tabindex="0">
+         List Machines in the admin cluster
+        </h4>
+        <pre class="prettyprint" dir="ltr" translate="no"><code dir="ltr" translate="no">kubectl get machines --kubeconfig [ADMIN_CLUSTER_KUBECONFIG]
+</code></pre>
+       </li>
+       <li>
+        <h4 data-text="Delete user control plane Machines in the admin cluster" id="delete_user_control_plane_machines_in_the_admin_cluster" tabindex="0">
+         Delete user control plane Machines in the admin cluster
+        </h4>
+        <pre class="prettyprint" dir="ltr" translate="no"><code dir="ltr" translate="no">kubectl delete machines --kubeconfig [ADMIN_CLUSTER_KUBECONFIG] [MACHINE_NAME]
+</code></pre>
+       </li>
+      </ol>
+     </div>
+     <h2 data-text="September 26, 2019" id="September_26_2019" tabindex="0">
+      September 26, 2019
+     </h2>
+     <div class="release-feature" id="e2c005e8">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GKE On-Prem version 1.1.0-gke.6 is now available. To download version 1.1.0-gke.6's
+       <code dir="ltr" translate="no">
+        gkectl
+       </code>
+       and upgrade bundle, see
+       <a href="https://cloud.google.com/gke-on-prem/docs/downloads?hl=fr#latest">
+        Downloads
+       </a>
+       . Then, see
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/upgrading?hl=fr">
+        Upgrading clusters
+       </a>
+       .
+      </p>
+      <p>
+       This minor version includes the following changes:
+      </p>
+     </div>
+     <div class="release-feature" id="eb503b16">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       The default Kubernetes version for cluster nodes is now version 1.13.7-gke.20 (previously 1.12.7-gke.19).
+      </p>
+     </div>
+     <div class="release-feature" id="2d08825f">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <strong>
+        Action required:
+       </strong>
+       As of version 1.1.0-gke.6, GKE On-Prem now creates vSphere
+       <a href="https://www.vmware.com/products/vsphere/drs-dpm.html">
+        Distributed Resource Scheduler (DRS)
+       </a>
+       rules for your user cluster's nodes (vSphere VMs), causing them to be spread across at least three physical hosts in your datacenter.
+      </p>
+      <p>
+       <strong>
+        This feature is enabled by default for all new and existing user clusters running version 1.1.0-gke.6.
+       </strong>
+      </p>
+      <p>
+       The feature requires that your vSphere environment meets the following conditions:
+      </p>
+      <ul>
+       <li>
+        VMware DRS must be enabled. VMware DRS requires vSphere Enterprise Plus license edition. To learn how to enable DRS, see
+        <a href="https://kb.vmware.com/s/article/1034280">
+         Enabling VMware DRS in a cluster
+        </a>
+        .
+       </li>
+       <li>
+        The vSphere user account provided in your GKE On-Prem configuration file's
+        <code dir="ltr" translate="no">
+         vcenter
+        </code>
+        field must have the
+        <code dir="ltr" translate="no">
+         Host.Inventory.EditCluster
+        </code>
+        permission.
+       </li>
+       <li>
+        There are at least three physical hosts available.
+       </li>
+      </ul>
+      <p>
+       If you
+       <em>
+        do not
+       </em>
+       want to enable this feature for your existing user clusters—for example, if you don't have enough hosts to accommdate the feature—perform the following steps
+       <em>
+        before
+       </em>
+       you upgrade your user clusters:
+      </p>
+      <ol>
+       <li>
+        Open your existing GKE On-Prem configuration file.
+       </li>
+       <li>
+        <p>
+         Under the
+         <code dir="ltr" translate="no">
+          usercluster
+         </code>
+         specification, add the
+         <code dir="ltr" translate="no">
+          antiaffinitygroups
+         </code>
+         field as described in the
+         <a href="https://cloud.google.com/gke-on-prem/docs/how-to/installation/install?hl=fr#antiaffinitygroups">
+          <code dir="ltr" translate="no">
+           antiaffinitygroups
+          </code>
+          documentation
+         </a>
+         :
+         <code dir="ltr" translate="no">
+          usercluster:
+          ...
+          antiaffinitygroups:
+            enabled: false
+         </code>
+        </p>
+       </li>
+       <li>
+        <p>
+         Save the file.
+        </p>
+       </li>
+       <li>
+        <p>
+         Use the configuration file to upgrade. Your clusters are upgraded, but the feature is not enabled.
+        </p>
+       </li>
+      </ol>
+     </div>
+     <div class="release-feature" id="a67bc8d1">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       You can now set the
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/administration/default-storage-class?hl=fr">
+        default storage class
+       </a>
+       for your clusters.
+      </p>
+     </div>
+     <div class="release-feature" id="02d6209b">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       You can now use
+       <a href="https://github.com/container-storage-interface/spec">
+        Container Storage Interface (CSI) 1.0
+       </a>
+       as a storage class for your clusters.
+      </p>
+     </div>
+     <div class="release-feature" id="3e3b4149">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       You can now
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/administration/deleting-a-user-cluster?hl=fr#delete_unhealthy_cluster">
+        delete broken or unhealthy user clusters
+       </a>
+       with
+       <code dir="ltr" translate="no">
+        gkectl delete cluster --force
+       </code>
+      </p>
+     </div>
+     <div class="release-feature" id="42303231">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       You can now
+       <a href="https://cloud.google.com/gke-on-prem/docs/support/debug-toolbox?hl=fr">
+        diagnose node issues
+       </a>
+       using the
+       <code dir="ltr" translate="no">
+        debug-toolbox
+       </code>
+       container image.
+      </p>
+     </div>
+     <div class="release-feature" id="6ec98307">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       You can now
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/installation/install?hl=fr#skip_validate">
+        skip validatations
+       </a>
+       run by
+       <code dir="ltr" translate="no">
+        gkectl
+       </code>
+       commands.
+      </p>
+     </div>
+     <div class="release-feature" id="2d56ff2e">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       The tarball that
+       <code dir="ltr" translate="no">
+        gkectl diagnose snapshot
+       </code>
+       creates now includes a log of the command's output by default.
+      </p>
+     </div>
+     <div class="release-feature" id="43c21f62">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Adds
+       <code dir="ltr" translate="no">
+        gkectl diagnose snapshot
+       </code>
+       flag
+       <code dir="ltr" translate="no">
+        --seed-config
+       </code>
+       . When you pass the flag, it includes your clusters' GKE On-Prem configuration file in the tarball procduced by
+       <code dir="ltr" translate="no">
+        snapshot
+       </code>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="261827a8">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       The
+       <code dir="ltr" translate="no">
+        gkeplatformversion
+       </code>
+       field has been removed from the GKE On-Prem configuration file. To specify a cluster's version, provide the version's bundle to the
+       <code dir="ltr" translate="no">
+        bundlepath
+       </code>
+       field.
+      </p>
+     </div>
+     <div class="release-changed" id="85e3fa42">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       You need to add the vSphere permission,
+       <code dir="ltr" translate="no">
+        Host.Inventory.EditCluster
+       </code>
+       , before you can use
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/installation/install?hl=fr#antiaffinitygroups">
+        <code dir="ltr" translate="no">
+         antiaffinitygroups
+        </code>
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="9fbc8496">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       You now specify a configuration file in
+       <code dir="ltr" translate="no">
+        gkectl diagnose snapshot
+       </code>
+       by passing the
+       <code dir="ltr" translate="no">
+        --snapshot-config
+       </code>
+       (previously
+       <code dir="ltr" translate="no">
+        --config
+       </code>
+       ). See
+       <a href="https://cloud.google.com/gke-on-prem/docs/support/diagnose?hl=fr#diagnose_snapshot">
+        Diagnosing cluster issues
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="450e4b8a">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       You now capture your cluster's configuration file with
+       <code dir="ltr" translate="no">
+        gkectl diagnose snapshot
+       </code>
+       by passing
+       <code dir="ltr" translate="no">
+        --snapshot-config
+       </code>
+       (previously
+       <code dir="ltr" translate="no">
+        --config
+       </code>
+       ). See
+       <a href="https://cloud.google.com/gke-on-prem/docs/support/diagnose?hl=fr#diagnose_snapshot">
+        Diagnosing cluster issues
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="c62fef44">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <code dir="ltr" translate="no">
+        gkectl diagnose
+       </code>
+       commands now return an error if you provide a user cluster's kubeconfig, rather than an admin cluster's kubeconfig.
+      </p>
+     </div>
+     <div class="release-changed" id="21358252">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Cloud Console now notifies you when an upgrade is available for a registered user cluster.
+      </p>
+     </div>
+     <div class="release-issue" id="0fb5fff0">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       A known issue prevents version 1.0.11, 1.0.1-gke.5, and 1.0.2-gke.3 clusters using OIDC from being upgraded to version 1.1. A fix is targeted for version 1.1.1. If you configured a version 1.0.11, 1.0.1-gke.5, or 1.0.2-gke.3 cluster with OIDC, you are not able to upgrade it. Create a version 1.1 cluster by following
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/installation/install?hl=fr">
+        Installing GKE On-Prem
+       </a>
+       .
+      </p>
+     </div>
+     <h2 data-text="August 22, 2019" id="August_22_2019" tabindex="0">
+      August 22, 2019
+     </h2>
+     <div class="release-feature" id="7e3db6bd">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GKE On-Prem version 1.0.2-gke.3 is now available. This patch release includes the following changes:
+      </p>
+     </div>
+     <div class="release-feature" id="7893155e">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Seesaw is now supported for manual load balancing.
+      </p>
+     </div>
+     <div class="release-feature" id="105b8bf4">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       You can now specify a different vSphere network for admin and user clusters.
+      </p>
+     </div>
+     <div class="release-feature" id="809d90a0">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       You can now delete user clusters using
+       <code dir="ltr" translate="no">
+        gkectl
+       </code>
+       . See
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/administration/deleting-a-user-cluster?hl=fr">
+        Deleting a user cluster
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="a1172269">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <code dir="ltr" translate="no">
+        gkectl diagnose snapshot
+       </code>
+       now gets logs from the user cluster control planes.
+      </p>
+     </div>
+     <div class="release-changed" id="791d0372">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       GKE On-Prem OIDC specification has been updated with several new fields:
+       <code dir="ltr" translate="no">
+        kubectlredirecturl
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        scopes
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        extraparams
+       </code>
+       , and
+       <code dir="ltr" translate="no">
+        usehttpproxy
+       </code>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="980c7066">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Calico updated to version 3.7.4.
+      </p>
+     </div>
+     <div class="release-changed" id="fc1f04dd">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Stackdriver Monitoring's system metrics prefixed changed from
+       <code dir="ltr" translate="no">
+        external.googleapis.com/prometheus/
+       </code>
+       to
+       <code dir="ltr" translate="no">
+        kubernetes.io/anthos/
+       </code>
+       . If you are tracking metrics or alerts, update your dashbaords with the next prefix.
+      </p>
+     </div>
+     <div class="release-fixed" id="3a481c72">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       <a href="https://cloud.google.com/gke-on-prem/docs/security-bulletins?hl=fr#august-22-2019">
+        Fixed a vulnerability from CVE-2019-11247
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-fixed" id="f695b70e">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       <a href="https://cloud.google.com/gke-on-prem/docs/security-bulletins?hl=fr#august-23-2019">
+        Fixed a vulnerability in RBAC proxy
+       </a>
+       .
+      </p>
+     </div>
+     <h2 data-text="July 30, 2019" id="July_30_2019" tabindex="0">
+      July 30, 2019
+     </h2>
+     <div class="release-feature" id="0ee69e83">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GKE On-Prem version 1.0.1-gke.5 is now available. This patch release includes the following changes:
+      </p>
+     </div>
+     <div class="release-feature" id="267938c6">
+      <strong>
+       FEATURE:
+      </strong>
+      <h3 data-text="New Features" id="new_features" tabindex="0">
+       New Features
+      </h3>
+     </div>
+     <div class="release-feature" id="2080e36d">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Published
+       <a href="https://cloud.google.com/gke-on-prem/docs/reference/cheatsheet?hl=fr">
+        GKE On-Prem cheatsheet
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="a0d8d6c0">
+      <strong>
+       CHANGED:
+      </strong>
+      <h3 data-text="Changes" id="changes" tabindex="0">
+       Changes
+      </h3>
+     </div>
+     <div class="release-changed" id="e21a28a6">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <code dir="ltr" translate="no">
+        gkectl check-config
+       </code>
+       now also checks node IP availability if you are using static IPs.
+      </p>
+     </div>
+     <div class="release-changed" id="5aca5d52">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <code dir="ltr" translate="no">
+        gkectl prepare
+       </code>
+       now checks if a VM exists and is marked as a template in vSphere before attempting to upload the VM's OVA image.
+      </p>
+     </div>
+     <div class="release-changed" id="0ca089f8">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Adds support for specifying a vCenter cluster, and resource pool in that cluster.
+      </p>
+     </div>
+     <div class="release-changed" id="9de48f39">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Upgrades F5 BIG-IP controller to version 1.9.0.
+      </p>
+     </div>
+     <div class="release-changed" id="f91ebab4">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Upgrades Istio ingress controller to version 1.2.2.
+      </p>
+     </div>
+     <div class="release-fixed" id="01274d39">
+      <strong>
+       FIXED:
+      </strong>
+      <h3 data-text="Fixes" id="fixes" tabindex="0">
+       Fixes
+      </h3>
+     </div>
+     <div class="release-fixed" id="812899d5">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixes registry data persistence issues with the admin workstation's Docker registry.
+      </p>
+     </div>
+     <div class="release-fixed" id="35cbc119">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixes validation that checks whether a user cluster's name is already in use.
+      </p>
+     </div>
+     <h2 data-text="July 25, 2019" id="July_25_2019" tabindex="0">
+      July 25, 2019
+     </h2>
+     <div class="release-feature" id="7e7760a7">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GKE On-Prem version 1.0.11 is now available.
+      </p>
+     </div>
+     <h2 data-text="June 17, 2019" id="June_17_2019" tabindex="0">
+      June 17, 2019
+     </h2>
+     <div class="release-feature" id="c820ab5d">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GKE On-Prem is now generally available. Version 1.0.10 includes the following changes:
+      </p>
+     </div>
+     <div class="release-changed" id="6e4059bc">
+      <strong>
+       CHANGED:
+      </strong>
+      <h3 data-text="Upgrading from beta-1.4 to 1.0.10" id="upgrading_from_beta-14_to_1010" tabindex="0">
+       Upgrading from beta-1.4 to 1.0.10
+      </h3>
+      <p>
+       Before upgrading your beta clusters to the first general availability version, perform the steps described in
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/upgrading/from-beta?hl=fr">
+        Upgrading from GKE On-Prem beta to general availability
+       </a>
+       , and review the following points:
+      </p>
+      <ul>
+       <li>
+        <p>
+         If you are running a beta version before beta-1.4, be sure to upgrade to beta-1.4 first.
+        </p>
+       </li>
+       <li>
+        <p>
+         If your beta clusters are running their own L4 load balancers (not the default, F5 BIG-IP), you need to delete and recreate your clusters to run the latest GKE On-Prem version.
+        </p>
+       </li>
+       <li>
+        <p>
+         If your clusters were upgraded to beta-1.4 from beta-1.3, run the following command
+         <em>
+          for each user cluster
+         </em>
+         before upgrading:
+        </p>
+        <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl delete crd networkpolicies.crd.projectcalico.org</pre>
+       </li>
+       <li>
+        <p>
+         vCenter certificate verification is now required. (
+         <code dir="ltr" translate="no">
+          vsphereinsecure
+         </code>
+         is no longer supported.) If you're upgrading your beta 1.4 clusters to 1.0.10, you need to provide a vCenter trusted root CA public certificate in the upgrade configuration file.
+        </p>
+       </li>
+       <li>
+        <p>
+         You need to upgrade
+         <em>
+          all
+         </em>
+         of your running clusters. For this upgrade to succeed, your clusters can't run in a mixed version state.
+        </p>
+       </li>
+       <li>
+        <p>
+         You need to upgrade your admin clusters to the latest version first, then upgrade your user clusters.
+        </p>
+       </li>
+      </ul>
+     </div>
+     <div class="release-feature" id="4d8720ee">
+      <strong>
+       FEATURE:
+      </strong>
+      <h3 data-text="New Features" id="new_features" tabindex="0">
+       New Features
+      </h3>
+     </div>
+     <div class="release-feature" id="56ac8fe1">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       You can now enable the
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/installation/manual-lb?hl=fr">
+        Manual load balancing mode
+       </a>
+       to configure a L4 load balancer. You can still choose to use the default load balancer, F5 BIG-IP.
+      </p>
+     </div>
+     <div class="release-feature" id="22ce7a46">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GKE On-Prem's configuration-driven installation process has been updated. You now declaratively install using a singular
+       <a href="https://cloud.google.com/gke-on-prem/docs/overview?hl=fr#config">
+        configuration file
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-feature" id="cdb98fb5">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Adds
+       <code dir="ltr" translate="no">
+        gkectl create-config
+       </code>
+       , which generates a configuration file for installing GKE On-Prem, upgrading existing clusters, and for creating additional user clusters in an existing installation. This replaces the installation wizard and
+       <code dir="ltr" translate="no">
+        create-config.yaml
+       </code>
+       from previous versions. See the updated documentation for
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/installation/install?hl=fr#generate_config">
+        installing GKE On-Prem
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-feature" id="13407bcc">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Adds
+       <code dir="ltr" translate="no">
+        gkectl check-config
+       </code>
+       , which validates the GKE On-Prem configuration file. See the updated documentation for
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/installation/install?hl=fr#validate_config">
+        installing GKE On-Prem
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-feature" id="29a9665c">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Adds an optional
+       <code dir="ltr" translate="no">
+        --validate-attestations
+       </code>
+       flag to
+       <code dir="ltr" translate="no">
+        gkectl prepare
+       </code>
+       . This flag verifies that the container images included in your admin workstationwere built and signed by Google and are ready for deployment. See the updated documentation for
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/installation/install?hl=fr#prepare">
+        installing GKE On-Prem
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="a83ab968">
+      <strong>
+       CHANGED:
+      </strong>
+      <h3 data-text="Changes" id="changes" tabindex="0">
+       Changes
+      </h3>
+     </div>
+     <div class="release-changed" id="01e8a005">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Upgrades Kubernetes version to 1.12.7-gke.19. You can now
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/administration/upgrading-clusters?hl=fr">
+        upgrade your clusters
+       </a>
+       to this version. You can no longer create clusters that run Kubernetes version 1.11.2-gke.19.
+      </p>
+      <p>
+       We recommend upgrading your admin cluster before you upgrade your user clusters.
+      </p>
+     </div>
+     <div class="release-changed" id="916fabbf">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Upgrades Istio ingress controller to version 1.1.7.
+      </p>
+     </div>
+     <div class="release-changed" id="8aa2c746">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       vCenter certificate verification is now required.
+       <code dir="ltr" translate="no">
+        vsphereinsecure
+       </code>
+       is no longer supported). You provide the certificate in the GKE On-Prem configration file's
+       <code dir="ltr" translate="no">
+        cacertpath
+       </code>
+       field.
+      </p>
+      <p>
+       When a client calls the vCenter server, the vCenter server must prove its identity to the client by presenting a certificate. That certificate must be signed by a certificate authority (CA). The certificate is must not be self-signed.
+      </p>
+      <p>
+       If you're upgrading your beta 1.4 clusters to 1.0.10, you need to provide a vCenter trusted root CA public certificate in the upgrade configuration file.
+      </p>
+     </div>
+     <div class="release-issue" id="b074fd6e">
+      <strong>
+       ISSUE:
+      </strong>
+      <h3 data-text="Known Issues" id="known_issues" tabindex="0">
+       Known Issues
+      </h3>
+     </div>
+     <div class="release-issue" id="c4295c3e">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <a href="https://cloud.google.com/gke-on-prem/docs/upgrading-clusters?hl=fr">
+        Upgrading clusters
+       </a>
+       can cause disruption or downtime for workloads that use
+       <a href="https://kubernetes.io/docs/concepts/workloads/pods/disruptions/#how-disruption-budgets-work">
+        PodDisruptionBudgets
+       </a>
+       (PDBs).
+      </p>
+     </div>
+     <div class="release-issue" id="87a3848d">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       You might not be able to upgrade beta clusters that use the
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/installation/manual-lb?hl=fr">
+        Manual load balancing mode
+       </a>
+       to GKE On-Prem version 1.0.10. To upgrade and continue using your own load balancer with these clusters, you need to recreate the clusters.
+      </p>
+     </div>
+     <h2 data-text="May 24, 2019" id="May_24_2019" tabindex="0">
+      May 24, 2019
+     </h2>
+     <div class="release-feature" id="8cf36e54">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GKE On-Prem beta version 1.4.7 is now available. This release includes the following changes:
+      </p>
+     </div>
+     <div class="release-feature" id="b1aff6d1">
+      <strong>
+       FEATURE:
+      </strong>
+      <h3 data-text="New Features" id="new_features" tabindex="0">
+       New Features
+      </h3>
+     </div>
+     <div class="release-feature" id="37931eee">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       In the
+       <a href="https://cloud.google.com/gke-on-prem/docs/beta-1.4/how-to/administration/diagnose?hl=fr#capture_admin">
+        <code dir="ltr" translate="no">
+         gkectl diagnose snapshot
+        </code>
+       </a>
+       command, the
+       <code dir="ltr" translate="no">
+        --admin-ssh-key-path
+       </code>
+       parameter is now optional.
+      </p>
+     </div>
+     <div class="release-changed" id="9cdeb1c6">
+      <strong>
+       CHANGED:
+      </strong>
+      <h3 data-text="Changes" id="changes" tabindex="0">
+       Changes
+      </h3>
+     </div>
+     <div class="release-changed" id="81801631">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       On May 8, 2019, we introduced a change to Connect, the service that enables you to interact with your GKE On-Prem clusters using Cloud Console. To use the new Connect agent, you must re-register your clusters with Cloud Console, or you must upgrade to GKE On-Prem beta-1.4.
+      </p>
+      <p>
+       Your GKE On-Prem clusters and the workloads running on them will continue to operate uninterrupted. However, your clusters will not be visible in Cloud Console until you re-register them or upgrade to beta-1.4.
+      </p>
+      <p>
+       Before you re-register or upgrade, make sure your service account has the
+       <code dir="ltr" translate="no">
+        gkehub.connect
+       </code>
+       role. Also, if your service account has the old clusterregistry.connect role, it's a good idea to remove that role.
+      </p>
+      <p>
+       Grant your service account the gkehub.connect role:
+      </p>
+      <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects add-iam-policy-binding <var class="edit" translate="no">[PROJECT_ID]</var> \n      --member="serviceAccount:<var class="edit" translate="no">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit" translate="no">[PROJECT_ID]</var>.iam.gserviceaccount.com" \n      --role="roles/gkehub.connect"</pre>
+      <p>
+       If your service account has the old
+       <code dir="ltr" translate="no">
+        clusterregistry.connect
+       </code>
+       role, remove the old role:
+      </p>
+      <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects remove-iam-policy-binding <var class="edit" translate="no">[PROJECT_ID]</var> \n      --member="serviceAccount:<var class="edit" translate="no">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit" translate="no">[PROJECT_ID]</var>.iam.gserviceaccount.com" \n      --role="roles/clusterregistry.connect"</pre>
+      <p>
+       Re-register you cluster, or upgrade to GKE On-Prem beta-1.4.
+      </p>
+      <p>
+       To
+       <a href="https://cloud.google.com/kubernetes-engine/connect/updating-agent?hl=fr">
+        re-register your cluster
+       </a>
+       :
+      </p>
+      <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud alpha container hub register-cluster <var class="edit" translate="no">[CLUSTER_NAME]</var> \n      --context=<var class="edit" translate="no">[USER_CLUSTER_CONTEXT]</var> \n      --service-account-key-file=<var class="edit" translate="no">[LOCAL_KEY_PATH]</var> \n      --kubeconfig-file=<var class="edit" translate="no">[KUBECONFIG_PATH]</var> \n      --project=<var class="edit" translate="no">[PROJECT_ID]</var>
+      </pre>
+      <p>
+       To
+       <a href="https://cloud.google.com/gke-on-prem/docs/beta-1.4/how-to/administration/upgrading-a-cluster?hl=fr">
+        upgrade to GKE On-Prem beta-1.4
+       </a>
+       :
+      </p>
+      <pre class="devsite-click-to-copy" dir="ltr" translate="no">gkectl upgrade --kubeconfig [ADMIN_CLUSTER_KUBECONFIG]</pre>
+     </div>
+     <div class="release-issue" id="adc417c0">
+      <strong>
+       ISSUE:
+      </strong>
+      <h3 data-text="Known Issues" id="known_issues" tabindex="0">
+       Known Issues
+      </h3>
+     </div>
+     <div class="release-issue" id="9c9ce92b">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       There is an issue that prevents the Connect agent from being updated to the new version during an upgrade. To work around this issue, run the following command after you upgrade a cluster:
+      </p>
+      <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl delete pod gke-connect-agent-install -n gke-connect</pre>
+     </div>
+     <h2 data-text="May 13, 2019" id="May_13_2019" tabindex="0">
+      May 13, 2019
+     </h2>
+     <div class="release-issue" id="06c15a38">
+      <strong>
+       ISSUE:
+      </strong>
+      <h3 data-text="Known Issues" id="known_issues" tabindex="0">
+       Known Issues
+      </h3>
+     </div>
+     <div class="release-issue" id="41f926c6">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       Clusters upgraded from version beta-1.2 to beta-1.3 might be affected by a known issue that damages the cluster's configuration file and prevents future cluster upgrades. This issue affects all future cluster upgrades.
+      </p>
+      <p>
+       You can resolve this issue by deleting and recreating clusters upgraded from beta-1.2 to beta-1.3.
+      </p>
+      <p>
+       To resolve the issue without deleting and recreating the cluster, you need to re-encode and apply each cluster's Secrets. Perform the following steps:
+      </p>
+      <ol>
+       <li>
+        <p>
+         Get the contents of the
+         <code dir="ltr" translate="no">
+          create-config
+         </code>
+         Secrets stored in the admin cluster. This must be done for the
+         <code dir="ltr" translate="no">
+          create-config
+         </code>
+         Secret in the kube-system namespace, and for the
+         <code dir="ltr" translate="no">
+          create-config
+         </code>
+         Secrets in each user cluster's namespace:
+        </p>
+        <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl get secret create-config -n kube-system -o jsonpath={.data.cfg} | base64 -d &gt; kube-system_create_secret.yaml</pre>
+        <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl get secret create-config -n <var translate="no">[USER_CLUSTER_NAME]</var> -o jsonpath={.data.cfg} | base64 -d &gt; <var translate="no">[USER_CLUSTER_NAME]</var>_create_secret.yaml</pre>
+       </li>
+       <li>
+        <p>
+         For each user cluster, open the
+         <code dir="ltr" translate="no">
+          &lt;var&gt;[USER_CLUSTER_NAME]&lt;/var&gt;_create_secret.yaml
+         </code>
+         file in an editor. If the values for
+         <code dir="ltr" translate="no">
+          registerserviceaccountkey
+         </code>
+         and
+         <code dir="ltr" translate="no">
+          connectserviceaccountkey
+         </code>
+         are not
+         <code dir="ltr" translate="no">
+          REDACTED
+         </code>
+         , no further action is required: the Secrets do not need to be re-encoded and written to the cluster.
+        </p>
+       </li>
+       <li>
+        <p>
+         Open the original
+         <code dir="ltr" translate="no">
+          create_config.yaml
+         </code>
+         file in another editor.
+        </p>
+       </li>
+       <li>
+        <p>
+         In
+         <code dir="ltr" translate="no">
+          &lt;var&gt;[USER_CLUSTER_NAME]&lt;/var&gt;_create_secret.yaml
+         </code>
+         , replace the
+         <code dir="ltr" translate="no">
+          registerserviceaccountkey
+         </code>
+         and
+         <code dir="ltr" translate="no">
+          connectserviceaccountkey
+         </code>
+         values with the values from the original
+         <code dir="ltr" translate="no">
+          create_config.yaml
+         </code>
+         file. Save the changed file.
+        </p>
+       </li>
+       <li>
+        <p>
+         Repeat steps 3-5 for each
+         <code dir="ltr" translate="no">
+          &lt;var&gt;[USER_CLUSTER_NAME]&lt;/var&gt;_create_secret.yaml
+         </code>
+         , and for the
+         <code dir="ltr" translate="no">
+          kube-system_create_secret.yaml
+         </code>
+         file.
+        </p>
+       </li>
+       <li>
+        <p>
+         Base64-encode each
+         <code dir="ltr" translate="no">
+          &lt;var&gt;[USER_CLUSTER_NAME]&lt;/var&gt;_create_secret.yaml
+         </code>
+         file and the
+         <code dir="ltr" translate="no">
+          kube-system_create_secret.yaml
+         </code>
+         file:
+        </p>
+        <pre class="devsite-click-to-copy" dir="ltr" translate="no">cat <var translate="no">[USER_CLUSTER_NAME]</var>_create_secret.yaml | base64 &gt; <var translate="no">[USER_CLUSTER_NAME]</var>_create_secret_create_secret.b64</pre>
+        <pre class="devsite-click-to-copy" dir="ltr" translate="no">cat kube-system-cluster_create_secret.yaml | base64 &gt;kube-system-cluster_create_secret.b64</pre>
+       </li>
+       <li>
+        <p>
+         Replace the
+         <code dir="ltr" translate="no">
+          data[cfg]
+         </code>
+         field in each Secret in the cluster with the contents of the corresponding file:
+        </p>
+        <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl edit secret create-config -n <var class="edit" translate="no">[USER_CLUSTER_NAME]</var>
+  # kubectl edit opens the file in the shell's default text editor
+  # Open `first-user-cluster_create_secret.b64` in another editor, and replace
+  # the `cfg` value with the copied value
+  # Make sure the copied string has no newlines in it!</pre>
+       </li>
+       <li>
+        <p>
+         Repeat step 8 for each
+         <code dir="ltr" translate="no">
+          &lt;var&gt;[USER_CLUSTER_NAME]&lt;/var&gt;_create_secret.yaml
+         </code>
+         Secret, and for the
+         <code dir="ltr" translate="no">
+          kube-system_create_secret.yaml
+         </code>
+         Secret.
+        </p>
+       </li>
+       <li>
+        <p>
+         To ensure that the update was successful, repeat step 1.
+        </p>
+       </li>
+      </ol>
+     </div>
+     <h2 data-text="May 07, 2019" id="May_07_2019" tabindex="0">
+      May 07, 2019
+     </h2>
+     <div class="release-feature" id="cde2558c">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GKE On-Prem beta version 1.4.1 is now available. This release includes the following changes:
+      </p>
+     </div>
+     <div class="release-feature" id="ab1b0651">
+      <strong>
+       FEATURE:
+      </strong>
+      <h3 data-text="New Features" id="new_features" tabindex="0">
+       New Features
+      </h3>
+     </div>
+     <div class="release-feature" id="2351b838">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       In the
+       <a href="https://cloud.google.com/gke-on-prem/docs/beta-1.4/how-to/administration/diagnose?hl=fr#capture_admin">
+        <code dir="ltr" translate="no">
+         gkectl diagnose snapshot
+        </code>
+       </a>
+       command, the
+       <code dir="ltr" translate="no">
+        --admin-ssh-key-path
+       </code>
+       parameter is now optional.
+      </p>
+     </div>
+     <div class="release-changed" id="01893a60">
+      <strong>
+       CHANGED:
+      </strong>
+      <h3 data-text="Changes" id="changes" tabindex="0">
+       Changes
+      </h3>
+     </div>
+     <div class="release-changed" id="085acfa8">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       On May 8, 2019, we introduced a change to Connect, the service that enables you to interact with your GKE On-Prem clusters using Cloud Console. To use the new Connect agent, you must re-register your clusters with Cloud Console, or you must upgrade to GKE On-Prem beta-1.4.
+      </p>
+      <p>
+       Your GKE On-Prem clusters and the workloads running on them will continue to operate uninterrupted. However, your clusters will not be visible in Cloud Console until you re-register them or upgrade to beta-1.4.
+      </p>
+      <p>
+       Before your re-register or upgrade, make sure your service account has the gkehub.connect role. Also, if your service account has the old clusterregistry.connect role, it's a good idea to remove that role.
+      </p>
+      <p>
+       Grant your service account the gkehub.connect role:
+      </p>
+      <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects add-iam-policy-binding <var class="edit" translate="no">[PROJECT_ID]</var> \n      --member="serviceAccount:<var class="edit" translate="no">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit" translate="no">[PROJECT_ID]</var>.iam.gserviceaccount.com" \n      --role="roles/gkehub.connect"</pre>
+      <p>
+       If your service account has the old clusterregistry.connect role, remove the old role:
+      </p>
+      <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects remove-iam-policy-binding <var class="edit" translate="no">[PROJECT_ID]</var> \n      --member="serviceAccount:<var class="edit" translate="no">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit" translate="no">[PROJECT_ID]</var>.iam.gserviceaccount.com" \n      --role="roles/clusterregistry.connect"</pre>
+      <p>
+       Re-register you cluster, or upgrade to GKE On-Prem beta-1.4.
+      </p>
+      <p>
+       To
+       <a href="https://cloud.google.com/kubernetes-engine/connect/updating-agent?hl=fr">
+        re-register your cluster
+       </a>
+       :
+      </p>
+      <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud alpha container hub register-cluster <var class="edit" translate="no">[CLUSTER_NAME]</var> \n      --context=<var class="edit" translate="no">[USER_CLUSTER_CONTEXT]</var> \n      --service-account-key-file=<var class="edit" translate="no">[LOCAL_KEY_PATH]</var> \n      --kubeconfig-file=<var class="edit" translate="no">[KUBECONFIG_PATH]</var> \n      --project=<var class="edit" translate="no">[PROJECT_ID]</var>
+      </pre>
+      <p>
+       To
+       <a href="https://cloud.google.com/gke-on-prem/docs/beta-1.4/how-to/administration/upgrading-a-cluster?hl=fr">
+        upgrade to GKE On-Prem beta-1.4
+       </a>
+       :
+      </p>
+      <pre class="devsite-click-to-copy" dir="ltr" translate="no">gkectl upgrade --kubeconfig [ADMIN_CLUSTER_KUBECONFIG]</pre>
+     </div>
+     <div class="release-issue" id="f579cc86">
+      <strong>
+       ISSUE:
+      </strong>
+      <h3 data-text="Known Issues" id="known_issues" tabindex="0">
+       Known Issues
+      </h3>
+     </div>
+     <div class="release-issue" id="d4aa31bd">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       There is an issue that prevents the Connect agent from being updated to the new version during an upgrade. To work around this issue, run the following command after you upgrade a cluster:
+      </p>
+      <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl delete pod gke-connect-agent-install -n gke-connect</pre>
+     </div>
+     <h2 data-text="April 25, 2019" id="April_25_2019" tabindex="0">
+      April 25, 2019
+     </h2>
+     <div class="release-feature" id="1c4d963b">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GKE On-Prem beta version 1.3.1 is now available. This release includes the following changes:
+      </p>
+     </div>
+     <div class="release-feature" id="6fc0299a">
+      <strong>
+       FEATURE:
+      </strong>
+      <h3 data-text="New Features" id="new_features" tabindex="0">
+       New Features
+      </h3>
+     </div>
+     <div class="release-feature" id="fd0439ff">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       The
+       <code dir="ltr" translate="no">
+        gkectl diagnose snapshot
+       </code>
+       command now has a
+       <a href="https://cloud.google.com/gke-on-prem/docs/beta-1.3/how-to/administration/diagnose?hl=fr#performing_a_dry_run_for_a_snapshot">
+        <code dir="ltr" translate="no">
+         --dry-run
+        </code>
+       </a>
+       flag.
+      </p>
+     </div>
+     <div class="release-feature" id="0223ec37">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       The
+       <code dir="ltr" translate="no">
+        gkectl diagnose snapshot
+       </code>
+       command now supports four
+       <a href="https://cloud.google.com/gke-on-prem/docs/beta-1.3/how-to/administration/diagnose?hl=fr#snapshot_scenarios">
+        scenarios
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-feature" id="43296a43">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       The
+       <code dir="ltr" translate="no">
+        gkectl diagnose snapshot
+       </code>
+       command now supports regular expressions for specifying namespaces.
+      </p>
+     </div>
+     <div class="release-changed" id="7d2d5ae9">
+      <strong>
+       CHANGED:
+      </strong>
+      <h3 data-text="Changes" id="changes" tabindex="0">
+       Changes
+      </h3>
+     </div>
+     <div class="release-changed" id="0a85abc0">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Istio 1.1 is now the default
+       <a href="https://cloud.google.com/gke-on-prem/docs/beta-1.3/how-to/administration/upgrading-a-cluster?hl=fr#upgrading_the_ingress_controller">
+        ingress controller
+       </a>
+       . The ingress controller runs in the
+       <code dir="ltr" translate="no">
+        gke-system
+       </code>
+       namespace for both admin and user clusters. This enables easier TLS management for Ingress. To enable ingress, or to re-enable ingress after an upgrade, follow the instructions under
+       <a href="https://cloud.google.com/gke-on-prem/docs/beta-1.3/how-to/installation/install?hl=fr#enabling_ingress">
+        Enabling ingress
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="6093a4c7">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       The
+       <code dir="ltr" translate="no">
+        gkectl
+       </code>
+       tool no longer uses Minikube and KVM for bootstrapping. This means you do not have to enable nested virtualization on your admin workstation VM.
+      </p>
+     </div>
+     <div class="release-issue" id="f3479b55">
+      <strong>
+       ISSUE:
+      </strong>
+      <h3 data-text="Known Issues" id="known_issues" tabindex="0">
+       Known Issues
+      </h3>
+     </div>
+     <div class="release-issue" id="c6b702da">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       GKE On-Prem's ingress controller uses Istio 1.1 with automatic Secret discovery. However, the node agent for Secret discovery may fail to get Secret updates after Secret deletion. So avoid deleting Secrets. If you must delete a Secret and Ingress TLS fails afterwards, manually restart the Ingress Pod in the gke-system namespace.
+      </p>
+     </div>
+     <h2 data-text="April 11, 2019" id="April_11_2019" tabindex="0">
+      April 11, 2019
+     </h2>
+     <div class="release-feature" id="17e1c9ed">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GKE On-Prem beta version 1.2.1 is now available. This release includes the following changes:
+      </p>
+     </div>
+     <div class="release-feature" id="413c99e7">
+      <strong>
+       FEATURE:
+      </strong>
+      <h3 data-text="New Features" id="new_features" tabindex="0">
+       New Features
+      </h3>
+     </div>
+     <div class="release-feature" id="99fcdc6b">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GKE On-Prem clusters now automatically connect back to Google using
+       <a href="https://cloud.google.com/kubernetes-engine/connect/?hl=fr">
+        Connect
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-feature" id="2def3f66">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       You can now run up to three control planes per user cluster.
+      </p>
+     </div>
+     <div class="release-changed" id="8bc663f4">
+      <strong>
+       CHANGED:
+      </strong>
+      <h3 data-text="Changes" id="changes" tabindex="0">
+       Changes
+      </h3>
+     </div>
+     <div class="release-changed" id="652f1954">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <code dir="ltr" translate="no">
+        gkectl
+       </code>
+       now validates vSphere and F5 BIG-IP credentials creating clusters.
+      </p>
+     </div>
+     <div class="release-issue" id="db308f2f">
+      <strong>
+       ISSUE:
+      </strong>
+      <h3 data-text="Known Issues" id="known_issues" tabindex="0">
+       Known Issues
+      </h3>
+     </div>
+     <div class="release-issue" id="6dadc5bd">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       A regression causes
+       <code dir="ltr" translate="no">
+        gkectl diagnose snapshot
+       </code>
+       commands to use the wrong SSH key, which prevents the command from collecting information from user clusters. As a workaround for support cases, you might need to SSH into individual user cluster nodes and manually gather data.
+      </p>
+     </div>
+     <h2 data-text="April 02, 2019" id="April_02_2019" tabindex="0">
+      April 02, 2019
+     </h2>
+     <div class="release-feature" id="a6d4505b">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GKE On-Prem beta version 1.1.1 is now available. This release includes the following changes:
+      </p>
+     </div>
+     <div class="release-feature" id="a0fb3014">
+      <strong>
+       FEATURE:
+      </strong>
+      <h3 data-text="New Features" id="new_features" tabindex="0">
+       New Features
+      </h3>
+     </div>
+     <div class="release-feature" id="33c71738">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       You now install GKE On-Prem with an
+       <a href="https://cloud.google.com/gke-on-prem/docs/beta-1.1/how-to/installation/getting-started?hl=fr#download_ova">
+        Open Virtual Appliance (OVA)
+       </a>
+       , a pre-configured virtual machine image that includes several command-line interface tools. This change makes installations easier and removes a layer of virtualization. You no longer need to run
+       <code dir="ltr" translate="no">
+        gkectl
+       </code>
+       inside a Docker container.
+      </p>
+      <p>
+       If you installed GKE On-Prem versions before beta-1.1.1, you should create a new admin workstation following the documented instructions. After you install the new admin workstation, copy over any SSH keys, configuration files, kubeconfigs, and any other files you need, from your previous workstation to the new one.
+      </p>
+     </div>
+     <div class="release-feature" id="8322b0f6">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Added documentation for
+       <a href="https://cloud.google.com/gke-on-prem/docs/beta-1.1/how-to/administration/backing-up?hl=fr">
+        backing up and restoring clusters
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-feature" id="0f0c99e8">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       You can now configure authentication for clusters using OIDC and ADFS. To learn more, refer to
+       <a href="https://cloud.google.com/gke-on-prem/docs/beta-1.1/how-to/security/oidc-adfs?hl=fr">
+        Authenticating with OIDC and ADFS
+       </a>
+       and
+       <a href="https://cloud.google.com/gke-on-prem/docs/concepts/authentication?hl=fr">
+        Authentication
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="5dc6d06b">
+      <strong>
+       CHANGED:
+      </strong>
+      <h3 data-text="Changes" id="changes" tabindex="0">
+       Changes
+      </h3>
+     </div>
+     <div class="release-changed" id="8efb82ad">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       You now must use an admin cluster's private key to run
+       <code dir="ltr" translate="no">
+        gkectl diagnose snapshot
+       </code>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="4b955a3c">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Added a configuration option during installation for deploying multi-master user clusters.
+      </p>
+     </div>
+     <div class="release-changed" id="f2d2a513">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <a href="https://cloud.google.com/kubernetes-engine/connect/?hl=fr">
+        Connect documentation
+       </a>
+       has been migrated.
+      </p>
+     </div>
+     <div class="release-fixed" id="b343a917">
+      <strong>
+       FIXED:
+      </strong>
+      <h3 data-text="Fixes" id="fixes" tabindex="0">
+       Fixes
+      </h3>
+     </div>
+     <div class="release-fixed" id="502f05ab">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixed an issue where cluster networking could be interrupted when a node is removed unexpectedly.
+      </p>
+     </div>
+     <div class="release-issue" id="e97840c9">
+      <strong>
+       ISSUE:
+      </strong>
+      <h3 data-text="Known Issues" id="known_issues" tabindex="0">
+       Known Issues
+      </h3>
+     </div>
+     <div class="release-issue" id="a7e3cf64">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       GKE On-Prem's Configuration Management has been upgraded from version 0.11 to 0.13. Several components of the system have been renamed. You need to take some steps to clean up the previous versions' resources and install a new instance.
+      </p>
+      <p>
+       If you have an active instance of Configuration Management:
+      </p>
+      <ol>
+       <li>
+        <p>
+         Uninstall the instance:
+        </p>
+        <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl -n=nomos-system delete nomos --all</pre>
+       </li>
+       <li>
+        <p>
+         Make sure that the instance's namespace has no resources:
+        </p>
+        <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl -n nomos-system get all</pre>
+       </li>
+       <li>
+        <p>
+         Delete the namespace:
+        </p>
+        <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl delete ns nomos-system</pre>
+       </li>
+       <li>
+        <p>
+         Delete the CRD:
+        </p>
+        <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl delete crd nomos.addons.sigs.k8s.io</pre>
+       </li>
+       <li>
+        <p>
+         Delete all kube-system resources for the operator:
+        </p>
+        <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl -n kube-system delete all -l k8s-app=nomos-operator</pre>
+       </li>
+      </ol>
+      <p>
+       If you don't have an active instance of Configuration Management:
+      </p>
+      <ol>
+       <li>
+        <p>
+         Delete the Configuration Management namespace:
+        </p>
+        <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl delete ns nomos-system</pre>
+       </li>
+       <li>
+        <p>
+         Delete the CRD:
+        </p>
+        <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl delete crd nomos.addons.sigs.k8s.io</pre>
+       </li>
+       <li>
+        <p>
+         Delete all kube-system resources for the operator:
+        </p>
+        <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl -n kube-system delete all -l k8s-app=nomos-operator</pre>
+       </li>
+      </ol>
+     </div>
+     <h2 data-text="March 12, 2019" id="March_12_2019" tabindex="0">
+      March 12, 2019
+     </h2>
+     <div class="release-feature" id="9fab914d">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GKE On-Prem beta version 1.0.3 is now available. This release includes the following changes:
+      </p>
+     </div>
+     <div class="release-fixed" id="5a0b5797">
+      <strong>
+       FIXED:
+      </strong>
+      <h3 data-text="Fixes" id="fixes" tabindex="0">
+       Fixes
+      </h3>
+     </div>
+     <div class="release-fixed" id="e19f906b">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixed an issue that caused Docker certificates to be saved to the wrong location.
+      </p>
+     </div>
+     <h2 data-text="March 04, 2019" id="March_04_2019" tabindex="0">
+      March 04, 2019
+     </h2>
+     <div class="release-feature" id="cb74f752">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GKE On-Prem beta version 1.0.2 is now available. This release includes the following changes:
+      </p>
+     </div>
+     <div class="release-feature" id="c87c4c27">
+      <strong>
+       FEATURE:
+      </strong>
+      <h3 data-text="New Features" id="new_features" tabindex="0">
+       New Features
+      </h3>
+     </div>
+     <div class="release-feature" id="9bab6956">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       You can now run
+       <code dir="ltr" translate="no">
+        gkectl version
+       </code>
+       to check which version of
+       <code dir="ltr" translate="no">
+        gkectl
+       </code>
+       you're running.
+      </p>
+     </div>
+     <div class="release-feature" id="612a677e">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       You can now
+       <a href="https://cloud.google.com/gke-on-prem/docs/beta-1.0/how-to/administration/upgrading-a-cluster?hl=fr">
+        upgrade user clusters
+       </a>
+       to future beta versions.
+      </p>
+     </div>
+     <div class="release-feature" id="3b447826">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <a href="https://cloud.google.com/anthos-config-management/docs/?hl=fr">
+        Anthos Config Management
+       </a>
+       version 0.11.6 is now available.
+      </p>
+     </div>
+     <div class="release-feature" id="e7c50773">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Stackdriver Logging is now enabled on each node. By default, the logging agent replicates logs to your GCP project for only control plane services, cluster API, vSphere controller, Calico, BIG-IP controller, Envoy proxy, Connect, Anthos Config Management, Prometheus and Grafana services, Istio control plane, and Docker. Application container logs are excluded by default, but can be optionally enabled.
+      </p>
+     </div>
+     <div class="release-feature" id="293193f8">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Stackdriver Prometheus Sidecar captures metrics for the same components as the logging agent.
+      </p>
+     </div>
+     <div class="release-feature" id="f1092118">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <a href="https://kubernetes.io/docs/concepts/services-networking/network-policies/">
+        Kubernetes Network Policies
+       </a>
+       are now supported.
+      </p>
+     </div>
+     <div class="release-changed" id="bfd6dd79">
+      <strong>
+       CHANGED:
+      </strong>
+      <h3 data-text="Changes" id="changes" tabindex="0">
+       Changes
+      </h3>
+     </div>
+     <div class="release-changed" id="5bed96ee">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       You can now update IP blocks in the cluster specification to expand the IP range for a given cluster.
+      </p>
+     </div>
+     <div class="release-changed" id="6409cbf3">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       If clusters you installed during alpha were disconnected from Google after beta, you might need to connect them again. Refer to
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/installation/registering-a-user-cluster?hl=fr">
+        Manually registering a user cluster.
+       </a>
+      </p>
+     </div>
+     <div class="release-changed" id="0b95d45a">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/installation/getting-started?hl=fr">
+        Getting started
+       </a>
+       has been updated with steps for activating your service account and running
+       <code dir="ltr" translate="no">
+        gkectl prepare
+       </code>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="83638330">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <code dir="ltr" translate="no">
+        gkectl diagnose snapshot
+       </code>
+       now only collects configuration data and excludes logs.  This tool is used to capture details of your environment prior to opening a support case.
+      </p>
+     </div>
+     <div class="release-changed" id="2725cce3">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Support for optional SNAT pool name configuration for F5 BIG-IP at cluster-creation time. This can be used to configure "--vs-snat-pool-name" value on
+       <a href="https://clouddocs.f5.com/products/connectors/k8s-bigip-ctlr/v1.8/">
+        F5 BIG-IP controller
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="f9f468a2">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       You now need to provide a VIP for add-ons that run in the admin cluster.
+      </p>
+     </div>
+     <div class="release-fixed" id="0687b790">
+      <strong>
+       FIXED:
+      </strong>
+      <h3 data-text="Fixes" id="fixes" tabindex="0">
+       Fixes
+      </h3>
+     </div>
+     <div class="release-fixed" id="bd385ac7">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Cluster resizing operations improved to prevent unintended node deletion.
+      </p>
+     </div>
+     <h2 data-text="February 07, 2019" id="February_07_2019" tabindex="0">
+      February 07, 2019
+     </h2>
+     <div class="release-feature" id="1306002c">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GKE On-Prem alpha version 1.3 is now available. This release includes the following changes:
+      </p>
+     </div>
+     <div class="release-feature" id="371e5d24">
+      <strong>
+       FEATURE:
+      </strong>
+      <h3 data-text="New Features" id="new_features" tabindex="0">
+       New Features
+      </h3>
+     </div>
+     <div class="release-feature" id="e5705427">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       During installation, you can now provide YAML files with
+       <code dir="ltr" translate="no">
+        nodeip
+       </code>
+       blocks to configure static IPAM.
+      </p>
+     </div>
+     <div class="release-changed" id="218ffa81">
+      <strong>
+       CHANGED:
+      </strong>
+      <h3 data-text="Changes" id="changes" tabindex="0">
+       Changes
+      </h3>
+     </div>
+     <div class="release-changed" id="0b58a37e">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       You now need to provision a 100GB disk in vSphere Datastore. GKE On-Prem uses the disk to store some of its vital data, such as etcd. See
+       <a href="https://cloud.google.com/gke-on-prem/docs/requirements?hl=fr">
+        System requirements
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="01d097cd">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       You can now only provide lowercase hostnames to
+       <code dir="ltr" translate="no">
+        nodeip
+       </code>
+       blocks.
+      </p>
+     </div>
+     <div class="release-changed" id="32cb3436">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       GKE On-Prem now enforces unique names for user clusters.
+      </p>
+     </div>
+     <div class="release-changed" id="b2e1c3b6">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Metrics endpoints and APIs that use Istio endpoints are now secured using mTLS and role-based access control.
+      </p>
+     </div>
+     <div class="release-changed" id="79af2c65">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       External communication by Grafana is disabled.
+      </p>
+     </div>
+     <div class="release-changed" id="fa995980">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Improvements to Prometheus and Alertmanager health-checking.
+      </p>
+     </div>
+     <div class="release-changed" id="d903a58f">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Prometheus now uses secured port for scraping metrics.
+      </p>
+     </div>
+     <div class="release-changed" id="76317844">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Several updates to Grafana dashboards.
+      </p>
+     </div>
+     <div class="release-issue" id="d2e42dff">
+      <strong>
+       ISSUE:
+      </strong>
+      <h3 data-text="Known Issues" id="known_issues" tabindex="0">
+       Known Issues
+      </h3>
+     </div>
+     <div class="release-issue" id="662a1726">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       If your vCenter user account uses a format like
+       <code dir="ltr" translate="no">
+        DOMAINUSER
+       </code>
+       , you might need to escape the backslash (
+       <code dir="ltr" translate="no">
+        DOMAIN\USER
+       </code>
+       ). Be sure to do this when prompted to enter the user account during installation.
+      </p>
+     </div>
+     <h2 data-text="January 23, 2019" id="January_23_2019" tabindex="0">
+      January 23, 2019
+     </h2>
+     <div class="release-feature" id="deb97ec7">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GKE On-Prem alpha version 1.2.1 is now available. This release includes the following changes:
+      </p>
+     </div>
+     <div class="release-feature" id="8f811188">
+      <strong>
+       FEATURE:
+      </strong>
+      <h3 data-text="New Features" id="new_features" tabindex="0">
+       New Features
+      </h3>
+     </div>
+     <div class="release-feature" id="232ac634">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       You can now use
+       <code dir="ltr" translate="no">
+        gkectl
+       </code>
+       to
+       <a href="https://cloud.google.com/gke-on-prem/docs/how-to/administration/deleting-an-admin-cluster?hl=fr">
+        delete admin clusters
+       </a>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="e8bbc7cb">
+      <strong>
+       CHANGED:
+      </strong>
+      <h3 data-text="Changes" id="changes" tabindex="0">
+       Changes
+      </h3>
+     </div>
+     <div class="release-changed" id="6c0c7665">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <code dir="ltr" translate="no">
+        gkectl diagnose snapshot
+       </code>
+       commands now allow you to specify nodes while capturing snapshots of remote command results and files.
+      </p>
+     </div>
+     <h2 data-text="January 14, 2019" id="January_14_2019" tabindex="0">
+      January 14, 2019
+     </h2>
+     <div class="release-feature" id="54135c18">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GKE On-Prem alpha version 1.1.2 is now available. This release includes the following changes:
+      </p>
+     </div>
+     <div class="release-feature" id="34685502">
+      <strong>
+       FEATURE:
+      </strong>
+      <h3 data-text="New Features" id="new_features" tabindex="0">
+       New Features
+      </h3>
+     </div>
+     <div class="release-feature" id="27825941">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       You can now use the
+       <code dir="ltr" translate="no">
+        gkectl prepare
+       </code>
+       command to pull and push GKE On-Prem's container images, which deprecates the
+       <code dir="ltr" translate="no">
+        populate_registry.sh
+       </code>
+       script.
+      </p>
+     </div>
+     <div class="release-feature" id="a3357e64">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <code dir="ltr" translate="no">
+        gkectl prepare
+       </code>
+       now prompts you to enter information about your vSphere cluster and resource pool.
+      </p>
+     </div>
+     <div class="release-feature" id="91f14aa6">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       You can now use the
+       <code dir="ltr" translate="no">
+        gkectl create
+       </code>
+       command to create and add user clusters to existing admin control planes by passing in an existing kubeconfig file when prompted during cluster creation.
+      </p>
+     </div>
+     <div class="release-feature" id="be5c5781">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       You can now pass in a Ingress TLS Secret for admin and user clusters at cluster creation time. You will see the following new prompt:
+      </p>
+      <p>
+       <code dir="ltr" translate="no">
+        Do you want to use TLS for Admin Control Plane/User Cluster ingress?
+       </code>
+      </p>
+      <p>
+       Providing the TLS Secret and certs allows
+       <code dir="ltr" translate="no">
+        gkectl
+       </code>
+       to set up the Ingress TLS. HTTP is not automatically disabled with TLS installation.
+      </p>
+     </div>
+     <div class="release-changed" id="ca43200f">
+      <strong>
+       CHANGED:
+      </strong>
+      <h3 data-text="Changes" id="changes" tabindex="0">
+       Changes
+      </h3>
+     </div>
+     <div class="release-changed" id="922f2003">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       GKE On-Prem now runs Kubernetes version
+       <strong>
+        1.11.2-gke.19
+       </strong>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="0ed766eb">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       The default footprint for GKE On-Prem has changed:
+      </p>
+      <ul>
+       <li>
+        Minimum memory requirement for user cluster nodes is now 8192M.
+       </li>
+      </ul>
+     </div>
+     <div class="release-changed" id="b3c705b9">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       GKE On-Prem now runs minikube version
+       <strong>
+        0.28.0
+       </strong>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="fe9b9e8d">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       GKE Policy Management has been upgraded to version
+       <strong>
+        0.11.1
+       </strong>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="43465f41">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <code dir="ltr" translate="no">
+        gkectl
+       </code>
+       no longer prompts you to provide a proxy configuration by default.
+      </p>
+     </div>
+     <div class="release-changed" id="6c9c1633">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       There are three new ConfigMap resources in the user cluster namespace:
+       <code dir="ltr" translate="no">
+        cluster-api-etcd-metrics-config
+       </code>
+       ,
+       <code dir="ltr" translate="no">
+        kube-etcd-metrics-config
+       </code>
+       , and
+       <code dir="ltr" translate="no">
+        kube-apiserver-config
+       </code>
+       . GKE On-Prem uses these files to quickly bootstrap the metrics proxy container.
+      </p>
+     </div>
+     <div class="release-changed" id="3e445dc3">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       kube-apiserver events now live in their own etcd. You can see kube-etcd-events in your user cluster's namespace.
+      </p>
+     </div>
+     <div class="release-changed" id="f8befac9">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Cluster API controllers now use leader election.
+      </p>
+     </div>
+     <div class="release-changed" id="d5bf21a6">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       vSphere credentials are now pulled from credential files.
+      </p>
+     </div>
+     <div class="release-changed" id="56aa4861">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <code dir="ltr" translate="no">
+        gkectl diagnose
+       </code>
+       commands now work with both admin and user clusters.
+      </p>
+     </div>
+     <div class="release-changed" id="287db9a8">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <code dir="ltr" translate="no">
+        gkectl diagnose snapshot
+       </code>
+       can now take snapshots of remote files on the node, results of remote commands on the nodes, and Prometheus queries.
+      </p>
+     </div>
+     <div class="release-changed" id="e68bafab">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <code dir="ltr" translate="no">
+        gkectl diagnose snapshot
+       </code>
+       can now take snapshots in multiple parallel threads.
+      </p>
+     </div>
+     <div class="release-changed" id="99368562">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <code dir="ltr" translate="no">
+        gkectl diagnose snapshot
+       </code>
+       now allows you to specify words to be excluded from the snapshot results.
+      </p>
+     </div>
+     <div class="release-fixed" id="d3199bc5">
+      <strong>
+       FIXED:
+      </strong>
+      <h3 data-text="Fixes" id="fixes" tabindex="0">
+       Fixes
+      </h3>
+     </div>
+     <div class="release-fixed" id="72baaec9">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixed issues with minikube caching that caused unexpected network calls.
+      </p>
+     </div>
+     <div class="release-fixed" id="611bb574">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Fixed an issue with pulling F5 BIG-IP credentials. Credentials are now read from a credentials file instead of using environment variables.
+      </p>
+     </div>
+     <div class="release-issue" id="c3fb6307">
+      <strong>
+       ISSUE:
+      </strong>
+      <h3 data-text="Known Issues" id="known_issues" tabindex="0">
+       Known Issues
+      </h3>
+     </div>
+     <div class="release-issue" id="1b6a7e24">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       You might encounter the following
+       <a href="https://github.com/vmware/govmomi">
+        <code dir="ltr" translate="no">
+         govmomi
+        </code>
+       </a>
+       warning when you run
+       <code dir="ltr" translate="no">
+        gkectl prepare
+       </code>
+       :
+      </p>
+      <p>
+       <code dir="ltr" translate="no">
+        Warning: Line 102: Unable to parse 'enableMPTSupport' for attribute 'key' on element 'Config'
+       </code>
+      </p>
+     </div>
+     <div class="release-issue" id="ddfbf576">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       Resizing user clusters can cause inadvertent node deletion or recreation.
+      </p>
+     </div>
+     <div class="release-issue" id="7922bb92">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       PersistentVolumes can fail to mount, producing the error
+       <code dir="ltr" translate="no">
+        devicePath is empty
+       </code>
+       . As a workaround, delete and re-create the associated PersistentVolumeClaim.
+      </p>
+     </div>
+     <div class="release-issue" id="2beed846">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       Resizing IPAM address blocks if using static IP allocation for nodes, is not supported in alpha. To work around this, consider allocating more IP addresses than you currently need.
+      </p>
+     </div>
+     <div class="release-issue" id="0e1096ac">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       On slow disks, VM creation can timeout and cause deployments to fail. If this occurs, delete all resources and try again.
+      </p>
+     </div>
+     <h2 data-text="December 19, 2018" id="December_19_2018" tabindex="0">
+      December 19, 2018
+     </h2>
+     <div class="release-feature" id="8f642121">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GKE On-Prem alpha 1.0.4 is now available. This release includes the following changes:
+      </p>
+     </div>
+     <div class="release-fixed" id="c0f9cb16">
+      <strong>
+       FIXED:
+      </strong>
+      <h3 data-text="Fixes" id="fixes" tabindex="0">
+       Fixes
+      </h3>
+     </div>
+     <div class="release-fixed" id="de12f673">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       The vulnerability caused by
+       <a href="https://github.com/kubernetes/kubernetes/issues/71411">
+        CVE-2018-1002105
+       </a>
+       has been patched.
+      </p>
+     </div>
+     <h2 data-text="November 30, 2018" id="November_30_2018" tabindex="0">
+      November 30, 2018
+     </h2>
+     <div class="release-feature" id="1a4e0795">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GKE On-Prem alpha 1.0 is now available. The following changes are included in this release:
+      </p>
+     </div>
+     <div class="release-changed" id="2d482ce2">
+      <strong>
+       CHANGED:
+      </strong>
+      <h3 data-text="Changes" id="changes" tabindex="0">
+       Changes
+      </h3>
+     </div>
+     <div class="release-changed" id="ff1d099c">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       GKE On-Prem alpha 1.0 runs Kubernetes 1.11.
+      </p>
+     </div>
+     <div class="release-changed" id="c1a9c015">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       The default footprint for GKE On-Prem has changed:
+      </p>
+      <ul>
+       <li>
+        The admin control plane runs three nodes, which use 4 CPUs and 16GB memory.
+       </li>
+       <li>
+        The user control plane runs one node that uses 4 CPUs 16GB memory.
+       </li>
+       <li>
+        User clusters run a minimum of three nodes, which use 4 CPUs and 16GB memory.
+       </li>
+      </ul>
+     </div>
+     <div class="release-changed" id="65588ce0">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Support for high-availability Prometheus setup.
+      </p>
+     </div>
+     <div class="release-changed" id="641341ec">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Support for custom Alert Manager configuration.
+      </p>
+     </div>
+     <div class="release-changed" id="0ddc4869">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Prometheus upgraded from
+       <strong>
+        2.3.2
+       </strong>
+       to
+       <strong>
+        2.4.3
+       </strong>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="641c9e85">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Grafana upgraded from
+       <strong>
+        5.0.4
+       </strong>
+       to
+       <strong>
+        5.3.4
+       </strong>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="1918b8e4">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       kube-state-metrics upgraded from
+       <strong>
+        1.3.1
+       </strong>
+       to
+       <strong>
+        1.4.0
+       </strong>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="fe63dae2">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Alert Manager upgraded from
+       <strong>
+        1.14.0
+       </strong>
+       to
+       <strong>
+        1.15.2
+       </strong>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="cdb1778b">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       node_exporter upgraded from
+       <strong>
+        1.15.2
+       </strong>
+       to
+       <strong>
+        1.16.0
+       </strong>
+       .
+      </p>
+     </div>
+     <div class="release-fixed" id="5c005868">
+      <strong>
+       FIXED:
+      </strong>
+      <h3 data-text="Fixes" id="fixes" tabindex="0">
+       Fixes
+      </h3>
+     </div>
+     <div class="release-fixed" id="f8233609">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       The vulnerability caused by
+       <a href="https://github.com/kubernetes/minikube/issues/3208">
+        CVE-2018-1002103
+       </a>
+       has been patched.
+      </p>
+     </div>
+     <div class="release-issue" id="23753c13">
+      <strong>
+       ISSUE:
+      </strong>
+      <h3 data-text="Known Issues" id="known_issues" tabindex="0">
+       Known Issues
+      </h3>
+     </div>
+     <div class="release-issue" id="7fc2a24e">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       PersistentVolumes can fail to mount, producing the error
+       <code dir="ltr" translate="no">
+        devicePath is empty
+       </code>
+       . As a workaround, delete and re-create the associated PersistentVolumeClaim.
+      </p>
+     </div>
+     <div class="release-issue" id="1a5a7f95">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       Resizing IPAM address blocks if using static IP allocation for nodes, is not supported in alpha. To work around this, consider allocating more IP addresses than you currently need.
+      </p>
+     </div>
+     <div class="release-issue" id="a0d46c2b">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       GKE On-Prem alpha 1.0 does not yet pass all conformance tests.
+      </p>
+     </div>
+     <div class="release-issue" id="5d3dba9c">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       Only one user cluster per admin cluster can be created. To create additional user clusters, create another admin cluster.
+      </p>
+     </div>
+     <h2 data-text="October 31, 2018" id="October_31_2018" tabindex="0">
+      October 31, 2018
+     </h2>
+     <div class="release-feature" id="31613226">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GKE On-Prem EAP 2.1 is now available. The following changes are included in this release:
+      </p>
+     </div>
+     <div class="release-changed" id="cc1f1943">
+      <strong>
+       CHANGED:
+      </strong>
+      <h3 data-text="Changes" id="changes" tabindex="0">
+       Changes
+      </h3>
+     </div>
+     <div class="release-changed" id="632dea26">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       When you create admin and user clusters at the same time, you can now re-use the admin cluster's F5 BIG-IP credentials to create the user cluster. Also, the CLI now requires that BIG-IP credentials be provided; this requirement cannot be skipped using
+       <code dir="ltr" translate="no">
+        --dry-run
+       </code>
+       .
+      </p>
+     </div>
+     <div class="release-changed" id="9b7e6b6c">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       F5 BIG-IP controller upgraded to use the latest OSS version, 1.7.0.
+      </p>
+     </div>
+     <div class="release-changed" id="92f34e61">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       To improve stability for slow vSphere machines, cluster machine creation timeout is now 15 minutes (previously five minutes).
+      </p>
+     </div>
+     <h2 data-text="October 17, 2018" id="October_17_2018" tabindex="0">
+      October 17, 2018
+     </h2>
+     <div class="release-feature" id="34cab9f8">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GKE On-Prem EAP 2.0 is now available. The following changes are included in this release:
+      </p>
+     </div>
+     <div class="release-changed" id="b400fea4">
+      <strong>
+       CHANGED:
+      </strong>
+      <h3 data-text="Changes" id="changes" tabindex="0">
+       Changes
+      </h3>
+     </div>
+     <div class="release-changed" id="3f3fa23a">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Support for GKE Connect.
+      </p>
+     </div>
+     <div class="release-changed" id="880cd072">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Support for Monitoring.
+      </p>
+     </div>
+     <div class="release-changed" id="2ddc555b">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Support for installation using private registries.
+      </p>
+     </div>
+     <div class="release-changed" id="58ede327">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Support for front-ending the L7 load-balancer as a L4 VIP on F5 BIG-IP.
+      </p>
+     </div>
+     <div class="release-changed" id="2e376a2d">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Support for static IP allocation for nodes during cluster bootstrap.
+      </p>
+     </div>
+     <div class="release-issue" id="32978e61">
+      <strong>
+       ISSUE:
+      </strong>
+      <h3 data-text="Known Issues" id="known_issues" tabindex="0">
+       Known Issues
+      </h3>
+     </div>
+     <div class="release-issue" id="832db8e8">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       Only one user cluster per admin cluster can be created. To create additional user clusters, create another admin cluster.
+      </p>
+     </div>
+     <div class="release-issue" id="e92f6042">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       Cluster upgrades are not supported in EAP 2.0.
+      </p>
+     </div>
+     <div class="release-issue" id="4e7e3dd6">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       On slow disks, VM creation can timeout and cause deployments to fail. If this occurs, delete all resources and try again.
+      </p>
+     </div>
+     <div class="release-issue" id="52d075c4">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       As part of the cluster bootstrapping process, a short-lived minikube instance is run. The minikube version used has security vulnerability
+       <a href="https://github.com/kubernetes/minikube/issues/3208">
+        CVE-2018-1002103
+       </a>
+       .
+      </p>
+     </div>
+    </section>
+   </section>
+  </div>
+ </article>
+</article>

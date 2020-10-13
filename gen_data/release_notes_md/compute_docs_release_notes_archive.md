@@ -500,7 +500,7 @@ You can now find information about network tags in the [ Networking
 
 **June 29, 2016**
 
-  * Protect data on Compute Engine with your own encryption keys. [ Customer-Supplied Encryption Keys ](/compute/docs/disks/customer-supplied-encryption) are now **generally available** for select countries. You can now also [ stop an instance ](/compute/docs/instances/stopping-or-deleting-an-instance) with a persistent disk that is encrypted with your own key. Compute Engine is able to restart your instance if you provide the key. 
+  * Protect data on Compute Engine with your own encryption keys. [ Customer-Supplied Encryption Keys ](/compute/docs/disks/customer-supplied-encryption) are now **generally available** for select countries. You can now also [ stop an instance ](/compute/docs/instances/stop-start-instance) with a persistent disk that is encrypted with your own key. Compute Engine is able to restart your instance if you provide the key. 
 
 **June 27, 2016**
 
@@ -735,7 +735,7 @@ documentation.
 
 **April 29, 2015**
 
-  * Released instance [ ` stop() ` ](/compute/docs/reference/latest/instances/stop) and [ ` start() ` ](/compute/docs/reference/latest/instances/start) features into **General Availability** . Additionally, stopped instances no longer count towards your CPU resource quotas. See [ Stopping an instance ](/compute/docs/instances/stopping-or-deleting-an-instance) and [ Restarting a stopped instance ](/compute/docs/instances/restarting-an-instance) for more information. 
+  * Released instance [ ` stop() ` ](/compute/docs/reference/latest/instances/stop) and [ ` start() ` ](/compute/docs/reference/latest/instances/start) features into **General Availability** . Additionally, stopped instances no longer count towards your CPU resource quotas. See [ Stopping an instance ](/compute/docs/instances/stop-start-instance#stopping_an_instance) and [ Restarting a stopped instance ](/compute/docs/instances/stop-start-instance#starting_a_stopped_instance) for more information. 
   * Upgraded us-central1-b to use [ Haswell ](https://en.wikipedia.org/wiki/Haswell_%28microarchitecture%29) processors. All new virtual machines started in us-central1-b will use Haswell processors by default. Existing instances in us-central1-b have been upgraded from Sandy Bridge to Haswell processors. See [ Zones ](/compute/docs/regions-zones#available) and [ Machine Types ](/compute/docs/machine-types) for a full list of available zones and processors. 
 
 **April 27, 2015**
@@ -779,7 +779,7 @@ documentation.
 **March 05, 2015**
 
   * Released new [ ` moveInstance() ` ](/compute/docs/reference/latest/projects/moveInstance) feature that moves an instance and its attached disks to another zone. See [ Moving an instance between zones ](/compute/docs/instances/moving-instance-across-zones) for more information. 
-  * VPN is now available in **Beta** . For more information, see the [ VPN documentation ](/vpn/docs/concepts/overview) . 
+  * VPN is now available in **Beta** . For more information, see the [ VPN documentation ](/network-connectivity/docs/vpn/concepts/overview) . 
 
 ##  February 2015
 
@@ -807,7 +807,7 @@ documentation.
 
 **January 13, 2015**
 
-  * Released new instance [ ` stop() ` ](/compute/docs/reference/latest/instances/stop) and [ ` start() ` ](/compute/docs/reference/latest/instances/start) features in **Beta** . See [ Stopping an instance ](/compute/docs/instances/stopping-or-deleting-an-instance) and [ Restarting a stopped instance ](/compute/docs/instances/restarting-an-instance) for more information. 
+  * Released new instance [ ` stop() ` ](/compute/docs/reference/latest/instances/stop) and [ ` start() ` ](/compute/docs/reference/latest/instances/start) features in **Beta** . See [ Stopping an instance ](/compute/docs/instances/stop-start-instance#stopping_an_instance) and [ Restarting a stopped instance ](/compute/docs/instances/stop-start-instance#starting_a_stopped_instance) for more information. 
 
 **Note:** Currently, virtual machines with local SSDs cannot be restarted but
 we expect to add this functionality in the future. Additionally, during Beta,
@@ -831,13 +831,17 @@ remove this restriction before this feature is generally available.
         --image windows-2008-r2
     
 
+For more information, see [ Starting a new Windows virtual machine instance
+](/compute/docs/instances/windows#starting_a_new_windows_virtual_machine_instance)
+.
+
 **December 08, 2014**
 
   * [ Windows Server 2008 R2 ](/compute/docs/images#windows) is now available in **Beta** to all users and projects. Additionally, we've also added support for [ Microsoft license mobility ](/compute/docs/instances/ms-licensing) . 
 
 **December 02, 2014**
 
-  * Added support for [ local SSD ](/compute/docs/disks/local-ssd) in all zones, **except** us-central1-b and europe-west1-a (which is deprecated). 
+  * Added support for [ local SSD ](/compute/docs/disks/local-ssd) in all zones, _except_ ` us-central1-b ` and ` europe-west1-a ` , which are deprecated. For more information, see [ Resetting an instance ](/compute/docs/instances/stop-start-instance#resetting_an_instance) or the [ ` instances().reset ` method ](/compute/docs/reference/latest/instances/reset) . 
 
 ##  November 2014
 
@@ -853,7 +857,7 @@ remove this restriction before this feature is generally available.
 **November 04, 2014**
 
   * Lowered pricing for persistent SSD and persistent disk snapshots. See [ Persistent disk pricing ](/compute/disks-image-pricing#persistentdisk) for more information. 
-  * Lowered network pricing. See [ Network pricing ](/compute/network-pricing) for more information. 
+  * Lowered network pricing. See [ Network pricing ](/vpc/network-pricing) for more information. 
   * Autoscaler is now available in Beta and available to all users and projects. See [ Autoscaler ](/compute/docs/autoscaler) for more information. 
 
 **November 03, 2014**
@@ -1323,7 +1327,7 @@ instances. For more information, see [ ` gcutil addinstance `
 **June 26th, 2013**
 
   * Added bursting for ` f1-micro ` instances. See [ machine types ](/compute/docs/machine-types) for more information. 
-  * Added ability to reset an instance through the API. Review the [ documentation for resetting instances ](/compute/docs/instances/restarting-an-instance#resetting_an_instance) for more information, or review the [ ` instances().reset ` ](/compute/docs/reference/latest/instances/reset) reference documentation. 
+  * Added ability to reset an instance through the API. For more information, see [ Resetting an instance ](/compute/docs/instances/stop-start-instance#resetting_an_instance) or the [ ` instances().reset ` method ](/compute/docs/reference/latest/instances/reset) . 
   * Released gcutil 1.8.2. 
     * Added new ` gcutil resetinstance ` command that allows resetting virtual machine instances. 
     * Fixed region detection when releasing addresses from multiple regions. 
@@ -1371,7 +1375,7 @@ instances. For more information, see [ ` gcutil addinstance `
 
       * Added new * _regional resource URIs_ to access regional resources, in the form: 
             
-                            https://compute.googleapis.com/compute/v1beta15/project/<project-id>/regions/<region-name>/<resource-type>/<resource-name>
+                            https://www.googleapis.com/compute/v1beta15/project/<project-id>/regions/<region-name>/<resource-type>/<resource-name>
             
 
 For example, to access [ regional reserved IPs
@@ -1379,7 +1383,7 @@ For example, to access [ regional reserved IPs
 regional URI:
 
             
-                            https://compute.googleapis.com/compute/v1beta15/project/example.com:myproject/regions/example-region/addresses
+                            https://www.googleapis.com/compute/v1beta15/project/example.com:myproject/regions/example-region/addresses
             
 
       * Updated reserved IP addresses to a regional resource. 
@@ -1400,7 +1404,7 @@ To use a machine type, you must now specify the zone in which that machine
 type lives:
 
         
-                https://compute.googleapis.com/compute/v1beta15/project/example.com:myproject/zones/example-zone/machineTypes/machineTypeName
+                https://www.googleapis.com/compute/v1beta15/project/example.com:myproject/zones/example-zone/machineTypes/machineTypeName
         
 
     * **Changed method of creating Snapshot resources to use a custom verb on the Disk resource.**
@@ -1408,7 +1412,7 @@ type lives:
 To create a Snapshot resource, you must now make a request to the following
 URI:
 
-https://compute.googleapis.com/compute/v1beta15/projects/PROJECT_ID/zones/ZONE/disks/DISK/createSnapshot
+https://www.googleapis.com/compute/v1beta15/projects/PROJECT_ID/zones/ZONE/disks/DISK/createSnapshot
 
 Snapshots are still accessible by making requests to the Snapshot collection.
 
@@ -1433,7 +1437,7 @@ For example, you can list instances across all zones by making a request to
 the following URI:
 
         
-                https://compute.googleapis.com/compute/v1beta15/project/example.com:myproject/aggregated/instances
+                https://www.googleapis.com/compute/v1beta15/project/example.com:myproject/aggregated/instances
         
 
     * **Introduced new[ shared-core machine types ](/compute/docs/vm-instance-pricing) . **
@@ -1579,25 +1583,25 @@ Changes in v1beta14 include:
 
       * Added new * _per-zone resource URIs_ to access per-zone resources, in the form: 
             
-                            https://compute.googleapis.com/compute/v1beta14/projects/<project-id>/zones/<zone>/<resource-type>/<resource-name>
+                            https://www.googleapis.com/compute/v1beta14/projects/<project-id>/zones/<zone>/<resource-type>/<resource-name>
             
 
 For example, accessing a Disk resource requires the following per-zone URI:
 
             
-                            https://compute.googleapis.com/compute/v1beta14/project/example.com:myproject/zones/some-example-zone/disks/mydisk
+                            https://www.googleapis.com/compute/v1beta14/project/example.com:myproject/zones/some-example-zone/disks/mydisk
             
 
     * _Added new global resource URIs for accessing global resources, in the form:_ * 
         
-                https://compute.googleapis.com/compute/v1beta14/projects/<project-id>/<resource-type>/<resource-name>
+                https://www.googleapis.com/compute/v1beta14/projects/<project-id>/<resource-type>/<resource-name>
         
 
 For example, accessing a Machine Type resource requires the following global
 URI:
 
         
-                https://compute.googleapis.com/compute/v1beta14/project/example.com:myproject/global/machineTypes/somemachinetype
+                https://www.googleapis.com/compute/v1beta14/project/example.com:myproject/global/machineTypes/somemachinetype
         
 
     * **Added a number of new features**
@@ -1706,7 +1710,7 @@ is not yet enabled. We expect to enable snapshot billing in January 2013.
 
     1. Change all URIs from ` v1beta12 ` to ` v1beta13 ` . For example: 
         
-                https://compute.googleapis.com/compute/ **v1beta13** /disks
+                https://www.googleapis.com/compute/ **v1beta13** /disks
 
     2. Update API nouns and verbs that have a dash to use camelCase (e.g. ` machineTypes ` instead of ` machine-types ` ) 
 

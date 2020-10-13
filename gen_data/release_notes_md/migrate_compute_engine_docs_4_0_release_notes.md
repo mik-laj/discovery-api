@@ -1,5 +1,5 @@
 This version is deprecated and its documentation will be removed soon. See the
-[ current version ](/migrate/compute-engine/docs/) for the latest
+[ current version ](/migrate/compute-engine/docs) for the latest
 documentation.
 
 #  Release Notes
@@ -43,8 +43,7 @@ For detailed instructions on how to use the new features, see [ Organizing
 migrations with waves ](/migrate/compute-engine/docs/4.0/how-to/organizing-
 migrations/overview) .
 
-####  Deployment of Velostrata Manager on Google Cloud via Google Cloud
-Marketplace
+####  Deployment of Velostrata Manager on Google Cloud via Cloud Marketplace
 
 Velostrata V4.0 Manager deployment is now available via [ Google Cloud
 Marketplace's

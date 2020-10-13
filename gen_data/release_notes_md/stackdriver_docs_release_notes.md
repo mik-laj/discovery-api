@@ -23,6 +23,286 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/stackdriver-release-notes.xml `
 
+##  August 17, 2020
+
+**Cloud Logging**
+
+**FEATURE:**
+
+To help you explore your logs more efficiently, Cloud Logging now provides
+suggested queries based on the context of your Google Cloud project. For more
+information, go to [ Suggested queries
+](https://cloud.google.com/logging/docs/view/building-
+queries#suggested_queries) .
+
+**Cloud Trace**
+
+**FEATURE:**
+
+The Cloud Trace viewer now supports search by the trace ID. For more
+information, see [ Viewing Trace Details
+](https://cloud.google.com/trace/docs/viewing-details) .
+
+##  August 13, 2020
+
+**Cloud Monitoring**
+
+**FEATURE:**
+
+The new, out-of-the-box **Infrastructure Summary** dashboard for Compute
+Engine VMs provides a single-pane-of-glass view into your VM fleet and load
+balancers. At a glance, you can see the top 5 VMs across a variety of key
+metrics including memory, CPU, sent/received traffic, latency, disk
+read/write, and more.
+
+##  August 12, 2020
+
+**Cloud Monitoring**
+
+**FEATURE:**
+
+Enhancements to the pre-configured Compute Engine **VM Instances** dashboard.
+The inventory table now includes a **Monitoring Agent Status** column, and the
+Monitoring agent can be installed by using a UI workflow from the table. The
+**Explore** tab gives an overview of additional metrics being sent (including
+agent metrics, custom metrics, and logs-based metrics) as well as a set of
+quick links to learn more about each type of metric. You can also use the
+**Recommended Alerts** button on the dashboard to configure fleet-wide alerts.
+
+##  August 11, 2020
+
+**Cloud Logging**
+
+**CHANGED:**
+
+Users now manage logs exclusions through logs sinks. As a result, custom roles
+that have the ` logging.sinks.* ` permissions can now control the volume of
+logs ingested into Cloud Logging through logs sinks.
+
+We recommend that you review any custom roles with the ` logging.sinks.* `
+permissions so that you can make adjustments as needed.
+
+**FEATURE:**
+
+Beta release: You can now use Logs Buckets to centralize or divide your logs
+based on your needs. For information about this feature, refer to the [
+Managing logs buckets ](https://cloud.google.com/logging/docs/buckets) guide.
+
+##  August 03, 2020
+
+**Cloud Logging**
+
+**FEATURE:**
+
+Alpha release: You can now use Logs Buckets to centralize or divide your logs
+based on your needs. For information about this feature, refer to the [
+Managing logs buckets ](https://cloud.google.com/logging/docs/buckets) guide.
+To participate in the alpha or to get notified when Logs Buckets goes beta,
+fill out the [ sign up form
+](https://docs.google.com/forms/d/e/1FAIpQLSeBVpNBivnTAAd4G3rdait9t94uG9TWc07oGwNRGcE071TeCA/viewform)
+.
+
+##  July 30, 2020
+
+**Cloud Logging**
+
+**CHANGED:**
+
+The Logs field explorer panel is now generally available (GA). To learn more,
+see the [ Logs field explorer section on Logs Viewer (Preview) interface page
+](https://cloud.google.com/logging/docs/view/logs-viewer-interface#logs-field-
+panel) .
+
+##  July 10, 2020
+
+**Cloud Monitoring**
+
+**FEATURE:**
+
+SLO monitoring for microservices is now Generally Available in the Cloud
+Console. This feature lets you create service-level objectives (SLOs) and set
+up alerting policies to monitor their performance using auto-generated
+dashboards with metrics, logs, and alerts in a single place. For more
+information, see [ SLO monitoring
+](https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring) .
+
+##  July 07, 2020
+
+**Cloud Monitoring**
+
+**CHANGED:**
+
+Monitoring Query Language (MQL) is now Generally Available. MQL is an
+expressive, text-based interface to Cloud Monitoring time-series data. With
+MQL, you can create charts you can't create any other way. You can access MQL
+from both the Cloud Console and the Monitoring API. For more information, see
+[ Introduction to Monitoring Query Language
+](https://cloud.google.com/monitoring/mql/) .
+
+##  June 30, 2020
+
+**Cloud Logging**
+
+**FEATURE:**
+
+Cloud Logging now contains a Logs Dashboard page that provides a high-level
+overview into the health of your systems running within a project. To learn
+more, see [ Logs Dashboard
+](https://cloud.google.com/logging/docs/view/dashboard) .
+
+##  June 29, 2020
+
+**Cloud Debugger**
+
+**FEATURE:**
+
+Cloud Debugger now lets you canary snapshots and logpoints on your Node.js
+applications. To learn more, see the [ Node.js page for setting up Cloud
+Debugger ](https://cloud.google.com/debugger/docs/setup/nodejs) .
+
+##  June 17, 2020
+
+**Cloud Debugger**
+
+**FEATURE:**
+
+Cloud Debugger now lets you canary snapshots and logpoints on your Python
+applications. To learn more, see the [ Python page for setting up Cloud
+Debugger ](https://cloud.google.com/debugger/docs/setup/python) .
+
+##  June 15, 2020
+
+**Cloud Monitoring**
+
+**CHANGED:**
+
+The Service Monitoring API is now Generally Available. You can use this
+feature to create services, set service-level objectives (SLOs), and create
+alerting policies to monitor your SLOs. See [ Service monitoring
+](https://cloud.google.com/monitoring/service-monitoring/) for documentation,
+and [ ` services ` ](https://cloud.google.com/monitoring/api/v3/#service-
+monitoring) for reference material.
+
+##  June 08, 2020
+
+**Cloud Monitoring**
+
+**FEATURE:**
+
+Enhancements to the pre-configured Compute Engine **VM Instances** dashboard.
+Compute Engine cross-fleet metrics and detail views specific to CPU, Disk,
+Memory, and Network are now available. Use filters to narrow down the set of
+VMs being inspected, and use the time selector or in-chart time selection to
+change the time window. VMs with the Monitoring agent installed get detailed
+memory and disk analysis out of the box.
+
+##  June 05, 2020
+
+**Cloud Logging**
+
+**CHANGED:**
+
+Custom retention is now generally available (GA). In order to have time to
+explore this feature, you won't be charged for extended retention of logs
+until March 31, 2021. To learn more, see the [ Logging pricing section on the
+Pricing for Google Cloud's operations suite page
+](https://cloud.google.com/stackdriver/pricing#logging-costs) .
+
+##  June 03, 2020
+
+**Cloud Logging**
+
+**FEATURE:**
+
+In the Logs Viewer (Preview), you can now save your queries, which can then be
+viewed and run from the **Saved** queries tab. For more information, see the [
+Saved queries section on the Building queries page
+](https://cloud.google.com/logging/docs/view/building-queries#saved-queries) .
+
+##  May 20, 2020
+
+**Cloud Monitoring**
+
+**FEATURE:**
+
+Cloud Monitoring introduces an improved experience for viewing and managing
+incidents. Improvements include performance optimizations for Workspaces with
+large numbers of incidents, summary statics, and the ability to filter by
+alerting policy name, metric type, and resource type. For more information,
+see [ Incidents and events
+](https://cloud.google.com/monitoring/alerts/incidents-events) .
+
+##  May 19, 2020
+
+**Cloud Debugger**
+
+**FEATURE:**
+
+Cloud Debugger now lets you canary snapshots and logpoints on your Java
+applications. To learn more, see the [ Java page for setting up Cloud Debugger
+](https://cloud.google.com/debugger/docs/setup/java) .
+
+**Cloud Monitoring**
+
+**CHANGED:**
+
+Alert notifications delivered by email now come from "alerting-
+noreply@google.com" instead of "alerts@stackdriver.com".
+
+##  May 18, 2020
+
+**Cloud Logging**
+
+**FEATURE:**
+
+**Logs Viewer** now contains the **Logs field explorer** panel, which lets you
+view aggregation-based results for your project's log fields and makes it more
+efficient to refine queries. To learn more, go to the [ Logs Viewer (Preview)
+page ](https://cloud.google.com/logging/docs/view/logs-viewer-interface) .
+
+##  May 14, 2020
+
+**Cloud Monitoring**
+
+**CHANGED:**
+
+Starting in version 6.0.2, the Cloud Monitoring agent is available for the
+Ubuntu LTS 20.04 (Focal Fossa) distribution.
+
+##  May 12, 2020
+
+**Cloud Profiler**
+
+**CHANGED:**
+
+The Cloud Profiler Python agent is now generally available. See [ Profiling
+Python applications ](https://cloud.google.com/profiler/docs/profiling-python)
+for information on configuring your Python application.
+
+##  May 11, 2020
+
+**Cloud Logging**
+
+**FEATURE:**
+
+You can now use regular expressions to query your logs data and create
+filters. For more information, go to [ Using regular expressions
+](https://cloud.google.com/logging/docs/view/logging-query-language#regular-
+expressions) .
+
+##  May 08, 2020
+
+**Cloud Monitoring**
+
+**FEATURE:**
+
+Monitoring Query Language (MQL) is now available in Beta. MQL is an
+expressive, text-based interface to Cloud Monitoring time-series data. With
+MQL, you can create charts you can't create any other way. You can access MQL
+from both the Cloud Console and the Monitoring API. For more information, see
+[ Introduction to Monitoring Query Language
+](https://cloud.google.com/monitoring/mql/) .
+
 ##  April 28, 2020
 
 **Cloud Monitoring**
@@ -178,8 +458,8 @@ distributions:
 
 **CHANGED:**
 
-Integration of Stackdriver Trace with Virtual Private Cloud Service Controls
-is now generally available. For more information, see [ VPC Service Controls
+Integration of Cloud Trace with Virtual Private Cloud Service Controls is now
+generally available. For more information, see [ VPC Service Controls
 documentation ](https://cloud.google.com/vpc-service-controls/docs/) .
 
 ##  February 19, 2020
@@ -333,23 +613,21 @@ is now beta. For more information, see [ VPC Service Controls documentation
 
 **CHANGED:**
 
-Google Kubernetes Engine (GKE) version 1.15, which is now [ generally
-available ](https://cloud.google.com/kubernetes-engine/docs/release-
-notes#december_13_2019) , drops support for GKE versions 1.12 and earlier. As
-a result, the beta version of Stackdriver Kubernetes Engine Monitoring is no
-longer supported. If your GKE clusters are running version 1.12 or earlier,
-then you must upgrade them as soon as possible.
+Google Kubernetes Engine (GKE) version 1.15, which is now generally available,
+drops support for GKE versions 1.12 and earlier. As a result, the beta version
+of Stackdriver Kubernetes Engine Monitoring is no longer supported. If your
+GKE clusters are running version 1.12 or earlier, then you must upgrade them
+as soon as possible.
 
 **Cloud Monitoring**
 
 **CHANGED:**
 
-Google Kubernetes Engine (GKE) version 1.15, which is now [ generally
-available ](https://cloud.google.com/kubernetes-engine/docs/release-
-notes#december_13_2019) , drops support for GKE versions 1.12 and earlier. As
-a result, the beta version of Stackdriver Kubernetes Engine Monitoring is no
-longer supported. If your GKE clusters are running version 1.12 or earlier,
-then you must upgrade them as soon as possible.
+Google Kubernetes Engine (GKE) version 1.15, which is now generally available,
+drops support for GKE versions 1.12 and earlier. As a result, the beta version
+of Stackdriver Kubernetes Engine Monitoring is no longer supported. If your
+GKE clusters are running version 1.12 or earlier, then you must upgrade them
+as soon as possible.
 
 **Cloud Profiler**
 
@@ -1140,8 +1418,8 @@ different callers. For more information, see [ Using the **Focus** Filter
 
 **CHANGED:**
 
-If you are using custom Cloud IAM roles, any roles that load Stackdriver
-Monitoring dashboards now require additional IAM permissions. The `
+If you are using custom IAM roles, any roles that load Stackdriver Monitoring
+dashboards now require additional IAM permissions. The `
 monitoring.dashboards.* ` and ` monitoring.publicWidgets.* ` permissions are
 now public, and custom roles used to load dashboards must now include them.
 See [ Stackdriver Monitoring Access Control
@@ -2642,8 +2920,8 @@ Cloud SDK is now named ` gcloud beta logging ` .
 
 **FEATURE:**
 
-The [ Cloud Logging API ](https://cloud.google.com/logging/docs/api/ref/rest/)
-and [ command-line interface
+The [ Cloud Logging API ](https://cloud.google.com/logging/docs/reference/api-
+overview) and [ command-line interface
 ](https://cloud.google.com/logging/docs/api/gcloud-logging) now support
 project sinks. A project sink can export log entries from any combination of
 logs, based on [ advanced logs filters

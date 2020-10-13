@@ -1,0 +1,706 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <div background="teal" class="devsite-banner devsite-banner-announcement">
+   <div class="devsite-banner-message">
+    <div class="devsite-banner-message-text">
+     <p>
+      <strong>
+       NOTE:
+      </strong>
+      Some aspects of this product are in Beta. The hybrid installation options are GA. To join the Beta program, reach out to your Apigee representative.
+     </p>
+    </div>
+   </div>
+  </div>
+  <h1 class="devsite-page-title">
+   1.3.0 - Apigee hybrid runtime release notes
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <p>
+    On July 30, 2020, we released Apigee hybrid runtime version 1.3.0.
+   </p>
+   <aside class="objective">
+    For more information, see the following resources:
+    <ul>
+     <li>
+      <em>
+       <a href="/apigee/docs/hybrid/v1.2/what-is-hybrid">
+        Learn more about hybrid
+       </a>
+      </em>
+      or
+      <em>
+       <a href="/apigee/docs/hybrid/v1.2/big-picture">
+        Start installing
+       </a>
+      </em>
+     </li>
+     <li>
+      <em>
+       Create a paid account:
+      </em>
+      Contact
+      <a href="https://pages.apigee.com/contact-sales-reg.html">
+       Apigee Sales
+      </a>
+     </li>
+     <li>
+      <em>
+       Questions or issues?
+      </em>
+      Contact
+      <a class="external" href="https://cloud.google.com/apigee/support/">
+       Apigee Support
+      </a>
+     </li>
+    </ul>
+   </aside>
+   <section class="expandable">
+    <h4 class="showalways" data-text="Help &amp; notifications" id="help-notifications" tabindex="0">
+     Help &amp; notifications
+    </h4>
+    <div class="note">
+     <p>
+      <strong>
+       Questions or issues?
+      </strong>
+      <a href="https://cloud.google.com/apigee/support/">
+       Get help here
+      </a>
+      .
+     </p>
+     <p>
+      <strong>
+       Release notifications
+      </strong>
+      : Go to
+      <a href="http://status.apigee.com">
+       http://status.apigee.com
+      </a>
+      and click
+      <strong>
+       Subscribe to Updates
+      </strong>
+      .
+     </p>
+     <p>
+      <a href="/apigee/docs/release/notes/apigee-release-notes">
+       Release notes home page
+      </a>
+     </p>
+    </div>
+   </section>
+   <h2 data-text="Upgrading" id="upgrading" tabindex="0">
+    Upgrading
+   </h2>
+   <aside class="warning">
+    Upgrade to Apigee hybrid v1.3.0 is not supported at this time.
+   </aside>
+   <h2 data-text="New features and updates" id="new-features-and-updates" tabindex="0">
+    New features and updates
+   </h2>
+   <p>
+    This section describes the new features and enhancements in this release.
+   </p>
+   <h3 data-text="New installation prerequisites " id="new-installation-prerequisites" tabindex="0">
+    New installation prerequisites
+   </h3>
+   <h4 data-text="cert-manager" id="cert-manager" tabindex="0">
+    cert-manager
+   </h4>
+   <p>
+    Apigee hybrid requires
+    <strong>
+     cert-manager v0.14.2
+    </strong>
+    to manage and verify certificates.
+    You can use
+    <code dir="ltr" translate="no">
+     kubectl
+    </code>
+    to install and configure cert-manager directly from
+    <em>
+     github &gt; jetstack &gt; cert-manager
+    </em>
+    .
+    See
+    <a href="/apigee/docs/hybrid/v1.3/install-download-cert-manager-istio#download-and-install-cert-manager">
+     Download and install cert-manager
+    </a>
+    .
+   </p>
+   <h4 data-text="Anthos Service Mesh" id="anthos-service-mesh" tabindex="0">
+    Anthos Service Mesh
+   </h4>
+   <p>
+    Apigee hybrid uses the Istio distribution provided with Anthos Service Mesh (ASM) version 1.5.x to
+    create and manage the runtime ingress gateway. See
+    <a href="/apigee/docs/hybrid/v1.3/install-download-cert-manager-istio#download-and-install-asm">
+     Download and install ASM
+    </a>
+    .
+   </p>
+   <h3 data-text="Environment groups" id="environment-groups" tabindex="0">
+    Environment groups
+   </h3>
+   <p>
+    Environment groups allow you to logically group environments together. Environments within each
+    group share the same hostnames. You can group environments by function, by hostname address, by
+    region if you are implementing a multi-region hybrid installation, or by any other metric you choose.
+   </p>
+   <p>
+    Environment groups provide the same routing features provided by the
+    <code dir="ltr" translate="no">
+     virtualHosts
+    </code>
+    property in Apigee hybrid version 1.2.
+   </p>
+   <p>
+    See
+    <a href="/apigee/docs/hybrid/v1.3/environment-groups-about">
+     About environment groups
+    </a>
+    .
+   </p>
+   <h3 data-text="New CLI command" id="new-cli-command" tabindex="0">
+    New CLI command
+   </h3>
+   <p>
+    The following new command was added to the apigeectl CLI. For more information about each command,
+    see
+    <a href="/apigee/docs/hybrid/v1.3/cli-reference">
+     apigeectl
+    </a>
+    .
+   </p>
+   <table>
+    <thead>
+     <tr>
+      <th>
+       Command
+      </th>
+      <th>
+       Description
+      </th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td>
+       <code dir="ltr" translate="no">
+        encode
+       </code>
+      </td>
+      <td>
+       Returns a list of encoded names of all the ApigeeDeployments for the specified organization
+         or the specified environment within the specified organization.
+      </td>
+     </tr>
+    </tbody>
+   </table>
+   <h3 data-text="CLI flag changes" id="cli-flag-changes" tabindex="0">
+    CLI flag changes
+   </h3>
+   <p>
+    The following new flags were added to the apigeectl CLI. For more information about each command,
+    see
+    <a href="/apigee/docs/hybrid/v1.3/cli-reference">
+     apigeectl
+    </a>
+    .
+   </p>
+   <table>
+    <thead>
+     <tr>
+      <th>
+       Flag
+      </th>
+      <th>
+       Status
+      </th>
+      <th>
+       Description
+      </th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td>
+       <code dir="ltr" translate="no">
+        --all-envs
+       </code>
+      </td>
+      <td>
+       New
+      </td>
+      <td>
+       Applies the apigeectl command to all environments under the organization specified in your
+       overrides config file.
+      </td>
+     </tr>
+     <tr>
+      <td>
+       <code dir="ltr" translate="no">
+        --env
+       </code>
+      </td>
+      <td>
+       New
+      </td>
+      <td>
+       Applies the configuration to the specified organization
+      </td>
+     </tr>
+     <tr>
+      <td>
+       <code dir="ltr" translate="no">
+        --datastore
+       </code>
+      </td>
+      <td>
+       New
+      </td>
+      <td>
+       Applies the configuration to the datastore scope (Cassandra).
+      </td>
+     </tr>
+     <tr>
+      <td>
+       <code dir="ltr" translate="no">
+        --dry-run
+       </code>
+      </td>
+      <td>
+       Changed
+      </td>
+      <td>
+       Arguments depend on the version of kubectl you are using:
+       <ul>
+        <li>
+         kubectl version 1.7.x or older:
+         <code dir="ltr" translate="no">
+          ‑‑dry‑run=true
+         </code>
+        </li>
+        <li>
+         kubectl version 1.8.x or newer:
+         <code dir="ltr" translate="no">
+          ‑‑dry‑run=client
+         </code>
+        </li>
+       </ul>
+      </td>
+     </tr>
+     <tr>
+      <td>
+       <code dir="ltr" translate="no">
+        --org
+       </code>
+      </td>
+      <td>
+       New
+      </td>
+      <td>
+       Applies the configuration to the specified organization.
+      </td>
+     </tr>
+     <tr>
+      <td>
+       <code dir="ltr" translate="no">
+        --telemetry
+       </code>
+      </td>
+      <td>
+       New
+      </td>
+      <td>
+       Applies the configuration for telemetry components: apigee-logger and apigee-metrics.
+      </td>
+     </tr>
+     <tr>
+      <td>
+       <code dir="ltr" translate="no">
+        -c, --components
+       </code>
+      </td>
+      <td>
+       Removed
+      </td>
+      <td>
+       Instead, apply changes by env, org, datastore, or telemetry scopes.
+      </td>
+     </tr>
+    </tbody>
+   </table>
+   <h3 data-text="Unique hashed values for organization and environment names" id="unique-hashed-values-for-organization-and-environment-names" tabindex="0">
+    Unique hashed values for organization and environment names
+   </h3>
+   <p>
+    Apigee hybrid now uses a unique hashed value to keep track of organization and environment names.
+    This avoids errors when org and env names are too long to concatenate. You can see the hashed
+    values with the
+    <code dir="ltr" translate="no">
+     apigeectl encode
+    </code>
+    command. For example:
+   </p>
+   <pre class="prettyprint" dir="ltr" translate="no">$ ./apigeectl encode --org hybrid-example
+List of ApigeeDeployments are:
+  apigee-connect-agent-hybrid-example-6a82f8a
+  apigee-mart-hybrid-example-6a82f8a
+  apigee-watcher-hybrid-example-6a82f8a
+
+$ ./apigeectl encode --org hybrid-example --env example-env
+List of ApigeeDeployments are:
+  apigee-runtime-hybrid-example-example-env-9e87e2d
+  apigee-synchronizer-hybrid-example-example-env-9e87e2d
+  apigee-udca-hybrid-example-example-env-9e87e2d
+$</pre>
+   <p>
+    See
+    <a href="/apigee/docs/hybrid/v1.3/cli-reference">
+     apigeectl
+    </a>
+    .
+   </p>
+   <h3 data-text="New axHashSalt configuration property" id="new-axhashsalt-configuration-property" tabindex="0">
+    New axHashSalt configuration property
+   </h3>
+   <p>
+    A new org-level configuration property, axHashSalt, was added. This property lets you specify the
+    name of a Kubernetes secret that contains a hashing salt value used to encrypt
+    <a href="/apigee/docs/hybrid/v1.3/obfuscate-userdata-for-analytics">
+     obfuscated user data
+    </a>
+    sent to Apigee analytics.  For more information, see the
+    <a href="/apigee/docs/hybrid/v1.3/config-prop-ref">
+     Configuration property reference
+    </a>
+    .
+   </p>
+   <h3 data-text="Added support for mTLS on the Istio ingress" id="added-support-for-mtls-on-the-istio-ingress" tabindex="0">
+    Added support for mTLS on the Istio ingress
+   </h3>
+   <p>
+    You can configure
+    <a href="https://en.wikipedia.org/wiki/Mutual_authentication">
+     mTLS
+    </a>
+    .
+    on the Istio ingress. For more information, see
+    <a href="/apigee/docs/hybrid/v1.3/ingress-tls#configuring-mtls">
+     Configuring mTLS
+    </a>
+    .
+   </p>
+   <h3 data-text="Watcher " id="watcher" tabindex="0">
+    Watcher
+   </h3>
+   <p>
+    Apigee Watcher pulls virtual hosts related changes for an org from synchronizer and makes necessary changes to configure istio ingress.
+   </p>
+   <p>
+    Watcher introduces:
+   </p>
+   <ul>
+    <li>
+     New service account: apigee-watcher
+     <li>
+      New role: Apigee Runtime Agent
+      <li>
+       New configuration property: watcher
+      </li>
+     </li>
+    </li>
+   </ul>
+   <p>
+    See
+    <a href="/apigee/docs/hybrid/v1.3/install-download-install#create-service-accounts">
+     Create service accounts
+    </a>
+    and the
+    <a href="/apigee/docs/hybrid/v1.3/config-prop-ref#watcher">
+     Configuration properties reference
+    </a>
+    .
+   </p>
+   <h3 data-text="GA of the OASValidation policy" id="ga-of-the-oasvalidation-policy" tabindex="0">
+    GA of the OASValidation policy
+   </h3>
+   <p>
+    The OASValidation policy is now GA.
+   </p>
+   <h3 data-text="Apigee Connect enabled by default" id="apigee-connect-enabled-by-default" tabindex="0">
+    Apigee Connect enabled by default
+   </h3>
+   <p>
+    Apigee Connect is now GA and is enabled by default for all new Apigee installs.
+    See
+    <a href="/apigee/docs/hybrid/v1.3/apigee-connect">
+     Apigee Connect
+    </a>
+    .
+   </p>
+   <h3 data-text="Metrics enabled by default" id="metrics-enabled-by-default" tabindex="0">
+    Metrics enabled by default
+   </h3>
+   <p>
+    Metrics are enabled by default for all new Apigee hybrid installations.
+    See
+    <a href="/apigee/docs/hybrid/v1.3/metrics-enable">
+     Configure metrics collection
+    </a>
+    .
+   </p>
+   <h3 data-text="Changes to the virtualHosts configuration property" id="changes-to-the-virtualhosts-configuration-property" tabindex="0">
+    Changes to the
+    <code dir="ltr" translate="no">
+     virtualHosts
+    </code>
+    configuration property
+   </h3>
+   <p>
+    Use environment groups to configure routing rules. This replaces the virtualHosts:routingRules
+    property. See
+    <a href="/apigee/docs/hybrid/v1.3/base-path-routing">
+     Configuring virtual hosts
+    </a>
+    and
+    <a href="/apigee/docs/hybrid/v1.3/environment-groups-about">
+     About environment groups
+    </a>
+    .
+   </p>
+   <h3 data-text="Changes to product limits" id="changes-to-product-limits" tabindex="0">
+    Changes to product limits
+   </h3>
+   <p>
+    The following default limits have been changed:
+   </p>
+   <table>
+    <thead>
+     <tr>
+      <th>
+       Limit
+      </th>
+      <th>
+       New value
+      </th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td>
+       Message logging payload
+      </td>
+      <td>
+       11 mb
+      </td>
+     </tr>
+     <tr>
+      <td>
+       Target connection timeout
+      </td>
+      <td>
+       600 seconds
+      </td>
+     </tr>
+    </tbody>
+   </table>
+   <h2 data-text="Bugs fixed" id="bugs-fixed" tabindex="0">
+    Bugs fixed
+   </h2>
+   <p>
+    The following bugs are fixed in this release. This list is primarily for users checking
+         to see if their support tickets have been fixed. It's not designed to provide detailed
+         information for all users.
+   </p>
+   <table class="table" summary="Bugs fixed in this release">
+    <thead>
+     <tr>
+      <th>
+       Issue ID
+      </th>
+      <th>
+       Description
+      </th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td>
+       153755536
+      </td>
+      <td>
+       An issue was fixed where a long environment and/or organization name caused an error.
+          Org and env names are now truncated to prevent this problem from occurring. A 32 character
+          limit is also now enforced for org and env names.
+      </td>
+     </tr>
+     <tr>
+      <td>
+       155913227
+      </td>
+      <td>
+       An issue was fixed where the runtime was unable to connect to the UDCA (fluentd)
+          endpoint even though UDCA is healthy.
+      </td>
+     </tr>
+     <tr>
+      <td>
+       155913227
+      </td>
+      <td>
+       Unable to connect to UDCA (fluentd) pod
+      </td>
+     </tr>
+     <tr>
+      <td>
+       153755536
+      </td>
+      <td>
+       Error received when environment length is long
+      </td>
+     </tr>
+    </tbody>
+   </table>
+   <h2 data-text="   Known issues " id="known-issues" tabindex="0">
+    Known issues
+   </h2>
+   <p>
+    The following table describes the known issues for this release:
+   </p>
+   <table class="purple">
+    <thead>
+     <tr>
+      <th>
+       Issue
+      </th>
+      <th>
+       Description
+      </th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td>
+       162759110
+      </td>
+      <td>
+       Base paths consisting of only "
+       <code dir="ltr" translate="no">
+        /
+       </code>
+       " will fail. You must include a path after the "
+       <code dir="ltr" translate="no">
+        /
+       </code>
+       ".
+       <p>
+        For example:
+       </p>
+       <ul>
+        <li>
+         <code dir="ltr" translate="no">
+          /123
+         </code>
+        </li>
+        <li>
+         <code dir="ltr" translate="no">
+          /v1/customers/123
+         </code>
+        </li>
+       </ul>
+      </td>
+     </tr>
+     <tr>
+      <td>
+       161658025
+      </td>
+      <td>
+       Inaccurate deployment status for Shared Flows
+       <p>
+        For Shared Flows, the deployment status is not being reported correctly to the UI, resulting
+        in an indefinitely spinning deployment icon. If you have deployed a Shared Flow and see the
+        spinning deployment icon, you must assume that the deployment has in fact failed.
+        <p>
+         To obtain the correct deployment status, use the
+         <a href="/apigee/docs/reference/apis/apigee/rest#rest-resource:-v1.organizations.environments.sharedflows.revisions.deployments">
+          v1.organizations.environments.sharedflows.revisions.deployments
+         </a>
+         API. For example:
+         <p>
+          <code dir="ltr" translate="no">
+           curl -s -H "$AUTH" \
+          </code>
+          <p>
+           <code dir="ltr" translate="no">
+            "https://apigee.googleapis.com/v1/o/$ORG/e/$ENV/sharedflows/$FLOW/revisions/$REV/deployments"
+           </code>
+          </p>
+         </p>
+        </p>
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td>
+       146222881
+      </td>
+      <td>
+       Invalid HTTP Header error: The Istio ingress switches all incoming target responses to the
+        HTTP2 protocol. Because the hybrid message processor only supports HTTP1, you may see the
+        following error when an API proxy is called:
+       <p>
+        <code dir="ltr" translate="no">
+         http2 error: Invalid HTTP header field was received: frame type: 1, stream: 1,
+        </code>
+       </p>
+       <p>
+        <code dir="ltr" translate="no">
+         name: [:authority], value: [domain_name]
+        </code>
+       </p>
+       <p>
+        If you see this error, you can take either of the following actions to correct the problem:
+        <ul>
+         <li>
+          Modify the target service to omit the Host header in the response.
+         </li>
+         <li>
+          Remove the Host header using the AssignMessage policy in your API proxy if necessary.
+         </li>
+        </ul>
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td>
+       143659917
+      </td>
+      <td>
+       The PopulateCache policy's expiration setting must be set to an explicit value between 1 and 30. For example:
+       <p>
+        <code dir="ltr" translate="no">
+         &lt;ExpirySettings&gt;
+        </code>
+       </p>
+       <p>
+        <code dir="ltr" translate="no">
+         &lt;TimeoutInSec&gt;30&lt;/TimeoutInSec&gt;
+        </code>
+        <p>
+         <code dir="ltr" translate="no">
+          &lt;/ExpirySettings&gt;
+         </code>
+        </p>
+       </p>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+ </article>
+</article>

@@ -14,13 +14,322 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/compute-release-notes.xml `
 
-##  April 30, 2020
+##  August 20, 2020
 
 **FEATURE:**
 
-You can now suspend and resume VM instances, available in **Beta** . Learn
-more about [ Suspending and Resuming an Instance
-](https://cloud.google.com/compute/docs/instances/suspend-resume-instance) .
+The Organization Policy for [ restricting protocol forwarding creation
+](https://cloud.google.com/compute/docs/protocol-
+forwarding#enforcing_protocol_forwarding_settings_across_a_project_folder_or_organization)
+has launched into general availability.
+
+##  August 18, 2020
+
+**FEATURE:**
+
+N2D machine types are now available in ` us-central1-c ` . For more
+information, see the [ VM instance pricing
+](https://cloud.google.com/compute/vm-instance-pricing#n2d_machine_types)
+page.
+
+**FEATURE:**
+
+N2D machine types are now available in Northern Virginia ` us-east4-a,b ` .
+For more information, see the [ VM instance pricing
+](https://cloud.google.com/compute/vm-instance-pricing#n2d_machine_types)
+page.
+
+##  August 12, 2020
+
+**FEATURE:**
+
+Compute Engine [ Committed use discount recommendations
+](https://cloud.google.com/compute/docs/instances/signing-up-committed-use-
+discounts#recommendations) are available in beta. Committed use
+recommendations give you opportunities to optimize your compute costs by
+analyzing your VM spending trends. For additional information, see [
+Understanding commitment recommendations
+](https://cloud.google.com/billing/docs/how-to/cud-analysis-resource-
+based#understanding_commitment_recommendations) .
+
+**CHANGED:**
+
+[ CPU overcommit on sole-tenant nodes
+](https://cloud.google.com/compute/docs/nodes/overcommitting-cpus-sole-tenant-
+vms) lets you overprovision sole-tenant node resources and schedule more VM
+CPUs on a sole-tenant node than are normally available. This feature is
+**Generally Available** .
+
+**FEATURE:**
+
+Key metrics for persistent disks in the new disk-level Monitoring tab are now
+**Generally Available** . Select any persistent disk attached to a single VM
+from [ Disks ](https://console.cloud.google.com/compute/disks) to see mean
+throughput, peak throughput, mean operations, and peak operations. You can
+also open each metric in [ Monitoring
+](https://console.cloud.google.com/monitoring) for querying, browsing, adding
+to a dashboard, or configuring alerts.
+
+##  August 07, 2020
+
+**FEATURE:**
+
+You can now update multiple instance properties using a single request from
+the command-line tool or the Compute Engine API to update multiple instance
+properties. For more information, see [ Updating instance properties
+](https://cloud.google.com/compute/docs/instances/update-instance-properties)
+.
+
+##  August 04, 2020
+
+**CHANGED:**
+
+You can attach a maximum of 24 local SSD partitions for 9 TB per instance.
+This is **generally available** on instances with N1 machine types. For more
+information, see [ Local SSDs
+](https://cloud.google.com/compute/docs/disks#localssds) .
+
+##  August 03, 2020
+
+**FEATURE:**
+
+You can now access C2 machine types in the following zones: Taiwan: ` asia-
+east1-a ` , Singapore: ` asia-southeast1-a ` , Sao Paulo: ` southamerica-
+east1-b,c ` , and Oregon: ` us-west1-b ` . For more information, see [ VM
+instance pricing ](https://cloud.google.com/compute/vm-instance-
+pricing#c2_machine_types) .
+
+##  July 31, 2020
+
+**FEATURE:**
+
+N2D machine types are now available in ` asia-east1 ` in all three zones. For
+more information, see the [ VM instance pricing
+](https://cloud.google.com/compute/vm-instance-pricing#n2d_machine_types)
+page.
+
+##  July 30, 2020
+
+**FEATURE:**
+
+When creating patch jobs, you can now choose whether to deploy zones
+concurrently or one at a time. You can also now specify a disruption budget
+for your VMs. For more information, see [ Patch rollout options
+](https://cloud.google.com/compute/docs/os-patch-management/create-patch-
+job#rollout-options) .
+
+**FEATURE:**
+
+N2 machines are now available in Sao Paulo ` southamerica-southeast1 ` in all
+three zones. For more information, see [ VM instance pricing
+](https://cloud.google.com/compute/vm-instance-pricing#n2_machine_types) .
+
+**FEATURE:**
+
+You can access ` m2-megamem ` memory-optimized machine types in all zones that
+already have ` m2-ultramem ` memory-optimized machine types. These two machine
+types have also been added to ` asia-south1-b ` . You can use ` m1-ultramem `
+machine types in ` asia-south1-a ` . To learn more, read [ Memory-optimized
+machine type family ](https://cloud.google.com/compute/vm-instance-
+pricing#memory-optimized) .
+
+##  July 28, 2020
+
+**CHANGED:**
+
+Improved validation checks will be introduced on API calls to `
+compute.googleapis.com ` starting on August 3, 2020 to increase reliability
+and REST API compliance of the Compute Engine platform for all users. Learn
+how to [ Validate API Requests
+](https://cloud.google.com/compute/docs/api/how-tos/api-requests-
+responses#validating_api_requests) to ensure your requests are properly
+formed.
+
+##  July 24, 2020
+
+**FEATURE:**
+
+  * NVIDIA® Tesla® T4 GPUs are now available in the following additional regions and zones: 
+
+    * Ashburn, Northern Virginia, USA: ` us-east4-b `
+
+For information about using T4 GPUs on Compute Engine, see [ GPUs on Compute
+Engine ](https://cloud.google.com/compute/docs/gpus/) .
+
+**FEATURE:**
+
+N2 machines are now available in Northern Virginia ` us-east4-c ` . Read more
+information on the [ VM instance pricing
+](https://cloud.google.com/compute/vm-instance-pricing#n2_machine_types) page.
+
+##  July 21, 2020
+
+**FEATURE:**
+
+You can now create _balanced persistent disks_ , in addition to standard and
+SSD persistent disks. Balanced persistent disks are an alternative to SSD
+persistent disks that balance performance and cost. For more information, see
+[ Persistent disk types
+](https://cloud.google.com/compute/docs/disks/index#disk-types) .
+
+##  July 17, 2020
+
+**FEATURE:**
+
+The Organization Policy for [ restricting protocol forwarding creation
+](https://cloud.google.com/compute/docs/protocol-
+forwarding#enforcing_protocol_forwarding_settings_across_a_project_folder_or_organization)
+has launched into **Beta** .
+
+##  July 16, 2020
+
+**CHANGED:**
+
+SSD persistent disks on certain machine types now have a maximum write
+throughput of 1,200 MB/s. To learn more about the requirements to reach these
+limits, see [ Block storage performance
+](https://cloud.google.com/compute/docs/disks/performance#size_price_performance)
+.
+
+**FEATURE:**
+
+You can now [ suspend and resume
+](https://cloud.google.com/compute/docs/instances/suspend-resume-instance)
+your VM instances. This feature is available in **Beta** .
+
+##  July 06, 2020
+
+**FEATURE:**
+
+E2 machine types now offer up to 32 vCPUs. See [ E2 machine types
+](https://cloud.google.com/compute/docs/machine-types#e2_machine_types) for
+more information.
+
+##  June 26, 2020
+
+**FEATURE:**
+
+To support a wide variety of BYOL scenarios, you can now [ configure VMs to
+live migrate within a sole-tenant node group during host maintenance events
+](https://cloud.google.com/compute/docs/nodes/bringing-your-own-licenses) .
+This is **Generally Available** .
+
+##  June 22, 2020
+
+**FEATURE:**
+
+N2D machine types are now available in Belgium, europe-west1, in all three
+zones. Read more information on the [ VM instance pricing
+](https://cloud.google.com/compute/vm-instance-pricing#n2d_machine_types)
+page.
+
+##  June 15, 2020
+
+**FEATURE:**
+
+[ New sole-tenant node types (c2-node-60-240, n1-node-96-1433, and
+n2d-node-224-896) ](https://cloud.google.com/compute/docs/nodes#node_types)
+are available in **Beta** .
+
+##  June 08, 2020
+
+**FEATURE:**
+
+The ` asia-southeast2 ` Jakarta, Indonesia region is now available to all
+projects and users. The zones in the ` asia-southeast2 ` region have [ E2 and
+N1 machine types ](https://cloud.google.com/compute/docs/machine-types) . See
+[ Regions and zones ](https://cloud.google.com/compute/docs/regions-zones) for
+more information.
+
+**FEATURE:**
+
+Enhancements to the pre-configured Cloud Monitoring Compute Engine **VM
+Instances** dashboard. Compute Engine cross-fleet metrics and detail views
+specific to CPU, Disk, Memory, and Network are now available. Use filters to
+narrow down the set of VMs being inspected, and use the time selector or in-
+chart time selection to change the time window. VMs with the Monitoring agent
+installed get detailed memory and disk analysis out of the box.
+
+##  June 05, 2020
+
+**FEATURE:**
+
+[ CPU overcommit on sole-tenant nodes
+](https://cloud.google.com/compute/docs/nodes/overcommitting-cpus-sole-tenant-
+vms) lets you overprovision sole-tenant node resources and schedule more VM
+CPUs on a sole-tenant node than are normally available. This feature is in
+**Beta** .
+
+**FEATURE:**
+
+[ New sole-tenant node types (m1-node-96-1433 and n2-node-80-640)
+](https://cloud.google.com/compute/docs/nodes#node_types) are available in
+**Beta** .
+
+##  June 01, 2020
+
+**FEATURE:**
+
+NVIDIA® Tesla® T4 GPUs are now available in the following additional regions
+and zones:
+
+  * Changua County, Taiwan ` asia-east1-c `
+
+For information about using T4 GPUs on Compute Engine, see [ GPUs on Compute
+Engine ](https://cloud.google.com/compute/docs/gpus) .
+
+##  May 21, 2020
+
+**FEATURE:**
+
+E2 shared-core machine types now support committed use discounts in all
+regions. See the [ VM instance ](https://cloud.google.com/compute/vm-instance-
+pricing#e2_sharedcore_machine_types) pricing page for more information.
+
+**FEATURE:**
+
+You can now SSH to your VMs using hardware-backed SSH key pairs. For more
+information, see [ SSH with security keys
+](https://cloud.google.com/compute/docs/tutorials/ssh-with-sk) .
+
+##  May 20, 2020
+
+**FEATURE:**
+
+If your managed instance group encountered errors - for example, if a VM could
+not be created - you can [ view those errors
+](https://cloud.google.com/compute/docs/instance-groups/getting-info-about-
+migs#listing_instance_errors) to diagnose and mitigate the cause. This is
+**Generally available** .
+
+##  May 19, 2020
+
+**FEATURE:**
+
+Troubleshoot VMs by [ capturing screenshots
+](https://cloud.google.com/compute/docs/instances/capturing-vm-screenshots) .
+This is in **beta** .
+
+##  May 12, 2020
+
+**FEATURE:**
+
+Automatically manage the size of sole-tenant node groups with the [ sole-
+tenant node group autoscaler
+](https://cloud.google.com/compute/docs/nodes/node-group-autoscaler) . This is
+**Generally Available** .
+
+##  May 11, 2020
+
+**FEATURE:**
+
+You can identify idle persistent disk resources by using [ idle persistent
+disk recommendations ](https://cloud.google.com/compute/docs/disks/viewing-
+and-applying-idle-pd-recommendations) . Following these recommendations will
+help reduce unused resources and reduce your compute bill. This feature is
+**Generally available** .
+
+##  April 30, 2020
 
 **CHANGED:**
 

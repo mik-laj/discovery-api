@@ -6,11 +6,51 @@ Image Family  |  cos-77-lts
 ---|---  
 Deprecated After  |  Dec 17, 2020  
 Kernel  |  [ 4.19.112
-](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/5d4ffd91281840f7a118143d77fbefb02e87943c)  
+](https://cos.googlesource.com/third_party/kernel/+/5d4ffd91281840f7a118143d77fbefb02e87943c)  
 Kubernetes  |  v1.15.3  
 Docker  |  v19.03.1  
   
 ##  Changelog
+
+###  cos-77-12371-1072-0
+
+_Date: Aug 10, 2020_
+
+  * Disabled CONFIG_PPP to mitigate Linux Kernel CVE-2020-14416. 
+  * Fixed CVE-2020-15705 in grub. 
+
+###  cos-77-12371-1064-0
+
+_Date: July 30, 2020_
+
+  * Removed the metrics daemon to address an issue where it would periodically cause CPU usage spikes in some cases. 
+
+###  cos-77-12371-326-0
+
+_Date: July 13, 2020_
+
+  * Added rsync back into the image, which was removed in cos-dev-77-12293-0-0. 
+  * Mount /var/lib/containerd with exec option. 
+  * Moved Kernel source to cos.googlesource.com. 
+  * Fixed CVE-2019-9169. 
+
+###  cos-77-12371-296-0
+
+_Date: June 16, 2020_
+
+  * Updated toolbox base container image to include security patches. 
+
+###  cos-77-12371-274-0
+
+_Date: May 26, 2020_
+
+  * Fixed a few OS Login CVEs: CVE-2020-8903, CVE-2020-8907, CVE-2020-8933. 
+
+###  cos-77-12371-273-0
+
+_Date: May 21, 2020_
+
+  * Fixed a Stackdriver Monitoring agent bug where not all mounted disk partitions has their usage reported. 
 
 ###  cos-77-12371-251-0
 

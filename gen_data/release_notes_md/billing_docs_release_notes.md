@@ -12,6 +12,175 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/billing-release-notes.xml `
 
+##  August 12, 2020
+
+**FEATURE:**
+
+Recommendations for Compute Engine committed use discounts are now available
+in **beta** . Recommendations provide you opportunities to optimize your
+compute costs by analyzing your VM spending trends and recommending committed
+use discount contracts. For understanding and purchasing committed use
+discount recommendations, see [ the documentation
+](https://cloud.google.com/billing/docs/how-to/cud-analysis-resource-
+based#understanding_commitment_recommendations) .
+
+##  August 07, 2020
+
+**FEATURE:**
+
+You can now view a summary of all your spend-based committed use discounts
+(CUD) and purchase new commitments in the [ commitment dashboard
+](https://cloud.google.com/docs/cuds-spend-based#view_commitment_dashboard) .
+The dashboard lists the **type** of commitment, **region** it's located,
+current **active** commitments, **term** length, and the **start** and **end**
+dates for the commitment. See [ the documentation
+](https://cloud.google.com/docs/cuds-spend-based#view_commitment_dashboard)
+for more details.
+
+**FEATURE:**
+
+**New columns added to Cost Table report: Credit ID and Credit name.**
+Starting with your **July 2020** invoice month, the [ cost table report
+](https://cloud.google.com/billing/docs/how-to/cost-table) now includes
+columns for ` Credit ID ` and ` Credit name ` . Including credit details in
+the cost table report is especially useful for understanding project-level
+credits, or for analyzing the source of multiple credits of the same type,
+earned during the same invoice period (such as sustained usage discounts
+earned as usage increases).
+
+When you first load the cost table report, the credit columns are hidden by
+default. You can use the [ column selector to customize the columns
+](https://cloud.google.com/billing/docs/how-to/cost-
+table#columns_in_the_cost_table) you view in the report as well as the columns
+you download to CSV. See the [ documentation
+](https://cloud.google.com/billing/docs/how-to/cost-table) for more details.
+
+##  August 06, 2020
+
+**FEATURE:**
+
+If you have a **negotiated pricing contract** associated with your Cloud
+Billing account, **starting with your July 2020 invoice** , the [ **Cloud
+Billing report** ](https://cloud.google.com/billing/docs/how-to/reports) and
+the [ **Cost Breakdown report** ](https://cloud.google.com/billing/docs/how-
+to/cost-breakdown) now support displaying your costs calculated using list
+prices, displaying your **negotiated savings** as a separate credit. This view
+helps you see how much money you are saving on your Google Cloud costs because
+of your negotiated pricing contract.
+
+For information on how to view your list costs and negotiated savings in
+reports, see the documentation:
+
+  * [ Learn more about viewing negotiated savings in your **Cloud Billing report** ](https://cloud.google.com/billing/docs/how-to/reports#contract-pricing) . 
+  * [ Learn more about viewing negotiated savings in your **Cost Breakdown report** ](https://cloud.google.com/billing/docs/how-to/cost-breakdown#negotiated-savings) . 
+
+##  July 23, 2020
+
+**FEATURE:**
+
+**Export your Cloud Billing account SKU prices to BigQuery.** You can now
+export your pricing information for Google Cloud and Google Maps Platform SKUs
+to BigQuery. Exporting your pricing data allows you to audit, analyze, and/or
+join your pricing data with your exported cost data. The pricing export
+includes list prices, pricing tiers, and, when applicable, any promotional or
+negotiated pricing. See the [ documentation
+](https://cloud.google.com/billing/docs/how-to/export-data-bigquery) for more
+details.
+
+##  July 10, 2020
+
+**FEATURE:**
+
+The [ Cost Table report ](https://cloud.google.com/billing/docs/how-to/cost-
+table) functionality has been updated to add a **Table configuration**
+interface that replaces the previous _Group by_ and _Label_ selectors. Use the
+new **Table configuration** dialog to choose a **Label key** and select your
+**Group by** options. Additionally, the available **Group by** options have
+been enhanced to include a new **Custom grouping** option. Use custom grouping
+to view a [ nested cost table ](https://cloud.google.com/billing/docs/how-
+to/cost-table#nested_table_view) with your costs grouped by up to three
+dimensions that you choose, including label values. See the [ documentation
+](https://cloud.google.com/billing/docs/how-to/cost-table) for more details.
+
+##  June 23, 2020
+
+**FEATURE:**
+
+Committed use discounts (CUDs) are now available to purchase for Cloud SQL.
+CUDs provide discounted prices in exchange for your commitment to use a
+minimum level of resources for a specified term. With spend-based committed
+use discounts for Cloud SQL, you can earn a deep discount off your cost of use
+in exchange for committing to continuously use database instances in a
+particular region for a 1- or 3-year term. See the [ blog
+](https://cloud.google.com/blog/products/databases/cloud-sql-database-
+instances-now-discounted) and [ documentation
+](https://cloud.google.com/docs/cuds) for more details.
+
+##  May 29, 2020
+
+**FEATURE:**
+
+[ ` Labels ` ](https://cloud.google.com/billing/docs/how-to/cost-
+table#columns_in_the_cost_table) column added to the [ flat table view
+](https://cloud.google.com/billing/docs/how-to/cost-table#flat_table_view) of
+the Cloud Billing Cost Table report. The Cost Table report provides a tabular
+view of your invoice costs. You can quickly filter your costs by available
+fields, such as project, service, SKU, and labels (among other fields), and
+you can download the table to CSV for offline analysis. See the [
+documentation ](https://cloud.google.com/billing/docs/how-to/cost-table) for
+more details.
+
+##  May 27, 2020
+
+**CHANGED:**
+
+New data property now available for Cloud Billing budget alerts that are
+configured for [ programmatic notifications
+](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-
+notifications) . You set up a Cloud Billing budget to trigger an alert
+notification based on [ threshold rules
+](https://cloud.google.com/billing/docs/how-to/budgets#alert-thresholds) for
+_Actual_ or _Forecasted_ spend. Programmatic notifications triggered on
+**Forecasted** costs are now identified with the ` forecastThresholdExceeded `
+property in the JSON object. See the [ documentation
+](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-
+notifications#notification_format) for more details.
+
+##  May 21, 2020
+
+**FEATURE:**
+
+Cloud Billing Budget API: new budget filters for groups of subaccounts and
+resource labels are now available in the Budget API. See the [ documentation
+](https://cloud.google.com/billing/docs/reference/budget/rest/v1beta1/billingAccounts.budgets)
+for more details.
+
+##  May 18, 2020
+
+**FEATURE:**
+
+**Cloud Billing budgets emails** : ensure your budget alert emails are seen by
+the right people using Cloud Monitoring notifications on your Cloud Billing
+budgets. By default, alert emails are sent to Billing Account Administrators.
+With the _Monitoring notifications_ feature, you can customize your budget to
+send alerts to up to five additional email recipients you specify. See the [
+documentation ](https://cloud.google.com/billing/docs/how-to/budgets-
+notification-recipients) for more details.
+
+**FEATURE:**
+
+New information is now available on your **Cloud Billing** account
+**Overview** page in the **Cloud Console** , featuring at-a-glance summaries
+of the top five spending projects and top five spending products over the last
+12 months.
+
+To see the updated Billing Account Overview page, go to the [ Manage billing
+accounts page ](https://console.cloud.google.com/billing) in the Cloud Console
+and sign in, then select the name of the Cloud Billing account you want to
+view. The Billing Overview page is displayed with the **BILLING ACCOUNT
+OVERVIEW** tab selected. You might need to scroll the page to see all the
+features.
+
 ##  April 23, 2020
 
 **FEATURE:**

@@ -12,6 +12,138 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/run-release-notes.xml `
 
+##  August 18, 2020
+
+**FEATURE:**
+
+You can now [ allocate up to 4GiB of memory
+](https://cloud.google.com/run/docs/configuring/memory-limits) to your Cloud
+Run (fully managed) services.
+
+##  August 03, 2020
+
+**FEATURE:**
+
+When [ setting up Continuous Deployment
+](https://cloud.google.com/run/docs/continuous-deployment-with-cloud-build) in
+the Cloud Run user interface, you can now select a repository that contains
+Go, Node.js, Python Java or .NET Core code. It will be built using [ Google
+Cloud Buildpacks ](https://github.com/GoogleCloudPlatform/buildpacks) without
+needing a Dockerfile.
+
+##  July 30, 2020
+
+**FEATURE:**
+
+You can now tag Cloud Run revisions. Tagged revisions get a dedicated URL
+allowing developers to reach these specific revisions without needing to
+allocate traffic to it.
+
+##  July 27, 2020
+
+**FEATURE:**
+
+Cloud Run is now available in ` asia-southeast1 ` (Singapore)
+
+##  July 23, 2020
+
+**FEATURE:**
+
+[ Serverless VPC Access support for Shared VPC
+](https://cloud.google.com/run/docs/configuring/connecting-vpc#shared-vpc) is
+now available in Beta.
+
+##  July 21, 2020
+
+**FEATURE:**
+
+Cloud Run resources are now available in [ Cloud Asset Inventory
+](https://cloud.google.com/asset-inventory/docs/overview)
+
+##  July 13, 2020
+
+**FEATURE:**
+
+The Cloud Run user interface now allows you to easily [ set up Continuous
+Deployment from Git using Cloud Build
+](https://cloud.google.com/run/docs/continuous-deployment-with-cloud-build)
+
+##  July 07, 2020
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for Cloud Run services via [
+Serverless network endpoint groups ](https://cloud.google.com/load-
+balancing/docs/negs/setting-up-serverless-negs) .  
+Notably, this feature allows you to use [ Cloud CDN
+](https://cloud.google.com/cdn) and multi-region load balancing.  
+This feature is available in Beta.
+
+##  June 30, 2020
+
+**CHANGED:**
+
+Cloud Run (fully managed) support for [ connecting to a VPC network
+](https://cloud.google.com/run/docs/configuring/connecting-vpc) with [
+Serverless VPC Access ](https://cloud.google.com/vpc/docs/configure-
+serverless-vpc-access) is now at general availability (GA).
+
+##  June 29, 2020
+
+**FEATURE:**
+
+Cloud Run is now available in the following regions:
+
+  * ` asia-northeast2 ` (Osaka) 
+  * ` australia-southeast1 ` (Sydney) 
+  * ` northamerica-northeast1 ` (Montréal) 
+
+##  June 16, 2020
+
+**FEATURE:**
+
+The Cloud Run user interface now allows you to copy a Cloud Run service.
+
+##  June 09, 2020
+
+**FEATURE:**
+
+Export a Cloud Run service to a YAML file with ` gcloud run services describe
+SERVICE --format export `
+
+##  June 03, 2020
+
+**FEATURE:**
+
+The Cloud Run user interface now allows you to edit the service YAML.
+
+##  May 20, 2020
+
+**FEATURE:**
+
+The Cloud Run [ container instance metadata server
+](https://cloud.google.com/run/docs/reference/container-contract#metadata-
+server) now exposes the unique identifier of the container instance and the
+region of the Cloud Run service
+
+##  May 13, 2020
+
+**FEATURE:**
+
+Cloud Run (fully managed) now supports [ connecting to a VPC network
+](https://cloud.google.com/run/docs/configuring/connecting-vpc) with [
+Serverless VPC Access ](https://cloud.google.com/vpc/docs/configure-
+serverless-vpc-access) , in beta.
+
+##  May 08, 2020
+
+**FEATURE:**
+
+Cloud Code IDE extensions support Cloud Run. See [ Cloud Code for VS Code
+](https://cloud.google.com/code/docs/vscode/deploying-a-cloud-run-app) and [
+Cloud Code for IntelliJ
+](https://cloud.google.com/code/docs/intellij/deploying-a-cloud-run-app)
+
 ##  March 30, 2020
 
 **FEATURE:**

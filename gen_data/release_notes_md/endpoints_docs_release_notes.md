@@ -14,6 +14,39 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloud-endpoints-release-
 notes.xml `
 
+##  August 2020
+
+###  Extensible Service Proxy V2 Beta support added for Compute Engine and
+Google Kubernetes Engine
+
+[ Extensible Service Proxy V2 Beta (ESPv2 Beta)
+](/endpoints/docs/openapi/glossary#extensible_service_proxy_v2) support added
+as a proxy for [ Compute Engine ](/endpoints/docs/openapi/get-started-compute-
+engine-docker-espv2) , [ Google Kubernetes Engine
+](/endpoints/docs/openapi/get-started-kubernetes-engine-espv2) , and [
+Kubernetes ](/endpoints/docs/openapi/get-started-kubernetes-espv2) not running
+in Google Cloud. ESPv2 Beta is an [ Envoy
+](https://www.envoyproxy.io/docs/envoy/latest/) -based high-performance,
+scalable proxy that runs in front of an OpenAPI or gRPC specification API
+backend. With this release, you can deploy ESPv2 Beta as an API Gateway or as
+a sidecar.
+
+ESPv2 Beta supports version 2 of the [ OpenAPI Specification
+](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md)
+and now supports [ gRPC ](http://www.grpc.io) specifications.
+
+With this release, Endpoints supports ESPv2 Beta for the following platforms:
+
+  * App Engine standard (OpenAPI only) 
+  * Cloud Functions (OpenAPI only) 
+  * Cloud Run (OpenAPI or gRPC) 
+  * Cloud Run for Anthos (OpenAPI or gRPC) 
+  * Google Kubernetes Engine (OpenAPI or gRPC) 
+  * Compute Engine (OpenAPI or gRPC) 
+  * Kubernetes (OpenAPI or gRPC) 
+
+Endpoints support for ESPv2 Beta is currently in Beta.
+
 ##  January 2020
 
 ###  gRPC support for Cloud Run added (Beta)
@@ -148,10 +181,10 @@ Stackdriver Trace.
 
 ###  New role and permissions for Endpoints Portal
 
-The [ Google Cloud Identity and Access Management ](/iam/docs) (Cloud IAM)
-role, **Endpoints Portal Admin** , and several new Cloud IAM permissions are
-now available. The new role and permissions allow you to control the degree of
-access that project members have to Endpoints Portal.
+The [ Identity and Access Management (IAM) ](/iam/docs) role, **Endpoints
+Portal Admin** , and several new IAM permissions are now available. The new
+role and permissions allow you to control the degree of access that project
+members have to Endpoints Portal.
 
 To learn more, see "Endpoints Portal permissions" in the documentation for
 your API implementation:

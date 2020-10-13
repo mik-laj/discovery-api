@@ -11,10 +11,51 @@
 ](https://github.com/googleapis/python-pubsub/releases) 、 [ Ruby
 ](https://github.com/googleapis/google-cloud-ruby/releases) 。
 
+[ Google Cloud リリースノート ](https://cloud.google.com/release-notes?hl=ja)
+のページで、Google Cloud の最新のプロダクト更新情報をすべて確認できます。
+
 プロダクトのアップデートに関する最新情報を受け取るには、このページの URL を [ フィード リーダー
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) に追加するか、またはフィード
 URL ディレクトリ ` https://cloud.google.com/feeds/pubsub-release-notes.xml `
 を直接追加します。
+
+##  August 05, 2020
+
+**FEATURE:**
+
+Pub/Sub [ message ordering
+](https://cloud.google.com/pubsub/docs/ordering?hl=ja) is now available at the
+[ beta launch stage ](https://cloud.google.com/products/?hl=ja#product-launch-
+stages) .
+
+##  June 16, 2020
+
+**FEATURE:**
+
+[ Retry policies for Pub/Sub subscriptions
+](https://cloud.google.com/pubsub/docs/admin?hl=ja#creating_subscriptions) are
+now available at the GA launch stage.
+
+##  June 08, 2020
+
+**FEATURE:**
+
+Pub/Sub is now available in the ` asia-southeast2 ` region (Jakarta).
+
+**FEATURE:**
+
+Pub/Sub [ message filtering
+](https://cloud.google.com/pubsub/docs/filtering?hl=ja) is now available at
+the [ beta launch stage ](https://cloud.google.com/products/?hl=ja#product-
+launch-stages) .
+
+##  May 26, 2020
+
+**FEATURE:**
+
+[ Pub/Sub Lite ](https://cloud.google.com/pubsub/docs/choosing-pubsub-or-
+lite?hl=ja) is now available at the [ beta launch stage
+](https://cloud.google.com/products/?hl=ja#product-launch-stages) .
 
 ##  April 20, 2020
 

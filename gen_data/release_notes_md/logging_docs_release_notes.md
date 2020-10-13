@@ -12,6 +12,100 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/stackdriver-release-notes.xml `
 
+##  August 17, 2020
+
+**FEATURE:**
+
+To help you explore your logs more efficiently, Cloud Logging now provides
+suggested queries based on the context of your Google Cloud project. For more
+information, go to [ Suggested queries
+](https://cloud.google.com/logging/docs/view/building-
+queries#suggested_queries) .
+
+##  August 11, 2020
+
+**CHANGED:**
+
+Users now manage logs exclusions through logs sinks. As a result, custom roles
+that have the ` logging.sinks.* ` permissions can now control the volume of
+logs ingested into Cloud Logging through logs sinks.
+
+We recommend that you review any custom roles with the ` logging.sinks.* `
+permissions so that you can make adjustments as needed.
+
+**FEATURE:**
+
+Beta release: You can now use Logs Buckets to centralize or divide your logs
+based on your needs. For information about this feature, refer to the [
+Managing logs buckets ](https://cloud.google.com/logging/docs/buckets) guide.
+
+##  August 03, 2020
+
+**FEATURE:**
+
+Alpha release: You can now use Logs Buckets to centralize or divide your logs
+based on your needs. For information about this feature, refer to the [
+Managing logs buckets ](https://cloud.google.com/logging/docs/buckets) guide.
+To participate in the alpha or to get notified when Logs Buckets goes beta,
+fill out the [ sign up form
+](https://docs.google.com/forms/d/e/1FAIpQLSeBVpNBivnTAAd4G3rdait9t94uG9TWc07oGwNRGcE071TeCA/viewform)
+.
+
+##  July 30, 2020
+
+**CHANGED:**
+
+The Logs field explorer panel is now generally available (GA). To learn more,
+see the [ Logs field explorer section on Logs Viewer (Preview) interface page
+](https://cloud.google.com/logging/docs/view/logs-viewer-interface#logs-field-
+panel) .
+
+##  June 30, 2020
+
+**FEATURE:**
+
+Cloud Logging now contains a Logs Dashboard page that provides a high-level
+overview into the health of your systems running within a project. To learn
+more, see [ Logs Dashboard
+](https://cloud.google.com/logging/docs/view/dashboard) .
+
+##  June 05, 2020
+
+**CHANGED:**
+
+Custom retention is now generally available (GA). In order to have time to
+explore this feature, you won't be charged for extended retention of logs
+until March 31, 2021. To learn more, see the [ Logging pricing section on the
+Pricing for Google Cloud's operations suite page
+](https://cloud.google.com/stackdriver/pricing#logging-costs) .
+
+##  June 03, 2020
+
+**FEATURE:**
+
+In the Logs Viewer (Preview), you can now save your queries, which can then be
+viewed and run from the **Saved** queries tab. For more information, see the [
+Saved queries section on the Building queries page
+](https://cloud.google.com/logging/docs/view/building-queries#saved-queries) .
+
+##  May 18, 2020
+
+**FEATURE:**
+
+**Logs Viewer** now contains the **Logs field explorer** panel, which lets you
+view aggregation-based results for your project's log fields and makes it more
+efficient to refine queries. To learn more, go to the [ Logs Viewer (Preview)
+page ](https://cloud.google.com/logging/docs/view/logs-viewer-interface) .
+
+##  May 11, 2020
+
+**FEATURE:**
+
+You can now use regular expressions to query your logs data and create
+filters. For more information, go to [ Using regular expressions
+](https://cloud.google.com/logging/docs/view/logging-query-language#regular-
+expressions) .
+
 ##  April 27, 2020
 
 **CHANGED:**
@@ -87,12 +181,11 @@ For details, go to [ Partitioned tables
 
 **CHANGED:**
 
-Google Kubernetes Engine (GKE) version 1.15, which is now [ generally
-available ](https://cloud.google.com/kubernetes-engine/docs/release-
-notes#december_13_2019) , drops support for GKE versions 1.12 and earlier. As
-a result, the beta version of Stackdriver Kubernetes Engine Monitoring is no
-longer supported. If your GKE clusters are running version 1.12 or earlier,
-then you must upgrade them as soon as possible.
+Google Kubernetes Engine (GKE) version 1.15, which is now generally available,
+drops support for GKE versions 1.12 and earlier. As a result, the beta version
+of Stackdriver Kubernetes Engine Monitoring is no longer supported. If your
+GKE clusters are running version 1.12 or earlier, then you must upgrade them
+as soon as possible.
 
 ##  December 11, 2019
 
@@ -881,8 +974,8 @@ Cloud SDK is now named ` gcloud beta logging ` .
 
 **FEATURE:**
 
-The [ Cloud Logging API ](https://cloud.google.com/logging/docs/api/ref/rest/)
-and [ command-line interface
+The [ Cloud Logging API ](https://cloud.google.com/logging/docs/reference/api-
+overview) and [ command-line interface
 ](https://cloud.google.com/logging/docs/api/gcloud-logging) now support
 project sinks. A project sink can export log entries from any combination of
 logs, based on [ advanced logs filters

@@ -176,6 +176,43 @@
                                 "https://www.googleapis.com/auth/cloud-platform"
                             ]
                         },
+                        "searchAllAssignments": {
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}:searchAllAssignments",
+                            "httpMethod": "GET",
+                            "id": "bigqueryreservation.projects.locations.searchAllAssignments",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "pageSize": {
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "pageToken": {
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "parent": {
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "query": {
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+parent}:searchAllAssignments",
+                            "response": {
+                                "$ref": "SearchAllAssignmentsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/bigquery",
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
                         "searchAssignments": {
                             "flatPath": "v1/projects/{projectsId}/locations/{locationsId}:searchAssignments",
                             "httpMethod": "GET",
@@ -731,11 +768,13 @@
                     "enum": [
                         "JOB_TYPE_UNSPECIFIED",
                         "PIPELINE",
-                        "QUERY"
+                        "QUERY",
+                        "ML_EXTERNAL"
                     ],
                     "type": "string"
                 },
                 "name": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "state": {
@@ -744,6 +783,7 @@
                         "PENDING",
                         "ACTIVE"
                     ],
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -761,6 +801,7 @@
                 },
                 "updateTime": {
                     "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -771,18 +812,27 @@
             "properties": {
                 "commitmentEndTime": {
                     "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "commitmentStartTime": {
+                    "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "failureStatus": {
-                    "$ref": "Status"
+                    "$ref": "Status",
+                    "readOnly": true
                 },
                 "name": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "plan": {
                     "enum": [
                         "COMMITMENT_PLAN_UNSPECIFIED",
                         "FLEX",
+                        "TRIAL",
                         "MONTHLY",
                         "ANNUAL"
                     ],
@@ -792,6 +842,7 @@
                     "enum": [
                         "COMMITMENT_PLAN_UNSPECIFIED",
                         "FLEX",
+                        "TRIAL",
                         "MONTHLY",
                         "ANNUAL"
                     ],
@@ -808,6 +859,7 @@
                         "ACTIVE",
                         "FAILED"
                     ],
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -938,6 +990,11 @@
         "Reservation": {
             "id": "Reservation",
             "properties": {
+                "creationTime": {
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "ignoreIdleSlots": {
                     "type": "boolean"
                 },
@@ -946,6 +1003,26 @@
                 },
                 "slotCapacity": {
                     "format": "int64",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SearchAllAssignmentsResponse": {
+            "id": "SearchAllAssignmentsResponse",
+            "properties": {
+                "assignments": {
+                    "items": {
+                        "$ref": "Assignment"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
                     "type": "string"
                 }
             },

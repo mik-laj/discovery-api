@@ -1,9 +1,9 @@
 You are viewing documentation for a previous version of GKE On-Prem. [ View
-the latest documentation ](/anthos/gke/docs/on-prem/) .
+the latest documentation ](/anthos/gke/docs/on-prem) .
 
 #  Security bulletins
 
-All security bulletins for Anthos GKE on-prem are described in this topic.
+All security bulletins for GKE on-prem are described in this topic.
 
 Vulnerabilities are often kept secret under embargos until affected parties
 have had a chance to address them. In these cases, GKE on-prem's [ Release
@@ -98,7 +98,7 @@ Medium
 
 |
 
-[ Anthos GKE on-prem releases ](/anthos/gke/docs/on-
+[ GKE on-prem releases ](/anthos/gke/docs/on-
 prem/archive/1.2/downloads#gkectl_latest)  
   
 ##  August 22, 2019

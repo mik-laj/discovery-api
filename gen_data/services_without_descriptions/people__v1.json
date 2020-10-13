@@ -3,6 +3,7 @@
         "oauth2": {
             "scopes": {
                 "https://www.googleapis.com/auth/contacts": {},
+                "https://www.googleapis.com/auth/contacts.other.readonly": {},
                 "https://www.googleapis.com/auth/contacts.readonly": {},
                 "https://www.googleapis.com/auth/directory.readonly": {},
                 "https://www.googleapis.com/auth/user.addresses.read": {},
@@ -281,6 +282,74 @@
                 }
             }
         },
+        "otherContacts": {
+            "methods": {
+                "copyOtherContactToMyContactsGroup": {
+                    "flatPath": "v1/otherContacts/{otherContactsId}:copyOtherContactToMyContactsGroup",
+                    "httpMethod": "POST",
+                    "id": "people.otherContacts.copyOtherContactToMyContactsGroup",
+                    "parameterOrder": [
+                        "resourceName"
+                    ],
+                    "parameters": {
+                        "resourceName": {
+                            "location": "path",
+                            "pattern": "^otherContacts/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+resourceName}:copyOtherContactToMyContactsGroup",
+                    "request": {
+                        "$ref": "CopyOtherContactToMyContactsGroupRequest"
+                    },
+                    "response": {
+                        "$ref": "Person"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/contacts",
+                        "https://www.googleapis.com/auth/contacts.other.readonly"
+                    ]
+                },
+                "list": {
+                    "flatPath": "v1/otherContacts",
+                    "httpMethod": "GET",
+                    "id": "people.otherContacts.list",
+                    "parameterOrder": [],
+                    "parameters": {
+                        "pageSize": {
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "readMask": {
+                            "format": "google-fieldmask",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "requestSyncToken": {
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "syncToken": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/otherContacts",
+                    "response": {
+                        "$ref": "ListOtherContactsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/contacts.other.readonly"
+                    ]
+                }
+            }
+        },
         "people": {
             "methods": {
                 "createContact": {
@@ -288,7 +357,24 @@
                     "httpMethod": "POST",
                     "id": "people.people.createContact",
                     "parameterOrder": [],
-                    "parameters": {},
+                    "parameters": {
+                        "personFields": {
+                            "format": "google-fieldmask",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "sources": {
+                            "enum": [
+                                "READ_SOURCE_TYPE_UNSPECIFIED",
+                                "READ_SOURCE_TYPE_PROFILE",
+                                "READ_SOURCE_TYPE_CONTACT",
+                                "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+                            ],
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
+                        }
+                    },
                     "path": "v1/people:createContact",
                     "request": {
                         "$ref": "Person"
@@ -341,6 +427,17 @@
                             "pattern": "^people/[^/]+$",
                             "required": true,
                             "type": "string"
+                        },
+                        "sources": {
+                            "enum": [
+                                "READ_SOURCE_TYPE_UNSPECIFIED",
+                                "READ_SOURCE_TYPE_PROFILE",
+                                "READ_SOURCE_TYPE_CONTACT",
+                                "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+                            ],
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
                         }
                     },
                     "path": "v1/{+resourceName}:deleteContactPhoto",
@@ -373,6 +470,17 @@
                             "location": "path",
                             "pattern": "^people/[^/]+$",
                             "required": true,
+                            "type": "string"
+                        },
+                        "sources": {
+                            "enum": [
+                                "READ_SOURCE_TYPE_UNSPECIFIED",
+                                "READ_SOURCE_TYPE_PROFILE",
+                                "READ_SOURCE_TYPE_CONTACT",
+                                "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+                            ],
+                            "location": "query",
+                            "repeated": true,
                             "type": "string"
                         }
                     },
@@ -414,6 +522,17 @@
                             "location": "query",
                             "repeated": true,
                             "type": "string"
+                        },
+                        "sources": {
+                            "enum": [
+                                "READ_SOURCE_TYPE_UNSPECIFIED",
+                                "READ_SOURCE_TYPE_PROFILE",
+                                "READ_SOURCE_TYPE_CONTACT",
+                                "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+                            ],
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
                         }
                     },
                     "path": "v1/people:batchGet",
@@ -434,6 +553,114 @@
                         "https://www.googleapis.com/auth/userinfo.profile"
                     ]
                 },
+                "listDirectoryPeople": {
+                    "flatPath": "v1/people:listDirectoryPeople",
+                    "httpMethod": "GET",
+                    "id": "people.people.listDirectoryPeople",
+                    "parameterOrder": [],
+                    "parameters": {
+                        "mergeSources": {
+                            "enum": [
+                                "DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED",
+                                "DIRECTORY_MERGE_SOURCE_TYPE_CONTACT"
+                            ],
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
+                        },
+                        "pageSize": {
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "readMask": {
+                            "format": "google-fieldmask",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "requestSyncToken": {
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "sources": {
+                            "enum": [
+                                "DIRECTORY_SOURCE_TYPE_UNSPECIFIED",
+                                "DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT",
+                                "DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE"
+                            ],
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
+                        },
+                        "syncToken": {
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/people:listDirectoryPeople",
+                    "response": {
+                        "$ref": "ListDirectoryPeopleResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/directory.readonly"
+                    ]
+                },
+                "searchDirectoryPeople": {
+                    "flatPath": "v1/people:searchDirectoryPeople",
+                    "httpMethod": "GET",
+                    "id": "people.people.searchDirectoryPeople",
+                    "parameterOrder": [],
+                    "parameters": {
+                        "mergeSources": {
+                            "enum": [
+                                "DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED",
+                                "DIRECTORY_MERGE_SOURCE_TYPE_CONTACT"
+                            ],
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
+                        },
+                        "pageSize": {
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "query": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "readMask": {
+                            "format": "google-fieldmask",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "sources": {
+                            "enum": [
+                                "DIRECTORY_SOURCE_TYPE_UNSPECIFIED",
+                                "DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT",
+                                "DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE"
+                            ],
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/people:searchDirectoryPeople",
+                    "response": {
+                        "$ref": "SearchDirectoryPeopleResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/directory.readonly"
+                    ]
+                },
                 "updateContact": {
                     "flatPath": "v1/people/{peopleId}:updateContact",
                     "httpMethod": "PATCH",
@@ -442,10 +669,26 @@
                         "resourceName"
                     ],
                     "parameters": {
+                        "personFields": {
+                            "format": "google-fieldmask",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "resourceName": {
                             "location": "path",
                             "pattern": "^people/[^/]+$",
                             "required": true,
+                            "type": "string"
+                        },
+                        "sources": {
+                            "enum": [
+                                "READ_SOURCE_TYPE_UNSPECIFIED",
+                                "READ_SOURCE_TYPE_PROFILE",
+                                "READ_SOURCE_TYPE_CONTACT",
+                                "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+                            ],
+                            "location": "query",
+                            "repeated": true,
                             "type": "string"
                         },
                         "updatePersonFields": {
@@ -542,6 +785,17 @@
                                     "location": "query",
                                     "type": "string"
                                 },
+                                "sources": {
+                                    "enum": [
+                                        "READ_SOURCE_TYPE_UNSPECIFIED",
+                                        "READ_SOURCE_TYPE_PROFILE",
+                                        "READ_SOURCE_TYPE_CONTACT",
+                                        "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+                                    ],
+                                    "location": "query",
+                                    "repeated": true,
+                                    "type": "string"
+                                },
                                 "syncToken": {
                                     "location": "query",
                                     "type": "string"
@@ -579,6 +833,7 @@
                     "type": "string"
                 },
                 "formattedType": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "formattedValue": {
@@ -682,6 +937,40 @@
             },
             "type": "object"
         },
+        "CalendarUrl": {
+            "id": "CalendarUrl",
+            "properties": {
+                "formattedType": {
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "FieldMetadata"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ClientData": {
+            "id": "ClientData",
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "FieldMetadata"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ContactGroup": {
             "id": "ContactGroup",
             "properties": {
@@ -689,6 +978,7 @@
                     "type": "string"
                 },
                 "formattedName": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "groupType": {
@@ -697,20 +987,24 @@
                         "USER_CONTACT_GROUP",
                         "SYSTEM_CONTACT_GROUP"
                     ],
+                    "readOnly": true,
                     "type": "string"
                 },
                 "memberCount": {
                     "format": "int32",
+                    "readOnly": true,
                     "type": "integer"
                 },
                 "memberResourceNames": {
                     "items": {
                         "type": "string"
                     },
+                    "readOnly": true,
                     "type": "array"
                 },
                 "metadata": {
-                    "$ref": "ContactGroupMetadata"
+                    "$ref": "ContactGroupMetadata",
+                    "readOnly": true
                 },
                 "name": {
                     "type": "string"
@@ -725,6 +1019,7 @@
             "id": "ContactGroupMembership",
             "properties": {
                 "contactGroupId": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "contactGroupResourceName": {
@@ -737,10 +1032,12 @@
             "id": "ContactGroupMetadata",
             "properties": {
                 "deleted": {
+                    "readOnly": true,
                     "type": "boolean"
                 },
                 "updateTime": {
                     "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -757,6 +1054,32 @@
                 },
                 "status": {
                     "$ref": "Status"
+                }
+            },
+            "type": "object"
+        },
+        "CopyOtherContactToMyContactsGroupRequest": {
+            "id": "CopyOtherContactToMyContactsGroupRequest",
+            "properties": {
+                "copyMask": {
+                    "format": "google-fieldmask",
+                    "type": "string"
+                },
+                "readMask": {
+                    "format": "google-fieldmask",
+                    "type": "string"
+                },
+                "sources": {
+                    "items": {
+                        "enum": [
+                            "READ_SOURCE_TYPE_UNSPECIFIED",
+                            "READ_SOURCE_TYPE_PROFILE",
+                            "READ_SOURCE_TYPE_CONTACT",
+                            "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -828,6 +1151,7 @@
                     "type": "string"
                 },
                 "formattedType": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "metadata": {
@@ -854,12 +1178,32 @@
                     "$ref": "Date"
                 },
                 "formattedType": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "metadata": {
                     "$ref": "FieldMetadata"
                 },
                 "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ExternalId": {
+            "id": "ExternalId",
+            "properties": {
+                "formattedType": {
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "FieldMetadata"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "value": {
                     "type": "string"
                 }
             },
@@ -875,7 +1219,20 @@
                     "$ref": "Source"
                 },
                 "verified": {
+                    "readOnly": true,
                     "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "FileAs": {
+            "id": "FileAs",
+            "properties": {
+                "metadata": {
+                    "$ref": "FieldMetadata"
+                },
+                "value": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -887,6 +1244,7 @@
                     "type": "string"
                 },
                 "formattedValue": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "metadata": {
@@ -914,9 +1272,11 @@
             "id": "ImClient",
             "properties": {
                 "formattedProtocol": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "formattedType": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "metadata": {
@@ -994,11 +1354,77 @@
             },
             "type": "object"
         },
+        "ListDirectoryPeopleResponse": {
+            "id": "ListDirectoryPeopleResponse",
+            "properties": {
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "nextSyncToken": {
+                    "type": "string"
+                },
+                "people": {
+                    "items": {
+                        "$ref": "Person"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ListOtherContactsResponse": {
+            "id": "ListOtherContactsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "nextSyncToken": {
+                    "type": "string"
+                },
+                "otherContacts": {
+                    "items": {
+                        "$ref": "Person"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "Locale": {
             "id": "Locale",
             "properties": {
                 "metadata": {
                     "$ref": "FieldMetadata"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Location": {
+            "id": "Location",
+            "properties": {
+                "buildingId": {
+                    "type": "string"
+                },
+                "current": {
+                    "type": "boolean"
+                },
+                "deskCode": {
+                    "type": "string"
+                },
+                "floor": {
+                    "type": "string"
+                },
+                "floorSection": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "FieldMetadata"
+                },
+                "type": {
+                    "type": "string"
                 },
                 "value": {
                     "type": "string"
@@ -1013,10 +1439,44 @@
                     "$ref": "ContactGroupMembership"
                 },
                 "domainMembership": {
-                    "$ref": "DomainMembership"
+                    "$ref": "DomainMembership",
+                    "readOnly": true
                 },
                 "metadata": {
                     "$ref": "FieldMetadata"
+                }
+            },
+            "type": "object"
+        },
+        "MiscKeyword": {
+            "id": "MiscKeyword",
+            "properties": {
+                "formattedType": {
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "FieldMetadata"
+                },
+                "type": {
+                    "enum": [
+                        "TYPE_UNSPECIFIED",
+                        "OUTLOOK_BILLING_INFORMATION",
+                        "OUTLOOK_DIRECTORY_SERVER",
+                        "OUTLOOK_KEYWORD",
+                        "OUTLOOK_MILEAGE",
+                        "OUTLOOK_PRIORITY",
+                        "OUTLOOK_SENSITIVITY",
+                        "OUTLOOK_SUBJECT",
+                        "OUTLOOK_USER",
+                        "HOME",
+                        "WORK",
+                        "OTHER"
+                    ],
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1061,9 +1521,11 @@
             "id": "Name",
             "properties": {
                 "displayName": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "displayNameLastFirst": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "familyName": {
@@ -1100,6 +1562,9 @@
                     "type": "string"
                 },
                 "phoneticMiddleName": {
+                    "type": "string"
+                },
+                "unstructuredName": {
                     "type": "string"
                 }
             },
@@ -1157,6 +1622,7 @@
                     "$ref": "Date"
                 },
                 "formattedType": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "jobDescription": {
@@ -1205,12 +1671,14 @@
                         "EIGHTEEN_TO_TWENTY",
                         "TWENTY_ONE_OR_OLDER"
                     ],
+                    "readOnly": true,
                     "type": "string"
                 },
                 "ageRanges": {
                     "items": {
                         "$ref": "AgeRangeType"
                     },
+                    "readOnly": true,
                     "type": "array"
                 },
                 "biographies": {
@@ -1231,10 +1699,23 @@
                     },
                     "type": "array"
                 },
+                "calendarUrls": {
+                    "items": {
+                        "$ref": "CalendarUrl"
+                    },
+                    "type": "array"
+                },
+                "clientData": {
+                    "items": {
+                        "$ref": "ClientData"
+                    },
+                    "type": "array"
+                },
                 "coverPhotos": {
                     "items": {
                         "$ref": "CoverPhoto"
                     },
+                    "readOnly": true,
                     "type": "array"
                 },
                 "emailAddresses": {
@@ -1249,6 +1730,18 @@
                 "events": {
                     "items": {
                         "$ref": "Event"
+                    },
+                    "type": "array"
+                },
+                "externalIds": {
+                    "items": {
+                        "$ref": "ExternalId"
+                    },
+                    "type": "array"
+                },
+                "fileAses": {
+                    "items": {
+                        "$ref": "FileAs"
                     },
                     "type": "array"
                 },
@@ -1276,6 +1769,12 @@
                     },
                     "type": "array"
                 },
+                "locations": {
+                    "items": {
+                        "$ref": "Location"
+                    },
+                    "type": "array"
+                },
                 "memberships": {
                     "items": {
                         "$ref": "Membership"
@@ -1283,7 +1782,14 @@
                     "type": "array"
                 },
                 "metadata": {
-                    "$ref": "PersonMetadata"
+                    "$ref": "PersonMetadata",
+                    "readOnly": true
+                },
+                "miscKeywords": {
+                    "items": {
+                        "$ref": "MiscKeyword"
+                    },
+                    "type": "array"
                 },
                 "names": {
                     "items": {
@@ -1319,6 +1825,7 @@
                     "items": {
                         "$ref": "Photo"
                     },
+                    "readOnly": true,
                     "type": "array"
                 },
                 "relations": {
@@ -1331,12 +1838,14 @@
                     "items": {
                         "$ref": "RelationshipInterest"
                     },
+                    "readOnly": true,
                     "type": "array"
                 },
                 "relationshipStatuses": {
                     "items": {
                         "$ref": "RelationshipStatus"
                     },
+                    "readOnly": true,
                     "type": "array"
                 },
                 "residences": {
@@ -1364,6 +1873,7 @@
                     "items": {
                         "$ref": "Tagline"
                     },
+                    "readOnly": true,
                     "type": "array"
                 },
                 "urls": {
@@ -1385,12 +1895,14 @@
             "id": "PersonMetadata",
             "properties": {
                 "deleted": {
+                    "readOnly": true,
                     "type": "boolean"
                 },
                 "linkedPeopleResourceNames": {
                     "items": {
                         "type": "string"
                     },
+                    "readOnly": true,
                     "type": "array"
                 },
                 "objectType": {
@@ -1399,12 +1911,14 @@
                         "PERSON",
                         "PAGE"
                     ],
+                    "readOnly": true,
                     "type": "string"
                 },
                 "previousResourceNames": {
                     "items": {
                         "type": "string"
                     },
+                    "readOnly": true,
                     "type": "array"
                 },
                 "sources": {
@@ -1439,9 +1953,11 @@
             "id": "PhoneNumber",
             "properties": {
                 "canonicalForm": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "formattedType": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "metadata": {
@@ -1480,6 +1996,7 @@
                         "PERSON",
                         "PAGE"
                     ],
+                    "readOnly": true,
                     "type": "string"
                 },
                 "userTypes": {
@@ -1492,6 +2009,7 @@
                         ],
                         "type": "string"
                     },
+                    "readOnly": true,
                     "type": "array"
                 }
             },
@@ -1501,6 +2019,7 @@
             "id": "Relation",
             "properties": {
                 "formattedType": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "metadata": {
@@ -1519,6 +2038,7 @@
             "id": "RelationshipInterest",
             "properties": {
                 "formattedValue": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "metadata": {
@@ -1534,6 +2054,7 @@
             "id": "RelationshipStatus",
             "properties": {
                 "formattedValue": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "metadata": {
@@ -1560,10 +2081,30 @@
             },
             "type": "object"
         },
+        "SearchDirectoryPeopleResponse": {
+            "id": "SearchDirectoryPeopleResponse",
+            "properties": {
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "people": {
+                    "items": {
+                        "$ref": "Person"
+                    },
+                    "type": "array"
+                },
+                "totalSize": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "SipAddress": {
             "id": "SipAddress",
             "properties": {
                 "formattedType": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "metadata": {
@@ -1600,7 +2141,8 @@
                     "type": "string"
                 },
                 "profileMetadata": {
-                    "$ref": "ProfileMetadata"
+                    "$ref": "ProfileMetadata",
+                    "readOnly": true
                 },
                 "type": {
                     "enum": [
@@ -1608,12 +2150,15 @@
                         "ACCOUNT",
                         "PROFILE",
                         "DOMAIN_PROFILE",
-                        "CONTACT"
+                        "CONTACT",
+                        "OTHER_CONTACT",
+                        "DOMAIN_CONTACT"
                     ],
                     "type": "string"
                 },
                 "updateTime": {
                     "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -1672,6 +2217,18 @@
                 "photoBytes": {
                     "format": "byte",
                     "type": "string"
+                },
+                "sources": {
+                    "items": {
+                        "enum": [
+                            "READ_SOURCE_TYPE_UNSPECIFIED",
+                            "READ_SOURCE_TYPE_PROFILE",
+                            "READ_SOURCE_TYPE_CONTACT",
+                            "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -1689,6 +2246,7 @@
             "id": "Url",
             "properties": {
                 "formattedType": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "metadata": {

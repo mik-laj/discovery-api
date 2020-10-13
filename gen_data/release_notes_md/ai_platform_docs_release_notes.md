@@ -15,6 +15,366 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/aiplatform-release-notes.xml `
 
+##  August 19, 2020
+
+**AI Platform Prediction**
+
+**CHANGED:**
+
+You can now use [ runtime version 2.1 ](https://cloud.google.com/ai-
+platform/prediction/docs/runtime-version-list) to serve online predictions
+using scikit-learn 0.22.1 and XGBoost 0.90.
+
+##  August 18, 2020
+
+**AI Platform Prediction**
+
+**CHANGED:**
+
+[ Compute Engine (N1) machine types for online prediction
+](https://cloud.google.com/ai-platform/prediction/docs/machine-types-online-
+prediction) are now generally available. They are available on all [ regional
+endpoints ](https://cloud.google.com/ai-platform/prediction/docs/regional-
+endpoints) .
+
+The [ AI Platform Training and Prediction Service Level Agreement
+](https://cloud.google.com/ai-platform/training-and-prediction/sla) does not
+apply to [ model versions that use a Compute Engine (N1) machine type and
+fewer than two prediction nodes ](https://cloud.google.com/ai-
+platform/prediction/docs/machine-types-online-prediction#scaling) .
+
+**CHANGED:**
+
+[ GPUs for online prediction ](https://cloud.google.com/ai-
+platform/prediction/docs/machine-types-online-prediction#gpus) are now
+generally available. You can use GPUs to serve predictions when you create a
+TensorFlow model version that uses a [ Compute Engine (N1) machine type
+](https://cloud.google.com/ai-platform/prediction/docs/machine-types-online-
+prediction) .
+
+Learn [ which types of GPU are available on each regional endpoint
+](https://cloud.google.com/ai-
+platform/prediction/docs/regions#using_gpus_for_online_prediction) .
+
+**CHANGED:**
+
+The following [ regional endpoints for online prediction
+](https://cloud.google.com/ai-platform/prediction/docs/regional-endpoints) are
+now generally available:
+
+  * ` us-central1-ml.googleapis.com `
+  * ` europe-west4-ml.googleapis.com `
+  * ` asia-east1-ml.googleapis.com `
+
+**DEPRECATED:**
+
+Using [ Compute Engine (N1) machine types ](https://cloud.google.com/ai-
+platform/prediction/docs/machine-types-online-prediction) on the global API
+endpoint ( ` ml.googleapis.com ` ) is deprecated. This functionality was
+previously available in beta in the ` us-central1 ` region.
+
+To continue to use Compute Engine (N1) machine types in the ` us-central1 `
+region, create a model on the ` us-central1-ml.googleapis.com ` [ regional
+endpoint ](https://cloud.google.com/ai-platform/prediction/docs/regional-
+endpoints) , and then create model versions using that model.
+
+##  August 17, 2020
+
+**AI Platform Deep Learning Containers**
+
+**FEATURE:**
+
+TensorFlow Enterprise 2.3 environments are now available. These environments
+include support for A100 GPU accelerators, CUDA 11, and TensorFloat-32 (TF32).
+
+**AI Platform Training**
+
+**FEATURE:**
+
+You can now set a maximum time that you are willing to wait between the moment
+when you create a training job and the moment when AI Platform Training starts
+running the job. If your training job has not started running after this
+duration, AI Platform Training cancels the job. Set the maximum wait time by
+specifying the [ ` scheduling.maxWaitTime ` ](https://cloud.google.com/ai-
+platform/training/docs/reference/rest/v1/projects.jobs#scheduling) field.
+
+##  August 14, 2020
+
+**AI Platform Training**
+
+**FEATURE:**
+
+The [ TabNet ](https://arxiv.org/abs/1908.07442) built-in algorithm is now
+available in Beta. You can train models on tabular data for classification and
+regression problems, and also get feature attributions to help explain the
+model's behavior.
+
+Try the [ TabNet built-in algorithm introductory tutorial
+](https://cloud.google.com/ai-platform/training/docs/algorithms/tab-net-start)
+.
+
+##  August 10, 2020
+
+**AI Platform Deep Learning VM Image**
+
+**FEATURE:**
+
+**M54 release**
+
+  * Added support for the europe-west3 region 
+  * Updated the Explainable AI sdk and added explainers 
+  * Fixed llvm-openmp support 
+  * Added support for instance auto upgrade 
+  * Made Deep Learning VM images and Deep Learning Containers more consistent for TPU 
+  * Updated NCCL to 2.7.6 in CU110 images 
+  * Added the scikit-learn package and container 
+  * Added JRE to R images 
+  * Limited custom container memory utilization 
+
+##  August 06, 2020
+
+**AI Platform Deep Learning VM Image**
+
+**FEATURE:**
+
+**M53 release**
+
+TensorFlow Enterprise 2.3 images, including images that support CUDA 11.0, are
+now available.
+
+##  August 04, 2020
+
+**AI Platform Training**
+
+**FEATURE:**
+
+Read a new guide to [ distributed PyTorch training
+](https://cloud.google.com/ai-platform/training/docs/distributed-pytorch) .
+You can use this guide with [ pre-built PyTorch containers
+](https://cloud.google.com/ai-platform/training/docs/getting-started-
+pytorch#pytorch_containers) , which are in beta.
+
+##  July 20, 2020
+
+**AI Platform Training**
+
+**FEATURE:**
+
+[ Customer-managed encryption keys (CMEK) for AI Platform Training
+](https://cloud.google.com/ai-platform/training/docs/cmek) is now generally
+available.
+
+**FEATURE:**
+
+The [ VPC Service Controls integration with AI Platform Training
+](https://cloud.google.com/ai-platform/training/docs/vpc-service-controls) is
+now generally available.
+
+**FEATURE:**
+
+You can now train a PyTorch model on AI Platform Training by [ using a pre-
+built PyTorch container ](https://cloud.google.com/ai-
+platform/training/docs/getting-started-pytorch) . Pre-built PyTorch containers
+are available in beta.
+
+##  July 14, 2020
+
+**AI Platform Prediction**
+
+**FEATURE:**
+
+[ VPC Service Controls ](https://cloud.google.com/vpc-service-
+controls/docs/overview) now supports AI Platform Prediction. Learn [ how to
+use a service perimeter to protect online prediction
+](https://cloud.google.com/ai-platform/prediction/docs/vpc-service-controls) .
+This functionality is in beta.
+
+##  July 13, 2020
+
+**AI Platform Deep Learning VM Image**
+
+**FEATURE:**
+
+**M51 release**
+
+Allow removing ` sudo ` access from Deep Learning Containers.
+
+Debian-10-based images are released. You can create [ Shielded VM instances
+](https://cloud.google.com/security/shielded-cloud/shielded-vm) from these
+images.
+
+**AI Platform Training**
+
+**FEATURE:**
+
+You can now configure a training job to run using a [ custom service account
+](https://cloud.google.com/ai-platform/training/docs/custom-service-account) .
+Using a custom service account can help you customize which Google Cloud
+resources your training code can access.
+
+This feature is available in beta.
+
+##  June 23, 2020
+
+**AI Platform Deep Learning VM Image**
+
+**FIXED:**
+
+**M50 release**
+
+Miscellaneous bug fixes.
+
+##  June 22, 2020
+
+**AI Platform Training**
+
+**CHANGED:**
+
+You can now [ use Cloud TPUs for training jobs ](https://cloud.google.com/ai-
+platform/training/docs/using-tpus) in the ` europe-west4 ` region. TPU v2
+accelerators are generally available, and TPU v3 accelerators are available in
+beta.
+
+Learn how to [ configure your training job to use TPUs
+](https://cloud.google.com/ai-platform/training/docs/using-
+tpus#configuring_a_custom_tpu_machine) , and read about [ TPU pricing on AI
+Platform Training ](https://cloud.google.com/ai-platform/training/pricing) .
+
+##  June 15, 2020
+
+**AI Platform Training**
+
+**FEATURE:**
+
+AI Platform Training now supports [ private services access
+](https://cloud.google.com/vpc/docs/private-access-options#service-networking)
+in beta. You can use VPC Network Peering to create a private connection so
+that training jobs can connect to your network on private IP.
+
+Learn how to set up [ VPC Network Peering with AI Platform Training
+](https://cloud.google.com/ai-platform/training/docs/vpc-peering) .
+
+##  June 11, 2020
+
+**AI Platform Deep Learning VM Image**
+
+**FEATURE:**
+
+**M49 release**
+
+TensorFlow Enterprise images updated to 1.15.3 and 2.1.1.
+
+The [ tensorflow-enterprise-addons ](https://pypi.org/project/tensorflow-
+enterprise-addons/) package is now available in all deep learning
+environments.
+
+XGBoost, MXNet, R, PyTorch, CNTK, and Caffe images have been updated with
+library upgrades and bug fixes.
+
+##  June 08, 2020
+
+**AI Platform Prediction**
+
+**FIXED:**
+
+The [ **Total latency** chart ](https://cloud.google.com/ai-
+platform/prediction/docs/monitor-prediction) on the **Version details** page
+of the Google Cloud Console was reporting incorrect information. This chart
+has now been fixed.
+
+In some cases, this adjustment might cause latencies to appear higher than
+they were previously. However, the latency of models has not changed.
+
+This affects both Compute Engine (N1) machine types and legacy (MLS1) machine
+types.
+
+##  May 21, 2020
+
+**AI Platform Training**
+
+**FEATURE:**
+
+You can now use TPUs with TensorFlow 2.1 when you create a training job with
+runtime version 2.1. You can also [ use TPUs with TensorFlow 2.1 when you
+train in a custom container ](https://cloud.google.com/ai-
+platform/training/docs/using-tpus#custom-containers) .
+
+Read the [ guide to using TPUs with AI Platform Training
+](https://cloud.google.com/ai-platform/training/docs/using-tpus) , which has
+been updated to show how to use TPUs with TensorFlow 2 APIs.
+
+##  May 18, 2020
+
+**AI Platform Deep Learning VM Image**
+
+**FEATURE:**
+
+**M48 release**
+
+TensorFlow 2.2 images have been added. The new TensorFlow 2.2 image families
+are ` tf2-2-2-cpu ` and ` tf2-2-2-cu101 ` . See the [ available image families
+](https://cloud.google.com/ai-platform/deep-learning-vm/docs/images) .
+
+##  May 13, 2020
+
+**AI Platform Prediction**
+
+**FEATURE:**
+
+AI Platform Prediction now supports the following regions for batch
+prediction, in addition to those that were already supported:
+
+  * ` northamerica-northeast1 ` (Montréal) 
+  * ` southamerica-east1 ` (São Paulo) 
+  * ` australia-southeast1 ` (Sydney) 
+
+See the [ full list of available regions ](https://cloud.google.com/ai-
+platform/prediction/docs/regions) .
+
+` northamerica-northeast1 ` and ` southamerica-east1 ` have the same pricing
+as other Americas regions, and ` australia-southeast1 ` has the same pricing
+as other Asia Pacific regions. Learn about [ pricing for each region
+](https://cloud.google.com/ai-platform/prediction/pricing) .
+
+**AI Platform Training**
+
+**FEATURE:**
+
+AI Platform Training now supports the following regions, in addition to those
+that were already supported:
+
+  * ` northamerica-northeast1 ` (Montréal) 
+  * ` southamerica-east1 ` (São Paulo) 
+  * ` australia-southeast1 ` (Sydney) 
+
+GPUs are available for training in each of the new regions:
+
+  * NVIDIA Tesla P4 GPUs are available in ` northamerica-northeast1 ` . 
+  * NVIDIA Tesla T4 GPUs are available in ` southamerica-east1 ` . 
+  * NVIDIA Tesla P4 GPUs and NVIDIA Tesla P100 GPUs are available in ` australia-southeast1 ` . 
+
+See the [ full list of available regions ](https://cloud.google.com/ai-
+platform/training/docs/regions) and the [ guide to training with GPUs
+](https://cloud.google.com/ai-platform/training/docs/using-gpus) .
+
+` northamerica-northeast1 ` and ` southamerica-east1 ` have the same pricing
+as other Americas regions, and ` australia-southeast1 ` has the same pricing
+as other Asia Pacific regions. Learn about [ pricing for each region
+](https://cloud.google.com/ai-platform/training/pricing) .
+
+##  May 12, 2020
+
+**AI Platform Deep Learning VM Image**
+
+**FIXED:**
+
+**M47 release**
+
+Fixed an OS login issue under single user mode for a user external to an
+organization.
+
+Fixed a git extensions plugin issue in TensorFlow 2 images.
+
 ##  April 29, 2020
 
 **AI Platform Prediction**
@@ -206,10 +566,10 @@ AI Platform Notebooks is now [ Generally Available
 ](https://cloud.google.com/products#product-launch-stages) . Some integrations
 with and specific features of AI Platform Notebooks are still in beta, such as
 [ Virtual Private Cloud Service Controls ](https://cloud.google.com/ai-
-platform/notebooks/docs/service-perimeter) , [ Cloud Identity and Access
-Management (Cloud IAM) ](https://cloud.google.com/ai-
-platform/notebooks/docs/iam) roles, and [ AI Platform Notebooks API
-](https://cloud.google.com/ai-platform/notebooks/docs/reference/rest) .
+platform/notebooks/docs/service-perimeter) , [ Identity and Access Management
+(IAM) ](https://cloud.google.com/ai-platform/notebooks/docs/iam) roles, and [
+AI Platform Notebooks API ](https://cloud.google.com/ai-
+platform/notebooks/docs/reference/rest) .
 
 ##  March 27, 2020
 
@@ -638,6 +998,17 @@ Geographic area  |  Old price per hour  |  New price per hour
   
 Read more about [ using GPUs for training ](https://cloud.google.com/ai-
 platform/training/docs/using-gpus) .
+
+##  January 08, 2020
+
+**AI Platform Deep Learning Containers**
+
+**FEATURE:**
+
+TensorFlow Enterprise environments are now available. [ Use TensorFlow
+Enterprise with Deep Learning Containers
+](https://cloud.google.com/tensorflow-enterprise/docs/use-with-deep-learning-
+containers) .
 
 ##  January 07, 2020
 

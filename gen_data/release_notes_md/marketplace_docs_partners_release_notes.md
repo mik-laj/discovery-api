@@ -1,7 +1,7 @@
 #  Release Notes
 
-This page contains the latest release notes for features and updates for
-Google Cloud Marketplace Partners.
+This page contains the latest release notes for features and updates for Cloud
+Marketplace Partners.
 
 You can see the latest product updates for all of Google Cloud on the [ Google
 Cloud release notes ](/release-notes) page.
@@ -11,6 +11,19 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcp-marketplace-partners-
 release-notes.xml `
+
+##  August 13, 2020
+
+**FEATURE:**
+
+Google Cloud Marketplace supports filters, called Category IDs, that are
+available to customers within the Google Cloud console. When you add a
+Category ID, your solution shows up in the filtered view for that category
+when customers search for solutions in Cloud Marketplace. You can select up to
+two categories for each of your solutions.
+
+To add or modify categories, go to the **Solutions Details** page and edit the
+**Category ID** section.
 
 ##  April 16, 2020
 

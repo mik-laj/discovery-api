@@ -560,7 +560,7 @@
 
   * [
 
-###  Anthos Service Mesh (beta)
+###  Anthos Service Mesh
 
 ](/service-mesh/docs/release-notes)
 

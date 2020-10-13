@@ -39,6 +39,636 @@ updated features, bug fixes, known issues, and deprecated functionality.
    </section>
    <section class="releases">
     <section class="releases">
+     <h2 data-text="August 10, 2020" id="August_10_2020" tabindex="0">
+      August 10, 2020
+     </h2>
+     <div class="release-changed" id="e11e2c52">
+      <strong>
+       CHANGED:
+      </strong>
+      <ul>
+       <li>
+        <a href="https://cloud.google.com/composer/docs/concepts/versioning/composer-versions">
+         New versions
+        </a>
+        of Cloud Composer images:
+        <code dir="ltr" translate="no">
+         composer-1.11.2-airflow-1.10.3
+        </code>
+        ,
+        <code dir="ltr" translate="no">
+         composer-1.11.2-airflow-1.10.6
+        </code>
+        , and
+        <code dir="ltr" translate="no">
+         composer-1.11.2-airflow-1.10.9
+        </code>
+        . The default is
+        <code dir="ltr" translate="no">
+         composer-1.11.2-airflow-1.10.6
+        </code>
+        . Upgrade your Cloud SDK to use features in this release.
+       </li>
+      </ul>
+     </div>
+     <div class="release-feature" id="c121f91a">
+      <strong>
+       FEATURE:
+      </strong>
+      <ul>
+       <li>
+        <strong>
+         Airflow 1.10.6 and 1.10.9:
+        </strong>
+        You can now specify a location argument when creating a
+        <code dir="ltr" translate="no">
+         BigQueryCheckOperator
+        </code>
+        to use it in a different region from the Composer environment.
+       </li>
+      </ul>
+     </div>
+     <div class="release-fixed" id="3a9ec902">
+      <strong>
+       FIXED:
+      </strong>
+      <ul>
+       <li>
+        Fixed GKE setting incompatibilities that broke environment creation for Composer versions between 1.7.2 and 1.8.3.
+       </li>
+       <li>
+        When DAG serialization is on, plugins and DAGs are no longer synced when the Airflow web server starts up. This fixes web server failures when plugins use custom PyPI packages.
+       </li>
+       <li>
+        Fixed intermittent failures when triggering a DAG from the Airflow Web UI with DAG serialization turned on.
+       </li>
+       <li>
+        Fixed update operations (installing Python dependencies and upgrading environments) for domain-scoped projects.
+       </li>
+       <li>
+        Fixed a broken link to the Airflow documentation in Airflow 1.10.9.
+       </li>
+      </ul>
+     </div>
+     <h2 data-text="August 03, 2020" id="August_03_2020" tabindex="0">
+      August 03, 2020
+     </h2>
+     <div class="release-changed" id="a8c2faf2">
+      <strong>
+       CHANGED:
+      </strong>
+      <ul>
+       <li>
+        <a href="https://cloud.google.com/composer/docs/concepts/versioning/composer-versions">
+         New versions
+        </a>
+        of Cloud Composer images:
+        <code dir="ltr" translate="no">
+         composer-1.11.1-airflow-1.10.3
+        </code>
+        ,
+        <code dir="ltr" translate="no">
+         composer-1.11.1-airflow-1.10.6
+        </code>
+        , and
+        <code dir="ltr" translate="no">
+         composer-1.11.1-airflow-1.10.9
+        </code>
+        . The default is
+        <code dir="ltr" translate="no">
+         composer-1.11.1-airflow-1.10.6
+        </code>
+        . Upgrade your Cloud SDK to use features in this release.
+       </li>
+       <li>
+        Composer now enforces
+        <code dir="ltr" translate="no">
+         iam.serviceAccounts.actAs
+        </code>
+        permission checks on the service account specified during Composer environment creation. See
+        <a href="https://cloud.google.com/composer/docs/how-to/managing/creating#access-control">
+         Creating environments
+        </a>
+        for details.
+       </li>
+      </ul>
+     </div>
+     <div class="release-feature" id="ebf9c39b">
+      <strong>
+       FEATURE:
+      </strong>
+      <ul>
+       <li>
+        Private IP environments can now be creating using non-rfc 1918 CGN ranges (100.64.0.0/10)
+       </li>
+       <li>
+        New PyPi packages have been added for Composer version composer-1.11.0-airflow-1.10.6. These make it possible to install apache-airflow-backport-providers-google with no additional package upgrades.
+       </li>
+       <li>
+        The PyPi package
+        <code dir="ltr" translate="no">
+         google-cloud-datacatalog
+        </code>
+        can now be installed on Composer environments running Airflow 1.10.6 and Python 3.
+       </li>
+       <li>
+        Cloud Composer 1.11.1+: Backport providers are installed by default for Airflow 1.10.6 and 1.10.9.
+       </li>
+       <li>
+        You can now use the
+        <code dir="ltr" translate="no">
+         label.worker_id
+        </code>
+        filter in Cloud Monitoring logs to see logs sent out of a specific Airflow worker Pod.
+       </li>
+       <li>
+        With the Composer Beta API, you can now upgrade an environment to any of the three latest Composer versions (instead of just the latest).
+       </li>
+       <li>
+        You can now modify these previously blocked Airflow configurations:
+        <code dir="ltr" translate="no">
+         [scheduler] scheduler_heartbeat_sec
+        </code>
+        ,
+        <code dir="ltr" translate="no">
+         [scheduler] job_heartbeat_sec
+        </code>
+        ,
+        <code dir="ltr" translate="no">
+         [scheduler] run_duration
+        </code>
+       </li>
+      </ul>
+     </div>
+     <div class="release-fixed" id="d51ce16d">
+      <strong>
+       FIXED:
+      </strong>
+      <ul>
+       <li>
+        A more informative error message was added for environment creation failures caused by issues with Cloud SQL instance creation.
+       </li>
+       <li>
+        Improved error reporting has been added for update operations that change the web server image in cases where the error occurs before the new web server image is created.
+       </li>
+       <li>
+        The Airflow-worker liveness check has been changed so that a task just added to a queue will not fire an alert.
+       </li>
+       <li>
+        Reduced the amount of non-informative logs thrown by the environment in Composer 1.10.6.
+       </li>
+       <li>
+        Improved the syncing procedure for env_var.json in Airflow 1.10.9 (it should no longer throw "missing file:" errors).
+       </li>
+       <li>
+        Airflow-worker and airflow-scheduler will no longer throw "missing env_var.json" errors in Airflow 1.10.6.
+       </li>
+      </ul>
+     </div>
+     <h2 data-text="July 30, 2020" id="July_30_2020" tabindex="0">
+      July 30, 2020
+     </h2>
+     <div class="release-feature" id="8a0d4e70">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Cloud Composer is now available in Osaka (
+       <code dir="ltr" translate="no">
+        asia-northeast2
+       </code>
+       ).
+      </p>
+     </div>
+     <h2 data-text="July 24, 2020" id="July_24_2020" tabindex="0">
+      July 24, 2020
+     </h2>
+     <div class="release-changed" id="72118ae6">
+      <strong>
+       CHANGED:
+      </strong>
+      <ul>
+       <li>
+        <a href="https://cloud.google.com/composer/docs/concepts/versioning/composer-versions">
+         New versions
+        </a>
+        of Cloud Composer images:
+        <code dir="ltr" translate="no">
+         composer-1.11.0-airflow-1.10.2
+        </code>
+        ,
+        <code dir="ltr" translate="no">
+         composer-1.11.0-airflow-1.10.3
+        </code>
+        ,
+        <code dir="ltr" translate="no">
+         composer-1.11.0-airflow-1.10.6
+        </code>
+        , and
+        <code dir="ltr" translate="no">
+         composer-1.11.0-airflow-1.10.9
+        </code>
+        . The default is
+        <code dir="ltr" translate="no">
+         composer-1.11.0-airflow-1.10.3
+        </code>
+        . Upgrade your Cloud SDK to use features in this release.
+       </li>
+      </ul>
+     </div>
+     <div class="release-feature" id="8dc05917">
+      <strong>
+       FEATURE:
+      </strong>
+      <ul>
+       <li>
+        Airflow 1.10.9 is now supported.
+       </li>
+       <li>
+        Environment upgrades have been enabled for the latest two Composer versions (1.11.0 and 1.10.6).
+       </li>
+       <li>
+        Added a retry feature to the Airflow CeleryExecutor (disabled by default). You can configure the number of times Celery will attempt to execute a task by setting the
+        <code dir="ltr" translate="no">
+         [celery] max_command_attempts
+        </code>
+        property. The delay between each retry can also be adjusted with
+        <code dir="ltr" translate="no">
+         [celery] command_retry_wait_duration
+        </code>
+        (default: 5 seconds).
+       </li>
+      </ul>
+     </div>
+     <div class="release-fixed" id="358f44a3">
+      <strong>
+       FIXED:
+      </strong>
+      <ul>
+       <li>
+        New PyPi packages have been added for Composer version
+        <code dir="ltr" translate="no">
+         composer-1.11.0-airflow-1.10.6
+        </code>
+        . These make it possible to install
+        <code dir="ltr" translate="no">
+         apache-airflow-backport-providers-google
+        </code>
+        with no additional package upgrades.
+       </li>
+       <li>
+        The PyPi package
+        <code dir="ltr" translate="no">
+         google-cloud-datacatalog
+        </code>
+        can now be installed on Composer environments running Airflow 1.10.6 and Python 3.
+       </li>
+       <li>
+        Fixed synchronization of environment variables to the web server.
+       </li>
+       <li>
+        Improved error reporting when PyPI package installation fails.
+       </li>
+      </ul>
+     </div>
+     <div class="release-deprecated" id="9ed715a1">
+      <strong>
+       DEPRECATED:
+      </strong>
+      <ul>
+       <li>
+        Composer versions 1.6.1, 1.7.0, and 1.7.1 are now deprecated.
+       </li>
+      </ul>
+     </div>
+     <h2 data-text="July 07, 2020" id="July_07_2020" tabindex="0">
+      July 07, 2020
+     </h2>
+     <div class="release-changed" id="8c743bae">
+      <strong>
+       CHANGED:
+      </strong>
+      <ul>
+       <li>
+        <p>
+         <a href="https://cloud.google.com/composer/docs/concepts/versioning/composer-versions">
+          New versions
+         </a>
+         of Cloud Composer images:
+         <code dir="ltr" translate="no">
+          composer-1.10.6-airflow-1.10.2
+         </code>
+         ,
+         <code dir="ltr" translate="no">
+          composer-1.10.6-airflow-1.10.3
+         </code>
+         and
+         <code dir="ltr" translate="no">
+          composer-1.10.6-airflow-1.10.6
+         </code>
+         . The default is
+         <code dir="ltr" translate="no">
+          composer-1.10.6-airflow-1.10.3
+         </code>
+         . Upgrade your Cloud SDK to use features in this release.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          For Airflow 1.10.6 and later:
+         </strong>
+         The Airflow config property
+         <code dir="ltr" translate="no">
+          [celery] pool
+         </code>
+         is now blocked.
+        </p>
+       </li>
+       <li>
+        <p>
+         The
+         <code dir="ltr" translate="no">
+          [core]sql_alchemy_pool_recycle
+         </code>
+         Airflow setting has been modified to improve SQL connection reliability.
+        </p>
+       </li>
+      </ul>
+     </div>
+     <div class="release-fixed" id="22cb109b">
+      <strong>
+       FIXED:
+      </strong>
+      <ul>
+       <li>
+        Fixed an issue with Airflow 1.10.6 environments where task logs were not visible in the UI when DAG serialization was enabled.
+       </li>
+       <li>
+        It is now possible to upgrade from Composer versions 1.1.1, 1.2.0, 1.3.0, 1.4.0, 1.4.1, 1.4.2, 1.5.0, and 1.5.2 to the newest version.
+       </li>
+      </ul>
+     </div>
+     <h2 data-text="June 30, 2020" id="June_30_2020" tabindex="0">
+      June 30, 2020
+     </h2>
+     <div class="release-feature" id="b6f6dc4c">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Cloud Composer support for
+       <a href="https://cloud.google.com/composer/docs/configuring-vpc-sc">
+        VPC Service Controls
+       </a>
+       is now in Beta.
+      </p>
+     </div>
+     <h2 data-text="June 24, 2020" id="June_24_2020" tabindex="0">
+      June 24, 2020
+     </h2>
+     <div class="release-changed" id="44dc824e">
+      <strong>
+       CHANGED:
+      </strong>
+      <ul>
+       <li>
+        <a href="https://cloud.google.com/composer/docs/concepts/versioning/composer-versions">
+         New versions
+        </a>
+        of Cloud Composer images:
+        <code dir="ltr" translate="no">
+         composer-1.10.5-airflow-1.10.2
+        </code>
+        ,
+        <code dir="ltr" translate="no">
+         composer-1.10.5-airflow-1.10.3
+        </code>
+        and
+        <code dir="ltr" translate="no">
+         composer-1.10.5-airflow-1.10.6
+        </code>
+        . The default is
+        <code dir="ltr" translate="no">
+         composer-1.10.5-airflow-1.10.3
+        </code>
+        . Upgrade your Cloud SDK to use features in this release.
+       </li>
+      </ul>
+     </div>
+     <div class="release-feature" id="08b88826">
+      <strong>
+       FEATURE:
+      </strong>
+      <ul>
+       <li>
+        Composer now uses the Kubernetes v1 API, and is compatible with GKE 1.16
+       </li>
+       <li>
+        An updated haproxy configuration for Composer increases the maximum number of connections to 2000, and changes load balancing to be based on the number of connections. These settings can be configured with environment variables.
+       </li>
+      </ul>
+     </div>
+     <div class="release-fixed" id="b8d078fc">
+      <strong>
+       FIXED:
+      </strong>
+      <ul>
+       <li>
+        Error messages for
+        <code dir="ltr" translate="no">
+         TP_APP_ENGINE_CREATING
+        </code>
+        timeout and RPC delivery issues have been expanded.
+       </li>
+       <li>
+        Airflow Providers can now be installed inside Cloud Composer.
+       </li>
+       <li>
+        Error handling for rendering templates in the Airflow web server UI has been improved.
+       </li>
+       <li>
+        Fixed an issue with rendering task instance details (logs, task instance template, params) in the Airflow web server UI when DAG serialization is enabled.
+       </li>
+       <li>
+        Fixed an issue with
+        <code dir="ltr" translate="no">
+         DataFlowJavaOperator
+        </code>
+        , so it can now be used with Apache Beam 2.20.
+       </li>
+       <li>
+        Improved error reporting for failing operations.
+       </li>
+       <li>
+        Memory consumption of the
+        <code dir="ltr" translate="no">
+         gcs-syncd
+        </code>
+        container is now constrained to prevent system instability.
+       </li>
+      </ul>
+     </div>
+     <h2 data-text="May 31, 2020" id="May_31_2020" tabindex="0">
+      May 31, 2020
+     </h2>
+     <div class="release-feature" id="4134bd5e">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Cloud Composer is now available in Seoul (
+       <code dir="ltr" translate="no">
+        asia-northeast3
+       </code>
+       ).
+      </p>
+     </div>
+     <h2 data-text="May 30, 2020" id="May_30_2020" tabindex="0">
+      May 30, 2020
+     </h2>
+     <div class="release-feature" id="1160a82a">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Domain restricted sharing is now generally available (GA). The v1 Composer API and GCP Console now support
+       <a href="https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains">
+        domain restricted sharing
+       </a>
+       for Composer environments.
+      </p>
+     </div>
+     <h2 data-text="May 26, 2020" id="May_26_2020" tabindex="0">
+      May 26, 2020
+     </h2>
+     <div class="release-changed" id="6cedbf44">
+      <strong>
+       CHANGED:
+      </strong>
+      <ul>
+       <li>
+        <a href="https://cloud.google.com/composer/docs/concepts/versioning/composer-versions">
+         New versions
+        </a>
+        of Cloud Composer images:
+        <code dir="ltr" translate="no">
+         composer-1.10.4-airflow-1.10.2
+        </code>
+        ,
+        <code dir="ltr" translate="no">
+         composer-1.10.4-airflow-1.10.3
+        </code>
+        and
+        <code dir="ltr" translate="no">
+         composer-1.10.4-airflow-1.10.6
+        </code>
+        . The default is
+        <code dir="ltr" translate="no">
+         composer-1.10.4-airflow-1.10.3
+        </code>
+        . Upgrade your Cloud SDK to use features in this release.
+       </li>
+       <li>
+        <strong>
+         For Airflow 1.10.6 and later:
+        </strong>
+        The Airflow config property
+        <code dir="ltr" translate="no">
+         [celery] pool
+        </code>
+        is now blocked.
+       </li>
+      </ul>
+     </div>
+     <div class="release-fixed" id="b0eb4342">
+      <strong>
+       FIXED:
+      </strong>
+      <ul>
+       <li>
+        Fixed an issue with Airflow 1.10.6 environments where task logs were not visible in the UI when DAG serialization was enabled.
+       </li>
+      </ul>
+     </div>
+     <h2 data-text="May 15, 2020" id="May_15_2020" tabindex="0">
+      May 15, 2020
+     </h2>
+     <div class="release-changed" id="28f479a5">
+      <strong>
+       CHANGED:
+      </strong>
+      <ul>
+       <li>
+        <a href="https://cloud.google.com/composer/docs/concepts/versioning/composer-versions">
+         New versions
+        </a>
+        of Cloud Composer images:
+        <code dir="ltr" translate="no">
+         composer-1.10.3-airflow-1.10.2
+        </code>
+        ,
+        <code dir="ltr" translate="no">
+         composer-1.10.3-airflow-1.10.3
+        </code>
+        and
+        <code dir="ltr" translate="no">
+         composer-1.10.3-airflow-1.10.6
+        </code>
+        . The default is
+        <code dir="ltr" translate="no">
+         composer-1.10.3-airflow-1.10.3
+        </code>
+        . Upgrade your Cloud SDK to use features in this release.
+       </li>
+      </ul>
+     </div>
+     <div class="release-feature" id="207966cc">
+      <strong>
+       FEATURE:
+      </strong>
+      <ul>
+       <li>
+        Resource quota limits have been updated, allowing environment administrators to set quotas with more granularity. The default quotas for read and write operations have also changed; see
+        <a href="https://cloud.google.com/composer/quotas">
+         Cloud Composer resource quotas
+        </a>
+        for details. The old limits are deprecated, but will not be removed from the Cloud Console Quotas page until a future release.
+       </li>
+      </ul>
+     </div>
+     <div class="release-changed" id="2500ad76">
+      <strong>
+       CHANGED:
+      </strong>
+      <ul>
+       <li>
+        The machine type of the Airflow web server will now be preserved during Composer environment updates, including cases like new PyPi module installations, or adding new environment variables.
+       </li>
+       <li>
+        Synchronization of log files between the Airflow scheduler, web server and workers has been improved.
+       </li>
+       <li>
+        More useful error messages have been added for Composer environment upgrade failures.
+       </li>
+       <li>
+        <em>
+         Future change:
+        </em>
+        Airflow 1.10.6 will become the default Airflow version for Composer environments in an upcoming release.
+       </li>
+      </ul>
+     </div>
+     <div class="release-deprecated" id="ec057b57">
+      <strong>
+       DEPRECATED:
+      </strong>
+      <ul>
+       <li>
+        Composer version 1.6.1 has been deprecated.
+       </li>
+      </ul>
+     </div>
      <h2 data-text="May 08, 2020" id="May_08_2020" tabindex="0">
       May 08, 2020
      </h2>
@@ -2745,7 +3375,7 @@ updated features, bug fixes, known issues, and deprecated functionality.
        <li>
         Added new
         <a href="https://cloud.google.com/composer/docs/how-to/access-control#roles">
-         Cloud Identity and Access Management roles
+         Identity and Access Management roles
         </a>
         .
         <ul>

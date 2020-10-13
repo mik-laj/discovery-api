@@ -374,6 +374,34 @@
     },
     "rootUrl": "https://serviceusage.googleapis.com/",
     "schemas": {
+        "AdminQuotaPolicy": {
+            "id": "AdminQuotaPolicy",
+            "properties": {
+                "container": {
+                    "type": "string"
+                },
+                "dimensions": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object"
+                },
+                "metric": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "policyValue": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "unit": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Api": {
             "id": "Api",
             "properties": {
@@ -537,9 +565,6 @@
                     "type": "string"
                 },
                 "protocol": {
-                    "type": "string"
-                },
-                "renameTo": {
                     "type": "string"
                 },
                 "selector": {
@@ -745,6 +770,14 @@
         "DisableServiceRequest": {
             "id": "DisableServiceRequest",
             "properties": {
+                "checkIfServiceHasUsage": {
+                    "enum": [
+                        "CHECK_IF_SERVICE_HAS_USAGE_UNSPECIFIED",
+                        "SKIP",
+                        "CHECK"
+                    ],
+                    "type": "string"
+                },
                 "disableDependentServices": {
                     "type": "boolean"
                 }
@@ -844,12 +877,6 @@
                 },
                 "allowCors": {
                     "type": "boolean"
-                },
-                "features": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
                 },
                 "name": {
                     "type": "string"
@@ -1280,6 +1307,18 @@
                 "overrides": {
                     "items": {
                         "$ref": "QuotaOverride"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ImportAdminQuotaPoliciesResponse": {
+            "id": "ImportAdminQuotaPoliciesResponse",
+            "properties": {
+                "policies": {
+                    "items": {
+                        "$ref": "AdminQuotaPolicy"
                     },
                     "type": "array"
                 }
@@ -1776,6 +1815,9 @@
         "QuotaOverride": {
             "id": "QuotaOverride",
             "properties": {
+                "adminOverrideAncestor": {
+                    "type": "string"
+                },
                 "dimensions": {
                     "additionalProperties": {
                         "type": "string"

@@ -956,6 +956,14 @@
                     },
                     "type": "array"
                 },
+                "connectedWorkAndPersonalApp": {
+                    "enum": [
+                        "CONNECTED_WORK_AND_PERSONAL_APP_UNSPECIFIED",
+                        "CONNECTED_WORK_AND_PERSONAL_APP_DISALLOWED",
+                        "CONNECTED_WORK_AND_PERSONAL_APP_ALLOWED"
+                    ],
+                    "type": "string"
+                },
                 "defaultPermissionPolicy": {
                     "enum": [
                         "PERMISSION_POLICY_UNSPECIFIED",
@@ -1098,6 +1106,14 @@
                 "blockAfterDays": {
                     "format": "int32",
                     "type": "integer"
+                },
+                "blockScope": {
+                    "enum": [
+                        "BLOCK_SCOPE_UNSPECIFIED",
+                        "BLOCK_SCOPE_WORK_PROFILE",
+                        "BLOCK_SCOPE_DEVICE"
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1313,6 +1329,14 @@
                     },
                     "type": "array"
                 },
+                "ownership": {
+                    "enum": [
+                        "OWNERSHIP_UNSPECIFIED",
+                        "COMPANY_OWNED",
+                        "PERSONALLY_OWNED"
+                    ],
+                    "type": "string"
+                },
                 "policyCompliant": {
                     "type": "boolean"
                 },
@@ -1446,6 +1470,14 @@
             "id": "EnrollmentToken",
             "properties": {
                 "additionalData": {
+                    "type": "string"
+                },
+                "allowPersonalUsage": {
+                    "enum": [
+                        "ALLOW_PERSONAL_USAGE_UNSPECIFIED",
+                        "PERSONAL_USAGE_ALLOWED",
+                        "PERSONAL_USAGE_DISALLOWED"
+                    ],
                     "type": "string"
                 },
                 "duration": {
@@ -2187,6 +2219,57 @@
             },
             "type": "object"
         },
+        "PersonalApplicationPolicy": {
+            "id": "PersonalApplicationPolicy",
+            "properties": {
+                "installType": {
+                    "enum": [
+                        "INSTALL_TYPE_UNSPECIFIED",
+                        "BLOCKED"
+                    ],
+                    "type": "string"
+                },
+                "packageName": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PersonalUsagePolicies": {
+            "id": "PersonalUsagePolicies",
+            "properties": {
+                "accountTypesWithManagementDisabled": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "cameraDisabled": {
+                    "type": "boolean"
+                },
+                "maxDaysWithWorkOff": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "personalApplications": {
+                    "items": {
+                        "$ref": "PersonalApplicationPolicy"
+                    },
+                    "type": "array"
+                },
+                "personalPlayStoreMode": {
+                    "enum": [
+                        "PLAY_STORE_MODE_UNSPECIFIED",
+                        "BLACKLIST"
+                    ],
+                    "type": "string"
+                },
+                "screenCaptureDisabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "Policy": {
             "id": "Policy",
             "properties": {
@@ -2427,6 +2510,9 @@
                     },
                     "type": "array"
                 },
+                "personalUsagePolicies": {
+                    "$ref": "PersonalUsagePolicies"
+                },
                 "playStoreMode": {
                     "enum": [
                         "PLAY_STORE_MODE_UNSPECIFIED",
@@ -2652,6 +2738,14 @@
         "SigninDetail": {
             "id": "SigninDetail",
             "properties": {
+                "allowPersonalUsage": {
+                    "enum": [
+                        "ALLOW_PERSONAL_USAGE_UNSPECIFIED",
+                        "PERSONAL_USAGE_ALLOWED",
+                        "PERSONAL_USAGE_DISALLOWED"
+                    ],
+                    "type": "string"
+                },
                 "qrCode": {
                     "type": "string"
                 },

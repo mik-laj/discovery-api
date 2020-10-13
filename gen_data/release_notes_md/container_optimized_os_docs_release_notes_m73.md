@@ -5,12 +5,26 @@
 Image Family  |  cos-73-lts  
 ---|---  
 Deprecated After  |  Jun 19, 2020  
-Kernel  |  [ 4.14.171
-](https://chromium.googlesource.com/chromiumos/third_party/kernel/+/c88d15e74e7bedba260a8ef7ee6920e02182477a)  
+Kernel  |  [ 4.14.174
+](https://cos.googlesource.com/third_party/kernel/+/828d247eb816d42392dfcdbf0ec63b8e845f50bd)  
 Kubernetes  |  v1.13.3  
 Docker  |  v18.09.7  
   
 ##  Changelog
+
+###  cos-73-11647-600-0
+
+_Date: July 13, 2020_
+
+  * Moved Kernel source to cos.googlesource.com. 
+  * Mounted /var/lib/containerd with exec option. 
+  * Fixed incorrect bprm->vma_pages prevent capturing all stack pages. 
+
+###  cos-73-11647-534-0
+
+_Date: May 07, 2020_
+
+  * Image rebuild to address an infrastructure issue. No image changes. 
 
 ###  cos-73-11647-510-0
 

@@ -1,7 +1,10 @@
 #  リリースノート
 
 このページには、Container Registry
-に関する更新内容が記載されています。このページを定期的にチェックして、新機能や更新された機能、バグ修正、既知の問題、非推奨となった機能に関するお知らせを確認してください。
+に関する本番環境の更新内容が記載されています。このページを定期的にチェックして、新機能や更新された機能、バグ修正、既知の問題、非推奨になった機能に関するお知らせを確認してください。
+
+[ Google Cloud リリースノート ](https://cloud.google.com/release-notes?hl=ja)
+のページで、Google Cloud の最新のプロダクト更新情報をすべて確認できます。
 
 プロダクトのアップデートに関する最新情報を受け取るには、このページの URL を [ フィード リーダー
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) に追加するか、またはフィード
@@ -15,9 +18,9 @@ notes.xml ` を直接追加します。
 Artifact Registry, the evolution of Container Registry, is now available in
 beta. It includes support for Docker as well as Maven and npm package formats.
 
-If you currently use Container Registry, see [ Planning for the upgrade from
-Container Registry ](https://cloud.google.com/artifacts/docs/upgrade?hl=ja)
-for more information.
+If you currently use Container Registry, see [ Transitioning from Container
+Registry ](https://cloud.google.com/artifact-registry/docs/transition-from-
+gcr?hl=ja) for more information.
 
 ##  September 20, 2019
 

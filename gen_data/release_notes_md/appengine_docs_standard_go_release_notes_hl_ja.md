@@ -1,3 +1,6 @@
+[ Go 1.13 ](https://cloud.google.com/appengine/docs/standard/go/runtime?hl=ja)
+が一般提供になりました。
+
 #  Go 1.12+ リリースノート
 
 [ Google Cloud リリースノート ](https://cloud.google.com/release-notes?hl=ja)
@@ -7,6 +10,58 @@
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) に追加するか、またはフィード
 URL ディレクトリ ` https://cloud.google.com/feeds/gaestd-go-release-notes.xml `
 を直接追加します。
+
+##  July 23, 2020
+
+**FEATURE:**
+
+[ Serverless VPC Access support for Shared VPC
+](https://cloud.google.com/appengine/docs/standard/go/connecting-
+vpc?hl=ja#shared-vpc) is now available in Beta.
+
+##  July 08, 2020
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for App Engine via [
+Serverless network endpoint groups ](https://cloud.google.com//load-
+balancing/docs/negs/setting-up-serverless-negs?hl=ja) . Notably, this feature
+allows you to use [ Cloud CDN ](https://cloud.google.com/cdn?hl=ja) with App
+Engine.  
+This feature is available in Beta.
+
+##  June 26, 2020
+
+**FEATURE:**
+
+The [ Go 1.14 runtime Beta
+](https://cloud.google.com/appengine/docs/standard/go/runtime?hl=ja) for the
+App Engine standard environment is now available.
+
+##  June 11, 2020
+
+**FEATURE:**
+
+The [ Go 1.13 runtime
+](https://cloud.google.com/appengine/docs/standard/go/runtime?hl=ja) for the
+App Engine standard environment is now generally available.
+
+##  June 08, 2020
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
+##  May 14, 2020
+
+**FEATURE:**
+
+To get a fine-grained view of billing data for each resource used by your App
+Engine services, you can apply labels to the services, export your billing
+data to BigQuery, and run queries. For more information, see [ Labeling App
+Engine resources
+](https://cloud.google.com/appengine/docs/standard/go/labeling-
+resources?hl=ja) .
 
 ##  April 20, 2020
 

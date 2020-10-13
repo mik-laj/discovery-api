@@ -14,6 +14,49 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/kms-release-notes.xml `
 
+##  July 14, 2020
+
+**FEATURE:**
+
+Cloud HSM resources are available in the ` us-west4 ` and ` asia-southeast2 `
+regions. Cloud KMS resources were already available in these regions.
+
+For information about which [ Cloud Locations
+](https://cloud.google.com/about/locations/) are supported by Cloud KMS, Cloud
+HSM, and Cloud EKM, see the [ Cloud KMS regional locations
+](https://cloud.google.com/kms/docs/locations#regional) .
+
+##  June 22, 2020
+
+**FEATURE:**
+
+Keys hosted by [ Thales
+](https://thalesdocs.com/dpod/services/key_management_services/ekms/ekms_setup_guide/index.html)
+are now supported in Cloud EKM. To learn more, see [ Cloud EKM
+](https://cloud.google.com/kms/docs/ekm) .
+
+##  June 08, 2020
+
+**FEATURE:**
+
+Cloud KMS and Cloud EKM resources are available in the ` asia-southeast2 `
+region. Cloud HSM resources are **not** available in this region.
+
+For information about which [ Cloud Locations
+](https://cloud.google.com/about/locations/) are supported by Cloud KMS, Cloud
+HSM, and Cloud EKM, see the [ Cloud KMS regional locations
+](https://cloud.google.com/kms/docs/locations#regional) .
+
+##  May 28, 2020
+
+**FEATURE:**
+
+Several fields related to data integrity have been added to the Cloud KMS API,
+along with guidelines for using them. To learn more about maintaining data
+integrity when performing cryptographic operations, see [ Verifying end-to-end
+data integrity ](https://cloud.google.com/kms/docs/data-integrity-guidelines)
+.
+
 ##  April 20, 2020
 
 **FEATURE:**

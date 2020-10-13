@@ -1,12 +1,34 @@
 #  출시 노트
 
-이 페이지에서는 AutoML Vision 객체 감지의 프로덕션 업데이트를 설명합니다. AutoML Vision 객체 감지 개발자는 이 목록을
+이 페이지에서는 AutoML Vision 객체 인식의 프로덕션 업데이트를 설명합니다. AutoML Vision 객체 인식 개발자는 이 목록을
 주기적으로 참고하여 새로운 공지사항을 확인하는 것이 좋습니다.
+
+[ Google Cloud 출시 노트 ](https://cloud.google.com/release-notes?hl=ko) 페이지에서 모든
+Google Cloud Platform의 최신 제품 업데이트를 확인할 수 있습니다.
 
 최신 제품 업데이트를 받으려면 [ 피드 리더
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) 에 이 페이지의 URL을
-추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/automl-vision-
+추가하거나 다음의 피드 URL을 직접 추가하세요. ` https://cloud.google.com/feeds/automl-vision-
 object-detection-release-notes.xml `
+
+##  June 04, 2020
+
+**DEPRECATED:**
+
+**v1beta1 endpoint end-of-life**
+
+After June 4, 2020, the v1beta1 version of AutoML API will deny increasing
+numbers of API requests from AutoML Vision users. Please refer to the [
+November 20, 2019 ](https://cloud.google.com/vision/automl/object-
+detection/docs/release-notes?hl=ko#November_20_2019) release notes and migrate
+to v1 version immediately.
+
+If you have any questions regarding the above action items, join the [ cloud-
+vision-discuss Google group ](https://groups.google.com/g/cloud-vision-
+discuss?hl=ko) . For further assistance, please open an issue in this [
+private issue tracker
+](https://issuetracker.google.com/issues/new?component=836902&template=1440861&hl=ko)
+.
 
 ##  April 03, 2020
 

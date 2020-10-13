@@ -13,11 +13,53 @@ Pub/Sub para lenguajes específicos, usa los vínculos siguientes: [ C#
 ](https://github.com/googleapis/python-pubsub/releases) y [ Ruby
 ](https://github.com/googleapis/google-cloud-ruby/releases) .
 
+Puedes ver las actualizaciones más recientes de todos los productos de Google
+Cloud en la página de [ notas de la versión de Google Cloud
+](https://cloud.google.com/release-notes?hl=es-419) .
+
 Para recibir las últimas actualizaciones de productos, agrega la URL de esta
 página a tu [ lector de feeds
-](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) o agrega
+](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , o agrega
 directamente la URL del feed: ` https://cloud.google.com/feeds/pubsub-release-
-notes.xml ` .
+notes.xml `
+
+##  August 05, 2020
+
+**FEATURE:**
+
+Pub/Sub [ message ordering
+](https://cloud.google.com/pubsub/docs/ordering?hl=es-419) is now available at
+the [ beta launch stage
+](https://cloud.google.com/products/?hl=es-419#product-launch-stages) .
+
+##  June 16, 2020
+
+**FEATURE:**
+
+[ Retry policies for Pub/Sub subscriptions
+](https://cloud.google.com/pubsub/docs/admin?hl=es-419#creating_subscriptions)
+are now available at the GA launch stage.
+
+##  June 08, 2020
+
+**FEATURE:**
+
+Pub/Sub is now available in the ` asia-southeast2 ` region (Jakarta).
+
+**FEATURE:**
+
+Pub/Sub [ message filtering
+](https://cloud.google.com/pubsub/docs/filtering?hl=es-419) is now available
+at the [ beta launch stage
+](https://cloud.google.com/products/?hl=es-419#product-launch-stages) .
+
+##  May 26, 2020
+
+**FEATURE:**
+
+[ Pub/Sub Lite ](https://cloud.google.com/pubsub/docs/choosing-pubsub-or-
+lite?hl=es-419) is now available at the [ beta launch stage
+](https://cloud.google.com/products/?hl=es-419#product-launch-stages) .
 
 ##  April 20, 2020
 

@@ -12,6 +12,43 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/cloudbuild-release-notes.xml `
 
+##  August 17, 2020
+
+**FEATURE:**
+
+The Cloud Build GitHub App now allows users to [ view triggers by name
+](https://cloud.google.com/cloud-build/docs/create-github-app-
+triggers#data_sharing) on [ GitHub ](https://github.com/) , including in pull
+requests. Note that required status checks may need to be updated on GitHub
+after enabling this feature.
+
+##  June 30, 2020
+
+**FEATURE:**
+
+Cloud Build now provides open-source notifiers for [ Slack
+](https://cloud.google.com/cloud-build/docs/configuring-
+notifications/configure-slack) and [ SMTP ](https://cloud.google.com/cloud-
+build/docs/configuring-notifications/configure-smtp) . These notifiers can be
+configured to securely alert users about build status.
+
+##  June 22, 2020
+
+**FEATURE:**
+
+Cloud Build's substitution variables can now refer to other substitution
+variables, manipulate them using bash-style string operations, and pull
+information from a trigger event payload. To learn more, see [ Using bash-
+style string operations and payload bindings in substitutions
+](http://cloud.google.com/cloud-build/docs/configuring-builds/use-bash-and-
+bindings-in-substitutions) .
+
+##  June 12, 2020
+
+**CHANGED:**
+
+Upgraded to Docker server version 19.03.8.
+
 ##  March 12, 2020
 
 **FEATURE:**

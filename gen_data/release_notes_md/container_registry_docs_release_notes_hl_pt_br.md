@@ -4,11 +4,15 @@ Esta página documenta as atualizações de produção do Container Registry.
 Acesse-a periodicamente para ver avisos de recursos novos ou atualizados,
 correções de bugs, problemas conhecidos e recursos obsoletos.
 
+É possível ver as atualizações mais recentes de todos os produtos do Google
+Cloud na página [ Notas da versão do Google Cloud
+](https://cloud.google.com/release-notes?hl=pt_br) .
+
 Para receber as atualizações de produtos mais recentes, adicione o URL desta
 página ao [ leitor de feeds
-](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) (em inglês) ou
-adicione o URL do feed diretamente: `
-https://cloud.google.com/feeds/container-registry-release-notes.xml `
+](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ou adicione o URL
+do feed diretamente: ` https://cloud.google.com/feeds/container-registry-
+release-notes.xml `
 
 ##  March 16, 2020
 
@@ -17,9 +21,9 @@ https://cloud.google.com/feeds/container-registry-release-notes.xml `
 Artifact Registry, the evolution of Container Registry, is now available in
 beta. It includes support for Docker as well as Maven and npm package formats.
 
-If you currently use Container Registry, see [ Planning for the upgrade from
-Container Registry ](https://cloud.google.com/artifacts/docs/upgrade?hl=pt_br)
-for more information.
+If you currently use Container Registry, see [ Transitioning from Container
+Registry ](https://cloud.google.com/artifact-registry/docs/transition-from-
+gcr?hl=pt_br) for more information.
 
 ##  September 20, 2019
 

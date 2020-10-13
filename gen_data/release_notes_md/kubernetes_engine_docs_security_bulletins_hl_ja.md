@@ -6,20 +6,111 @@
 ](https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=ja)
 には、情報制限が解除されるまで「セキュリティ更新」が記載されます。リリースノートは情報制限が解除された時点で更新され、パッチによって対処された脆弱性の情報が反映されます。
 
-**注:** GKE でマルチテナント ワークロードを実行する場合、上記の情報には特に注意してください。これらの脆弱性の影響を受ける可能性は、マルチテナント
-ワークロードの方が高くなります。GKE のセキュリティ境界とそれによるワークロードへの影響に関する技術的説明については、 [ Kubernetes
-スタックのさまざまなレイヤーでの隔離 ](https://cloudplatform.googleblog.com/2018/05/Exploring-
-container-security-Isolation-at-different-layers-of-the-Kubernetes-stack.html)
-をご覧ください。
+**注:** GKE でマルチテナント ワークロードを実行する場合、上記の情報には特に注意してください。これらの脆弱性はマルチテナント
+ワークロードに影響を及ぼす可能性が高くなります。GKE のセキュリティ境界とそれによるワークロードへの影響に関する技術的説明については、 [
+Kubernetes スタックのさまざまなレイヤでの隔離
+](https://cloudplatform.googleblog.com/2018/05/Exploring-container-security-
+Isolation-at-different-layers-of-the-Kubernetes-stack.html) をご覧ください。
 
 最新のセキュリティ情報を受け取るには、このページの URL を [ フィード リーダー
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) に追加するか、フィード URL `
 https://cloud.google.com/feeds/kubernetes-engine-security-bulletins.xml `
 を直接追加してください。
 
+##  GCP-2020-005
+
+**公開日:** 2020 年 5 月 7 日  
+**最終更新日:** 2020 年 5 月 7 日  説明  |  重大度  |  注  
+---|---|---  
+  
+先ごろ、Linux カーネルに脆弱性 [ CVE-2020-8835 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8835)
+が発見されました。この脆弱性により、コンテナがエスケープ処理を行ってホストノードのルート権限を奪ってしまうおそれがあります。
+
+この脆弱性は Google Kubernetes Engine（GKE）1.16 または 1.17 を実行する GKE Ubuntu
+ノードに影響するため、できるだけ早く最新のパッチ バージョンにアップグレードすることをおすすめします。詳細については、以下をご覧ください。
+
+コンテナ最適化 OS を実行しているノードは影響を受けません。GKE On-Prem 上で実行しているノードは影響を受けません。
+
+####  必要な対策
+
+**ほとんどのお客様は、以後の対応は必要ありません。GKE バージョン 1.16 または 1.17 の Ubuntu
+を実行しているノードのみが影響を受けます。**
+
+ご使用のノードをアップグレードするには、まずマスターを最新バージョンにアップグレードする必要があります。このパッチは Kubernetes
+1.16.8-gke.12、1.17.4-gke.10、およびそれ以降のリリースで提供されます。パッチが公開されたかどうかについては、 [ リリースノート
+](https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=ja)
+で定期的にご確認ください。
+
+####  このパッチで対処される脆弱性
+
+このパッチで緩和される脆弱性は以下のとおりです。
+
+[ CVE-2020-8835 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8835) は Linux カーネル バージョン 5.5.0
+以降の脆弱性であり、悪意のあるコンテナが（exec 形式での最小限のユーザー
+インタラクションで）カーネルメモリの読み取りと書き込みにより、ホストノードでルート権限のコードを実行できるというものです。この脆弱性の重大度評価は高です。
+
+|
+
+高
+
+|
+
+[ CVE-2020-8835 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8835)  
+  
+  
+##  GCP-2020-003
+
+**公開日:** 2020 年 3 月 31 日  
+**最終更新日:** 2020 年 3 月 31 日  説明  |  重大度  |  注  
+---|---|---  
+  
+先ごろ、Kubernetes で [ CVE-2019-11254 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2019-11254) に記載された脆弱性が発見されました。これは、POST
+リクエストの発行を許可された任意のユーザーが Kubernetes API サーバーへのリモート
+サービス拒否攻撃を実行できるというものです。Kubernetes 製品セキュリティ委員会（PSC）から発表されたこの脆弱性に関する追加情報は、 [ こちら
+](https://groups.google.com/forum/?hl=ja#!topic/kubernetes-security-
+announce/wuwEwZigXBc) からご覧いただけます。
+
+この脆弱性は、 [ マスター承認済みネットワーク ](https://cloud.google.com/kubernetes-
+engine/docs/how-to/authorized-networks?hl=ja) と [ パブリック エンドポイントを持たない限定公開クラスタ
+](https://cloud.google.com/kubernetes-engine/docs/how-to/private-
+clusters?hl=ja#private_master) を使用した GKE クラスタでは緩和されます。
+
+####  必要な対策
+
+この脆弱性の修正を含むパッチ バージョンにクラスタをアップグレードすることをおすすめします。
+
+修正を含むパッチ バージョンは次のとおりです。
+
+  * 1.13.12-gke.29 
+  * 1.14.9-gke.27 
+  * 1.14.10-gke.24 
+  * 1.15.9-gke.20 
+  * 1.16.6-gke.1 
+
+####  このパッチで対処される脆弱性
+
+このパッチは次のサービス拒否攻撃（DoS）の脆弱性を修正します。
+
+[ CVE-2019-11254 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2019-11254) .
+
+|
+
+中
+
+|
+
+[ CVE-2019-11254 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2019-11254)  
+  
 ##  GCP-2020-002
 
-説明  |  重大度  |  注  
+**公開日:** 2020 年 3 月 23 日  
+**最終更新日:** 2020 年 3 月 23 日  説明  |  重大度  |  注  
 ---|---|---  
   
 Kubernetes は [ サービス拒否攻撃の脆弱性を 2 件
@@ -64,7 +155,8 @@ bin/cvename.cgi?name=CVE-2020-8552)
   
 ##  2020 年 1 月 21 日、最終更新日 2020 年 1 月 24 日
 
-説明  |  重大度  |  注  
+**公開日:** 2020 年 1 月 21 日  
+**最終更新日:** 2020 年 1 月 24 日  説明  |  重大度  |  注  
 ---|---|---  
   
 **2020 年 1 月 24 日更新:** パッチ適用済みバージョンを現在作成中で、2020 年 1 月 25 日までに完成する予定です。
@@ -128,7 +220,8 @@ bin/cvename.cgi?name=CVE-2020-0601)
   
 ##  2019 年 11 月 14 日
 
-説明  |  重大度  |  注  
+**公開日:** 2019 年 11 月 14 日  
+**最終更新日:** 2019 年 11 月 14 日  説明  |  重大度  |  注  
 ---|---|---  
   
 kubernetes-csi の [ ` external-provisioner ` ](https://github.com/kubernetes-
@@ -170,10 +263,11 @@ bin/cvename.cgi?name=CVE-2019-11255)
   
 ##  2019 年 11 月 12 日
 
-説明  |  重大度  |  注  
+**公開日:** 2019 年 11 月 12 日  
+**最終更新日:** 2019 年 11 月 12 日  説明  |  重大度  |  注  
 ---|---|---  
   
-Intel により、投機的実行とマイクロアーキテクチャ状態との相互作用によってデータが漏洩する可能性がある CVE が公表されました。詳細については、 [
+Intel により、マイクロアーキテクチャ状態での投機的実行の操作を通じてデータが公開される可能性がある CVE が公表されました。詳細については、 [
 Intel の開示情報 ](https://blogs.intel.com/technology/2019/11/ipas-
 november-2019-intel-platform-update-ipu/) をご覧ください。
 
@@ -202,15 +296,15 @@ cluster?hl=ja#upgrade_nodes) オペレーションを使用して対象となる
 このパッチで緩和される脆弱性は以下のとおりです。
 
 [ CVE-2019-11135 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11135)
-: この CVE は TSX 非同期アボート（TAA）とも呼ばれます。TAA は、 [ マイクロアーキテクチャ データ サンプリング（MDS）
+: この CVE は TSX 非同期アボート（TAA）とも呼ばれます。TAA により、 [ マイクロアーキテクチャ データ サンプリング（MDS）
 ](https://cloud.google.com/kubernetes-engine/docs/security-
 bulletins?hl=ja#may-14-2019) で悪用されていたのと同じマイクロアーキテクチャ
-データ構造を使用したデータ引き出しを別の手口で行うことを可能にします。
+データ構造を使用してデータを引き出すことも可能になります。
 
 [ CVE-2018-12207 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12207)
 :
 これは仮想マシンホストを対象としたサービス拒否攻撃（DoS）の脆弱性であり、悪意のあるゲストが保護されていないホストをクラッシュさせることができるというものです。この
-CVE は「ページサイズ変更時のマシンチェック エラー」とも呼ばれます。これは GKE に影響しません。
+CVE は「ページサイズ変更時のマシンチェック エラー」とも呼ばれます。これは GKE には影響しません。
 
 |
 
@@ -223,11 +317,12 @@ CVE は「ページサイズ変更時のマシンチェック エラー」とも
   
 ##  2019 年 10 月 22 日
 
-説明  |  重大度  |  注  
+**公開日:** 2019 年 10 月 22 日  
+**最終更新日:** 2019 年 10 月 22 日  説明  |  重大度  |  注  
 ---|---|---  
   
 先ごろ、Go プログラミング言語で [ CVE-2019-16276 ](https://cve.mitre.org/cgi-
-bin/cvename.cgi?name=CVE-2019-16276) に記載された脆弱性が見つかりました。この脆弱性は、認証プロキシを使用した
+bin/cvename.cgi?name=CVE-2019-16276) に記載された脆弱性が発見されました。この脆弱性は、認証プロキシを使用した
 Kubernetes 構成に影響する可能性があります。詳細については、 [ Kubernetes の開示情報
 ](https://groups.google.com/forum/?hl=ja#!topic/kubernetes-security-
 announce/PtsUCqFi4h4) をご覧ください。
@@ -246,7 +341,8 @@ bin/cvename.cgi?name=CVE-2019-16276)
   
 ##  2019 年 10 月 16 日
 
-説明  |  重大度  |  注  
+**公開日:** 2019 年 10 月 16 日  
+**最終更新日:** 2019 年 10 月 24 日  説明  |  重大度  |  注  
 ---|---|---  
   
 **2019 年 10 月 24 日更新:** パッチ適用済みバージョンがすべてのリージョンで入手できるようになりました。
@@ -254,9 +350,9 @@ bin/cvename.cgi?name=CVE-2019-16276)
 * * *
 
 先ごろ、Kubernetes で [ CVE-2019-11253 ](https://cve.mitre.org/cgi-
-bin/cvename.cgi?name=CVE-2019-11253) に記載された脆弱性が見つかりました。これは、POST
+bin/cvename.cgi?name=CVE-2019-11253) に記載された脆弱性が発見されました。これは、POST
 リクエストの発行を許可された任意のユーザーが Kubernetes API サーバーへのリモート
-サービス拒否攻撃を実行できるというものです。Kubernetes 製品セキュリティ委員会（PSC）から発表されたこの脆弱性に関する追加情報を [ こちら
+サービス拒否攻撃を実行できるというものです。Kubernetes 製品セキュリティ委員会（PSC）から発表されたこの脆弱性に関する追加情報は、 [ こちら
 ](https://groups.google.com/forum/?hl=ja#!topic/kubernetes-security-
 announce/jk8polzSUxs) からご覧いただけます。
 
@@ -295,7 +391,8 @@ bin/cvename.cgi?name=CVE-2019-11253)
   
 ##  2019 年 9 月 16 日
 
-説明  |  重大度  |  注  
+**公開日:** 2019 年 9 月 16 日  
+**最終更新日:** 2019 年 10 月 16 日  説明  |  重大度  |  注  
 ---|---|---  
   
 このセキュリティ情報は当初の発表時から更新されました。
@@ -303,7 +400,7 @@ bin/cvename.cgi?name=CVE-2019-11253)
 先ごろ、Go プログラミング言語で新たなセキュリティ上の脆弱性 [ CVE-2019-9512 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2019-9512) と [ CVE-2019-9514
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9514)
-が見つかりました。これらはサービス拒否攻撃（DoS）を受ける可能性があるというものです。GKE では、悪意のあるユーザーがこの脆弱性を利用して
+が発見されました。これらはサービス拒否攻撃（DoS）を受ける可能性があるというものです。GKE では、悪意のあるユーザーがこの脆弱性を利用して
 Kubernetes API サーバーの CPU を大量に消費するリクエストを送りつけ、クラスタ コントロール
 プレーンの可用性を低下させるおそれがあります。詳細については、 [ Go プログラミング言語の開示情報
 ](https://groups.google.com/forum/?hl=ja#!topic/golang-announce/65QixT3tcmg)
@@ -345,9 +442,15 @@ bin/cvename.cgi?name=CVE-2019-9514)
   
 ##  2019 年 9 月 5 日
 
+**公開日:** 2019 年 9 月 5 日  
+**最終更新日:** 2019 年 9 月 5 日
+
 2019 年 5 月 31 日付け  のセキュリティ情報に記載された脆弱性の修正に関する情報が更新されました。
 
 ##  2019 年 8 月 22 日
+
+**公開日:** 2019 年 8 月 22 日  
+**最終更新日:** 2019 年 8 月 22 日
 
 2019 年 8 月 5 日付け  のセキュリティ情報が更新されました。先日のセキュリティ情報に記載された脆弱性の修正が [ 公開
 ](https://cloud.google.com/kubernetes-engine/docs/release-
@@ -355,23 +458,27 @@ notes?hl=ja#august_22_2019) されました。
 
 ##  2019 年 8 月 8 日
 
+**公開日:** 2019 年 8 月 8 日  
+**最終更新日:** 2019 年 8 月 8 日
+
 2019 年 8 月 5 日付け  のセキュリティ情報が更新されました。このセキュリティ情報に記載された脆弱性の修正は次回の GKE
-リリースで提供される予定です。
+リリースとともに提供される予定です。
 
 ##  2019 年 8 月 5 日
 
-説明  |  重大度  |  注  
+**公開日:** 2019 年 8 月 5 日  
+**最終更新日:** 2019 年 8 月 9 日  説明  |  重大度  |  注  
 ---|---|---  
   
 このセキュリティ情報は当初の発表時から更新されました。
 
 先ごろ、Kubernetes で脆弱性 [ CVE-2019-11247 ](https://cve.mitre.org/cgi-
-bin/cvename.cgi?name=CVE-2019-11247) が見つかりました。これは、クラスタ スコープの [ カスタム リソース
+bin/cvename.cgi?name=CVE-2019-11247) が発見されました。これは、クラスタ スコープの [ カスタム リソース
 ](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-
-resources/) インスタンスを、あたかもすべての名前空間に存在する Namespace
-オブジェクトであるかのように動作させることができるというものです。つまり、名前空間レベルの RBAC 権限しか持たないユーザー アカウントまたはサービス
-アカウントでも、クラスタ スコープのカスタム
-リソースとやり取りできてしまいます。攻撃者がこの脆弱性を悪用するためには、任意の名前空間のリソースにアクセスする権限が必要です。
+resources/) インスタンスを、あたかもすべての Namespace
+に存在する名前空間オブジェクトであるかのように動作させることができるというものです。つまり、名前空間レベルの RBAC 権限しか持たないユーザー
+アカウントまたはサービス アカウントでも、クラスタ スコープのカスタム リソースとやり取りできてしまいます。攻撃者がこの脆弱性を悪用するためには、任意の
+Namespace のリソースにアクセスする権限が必要です。
 
 ######  必要な対策
 
@@ -401,7 +508,8 @@ bin/cvename.cgi?name=CVE-2019-11247)
   
 ##  2019 年 7 月 3 日
 
-説明  |  重大度  |  注  
+**公開日:** 2019 年 7 月 3 日  
+**最終更新日:** 2019 年 7 月 3 日  説明  |  重大度  |  注  
 ---|---|---  
   
 CVE-2019-11246 に対処する ` kubectl ` のパッチ適用済みバージョンが [ ` gcloud ` 253.0.0
@@ -421,7 +529,8 @@ bin/cvename.cgi?name=CVE-2018-15664)
   
 ##  2019 年 7 月 3 日
 
-説明  |  重大度  |  注  
+**公開日:** 2019 年 6 月 25 日  
+**最終更新日:** 2019 年 7 月 3 日  説明  |  重大度  |  注  
 ---|---|---  
   
 ######  2019 年 7 月 3 日更新
@@ -433,7 +542,7 @@ bin/cvename.cgi?name=CVE-2018-15664)
 インフラストラクチャにもパッチが適用され、この脆弱性から保護されています。
 
 1.11 マスターはまもなくサポートが終了し、2019 年 7 月 8 日の週に自動的に 1.12
-にアップグレードされる予定です。パッチ適用済みバージョンにノードが導入されるようにするため、次の推奨対応の中からいずれかをお選びください。
+にアップグレードされる予定です。パッチ適用済みバージョンにノードが導入されるようにするため、次の推奨される対応の中からいずれかをお選びください。
 
   * 2019 年 7 月 8 日までにノードを 1.11.10-gke.5 にアップグレードする。この日付以降、1.11 バージョンは使用可能なアップグレード ターゲットのリストから削除されます。 
   * 1.11 ノードで [ 自動アップグレード ](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-upgrades?hl=ja) を有効にし、マスターが 1.12 にアップグレードされたときにノードもアップグレードされるようにする。 
@@ -501,15 +610,15 @@ DaemonSet を作成しました。
 
 次のコマンドを実行して、クラスタ内のすべてのノードに Kubernetes DaemonSet を適用します。これにより、この脆弱性を緩和する `
 iptables ` ルールがノードの既存の ` iptables ` ルールに追加されます。 **このコマンドは、それぞれの Google Cloud
-プロジェクトでクラスタごとに 1 回ずつ実行してください。**
+プロジェクトのクラスタごとに 1 回ずつ実行してください。**
 
     
     
     
     kubectl apply -f \
-        https://raw.githubusercontent.com/GoogleCloudPlatform\
-        /k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
-              
+    https://raw.githubusercontent.com/GoogleCloudPlatform\
+    /k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
+          
 
 Ipv6 は GKE でサポートされていないため、ip6tables ルールは必要ありません。
 
@@ -520,9 +629,9 @@ Ipv6 は GKE でサポートされていないため、ip6tables ルールは必
     
     
     kubectl delete -f \
-        https://raw.githubusercontent.com/GoogleCloudPlatform\
-        /k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
-              
+    https://raw.githubusercontent.com/GoogleCloudPlatform\
+    /k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
+          
 
 |  高  
 中  
@@ -548,8 +657,8 @@ bin/cvename.cgi?name=CVE-2019-11479)
 * * *
 
 先ごろ、Kubernetes で脆弱性 [ CVE-2019-11246 ](https://cve.mitre.org/cgi-
-bin/cvename.cgi?name=CVE-2019-11246) が見つかりました。これは、 ` kubectl cp `
-オペレーションの権限とコンテナ内のコード実行権限を持つ攻撃者がホスト上のファイルを変更できるというものです。攻撃者はこの脆弱性を悪用して、ホストのファイル
+bin/cvename.cgi?name=CVE-2019-11246) が発見されました。これは、 ` kubectl cp `
+のオペレーションへのアクセスとコンテナ内のコード実行が可能な攻撃者がホスト上のファイルを変更できるというものです。攻撃者はこの脆弱性を悪用して、ホストのファイル
 システムにファイルを作成したり、既存のファイルを置き換えたりすることができます。詳細については、 [ Kubernetes の開示情報
 ](https://groups.google.com/forum/?hl=ja#!topic/kubernetes-security-
 announce/NLs2TGbfPdo) をご覧ください。
@@ -560,7 +669,7 @@ announce/NLs2TGbfPdo) をご覧ください。
 
 ######  必要な対策
 
-今後の ` gcloud ` のリリースで、 ` kubectl ` のパッチ適用済みバージョンが提供されます。ご自身で [ ` kubectl `
+今後の ` gcloud ` のリリースでは、 ` kubectl ` のパッチ適用済みバージョンが提供されます。ご自身で [ ` kubectl `
 を直接アップグレード ](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 することもできます。
 
@@ -589,7 +698,7 @@ bin/cvename.cgi?name=CVE-2018-15664)
 ---|---|---  
   
 先ごろ、Docker で脆弱性 [ CVE-2018-15664 ](https://cve.mitre.org/cgi-
-bin/cvename.cgi?name=CVE-2018-15664) が見つかりました。これは、攻撃者がコンテナ内でコードを実行して、外部から開始された
+bin/cvename.cgi?name=CVE-2018-15664) が発見されました。これは、コンテナ内のコード実行が可能な攻撃者が外部から開始された
 ` docker cp ` オペレーションをハイジャックできるというものです。攻撃者はこの脆弱性を悪用して、ファイルの書き込み先をホストのファイル
 システム上の任意の場所に変更できます。
 
@@ -612,7 +721,7 @@ containerd?hl=ja) を実行しているノードは影響を受けません。
 ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
 cluster?hl=ja#upgrading_the_cluster)
 する必要があります。パッチが公開されたら、マスターのアップグレードを手動で開始するか、Google
-によって自動的にマスターがアップグレードされるのを待ちます。パッチは Docker 18.09.7 で提供されます。これは近日中に公開される GKE
+によって自動的にマスターがアップグレードされるまで待ちます。パッチは Docker 18.09.7 で提供されます。これは近日中に公開される GKE
 パッチに含まれます。 **このパッチは GKE バージョン 1.13 以降でのみ提供されます。**
 
 クラスタ マスターは、定期的なアップグレード
@@ -627,7 +736,7 @@ cluster?hl=ja#upgrading_the_cluster)
 このパッチで緩和される脆弱性は以下のとおりです。
 
 脆弱性 [ CVE-2018-15664 ](https://cve.mitre.org/cgi-
-bin/cvename.cgi?name=CVE-2018-15664) は、攻撃者がコンテナ内でコードを実行して、外部から開始された ` docker
+bin/cvename.cgi?name=CVE-2018-15664) は、コンテナ内のコード実行が可能な攻撃者が外部から開始された ` docker
 cp ` オペレーションをハイジャックできるというものです。攻撃者はこの脆弱性を悪用して、ファイルの書き込み先をホストのファイル
 システム上の任意の場所に変更できます。
 
@@ -649,12 +758,12 @@ cp ` オペレーションをハイジャックできるというものです。
 Kubernetes プロジェクトにより、kubelet v1.13.6 と v1.14.2 で [ CVE-2019-11245
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11245) が公表されました。これはコンテナを
 UID 0（通常は ` root ` ユーザーにマップされている）として実行できるという脆弱性であり、コンテナ
-イメージで別のユーザーが指定されている場合でも UID 0 として実行できてしまいます。 **コンテナを root
+イメージで別のユーザーが指定されている場合でも UID 0 として実行できます。 **コンテナを root
 以外のユーザーとして実行していて、実行しているノードのバージョンが 1.13.6-gke.0～1.13.6-gke.6 である場合は、UID 0
 として実行してはならないコンテナを含むクラスタ上のすべてのポッドで` RunAsUser ` を設定することをおすすめします。 **
 
 root 以外の ` USER ` 値が指定されている（たとえば、Dockerfile で ` USER `
-の値を設定するという方法など）場合は、予期しない動作が起こります。あるノードであるコンテナが初めて実行されるときは、指定された UID
+の値を設定するなど）場合は、予期しない動作が起こります。あるノードであるコンテナが初めて実行されるときは、指定された UID
 が正しく使用されます。しかし、この不具合により、2 回目以降の実行では、指定されている UID にかかわらず UID 0
 としてコンテナが実行されます。これは通常、望ましくないエスカレーションされた権限であり、アプリケーションの予期しない動作につながる可能性があります。
 
@@ -665,9 +774,9 @@ root 以外の ` USER ` 値が指定されている（たとえば、Dockerfile 
     
     
     
-        kubectl get nodes -o=jsonpath='{range .items[*]}'\
-        '{.status.nodeInfo.machineID}'\
-        '{"\t"}{.status.nodeInfo.kubeletVersion}{"\n"}{end}'
+    kubectl get nodes -o=jsonpath='{range .items[*]}'\
+    '{.status.nodeInfo.machineID}'\
+    '{"\t"}{.status.nodeInfo.kubeletVersion}{"\n"}{end}'
 
 出力に以下の kubelet バージョンが示された場合、そのノードはこの脆弱性の影響を受けます。
 
@@ -702,7 +811,7 @@ bin/cvename.cgi?name=2019-11245)
 **2019 年 6 月 11 日更新:** 2019 年 5 月 28 日の週にリリースされた
 1.11.10-gke.4、1.12.8-gke.6、1.13.6-gke.5 とそれ以降のリリースでパッチが提供されました。
 
-Intel が 次の CVE を公表しました。
+次の CVE が Intel により公表されました。
 
   * [ CVE-2018-12126 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12126)
   * [ CVE-2018-12127 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12127)
@@ -710,7 +819,7 @@ Intel が 次の CVE を公表しました。
   * [ CVE-2019-11091 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11091)
 
 これらの CVE はマイクロアーキテクチャ データ
-サンプリング（MDS）と総称されます。これらの脆弱性により、投機的実行とマイクロアーキテクチャ状態との相互作用によってデータが漏洩する可能性があります。詳細については、
+サンプリング（MDS）と総称されます。これらの脆弱性により、マイクロアーキテクチャ状態での投機的実行の操作を通じてデータが公開される可能性があります。詳細については、
 [ Intel の開示情報 ](https://www.intel.com/content/www/us/en/security-
 center/advisory/intel-sa-00233.html) をご覧ください。
 
@@ -742,9 +851,9 @@ sa-00233.html) をご覧ください。
 n1-standard-1、g1-small、f1-micro の各 VM でゲスト環境に公開される vCPU は 1 つだけなので、ハイパー
 スレッディングを無効にする必要はありません。
 
-**警告**
+**警告:**
 
-  * ハイパー スレッディングを無効にすると、クラスタとアプリケーションのパフォーマンスが大幅に低下する可能性があります。本番環境クラスタにこれを実装する前に、ハイパー スレッディングを無効にしても問題ないことを確認してください。 
+  * ハイパー スレッディングを無効にすると、クラスタとアプリケーションのパフォーマンスが大幅に低下する可能性があります。本番環境クラスタにこれを実装する前に、ハイパー スレッディングを無効にしても問題ないか確認してください。 
   * ハイパー スレッディングは、DaemonSet をデプロイすることで GKE ノードプール レベルで無効にできます。ただし、この DaemonSet をデプロイすると、ノードプールに含まれるすべてのノードが同時に再起動されます。したがって、クラスタに新しいノードプールを作成し、ハイパー スレッディングを無効にする DaemonSet をそのノードプールにデプロイしてから、ワークロードを新しいノードプールに移行することをおすすめします。 
 
 ハイパー スレッディングを無効にした新しいノードプールを作成するには:
@@ -752,33 +861,38 @@ n1-standard-1、g1-small、f1-micro の各 VM でゲスト環境に公開され�
   1. ノードラベル ` cloud.google.com/gke-smt-disabled=true ` を使用して、クラスタに新しいノードプールを作成します。 
     
         
-        gcloud container node-pools create smt-disabled --cluster=[CLUSTER_NAME] \
-            --node-labels=cloud.google.com/gke-smt-disabled=true
+    gcloud container node-pools create smt-disabled --cluster=[CLUSTER_NAME] \
+        --node-labels=cloud.google.com/gke-smt-disabled=true
 
   2. この新しいノードプールに DaemonSet をデプロイします。この DaemonSet は、 ` cloud.google.com/gke-smt-disabled=true ` ラベルが付いているノードでのみ実行されます。これにより、ハイパー スレッディングが無効化された後、ノードが再起動されます。 
     
         
-        kubectl create -f \
-        https://raw.githubusercontent.com/GoogleCloudPlatform/\
-        k8s-node-tools/master/disable-smt/gke/disable-smt.yaml
+    kubectl create -f \
+    https://raw.githubusercontent.com/GoogleCloudPlatform/\
+    k8s-node-tools/master/disable-smt/gke/disable-smt.yaml
 
   3. DaemonSet ポッドが実行状態にあることを確認します。 
     
         
-        kubectl get pods --selector=name=disable-smt -n kube-system
+    kubectl get pods --selector=name=disable-smt -n kube-system
 
-次のようなレスポンスが返されます。
+次のようなレスポンスが返されれば問題ありません。
 
     
         
-        NAME                READY     STATUS    RESTARTS   AGE
+    NAME                READY     STATUS    RESTARTS   AGE
     
-        disable-smt-2xnnc   1/1       Running   0          6m
+    disable-smt-2xnnc   1/1       Running   0          6m
 
   4. ポッドのログに「SMT has been disabled」と記録されていることを確認します。 
     
         
-        kubectl logs disable-smt-2xnnc disable-smt -n kube-system
+    kubectl logs disable-smt-2xnnc disable-smt -n kube-system
+
+注: ノードで [セキュアブート]（/kubernetes-engine/docs/how-to/shielded-gke-
+nodes#secure_boot）機能が有効になっている場合、ブート
+オプションは変更できません。セキュアブートが有効の場合、[無効]（/kubernetes-engine/docs/how-to/shielded-gke-
+nodes#disabling）に変更してから DaemonSet を作成する必要があります。
 
 この DaemonSet
 をノードプールで実行し続ける必要があります。これにより、プールで作成された新しいノードにも自動的に変更が適用されます。ノードの作成は、ノードの自動修復、手動アップグレード、自動アップグレード、自動スケーリングによってトリガーされます。
@@ -803,7 +917,7 @@ bin/cvename.cgi?name=2018-12127) 、 [ CVE-2018-12130
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12130) 、 [
 CVE-2019-11091 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11091) :
 これらの脆弱性は投機的実行を悪用します。これらの CVE はマイクロアーキテクチャ データ
-サンプリングと総称されます。これらの脆弱性により、投機的実行とマイクロアーキテクチャ状態との相互作用によってデータが漏洩する可能性があります。  |  中
+サンプリングと総称されます。これらの脆弱性により、マイクロアーキテクチャ状態での投機的実行の操作を通じてデータが公開される可能性があります。  |  中
 |
 
   * [ CVE-2018-12126 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12126)
@@ -821,7 +935,7 @@ CVE-2019-11091 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11091) :
 先ごろ、セキュリティ上の脆弱性 [ CVE-2019-9900 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2019-9900) と [ CVE-2019-9901
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9901) が [ Envoy
-](https://www.envoyproxy.io/) で見つかりました。
+](https://www.envoyproxy.io/) で発見されました。
 
 [ Istio ](https://istio.io/) には Envoy が組み込まれており、これらの脆弱性の影響で場合によっては Istio
 ポリシーがバイパスされる危険性があります。
@@ -884,7 +998,7 @@ notes?hl=ja#march_19_2019) で定期的にご確認ください。
 
 先ごろ、Kubernetes で新しいサービス拒否攻撃の脆弱性 [ CVE-2019-1002100
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1002100)
-が見つかりました。これは、パッチ リクエストの発行を許可されたユーザーが、Kubernetes API サーバーの CPU
+が発見されました。これは、パッチ リクエストの発行を許可されたユーザーが、Kubernetes API サーバーの CPU
 とメモリを大量に消費する悪意ある「json-patch」リクエストを作成できるというもので、クラスタ コントロール
 プレーンの可用性を低下させるおそれがあります。詳細については、 [ Kubernetes の開示情報
 ](https://groups.google.com/forum/?hl=ja#!topic/kubernetes-
@@ -921,8 +1035,8 @@ bin/cvename.cgi?name=CVE-2019-1002100)
   
 先ごろ、Open Containers Initiative（OCI）によって runc に新しいセキュリティ上の脆弱性 [ CVE-2019-5736
 ](https://groups.google.com/a/opencontainers.org/forum/m/?hl=ja#!topic/dev/Tc1ELm-8oDI)
-が [ 見つかりました ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5736)
-。これは、コンテナがエスケープ処理によってホストノードの root 権限を奪ってしまうおそれがあるというものです。
+が [ 発見されました ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5736)
+。これは、コンテナがエスケープ処理によってホストノードのルート権限を奪ってしまうおそれがあります。
 
 **この脆弱性の影響を受けるのは Google Kubernetes Engine（GKE）Ubuntu ノードです。Ubuntu
 ノードをご利用のお客様は、できるだけ早く最新のパッチ バージョンに[ アップグレード
@@ -931,8 +1045,8 @@ cluster?hl=ja) することをおすすめします。詳細については、�
 
 ####  必要な対策
 
-ご使用のノードをアップグレードするには、まずマスターを最新バージョンにアップグレードする必要があります。このパッチは、Kubernetes
-1.10.12-gke.7、1.11.6-gke.11、1.11.7-gke.4、1.12.5-gke.5、およびそれ以降のリリースで提供されています。パッチの提供状況については、
+ご使用のノードをアップグレードするには、まずマスターを最新バージョンにアップグレードする必要があります。このパッチは Kubernetes
+1.10.12-gke.7、1.11.6-gke.11、1.11.7-gke.4、1.12.5-gke.5、およびそれ以降のリリースで入手できます。パッチの提供状況については、
 [ リリースノート ](https://cloud.google.com/kubernetes-engine/docs/release-
 notes?hl=ja#february-11-2019) をご覧ください。
 
@@ -947,8 +1061,9 @@ notes?hl=ja#february-11-2019) をご覧ください。
 
 [ CVE-2019-5736 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2019-5736) は runc の脆弱性であり、悪意のあるコンテナが（exec
-形式での最小限のユーザー インタラクションで）ホストの runc バイナリを上書きすることにより、ホストノードで root
-権限のコードを実行できてしまうというものです。root として実行されていないコンテナは影響を受けません。この脆弱性の重大度評価は高です。
+形式での最小限のユーザー インタラクションで）ホストの runc
+バイナリを上書きすることにより、ホストノードでルート権限のコードを実行できるというものです。root
+として実行されていないコンテナは影響を受けません。この脆弱性の重大度評価は高です。
 
 |  高  |  [ CVE-2019-5736 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2019-5736)  
@@ -959,11 +1074,11 @@ bin/cvename.cgi?name=CVE-2019-5736)
 ---|---|---  
   
 **2019 年 2 月 25 日更新:** すでにお知らせしたように、1.11.7-gke.4 用のパッチはまだ提供されていません。1.11.7
-をご利用のお客様は、1.11.6 にダウングレードする、1.12 にアップグレードする、または 2019 年 3 月 4 日の週に次の 1.11.7
-パッチが提供されるまでお待ちください。
+をご利用のお客様は、次のいずれかをお選びいただけます。1.11.6 にダウングレードする、1.12 にアップグレードする、2019 年 3 月 4
+日の週に次の 1.11.7 パッチが提供されるまで待つ。
 
 先ごろ、Go プログラミング言語に新しいセキュリティ上の脆弱性 [ CVE-2019-6486 ](https://cve.mitre.org/cgi-
-bin/cvename.cgi?name=CVE-2019-6486) が見つかりました。これは P-521 と P-384
+bin/cvename.cgi?name=CVE-2019-6486) が発見されました。これは P-521 と P-384
 の楕円曲線の暗号および楕円に関する実装に問題があり、サービス拒否攻撃（DoS）を受ける可能性があるというものです。Google Kubernetes
 Engine（GKE）では、悪意のあるユーザーがこの脆弱性を利用して Kubernetes API サーバーの CPU
 を大量に消費するリクエストを送りつけ、クラスタ コントロール プレーンの可用性を低下させるおそれがあります。詳細については、 [ Go
@@ -1001,8 +1116,8 @@ bin/cvename.cgi?name=CVE-2019-6486)
 ---|---|---  
   
 先ごろ、Kubernetes にセキュリティ上の脆弱性 [ CVE-2018-1002105 ](https://cve.mitre.org/cgi-
-bin/cvename.cgi?name=CVE-2018-1002105) が見つかりました。これは、比較的権限の低いユーザーが kubelet の
-API に対する権限付与をバイパスして、クラスタ内のポッドやノードに対して任意のオペレーションを実行できてしまうというものです。詳細については、 [
+bin/cvename.cgi?name=CVE-2018-1002105) が発見されました。これは、比較的権限の低いユーザーが kubelet の
+API に対する権限付与をバイパスして、クラスタ内のポッドやノードに対して任意のオペレーションを実行できるというものです。詳細については、 [
 Kubernetes の開示情報 ](https://groups.google.com/forum/?hl=ja#!topic/kubernetes-
 announce/GVllWCg6L88) をご覧ください。 **この脆弱性の影響を受けるのは、すべての Google Kubernetes
 Engine（GKE）マスターです。Google では、すでにクラスタを[ 最新のパッチ バージョン
@@ -1021,8 +1136,8 @@ notes?hl=ja#november-12-2018) にアップグレード済みです。お客様�
 このパッチで緩和される脆弱性は以下のとおりです。
 
 脆弱性 CVE-2018-1002105 は、比較的権限の低いユーザーが kubelet の API
-に対する権限付与をバイパスできてしまうというものです。これにより、ユーザーはアップグレード可能なリクエストを作成してエスカレーションし、kubelet の
-API を任意に呼び出すことができます。この脆弱性は、Kubernetes ではきわめて重大と評価されています。GKE の実装では未認証のエスカレーション
+に対する権限付与をバイパスできるというものです。これにより、ユーザーはアップグレード可能なリクエストを作成してエスカレーションし、kubelet の API
+を任意に呼び出すことができます。この脆弱性は、Kubernetes ではきわめて重大と評価されています。GKE の実装では未認証のエスカレーション
 パスを防ぐことに注意が払われているため、この脆弱性は高と評価されています。
 
 |  高  |  [ CVE-2018-1002105 ](https://cve.mitre.org/cgi-
@@ -1033,10 +1148,11 @@ bin/cvename.cgi?name=CVE-2018-1002105)
 説明  
 ---  
   
-**2018 年 11 月 16 日更新:** 影響を受けた可能性のあるすべてのトークンの取り消しと入れ替えが完了しました。以後の対応は特に必要ありません。
+**2018 年 11 月 16 日更新:**
+影響を受けた可能性のあるすべてのトークンの取り消しと入れ替えが完了しました。以後の対応は特に必要はありません。
 
 Calico Container Network
-Interface（CNI）プラグインで、特定の構成において機密情報を記録できるという問題が見つかりました。この問題は Tigera Technical
+Interface（CNI）プラグインで、特定の構成において機密情報を記録できるという問題が発見されました。この問題は Tigera Technical
 Advisory [ TTA-2018-001 ](https://www.projectcalico.org/security-bulletins/)
 で追跡されています。
 
@@ -1048,45 +1164,45 @@ Advisory [ TTA-2018-001 ](https://www.projectcalico.org/security-bulletins/)
       
     
     
-        bgpconfigurations.crd.projectcalico.org     [create get list update watch]
-        bgppeers.crd.projectcalico.org              [create get list update watch]
-        clusterinformations.crd.projectcalico.org   [create get list update watch]
-        felixconfigurations.crd.projectcalico.org   [create get list update watch]
-        globalbgpconfigs.crd.projectcalico.org      [create get list update watch]
-        globalfelixconfigs.crd.projectcalico.org    [create get list update watch]
-        globalnetworkpolicies.crd.projectcalico.org [create get list update watch]
-        globalnetworksets.crd.projectcalico.org     [create get list update watch]
-        hostendpoints.crd.projectcalico.org         [create get list update watch]
-        ippools.crd.projectcalico.org               [create get list update watch]
-        networkpolicies.crd.projectcalico.org       [create get list update watch]
-        nodes                                       [get list update watch]
-        pods                                        [get list watch patch]
-        namespaces                                  [get list watch]
-        networkpolicies.extensions                  [get list watch]
-        endpoints                                   [get]
-        services                                    [get]
-        pods/status                                 [update]
-        networkpolicies.networking.k8s.io           [watch list]
-                
+    bgpconfigurations.crd.projectcalico.org     [create get list update watch]
+    bgppeers.crd.projectcalico.org              [create get list update watch]
+    clusterinformations.crd.projectcalico.org   [create get list update watch]
+    felixconfigurations.crd.projectcalico.org   [create get list update watch]
+    globalbgpconfigs.crd.projectcalico.org      [create get list update watch]
+    globalfelixconfigs.crd.projectcalico.org    [create get list update watch]
+    globalnetworkpolicies.crd.projectcalico.org [create get list update watch]
+    globalnetworksets.crd.projectcalico.org     [create get list update watch]
+    hostendpoints.crd.projectcalico.org         [create get list update watch]
+    ippools.crd.projectcalico.org               [create get list update watch]
+    networkpolicies.crd.projectcalico.org       [create get list update watch]
+    nodes                                       [get list update watch]
+    pods                                        [get list watch patch]
+    namespaces                                  [get list watch]
+    networkpolicies.extensions                  [get list watch]
+    endpoints                                   [get]
+    services                                    [get]
+    pods/status                                 [update]
+    networkpolicies.networking.k8s.io           [watch list]
+            
   
 ---  
   
 クラスタ ネットワーク ポリシーと Stackdriver Logging が有効になっている Google Kubernetes Engine
 クラスタで、Calico サービス アカウント トークンが Stackdriver に記録されることが確認されました。ネットワーク
-ポリシーが有効になっていないクラスタは影響を受けていません。
+ポリシーが有効になっていないクラスタは影響を受けません。
 
 Calico CNI プラグインのロギングが警告レベルでのみ行われるよう変更し、新しいサービス
-アカウントを使用する修正プログラムをデプロイしました。パッチが適用された Calico コードは、今後のリリースでデプロイされる予定です。
+アカウントを使用する修正プログラムを導入しました。パッチが適用された Calico コードは、今後のリリースでデプロイされる予定です。
 
-影響を受けた可能性のあるトークンの取り消しを、来週中に段階的に実施していく予定です。取り消しが完了次第、こちらの情報も更新いたします。
+影響を受ける可能性のあるトークンの取り消しを、来週中に段階的に実施していく予定です。取り消しが完了次第、こちらの情報も更新いたします。
 **お客様側での対応は特に必要ありません** （このトークン入れ替え作業は 2018 年 11 月 16 日に完了しました）。
 
 これらのトークンをすぐに入れ替えたい場合は、次のコマンドを実行してください。サービス アカウントの新しいシークレットが数秒以内に自動で再作成されます。  
       
     
     
-        kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
-                
+    kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
+            
   
 ---  
   
@@ -1094,82 +1210,82 @@ Calico CNI プラグインのロギングが警告レベルでのみ行われる
 
 GKE は、API サーバーへのアクセスをすべて記録します。Google Cloud で想定されている IP 範囲外から Calico
 トークンが使用されたかどうかを判断するには、次の Stackdriver クエリを実行します。このクエリは、GCP
-のネットワーク外から行われた呼び出しの記録のみを返す点にご注意ください。また、必要に応じて、ご使用の環境に合わせてカスタマイズしてください。  
+のネットワーク外から行われた呼び出しの記録のみを返す点にご留意ください。また、必要に応じて、ご使用の環境に合わせてカスタマイズしてください。  
   
 ---  
       
     
     
-        resource.type="k8s_cluster"
-        protoPayload.authenticationInfo.principalEmail="system:serviceaccount:kube-system:calico"
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.34.208.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.192.0/21")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.200.0/23")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.59.80.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.192.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.208.0/21")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.216.0/22")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.220.0/23")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.222.0/24")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.224.0.0/13")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.216.148.0/22")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.222.176.0/21")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "173.255.112.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "192.158.28.0/22")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.192.112.0/22")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.232.0/22")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.236.0/23")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.236.48.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.251.128.0/19")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.204.0.0/14")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.208.0.0/13")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.167.160.0/19")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.178.192.0/18")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.2.0/23")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.4.0/22")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.8.0/21")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.16.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.32.0/19")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.64.0/18")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.0.0/17")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.128.0/18")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.192.0/19")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.240.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.8.0/21")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.16.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.32.0/19")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.64.0/18")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.128.0/17")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.154.0.0/15")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.196.0.0/14")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "208.68.108.0/23")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.184.0.0/14")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.188.0.0/15")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.202.0.0/16")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.0.0/17")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.128.0/18")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.192.0/19")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.224.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.192.0.0/14")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.196.0.0/15")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.198.0.0/16")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.0.0/17")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.128.0/18")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.200.0.0/15")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "2600:1900::/35")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.224.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.232.0.0/15")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.234.0.0/16")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.0.0/17")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.192.0/20")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.236.0.0/14")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.240.0.0/15")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.232.0/21")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.4.0/22")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.220.0.0/14")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.242.0.0/15")
-        NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.244.0.0/14")
-                
+    resource.type="k8s_cluster"
+    protoPayload.authenticationInfo.principalEmail="system:serviceaccount:kube-system:calico"
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.34.208.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.192.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.200.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.59.80.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.192.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.208.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.216.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.220.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.222.0/24")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.224.0.0/13")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.216.148.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.222.176.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "173.255.112.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "192.158.28.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.192.112.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.232.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.236.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.236.48.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.251.128.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.204.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.208.0.0/13")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.167.160.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.178.192.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.2.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.4.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.8.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.16.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.32.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.64.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.0.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.128.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.192.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.240.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.8.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.16.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.32.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.64.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.128.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.154.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.196.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "208.68.108.0/23")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.184.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.188.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.202.0.0/16")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.0.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.128.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.192.0/19")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.224.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.192.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.196.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.198.0.0/16")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.0.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.128.0/18")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.200.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "2600:1900::/35")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.224.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.232.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.234.0.0/16")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.0.0/17")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.192.0/20")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.236.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.240.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.232.0/21")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.4.0/22")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.220.0.0/14")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.242.0.0/15")
+    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.244.0.0/14")
+            
   
 ---  
   
@@ -1178,7 +1294,7 @@ GKE は、API サーバーへのアクセスをすべて記録します。Google
 説明  |  重大度  |  注  
 ---|---|---  
   
-Intel が次の CVE を [ 公表しました
+次の CVE が [ Intel により公表されました
 ](https://www.intel.com/content/www/us/en/architecture-and-
 technology/l1tf.html) 。
 
@@ -1269,7 +1385,7 @@ cluster?hl=ja#upgrading-nodes) することをおすすめします。
 説明  |  重大度  |  注  
 ---|---|---  
   
-先ごろ Git に脆弱性が見つかりました。この脆弱性により、権限のないユーザーによる gitRepo
+先ごろ、Git に脆弱性が発見されました。この脆弱性により、権限のないユーザーによる gitRepo
 ボリュームを使用したポッド作成が許可されている場合、Kubernetes で権限をエスカレーションできてしまうおそれがあります。この CVE のタグは [
 CVE-2018-11235 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2018-11235) です。
@@ -1282,7 +1398,7 @@ bin/cvename.cgi?name=CVE-2018-11235) です。
   * 信頼できないユーザーによって作成されたポッドに、（ [ PodSecurityPolicy ](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=ja) などを使用して）ホストの root アクセス権を防止する制限がある。 
   * 信頼できないユーザーによって作成されたポッドで、gitRepo ボリューム タイプの使用が許可されている。 
 
-すべての Kubernetes Engine ノードに脆弱性があります。
+すべての Kubernetes Engine ノードに、この脆弱性の影響を受ける可能性があります。
 
 ####  必要な対策
 
@@ -1295,32 +1411,32 @@ gitRepo ボリューム タイプの使用を禁止します。PodSecurityPolicy
     
     
     apiVersion: v1
-        kind: Pod
-        metadata:
-          name: git-repo-example
-        spec:
-          initContainers:
-            # This container clones the desired git repo to the EmptyDir volume.
-            - name: git-clone
-              image: alpine/git # Any image with git will do
-              args:
-                - clone
-                - --single-branch
-                - --
-                - https://github.com/kubernetes/kubernetes # Your repo
-                - /repo # Put it in the volume
-              securityContext:
-                runAsUser: 1 # Any non-root user will do. Match to the workload.
-                allowPrivilegeEscalation: false
-                readOnlyRootFilesystem: true
-              volumeMounts:
-                - name: git-repo
-                  mountPath: /repo
-          containers:
-            ...
-          volumes:
+    kind: Pod
+    metadata:
+      name: git-repo-example
+    spec:
+      initContainers:
+        # This container clones the desired git repo to the EmptyDir volume.
+        - name: git-clone
+          image: alpine/git # Any image with git will do
+          args:
+            - clone
+            - --single-branch
+            - --
+            - https://github.com/kubernetes/kubernetes # Your repo
+            - /repo # Put it in the volume
+          securityContext:
+            runAsUser: 1 # Any non-root user will do. Match to the workload.
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+          volumeMounts:
             - name: git-repo
-              emptyDir: {}
+              mountPath: /repo
+      containers:
+        ...
+      volumes:
+        - name: git-repo
+          emptyDir: {}
 
 ####  この脆弱性に対処するパッチ
 
@@ -1337,9 +1453,9 @@ gitRepo ボリューム タイプの使用を禁止します。PodSecurityPolicy
 説明  |  重大度  |  注  
 ---|---|---  
   
-先ごろ Linux
-カーネルにいくつかの脆弱性が見つかりました。こうした脆弱性により、権限のないプロセスからの権限エスカレーションや（カーネルのクラッシュによる）サービス拒否を実行できるおそれがあります。これらの
-CVE のタグは [ CVE-2018-1000199 ](https://cve.mitre.org/cgi-
+先ごろ、Linux
+カーネルにいくつかの脆弱性が発見されました。こうした脆弱性により、権限のないプロセスからの権限エスカレーションや（カーネルのクラッシュによる）サービス拒否を実行できるおそれがあります。これらの
+CVE のタグは、それぞれ [ CVE-2018-1000199 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2018-1000199) 、 [ CVE-2018-8897
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-8897) 、 [
 CVE-2018-1087 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1087)
@@ -1369,11 +1485,11 @@ bin/cvename.cgi?name=CVE-2018-1000199) : この脆弱性は Linux
 [ CVE-2018-8897 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2018-8897) : この脆弱性は Linux
 カーネルに影響を及ぼします。権限のないユーザーまたはプロセスがシステム カーネルをクラッシュできるようになり、DoS
-攻撃が発生します。脆弱性の重大度評価は中で、CVSS は 6.5 です。
+攻撃が発生します。脆弱性の評価は中で、CVSS は 6.5 です。
 
 [ CVE-2018-1087 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2018-1087) : この脆弱性は Linux カーネルの KVM
-ハイパーバイザに影響を及ぼします。権限のないプロセスがゲストカーネルをクラッシュできるようになり、場合によっては権限を取得できてしまいます。Kubernetes
+ハイパーバイザに影響を及ぼします。権限のないプロセスがゲストカーネルをクラッシュできるようになり、場合によっては権限を取得できます。Kubernetes
 Engine が実行されているインフラストラクチャにはこの脆弱性のパッチが適用されているため、Kubernetes Engine
 は影響を受けません。脆弱性の重大度評価は高で、CVSS スコアは 8.0 です。
 
@@ -1395,7 +1511,7 @@ Engine が実行されているインフラストラクチャにはこの脆弱�
 CVE-2017-1002102 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=2017-1002102) が [ 公表されました
 ](https://groups.google.com/forum/?hl=ja#!topic/kubernetes-security-
-announce/P7lBjbjDKd8) 。これは、コンテナの外部にあるファイルにコンテナからアクセスできてしまうというものです。これらの脆弱性はすべての
+announce/P7lBjbjDKd8) 。これは、コンテナの外部にあるファイルにコンテナからアクセスできるというものです。これらの脆弱性はすべての
 Kubernetes Engine ノードに影響するため、できるだけ早く最新のパッチ
 バージョンにアップグレードすることをおすすめします。詳細については、以下をご覧ください。
 
@@ -1425,12 +1541,12 @@ a-container-cluster?hl=ja) することをおすすめします。
 
 脆弱性 CVE-2017-1002101 は、 [ subPath
 ](https://kubernetes.io/docs/concepts/storage/volumes/#using-subpath) ボリューム
-マウントを使用しているコンテナがボリュームの外部にあるファイルにアクセスできてしまうというものです。つまり、PodSecurityPolicy で
+マウントを使用しているコンテナがボリュームの外部にあるファイルにアクセスできるというものです。つまり、PodSecurityPolicy で
 hostPath ボリュームへのコンテナ アクセスをブロックしている場合、ポッドを更新または作成できる攻撃者が他のボリューム タイプを使用して任意の
 hostPath をマウントするおそれがあります。
 
 脆弱性 CVE-2017-1002102 は、特定のボリューム タイプ（シークレット、構成マップ、投影ボリューム、下位 API
-ボリュームなど）を使用するコンテナがボリュームの外部にあるファイルを削除できてしまうというものです。つまり、これらのボリューム
+ボリュームなど）を使用するコンテナがボリュームの外部にあるファイルを削除できるというものです。つまり、これらのボリューム
 タイプのいずれかを使用するコンテナが不正使用された場合、または信頼できないユーザーによるポッド作成が許可されている場合、攻撃者がそのコンテナを利用してホスト上の任意のファイルを削除するおそれがあります。
 
 この修正の詳細については、 [ Kubernetes ブログの記事

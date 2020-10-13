@@ -5,9 +5,21 @@
 ](https://groups.google.com/forum/?hl=zh_cn#!forum/google-translate-api)
 邮寄名单发布公告。
 
-要接收最新产品动态，请将本页面的网址添加到您的 [ Feed 阅读器
+您可以在 [ Google Cloud 版本说明 ](https://cloud.google.com/release-notes?hl=zh_cn)
+页面上查看 Google Cloud 所有产品的最新产品动态。
+
+如需接收最新产品动态，请将本页面的网址添加到您的 [ Feed 阅读器
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
-https://cloud.google.com/feeds/automl-translation-release-notes.xml `
+https://cloud.google.com/feeds/automl-translate-release-notes.xml `
+
+##  July 17, 2020
+
+**FEATURE:**
+
+For test data, added support for the ` .tmx ` file type when evaluating
+existing models. For more information, see [ Evaluating models
+](https://cloud.google.com/translate/automl/docs/evaluate?hl=zh_cn#evaluate_and_compare_models_using_a_new_test_set)
+.
 
 ##  April 03, 2020
 

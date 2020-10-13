@@ -3,10 +3,32 @@
 本页面记录了 AutoML Vision Object Detection 的正式版更新。我们建议 AutoML Vision Object
 Detection 开发者定期查看此列表，以便及时获知新公告。
 
+您可以在 [ Google Cloud 版本说明 ](https://cloud.google.com/release-notes?hl=zh_cn)
+页面上查看 Google Cloud Platform 所有产品的最新动态。
+
 要接收最新产品动态，请将本页面的网址添加到您的 [ Feed 阅读器
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/automl-vision-object-detection-release-
 notes.xml `
+
+##  June 04, 2020
+
+**DEPRECATED:**
+
+**v1beta1 endpoint end-of-life**
+
+After June 4, 2020, the v1beta1 version of AutoML API will deny increasing
+numbers of API requests from AutoML Vision users. Please refer to the [
+November 20, 2019 ](https://cloud.google.com/vision/automl/object-
+detection/docs/release-notes?hl=zh_cn#November_20_2019) release notes and
+migrate to v1 version immediately.
+
+If you have any questions regarding the above action items, join the [ cloud-
+vision-discuss Google group ](https://groups.google.com/g/cloud-vision-
+discuss?hl=zh_cn) . For further assistance, please open an issue in this [
+private issue tracker
+](https://issuetracker.google.com/issues/new?component=836902&template=1440861&hl=zh_cn)
+.
 
 ##  April 03, 2020
 

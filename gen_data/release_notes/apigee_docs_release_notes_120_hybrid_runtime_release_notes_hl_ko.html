@@ -1,0 +1,621 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <div background="teal" class="devsite-banner devsite-banner-announcement">
+   <div class="devsite-banner-message">
+    <div class="devsite-banner-message-text">
+     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+      <p>
+       <strong>
+        참고:
+       </strong>
+       이 제품의 일부 요소는 베타 버전입니다. 하이브리드 설치 옵션은 GA입니다. 베타 프로그램에 참여하려면 Apigee 담당자에게 문의하세요.
+      </p>
+     </meta>
+    </div>
+   </div>
+  </div>
+  <h1 class="devsite-page-title">
+   1.2.0 - Apigee Hybrid 런타임 출시 노트
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <p>
+    2020년 4월 3일, Apigee Hybrid 런타임 버전 1.2.0이 출시되었습니다.
+   </p>
+   <aside class="objective">
+    자세한 내용은 다음 리소스를 참조하세요.
+    <ul>
+     <li>
+      <em>
+       <a href="https://cloud.google.com/apigee/docs/hybrid/v1.2/what-is-hybrid?hl=ko">
+        하이브리드 자세히 알아보기
+       </a>
+      </em>
+      또는
+      <em>
+       <a href="https://cloud.google.com/apigee/docs/hybrid/v1.2/big-picture?hl=ko">
+        설치 시작
+       </a>
+      </em>
+     </li>
+     <li>
+      <em>
+       유료 계정 만들기:
+      </em>
+      <a href="https://pages.apigee.com/contact-sales-reg.html?hl=ko">
+       Apigee 영업팀
+      </a>
+      에 문의하기
+     </li>
+     <li>
+      <em>
+       질문 또는 문제:
+      </em>
+      <a class="external" href="https://cloud.google.com/apigee/support/?hl=ko">
+       Apigee 지원팀
+      </a>
+      에 문의하기
+     </li>
+    </ul>
+   </aside>
+   <section class="expandable">
+    <h4 class="showalways" data-text="도움말 및 알림" id="help-notifications" tabindex="0">
+     도움말 및 알림
+    </h4>
+    <div class="note">
+     <p>
+      <strong>
+       프라이빗 클라우드 고객
+      </strong>
+      : 이 클라우드 출시 버전이 프라이빗 클라우드 버전에 포함되어 있는지 확인하세요. 버전에 포함된 클라우드 출시 버전을 보려면 버전 출시 노트를 참조하세요. 또한 출시 버전 번호를 비교하여 이를 알아보는 방법은
+      <a href="https://cloud.google.com/apigee/docs/release/apigee-edge-release-process?hl=ko#aboutreleasenumbering">
+       출시 버전 번호 지정 정보
+      </a>
+      를 참조하세요.
+     </p>
+     <p>
+      <strong>
+       질문 또는 문제:
+      </strong>
+      <a href="https://cloud.google.com/apigee/support/?hl=ko">
+       여기에서 도움을 받으세요
+      </a>
+      .
+     </p>
+     <p>
+      <strong>
+       출시 알림
+      </strong>
+      :
+      <a href="http://status.apigee.com?hl=ko">
+       http://status.apigee.com
+      </a>
+      으로 이동하여
+      <strong>
+       업데이트 구독
+      </strong>
+      을 클릭합니다.
+     </p>
+     <p>
+      <a href="https://cloud.google.com/apigee/docs/release/notes/apigee-release-notes?hl=ko">
+       출시 노트 홈페이지
+      </a>
+     </p>
+    </div>
+   </section>
+   <h2 data-text="업그레이드" id="upgrading" tabindex="0">
+    업그레이드
+   </h2>
+   <aside class="warning">
+    버전 1.1.1에서 1.2.0으로 업그레이드하려면 버전 1.1.1과 호환되지 않는 재정의 파일에서 변경 작업을 수행해야 합니다. 재정의 파일의 변경을 수행하는 것은 업그레이드를 수행하기 위한 기본 요건입니다. 새로운 구성은 API 호출이 잘못된 환경으로 라우팅되는 문제를 해결합니다.
+  자세한 내용은
+    <a href="https://cloud.google.com/apigee/docs/hybrid/v1.2/upgrade?hl=ko">
+     Apigee Hybrid 업그레이드
+    </a>
+    를 참조하세요.
+   </aside>
+   <h2 data-text="새로운 기능 및 업데이트" id="new-features-and-updates" tabindex="0">
+    새로운 기능 및 업데이트
+   </h2>
+   <p>
+    다음은 이번 출시의 새로운 기능과 업데이트입니다.
+   </p>
+   <h3 data-text="라우팅 규칙을 지정하기 위해 새로운 가상 호스트 구성 추가" id="a-new-virtual-host-configuration-was-added-to-specify-routing-rules" tabindex="0">
+    라우팅 규칙을 지정하기 위해 새로운 가상 호스트 구성 추가
+   </h3>
+   <p>
+    새로운
+    <code dir="ltr" translate="no">
+     virtualhosts
+    </code>
+    구성 기능은 기본 경로가 여러 환경으로 라우팅되는 순서가 불확실한 문제를 해결합니다. 자세한 내용은
+    <a href="https://cloud.google.com/apigee/docs/hybrid/v1.2/base-path-routing?hl=ko">
+     가상 호스트 구성
+    </a>
+    을 참조하세요. (150336519)
+   </p>
+   <h3 data-text="OASValidation 정책 베타 출시" id="beta-release-of-the-oasvalidation-policy" tabindex="0">
+    OASValidation 정책 베타 출시
+   </h3>
+   <p>
+    OASValidation(OpenAPI 사양 유효성 검사) 정책(베타)을 사용하면 OpenAPI 3.0 사양(JSON 또는 YAML)에 대한 수신 요청 또는 응답 메시지의 유효성을 검사할 수 있습니다.
+  자세한 내용은
+    <a href="https://cloud.google.com/apigee/docs/api-platform/reference/policies/oas-validation-policy?hl=ko">
+     OASValidation 정책(베타)
+    </a>
+    을 참조하세요. (144949685)
+   </p>
+   <h3 data-text="WebSocket 지원 베타 출시" id="beta-release-of-websocket-support" tabindex="0">
+    WebSocket 지원 베타 출시
+   </h3>
+   <p>
+    Apigee Hybrid는 WebSocket 연결을 지원합니다. 이제 API 프록시 클라이언트가 HTTP에서 WebSockets로 프로토콜 업그레이드를 요청할 수 있습니다.
+  자세한 내용은
+    <a href="https://cloud.google.com/apigee/docs/hybrid/v1.2/websockets?hl=ko">
+     WebSocket 사용(베타)
+    </a>
+    을 참조하세요.
+   </p>
+   <h3 data-text="Kubernetes 보안 비밀에서 정책 보안 비밀 값에 액세스" id="accessing-policy-secret-values-from-kubernetes-secrets" tabindex="0">
+    Kubernetes 보안 비밀에서 정책 보안 비밀 값에 액세스
+   </h3>
+   <p>
+    새로운 기능을 사용하면 프록시 흐름 변수의 Kubernetes 보안 비밀에 저장된 값에 액세스할 수 있습니다.
+    자세한 내용은
+    <a href="https://cloud.google.com/apigee/docs/hybrid/v1.2/k8s-secrets?hl=ko">
+     Kubernetes 보안 비밀에 데이터 저장
+    </a>
+    을 참조하세요.
+    (133377603)
+   </p>
+   <h3 data-text="ADAC 및 ADAH를 대체하는 Apigee Operators(AO) 요소" id="ao" tabindex="0">
+    ADAC 및 ADAH를 대체하는 Apigee Operators(AO) 요소
+   </h3>
+   <p>
+    Apigee Operators(AO)는 AD를 배포하고 유지하는 데 필요한 하위 수준 Kubernetes 및 Istio 리소스를 만들고 업데이트합니다. 예를 들어 컨트롤러는 메시지 프로세서의 출시를 수행합니다. 또한 ApigeeDeployment 구성을 Kubernetes 클러스터에서 유지하기 전에 검증합니다. AO는 Apigee 배포 Admissionhook(ADAH) 및 Apigee 배포 컨트롤러(ADC)를 대체합니다.
+    <a href="https://cloud.google.com/apigee/docs/hybrid/v1.2/config-prop-ref?hl=ko#ao">
+     구성 속성 참조에 있는 AO
+    </a>
+    를 참조하세요.
+  (151250559)
+   </p>
+   <h3 data-text="특정 클러스터 및 프로젝트 구성 속성 교체 및 지원 중단" id="replace-and-deprecate-certain-cluster-and-project-configuration-properties" tabindex="0">
+    특정 클러스터 및 프로젝트 구성 속성 교체 및 지원 중단
+   </h3>
+   <p>
+    2개의 새로운 구성 속성,
+    <code dir="ltr" translate="no">
+     k8sCluster
+    </code>
+    와
+    <code dir="ltr" translate="no">
+     gcp
+    </code>
+    가 추가되었습니다.
+   이러한 속성은 지원 중단된
+    <code dir="ltr" translate="no">
+     k8sClusterName
+    </code>
+    ,
+    <code dir="ltr" translate="no">
+     gcpRegion
+    </code>
+    ,
+    <code dir="ltr" translate="no">
+     gcpProjectID
+    </code>
+    속성을 대체합니다. 자세한 내용은
+    <a href="https://cloud.google.com/apigee/docs/hybrid/v1.2/config-prop-ref?hl=ko">
+     구성 속성 참조
+    </a>
+    를 참조하세요. (146299599)
+   </p>
+   <h3 data-text="Kubernetes 기반 Cassandra의 영구 볼륨 확장" id="persistent-volume-expansion-for-cassandra-on-kubernetes" tabindex="0">
+    Kubernetes 기반 Cassandra의 영구 볼륨 확장
+   </h3>
+   <p>
+    스토리지 요구사항을 충족하기 위해 더 많은 노드를 추가하지 않고도 apigee-cassandra에서 사용하는 영구 볼륨을 확장할 수 있는 프로세스가 추가되었습니다.
+    <a href="https://cloud.google.com/apigee/docs/hybrid/v1.2/expand-persistent-volumes?hl=ko">
+     Cassandra 영구 볼륨 확장
+    </a>
+    을 참조하세요. (138167919)
+   </p>
+   <h3 data-text="인증서, 암호화 키, SA를 위한 추가 소스 지원" id="support-additional-sources-for-certs,-encryption-keys-and-sas" tabindex="0">
+    인증서, 암호화 키, SA를 위한 추가 소스 지원
+   </h3>
+   <p>
+    TLS 인증서, 암호화 키, 서비스 계정 키를 더 유연하게 지정할 수 있도록 해주는 새로운 구성 속성이 추가되었습니다. 새 속성은 다음과 같습니다.
+   </p>
+   <ul>
+    <li>
+     <code dir="ltr" translate="no">
+      kmsEncryptionPath
+     </code>
+    </li>
+    <li>
+     <code dir="ltr" translate="no">
+      kmsEncryptionSecret.key
+     </code>
+    </li>
+    <li>
+     <code dir="ltr" translate="no">
+      kmsEncryptionSecret.name
+     </code>
+    </li>
+    <li>
+     <code dir="ltr" translate="no">
+      cassandra.backup.serviceAccountSecretRef
+     </code>
+    </li>
+    <li>
+     <code dir="ltr" translate="no">
+      cassandra.restore.serviceAccountSecretRef
+     </code>
+    </li>
+    <li>
+     <code dir="ltr" translate="no">
+      envs[].cacheEncryptionPath
+     </code>
+    </li>
+    <li>
+     <code dir="ltr" translate="no">
+      envs[].cacheEncryptionSecret.key
+     </code>
+    </li>
+    <li>
+     <code dir="ltr" translate="no">
+      envs[].cacheEncryptionSecret.name
+     </code>
+    </li>
+    <li>
+     <code dir="ltr" translate="no">
+      envs[].kmsEncryptionPath
+     </code>
+    </li>
+    <li>
+     <code dir="ltr" translate="no">
+      envs[].kmsEncryptionSecret.key
+     </code>
+    </li>
+    <li>
+     <code dir="ltr" translate="no">
+      envs[].kmsEncryptionSecret.name
+     </code>
+    </li>
+    <li>
+     <code dir="ltr" translate="no">
+      envs[].serviceAccountSecretRefs.synchronizer
+     </code>
+    </li>
+    <li>
+     <code dir="ltr" translate="no">
+      envs[].serviceAccountSecretRefs.udca
+     </code>
+    </li>
+    <li>
+     <code dir="ltr" translate="no">
+      envs[].sslSecret
+     </code>
+    </li>
+    <li>
+     <code dir="ltr" translate="no">
+      logger.serviceAccountSecretRef
+     </code>
+    </li>
+    <li>
+     <code dir="ltr" translate="no">
+      mart.serviceAccountSecretRef
+     </code>
+    </li>
+    <li>
+     <code dir="ltr" translate="no">
+      mart.sslSecret
+     </code>
+    </li>
+    <li>
+     <code dir="ltr" translate="no">
+      metrics.serviceAccountSecretRef
+     </code>
+    </li>
+    <li>
+     <code dir="ltr" translate="no">
+      synchronizer.serviceAccountSecretRef
+     </code>
+    </li>
+    <li>
+     <code dir="ltr" translate="no">
+      udca.serviceAccountSecretRef
+     </code>
+    </li>
+   </ul>
+   <p>
+    자세한 내용은
+    <a href="https://cloud.google.com/apigee/docs/hybrid/v1.2/config-prop-ref?hl=ko">
+     구성 속성 참조
+    </a>
+    를 참조하세요. (145303466)
+   </p>
+   <h3 data-text="분석하기 위해 데이터를 보내기 전에 데이터를 난독화" id="allow-customers-to-obfuscate-data-before-sending-it-to-analytics" tabindex="0">
+    분석하기 위해 데이터를 보내기 전에 데이터를 난독화
+   </h3>
+   <p>
+    특정 분석 데이터를 관리 영역으로 전송되기 전에 난독화할 수 있는 기능이 추가되었습니다. 자세한 내용은
+    <a href="https://cloud.google.com/apigee/docs/hybrid/v1.2/obfuscate-userdata-for-analytics?hl=ko">
+     분석을 위한 사용자 데이터 난독화
+    </a>
+    를 참조하세요. (142578910)
+   </p>
+   <h3 data-text="StatefulSets의 영구 볼륨 확장" id="expand-persistent-volumes-for-statefulsets" tabindex="0">
+    StatefulSets의 영구 볼륨 확장
+   </h3>
+   <p>
+    스토리지 요구를 충족하기 위해 더 많은 컴퓨팅 성능을 추가하지 않고도 apigee-cassandra에서 사용하는 영구 볼륨을 확장할 수 있는 기능이 추가되었습니다.  자세한 내용은
+    <a href="https://cloud.google.com/apigee/docs/release/notes/hybrid/v1.2/expand-persistent-volumes?hl=ko">
+     StatefulSets의 영구 볼륨 확장
+    </a>
+    을 참조하세요.
+    (138167919)
+   </p>
+   <h3 data-text="업그레이드된 GKE, Anthos, AKS의 지원되는 최소 버전" id="minimum-supported-versions-of-gke,-anthos,-and-aks-are-upgraded" tabindex="0">
+    업그레이드된 GKE, Anthos, AKS의 지원되는 최소 버전
+   </h3>
+   <p>
+    Apigee Hybrid는 이제 GKE 1.14.x, Anthos 1.2, AKS 1.14.x를 지원합니다. (149578101)
+   </p>
+   <h3 data-text="상위 연결을 위한 TLS 1.3 지원" id="support-tls-1.3-for-northbound-connections" tabindex="0">
+    상위 연결을 위한 TLS 1.3 지원
+   </h3>
+   <p>
+    2개의 새로운 구성 속성을 사용하여 인그레스의 최소(
+    <code dir="ltr" translate="no">
+     ingress.minTLSProtocolVersion
+    </code>
+    ) 및 최대(
+    <code dir="ltr" translate="no">
+     maxTLSProtocolVersion
+    </code>
+    ) TLS 버전을 설정할 수 있습니다.
+    가능한 값은 1.0, 1.1, 1.2, 1.3입니다. 자세한 내용은
+    <a href="https://cloud.google.com/apigee/docs/hybrid/v1.2/config-prop-ref?hl=ko">
+     구성 속성 참조
+    </a>
+    를 참조하세요. (117580780)
+   </p>
+   <h3 data-text="하이브리드 런타임을 위한 전달 프록시 구성 지원" id="support-forward-proxy-configuration-for-hybrid-runtime" tabindex="0">
+    하이브리드 런타임을 위한 전달 프록시 구성 지원
+   </h3>
+   <p>
+    이제 환경에 배포된 API 프록시에서 HTTP 전달 프록시가 지원됩니다.
+    자세한 내용은
+    <a href="https://cloud.google.com/apigee/docs/hybrid/v1.2/forward-proxy?hl=ko">
+     전달 프록시 구성
+    </a>
+    을 참조하세요. (148970527)
+   </p>
+   <h3 data-text="환경별로 여러 hostAliases 지원" id="support-multiple-hostaliases-per-environment" tabindex="0">
+    환경별로 여러 hostAliases 지원
+   </h3>
+   <p>
+    새 구성 속성
+    <code dir="ltr" translate="no">
+     envs[].hostAliases
+    </code>
+    가 추가되었습니다. 이 속성을 사용하면 환경에 여러 호스트 별칭을 추가할 수 있습니다. 지원 중단된
+    <code dir="ltr" translate="no">
+     hostAlias
+    </code>
+    대신 이 요소를 사용하세요. 자세한 내용은
+    <a href="https://cloud.google.com/apigee/docs/hybrid/v1.2/environment-create?hl=ko#adding-multiple-host-aliases-to-an-environment">
+     환경에 여러 호스트 별칭 추가
+    </a>
+    를 참조하세요. (150738495)
+   </p>
+   <h3 data-text="속성 세트에 템플릿 허용" id="allow-templates-for-property-sets" tabindex="0">
+    속성 세트에 템플릿 허용
+   </h3>
+   <p>
+    새 요소 &lt;PropertySetRef&gt;가 &lt;AssignMessage&gt; 정책의 &lt;AssignVariable&gt; 요소에 추가되었습니다. &lt;PropertySetRef&gt;를 사용하면 속성 세트 이름/키 쌍을 동적으로 만들 수 있습니다.
+         이 기능은 Apigee Hybrid에 배포된 API 프록시에서만 사용할 수 있습니다.
+    <a href="https://cloud.google.com/apigee/docs/api-platform/reference/policies/assign-message-policy?hl=ko#assignvariable">
+     AssignVariable
+    </a>
+    을 참조하세요. (148612340)
+   </p>
+   <h2 data-text="수정된 버그" id="bugs-fixed" tabindex="0">
+    수정된 버그
+   </h2>
+   <p>
+    이번 출시에서는 다음 버그가 수정되었습니다. 이 목록은 주로 지원 티켓이 수정되었는지 확인하는 사용자를 위한 것입니다. 모든 사용자에게 자세한 정보를 제공하기 위한 것은 아닙니다.
+   </p>
+   <table class="table" summary="이번 출시에서 수정된 버그">
+    <thead>
+     <tr>
+      <th>
+       문제 ID
+      </th>
+      <th>
+       구성요소 이름
+      </th>
+      <th>
+       설명
+      </th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td>
+       147958049
+      </td>
+      <td>
+       런타임
+      </td>
+      <td>
+       간혹 동기화 도구가 제대로 시작되지 않도록 하던 런타임 시작 시퀀싱의 타이밍 문제가 해결되었습니다.
+      </td>
+     </tr>
+     <tr>
+      <td>
+       149867244
+      </td>
+      <td>
+       K8S 플랫폼
+      </td>
+      <td>
+       멀티 리전 설정에서 apigee-cps-setup pod가 작동하지 않습니다.
+      </td>
+     </tr>
+     <tr>
+      <td>
+       150187652 / 149117839
+      </td>
+      <td>
+       런타임
+      </td>
+      <td>
+       환경 이름에 하이픈을 사용할 수 없습니다.
+      </td>
+     </tr>
+     <tr>
+      <td>
+       149220463
+      </td>
+      <td>
+       MP pod
+      </td>
+      <td>
+       이전에 배포된 프록시가 다시 배포되어야 했습니다.
+      </td>
+     </tr>
+     <tr>
+      <td>
+       144321144
+      </td>
+      <td>
+       런타임
+      </td>
+      <td>
+       안전한 가상 호스트가 있는 프록시를 다시 로드할 수 없습니다.
+      </td>
+     </tr>
+     <tr>
+      <td>
+       147685310
+      </td>
+      <td>
+       런타임
+      </td>
+      <td>
+       초기화 중 GCP 토큰 가져오기의 실패로 인한 동기화 도구 초기화의 실패가 발생하였습니다.
+      </td>
+     </tr>
+     <tr>
+      <td>
+       151115900
+      </td>
+      <td>
+       런타임
+      </td>
+      <td>
+       HybridMART에 대해 주기적 내부 프로브가 발생하지 않아 거짓양성 결과가 나타났습니다.
+      </td>
+     </tr>
+    </tbody>
+   </table>
+   <h2 data-text="알려진 문제" id="known-issues" tabindex="0">
+    알려진 문제
+   </h2>
+   <p>
+    다음 표에서는 이번 출시 버전의 알려진 문제를 설명합니다.
+   </p>
+   <table class="purple">
+    <thead>
+     <tr>
+      <th width="20%">
+       문제
+      </th>
+      <th>
+       설명
+      </th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td>
+       해당 없음
+      </td>
+      <td>
+       <p>
+        잘못된 HTTP 헤더 오류: Istio 인그레스는 모든 수신 대상 응답을 HTTP2 프로토콜로 전환합니다. 하이브리드 메시지 프로세서는 HTTP1만 지원하므로 API 프록시가 호출되면 다음 오류가 표시될 수 있습니다.
+       </p>
+       <pre class="prettyprint" dir="ltr" translate="no">
+
+http2 error: Invalid HTTP header field was received: frame type: 1, stream: 1,
+   name: [:authority], value: [domain_name]</pre>
+       <p>
+        이 오류가 표시되면 다음 작업 중 하나를 수행하여 문제를 해결할 수 있습니다.
+       </p>
+       <ul>
+        <li>
+         응답에서 호스트 헤더를 생략하도록 대상 서비스를 수정합니다.
+        </li>
+        <li>
+         필요한 경우 API 프록시에서 AssignMessage 정책을 사용하여 호스트 헤더를 삭제합니다.
+        </li>
+       </ul>
+      </td>
+     </tr>
+     <tr>
+      <td>
+       144584813
+      </td>
+      <td>
+       디버그 세션을 만들었지만 세션에 아직 트랜잭션이 없으면
+       <a href="https://cloud.google.com/hybrid/v1.2/reference/apis/rest/v1/organizations.environments.apis.revisions.debugsessions/list?hl=ko">
+        List Debug Sessions API
+       </a>
+       에는 이 목록에 있는 세션이 포함되지 않습니다. API는 세션에 하나 이상의 트랜잭션이 포함된 경우에만 응답에 세션을 포함합니다.
+      </td>
+     </tr>
+     <tr>
+      <td>
+       143659917
+      </td>
+      <td>
+       <p>
+        PopulateCache 정책의 만료 설정은 1~30 사이의 명시적 값으로 설정되어야 합니다. 예:
+       </p>
+       <pre class="prettyprint" dir="ltr" translate="no">
+
+&lt;ExpirySettings&gt;
+  &lt;TimeoutInSec&gt;30&lt;/TimeoutInSec&gt;
+&lt;/ExpirySettings&gt;</pre>
+      </td>
+     </tr>
+     <tr>
+      <td>
+       133192879
+      </td>
+      <td>
+       <p>
+        요약: API 또는 UI를 사용하여 조직의 배포 상태를 가져올 때 지연 시간은 매우 깁니다. 이 지연 시간으로 인해
+        <code dir="ltr" translate="no">
+         HTTP 204 (No
+          Content)
+        </code>
+        또는
+        <code dir="ltr" translate="no">
+         HTTP 400 (Bad Request)
+        </code>
+        응답이 발생할 수 있습니다.
+       </p>
+       <p>
+        해결 방법: 브라우저를 새로고침하거나 요청을 다시 보냅니다.
+       </p>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+ </article>
+</article>

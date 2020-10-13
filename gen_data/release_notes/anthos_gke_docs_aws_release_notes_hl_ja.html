@@ -1,0 +1,343 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <div background="google-blue" class="devsite-banner devsite-banner-announcement">
+   <div class="devsite-banner-message">
+    <div class="devsite-banner-message-text">
+     A new version of Anthos GKE on AWS was released on August 5. See the
+     <a href="https://cloud.google.com/anthos/gke/docs/aws/release-notes?hl=ja">
+      release notes
+     </a>
+     for information on breaking changes.
+    </div>
+   </div>
+  </div>
+  <h1 class="devsite-page-title">
+   リリースノート
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <section class="intro">
+    このページには、Anthos GKE on AWS に関する更新内容が記載されています。このページを定期的にチェックして、新機能や更新された機能、バグ修正、既知の問題、非推奨になった機能に関するお知らせを確認してください。
+   </section>
+   <section>
+    <p>
+     <a href="https://cloud.google.com/release-notes?hl=ja">
+      Google Cloud リリースノート
+     </a>
+     のページで、Google Cloud の最新のプロダクト更新情報をすべて確認できます。
+    </p>
+   </section>
+   <section class="xml">
+   </section>
+   <section class="releases">
+    <section class="releases">
+     <h2 data-text="August 04, 2020" id="August_04_2020" tabindex="0">
+      August 04, 2020
+     </h2>
+     <div class="release-fixed" id="575a931a">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Anthos GKE on AWS 1.4.1-gke.17 is released. This release fixes a memory leak that causes clusters to become unresponsive.
+      </p>
+      <p>
+       To upgrade your clusters, perform the following steps:
+      </p>
+      <ol>
+       <li>
+        Restart your
+        <a href="https://cloud.google.com/anthos/gke/docs/aws/troubleshooting?hl=ja#rebooting_your_control_plane">
+         control plane instances
+        </a>
+        .
+       </li>
+       <li>
+        Upgrade your
+        <a href="http://cloud.google.com/anthos/gke/docs/aws/how-to/upgrading-management?hl=ja">
+         management service
+        </a>
+        to aws-1.4.1-gke.17.
+       </li>
+       <li>
+        Upgrade your
+        <a href="http://cloud.google.com/anthos/gke/docs/aws/how-to/upgrading-user-cluster?hl=ja">
+         user cluster's
+        </a>
+        AWSCluster and AWSNodePools to 1.16.9-gke.15.
+       </li>
+      </ol>
+     </div>
+     <div class="release-changed" id="d04c2353">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Use version 1.16.9-gke.15 for creating new clusters.
+      </p>
+     </div>
+     <h2 data-text="August 03, 2020" id="August_03_2020" tabindex="0">
+      August 03, 2020
+     </h2>
+     <div class="release-issue" id="78acf2f9">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       Anthos GKE on AWS 1.4.1-gke.15 clusters will experience a memory leak that results in an unresponsive cluster. A fix for this issue is in development.
+      </p>
+      <p>
+       If you are planning to deploy an Anthos GKE on AWS cluster, wait until the fix is ready.
+      </p>
+     </div>
+     <h2 data-text="July 24, 2020" id="July_24_2020" tabindex="0">
+      July 24, 2020
+     </h2>
+     <div class="release-changed" id="530ac36a">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Anthos GKE on AWS is now generally available.
+      </p>
+     </div>
+     <div class="release-changed" id="5f0630da">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Clusters support in-place upgrades, with the ability to upgrade the control plane and node pools separately.
+      </p>
+     </div>
+     <div class="release-changed" id="ea85f4f3">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Clusters can be deployed in a high availability (HA) configuration, where control plane instances and node pools are spread across multiple availability zones.
+      </p>
+     </div>
+     <div class="release-changed" id="8b2b2d15">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Clusters have been validated to support up to 200 nodes and 6000 pods.
+      </p>
+     </div>
+     <div class="release-changed" id="8b631fe9">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Allows the number of nodes to be scaled dynamically based on traffic volume to increase utilization and reduce cost, and improve performance
+      </p>
+     </div>
+     <div class="release-changed" id="262324ea">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Anthos can be deployed within existing AWS VPCs, leveraging existing security groups to secure those clusters. Customers can ingress traffic using NLB and ALBs.  Additionally Anthos on AWS supports AWS IAM and OIDC.  This makes deploying Anthos easy, eliminates the need to provision new accounts, and minimizes configuration of the environment.
+      </p>
+     </div>
+     <div class="release-changed" id="53e2f887">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       With Anthos Config Management enterprises can set policies on their AWS workloads and with Anthos Service Mesh, they can monitor, manage, and secure them.
+      </p>
+     </div>
+     <div class="release-changed" id="d103f170">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Kubernetes settings (flags and sysctl settings) have been updated to match GKE.
+      </p>
+     </div>
+     <div class="release-breaking" id="add6e42d">
+      <strong>
+       BREAKING:
+      </strong>
+      <p>
+       Upgrades from beta versions are not supported. To install Anthos GKE on AWS, you must remove your user and management clusters, then reinstall them.
+      </p>
+     </div>
+     <h2 data-text="May 29, 2020" id="May_29_2020" tabindex="0">
+      May 29, 2020
+     </h2>
+     <div class="release-changed" id="159c212c">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       A new build of Anthos GKE on AWS has been released. This build removes the need to check AWS IAM privileges when creating a management cluster.
+       <strong>
+        You don't need to update
+       </strong>
+       if you have not encountered this issue.
+      </p>
+      <p>
+       To install this build, download the
+       <code dir="ltr" translate="no">
+        anthos-gke
+       </code>
+       tool by running the following command:
+      </p>
+      <p>
+       <code dir="ltr" translate="no">
+        gsutil cp gs://gke-multi-cloud-release/bin/aws-0.2.1-gke.8/anthos-gke .
+       </code>
+      </p>
+      <p>
+       Then, recreate your
+       <a href="https://cloud.google.com/anthos/gke/docs/aws/how-to/installing-management?hl=ja">
+        Terraform configuration
+       </a>
+       and continue with your installation.
+      </p>
+     </div>
+     <h2 data-text="May 07, 2020" id="May_07_2020" tabindex="0">
+      May 07, 2020
+     </h2>
+     <div class="release-breaking" id="6de4a17b">
+      <strong>
+       BREAKING:
+      </strong>
+      <p>
+       To upgrade your Anthos GKE on AWS clusters, you need to
+       <a href="https://cloud.google.com/anthos/gke/docs/aws/how-to/uninstalling?hl=ja">
+        uninstall
+       </a>
+       all your management and user clusters. You also need to download the new version of the
+       <a href="https://cloud.google.com/anthos/gke/docs/aws/downloads?hl=ja#anthos-gke_cli_tool">
+        <code dir="ltr" translate="no">
+         anthos-gke
+        </code>
+       </a>
+       cli tool.
+      </p>
+     </div>
+     <div class="release-changed" id="8cfa293d">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Anthos GKE on AWS now supports
+       <a href="https://cloud.google.com/anthos/gke/docs/aws/how-to/scaling-user-cluster?hl=ja">
+        auto-scaling
+       </a>
+       . You can enable auto-scaling by changing settings in your AWSNodePools, or scale your clusters manually by adding new AWSNodePools.
+      </p>
+     </div>
+     <div class="release-changed" id="a02f0fe8">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Built-in EBS StorageClass names have been changed to
+       <code dir="ltr" translate="no">
+        standard-rwo
+       </code>
+       and
+       <code dir="ltr" translate="no">
+        premium-rwo
+       </code>
+       . If you declare the
+       <a href="https://cloud.google.com/anthos/gke/docs/aws/concepts/storage.md?hl=ja">
+        <code dir="ltr" translate="no">
+         singlewriter-standard
+        </code>
+        or
+        <code dir="ltr" translate="no">
+         singlewriter-premium
+        </code>
+       </a>
+       StorageClasses with your workloads, you must update your workloads when upgrading.
+      </p>
+     </div>
+     <div class="release-changed" id="b2950bca">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Anthos GKE on AWS now support for Application-layer secrets encryption with AWS KMS by passing a KMS key ARN to your
+       <a href="https://cloud.google.com/anthos/gke/docs/aws/reference/awscluster?hl=ja#speccontrolplane">
+        AWSCluster
+       </a>
+       .
+      </p>
+     </div>
+     <h2 data-text="April 02, 2020" id="April_02_2020" tabindex="0">
+      April 02, 2020
+     </h2>
+     <div class="release-feature" id="da17d733">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Initial beta release of Anthos GKE on AWS
+      </p>
+     </div>
+     <div class="release-changed" id="cf11fccb">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       The release improves upon earlier releases with:
+      </p>
+      <ul>
+       <li>
+        <p>
+         <strong>
+          Improved reliability
+         </strong>
+         : User clusters are now deployed in a high availability (HA) fashion, where both control plane instances as well as node pools can be placed across multiple availability zones. AWS Auto Scaling groups are also now used for resiliency.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          Improved security
+         </strong>
+         : Control plane instances for different user clusters are now isolated in separate security groups. Instance Metadata Service Version 2 (IMDSv2) is enabled to protect against SSRF attacks, and sensitive fields in EC2 metadata are now encrypted.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          Easier to deploy
+         </strong>
+         : The installation process for the management layer has been simplified and performs additional validation checks. It uses Terraform modules for flexible integration into different AWS environments, and customers can now leverage existing security groups and IAM resources to secure clusters. Documentation has been improved and expanded.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          Future-proof storage stack
+         </strong>
+         : We're now using the
+         <a href="https://github.com/kubernetes-sigs/aws-ebs-csi-driver">
+          EBS CSI driver
+         </a>
+         to manage all AWS EBS volumes. The legacy, in-tree Kubernetes EBS driver has been removed entirely, and all upcoming storage features, such as snapshots, will be provided using CSI.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          Updated Kubernetes version
+         </strong>
+         : User clusters are now based on Kubernetes 1.15 and have passed open-source Kubernetes conformance tests.
+        </p>
+       </li>
+      </ul>
+     </div>
+    </section>
+   </section>
+  </div>
+ </article>
+</article>

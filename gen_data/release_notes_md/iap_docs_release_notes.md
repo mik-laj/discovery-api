@@ -14,6 +14,14 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/iap-release-notes.xml `
 
+##  May 29, 2020
+
+**FEATURE:**
+
+The ability to authenticate users with [ external identities
+](https://cloud.google.com/iap/docs/enable-external-identities) is now
+generally available.
+
 ##  February 12, 2020
 
 **FEATURE:**
@@ -42,7 +50,7 @@ your backends.
 Cloud IAP with context-aware access general availability release
 
 The ability to extend Cloud IAP access policies with [ access levels
-](https://cloud.google.com/access-context-manager/docs/) and the [ Cloud IAM
+](https://cloud.google.com/access-context-manager/docs/) and the [ IAM
 Conditions Framework ](https://cloud.google.com/iam/docs/conditions-overview)
 is now generally available.
 
@@ -86,11 +94,11 @@ Cloud IAP with context-aware access beta release
 
 Cloud IAP access policies for Cloud IAP-secured applications, services, and
 versions have been extended to use [ access levels
-](https://cloud.google.com/access-context-manager/docs/) and the [ Cloud IAM
+](https://cloud.google.com/access-context-manager/docs/) and the [ IAM
 Conditions Framework ](https://cloud.google.com/iam/docs/conditions-overview)
 . Access levels allow access restrictions to resources based on IP address and
-end-user device attributes. Cloud IAM conditions allow access restrictions
-based on URL hosts, paths, date, and time.
+end-user device attributes. IAM conditions allow access restrictions based on
+URL hosts, paths, date, and time.
 
 ##  August 16, 2018
 

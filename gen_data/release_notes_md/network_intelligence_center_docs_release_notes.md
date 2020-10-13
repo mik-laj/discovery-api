@@ -1,4 +1,4 @@
-#  Release Notes
+#  Release notes
 
 This page contains release notes for features and updates to Network
 Intelligence Center and its components.
@@ -11,6 +11,40 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/networkintelligence-release-
 notes.xml `
+
+##  July 30, 2020
+
+**DEPRECATED:**
+
+Network Topology no longer supports [ infrastructure segments
+](https://cloud.google.com/network-intelligence-center/docs/network-
+topology/how-to/using-network-topology#defining-infra-segment) . This feature
+is deprecated and will be completely removed after 90 days. If you have any
+questions, see [ Getting support ](https://cloud.google.com/network-
+intelligence-center/docs/network-topology/support/getting-support) .
+
+##  July 23, 2020
+
+**FEATURE:**
+
+Network Topology includes two new metrics for connections between entities:
+packet loss and latency. Additionally, you can now use a drop-down menu to
+select which metric Network Topology overlays on traffic paths. For more
+information, see [ Viewing metrics for traffic between entities
+](https://cloud.google.com/network-intelligence-center/docs/network-
+topology/how-to/using-network-
+topology#viewing_metrics_for_traffic_between_entities) and [ Network Topology
+metrics reference ](https://cloud.google.com/network-intelligence-
+center/docs/network-topology/reference/metrics-reference) .
+
+##  July 01, 2020
+
+**FEATURE:**
+
+Connectivity Tests now supports [ running tests
+](https://cloud.google.com/network-intelligence-center/docs/connectivity-
+tests/how-to/running-connectivity-tests) from the **Network interface details
+screen** of a Compute Engine VM instance in the Google Cloud Console.
 
 ##  April 16, 2020
 

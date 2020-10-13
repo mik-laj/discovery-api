@@ -5,11 +5,21 @@ do Cloud Storage. Recomendamos que os desenvolvedores do serviço de
 transferência do Cloud Storage consultem periodicamente esta lista para ver
 novos anúncios.
 
+É possível ver as atualizações mais recentes de todos os produtos do Google
+Cloud na página [ Notas da versão do Google Cloud
+](https://cloud.google.com/release-notes?hl=pt-br) .
+
 Para receber as atualizações de produtos mais recentes, adicione o URL desta
 página ao [ leitor de feeds
-](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) (em inglês) ou
-adicione o URL do feed diretamente: `
-https://cloud.google.com/feeds/storagetransfer-release-notes.xml `
+](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ou adicione o URL
+do feed diretamente: ` https://cloud.google.com/feeds/storagetransfer-release-
+notes.xml `
+
+##  July 31, 2020
+
+**FEATURE:**
+
+Transfers from Microsoft Azure Blob Storage are now generally available.
 
 ##  March 31, 2020
 

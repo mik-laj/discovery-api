@@ -13,6 +13,23 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/artifactregistry-release-
 notes.xml `
 
+##  August 17, 2020
+
+**FEATURE:**
+
+You can now use Pub/Sub to configure notifications for changes in Docker
+repositories. For more information, see [ Configuring Pub/Sub notifications
+](https://cloud.google.com/artifact-registry/docs/configure-notifications) .
+
+##  July 14, 2020
+
+**FEATURE:**
+
+You can now use Customer-Managed Encryption Keys (CMEK) to protect repository
+data in Artifact Registry. For more information, see [ Enabling customer-
+managed encryption keys ](https://cloud.google.com/artifact-
+registry/docs/cmek) .
+
 ##  March 16, 2020
 
 **FEATURE:**

@@ -9,9 +9,11 @@ tables/docs/known-issues) .
 
 **Beta**
 
-This product is in a pre-release state and might change or have limited
-support. For more information, see the [ product launch stages
-](/products#product-launch-stages) .
+This product is covered by the [ Pre-GA Offerings Terms ](/terms/service-
+terms#1) of the Google Cloud Platform Terms of Service. Pre-GA products may
+have limited support, and changes to pre-GA products may not be compatible
+with other pre-GA versions. For more information, see the [ launch stage
+descriptions ](/products#product-launch-stages) .
 
 You can see the latest product updates for all of Google Cloud on the [ Google
 Cloud release notes ](/release-notes) page.
@@ -21,6 +23,14 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/automl-tables-release-notes.xml
 `
+
+##  June 01, 2020
+
+**FEATURE:**
+
+Support for [ feature importance with batch predictions
+](https://cloud.google.com/automl-
+tables/docs/explain#getting_local_feature_importance_for_batch_predictions) .
 
 ##  April 03, 2020
 

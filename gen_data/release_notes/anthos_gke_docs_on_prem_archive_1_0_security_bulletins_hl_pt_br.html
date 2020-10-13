@@ -1,0 +1,227 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <div background="google-blue" class="devsite-banner devsite-banner-announcement">
+   <div class="devsite-banner-message">
+    <div class="devsite-banner-message-text">
+     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+      Você está visualizando a documentação de uma versão anterior do GKE On-Prem.
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem?hl=pt-br">
+       Veja a documentação mais recente
+      </a>
+      .
+     </meta>
+    </div>
+   </div>
+  </div>
+  <h1 class="devsite-page-title">
+   Boletins de segurança
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <p>
+    Todos os boletins de segurança do GKE On-Prem estão descritos neste tópico.
+   </p>
+   <p>
+    Geralmente, as vulnerabilidades são mantidas sob sigilo e não podem ser divulgadas até que as partes afetadas tenham a oportunidade de solucioná-las. Nesses casos, as
+    <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.0/release-notes?hl=pt-br">
+     notas de lançamento
+    </a>
+    do GKE On-Prem mencionarão "atualizações de segurança" até que a divulgação seja liberada. No momento da liberação, as notas serão atualizadas para indicar a vulnerabilidade solucionada pelo patch.
+   </p>
+   <aside class="note">
+    <strong>
+     Observação:
+    </strong>
+    <span>
+     esses boletins são especialmente importantes para quem tem cargas de trabalho com vários locatários no GKE On-Prem. Geralmente, elas costumam ser mais impactadas por essas vulnerabilidades. Para uma descrição técnica dos limites de segurança no GKE On-Prem e como eles afetam as cargas de trabalho, consulte
+     <a href="https://cloudplatform.googleblog.com/2018/05/Exploring-container-security-Isolation-at-different-layers-of-the-Kubernetes-stack.html">
+      Isolamento em camadas diferentes da pilha do Kubernetes
+     </a>
+     (em inglês).
+    </span>
+   </aside>
+   <p>
+    Para receber os boletins de segurança mais recentes, adicione o URL desta página ao seu
+    <a class="external" href="https://wikipedia.org/wiki/Comparison_of_feed_aggregators">
+     leitor de feeds
+    </a>
+    (em inglês).
+   </p>
+   <section class="bulletins">
+    <h2 data-text="23 de agosto de 2019" id="august-23-2019" tabindex="0">
+     23 de agosto de 2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Descrição
+       </th>
+       <th>
+        Gravidade
+       </th>
+       <th>
+        Notas
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Descobrimos e mitigamos uma vulnerabilidade em que o proxy RBAC, usado para proteger os endpoints de monitoramento, não autorizou corretamente os usuários.
+      Consequentemente, as métricas de determinados componentes estão disponíveis para usuários não autorizados na rede interna do cluster. Os seguintes componentes foram afetados:
+        </p>
+        <ul>
+         <li>
+          <code dir="ltr" translate="no">
+           etcd
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           etcd-events
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           kube-apiserver
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           kube-controller-manager
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           kube-scheduler
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           node-exporter
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           kube-state-metrics
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           prometheus
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           alertmanager
+          </code>
+         </li>
+        </ul>
+        <h6 data-text="O que fazer?" id="what-should-i-do" tabindex="0">
+         O que fazer?
+        </h6>
+        <p>
+         Recomendamos
+         <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.0/how-to/administration/upgrading-clusters?hl=pt-br">
+          fazer upgrade
+         </a>
+         dos clusters para a versão
+         <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.0/downloads?hl=pt-br#gkectl_latest">
+          1.0.2-gke.3
+         </a>
+         , que inclui o patch dessa vulnerabilidade, o mais rápido possível.
+        </p>
+       </td>
+       <td>
+        <p>
+         Média
+        </p>
+       </td>
+       <td>
+        <p>
+         <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.0/downloads?hl=pt-br#gkectl_latest">
+          Versões do GKE On-Prem
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+   </section>
+   <h2 data-text="22 de agosto de 2019" id="august-22-2019" tabindex="0">
+    22 de agosto de 2019
+   </h2>
+   <table>
+    <thead>
+     <tr>
+      <th width="70%">
+       Descrição
+      </th>
+      <th>
+       Gravidade
+      </th>
+      <th>
+       Notas
+      </th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td>
+       <p>
+        Recentemente, o Kubernetes descobriu uma vulnerabilidade, a
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11247">
+         CVE-2019-11247
+        </a>
+        , que possibilita que instâncias de
+        <a class="external" href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">
+         recursos personalizados
+        </a>
+        com escopo no cluster sejam usadas como se fossem objetos de namespaces existentes em todos os namespaces. Isso significa que contas de usuários e de serviço com permissões apenas do RBAC de nível namespace podem interagir com recursos personalizados com escopo no cluster. A exploração dessa vulnerabilidade exige que o invasor tenha privilégios para acessar o recurso no namespace.
+       </p>
+       <h6 data-text="O que fazer?" id="what-should-i-do_1" tabindex="0">
+        O que fazer?
+       </h6>
+       <p>
+        Recomendamos
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.0/how-to/administration/upgrading-clusters?hl=pt-br">
+         fazer upgrade
+        </a>
+        dos clusters para a versão
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.0/downloads?hl=pt-br#gkectl_latest">
+         1.0.2-gke.3
+        </a>
+        , que inclui o patch dessa vulnerabilidade, o mais rápido possível.
+       </p>
+       <h6 data-text="Qual vulnerabilidade é corrigida pelo patch?" id="what-vulnerability-is-addressed-by-this-patch" tabindex="0">
+        Qual vulnerabilidade é corrigida pelo patch?
+       </h6>
+       <p>
+        O patch reduz a seguinte vulnerabilidade:
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11247">
+         CVE-2019-11247
+        </a>
+        .
+       </p>
+      </td>
+      <td>
+       <p>
+        Média
+       </p>
+      </td>
+      <td>
+       <p>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11247">
+         CVE-2019-11247
+        </a>
+       </p>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+ </article>
+</article>

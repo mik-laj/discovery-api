@@ -4,7 +4,7 @@
    <div class="devsite-banner-message">
     <div class="devsite-banner-message-text">
      You're viewing documentation for a prior version of Migrate for Compute Engine (formerly Velostrata). You can continue using this version, or use the
-     <a href="/migrate/compute-engine/docs/">
+     <a href="/migrate/compute-engine/docs">
       current version
      </a>
      .
@@ -46,6 +46,722 @@ bug fixes, known issues, and deprecated functionality.
    </section>
    <section class="releases">
     <section class="releases">
+     <h2 data-text="August 12, 2020" id="August_12_2020" tabindex="0">
+      August 12, 2020
+     </h2>
+     <div class="release-note-product-version-title">
+      4.11
+     </div>
+     <div class="release-feature" id="ed37f897">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       V4.11 offers integration with Secret Manager. You can store Migrate for Compute Engine password and encryption key as objects in secret manager to provide a higher level of security and control. See
+       <a href="https://cloud.google.com/migrate/compute-engine/docs/4.11/how-to/configure-manager/configuring-migration-manager">
+        Configuring the migration manager
+       </a>
+       for more.
+      </p>
+     </div>
+     <div class="release-feature" id="a4f79188">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       V4.11 introduces Windows upgrade with bring-your-own-license (BYOL) feature. Migrating Windows Server 2008R2 with a customer owned license (BYOL) can upgrade to Windows Server 2012R2 using BYOL as part of the migration process. See
+       <a href="https://cloud.google.com/migrate/compute-engine/docs/4.11/how-to/upgrading-vms/upgrading-windows-vms">
+        Upgrading Windows Server VMs
+       </a>
+       for more.
+      </p>
+     </div>
+     <div class="release-feature" id="f48746c0">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       V4.11 introduces automatic deployment of Google Cloud OS Config agent to migrating VMs. This allows you to get insights on your migrated VM patch status and automate deployment of software patches to migrated VMs. See
+       <a href="https://cloud.google.com/migrate/compute-engine/docs/4.11/concepts/planning-a-migration/vm-adaptations">
+        Adapting VMs to run on Google Cloud
+       </a>
+       for more.
+      </p>
+     </div>
+     <div class="release-feature" id="51940b1e">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Migrate Backend network connectivity requirement to Migrate Manager and Cloud Extensions have been reduced, all traffic on this channel is performed over port 443 (HTTPS and TLS) instead of using port 9111. See
+       <a href="https://cloud.google.com/migrate/compute-engine/docs/4.11/concepts/planning-a-migration/network-access-requirements">
+        Network access requirements
+       </a>
+       for more.
+      </p>
+     </div>
+     <div class="release-feature" id="4828f348">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Usability enhancements in the following flows:
+      </p>
+      <ul>
+       <li>
+        Automatic adjustments of VDDK max open sessions when accessing vSphere V6.5 to avoid overloading VDDK max connections limit.
+       </li>
+       <li>
+        Support for vCenter certificate update flow.
+       </li>
+       <li>
+        Enhancement of automatic license assignment feature to offline migration flow.
+       </li>
+      </ul>
+     </div>
+     <div class="release-issue" id="72f66a52">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #160405343
+       </strong>
+       : Due to a change in behavior on the activation flow for SUSE, configuring repositories on SUSE Enterprise Linux instances post-detach now fail.
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : The following workaround can be used prior to detach (either before migration or before detach).
+      </p>
+      <ol>
+       <li>
+        <p>
+         Follow the instructions described for Situation 4 at
+         <a href="https://www.suse.com/support/kb/doc/?id=000019633">
+          https://www.suse.com/support/kb/doc/?id=000019633
+         </a>
+         to download the required packages for Compute Engine as a tar.gz file.
+        </p>
+       </li>
+       <li>
+        <p>
+         <strong>
+          For SLES 12.x
+         </strong>
+         , then run the following commands:
+        </p>
+        <pre class="prettyprint lang-sha1sum" dir="ltr" translate="no"><code dir="ltr" translate="no">tar -xf late_instance_offline_update_gce_SLE12.tar.gz
+cd x86_64/
+zypper --no-refresh --no-remote --non-interactive in *.rpm```
+</code></pre>
+       </li>
+      </ol>
+      <ol>
+       <li>
+        <p>
+         <strong>
+          For SLES 15.x
+         </strong>
+         , then run the following commands:
+        </p>
+        <pre class="prettyprint lang-sha1sum" dir="ltr" translate="no"><code dir="ltr" translate="no">tar -xf late_instance_offline_update_gce_SLE15.tar.gz
+cd x86_64/
+zypper --no-refresh --no-remote --non-interactive in *.rpm```
+</code></pre>
+       </li>
+      </ol>
+     </div>
+     <div class="release-issue" id="6b6bc162">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #149004085
+       </strong>
+       : Ubuntu 14 from on-premise may fail to start networking post detach.
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : Connect via the serial console and manually add the network interface with DHCP.
+      </p>
+     </div>
+     <div class="release-issue" id="3dcc31e4">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #145086776
+       </strong>
+       : In rare cases, older versions of RHEL7 may hang during streaming or reach a Kernel panic. This issues were resolved in later versions of RHEL7.
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : Run
+       <code dir="ltr" translate="no">
+        sudo yum update
+       </code>
+       before migrating to update the system.
+      </p>
+     </div>
+     <div class="release-issue" id="f357df09">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #145644737
+       </strong>
+       : Clones created on Azure or AWS from instances of Linux distributions that use cloud-init may experience issues in booting after installing the Linux prep package.
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : Uninstall the package before cloning and reinstall when preparing to migrate.
+      </p>
+     </div>
+     <div class="release-issue" id="ea801d44">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #143313211
+       </strong>
+       : Customer migrating RHEL 6.8 VM may experience boot issues in the cloud destination.
+      </p>
+      <p>
+       RHEL 6.x systems using kernel versions 2.6.32-xxx and using LVM may reach a kernel panic when booting in Compute Engine during migration.
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : The kernel should be upgraded to 2.6.32-754 or higher before migrating.
+      </p>
+     </div>
+     <div class="release-issue" id="fa5a4839">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #143262721
+       </strong>
+       : Migration of VM from Azure fails when data disk is greater than 4 terabytes.
+      </p>
+      <p>
+       At this time, Migrate for Compute Engine does not support migration of Azure VMs with data disks bigger than 4TB.
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : Make sure VM has data disk smaller than 4TB.
+      </p>
+     </div>
+     <div class="release-issue" id="8e499995">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #131532690
+       </strong>
+       : Run-in-cloud and migration operations may fail for Windows Server 2016 workload when Symantec Endpoint Protection (SEP) is installed. This may also happen when SEP appears to be disabled.
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : Modify workload Network interface bindings to remove the SEP option.
+      </p>
+      <ol>
+       <li>
+        Download
+        <a href="https://gallery.technet.microsoft.com/Hyper-V-Network-VSP-Bind-cf937850">
+         Microsoft Network VSP Bind (nvspbind)
+        </a>
+       </li>
+       <li>
+        Install Microsoft_Nvspbind_package.EXE into c:\temp.
+       </li>
+       <li>
+        <p>
+         Open a command prompt as an Administrator and run the following:
+        </p>
+        <p>
+         <code dir="ltr" translate="no">
+          nvspbind.exe /d * symc_teefer2
+         </code>
+        </p>
+       </li>
+      </ol>
+     </div>
+     <div class="release-issue" id="353423f8">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #131614405
+       </strong>
+       : When the Velostrata Prep RPM is installed on SUSE Linux Enterprise Server 11, the VM obtains a DHCP IP address in addition to an existing static IP configuration. This issue occurs when the VM is started on-premises in a subnet that is enabled with DHCP services.
+      </p>
+      <p>
+       <strong>
+        Note
+       </strong>
+       : The issue does not occur when the subnet has no DHCP services. There is no connectivity impact for communications with the original static IP address.
+      </p>
+     </div>
+     <div class="release-issue" id="0633fccf">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #131637800
+       </strong>
+       : After registering the Velostrata plug-in, running the Cloud Extension wizard might generate an error "XXXXXXXXXX" upon "Finish".
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : Un-register the Velostrata plug-in and restart the vSphere Web client service, then re-register the plug-in. Contact support if the issue persists.
+      </p>
+     </div>
+     <div class="release-issue" id="0e7e0388">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #131548730
+       </strong>
+       : In some cases, when a VM is moved to Run-in-Cloud while a 3rd party VM-level backup solution holds a temporary snapshot, the Migrate for Compute Engine periodic write-back operations will not complete even after the backup solution deletes the temporary snapshot. The uncommitted writes counter on the VM will show an increasing size and no consistency checkpoint will be created on-premises.
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : Select the Run On-Premises action for the VM and wait for the task to complete, which will commit all pending writes. Then select the Run-in-Cloud action again. Note that committing many pending writes may take a while. Do not use the Force option as this will result in the loss of the uncommitted writes.
+      </p>
+     </div>
+     <div class="release-issue" id="a6ea2a47">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #131605387
+       </strong>
+       : vCenter reboot causes Velostrata tasks in vCenter to disappear from UI. This is a vCenter limitation.
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : Use the Velostrata PowerShell module to monitor Velostrata managed VMs or Cloud Extensions tasks that are currently running.
+      </p>
+     </div>
+     <div class="release-issue" id="1c8e4db9">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #131638716
+       </strong>
+       : With an ESXi host in maintenance mode, if a VM is moved to cloud, the operation will fail and get stuck in the rollback phase.
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : Manually cancel the Run-in-Cloud task, migrate the VM to another ESXi host in the cluster and retry the Run-in-Cloud operation.
+      </p>
+     </div>
+     <div class="release-issue" id="5582b8fd">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #131638455
+       </strong>
+       : A Run-in-Cloud operation fails with the error - "Failed to create virtual machine snapshot. The attempted operation cannot be performed in the current state (Powered off)".
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : The VMware VM snapshot file may be pointing to a non-existent snapshot. Contact support for assistance in correcting the issue.
+      </p>
+     </div>
+     <div class="release-issue" id="0837af4e">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #131534862
+       </strong>
+       : In rare cases, after running a Workload back on-premises - Workload VMDK's are locked. In certain cases, this is due to network disruptions between the Velostrata management appliance and the ESXi host on which the workload is running.
+      </p>
+      <p>
+       <strong>
+        Note
+       </strong>
+       : The issue will resolve itself after 1-2 hours.
+      </p>
+     </div>
+     <div class="release-issue" id="84a8ef92">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #131550214
+       </strong>
+       : During Detach, the operation might fail with the following error message: "Operation was canceled".
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : Retry the Detach operation.
+      </p>
+     </div>
+     <div class="release-issue" id="304b44da">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #131650367
+       </strong>
+       : When performing a detach after a cancel detach operation, the action may fail.
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : Retry the operation.
+      </p>
+     </div>
+     <div class="release-issue" id="6ddba9de">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #131649978
+       </strong>
+       : In the event of certain system failures, Velostrata components disconnect from vCenter. In this case, an event may not be sent, resulting in the alarm either not being set properly or not being cleared properly.
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : Clear the alarm manually in vCenter.
+      </p>
+     </div>
+     <div class="release-issue" id="12b290f7">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #131532549
+       </strong>
+       : For workloads with a Windows machine using a retail license, when returning from the cloud, the license is not present.
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : Reinstall the license.
+      </p>
+     </div>
+     <div class="release-issue" id="e9a40a1f">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #131555885
+       </strong>
+       : vCenter "Export OVA" operation is available when the VM in cloud is running in cache mode, however, this operation results in a corrupted OVA.
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : Only create OVA after the detach.
+      </p>
+     </div>
+     <div class="release-issue" id="b54d64ac">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #131647857
+       </strong>
+       : In rare cases, when a cloud component instance is created and system fails before it is tagged, the instance will remain untagged. This will not allow full clean-up or repair of the CE.
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : Manually tag the instance, and then run "Repair".
+      </p>
+     </div>
+     <div class="release-issue" id="3b988c1f">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #131537125
+       </strong>
+       : Cloud Extension high availability does not work for workloads running Ubuntu OS with LVM configuration.
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : Update the kernel to 3.13.0-161 or higher.
+      </p>
+     </div>
+     <div class="release-issue" id="f9241a55">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #131560126
+       </strong>
+       : Suse12: Due to a bug in SUSE kernel older than 4.2, configurations that include BTRFS mounts with subvolumes are not supported.
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : Upgrade to SUSE version with Kernel &gt;=4.2 (SP2).
+      </p>
+     </div>
+     <div class="release-issue" id="bdcf6bdc">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #131533480
+       </strong>
+       : When using the Create Cloud Extension wizard, using an illegal HTTP proxy address will not generate a warning message.
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : Delete the CE and then create the CE with a valid HTTP proxy address.
+      </p>
+     </div>
+     <div class="release-issue" id="c16856e6">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #131647654
+       </strong>
+       : Run on-premises operation succeeded but the status is marked as failed with error "Failed to consolidate snapshots"
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : Consolidate snapshots via vCenter, and clear the error manually.
+      </p>
+     </div>
+     <div class="release-issue" id="9fa282c4">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #131558198
+       </strong>
+       : PowerShell client for cloud to cloud Runbook reports errors when running on PowerShell 3.0
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : Upgrade to PowerShell 4.0
+      </p>
+     </div>
+     <div class="release-issue" id="7da32aac">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #131533056
+       </strong>
+       : When migrating RHEL 7.4 from AWS to Google Cloud, Google Cloud agent will not be installed automatically.
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : Manually remove the AWS agent and install Google Cloud agent
+      </p>
+     </div>
+     <div class="release-issue" id="85bfa11e">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #131532713
+       </strong>
+       : After Offline Migration of Windows 2003R2, if a NIC is manually deleted, it may be impossible to auto-detect and automatically reinstall it.
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : The VM storage can be attached to a different VM, and the NIC Registry entry could be imported manually using a similar VM as a reference. Contact support for assistance.
+      </p>
+     </div>
+     <div class="release-issue" id="6d42ed0c">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #131532666
+       </strong>
+       : Linux versions running with kernel version 2.6.32 may experience a kernel panic on ephemeral storage access failures; these are more likely while streaming over iSCSI.
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : Upgrade your kernel. The issue will also reduce in likelihood after Detach.
+      </p>
+     </div>
+     <div class="release-issue" id="7fb83478">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #131532846
+       </strong>
+       : Certain firewalls and anti-viruses may cause Windows VMs to fail when moved to cloud by blocking iSCSI traffic.
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : Disable the affecting service while migrating and reinstall after Detach.
+      </p>
+     </div>
+     <div class="release-issue" id="7add70cf">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #131532882
+       </strong>
+       : In certain cases, initiating Run in Cloud during a Windows update may cause the update to terminate abruptly and cause a failure to boot in the cloud.
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : Allow the system to finish Windows update and/or suspend Windows updates before migrating.
+      </p>
+     </div>
+     <div class="release-issue" id="3b032945">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #135664281
+       </strong>
+       : When completing or canceling Azure to Google Cloud migration, if Velostrata Management failed to start the importer, Velostrata-created resources may be left in the original instance's resource group.
+      </p>
+     </div>
+     <div class="release-issue" id="fc4504f4">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #133137658
+       </strong>
+       : Scenario: No network connection between Migration Manager and VSphere
+      </p>
+      <p>
+       Customer Impact: RunInCloud task will stay stuck due to failure in call to getReadSessions on VSphere.
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : Fix the network connection. If not, cancel the task and try again.
+      </p>
+     </div>
+     <div class="release-issue" id="1131df2c">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #135573857
+       </strong>
+       : Scenario: When moving a VM back on-prem with "force" flag, failure to consolidate snapshot will cause the VM to remain as managed by Velostrata. RunInCloud on the same VM may fail since it is not allowed on managed VMs.
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : Wait a couple of minutes and try again.
+      </p>
+     </div>
+     <div class="release-issue" id="f8af421c">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        #137082702
+       </strong>
+       : In rare cases, the Cancel detach operation succeeds but the VM instance will fail to start.
+      </p>
+      <p>
+       <strong>
+        Workaround
+       </strong>
+       : Move the instance back and move it again to the cloud.
+      </p>
+     </div>
      <h2 data-text="December 20, 2019" id="December_20_2019" tabindex="0">
       December 20, 2019
      </h2>

@@ -7,27 +7,46 @@
             }
         }
     },
-    "basePath": "/games/v1/",
-    "baseUrl": "https://www.googleapis.com/games/v1/",
-    "batchPath": "batch/games/v1",
+    "basePath": "",
+    "baseUrl": "https://games.googleapis.com/",
+    "batchPath": "batch",
     "canonicalName": "Games",
     "discoveryVersion": "v1",
-    "documentationLink": "https://developers.google.com/games/services/",
+    "documentationLink": "https://developers.google.com/games/",
     "icons": {
-        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
-        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+        "x16": "http://www.google.com/images/icons/product/search-16.gif",
+        "x32": "http://www.google.com/images/icons/product/search-32.gif"
     },
     "id": "games:v1",
     "kind": "discovery#restDescription",
+    "mtlsRootUrl": "https://games.mtls.googleapis.com/",
     "name": "games",
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "$.xgafv": {
+            "enum": [
+                "1",
+                "2"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "location": "query",
+            "type": "string"
+        },
         "alt": {
             "default": "json",
             "enum": [
-                "json"
+                "json",
+                "media",
+                "proto"
             ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
             "location": "query",
             "type": "string"
         },
@@ -52,7 +71,11 @@
             "location": "query",
             "type": "string"
         },
-        "userIp": {
+        "uploadType": {
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
             "location": "query",
             "type": "string"
         }
@@ -62,8 +85,10 @@
         "achievementDefinitions": {
             "methods": {
                 "list": {
+                    "flatPath": "games/v1/achievements",
                     "httpMethod": "GET",
                     "id": "games.achievementDefinitions.list",
+                    "parameterOrder": [],
                     "parameters": {
                         "language": {
                             "location": "query",
@@ -72,8 +97,6 @@
                         "maxResults": {
                             "format": "int32",
                             "location": "query",
-                            "maximum": "200",
-                            "minimum": "1",
                             "type": "integer"
                         },
                         "pageToken": {
@@ -81,7 +104,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "achievements",
+                    "path": "games/v1/achievements",
                     "response": {
                         "$ref": "AchievementDefinitionsListResponse"
                     },
@@ -94,6 +117,7 @@
         "achievements": {
             "methods": {
                 "increment": {
+                    "flatPath": "games/v1/achievements/{achievementId}/increment",
                     "httpMethod": "POST",
                     "id": "games.achievements.increment",
                     "parameterOrder": [
@@ -114,12 +138,11 @@
                         "stepsToIncrement": {
                             "format": "int32",
                             "location": "query",
-                            "minimum": "1",
                             "required": true,
                             "type": "integer"
                         }
                     },
-                    "path": "achievements/{achievementId}/increment",
+                    "path": "games/v1/achievements/{achievementId}/increment",
                     "response": {
                         "$ref": "AchievementIncrementResponse"
                     },
@@ -128,6 +151,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "games/v1/players/{playerId}/achievements",
                     "httpMethod": "GET",
                     "id": "games.achievements.list",
                     "parameterOrder": [
@@ -141,8 +165,6 @@
                         "maxResults": {
                             "format": "int32",
                             "location": "query",
-                            "maximum": "200",
-                            "minimum": "1",
                             "type": "integer"
                         },
                         "pageToken": {
@@ -165,7 +187,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "players/{playerId}/achievements",
+                    "path": "games/v1/players/{playerId}/achievements",
                     "response": {
                         "$ref": "PlayerAchievementListResponse"
                     },
@@ -174,6 +196,7 @@
                     ]
                 },
                 "reveal": {
+                    "flatPath": "games/v1/achievements/{achievementId}/reveal",
                     "httpMethod": "POST",
                     "id": "games.achievements.reveal",
                     "parameterOrder": [
@@ -186,7 +209,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "achievements/{achievementId}/reveal",
+                    "path": "games/v1/achievements/{achievementId}/reveal",
                     "response": {
                         "$ref": "AchievementRevealResponse"
                     },
@@ -195,6 +218,7 @@
                     ]
                 },
                 "setStepsAtLeast": {
+                    "flatPath": "games/v1/achievements/{achievementId}/setStepsAtLeast",
                     "httpMethod": "POST",
                     "id": "games.achievements.setStepsAtLeast",
                     "parameterOrder": [
@@ -210,12 +234,11 @@
                         "steps": {
                             "format": "int32",
                             "location": "query",
-                            "minimum": "1",
                             "required": true,
                             "type": "integer"
                         }
                     },
-                    "path": "achievements/{achievementId}/setStepsAtLeast",
+                    "path": "games/v1/achievements/{achievementId}/setStepsAtLeast",
                     "response": {
                         "$ref": "AchievementSetStepsAtLeastResponse"
                     },
@@ -224,6 +247,7 @@
                     ]
                 },
                 "unlock": {
+                    "flatPath": "games/v1/achievements/{achievementId}/unlock",
                     "httpMethod": "POST",
                     "id": "games.achievements.unlock",
                     "parameterOrder": [
@@ -236,7 +260,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "achievements/{achievementId}/unlock",
+                    "path": "games/v1/achievements/{achievementId}/unlock",
                     "response": {
                         "$ref": "AchievementUnlockResponse"
                     },
@@ -245,9 +269,12 @@
                     ]
                 },
                 "updateMultiple": {
+                    "flatPath": "games/v1/achievements/updateMultiple",
                     "httpMethod": "POST",
                     "id": "games.achievements.updateMultiple",
-                    "path": "achievements/updateMultiple",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "games/v1/achievements/updateMultiple",
                     "request": {
                         "$ref": "AchievementUpdateMultipleRequest"
                     },
@@ -263,6 +290,7 @@
         "applications": {
             "methods": {
                 "get": {
+                    "flatPath": "games/v1/applications/{applicationId}",
                     "httpMethod": "GET",
                     "id": "games.applications.get",
                     "parameterOrder": [
@@ -280,6 +308,7 @@
                         },
                         "platformType": {
                             "enum": [
+                                "PLATFORM_TYPE_UNSPECIFIED",
                                 "ANDROID",
                                 "IOS",
                                 "WEB_APP"
@@ -288,7 +317,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "applications/{applicationId}",
+                    "path": "games/v1/applications/{applicationId}",
                     "response": {
                         "$ref": "Application"
                     },
@@ -297,14 +326,18 @@
                     ]
                 },
                 "played": {
+                    "flatPath": "games/v1/applications/played",
                     "httpMethod": "POST",
                     "id": "games.applications.played",
-                    "path": "applications/played",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "games/v1/applications/played",
                     "scopes": [
                         "https://www.googleapis.com/auth/games"
                     ]
                 },
                 "verify": {
+                    "flatPath": "games/v1/applications/{applicationId}/verify",
                     "httpMethod": "GET",
                     "id": "games.applications.verify",
                     "parameterOrder": [
@@ -317,7 +350,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "applications/{applicationId}/verify",
+                    "path": "games/v1/applications/{applicationId}/verify",
                     "response": {
                         "$ref": "ApplicationVerifyResponse"
                     },
@@ -330,8 +363,10 @@
         "events": {
             "methods": {
                 "listByPlayer": {
+                    "flatPath": "games/v1/events",
                     "httpMethod": "GET",
                     "id": "games.events.listByPlayer",
+                    "parameterOrder": [],
                     "parameters": {
                         "language": {
                             "location": "query",
@@ -340,8 +375,6 @@
                         "maxResults": {
                             "format": "int32",
                             "location": "query",
-                            "maximum": "100",
-                            "minimum": "1",
                             "type": "integer"
                         },
                         "pageToken": {
@@ -349,7 +382,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "events",
+                    "path": "games/v1/events",
                     "response": {
                         "$ref": "PlayerEventListResponse"
                     },
@@ -358,8 +391,10 @@
                     ]
                 },
                 "listDefinitions": {
+                    "flatPath": "games/v1/eventDefinitions",
                     "httpMethod": "GET",
                     "id": "games.events.listDefinitions",
+                    "parameterOrder": [],
                     "parameters": {
                         "language": {
                             "location": "query",
@@ -368,8 +403,6 @@
                         "maxResults": {
                             "format": "int32",
                             "location": "query",
-                            "maximum": "100",
-                            "minimum": "1",
                             "type": "integer"
                         },
                         "pageToken": {
@@ -377,7 +410,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "eventDefinitions",
+                    "path": "games/v1/eventDefinitions",
                     "response": {
                         "$ref": "EventDefinitionListResponse"
                     },
@@ -386,15 +419,17 @@
                     ]
                 },
                 "record": {
+                    "flatPath": "games/v1/events",
                     "httpMethod": "POST",
                     "id": "games.events.record",
+                    "parameterOrder": [],
                     "parameters": {
                         "language": {
                             "location": "query",
                             "type": "string"
                         }
                     },
-                    "path": "events",
+                    "path": "games/v1/events",
                     "request": {
                         "$ref": "EventRecordRequest"
                     },
@@ -410,6 +445,7 @@
         "leaderboards": {
             "methods": {
                 "get": {
+                    "flatPath": "games/v1/leaderboards/{leaderboardId}",
                     "httpMethod": "GET",
                     "id": "games.leaderboards.get",
                     "parameterOrder": [
@@ -426,7 +462,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "leaderboards/{leaderboardId}",
+                    "path": "games/v1/leaderboards/{leaderboardId}",
                     "response": {
                         "$ref": "Leaderboard"
                     },
@@ -435,8 +471,10 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "games/v1/leaderboards",
                     "httpMethod": "GET",
                     "id": "games.leaderboards.list",
+                    "parameterOrder": [],
                     "parameters": {
                         "language": {
                             "location": "query",
@@ -445,8 +483,6 @@
                         "maxResults": {
                             "format": "int32",
                             "location": "query",
-                            "maximum": "200",
-                            "minimum": "1",
                             "type": "integer"
                         },
                         "pageToken": {
@@ -454,7 +490,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "leaderboards",
+                    "path": "games/v1/leaderboards",
                     "response": {
                         "$ref": "LeaderboardListResponse"
                     },
@@ -467,9 +503,12 @@
         "metagame": {
             "methods": {
                 "getMetagameConfig": {
+                    "flatPath": "games/v1/metagameConfig",
                     "httpMethod": "GET",
                     "id": "games.metagame.getMetagameConfig",
-                    "path": "metagameConfig",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "games/v1/metagameConfig",
                     "response": {
                         "$ref": "MetagameConfig"
                     },
@@ -478,6 +517,7 @@
                     ]
                 },
                 "listCategoriesByPlayer": {
+                    "flatPath": "games/v1/players/{playerId}/categories/{collection}",
                     "httpMethod": "GET",
                     "id": "games.metagame.listCategoriesByPlayer",
                     "parameterOrder": [
@@ -487,7 +527,8 @@
                     "parameters": {
                         "collection": {
                             "enum": [
-                                "all"
+                                "COLLECTION_UNSPECIFIED",
+                                "ALL"
                             ],
                             "location": "path",
                             "required": true,
@@ -500,8 +541,6 @@
                         "maxResults": {
                             "format": "int32",
                             "location": "query",
-                            "maximum": "100",
-                            "minimum": "1",
                             "type": "integer"
                         },
                         "pageToken": {
@@ -514,7 +553,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "players/{playerId}/categories/{collection}",
+                    "path": "games/v1/players/{playerId}/categories/{collection}",
                     "response": {
                         "$ref": "CategoryListResponse"
                     },
@@ -527,6 +566,7 @@
         "players": {
             "methods": {
                 "get": {
+                    "flatPath": "games/v1/players/{playerId}",
                     "httpMethod": "GET",
                     "id": "games.players.get",
                     "parameterOrder": [
@@ -543,7 +583,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "players/{playerId}",
+                    "path": "games/v1/players/{playerId}",
                     "response": {
                         "$ref": "Player"
                     },
@@ -552,6 +592,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "games/v1/players/me/players/{collection}",
                     "httpMethod": "GET",
                     "id": "games.players.list",
                     "parameterOrder": [
@@ -560,11 +601,9 @@
                     "parameters": {
                         "collection": {
                             "enum": [
-                                "connected",
-                                "friends_all",
-                                "playedWith",
-                                "played_with",
-                                "visible"
+                                "CONNECTED",
+                                "VISIBLE",
+                                "FRIENDS_ALL"
                             ],
                             "location": "path",
                             "required": true,
@@ -577,8 +616,6 @@
                         "maxResults": {
                             "format": "int32",
                             "location": "query",
-                            "maximum": "50",
-                            "minimum": "1",
                             "type": "integer"
                         },
                         "pageToken": {
@@ -586,35 +623,9 @@
                             "type": "string"
                         }
                     },
-                    "path": "players/me/players/{collection}",
+                    "path": "games/v1/players/me/players/{collection}",
                     "response": {
                         "$ref": "PlayerListResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/games"
-                    ]
-                }
-            }
-        },
-        "pushtokens": {
-            "methods": {
-                "remove": {
-                    "httpMethod": "POST",
-                    "id": "games.pushtokens.remove",
-                    "path": "pushtokens/remove",
-                    "request": {
-                        "$ref": "PushTokenId"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/games"
-                    ]
-                },
-                "update": {
-                    "httpMethod": "PUT",
-                    "id": "games.pushtokens.update",
-                    "path": "pushtokens",
-                    "request": {
-                        "$ref": "PushToken"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/games"
@@ -625,6 +636,7 @@
         "revisions": {
             "methods": {
                 "check": {
+                    "flatPath": "games/v1/revisions/check",
                     "httpMethod": "GET",
                     "id": "games.revisions.check",
                     "parameterOrder": [
@@ -637,213 +649,9 @@
                             "type": "string"
                         }
                     },
-                    "path": "revisions/check",
+                    "path": "games/v1/revisions/check",
                     "response": {
                         "$ref": "RevisionCheckResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/games"
-                    ]
-                }
-            }
-        },
-        "rooms": {
-            "methods": {
-                "create": {
-                    "httpMethod": "POST",
-                    "id": "games.rooms.create",
-                    "parameters": {
-                        "language": {
-                            "location": "query",
-                            "type": "string"
-                        }
-                    },
-                    "path": "rooms/create",
-                    "request": {
-                        "$ref": "RoomCreateRequest"
-                    },
-                    "response": {
-                        "$ref": "Room"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/games"
-                    ]
-                },
-                "decline": {
-                    "httpMethod": "POST",
-                    "id": "games.rooms.decline",
-                    "parameterOrder": [
-                        "roomId"
-                    ],
-                    "parameters": {
-                        "language": {
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "roomId": {
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "rooms/{roomId}/decline",
-                    "response": {
-                        "$ref": "Room"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/games"
-                    ]
-                },
-                "dismiss": {
-                    "httpMethod": "POST",
-                    "id": "games.rooms.dismiss",
-                    "parameterOrder": [
-                        "roomId"
-                    ],
-                    "parameters": {
-                        "roomId": {
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "rooms/{roomId}/dismiss",
-                    "scopes": [
-                        "https://www.googleapis.com/auth/games"
-                    ]
-                },
-                "get": {
-                    "httpMethod": "GET",
-                    "id": "games.rooms.get",
-                    "parameterOrder": [
-                        "roomId"
-                    ],
-                    "parameters": {
-                        "language": {
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "roomId": {
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "rooms/{roomId}",
-                    "response": {
-                        "$ref": "Room"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/games"
-                    ]
-                },
-                "join": {
-                    "httpMethod": "POST",
-                    "id": "games.rooms.join",
-                    "parameterOrder": [
-                        "roomId"
-                    ],
-                    "parameters": {
-                        "language": {
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "roomId": {
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "rooms/{roomId}/join",
-                    "request": {
-                        "$ref": "RoomJoinRequest"
-                    },
-                    "response": {
-                        "$ref": "Room"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/games"
-                    ]
-                },
-                "leave": {
-                    "httpMethod": "POST",
-                    "id": "games.rooms.leave",
-                    "parameterOrder": [
-                        "roomId"
-                    ],
-                    "parameters": {
-                        "language": {
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "roomId": {
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "rooms/{roomId}/leave",
-                    "request": {
-                        "$ref": "RoomLeaveRequest"
-                    },
-                    "response": {
-                        "$ref": "Room"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/games"
-                    ]
-                },
-                "list": {
-                    "httpMethod": "GET",
-                    "id": "games.rooms.list",
-                    "parameters": {
-                        "language": {
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "maxResults": {
-                            "format": "int32",
-                            "location": "query",
-                            "maximum": "500",
-                            "minimum": "1",
-                            "type": "integer"
-                        },
-                        "pageToken": {
-                            "location": "query",
-                            "type": "string"
-                        }
-                    },
-                    "path": "rooms",
-                    "response": {
-                        "$ref": "RoomList"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/games"
-                    ]
-                },
-                "reportStatus": {
-                    "httpMethod": "POST",
-                    "id": "games.rooms.reportStatus",
-                    "parameterOrder": [
-                        "roomId"
-                    ],
-                    "parameters": {
-                        "language": {
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "roomId": {
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "rooms/{roomId}/reportstatus",
-                    "request": {
-                        "$ref": "RoomP2PStatuses"
-                    },
-                    "response": {
-                        "$ref": "RoomStatus"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/games"
@@ -854,6 +662,7 @@
         "scores": {
             "methods": {
                 "get": {
+                    "flatPath": "games/v1/players/{playerId}/leaderboards/{leaderboardId}/scores/{timeSpan}",
                     "httpMethod": "GET",
                     "id": "games.scores.get",
                     "parameterOrder": [
@@ -864,9 +673,11 @@
                     "parameters": {
                         "includeRankType": {
                             "enum": [
+                                "INCLUDE_RANK_TYPE_UNSPECIFIED",
                                 "ALL",
                                 "PUBLIC",
-                                "SOCIAL"
+                                "SOCIAL",
+                                "FRIENDS"
                             ],
                             "location": "query",
                             "type": "string"
@@ -883,8 +694,6 @@
                         "maxResults": {
                             "format": "int32",
                             "location": "query",
-                            "maximum": "30",
-                            "minimum": "1",
                             "type": "integer"
                         },
                         "pageToken": {
@@ -898,17 +707,18 @@
                         },
                         "timeSpan": {
                             "enum": [
+                                "SCORE_TIME_SPAN_UNSPECIFIED",
                                 "ALL",
                                 "ALL_TIME",
-                                "DAILY",
-                                "WEEKLY"
+                                "WEEKLY",
+                                "DAILY"
                             ],
                             "location": "path",
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "players/{playerId}/leaderboards/{leaderboardId}/scores/{timeSpan}",
+                    "path": "games/v1/players/{playerId}/leaderboards/{leaderboardId}/scores/{timeSpan}",
                     "response": {
                         "$ref": "PlayerLeaderboardScoreListResponse"
                     },
@@ -917,6 +727,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "games/v1/leaderboards/{leaderboardId}/scores/{collection}",
                     "httpMethod": "GET",
                     "id": "games.scores.list",
                     "parameterOrder": [
@@ -927,8 +738,10 @@
                     "parameters": {
                         "collection": {
                             "enum": [
+                                "SCORE_COLLECTION_UNSPECIFIED",
                                 "PUBLIC",
-                                "SOCIAL"
+                                "SOCIAL",
+                                "FRIENDS"
                             ],
                             "location": "path",
                             "required": true,
@@ -946,8 +759,6 @@
                         "maxResults": {
                             "format": "int32",
                             "location": "query",
-                            "maximum": "30",
-                            "minimum": "1",
                             "type": "integer"
                         },
                         "pageToken": {
@@ -956,16 +767,17 @@
                         },
                         "timeSpan": {
                             "enum": [
+                                "SCORE_TIME_SPAN_UNSPECIFIED",
                                 "ALL_TIME",
-                                "DAILY",
-                                "WEEKLY"
+                                "WEEKLY",
+                                "DAILY"
                             ],
                             "location": "query",
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "leaderboards/{leaderboardId}/scores/{collection}",
+                    "path": "games/v1/leaderboards/{leaderboardId}/scores/{collection}",
                     "response": {
                         "$ref": "LeaderboardScores"
                     },
@@ -974,6 +786,7 @@
                     ]
                 },
                 "listWindow": {
+                    "flatPath": "games/v1/leaderboards/{leaderboardId}/window/{collection}",
                     "httpMethod": "GET",
                     "id": "games.scores.listWindow",
                     "parameterOrder": [
@@ -984,8 +797,10 @@
                     "parameters": {
                         "collection": {
                             "enum": [
+                                "SCORE_COLLECTION_UNSPECIFIED",
                                 "PUBLIC",
-                                "SOCIAL"
+                                "SOCIAL",
+                                "FRIENDS"
                             ],
                             "location": "path",
                             "required": true,
@@ -1003,8 +818,6 @@
                         "maxResults": {
                             "format": "int32",
                             "location": "query",
-                            "maximum": "30",
-                            "minimum": "1",
                             "type": "integer"
                         },
                         "pageToken": {
@@ -1022,16 +835,17 @@
                         },
                         "timeSpan": {
                             "enum": [
+                                "SCORE_TIME_SPAN_UNSPECIFIED",
                                 "ALL_TIME",
-                                "DAILY",
-                                "WEEKLY"
+                                "WEEKLY",
+                                "DAILY"
                             ],
                             "location": "query",
                             "required": true,
                             "type": "string"
                         }
                     },
-                    "path": "leaderboards/{leaderboardId}/window/{collection}",
+                    "path": "games/v1/leaderboards/{leaderboardId}/window/{collection}",
                     "response": {
                         "$ref": "LeaderboardScores"
                     },
@@ -1040,6 +854,7 @@
                     ]
                 },
                 "submit": {
+                    "flatPath": "games/v1/leaderboards/{leaderboardId}/scores",
                     "httpMethod": "POST",
                     "id": "games.scores.submit",
                     "parameterOrder": [
@@ -1068,7 +883,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "leaderboards/{leaderboardId}/scores",
+                    "path": "games/v1/leaderboards/{leaderboardId}/scores",
                     "response": {
                         "$ref": "PlayerScoreResponse"
                     },
@@ -1077,15 +892,17 @@
                     ]
                 },
                 "submitMultiple": {
+                    "flatPath": "games/v1/leaderboards/scores",
                     "httpMethod": "POST",
                     "id": "games.scores.submitMultiple",
+                    "parameterOrder": [],
                     "parameters": {
                         "language": {
                             "location": "query",
                             "type": "string"
                         }
                     },
-                    "path": "leaderboards/scores",
+                    "path": "games/v1/leaderboards/scores",
                     "request": {
                         "$ref": "PlayerScoreSubmissionList"
                     },
@@ -1101,6 +918,7 @@
         "snapshots": {
             "methods": {
                 "get": {
+                    "flatPath": "games/v1/snapshots/{snapshotId}",
                     "httpMethod": "GET",
                     "id": "games.snapshots.get",
                     "parameterOrder": [
@@ -1117,7 +935,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "snapshots/{snapshotId}",
+                    "path": "games/v1/snapshots/{snapshotId}",
                     "response": {
                         "$ref": "Snapshot"
                     },
@@ -1127,6 +945,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "games/v1/players/{playerId}/snapshots",
                     "httpMethod": "GET",
                     "id": "games.snapshots.list",
                     "parameterOrder": [
@@ -1140,8 +959,6 @@
                         "maxResults": {
                             "format": "int32",
                             "location": "query",
-                            "maximum": "25",
-                            "minimum": "1",
                             "type": "integer"
                         },
                         "pageToken": {
@@ -1154,7 +971,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "players/{playerId}/snapshots",
+                    "path": "games/v1/players/{playerId}/snapshots",
                     "response": {
                         "$ref": "SnapshotListResponse"
                     },
@@ -1165,363 +982,17 @@
                 }
             }
         },
-        "turnBasedMatches": {
+        "stats": {
             "methods": {
-                "cancel": {
-                    "httpMethod": "PUT",
-                    "id": "games.turnBasedMatches.cancel",
-                    "parameterOrder": [
-                        "matchId"
-                    ],
-                    "parameters": {
-                        "matchId": {
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "turnbasedmatches/{matchId}/cancel",
-                    "scopes": [
-                        "https://www.googleapis.com/auth/games"
-                    ]
-                },
-                "create": {
-                    "httpMethod": "POST",
-                    "id": "games.turnBasedMatches.create",
-                    "parameters": {
-                        "language": {
-                            "location": "query",
-                            "type": "string"
-                        }
-                    },
-                    "path": "turnbasedmatches/create",
-                    "request": {
-                        "$ref": "TurnBasedMatchCreateRequest"
-                    },
-                    "response": {
-                        "$ref": "TurnBasedMatch"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/games"
-                    ]
-                },
-                "decline": {
-                    "httpMethod": "PUT",
-                    "id": "games.turnBasedMatches.decline",
-                    "parameterOrder": [
-                        "matchId"
-                    ],
-                    "parameters": {
-                        "language": {
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "matchId": {
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "turnbasedmatches/{matchId}/decline",
-                    "response": {
-                        "$ref": "TurnBasedMatch"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/games"
-                    ]
-                },
-                "dismiss": {
-                    "httpMethod": "PUT",
-                    "id": "games.turnBasedMatches.dismiss",
-                    "parameterOrder": [
-                        "matchId"
-                    ],
-                    "parameters": {
-                        "matchId": {
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "turnbasedmatches/{matchId}/dismiss",
-                    "scopes": [
-                        "https://www.googleapis.com/auth/games"
-                    ]
-                },
-                "finish": {
-                    "httpMethod": "PUT",
-                    "id": "games.turnBasedMatches.finish",
-                    "parameterOrder": [
-                        "matchId"
-                    ],
-                    "parameters": {
-                        "language": {
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "matchId": {
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "turnbasedmatches/{matchId}/finish",
-                    "request": {
-                        "$ref": "TurnBasedMatchResults"
-                    },
-                    "response": {
-                        "$ref": "TurnBasedMatch"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/games"
-                    ]
-                },
                 "get": {
+                    "flatPath": "games/v1/stats",
                     "httpMethod": "GET",
-                    "id": "games.turnBasedMatches.get",
-                    "parameterOrder": [
-                        "matchId"
-                    ],
-                    "parameters": {
-                        "includeMatchData": {
-                            "location": "query",
-                            "type": "boolean"
-                        },
-                        "language": {
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "matchId": {
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "turnbasedmatches/{matchId}",
+                    "id": "games.stats.get",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "games/v1/stats",
                     "response": {
-                        "$ref": "TurnBasedMatch"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/games"
-                    ]
-                },
-                "join": {
-                    "httpMethod": "PUT",
-                    "id": "games.turnBasedMatches.join",
-                    "parameterOrder": [
-                        "matchId"
-                    ],
-                    "parameters": {
-                        "language": {
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "matchId": {
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "turnbasedmatches/{matchId}/join",
-                    "response": {
-                        "$ref": "TurnBasedMatch"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/games"
-                    ]
-                },
-                "leave": {
-                    "httpMethod": "PUT",
-                    "id": "games.turnBasedMatches.leave",
-                    "parameterOrder": [
-                        "matchId"
-                    ],
-                    "parameters": {
-                        "language": {
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "matchId": {
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "turnbasedmatches/{matchId}/leave",
-                    "response": {
-                        "$ref": "TurnBasedMatch"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/games"
-                    ]
-                },
-                "leaveTurn": {
-                    "httpMethod": "PUT",
-                    "id": "games.turnBasedMatches.leaveTurn",
-                    "parameterOrder": [
-                        "matchId",
-                        "matchVersion"
-                    ],
-                    "parameters": {
-                        "language": {
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "matchId": {
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        },
-                        "matchVersion": {
-                            "format": "int32",
-                            "location": "query",
-                            "required": true,
-                            "type": "integer"
-                        },
-                        "pendingParticipantId": {
-                            "location": "query",
-                            "type": "string"
-                        }
-                    },
-                    "path": "turnbasedmatches/{matchId}/leaveTurn",
-                    "response": {
-                        "$ref": "TurnBasedMatch"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/games"
-                    ]
-                },
-                "list": {
-                    "httpMethod": "GET",
-                    "id": "games.turnBasedMatches.list",
-                    "parameters": {
-                        "includeMatchData": {
-                            "location": "query",
-                            "type": "boolean"
-                        },
-                        "language": {
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "maxCompletedMatches": {
-                            "format": "int32",
-                            "location": "query",
-                            "maximum": "500",
-                            "minimum": "0",
-                            "type": "integer"
-                        },
-                        "maxResults": {
-                            "format": "int32",
-                            "location": "query",
-                            "maximum": "500",
-                            "minimum": "1",
-                            "type": "integer"
-                        },
-                        "pageToken": {
-                            "location": "query",
-                            "type": "string"
-                        }
-                    },
-                    "path": "turnbasedmatches",
-                    "response": {
-                        "$ref": "TurnBasedMatchList"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/games"
-                    ]
-                },
-                "rematch": {
-                    "httpMethod": "POST",
-                    "id": "games.turnBasedMatches.rematch",
-                    "parameterOrder": [
-                        "matchId"
-                    ],
-                    "parameters": {
-                        "language": {
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "matchId": {
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        },
-                        "requestId": {
-                            "format": "int64",
-                            "location": "query",
-                            "type": "string"
-                        }
-                    },
-                    "path": "turnbasedmatches/{matchId}/rematch",
-                    "response": {
-                        "$ref": "TurnBasedMatchRematch"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/games"
-                    ]
-                },
-                "sync": {
-                    "httpMethod": "GET",
-                    "id": "games.turnBasedMatches.sync",
-                    "parameters": {
-                        "includeMatchData": {
-                            "location": "query",
-                            "type": "boolean"
-                        },
-                        "language": {
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "maxCompletedMatches": {
-                            "format": "int32",
-                            "location": "query",
-                            "maximum": "500",
-                            "minimum": "0",
-                            "type": "integer"
-                        },
-                        "maxResults": {
-                            "format": "int32",
-                            "location": "query",
-                            "maximum": "500",
-                            "minimum": "1",
-                            "type": "integer"
-                        },
-                        "pageToken": {
-                            "location": "query",
-                            "type": "string"
-                        }
-                    },
-                    "path": "turnbasedmatches/sync",
-                    "response": {
-                        "$ref": "TurnBasedMatchSync"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/games"
-                    ]
-                },
-                "takeTurn": {
-                    "httpMethod": "PUT",
-                    "id": "games.turnBasedMatches.takeTurn",
-                    "parameterOrder": [
-                        "matchId"
-                    ],
-                    "parameters": {
-                        "language": {
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "matchId": {
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "turnbasedmatches/{matchId}/turn",
-                    "request": {
-                        "$ref": "TurnBasedMatchTurn"
-                    },
-                    "response": {
-                        "$ref": "TurnBasedMatch"
+                        "$ref": "StatsResponse"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/games"
@@ -1530,12 +1001,17 @@
             }
         }
     },
-    "rootUrl": "https://www.googleapis.com/",
+    "rootUrl": "https://games.googleapis.com/",
     "schemas": {
         "AchievementDefinition": {
             "id": "AchievementDefinition",
             "properties": {
                 "achievementType": {
+                    "enum": [
+                        "ACHIEVEMENT_TYPE_UNSPECIFIED",
+                        "STANDARD",
+                        "INCREMENTAL"
+                    ],
                     "type": "string"
                 },
                 "experiencePoints": {
@@ -1549,6 +1025,12 @@
                     "type": "string"
                 },
                 "initialState": {
+                    "enum": [
+                        "INITIAL_ACHIEVEMENT_STATE_UNSPECIFIED",
+                        "HIDDEN",
+                        "REVEALED",
+                        "UNLOCKED"
+                    ],
                     "type": "string"
                 },
                 "isRevealedIconUrlDefault": {
@@ -1558,7 +1040,6 @@
                     "type": "boolean"
                 },
                 "kind": {
-                    "default": "games#achievementDefinition",
                     "type": "string"
                 },
                 "name": {
@@ -1587,7 +1068,6 @@
                     "type": "array"
                 },
                 "kind": {
-                    "default": "games#achievementDefinitionsListResponse",
                     "type": "string"
                 },
                 "nextPageToken": {
@@ -1604,7 +1084,6 @@
                     "type": "integer"
                 },
                 "kind": {
-                    "default": "games#achievementIncrementResponse",
                     "type": "string"
                 },
                 "newlyUnlocked": {
@@ -1617,10 +1096,14 @@
             "id": "AchievementRevealResponse",
             "properties": {
                 "currentState": {
+                    "enum": [
+                        "REVEAL_ACHIEVEMENT_STATE_UNSPECIFIED",
+                        "REVEALED",
+                        "UNLOCKED"
+                    ],
                     "type": "string"
                 },
                 "kind": {
-                    "default": "games#achievementRevealResponse",
                     "type": "string"
                 }
             },
@@ -1634,7 +1117,6 @@
                     "type": "integer"
                 },
                 "kind": {
-                    "default": "games#achievementSetStepsAtLeastResponse",
                     "type": "string"
                 },
                 "newlyUnlocked": {
@@ -1647,7 +1129,6 @@
             "id": "AchievementUnlockResponse",
             "properties": {
                 "kind": {
-                    "default": "games#achievementUnlockResponse",
                     "type": "string"
                 },
                 "newlyUnlocked": {
@@ -1660,7 +1141,6 @@
             "id": "AchievementUpdateMultipleRequest",
             "properties": {
                 "kind": {
-                    "default": "games#achievementUpdateMultipleRequest",
                     "type": "string"
                 },
                 "updates": {
@@ -1676,7 +1156,6 @@
             "id": "AchievementUpdateMultipleResponse",
             "properties": {
                 "kind": {
-                    "default": "games#achievementUpdateMultipleResponse",
                     "type": "string"
                 },
                 "updatedAchievements": {
@@ -1698,13 +1177,19 @@
                     "$ref": "GamesAchievementIncrement"
                 },
                 "kind": {
-                    "default": "games#achievementUpdateRequest",
                     "type": "string"
                 },
                 "setStepsAtLeastPayload": {
                     "$ref": "GamesAchievementSetStepsAtLeast"
                 },
                 "updateType": {
+                    "enum": [
+                        "ACHIEVEMENT_UPDATE_TYPE_UNSPECIFIED",
+                        "REVEAL",
+                        "UNLOCK",
+                        "INCREMENT",
+                        "SET_STEPS_AT_LEAST"
+                    ],
                     "type": "string"
                 }
             },
@@ -1717,6 +1202,12 @@
                     "type": "string"
                 },
                 "currentState": {
+                    "enum": [
+                        "UPDATED_ACHIEVEMENT_STATE_UNSPECIFIED",
+                        "HIDDEN",
+                        "REVEALED",
+                        "UNLOCKED"
+                    ],
                     "type": "string"
                 },
                 "currentSteps": {
@@ -1724,7 +1215,6 @@
                     "type": "integer"
                 },
                 "kind": {
-                    "default": "games#achievementUpdateResponse",
                     "type": "string"
                 },
                 "newlyUnlocked": {
@@ -1732,48 +1222,6 @@
                 },
                 "updateOccurred": {
                     "type": "boolean"
-                }
-            },
-            "type": "object"
-        },
-        "AggregateStats": {
-            "id": "AggregateStats",
-            "properties": {
-                "count": {
-                    "format": "int64",
-                    "type": "string"
-                },
-                "kind": {
-                    "default": "games#aggregateStats",
-                    "type": "string"
-                },
-                "max": {
-                    "format": "int64",
-                    "type": "string"
-                },
-                "min": {
-                    "format": "int64",
-                    "type": "string"
-                },
-                "sum": {
-                    "format": "int64",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "AnonymousPlayer": {
-            "id": "AnonymousPlayer",
-            "properties": {
-                "avatarImageUrl": {
-                    "type": "string"
-                },
-                "displayName": {
-                    "type": "string"
-                },
-                "kind": {
-                    "default": "games#anonymousPlayer",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -1799,6 +1247,10 @@
                 },
                 "enabledFeatures": {
                     "items": {
+                        "enum": [
+                            "APPLICATION_FEATURE_UNSPECIFIED",
+                            "SNAPSHOTS"
+                        ],
                         "type": "string"
                     },
                     "type": "array"
@@ -1813,7 +1265,6 @@
                     "type": "array"
                 },
                 "kind": {
-                    "default": "games#application",
                     "type": "string"
                 },
                 "lastUpdatedTimestamp": {
@@ -1837,7 +1288,6 @@
             "id": "ApplicationCategory",
             "properties": {
                 "kind": {
-                    "default": "games#applicationCategory",
                     "type": "string"
                 },
                 "primary": {
@@ -1856,7 +1306,6 @@
                     "type": "string"
                 },
                 "kind": {
-                    "default": "games#applicationVerifyResponse",
                     "type": "string"
                 },
                 "player_id": {
@@ -1876,7 +1325,6 @@
                     "type": "string"
                 },
                 "kind": {
-                    "default": "games#category",
                     "type": "string"
                 }
             },
@@ -1892,7 +1340,6 @@
                     "type": "array"
                 },
                 "kind": {
-                    "default": "games#categoryListResponse",
                     "type": "string"
                 },
                 "nextPageToken": {
@@ -1905,10 +1352,18 @@
             "id": "EventBatchRecordFailure",
             "properties": {
                 "failureCause": {
+                    "enum": [
+                        "EVENT_FAILURE_CAUSE_UNSPECIFIED",
+                        "TOO_LARGE",
+                        "TIME_PERIOD_EXPIRED",
+                        "TIME_PERIOD_SHORT",
+                        "TIME_PERIOD_LONG",
+                        "ALREADY_UPDATED",
+                        "RECORD_RATE_HIGH"
+                    ],
                     "type": "string"
                 },
                 "kind": {
-                    "default": "games#eventBatchRecordFailure",
                     "type": "string"
                 },
                 "range": {
@@ -1924,7 +1379,6 @@
                     "type": "string"
                 },
                 "kind": {
-                    "default": "games#eventChild",
                     "type": "string"
                 }
             },
@@ -1952,10 +1406,14 @@
                     "type": "boolean"
                 },
                 "kind": {
-                    "default": "games#eventDefinition",
                     "type": "string"
                 },
                 "visibility": {
+                    "enum": [
+                        "EVENT_VISIBILITY_UNSPECIFIED",
+                        "REVEALED",
+                        "HIDDEN"
+                    ],
                     "type": "string"
                 }
             },
@@ -1971,7 +1429,6 @@
                     "type": "array"
                 },
                 "kind": {
-                    "default": "games#eventDefinitionListResponse",
                     "type": "string"
                 },
                 "nextPageToken": {
@@ -1984,7 +1441,6 @@
             "id": "EventPeriodRange",
             "properties": {
                 "kind": {
-                    "default": "games#eventPeriodRange",
                     "type": "string"
                 },
                 "periodEndMillis": {
@@ -2002,7 +1458,6 @@
             "id": "EventPeriodUpdate",
             "properties": {
                 "kind": {
-                    "default": "games#eventPeriodUpdate",
                     "type": "string"
                 },
                 "timePeriod": {
@@ -2024,10 +1479,14 @@
                     "type": "string"
                 },
                 "failureCause": {
+                    "enum": [
+                        "EVENT_UPDATE_FAILURE_CAUSE_UNSPECIFIED",
+                        "NOT_FOUND",
+                        "INVALID_UPDATE_VALUE"
+                    ],
                     "type": "string"
                 },
                 "kind": {
-                    "default": "games#eventRecordFailure",
                     "type": "string"
                 }
             },
@@ -2041,7 +1500,6 @@
                     "type": "string"
                 },
                 "kind": {
-                    "default": "games#eventRecordRequest",
                     "type": "string"
                 },
                 "requestId": {
@@ -2064,7 +1522,6 @@
                     "type": "string"
                 },
                 "kind": {
-                    "default": "games#eventUpdateRequest",
                     "type": "string"
                 },
                 "updateCount": {
@@ -2090,7 +1547,6 @@
                     "type": "array"
                 },
                 "kind": {
-                    "default": "games#eventUpdateResponse",
                     "type": "string"
                 },
                 "playerEvents": {
@@ -2106,7 +1562,6 @@
             "id": "GamesAchievementIncrement",
             "properties": {
                 "kind": {
-                    "default": "games#GamesAchievementIncrement",
                     "type": "string"
                 },
                 "requestId": {
@@ -2124,7 +1579,6 @@
             "id": "GamesAchievementSetStepsAtLeast",
             "properties": {
                 "kind": {
-                    "default": "games#GamesAchievementSetStepsAtLeast",
                     "type": "string"
                 },
                 "steps": {
@@ -2142,7 +1596,6 @@
                     "type": "integer"
                 },
                 "kind": {
-                    "default": "games#imageAsset",
                     "type": "string"
                 },
                 "name": {
@@ -2171,13 +1624,18 @@
                     "$ref": "InstanceIosDetails"
                 },
                 "kind": {
-                    "default": "games#instance",
                     "type": "string"
                 },
                 "name": {
                     "type": "string"
                 },
                 "platformType": {
+                    "enum": [
+                        "PLATFORM_TYPE_UNSPECIFIED",
+                        "ANDROID",
+                        "IOS",
+                        "WEB_APP"
+                    ],
                     "type": "string"
                 },
                 "realtimePlay": {
@@ -2199,7 +1657,6 @@
                     "type": "boolean"
                 },
                 "kind": {
-                    "default": "games#instanceAndroidDetails",
                     "type": "string"
                 },
                 "packageName": {
@@ -2221,7 +1678,6 @@
                     "type": "string"
                 },
                 "kind": {
-                    "default": "games#instanceIosDetails",
                     "type": "string"
                 },
                 "preferredForIpad": {
@@ -2243,7 +1699,6 @@
             "id": "InstanceWebDetails",
             "properties": {
                 "kind": {
-                    "default": "games#instanceWebDetails",
                     "type": "string"
                 },
                 "launchUrl": {
@@ -2268,13 +1723,17 @@
                     "type": "boolean"
                 },
                 "kind": {
-                    "default": "games#leaderboard",
                     "type": "string"
                 },
                 "name": {
                     "type": "string"
                 },
                 "order": {
+                    "enum": [
+                        "SCORE_ORDER_UNSPECIFIED",
+                        "LARGER_IS_BETTER",
+                        "SMALLER_IS_BETTER"
+                    ],
                     "type": "string"
                 }
             },
@@ -2290,7 +1749,6 @@
                     "type": "string"
                 },
                 "kind": {
-                    "default": "games#leaderboardEntry",
                     "type": "string"
                 },
                 "player": {
@@ -2308,6 +1766,12 @@
                     "type": "string"
                 },
                 "timeSpan": {
+                    "enum": [
+                        "SCORE_TIME_SPAN_UNSPECIFIED",
+                        "ALL_TIME",
+                        "WEEKLY",
+                        "DAILY"
+                    ],
                     "type": "string"
                 },
                 "writeTimestampMillis": {
@@ -2327,7 +1791,6 @@
                     "type": "array"
                 },
                 "kind": {
-                    "default": "games#leaderboardListResponse",
                     "type": "string"
                 },
                 "nextPageToken": {
@@ -2346,7 +1809,6 @@
                     "type": "string"
                 },
                 "kind": {
-                    "default": "games#leaderboardScoreRank",
                     "type": "string"
                 },
                 "numScores": {
@@ -2370,7 +1832,6 @@
                     "type": "array"
                 },
                 "kind": {
-                    "default": "games#leaderboardScores",
                     "type": "string"
                 },
                 "nextPageToken": {
@@ -2397,7 +1858,6 @@
                     "type": "integer"
                 },
                 "kind": {
-                    "default": "games#metagameConfig",
                     "type": "string"
                 },
                 "playerLevels": {
@@ -2405,133 +1865,6 @@
                         "$ref": "PlayerLevel"
                     },
                     "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "NetworkDiagnostics": {
-            "id": "NetworkDiagnostics",
-            "properties": {
-                "androidNetworkSubtype": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "androidNetworkType": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "iosNetworkType": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "kind": {
-                    "default": "games#networkDiagnostics",
-                    "type": "string"
-                },
-                "networkOperatorCode": {
-                    "type": "string"
-                },
-                "networkOperatorName": {
-                    "type": "string"
-                },
-                "registrationLatencyMillis": {
-                    "format": "int32",
-                    "type": "integer"
-                }
-            },
-            "type": "object"
-        },
-        "ParticipantResult": {
-            "id": "ParticipantResult",
-            "properties": {
-                "kind": {
-                    "default": "games#participantResult",
-                    "type": "string"
-                },
-                "participantId": {
-                    "type": "string"
-                },
-                "placing": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "result": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "PeerChannelDiagnostics": {
-            "id": "PeerChannelDiagnostics",
-            "properties": {
-                "bytesReceived": {
-                    "$ref": "AggregateStats"
-                },
-                "bytesSent": {
-                    "$ref": "AggregateStats"
-                },
-                "kind": {
-                    "default": "games#peerChannelDiagnostics",
-                    "type": "string"
-                },
-                "numMessagesLost": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "numMessagesReceived": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "numMessagesSent": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "numSendFailures": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "roundtripLatencyMillis": {
-                    "$ref": "AggregateStats"
-                }
-            },
-            "type": "object"
-        },
-        "PeerSessionDiagnostics": {
-            "id": "PeerSessionDiagnostics",
-            "properties": {
-                "connectedTimestampMillis": {
-                    "format": "int64",
-                    "type": "string"
-                },
-                "kind": {
-                    "default": "games#peerSessionDiagnostics",
-                    "type": "string"
-                },
-                "participantId": {
-                    "type": "string"
-                },
-                "reliableChannel": {
-                    "$ref": "PeerChannelDiagnostics"
-                },
-                "unreliableChannel": {
-                    "$ref": "PeerChannelDiagnostics"
-                }
-            },
-            "type": "object"
-        },
-        "Played": {
-            "id": "Played",
-            "properties": {
-                "autoMatched": {
-                    "type": "boolean"
-                },
-                "kind": {
-                    "default": "games#played",
-                    "type": "string"
-                },
-                "timeMillis": {
-                    "format": "int64",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -2555,14 +1888,15 @@
                     "$ref": "PlayerExperienceInfo"
                 },
                 "friendStatus": {
+                    "enum": [
+                        "FRIEND_STATUS_UNSPECIFIED",
+                        "NO_RELATIONSHIP",
+                        "FRIEND"
+                    ],
                     "type": "string"
                 },
                 "kind": {
-                    "default": "games#player",
                     "type": "string"
-                },
-                "lastPlayedWith": {
-                    "$ref": "Played"
                 },
                 "name": {
                     "properties": {
@@ -2594,6 +1928,12 @@
             "id": "PlayerAchievement",
             "properties": {
                 "achievementState": {
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "HIDDEN",
+                        "REVEALED",
+                        "UNLOCKED"
+                    ],
                     "type": "string"
                 },
                 "currentSteps": {
@@ -2611,7 +1951,6 @@
                     "type": "string"
                 },
                 "kind": {
-                    "default": "games#playerAchievement",
                     "type": "string"
                 },
                 "lastUpdatedTimestamp": {
@@ -2631,7 +1970,6 @@
                     "type": "array"
                 },
                 "kind": {
-                    "default": "games#playerAchievementListResponse",
                     "type": "string"
                 },
                 "nextPageToken": {
@@ -2650,7 +1988,6 @@
                     "type": "string"
                 },
                 "kind": {
-                    "default": "games#playerEvent",
                     "type": "string"
                 },
                 "numEvents": {
@@ -2673,7 +2010,6 @@
                     "type": "array"
                 },
                 "kind": {
-                    "default": "games#playerEventListResponse",
                     "type": "string"
                 },
                 "nextPageToken": {
@@ -2693,7 +2029,6 @@
                     "$ref": "PlayerLevel"
                 },
                 "kind": {
-                    "default": "games#playerExperienceInfo",
                     "type": "string"
                 },
                 "lastLevelUpTimestampMillis": {
@@ -2709,8 +2044,10 @@
         "PlayerLeaderboardScore": {
             "id": "PlayerLeaderboardScore",
             "properties": {
+                "friendsRank": {
+                    "$ref": "LeaderboardScoreRank"
+                },
                 "kind": {
-                    "default": "games#playerLeaderboardScore",
                     "type": "string"
                 },
                 "leaderboard_id": {
@@ -2733,6 +2070,12 @@
                     "$ref": "LeaderboardScoreRank"
                 },
                 "timeSpan": {
+                    "enum": [
+                        "SCORE_TIME_SPAN_UNSPECIFIED",
+                        "ALL_TIME",
+                        "WEEKLY",
+                        "DAILY"
+                    ],
                     "type": "string"
                 },
                 "writeTimestamp": {
@@ -2752,7 +2095,6 @@
                     "type": "array"
                 },
                 "kind": {
-                    "default": "games#playerLeaderboardScoreListResponse",
                     "type": "string"
                 },
                 "nextPageToken": {
@@ -2768,7 +2110,6 @@
             "id": "PlayerLevel",
             "properties": {
                 "kind": {
-                    "default": "games#playerLevel",
                     "type": "string"
                 },
                 "level": {
@@ -2796,7 +2137,6 @@
                     "type": "array"
                 },
                 "kind": {
-                    "default": "games#playerListResponse",
                     "type": "string"
                 },
                 "nextPageToken": {
@@ -2812,7 +2152,6 @@
                     "type": "string"
                 },
                 "kind": {
-                    "default": "games#playerScore",
                     "type": "string"
                 },
                 "score": {
@@ -2823,6 +2162,12 @@
                     "type": "string"
                 },
                 "timeSpan": {
+                    "enum": [
+                        "SCORE_TIME_SPAN_UNSPECIFIED",
+                        "ALL_TIME",
+                        "WEEKLY",
+                        "DAILY"
+                    ],
                     "type": "string"
                 }
             },
@@ -2832,7 +2177,6 @@
             "id": "PlayerScoreListResponse",
             "properties": {
                 "kind": {
-                    "default": "games#playerScoreListResponse",
                     "type": "string"
                 },
                 "submittedScores": {
@@ -2849,6 +2193,12 @@
             "properties": {
                 "beatenScoreTimeSpans": {
                     "items": {
+                        "enum": [
+                            "SCORE_TIME_SPAN_UNSPECIFIED",
+                            "ALL_TIME",
+                            "WEEKLY",
+                            "DAILY"
+                        ],
                         "type": "string"
                     },
                     "type": "array"
@@ -2857,7 +2207,6 @@
                     "type": "string"
                 },
                 "kind": {
-                    "default": "games#playerScoreResponse",
                     "type": "string"
                 },
                 "leaderboardId": {
@@ -2879,7 +2228,6 @@
             "id": "PlayerScoreSubmissionList",
             "properties": {
                 "kind": {
-                    "default": "games#playerScoreSubmissionList",
                     "type": "string"
                 },
                 "scores": {
@@ -2895,55 +2243,19 @@
             "id": "ProfileSettings",
             "properties": {
                 "friendsListVisibility": {
+                    "enum": [
+                        "FRIENDS_LIST_VISIBILITY_UNSPECIFIED",
+                        "VISIBLE",
+                        "REQUEST_REQUIRED",
+                        "UNAVAILABLE"
+                    ],
                     "type": "string"
                 },
                 "kind": {
-                    "default": "games#profileSettings",
                     "type": "string"
                 },
                 "profileVisible": {
                     "type": "boolean"
-                }
-            },
-            "type": "object"
-        },
-        "PushToken": {
-            "id": "PushToken",
-            "properties": {
-                "clientRevision": {
-                    "type": "string"
-                },
-                "id": {
-                    "$ref": "PushTokenId"
-                },
-                "kind": {
-                    "default": "games#pushToken",
-                    "type": "string"
-                },
-                "language": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "PushTokenId": {
-            "id": "PushTokenId",
-            "properties": {
-                "ios": {
-                    "properties": {
-                        "apns_device_token": {
-                            "format": "byte",
-                            "type": "string"
-                        },
-                        "apns_environment": {
-                            "type": "string"
-                        }
-                    },
-                    "type": "object"
-                },
-                "kind": {
-                    "default": "games#pushTokenId",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -2955,373 +2267,16 @@
                     "type": "string"
                 },
                 "kind": {
-                    "default": "games#revisionCheckResponse",
                     "type": "string"
                 },
                 "revisionStatus": {
+                    "enum": [
+                        "REVISION_STATUS_UNSPECIFIED",
+                        "OK",
+                        "DEPRECATED",
+                        "INVALID"
+                    ],
                     "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Room": {
-            "id": "Room",
-            "properties": {
-                "applicationId": {
-                    "type": "string"
-                },
-                "autoMatchingCriteria": {
-                    "$ref": "RoomAutoMatchingCriteria"
-                },
-                "autoMatchingStatus": {
-                    "$ref": "RoomAutoMatchStatus"
-                },
-                "creationDetails": {
-                    "$ref": "RoomModification"
-                },
-                "inviterId": {
-                    "type": "string"
-                },
-                "kind": {
-                    "default": "games#room",
-                    "type": "string"
-                },
-                "lastUpdateDetails": {
-                    "$ref": "RoomModification"
-                },
-                "participants": {
-                    "items": {
-                        "$ref": "RoomParticipant"
-                    },
-                    "type": "array"
-                },
-                "roomId": {
-                    "type": "string"
-                },
-                "roomStatusVersion": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "status": {
-                    "type": "string"
-                },
-                "variant": {
-                    "format": "int32",
-                    "type": "integer"
-                }
-            },
-            "type": "object"
-        },
-        "RoomAutoMatchStatus": {
-            "id": "RoomAutoMatchStatus",
-            "properties": {
-                "kind": {
-                    "default": "games#roomAutoMatchStatus",
-                    "type": "string"
-                },
-                "waitEstimateSeconds": {
-                    "format": "int32",
-                    "type": "integer"
-                }
-            },
-            "type": "object"
-        },
-        "RoomAutoMatchingCriteria": {
-            "id": "RoomAutoMatchingCriteria",
-            "properties": {
-                "exclusiveBitmask": {
-                    "format": "int64",
-                    "type": "string"
-                },
-                "kind": {
-                    "default": "games#roomAutoMatchingCriteria",
-                    "type": "string"
-                },
-                "maxAutoMatchingPlayers": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "minAutoMatchingPlayers": {
-                    "format": "int32",
-                    "type": "integer"
-                }
-            },
-            "type": "object"
-        },
-        "RoomClientAddress": {
-            "id": "RoomClientAddress",
-            "properties": {
-                "kind": {
-                    "default": "games#roomClientAddress",
-                    "type": "string"
-                },
-                "xmppAddress": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "RoomCreateRequest": {
-            "id": "RoomCreateRequest",
-            "properties": {
-                "autoMatchingCriteria": {
-                    "$ref": "RoomAutoMatchingCriteria"
-                },
-                "capabilities": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "clientAddress": {
-                    "$ref": "RoomClientAddress"
-                },
-                "invitedPlayerIds": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "kind": {
-                    "default": "games#roomCreateRequest",
-                    "type": "string"
-                },
-                "networkDiagnostics": {
-                    "$ref": "NetworkDiagnostics"
-                },
-                "requestId": {
-                    "format": "int64",
-                    "type": "string"
-                },
-                "variant": {
-                    "format": "int32",
-                    "type": "integer"
-                }
-            },
-            "type": "object"
-        },
-        "RoomJoinRequest": {
-            "id": "RoomJoinRequest",
-            "properties": {
-                "capabilities": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "clientAddress": {
-                    "$ref": "RoomClientAddress"
-                },
-                "kind": {
-                    "default": "games#roomJoinRequest",
-                    "type": "string"
-                },
-                "networkDiagnostics": {
-                    "$ref": "NetworkDiagnostics"
-                }
-            },
-            "type": "object"
-        },
-        "RoomLeaveDiagnostics": {
-            "id": "RoomLeaveDiagnostics",
-            "properties": {
-                "androidNetworkSubtype": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "androidNetworkType": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "iosNetworkType": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "kind": {
-                    "default": "games#roomLeaveDiagnostics",
-                    "type": "string"
-                },
-                "networkOperatorCode": {
-                    "type": "string"
-                },
-                "networkOperatorName": {
-                    "type": "string"
-                },
-                "peerSession": {
-                    "items": {
-                        "$ref": "PeerSessionDiagnostics"
-                    },
-                    "type": "array"
-                },
-                "socketsUsed": {
-                    "type": "boolean"
-                }
-            },
-            "type": "object"
-        },
-        "RoomLeaveRequest": {
-            "id": "RoomLeaveRequest",
-            "properties": {
-                "kind": {
-                    "default": "games#roomLeaveRequest",
-                    "type": "string"
-                },
-                "leaveDiagnostics": {
-                    "$ref": "RoomLeaveDiagnostics"
-                },
-                "reason": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "RoomList": {
-            "id": "RoomList",
-            "properties": {
-                "items": {
-                    "items": {
-                        "$ref": "Room"
-                    },
-                    "type": "array"
-                },
-                "kind": {
-                    "default": "games#roomList",
-                    "type": "string"
-                },
-                "nextPageToken": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "RoomModification": {
-            "id": "RoomModification",
-            "properties": {
-                "kind": {
-                    "default": "games#roomModification",
-                    "type": "string"
-                },
-                "modifiedTimestampMillis": {
-                    "format": "int64",
-                    "type": "string"
-                },
-                "participantId": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "RoomP2PStatus": {
-            "id": "RoomP2PStatus",
-            "properties": {
-                "connectionSetupLatencyMillis": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "error": {
-                    "type": "string"
-                },
-                "error_reason": {
-                    "type": "string"
-                },
-                "kind": {
-                    "default": "games#roomP2PStatus",
-                    "type": "string"
-                },
-                "participantId": {
-                    "type": "string"
-                },
-                "status": {
-                    "type": "string"
-                },
-                "unreliableRoundtripLatencyMillis": {
-                    "format": "int32",
-                    "type": "integer"
-                }
-            },
-            "type": "object"
-        },
-        "RoomP2PStatuses": {
-            "id": "RoomP2PStatuses",
-            "properties": {
-                "kind": {
-                    "default": "games#roomP2PStatuses",
-                    "type": "string"
-                },
-                "updates": {
-                    "items": {
-                        "$ref": "RoomP2PStatus"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "RoomParticipant": {
-            "id": "RoomParticipant",
-            "properties": {
-                "autoMatched": {
-                    "type": "boolean"
-                },
-                "autoMatchedPlayer": {
-                    "$ref": "AnonymousPlayer"
-                },
-                "capabilities": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "clientAddress": {
-                    "$ref": "RoomClientAddress"
-                },
-                "connected": {
-                    "type": "boolean"
-                },
-                "id": {
-                    "type": "string"
-                },
-                "kind": {
-                    "default": "games#roomParticipant",
-                    "type": "string"
-                },
-                "leaveReason": {
-                    "type": "string"
-                },
-                "player": {
-                    "$ref": "Player"
-                },
-                "status": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "RoomStatus": {
-            "id": "RoomStatus",
-            "properties": {
-                "autoMatchingStatus": {
-                    "$ref": "RoomAutoMatchStatus"
-                },
-                "kind": {
-                    "default": "games#roomStatus",
-                    "type": "string"
-                },
-                "participants": {
-                    "items": {
-                        "$ref": "RoomParticipant"
-                    },
-                    "type": "array"
-                },
-                "roomId": {
-                    "type": "string"
-                },
-                "status": {
-                    "type": "string"
-                },
-                "statusVersion": {
-                    "format": "int32",
-                    "type": "integer"
                 }
             },
             "type": "object"
@@ -3330,7 +2285,6 @@
             "id": "ScoreSubmission",
             "properties": {
                 "kind": {
-                    "default": "games#scoreSubmission",
                     "type": "string"
                 },
                 "leaderboardId": {
@@ -3341,7 +2295,6 @@
                     "type": "string"
                 },
                 "scoreTag": {
-                    "pattern": "[a-zA-Z0-9-._~]{0,64}",
                     "type": "string"
                 },
                 "signature": {
@@ -3367,7 +2320,6 @@
                     "type": "string"
                 },
                 "kind": {
-                    "default": "games#snapshot",
                     "type": "string"
                 },
                 "lastModifiedMillis": {
@@ -3382,6 +2334,10 @@
                     "type": "string"
                 },
                 "type": {
+                    "enum": [
+                        "SNAPSHOT_TYPE_UNSPECIFIED",
+                        "SAVE_GAME"
+                    ],
                     "type": "string"
                 },
                 "uniqueName": {
@@ -3398,7 +2354,6 @@
                     "type": "integer"
                 },
                 "kind": {
-                    "default": "games#snapshotImage",
                     "type": "string"
                 },
                 "mime_type": {
@@ -3424,7 +2379,6 @@
                     "type": "array"
                 },
                 "kind": {
-                    "default": "games#snapshotListResponse",
                     "type": "string"
                 },
                 "nextPageToken": {
@@ -3433,309 +2387,57 @@
             },
             "type": "object"
         },
-        "TurnBasedAutoMatchingCriteria": {
-            "id": "TurnBasedAutoMatchingCriteria",
+        "StatsResponse": {
+            "id": "StatsResponse",
             "properties": {
-                "exclusiveBitmask": {
-                    "format": "int64",
-                    "type": "string"
+                "avg_session_length_minutes": {
+                    "format": "float",
+                    "type": "number"
                 },
-                "kind": {
-                    "default": "games#turnBasedAutoMatchingCriteria",
-                    "type": "string"
+                "churn_probability": {
+                    "format": "float",
+                    "type": "number"
                 },
-                "maxAutoMatchingPlayers": {
+                "days_since_last_played": {
                     "format": "int32",
                     "type": "integer"
                 },
-                "minAutoMatchingPlayers": {
-                    "format": "int32",
-                    "type": "integer"
-                }
-            },
-            "type": "object"
-        },
-        "TurnBasedMatch": {
-            "id": "TurnBasedMatch",
-            "properties": {
-                "applicationId": {
-                    "type": "string"
-                },
-                "autoMatchingCriteria": {
-                    "$ref": "TurnBasedAutoMatchingCriteria"
-                },
-                "creationDetails": {
-                    "$ref": "TurnBasedMatchModification"
-                },
-                "data": {
-                    "$ref": "TurnBasedMatchData"
-                },
-                "inviterId": {
-                    "type": "string"
+                "high_spender_probability": {
+                    "format": "float",
+                    "type": "number"
                 },
                 "kind": {
-                    "default": "games#turnBasedMatch",
                     "type": "string"
                 },
-                "lastUpdateDetails": {
-                    "$ref": "TurnBasedMatchModification"
-                },
-                "matchId": {
-                    "type": "string"
-                },
-                "matchNumber": {
+                "num_purchases": {
                     "format": "int32",
                     "type": "integer"
                 },
-                "matchVersion": {
+                "num_sessions": {
                     "format": "int32",
                     "type": "integer"
                 },
-                "participants": {
-                    "items": {
-                        "$ref": "TurnBasedMatchParticipant"
-                    },
-                    "type": "array"
+                "num_sessions_percentile": {
+                    "format": "float",
+                    "type": "number"
                 },
-                "pendingParticipantId": {
-                    "type": "string"
+                "spend_percentile": {
+                    "format": "float",
+                    "type": "number"
                 },
-                "previousMatchData": {
-                    "$ref": "TurnBasedMatchData"
+                "spend_probability": {
+                    "format": "float",
+                    "type": "number"
                 },
-                "rematchId": {
-                    "type": "string"
-                },
-                "results": {
-                    "items": {
-                        "$ref": "ParticipantResult"
-                    },
-                    "type": "array"
-                },
-                "status": {
-                    "type": "string"
-                },
-                "userMatchStatus": {
-                    "type": "string"
-                },
-                "variant": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "withParticipantId": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "TurnBasedMatchCreateRequest": {
-            "id": "TurnBasedMatchCreateRequest",
-            "properties": {
-                "autoMatchingCriteria": {
-                    "$ref": "TurnBasedAutoMatchingCriteria"
-                },
-                "invitedPlayerIds": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "kind": {
-                    "default": "games#turnBasedMatchCreateRequest",
-                    "type": "string"
-                },
-                "requestId": {
-                    "format": "int64",
-                    "type": "string"
-                },
-                "variant": {
-                    "format": "int32",
-                    "type": "integer"
-                }
-            },
-            "type": "object"
-        },
-        "TurnBasedMatchData": {
-            "id": "TurnBasedMatchData",
-            "properties": {
-                "data": {
-                    "format": "byte",
-                    "type": "string"
-                },
-                "dataAvailable": {
-                    "type": "boolean"
-                },
-                "kind": {
-                    "default": "games#turnBasedMatchData",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "TurnBasedMatchDataRequest": {
-            "id": "TurnBasedMatchDataRequest",
-            "properties": {
-                "data": {
-                    "format": "byte",
-                    "type": "string"
-                },
-                "kind": {
-                    "default": "games#turnBasedMatchDataRequest",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "TurnBasedMatchList": {
-            "id": "TurnBasedMatchList",
-            "properties": {
-                "items": {
-                    "items": {
-                        "$ref": "TurnBasedMatch"
-                    },
-                    "type": "array"
-                },
-                "kind": {
-                    "default": "games#turnBasedMatchList",
-                    "type": "string"
-                },
-                "nextPageToken": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "TurnBasedMatchModification": {
-            "id": "TurnBasedMatchModification",
-            "properties": {
-                "kind": {
-                    "default": "games#turnBasedMatchModification",
-                    "type": "string"
-                },
-                "modifiedTimestampMillis": {
-                    "format": "int64",
-                    "type": "string"
-                },
-                "participantId": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "TurnBasedMatchParticipant": {
-            "id": "TurnBasedMatchParticipant",
-            "properties": {
-                "autoMatched": {
-                    "type": "boolean"
-                },
-                "autoMatchedPlayer": {
-                    "$ref": "AnonymousPlayer"
-                },
-                "id": {
-                    "type": "string"
-                },
-                "kind": {
-                    "default": "games#turnBasedMatchParticipant",
-                    "type": "string"
-                },
-                "player": {
-                    "$ref": "Player"
-                },
-                "status": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "TurnBasedMatchRematch": {
-            "id": "TurnBasedMatchRematch",
-            "properties": {
-                "kind": {
-                    "default": "games#turnBasedMatchRematch",
-                    "type": "string"
-                },
-                "previousMatch": {
-                    "$ref": "TurnBasedMatch"
-                },
-                "rematch": {
-                    "$ref": "TurnBasedMatch"
-                }
-            },
-            "type": "object"
-        },
-        "TurnBasedMatchResults": {
-            "id": "TurnBasedMatchResults",
-            "properties": {
-                "data": {
-                    "$ref": "TurnBasedMatchDataRequest"
-                },
-                "kind": {
-                    "default": "games#turnBasedMatchResults",
-                    "type": "string"
-                },
-                "matchVersion": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "results": {
-                    "items": {
-                        "$ref": "ParticipantResult"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "TurnBasedMatchSync": {
-            "id": "TurnBasedMatchSync",
-            "properties": {
-                "items": {
-                    "items": {
-                        "$ref": "TurnBasedMatch"
-                    },
-                    "type": "array"
-                },
-                "kind": {
-                    "default": "games#turnBasedMatchSync",
-                    "type": "string"
-                },
-                "moreAvailable": {
-                    "type": "boolean"
-                },
-                "nextPageToken": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "TurnBasedMatchTurn": {
-            "id": "TurnBasedMatchTurn",
-            "properties": {
-                "data": {
-                    "$ref": "TurnBasedMatchDataRequest"
-                },
-                "kind": {
-                    "default": "games#turnBasedMatchTurn",
-                    "type": "string"
-                },
-                "matchVersion": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "pendingParticipantId": {
-                    "type": "string"
-                },
-                "results": {
-                    "items": {
-                        "$ref": "ParticipantResult"
-                    },
-                    "type": "array"
+                "total_spend_next_28_days": {
+                    "format": "float",
+                    "type": "number"
                 }
             },
             "type": "object"
         }
     },
-    "servicePath": "games/v1/",
-    "title": "Google Play Game Services API",
+    "servicePath": "",
+    "title": "Google Play Game Services",
     "version": "v1"
 }

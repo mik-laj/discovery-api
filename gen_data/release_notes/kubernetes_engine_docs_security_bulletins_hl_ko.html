@@ -7,7 +7,7 @@
   </devsite-toc>
   <div class="devsite-article-body clearfix">
    <p>
-    Google Kubernetes Engine(GKE)에 해당하는 모든 보안 게시판은 이 주제에서 확인할 수 있습니다.
+    이 주제에서는 Google Kubernetes Engine(GKE)의 모든 보안 게시판에 대해 설명합니다.
    </p>
    <p>
     취약점은 영향을 받는 당사자가 대처 방안을 마련할 수 있을 때까지 엠바고에 따라 비밀로 유지되는 경우가 많습니다. 이 경우 GKE의
@@ -21,9 +21,9 @@
      참고:
     </strong>
     <span>
-     GKE에서 멀티테넌트 워크로드를 실행할 경우 해당 게시판에 각별히 유의하시기 바랍니다. 취약점이 멀티테넌트 워크로드에 영향을 미칠 가능성이 크기 때문입니다. GKE의 보안 경계에 대한 기술적 설명과 이에 따라 워크로드가 받는 영향에 대해서는
+     GKE에서 멀티 테넌트 워크로드를 실행할 경우 해당 게시판에 각별히 유의하시기 바랍니다. 취약점이 멀티 테넌트 워크로드에 영향을 미칠 가능성이 크기 때문입니다. GKE의 보안 경계에 대한 기술적 설명과 이에 따라 워크로드가 받는 영향에 대해서는
      <a href="https://cloudplatform.googleblog.com/2018/05/Exploring-container-security-Isolation-at-different-layers-of-the-Kubernetes-stack.html">
-      다양한 Kubernetes 스택 레이어에서의 격리
+      Kubernetes 스택 내 여러 레이어의 격리
      </a>
      를 참조하세요.
     </span>
@@ -39,9 +39,790 @@
     </code>
    </p>
    <section class="bulletins">
+    <h2 data-text="GCP-2020-011" id="gcp-2020-011" tabindex="0">
+     GCP-2020-011
+    </h2>
+    <strong>
+     게시:
+    </strong>
+    2020년 7월 24일
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        설명
+       </th>
+       <th>
+        심각도
+       </th>
+       <th>
+        참고
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         네트워킹 취약점
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/92315">
+          CVE-2020-8558
+         </a>
+         이 최근 Kubernetes에서 발견되었습니다. 서비스는 로컬 루프백 인터페이스(127.0.0.1)를 사용하여 동일한 pod 내에서 실행되는 다른 애플리케이션과 통신하는 경우도 있습니다. 이 취약점은 클러스터 네트워크에 액세스할 수 있는 공격자가 인접한 pod 및 노드의 루프백 인터페이스로 트래픽을 전송할 수 있게 해줍니다. 루프백 인터페이스에 의존하는 서비스는 pod 외부에서 액세스할 수 없습니다.
+        </p>
+        <p>
+         GKE 클러스터의 이 취약점을 악용하려면 공격자가 클러스터의 VPC를 호스팅하는 Google Cloud에 네트워크 관리자 권한이 있어야 합니다. 이 취약점만으로는 공격자가 네트워크 관리자 권한을 부여하지 않습니다. 이러한 이유로 이 취약점에는 GKE에 대한 낮은 심각도가 할당되었습니다.
+        </p>
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do" tabindex="0">
+         어떻게 해야 하나요?
+        </h4>
+        <p>
+         이 취약점을 해결하려면 클러스터의 노드 풀을 다음 GKE 버전(및 이상)으로
+         <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-upgrades?hl=ko">
+          업그레이드
+         </a>
+         하세요.
+        </p>
+        <ul>
+         <li>
+          1.17.7-gke.0
+         </li>
+         <li>
+          1.16.11-gke.0
+         </li>
+         <li>
+          1.16.10-gke.11
+         </li>
+         <li>
+          1.16.9-gke.14
+         </li>
+        </ul>
+        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch" tabindex="0">
+         이 패치로 어떤 취약점이 해결되나요?
+        </h4>
+        <p>
+         이 패치는
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/92315">
+          CVE-2020-8558
+         </a>
+         취약점을 해결합니다.
+        </p>
+       </td>
+       <td>
+        <p>
+         낮음
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/92315">
+          CVE-2020-8558
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-009" id="gcp-2020-009" tabindex="0">
+     GCP-2020-009
+    </h2>
+    <strong>
+     게시:
+    </strong>
+    2020년 7월 15일
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        설명
+       </th>
+       <th>
+        심각도
+       </th>
+       <th>
+        참고
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Kubernetes에서 권한 에스컬레이션 취약점
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8559">
+          CVE-2020-8559
+         </a>
+         가 최근에 발견되었습니다. 이 취약점을 통해 노드가 이미 손상된 공격자가 클러스터의 모든 pod에서 명령어를 실행할 수 있습니다. 따라서 공격자는 이미 도용된 노드를 사용하여 다른 노드를 손상시킬 수 있으며 정보를 읽거나 파괴적인 작업을 유발할 수 있습니다.
+        </p>
+        <p>
+         공격자가 이 취약점을 악용하려는 경우, 클러스터의 노드는 이미 손상되었을 것입니다. 이 취약점 자체는 클러스터에 있는 노드를 손상시키지 않습니다.
+        </p>
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_1" tabindex="0">
+         어떻게 해야 하나요?
+        </h4>
+        <p>
+         클러스터를 패치된 버전으로
+         <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-upgrades?hl=ko">
+          업그레이드
+         </a>
+         합니다. 클러스터는 다음 주에 걸쳐 자동으로 업그레이드되고 패치 버전이 2020년 7월 19일까지 가속화된 수동 업그레이드 일정에 따라 제공됩니다.
+        다음 GKE 제어 영역 버전 또는 더 최신 버전에는 이 취약점에 대한 수정사항이 포함되어 있습니다.
+        </p>
+        <ul>
+         <li>
+          v1.14.10-gke.46
+         </li>
+         <li>
+          v1.15.12-gke.8
+         </li>
+         <li>
+          v1.16.9-gke.11
+         </li>
+         <li>
+          v1.16.10-gke.9
+         </li>
+         <li>
+          v1.16.11-gke.3+
+         </li>
+         <li>
+          v1.17.7-gke.6+
+         </li>
+        </ul>
+        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_1" tabindex="0">
+         이 패치로 어떤 취약점이 해결되나요?
+        </h4>
+        <p>
+         이러한 패치는 CVE-2020-8559 취약점을 완화합니다. 이것은 GKE에서 '보통' 등급의 취약점으로 분류됩니다. 공격자가 클러스터, 노드, 워크로드에 대한 직접적인 정보를 제공하여 기존의 손상된 노드 외에 이 공격을 효과적으로 이용해야 하기 때문입니다. 이 취약점 자체는 공격자에게 손상된 노드를 제공하지 않습니다.
+        </p>
+       </td>
+       <td>
+        <p>
+         보통
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8559">
+          CVE-2020-8559
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-007" id="gcp-2020-007" tabindex="0">
+     GCP-2020-007
+    </h2>
+    <strong>
+     게시:
+    </strong>
+    2020년 6월 1일
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        설명
+       </th>
+       <th>
+        심각도
+       </th>
+       <th>
+        참고
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         서버 측 요청 위조(SSRF) 취약점(
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555">
+          CVE-2020-8555
+         </a>
+         )이 최근 Kubernetes에서 감지되었습니다. 승인된 특정 사용자가 제어 영역 호스트 네트워크의 민감한 정보를 500바이트까지 유출할 수 있는 취약점 입니다. Google Kubernetes Engine(GKE) 제어 영역은 Kubernetes의 컨트롤러를 사용하기 때문에 이 취약점의 영향을 받습니다. 아래의 세부정보를 참고하여 제어 영역을 최신 패치 버전으로
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-container-cluster?hl=ko">
+          업그레이드
+         </a>
+         하는 것이 좋습니다.
+      노드 업그레이드는 필요하지 않습니다.
+         <br/>
+        </p>
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_2" tabindex="0">
+         어떻게 해야 하나요?
+        </h4>
+        대부분 고객의 경우 추가 조치는 필요하지 않습니다. 대다수의 클러스터가 이미 패치 버전을 실행하고 있습니다.
+
+      이 취약점의 수정사항이 포함된 GKE 버전은 다음과 같습니다.
+        <ul>
+         <li>
+          1.14.7-gke.39
+         </li>
+         <li>
+          1.14.8-gke.32
+         </li>
+         <li>
+          1.14.9-gke.17
+         </li>
+         <li>
+          1.14.10-gke.12
+         </li>
+         <li>
+          1.15.7-gke.17
+         </li>
+         <li>
+          1.16.4-gke.21
+         </li>
+         <li>
+          1.17.0-gke.0
+         </li>
+        </ul>
+        <p>
+         <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels?hl=ko">
+          출시 채널
+         </a>
+         을 사용하는 클러스터는 이미 완화책이 적용된 제어 영역 버전으로 업그레이드되었습니다.
+        </p>
+        <h4 data-text="이 패치로 어떤 취약점이 해결되나요? " id="what-vulnerability-is-addressed-by-this-patch_2" tabindex="0">
+         이 패치로 어떤 취약점이 해결되나요?
+        </h4>
+        <p>
+         이러한 패치는 CVE-2020-8555 취약점을 완화합니다. 악용을 방지하기 위한 여러 제어 영역 강화 조치로 이 문제는 GKE에서 '보통' 등급의 취약점으로 분류됩니다.
+        </p>
+        <p>
+         특정 볼륨 유형(GlusterFS, Quobyte, StorageFS, ScaleIO)이 내장된 pod 생성 또는 StorageClass 생성 권한을 보유한 공격자는 마스터의 호스트 네트워크에서 요청 본문을 제어하지
+         <em>
+          않아도
+         </em>
+         <code dir="ltr" translate="no">
+          kube-controller-manager
+         </code>
+         에서
+         <code dir="ltr" translate="no">
+          GET
+         </code>
+         요청 또는
+         <code dir="ltr" translate="no">
+          POST
+         </code>
+         요청을 보내도록 만들 수 있습니다. 이러한 볼륨은 GKE에서 거의 사용되지 않으므로 이러한 볼륨이 새로 사용된 것은 유용한 감지 신호일 수 있습니다.
+        </p>
+        <p>
+         로그처럼
+         <code dir="ltr" translate="no">
+          GET/POST
+         </code>
+         의 결과를 공격자에게 반환하는 수단과 결합되면 민감한 정보 공개로 이어질 수 있습니다. 문제가 되는 스토리지 드라이버를 업데이트하여 이러한 유출 가능성을 제거했습니다.
+        </p>
+       </td>
+       <td>
+        <p>
+         보통
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555">
+          CVE-2020-8555
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-006" id="gcp-2020-006" tabindex="0">
+     GCP-2020-006
+    </h2>
+    <strong>
+     게시:
+    </strong>
+    2020년 6월 1일
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        설명
+       </th>
+       <th>
+        심각도
+       </th>
+       <th>
+        참고
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Kubernetes에서는 권한이 있는 컨테이너가 노드 트래픽을 다른 컨테이너로 리디렉션하도록 허용하는
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          취약점
+         </a>
+         을 공개했습니다. 이 공격을 받으면 상호 TLS/SSH 트래픽(예: Kubelet과 API 서버 사이 또는 mTLS를 사용하는 애플리케이션 발생 트래픽)을 읽거나 수정할 수 없습니다. 이 취약점은 모든 Google Kubernetes Engine(GKE) 노드에 영향을 미치므로 아래의 세부정보를 참고하여 최신 패치 버전으로
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=ko">
+          업그레이드
+         </a>
+         하는 것이 좋습니다.
+        </p>
+        <h4 data-text=" 어떻게 해야 하나요? " id="what-should-i-do_3" tabindex="0">
+         어떻게 해야 하나요?
+        </h4>
+        이 취약점을 완화하려면 제어 영역을
+        <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=ko">
+         업그레이드
+        </a>
+        한 후 노드를 아래에 나온 패치 버전 중 하나로 업그레이드하세요. 출시 채널의 클러스터는 이미 제어 영역과 노드에서 이러한 패치 버전을 실행하고 있습니다.
+        <ul>
+         <li>
+          1.14.10-gke.36
+         </li>
+         <li>
+          1.15.11-gke.15
+         </li>
+         <li>
+          1.16.8-gke.15
+         </li>
+        </ul>
+        <p>
+         일반적으로
+         <code dir="ltr" translate="no">
+          CAP_NET_RAW
+         </code>
+         가 필요한 컨테이너는 거의 없습니다.
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=ko">
+          PodSecurityPolicy
+         </a>
+         또는
+         <a href="https://cloud.google.com/anthos-config-management/docs/concepts/policy-controller?hl=ko">
+          Anthos Policy Controller
+         </a>
+         를 통해 이 기능과 기타 강력한 기능을 기본적으로 차단해야 합니다.
+        </p>
+        <ul>
+         <li>
+          컨테이너에서
+          <code dir="ltr" translate="no">
+           CAP_NET_RAW
+          </code>
+          기능을 사용 중지합니다.
+         </li>
+         <ul>
+          <li>
+           다음과 같이
+           <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=ko">
+            PodSecurityPolicy
+           </a>
+           를 통해 적용하면 됩니다.
+          </li>
+          <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Require dropping CAP_NET_RAW with a PSP
+apiversion: extensions/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: no-cap-net-raw
+spec:
+  requiredDropCapabilities:
+    -NET_RAW
+     ...
+     # Unrelated fields omitted
+</pre>
+         </ul>
+         <ul>
+          <li>
+           또는 이
+           <a class="external" href="https://github.com/open-policy-agent/gatekeeper/blob/master/library/pod-security-policy/capabilities/template.yaml">
+            제약조건 템플릿
+           </a>
+           과 함께 Anthos Policy Controller/Gatekeeper를 사용한 후 적용하는 방법도 있습니다. 예를 들면 다음과 같습니다.
+          </li>
+          <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Dropping CAP_NET_RAW with Gatekeeper
+# (requires the K8sPSPCapabilities template)
+apiversion: constraints.gatekeeper.sh/v1beta1
+kind:  K8sPSPCapabilities
+metadata:
+  name: forbid-cap-net-raw
+spec:
+  match:
+    kinds:
+      - apiGroups: [""]
+      kinds: ["Pod"]
+    namespaces:
+      #List of namespaces to enforce this constraint on
+      - default
+    # If running gatekeeper &gt;= v3.1.0-beta.5,
+    # you can exclude namespaces rather than including them above.
+    excludedNamespaces:
+      - kube-system
+  parameters:
+    requiredDropCapabilities:
+      - "NET_RAW"
+</pre>
+         </ul>
+         <ul>
+          <li>
+           또는 pod 사양을 업데이트합니다.
+          </li>
+          <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Dropping CAP_NET_RAW from a Pod:
+apiVersion: v1
+kind: Pod
+metadata:
+  name: no-cap-net-raw
+spec:
+  containers:
+    -name: may-container
+     ...
+    securityContext:
+      capabilities:
+        drop:
+          -NET_RAW
+</pre>
+         </ul>
+        </ul>
+        <h4 data-text="이 패치로 어떤 취약점이 해결되나요? " id="what-vulnerability-is-addressed-by-this-patch_3" tabindex="0">
+         이 패치로 어떤 취약점이 해결되나요?
+        </h4>
+        <p>
+         이 패치로 다음의 취약점이 완화됩니다.
+        </p>
+        <p>
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          Kubernetes 문제 91507
+         </a>
+         에는 노드에서 악성 IPv6 스택을 구성하고 노드 트래픽을 공격자가 제어하는 컨테이너로 리디렉션할 수 있는
+         <code dir="ltr" translate="no">
+          CAP_NET_RAW
+         </code>
+         기능(기본 컨테이너 기능 모음에 포함되어 있음)의 취약점이 설명되어 있습니다. 공격자는 이 취약점을 이용해 노드에서 송/수신되는 트래픽을 가로채거나 수정할 수 있습니다. 이 공격을 받으면 상호 TLS/SSH 트래픽(예: Kubelet과 API 서버 사이 또는 mTLS를 사용하는 애플리케이션의 트래픽)을 읽거나 수정할 수 없습니다.
+        </p>
+       </td>
+       <td>
+        <p>
+         보통
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          Kubernetes 문제 91507
+         </a>
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-005" id="gcp-2020-005" tabindex="0">
+     GCP-2020-005
+    </h2>
+    <strong>
+     게시:
+    </strong>
+    2020년 5월 7일
+    <br/>
+    <strong>
+     업데이트:
+    </strong>
+    2020년 5월 7일
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        설명
+       </th>
+       <th>
+        심각도
+       </th>
+       <th>
+        참고
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8835">
+          CVE-2020-8835
+         </a>
+         에 설명된 바와 같이 최근 Linux 커널에서 취약점이 발견되었으며, 이 취약점은 컨테이너 이스케이프가 호스트 노드의 루트 권한을 확보할 수 있다는 문제를 안고 있습니다.
+        </p>
+        <p>
+         GKE 1.16 또는 1.17을 실행하는 Google Kubernetes Engine (GKE) Ubuntu 노드가 이 취약점의 영향을 받으며, 아래의 세부정보에 따라 최대한 빨리 최신 패치 버전으로 업그레이드하는 것이 좋습니다.
+        </p>
+        <p>
+         Container-Optimized OS를 실행하는 노드는 영향을 받지 않습니다. GKE On-Prem을 실행하는 노드는 영향을 받지 않습니다.
+        </p>
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_4" tabindex="0">
+         어떻게 해야 하나요?
+        </h4>
+        <p>
+         <strong>
+          대부분 고객의 경우 추가 조치는 필요하지 않습니다. GKE 버전 1.16 또는 1.17의 Ubuntu를 실행하는 노드만 영향을 받습니다.
+         </strong>
+        </p>
+        <p>
+         노드를 업그레이드하려면 먼저 마스터를 최신 버전으로 업그레이드해야 합니다. 이 패치는 Kubernetes 1.16.8-gke.12, 1.17.4-gke.10 및 그 이상의 출시 버전에서 제공됩니다.
+         <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=ko">
+          출시 노트
+         </a>
+         에서 이 패치의 가용성을 추적할 수 있습니다.
+        </p>
+        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_4" tabindex="0">
+         이 패치로 어떤 취약점이 해결되나요?
+        </h4>
+        <p>
+         이 패치로 다음의 취약점이 완화됩니다.
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8835">
+          CVE-2020-8835
+         </a>
+         는 악성 컨테이너가 실행 형태인 사용자 상호작용이 최소화된 상태로 커널 메모리를 읽고 쓸 수 있게 하여 호스트 노드에서 루트 수준의 코드 실행을 획득할 수 있는 Linux 커널 버전 5.5.0 이상의 취약점을 설명합니다. 이 문제는 '높음' 등급의 취약점으로 분류됩니다.
+        </p>
+       </td>
+       <td>
+        <p>
+         높음
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8835">
+          CVE-2020-8835
+         </a>
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-003" id="gcp-2020-003" tabindex="0">
+     GCP-2020-003
+    </h2>
+    <strong>
+     게시:
+    </strong>
+    2020년 3월 31일
+    <br/>
+    <strong>
+     업데이트:
+    </strong>
+    2020년 3월 31일
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        설명
+       </th>
+       <th>
+        심각도
+       </th>
+       <th>
+        참고
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11254">
+          CVE-2019-11254
+         </a>
+         에 설명된 바와 같이 최근 Kubernetes에서 취약점이 발견되었으며, 이 취약점에는 POST 요청 권한이 있는 모든 사용자가 Kubernetes API 서버에서 원격으로 서비스 거부 공격을 실행할 수 있다는 문제가 있습니다. Kubernetes Product Security Committee(PSC)에서 공개한 이 취약점에 관한 추가 정보는
+         <a href="https://groups.google.com/forum/?hl=ko#!topic/kubernetes-security-announce/wuwEwZigXBc">
+          여기
+         </a>
+         에서 확인할 수 있습니다.
+        </p>
+        <p>
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/authorized-networks?hl=ko">
+          마스터 승인 네트워크
+         </a>
+         와
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters?hl=ko#private_master">
+          공개 엔드포인트가 없는 비공개 클러스터
+         </a>
+         를 사용하는 GKE 클러스터는 이 취약점을 완화합니다.
+        </p>
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_5" tabindex="0">
+         어떻게 해야 하나요?
+        </h4>
+        <p>
+         이 취약점의 수정사항이 포함된 패치 버전으로 클러스터를 업그레이드하는 것이 좋습니다.
+        </p>
+        <p>
+         수정사항이 포함된 패치 버전은 아래와 같습니다.
+        </p>
+        <ul>
+         <li>
+          1.13.12-gke.29
+         </li>
+         <li>
+          1.14.9-gke.27
+         </li>
+         <li>
+          1.14.10-gke.24
+         </li>
+         <li>
+          1.15.9-gke.20
+         </li>
+         <li>
+          1.16.6-gke.1
+         </li>
+        </ul>
+        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerabilities-are-addressed-by-this-patch" tabindex="0">
+         이 패치로 어떤 취약점이 해결되나요?
+        </h4>
+        <p>
+         이 패치는 다음 서비스 거부(DoS) 취약점을 해결합니다.
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11254">
+          CVE-2019-11254
+         </a>
+        </p>
+       </td>
+       <td>
+        <p>
+         보통
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11254">
+          CVE-2019-11254
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-002" id="gcp-2020-002" tabindex="0">
+     GCP-2020-002
+    </h2>
+    <strong>
+     게시:
+    </strong>
+    2020년 3월 23일
+    <br/>
+    <strong>
+     업데이트:
+    </strong>
+    2020년 3월 23일
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        설명
+       </th>
+       <th>
+        심각도
+       </th>
+       <th>
+        참고
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Kubernetes는 각각 API 서버와 Kubelet에 영향을 미치는
+         <a href="https://groups.google.com/forum/?hl=ko#!topic/kubernetes-security-announce/2UOlsba2g0s">
+          2개의 서비스 거부 취약점
+         </a>
+         을 공개했습니다. 자세한 내용은 Kubernetes 문제:
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/89377">
+          89377
+         </a>
+         및
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/89378">
+          89378
+         </a>
+         을 참조하세요.
+        </p>
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_6" tabindex="0">
+         어떻게 해야 하나요?
+        </h4>
+        <p>
+         신뢰할 수 없는 사용자가 클러스터의 내부 네트워크에서 요청을 전송할 수 있는 경우만 아니라면 모든 GKE 사용자가 CVE-2020-8551로부터 보호됩니다.
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/authorized-networks?hl=ko">
+          마스터 승인 네트워크
+         </a>
+         를 사용해도 CVE-2020-8552가 완화됩니다.
+        </p>
+        <h4 data-text="이 패치는 언제 적용되나요?" id="when-will-these-be-patched" tabindex="0">
+         이 패치는 언제 적용되나요?
+        </h4>
+        <p>
+         CVE-2020-8551 패치는 노드 업그레이드가 필요합니다. 취약점 완화 방법이 포함된 패치 버전은 아래와 같습니다.
+        </p>
+        <ul>
+         <li>
+          1.15.10-gke.*
+         </li>
+         <li>
+          1.16.7-gke.*
+         </li>
+        </ul>
+        <aside class="note">
+         참고: 1.14.x 이하 버전은 이 취약점의 영향을 받지 않으므로 패치가 필요하지 않습니다.
+        </aside>
+        <p>
+         CVE-2020-8552 패치는 마스터 업그레이드가 필요합니다. 취약점 완화 방법이 포함된 패치 버전은 아래와 같습니다.
+        </p>
+        <ul>
+         <li>
+          1.14.10-gke.32
+         </li>
+         <li>
+          1.15.10-gke.*
+         </li>
+         <li>
+          1.16.7-gke.*
+         </li>
+        </ul>
+       </td>
+       <td>
+        <p>
+         보통
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8551">
+          CVE-2020-8551
+         </a>
+         <br/>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8552">
+          CVE-2020-8552
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
     <h2 data-text="2020년 1월 21일, 최종 업데이트: 2020년 1월 24일" id="january_21_2020" tabindex="0">
      2020년 1월 21일, 최종 업데이트: 2020년 1월 24일
     </h2>
+    <strong>
+     게시:
+    </strong>
+    2020년 1월 21일
+    <br/>
+    <strong>
+     업데이트:
+    </strong>
+    2020년 1월 24일
     <table>
      <thead>
       <tr>
@@ -80,11 +861,11 @@
         </p>
         <p>
          <strong>
-          대부분의 고객은 별도의 조치를 취하지 않아도 됩니다. Windows Server를 실행 중인 노드만 영향을 받습니다.
+          대부분 고객의 경우 추가 조치는 필요하지 않습니다. Windows Server를 실행 중인 노드만 영향을 받습니다.
          </strong>
         </p>
         <p>
-         Windows Server 노드를 사용하고 있는 고객의 경우 노드와 해당 노드에서 실행되는 컨테이너화된 워크로드를 모두 패치 버전으로 업데이트해야 이 취약점을 해결할 수 있습니다.
+         Windows Server 노드를 사용하고 있는 고객의 경우 노드와 해당 노드에서 실행되는 컨테이너화된 워크로드를 모두 패치 버전으로 업데이트해야 이 취약점을 완화할 수 있습니다.
         </p>
         <p>
          <strong>
@@ -108,7 +889,7 @@
          </strong>
         </p>
         <p>
-         패치 버전을 출시하기 위한 과정이 이미 진행 중이며 2020년 1월 24일까지 완료될 예정입니다.
+         이미 패치 버전을 출시하기 위한 과정이 진행 중이며 2020년 1월 24일까지 완료될 예정입니다.
         </p>
         <p>
          그때까지 기다렸다가 패치된 GKE 버전으로 노드 업그레이드를 수행하거나 Windows Update를 사용하여 언제든지 최신 Windows 패치를 수동으로 배포할 수도 있습니다.
@@ -148,11 +929,11 @@
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-0601">
           CVE-2020-0601
          </a>
-         : 이 취약점은
+         - 이 취약점은
          <a class="external" href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2020-0601">
           Windows Crypto API 스푸핑 취약점
          </a>
-         이라고도 하며, 악성 실행 파일을 신뢰할 수 있는 파일인 것처럼 보이게 하거나 공격자가 중간자 공격을 수행하고 영향을 받는 소프트웨어에 대한 TLS 연결에서 기밀 정보를 복호화하는 데 악용될 수 있습니다.
+         이라고도 하며, 악성 실행 파일을 신뢰할 수 있는 파일인 것처럼 보이게 하거나 공격자가 중간자 공격을 수행하고 TLS 연결의 기밀 정보를 영향을 받는 소프트웨어에 복호화하는 데 악용될 수 있습니다.
         </p>
        </td>
        <td>
@@ -174,6 +955,15 @@
     <h2 data-text="2019년 11월 14일" id="november_14_2019" tabindex="0">
      2019년 11월 14일
     </h2>
+    <strong>
+     게시:
+    </strong>
+    2019년 11월 14일
+    <br/>
+    <strong>
+     업데이트:
+    </strong>
+    2019년 11월 14일
     <table>
      <thead>
       <tr>
@@ -229,7 +1019,7 @@
           이 취약점은 관리형 GKE 구성요소에 영향을 주지 않습니다
          </strong>
          .
-            GKE 버전 1.12 이상을 실행하는
+        GKE 버전 1.12 이상을 실행하는
          <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/alpha-clusters?hl=ko">
           GKE 알파 클러스터
          </a>
@@ -291,6 +1081,15 @@
     <h2 data-text="2019년 11월 12일" id="november_12_2019" tabindex="0">
      2019년 11월 12일
     </h2>
+    <strong>
+     게시:
+    </strong>
+    2019년 11월 12일
+    <br/>
+    <strong>
+     업데이트:
+    </strong>
+    2019년 11월 12일
     <table>
      <thead>
       <tr>
@@ -317,7 +1116,7 @@
         </p>
         <p>
          <strong>
-          Kubernetes Engine을 실행하는 호스트 인프라는 고객의 워크로드를 격리합니다. 자체 멀티테넌트 GKE 클러스터 내에서 신뢰할 수 없는 코드를 실행 중인 경우
+          Kubernetes Engine을 실행하는 호스트 인프라는 고객의 워크로드를 격리합니다. 자체 멀티 테넌트 GKE 클러스터 내에서 신뢰할 수 없는 코드를 실행 중인 경우
           <em>
            및
           </em>
@@ -326,13 +1125,13 @@
          N1 노드의 GKE 인스턴스에도 새로운 조치가 필요하지 않습니다.
         </p>
         <p>
-         온프렘으로 배포된 Anthos GKE를 실행 중인 경우 노출 여부는 하드웨어에 따라 다릅니다.
+         Anthos GKE On-Prem을 실행 중인 경우 노출 여부는 하드웨어에 따라 다릅니다.
          <a href="https://blogs.intel.com/technology/2019/11/ipas-november-2019-intel-platform-update-ipu/">
           Intel 정보 공개
          </a>
          와 인프라를 비교해 보세요.
         </p>
-        <h4 data-text="어떻게 해야 하나요?" id="어떻게-해야-하나요" tabindex="0">
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_7" tabindex="0">
          어떻게 해야 하나요?
         </h4>
         <p>
@@ -341,7 +1140,7 @@
           <em>
            이고
           </em>
-          이러한 노드가 자체 멀티테넌트 GKE 클러스터 내에서 신뢰할 수 없는 코드를 실행하는 경우에만 영향을 받습니다.
+          이러한 노드가 자체 멀티 테넌트 GKE 클러스터 내에서 신뢰할 수 없는 코드를 실행하는 경우에만 영향을 받습니다.
          </strong>
         </p>
         <p>
@@ -362,7 +1161,7 @@
          </code>
          플래그를 사용하여 동일한 노드 버전으로 업그레이드를 시작할 수 있습니다.
         </aside>
-        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="이-패치로-어떤-취약점이-해결되나요" tabindex="0">
+        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerabilities-are-addressed-by-this-patch_1" tabindex="0">
          이 패치로 어떤 취약점이 해결되나요?
         </h4>
         <p>
@@ -373,18 +1172,17 @@
           CVE-2019-11135
          </a>
          :
-        이 CVE는 TSX Async Abort(TAA)로도 알려져 있습니다. TAA는
+        이 CVE는 TAA(TSX Async Abort)로도 알려져 있습니다. TAA는
          <a href="https://cloud.google.com/kubernetes-engine/docs/security-bulletins?hl=ko#may-14-2019">
           마이크로아키텍처 데이터 샘플링(MDS)
          </a>
-         에서 악용한 것과 동일한 마이크로아키텍처 데이터 구조로 데이터를 유출할 수 있는 또 다른 경로를 제공합니다.
+         에서 악용한 것과 동일한 마이크로아키텍처 데이터 구조로 데이터를 무단 반출할 수 있는 또 다른 경로를 제공합니다.
         </p>
         <p>
          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12207">
           CVE-2018-12207
          </a>
-         :
-        이 서비스 거부(DoS) 취약점은 가상 머신 호스트에 영향을 미치며, 악의적인 게스트가 보호되지 않는 호스트를 비정상 종료할 수 있다는 문제를 안고 있습니다. 이 CVE는 '페이지 크기 변경 시 머신 확인 오류'로도 알려져 있습니다. 이 문제는 GKE에 영향을 주지 않습니다.
+         이 서비스 거부(DoS) 취약점은 가상 머신 호스트에 영향을 미치며, 악성 게스트가 보호되지 않는 호스트를 비정상 종료할 수 있다는 문제를 안고 있습니다. 이 CVE는 '페이지 크기 변경 시 머신 확인 오류'로도 알려져 있습니다. 이 문제는 GKE에 영향을 주지 않습니다.
         </p>
        </td>
        <td>
@@ -409,6 +1207,15 @@
     <h2 data-text="2019년 10월 22일" id="october_22_2019" tabindex="0">
      2019년 10월 22일
     </h2>
+    <strong>
+     게시:
+    </strong>
+    2019년 10월 22일
+    <br/>
+    <strong>
+     업데이트:
+    </strong>
+    2019년 10월 22일
     <table>
      <thead>
       <tr>
@@ -427,11 +1234,12 @@
       <tr>
        <td>
         <p>
+         이 취약점은 최근 Go 프로그래밍 언어에서 발견되었으며,
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-16276">
           CVE-2019-16276
          </a>
-         에서 설명된 바와 같이 Go 프로그래밍 언어에서 최근에 취약점이 발견되었습니다.
-            이 취약점은 Authenticating Proxy를 사용하는 Kubernetes 구성에 영향을 줄 수 있습니다. 자세한 내용은
+         에 설명되어 있습니다.
+        이 취약점은 Authenticating Proxy를 사용하는 Kubernetes 구성에 영향을 줄 수 있습니다. 자세한 내용은
          <a class="external" href="https://groups.google.com/forum/?hl=ko#!topic/kubernetes-security-announce/PtsUCqFi4h4">
           Kubernetes 정보 공개
          </a>
@@ -460,6 +1268,15 @@
     <h2 data-text="2019년 10월 16일" id="october_16_2019" tabindex="0">
      2019년 10월 16일
     </h2>
+    <strong>
+     게시:
+    </strong>
+    2019년 10월 16일
+    <br/>
+    <strong>
+     업데이트:
+    </strong>
+    2019년 10월 24일
     <table>
      <thead>
       <tr>
@@ -488,7 +1305,7 @@
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11253">
           CVE-2019-11253
          </a>
-         에 설명된 바와 같이 최근 Kubernetes에서 취약점이 발견되었으며, 이 취약점에는 POST 요청 권한이 있는 모든 사용자가 Kubernetes API 서버에서 원격으로 서비스 거부 공격을 실행할 수 있다는 문제가 있습니다. Kubernetes Product Security Committee(PSC)에서 공개한 이 취약점에 관한 추가 정보는
+         에 설명된 바와 같이 최근 Kubernetes에서 취약점이 발견되었으며, 이 취약점에는 POST 요청 권한이 있는 모든 사용자가 Kubernetes API 서버에서 원격으로 서비스 거부 공격을 실행할 수 있다는 문제가 있습니다. Kubernetes PSC(Product Security Committee)에서 공개한 이 취약점에 관한 추가 정보는
          <a class="external" href="https://groups.google.com/forum/?hl=ko#!topic/kubernetes-security-announce/jk8polzSUxs">
           여기
          </a>
@@ -504,11 +1321,11 @@
          </a>
          를 사용하는 GKE 클러스터는 이 취약점을 완화합니다.
         </p>
-        <h6 data-text="어떻게 해야 하나요?" id="어떻게-해야-하나요_1" tabindex="0">
+        <h6 data-text="어떻게 해야 하나요?" id="what-should-i-do_8" tabindex="0">
          어떻게 해야 하나요?
         </h6>
         <p>
-         수정이 포함된 패치 버전이 제공되는 즉시 클러스터를 업데이트하는 것이 좋습니다. 패치 버전은 10월 14일이 포함된 주에 계획된 GKE 출시를 통해 모든 영역에 제공될 예정입니다.
+         수정사항이 포함된 패치 버전이 제공되는 즉시 클러스터를 업그레이드하는 것이 좋습니다. 패치 버전은 10월 14일이 포함된 주에 계획된 GKE 출시를 통해 모든 영역에 제공될 예정입니다.
         </p>
         <p>
          취약점 완화 방법이 포함된 패치 버전은 아래와 같습니다.
@@ -527,7 +1344,7 @@
           1.15.4-gke.15
          </li>
         </ul>
-        <h6 data-text="이 패치로 어떤 취약점이 해결되나요?" id="이-패치로-어떤-취약점이-해결되나요_1" tabindex="0">
+        <h6 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerabilities-are-addressed-by-this-patch_2" tabindex="0">
          이 패치로 어떤 취약점이 해결되나요?
         </h6>
         <p>
@@ -556,6 +1373,15 @@
     <h2 data-text="2019년 9월 16일" id="september_16_2019" tabindex="0">
      2019년 9월 16일
     </h2>
+    <strong>
+     게시:
+    </strong>
+    2019년 9월 16일
+    <br/>
+    <strong>
+     업데이트:
+    </strong>
+    2019년 10월 16일
     <table>
      <thead>
       <tr>
@@ -577,7 +1403,7 @@
          이 게시판은 처음 게시된 이후 업데이트되었습니다.
         </p>
         <p>
-         Go 프로그래밍 언어에서 신규 보안 취약점
+         Go 프로그래밍 언어는 최근 보안 취약점
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9512">
           CVE-2019-9512
          </a>
@@ -585,18 +1411,18 @@
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9514">
           CVE-2019-9514
          </a>
-         를 최근 발견했으며, 둘 모두 서비스 거부(DoS) 취약점입니다. GKE에서 사용자는 이 취약점을 이용해 Kubernetes API 서버의 CPU를 과도하게 소비하는 악의적인 요청을 만들어서 클러스터 제어 영역의 가용성을 줄일 수 있습니다. 자세한 내용은
+         를 발견했으며, 두 CVE는 서비스 거부(DoS) 취약점입니다. GKE에서 사용자는 이 취약점을 악용해 Kubernetes API 서버의 CPU를 과도하게 소비하도록 악성 요청을 만들어서 클러스터 제어 영역의 가용성을 줄일 수 있습니다. 자세한 내용은
          <a class="external" href="https://groups.google.com/forum/?hl=ko#!topic/golang-announce/65QixT3tcmg">
           Go 프로그래밍 언어 정보 공개
          </a>
          를 참조하세요.
         </p>
-        <h6 data-text="어떻게 해야 하나요?" id="어떻게-해야-하나요_2" tabindex="0">
+        <h6 data-text="어떻게 해야 하나요?" id="what-should-i-do_9" tabindex="0">
          어떻게 해야 하나요?
         </h6>
         <p>
          이 취약점의 완화 방법이 포함된 최신 패치 버전이 제공되는 즉시 클러스터를 업그레이드하는 것이 좋습니다. 패치 버전은
-         <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=ko#september_16_2019">
+         <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes-archive?hl=ko#september_16_2019">
           출시 일정
          </a>
          에 따라 다음 GKE 출시를 통해 모든 영역에 제공될 예정입니다.
@@ -618,7 +1444,7 @@
           1.14.6-gke.1
          </li>
         </ul>
-        <h6 data-text="이 패치로 어떤 취약점이 해결되나요?" id="이-패치로-어떤-취약점이-해결되나요_2" tabindex="0">
+        <h6 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_5" tabindex="0">
          이 패치로 어떤 취약점이 해결되나요?
         </h6>
         <p>
@@ -658,22 +1484,40 @@
     <h2 data-text="2019년 9월 5일" id="may-31-2019-update" tabindex="0">
      2019년 9월 5일
     </h2>
+    <strong>
+     게시:
+    </strong>
+    2019년 9월 5일
+    <br/>
+    <strong>
+     업데이트:
+    </strong>
+    2019년 9월 5일
     <p>
      <a href="#may-31-2019">
       2019년 5월 31일
      </a>
-     게시판에 설명된 취약점을 해결하는 수정에 관한 게시판이 업데이트되었습니다.
+     게시판에 설명된 취약점 해결책 게시판이 업데이트되었습니다.
     </p>
     <h2 data-text="2019년 8월 22일" id="august-05-2019-update2" tabindex="0">
      2019년 8월 22일
     </h2>
+    <strong>
+     게시:
+    </strong>
+    2019년 8월 22일
+    <br/>
+    <strong>
+     업데이트:
+    </strong>
+    2019년 8월 22일
     <p>
      <a href="#august-05-2019">
       2019년 8월 5일
      </a>
      게시판이 업데이트되었습니다.
-    이전 게시판에 설명된 취약점을 해결하는 수정이
-     <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=ko#august_22_2019">
+이전 게시판에 설명된 취약점 해결책이
+     <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes-archive?hl=ko#august_22_2019">
       제공
      </a>
      됩니다.
@@ -681,16 +1525,34 @@
     <h2 data-text="2019년 8월 8일" id="august-05-2019-update" tabindex="0">
      2019년 8월 8일
     </h2>
+    <strong>
+     게시:
+    </strong>
+    2019년 8월 8일
+    <br/>
+    <strong>
+     업데이트:
+    </strong>
+    2019년 8월 8일
     <p>
      <a href="#august-05-2019">
       2019년 8월 5일
      </a>
      게시판이 업데이트되었습니다.
-    해당 게시판에 설명된 취약점을 해결하는 수정은 다음 GKE 출시에서 제공될 예정입니다.
+해당 게시판에 설명된 취약점 해결책은 다음 GKE 출시에서 제공될 예정입니다.
     </p>
     <h2 data-text="2019년 8월 5일" id="august-05-2019" tabindex="0">
      2019년 8월 5일
     </h2>
+    <strong>
+     게시:
+    </strong>
+    2019년 8월 5일
+    <br/>
+    <strong>
+     업데이트:
+    </strong>
+    2019년 8월 9일
     <table>
      <thead>
       <tr>
@@ -712,17 +1574,17 @@
          이 게시판은 처음 게시된 이후 업데이트되었습니다.
         </p>
         <p>
-         Kubernetes에서
+         Kubernetes에서 최근 발견한
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11247">
           CVE-2019-11247
          </a>
-         취약점을 최근 발견했으며, 이 취약점은 클러스터 범위의
+         취약점에는 클러스터 범위의
          <a class="external" href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">
           커스텀 리소스
          </a>
-         인스턴스가 모든 네임스페이스에 존재하는 네임스페이스화된 객체인 것처럼 처리될 수 있다는 문제를 안고 있습니다. 즉, 사용자 및 서비스 계정은 네임스페이스 수준의 RBAC 권한만 있어도 클러스터 범위의 커스텀 리소스와 상호작용할 수 있습니다. 공격자에게 네임스페이스의 리소스에 액세스할 권한이 있으면 이 취약점을 악용할 수 있습니다.
+         인스턴스가 모든 네임스페이스에 존재하는 네임스페이스화된 객체인 것처럼 처리될 수 있다는 문제가 있습니다. 즉, 사용자 및 서비스 계정은 네임스페이스 수준의 RBAC 권한만 있어도 클러스터 범위의 커스텀 리소스와 상호작용할 수 있습니다. 공격자에게 네임스페이스의 리소스에 액세스할 권한이 있으면 이 취약점을 악용할 수 있습니다.
         </p>
-        <h6 data-text="어떻게 해야 하나요?" id="어떻게-해야-하나요_3" tabindex="0">
+        <h6 data-text="어떻게 해야 하나요?" id="what-should-i-do_10" tabindex="0">
          어떻게 해야 하나요?
         </h6>
         <p>
@@ -750,7 +1612,7 @@
           )
          </li>
         </ul>
-        <h6 data-text="이 패치로 어떤 취약점이 해결되나요?" id="이-패치로-어떤-취약점이-해결되나요_3" tabindex="0">
+        <h6 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_6" tabindex="0">
          이 패치로 어떤 취약점이 해결되나요?
         </h6>
         <p>
@@ -758,6 +1620,7 @@
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11247">
           CVE-2019-11247
          </a>
+         .
         </p>
        </td>
        <td>
@@ -778,6 +1641,15 @@
     <h2 data-text="2019년 7월 3일" id="july-03-2019-2" tabindex="0">
      2019년 7월 3일
     </h2>
+    <strong>
+     게시:
+    </strong>
+    2019년 7월 3일
+    <br/>
+    <strong>
+     업데이트:
+    </strong>
+    2019년 7월 3일
     <table>
      <thead>
       <tr>
@@ -808,7 +1680,7 @@
           253.0.0
          </a>
          을 통해 제공됩니다.
-          자세한 내용은
+      자세한 내용은
          <a href="#june-25-2019">
           2019년 6월 25일 보안 게시판
          </a>
@@ -821,7 +1693,7 @@
          <code dir="ltr" translate="no">
           kubectl
          </code>
-         1.11.10에서는 이 패치를 사용할 수 없습니다.
+         1.11.10에서는 패치를 사용할 수 없습니다.
         </p>
        </td>
        <td>
@@ -842,6 +1714,15 @@
     <h2 data-text="2019년 7월 3일" id="july-03-2019" tabindex="0">
      2019년 7월 3일
     </h2>
+    <strong>
+     게시:
+    </strong>
+    2019년 6월 25일
+    <br/>
+    <strong>
+     업데이트:
+    </strong>
+    2019년 7월 3일
     <table>
      <thead>
       <tr>
@@ -859,7 +1740,7 @@
      <tbody>
       <tr>
        <td>
-        <h6 data-text="2019년 7월 3일 업데이트" id="2019년-7월-3일-업데이트" tabindex="0">
+        <h6 data-text="2019년 7월 3일 업데이트" id="july-3,-2019-update" tabindex="0">
          2019년 7월 3일 업데이트
         </h6>
         <p>
@@ -869,7 +1750,7 @@
          현재 GKE 마스터와 Kubernetes Engine을 실행하는 Google 인프라에 패치가 적용되어 취약점으로부터 보호됩니다.
         </p>
         <p>
-         1.11 마스터는 곧 지원 중단되며 2019년 7월 8일이 포함된 주에 1.12로 자동 업그레이드될 예정입니다. 다음 권장 조치 중 하나를 선택하여 노드를 패치 버전으로 업그레이드할 수 있습니다.
+         1.11 마스터는 곧 지원 중단되며 2019년 7월 8일이 포함된 주에 1.12로 자동 업그레이드될 예정입니다. 제안된 다음 조치 중 하나를 선택하여 노드를 패치 버전으로 업그레이드할 수 있습니다.
         </p>
         <ul>
          <li>
@@ -894,7 +1775,7 @@
          2019년 6월 24일에 처음 공개된 게시판 내용은 다음과 같습니다.
         </p>
         <hr/>
-        <h6 data-text="2019년 6월 24일 업데이트" id="2019년-6월-24일-업데이트" tabindex="0">
+        <h6 data-text="2019년 6월 24일 업데이트" id="june-24,-2019-update" tabindex="0">
          2019년 6월 24일 업데이트
         </h6>
         <p>
@@ -963,7 +1844,7 @@
           신뢰할 수 없는 네트워크 트래픽을 보내거나 받는 Google Kubernetes Engine 노드가 영향을 받으며, 아래의 완화 단계에 따라 워크로드를 보호하는 것이 좋습니다.
          </strong>
         </p>
-        <h6 data-text="Kubernetes 마스터" id="kubernetes-마스터" tabindex="0">
+        <h6 data-text="Kubernetes 마스터" id="kubernetes-masters" tabindex="0">
          Kubernetes 마스터
         </h6>
         <ul>
@@ -981,7 +1862,7 @@
           </p>
          </li>
         </ul>
-        <h6 data-text="Kubernetes 노드" id="kubernetes-노드" tabindex="0">
+        <h6 data-text="Kubernetes 노드" id="kubernetes-nodes" tabindex="0">
          Kubernetes 노드
         </h6>
         <p>
@@ -1000,16 +1881,16 @@
          </li>
         </ul>
         <p>
-         Google은 이러한 취약점을 영구적으로 완화할 방법을 준비 중이며 새 노드 버전으로 제공할 예정입니다. 영구 수정이 제공되면 이 게시판을 업데이트하고 모든 GKE 고객에게 이메일을 보내 드릴 것입니다.
+         Google은 이러한 취약점을 영구적으로 완화할 방법을 준비 중이며 새 노드 버전으로 제공할 예정입니다. 영구적 해결책이 제공되면 이 게시판을 업데이트하고 모든 GKE 고객에게 이메일을 보내드릴 것입니다.
         </p>
         <p>
-         영구 수정이 제공되기 전에 사용할 수 있도록 호스트
+         영구적 해결책이 제공되기 전에 사용할 수 있도록 호스트
          <code dir="ltr" translate="no">
           iptables
          </code>
          구성을 수정하여 완화 방법을 구현하는 Kubernetes DaemonSet가 제공됩니다.
         </p>
-        <h5 data-text="어떻게 해야 하나요?" id="어떻게-해야-하나요_4" tabindex="0">
+        <h5 data-text="어떻게 해야 하나요?" id="what-should-i-do_11" tabindex="0">
          어떻게 해야 하나요?
         </h5>
         <p>
@@ -1029,9 +1910,9 @@
         <pre class="devsite-click-to-copy" dir="ltr" translate="no">
 
 kubectl apply -f \
-    https://raw.githubusercontent.com/GoogleCloudPlatform\
-    /k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
-          </pre>
+https://raw.githubusercontent.com/GoogleCloudPlatform\
+/k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
+      </pre>
         <aside class="note">
          <p>
           Ipv6은 GKE에서 지원되지 않으므로 ip6tables 규칙은 필요하지 않습니다.
@@ -1046,9 +1927,9 @@ kubectl apply -f \
         <pre class="devsite-click-to-copy" dir="ltr" translate="no">
 
 kubectl delete -f \
-    https://raw.githubusercontent.com/GoogleCloudPlatform\
-    /k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
-          </pre>
+https://raw.githubusercontent.com/GoogleCloudPlatform\
+/k8s-node-tools/master/drop-small-mss/drop-small-mss.yaml
+      </pre>
        </td>
        <td>
         높음
@@ -1117,15 +1998,15 @@ kubectl delete -f \
         </p>
         <hr/>
         <p>
-         Kubernetes에서 컨테이너 내
-         <code dir="ltr" translate="no">
-          kubectl cp
-         </code>
-         작업과 코드 실행에 대한 액세스 권한이 있는 공격자가 호스트의 파일을 수정할 수 있는
+         Kubernetes에서 최근 발견한
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11246">
           CVE-2019-11246
          </a>
-         취약점을 최근 발견했습니다. 공격자는 이 취약점을 악용하여 호스트 파일 시스템에서 파일을 바꾸거나 만들 수 있습니다. 자세한 내용은
+         취약점에는 컨테이너 내
+         <code dir="ltr" translate="no">
+          kubectl cp
+         </code>
+         작업과 코드 실행에 액세스 권한이 있는 공격자가 호스트의 파일을 수정할 수 있다는 문제가 있습니다. 공격자는 이 취약점을 악용하여 호스트 파일 시스템에서 파일을 바꾸거나 만들 수 있습니다. 자세한 내용은
          <a class="external" href="https://groups.google.com/forum/?hl=ko#!topic/kubernetes-security-announce/NLs2TGbfPdo">
           Kubernetes 정보 공개
          </a>
@@ -1145,7 +2026,7 @@ kubectl delete -f \
          </strong>
          예정된 패치 버전에 이 취약점의 완화 방법이 포함됩니다.
         </p>
-        <h6 data-text="어떻게 해야 하나요?" id="어떻게-해야-하나요_5" tabindex="0">
+        <h6 data-text="어떻게 해야 하나요?" id="what-should-i-do_12" tabindex="0">
          어떻게 해야 하나요?
         </h6>
         <p>
@@ -1175,7 +2056,7 @@ kubectl delete -f \
          </a>
          에서 이 패치의 가용성을 추적할 수 있습니다.
         </p>
-        <h6 data-text="이 패치로 어떤 취약점이 해결되나요?" id="이-패치로-어떤-취약점이-해결되나요_4" tabindex="0">
+        <h6 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_7" tabindex="0">
          이 패치로 어떤 취약점이 해결되나요?
         </h6>
         <p>
@@ -1187,7 +2068,7 @@ kubectl delete -f \
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11246">
           CVE-2019-11246
          </a>
-         을 이용하여 호스트의 파일을 수정할 수 있습니다. 공격자는 이 취약점을 악용하여 호스트 파일 시스템에서 파일을 바꾸거나 만들 수 있습니다.
+         을 악용하여 호스트의 파일을 수정할 수 있습니다. 공격자는 이 취약점을 악용하여 호스트 파일 시스템에서 파일을 바꾸거나 만들 수 있습니다.
         </p>
        </td>
        <td>
@@ -1226,19 +2107,19 @@ kubectl delete -f \
       <tr>
        <td>
         <p>
-         Docker에서
+         Docker에서 최근 발견한
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-15664">
           CVE-2018-15664
          </a>
-         취약점을 최근 발견했으며, 이 취약점은 컨테이너 내부에서 코드를 실행할 수 있는 공격자가 외부에서 시작된
+         취약점에는 컨테이너 내부에서 코드를 실행할 수 있는 공격자가 외부에서 시작된
          <code dir="ltr" translate="no">
           docker cp
          </code>
-         작업을 도용할 수 있다는 문제를 안고 있습니다. 공격자는 이 취약점을 악용하여 파일이 작성된 위치를 호스트 파일 시스템에 있는 임의 위치로 변경할 수 있습니다.
+         작업을 도용할 수 있다는 문제가 있습니다. 공격자는 이 취약점을 악용하여 파일이 작성된 위치를 호스트 파일 시스템 내 임의의 위치로 변경할 수 있습니다.
         </p>
         <p>
          <strong>
-          Docker를 실행하는 모든 Google Kubernetes Engine(GKE) 노드가 이 취약점의 영향을 받으므로 최신 패치 버전이 제공되는 대로 업그레이드하는 것이 좋습니다. 예정된 패치 버전에 이 취약점의 완화 방법이 포함됩니다.
+          Docker를 실행하는 모든 Google Kubernetes Engine(GKE) 노드가 이 취약점의 영향을 받으며, 최신 패치 버전이 제공되면 업그레이드하는 것이 좋습니다. 예정된 패치 버전에 이 취약점의 완화 방법이 포함됩니다.
          </strong>
         </p>
         <p>
@@ -1251,7 +2132,7 @@ kubectl delete -f \
          </code>
          에 액세스할 수 없으므로 이 취약점의 위험은 GKE 마스터로 한정됩니다.
         </p>
-        <h5 data-text="어떻게 해야 하나요?" id="어떻게-해야-하나요_6" tabindex="0">
+        <h5 data-text="어떻게 해야 하나요?" id="what-should-i-do_13" tabindex="0">
          어떻게 해야 하나요?
         </h5>
         <p>
@@ -1260,7 +2141,7 @@ kubectl delete -f \
           docker cp
          </code>
          (또는 API 상응) 명령어가 실행되는 경우에 한해 Docker를 실행하는 노드만 영향을 받습니다.
-          Kubernetes 환경에서 이러한 상황은 상당히 드물 것으로 예상됩니다.
+      Kubernetes 환경에서 이러한 상황은 상당히 드물 것으로 예상됩니다.
          <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/using-containerd?hl=ko">
           컨테이너가 있는 COS
          </a>
@@ -1286,7 +2167,7 @@ kubectl delete -f \
          </a>
          에서 이 패치의 가용성을 추적할 수 있습니다.
         </p>
-        <h5 data-text="이 패치로 어떤 취약점이 해결되나요?" id="이-패치로-어떤-취약점이-해결되나요_5" tabindex="0">
+        <h5 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_8" tabindex="0">
          이 패치로 어떤 취약점이 해결되나요?
         </h5>
         <p>
@@ -1300,7 +2181,7 @@ kubectl delete -f \
          를 이용하여 외부에서 시작된
          <code dir="ltr" translate="no">
           docker
-          cp
+      cp
          </code>
          작업을 도용할 수 있습니다. 공격자는 이 취약점을 악용하여 파일이 작성된 위치를 호스트 파일 시스템에 있는 임의 위치로 변경할 수 있습니다.
         </p>
@@ -1336,7 +2217,7 @@ kubectl delete -f \
         <p>
          이 게시판은 처음 게시된 이후 업데이트되었습니다.
         </p>
-        <h6 data-text="2019년 8월 2일 업데이트" id="2019년-8월-2일-업데이트" tabindex="0">
+        <h6 data-text="2019년 8월 2일 업데이트" id="august-2,-2019-update" tabindex="0">
          2019년 8월 2일 업데이트
         </h6>
         <p>
@@ -1345,17 +2226,17 @@ kubectl delete -f \
         <p>
         </p>
         <p>
-         Kubernetes 프로젝트에서 kubelet v1.13.6 및 v1.14.2의 취약점
+         Kubernetes 프로젝트에서 공개한 kubelet v1.13.6 및 v1.14.2의 취약점
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2019-11245">
           CVE-2019-11245
          </a>
-         를 공개했으며, 이로 인해 컨테이너 이미지에 다른 사용자가 지정되었더라도 컨테이너가 UID 0(일반적으로
+         로 인해 컨테이너 이미지에 다른 사용자가 지정되었더라도 컨테이너가 UID 0(일반적으로
          <code dir="ltr" translate="no">
           root
          </code>
          사용자에 매핑)으로 실행될 수 있습니다.
          <strong>
-          컨테이너가 루트가 아닌 사용자로 실행되고 노드 버전 1.13.6-gke.0~1.13.6-gke.6을 실행하고 있다면 컨테이너가 UID 0으로 실행되어서는 안 되는 클러스터의 모든 Pod에
+          컨테이너가 루트가 아닌 사용자로 실행되고 노드 버전 1.13.6-gke.0~1.13.6-gke.6을 실행하고 있다면 컨테이너가 UID 0으로 실행되어서는 안 되는 클러스터의 모든 pod에
           <code dir="ltr" translate="no">
            RunAsUser
           </code>
@@ -1373,7 +2254,7 @@ kubectl delete -f \
          </code>
          값 설정) 예상치 못한 동작이 발생합니다. 컨테이너가 노드에서 처음 실행될 때는 지정된 UID를 올바르게 고려합니다. 그러나, 이 결함으로 인해 두 번째 실행 이후에는 지정된 UID와 관계없이 컨테이너가 UID 0으로 실행됩니다. 이는 바람직하지 않게 에스컬레이션된 권한인 경우가 많으며 예상치 못한 애플리케이션 동작으로 이어질 수 있습니다.
         </p>
-        <h5 data-text="영향을 받는 버전을 실행 중인지 어떻게 알 수 있나요?" id="영향을-받는-버전을-실행-중인지-어떻게-알-수-있나요" tabindex="0">
+        <h5 data-text="영향을 받는 버전을 실행 중인지 어떻게 알 수 있나요?" id="how-do-i-know-if-im-running-an-impacted-version" tabindex="0">
          영향을 받는 버전을 실행 중인지 어떻게 알 수 있나요?
         </h5>
         <p>
@@ -1381,11 +2262,11 @@ kubectl delete -f \
         </p>
         <pre class="devsite-click-to-copy prettyprint" dir="ltr" suppresswarning="" translate="no">
 
-    kubectl get nodes -o=jsonpath='{range .items[*]}'\
-    '{.status.nodeInfo.machineID}'\
-    '{"\t"}{.status.nodeInfo.kubeletVersion}{"\n"}{end}'</pre>
+kubectl get nodes -o=jsonpath='{range .items[*]}'\
+'{.status.nodeInfo.machineID}'\
+'{"\t"}{.status.nodeInfo.kubeletVersion}{"\n"}{end}'</pre>
         <p>
-         출력에 아래와 같은 kubelet 버전이 나열되면 영향을 받는 노드인 것입니다.
+         출력에 아래와 같은 kubelet 버전이 나열되면 영향을 받는 노드입니다.
         </p>
         <ul>
          <li>
@@ -1395,7 +2276,7 @@ kubectl delete -f \
           v1.14.2
          </li>
         </ul>
-        <h5 data-text="특정 구성이 영향을 받는지 어떻게 알 수 있나요?" id="특정-구성이-영향을-받는지-어떻게-알-수-있나요" tabindex="0">
+        <h5 data-text="특정 구성이 영향을 받는지 어떻게 알 수 있나요?" id="how-do-i-know-if-my-specific-configuration-is-affected" tabindex="0">
          특정 구성이 영향을 받는지 어떻게 알 수 있나요?
         </h5>
         <p>
@@ -1407,7 +2288,7 @@ kubectl delete -f \
           <code dir="ltr" translate="no">
            runAsUser
           </code>
-          PodSecurityContext 값을 지정하는 Pod는 영향을 받지 않으며 계속 정상적으로 작동합니다.
+          PodSecurityContext 값을 지정하는 pod는 영향을 받지 않으며 계속 정상적으로 작동합니다.
          </li>
          <li>
           <code dir="ltr" translate="no">
@@ -1419,14 +2300,14 @@ kubectl delete -f \
           <code dir="ltr" translate="no">
            mustRunAsNonRoot:true
           </code>
-          를 지정하는 Pod는 UID 0으로 시작하지 않지만 이 문제의 영향을 받을 경우 시작할 수 없습니다.
+          를 지정하는 pod는 UID 0으로 시작하지 않지만 이 문제의 영향을 받을 경우 시작할 수 없습니다.
          </li>
         </ul>
-        <h5 data-text="어떻게 해야 하나요?" id="어떻게-해야-하나요_7" tabindex="0">
+        <h5 data-text="어떻게 해야 하나요?" id="what-should-i-do_14" tabindex="0">
          어떻게 해야 하나요?
         </h5>
         <p>
-         UID 0으로 실행하면 안 되는 클러스터의 모든 Pod에서
+         UID 0으로 실행하면 안 되는 클러스터의 모든 pod에서
          <a class="external" href="https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod">
           RunAsUser Security Context
          </a>
@@ -1508,15 +2389,15 @@ kubectl delete -f \
         </p>
         <p>
          <strong>
-          Kubernetes Engine을 실행하는 호스트 인프라는 고객의 워크로드를 서로 격리합니다. 자체 멀티테넌트 GKE 클러스터에서 신뢰할 수 없는 코드를 실행하는 경우가 아니라면 영향을 받지 않습니다.
+          Kubernetes Engine을 실행하는 호스트 인프라는 고객의 워크로드를 서로 격리합니다. 자체 멀티 테넌트 GKE 클러스터 내에서 신뢰할 수 없는 코드를 실행하는 경우가 아니면 영향을 받지 않습니다.
          </strong>
         </p>
         <p>
          <strong>
-          Kubernetes Engine 내 자체 멀티테넌트 서비스에서 신뢰할 수 없는 코드를 실행하는 고객에게는 특히 심각한 취약점입니다.
+          Kubernetes Engine 내 자체 멀티 테넌트 서비스에서 신뢰할 수 없는 코드를 실행하는 고객에게는 특히 심각한 취약점입니다.
          </strong>
          Kubernetes Engine에서 취약점을 완화하려면 노드에서 하이퍼 스레딩을 사용 중지하세요. 이 취약점은 여러 CPU를 사용하는 Google Kubernetes Engine(GKE) 노드에만 영향을 미칩니다.
-              n1-standard-1(GKE 기본값), g1-small, f1-micro VM은 1개의 vCPU만 게스트 환경에 노출하므로 하이퍼 스레딩을 사용 중지할 필요가 없습니다.
+          n1-standard-1(GKE 기본값), g1-small, f1-micro VM은 1개의 vCPU만 게스트 환경에 노출하므로 하이퍼 스레딩을 사용 중지할 필요가 없습니다.
         </p>
         <p>
          삭제 기능을 사용 설정하는 추가적인 보호 조치가 예정된
@@ -1524,7 +2405,7 @@ kubectl delete -f \
           패치 버전
          </a>
          에 포함됩니다.
-            몇 주 후 정기적인 업그레이드 주기에 따라 마스터와 노드가 자동 업그레이드를 통해 패치 버전으로 자동 업그레이드됩니다.
+        몇 주 후 정기적인 업그레이드 주기에 따라 마스터와 노드가 자동 업그레이드를 통해 패치 버전으로 자동 업그레이드됩니다.
          <strong>
           패치만으로는 이 취약점에 대한 노출을 완화하기에 충분하지 않습니다. 아래에서 권장 조치를 참조하세요.
          </strong>
@@ -1536,12 +2417,12 @@ kubectl delete -f \
          </a>
          를 참조하세요.
         </p>
-        <h4 data-text="어떻게 해야 하나요?" id="어떻게-해야-하나요_8" tabindex="0">
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_15" tabindex="0">
          어떻게 해야 하나요?
         </h4>
         <p>
          <strong>
-          자체 멀티테넌트 GKE 클러스터에서 신뢰할 수 없는 코드를 실행하는 경우가 아니라면 영향을 받지 않습니다.
+          자체 멀티 테넌트 GKE 클러스터에서 신뢰할 수 없는 코드를 실행하는 경우가 아니라면 영향을 받지 않습니다.
          </strong>
         </p>
         <p>
@@ -1562,7 +2443,7 @@ kubectl delete -f \
           </li>
           <li>
            하이퍼 스레딩은 DaemonSet를 배포하여 GKE 노드 풀 수준에서 사용 중지할 수 있습니다. 그러나 이 DaemonSet를 배포하면 노드 풀의 모든 노드가 동시에 재부팅됩니다.
-                그러므로 클러스터에서 새 노드 풀을 만들고 DaemonSet를 배포하여 노드 풀에서 하이퍼 스레딩을 사용 중지한 다음, 워크로드를 새 노드 풀로 마이그레이션하는 것이 좋습니다.
+            그러므로 클러스터에서 새 노드 풀을 만들고 DaemonSet를 배포하여 노드 풀에서 하이퍼 스레딩을 사용 중지한 다음, 워크로드를 새 노드 풀로 마이그레이션하는 것이 좋습니다.
           </li>
          </ul>
         </div>
@@ -1577,8 +2458,8 @@ kubectl delete -f \
           노드 라벨을 사용하여 클러스터에 새 노드 풀을 만듭니다.
           <pre dir="ltr" translate="no">
 
-    gcloud container node-pools create smt-disabled --cluster=[CLUSTER_NAME] \
-        --node-labels=cloud.google.com/gke-smt-disabled=true</pre>
+gcloud container node-pools create smt-disabled --cluster=[CLUSTER_NAME] \
+    --node-labels=cloud.google.com/gke-smt-disabled=true</pre>
          </li>
          <li>
           이 새 노드 풀에 DaemonSet를 배포합니다. DaemonSet는
@@ -1588,31 +2469,42 @@ kubectl delete -f \
           라벨이 있는 노드에서만 실행되며 하이퍼 스레딩을 사용 중지한 다음 노드를 재부팅합니다.
           <pre dir="ltr" translate="no">
 
-    kubectl create -f \
-    https://raw.githubusercontent.com/GoogleCloudPlatform/\
-    k8s-node-tools/master/disable-smt/gke/disable-smt.yaml</pre>
+kubectl create -f \
+https://raw.githubusercontent.com/GoogleCloudPlatform/\
+k8s-node-tools/master/disable-smt/gke/disable-smt.yaml</pre>
          </li>
          <li>
-          DaemonSet Pod가 실행 중인 상태인지 확인합니다.
+          DaemonSet pod가 실행 중인 상태인지 확인합니다.
           <pre dir="ltr" translate="no">
 
-    kubectl get pods --selector=name=disable-smt -n kube-system</pre>
+kubectl get pods --selector=name=disable-smt -n kube-system</pre>
           <p>
            다음과 비슷한 응답을 받게 됩니다.
           </p>
           <pre dir="ltr" translate="no">
 
-    NAME                READY     STATUS    RESTARTS   AGE
+NAME                READY     STATUS    RESTARTS   AGE
 
-    disable-smt-2xnnc   1/1       Running   0          6m</pre>
+disable-smt-2xnnc   1/1       Running   0          6m</pre>
          </li>
          <li>
-          Pod의 로그에 'SMT가 사용 중지됨'이 표시되는지 확인합니다.
+          pod의 로그에 'SMT가 사용 중지됨'이 표시되는지 확인합니다.
           <pre dir="ltr" translate="no">
 
-    kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
+kubectl logs disable-smt-2xnnc disable-smt -n kube-system</pre>
          </li>
         </ol>
+        <aside class="note">
+         참고: 노드에
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/shielded-gke-nodes?hl=ko#secure_boot">
+          안전한 부팅
+         </a>
+         기능이 사용 설정되어 있으면 부팅 옵션을 수정할 수 없습니다. 안전한 부팅이 사용 설정된 경우 DaemonSet를 생성하기 전에
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/shielded-gke-nodes?hl=ko#disabling">
+          사용 중지
+         </a>
+         해야 합니다.
+        </aside>
         <p>
          풀에서 만든 새 노드에 변경사항이 자동으로 적용될 수 있도록 노드 풀에서 DaemonSet를 실행 중인 상태로 유지해야 합니다. 노드 생성은 노드 자동 복구, 수동 또는 자동 업그레이드, 자동 확장으로 트리거될 수 있습니다.
         </p>
@@ -1624,12 +2516,12 @@ kubectl delete -f \
          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=ko#upgrading_the_cluster">
           마스터를 최신 버전으로 업그레이드
          </a>
-         해야 합니다. GKE 마스터는 정기적인 업그레이드 주기에 따라 자동 업그레이드됩니다.
+         해야 합니다. GKE 마스터는 정기적인 업그레이드 주기에 따라 자동으로 업그레이드됩니다.
         </p>
         <p>
          패치가 제공되면 패치가 포함된 버전으로 이 게시판이 업데이트됩니다.
         </p>
-        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="이-패치로-어떤-취약점이-해결되나요_6" tabindex="0">
+        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_9" tabindex="0">
          이 패치로 어떤 취약점이 해결되나요?
         </h4>
         <p>
@@ -1730,7 +2622,7 @@ kubectl delete -f \
           영향을 받는 클러스터를 최신 패치 버전으로 최대한 빨리 업그레이드하고 Istio 사이드카도 업그레이드하는 것이 좋습니다(아래 안내 참조).
          </strong>
         </p>
-        <h4 data-text="어떻게 해야 하나요?" id="어떻게-해야-하나요_9" tabindex="0">
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_16" tabindex="0">
          어떻게 해야 하나요?
         </h4>
         <p>
@@ -1750,7 +2642,7 @@ kubectl delete -f \
          </li>
          <li>
           <strong>
-           <a class="external" href="https://istio.io/docs/setup/kubernetes/upgrade/steps/#sidecar-upgrade">
+           <a class="external" href="https://archive.istio.io/v1.5/docs/setup/upgrade/cni-helm-upgrade/#control-plane-upgrade">
             사이드카 업그레이드 문서
            </a>
            에 따라 사이드카를 업그레이드합니다.
@@ -1761,7 +2653,7 @@ kubectl delete -f \
          패치 버전은 금일 오후 7시(PDT 기준) 이전에 모든 GKE 프로젝트에 제공될 예정입니다.
         </p>
         <p>
-         이 패치는 아래 GKE 버전에 제공됩니다. GKE 보안 게시판 페이지에서 패치 버전이 발표되면(2019년 4월 15일로 예정) 새 클러스터에서 기본적으로 이 패치 버전을 사용합니다. 그 전에 새 클러스터를 만들었다면 사용할 패치 버전을 지정해야 합니다.
+         이 패치는 아래 GKE 버전에 제공됩니다. GKE 보안 게시판 페이지에서 패치 버전이 발표되면(2019년 4월 15일로 예정) 새 클러스터에서 기본적으로 이 패치 버전을 사용합니다. 그 전에 새 클러스터를 만드는 경우에는 여기에 사용할 패치 버전을 지정해야 합니다.
          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-upgrades?hl=ko">
           노드 자동 업그레이드
          </a>
@@ -1790,7 +2682,7 @@ kubectl delete -f \
           1.13.4-gke.10
          </li>
         </ul>
-        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="이-패치로-어떤-취약점이-해결되나요_7" tabindex="0">
+        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_10" tabindex="0">
          이 패치로 어떤 취약점이 해결되나요?
         </h4>
         <p>
@@ -1856,17 +2748,17 @@ kubectl delete -f \
           2019년 3월 22일 업데이트:
          </strong>
          이 패치는 Kubernetes 1.11.8-gke.4, 1.13.4-gke.1 및 그 이상의 출시 버전에서 제공됩니다. 1.12에서는 이 패치를 아직 사용할 수 없습니다.
-         <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=ko#march_19_2019">
+         <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes-archive?hl=ko#march_19_2019">
           출시 노트
          </a>
          에서 이 패치의 가용성을 추적할 수 있습니다.
         </p>
         <p>
-         Kubernetes에서 신규 서비스 거부 취약점
+         Kubernetes에서 최근 발견한 신규 서비스 거부 취약점
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1002100">
           CVE-2019-1002100
          </a>
-         을 최근 발견했으며, 이 취약점은 패치 요청 권한이 있는 사용자가 Kubernetes API 서버의 CPU와 메모리를 과도하게 소비하는 악의적인 'json-patch' 요청을 만들어 클러스터 제어 영역의 가용성을 줄일 수 있다는 문제를 안고 있습니다. 자세한 내용은
+         에는 패치 요청 권한이 있는 사용자가 Kubernetes API 서버의 CPU와 메모리를 과도하게 소비하는 악성 요청인 'json-patch'을 만들어 클러스터 제어 영역의 가용성을 줄일 수 있다는 문제가 있습니다. 자세한 내용은
          <a href="https://groups.google.com/forum/?hl=ko#!topic/kubernetes-announce/vmUUNkYfG9g">
           Kubernetes 정보 공개
          </a>
@@ -1875,12 +2767,12 @@ kubectl delete -f \
           이 취약점은 모든 Google Kubernetes Engine(GKE) 마스터에 영향을 미칩니다. 예정된 패치 버전에 이 취약점의 완화 방법이 포함됩니다. 몇 주 후 정기적인 업그레이드 주기에 따라 클러스터 마스터가 패치 버전으로 자동 업그레이드됩니다.
          </strong>
         </p>
-        <h4 data-text="어떻게 해야 하나요?" id="어떻게-해야-하나요_10" tabindex="0">
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_17" tabindex="0">
          어떻게 해야 하나요?
         </h4>
         <p>
          <strong>
-          별도의 조치를 취할 필요가 없습니다. GKE 마스터는 정기적인 업그레이드 주기에 따라 자동 업그레이드됩니다.
+          별도의 조치를 취할 필요가 없습니다. GKE 마스터는 정기적인 업그레이드 주기에 따라 자동으로 업그레이드됩니다.
          </strong>
          마스터를 더 빨리 업그레이드하려면
          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=ko#upgrading_the_cluster">
@@ -1889,9 +2781,9 @@ kubectl delete -f \
          해도 됩니다.
         </p>
         <p>
-         이 게시판은 업데이트되어 패치가 포함된 버전이 추가될 예정입니다. 이 패치는 버전 1.10이 아닌 버전 1.11+에서만 사용할 수 있습니다.
+         패치가 포함된 버전으로 이 게시판이 업데이트됩니다. 이 패치는 버전 1.10이 아닌 버전 1.11+에서만 사용할 수 있습니다.
         </p>
-        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="이-패치로-어떤-취약점이-해결되나요_8" tabindex="0">
+        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_11" tabindex="0">
          이 패치로 어떤 취약점이 해결되나요?
         </h4>
         <p>
@@ -1956,15 +2848,15 @@ kubectl delete -f \
           하는 것이 좋습니다.
          </strong>
         </p>
-        <h4 data-text="어떻게 해야 하나요?" id="어떻게-해야-하나요_11" tabindex="0">
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_18" tabindex="0">
          어떻게 해야 하나요?
         </h4>
         <p>
          노드를 업그레이드하려면 먼저 마스터를 최신 버전으로 업그레이드해야 합니다. 이 패치는 Kubernetes 1.10.12-gke.7, 1.11.6-gke.11, 1.11.7-gke.4, 1.12.5-gke.5 및 그 이상의 출시 버전에서 제공됩니다.
-         <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=ko#february-11-2019">
+         <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes-archive?hl=ko#february-11-2019">
           출시 노트
          </a>
-         에서 이 패치의 가용성을 추적할 수 있습니다.
+         에서 패치의 가용성을 추적할 수 있습니다.
         </p>
         <p>
          GKE의 Ubuntu 노드만 영향을 받습니다. COS를 실행하는 노드는 영향을 받지 않습니다.
@@ -1972,7 +2864,7 @@ kubectl delete -f \
         <p>
          새로운 버전의 runc는 메모리 사용량이 증가했으며 메모리 제한이 낮게(16MB 미만) 설정된 경우 컨테이너에 할당된 메모리를 업데이트해야 할 수 있습니다.
         </p>
-        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="이-패치로-어떤-취약점이-해결되나요_9" tabindex="0">
+        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_12" tabindex="0">
          이 패치로 어떤 취약점이 해결되나요?
         </h4>
         <p>
@@ -1982,8 +2874,8 @@ kubectl delete -f \
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5736">
           CVE-2019-5736
          </a>
-         은 악의적인 컨테이너가 실행 형태인 사용자 상호작용이 최소화된 상태로 호스트 runc 바이너리를 덮어써서 호스트 노드에서 루트 수준의 코드 실행을 획득할 수 있는 runc의 취약점을 설명합니다.
-          루트로 실행되지 않는 컨테이너는 영향을 받지 않습니다. 이 문제는 '높음' 등급의 취약점으로 분류됩니다.
+         은 악성 컨테이너가 실행 형태인 사용자 상호작용이 최소화된 상태로 호스트 runc 바이너리를 덮어써서 호스트 노드에서 루트 수준의 코드 실행을 획득할 수 있는 runc의 취약점을 설명합니다.
+      루트로 실행되지 않는 컨테이너는 영향을 받지 않습니다. 이 문제는 '높음' 등급의 취약점으로 분류됩니다.
         </p>
        </td>
        <td>
@@ -2021,15 +2913,15 @@ kubectl delete -f \
          <strong>
           2019년 2월 25일 업데이트:
          </strong>
-         패치는 이미 안내된 내용과 같이 1.11.7-gke.4에서는 제공되지 않습니다. 1.11.7을 실행하고 있다면 1.11.6으로 다운그레이드 또는 1.12로 업그레이드하거나 2019년 3월 4일이 포함된 주에 다음 1.11.7 패치가 제공될 때까지 기다릴 수 있습니다.
+         패치는 이미 안내된 내용과 같이 1.11.7-gke.4에서는 제공되지 않습니다. 1.11.7을 실행하고 있다면 1.11.6으로 다운그레이드 또는 1.12로 업그레이드하거나 2019년 3월 4일이 포함된 주에 1.11.7 패치가 제공될 때까지 기다릴 수 있습니다.
         </p>
         <p>
-         Go 프로그래밍 언어에서 신규 보안 취약점
+         Go 프로그래밍 언어에서 최근 발견한 신규 보안 취약점
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-6486">
           CVE-2019-6486
          </a>
-         을 최근 발견했으며, 이는 P-521 및 P-384 타원 곡선의 암호화/타원 구현에 관한 서비스 거부(DoS) 취약점입니다. Google Kubernetes Engine(GKE)에서 사용자는 이 취약점을 악용해 Kubernetes API 서버의 CPU를 과도하게 소비하는 악의적인 요청을 만들어서 클러스터 제어 영역의 가용성을 줄일 수 있습니다.
-            자세한 내용은
+         은 P-521 및 P-384 타원 곡선의 암호화/타원 구현에 관한 서비스 거부(DoS) 취약점입니다. Google Kubernetes Engine(GKE)에서 사용자는 이 취약점을 악용해 Kubernetes API 서버의 CPU를 과도하게 소비하는 악성 요청을 만들어서 클러스터 제어 영역의 가용성을 줄일 수 있습니다.
+        자세한 내용은
          <a href="https://groups.google.com/forum/?hl=ko#!topic/golang-announce/mVeX35iXuSw">
           Go 프로그래밍 언어 정보 공개
          </a>
@@ -2038,13 +2930,13 @@ kubectl delete -f \
         <p>
          <strong>
           이 취약점은 모든 Google Kubernetes Engine(GKE) 마스터에 영향을 미칩니다.
-          <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=ko#february-11-2019">
+          <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes-archive?hl=ko#february-11-2019">
            최신 패치 버전
           </a>
-          에 이 취약점의 완화 방법이 포함되어 있습니다. 몇 주 후 정기적인 업그레이드 주기에 따라 클러스터 마스터가 패치 버전으로 자동 업그레이드됩니다.
+          에 이 취약점의 완화 방법이 포함됩니다. 몇 주 후 정기적인 업그레이드 주기에 따라 클러스터 마스터가 패치 버전으로 자동 업그레이드됩니다
          </strong>
         </p>
-        <h4 data-text="어떻게 해야 하나요?" id="어떻게-해야-하나요_12" tabindex="0">
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_19" tabindex="0">
          어떻게 해야 하나요?
         </h4>
         <p>
@@ -2060,7 +2952,7 @@ kubectl delete -f \
         <p>
          이 패치는 GKE 1.10.12-gke.7, 1.11.6-gke.11, 1.11.7-gke.4, 1.12.5-gke.5 및 그 이상의 출시 버전에서 제공됩니다.
         </p>
-        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="이-패치로-어떤-취약점이-해결되나요_10" tabindex="0">
+        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_13" tabindex="0">
          이 패치로 어떤 취약점이 해결되나요?
         </h4>
         <p>
@@ -2102,25 +2994,25 @@ kubectl delete -f \
       <tr>
        <td>
         <p>
-         Kubernetes에서 신규 보안 취약점
+         Kubernetes에서 최근 발견한 신규 보안 취약점
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1002105">
           CVE-2018-1002105
          </a>
-         를 최근 발견했으며, 이 취약점은 권한이 비교적 낮은 사용자가 kubelet의 API에 대한 승인을 우회하여 클러스터 내의 어떤 노드에서든 모든 Pod에 대해 임의의 작업을 실행할 수 있다는 문제를 안고 있습니다. 자세한 내용은
+         는 권한이 비교적 낮은 사용자가 kubelet의 API에 대한 승인을 우회하여 클러스터 내의 어떤 노드에서든 모든 pod에 대해 임의의 작업을 실행할 수 있다는 문제를 안고 있습니다. 자세한 내용은
          <a class="external" href="https://groups.google.com/forum/?hl=ko#!topic/kubernetes-announce/GVllWCg6L88">
           Kubernetes 정보 공개
          </a>
          를 참조하세요.
          <strong>
           모든 Google Kubernetes Engine(GKE) 마스터가 이 취약점의 영향을 받았으며, Google은 이미
-          <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=ko#november-12-2018">
+          <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes-archive?hl=ko#november-12-2018">
            최신 패치 버전
           </a>
           으로 클러스터를 업그레이드했습니다.
-            별도의 조치를 취할 필요가 없습니다.
+        별도의 조치를 취할 필요가 없습니다.
          </strong>
         </p>
-        <h4 data-text="어떻게 해야 하나요?" id="어떻게-해야-하나요_13" tabindex="0">
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_20" tabindex="0">
          어떻게 해야 하나요?
         </h4>
         <p>
@@ -2131,14 +3023,14 @@ kubectl delete -f \
         <p>
          이 패치는 GKE 1.9.7-gke.11, 1.10.6-gke.11, 1.10.7-gke.11, 1.10.9-gke.5, 1.11.2-gke.18 및 그 이상의 출시 버전에서 제공됩니다.
         </p>
-        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="이-패치로-어떤-취약점이-해결되나요_11" tabindex="0">
+        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerability-is-addressed-by-this-patch_14" tabindex="0">
          이 패치로 어떤 취약점이 해결되나요?
         </h4>
         <p>
          이 패치로 다음의 취약점이 완화됩니다.
         </p>
         <p>
-         취약점 CVE-2018-1002105는 권한이 비교적 낮은 사용자가 kubelet의 API에 대한 승인을 우회할 수 있다는 문제를 안고 있습니다. 이에 따라 사용자에게는 kubelet API 임의 호출 수행과 에스컬레이션을 위한 요청(업그레이드 가능) 권한이 주어집니다. 이는 Kubernetes에서 심각한 취약점으로 분류됩니다. 미승인 에스컬레이션 경로가 차단된 GKE 구현을 좀 더 상세히 고려해 보면 이 문제는 높은 등급의 취약점으로 분류됩니다.
+         취약점 CVE-2018-1002105는 권한이 비교적 낮은 사용자가 kubelet의 API에 대한 승인을 우회할 수 있다는 문제를 안고 있습니다. 이에 따라 사용자에게는 kubelet API 임의 호출 수행과 에스컬레이션을 위한 요청(업그레이드 가능) 권한이 주어집니다. 이는 Kubernetes에서 심각한 취약점으로 분류됩니다. 미승인 에스컬레이션 경로가 차단된 GKE 구현을 좀 더 상세히 고려해 보면 이 문제는 '높음' 등급의 취약점으로 분류됩니다.
         </p>
        </td>
        <td>
@@ -2203,26 +3095,26 @@ kubectl delete -f \
        <td>
         <pre dir="ltr" translate="no">
 
-    bgpconfigurations.crd.projectcalico.org     [create get list update watch]
-    bgppeers.crd.projectcalico.org              [create get list update watch]
-    clusterinformations.crd.projectcalico.org   [create get list update watch]
-    felixconfigurations.crd.projectcalico.org   [create get list update watch]
-    globalbgpconfigs.crd.projectcalico.org      [create get list update watch]
-    globalfelixconfigs.crd.projectcalico.org    [create get list update watch]
-    globalnetworkpolicies.crd.projectcalico.org [create get list update watch]
-    globalnetworksets.crd.projectcalico.org     [create get list update watch]
-    hostendpoints.crd.projectcalico.org         [create get list update watch]
-    ippools.crd.projectcalico.org               [create get list update watch]
-    networkpolicies.crd.projectcalico.org       [create get list update watch]
-    nodes                                       [get list update watch]
-    pods                                        [get list watch patch]
-    namespaces                                  [get list watch]
-    networkpolicies.extensions                  [get list watch]
-    endpoints                                   [get]
-    services                                    [get]
-    pods/status                                 [update]
-    networkpolicies.networking.k8s.io           [watch list]
-          </pre>
+bgpconfigurations.crd.projectcalico.org     [create get list update watch]
+bgppeers.crd.projectcalico.org              [create get list update watch]
+clusterinformations.crd.projectcalico.org   [create get list update watch]
+felixconfigurations.crd.projectcalico.org   [create get list update watch]
+globalbgpconfigs.crd.projectcalico.org      [create get list update watch]
+globalfelixconfigs.crd.projectcalico.org    [create get list update watch]
+globalnetworkpolicies.crd.projectcalico.org [create get list update watch]
+globalnetworksets.crd.projectcalico.org     [create get list update watch]
+hostendpoints.crd.projectcalico.org         [create get list update watch]
+ippools.crd.projectcalico.org               [create get list update watch]
+networkpolicies.crd.projectcalico.org       [create get list update watch]
+nodes                                       [get list update watch]
+pods                                        [get list watch patch]
+namespaces                                  [get list watch]
+networkpolicies.extensions                  [get list watch]
+endpoints                                   [get]
+services                                    [get]
+pods/status                                 [update]
+networkpolicies.networking.k8s.io           [watch list]
+      </pre>
        </td>
       </tr>
      </tbody>
@@ -2236,7 +3128,7 @@ kubectl delete -f \
     <p>
      영향을 받았을 가능성이 있는 모든 토큰은 다음 주 중에 단계적으로 취소될 예정입니다. 취소가 완료되면 이 게시판이 업데이트됩니다.
      <strong>
-      사용자의 추가 조치는 필요하지 않습니다.
+      추가 조치는 필요하지 않습니다.
      </strong>
      (이 순환은 2018년 11월 16일에 완료됨)
     </p>
@@ -2255,10 +3147,7 @@ kubectl delete -f \
      <tbody>
       <tr>
        <td>
-        <pre dir="ltr" translate="no">
-
-    kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
-          </pre>
+        kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
        </td>
       </tr>
      </tbody>
@@ -2267,7 +3156,7 @@ kubectl delete -f \
      <tbody>
       <tr>
        <td>
-        <h4 data-text="감지" id="감지" tabindex="0">
+        <h4 data-text="감지" id="detection" tabindex="0">
          감지
         </h4>
         <p>
@@ -2283,76 +3172,76 @@ kubectl delete -f \
        <td>
         <pre dir="ltr" translate="no">
 
-    resource.type="k8s_cluster"
-    protoPayload.authenticationInfo.principalEmail="system:serviceaccount:kube-system:calico"
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.34.208.0/20")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.192.0/21")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.200.0/23")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.59.80.0/20")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.192.0/20")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.208.0/21")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.216.0/22")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.220.0/23")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.222.0/24")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.224.0.0/13")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.216.148.0/22")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.222.176.0/21")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "173.255.112.0/20")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "192.158.28.0/22")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.192.112.0/22")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.232.0/22")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.236.0/23")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.236.48.0/20")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.251.128.0/19")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.204.0.0/14")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.208.0.0/13")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.167.160.0/19")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.178.192.0/18")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.2.0/23")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.4.0/22")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.8.0/21")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.16.0/20")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.32.0/19")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.64.0/18")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.0.0/17")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.128.0/18")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.192.0/19")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.240.0/20")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.8.0/21")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.16.0/20")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.32.0/19")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.64.0/18")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.128.0/17")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.154.0.0/15")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.196.0.0/14")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "208.68.108.0/23")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.184.0.0/14")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.188.0.0/15")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.202.0.0/16")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.0.0/17")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.128.0/18")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.192.0/19")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.224.0/20")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.192.0.0/14")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.196.0.0/15")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.198.0.0/16")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.0.0/17")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.128.0/18")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.200.0.0/15")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "2600:1900::/35")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.224.0/20")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.232.0.0/15")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.234.0.0/16")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.0.0/17")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.192.0/20")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.236.0.0/14")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.240.0.0/15")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.232.0/21")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.4.0/22")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.220.0.0/14")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.242.0.0/15")
-    NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.244.0.0/14")
-          </pre>
+resource.type="k8s_cluster"
+protoPayload.authenticationInfo.principalEmail="system:serviceaccount:kube-system:calico"
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.34.208.0/20")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.192.0/21")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "8.35.200.0/23")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.59.80.0/20")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.192.0/20")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.208.0/21")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.216.0/22")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.220.0/23")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "108.170.222.0/24")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.224.0.0/13")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.216.148.0/22")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "162.222.176.0/21")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "173.255.112.0/20")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "192.158.28.0/22")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.192.112.0/22")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.232.0/22")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "199.223.236.0/23")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.236.48.0/20")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "23.251.128.0/19")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.204.0.0/14")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.208.0.0/13")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.167.160.0/19")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "107.178.192.0/18")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.2.0/23")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.4.0/22")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.8.0/21")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.16.0/20")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.32.0/19")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "146.148.64.0/18")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.0.0/17")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.128.0/18")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.192.0/19")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.240.0/20")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.8.0/21")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.16.0/20")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.32.0/19")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.64.0/18")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.128.0/17")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.154.0.0/15")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "104.196.0.0/14")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "208.68.108.0/23")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.184.0.0/14")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.188.0.0/15")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.202.0.0/16")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.0.0/17")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.128.0/18")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.192.0/19")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.224.0/20")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.192.0.0/14")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.196.0.0/15")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.198.0.0/16")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.0.0/17")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.199.128.0/18")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.200.0.0/15")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "2600:1900::/35")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.190.224.0/20")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.232.0.0/15")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.234.0.0/16")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.0.0/17")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.235.192.0/20")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.236.0.0/14")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.240.0.0/15")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.203.232.0/21")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "130.211.4.0/22")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.220.0.0/14")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.242.0.0/15")
+NOT ip_in_net(protoPayload.requestMetadata.callerIp, "35.244.0.0/14")
+      </pre>
        </td>
       </tr>
      </tbody>
@@ -2416,7 +3305,7 @@ kubectl delete -f \
         </p>
         <p>
          이러한 L1TF 취약점은 프로세서 수준 데이터 구조의 구성을 공격하는 식의 예측 실행 악용 문제를 안고 있습니다.
-          'L1'은 레벨 1 데이터 캐시(L1D), 즉 메모리 액세스 가속화에 사용되는 소형 온코어(on-core) 리소스를 의미합니다.
+      'L1'은 레벨 1 데이터 캐시(L1D), 즉 메모리 액세스 가속화에 사용되는 소형 온코어(on-core) 리소스를 의미합니다.
         </p>
         <p>
          이러한 취약점과 Compute Engine의 완화 조치에 대한 자세한 내용은
@@ -2425,7 +3314,7 @@ kubectl delete -f \
          </a>
          을 참조하세요.
         </p>
-        <h4 data-text="Google Kubernetes Engine에 미치는 영향" id="google-kubernetes-engine에-미치는-영향" tabindex="0">
+        <h4 data-text="Google Kubernetes Engine에 미치는 영향" id="google-kubernetes-engine-impact" tabindex="0">
          Google Kubernetes Engine에 미치는 영향
         </h4>
         <p>
@@ -2494,20 +3383,21 @@ kubectl delete -f \
      <tbody>
       <tr>
        <td>
-        <h4 data-text="2018년 9월 5일 업데이트" id="2018년-9월-5일-업데이트" tabindex="0">
+        <h4 data-text="2018년 9월 5일 업데이트" id="2018-09-05-update" tabindex="0">
          2018년 9월 5일 업데이트
         </h4>
         <p>
+         최근 공개된
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5391">
           CVE-2018-5391
          </a>
-         이 최근 공개되었습니다. 이는
+         은
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390">
           CVE-2018-5390
          </a>
-         과 같은 커널 수준의 네트워킹 취약점으로서, 취약 시스템에 대한 서비스 거부(DoS) 공격 효과가 증가한다는 문제를 안고 있습니다. 주요한 차이는 CVE-2018-5391은 IP 연결 시 악용될 수 있다는 점입니다. 이 두 취약점을 모두 고려할 수 있도록 게시판이 업데이트되었습니다.
+         과 같은 커널 수준의 네트워킹 취약점이며, 취약 시스템에 대한 서비스 거부(DoS) 공격 효과가 증가한다는 문제를 안고 있습니다. 주요한 차이는 CVE-2018-5391은 IP 연결 시 악용될 수 있다는 점입니다. 이 두 취약점을 모두 고려할 수 있도록 게시판이 업데이트되었습니다.
         </p>
-        <h4 data-text="설명" id="설명" tabindex="0">
+        <h4 data-text="설명" id="description" tabindex="0">
          설명
         </h4>
         <p>
@@ -2522,22 +3412,22 @@ kubectl delete -f \
          </a>
          ('FragmentSmack')은 IP 연결 시 취약 시스템에 대한 서비스 거부(DoS) 공격 효과가 증가하는 커널 수준의 네트워킹 취약점입니다.
         </p>
-        <h4 data-text="Google Kubernetes Engine에 미치는 영향" id="google-kubernetes-engine에-미치는-영향_1" tabindex="0">
+        <h4 data-text="Google Kubernetes Engine에 미치는 영향" id="google-kubernetes-engine-impact_1" tabindex="0">
          Google Kubernetes Engine에 미치는 영향
         </h4>
         <p>
          2018년 8월 11일부터는 모든 Kubernetes Engine 마스터와 자동 업그레이드가 구성된 모든 Kubernetes Engine 클러스터가 두 취약점으로부터 안전해집니다.
-         <a class="external" href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=ko">
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=ko">
           자동 업그레이드
          </a>
-         가 구성되지 않았고 마지막 수동 업그레이드 시점이 2018년 8월 11일 이전인 Kubernetes Engine 노드 풀은 두 취약점의 영향을 받을 수 있습니다.
+         가 구성되지 않았고 마지막 수동 업그레이드 시점이 2018년 8월 11일 이전인 Kubernetes Engine 노드 풀은 두 취약점에 영향을 받을 수 있습니다.
         </p>
-        <h4 data-text="패치 버전" id="패치-버전" tabindex="0">
+        <h4 data-text="패치 버전" id="patched-versions" tabindex="0">
          패치 버전
         </h4>
         <p>
          이 취약점의 심각도가 높으므로 패치가 제공되는 즉시 노드를
-         <a class="external" href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=ko#upgrading_nodes">
+         <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=ko#upgrading-nodes">
           수동으로 업그레이드
          </a>
          하는 것이 좋습니다.
@@ -2584,13 +3474,13 @@ kubectl delete -f \
       <tr>
        <td>
         <p>
-         Git에서 권한 없는 사용자가 gitRepo 볼륨이 포함된 Pod를 생성할 수 있을 경우 Kubernetes 내의 권한 에스컬레이션이 가능할 수 있는 취약점이 최근 발견되었습니다. 이 CVE는
+         Git에서 최근 발견된 취약점은 권한 없는 사용자가 gitRepo 볼륨이 포함된 pod를 생성할 수 있을 경우 Kubernetes 내의 권한 에스컬레이션이 가능할 수도 있다는 문제를 안고 있습니다. 이 CVE는
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-11235">
           CVE-2018-11235
          </a>
          태그로 식별됩니다.
         </p>
-        <h4 data-text="영향을 받는지 여부는 어떻게 확인하나요?" id="영향을-받는지-여부는-어떻게-확인하나요" tabindex="0">
+        <h4 data-text="영향을 받는지 여부는 어떻게 확인하나요?" id="am-i-affected" tabindex="0">
          영향을 받는지 여부는 어떻게 확인하나요?
         </h4>
         <p>
@@ -2598,11 +3488,10 @@ kubectl delete -f \
         </p>
         <ul>
          <li>
-          신뢰할 수 없는 사용자가 Pod를 생성하거나 Pod 생성을 트리거할 수 있습니다.
+          신뢰할 수 없는 사용자가 pod를 생성하거나 pod 생성을 트리거할 수 있습니다.
          </li>
          <li>
-          신뢰할 수 없는 사용자가 생성한
-Pod에 호스트 루트 액세스를 방지하는 제한이 있습니다(예:
+          신뢰할 수 없는 사용자가 생성한 pod에 호스트 루트 액세스를 방지하는 제한이 있습니다(예:
           <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=ko">
            PodSecurityPolicy
           </a>
@@ -2610,13 +3499,13 @@ Pod에 호스트 루트 액세스를 방지하는 제한이 있습니다(예:
          </li>
          <li>
           신뢰할 수 없는 사용자가 생성한
-Pod가 gitRepo 볼륨 유형을 사용할 수 있습니다.
+pod가 gitRepo 볼륨 유형을 사용할 수 있습니다.
          </li>
         </ul>
         <p>
          모든 Kubernetes Engine 노드가 취약합니다.
         </p>
-        <h4 data-text="어떻게 해야 하나요?" id="어떻게-해야-하나요_14" tabindex="0">
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_21" tabindex="0">
          어떻게 해야 하나요?
         </h4>
         <p>
@@ -2636,38 +3525,38 @@ Pod가 gitRepo 볼륨 유형을 사용할 수 있습니다.
         <pre class="notranslate" dir="ltr" translate="no">
 
 <code dir="ltr" translate="no">apiVersion: v1
-    kind: Pod
-    metadata:
-      name: git-repo-example
-    spec:
-      initContainers:
-        # This container clones the desired git repo to the EmptyDir volume.
-        - name: git-clone
-          image: alpine/git # Any image with git will do
-          args:
-            - clone
-            - --single-branch
-            - --
-            - https://github.com/kubernetes/kubernetes # Your repo
-            - /repo # Put it in the volume
-          securityContext:
-            runAsUser: 1 # Any non-root user will do. Match to the workload.
-            allowPrivilegeEscalation: false
-            readOnlyRootFilesystem: true
-          volumeMounts:
-            - name: git-repo
-              mountPath: /repo
-      containers:
-        ...
-      volumes:
+kind: Pod
+metadata:
+  name: git-repo-example
+spec:
+  initContainers:
+    # This container clones the desired git repo to the EmptyDir volume.
+    - name: git-clone
+      image: alpine/git # Any image with git will do
+      args:
+        - clone
+        - --single-branch
+        - --
+        - https://github.com/kubernetes/kubernetes # Your repo
+        - /repo # Put it in the volume
+      securityContext:
+        runAsUser: 1 # Any non-root user will do. Match to the workload.
+        allowPrivilegeEscalation: false
+        readOnlyRootFilesystem: true
+      volumeMounts:
         - name: git-repo
-          emptyDir: {}</code></pre>
-        <h4 data-text="어떤 패치로 이 취약점을 해결할 수 있나요?" id="어떤-패치로-이-취약점을-해결할-수-있나요" tabindex="0">
+          mountPath: /repo
+  containers:
+    ...
+  volumes:
+    - name: git-repo
+      emptyDir: {}</code></pre>
+        <h4 data-text="어떤 패치로 이 취약점을 해결할 수 있나요?" id="what-patch-addresses-this-vulnerability" tabindex="0">
          어떤 패치로 이 취약점을 해결할 수 있나요?
         </h4>
         <p>
          향후 예정된 Kubernetes Engine 출시 버전에 패치가 포함될 예정입니다.
-            추후에 게시판을 다시 방문하여 자세한 내용을 확인하세요.
+        추후에 게시판을 다시 방문하여 자세한 내용을 확인하세요.
         </p>
        </td>
        <td>
@@ -2706,7 +3595,7 @@ Pod가 gitRepo 볼륨 유형을 사용할 수 있습니다.
       <tr>
        <td>
         <p>
-         Linux 커널에서 권한 없는 프로세스의 (커널 장애를 통한) 서비스 거부 또는 권한 에스컬레이션이 가능할 수 있는 몇 가지 취약점이 최근 발견되었습니다. 이러한 CVE는
+         Linux 커널에서 최근 발견된 몇몇 취약점은 권한 없는 프로세스의 (커널 장애를 통한) 서비스 거부 또는 권한 에스컬레이션이 가능할 수도 있다는 문제를 안고 있습니다. 이러한 CVE는
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1000199">
           CVE-2018-1000199
          </a>
@@ -2719,18 +3608,18 @@ Pod가 gitRepo 볼륨 유형을 사용할 수 있습니다.
           CVE-2018-1087
          </a>
          태그로 식별됩니다.
-            이 취약점은 모든 Kubernetes Engine 노드에 영향을 미치므로 아래의 세부정보를 참고하여 최신 패치 버전으로
+        이 취약점은 모든 Kubernetes Engine 노드에 영향을 미치므로 아래의 세부정보를 참고하여 최신 패치 버전으로
          <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-container-cluster?hl=ko">
           업그레이드
          </a>
          하는 것이 좋습니다.
         </p>
-        <h4 data-text="어떻게 해야 하나요?" id="어떻게-해야-하나요_15" tabindex="0">
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_22" tabindex="0">
          어떻게 해야 하나요?
         </h4>
         <p>
          업그레이드하려면 우선 마스터를 최신 버전으로 업그레이드해야 합니다. 이 패치는 Kubernetes Engine 1.8.12-gke.1, Kubernetes Engine 1.9.7-gke.1, Kubernetes Engine 1.10.2-gke.1에서 제공됩니다.
-            이러한 출시 버전에는 Container-Optimized OS와 Ubuntu 이미지의 패치가 포함되어 있습니다.
+        이러한 출시 버전에는 Container-Optimized OS와 Ubuntu 이미지의 패치가 포함됩니다.
         </p>
         <p>
          그 전에 새 클러스터를 만드는 경우 여기에 사용할 패치 버전을 지정해야 합니다.
@@ -2739,7 +3628,7 @@ Pod가 gitRepo 볼륨 유형을 사용할 수 있습니다.
          </a>
          를 사용 설정하고 수동으로는 업그레이드하지 않는 고객은 노드가 향후 몇 주 내에 패치 버전으로 업그레이드됩니다.
         </p>
-        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="이-패치로-어떤-취약점이-해결되나요_12" tabindex="0">
+        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerabilities-are-addressed-by-this-patch_3" tabindex="0">
          이 패치로 어떤 취약점이 해결되나요?
         </h4>
         <p>
@@ -2749,20 +3638,20 @@ Pod가 gitRepo 볼륨 유형을 사용할 수 있습니다.
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1000199">
           CVE-2018-1000199
          </a>
-         : 이 취약점은 Linux 커널에 영향을 미치며, 이로 인해 권한이 없는 사용자나 프로세스가 시스템 커널에 장애를 일으켜 DoS 공격이나 권한 에스컬레이션이 발생할 수 있습니다. 이 문제는 CVSS 7.8점에 해당하는 높은 등급의 취약점으로 분류됩니다.
+         : 이 취약점은 Linux 커널에 영향을 미치며, 이로 인해 권한이 없는 사용자나 프로세스가 시스템 커널에 장애를 일으켜 DoS 공격이나 권한 에스컬레이션이 발생할 수 있습니다. 이 문제는 CVSS 7.8점에 해당하는 '높음' 등급의 취약점으로 분류됩니다.
         </p>
         <p>
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-8897">
           CVE-2018-8897
          </a>
          : 이 취약점은 Linux 커널에 영향을 미치며, 이로 인해 권한이 없는 사용자나 프로세스가 시스템 커널에 장애를 일으켜 DoS 공격이 발생할 수 있습니다.
-            이 문제는 CVSS 6.5점에 해당하는 보통 등급의 취약점으로 분류됩니다.
+        이 문제는 CVSS 6.5점에 해당하는 '보통' 등급의 취약점으로 분류됩니다.
         </p>
         <p>
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-1087">
           CVE-2018-1087
          </a>
-         : 이 취약점은 Linux 커널의 KVM 하이퍼바이저에 영향을 미치며, 이로 인해 권한이 없는 프로세스가 게스트 커널에 장애를 일으킬 수 있거나 이 프로세스에 권한이 주어질 가능성도 있습니다. Kubernetes Engine 실행 인프라에서는 이 취약점을 해결하는 패치가 적용되었으므로 Kubernetes Engine은 영향을 받지 않습니다. 이 문제는 CVSS 8.0점에 해당하는 높은 등급의 취약점으로 분류됩니다.
+         : 이 취약점은 Linux 커널의 KVM 하이퍼바이저에 영향을 미치며, 이로 인해 권한이 없는 프로세스가 게스트 커널에 장애를 일으킬 수 있거나 이 프로세스에 권한이 주어질 가능성도 있습니다. Kubernetes Engine 실행 인프라에서는 이 취약점을 해결하는 패치가 적용되었으므로 Kubernetes Engine은 영향을 받지 않습니다. 이 문제는 CVSS 8.0점에 해당하는 '높음' 등급의 취약점으로 분류됩니다.
         </p>
        </td>
        <td>
@@ -2811,7 +3700,11 @@ Pod가 gitRepo 볼륨 유형을 사용할 수 있습니다.
       <tr>
        <td>
         <p>
-         Kubernetes 프로젝트에서 컨테이너가 컨테이너 외부에 있는 파일에 액세스할 수 있는 신규 보안 취약점
+         Kubernetes 프로젝트에서
+         <a class="external" href="https://groups.google.com/forum/?hl=ko#!topic/kubernetes-security-announce/P7lBjbjDKd8">
+          최근 공개된
+         </a>
+         신규 보안 취약점
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2017-1002101">
           CVE-2017-1002101
          </a>
@@ -2819,13 +3712,9 @@ Pod가 gitRepo 볼륨 유형을 사용할 수 있습니다.
          <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2017-1002102">
           CVE-2017-1002102
          </a>
-         를
-         <a class="external" href="https://groups.google.com/forum/?hl=ko#!topic/kubernetes-security-announce/P7lBjbjDKd8">
-          최근 공개
-         </a>
-         했습니다. 이 취약점은 모든 Kubernetes Engine 노드에 영향을 미치므로 아래의 세부정보를 참고하여 최대한 빨리 최신 패치 버전으로 업그레이드하는 것이 좋습니다.
+         는 컨테이너가 컨테이너 외부 파일에 액세스할 수 있다는 문제를 안고 있습니다. 이 취약점은 모든 Kubernetes Engine 노드에 영향을 미치므로 아래의 세부정보를 참고하여 최대한 빨리 최신 패치 버전으로 업그레이드하는 것이 좋습니다.
         </p>
-        <h4 data-text="어떻게 해야 하나요?" id="어떻게-해야-하나요_16" tabindex="0">
+        <h4 data-text="어떻게 해야 하나요?" id="what-should-i-do_23" tabindex="0">
          어떻게 해야 하나요?
         </h4>
         <p>
@@ -2834,7 +3723,7 @@ Pod가 gitRepo 볼륨 유형을 사용할 수 있습니다.
           수동으로 업그레이드
          </a>
          하는 것이 좋습니다. 패치는 3월 16일까지 모든 고객에게 제공될 예정이지만 사용자의 클러스터가 위치한 영역을 기준으로
-         <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=ko#march-12-2018">
+         <a href="https://cloud.google.com/kubernetes-engine/docs/release-notes-archive?hl=ko#march-12-2018">
           출시 일정
          </a>
          에 따라 더 일찍 제공될 수도 있습니다.
@@ -2852,25 +3741,24 @@ Pod가 gitRepo 볼륨 유형을 사용할 수 있습니다.
          </a>
          하는 것이 좋습니다.
         </p>
-        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="이-패치로-어떤-취약점이-해결되나요_13" tabindex="0">
+        <h4 data-text="이 패치로 어떤 취약점이 해결되나요?" id="what-vulnerabilities-are-addressed-by-this-patch_4" tabindex="0">
          이 패치로 어떤 취약점이 해결되나요?
         </h4>
         <p>
-         이 패치로 다음의 두 취약점이 완화됩니다.
+         이 패치로 다음 2가지 취약점이 완화됩니다.
         </p>
         <p>
          취약점 CVE-2017-1002101은
          <a class="external" href="https://kubernetes.io/docs/concepts/storage/volumes/#using-subpath">
           subpath
          </a>
-         볼륨 마운트를 사용하는 컨테이너가 볼륨 외부의 파일에 액세스할 수 있다는 문제를 안고 있습니다. 즉, PodSecurityPolicy로 컨테이너의 hostpath 볼륨 액세스를 차단하는 경우
-Pod 업데이트나 생성이 가능한 공격자가 다른 볼륨 유형으로 임의의 hostpath를 마운트할 수 있게 됩니다.
+         볼륨 마운트를 사용하는 컨테이너가 볼륨 외부의 파일에 액세스할 수 있다는 문제를 안고 있습니다. 즉, PodSecurityPolicy로 컨테이너의 hostpath 볼륨 액세스를 차단하는 경우 pod를 업데이트하거나 생성할 수 있는 공격자가 다른 볼륨 유형으로 임의의 hostpath를 마운트할 수 있게 됩니다.
         </p>
         <p>
-         취약점 CVE-2017-1002102는 특정 볼륨 유형(보안 비밀, 구성 맵, 예상 볼륨 또는 하향식 API 볼륨 등)을 사용하는 컨테이너가 볼륨 외부의 파일을 삭제할 수 있다는 문제를 안고 있습니다. 즉, 이러한 볼륨 유형 중 하나를 사용하는 컨테이너가 손상되거나 신뢰할 수 없는 사용자의 Pod 생성이 허용되는 경우 공격자가 이러한 컨테이너로 호스트상의 임의 파일을 삭제할 수 있게 됩니다.
+         취약점 CVE-2017-1002102는 특정 볼륨 유형(보안 비밀, 구성 맵, 예상 볼륨 또는 하향식 API 볼륨 등)을 사용하는 컨테이너가 볼륨 외부의 파일을 삭제할 수 있다는 문제를 안고 있습니다. 즉, 이러한 볼륨 유형 중 하나를 사용하는 컨테이너가 손상되거나 신뢰할 수 없는 사용자의 pod 생성이 허용되는 경우 공격자가 이러한 컨테이너로 호스트상의 임의 파일을 삭제할 수 있게 됩니다.
         </p>
         <p>
-         수정에 대한 자세한 내용은
+         해결책에 대한 자세한 내용은
          <a class="external" href="https://kubernetes.io/blog/2018/04/04/fixing-subpath-volume-vulnerability/">
           Kubernetes 블로그 게시물
          </a>

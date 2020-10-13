@@ -6,27 +6,46 @@
             }
         }
     },
-    "basePath": "/androidenterprise/v1/",
-    "baseUrl": "https://www.googleapis.com/androidenterprise/v1/",
+    "basePath": "",
+    "baseUrl": "https://www.googleapis.com/",
     "batchPath": "batch/androidenterprise/v1",
     "canonicalName": "Android Enterprise",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/android/work/play/emm-api",
     "icons": {
-        "x16": "https://www.google.com/images/icons/product/android-16.png",
-        "x32": "https://www.google.com/images/icons/product/android-32.png"
+        "x16": "http://www.google.com/images/icons/product/search-16.gif",
+        "x32": "http://www.google.com/images/icons/product/search-32.gif"
     },
     "id": "androidenterprise:v1",
     "kind": "discovery#restDescription",
+    "mtlsRootUrl": "https://www.mtls.googleapis.com/",
     "name": "androidenterprise",
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "$.xgafv": {
+            "enum": [
+                "1",
+                "2"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "location": "query",
+            "type": "string"
+        },
         "alt": {
             "default": "json",
             "enum": [
-                "json"
+                "json",
+                "media",
+                "proto"
             ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
             "location": "query",
             "type": "string"
         },
@@ -51,7 +70,11 @@
             "location": "query",
             "type": "string"
         },
-        "userIp": {
+        "uploadType": {
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
             "location": "query",
             "type": "string"
         }
@@ -61,6 +84,7 @@
         "devices": {
             "methods": {
                 "forceReportUpload": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/forceReportUpload",
                     "httpMethod": "POST",
                     "id": "androidenterprise.devices.forceReportUpload",
                     "parameterOrder": [
@@ -85,12 +109,13 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/forceReportUpload",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/forceReportUpload",
                     "scopes": [
                         "https://www.googleapis.com/auth/androidenterprise"
                     ]
                 },
                 "get": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}",
                     "httpMethod": "GET",
                     "id": "androidenterprise.devices.get",
                     "parameterOrder": [
@@ -115,7 +140,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}",
                     "response": {
                         "$ref": "Device"
                     },
@@ -124,6 +149,7 @@
                     ]
                 },
                 "getState": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/state",
                     "httpMethod": "GET",
                     "id": "androidenterprise.devices.getState",
                     "parameterOrder": [
@@ -148,7 +174,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/state",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/state",
                     "response": {
                         "$ref": "DeviceState"
                     },
@@ -157,6 +183,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices",
                     "httpMethod": "GET",
                     "id": "androidenterprise.devices.list",
                     "parameterOrder": [
@@ -175,7 +202,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}/devices",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices",
                     "response": {
                         "$ref": "DevicesListResponse"
                     },
@@ -184,6 +211,7 @@
                     ]
                 },
                 "setState": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/state",
                     "httpMethod": "PUT",
                     "id": "androidenterprise.devices.setState",
                     "parameterOrder": [
@@ -208,7 +236,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/state",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/state",
                     "request": {
                         "$ref": "DeviceState"
                     },
@@ -220,6 +248,7 @@
                     ]
                 },
                 "update": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}",
                     "httpMethod": "PUT",
                     "id": "androidenterprise.devices.update",
                     "parameterOrder": [
@@ -248,7 +277,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}",
                     "request": {
                         "$ref": "Device"
                     },
@@ -264,22 +293,26 @@
         "enterprises": {
             "methods": {
                 "acknowledgeNotificationSet": {
+                    "flatPath": "androidenterprise/v1/enterprises/acknowledgeNotificationSet",
                     "httpMethod": "POST",
                     "id": "androidenterprise.enterprises.acknowledgeNotificationSet",
+                    "parameterOrder": [],
                     "parameters": {
                         "notificationSetId": {
                             "location": "query",
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/acknowledgeNotificationSet",
+                    "path": "androidenterprise/v1/enterprises/acknowledgeNotificationSet",
                     "scopes": [
                         "https://www.googleapis.com/auth/androidenterprise"
                     ]
                 },
                 "completeSignup": {
+                    "flatPath": "androidenterprise/v1/enterprises/completeSignup",
                     "httpMethod": "POST",
                     "id": "androidenterprise.enterprises.completeSignup",
+                    "parameterOrder": [],
                     "parameters": {
                         "completionToken": {
                             "location": "query",
@@ -290,7 +323,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/completeSignup",
+                    "path": "androidenterprise/v1/enterprises/completeSignup",
                     "response": {
                         "$ref": "Enterprise"
                     },
@@ -299,6 +332,7 @@
                     ]
                 },
                 "createWebToken": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/createWebToken",
                     "httpMethod": "POST",
                     "id": "androidenterprise.enterprises.createWebToken",
                     "parameterOrder": [
@@ -311,7 +345,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/createWebToken",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/createWebToken",
                     "request": {
                         "$ref": "AdministratorWebTokenSpec"
                     },
@@ -323,6 +357,7 @@
                     ]
                 },
                 "enroll": {
+                    "flatPath": "androidenterprise/v1/enterprises/enroll",
                     "httpMethod": "POST",
                     "id": "androidenterprise.enterprises.enroll",
                     "parameterOrder": [
@@ -335,7 +370,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/enroll",
+                    "path": "androidenterprise/v1/enterprises/enroll",
                     "request": {
                         "$ref": "Enterprise"
                     },
@@ -347,15 +382,17 @@
                     ]
                 },
                 "generateSignupUrl": {
+                    "flatPath": "androidenterprise/v1/enterprises/signupUrl",
                     "httpMethod": "POST",
                     "id": "androidenterprise.enterprises.generateSignupUrl",
+                    "parameterOrder": [],
                     "parameters": {
                         "callbackUrl": {
                             "location": "query",
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/signupUrl",
+                    "path": "androidenterprise/v1/enterprises/signupUrl",
                     "response": {
                         "$ref": "SignupInfo"
                     },
@@ -364,6 +401,7 @@
                     ]
                 },
                 "get": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}",
                     "httpMethod": "GET",
                     "id": "androidenterprise.enterprises.get",
                     "parameterOrder": [
@@ -376,7 +414,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}",
                     "response": {
                         "$ref": "Enterprise"
                     },
@@ -385,6 +423,7 @@
                     ]
                 },
                 "getServiceAccount": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/serviceAccount",
                     "httpMethod": "GET",
                     "id": "androidenterprise.enterprises.getServiceAccount",
                     "parameterOrder": [
@@ -405,7 +444,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/serviceAccount",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/serviceAccount",
                     "response": {
                         "$ref": "ServiceAccount"
                     },
@@ -414,6 +453,7 @@
                     ]
                 },
                 "getStoreLayout": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout",
                     "httpMethod": "GET",
                     "id": "androidenterprise.enterprises.getStoreLayout",
                     "parameterOrder": [
@@ -426,7 +466,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/storeLayout",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout",
                     "response": {
                         "$ref": "StoreLayout"
                     },
@@ -435,6 +475,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "androidenterprise/v1/enterprises",
                     "httpMethod": "GET",
                     "id": "androidenterprise.enterprises.list",
                     "parameterOrder": [
@@ -447,7 +488,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises",
+                    "path": "androidenterprise/v1/enterprises",
                     "response": {
                         "$ref": "EnterprisesListResponse"
                     },
@@ -456,19 +497,21 @@
                     ]
                 },
                 "pullNotificationSet": {
+                    "flatPath": "androidenterprise/v1/enterprises/pullNotificationSet",
                     "httpMethod": "POST",
                     "id": "androidenterprise.enterprises.pullNotificationSet",
+                    "parameterOrder": [],
                     "parameters": {
                         "requestMode": {
                             "enum": [
-                                "returnImmediately",
-                                "waitForNotifications"
+                                "waitForNotifications",
+                                "returnImmediately"
                             ],
                             "location": "query",
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/pullNotificationSet",
+                    "path": "androidenterprise/v1/enterprises/pullNotificationSet",
                     "response": {
                         "$ref": "NotificationSet"
                     },
@@ -477,6 +520,7 @@
                     ]
                 },
                 "sendTestPushNotification": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/sendTestPushNotification",
                     "httpMethod": "POST",
                     "id": "androidenterprise.enterprises.sendTestPushNotification",
                     "parameterOrder": [
@@ -489,7 +533,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/sendTestPushNotification",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/sendTestPushNotification",
                     "response": {
                         "$ref": "EnterprisesSendTestPushNotificationResponse"
                     },
@@ -498,6 +542,7 @@
                     ]
                 },
                 "setAccount": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/account",
                     "httpMethod": "PUT",
                     "id": "androidenterprise.enterprises.setAccount",
                     "parameterOrder": [
@@ -510,7 +555,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/account",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/account",
                     "request": {
                         "$ref": "EnterpriseAccount"
                     },
@@ -522,6 +567,7 @@
                     ]
                 },
                 "setStoreLayout": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout",
                     "httpMethod": "PUT",
                     "id": "androidenterprise.enterprises.setStoreLayout",
                     "parameterOrder": [
@@ -534,7 +580,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/storeLayout",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout",
                     "request": {
                         "$ref": "StoreLayout"
                     },
@@ -546,6 +592,7 @@
                     ]
                 },
                 "unenroll": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/unenroll",
                     "httpMethod": "POST",
                     "id": "androidenterprise.enterprises.unenroll",
                     "parameterOrder": [
@@ -558,7 +605,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/unenroll",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/unenroll",
                     "scopes": [
                         "https://www.googleapis.com/auth/androidenterprise"
                     ]
@@ -568,6 +615,7 @@
         "entitlements": {
             "methods": {
                 "delete": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}",
                     "httpMethod": "DELETE",
                     "id": "androidenterprise.entitlements.delete",
                     "parameterOrder": [
@@ -592,12 +640,13 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}",
                     "scopes": [
                         "https://www.googleapis.com/auth/androidenterprise"
                     ]
                 },
                 "get": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}",
                     "httpMethod": "GET",
                     "id": "androidenterprise.entitlements.get",
                     "parameterOrder": [
@@ -622,7 +671,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}",
                     "response": {
                         "$ref": "Entitlement"
                     },
@@ -631,6 +680,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/entitlements",
                     "httpMethod": "GET",
                     "id": "androidenterprise.entitlements.list",
                     "parameterOrder": [
@@ -649,7 +699,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}/entitlements",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/entitlements",
                     "response": {
                         "$ref": "EntitlementsListResponse"
                     },
@@ -658,6 +708,7 @@
                     ]
                 },
                 "update": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}",
                     "httpMethod": "PUT",
                     "id": "androidenterprise.entitlements.update",
                     "parameterOrder": [
@@ -686,7 +737,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}",
                     "request": {
                         "$ref": "Entitlement"
                     },
@@ -702,6 +753,7 @@
         "grouplicenses": {
             "methods": {
                 "get": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/groupLicenses/{groupLicenseId}",
                     "httpMethod": "GET",
                     "id": "androidenterprise.grouplicenses.get",
                     "parameterOrder": [
@@ -720,7 +772,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/groupLicenses/{groupLicenseId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/groupLicenses/{groupLicenseId}",
                     "response": {
                         "$ref": "GroupLicense"
                     },
@@ -729,6 +781,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/groupLicenses",
                     "httpMethod": "GET",
                     "id": "androidenterprise.grouplicenses.list",
                     "parameterOrder": [
@@ -741,7 +794,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/groupLicenses",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/groupLicenses",
                     "response": {
                         "$ref": "GroupLicensesListResponse"
                     },
@@ -754,6 +807,7 @@
         "grouplicenseusers": {
             "methods": {
                 "list": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/groupLicenses/{groupLicenseId}/users",
                     "httpMethod": "GET",
                     "id": "androidenterprise.grouplicenseusers.list",
                     "parameterOrder": [
@@ -772,7 +826,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/groupLicenses/{groupLicenseId}/users",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/groupLicenses/{groupLicenseId}/users",
                     "response": {
                         "$ref": "GroupLicenseUsersListResponse"
                     },
@@ -785,6 +839,7 @@
         "installs": {
             "methods": {
                 "delete": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}",
                     "httpMethod": "DELETE",
                     "id": "androidenterprise.installs.delete",
                     "parameterOrder": [
@@ -815,12 +870,13 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}",
                     "scopes": [
                         "https://www.googleapis.com/auth/androidenterprise"
                     ]
                 },
                 "get": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}",
                     "httpMethod": "GET",
                     "id": "androidenterprise.installs.get",
                     "parameterOrder": [
@@ -851,7 +907,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}",
                     "response": {
                         "$ref": "Install"
                     },
@@ -860,6 +916,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs",
                     "httpMethod": "GET",
                     "id": "androidenterprise.installs.list",
                     "parameterOrder": [
@@ -884,7 +941,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs",
                     "response": {
                         "$ref": "InstallsListResponse"
                     },
@@ -893,6 +950,7 @@
                     ]
                 },
                 "update": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}",
                     "httpMethod": "PUT",
                     "id": "androidenterprise.installs.update",
                     "parameterOrder": [
@@ -923,7 +981,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}",
                     "request": {
                         "$ref": "Install"
                     },
@@ -939,6 +997,7 @@
         "managedconfigurationsfordevice": {
             "methods": {
                 "delete": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}",
                     "httpMethod": "DELETE",
                     "id": "androidenterprise.managedconfigurationsfordevice.delete",
                     "parameterOrder": [
@@ -969,12 +1028,13 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}",
                     "scopes": [
                         "https://www.googleapis.com/auth/androidenterprise"
                     ]
                 },
                 "get": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}",
                     "httpMethod": "GET",
                     "id": "androidenterprise.managedconfigurationsfordevice.get",
                     "parameterOrder": [
@@ -1005,7 +1065,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}",
                     "response": {
                         "$ref": "ManagedConfiguration"
                     },
@@ -1014,6 +1074,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice",
                     "httpMethod": "GET",
                     "id": "androidenterprise.managedconfigurationsfordevice.list",
                     "parameterOrder": [
@@ -1038,7 +1099,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice",
                     "response": {
                         "$ref": "ManagedConfigurationsForDeviceListResponse"
                     },
@@ -1047,6 +1108,7 @@
                     ]
                 },
                 "update": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}",
                     "httpMethod": "PUT",
                     "id": "androidenterprise.managedconfigurationsfordevice.update",
                     "parameterOrder": [
@@ -1077,7 +1139,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}",
                     "request": {
                         "$ref": "ManagedConfiguration"
                     },
@@ -1093,6 +1155,7 @@
         "managedconfigurationsforuser": {
             "methods": {
                 "delete": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}",
                     "httpMethod": "DELETE",
                     "id": "androidenterprise.managedconfigurationsforuser.delete",
                     "parameterOrder": [
@@ -1117,12 +1180,13 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}",
                     "scopes": [
                         "https://www.googleapis.com/auth/androidenterprise"
                     ]
                 },
                 "get": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}",
                     "httpMethod": "GET",
                     "id": "androidenterprise.managedconfigurationsforuser.get",
                     "parameterOrder": [
@@ -1147,7 +1211,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}",
                     "response": {
                         "$ref": "ManagedConfiguration"
                     },
@@ -1156,6 +1220,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser",
                     "httpMethod": "GET",
                     "id": "androidenterprise.managedconfigurationsforuser.list",
                     "parameterOrder": [
@@ -1174,7 +1239,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser",
                     "response": {
                         "$ref": "ManagedConfigurationsForUserListResponse"
                     },
@@ -1183,6 +1248,7 @@
                     ]
                 },
                 "update": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}",
                     "httpMethod": "PUT",
                     "id": "androidenterprise.managedconfigurationsforuser.update",
                     "parameterOrder": [
@@ -1207,7 +1273,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}",
                     "request": {
                         "$ref": "ManagedConfiguration"
                     },
@@ -1223,6 +1289,7 @@
         "managedconfigurationssettings": {
             "methods": {
                 "list": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/managedConfigurationsSettings",
                     "httpMethod": "GET",
                     "id": "androidenterprise.managedconfigurationssettings.list",
                     "parameterOrder": [
@@ -1241,7 +1308,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/products/{productId}/managedConfigurationsSettings",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/managedConfigurationsSettings",
                     "response": {
                         "$ref": "ManagedConfigurationsSettingsListResponse"
                     },
@@ -1254,6 +1321,7 @@
         "permissions": {
             "methods": {
                 "get": {
+                    "flatPath": "androidenterprise/v1/permissions/{permissionId}",
                     "httpMethod": "GET",
                     "id": "androidenterprise.permissions.get",
                     "parameterOrder": [
@@ -1270,7 +1338,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "permissions/{permissionId}",
+                    "path": "androidenterprise/v1/permissions/{permissionId}",
                     "response": {
                         "$ref": "Permission"
                     },
@@ -1283,6 +1351,7 @@
         "products": {
             "methods": {
                 "approve": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/approve",
                     "httpMethod": "POST",
                     "id": "androidenterprise.products.approve",
                     "parameterOrder": [
@@ -1301,7 +1370,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/products/{productId}/approve",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/approve",
                     "request": {
                         "$ref": "ProductsApproveRequest"
                     },
@@ -1310,6 +1379,7 @@
                     ]
                 },
                 "generateApprovalUrl": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/generateApprovalUrl",
                     "httpMethod": "POST",
                     "id": "androidenterprise.products.generateApprovalUrl",
                     "parameterOrder": [
@@ -1332,7 +1402,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/products/{productId}/generateApprovalUrl",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/generateApprovalUrl",
                     "response": {
                         "$ref": "ProductsGenerateApprovalUrlResponse"
                     },
@@ -1341,6 +1411,7 @@
                     ]
                 },
                 "get": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}",
                     "httpMethod": "GET",
                     "id": "androidenterprise.products.get",
                     "parameterOrder": [
@@ -1363,7 +1434,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/products/{productId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}",
                     "response": {
                         "$ref": "Product"
                     },
@@ -1372,6 +1443,7 @@
                     ]
                 },
                 "getAppRestrictionsSchema": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/appRestrictionsSchema",
                     "httpMethod": "GET",
                     "id": "androidenterprise.products.getAppRestrictionsSchema",
                     "parameterOrder": [
@@ -1394,7 +1466,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/products/{productId}/appRestrictionsSchema",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/appRestrictionsSchema",
                     "response": {
                         "$ref": "AppRestrictionsSchema"
                     },
@@ -1403,6 +1475,7 @@
                     ]
                 },
                 "getPermissions": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/permissions",
                     "httpMethod": "GET",
                     "id": "androidenterprise.products.getPermissions",
                     "parameterOrder": [
@@ -1421,7 +1494,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/products/{productId}/permissions",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/permissions",
                     "response": {
                         "$ref": "ProductPermissions"
                     },
@@ -1430,6 +1503,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/products",
                     "httpMethod": "GET",
                     "id": "androidenterprise.products.list",
                     "parameterOrder": [
@@ -1463,7 +1537,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/products",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/products",
                     "response": {
                         "$ref": "ProductsListResponse"
                     },
@@ -1472,6 +1546,7 @@
                     ]
                 },
                 "unapprove": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/unapprove",
                     "httpMethod": "POST",
                     "id": "androidenterprise.products.unapprove",
                     "parameterOrder": [
@@ -1490,7 +1565,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/products/{productId}/unapprove",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/unapprove",
                     "scopes": [
                         "https://www.googleapis.com/auth/androidenterprise"
                     ]
@@ -1500,6 +1575,7 @@
         "serviceaccountkeys": {
             "methods": {
                 "delete": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/serviceAccountKeys/{keyId}",
                     "httpMethod": "DELETE",
                     "id": "androidenterprise.serviceaccountkeys.delete",
                     "parameterOrder": [
@@ -1518,12 +1594,13 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/serviceAccountKeys/{keyId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/serviceAccountKeys/{keyId}",
                     "scopes": [
                         "https://www.googleapis.com/auth/androidenterprise"
                     ]
                 },
                 "insert": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/serviceAccountKeys",
                     "httpMethod": "POST",
                     "id": "androidenterprise.serviceaccountkeys.insert",
                     "parameterOrder": [
@@ -1536,7 +1613,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/serviceAccountKeys",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/serviceAccountKeys",
                     "request": {
                         "$ref": "ServiceAccountKey"
                     },
@@ -1548,6 +1625,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/serviceAccountKeys",
                     "httpMethod": "GET",
                     "id": "androidenterprise.serviceaccountkeys.list",
                     "parameterOrder": [
@@ -1560,7 +1638,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/serviceAccountKeys",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/serviceAccountKeys",
                     "response": {
                         "$ref": "ServiceAccountKeysListResponse"
                     },
@@ -1573,6 +1651,7 @@
         "storelayoutclusters": {
             "methods": {
                 "delete": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}",
                     "httpMethod": "DELETE",
                     "id": "androidenterprise.storelayoutclusters.delete",
                     "parameterOrder": [
@@ -1597,12 +1676,13 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}",
                     "scopes": [
                         "https://www.googleapis.com/auth/androidenterprise"
                     ]
                 },
                 "get": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}",
                     "httpMethod": "GET",
                     "id": "androidenterprise.storelayoutclusters.get",
                     "parameterOrder": [
@@ -1627,7 +1707,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}",
                     "response": {
                         "$ref": "StoreCluster"
                     },
@@ -1636,6 +1716,7 @@
                     ]
                 },
                 "insert": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters",
                     "httpMethod": "POST",
                     "id": "androidenterprise.storelayoutclusters.insert",
                     "parameterOrder": [
@@ -1654,7 +1735,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters",
                     "request": {
                         "$ref": "StoreCluster"
                     },
@@ -1666,6 +1747,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters",
                     "httpMethod": "GET",
                     "id": "androidenterprise.storelayoutclusters.list",
                     "parameterOrder": [
@@ -1684,7 +1766,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters",
                     "response": {
                         "$ref": "StoreLayoutClustersListResponse"
                     },
@@ -1693,6 +1775,7 @@
                     ]
                 },
                 "update": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}",
                     "httpMethod": "PUT",
                     "id": "androidenterprise.storelayoutclusters.update",
                     "parameterOrder": [
@@ -1717,7 +1800,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}",
                     "request": {
                         "$ref": "StoreCluster"
                     },
@@ -1733,6 +1816,7 @@
         "storelayoutpages": {
             "methods": {
                 "delete": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}",
                     "httpMethod": "DELETE",
                     "id": "androidenterprise.storelayoutpages.delete",
                     "parameterOrder": [
@@ -1751,12 +1835,13 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/storeLayout/pages/{pageId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}",
                     "scopes": [
                         "https://www.googleapis.com/auth/androidenterprise"
                     ]
                 },
                 "get": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}",
                     "httpMethod": "GET",
                     "id": "androidenterprise.storelayoutpages.get",
                     "parameterOrder": [
@@ -1775,7 +1860,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/storeLayout/pages/{pageId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}",
                     "response": {
                         "$ref": "StorePage"
                     },
@@ -1784,6 +1869,7 @@
                     ]
                 },
                 "insert": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages",
                     "httpMethod": "POST",
                     "id": "androidenterprise.storelayoutpages.insert",
                     "parameterOrder": [
@@ -1796,7 +1882,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/storeLayout/pages",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages",
                     "request": {
                         "$ref": "StorePage"
                     },
@@ -1808,6 +1894,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages",
                     "httpMethod": "GET",
                     "id": "androidenterprise.storelayoutpages.list",
                     "parameterOrder": [
@@ -1820,7 +1907,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/storeLayout/pages",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages",
                     "response": {
                         "$ref": "StoreLayoutPagesListResponse"
                     },
@@ -1829,6 +1916,7 @@
                     ]
                 },
                 "update": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}",
                     "httpMethod": "PUT",
                     "id": "androidenterprise.storelayoutpages.update",
                     "parameterOrder": [
@@ -1847,7 +1935,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/storeLayout/pages/{pageId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/storeLayout/pages/{pageId}",
                     "request": {
                         "$ref": "StorePage"
                     },
@@ -1863,6 +1951,7 @@
         "users": {
             "methods": {
                 "delete": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}",
                     "httpMethod": "DELETE",
                     "id": "androidenterprise.users.delete",
                     "parameterOrder": [
@@ -1881,12 +1970,13 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}",
                     "scopes": [
                         "https://www.googleapis.com/auth/androidenterprise"
                     ]
                 },
                 "generateAuthenticationToken": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/authenticationToken",
                     "httpMethod": "POST",
                     "id": "androidenterprise.users.generateAuthenticationToken",
                     "parameterOrder": [
@@ -1905,7 +1995,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}/authenticationToken",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/authenticationToken",
                     "response": {
                         "$ref": "AuthenticationToken"
                     },
@@ -1913,34 +2003,8 @@
                         "https://www.googleapis.com/auth/androidenterprise"
                     ]
                 },
-                "generateToken": {
-                    "httpMethod": "POST",
-                    "id": "androidenterprise.users.generateToken",
-                    "parameterOrder": [
-                        "enterpriseId",
-                        "userId"
-                    ],
-                    "parameters": {
-                        "enterpriseId": {
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        },
-                        "userId": {
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "enterprises/{enterpriseId}/users/{userId}/token",
-                    "response": {
-                        "$ref": "UserToken"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/androidenterprise"
-                    ]
-                },
                 "get": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}",
                     "httpMethod": "GET",
                     "id": "androidenterprise.users.get",
                     "parameterOrder": [
@@ -1959,7 +2023,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}",
                     "response": {
                         "$ref": "User"
                     },
@@ -1968,6 +2032,7 @@
                     ]
                 },
                 "getAvailableProductSet": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/availableProductSet",
                     "httpMethod": "GET",
                     "id": "androidenterprise.users.getAvailableProductSet",
                     "parameterOrder": [
@@ -1986,7 +2051,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}/availableProductSet",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/availableProductSet",
                     "response": {
                         "$ref": "ProductSet"
                     },
@@ -1995,6 +2060,7 @@
                     ]
                 },
                 "insert": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users",
                     "httpMethod": "POST",
                     "id": "androidenterprise.users.insert",
                     "parameterOrder": [
@@ -2007,7 +2073,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users",
                     "request": {
                         "$ref": "User"
                     },
@@ -2019,6 +2085,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users",
                     "httpMethod": "GET",
                     "id": "androidenterprise.users.list",
                     "parameterOrder": [
@@ -2037,7 +2104,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users",
                     "response": {
                         "$ref": "UsersListResponse"
                     },
@@ -2046,6 +2113,7 @@
                     ]
                 },
                 "revokeDeviceAccess": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/deviceAccess",
                     "httpMethod": "DELETE",
                     "id": "androidenterprise.users.revokeDeviceAccess",
                     "parameterOrder": [
@@ -2064,36 +2132,13 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}/deviceAccess",
-                    "scopes": [
-                        "https://www.googleapis.com/auth/androidenterprise"
-                    ]
-                },
-                "revokeToken": {
-                    "httpMethod": "DELETE",
-                    "id": "androidenterprise.users.revokeToken",
-                    "parameterOrder": [
-                        "enterpriseId",
-                        "userId"
-                    ],
-                    "parameters": {
-                        "enterpriseId": {
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        },
-                        "userId": {
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "enterprises/{enterpriseId}/users/{userId}/token",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/deviceAccess",
                     "scopes": [
                         "https://www.googleapis.com/auth/androidenterprise"
                     ]
                 },
                 "setAvailableProductSet": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/availableProductSet",
                     "httpMethod": "PUT",
                     "id": "androidenterprise.users.setAvailableProductSet",
                     "parameterOrder": [
@@ -2112,7 +2157,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}/availableProductSet",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/availableProductSet",
                     "request": {
                         "$ref": "ProductSet"
                     },
@@ -2124,6 +2169,7 @@
                     ]
                 },
                 "update": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}",
                     "httpMethod": "PUT",
                     "id": "androidenterprise.users.update",
                     "parameterOrder": [
@@ -2142,7 +2188,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/users/{userId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}",
                     "request": {
                         "$ref": "User"
                     },
@@ -2158,6 +2204,7 @@
         "webapps": {
             "methods": {
                 "delete": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/webApps/{webAppId}",
                     "httpMethod": "DELETE",
                     "id": "androidenterprise.webapps.delete",
                     "parameterOrder": [
@@ -2176,12 +2223,13 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/webApps/{webAppId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/webApps/{webAppId}",
                     "scopes": [
                         "https://www.googleapis.com/auth/androidenterprise"
                     ]
                 },
                 "get": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/webApps/{webAppId}",
                     "httpMethod": "GET",
                     "id": "androidenterprise.webapps.get",
                     "parameterOrder": [
@@ -2200,7 +2248,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/webApps/{webAppId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/webApps/{webAppId}",
                     "response": {
                         "$ref": "WebApp"
                     },
@@ -2209,6 +2257,7 @@
                     ]
                 },
                 "insert": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/webApps",
                     "httpMethod": "POST",
                     "id": "androidenterprise.webapps.insert",
                     "parameterOrder": [
@@ -2221,7 +2270,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/webApps",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/webApps",
                     "request": {
                         "$ref": "WebApp"
                     },
@@ -2233,6 +2282,7 @@
                     ]
                 },
                 "list": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/webApps",
                     "httpMethod": "GET",
                     "id": "androidenterprise.webapps.list",
                     "parameterOrder": [
@@ -2245,7 +2295,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/webApps",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/webApps",
                     "response": {
                         "$ref": "WebAppsListResponse"
                     },
@@ -2254,6 +2304,7 @@
                     ]
                 },
                 "update": {
+                    "flatPath": "androidenterprise/v1/enterprises/{enterpriseId}/webApps/{webAppId}",
                     "httpMethod": "PUT",
                     "id": "androidenterprise.webapps.update",
                     "parameterOrder": [
@@ -2272,7 +2323,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "enterprises/{enterpriseId}/webApps/{webAppId}",
+                    "path": "androidenterprise/v1/enterprises/{enterpriseId}/webApps/{webAppId}",
                     "request": {
                         "$ref": "WebApp"
                     },
@@ -2300,10 +2351,6 @@
         "AdministratorWebToken": {
             "id": "AdministratorWebToken",
             "properties": {
-                "kind": {
-                    "default": "androidenterprise#administratorWebToken",
-                    "type": "string"
-                },
                 "token": {
                     "type": "string"
                 }
@@ -2313,10 +2360,6 @@
         "AdministratorWebTokenSpec": {
             "id": "AdministratorWebTokenSpec",
             "properties": {
-                "kind": {
-                    "default": "androidenterprise#administratorWebTokenSpec",
-                    "type": "string"
-                },
                 "managedConfigurations": {
                     "$ref": "AdministratorWebTokenSpecManagedConfigurations"
                 },
@@ -2325,6 +2368,11 @@
                 },
                 "permission": {
                     "items": {
+                        "enum": [
+                            "unknown",
+                            "approveApps",
+                            "manageMcm"
+                        ],
                         "type": "string"
                     },
                     "type": "array"
@@ -2444,6 +2492,16 @@
                     "type": "array"
                 },
                 "restrictionType": {
+                    "enum": [
+                        "bool",
+                        "string",
+                        "integer",
+                        "choice",
+                        "multiselect",
+                        "hidden",
+                        "bundle",
+                        "bundleArray"
+                    ],
                     "type": "string"
                 },
                 "title": {
@@ -2456,6 +2514,16 @@
             "id": "AppRestrictionsSchemaRestrictionRestrictionValue",
             "properties": {
                 "type": {
+                    "enum": [
+                        "bool",
+                        "string",
+                        "integer",
+                        "choice",
+                        "multiselect",
+                        "hidden",
+                        "bundle",
+                        "bundleArray"
+                    ],
                     "type": "string"
                 },
                 "valueBool": {
@@ -2508,6 +2576,12 @@
                     "type": "boolean"
                 },
                 "track": {
+                    "enum": [
+                        "appTrackUnspecified",
+                        "production",
+                        "beta",
+                        "alpha"
+                    ],
                     "type": "string"
                 },
                 "trackId": {
@@ -2531,10 +2605,6 @@
             "properties": {
                 "approvalUrl": {
                     "type": "string"
-                },
-                "kind": {
-                    "default": "androidenterprise#approvalUrlInfo",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -2542,10 +2612,6 @@
         "AuthenticationToken": {
             "id": "AuthenticationToken",
             "properties": {
-                "kind": {
-                    "default": "androidenterprise#authenticationToken",
-                    "type": "string"
-                },
                 "token": {
                     "type": "string"
                 }
@@ -2556,12 +2622,27 @@
             "id": "AutoInstallConstraint",
             "properties": {
                 "chargingStateConstraint": {
+                    "enum": [
+                        "chargingStateConstraintUnspecified",
+                        "chargingNotRequired",
+                        "chargingRequired"
+                    ],
                     "type": "string"
                 },
                 "deviceIdleStateConstraint": {
+                    "enum": [
+                        "deviceIdleStateConstraintUnspecified",
+                        "deviceIdleNotRequired",
+                        "deviceIdleRequired"
+                    ],
                     "type": "string"
                 },
                 "networkTypeConstraint": {
+                    "enum": [
+                        "networkTypeConstraintUnspecified",
+                        "anyNetwork",
+                        "unmeteredNetwork"
+                    ],
                     "type": "string"
                 }
             },
@@ -2577,6 +2658,12 @@
                     "type": "array"
                 },
                 "autoInstallMode": {
+                    "enum": [
+                        "autoInstallModeUnspecified",
+                        "doNotAutoInstall",
+                        "autoInstallOnce",
+                        "forceAutoInstall"
+                    ],
                     "type": "string"
                 },
                 "autoInstallPriority": {
@@ -2593,10 +2680,6 @@
         "ConfigurationVariables": {
             "id": "ConfigurationVariables",
             "properties": {
-                "kind": {
-                    "default": "androidenterprise#configurationVariables",
-                    "type": "string"
-                },
                 "mcmId": {
                     "type": "string"
                 },
@@ -2615,11 +2698,13 @@
                 "androidId": {
                     "type": "string"
                 },
-                "kind": {
-                    "default": "androidenterprise#device",
-                    "type": "string"
-                },
                 "managementType": {
+                    "enum": [
+                        "managedDevice",
+                        "managedProfile",
+                        "containerApp",
+                        "unmanagedProfile"
+                    ],
                     "type": "string"
                 },
                 "policy": {
@@ -2666,10 +2751,10 @@
             "id": "DeviceState",
             "properties": {
                 "accountState": {
-                    "type": "string"
-                },
-                "kind": {
-                    "default": "androidenterprise#deviceState",
+                    "enum": [
+                        "enabled",
+                        "disabled"
+                    ],
                     "type": "string"
                 }
             },
@@ -2683,10 +2768,6 @@
                         "$ref": "Device"
                     },
                     "type": "array"
-                },
-                "kind": {
-                    "default": "androidenterprise#devicesListResponse",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -2703,10 +2784,6 @@
                 "id": {
                     "type": "string"
                 },
-                "kind": {
-                    "default": "androidenterprise#enterprise",
-                    "type": "string"
-                },
                 "name": {
                     "type": "string"
                 },
@@ -2721,10 +2798,6 @@
             "properties": {
                 "accountEmail": {
                     "type": "string"
-                },
-                "kind": {
-                    "default": "androidenterprise#enterpriseAccount",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -2737,10 +2810,6 @@
                         "$ref": "Enterprise"
                     },
                     "type": "array"
-                },
-                "kind": {
-                    "default": "androidenterprise#enterprisesListResponse",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -2760,14 +2829,15 @@
         "Entitlement": {
             "id": "Entitlement",
             "properties": {
-                "kind": {
-                    "default": "androidenterprise#entitlement",
-                    "type": "string"
-                },
                 "productId": {
                     "type": "string"
                 },
                 "reason": {
+                    "enum": [
+                        "free",
+                        "groupLicense",
+                        "userPurchase"
+                    ],
                     "type": "string"
                 }
             },
@@ -2781,10 +2851,6 @@
                         "$ref": "Entitlement"
                     },
                     "type": "array"
-                },
-                "kind": {
-                    "default": "androidenterprise#entitlementsListResponse",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -2793,13 +2859,17 @@
             "id": "GroupLicense",
             "properties": {
                 "acquisitionKind": {
+                    "enum": [
+                        "free",
+                        "bulkPurchase"
+                    ],
                     "type": "string"
                 },
                 "approval": {
-                    "type": "string"
-                },
-                "kind": {
-                    "default": "androidenterprise#groupLicense",
+                    "enum": [
+                        "approved",
+                        "unapproved"
+                    ],
                     "type": "string"
                 },
                 "numProvisioned": {
@@ -2811,6 +2881,11 @@
                     "type": "integer"
                 },
                 "permissions": {
+                    "enum": [
+                        "currentApproved",
+                        "needsReapproval",
+                        "allCurrentAndFutureApproved"
+                    ],
                     "type": "string"
                 },
                 "productId": {
@@ -2822,10 +2897,6 @@
         "GroupLicenseUsersListResponse": {
             "id": "GroupLicenseUsersListResponse",
             "properties": {
-                "kind": {
-                    "default": "androidenterprise#groupLicenseUsersListResponse",
-                    "type": "string"
-                },
                 "user": {
                     "items": {
                         "$ref": "User"
@@ -2843,10 +2914,6 @@
                         "$ref": "GroupLicense"
                     },
                     "type": "array"
-                },
-                "kind": {
-                    "default": "androidenterprise#groupLicensesListResponse",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -2855,10 +2922,10 @@
             "id": "Install",
             "properties": {
                 "installState": {
-                    "type": "string"
-                },
-                "kind": {
-                    "default": "androidenterprise#install",
+                    "enum": [
+                        "installed",
+                        "installPending"
+                    ],
                     "type": "string"
                 },
                 "productId": {
@@ -2881,6 +2948,10 @@
                     "type": "string"
                 },
                 "failureReason": {
+                    "enum": [
+                        "unknown",
+                        "timeout"
+                    ],
                     "type": "string"
                 },
                 "productId": {
@@ -2900,10 +2971,6 @@
                         "$ref": "Install"
                     },
                     "type": "array"
-                },
-                "kind": {
-                    "default": "androidenterprise#installsListResponse",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -2921,6 +2988,11 @@
                     "type": "string"
                 },
                 "severity": {
+                    "enum": [
+                        "severityUnknown",
+                        "severityInfo",
+                        "severityError"
+                    ],
                     "type": "string"
                 },
                 "stateTimestampMillis": {
@@ -2980,10 +3052,6 @@
         "ManagedConfigurationsForDeviceListResponse": {
             "id": "ManagedConfigurationsForDeviceListResponse",
             "properties": {
-                "kind": {
-                    "default": "androidenterprise#managedConfigurationsForDeviceListResponse",
-                    "type": "string"
-                },
                 "managedConfigurationForDevice": {
                     "items": {
                         "$ref": "ManagedConfiguration"
@@ -2996,10 +3064,6 @@
         "ManagedConfigurationsForUserListResponse": {
             "id": "ManagedConfigurationsForUserListResponse",
             "properties": {
-                "kind": {
-                    "default": "androidenterprise#managedConfigurationsForUserListResponse",
-                    "type": "string"
-                },
                 "managedConfigurationForUser": {
                     "items": {
                         "$ref": "ManagedConfiguration"
@@ -3012,10 +3076,6 @@
         "ManagedConfigurationsSettings": {
             "id": "ManagedConfigurationsSettings",
             "properties": {
-                "kind": {
-                    "default": "androidenterprise#managedConfigurationsSettings",
-                    "type": "string"
-                },
                 "lastUpdatedTimestampMillis": {
                     "format": "int64",
                     "type": "string"
@@ -3032,10 +3092,6 @@
         "ManagedConfigurationsSettingsListResponse": {
             "id": "ManagedConfigurationsSettingsListResponse",
             "properties": {
-                "kind": {
-                    "default": "androidenterprise#managedConfigurationsSettingsListResponse",
-                    "type": "string"
-                },
                 "managedConfigurationsSettings": {
                     "items": {
                         "$ref": "ManagedConfigurationsSettings"
@@ -3101,6 +3157,10 @@
                     "type": "string"
                 },
                 "managementType": {
+                    "enum": [
+                        "managedDevice",
+                        "managedProfile"
+                    ],
                     "type": "string"
                 },
                 "userId": {
@@ -3155,6 +3215,18 @@
                     "$ref": "NewPermissionsEvent"
                 },
                 "notificationType": {
+                    "enum": [
+                        "unknown",
+                        "testNotification",
+                        "productApproval",
+                        "installFailure",
+                        "appUpdate",
+                        "newPermissions",
+                        "appRestricionsSchemaChange",
+                        "productAvailabilityChange",
+                        "newDevice",
+                        "deviceReportUpdate"
+                    ],
                     "type": "string"
                 },
                 "productApprovalEvent": {
@@ -3173,10 +3245,6 @@
         "NotificationSet": {
             "id": "NotificationSet",
             "properties": {
-                "kind": {
-                    "default": "androidenterprise#notificationSet",
-                    "type": "string"
-                },
                 "notification": {
                     "items": {
                         "$ref": "Notification"
@@ -3210,10 +3278,6 @@
         "Permission": {
             "id": "Permission",
             "properties": {
-                "kind": {
-                    "default": "androidenterprise#permission",
-                    "type": "string"
-                },
                 "name": {
                     "type": "string"
                 },
@@ -3227,15 +3291,32 @@
             "id": "Policy",
             "properties": {
                 "autoUpdatePolicy": {
+                    "enum": [
+                        "autoUpdatePolicyUnspecified",
+                        "choiceToTheUser",
+                        "never",
+                        "wifiOnly",
+                        "always"
+                    ],
                     "type": "string"
                 },
                 "deviceReportPolicy": {
+                    "enum": [
+                        "deviceReportPolicyUnspecified",
+                        "deviceReportDisabled",
+                        "deviceReportEnabled"
+                    ],
                     "type": "string"
                 },
                 "maintenanceWindow": {
                     "$ref": "MaintenanceWindow"
                 },
                 "productAvailabilityPolicy": {
+                    "enum": [
+                        "productAvailabilityPolicyUnspecified",
+                        "whitelist",
+                        "all"
+                    ],
                     "type": "string"
                 },
                 "productPolicy": {
@@ -3273,6 +3354,12 @@
                 },
                 "availableTracks": {
                     "items": {
+                        "enum": [
+                            "appTrackUnspecified",
+                            "production",
+                            "beta",
+                            "alpha"
+                        ],
                         "type": "string"
                     },
                     "type": "array"
@@ -3281,25 +3368,37 @@
                     "type": "string"
                 },
                 "contentRating": {
+                    "enum": [
+                        "ratingUnknown",
+                        "all",
+                        "preTeen",
+                        "teen",
+                        "mature"
+                    ],
                     "type": "string"
                 },
                 "detailsUrl": {
                     "type": "string"
                 },
                 "distributionChannel": {
+                    "enum": [
+                        "publicGoogleHosted",
+                        "privateGoogleHosted",
+                        "privateSelfHosted"
+                    ],
                     "type": "string"
                 },
                 "features": {
                     "items": {
+                        "enum": [
+                            "featureUnknown",
+                            "vpnApp"
+                        ],
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "iconUrl": {
-                    "type": "string"
-                },
-                "kind": {
-                    "default": "androidenterprise#product",
                     "type": "string"
                 },
                 "lastUpdatedTimestampMillis": {
@@ -3320,6 +3419,12 @@
                     "type": "string"
                 },
                 "productPricing": {
+                    "enum": [
+                        "unknown",
+                        "free",
+                        "freeWithInAppPurchase",
+                        "paid"
+                    ],
                     "type": "string"
                 },
                 "recentChanges": {
@@ -3353,6 +3458,11 @@
             "id": "ProductApprovalEvent",
             "properties": {
                 "approved": {
+                    "enum": [
+                        "unknown",
+                        "approved",
+                        "unapproved"
+                    ],
                     "type": "string"
                 },
                 "productId": {
@@ -3365,6 +3475,12 @@
             "id": "ProductAvailabilityChangeEvent",
             "properties": {
                 "availabilityStatus": {
+                    "enum": [
+                        "unknown",
+                        "available",
+                        "removed",
+                        "unpublished"
+                    ],
                     "type": "string"
                 },
                 "productId": {
@@ -3380,6 +3496,10 @@
                     "type": "string"
                 },
                 "state": {
+                    "enum": [
+                        "required",
+                        "accepted"
+                    ],
                     "type": "string"
                 }
             },
@@ -3388,10 +3508,6 @@
         "ProductPermissions": {
             "id": "ProductPermissions",
             "properties": {
-                "kind": {
-                    "default": "androidenterprise#productPermissions",
-                    "type": "string"
-                },
                 "permission": {
                     "items": {
                         "$ref": "ProductPermission"
@@ -3424,6 +3540,12 @@
                 },
                 "tracks": {
                     "items": {
+                        "enum": [
+                            "appTrackUnspecified",
+                            "production",
+                            "beta",
+                            "alpha"
+                        ],
                         "type": "string"
                     },
                     "type": "array"
@@ -3434,10 +3556,6 @@
         "ProductSet": {
             "id": "ProductSet",
             "properties": {
-                "kind": {
-                    "default": "androidenterprise#productSet",
-                    "type": "string"
-                },
                 "productId": {
                     "items": {
                         "type": "string"
@@ -3445,6 +3563,12 @@
                     "type": "array"
                 },
                 "productSetBehavior": {
+                    "enum": [
+                        "unknown",
+                        "whitelist",
+                        "includeAll",
+                        "allApproved"
+                    ],
                     "type": "string"
                 },
                 "productVisibility": {
@@ -3482,6 +3606,12 @@
                 },
                 "tracks": {
                     "items": {
+                        "enum": [
+                            "appTrackUnspecified",
+                            "production",
+                            "beta",
+                            "alpha"
+                        ],
                         "type": "string"
                     },
                     "type": "array"
@@ -3496,6 +3626,10 @@
                     "$ref": "ApprovalUrlInfo"
                 },
                 "approvedPermissions": {
+                    "enum": [
+                        "currentPermissionsOnly",
+                        "allPermissions"
+                    ],
                     "type": "string"
                 }
             },
@@ -3513,10 +3647,6 @@
         "ProductsListResponse": {
             "id": "ProductsListResponse",
             "properties": {
-                "kind": {
-                    "default": "androidenterprise#productsListResponse",
-                    "type": "string"
-                },
                 "pageInfo": {
                     "$ref": "PageInfo"
                 },
@@ -3538,10 +3668,6 @@
                 "key": {
                     "$ref": "ServiceAccountKey"
                 },
-                "kind": {
-                    "default": "androidenterprise#serviceAccount",
-                    "type": "string"
-                },
                 "name": {
                     "type": "string"
                 }
@@ -3557,10 +3683,6 @@
                 "id": {
                     "type": "string"
                 },
-                "kind": {
-                    "default": "androidenterprise#serviceAccountKey",
-                    "type": "string"
-                },
                 "publicData": {
                     "type": "string"
                 },
@@ -3570,6 +3692,10 @@
                             "androidenterprise.serviceaccountkeys.insert"
                         ]
                     },
+                    "enum": [
+                        "googleCredentials",
+                        "pkcs12"
+                    ],
                     "type": "string"
                 }
             },
@@ -3608,10 +3734,6 @@
                 "id": {
                     "type": "string"
                 },
-                "kind": {
-                    "default": "androidenterprise#storeCluster",
-                    "type": "string"
-                },
                 "name": {
                     "items": {
                         "$ref": "LocalizedText"
@@ -3636,11 +3758,12 @@
                 "homepageId": {
                     "type": "string"
                 },
-                "kind": {
-                    "default": "androidenterprise#storeLayout",
-                    "type": "string"
-                },
                 "storeLayoutType": {
+                    "enum": [
+                        "unknown",
+                        "basic",
+                        "custom"
+                    ],
                     "type": "string"
                 }
             },
@@ -3654,10 +3777,6 @@
                         "$ref": "StoreCluster"
                     },
                     "type": "array"
-                },
-                "kind": {
-                    "default": "androidenterprise#storeLayoutClustersListResponse",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -3665,10 +3784,6 @@
         "StoreLayoutPagesListResponse": {
             "id": "StoreLayoutPagesListResponse",
             "properties": {
-                "kind": {
-                    "default": "androidenterprise#storeLayoutPagesListResponse",
-                    "type": "string"
-                },
                 "page": {
                     "items": {
                         "$ref": "StorePage"
@@ -3682,10 +3797,6 @@
             "id": "StorePage",
             "properties": {
                 "id": {
-                    "type": "string"
-                },
-                "kind": {
-                    "default": "androidenterprise#storePage",
                     "type": "string"
                 },
                 "link": {
@@ -3744,6 +3855,10 @@
                             "androidenterprise.users.insert"
                         ]
                     },
+                    "enum": [
+                        "deviceAccount",
+                        "userAccount"
+                    ],
                     "type": "string"
                 },
                 "displayName": {
@@ -3752,11 +3867,11 @@
                 "id": {
                     "type": "string"
                 },
-                "kind": {
-                    "default": "androidenterprise#user",
-                    "type": "string"
-                },
                 "managementType": {
+                    "enum": [
+                        "googleManaged",
+                        "emmManaged"
+                    ],
                     "type": "string"
                 },
                 "primaryEmail": {
@@ -3765,29 +3880,9 @@
             },
             "type": "object"
         },
-        "UserToken": {
-            "id": "UserToken",
-            "properties": {
-                "kind": {
-                    "default": "androidenterprise#userToken",
-                    "type": "string"
-                },
-                "token": {
-                    "type": "string"
-                },
-                "userId": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "UsersListResponse": {
             "id": "UsersListResponse",
             "properties": {
-                "kind": {
-                    "default": "androidenterprise#usersListResponse",
-                    "type": "string"
-                },
                 "user": {
                     "items": {
                         "$ref": "User"
@@ -3800,10 +3895,6 @@
         "VariableSet": {
             "id": "VariableSet",
             "properties": {
-                "kind": {
-                    "default": "androidenterprise#variableSet",
-                    "type": "string"
-                },
                 "placeholder": {
                     "type": "string"
                 },
@@ -3817,6 +3908,12 @@
             "id": "WebApp",
             "properties": {
                 "displayMode": {
+                    "enum": [
+                        "displayModeUnspecified",
+                        "minimalUi",
+                        "standalone",
+                        "fullScreen"
+                    ],
                     "type": "string"
                 },
                 "icons": {
@@ -3856,10 +3953,6 @@
         "WebAppsListResponse": {
             "id": "WebAppsListResponse",
             "properties": {
-                "kind": {
-                    "default": "androidenterprise#webAppsListResponse",
-                    "type": "string"
-                },
                 "webApp": {
                     "items": {
                         "$ref": "WebApp"
@@ -3870,7 +3963,7 @@
             "type": "object"
         }
     },
-    "servicePath": "androidenterprise/v1/",
+    "servicePath": "",
     "title": "Google Play EMM API",
     "version": "v1"
 }

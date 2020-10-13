@@ -1701,6 +1701,14 @@
         "BackupRun": {
             "id": "BackupRun",
             "properties": {
+                "backupKind": {
+                    "enum": [
+                        "SQL_BACKUP_KIND_UNSPECIFIED",
+                        "SNAPSHOT",
+                        "PHYSICAL"
+                    ],
+                    "type": "string"
+                },
                 "diskEncryptionConfiguration": {
                     "$ref": "DiskEncryptionConfiguration"
                 },
@@ -1903,7 +1911,8 @@
                         "SQLSERVER_2017_EXPRESS",
                         "SQLSERVER_2017_WEB",
                         "POSTGRES_10",
-                        "POSTGRES_12"
+                        "POSTGRES_12",
+                        "MYSQL_8_0"
                     ],
                     "type": "string"
                 },
@@ -2147,6 +2156,9 @@
                 "kind": {
                     "type": "string"
                 },
+                "offload": {
+                    "type": "boolean"
+                },
                 "sqlExportOptions": {
                     "properties": {
                         "mysqlExportOptions": {
@@ -2220,7 +2232,8 @@
                             "SQLSERVER_2017_EXPRESS",
                             "SQLSERVER_2017_WEB",
                             "POSTGRES_10",
-                            "POSTGRES_12"
+                            "POSTGRES_12",
+                            "MYSQL_8_0"
                         ],
                         "type": "string"
                     },
@@ -2845,6 +2858,9 @@
                 "backupConfiguration": {
                     "$ref": "BackupConfiguration"
                 },
+                "collation": {
+                    "type": "string"
+                },
                 "crashSafeReplicationEnabled": {
                     "type": "boolean"
                 },
@@ -2940,7 +2956,17 @@
                         "INSUFFICIENT_PRIVILEGE",
                         "UNSUPPORTED_MIGRATION_TYPE",
                         "NO_PGLOGICAL_INSTALLED",
-                        "PGLOGICAL_NODE_ALREADY_EXISTS"
+                        "PGLOGICAL_NODE_ALREADY_EXISTS",
+                        "INVALID_WAL_LEVEL",
+                        "INVALID_SHARED_PRELOAD_LIBRARY",
+                        "INSUFFICIENT_MAX_REPLICATION_SLOTS",
+                        "INSUFFICIENT_MAX_WAL_SENDERS",
+                        "INSUFFICIENT_MAX_WORKER_PROCESSES",
+                        "UNSUPPORTED_EXTENSIONS",
+                        "INVALID_RDS_LOGICAL_REPLICATION",
+                        "INVALID_LOGGING_SETUP",
+                        "INVALID_DB_PARAM",
+                        "UNSUPPORTED_GTID_MODE"
                     ],
                     "type": "string"
                 }
@@ -3192,6 +3218,14 @@
                 },
                 "sqlserverUserDetails": {
                     "$ref": "SqlServerUserDetails"
+                },
+                "type": {
+                    "enum": [
+                        "BUILT_IN",
+                        "CLOUD_IAM_USER",
+                        "CLOUD_IAM_SERVICE_ACCOUNT"
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"

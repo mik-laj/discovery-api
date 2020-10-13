@@ -5,11 +5,34 @@ detección de objetos de AutoML Vision. Recomendamos que los desarrolladores de
 detección objetos de AutoML Vision verifiquen esta lista de forma periódica
 para conocer los nuevos anuncios.
 
+Puedes ver las últimas actualizaciones de productos de todo Google Cloud
+Platform en la página [ Notas de la versión de Google Cloud
+](https://cloud.google.com/release-notes?hl=es_419) .
+
 Para recibir las últimas actualizaciones de productos, agrega la URL de esta
 página a tu [ lector de feeds
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , o agrega
 directamente la URL del feed: ` https://cloud.google.com/feeds/automl-vision-
 object-detection-release-notes.xml `
+
+##  June 04, 2020
+
+**DEPRECATED:**
+
+**v1beta1 endpoint end-of-life**
+
+After June 4, 2020, the v1beta1 version of AutoML API will deny increasing
+numbers of API requests from AutoML Vision users. Please refer to the [
+November 20, 2019 ](https://cloud.google.com/vision/automl/object-
+detection/docs/release-notes?hl=es_419#November_20_2019) release notes and
+migrate to v1 version immediately.
+
+If you have any questions regarding the above action items, join the [ cloud-
+vision-discuss Google group ](https://groups.google.com/g/cloud-vision-
+discuss?hl=es_419) . For further assistance, please open an issue in this [
+private issue tracker
+](https://issuetracker.google.com/issues/new?component=836902&template=1440861&hl=es_419)
+.
 
 ##  April 03, 2020
 

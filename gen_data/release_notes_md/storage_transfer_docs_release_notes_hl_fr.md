@@ -1,15 +1,25 @@
 #  Notes de version
 
 Cette page répertorie les mises à jour en production du service de transfert
-de stockage. Nous recommandons aux développeurs du service de transfert de
-stockage de consulter régulièrement cette liste pour prendre connaissance des
-nouvelles annonces.
+de stockage. Nous recommandons aux développeurs qui utilisent le service de
+transfert de stockage de consulter régulièrement cette liste pour prendre
+connaissance des nouvelles annonces.
+
+Vous pouvez consulter les dernières mises à jour de produits pour l'ensemble
+de Google Cloud sur la page [ Notes de version de Google Cloud
+](https://cloud.google.com/release-notes?hl=fr) .
 
 Pour recevoir les dernières mises à jour concernant ce produit, ajoutez l'URL
 de cette page à votre [ lecteur de flux
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ou ajoutez l'URL
 du flux directement : ` https://cloud.google.com/feeds/storagetransfer-
 release-notes.xml `
+
+##  July 31, 2020
+
+**FEATURE:**
+
+Transfers from Microsoft Azure Blob Storage are now generally available.
 
 ##  March 31, 2020
 

@@ -12,6 +12,29 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/storage-release-notes.xml `
 
+##  July 20, 2020
+
+**FEATURE:**
+
+[ Detailed audit logging mode ](https://cloud.google.com/storage/docs/org-
+policy-constraints#audit-logging) launched.
+
+##  June 08, 2020
+
+**FEATURE:**
+
+Jakarta region ( ` asia-southeast2 ` ) launched.
+
+  * New [ location ](https://cloud.google.com/storage/docs/locations) for storing your data. 
+
+##  May 18, 2020
+
+**CHANGED:**
+
+The V4 signing process is now in GA.
+
+  * The V4 signing process is an improved method for creating [ signatures ](https://cloud.google.com/storage/docs/authentication/signatures) using RSA or HMAC keys. 
+
 ##  April 20, 2020
 
 **FEATURE:**
@@ -24,7 +47,7 @@ Las Vegas region ( ` us-west4 ` ) launched.
 
 **CHANGED:**
 
-[ Cloud IAM Conditions for Cloud Storage
+[ IAM Conditions for Cloud Storage
 ](https://cloud.google.com/storage/docs/access-control/using-iam-
 permissions#conditions-iam) is now in GA.
 
@@ -56,10 +79,10 @@ Archive Storage now available.
 
 **FEATURE:**
 
-Cloud IAM Conditions  BETA  for Cloud Storage is now available.
+IAM Conditions  BETA  for Cloud Storage is now available.
 
-  * [ Cloud IAM Conditions ](https://cloud.google.com/iam/docs/conditions-overview) allows you to grant permissions for a specified period of time, or to a subset of objects in your buckets. 
-  * See [ Using Cloud IAM Conditions on buckets ](https://cloud.google.com/storage/docs/access-control/using-iam-permissions#conditions-iam) for step-by-step instructions. 
+  * [ IAM Conditions ](https://cloud.google.com/iam/docs/conditions-overview) allows you to grant permissions for a specified period of time, or to a subset of objects in your buckets. 
+  * See [ Using IAM Conditions on buckets ](https://cloud.google.com/storage/docs/access-control/using-iam-permissions#conditions-iam) for step-by-step instructions. 
 
 ##  November 18, 2019
 

@@ -1,5 +1,8 @@
 #  Python 版本说明
 
+您可以在 [ Google Cloud 版本说明 ](https://cloud.google.com/release-notes?hl=zh-cn)
+页面上查看所有 Google Cloud 的最新产品动态。
+
 要接收最新产品动态，请将本页面的网址添加到您的 [ Feed 阅读器
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/gaeflex-py-release-notes.xml `

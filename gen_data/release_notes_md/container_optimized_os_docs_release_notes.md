@@ -7,7 +7,17 @@ project:  Stable  |  Beta  |  Dev
 ---|---|---  
       
     
-    **cos-stable-81-12871-96-0**
+    **cos-stable-81-12871-1185-0**
+    Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/1d5bc45f886bc0308010614cdcdf658f5fb44a25)
+    Kubernetes:     v1.17.6
+    Docker:         v19.03.6
+    
+
+|
+
+    
+    
+    **cos-beta-81-12871-117-0**
     Kernel:         [COS-4.19.112](https://cos.googlesource.com/third_party/kernel/+/fa84f12c6d738af9486e69a006a57df923f9476a)
     Kubernetes:     v1.17.3
     Docker:         v19.03.6
@@ -17,26 +27,20 @@ project:  Stable  |  Beta  |  Dev
 
     
     
-    **cos-beta-81-12871-44-0**
-    Kernel:         [ChromiumOS-4.19.108](https://chromium.googlesource.com/chromiumos/third_party/lakitu-kernel/+/4d594cea40affe77720d76a1f70b5039aa488e52)
-    Kubernetes:     v1.17.3
-    Docker:         v19.03.6
-    
-
-|
-
-    
-    
-    **cos-dev-83-13020-12-0**
-    Kernel:         [COS-4.19.114](https://cos.googlesource.com/third_party/kernel/+/a8c47ac5afe9c1a9f569b2caaa93b803a6c4d94b)
-    Kubernetes:     v1.17.3
-    Docker:         v19.03.6
+    **cos-dev-86-15119-0-0**
+    Kernel:         [COS-5.4.58](https://cos.googlesource.com/third_party/kernel/+/b191651b3e04ed25282778c3907cdb07e0ce83f2)
+    Kubernetes:     v1.18.3
+    Docker:         v19.03.9
       
   
+**Note:** Kubernetes version provided in the changelog corresponds to the
+Kubelet and the Kubectl version that are shipped in that Container-Optimized
+OS image. Also, these component version may not be used when running a GKE
+cluster using a Container-Optimized OS image.
+
 ###  LTS Image Families
 
-  * [ cos-69-lts ](/container-optimized-os/docs/release-notes/m69)
-  * [ cos-73-lts ](/container-optimized-os/docs/release-notes/m73)
+  * [ cos-81-lts ](/container-optimized-os/docs/release-notes/m81)
   * [ cos-77-lts ](/container-optimized-os/docs/release-notes/m77)
 
 ##  Release Schedule

@@ -12,6 +12,14 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/stackdriver-release-notes.xml `
 
+##  August 17, 2020
+
+**FEATURE:**
+
+The Cloud Trace viewer now supports search by the trace ID. For more
+information, see [ Viewing Trace Details
+](https://cloud.google.com/trace/docs/viewing-details) .
+
 ##  March 30, 2020
 
 **FEATURE:**
@@ -25,8 +33,8 @@ applications running on GKE and Compute Engine.
 
 **CHANGED:**
 
-Integration of Stackdriver Trace with Virtual Private Cloud Service Controls
-is now generally available. For more information, see [ VPC Service Controls
+Integration of Cloud Trace with Virtual Private Cloud Service Controls is now
+generally available. For more information, see [ VPC Service Controls
 documentation ](https://cloud.google.com/vpc-service-controls/docs/) .
 
 ##  February 19, 2020

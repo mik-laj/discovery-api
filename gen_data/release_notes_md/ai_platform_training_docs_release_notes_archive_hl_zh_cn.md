@@ -1,4 +1,7 @@
-#  归档版本说明
+#  已归档的版本说明
+
+您可以在 [ Google Cloud 版本说明 ](https://cloud.google.com/release-notes?hl=zh_cn)
+页面上查看 Google Cloud 所有产品的最新产品动态。
 
 2019 年 4 月 10 日，Cloud Machine Learning Engine 划分为 [ AI Platform Training
 ](https://cloud.google.com/ai-platform/training?hl=zh_cn) 和 [ AI Platform
@@ -14,7 +17,7 @@ Cloud ML Engine 的历史更新内容。
 
 **FEATURE:**
 
-针对训练、在线预测和批量预测，Cloud ML Engine 现在提供折扣价格。
+Cloud ML Engine 现在针对训练、在线预测和批量预测提供折扣价格。
 
 详细了解 [ Cloud ML Engine 价格 ](https://cloud.google.com/ai-
 platform/training/docs/pricing?hl=zh_cn) 。
@@ -98,7 +101,7 @@ training?hl=zh_cn) 。
 
 您现在可以使用某些 Compute Engine 机器类型来配置训练作业。为训练作业分配计算资源时，这可提供更高的灵活性。此功能现已发布 Beta 版。
 
-使用 Compute Engine 机器类型配置作业时，您可以挂接一组自定义的 GPU。
+使用 Compute Engine 机器类型来配置作业时，可以挂接一组您指定的 GPU。
 
 详细了解 [ Compute Engine 机器类型 ](https://cloud.google.com/ai-
 platform/training/docs/machine-types?hl=zh_cn#compute-engine-machine-types) 、
@@ -109,9 +112,9 @@ gpus?hl=zh_cn#compute-engine-machine-types-with-gpu) 及其 [ 价格
 **FEATURE:**
 
 P4 GPU 现已推出 Beta 版，可用于训练。如需了解详情，请参阅 [ 使用 GPU ](https://cloud.google.com/ml-
-engine/docs/tensorflow/using-gpus?hl=zh_cn) 指南、其 [ 区域可用性
+engine/docs/tensorflow/using-gpus?hl=zh_cn) 指南、 [ 其区域可用性
 ](https://cloud.google.com/ml-
-engine/docs/tensorflow/regions?hl=zh_cn#training_with_accelerators) 指南以及其 [ 价格
+engine/docs/tensorflow/regions?hl=zh_cn#training_with_accelerators) 指南以及 [ 其价格
 ](https://cloud.google.com/ai-platform/training/docs/pricing?hl=zh_cn) 指南。
 
 ##  2019 年 2 月 1 日
@@ -123,20 +126,20 @@ engine/docs/tensorflow/regions?hl=zh_cn#training_with_accelerators) 指南以及
   * 为 [ ` projects.models.versions.create ` ](https://cloud.google.com/ai-platform/training/docs/reference/rest/v1/projects.models.versions?hl=zh_cn) 设置 ` machineType ` ，以指定用于提供服务的机器类型。对于四核 CPU，请使用 ` mls1-c4-m2 ` 。默认为单核 CPU ` mls1-c1-m2 ` 。 
   * Alpha 版中使用的以下机器名称 **已弃用** ： ` mls1-highmem-1 ` 和 ` mls1-highcpu-4 ` 。 
   * 如需了解详情，请参阅 [ 在线预测 ](https://cloud.google.com/ai-platform/training/docs/online-predict?hl=zh_cn#machine-types) 指南。 
-  * 如需了解提供服务的机器类型，请参阅更新后的 [ 价格 ](https://cloud.google.com/ai-platform/training/docs/pricing?hl=zh_cn) 。 
+  * 如需了解支持的机器类型，请参阅更新后的 [ 价格 ](https://cloud.google.com/ai-platform/training/docs/pricing?hl=zh_cn) 。 
 
 ##  2019 年 1 月 25 日
 
 **FEATURE:**
 
-在线预测功能现已在 us-east4 区域发布。 请参阅 [ 区域可用性 ](https://cloud.google.com/ai-
+在线预测功能现已在 us-east4 区域发布。请参阅 [ 区域可用性 ](https://cloud.google.com/ai-
 platform/training/docs/regions?hl=zh_cn) 指南。
 
 ##  2019 年 1 月 10 日
 
 **FEATURE:**
 
-V100 GPU 现已正式推出，可用于训练。 如需了解详情，请参阅 [ 使用 GPU ](https://cloud.google.com/ml-
+V100 GPU 现已正式推出，可用于训练。如需了解详情，请参阅 [ 使用 GPU ](https://cloud.google.com/ml-
 engine/docs/tensorflow/using-gpus?hl=zh_cn) 指南和 [ 价格
 ](https://cloud.google.com/ai-platform/training/docs/pricing?hl=zh_cn) 指南。
 
@@ -170,7 +173,7 @@ list?hl=zh_cn#tpu-support) 。
 **ISSUE:**
 
 由于 GPU 训练期间 [ CuDNN 版本不匹配导致的错误 ](https://stackoverflow.com/q/52733440) ，Cloud
-ML Engine 运行时版本 1.11 将回滚。当前的折衷解决方法是使用运行时版本 1.10。如需了解详情，请参阅 [ 运行时版本列表
+ML Engine 运行时版本 1.11 已回滚。当前的折衷解决方法是使用运行时版本 1.10。如需了解详情，请参阅 [ 运行时版本列表
 ](https://cloud.google.com/ai-platform/training/docs/runtime-version-
 list?hl=zh_cn) 。
 
@@ -201,13 +204,13 @@ V100 GPU 现已推出 Beta 版，可用于训练。使用 V100 GPU 现在会产�
 
 **FEATURE:**
 
-P100 GPU 现已正式推出，可用于训练。 如需了解详情，请参阅 [ 使用 GPU ](https://cloud.google.com/ml-
+P100 GPU 现已正式推出，可用于训练。如需了解详情，请参阅 [ 使用 GPU ](https://cloud.google.com/ml-
 engine/docs/tensorflow/using-gpus?hl=zh_cn) 指南和 [ 价格
 ](https://cloud.google.com/ai-platform/training/docs/pricing?hl=zh_cn) 指南。
 
 **FEATURE:**
 
-us-west1 和 europe-west4 这两个新区域现已推出，可用于训练。 如需了解详情，请参阅 [ 区域
+us-west1 和 europe-west4 这两个新区域现已推出，可用于训练。如需了解详情，请参阅 [ 区域
 ](https://cloud.google.com/ai-platform/training/docs/regions?hl=zh_cn) 页面。
 
 ##  2018 年 8 月 24 日
@@ -222,7 +225,7 @@ list?hl=zh_cn#tpu-support) 。
 
 **CHANGED:**
 
-我们很高兴地宣布大幅降低使用 AI Platform Training 进行在线预测的价格。
+我们很高兴地宣布，AI Platform Training 在线预测的价格已大幅降低。
 
 请参阅下表以了解新旧价格：
 
@@ -232,7 +235,7 @@ list?hl=zh_cn#tpu-support) 。
 欧洲  |  $0.348 USD  |  $0.061 USD  
 亚太地区  |  $0.348 USD  |  $0.071 USD  
   
-如需了解详细信息，请参阅 [ 价格指南 ](https://cloud.google.com/ai-
+如需了解详情，请参阅 [ 价格指南 ](https://cloud.google.com/ai-
 platform/training/docs/pricing?hl=zh_cn) 。
 
 ##  2018 年 8 月 8 日
@@ -248,7 +251,7 @@ platform/training/docs/pricing?hl=zh_cn) 。
 容量层级： ` BASIC_TPU ` （Beta 版） __ |  $9.7674 USD  |  $6.8474 USD  
 自定义机器类型： ` cloud_tpu ` （Beta 版） __ |  $9.4900 USD  |  $6.5700 USD  
   
-请注意，该表仅显示了美国区域的价格。Cloud ML Engine 中 Cloud TPU 的可用性没有变化。如需了解详情，请参阅 [ 价格指南
+请注意，该表仅显示了美国区域的价格。Cloud ML Engine 中 Cloud TPU 的可用性没有变化。如需了解详细信息，请参阅 [ 价格指南
 ](https://cloud.google.com/ai-platform/training/docs/pricing?hl=zh_cn) 。
 
 ##  2018 年 8 月 6 日
@@ -271,7 +274,7 @@ engine/docs/scikit/getting-started-training?hl=zh_cn) 指南。
 
 现已正式发布对 **scikit-learn** 和 **XGBoost** 的在线预测支持。
 
-  * 为 [ ` projects.models.versions.create ` ](https://cloud.google.com/ai-platform/training/docs/reference/rest/v1/projects.models.versions?hl=zh_cn) 设置 ` framework ` ，以在创建模型版本时指定机器学习框架。有效值为 ` TENSORFLOW ` 、 ` SCIKIT_LEARN ` 、 ` XGBOOST ` 。默认值为 ` TENSORFLOW ` 。如果指定了 ` SCIKIT_LEARN ` 或 ` XGBOOST ` ，则还必须在模型版本中将 ` runtimeVersion ` 设置为 1.4 或更高版本。 
+  * 为 [ ` projects.models.versions.create ` ](https://cloud.google.com/ai-platform/training/docs/reference/rest/v1/projects.models.versions?hl=zh_cn) 设置 ` framework ` ，以在创建模型版本时指定机器学习框架。有效值为 ` TENSORFLOW ` 、 ` SCIKIT_LEARN ` 和 ` XGBOOST ` 。默认值为 ` TENSORFLOW ` 。如果指定了 ` SCIKIT_LEARN ` 或 ` XGBOOST ` ，则还必须在模型版本中将 ` runtimeVersion ` 设置为 1.4 或更高版本。 
   * 请参阅 [ 使用 scikit-learn 和 XGBoost 进行本地训练和在线预测 ](https://cloud.google.com/ml-engine/docs/scikit/quickstart?hl=zh_cn) 指南。 
 
 ##  2018 年 7 月 12 日
@@ -284,9 +287,9 @@ platform/training/docs/reference/rest/v1/projects.jobs?hl=zh_cn) 、 [ 模型
 platform/training/docs/reference/rest/v1/projects.models?hl=zh_cn) 和 [ 模型版本
 ](https://cloud.google.com/ai-
 platform/training/docs/reference/rest/v1/projects.models.versions?hl=zh_cn)
-）添加标签，然后使用这些标签对资源进行分类。此外， [ 操作 ](https://cloud.google.com/ai-
+）添加标签，然后使用这些标签对资源进行分类。此外，您也可以为 [ 操作 ](https://cloud.google.com/ai-
 platform/training/docs/reference/rest/v1/projects.operations?hl=zh_cn)
-也可以使用标签。在这种情况下，这些标签来自操作所应用的资源。请详细了解如何 [ 添加和使用标签 ](https://cloud.google.com/ml-
+添加标签。在这种情况下，应根据操作所使用的资源来定义标签。请详细了解如何 [ 添加和使用标签 ](https://cloud.google.com/ml-
 engine/docs/tensorflow/resource-labels?hl=zh_cn) 。
 
 ##  2018 年 6 月 26 日
@@ -298,7 +301,7 @@ engine/docs/tensorflow/resource-labels?hl=zh_cn) 。
   * us-east1 
   * asia-northeast1 
 
-详细了解 [ 区域可用性 ](https://cloud.google.com/ai-
+请详细了解 [ 区域可用性 ](https://cloud.google.com/ai-
 platform/training/docs/regions?hl=zh_cn) 。
 
 ##  2018 年 6 月 13 日
@@ -361,11 +364,11 @@ list?hl=zh_cn) 中列出的其他软件包。
 platform/training/docs/reference/rest/v1/projects.jobs?hl=zh_cn#hyperparameterspec)
 中指定搜索算法。可用的值包括：
 
-  * ` GRID_SEARCH ` ：在可行空间内执行简单的网格搜索。如果您要指定的试验次数超过可行空间中的点数，则此选项特别有用。在这种情况下，如果您未指定网格搜索，则 Cloud ML Engine 默认算法可能会生成重复的建议。如需使用网格搜索，所有参数都必须是 ` INTEGER ` 、 ` CATEGORICAL ` 或 ` DISCRETE ` 类型。 
-  * ` RANDOM_SEARCH ` ：在可行空间内执行简单的随机搜索。 
+  * ` GRID_SEARCH ` ：在可行空间内进行简单的网格搜索。如果您要指定的试验次数超过可行空间中的点数，则此选项特别有用。在这种情况下，如果您未指定网格搜索，则 Cloud ML Engine 默认算法可能会生成重复的建议。如需使用网格搜索，所有参数都必须是 ` INTEGER ` 、 ` CATEGORICAL ` 或 ` DISCRETE ` 类型。 
+  * ` RANDOM_SEARCH ` ：在可行空间内执行的简单随机搜索。 
 
-如果您不指定算法，则您的作业将使用默认的 Cloud ML Engine
-算法，通过在参数空间内执行更有效的搜索，推动参数搜索找到最佳解决方案。如需详细了解超参数调节，请参阅 [ 超参数调节概览
+如果您未指定算法，则您的作业将使用默认的 Cloud ML Engine
+算法，该算法可驱动参数搜索，从而通过在参数空间上进行更有效的搜索来获得最佳解决方案。如需了解超参数调节的更多信息，请参阅 [ 超参数调节概述
 ](https://cloud.google.com/ml-engine/docs/tensorflow/hyperparameter-tuning-
 overview?hl=zh_cn) 。
 
@@ -373,10 +376,10 @@ overview?hl=zh_cn) 。
 
 **FEATURE:**
 
-Cloud ML Engine 现在支持使用 **scikit-learn** 和 **XGBoost** 进行在线预测。此功能目前处于 __ Beta
-版阶段。
+Cloud ML Engine 现在支持使用 **scikit-learn** 和 **XGBoost** 进行在线预测。此功能目前处于 Beta 版阶段。
+__
 
-  * 为 [ ` projects.models.versions.create ` ](https://cloud.google.com/ai-platform/training/docs/reference/rest/v1/projects.models.versions?hl=zh_cn) 设置 ` framework ` ，以在创建模型版本时指定机器学习框架。有效值为 ` TENSORFLOW ` 、 ` SCIKIT_LEARN ` 、 ` XGBOOST ` 。默认值为 ` TENSORFLOW ` 。如果指定了 ` SCIKIT_LEARN ` 或 ` XGBOOST ` ，则还必须在模型版本中将 ` runtimeVersion ` 设置为 1.4 或更高版本。 
+  * 为 [ ` projects.models.versions.create ` ](https://cloud.google.com/ai-platform/training/docs/reference/rest/v1/projects.models.versions?hl=zh_cn) 设置 ` framework ` ，以在创建模型版本时指定机器学习框架。有效值为 ` TENSORFLOW ` 、 ` SCIKIT_LEARN ` 和 ` XGBOOST ` 。默认值为 ` TENSORFLOW ` 。如果指定了 ` SCIKIT_LEARN ` 或 ` XGBOOST ` ，则还必须在模型版本中将 ` runtimeVersion ` 设置为 1.4 或更高版本。 
   * 请参阅 [ 在 Cloud ML Engine 上使用 scikit-learn 和 XGBoost ](https://cloud.google.com/ml-engine/docs/scikit/quickstart?hl=zh_cn) 指南。 
 
 **FEATURE:**
@@ -442,7 +445,7 @@ faq?hl=zh_cn) 中的新旧价格对比。
 
 **FEATURE:**
 
-P100 GPU 现已推出 Beta 版。使用 P100 GPU 现在会产生费用。如需了解详情，请参阅 [ 使用 GPU
+P100 GPU 现已推出 Beta 版。使用 P100 GPU 现在会产生费用。 如需了解详情，请参阅 [ 使用 GPU
 ](https://cloud.google.com/ml-engine/docs/tensorflow/using-gpus?hl=zh_cn) 和 [
 价格 ](https://cloud.google.com/ai-platform/training/docs/pricing?hl=zh_cn) 。
 
@@ -450,7 +453,7 @@ P100 GPU 现已推出 Beta 版。使用 P100 GPU 现在会产生费用。如需�
 
 **FEATURE:**
 
-适用于 Cloud ML Engine 的审核日志现在处于 Beta 版阶段。如需了解详情，请参阅 [ 查看审核日志
+适用于 Cloud ML Engine 的审核日志现在处于 Beta 版阶段。 如需了解详情，请参阅 [ 查看审核日志
 ](https://cloud.google.com/ml-engine/docs/tensorflow/audit-logs?hl=zh_cn) 。
 
 ##  2017 年 9 月 25 日
@@ -504,7 +507,7 @@ Beta 版阶段。
 
 **FEATURE:**
 
-在线预测功能现处于 Beta 版 [ 发布阶段 ](https://cloud.google.com/terms/launch-
+在线预测功能现在处于 Beta 版 [ 发布阶段 ](https://cloud.google.com/terms/launch-
 stages?hl=zh_cn) 。该功能现在受 Cloud ML Engine [ 价格政策 ](https://cloud.google.com/ai-
 platform/training/docs/pricing?hl=zh_cn) 的约束，并采用与批量预测功能相同的价格公式。虽然已处于 Beta
 版阶段，但在线预测功能不适合在关键应用中使用。

@@ -1,15 +1,18 @@
 #  Notes de version
 
-Cette page répertorie les mises à jour en production de la recherche de
-produits de Vision. Nous recommandons aux développeurs qui utilisent la
-fonctionnalité de recherche de produits de Vision de consulter régulièrement
-cette liste pour prendre connaissance des nouvelles annonces.
+Cette page répertorie les mises à jour en production de Vision Product Search.
+Nous recommandons aux développeurs de Vision Product Search de consulter
+régulièrement cette liste pour prendre connaissance des nouvelles annonces.
+
+Vous pouvez consulter les dernières mises à jour de produits pour l'ensemble
+de Google Cloud sur la page [ Notes de version de Google Cloud
+](https://cloud.google.com/release-notes?hl=fr) .
 
 Pour recevoir les dernières mises à jour concernant ce produit, ajoutez l'URL
 de cette page à votre [ lecteur de flux
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ou ajoutez l'URL
-du flux directement : ` https://cloud.google.com/feeds/cloud-vision-api-
-product-search-release-notes.xml `
+du flux directement : ` https://cloud.google.com/feeds/visionproductsearch-
+release-notes.xml `
 
 ##  September 18, 2019
 

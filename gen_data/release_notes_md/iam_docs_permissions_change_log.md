@@ -1,14 +1,14 @@
 #  IAM permissions change log
 
-This page describes changes to the public Cloud IAM permissions for all
-Generally Available and Beta services on Google Cloud. This change log can
-help you maintain and troubleshoot your [ custom roles
-](/iam/docs/understanding-custom-roles) .
+This page describes changes to the public IAM permissions for all Generally
+Available and Beta services on Google Cloud. This change log can help you
+maintain and troubleshoot your [ custom roles ](/iam/docs/understanding-
+custom-roles) .
 
-When a permission is retired or is no longer supported in custom roles, Cloud
-IAM automatically removes the permission from your custom roles. In contrast,
-when a permission is added, Cloud IAM _does not_ automatically add the
-permission to your custom roles.
+When a permission is retired or is no longer supported in custom roles, IAM
+automatically removes the permission from your custom roles. In contrast, when
+a permission is added, IAM _does not_ automatically add the permission to your
+custom roles.
 
 You can see the latest product updates for all of Google Cloud on the [ Google
 Cloud release notes ](/release-notes) page.
@@ -19,6 +19,2123 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloud-iam-permissions-change-
 log.xml `
 
+##  Upcoming Cloud IAM changes for the week of 2020-08-17
+
+Service  |  Change  |  Description  
+---|---|---  
+Dialogflow  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/dialogflow.admin
+` (Dialogflow API Admin):
+
+` dialogflow.environments.lookupHistory `  
+` dialogflow.versions.load `  
+  
+Dialogflow  |  Role Updated  |
+
+The following permissions have been added to the role `
+roles/dialogflow.consoleAgentEditor ` (Dialogflow Console Agent Editor):
+
+` dialogflow.environments.lookupHistory `  
+` dialogflow.versions.load `  
+  
+Primitive Role  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/editor `
+(Editor):
+
+` dialogflow.environments.lookupHistory `  
+` dialogflow.versions.load `  
+  
+Primitive Role  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/owner ` (Owner):
+
+` dialogflow.environments.lookupHistory `  
+` dialogflow.versions.load `  
+  
+Primitive Role  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/viewer `
+(Viewer):
+
+` dialogflow.environments.lookupHistory `  
+  
+Apigee API  |  Added  |  ` apigee.caches.delete `  
+` apigee.caches.list `  
+` apigee.canaryevaluations.create `  
+` apigee.canaryevaluations.get `  
+` apigee.datacollectors.create `  
+` apigee.datacollectors.delete `  
+` apigee.datacollectors.get `  
+` apigee.datacollectors.list `  
+` apigee.datacollectors.update `  
+` apigee.datastores.create `  
+` apigee.datastores.delete `  
+` apigee.datastores.get `  
+` apigee.datastores.list `  
+` apigee.datastores.update `  
+` apigee.envgroupattachments.create `  
+` apigee.envgroupattachments.delete `  
+` apigee.envgroupattachments.get `  
+` apigee.envgroupattachments.list `  
+` apigee.envgroups.create `  
+` apigee.envgroups.delete `  
+` apigee.envgroups.get `  
+` apigee.envgroups.list `  
+` apigee.envgroups.update `  
+` apigee.exports.create `  
+` apigee.exports.get `  
+` apigee.exports.list `  
+` apigee.hostqueries.create `  
+` apigee.hostqueries.get `  
+` apigee.hostqueries.list `  
+` apigee.hoststats.get `  
+` apigee.ingressconfigs.get `  
+` apigee.instanceattachments.create `  
+` apigee.instanceattachments.delete `  
+` apigee.instanceattachments.get `  
+` apigee.instanceattachments.list `  
+` apigee.instances.create `  
+` apigee.instances.delete `  
+` apigee.instances.get `  
+` apigee.instances.list `  
+` apigee.instances.reportStatus `  
+` apigee.operations.get `  
+` apigee.operations.list `  
+` apigee.projects.update `  
+  
+Apigee API  |  Supported In Custom Roles  |  ` apigee.datastores.create `  
+` apigee.datastores.delete `  
+` apigee.datastores.get `  
+` apigee.datastores.list `  
+` apigee.datastores.update `  
+` apigee.exports.create `  
+` apigee.exports.get `  
+` apigee.exports.list `  
+  
+Apigee API  |  Now GA  |  ` apigee.caches.delete `  
+` apigee.caches.list `  
+` apigee.canaryevaluations.create `  
+` apigee.canaryevaluations.get `  
+` apigee.datacollectors.create `  
+` apigee.datacollectors.delete `  
+` apigee.datacollectors.get `  
+` apigee.datacollectors.list `  
+` apigee.datacollectors.update `  
+` apigee.datastores.create `  
+` apigee.datastores.delete `  
+` apigee.datastores.get `  
+` apigee.datastores.list `  
+` apigee.datastores.update `  
+` apigee.envgroupattachments.create `  
+` apigee.envgroupattachments.delete `  
+` apigee.envgroupattachments.get `  
+` apigee.envgroupattachments.list `  
+` apigee.envgroups.create `  
+` apigee.envgroups.delete `  
+` apigee.envgroups.get `  
+` apigee.envgroups.list `  
+` apigee.envgroups.update `  
+` apigee.exports.create `  
+` apigee.exports.get `  
+` apigee.exports.list `  
+` apigee.hostqueries.create `  
+` apigee.hostqueries.get `  
+` apigee.hostqueries.list `  
+` apigee.hoststats.get `  
+` apigee.ingressconfigs.get `  
+` apigee.instanceattachments.create `  
+` apigee.instanceattachments.delete `  
+` apigee.instanceattachments.get `  
+` apigee.instanceattachments.list `  
+` apigee.instances.create `  
+` apigee.instances.delete `  
+` apigee.instances.get `  
+` apigee.instances.list `  
+` apigee.instances.reportStatus `  
+` apigee.operations.get `  
+` apigee.operations.list `  
+` apigee.projects.update `  
+  
+Compute Engine  |  Now GA  |  ` compute.images.update `  
+  
+Dialogflow  |  Added  |  ` dialogflow.agents.list `  
+` dialogflow.agents.validate `  
+` dialogflow.environments.create `  
+` dialogflow.environments.delete `  
+` dialogflow.environments.get `  
+` dialogflow.environments.getHistory `  
+` dialogflow.environments.list `  
+` dialogflow.environments.lookupHistory `  
+` dialogflow.environments.update `  
+` dialogflow.flows.create `  
+` dialogflow.flows.delete `  
+` dialogflow.flows.get `  
+` dialogflow.flows.list `  
+` dialogflow.flows.train `  
+` dialogflow.flows.update `  
+` dialogflow.flows.validate `  
+` dialogflow.pages.create `  
+` dialogflow.pages.delete `  
+` dialogflow.pages.get `  
+` dialogflow.pages.list `  
+` dialogflow.pages.update `  
+` dialogflow.transitionRouteGroups.create `  
+` dialogflow.transitionRouteGroups.delete `  
+` dialogflow.transitionRouteGroups.get `  
+` dialogflow.transitionRouteGroups.list `  
+` dialogflow.transitionRouteGroups.update `  
+` dialogflow.versions.create `  
+` dialogflow.versions.delete `  
+` dialogflow.versions.get `  
+` dialogflow.versions.list `  
+` dialogflow.versions.load `  
+` dialogflow.versions.update `  
+` dialogflow.webhooks.create `  
+` dialogflow.webhooks.delete `  
+` dialogflow.webhooks.get `  
+` dialogflow.webhooks.list `  
+` dialogflow.webhooks.update `  
+  
+Dialogflow  |  Supported In Custom Roles  |  ` dialogflow.environments.create
+`  
+` dialogflow.environments.delete `  
+` dialogflow.environments.get `  
+` dialogflow.environments.getHistory `  
+` dialogflow.environments.list `  
+` dialogflow.environments.update `  
+` dialogflow.versions.create `  
+` dialogflow.versions.delete `  
+` dialogflow.versions.get `  
+` dialogflow.versions.list `  
+` dialogflow.versions.update `  
+  
+Dialogflow  |  Now GA  |  ` dialogflow.agents.list `  
+` dialogflow.agents.validate `  
+` dialogflow.environments.create `  
+` dialogflow.environments.delete `  
+` dialogflow.environments.get `  
+` dialogflow.environments.getHistory `  
+` dialogflow.environments.list `  
+` dialogflow.environments.update `  
+` dialogflow.flows.create `  
+` dialogflow.flows.delete `  
+` dialogflow.flows.get `  
+` dialogflow.flows.list `  
+` dialogflow.flows.train `  
+` dialogflow.flows.update `  
+` dialogflow.flows.validate `  
+` dialogflow.pages.create `  
+` dialogflow.pages.delete `  
+` dialogflow.pages.get `  
+` dialogflow.pages.list `  
+` dialogflow.pages.update `  
+` dialogflow.transitionRouteGroups.create `  
+` dialogflow.transitionRouteGroups.delete `  
+` dialogflow.transitionRouteGroups.get `  
+` dialogflow.transitionRouteGroups.list `  
+` dialogflow.transitionRouteGroups.update `  
+` dialogflow.versions.create `  
+` dialogflow.versions.delete `  
+` dialogflow.versions.get `  
+` dialogflow.versions.list `  
+` dialogflow.versions.update `  
+` dialogflow.webhooks.create `  
+` dialogflow.webhooks.delete `  
+` dialogflow.webhooks.get `  
+` dialogflow.webhooks.list `  
+` dialogflow.webhooks.update `  
+  
+Cloud Healthcare API  |  Added  |  ` healthcare.annotationStores.create `  
+` healthcare.annotationStores.delete `  
+` healthcare.annotationStores.evaluate `  
+` healthcare.annotationStores.export `  
+` healthcare.annotationStores.get `  
+` healthcare.annotationStores.getIamPolicy `  
+` healthcare.annotationStores.import `  
+` healthcare.annotationStores.list `  
+` healthcare.annotationStores.setIamPolicy `  
+` healthcare.annotationStores.update `  
+` healthcare.annotations.create `  
+` healthcare.annotations.delete `  
+` healthcare.annotations.get `  
+` healthcare.annotations.list `  
+` healthcare.annotations.update `  
+  
+Cloud Healthcare API  |  Supported In Custom Roles  |  `
+healthcare.annotationStores.create `  
+` healthcare.annotationStores.delete `  
+` healthcare.annotationStores.evaluate `  
+` healthcare.annotationStores.export `  
+` healthcare.annotationStores.get `  
+` healthcare.annotationStores.getIamPolicy `  
+` healthcare.annotationStores.import `  
+` healthcare.annotationStores.list `  
+` healthcare.annotationStores.setIamPolicy `  
+` healthcare.annotationStores.update `  
+` healthcare.annotations.create `  
+` healthcare.annotations.delete `  
+` healthcare.annotations.get `  
+` healthcare.annotations.list `  
+` healthcare.annotations.update `  
+  
+  
+##  Cloud IAM changes as of 2020-08-14
+
+Service  |  Change  |  Description  
+---|---|---  
+Private Catalog  |  Role Updated  |
+
+The following permissions have been added to the role `
+roles/cloudprivatecatalog.consumer ` (Catalog Consumer):
+
+` resourcemanager.projects.get `  
+` resourcemanager.projects.list `  
+  
+Private Catalog  |  Role Updated  |
+
+The following permissions have been added to the role `
+roles/cloudprivatecatalogproducer.admin ` (Catalog Admin):
+
+` cloudprivatecatalog.targets.get `  
+` cloudprivatecatalogproducer.targets.associate `  
+` cloudprivatecatalogproducer.targets.unassociate `  
+` resourcemanager.projects.get `  
+` resourcemanager.projects.list `  
+  
+Private Catalog  |  Role Updated  |
+
+The following permissions have been added to the role `
+roles/cloudprivatecatalogproducer.manager ` (Catalog Manager):
+
+` resourcemanager.projects.get `  
+` resourcemanager.projects.list `  
+  
+Dialogflow  |  Added  |  ` dialogflow.fulfillments.get `  
+` dialogflow.fulfillments.update `  
+  
+Dialogflow  |  Now GA  |  ` dialogflow.fulfillments.get `  
+` dialogflow.fulfillments.update `  
+  
+  
+##  Cloud IAM changes as of 2020-08-07
+
+Service  |  Change  |  Description  
+---|---|---  
+Cloud Composer  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/composer.worker
+` (Composer Worker):
+
+` artifactregistry.packages.delete `  
+` artifactregistry.repositories.create `  
+` artifactregistry.repositories.delete `  
+` artifactregistry.repositories.deleteArtifacts `  
+` artifactregistry.repositories.getIamPolicy `  
+` artifactregistry.repositories.setIamPolicy `  
+` artifactregistry.repositories.update `  
+` artifactregistry.tags.delete `  
+` artifactregistry.versions.delete `  
+  
+GKE Hub  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/gkehub.viewer `
+(GKE Hub Viewer):
+
+` gkehub.features.getIamPolicy `  
+` gkehub.gateway.get `  
+` gkehub.gateway.getIamPolicy `  
+  
+Cloud Logging  |  Now GA  |
+
+The role ` roles/logging.bucketWriter ` (Logs Bucket Writer) is now GA.  
+  
+Cloud Logging  |  Now GA  |
+
+The role ` roles/logging.viewAccessor ` (Logs View Accessor) is now GA.  
+  
+Cloud Logging  |  Role Updated  |
+
+The following permissions have been added to the role `
+roles/logging.privateLogViewer ` (Private Logs Viewer):
+
+` logging.views.access `  
+  
+Compute Engine  |  Now GA  |  ` compute.instances.getScreenshot `  
+  
+Identity and Access Management  |  Supported In Custom Roles  |  `
+iam.serviceAccounts.disable `  
+` iam.serviceAccounts.enable `  
+` iam.serviceAccounts.undelete `  
+  
+Identity and Access Management  |  Now GA  |  ` iam.serviceAccounts.disable `  
+` iam.serviceAccounts.enable `  
+` iam.serviceAccounts.undelete `  
+  
+Cloud Logging  |  Added  |  ` logging.buckets.create `  
+` logging.buckets.delete `  
+` logging.buckets.undelete `  
+` logging.buckets.write `  
+` logging.views.access `  
+  
+Cloud Logging  |  Supported In Custom Roles  |  ` logging.buckets.create `  
+` logging.buckets.delete `  
+` logging.buckets.undelete `  
+` logging.buckets.write `  
+` logging.views.access `  
+  
+Cloud Logging  |  Now GA  |  ` logging.buckets.create `  
+` logging.buckets.delete `  
+` logging.buckets.undelete `  
+` logging.buckets.write `  
+` logging.views.access `  
+  
+OAuthConfig  |  Added  |  ` oauthconfig.clientpolicy.get `  
+` oauthconfig.testusers.get `  
+` oauthconfig.testusers.update `  
+` oauthconfig.verification.get `  
+` oauthconfig.verification.submit `  
+` oauthconfig.verification.update `  
+  
+OAuthConfig  |  Supported In Custom Roles  |  ` oauthconfig.clientpolicy.get `  
+` oauthconfig.testusers.get `  
+` oauthconfig.testusers.update `  
+` oauthconfig.verification.get `  
+` oauthconfig.verification.submit `  
+` oauthconfig.verification.update `  
+  
+OAuthPolicyMetadata  |  Added  |  `
+oauthpolicymetadata.brandpolicy.createOrUpdate `  
+` oauthpolicymetadata.brandpolicy.get `  
+` oauthpolicymetadata.brandpolicy.submitVerification `  
+` oauthpolicymetadata.clientpolicy.get `  
+  
+OAuthPolicyMetadata  |  Supported In Custom Roles  |  `
+oauthpolicymetadata.brandpolicy.createOrUpdate `  
+` oauthpolicymetadata.brandpolicy.get `  
+` oauthpolicymetadata.brandpolicy.submitVerification `  
+` oauthpolicymetadata.clientpolicy.get `  
+  
+OAuthTestApp  |  Added  |  ` oauthtestapp.userwhitelist.read `  
+` oauthtestapp.userwhitelist.write `  
+  
+OAuthTestApp  |  Supported In Custom Roles  |  `
+oauthtestapp.userwhitelist.read `  
+` oauthtestapp.userwhitelist.write `  
+  
+Certificate Authority Service  |  Added  |  `
+privateca.certificateAuthorities.create `  
+` privateca.certificateAuthorities.delete `  
+` privateca.certificateAuthorities.get `  
+` privateca.certificateAuthorities.getIamPolicy `  
+` privateca.certificateAuthorities.list `  
+` privateca.certificateAuthorities.setIamPolicy `  
+` privateca.certificateAuthorities.update `  
+` privateca.certificateRevocationLists.create `  
+` privateca.certificateRevocationLists.get `  
+` privateca.certificateRevocationLists.getIamPolicy `  
+` privateca.certificateRevocationLists.list `  
+` privateca.certificateRevocationLists.setIamPolicy `  
+` privateca.certificateRevocationLists.update `  
+` privateca.certificates.create `  
+` privateca.certificates.get `  
+` privateca.certificates.getIamPolicy `  
+` privateca.certificates.list `  
+` privateca.certificates.setIamPolicy `  
+` privateca.certificates.update `  
+` privateca.locations.get `  
+` privateca.locations.list `  
+` privateca.operations.cancel `  
+` privateca.operations.delete `  
+` privateca.operations.get `  
+` privateca.operations.list `  
+` privateca.reusableConfigs.create `  
+` privateca.reusableConfigs.delete `  
+` privateca.reusableConfigs.get `  
+` privateca.reusableConfigs.getIamPolicy `  
+` privateca.reusableConfigs.list `  
+` privateca.reusableConfigs.setIamPolicy `  
+` privateca.reusableConfigs.update `  
+  
+Certificate Authority Service  |  Supported In Custom Roles  |  `
+privateca.certificateAuthorities.create `  
+` privateca.certificateAuthorities.delete `  
+` privateca.certificateAuthorities.get `  
+` privateca.certificateAuthorities.getIamPolicy `  
+` privateca.certificateAuthorities.list `  
+` privateca.certificateAuthorities.setIamPolicy `  
+` privateca.certificateAuthorities.update `  
+` privateca.certificateRevocationLists.create `  
+` privateca.certificateRevocationLists.get `  
+` privateca.certificateRevocationLists.getIamPolicy `  
+` privateca.certificateRevocationLists.list `  
+` privateca.certificateRevocationLists.setIamPolicy `  
+` privateca.certificateRevocationLists.update `  
+` privateca.certificates.create `  
+` privateca.certificates.get `  
+` privateca.certificates.getIamPolicy `  
+` privateca.certificates.list `  
+` privateca.certificates.setIamPolicy `  
+` privateca.certificates.update `  
+` privateca.locations.get `  
+` privateca.locations.list `  
+` privateca.operations.cancel `  
+` privateca.operations.delete `  
+` privateca.operations.get `  
+` privateca.operations.list `  
+` privateca.reusableConfigs.create `  
+` privateca.reusableConfigs.delete `  
+` privateca.reusableConfigs.get `  
+` privateca.reusableConfigs.getIamPolicy `  
+` privateca.reusableConfigs.list `  
+` privateca.reusableConfigs.setIamPolicy `  
+` privateca.reusableConfigs.update `  
+  
+Recommender  |  Added  |  ` recommender.commitmentUtilizationInsights.get `  
+` recommender.commitmentUtilizationInsights.list `  
+` recommender.commitmentUtilizationInsights.update `  
+` recommender.usageCommitmentRecommendations.get `  
+` recommender.usageCommitmentRecommendations.list `  
+` recommender.usageCommitmentRecommendations.update `  
+  
+  
+##  Cloud IAM changes as of 2020-07-31
+
+Service  |  Change  |  Description  
+---|---|---  
+Apigee API  |  Now GA  |
+
+The role ` roles/apigee.admin ` (Apigee Organization Admin) is now GA.  
+  
+Apigee API  |  Now GA  |
+
+The role ` roles/apigee.analyticsAgent ` (Apigee Analytics Agent) is now GA.  
+  
+Apigee API  |  Now GA  |
+
+The role ` roles/apigee.analyticsEditor ` (Apigee Analytics Editor) is now GA.  
+  
+Apigee API  |  Now GA  |
+
+The role ` roles/apigee.analyticsViewer ` (Apigee Analytics Viewer) is now GA.  
+  
+Apigee API  |  Now GA  |
+
+The role ` roles/apigee.apiCreator ` (Apigee API Creator) is now GA.  
+  
+Apigee API  |  Now GA  |
+
+The role ` roles/apigee.deployer ` (Apigee Deployer) is now GA.  
+  
+Apigee API  |  Now GA  |
+
+The role ` roles/apigee.developerAdmin ` (Apigee Developer Admin) is now GA.  
+  
+Apigee API  |  Now GA  |
+
+The role ` roles/apigee.readOnlyAdmin ` (Apigee Read-only Admin) is now GA.  
+  
+Apigee API  |  Now GA  |
+
+The role ` roles/apigee.runtimeAgent ` (Apigee Runtime Agent) is now GA.  
+  
+Apigee API  |  Now GA  |
+
+The role ` roles/apigee.synchronizerManager ` (Apigee Synchronizer Manager) is
+now GA.  
+  
+Apigee Connect  |  Now GA  |
+
+The role ` roles/apigeeconnect.Admin ` (Apigee Connect Admin) is now GA.  
+  
+Apigee Connect  |  Now GA  |
+
+The role ` roles/apigeeconnect.Agent ` (Apigee Connect Agent) is now GA.  
+  
+Google Cloud Game Servers  |  Now GA  |
+
+The role ` roles/gameservices.admin ` (Game Services API Admin) is now GA.  
+  
+Google Cloud Game Servers  |  Now GA  |
+
+The role ` roles/gameservices.viewer ` (Game Services API Viewer) is now GA.  
+  
+Identity and Access Management  |  Role Updated  |
+
+The following permissions have been removed from the role `
+roles/iam.securityAdmin ` (Security Admin):
+
+` container.secrets.list `  
+  
+Identity and Access Management  |  Role Updated  |
+
+The following permissions have been removed from the role `
+roles/iam.securityReviewer ` (Security Reviewer):
+
+` container.secrets.list `  
+  
+AI Platform Notebooks  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/notebooks.admin
+` (Notebooks Admin):
+
+` compute.acceleratorTypes.get `  
+` compute.addresses.get `  
+` compute.addresses.list `  
+` compute.autoscalers.get `  
+` compute.autoscalers.list `  
+` compute.backendBuckets.get `  
+` compute.backendBuckets.list `  
+` compute.backendServices.get `  
+` compute.backendServices.list `  
+` compute.commitments.get `  
+` compute.commitments.list `  
+` compute.diskTypes.get `  
+` compute.disks.get `  
+` compute.disks.getIamPolicy `  
+` compute.disks.list `  
+` compute.externalVpnGateways.get `  
+` compute.externalVpnGateways.list `  
+` compute.firewalls.get `  
+` compute.firewalls.list `  
+` compute.forwardingRules.get `  
+` compute.forwardingRules.list `  
+` compute.globalAddresses.get `  
+` compute.globalAddresses.list `  
+` compute.globalForwardingRules.get `  
+` compute.globalForwardingRules.list `  
+` compute.globalOperations.get `  
+` compute.globalOperations.getIamPolicy `  
+` compute.globalOperations.list `  
+` compute.globalPublicDelegatedPrefixes.get `  
+` compute.globalPublicDelegatedPrefixes.list `  
+` compute.healthChecks.get `  
+` compute.healthChecks.list `  
+` compute.httpHealthChecks.get `  
+` compute.httpHealthChecks.list `  
+` compute.httpsHealthChecks.get `  
+` compute.httpsHealthChecks.list `  
+` compute.images.get `  
+` compute.images.getFromFamily `  
+` compute.images.getIamPolicy `  
+` compute.images.list `  
+` compute.instanceGroupManagers.get `  
+` compute.instanceGroupManagers.list `  
+` compute.instanceGroups.get `  
+` compute.instanceGroups.list `  
+` compute.instanceTemplates.get `  
+` compute.instanceTemplates.getIamPolicy `  
+` compute.instanceTemplates.list `  
+` compute.instances.get `  
+` compute.instances.getEffectiveFirewalls `  
+` compute.instances.getGuestAttributes `  
+` compute.instances.getIamPolicy `  
+` compute.instances.getScreenshot `  
+` compute.instances.getSerialPortOutput `  
+` compute.instances.getShieldedInstanceIdentity `  
+` compute.instances.getShieldedVmIdentity `  
+` compute.instances.list `  
+` compute.instances.listReferrers `  
+` compute.interconnectAttachments.get `  
+` compute.interconnectAttachments.list `  
+` compute.interconnectLocations.get `  
+` compute.interconnectLocations.list `  
+` compute.interconnects.get `  
+` compute.interconnects.list `  
+` compute.licenseCodes.get `  
+` compute.licenseCodes.getIamPolicy `  
+` compute.licenseCodes.list `  
+` compute.licenses.get `  
+` compute.licenses.getIamPolicy `  
+` compute.licenses.list `  
+` compute.machineTypes.get `  
+` compute.maintenancePolicies.get `  
+` compute.maintenancePolicies.getIamPolicy `  
+` compute.maintenancePolicies.list `  
+` compute.networkEndpointGroups.get `  
+` compute.networkEndpointGroups.getIamPolicy `  
+` compute.networkEndpointGroups.list `  
+` compute.networks.get `  
+` compute.networks.getEffectiveFirewalls `  
+` compute.networks.list `  
+` compute.networks.listPeeringRoutes `  
+` compute.nodeGroups.get `  
+` compute.nodeGroups.getIamPolicy `  
+` compute.nodeGroups.list `  
+` compute.nodeTemplates.get `  
+` compute.nodeTemplates.getIamPolicy `  
+` compute.nodeTemplates.list `  
+` compute.nodeTypes.get `  
+` compute.nodeTypes.list `  
+` compute.organizations.listAssociations `  
+` compute.projects.get `  
+` compute.publicAdvertisedPrefixes.get `  
+` compute.publicAdvertisedPrefixes.list `  
+` compute.publicDelegatedPrefixes.get `  
+` compute.publicDelegatedPrefixes.list `  
+` compute.regionBackendServices.get `  
+` compute.regionBackendServices.list `  
+` compute.regionHealthCheckServices.get `  
+` compute.regionHealthCheckServices.list `  
+` compute.regionNotificationEndpoints.get `  
+` compute.regionNotificationEndpoints.list `  
+` compute.regionOperations.get `  
+` compute.regionOperations.getIamPolicy `  
+` compute.regionOperations.list `  
+` compute.regions.get `  
+` compute.regions.list `  
+` compute.reservations.get `  
+` compute.reservations.list `  
+` compute.resourcePolicies.get `  
+` compute.resourcePolicies.list `  
+` compute.routers.get `  
+` compute.routers.list `  
+` compute.routes.get `  
+` compute.routes.list `  
+` compute.securityPolicies.get `  
+` compute.securityPolicies.getIamPolicy `  
+` compute.securityPolicies.list `  
+` compute.snapshots.get `  
+` compute.snapshots.getIamPolicy `  
+` compute.snapshots.list `  
+` compute.sslCertificates.get `  
+` compute.sslCertificates.list `  
+` compute.sslPolicies.get `  
+` compute.sslPolicies.list `  
+` compute.sslPolicies.listAvailableFeatures `  
+` compute.subnetworks.get `  
+` compute.subnetworks.getIamPolicy `  
+` compute.targetHttpProxies.get `  
+` compute.targetHttpProxies.list `  
+` compute.targetHttpsProxies.get `  
+` compute.targetHttpsProxies.list `  
+` compute.targetInstances.get `  
+` compute.targetInstances.list `  
+` compute.targetPools.get `  
+` compute.targetPools.list `  
+` compute.targetSslProxies.get `  
+` compute.targetSslProxies.list `  
+` compute.targetTcpProxies.get `  
+` compute.targetTcpProxies.list `  
+` compute.targetVpnGateways.get `  
+` compute.targetVpnGateways.list `  
+` compute.urlMaps.get `  
+` compute.urlMaps.list `  
+` compute.urlMaps.validate `  
+` compute.vpnGateways.get `  
+` compute.vpnGateways.list `  
+` compute.vpnTunnels.get `  
+` compute.vpnTunnels.list `  
+` compute.zoneOperations.get `  
+` compute.zoneOperations.getIamPolicy `  
+` compute.zoneOperations.list `  
+` compute.zones.get `  
+` compute.zones.list `  
+` serviceusage.quotas.get `  
+` serviceusage.services.get `  
+` serviceusage.services.list `  
+  
+AI Platform Notebooks  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/notebooks.runner
+` (Notebooks Runner):
+
+` compute.acceleratorTypes.get `  
+` compute.addresses.get `  
+` compute.addresses.list `  
+` compute.autoscalers.get `  
+` compute.autoscalers.list `  
+` compute.backendBuckets.get `  
+` compute.backendBuckets.list `  
+` compute.backendServices.get `  
+` compute.backendServices.list `  
+` compute.commitments.get `  
+` compute.commitments.list `  
+` compute.diskTypes.get `  
+` compute.disks.get `  
+` compute.disks.getIamPolicy `  
+` compute.disks.list `  
+` compute.externalVpnGateways.get `  
+` compute.externalVpnGateways.list `  
+` compute.firewalls.get `  
+` compute.firewalls.list `  
+` compute.forwardingRules.get `  
+` compute.forwardingRules.list `  
+` compute.globalAddresses.get `  
+` compute.globalAddresses.list `  
+` compute.globalForwardingRules.get `  
+` compute.globalForwardingRules.list `  
+` compute.globalOperations.get `  
+` compute.globalOperations.getIamPolicy `  
+` compute.globalOperations.list `  
+` compute.globalPublicDelegatedPrefixes.get `  
+` compute.globalPublicDelegatedPrefixes.list `  
+` compute.healthChecks.get `  
+` compute.healthChecks.list `  
+` compute.httpHealthChecks.get `  
+` compute.httpHealthChecks.list `  
+` compute.httpsHealthChecks.get `  
+` compute.httpsHealthChecks.list `  
+` compute.images.get `  
+` compute.images.getFromFamily `  
+` compute.images.getIamPolicy `  
+` compute.images.list `  
+` compute.instanceGroupManagers.get `  
+` compute.instanceGroupManagers.list `  
+` compute.instanceGroups.get `  
+` compute.instanceGroups.list `  
+` compute.instanceTemplates.get `  
+` compute.instanceTemplates.getIamPolicy `  
+` compute.instanceTemplates.list `  
+` compute.instances.get `  
+` compute.instances.getEffectiveFirewalls `  
+` compute.instances.getGuestAttributes `  
+` compute.instances.getIamPolicy `  
+` compute.instances.getScreenshot `  
+` compute.instances.getSerialPortOutput `  
+` compute.instances.getShieldedInstanceIdentity `  
+` compute.instances.getShieldedVmIdentity `  
+` compute.instances.list `  
+` compute.instances.listReferrers `  
+` compute.interconnectAttachments.get `  
+` compute.interconnectAttachments.list `  
+` compute.interconnectLocations.get `  
+` compute.interconnectLocations.list `  
+` compute.interconnects.get `  
+` compute.interconnects.list `  
+` compute.licenseCodes.get `  
+` compute.licenseCodes.getIamPolicy `  
+` compute.licenseCodes.list `  
+` compute.licenses.get `  
+` compute.licenses.getIamPolicy `  
+` compute.licenses.list `  
+` compute.machineTypes.get `  
+` compute.maintenancePolicies.get `  
+` compute.maintenancePolicies.getIamPolicy `  
+` compute.maintenancePolicies.list `  
+` compute.networkEndpointGroups.get `  
+` compute.networkEndpointGroups.getIamPolicy `  
+` compute.networkEndpointGroups.list `  
+` compute.networks.get `  
+` compute.networks.getEffectiveFirewalls `  
+` compute.networks.list `  
+` compute.networks.listPeeringRoutes `  
+` compute.nodeGroups.get `  
+` compute.nodeGroups.getIamPolicy `  
+` compute.nodeGroups.list `  
+` compute.nodeTemplates.get `  
+` compute.nodeTemplates.getIamPolicy `  
+` compute.nodeTemplates.list `  
+` compute.nodeTypes.get `  
+` compute.nodeTypes.list `  
+` compute.organizations.listAssociations `  
+` compute.projects.get `  
+` compute.publicAdvertisedPrefixes.get `  
+` compute.publicAdvertisedPrefixes.list `  
+` compute.publicDelegatedPrefixes.get `  
+` compute.publicDelegatedPrefixes.list `  
+` compute.regionBackendServices.get `  
+` compute.regionBackendServices.list `  
+` compute.regionHealthCheckServices.get `  
+` compute.regionHealthCheckServices.list `  
+` compute.regionNotificationEndpoints.get `  
+` compute.regionNotificationEndpoints.list `  
+` compute.regionOperations.get `  
+` compute.regionOperations.getIamPolicy `  
+` compute.regionOperations.list `  
+` compute.regions.get `  
+` compute.regions.list `  
+` compute.reservations.get `  
+` compute.reservations.list `  
+` compute.resourcePolicies.get `  
+` compute.resourcePolicies.list `  
+` compute.routers.get `  
+` compute.routers.list `  
+` compute.routes.get `  
+` compute.routes.list `  
+` compute.securityPolicies.get `  
+` compute.securityPolicies.getIamPolicy `  
+` compute.securityPolicies.list `  
+` compute.snapshots.get `  
+` compute.snapshots.getIamPolicy `  
+` compute.snapshots.list `  
+` compute.sslCertificates.get `  
+` compute.sslCertificates.list `  
+` compute.sslPolicies.get `  
+` compute.sslPolicies.list `  
+` compute.sslPolicies.listAvailableFeatures `  
+` compute.subnetworks.get `  
+` compute.subnetworks.getIamPolicy `  
+` compute.targetHttpProxies.get `  
+` compute.targetHttpProxies.list `  
+` compute.targetHttpsProxies.get `  
+` compute.targetHttpsProxies.list `  
+` compute.targetInstances.get `  
+` compute.targetInstances.list `  
+` compute.targetPools.get `  
+` compute.targetPools.list `  
+` compute.targetSslProxies.get `  
+` compute.targetSslProxies.list `  
+` compute.targetTcpProxies.get `  
+` compute.targetTcpProxies.list `  
+` compute.targetVpnGateways.get `  
+` compute.targetVpnGateways.list `  
+` compute.urlMaps.get `  
+` compute.urlMaps.list `  
+` compute.urlMaps.validate `  
+` compute.vpnGateways.get `  
+` compute.vpnGateways.list `  
+` compute.vpnTunnels.get `  
+` compute.vpnTunnels.list `  
+` compute.zoneOperations.get `  
+` compute.zoneOperations.getIamPolicy `  
+` compute.zoneOperations.list `  
+` compute.zones.get `  
+` compute.zones.list `  
+` serviceusage.quotas.get `  
+` serviceusage.services.get `  
+` serviceusage.services.list `  
+  
+AI Platform Notebooks  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/notebooks.viewer
+` (Notebooks Viewer):
+
+` compute.acceleratorTypes.get `  
+` compute.addresses.get `  
+` compute.addresses.list `  
+` compute.autoscalers.get `  
+` compute.autoscalers.list `  
+` compute.backendBuckets.get `  
+` compute.backendBuckets.list `  
+` compute.backendServices.get `  
+` compute.backendServices.list `  
+` compute.commitments.get `  
+` compute.commitments.list `  
+` compute.diskTypes.get `  
+` compute.disks.get `  
+` compute.disks.getIamPolicy `  
+` compute.disks.list `  
+` compute.externalVpnGateways.get `  
+` compute.externalVpnGateways.list `  
+` compute.firewalls.get `  
+` compute.firewalls.list `  
+` compute.forwardingRules.get `  
+` compute.forwardingRules.list `  
+` compute.globalAddresses.get `  
+` compute.globalAddresses.list `  
+` compute.globalForwardingRules.get `  
+` compute.globalForwardingRules.list `  
+` compute.globalOperations.get `  
+` compute.globalOperations.getIamPolicy `  
+` compute.globalOperations.list `  
+` compute.globalPublicDelegatedPrefixes.get `  
+` compute.globalPublicDelegatedPrefixes.list `  
+` compute.healthChecks.get `  
+` compute.healthChecks.list `  
+` compute.httpHealthChecks.get `  
+` compute.httpHealthChecks.list `  
+` compute.httpsHealthChecks.get `  
+` compute.httpsHealthChecks.list `  
+` compute.images.get `  
+` compute.images.getFromFamily `  
+` compute.images.getIamPolicy `  
+` compute.images.list `  
+` compute.instanceGroupManagers.get `  
+` compute.instanceGroupManagers.list `  
+` compute.instanceGroups.get `  
+` compute.instanceGroups.list `  
+` compute.instanceTemplates.get `  
+` compute.instanceTemplates.getIamPolicy `  
+` compute.instanceTemplates.list `  
+` compute.instances.get `  
+` compute.instances.getEffectiveFirewalls `  
+` compute.instances.getGuestAttributes `  
+` compute.instances.getIamPolicy `  
+` compute.instances.getScreenshot `  
+` compute.instances.getSerialPortOutput `  
+` compute.instances.getShieldedInstanceIdentity `  
+` compute.instances.getShieldedVmIdentity `  
+` compute.instances.list `  
+` compute.instances.listReferrers `  
+` compute.interconnectAttachments.get `  
+` compute.interconnectAttachments.list `  
+` compute.interconnectLocations.get `  
+` compute.interconnectLocations.list `  
+` compute.interconnects.get `  
+` compute.interconnects.list `  
+` compute.licenseCodes.get `  
+` compute.licenseCodes.getIamPolicy `  
+` compute.licenseCodes.list `  
+` compute.licenses.get `  
+` compute.licenses.getIamPolicy `  
+` compute.licenses.list `  
+` compute.machineTypes.get `  
+` compute.maintenancePolicies.get `  
+` compute.maintenancePolicies.getIamPolicy `  
+` compute.maintenancePolicies.list `  
+` compute.networkEndpointGroups.get `  
+` compute.networkEndpointGroups.getIamPolicy `  
+` compute.networkEndpointGroups.list `  
+` compute.networks.get `  
+` compute.networks.getEffectiveFirewalls `  
+` compute.networks.list `  
+` compute.networks.listPeeringRoutes `  
+` compute.nodeGroups.get `  
+` compute.nodeGroups.getIamPolicy `  
+` compute.nodeGroups.list `  
+` compute.nodeTemplates.get `  
+` compute.nodeTemplates.getIamPolicy `  
+` compute.nodeTemplates.list `  
+` compute.nodeTypes.get `  
+` compute.nodeTypes.list `  
+` compute.organizations.listAssociations `  
+` compute.projects.get `  
+` compute.publicAdvertisedPrefixes.get `  
+` compute.publicAdvertisedPrefixes.list `  
+` compute.publicDelegatedPrefixes.get `  
+` compute.publicDelegatedPrefixes.list `  
+` compute.regionBackendServices.get `  
+` compute.regionBackendServices.list `  
+` compute.regionHealthCheckServices.get `  
+` compute.regionHealthCheckServices.list `  
+` compute.regionNotificationEndpoints.get `  
+` compute.regionNotificationEndpoints.list `  
+` compute.regionOperations.get `  
+` compute.regionOperations.getIamPolicy `  
+` compute.regionOperations.list `  
+` compute.regions.get `  
+` compute.regions.list `  
+` compute.reservations.get `  
+` compute.reservations.list `  
+` compute.resourcePolicies.get `  
+` compute.resourcePolicies.list `  
+` compute.routers.get `  
+` compute.routers.list `  
+` compute.routes.get `  
+` compute.routes.list `  
+` compute.securityPolicies.get `  
+` compute.securityPolicies.getIamPolicy `  
+` compute.securityPolicies.list `  
+` compute.snapshots.get `  
+` compute.snapshots.getIamPolicy `  
+` compute.snapshots.list `  
+` compute.sslCertificates.get `  
+` compute.sslCertificates.list `  
+` compute.sslPolicies.get `  
+` compute.sslPolicies.list `  
+` compute.sslPolicies.listAvailableFeatures `  
+` compute.subnetworks.get `  
+` compute.subnetworks.getIamPolicy `  
+` compute.targetHttpProxies.get `  
+` compute.targetHttpProxies.list `  
+` compute.targetHttpsProxies.get `  
+` compute.targetHttpsProxies.list `  
+` compute.targetInstances.get `  
+` compute.targetInstances.list `  
+` compute.targetPools.get `  
+` compute.targetPools.list `  
+` compute.targetSslProxies.get `  
+` compute.targetSslProxies.list `  
+` compute.targetTcpProxies.get `  
+` compute.targetTcpProxies.list `  
+` compute.targetVpnGateways.get `  
+` compute.targetVpnGateways.list `  
+` compute.urlMaps.get `  
+` compute.urlMaps.list `  
+` compute.urlMaps.validate `  
+` compute.vpnGateways.get `  
+` compute.vpnGateways.list `  
+` compute.vpnTunnels.get `  
+` compute.vpnTunnels.list `  
+` compute.zoneOperations.get `  
+` compute.zoneOperations.getIamPolicy `  
+` compute.zoneOperations.list `  
+` compute.zones.get `  
+` compute.zones.list `  
+` serviceusage.quotas.get `  
+` serviceusage.services.get `  
+` serviceusage.services.list `  
+  
+Apigee API  |  Now GA  |  ` apigee.apiproductattributes.createOrUpdateAll `  
+` apigee.apiproductattributes.delete `  
+` apigee.apiproductattributes.get `  
+` apigee.apiproductattributes.list `  
+` apigee.apiproductattributes.update `  
+` apigee.apiproducts.create `  
+` apigee.apiproducts.delete `  
+` apigee.apiproducts.get `  
+` apigee.apiproducts.list `  
+` apigee.apiproducts.update `  
+` apigee.appkeys.create `  
+` apigee.appkeys.delete `  
+` apigee.appkeys.get `  
+` apigee.appkeys.manage `  
+` apigee.apps.get `  
+` apigee.apps.list `  
+` apigee.deployments.create `  
+` apigee.deployments.delete `  
+` apigee.deployments.get `  
+` apigee.deployments.list `  
+` apigee.deployments.update `  
+` apigee.developerappattributes.createOrUpdateAll `  
+` apigee.developerappattributes.delete `  
+` apigee.developerappattributes.get `  
+` apigee.developerappattributes.list `  
+` apigee.developerappattributes.update `  
+` apigee.developerapps.create `  
+` apigee.developerapps.delete `  
+` apigee.developerapps.get `  
+` apigee.developerapps.list `  
+` apigee.developerapps.manage `  
+` apigee.developerattributes.createOrUpdateAll `  
+` apigee.developerattributes.delete `  
+` apigee.developerattributes.get `  
+` apigee.developerattributes.list `  
+` apigee.developerattributes.update `  
+` apigee.developers.create `  
+` apigee.developers.delete `  
+` apigee.developers.get `  
+` apigee.developers.list `  
+` apigee.developers.update `  
+` apigee.environments.create `  
+` apigee.environments.delete `  
+` apigee.environments.get `  
+` apigee.environments.getDataLocation `  
+` apigee.environments.getIamPolicy `  
+` apigee.environments.getStats `  
+` apigee.environments.list `  
+` apigee.environments.manageRuntime `  
+` apigee.environments.setIamPolicy `  
+` apigee.environments.update `  
+` apigee.flowhooks.attachSharedFlow `  
+` apigee.flowhooks.detachSharedFlow `  
+` apigee.flowhooks.getSharedFlow `  
+` apigee.flowhooks.list `  
+` apigee.keystorealiases.create `  
+` apigee.keystorealiases.delete `  
+` apigee.keystorealiases.exportCertificate `  
+` apigee.keystorealiases.generateCSR `  
+` apigee.keystorealiases.get `  
+` apigee.keystorealiases.list `  
+` apigee.keystorealiases.update `  
+` apigee.keystores.create `  
+` apigee.keystores.delete `  
+` apigee.keystores.export `  
+` apigee.keystores.get `  
+` apigee.keystores.list `  
+` apigee.keyvaluemaps.create `  
+` apigee.keyvaluemaps.delete `  
+` apigee.keyvaluemaps.list `  
+` apigee.maskconfigs.get `  
+` apigee.maskconfigs.update `  
+` apigee.organizations.create `  
+` apigee.organizations.get `  
+` apigee.organizations.list `  
+` apigee.organizations.update `  
+` apigee.proxies.create `  
+` apigee.proxies.delete `  
+` apigee.proxies.get `  
+` apigee.proxies.list `  
+` apigee.proxyrevisions.delete `  
+` apigee.proxyrevisions.deploy `  
+` apigee.proxyrevisions.get `  
+` apigee.proxyrevisions.list `  
+` apigee.proxyrevisions.undeploy `  
+` apigee.proxyrevisions.update `  
+` apigee.queries.create `  
+` apigee.queries.get `  
+` apigee.queries.list `  
+` apigee.references.create `  
+` apigee.references.delete `  
+` apigee.references.get `  
+` apigee.references.list `  
+` apigee.references.update `  
+` apigee.reports.create `  
+` apigee.reports.delete `  
+` apigee.reports.get `  
+` apigee.reports.list `  
+` apigee.reports.update `  
+` apigee.resourcefiles.create `  
+` apigee.resourcefiles.delete `  
+` apigee.resourcefiles.get `  
+` apigee.resourcefiles.list `  
+` apigee.resourcefiles.update `  
+` apigee.sharedflowrevisions.delete `  
+` apigee.sharedflowrevisions.deploy `  
+` apigee.sharedflowrevisions.get `  
+` apigee.sharedflowrevisions.list `  
+` apigee.sharedflowrevisions.undeploy `  
+` apigee.sharedflowrevisions.update `  
+` apigee.sharedflows.create `  
+` apigee.sharedflows.delete `  
+` apigee.sharedflows.get `  
+` apigee.sharedflows.list `  
+` apigee.targetservers.create `  
+` apigee.targetservers.delete `  
+` apigee.targetservers.get `  
+` apigee.targetservers.list `  
+` apigee.targetservers.update `  
+` apigee.tracesessions.create `  
+` apigee.tracesessions.delete `  
+` apigee.tracesessions.get `  
+` apigee.tracesessions.list `  
+  
+Apigee Connect  |  Now GA  |  ` apigeeconnect.connections.list `  
+` apigeeconnect.endpoints.connect `  
+  
+Recommendations AI  |  Added  |  ` automlrecommendations.events.rejoin `  
+` automlrecommendations.placements.create `  
+` automlrecommendations.placements.delete `  
+` automlrecommendations.recommendations.create `  
+` automlrecommendations.recommendations.delete `  
+` automlrecommendations.recommendations.pause `  
+` automlrecommendations.recommendations.resume `  
+` automlrecommendations.recommendations.update `  
+  
+Recommendations AI  |  Supported In Custom Roles  |  `
+automlrecommendations.events.rejoin `  
+` automlrecommendations.placements.create `  
+` automlrecommendations.placements.delete `  
+` automlrecommendations.placements.list `  
+` automlrecommendations.recommendations.create `  
+` automlrecommendations.recommendations.delete `  
+` automlrecommendations.recommendations.pause `  
+` automlrecommendations.recommendations.resume `  
+` automlrecommendations.recommendations.update `  
+  
+BigQuery  |  Supported In Custom Roles  |  ` bigquery.tables.setCategory `  
+  
+Google Cloud Game Servers  |  Now GA  |  `
+gameservices.gameServerClusters.create `  
+` gameservices.gameServerClusters.delete `  
+` gameservices.gameServerClusters.get `  
+` gameservices.gameServerClusters.list `  
+` gameservices.gameServerClusters.update `  
+` gameservices.gameServerConfigs.create `  
+` gameservices.gameServerConfigs.delete `  
+` gameservices.gameServerConfigs.get `  
+` gameservices.gameServerConfigs.list `  
+` gameservices.gameServerDeployments.create `  
+` gameservices.gameServerDeployments.delete `  
+` gameservices.gameServerDeployments.get `  
+` gameservices.gameServerDeployments.list `  
+` gameservices.gameServerDeployments.rollout `  
+` gameservices.gameServerDeployments.update `  
+` gameservices.locations.get `  
+` gameservices.locations.list `  
+` gameservices.operations.cancel `  
+` gameservices.operations.delete `  
+` gameservices.operations.get `  
+` gameservices.operations.list `  
+` gameservices.realms.create `  
+` gameservices.realms.delete `  
+` gameservices.realms.get `  
+` gameservices.realms.list `  
+` gameservices.realms.update `  
+  
+Cloud Healthcare API  |  Added  |  ` healthcare.hl7V2Stores.import `  
+` healthcare.locations.get `  
+` healthcare.locations.list `  
+  
+Identity and Access Management  |  Added  |  ` iam.serviceAccounts.disable `  
+` iam.serviceAccounts.enable `  
+` iam.serviceAccounts.undelete `  
+  
+Identity and Access Management  |  Available In Custom Roles  |  `
+iam.serviceAccounts.undelete `  
+  
+AI Platform Notebooks  |  Added  |  ` notebooks.instances.checkUpgradability `  
+` notebooks.instances.reset `  
+` notebooks.instances.setAccelerator `  
+` notebooks.instances.setLabels `  
+` notebooks.instances.setMachineType `  
+` notebooks.instances.start `  
+` notebooks.instances.stop `  
+` notebooks.instances.upgrade `  
+  
+  
+##  Cloud IAM changes as of 2020-07-24
+
+Service  |  Change  |  Description  
+---|---|---  
+Identity and Access Management  |  Role Updated  |
+
+The following permissions have been removed from the role `
+roles/iam.securityAdmin ` (Security Admin):
+
+` container.secrets.list `  
+  
+Identity and Access Management  |  Role Updated  |
+
+The following permissions have been removed from the role `
+roles/iam.securityReviewer ` (Security Reviewer):
+
+` container.secrets.list `  
+  
+  
+##  Cloud IAM changes as of 2020-07-17
+
+Service  |  Change  |  Description  
+---|---|---  
+GKE Hub  |  Now GA  |
+
+The role ` roles/gkehub.gatewayAdmin ` (Connect Gateway Admin) is now GA.  
+  
+Secret Manager  |  Now GA  |
+
+The role ` roles/secretmanager.secretVersionAdder ` (Secret Manager Secret
+Version Adder) is now GA.  
+  
+Secret Manager  |  Now GA  |
+
+The role ` roles/secretmanager.secretVersionManager ` (Secret Manager Secret
+Version Manager) is now GA.  
+  
+Cloud Bigtable  |  Added  |  ` bigtable.backups.create `  
+` bigtable.backups.delete `  
+` bigtable.backups.get `  
+` bigtable.backups.getIamPolicy `  
+` bigtable.backups.list `  
+` bigtable.backups.restore `  
+` bigtable.backups.setIamPolicy `  
+` bigtable.backups.update `  
+  
+Cloud Bigtable  |  Supported In Custom Roles  |  ` bigtable.backups.create `  
+` bigtable.backups.delete `  
+` bigtable.backups.get `  
+` bigtable.backups.getIamPolicy `  
+` bigtable.backups.list `  
+` bigtable.backups.restore `  
+` bigtable.backups.setIamPolicy `  
+` bigtable.backups.update `  
+  
+Cloud Bigtable  |  Now GA  |  ` bigtable.backups.create `  
+` bigtable.backups.delete `  
+` bigtable.backups.get `  
+` bigtable.backups.getIamPolicy `  
+` bigtable.backups.list `  
+` bigtable.backups.restore `  
+` bigtable.backups.setIamPolicy `  
+` bigtable.backups.update `  
+  
+Cloud Commerce Consumer Procurement  |  Added  |  `
+consumerprocurement.accounts.create `  
+` consumerprocurement.accounts.delete `  
+` consumerprocurement.accounts.get `  
+` consumerprocurement.accounts.list `  
+` consumerprocurement.entitlements.get `  
+` consumerprocurement.entitlements.list `  
+` consumerprocurement.freeTrials.create `  
+` consumerprocurement.freeTrials.get `  
+` consumerprocurement.freeTrials.list `  
+` consumerprocurement.orders.cancel `  
+` consumerprocurement.orders.get `  
+` consumerprocurement.orders.list `  
+` consumerprocurement.orders.modify `  
+` consumerprocurement.orders.place `  
+  
+Cloud Commerce Consumer Procurement  |  Supported In Custom Roles  |  `
+consumerprocurement.accounts.create `  
+` consumerprocurement.accounts.delete `  
+` consumerprocurement.accounts.get `  
+` consumerprocurement.accounts.list `  
+` consumerprocurement.entitlements.get `  
+` consumerprocurement.entitlements.list `  
+` consumerprocurement.freeTrials.create `  
+` consumerprocurement.freeTrials.get `  
+` consumerprocurement.freeTrials.list `  
+` consumerprocurement.orders.cancel `  
+` consumerprocurement.orders.get `  
+` consumerprocurement.orders.list `  
+` consumerprocurement.orders.modify `  
+` consumerprocurement.orders.place `  
+  
+GKE Hub  |  Added  |  ` gkehub.gateway.delete `  
+` gkehub.gateway.get `  
+` gkehub.gateway.getIamPolicy `  
+` gkehub.gateway.patch `  
+` gkehub.gateway.post `  
+` gkehub.gateway.put `  
+` gkehub.gateway.setIamPolicy `  
+  
+GKE Hub  |  Now GA  |  ` gkehub.gateway.delete `  
+` gkehub.gateway.get `  
+` gkehub.gateway.getIamPolicy `  
+` gkehub.gateway.patch `  
+` gkehub.gateway.post `  
+` gkehub.gateway.put `  
+` gkehub.gateway.setIamPolicy `  
+  
+  
+##  Cloud IAM changes as of 2020-07-10
+
+Service  |  Change  |  Description  
+---|---|---  
+Cloud Monitoring  |  Now GA  |
+
+The role ` roles/monitoring.servicesEditor ` (Monitoring Services Editor) is
+now GA.  
+  
+Cloud Monitoring  |  Now GA  |
+
+The role ` roles/monitoring.servicesViewer ` (Monitoring Services Viewer) is
+now GA.  
+  
+NetApp Cloud Volumes Service  |  Added  |  ` cloudvolumesgcp-
+api.netapp.com/activeDirectories.create `  
+` cloudvolumesgcp-api.netapp.com/activeDirectories.delete `  
+` cloudvolumesgcp-api.netapp.com/activeDirectories.get `  
+` cloudvolumesgcp-api.netapp.com/activeDirectories.list `  
+` cloudvolumesgcp-api.netapp.com/activeDirectories.update `  
+` cloudvolumesgcp-api.netapp.com/ipRanges.list `  
+` cloudvolumesgcp-api.netapp.com/jobs.get `  
+` cloudvolumesgcp-api.netapp.com/jobs.list `  
+` cloudvolumesgcp-api.netapp.com/regions.list `  
+` cloudvolumesgcp-api.netapp.com/serviceLevels.list `  
+` cloudvolumesgcp-api.netapp.com/snapshots.create `  
+` cloudvolumesgcp-api.netapp.com/snapshots.delete `  
+` cloudvolumesgcp-api.netapp.com/snapshots.get `  
+` cloudvolumesgcp-api.netapp.com/snapshots.list `  
+` cloudvolumesgcp-api.netapp.com/snapshots.update `  
+` cloudvolumesgcp-api.netapp.com/volumes.create `  
+` cloudvolumesgcp-api.netapp.com/volumes.delete `  
+` cloudvolumesgcp-api.netapp.com/volumes.get `  
+` cloudvolumesgcp-api.netapp.com/volumes.list `  
+` cloudvolumesgcp-api.netapp.com/volumes.update `  
+  
+Cloud Monitoring  |  Added  |  ` monitoring.services.create `  
+` monitoring.services.delete `  
+` monitoring.services.get `  
+` monitoring.services.list `  
+` monitoring.services.update `  
+` monitoring.slos.create `  
+` monitoring.slos.delete `  
+` monitoring.slos.get `  
+` monitoring.slos.list `  
+` monitoring.slos.update `  
+  
+Cloud Monitoring  |  Supported In Custom Roles  |  `
+monitoring.services.create `  
+` monitoring.services.delete `  
+` monitoring.services.get `  
+` monitoring.services.list `  
+` monitoring.services.update `  
+` monitoring.slos.create `  
+` monitoring.slos.delete `  
+` monitoring.slos.get `  
+` monitoring.slos.list `  
+` monitoring.slos.update `  
+  
+Cloud Monitoring  |  Now GA  |  ` monitoring.services.create `  
+` monitoring.services.delete `  
+` monitoring.services.get `  
+` monitoring.services.list `  
+` monitoring.services.update `  
+` monitoring.slos.create `  
+` monitoring.slos.delete `  
+` monitoring.slos.get `  
+` monitoring.slos.list `  
+` monitoring.slos.update `  
+  
+Network Security  |  Added  |  ` networksecurity.authorizationPolicies.create
+`  
+` networksecurity.authorizationPolicies.delete `  
+` networksecurity.authorizationPolicies.get `  
+` networksecurity.authorizationPolicies.getIamPolicy `  
+` networksecurity.authorizationPolicies.list `  
+` networksecurity.authorizationPolicies.setIamPolicy `  
+` networksecurity.authorizationPolicies.update `  
+` networksecurity.authorizationPolicies.use `  
+` networksecurity.clientTlsPolicies.create `  
+` networksecurity.clientTlsPolicies.delete `  
+` networksecurity.clientTlsPolicies.get `  
+` networksecurity.clientTlsPolicies.getIamPolicy `  
+` networksecurity.clientTlsPolicies.list `  
+` networksecurity.clientTlsPolicies.setIamPolicy `  
+` networksecurity.clientTlsPolicies.update `  
+` networksecurity.clientTlsPolicies.use `  
+` networksecurity.locations.get `  
+` networksecurity.locations.list `  
+` networksecurity.operations.cancel `  
+` networksecurity.operations.delete `  
+` networksecurity.operations.get `  
+` networksecurity.operations.list `  
+` networksecurity.serverTlsPolicies.create `  
+` networksecurity.serverTlsPolicies.delete `  
+` networksecurity.serverTlsPolicies.get `  
+` networksecurity.serverTlsPolicies.getIamPolicy `  
+` networksecurity.serverTlsPolicies.list `  
+` networksecurity.serverTlsPolicies.setIamPolicy `  
+` networksecurity.serverTlsPolicies.update `  
+` networksecurity.serverTlsPolicies.use `  
+  
+Network Security  |  Supported In Custom Roles  |  `
+networksecurity.authorizationPolicies.create `  
+` networksecurity.authorizationPolicies.delete `  
+` networksecurity.authorizationPolicies.get `  
+` networksecurity.authorizationPolicies.getIamPolicy `  
+` networksecurity.authorizationPolicies.list `  
+` networksecurity.authorizationPolicies.setIamPolicy `  
+` networksecurity.authorizationPolicies.update `  
+` networksecurity.authorizationPolicies.use `  
+` networksecurity.clientTlsPolicies.create `  
+` networksecurity.clientTlsPolicies.delete `  
+` networksecurity.clientTlsPolicies.get `  
+` networksecurity.clientTlsPolicies.getIamPolicy `  
+` networksecurity.clientTlsPolicies.list `  
+` networksecurity.clientTlsPolicies.setIamPolicy `  
+` networksecurity.clientTlsPolicies.update `  
+` networksecurity.clientTlsPolicies.use `  
+` networksecurity.locations.get `  
+` networksecurity.locations.list `  
+` networksecurity.operations.cancel `  
+` networksecurity.operations.delete `  
+` networksecurity.operations.get `  
+` networksecurity.operations.list `  
+` networksecurity.serverTlsPolicies.create `  
+` networksecurity.serverTlsPolicies.delete `  
+` networksecurity.serverTlsPolicies.get `  
+` networksecurity.serverTlsPolicies.getIamPolicy `  
+` networksecurity.serverTlsPolicies.list `  
+` networksecurity.serverTlsPolicies.setIamPolicy `  
+` networksecurity.serverTlsPolicies.update `  
+` networksecurity.serverTlsPolicies.use `  
+  
+Network Services  |  Added  |  `
+networkservices.endpointConfigSelectors.create `  
+` networkservices.endpointConfigSelectors.delete `  
+` networkservices.endpointConfigSelectors.get `  
+` networkservices.endpointConfigSelectors.getIamPolicy `  
+` networkservices.endpointConfigSelectors.list `  
+` networkservices.endpointConfigSelectors.setIamPolicy `  
+` networkservices.endpointConfigSelectors.update `  
+` networkservices.endpointConfigSelectors.use `  
+` networkservices.httpFilters.create `  
+` networkservices.httpFilters.delete `  
+` networkservices.httpFilters.get `  
+` networkservices.httpFilters.getIamPolicy `  
+` networkservices.httpFilters.list `  
+` networkservices.httpFilters.setIamPolicy `  
+` networkservices.httpFilters.update `  
+` networkservices.httpFilters.use `  
+` networkservices.locations.get `  
+` networkservices.locations.list `  
+` networkservices.operations.cancel `  
+` networkservices.operations.delete `  
+` networkservices.operations.get `  
+` networkservices.operations.list `  
+  
+Network Services  |  Supported In Custom Roles  |  `
+networkservices.endpointConfigSelectors.create `  
+` networkservices.endpointConfigSelectors.delete `  
+` networkservices.endpointConfigSelectors.get `  
+` networkservices.endpointConfigSelectors.getIamPolicy `  
+` networkservices.endpointConfigSelectors.list `  
+` networkservices.endpointConfigSelectors.setIamPolicy `  
+` networkservices.endpointConfigSelectors.update `  
+` networkservices.endpointConfigSelectors.use `  
+` networkservices.httpFilters.create `  
+` networkservices.httpFilters.delete `  
+` networkservices.httpFilters.get `  
+` networkservices.httpFilters.getIamPolicy `  
+` networkservices.httpFilters.list `  
+` networkservices.httpFilters.setIamPolicy `  
+` networkservices.httpFilters.update `  
+` networkservices.httpFilters.use `  
+` networkservices.locations.get `  
+` networkservices.locations.list `  
+` networkservices.operations.cancel `  
+` networkservices.operations.delete `  
+` networkservices.operations.get `  
+` networkservices.operations.list `  
+  
+Pub/Sub  |  Added  |  ` pubsub.topics.detachSubscription `  
+  
+Pub/Sub  |  Now GA  |  ` pubsub.topics.detachSubscription `  
+  
+reCAPTCHA Enterprise  |  Added  |  ` recaptchaenterprise.metrics.get `  
+  
+reCAPTCHA Enterprise  |  Supported In Custom Roles  |  `
+recaptchaenterprise.metrics.get `  
+  
+Recommender  |  Added  |  ` recommender.computeDiskIdleResourceInsights.get `  
+` recommender.computeDiskIdleResourceInsights.list `  
+` recommender.computeDiskIdleResourceInsights.update `  
+  
+Recommender  |  Supported In Custom Roles  |  `
+recommender.computeDiskIdleResourceInsights.get `  
+` recommender.computeDiskIdleResourceInsights.list `  
+` recommender.computeDiskIdleResourceInsights.update `  
+  
+Recommender  |  Now GA  |  ` recommender.computeDiskIdleResourceInsights.get `  
+` recommender.computeDiskIdleResourceInsights.list `  
+` recommender.computeDiskIdleResourceInsights.update `  
+  
+  
+##  Cloud IAM changes as of 2020-06-26
+
+Service  |  Change  |  Description  
+---|---|---  
+Apigee API  |  Role Updated  |
+
+The following permissions have been added to the role `
+roles/apigee.analyticsViewer ` (Apigee Analytics Viewer):
+
+` apigee.queries.get `  
+` apigee.queries.list `  
+` apigee.reports.get `  
+` apigee.reports.list `  
+  
+Cloud Billing  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/billing.admin `
+(Billing Account Administrator):
+
+` dataprocessing.groupcontrols.list `  
+  
+Cloud Billing  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/billing.viewer `
+(Billing Account Viewer):
+
+` dataprocessing.groupcontrols.list `  
+  
+Cloud Composer  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/composer.worker
+` (Composer Worker):
+
+` monitoring.timeSeries.list `  
+  
+Dataproc  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/dataproc.viewer
+` (Dataproc Viewer):
+
+` compute.zones.list `  
+  
+Customer Usage Data Processing API  |  Role Updated  |
+
+The following permissions have been added to the role `
+roles/dataprocessing.admin ` (Data Processing Controls Resource Admin):
+
+` billing.accounts.get `  
+` billing.accounts.list `  
+  
+Primitive Role  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/editor `
+(Editor):
+
+` containeranalysis.notes.getIamPolicy `  
+` containeranalysis.occurrences.getIamPolicy `  
+  
+Primitive Role  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/viewer `
+(Viewer):
+
+` containeranalysis.notes.getIamPolicy `  
+` containeranalysis.occurrences.getIamPolicy `  
+  
+Serverless VPC Access  |  Now GA  |
+
+The role ` roles/vpcaccess.user ` (Serverless VPC Access User) is now GA.  
+  
+Serverless VPC Access  |  Now GA  |
+
+The role ` roles/vpcaccess.viewer ` (Serverless VPC Access Viewer) is now GA.  
+  
+Compute Engine  |  Added  |  ` compute.images.update `  
+` compute.instances.getEffectiveFirewalls `  
+` compute.networks.getEffectiveFirewalls `  
+` compute.organizations.listAssociations `  
+` compute.organizations.setSecurityPolicy `  
+` compute.securityPolicies.addAssociation `  
+` compute.securityPolicies.copyRules `  
+` compute.securityPolicies.move `  
+` compute.securityPolicies.removeAssociation `  
+  
+Compute Engine  |  Supported In Custom Roles  |  `
+compute.instances.getEffectiveFirewalls `  
+` compute.networks.getEffectiveFirewalls `  
+` compute.organizations.listAssociations `  
+` compute.organizations.setSecurityPolicy `  
+` compute.securityPolicies.addAssociation `  
+` compute.securityPolicies.copyRules `  
+` compute.securityPolicies.move `  
+` compute.securityPolicies.removeAssociation `  
+  
+Container Analysis  |  Added  |  ` containeranalysis.notes.attachOccurrence `  
+` containeranalysis.notes.create `  
+` containeranalysis.notes.delete `  
+` containeranalysis.notes.get `  
+` containeranalysis.notes.getIamPolicy `  
+` containeranalysis.notes.list `  
+` containeranalysis.notes.listOccurrences `  
+` containeranalysis.notes.setIamPolicy `  
+` containeranalysis.notes.update `  
+` containeranalysis.occurrences.create `  
+` containeranalysis.occurrences.delete `  
+` containeranalysis.occurrences.get `  
+` containeranalysis.occurrences.getIamPolicy `  
+` containeranalysis.occurrences.list `  
+` containeranalysis.occurrences.setIamPolicy `  
+` containeranalysis.occurrences.update `  
+  
+Container Analysis  |  Supported In Custom Roles  |  `
+containeranalysis.notes.attachOccurrence `  
+` containeranalysis.notes.create `  
+` containeranalysis.notes.delete `  
+` containeranalysis.notes.get `  
+` containeranalysis.notes.getIamPolicy `  
+` containeranalysis.notes.list `  
+` containeranalysis.notes.listOccurrences `  
+` containeranalysis.notes.setIamPolicy `  
+` containeranalysis.notes.update `  
+` containeranalysis.occurrences.create `  
+` containeranalysis.occurrences.delete `  
+` containeranalysis.occurrences.get `  
+` containeranalysis.occurrences.getIamPolicy `  
+` containeranalysis.occurrences.list `  
+` containeranalysis.occurrences.setIamPolicy `  
+` containeranalysis.occurrences.update `  
+  
+Recommender  |  Added  |  ` recommender.iamServiceAccountInsights.get `  
+` recommender.iamServiceAccountInsights.list `  
+` recommender.iamServiceAccountInsights.update `  
+  
+Recommender  |  Supported In Custom Roles  |  `
+recommender.iamServiceAccountInsights.get `  
+` recommender.iamServiceAccountInsights.list `  
+` recommender.iamServiceAccountInsights.update `  
+  
+Recommender  |  Now GA  |  ` recommender.iamServiceAccountInsights.get `  
+` recommender.iamServiceAccountInsights.list `  
+` recommender.iamServiceAccountInsights.update `  
+  
+Cloud Spanner  |  Added  |  ` spanner.databases.beginPartitionedDmlTransaction
+`  
+` spanner.databases.partitionQuery `  
+` spanner.databases.partitionRead `  
+  
+Cloud Spanner  |  Supported In Custom Roles  |  `
+spanner.databases.beginPartitionedDmlTransaction `  
+` spanner.databases.partitionQuery `  
+` spanner.databases.partitionRead `  
+  
+Cloud Spanner  |  Now GA  |  `
+spanner.databases.beginPartitionedDmlTransaction `  
+` spanner.databases.partitionQuery `  
+` spanner.databases.partitionRead `  
+  
+  
+##  Cloud IAM changes as of 2020-06-19
+
+Service  |  Change  |  Description  
+---|---|---  
+Actions API  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/actions.Admin `
+(Actions Admin):
+
+` serviceusage.services.use `  
+  
+Actions API  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/actions.Viewer `
+(Actions Viewer):
+
+` serviceusage.services.use `  
+  
+Container Analysis  |  Now GA  |
+
+The role ` roles/containeranalysis.admin ` (Container Analysis Admin) is now
+GA.  
+  
+Container Analysis  |  Now GA  |
+
+The role ` roles/containeranalysis.notes.attacher ` (Container Analysis Notes
+Attacher) is now GA.  
+  
+Container Analysis  |  Now GA  |
+
+The role ` roles/containeranalysis.notes.editor ` (Container Analysis Notes
+Editor) is now GA.  
+  
+Container Analysis  |  Now GA  |
+
+The role ` roles/containeranalysis.notes.viewer ` (Container Analysis Notes
+Viewer) is now GA.  
+  
+Container Analysis  |  Now GA  |
+
+The role ` roles/containeranalysis.occurrences.editor ` (Container Analysis
+Occurrences Editor) is now GA.  
+  
+Container Analysis  |  Now GA  |
+
+The role ` roles/containeranalysis.occurrences.viewer ` (Container Analysis
+Occurrences Viewer) is now GA.  
+  
+Cloud OS Config  |  Now GA  |
+
+The role ` roles/osconfig.assignmentAdmin ` (Assignment Admin) is now GA.  
+  
+Cloud OS Config  |  Now GA  |
+
+The role ` roles/osconfig.assignmentEditor ` (Assignment Editor) is now GA.  
+  
+Cloud OS Config  |  Now GA  |
+
+The role ` roles/osconfig.assignmentViewer ` (Assignment Viewer) is now GA.  
+  
+Cloud OS Config  |  Now GA  |
+
+The role ` roles/osconfig.osConfigAdmin ` (OsConfig Admin) is now GA.  
+  
+Cloud OS Config  |  Now GA  |
+
+The role ` roles/osconfig.osConfigEditor ` (OsConfig Editor) is now GA.  
+  
+Cloud OS Config  |  Now GA  |
+
+The role ` roles/osconfig.osConfigViewer ` (OsConfig Viewer) is now GA.  
+  
+Cloud OS Config  |  Now GA  |
+
+The role ` roles/osconfig.patchDeploymentAdmin ` (PatchDeployment Admin) is
+now GA.  
+  
+Cloud OS Config  |  Now GA  |
+
+The role ` roles/osconfig.patchDeploymentViewer ` (PatchDeployment Viewer) is
+now GA.  
+  
+Cloud OS Config  |  Now GA  |
+
+The role ` roles/osconfig.patchJobExecutor ` (Patch Job Executor) is now GA.  
+  
+Cloud OS Config  |  Now GA  |
+
+The role ` roles/osconfig.patchJobViewer ` (Patch Job Viewer) is now GA.  
+  
+Primitive Role  |  Role Updated  |
+
+The following permissions have been removed from the role ` roles/viewer `
+(Viewer):
+
+` apigee.appkeys.create `  
+  
+BigQuery  |  Supported In Custom Roles  |  ` bigquery.connections.create `  
+` bigquery.connections.delete `  
+` bigquery.connections.get `  
+` bigquery.connections.getIamPolicy `  
+` bigquery.connections.list `  
+` bigquery.connections.setIamPolicy `  
+` bigquery.connections.update `  
+` bigquery.connections.use `  
+  
+Compute Engine  |  Added  |  ` compute.instances.update `  
+  
+Compute Engine  |  Supported In Custom Roles  |  ` compute.instances.update `  
+  
+Compute Engine  |  Now GA  |  ` compute.instances.update `  
+  
+Filestore  |  Added  |  ` file.backups.create `  
+` file.backups.delete `  
+` file.backups.get `  
+` file.backups.list `  
+` file.backups.update `  
+  
+GKE Hub  |  Added  |  ` gkehub.features.create `  
+` gkehub.features.delete `  
+` gkehub.features.get `  
+` gkehub.features.getIamPolicy `  
+` gkehub.features.list `  
+` gkehub.features.setIamPolicy `  
+` gkehub.features.update `  
+  
+GKE Hub  |  Now GA  |  ` gkehub.features.create `  
+` gkehub.features.delete `  
+` gkehub.features.get `  
+` gkehub.features.getIamPolicy `  
+` gkehub.features.list `  
+` gkehub.features.setIamPolicy `  
+` gkehub.features.update `  
+  
+Cloud OS Config  |  Now GA  |  ` osconfig.patchDeployments.create `  
+` osconfig.patchDeployments.delete `  
+` osconfig.patchDeployments.execute `  
+` osconfig.patchDeployments.get `  
+` osconfig.patchDeployments.list `  
+` osconfig.patchDeployments.update `  
+` osconfig.patchJobs.exec `  
+` osconfig.patchJobs.get `  
+` osconfig.patchJobs.list `  
+  
+Pub/Sub Lite  |  Added  |  ` pubsublite.subscriptions.create `  
+` pubsublite.subscriptions.delete `  
+` pubsublite.subscriptions.get `  
+` pubsublite.subscriptions.getCursor `  
+` pubsublite.subscriptions.list `  
+` pubsublite.subscriptions.setCursor `  
+` pubsublite.subscriptions.subscribe `  
+` pubsublite.subscriptions.update `  
+` pubsublite.topics.create `  
+` pubsublite.topics.delete `  
+` pubsublite.topics.get `  
+` pubsublite.topics.getPartitions `  
+` pubsublite.topics.list `  
+` pubsublite.topics.listSubscriptions `  
+` pubsublite.topics.publish `  
+` pubsublite.topics.subscribe `  
+` pubsublite.topics.update `  
+  
+Pub/Sub Lite  |  Supported In Custom Roles  |  `
+pubsublite.subscriptions.create `  
+` pubsublite.subscriptions.delete `  
+` pubsublite.subscriptions.get `  
+` pubsublite.subscriptions.getCursor `  
+` pubsublite.subscriptions.list `  
+` pubsublite.subscriptions.setCursor `  
+` pubsublite.subscriptions.subscribe `  
+` pubsublite.subscriptions.update `  
+` pubsublite.topics.create `  
+` pubsublite.topics.delete `  
+` pubsublite.topics.get `  
+` pubsublite.topics.getPartitions `  
+` pubsublite.topics.list `  
+` pubsublite.topics.listSubscriptions `  
+` pubsublite.topics.publish `  
+` pubsublite.topics.subscribe `  
+` pubsublite.topics.update `  
+  
+Google Cloud VMware Engine  |  Now GA  |
+
+The role ` roles/vmwareengine.vmwareengineAdmin ` (VMWare Engine Service
+Admin) is now GA.  
+  
+Google Cloud VMware Engine  |  Now GA  |
+
+The role ` roles/vmwareengine.vmwareengineViewer ` (VMWare Engine Service
+Viewer) is now GA.  
+  
+Google Cloud VMware Engine  |  Added  |  `
+vmwareengine.googleapis.com/services.use `  
+` vmwareengine.googleapis.com/services.view `  
+` vmwareengine.services.use `  
+` vmwareengine.services.view `  
+  
+Google Cloud VMware Engine  |  Supported In Custom Roles  |  `
+vmwareengine.googleapis.com/services.use `  
+` vmwareengine.googleapis.com/services.view `  
+` vmwareengine.services.use `  
+` vmwareengine.services.view `  
+  
+Google Cloud VMware Engine  |  Now GA  |  `
+vmwareengine.googleapis.com/services.use `  
+` vmwareengine.googleapis.com/services.view `  
+` vmwareengine.services.use `  
+` vmwareengine.services.view `  
+  
+  
+##  Cloud IAM changes as of 2020-06-12
+
+Service  |  Change  |  Description  
+---|---|---  
+Customer Usage Data Processing API  |  Now GA  |
+
+The role ` roles/dataprocessing.admin ` (Data Processing Controls Resource
+Admin) is now GA.  
+  
+Customer Usage Data Processing API  |  Now GA  |
+
+The role ` roles/dataprocessing.iamAccessHistoryExporter ` (Data Processing
+IAM Access History Exporter) is now GA.  
+  
+Cloud Data Loss Prevention  |  Now GA  |
+
+The role ` roles/dlp.inspectFindingsReader ` (DLP Inspect Findings Reader) is
+now GA.  
+  
+GKE Hub  |  Now GA  |
+
+The role ` roles/gkehub.admin ` (GKE Hub Admin) is now GA.  
+  
+GKE Hub  |  Now GA  |
+
+The role ` roles/gkehub.connect ` (GKE Hub Connection Agent) is now GA.  
+  
+GKE Hub  |  Now GA  |
+
+The role ` roles/gkehub.viewer ` (GKE Hub Viewer) is now GA.  
+  
+Cloud Life Sciences  |  Role Updated  |
+
+The following permissions have been added to the role `
+roles/lifesciences.viewer ` (Cloud Life Sciences Viewer):
+
+` resourcemanager.projects.get `  
+` resourcemanager.projects.list `  
+  
+Cloud Monitoring  |  Now GA  |
+
+The role ` roles/monitoring.dashboardEditor ` (Monitoring Dashboard
+Configuration Editor) is now GA.  
+  
+Cloud Monitoring  |  Now GA  |
+
+The role ` roles/monitoring.dashboardViewer ` (Monitoring Dashboard
+Configuration Viewer) is now GA.  
+  
+Apigee Connect  |  Added  |  ` apigeeconnect.connections.list `  
+` apigeeconnect.endpoints.connect `  
+  
+Apigee Connect  |  Supported In Custom Roles  |  `
+apigeeconnect.connections.list `  
+` apigeeconnect.endpoints.connect `  
+  
+Service Usage  |  Added  |  ` apikeys.keys.create `  
+` apikeys.keys.delete `  
+` apikeys.keys.get `  
+` apikeys.keys.list `  
+` apikeys.keys.lookup `  
+` apikeys.keys.update `  
+  
+Recommendations AI  |  Supported In Custom Roles  |  `
+automlrecommendations.events.create `  
+  
+BigQuery  |  Added  |  ` bigquery.tables.getIamPolicy `  
+` bigquery.tables.setIamPolicy `  
+  
+BigQuery  |  Supported In Custom Roles  |  ` bigquery.tables.getIamPolicy `  
+` bigquery.tables.setIamPolicy `  
+  
+Cloud Asset Inventory  |  Added  |  `
+cloudasset.assets.exportCloudkmsImportJobs `  
+  
+Cloud Asset Inventory  |  Supported In Custom Roles  |  `
+cloudasset.assets.exportCloudkmsImportJobs `  
+  
+Cloud Asset Inventory  |  Now GA  |  ` cloudasset.assets.searchAllIamPolicies
+`  
+` cloudasset.assets.searchAllResources `  
+  
+Compute Engine  |  Added  |  ` compute.globalPublicDelegatedPrefixes.create `  
+` compute.globalPublicDelegatedPrefixes.delete `  
+` compute.globalPublicDelegatedPrefixes.get `  
+` compute.globalPublicDelegatedPrefixes.list `  
+` compute.globalPublicDelegatedPrefixes.update `  
+` compute.globalPublicDelegatedPrefixes.updatePolicy `  
+` compute.globalPublicDelegatedPrefixes.use `  
+` compute.publicAdvertisedPrefixes.create `  
+` compute.publicAdvertisedPrefixes.delete `  
+` compute.publicAdvertisedPrefixes.get `  
+` compute.publicAdvertisedPrefixes.list `  
+` compute.publicAdvertisedPrefixes.update `  
+` compute.publicAdvertisedPrefixes.updatePolicy `  
+` compute.publicAdvertisedPrefixes.use `  
+` compute.publicDelegatedPrefixes.create `  
+` compute.publicDelegatedPrefixes.delete `  
+` compute.publicDelegatedPrefixes.get `  
+` compute.publicDelegatedPrefixes.list `  
+` compute.publicDelegatedPrefixes.update `  
+` compute.publicDelegatedPrefixes.updatePolicy `  
+` compute.publicDelegatedPrefixes.use `  
+  
+Compute Engine  |  Supported In Custom Roles  |  `
+compute.globalPublicDelegatedPrefixes.create `  
+` compute.globalPublicDelegatedPrefixes.delete `  
+` compute.globalPublicDelegatedPrefixes.get `  
+` compute.globalPublicDelegatedPrefixes.list `  
+` compute.globalPublicDelegatedPrefixes.update `  
+` compute.globalPublicDelegatedPrefixes.updatePolicy `  
+` compute.globalPublicDelegatedPrefixes.use `  
+` compute.publicAdvertisedPrefixes.create `  
+` compute.publicAdvertisedPrefixes.delete `  
+` compute.publicAdvertisedPrefixes.get `  
+` compute.publicAdvertisedPrefixes.list `  
+` compute.publicAdvertisedPrefixes.update `  
+` compute.publicAdvertisedPrefixes.updatePolicy `  
+` compute.publicAdvertisedPrefixes.use `  
+` compute.publicDelegatedPrefixes.create `  
+` compute.publicDelegatedPrefixes.delete `  
+` compute.publicDelegatedPrefixes.get `  
+` compute.publicDelegatedPrefixes.list `  
+` compute.publicDelegatedPrefixes.update `  
+` compute.publicDelegatedPrefixes.updatePolicy `  
+` compute.publicDelegatedPrefixes.use `  
+  
+Cloud Data Fusion  |  Added  |  ` datafusion.instances.runtime `  
+  
+Customer Usage Data Processing API  |  Now GA  |  `
+dataprocessing.featurecontrols.list `  
+` dataprocessing.featurecontrols.update `  
+` dataprocessing.groupcontrols.list `  
+` dataprocessing.groupcontrols.update `  
+  
+Cloud Data Loss Prevention  |  Added  |  ` dlp.inspectFindings.list `  
+` dlp.jobTriggers.hybridInspect `  
+` dlp.jobs.hybridInspect `  
+  
+Cloud Data Loss Prevention  |  Now GA  |  ` dlp.inspectFindings.list `  
+` dlp.jobTriggers.hybridInspect `  
+` dlp.jobs.hybridInspect `  
+  
+GKE Hub  |  Now GA  |  ` gkehub.endpoints.connect `  
+` gkehub.locations.get `  
+` gkehub.locations.list `  
+` gkehub.memberships.create `  
+` gkehub.memberships.delete `  
+` gkehub.memberships.generateConnectManifest `  
+` gkehub.memberships.get `  
+` gkehub.memberships.getIamPolicy `  
+` gkehub.memberships.list `  
+` gkehub.memberships.setIamPolicy `  
+` gkehub.memberships.update `  
+` gkehub.operations.cancel `  
+` gkehub.operations.get `  
+` gkehub.operations.list `  
+  
+Cloud Healthcare API  |  Added  |  `
+healthcare.fhirResources.translateConceptMap `  
+  
+Cloud Healthcare API  |  Supported In Custom Roles  |  `
+healthcare.fhirResources.translateConceptMap `  
+  
+Cloud Healthcare API  |  Now GA  |  `
+healthcare.fhirResources.translateConceptMap `  
+  
+Recommender  |  Added  |  `
+recommender.computeDiskIdleResourceRecommendations.get `  
+` recommender.computeDiskIdleResourceRecommendations.list `  
+` recommender.computeDiskIdleResourceRecommendations.update `  
+  
+Recommender  |  Supported In Custom Roles  |  `
+recommender.computeDiskIdleResourceRecommendations.get `  
+` recommender.computeDiskIdleResourceRecommendations.list `  
+` recommender.computeDiskIdleResourceRecommendations.update `  
+  
+Recommender  |  Now GA  |  `
+recommender.computeDiskIdleResourceRecommendations.get `  
+` recommender.computeDiskIdleResourceRecommendations.list `  
+` recommender.computeDiskIdleResourceRecommendations.update `  
+  
+  
+##  Cloud IAM changes as of 2020-05-22
+
+Service  |  Change  |  Description  
+---|---|---  
+Primitive Role  |  Role Updated  |
+
+The following permissions have been added to the role ` roles/owner ` (Owner):
+
+` apigee.appkeys.create `  
+  
+  
 ##  Cloud IAM changes as of 2020-03-27
 
 Service  |  Change  |  Description  
@@ -598,7 +2715,7 @@ The following permissions have been added to the role ` roles/editor `
 ` servicedirectory.locations.get `  
 ` servicedirectory.locations.list `  
   
-Cloud Identity and Access Management  |  Role Updated  |
+Identity and Access Management  |  Role Updated  |
 
 The following permissions have been added to the role `
 roles/iam.securityAdmin ` (Security Admin):
@@ -607,7 +2724,7 @@ roles/iam.securityAdmin ` (Security Admin):
 ` identityplatform.workloadPools.list `  
 ` servicedirectory.locations.list `  
   
-Cloud Identity and Access Management  |  Role Updated  |
+Identity and Access Management  |  Role Updated  |
 
 The following permissions have been added to the role `
 roles/iam.securityReviewer ` (Security Reviewer):
@@ -891,7 +3008,7 @@ Data Catalog  |  Supported In Custom Roles  |  ` datacatalog.entryGroups.list
 Cloud Healthcare API  |  Supported In Custom Roles  |  `
 healthcare.fhirStores.executeBundle `  
   
-Cloud Identity and Access Management  |  Supported In Custom Roles  |  `
+Identity and Access Management  |  Supported In Custom Roles  |  `
 iam.serviceAccounts.getOpenIdToken `  
   
 Cloud Spanner  |  Added  |  ` spanner.backupOperations.cancel `  
@@ -1474,7 +3591,7 @@ artifactregistry.files.get `
 ` artifactregistry.versions.get `  
 ` artifactregistry.versions.list `  
   
-Cloud Identity and Access Management  |  Added  |  `
+Identity and Access Management  |  Added  |  `
 iam.serviceAccounts.getOpenIdToken `  
   
 Security Command Center  |  Added  |  `
@@ -2392,7 +4509,7 @@ Actions API  |  Now GA  |  ` actions.agent.claimContentProvider `
 ` actions.agentVersions.deploy `  
 ` actions.agentVersions.list `  
   
-Cloud Identity and Access Management  |  Supported In Custom Roles  |  `
+Identity and Access Management  |  Supported In Custom Roles  |  `
 iam.serviceAccounts.actAs `  
 ` iam.serviceAccounts.getAccessToken `  
 ` iam.serviceAccounts.implicitDelegation `  
@@ -2428,7 +4545,7 @@ cloudasset.assets.exportAccessPolicy `
 ` cloudasset.feeds.list `  
 ` cloudasset.feeds.update `  
   
-Cloud Identity and Access Management  |  Supported In Custom Roles  |  `
+Identity and Access Management  |  Supported In Custom Roles  |  `
 iam.serviceAccountKeys.create `  
 ` iam.serviceAccountKeys.delete `  
 ` iam.serviceAccountKeys.get `  
@@ -3171,7 +5288,7 @@ Compute Engine  |  Now GA  |  ` compute.vpnGateways.create `
 
 Service  |  Change  |  Description  
 ---|---|---  
-Cloud Identity and Access Management  |  Now GA  |
+Identity and Access Management  |  Now GA  |
 
 The role ` roles/iam.workloadIdentityUser ` (Workload Identity User) is now
 GA.  
@@ -3211,7 +5328,7 @@ roles/datacatalog.admin ` (Data Catalog Admin):
 Migrate for Compute Engine  |  Added  |  `
 cloudmigration.velostrataendpoints.connect `  
   
-Cloud Identity and Access Management  |  Available In Custom Roles  |  `
+Identity and Access Management  |  Available In Custom Roles  |  `
 iam.serviceAccounts.actAs `  
 ` iam.serviceAccounts.getAccessToken `  
 ` iam.serviceAccounts.implicitDelegation `  
@@ -3296,7 +5413,7 @@ Dialogflow  |  Now GA  |  ` dialogflow.agents.create `
 
 Service  |  Change  |  Description  
 ---|---|---  
-Cloud Identity and Access Management  |  Now GA  |
+Identity and Access Management  |  Now GA  |
 
 The role ` roles/iam.securityAdmin ` (Security Admin) is now GA.  
   
@@ -4112,12 +6229,12 @@ The following permissions have been added to the role ` roles/file.viewer `
 ` file.snapshots.get `  
 ` file.snapshots.list `  
   
-Cloud Identity and Access Management  |  Now GA  |
+Identity and Access Management  |  Now GA  |
 
 The role ` roles/iam.serviceAccountCreator ` (Create Service Accounts) is now
 GA.  
   
-Cloud Identity and Access Management  |  Role Updated  |
+Identity and Access Management  |  Role Updated  |
 
 The following permissions have been added to the role `
 roles/iam.securityReviewer ` (Security Reviewer):
@@ -4291,7 +6408,7 @@ The following permissions have been added to the role ` roles/editor `
 ` dataproc.jobs.getIamPolicy `  
 ` dataproc.operations.getIamPolicy `  
   
-Cloud Identity and Access Management  |  Role Updated  |
+Identity and Access Management  |  Role Updated  |
 
 The following permissions have been added to the role `
 roles/iam.serviceAccountDeleter ` (Delete Service Accounts):
@@ -4805,7 +6922,7 @@ BigQuery  |  Now GA  |
 The role ` roles/bigquery.metadataViewer ` (BigQuery Metadata Viewer) is now
 GA.  
   
-Cloud Identity and Access Management  |  Now GA  |
+Identity and Access Management  |  Now GA  |
 
 The role ` roles/iam.serviceAccountDeleter ` (Delete Service Accounts) is now
 GA.  
@@ -5961,7 +8078,7 @@ Cloud TPU  |  Supported In Custom Roles  |  ` tpu.acceleratortypes.get `
 
 Service  |  Change  |  Description  
 ---|---|---  
-Cloud Identity and Access Management  |  Now GA  |  `
+Identity and Access Management  |  Now GA  |  `
 iam.serviceAccounts.implicitDelegation `  
   
   
@@ -6979,7 +9096,7 @@ errorreporting.applications.list `
 ` errorreporting.groupMetadata.update `  
 ` errorreporting.groups.list `  
   
-Cloud Identity and Access Management  |  Not Supported In Custom Roles  |  `
+Identity and Access Management  |  Not Supported In Custom Roles  |  `
 iam.serviceAccounts.actAs `  
 ` iam.serviceAccounts.getAccessToken `  
 ` iam.serviceAccounts.signBlob `  
@@ -7320,7 +9437,7 @@ Google Kubernetes Engine  |  Now GA  |  ` container.deployments.getScale `
 Dataprep by Trifacta  |  Supported In Custom Roles  |  ` dataprep.projects.use
 `  
   
-Cloud Identity and Access Management  |  Supported In Custom Roles  |  `
+Identity and Access Management  |  Supported In Custom Roles  |  `
 iam.roles.create `  
 ` iam.roles.delete `  
 ` iam.roles.get `  

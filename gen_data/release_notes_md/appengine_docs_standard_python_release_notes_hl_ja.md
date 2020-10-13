@@ -1,6 +1,6 @@
 Python 2 は、コミュニティでサポートを終了しました。 [ Python 2 アプリを Python 3 に移行する
 ](https://cloud.google.com/appengine/docs/standard/python/migrate-to-
-python3/?hl=ja) ことをおすすめします。
+python3?hl=ja) ことをおすすめします。
 
 #  Python 2.7 リリースノート
 
@@ -11,6 +11,48 @@ python3/?hl=ja) ことをおすすめします。
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) に追加するか、またはフィード
 URL ディレクトリ ` https://cloud.google.com/feeds/gaestd-py-release-notes.xml `
 を直接追加します。
+
+##  July 23, 2020
+
+**FEATURE:**
+
+[ Serverless VPC Access support for Shared VPC
+](https://cloud.google.com/appengine/docs/standard/python/connecting-
+vpc?hl=ja#shared-vpc) is now available in Beta.
+
+##  July 08, 2020
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for App Engine via [
+Serverless network endpoint groups ](https://cloud.google.com//load-
+balancing/docs/negs/setting-up-serverless-negs?hl=ja) . Notably, this feature
+allows you to use [ Cloud CDN ](https://cloud.google.com/cdn?hl=ja) with App
+Engine.  
+This feature is available in Beta.
+
+##  June 08, 2020
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
+##  May 14, 2020
+
+**FEATURE:**
+
+To get a fine-grained view of billing data for each resource used by your App
+Engine services, you can apply labels to the services, export your billing
+data to BigQuery, and run queries. For more information, see [ Labeling App
+Engine resources
+](https://cloud.google.com/appengine/docs/standard/python/labeling-
+resources?hl=ja) .
+
+##  May 11, 2020
+
+**CHANGED:**
+
+Updated Python SDK to version 1.9.91.
 
 ##  April 20, 2020
 

@@ -1273,6 +1273,7 @@
                         "DOWNLOAD_INPUTS_ERROR",
                         "UNKNOWN",
                         "UPLOAD_OUTPUTS_ERROR",
+                        "UPLOAD_OUTPUTS_BYTES_LIMIT_EXCEEDED",
                         "DOCKER_LOGIN_ERROR",
                         "DOCKER_IMAGE_PULL_ERROR",
                         "DOCKER_IMAGE_EXIST_ERROR",
@@ -1295,7 +1296,9 @@
                         "DOCKER_PREPARELAYER_ERROR",
                         "DOCKER_INCOMPATIBLE_OS_ERROR",
                         "DOCKER_CREATE_RUNTIME_FILE_NOT_FOUND",
-                        "DOCKER_CREATE_RUNTIME_PERMISSION_DENIED"
+                        "DOCKER_CREATE_RUNTIME_PERMISSION_DENIED",
+                        "DOCKER_CREATE_PROCESS_FILE_NOT_FOUND",
+                        "DOCKER_CREATE_COMPUTE_SYSTEM_INCORRECT_PARAMETER_ERROR"
                     ],
                     "type": "string"
                 },
@@ -1410,6 +1413,64 @@
             },
             "type": "object"
         },
+        "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy": {
+            "id": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy",
+            "properties": {
+                "containerImageSources": {
+                    "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature"
+                },
+                "dockerAddCapabilities": {
+                    "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature"
+                },
+                "dockerChrootPath": {
+                    "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature"
+                },
+                "dockerNetwork": {
+                    "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature"
+                },
+                "dockerPrivileged": {
+                    "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature"
+                },
+                "dockerRunAsRoot": {
+                    "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature"
+                },
+                "dockerRuntime": {
+                    "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature"
+                },
+                "dockerSiblingContainers": {
+                    "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature"
+                },
+                "linuxIsolation": {
+                    "enum": [
+                        "LINUX_ISOLATION_UNSPECIFIED",
+                        "GVISOR"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature": {
+            "id": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature",
+            "properties": {
+                "allowedValues": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "policy": {
+                    "enum": [
+                        "POLICY_UNSPECIFIED",
+                        "ALLOWED",
+                        "FORBIDDEN",
+                        "RESTRICTED"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest": {
             "id": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest",
             "properties": {
@@ -1431,6 +1492,9 @@
         "GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance": {
             "id": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance",
             "properties": {
+                "featurePolicy": {
+                    "$ref": "GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy"
+                },
                 "location": {
                     "type": "string"
                 },
@@ -1563,6 +1627,9 @@
                 },
                 "reserved": {
                     "type": "boolean"
+                },
+                "vmImage": {
+                    "type": "string"
                 }
             },
             "type": "object"

@@ -1,8 +1,8 @@
 #  Release Notes
 
-This page documents production updates to Connect for Anthos. You can
-periodically check this page for announcements about new or updated features,
-bug fixes, known issues, and deprecated functionality.
+This page documents production updates to Connect. You can periodically check
+this page for announcements about new or updated features, bug fixes, known
+issues, and deprecated functionality.
 
 You can see the latest product updates for all of Google Cloud on the [ Google
 Cloud release notes ](/release-notes) page.
@@ -11,7 +11,7 @@ Cloud release notes ](/release-notes) page.
 
 **CHANGED:**
 
-Connect for Anthos is Generally Available.
+Connect is Generally Available.
 
 **CHANGED:**
 
@@ -38,8 +38,8 @@ register/unregister ` .
 
 **FIXED:**
 
-Fixed an issue that prevented updates to Connect Agent in registered Anthos
-GKE on-prem clusters.
+Fixed an issue that prevented updates to Connect Agent in registered GKE on-
+prem clusters.
 
 **FIXED:**
 

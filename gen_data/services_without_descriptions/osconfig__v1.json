@@ -394,6 +394,52 @@
             "properties": {},
             "type": "object"
         },
+        "ExecResource": {
+            "id": "ExecResource",
+            "properties": {
+                "enforce": {
+                    "$ref": "ExecResourceExec"
+                },
+                "validate": {
+                    "$ref": "ExecResourceExec"
+                }
+            },
+            "type": "object"
+        },
+        "ExecResourceExec": {
+            "id": "ExecResourceExec",
+            "properties": {
+                "allowedSuccessCodes": {
+                    "items": {
+                        "format": "int32",
+                        "type": "integer"
+                    },
+                    "type": "array"
+                },
+                "args": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "file": {
+                    "$ref": "File"
+                },
+                "interpreter": {
+                    "enum": [
+                        "INTERPRETER_UNSPECIFIED",
+                        "NONE",
+                        "SHELL",
+                        "POWERSHELL"
+                    ],
+                    "type": "string"
+                },
+                "script": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ExecStep": {
             "id": "ExecStep",
             "properties": {
@@ -451,6 +497,126 @@
                 },
                 "patchConfig": {
                     "$ref": "PatchConfig"
+                },
+                "rollout": {
+                    "$ref": "PatchRollout"
+                }
+            },
+            "type": "object"
+        },
+        "ExtractArchiveResource": {
+            "id": "ExtractArchiveResource",
+            "properties": {
+                "creates": {
+                    "type": "string"
+                },
+                "destination": {
+                    "type": "string"
+                },
+                "overwrite": {
+                    "type": "boolean"
+                },
+                "source": {
+                    "$ref": "File"
+                },
+                "type": {
+                    "enum": [
+                        "ARCHIVE_TYPE_UNSPECIFIED",
+                        "TAR",
+                        "TAR_GZIP",
+                        "TAR_BZIP",
+                        "TAR_LZMA",
+                        "TAR_XZ",
+                        "ZIP"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "File": {
+            "id": "File",
+            "properties": {
+                "allowInsecure": {
+                    "type": "boolean"
+                },
+                "gcs": {
+                    "$ref": "FileGcs"
+                },
+                "localPath": {
+                    "type": "string"
+                },
+                "remote": {
+                    "$ref": "FileRemote"
+                }
+            },
+            "type": "object"
+        },
+        "FileGcs": {
+            "id": "FileGcs",
+            "properties": {
+                "bucket": {
+                    "type": "string"
+                },
+                "generation": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "object": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "FileRemote": {
+            "id": "FileRemote",
+            "properties": {
+                "sha256Checksum": {
+                    "type": "string"
+                },
+                "uri": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "FileResource": {
+            "id": "FileResource",
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "file": {
+                    "$ref": "File"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "permissions": {
+                    "type": "string"
+                },
+                "state": {
+                    "enum": [
+                        "DESIRED_STATE_UNSPECIFIED",
+                        "PRESENT",
+                        "ABSENT",
+                        "CONTENTS_MATCH"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "FixedOrPercent": {
+            "id": "FixedOrPercent",
+            "properties": {
+                "fixed": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "percent": {
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -544,6 +710,123 @@
             },
             "type": "object"
         },
+        "PackageResource": {
+            "id": "PackageResource",
+            "properties": {
+                "apt": {
+                    "$ref": "PackageResourceAPT"
+                },
+                "deb": {
+                    "$ref": "PackageResourceDeb"
+                },
+                "desiredState": {
+                    "enum": [
+                        "DESIRED_STATE_UNSPECIFIED",
+                        "INSTALLED",
+                        "REMOVED"
+                    ],
+                    "type": "string"
+                },
+                "googet": {
+                    "$ref": "PackageResourceGooGet"
+                },
+                "msi": {
+                    "$ref": "PackageResourceMSI"
+                },
+                "rpm": {
+                    "$ref": "PackageResourceRPM"
+                },
+                "yum": {
+                    "$ref": "PackageResourceYUM"
+                },
+                "zypper": {
+                    "$ref": "PackageResourceZypper"
+                }
+            },
+            "type": "object"
+        },
+        "PackageResourceAPT": {
+            "id": "PackageResourceAPT",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PackageResourceDeb": {
+            "id": "PackageResourceDeb",
+            "properties": {
+                "pullDeps": {
+                    "type": "boolean"
+                },
+                "source": {
+                    "$ref": "File"
+                }
+            },
+            "type": "object"
+        },
+        "PackageResourceGooGet": {
+            "id": "PackageResourceGooGet",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PackageResourceMSI": {
+            "id": "PackageResourceMSI",
+            "properties": {
+                "allowedSuccessCodes": {
+                    "items": {
+                        "format": "int32",
+                        "type": "integer"
+                    },
+                    "type": "array"
+                },
+                "flags": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "source": {
+                    "$ref": "File"
+                }
+            },
+            "type": "object"
+        },
+        "PackageResourceRPM": {
+            "id": "PackageResourceRPM",
+            "properties": {
+                "pullDeps": {
+                    "type": "boolean"
+                },
+                "source": {
+                    "$ref": "File"
+                }
+            },
+            "type": "object"
+        },
+        "PackageResourceYUM": {
+            "id": "PackageResourceYUM",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PackageResourceZypper": {
+            "id": "PackageResourceZypper",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "PatchConfig": {
             "id": "PatchConfig",
             "properties": {
@@ -585,6 +868,7 @@
             "properties": {
                 "createTime": {
                     "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "duration": {
@@ -596,6 +880,7 @@
                 },
                 "lastExecuteTime": {
                     "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "name": {
@@ -610,8 +895,12 @@
                 "recurringSchedule": {
                     "$ref": "RecurringSchedule"
                 },
+                "rollout": {
+                    "$ref": "PatchRollout"
+                },
                 "updateTime": {
                     "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -695,11 +984,15 @@
                     "$ref": "PatchConfig"
                 },
                 "patchDeployment": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "percentComplete": {
                     "format": "double",
                     "type": "number"
+                },
+                "rollout": {
+                    "$ref": "PatchRollout"
                 },
                 "state": {
                     "enum": [
@@ -827,6 +1120,23 @@
             },
             "type": "object"
         },
+        "PatchRollout": {
+            "id": "PatchRollout",
+            "properties": {
+                "disruptionBudget": {
+                    "$ref": "FixedOrPercent"
+                },
+                "mode": {
+                    "enum": [
+                        "MODE_UNSPECIFIED",
+                        "ZONE_BY_ZONE",
+                        "CONCURRENT_ZONES"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "RecurringSchedule": {
             "id": "RecurringSchedule",
             "properties": {
@@ -844,6 +1154,7 @@
                 },
                 "lastExecuteTime": {
                     "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "monthly": {
@@ -851,6 +1162,7 @@
                 },
                 "nextExecuteTime": {
                     "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "startTime": {
@@ -867,6 +1179,112 @@
                     "$ref": "WeeklySchedule"
                 }
             },
+            "type": "object"
+        },
+        "RepositoryResource": {
+            "id": "RepositoryResource",
+            "properties": {
+                "apt": {
+                    "$ref": "RepositoryResourceAptRepository"
+                },
+                "goo": {
+                    "$ref": "RepositoryResourceGooRepository"
+                },
+                "yum": {
+                    "$ref": "RepositoryResourceYumRepository"
+                },
+                "zypper": {
+                    "$ref": "RepositoryResourceZypperRepository"
+                }
+            },
+            "type": "object"
+        },
+        "RepositoryResourceAptRepository": {
+            "id": "RepositoryResourceAptRepository",
+            "properties": {
+                "archiveType": {
+                    "enum": [
+                        "ARCHIVE_TYPE_UNSPECIFIED",
+                        "DEB",
+                        "DEB_SRC"
+                    ],
+                    "type": "string"
+                },
+                "components": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "distribution": {
+                    "type": "string"
+                },
+                "gpgKey": {
+                    "type": "string"
+                },
+                "uri": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RepositoryResourceGooRepository": {
+            "id": "RepositoryResourceGooRepository",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RepositoryResourceYumRepository": {
+            "id": "RepositoryResourceYumRepository",
+            "properties": {
+                "baseUrl": {
+                    "type": "string"
+                },
+                "displayName": {
+                    "type": "string"
+                },
+                "gpgKeys": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RepositoryResourceZypperRepository": {
+            "id": "RepositoryResourceZypperRepository",
+            "properties": {
+                "baseUrl": {
+                    "type": "string"
+                },
+                "displayName": {
+                    "type": "string"
+                },
+                "gpgKeys": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ServiceResource": {
+            "id": "ServiceResource",
+            "properties": {},
             "type": "object"
         },
         "TimeOfDay": {

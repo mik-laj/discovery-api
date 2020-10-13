@@ -13,6 +13,23 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/data-catalog-release-notes.xml
 `
 
+##  July 24, 2020
+
+v1
+
+**FEATURE:**
+
+Data Catalog is now available in Seoul ( ` asia-northeast3 ` ).
+
+##  July 20, 2020
+
+v1
+
+**FEATURE:**
+
+Data Catalog is now available in Salt Lake City ( ` us-west3 ` ) and Las Vegas
+( ` us-west4 ` ).
+
 ##  April 30, 2020
 
 v1

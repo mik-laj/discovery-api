@@ -310,6 +310,87 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform"
                     ]
+                },
+                "searchAllIamPolicies": {
+                    "flatPath": "v1/{v1Id}/{v1Id1}:searchAllIamPolicies",
+                    "httpMethod": "GET",
+                    "id": "cloudasset.searchAllIamPolicies",
+                    "parameterOrder": [
+                        "scope"
+                    ],
+                    "parameters": {
+                        "pageSize": {
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "query": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "scope": {
+                            "location": "path",
+                            "pattern": "^[^/]+/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+scope}:searchAllIamPolicies",
+                    "response": {
+                        "$ref": "SearchAllIamPoliciesResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
+                "searchAllResources": {
+                    "flatPath": "v1/{v1Id}/{v1Id1}:searchAllResources",
+                    "httpMethod": "GET",
+                    "id": "cloudasset.searchAllResources",
+                    "parameterOrder": [
+                        "scope"
+                    ],
+                    "parameters": {
+                        "assetTypes": {
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
+                        },
+                        "orderBy": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageSize": {
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "query": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "scope": {
+                            "location": "path",
+                            "pattern": "^[^/]+/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+scope}:searchAllResources",
+                    "response": {
+                        "$ref": "SearchAllResourcesResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
                 }
             }
         }
@@ -351,6 +432,10 @@
                 },
                 "servicePerimeter": {
                     "$ref": "GoogleIdentityAccesscontextmanagerV1ServicePerimeter"
+                },
+                "updateTime": {
+                    "format": "google-datetime",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -453,6 +538,18 @@
             "properties": {},
             "type": "object"
         },
+        "Explanation": {
+            "id": "Explanation",
+            "properties": {
+                "matchedPermissions": {
+                    "additionalProperties": {
+                        "$ref": "Permissions"
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "ExportAssetsRequest": {
             "id": "ExportAssetsRequest",
             "properties": {
@@ -511,6 +608,9 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "condition": {
+                    "$ref": "Expr"
                 },
                 "contentType": {
                     "enum": [
@@ -867,6 +967,24 @@
             },
             "type": "object"
         },
+        "IamPolicySearchResult": {
+            "id": "IamPolicySearchResult",
+            "properties": {
+                "explanation": {
+                    "$ref": "Explanation"
+                },
+                "policy": {
+                    "$ref": "Policy"
+                },
+                "project": {
+                    "type": "string"
+                },
+                "resource": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ListFeedsResponse": {
             "id": "ListFeedsResponse",
             "properties": {
@@ -914,6 +1032,18 @@
                 },
                 "gcsDestination": {
                     "$ref": "GcsDestination"
+                }
+            },
+            "type": "object"
+        },
+        "Permissions": {
+            "id": "Permissions",
+            "properties": {
+                "permissions": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -968,6 +1098,9 @@
                 "discoveryName": {
                     "type": "string"
                 },
+                "location": {
+                    "type": "string"
+                },
                 "parent": {
                     "type": "string"
                 },
@@ -976,6 +1109,75 @@
                 },
                 "version": {
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ResourceSearchResult": {
+            "id": "ResourceSearchResult",
+            "properties": {
+                "additionalAttributes": {
+                    "additionalProperties": {
+                        "type": "any"
+                    },
+                    "type": "object"
+                },
+                "assetType": {
+                    "type": "string"
+                },
+                "displayName": {
+                    "type": "string"
+                },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "networkTags": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "project": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SearchAllIamPoliciesResponse": {
+            "id": "SearchAllIamPoliciesResponse",
+            "properties": {
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "results": {
+                    "items": {
+                        "$ref": "IamPolicySearchResult"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SearchAllResourcesResponse": {
+            "id": "SearchAllResourcesResponse",
+            "properties": {
+                "nextPageToken": {
+                    "type": "string"
+                },
+                "results": {
+                    "items": {
+                        "$ref": "ResourceSearchResult"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -1010,6 +1212,19 @@
                 },
                 "deleted": {
                     "type": "boolean"
+                },
+                "priorAsset": {
+                    "$ref": "Asset"
+                },
+                "priorAssetState": {
+                    "enum": [
+                        "PRIOR_ASSET_STATE_UNSPECIFIED",
+                        "PRESENT",
+                        "INVALID",
+                        "DOES_NOT_EXIST",
+                        "DELETED"
+                    ],
+                    "type": "string"
                 },
                 "window": {
                     "$ref": "TimeWindow"

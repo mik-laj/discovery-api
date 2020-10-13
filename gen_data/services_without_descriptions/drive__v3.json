@@ -145,6 +145,10 @@
                             "location": "query",
                             "type": "boolean"
                         },
+                        "includePermissionsForView": {
+                            "location": "query",
+                            "type": "string"
+                        },
                         "includeRemoved": {
                             "default": "true",
                             "location": "query",
@@ -228,6 +232,10 @@
                             "default": "false",
                             "location": "query",
                             "type": "boolean"
+                        },
+                        "includePermissionsForView": {
+                            "location": "query",
+                            "type": "string"
                         },
                         "includeRemoved": {
                             "default": "true",
@@ -686,6 +694,10 @@
                             "location": "query",
                             "type": "boolean"
                         },
+                        "includePermissionsForView": {
+                            "location": "query",
+                            "type": "string"
+                        },
                         "keepRevisionForever": {
                             "default": "false",
                             "location": "query",
@@ -749,6 +761,10 @@
                             "default": "false",
                             "location": "query",
                             "type": "boolean"
+                        },
+                        "includePermissionsForView": {
+                            "location": "query",
+                            "type": "string"
                         },
                         "keepRevisionForever": {
                             "default": "false",
@@ -900,6 +916,10 @@
                             "required": true,
                             "type": "string"
                         },
+                        "includePermissionsForView": {
+                            "location": "query",
+                            "type": "string"
+                        },
                         "supportsAllDrives": {
                             "default": "false",
                             "location": "query",
@@ -952,6 +972,10 @@
                             "default": "false",
                             "location": "query",
                             "type": "boolean"
+                        },
+                        "includePermissionsForView": {
+                            "location": "query",
+                            "type": "string"
                         },
                         "includeTeamDriveItems": {
                             "default": "false",
@@ -1049,6 +1073,10 @@
                             "required": true,
                             "type": "string"
                         },
+                        "includePermissionsForView": {
+                            "location": "query",
+                            "type": "string"
+                        },
                         "keepRevisionForever": {
                             "default": "false",
                             "location": "query",
@@ -1109,6 +1137,10 @@
                         "fileId": {
                             "location": "path",
                             "required": true,
+                            "type": "string"
+                        },
+                        "includePermissionsForView": {
+                            "location": "query",
                             "type": "string"
                         },
                         "supportsAllDrives": {
@@ -1307,6 +1339,10 @@
                         "fileId": {
                             "location": "path",
                             "required": true,
+                            "type": "string"
+                        },
+                        "includePermissionsForView": {
+                            "location": "query",
                             "type": "string"
                         },
                         "pageSize": {
@@ -2174,6 +2210,28 @@
             },
             "type": "object"
         },
+        "ContentRestriction": {
+            "id": "ContentRestriction",
+            "properties": {
+                "readOnly": {
+                    "type": "boolean"
+                },
+                "reason": {
+                    "type": "string"
+                },
+                "restrictingUser": {
+                    "$ref": "User"
+                },
+                "restrictionTime": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Drive": {
             "id": "Drive",
             "properties": {
@@ -2335,6 +2393,9 @@
                         "canAddChildren": {
                             "type": "boolean"
                         },
+                        "canAddFolderFromAnotherDrive": {
+                            "type": "boolean"
+                        },
                         "canAddMyDriveParent": {
                             "type": "boolean"
                         },
@@ -2366,6 +2427,9 @@
                             "type": "boolean"
                         },
                         "canModifyContent": {
+                            "type": "boolean"
+                        },
+                        "canModifyContentRestriction": {
                             "type": "boolean"
                         },
                         "canMoveChildrenOutOfDrive": {
@@ -2450,6 +2514,12 @@
                         }
                     },
                     "type": "object"
+                },
+                "contentRestrictions": {
+                    "items": {
+                        "$ref": "ContentRestriction"
+                    },
+                    "type": "array"
                 },
                 "copyRequiresWriterPermission": {
                     "type": "boolean"
@@ -2881,6 +2951,9 @@
                         ]
                     },
                     "type": "string"
+                },
+                "view": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -3004,6 +3077,9 @@
                 },
                 "published": {
                     "type": "boolean"
+                },
+                "publishedLink": {
+                    "type": "string"
                 },
                 "publishedOutsideDomain": {
                     "type": "boolean"

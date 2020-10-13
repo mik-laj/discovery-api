@@ -2,9 +2,11 @@
 
 **Beta**
 
-This product is in a pre-release state and might change or have limited
-support. For more information, see the [ product launch stages
-](/products#product-launch-stages) .
+This product is covered by the [ Pre-GA Offerings Terms ](/terms/service-
+terms#1) of the Google Cloud Platform Terms of Service. Pre-GA products may
+have limited support, and changes to pre-GA products may not be compatible
+with other pre-GA versions. For more information, see the [ launch stage
+descriptions ](/products#product-launch-stages) .
 
 This page documents production updates to AutoML Video Classification. You can
 periodically check this page for announcements about new or updated features,

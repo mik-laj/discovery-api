@@ -13,6 +13,237 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/configconnector-release-
 notes.xml `
 
+##  August 19, 2020
+
+**FEATURE:**
+
+Add support for configuring Bigtable garbage collection policies with the `
+BigtableGCPolicy ` resource
+
+**FIXED:**
+
+Fixes issue where ` SQLUser ` would constantly update despite there being no
+changes.
+
+**FIXED:**
+
+Fix issue where Deletion Defender would sometimes panic during uninstallation
+of Config Connector, preventing uninstallation to complete.
+
+**FIXED:**
+
+Performance improvements.
+
+##  August 13, 2020
+
+**FEATURE:**
+
+The Config Connector [ GKE Add-on ](https://cloud.google.com/config-
+connector/docs/how-to/install-upgrade-uninstall#installing_kcc) is launched to
+GA. Users can now enable the GKE Add-on on cluster creation with the ` gcloud
+` CLI or on the Cloud Console.
+
+**FEATURE:**
+
+Add support for ` BigtableAppProfile `
+
+##  August 08, 2020
+
+**FEATURE:**
+
+Added support for ` BigtableTable `
+
+**FIXED:**
+
+Fix a bug where a CRD would be marked as uninstalling on a dryrun delete
+
+##  July 31, 2020
+
+**FEATURE:**
+
+Add support for ` ArtifactRegistryRepository `
+
+**FEATURE:**
+
+Changes ` DataflowJob ` to allow for ` spec.parameters ` and `
+spec.ipConfiguration ` to be updateable
+
+**FIXED:**
+
+Fixes issue that was causing ` ContainerNodePool ` and ` SQLDatabase ` to
+display ` UpdateFailed ` due to the referenced ` ContainerCluster ` or `
+SQLDatabase ` not being ready
+
+**FIXED:**
+
+Fixes issue preventing the creation of BigQuery resources that read from
+Google Drive files due to insufficient OAuth 2.0 scopes
+
+**FIXED:**
+
+Fixes issue causing ` SourceRepoRepository ` to constantly update even when
+there were no changes
+
+##  July 21, 2020
+
+**FIXED:**
+
+bug fixes and performance improvements
+
+##  July 16, 2020
+
+**FEATURE:**
+
+Add support for allowing fields not specified by the user to be externally-
+managed (i.e. changeable outside of Config Connector). This feature can be
+enabled for a resource by enabling K8s server-side apply for the resource,
+which will be the default for all K8s resources starting in K8s 1.18. More
+detailed docs about the feature coming soon.
+
+**FEATURE:**
+
+Operator improvement: add support for cluster-mode set-ups, which allows users
+to use one Google Service Account for all namespaces in their cluster. This is
+very similar to the traditional "Workload Identity" installation set-up.
+
+**FIXED:**
+
+Fix ` ContainerCluster ` validation issue ( [ Issue #242
+](https://github.com/GoogleCloudPlatform/k8s-config-connector/issues/242) ).
+
+**FIXED:**
+
+Fix OOM issue for the ` cnrm-resource-stats-recorder ` pod ( [ Issue #239
+](https://github.com/GoogleCloudPlatform/k8s-config-connector/issues/239) ).
+
+**FEATURE:**
+
+Add support for ` projectViewer ` prefix for members in ` IAMPolicy ` and `
+IAMPolicyMember ` ( [ Issue #234
+](https://github.com/GoogleCloudPlatform/k8s-config-connector/issues/234) ).
+
+**CHANGED:**
+
+Reduce ` spec.revisionHistoryLimit ` for the ` cnrm-stats-recorder ` and `
+cnrm-webhook-manager ` Deployments from 10 (the default) to 1.
+
+##  July 09, 2020
+
+**FEATURE:**
+
+Added support for ` SecretManagerSecret `
+
+##  July 01, 2020
+
+**FEATURE:**
+
+Config Connector now supports [ ` --server-dry-run `
+](https://kubernetes.io/blog/2019/01/14/apiserver-dry-run-and-kubectl-diff/)
+for resource CRDs.
+
+**FIXED:**
+
+Fix a bug for the BigtableInstance resource that causes constant
+reconciliation.
+
+**CHANGED:**
+
+Deprecate BigtableInstance's spec.deletionProtection field.
+
+##  June 25, 2020
+
+**FEATURE:**
+
+Add an option, iam-format, to config-connector to control IAM output, options
+are policy, policymember, or none.
+
+**FEATURE:**
+
+ComputeForwardingRule's target field now supports referencing a
+ComputeTargetSSLProxy and ComputeTargetTCPProxy.
+
+**CHANGED:**
+
+DataFlowJob's serviceAccountEmail, network, subnetwork, machineType, and
+ipConfiguration fields now support updates.
+
+**FIXED:**
+
+Fix an issue where config-connector would error on a Project resource.
+
+##  June 16, 2020
+
+**FEATURE:**
+
+You can use ` config-connector ` tool to export Google Cloud resources into
+Config Connector: [ documentation ](https://cloud.google.com/config-
+connector/docs/how-to/importing-existing-resources)
+
+**FIXED:**
+
+Bug fixes
+
+##  June 12, 2020
+
+**FEATURE:**
+
+  * Added ability to [ update streaming DataflowJobs ](https://cloud.google.com/dataflow/docs/guides/updating-a-pipeline) by updating its spec (e.g. ` spec.templateGcsPath ` ). Note that not all fields can be updated, and batch DataflowJobs don't support updates. 
+  * Added ` IAMPolicy ` to the output of ` config-connector `
+
+##  June 03, 2020
+
+**CHANGED:**
+
+Miscellaneous bug fixes and improvements
+
+##  May 29, 2020
+
+**CHANGED:**
+
+Added support for ` SQLSSLCert `
+
+**CHANGED:**
+
+Supported acquisition of backends added to Compute Backend Services out-of-
+band of Config Connector
+
+**FIXED:**
+
+Fixed support for [ autoscaling and manually resizing node pools with
+ContainerNodePool ](https://github.com/GoogleCloudPlatform/k8s-config-
+connector/issues/165)
+
+##  May 27, 2020
+
+**CHANGED:**
+
+Added support for ` BigQueryJob ` resource
+
+##  May 19, 2020
+
+**FIXED:**
+
+Bug fixes and reliability improvements
+
+**FIXED:**
+
+Improving handling of scenarios when ` version ` field on ` ContainerNodePool
+` is updated externally
+
+##  May 15, 2020
+
+**FIXED:**
+
+fix ContainerNodePool version upgrade scenario
+
+**CHANGED:**
+
+increase the cpu/memory request for webhook and recorder
+
+**CHANGED:**
+
+Miscellaneous bug fixes and improvement
+
 ##  April 30, 2020
 
 **CHANGED:**
@@ -270,7 +501,7 @@ ComputeFirewall: v1alpha2->v1alpha3
 
 Added new resources and [ samples
 ](https://github.com/GoogleCloudPlatform/k8s-config-
-connector/tree/master/resources) for BigQueryTable, ComputeExternalVPNGateway
+connector/tree/master/samples) for BigQueryTable, ComputeExternalVPNGateway
 
 ##  October 15, 2019
 
@@ -286,7 +517,7 @@ Bump compute api group version to v1alpha2
 
 Add the following new resources with [ samples
 ](https://github.com/GoogleCloudPlatform/k8s-config-
-connector/tree/master/resources) : ComputeNetworkPeering,
+connector/tree/master/samples) : ComputeNetworkPeering,
 ComputeTargetVPNGateway, ComputeVpnGateway, IAMCustomRole,
 ComputeHTTPSHealthCheck, ComputeSharedVPCHostProject, ComputeRouter
 

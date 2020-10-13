@@ -2,9 +2,64 @@
 
 本页面记录了 Vision API 的正式版更新。我们建议 Vision 开发者定期查看此列表，以便及时获知新公告。
 
+您可以在 [ Google Cloud 版本说明 ](https://cloud.google.com/release-notes?hl=zh_cn)
+页面上查看 Google Cloud 所有产品的最新产品动态。
+
 要接收最新产品动态，请将本页面的网址添加到您的 [ Feed 阅读器
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/vision-release-notes.xml `
+
+##  June 11, 2020
+
+**CHANGED:**
+
+**OCR legacy model access extension**
+
+Based on customer feedback, we have decided to extend support of the legacy `
+TEXT_DETECTION ` and ` DOCUMENT_TEXT_DETECTION ` models. These legacy models
+are accessed by specifying "builtin/legacy_20190601" in the [ ` model `
+](https://cloud.google.com/vision/docs/reference/rest/v1/Feature?hl=zh_cn) of
+a ` Feature ` object.
+
+These models will now be accessible until **November 15, 2020 (6 months from
+launch date)** to give customers more time to adapt and migrate to the new
+model.
+
+See the  May 15, 2020  release note for the original update announcement.
+
+##  June 04, 2020
+
+**FEATURE:**
+
+**Access Transparency GA**
+
+Access Transparency logging is now Generally Available. If you want to enable
+Access Transparency logs, see [ Enabling Access Transparency
+](https://cloud.google.com/logging/docs/audit/access-transparency-
+overview?hl=zh_cn#enabling) .
+
+##  May 15, 2020
+
+**CHANGED:**
+
+**OCR model upgrades**
+
+_**Note** : As per the  June 11, 2020  release note, the legacy models are
+accessible through November 15, 2020. _
+
+The ` TEXT_DETECTION ` and ` DOCUMENT_TEXT_DETECTION ` models have been
+upgraded to newer versions. The API interface and client library will be the
+same as previous version. The API follows the same [ Service Level Agreement
+](https://cloud.google.com/vision/sla?hl=zh_cn) .
+
+The legacy models can still be accessed until June 30, 2020. Specify
+"builtin/legacy_20190601" in the [ ` model `
+](https://cloud.google.com/vision/docs/reference/rest/v1/Feature?hl=zh_cn)
+field of a ` Feature ` object to get the old model results. After June 30,
+2020 the old models will not longer be offered.
+
+For more information, see the [ product documentation
+](https://cloud.google.com/vision/docs/ocr?hl=zh_cn) .
 
 ##  April 11, 2020
 

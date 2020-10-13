@@ -1,7 +1,8 @@
 #  Release Notes: Dataflow SDK 1.x for Java
 
 **Warning:** Dataflow SDK 1.x for Java is unsupported as of October 16, 2018.
-See [ Migrating from Dataflow SDK 1.x for Java
+After August 12, 2020, Dataflow will not run jobs using Dataflow 1.x and
+below. See [ Migrating from Dataflow SDK 1.x for Java
 ](/dataflow/docs/guides/migrate-java-1-to-2) for migration guidance.
 
 This page documents production updates to the Dataflow SDK 1.x for Java. You

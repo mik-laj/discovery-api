@@ -8,7 +8,7 @@ kans hebben gehad om ze aan te pakken. In deze gevallen hebben de [ release-
 opmerkingen ](https://cloud.google.com/kubernetes-engine/docs/release-
 notes?hl=nl) van GKE betrekking op 'beveiligingsupdates' totdat het embargo is
 opgeheven. Op dat moment worden de opmerkingen geüpdatet met de kwetsbaarheid
-die door de patch is aangepakt.
+die door de patch is verholpen.
 
 **Opmerking:** Lees deze bulletins vooral goed door als u multi-tenant
 productietaken op GKE uitvoert, omdat deze kwetsbaarheden vaak meer impact
@@ -23,19 +23,253 @@ Voeg de URL van deze pagina aan uw [ feedlezer
 feed-URL rechtstreeks toe om de nieuwste beveiligingsbulletins te ontvangen: `
 https://cloud.google.com/feeds/kubernetes-engine-security-bulletins.xml `
 
+##  GCP-2020-007
+
+**Gepubliceerd:** 01-06-2020  
+Beschrijving  |  Ernst  |  Opmerkingen  
+---|---|---  
+  
+Onlangs is in Kubernetes een kwetsbaarheid van het type Server Side Request
+Forgery (SSRF), [ CVE-2020-8555 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8555) , ontdekt waardoor bepaalde gemachtigde
+gebruikers tot 500 bytes aan gevoelige informatie kunnen lekken van het
+hostnetwerk van het besturingsvlak. Het GKE-besturingsvlak (Google Kubernetes
+Engine) gebruikt controllers van Kubernetes en is dus getroffen door deze
+kwetsbaarheid. We raden u aan het besturingsvlak te [ upgraden
+](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
+container-cluster?hl=nl) naar de nieuwste patchversie, zoals hieronder wordt
+beschreven. Een node-upgrade is niet vereist.  
+
+####  Wat moet ik doen?
+
+De meeste klanten hoeven verder niets te doen. Het merendeel van de clusters
+heeft al een gepatchte versie. De volgende GKE-versies of nieuwer bevatten de
+oplossing voor deze kwetsbaarheid:
+
+  * 1.14.7-gke.39 
+  * 1.14.8-gke.32 
+  * 1.14.9-gke.17 
+  * 1.14.10-gke.12 
+  * 1.15.7-gke.17 
+  * 1.16.4-gke.21 
+  * 1.17.0-gke.0 
+
+Clusters met [ releasekanalen ](https://cloud.google.com/kubernetes-
+engine/docs/concepts/release-channels?hl=nl) voeren al besturingsvlakversies
+met de oplossing uit.
+
+####  Welke kwetsbaarheid wordt door deze patch verholpen?
+
+Deze patches pakken de kwetsbaarheid CVE-2020-8555 aan. Dit wordt beoordeeld
+als een gemiddelde kwetsbaarheid voor GKE, omdat het moeilijk te misbruiken
+was vanwege de verschillende versterkingsmaatregelen voor het besturingsvlak.
+
+Een aanvaller met toestemming om een pod met bepaalde ingebouwde volumetypen
+(GlusterFS, Quobyte, StorageFS, ScaleIO) of een StorageClass te maken, kan `
+kube-controller-manager ` ` GET ` -verzoeken of ` POST ` -verzoeken laten
+uitvoeren _zonder_ een door de aanvaller gecontroleerd tekstgedeelte van het
+verzoek van het hostnetwerk van de hoofdinstantie. Deze volumetypen worden
+zelden gebruikt op GKE, dus nieuw gebruik van deze volumetypen kan een nuttig
+detectiesignaal zijn.
+
+In combinatie met de mogelijkheid om de resultaten van de ` GET/POST ` terug
+naar de aanvaller te lekken, bijvoorbeeld via logboeken, kan dit leiden tot
+openbaarmaking van gevoelige informatie. We hebben de desbetreffende
+opslagdrivers geüpdatet om het potentiële risico op dergelijke lekken weg te
+nemen.
+
+|
+
+Gemiddeld
+
+|
+
+[ CVE-2020-8555 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8555)  
+  
+##  GCP-2020-006
+
+**Gepubliceerd:** 01-06-2020  
+Beschrijving  |  Ernst  |  Opmerkingen  
+---|---|---  
+  
+Kubernetes heeft bekendgemaakt dat er een [ kwetsbaarheid
+](https://github.com/kubernetes/kubernetes/issues/91507) is waardoor een
+gemachtigde container node-verkeer kan omleiden naar een andere container.
+Wederzijds TLS/SSH-verkeer, zoals tussen de kubelet en de API-server of
+verkeer van apps die mTLS gebruiken, kunnen niet worden gelezen of gewijzigd
+door deze aanval. Deze kwetsbaarheid geldt voor alle GKE-nodes (Google
+Kubernetes Engine). We raden u aan een [ upgrade
+](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
+cluster?hl=nl) uit te voeren naar de nieuwste patchversie, zoals hieronder
+beschreven.
+
+####  Wat moet ik doen?
+
+[ Upgrade ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-
+a-cluster?hl=nl) uw besturingsvlak en vervolgens uw nodes naar een van de
+gepatchte versies hieronder om deze kwetsbaarheid op te lossen. Clusters op
+releasekanalen voeren al een gepatchte versie op het besturingsvlak en de
+nodes uit
+
+  * 1.14.10-gke.36 
+  * 1.15.11-gke.15 
+  * 1.16.8-gke.15 
+
+Voor zeer weinig containers is ` CAP_NET_RAW ` vereist. Deze en andere
+krachtige functies moeten standaard worden geblokkeerd via [ PodSecurityPolicy
+](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-
+policies?hl=nl) of [ Anthos Policy Controller
+](https://cloud.google.com/anthos-config-management/docs/concepts/policy-
+controller?hl=nl) :
+
+  * Verwijder de ` CAP_NET_RAW ` -functionaliteit uit containers: 
+    * Door het af te dwingen via [ PodSecurityPolicy ](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=nl) met: 
+        
+                
+        # Require dropping CAP_NET_RAW with a PSP
+        apiversion: extensions/v1beta1
+        kind: PodSecurityPolicy
+        metadata:
+          name: no-cap-net-raw
+        spec:
+          requiredDropCapabilities:
+            -NET_RAW
+             ...
+             # Unrelated fields omitted
+        
+
+    * Of door Anthos Policy Controller/Gatekeeper te gebruiken met deze [ beperkingentemplate ](https://github.com/open-policy-agent/gatekeeper/blob/master/library/pod-security-policy/capabilities/template.yaml) en deze toe te passen. bijvoorbeeld: 
+        
+                
+        # Dropping CAP_NET_RAW with Gatekeeper
+        # (requires the K8sPSPCapabilities template)
+        apiversion: constraints.gatekeeper.sh/v1beta1
+        kind:  K8sPSPCapabilities
+        metadata:
+          name: forbid-cap-net-raw
+        spec:
+          match:
+            kinds:
+              - apiGroups: [""]
+              kinds: ["Pod"]
+            namespaces:
+              #List of namespaces to enforce this constraint on
+              - default
+            # If running gatekeeper >= v3.1.0-beta.5,
+            # you can exclude namespaces rather than including them above.
+            excludedNamespaces:
+              - kube-system
+          parameters:
+            requiredDropCapabilities:
+              - "NET_RAW"
+        
+
+    * Of door uw pod-specificaties te updaten: 
+        
+                
+        # Dropping CAP_NET_RAW from a Pod:
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          name: no-cap-net-raw
+        spec:
+          containers:
+            -name: may-container
+             ...
+            securityContext:
+              capabilities:
+                drop:
+                  -NET_RAW
+        
+
+####  Welke kwetsbaarheid wordt door deze patch verholpen?
+
+De patch verhelpt de volgende kwetsbaarheid:
+
+De kwetsbaarheid beschreven in [ Kubernetes-probleem 91507
+](https://github.com/kubernetes/kubernetes/issues/91507) ` CAP_NET_RAW `
+-functie (die is inbegrepen in de standaard functieset voor containers) om op
+schadelijke wijze de IPv6-stack op de node te configureren en node-verkeer
+naar de door de aanvaller beheerde container om te leiden. Hierdoor kan de
+aanvaller verkeer van of naar de node onderscheppen/aanpassen. Wederzijds
+TLS/SSH-verkeer, zoals tussen de kubelet en de API-server of verkeer van apps
+met mTLS, kunnen niet worden gelezen of aangepast door deze aanval.
+
+|
+
+Gemiddeld
+
+|
+
+[ Kubernetes-probleem 91507
+](https://github.com/kubernetes/kubernetes/issues/91507)  
+  
+  
+##  GCP-2020-005
+
+**Gepubliceerd:** 07-05-2020  
+**Geüpdatet:** 07-05-2020  Beschrijving  |  Ernst  |  Opmerkingen  
+---|---|---  
+  
+In de Linux-kernel is onlangs een kwetsbaarheid ontdekt, zoals beschreven in [
+CVE-2020-8835 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8835)
+. Hierdoor kan containerescape rootrechten krijgen op de host-node.
+
+Deze kwetsbaarheid is van toepassing op Ubuntu-nodes in Google Kubernetes
+Engine (GKE) die GKE 1.16 of 1.17 uitvoeren. We raden u aan zo snel mogelijk
+te upgraden naar de nieuwste patchversie, zoals hieronder beschreven.
+
+Nodes die Container-Optimized OS uitvoeren, worden niet beïnvloed. Nodes die
+op GKE On-Prem worden uitgevoerd, worden niet beïnvloed.
+
+####  Wat moet ik doen?
+
+**De meeste klanten hoeven verder niets te doen. Alleen nodes die Ubuntu in
+GKE-versie 1.16 of 1.17 uitvoeren, worden beïnvloed.**
+
+Als u uw nodes wilt upgraden, moet u eerst uw hoofdinstantie naar de nieuwste
+versie upgraden. Deze patch wordt beschikbaar gesteld in Kubernetes
+1.16.8-gke.12, 1.17.4-gke.10 en nieuwere releases. Monitor de beschikbaarheid
+van deze patches in de [ release-opmerkingen
+](https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=nl) .
+
+####  Welke kwetsbaarheid wordt door deze patch verholpen?
+
+De patch beperkt de volgende kwetsbaarheid:
+
+[ CVE-2020-8835 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8835) beschrijft een kwetsbaarheid in Linux-
+kernelversie 5.5.0 en nieuwer waarmee een kwaadaardige container (met minimale
+gebruikersinteractie in de vorm van een exec) kernelgeheugen kan lezen en
+schrijven en zo code-uitvoering op hoofdniveau op de host-node kan verkrijgen.
+Dit wordt beoordeeld als een ernstige kwetsbaarheid.
+
+|
+
+Hoog
+
+|
+
+[ CVE-2020-8835 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8835)  
+  
+  
 ##  GCP-2020-003
 
-Beschrijving  |  Ernst -  |  Opmerkingen  
+**Gepubliceerd:** 31-03-2020  
+**Geüpdatet:** 31-03-2020  Beschrijving  |  Ernst  |  Opmerkingen  
 ---|---|---  
   
 Onlangs is in Kubernetes een kwetsbaarheid ontdekt, zoals beschreven in [
 CVE-2019-11254 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2019-11254) , waardoor gebruikers die gemachtigd zijn
-om POST-verzoeken in te dienen, op afstand een DoS-aanval (Denial of Service)
+om POST-verzoeken in te dienen, op afstand een DoS-aanval (denial of service)
 op een Kubernetes API-server kunnen uitvoeren. Het Product Security Committee
 (PSC) van Kubernetes heeft aanvullende informatie over deze kwetsbaarheid
-vrijgegeven. Deze kunt u [ hier ](https://groups.google.com/g/kubernetes-
-security-announce/c/wuwEwZigXBc?hl=nl) vinden.
+vrijgegeven. Deze kunt u [ hier
+](https://groups.google.com/forum/?hl=nl#!topic/kubernetes-security-
+announce/wuwEwZigXBc) vinden.
 
 GKE-clusters die [ gemachtigde hoofdnetwerken
 ](https://cloud.google.com/kubernetes-engine/docs/how-to/authorized-
@@ -59,8 +293,8 @@ De patchversies die de oplossing bevatten, worden hieronder weergegeven:
 
 ####  Welke kwetsbaarheden worden door deze patch verholpen?
 
-Deze patch bevat de oplossing voor de volgende DoS-kwetsbaarheid (Denial of
-Service):
+Deze patch bevat de oplossing voor de volgende DoS-kwetsbaarheid (denial of
+service):
 
 [ CVE-2019-11254 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2019-11254) .
@@ -76,7 +310,8 @@ bin/cvename.cgi?name=CVE-2019-11254)
   
 ##  GCP-2020-002
 
-Beschrijving  |  Ernst -  |  Opmerkingen  
+**Gepubliceerd:** 23-03-2020  
+**Geüpdatet:** 23-03-2020  Beschrijving  |  Ernst  |  Opmerkingen  
 ---|---|---  
   
 Kubernetes heeft [ twee DoS-kwetsbaarheden (denial of service)
@@ -126,7 +361,8 @@ bin/cvename.cgi?name=CVE-2020-8552)
   
 ##  21 januari 2020, voor het laatst geüpdatet op 24 januari 2020
 
-Beschrijving  |  Ernst -  |  Opmerkingen  
+**Gepubliceerd:** 21-01-2020  
+**Geüpdatet:** 24-01-2020  Beschrijving  |  Ernst  |  Opmerkingen  
 ---|---|---  
   
 **Update op 24-01-2020:** Het proces om gepatchte versies beschikbaar te
@@ -198,7 +434,8 @@ bin/cvename.cgi?name=CVE-2020-0601)
   
 ##  14 november 2019
 
-Beschrijving  |  Ernst -  |  Opmerkingen  
+**Gepubliceerd:** 14-11-2019  
+**Geüpdatet:** 14-11-2019  Beschrijving  |  Ernst  |  Opmerkingen  
 ---|---|---  
   
 Kubernetes heeft een beveiligingsprobleem bekendgemaakt in de kubernetes-csi [
@@ -207,7 +444,7 @@ provisioner) -, [ ` external-snapshotter ` ](https://github.com/kubernetes-
 csi/external-snapshotter) \- en [ ` external-resizer `
 ](https://github.com/kubernetes-csi/external-resizer) -sidecars dat van
 toepassing is op de meeste versies van de sidecars die zijn gebundeld in [
-Container Storage Interface (CSI)-stuurprogramma's ](https://kubernetes-
+CSI-stuurprogramma's (Container Storage Interface) ](https://kubernetes-
 csi.github.io/docs/drivers.html) . Bekijk de [ kennisgeving van Kubernetes
 ](https://github.com/kubernetes/kubernetes/issues/85233) voor meer informatie.
 
@@ -228,7 +465,7 @@ csi/external-provisioner) -, [ ` external-snapshotter `
 resizer ` ](https://github.com/kubernetes-csi/external-resizer) -sidecars
 waardoor ongeoorloofde gegevenstoegang of -mutatie kan plaatsvinden. Dit is
 van toepassing op de meeste versies van de sidecars die zijn gebundeld in [
-CSI stuurprogramma's ](https://kubernetes-csi.github.io/docs/drivers.html) .
+CSI-stuurprogramma's ](https://kubernetes-csi.github.io/docs/drivers.html) .
 
 |
 
@@ -242,7 +479,8 @@ bin/cvename.cgi?name=CVE-2019-11255)
   
 ##  12 november 2019
 
-Beschrijving  |  Ernst -  |  Opmerkingen  
+**Gepubliceerd:** 12-11-2019  
+**Geüpdatet:** 12-11-2019  Beschrijving  |  Ernst  |  Opmerkingen  
 ---|---|---  
   
 Intel heeft CVE's bekendgemaakt die mogelijk interacties tussen speculatieve
@@ -289,7 +527,7 @@ gegevensstructuren waarvan [ Microarchitectural Data Sampling (MDS)
 bulletins?hl=nl#may-14-2019) misbruik heeft gemaakt.
 
 [ CVE-2018-12207 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-12207)
-Dit is een DoS-kwetsbaarheid (Denial of Service) die van invloed is op de
+Dit is een DoS-kwetsbaarheid (denial of service) die van invloed is op de
 hosts van virtuele machines. Door deze kwetsbaarheid kunnen kwaadwillende
 outsiders een onbeschermde host laten crashen. Deze CVE staat ook bekend als
 'Machine Check Error on Page Size Change'. Dit is niet van toepassing op GKE.
@@ -305,7 +543,8 @@ Gemiddeld
   
 ##  22 oktober 2019
 
-Beschrijving  |  Ernst -  |  Opmerkingen  
+**Gepubliceerd:** 22-10-2019  
+**Geüpdatet:** 22-10-2019  Beschrijving  |  Ernst  |  Opmerkingen  
 ---|---|---  
   
 In de programmeertaal Go is onlangs een kwetsbaarheid ontdekt, zoals
@@ -331,7 +570,8 @@ bin/cvename.cgi?name=CVE-2019-16276)
   
 ##  16 oktober 2019
 
-Beschrijving  |  Ernst -  |  Opmerkingen  
+**Gepubliceerd:** 16-10-2019  
+**Geüpdatet:** 24-10-2019  Beschrijving  |  Ernst  |  Opmerkingen  
 ---|---|---  
   
 **Update 24-10-2019:** gepatchte versies zijn nu beschikbaar in alle zones.
@@ -341,7 +581,7 @@ Beschrijving  |  Ernst -  |  Opmerkingen
 Onlangs is in Kubernetes een kwetsbaarheid ontdekt, zoals beschreven in [
 CVE-2019-11253 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2019-11253) , waardoor gebruikers die gemachtigd zijn
-om POST-verzoeken in te dienen, op afstand een DoS-aanval (Denial of Service)
+om POST-verzoeken in te dienen, op afstand een DoS-aanval (denial of service)
 op een Kubernetes API-server kunnen uitvoeren. Het Kubernetes Product Security
 Committee (PSC) heeft aanvullende informatie over deze kwetsbaarheid
 vrijgegeven, die [ hier
@@ -372,7 +612,7 @@ De patchversies die de oplossing bevatten, worden hieronder weergegeven.
 
 De patch beperkt de volgende kwetsbaarheden:
 
-CVE-2019-11253 is een DoS-kwetsbaarheid (Denial of Service).
+CVE-2019-11253 is een DoS-kwetsbaarheid (denial of service).
 
 |
 
@@ -386,7 +626,8 @@ bin/cvename.cgi?name=CVE-2019-11253)
   
 ##  16 september 2019
 
-Beschrijving  |  Ernst -  |  Opmerkingen  
+**Gepubliceerd:** 16-09-2019  
+**Geüpdatet:** 16-10-2019  Beschrijving  |  Ernst  |  Opmerkingen  
 ---|---|---  
   
 Dit bulletin is na de oorspronkelijke publicatie geüpdatet.
@@ -394,11 +635,11 @@ Dit bulletin is na de oorspronkelijke publicatie geüpdatet.
 In de programmeertaal Go zijn onlangs de nieuwe kwetsbaarheden [ CVE-2019-9512
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9512) en [
 CVE-2019-9514 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9514)
-ontdekt. Dit zijn DoS-kwetsbaarheden (Denial of Service). Hierdoor kunnen
+ontdekt. Dit zijn DoS-kwetsbaarheden (denial of service). Hierdoor kunnen
 gebruikers in GKE kwaadwillende verzoeken indienen die buitensporige
 hoeveelheden CPU in de Kubernetes API-server verbruiken, waardoor de
-beschikbaarheid van het clusterbeheervlak mogelijk wordt verminderd. Bekijk de
-[ kennisgeving van de programmeertaal Go
+beschikbaarheid van het clusterbesturingsvlak mogelijk wordt verminderd.
+Bekijk de [ kennisgeving van de programmeertaal Go
 ](https://groups.google.com/forum/?hl=nl#!topic/golang-announce/65QixT3tcmg)
 voor meer informatie.
 
@@ -416,14 +657,14 @@ De patchversies die de oplossing bevatten, worden hieronder weergegeven.
   * 1.13.10-gke.0 
   * 1.14.6-gke.1 
 
-######  Welke kwetsbaarheid wordt door deze patch aangepakt?
+######  Welke kwetsbaarheid wordt door deze patch verholpen?
 
 De patch beperkt de volgende kwetsbaarheden:
 
 [ CVE-2019-9512 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2019-9512) en [ CVE-2019-9514
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9514) zijn DoS-
-kwetsbaarheden (Denial of Service).
+kwetsbaarheden (denial of service).
 
 |
 
@@ -439,10 +680,16 @@ bin/cvename.cgi?name=CVE-2019-9514)
   
 ##  5 september 2019
 
+**Gepubliceerd:** 05-09-2019  
+**Geüpdatet:** 05-09-2019
+
 Het bulletin voor de oplossing voor de kwetsbaarheid uit het bulletin van  31
 mei 2019  is geüpdatet.
 
 ##  22 augustus 2019
+
+**Gepubliceerd:** 22-08-2019  
+**Geüpdatet:** 22-08-2019
 
 Het bulletin van  5 augustus 2019  is geüpdatet. De oplossing voor de
 kwetsbaarheid die werd beschreven in het eerdere bulletin is [ beschikbaar
@@ -451,13 +698,17 @@ notes?hl=nl#august_22_2019) .
 
 ##  8 augustus 2019
 
+**Gepubliceerd:** 08-08-2019  
+**Geüpdatet:** 08-08-2019
+
 Het bulletin van  5 augustus 2019  is geüpdatet. We verwachten dat de
 oplossing voor de kwetsbaarheid die in dat bulletin wordt beschreven in de
 volgende versie van GKE beschikbaar is.
 
 ##  5 augustus 2019
 
-Beschrijving  |  Ernst -  |  Opmerkingen  
+**Gepubliceerd:** 05-08-2019  
+**Geüpdatet:** 09-08-2019  Beschrijving  |  Ernst  |  Opmerkingen  
 ---|---|---  
   
 Dit bulletin is na de oorspronkelijke publicatie geüpdatet.
@@ -485,7 +736,7 @@ patchversies die de oplossing bevatten, worden hieronder weergegeven:
   * 1.13.7-gke.19 
   * 1.14.3-gke.10 ( [ versneld kanaal ](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels?hl=nl) ) 
 
-######  Welke kwetsbaarheid wordt door deze patch aangepakt?
+######  Welke kwetsbaarheid wordt door deze patch verholpen?
 
 De patch lost de volgende kwetsbaarheid op: [ CVE-2019-11247
 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11247) .
@@ -501,7 +752,8 @@ bin/cvename.cgi?name=CVE-2019-11247)
   
 ##  3 juli 2019
 
-Beschrijving  |  Ernst -  |  Opmerkingen  
+**Gepubliceerd:** 03-07-2019  
+**Geüpdatet:** 03-07-2019  Beschrijving  |  Ernst  |  Opmerkingen  
 ---|---|---  
   
 Een gepatchte versie van ` kubectl ` om CVE-2019-11246 te verhelpen is nu
@@ -522,7 +774,8 @@ bin/cvename.cgi?name=CVE-2018-15664)
   
 ##  3 juli 2019
 
-Beschrijving  |  Ernst -  |  Opmerkingen  
+**Gepubliceerd:** 25-06-2019  
+**Geüpdatet:** 03-07-2019  Beschrijving  |  Ernst  |  Opmerkingen  
 ---|---|---  
   
 ######  Update 3 juli 2019
@@ -553,7 +806,7 @@ Op 22-06-2019 21:40 UTC hebben we de volgende gepatchte versie van Kubernetes
 vrijgegeven. Hoofdinstanties tussen Kubernetes-versie 1.11.0 en 1.13.6 worden
 automatisch geüpdatet naar een gepatchte versie. Upgrade naar een compatibele
 hoofdversie (zie hieronder) voordat u uw nodes upgradet, als u een versie
-uitvoert die niet compatibel is met deze patch.
+uitvoert die niet is met deze patch.
 
 **Vanwege de ernst van deze kwetsbaarheden raden we aan uw nodes en
 hoofdinstanties zo snel mogelijk[ handmatig te upgraden
@@ -653,7 +906,7 @@ bin/cvename.cgi?name=CVE-2019-11479)
   
 ##  25 juni 2019
 
-Beschrijving  |  Ernst -  |  Opmerkingen  
+Beschrijving  |  Ernst  |  Opmerkingen  
 ---|---|---  
   
 **Update 03-07-2019:** Deze patch is beschikbaar in ` gcloud ` 253.0.0, voor `
@@ -663,10 +916,10 @@ kubectl ` -versies 1.12.9, 1.13.6, 1.14.2 en nieuwere releases.
 
 * * *
 
-Kubernetes heeft onlangs een kwetsbaarheid, [ CVE-2019-11246
-](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11246) , ontdekt,
-waardoor een aanvaller met toegang tot een ` kubectl cp ` -operatie en code-
-uitvoering binnen een container bestanden kan aanpassen op de host. Door dit
+Kubernetes heeft onlangs een kwetsbaarheid ontdekt, [ CVE-2019-11246
+](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11246) , waardoor
+een aanvaller met toegang tot een ` kubectl cp ` -operatie en code-uitvoering
+binnen een container bestanden kan aanpassen op de host. Door dit
 beveiligingslek kan een aanvaller mogelijk een bestand in het bestandssysteem
 van de host vervangen of maken. Bekijk de [ kennisgeving van Kubernetes
 ](https://groups.google.com/forum/?hl=nl#!topic/kubernetes-security-
@@ -686,7 +939,7 @@ Een gepatchte versie van ` kubectl ` wordt in een aankomende ` gcloud `
 Monitor de beschikbaarheid van deze patch in de [ ` gcloud ` -release-
 opmerkingen ](https://cloud.google.com/sdk/docs/release-notes?hl=nl) .
 
-######  Welke kwetsbaarheid wordt door deze patch aangepakt?
+######  Welke kwetsbaarheid wordt door deze patch verholpen?
 
 Door de kwetsbaarheid [ CVE-2019-11246 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2019-11246) kan een aanvaller met toegang tot een `
@@ -705,7 +958,7 @@ bin/cvename.cgi?name=CVE-2018-15664)
   
 ##  18 juni 2019
 
-Beschrijving  |  Ernst -  |  Opmerkingen  
+Beschrijving  |  Ernst  |  Opmerkingen  
 ---|---|---  
   
 Docker heeft onlangs de kwetsbaarheid [ CVE-2018-15664
@@ -715,12 +968,12 @@ gestarte ` docker cp ` -operatie kan hacken. Door dit beveiligingslek kan een
 aanvaller de schrijflocatie van een bestand veranderen in een willekeurige
 locatie in het bestandssysteem van de host.
 
-**Deze kwetsbaarheid geldt voor alle Google Kubernetes Engine (GKE)-nodes die
+**Deze kwetsbaarheid geldt voor alle GKE-nodes (Google Kubernetes Engine) die
 Docker uitvoeren. We raden u aan een upgrade uit te voeren naar de nieuwste
 patchversie, zodra deze beschikbaar is. Een aankomende patchversie bevat een
 oplossing voor deze kwetsbaarheid.**
 
-**Alle Google Kubernetes Engine (GKE)-hoofdinstanties die ouder zijn dan
+**Alle GKE-hoofdinstanties (Google Kubernetes Engine) die ouder zijn dan
 versie 1.12.7 draaien op Docker en zijn getroffen door deze kwetsbaarheid.**
 Gebruikers op GKE hebben geen toegang tot ` docker cp ` op de hoofdinstantie.
 Het risico op deze kwetsbaarheid is dus beperkt voor GKE-hoofdinstanties.
@@ -728,7 +981,7 @@ Het risico op deze kwetsbaarheid is dus beperkt voor GKE-hoofdinstanties.
 #####  Wat moet ik doen?
 
 Dit is alleen van toepassing op nodes die Docker uitvoeren en een ` docker cp
-` (of API-equivalent)-opdracht uitgeven die kan worden gehackt. Dit is naar
+` -opdracht (of API-equivalent) uitgeven die kan worden gehackt. Dit is naar
 verwachting vrij ongebruikelijk in een Kubernetes-omgeving. Nodes die [ COS
 met containerd ](https://cloud.google.com/kubernetes-
 engine/docs/concepts/using-containerd?hl=nl) uitvoeren, worden niet beïnvloed.
@@ -749,7 +1002,7 @@ We zullen dit bulletin updaten met de gepatchte versies zodra deze beschikbaar
 zijn. Monitor de beschikbaarheid van deze patches in de [ release-opmerkingen
 ](https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=nl) .
 
-#####  Welke kwetsbaarheid wordt door deze patch aangepakt?
+#####  Welke kwetsbaarheid wordt door deze patch verholpen?
 
 De patch beperkt de volgende kwetsbaarheid:
 
@@ -763,7 +1016,7 @@ veranderen in een willekeurige locatie in het bestandssysteem van de host.
   
 ##  31 mei 2019
 
-Beschrijving  |  Ernst -  |  Opmerkingen  
+Beschrijving  |  Ernst  |  Opmerkingen  
 ---|---|---  
   
 Dit bulletin is na de oorspronkelijke publicatie geüpdatet.
@@ -778,13 +1031,14 @@ Het Kubernetes-project heeft [ CVE-2019-11245 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=2019-11245) in kubelet v1.13.6 en v1.14.2 bekendgemaakt.
 Door deze kwetsbaarheid kunnen containers als UID 0 worden uitgevoerd (wordt
 meestal aan de ` root ` -gebruiker toegewezen), zelfs als er in de container-
-image een andere gebruiker is opgegeven. **Als uw containers als een non-root
-gebruiker worden uitgevoerd, raden we u aan` RunAsUser ` in te stellen op alle
-pods in het cluster waarvan de containers niet als UID O moeten worden
-uitgevoerd. **
+image een andere gebruiker is opgegeven. **Als uw containers als een niet-
+root-gebruiker worden uitgevoerd en u node-versie 1.13.6-gke.0 tot en met
+1.13.6-gke.6 uitvoert, raden we u aan` RunAsUser ` in te stellen op alle pods
+in het cluster waarvan de containers niet als UID 0 moeten worden uitgevoerd.
+**
 
-Als er een non-root ` USER ` -waarde is opgegeven (bijvoorbeeld door de waarde
-van ` USER ` in een Dockerfile in te stellen), kan er onverwacht gedrag
+Als er een niet-root ` USER ` -waarde is opgegeven (bijvoorbeeld door de
+waarde van ` USER ` in een Dockerfile in te stellen), kan er onverwacht gedrag
 optreden. Wordt een container voor de eerste keer op een node uitgevoerd, dan
 respecteert deze op de juiste wijze de opgegeven UID. Door dit defect wordt de
 container tijdens de tweede uitvoering (en de daaropvolgende uitvoeringen)
@@ -811,11 +1065,11 @@ toepassing op uw nodes.
 
 #####  Hoe weet ik of dit defect op mijn configuratie van toepassing is?
 
-Als uw containers als een non-root gebruiker worden uitgevoerd en u voert
+Als uw containers als een niet-root-gebruiker worden uitgevoerd en u voert
 node-versie 1.13.6-gke.0 tot en met 1.13.6-gke.6 uit, is het defect op u van
 toepassing, met uitzondering van de volgende gevallen:
 
-  * Pods die een geldige non-root waarde voor de ` runAsUser ` -PodSecurityContext opgeven, worden niet beïnvloed en blijven gewoon werken. 
+  * Pods die een geldige niet-root-waarde voor de ` runAsUser ` -PodSecurityContext opgeven, worden niet beïnvloed en blijven werken zoals verwacht. 
   * PodSecurityPolicies die een ` runAsUser ` -instelling afdwingen, worden ook niet beïnvloed en blijven ook gewoon werken. 
   * Pods die ` mustRunAsNonRoot:true ` opgeven, starten niet als UID 0, maar starten niet als ze door dit probleem worden beïnvloed. 
 
@@ -833,7 +1087,7 @@ bin/cvename.cgi?name=2019-11245)
   
 ##  14 mei 2019
 
-Beschrijving  |  Ernst -  |  Opmerkingen  
+Beschrijving  |  Ernst  |  Opmerkingen  
 ---|---|---  
   
 **Update 11-06-2019:** de patch is beschikbaar in 1.11.10-gke.4, 1.12.8-gke.6
@@ -861,8 +1115,8 @@ u niet-vertrouwde code binnen uw eigen multi-tenant GKE-clusters uitvoert.**
 **Voor klanten die niet-vertrouwde code uitvoeren in hun eigen multi-tenant
 services binnen Kubernetes-engine, is dit een ernstige kwetsbaarheid.**
 Schakel hyperthreading in uw nodes uit om dit in Kubernetes Engine op te
-lossen. Deze kwetsbaarheden zijn alleen van toepassing op Google Kubernetes
-Engine (GKE)-nodes die meerdere CPU's gebruiken. n1-standard-1 (de GKE-
+lossen. Deze kwetsbaarheden zijn alleen van toepassing op GKE-nodes (Google
+Kubernetes Engine) die meerdere CPU's gebruiken. n1-standard-1 (de GKE-
 standaard), g1-small en f1-micro VM's stellen slechts 1 vCPU beschikbaar aan
 de gastomgeving. Hyperthreading hoeft dus niet uitgeschakeld te worden.
 
@@ -929,6 +1183,13 @@ Als het goed is, krijgt u een reactie als deze:
         
     kubectl logs disable-smt-2xnnc disable-smt -n kube-system
 
+Opmerking: Opstartfuncties kunnen niet worden aangepast als de functie [
+Veilig opstarten ](https://cloud.google.com/kubernetes-engine/docs/how-
+to/shielded-gke-nodes?hl=nl#secure_boot) ingeschakeld is voor de node. Als
+'Veilig opstarten' ingeschakeld is, moet deze functie worden [ uitgeschakeld
+](https://cloud.google.com/kubernetes-engine/docs/how-to/shielded-gke-
+nodes?hl=nl#disabling) voordat de DaemonSet wordt gemaakt.
+
 Zorg ervoor dat de DaemonSet actief blijft op de nodes, zodat de wijzigingen
 automatisch worden toegepast op de nieuwe nodes in de pool. Het maken van
 nodes kan worden geactiveerd door het automatisch herstellen, het handmatig of
@@ -947,7 +1208,7 @@ gebruikelijke upgradefrequentie.
 We zullen dit bulletin updaten met de gepatchte versies zodra deze beschikbaar
 zijn.
 
-####  Welke kwetsbaarheid wordt door deze patch aangepakt?
+####  Welke kwetsbaarheid wordt door deze patch verholpen?
 
 De patch beperkt de volgende kwetsbaarheden:
 
@@ -970,7 +1231,7 @@ speculatieve uitvoering en de microarchitecturale toestand.  |  Gemiddeld  |
   
 ##  5 april 2019
 
-Beschrijving  |  Ernst -  |  Opmerkingen  
+Beschrijving  |  Ernst  |  Opmerkingen  
 ---|---|---  
   
 Onlangs zijn de kwetsbaarheden [ CVE-2019-9900 ](https://cve.mitre.org/cgi-
@@ -1003,8 +1264,8 @@ op de pagina met GKE-beveiligingsbulletins (verwacht op 15 april 2019). Als u
 voor die tijd een nieuw cluster maakt, moet u aangeven welke gepatchte versie
 gebruikt moet worden. De nodes van GKE-klanten die [ automatische upgrades
 voor nodes ](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-
-upgrades?hl=nl) hebben ingeschakeld en niet handmatig upgraden, worden
-volgende week geüpgraded naar gepatchte versies.
+upgrades?hl=nl) hebben ingeschakeld en die niet handmatig worden geüpgraded,
+worden volgende week automatisch geüpgraded naar gepatchte versies.
 
 Gepatchte versies:
 
@@ -1015,7 +1276,7 @@ Gepatchte versies:
   * 1.12.6-gke.10 
   * 1.13.4-gke.10 
 
-####  Welke kwetsbaarheid wordt door deze patch aangepakt?
+####  Welke kwetsbaarheid wordt door deze patch verholpen?
 
 De patch beperkt de volgende kwetsbaarheden:
 
@@ -1034,7 +1295,7 @@ informatie.
   
 ##  1 maart 2019
 
-Beschrijving  |  Ernst -  |  Opmerkingen  
+Beschrijving  |  Ernst  |  Opmerkingen  
 ---|---|---  
   
 **Update 22-03-2019:** Deze patch is beschikbaar in Kubernetes 1.11.8-gke.4,
@@ -1043,15 +1304,16 @@ Monitor de beschikbaarheid van deze patches in de [ release-opmerkingen
 ](https://cloud.google.com/kubernetes-engine/docs/release-
 notes?hl=nl#march_19_2019) .
 
-Kubernetes heeft onlangs een nieuwe DoS-kwetsbaarheid, [ CVE-2019-1002100
-](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1002100) , ontdekt,
-waardoor een gebruiker die patchverzoeken mag indienen een kwaadaardig 'json-
-patch'-verzoek kan maken dat buitensporige hoeveelheden CPU en geheugen in de
-Kubernetes API-server verbruikt. Hierdoor wordt de beschikbaarheid van het
-clusterbeheervlak mogelijk verminderd. Bekijk de [ kennisgeving van Kubernetes
+Kubernetes heeft onlangs een nieuwe DoS-kwetsbaarheid ontdekt, [
+CVE-2019-1002100 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2019-1002100) , waardoor een gebruiker die
+patchverzoeken mag indienen een kwaadaardig 'json-patch'-verzoek kan maken dat
+buitensporige hoeveelheden CPU en geheugen in de Kubernetes API-server
+verbruikt. Hierdoor wordt de beschikbaarheid van het clusterbesturingsvlak
+mogelijk verminderd. Bekijk de [ kennisgeving van Kubernetes
 ](https://groups.google.com/forum/?hl=nl#!topic/kubernetes-
 announce/vmUUNkYfG9g) voor meer informatie. **Deze kwetsbaarheden zijn van
-toepassing op alle Google Kubernetes Engine (GKE)-hoofdinstanties. Een
+toepassing op alle GKE-hoofdinstanties (Google Kubernetes Engine). Een
 aankomende patchversie bevat een oplossing voor deze kwetsbaarheid. We zullen
 de clusterhoofden in de komende weken automatisch upgraden naar de gepatchte
 versie volgens de gebruikelijke upgradefrequentie.**
@@ -1067,7 +1329,7 @@ cluster?hl=nl#upgrading_the_cluster) .
 We zullen dit bulletin updaten met de gepatchte versies. De patch is alleen
 beschikbaar in de versies 1.11+ en niet in 1.10.
 
-####  Welke kwetsbaarheid wordt door deze patch aangepakt?
+####  Welke kwetsbaarheid wordt door deze patch verholpen?
 
 De patch beperkt de volgende kwetsbaarheid:
 
@@ -1075,14 +1337,14 @@ Door de kwetsbaarheid [ CVE-2019-1002100 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2019-1002100) kan een gebruiker een 'json-
 patch'-patch maken die buitensporige hoeveelheden CPU in de Kubernetes API-
 server verbruikt. Hierdoor wordt mogelijk de beschikbaarheid van het
-clusterbeheervlak verminderd.
+clusterbesturingsvlak verminderd.
 
 |  Gemiddeld  |  [ CVE-2019-1002100 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2019-1002100)  
   
 ##  11 februari 2019 (runc)
 
-Beschrijving  |  Ernst -  |  Opmerkingen  
+Beschrijving  |  Ernst  |  Opmerkingen  
 ---|---|---  
   
 Het Open Containers Initiative (OCI) heeft onlangs in runc de [ nieuwe
@@ -1113,7 +1375,7 @@ De nieuwe versie van runc heeft het geheugenverbruik verhoogd. Mogelijk moet u
 het geheugen dat aan containers is toegewezen updaten als u lage
 geheugenlimieten heeft ingesteld (< 16 MB).
 
-####  Welke kwetsbaarheid wordt door deze patch aangepakt?
+####  Welke kwetsbaarheid wordt door deze patch verholpen?
 
 De patch beperkt de volgende kwetsbaarheid:
 
@@ -1130,7 +1392,7 @@ bin/cvename.cgi?name=CVE-2019-5736)
   
 ##  11 februari 2019 (Go)
 
-Beschrijving  |  Ernst -  |  Opmerkingen  
+Beschrijving  |  Ernst  |  Opmerkingen  
 ---|---|---  
   
 **Update 25-02-2019:** de patch is niet beschikbaar in 1.11.7-gke.4, zoals
@@ -1138,19 +1400,19 @@ eerder gemeld. Als u 1.11.7 gebruikt, kunt u downgraden naar 1.11.6, upgraden
 naar 1.12 of wachten totdat de volgende patch voor 1.11.7 beschikbaar is in de
 week van 04-03-2019.
 
-De programmeertaal Go heeft onlangs een nieuwe kwetsbaarheid, [ CVE-2019-6486
-](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-6486) , ontdekt. Dit
-is een DoS-kwetsbaarheid (Denial of Service) in de crypto-/elliptische
+De programmeertaal Go heeft onlangs een nieuwe kwetsbaarheid ontdekt, [
+CVE-2019-6486 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-6486)
+. Dit is een DoS-kwetsbaarheid (denial of service) in de crypto-/elliptische
 implementaties van de elliptische krommen P-521 en P-384. Hierdoor kan een
 gebruiker in Google Kubernetes Engine (GKE) kwaadaardige verzoeken maken die
 buitensporig veel CPU verbruiken in de Kubernetes API-server, waardoor
-mogelijk de beschikbaarheid van het clusterbeheervlak wordt verminderd. Bekijk
-de [ kennisgeving van de programmeertaal Go
+mogelijk de beschikbaarheid van het clusterbesturingsvlak wordt verminderd.
+Bekijk de [ kennisgeving van de programmeertaal Go
 ](https://groups.google.com/forum/?hl=nl#!topic/golang-announce/mVeX35iXuSw)
 voor meer informatie.
 
-**Deze kwetsbaarheden zijn van toepassing op alle Google Kubernetes Engine
-(GKE)-hoofdinstanties. De[ nieuwste patchversie
+**Deze kwetsbaarheden zijn van toepassing op alle GKE-hoofdinstanties (Google
+Kubernetes Engine). De[ nieuwste patchversie
 ](https://cloud.google.com/kubernetes-engine/docs/release-
 notes?hl=nl#february-11-2019) bevat een oplossing voor deze kwetsbaarheid. We
 upgraden de clusterhoofden in de komende weken automatisch naar de gepatchte
@@ -1159,28 +1421,28 @@ versie volgens de gebruikelijke upgradefrequentie. **
 ####  Wat moet ik doen?
 
 **U hoeft niets te doen. GKE-hoofdinstanties worden automatisch geüpgraded
-volgens de gebruikelijke upgradefrequentie. Als u uw hoofdinstantie eerder
-wilt upgraden, kunt u[ handmatig een upgrade uitvoeren
+volgens de gebruikelijke upgradefrequentie.** Als u uw hoofdinstantie eerder
+wilt upgraden, kunt u [ handmatig een upgrade uitvoeren
 ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
-cluster?hl=nl#upgrading_the_cluster) . **
+cluster?hl=nl#upgrading_the_cluster) .
 
-**Deze patch is beschikbaar in GKE 1.10.12-gke.7, 1.11.6-gke.11, 1.11.7-gke.4,
-1.12.5-gke.5 en nieuwere releases.**
+Deze patch is beschikbaar in GKE 1.10.12-gke.7, 1.11.6-gke.11, 1.11.7-gke.4,
+1.12.5-gke.5 en nieuwere releases.
 
-####  **Welke kwetsbaarheid wordt door deze patch aangepakt?**
+####  Welke kwetsbaarheid wordt door deze patch verholpen?
 
-**De patch beperkt de volgende kwetsbaarheid:**
+De patch beperkt de volgende kwetsbaarheid:
 
-**CVE-2019-6486 is een kwetsbaarheid in de crypto-/elliptische implementaties
+CVE-2019-6486 is een kwetsbaarheid in de crypto-/elliptische implementaties
 van de elliptische krommen P-521 en P-384. Hierdoor kan een gebruiker invoer
-maken die buitensporige hoeveelheden CPU verbruikt.**
+maken die buitensporige hoeveelheden CPU verbruikt.
 
 |  Hoog  |  [ CVE-2019-6486 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2019-6486)  
   
 ##  3 december 2018
 
-Beschrijving  |  Ernst -  |  Opmerkingen  
+Beschrijving  |  Ernst  |  Opmerkingen  
 ---|---|---  
   
 Kubernetes ontdekte onlangs de nieuwe beveiligingskwetsbaarheid [
@@ -1203,7 +1465,7 @@ notes?hl=nl#november-12-2018) . U hoeft niets te doen. **
 Deze patch is beschikbaar in GKE 1.9.7-gke.11, 1.10.6-gke.11, 1.10.7-gke.11,
 1.10.9-gke.5 en 1.11.2-gke.18 en nieuwere releases.
 
-####  Welke kwetsbaarheid wordt door deze patch aangepakt?
+####  Welke kwetsbaarheid wordt door deze patch verholpen?
 
 De patch beperkt de volgende kwetsbaarheid:
 
@@ -1270,23 +1532,20 @@ netwerkbeleid niet is ingeschakeld.
 
 We hebben een oplossing geïmplementeerd die de Calico CNI-plug-in migreert om
 alleen op het waarschuwingsniveau logboekregistraties te schrijven en een
-nieuw serviceaccount te gebruiken. De gepatchte calico-code wordt in een
+nieuw serviceaccount te gebruiken. De gepatchte Calico-code wordt in een
 latere release geïmplementeerd.
 
 In de loop van de volgende week zullen we een continue intrekking van alle
 mogelijk aangetaste tokens uitvoeren. Dit bulletin wordt geüpdatet wanneer de
-intrekking is voltooid. **U hoeft verder niets te doen.** (Deze rotatie is
+intrekking is voltooid. **U hoeft verder niets te doen.** (Deze rotatie werd
 voltooid op 16-11-2018)
 
 Als u deze tokens onmiddellijk wilt rouleren, kunt u de volgende opdracht
 uitvoeren. Het nieuwe geheim voor het serviceaccount zou binnen enkele
 seconden automatisch opnieuw moeten worden gemaakt:  
-      
-    
-    
-    kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
-            
   
+kubectl get sa --namespace kube-system calico -o template --template '{{(index
+.secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system  
 ---  
   
 ####  Detectie
@@ -1376,7 +1635,7 @@ specifieke omgeving.
   
 ##  14 augustus 2018
 
-Beschrijving  |  Ernst -  |  Opmerkingen  
+Beschrijving  |  Ernst  |  Opmerkingen  
 ---|---|---  
   
 De volgende CVE's zijn [ door Intel bekendgemaakt
@@ -1401,11 +1660,12 @@ kwetsbaarheden en de beperkende maatregelen van Compute Engine.
 
 ####  Gevolgen voor Google Kubernetes Engine
 
-De infrastructuur waarop Kubernetes Engine wordt uitgevoerd en klantclusters
-en nodes van elkaar isoleert, is beveiligd tegen bekende aanvallen.
+De infrastructuur waarop Kubernetes Engine wordt uitgevoerd en die
+klantclusters en nodes van elkaar isoleert, is beveiligd tegen bekende
+aanvallen.
 
-Node-pools op Kubernetes Engine die Google's voor containers geoptimaliseerde
-OS-image gebruiken en [ automatisch upgraden
+Node-pools op Kubernetes Engine die de voor containers geoptimaliseerde OS-
+image van Google gebruiken en [ automatisch upgraden
 ](https://cloud.google.com/kubernetes-engine/docs/concepts/node-auto-
 upgrades?hl=nl) hebben ingeschakeld, worden automatisch geüpdatet naar
 gepatchte versies van onze COS-image zodra deze beschikbaar zijn vanaf de week
@@ -1428,7 +1688,7 @@ beschikbaar zijn.
   
 ##  6 augustus 2018, laatste update op 5 september 2018
 
-Beschrijving  |  Ernst -  |  Opmerkingen  
+Beschrijving  |  Ernst  |  Opmerkingen  
 ---|---|---  
   
 ####  Update op 05-09-2018
@@ -1437,7 +1697,7 @@ Beschrijving  |  Ernst -  |  Opmerkingen
 bin/cvename.cgi?name=CVE-2018-5391) is onlangs bekendgemaakt. Net als bij [
 CVE-2018-5390 ](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-5390)
 is dit een netwerkkwetsbaarheid op kernel-niveau die de effectiviteit van DoS-
-aanvallen (Denial of Service) op kwetsbare systemen verhoogt. Het
+aanvallen (denial of service) op kwetsbare systemen verhoogt. Het
 belangrijkste verschil is dat CVE-2018-5391 kan worden gebruikt via IP-
 verbindingen. We hebben dit bulletin geüpdatet om beide kwetsbaarheden te
 behandelen.
@@ -1447,12 +1707,12 @@ behandelen.
 [ CVE-2018-5390 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2018-5390) ('SegmentSmack') beschrijft een
 netwerkkwetsbaarheid op kernel-niveau die de effectiviteit van DoS-aanvallen
-(Denial of Service) via TCP-verbindingen op kwetsbare systemen verhoogt.
+(denial of service) via TCP-verbindingen op kwetsbare systemen verhoogt.
 
 [ CVE-2018-5391 ](https://cve.mitre.org/cgi-
 bin/cvename.cgi?name=CVE-2018-5391) ('FragmentSmack') beschrijft een
 netwerkkwetsbaarheid op kernel-niveau die de effectiviteit van DoS-aanvallen
-(Denial of Service) via IP-verbindingen op kwetsbare systemen verhoogt.
+(denial of service) via IP-verbindingen op kwetsbare systemen verhoogt.
 
 ####  Gevolgen voor Google Kubernetes Engine
 
@@ -1479,7 +1739,7 @@ to/upgrading-a-cluster?hl=nl#upgrading-nodes) zodra de patch beschikbaar is.
   
 ##  30 mei 2018
 
-Beschrijving  |  Ernst -  |  Opmerkingen  
+Beschrijving  |  Ernst  |  Opmerkingen  
 ---|---|---  
   
 Onlangs werd in Git een kwetsbaarheid ontdekt die uitbreiding van bevoegdheden
@@ -1550,7 +1810,7 @@ later terug voor meer informatie.
   
 ##  21 mei 2018
 
-Beschrijving  |  Ernst -  |  Opmerkingen  
+Beschrijving  |  Ernst  |  Opmerkingen  
 ---|---|---  
   
 Recentelijk zijn verschillende kwetsbaarheden ontdekt in de Linux-kernel die
@@ -1613,7 +1873,7 @@ kwetsbaarheid, met een CVSS-score van 8,0.
   
 ##  12 maart 2018
 
-Beschrijving  |  Ernst -  |  Opmerkingen  
+Beschrijving  |  Ernst  |  Opmerkingen  
 ---|---|---  
   
 Het Kubernetes-project [ publiceerde onlangs
@@ -1635,14 +1895,14 @@ to/upgrading-a-container-cluster?hl=nl) zodra de patch beschikbaar is,
 ongeacht of u de automatische upgrades voor nodes heeft ingeschakeld. De patch
 is vanaf 16 maart voor alle klanten beschikbaar, maar is mogelijk eerder
 beschikbaar op basis van de zone waarin uw cluster zich bevindt. Zie het [
-release-schema ](https://cloud.google.com/kubernetes-engine/docs/release-
+releaseschema ](https://cloud.google.com/kubernetes-engine/docs/release-
 notes?hl=nl#march-12-2018) .
 
 Upgrade eerst uw hoofdinstantie naar de nieuwste versie. Deze patch is
 beschikbaar in Kubernetes 1.9.4-gke.1, Kubernetes 1.8.9-gke.1 en Kubernetes
-1.7.14-gke.1. Nieuwe clusters gebruiken de gepatchte versie standaard vanaf 30
-maart. Als u eerder een nieuw cluster maakt, moet u de gepatchte versie
-opgeven zodat deze wordt gebruikt.
+1.7.14-gke.1. Vanaf 30 maart gebruiken alle nieuwe clusters standaard de
+gepatchte versie. Als u eerder een nieuw cluster maakt, moet u de gepatchte
+versie opgeven zodat deze wordt gebruikt.
 
 Voor klanten die [ automatische upgrades voor nodes
 ](https://cloud.google.com/kubernetes-engine/docs/concepts/node-auto-
@@ -1656,18 +1916,18 @@ container-cluster?hl=nl) zodra de patch voor u beschikbaar is.
 
 De patch beperkt de volgende kwetsbaarheden:
 
-De kwetsbaarheid CVE-2017-1002101 geeft containers die [ subpad
-](https://kubernetes.io/docs/concepts/storage/volumes/#using-subpath)
--volumeactivaties gebruiken toegang tot bestanden buiten het volume. Dit
-betekent dat als u containertoegang tot hostpad-volumes blokkeert met
-PodSecurityPolicy, een aanvaller met de mogelijkheid om pods te updaten of te
-maken elk hostpad kan activeren met elk ander volumetype.
+De kwetsbaarheid CVE-2017-1002101 geeft containers die middels volumeactivatie
+een [ subpad ](https://kubernetes.io/docs/concepts/storage/volumes/#using-
+subpath) specificeren, toegang tot bestanden buiten het volume. Dit betekent
+dat als u containertoegang tot hostpadvolumes blokkeert met PodSecurityPolicy,
+een aanvaller met de mogelijkheid om pods te updaten of te maken elk hostpad
+kan activeren met elk ander volumetype.
 
 Door de kwetsbaarheid CVE-2017-1002102 kunnen containers met bepaalde
 volumetypen (waaronder geheimen, Config Maps, geprojecteerde volumes of
 neerwaartse API-volumes) bestanden verwijderen buiten het volume. Als een
-container die een van deze volumetypen gebruikt, wordt gecompromitteerd of als
-u niet-vertrouwde gebruikers de mogelijkheid biedt om pods te maken, kan een
+container die een van deze volumetypen gebruikt, wordt gehackt of als u niet-
+vertrouwde gebruikers de mogelijkheid biedt om pods te maken, kan een
 aanvaller die container gebruiken om willekeurige bestanden op de host te
 verwijderen.
 

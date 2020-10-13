@@ -1,12 +1,67 @@
 #  출시 노트
 
-이 페이지에서는 Vision API의 프로덕션 업데이트에 대해 설명합니다. Vision 개발자는 이 목록을 주기적으로 참고하여 새로운 소식을
-확인하는 것이 좋습니다.
+이 페이지에서는 Vision API의 프로덕션 업데이트에 대해 설명합니다. Vision API 개발자는 이 목록을 주기적으로 참고하여 새로운
+소식을 확인하는 것이 좋습니다.
+
+[ Google Cloud 출시 노트 ](https://cloud.google.com/release-notes?hl=ko) 페이지에서 모든
+Google Cloud의 최신 제품 업데이트를 확인할 수 있습니다.
 
 최신 제품 업데이트를 받으려면 [ 피드 리더
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) 에 이 페이지의 URL을
 추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/vision-
 release-notes.xml `
+
+##  June 11, 2020
+
+**CHANGED:**
+
+**OCR legacy model access extension**
+
+Based on customer feedback, we have decided to extend support of the legacy `
+TEXT_DETECTION ` and ` DOCUMENT_TEXT_DETECTION ` models. These legacy models
+are accessed by specifying "builtin/legacy_20190601" in the [ ` model `
+](https://cloud.google.com/vision/docs/reference/rest/v1/Feature?hl=ko) of a `
+Feature ` object.
+
+These models will now be accessible until **November 15, 2020 (6 months from
+launch date)** to give customers more time to adapt and migrate to the new
+model.
+
+See the  May 15, 2020  release note for the original update announcement.
+
+##  June 04, 2020
+
+**FEATURE:**
+
+**Access Transparency GA**
+
+Access Transparency logging is now Generally Available. If you want to enable
+Access Transparency logs, see [ Enabling Access Transparency
+](https://cloud.google.com/logging/docs/audit/access-transparency-
+overview?hl=ko#enabling) .
+
+##  May 15, 2020
+
+**CHANGED:**
+
+**OCR model upgrades**
+
+_**Note** : As per the  June 11, 2020  release note, the legacy models are
+accessible through November 15, 2020. _
+
+The ` TEXT_DETECTION ` and ` DOCUMENT_TEXT_DETECTION ` models have been
+upgraded to newer versions. The API interface and client library will be the
+same as previous version. The API follows the same [ Service Level Agreement
+](https://cloud.google.com/vision/sla?hl=ko) .
+
+The legacy models can still be accessed until June 30, 2020. Specify
+"builtin/legacy_20190601" in the [ ` model `
+](https://cloud.google.com/vision/docs/reference/rest/v1/Feature?hl=ko) field
+of a ` Feature ` object to get the old model results. After June 30, 2020 the
+old models will not longer be offered.
+
+For more information, see the [ product documentation
+](https://cloud.google.com/vision/docs/ocr?hl=ko) .
 
 ##  April 11, 2020
 

@@ -2230,6 +2230,12 @@
                 "cloudRunConfig": {
                     "$ref": "CloudRunConfig"
                 },
+                "configConnectorConfig": {
+                    "$ref": "ConfigConnectorConfig"
+                },
+                "dnsCacheConfig": {
+                    "$ref": "DnsCacheConfig"
+                },
                 "horizontalPodAutoscaling": {
                     "$ref": "HorizontalPodAutoscaling"
                 },
@@ -2482,6 +2488,9 @@
                 "privateClusterConfig": {
                     "$ref": "PrivateClusterConfig"
                 },
+                "releaseChannel": {
+                    "$ref": "ReleaseChannel"
+                },
                 "resourceLabels": {
                     "additionalProperties": {
                         "type": "string"
@@ -2572,6 +2581,9 @@
                 "desiredDatabaseEncryption": {
                     "$ref": "DatabaseEncryption"
                 },
+                "desiredDefaultSnatStatus": {
+                    "$ref": "DefaultSnatStatus"
+                },
                 "desiredImageType": {
                     "type": "string"
                 },
@@ -2605,6 +2617,12 @@
                 "desiredNodeVersion": {
                     "type": "string"
                 },
+                "desiredPrivateClusterConfig": {
+                    "$ref": "PrivateClusterConfig"
+                },
+                "desiredReleaseChannel": {
+                    "$ref": "ReleaseChannel"
+                },
                 "desiredResourceUsageExportConfig": {
                     "$ref": "ResourceUsageExportConfig"
                 },
@@ -2634,6 +2652,15 @@
                 },
                 "zone": {
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ConfigConnectorConfig": {
+            "id": "ConfigConnectorConfig",
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -2711,6 +2738,24 @@
                         "DECRYPTED"
                     ],
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DefaultSnatStatus": {
+            "id": "DefaultSnatStatus",
+            "properties": {
+                "disabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "DnsCacheConfig": {
+            "id": "DnsCacheConfig",
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -2851,6 +2896,9 @@
                     "type": "string"
                 },
                 "useIpAliases": {
+                    "type": "boolean"
+                },
+                "useRoutes": {
                     "type": "boolean"
                 }
             },
@@ -3081,6 +3129,9 @@
         "NetworkConfig": {
             "id": "NetworkConfig",
             "properties": {
+                "defaultSnatStatus": {
+                    "$ref": "DefaultSnatStatus"
+                },
                 "enableIntraNodeVisibility": {
                     "type": "boolean"
                 },
@@ -3127,6 +3178,9 @@
                     },
                     "type": "array"
                 },
+                "bootDiskKmsKey": {
+                    "type": "string"
+                },
                 "diskSizeGb": {
                     "format": "int32",
                     "type": "integer"
@@ -3157,6 +3211,9 @@
                     "type": "object"
                 },
                 "minCpuPlatform": {
+                    "type": "string"
+                },
+                "nodeGroup": {
                     "type": "string"
                 },
                 "oauthScopes": {
@@ -3375,7 +3432,8 @@
                     "type": "string"
                 },
                 "progress": {
-                    "$ref": "OperationProgress"
+                    "$ref": "OperationProgress",
+                    "readOnly": true
                 },
                 "selfLink": {
                     "type": "string"
@@ -3394,6 +3452,7 @@
                     "type": "string"
                 },
                 "statusMessage": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "targetLink": {
@@ -3445,6 +3504,9 @@
                 "enablePrivateNodes": {
                     "type": "boolean"
                 },
+                "masterGlobalAccessConfig": {
+                    "$ref": "PrivateClusterMasterGlobalAccessConfig"
+                },
                 "masterIpv4CidrBlock": {
                     "type": "string"
                 },
@@ -3460,6 +3522,15 @@
             },
             "type": "object"
         },
+        "PrivateClusterMasterGlobalAccessConfig": {
+            "id": "PrivateClusterMasterGlobalAccessConfig",
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "RecurringTimeWindow": {
             "id": "RecurringTimeWindow",
             "properties": {
@@ -3468,6 +3539,45 @@
                 },
                 "window": {
                     "$ref": "TimeWindow"
+                }
+            },
+            "type": "object"
+        },
+        "ReleaseChannel": {
+            "id": "ReleaseChannel",
+            "properties": {
+                "channel": {
+                    "enum": [
+                        "UNSPECIFIED",
+                        "RAPID",
+                        "REGULAR",
+                        "STABLE"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ReleaseChannelConfig": {
+            "id": "ReleaseChannelConfig",
+            "properties": {
+                "channel": {
+                    "enum": [
+                        "UNSPECIFIED",
+                        "RAPID",
+                        "REGULAR",
+                        "STABLE"
+                    ],
+                    "type": "string"
+                },
+                "defaultVersion": {
+                    "type": "string"
+                },
+                "validVersions": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -3565,6 +3675,12 @@
         "ServerConfig": {
             "id": "ServerConfig",
             "properties": {
+                "channels": {
+                    "items": {
+                        "$ref": "ReleaseChannelConfig"
+                    },
+                    "type": "array"
+                },
                 "defaultClusterVersion": {
                     "type": "string"
                 },
@@ -4024,6 +4140,36 @@
                     "$ref": "WorkloadMetadataConfig"
                 },
                 "zone": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UpgradeEvent": {
+            "id": "UpgradeEvent",
+            "properties": {
+                "currentVersion": {
+                    "type": "string"
+                },
+                "operation": {
+                    "type": "string"
+                },
+                "operationStartTime": {
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "resource": {
+                    "type": "string"
+                },
+                "resourceType": {
+                    "enum": [
+                        "UPGRADE_RESOURCE_TYPE_UNSPECIFIED",
+                        "MASTER",
+                        "NODE_POOL"
+                    ],
+                    "type": "string"
+                },
+                "targetVersion": {
                     "type": "string"
                 }
             },

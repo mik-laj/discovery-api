@@ -13,6 +13,13 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/managedmicrosoftad-release-
 notes.xml `
 
+##  July 09, 2020
+
+**FEATURE:**
+
+The [ Managed Microsoft AD SLA ](https://cloud.google.com/managed-microsoft-
+ad/sla) has been published.
+
 ##  March 23, 2020
 
 **CHANGED:**

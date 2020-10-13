@@ -1,5 +1,8 @@
 #  リリースノートのアーカイブ
 
+[ Google Cloud リリースノート ](https://cloud.google.com/release-notes?hl=ja)
+のページで、Google Cloud の最新のプロダクト更新情報をすべて確認できます。
+
 2019 年 4 月 10 日、Cloud Machine Learning Engine が [ AI Platform Training
 ](https://cloud.google.com/ai-platform/training?hl=ja) と [ AI Platform
 Prediction ](https://cloud.google.com/ai-platform/prediction?hl=ja)
@@ -38,9 +41,10 @@ platform/training/docs/algorithms?hl=ja) をご覧ください。
 
 **CHANGED:**
 
-Cloud ML Engine ランタイム バージョン 1.13 に TensorFlow 1.13.1 のサポートが追加されました。ランタイム バージョン
-1.13 に含まれる全パッケージのリストについては、 [ ランタイム バージョンのリスト ](https://cloud.google.com/ai-
-platform/prediction/docs/runtime-version-list?hl=ja) をご覧ください。
+Cloud ML Engine ランタイム バージョン 1.13 に TensorFlow 1.13.1 のサポートが追加されました。 ランタイム
+バージョン 1.13 に含まれる全パッケージのリストについては、 [ ランタイム バージョンのリスト
+](https://cloud.google.com/ai-platform/prediction/docs/runtime-version-
+list?hl=ja) をご覧ください。
 
 ##  2019 年 3 月 8 日
 
@@ -57,7 +61,7 @@ version-list?hl=ja#tpu-support) をご覧ください。
 
 Cloud ML Engine ランタイム バージョン 1.13 がトレーニングと予測に使用できるようになりました。このバージョンは、TensorFlow
 1.13 をサポートし、 [ ランタイム バージョンのリスト ](https://cloud.google.com/ai-
-platform/prediction/docs/runtime-version-list?hl=ja) にある他のパッケージを含んでいます。
+platform/prediction/docs/runtime-version-list?hl=ja) に記載される他のパッケージを含んでいます。
 
 TPU を使用したトレーニングは、現時点ではランタイム バージョン 1.13 でサポートされていません。
 
@@ -83,10 +87,9 @@ new?hl=ja) をご覧ください。
 Cloud TPU が一般提供され、TensorFlow モデルのトレーニングで使用できるようになりました。Tensor Processing
 Unit（TPU）は、機械学習ワークロードを高速化するために Google が独自に開発したアクセラレータです。
 
-Cloud ML Engine 上で [ TPU を使用してモデルをトレーニングする ](https://cloud.google.com/ml-
-engine/docs/tensorflow/using-tpus?hl=ja) 方法をご覧ください。TPU の料金については [ こちら
-](https://cloud.google.com/ai-platform/prediction/docs/pricing?hl=ja)
-をお読みください。
+Cloud ML Engine 上で [ TPU を使用してモデルをトレーニングする方法 ](https://cloud.google.com/ml-
+engine/docs/tensorflow/using-tpus?hl=ja) を確認してください。TPU の料金については [ こちら
+](https://cloud.google.com/ai-platform/prediction/docs/pricing?hl=ja) をご覧ください。
 
 ##  2019 年 2 月 7 日
 
@@ -141,7 +144,7 @@ engine/docs/tensorflow/regions?hl=ja#training_with_accelerators) 、 [ GPU の�
 
 **FEATURE:**
 
-V100 GPU を使用するトレーニングが一般提供されることになりました。詳細については、 [ GPU の使用
+V100 GPU を使用するトレーニングが一般提供になりました。詳細については、 [ GPU の使用
 ](https://cloud.google.com/ml-engine/docs/tensorflow/using-gpus?hl=ja) と [ 料金
 ](https://cloud.google.com/ai-platform/prediction/docs/pricing?hl=ja)
 に関するガイドをご覧ください。
@@ -150,13 +153,13 @@ V100 GPU を使用するトレーニングが一般提供されることにな�
 
 **FEATURE:**
 
-Cloud ML Engine ランタイム バージョン 1.11 と 1.12
-がトレーニングと予測に使用できるようになりました。これらのバージョンはそれぞれ、TensorFlow 1.11、1.12 をサポートしています。また、 [
-ランタイム バージョンのリスト ](https://cloud.google.com/ai-
-platform/prediction/docs/runtime-version-list?hl=ja) に記載される他のパッケージもサポートしています。
+Cloud ML Engine ランタイム バージョン 1.11 と 1.12 がトレーニングと予測に使用できるようになりました。これらのバージョンは
+TensorFlow 1.11、1.12 をそれぞれサポートしています。また、 [ ランタイム バージョンのリスト
+](https://cloud.google.com/ai-platform/prediction/docs/runtime-version-
+list?hl=ja) にある他のパッケージもサポートしています。
 
-Cloud ML Engine ランタイム バージョン 1.11 と 1.12 に TPU トレーニングのサポートが追加されました。バージョン 1.10
-はサポートされていません。現在サポートされているバージョンについては、 [ ランタイム バージョンのリスト
+TPU トレーニングが Cloud ML Engine ランタイム バージョン 1.11 と 1.12 でサポートされるようになりました。バージョン
+1.10 はサポートされていません。現在サポートされているバージョンについては、 [ ランタイム バージョンのリスト
 ](https://cloud.google.com/ml-engine/docs/tensorflow/runtime-version-
 list?hl=ja#tpu-support) をご覧ください。
 
@@ -180,8 +183,8 @@ list?hl=ja#tpu-support) をご覧ください。
 **ISSUE:**
 
 Cloud ML Engine ランタイム バージョン 1.11 は、GPU トレーニング中の [ CuDNN バージョンの不一致によるエラー
-](https://stackoverflow.com/q/52733440) のためにロールバックされます。当面の回避策として、ランタイム バージョン
-1.10 をご使用ください。詳細については、 [ ランタイム バージョン リスト ](https://cloud.google.com/ai-
+](https://stackoverflow.com/q/52733440) のためにロールバックされます。現在の回避策は、ランタイム バージョン
+1.10 を使用することです。詳細については、 [ ランタイム バージョン リスト ](https://cloud.google.com/ai-
 platform/prediction/docs/runtime-version-list?hl=ja) をご覧ください。
 
 ##  2018 年 10 月 5 日
@@ -204,14 +207,14 @@ platform/prediction/docs/runtime-version-list?hl=ja) にある他のパッケー
 
 **FEATURE:**
 
-トレーニングに V100 GPU のベータ版を使用できるようになりました。今後、V100 GPU を使用すると、料金が発生します。詳細については、 [
+トレーニングに V100 GPU のベータ版を使用できるようになりました。今後、V100 GPU を使用すると、料金が発生します。 詳細については、 [
 GPU の使用 ](https://cloud.google.com/ml-engine/docs/tensorflow/using-gpus?hl=ja)
 と [ 料金 ](https://cloud.google.com/ai-platform/prediction/docs/pricing?hl=ja)
 に関するガイドをご覧ください。
 
 **FEATURE:**
 
-P100 GPU を使用するトレーニングが一般提供されることになりました。詳細については、 [ GPU の使用
+P100 GPU を使用するトレーニングが一般提供になりました。詳細については、 [ GPU の使用
 ](https://cloud.google.com/ml-engine/docs/tensorflow/using-gpus?hl=ja) と [ 料金
 ](https://cloud.google.com/ai-platform/prediction/docs/pricing?hl=ja)
 に関するガイドをご覧ください。
@@ -287,7 +290,7 @@ training?hl=ja) のガイドをご覧ください。
 オンライン予測での **scikit-learn** と **XGBoost** のサポートが一般提供になりました。
 
   * モデル バージョンを作成する際に、 [ ` projects.models.versions.create ` ](https://cloud.google.com/ai-platform/prediction/docs/reference/rest/v1/projects.models.versions?hl=ja) に ` framework ` を設定して機械学習フレームワークを指定します。有効な値は ` TENSORFLOW ` 、 ` SCIKIT_LEARN ` 、 ` XGBOOST ` です。デフォルトは ` TENSORFLOW ` です。 ` SCIKIT_LEARN ` または ` XGBOOST ` を指定する場合は、モデル バージョンで ` runtimeVersion ` を 1.4 以上に設定する必要があります。 
-  * [ scikit-learn と XGBoost によるローカル トレーニングとオンライン予測 ](https://cloud.google.com/ml-engine/docs/scikit/quickstart?hl=ja) に関するガイドをご覧ください。 
+  * [ scikit-learn と XGBoost によるローカル トレーニングとオンライン予測 ](https://cloud.google.com/ml-engine/docs/scikit/quickstart?hl=ja) のガイドをご覧ください。 
 
 ##  2018 年 7 月 12 日
 
@@ -331,8 +334,8 @@ list?hl=ja#tpu-support) をご覧ください。
 
 **CHANGED:**
 
-TensorFlow 1.8 と Cloud ML Engine ランタイム バージョン 1.8 で Cloud TPU（ベータ版 __
-）を使用できるようになりました。
+TensorFlow 1.8 と Cloud ML Engine ランタイム バージョン 1.8 で Cloud TPU（ __
+ベータ版）を使用できるようになりました。
 
 背景情報: __ 5 月 14 日より、Cloud TPU が Cloud ML Engine ランタイム バージョン 1.6 と 1.7
 で使用できるようになりました。先週、ランタイム バージョン 1.8 がリリースされましたが、その時点では TensorFlow 1.8 で Cloud
@@ -383,11 +386,11 @@ engine/docs/tensorflow/runtime-version-list?hl=ja) にある他のパッケー�
 platform/prediction/docs/reference/rest/v1/projects.jobs?hl=ja#hyperparameterspec)
 で検索アルゴリズムを指定できるようになりました。使用可能な値は次のとおりです。
 
-  * ` GRID_SEARCH ` : 実行可能領域内の単純なグリッド検索。このオプションは、実行可能領域内のポイント数を超える試行回数を指定する場合に特に便利です。 そのような場合、グリッド検索を指定しないと、Cloud ML Engine のデフォルト アルゴリズムによって重複した候補が生成されることがあります。グリッド検索を使用するには、すべてのパラメータの型が ` INTEGER ` 、 ` CATEGORICAL ` 、または ` DISCRETE ` でなければなりません。 
+  * ` GRID_SEARCH ` : 実行可能領域内の単純なグリッド検索。このオプションは、実行可能領域内のポイント数を超える試行回数を指定する場合に特に便利です。そのような場合、グリッド検索を指定しないと、Cloud ML Engine のデフォルト アルゴリズムによって重複した候補が生成されることがあります。グリッド検索を使用するには、すべてのパラメータの型が ` INTEGER ` 、 ` CATEGORICAL ` 、または ` DISCRETE ` でなければなりません。 
   * ` RANDOM_SEARCH ` : 実行可能領域内の単純なランダム検索。 
 
 アルゴリズムを指定しない場合、デフォルトの Cloud ML Engine
-アルゴリズムが使用されます。このアルゴリズムは、パラメータ空間のより効果的な検索により、最適なソリューションを導き出します。ハイパーパラメータ調整については、
+アルゴリズムが使用されます。このアルゴリズムは、パラメータ空間のより効果的な検索により、最適なソリューションを導き出します。ハイパーパラメータ調整の詳細については、
 [ ハイパーパラメータ調整の概要 ](https://cloud.google.com/ml-
 engine/docs/tensorflow/hyperparameter-tuning-overview?hl=ja) をご覧ください。
 
@@ -428,7 +431,7 @@ engine/docs/tensorflow/runtime-version-list?hl=ja) をご覧ください。
 
 **FEATURE:**
 
-ハイパーパラメータ調整に新機能が追加されました。トライアルの早期自動停止、以前のハイパーパラメータ調整ジョブの再開、類似したジョブの実行中の効率的な最適化などの機能が追加されています。詳細については、
+ハイパーパラメータ調整に新機能が追加されました。トライアルの早期自動停止、以前のハイパーパラメータ調整ジョブの再開、類似したジョブの実行中の効率的な最適化などの機能が追加されています。ハイパーパラメータ調整については、
 [ ハイパーパラメータ調整の概要 ](https://cloud.google.com/ml-
 engine/docs/tensorflow/hyperparameter-tuning-overview?hl=ja) をご覧ください。
 
@@ -482,7 +485,7 @@ Cloud ML Engine の監査ロギングがベータ版で利用可能になりま�
 
 **FEATURE:**
 
-Cloud ML Engine の事前定義された IAM の役割が一般提供になりました。詳細については、 [ アクセス制御
+Cloud ML Engine の事前定義された IAM のロールが一般提供になりました。詳細については、 [ アクセス制御
 ](https://cloud.google.com/ml-engine/docs/tensorflow/access-control?hl=ja)
 をご覧ください。
 
@@ -506,7 +509,7 @@ list?hl=ja#runtime-version-support) をご覧ください。
 
 **FEATURE:**
 
-GPU が有効なマシンの一般提供が発表されました。詳細については、 [ クラウド中のトレーニング モデルに GPU を使用
+GPU が有効なマシンの一般提供が発表されました。 詳細については、 [ クラウド中のトレーニング モデルに GPU を使用
 ](https://cloud.google.com/ml-engine/docs/tensorflow/using-gpus?hl=ja)
 をご覧ください。
 
@@ -535,7 +538,7 @@ overview?hl=ja) 機能も一般提供になりましたが、オンライン予�
 オンラインでの予測は、ベータ版の [ リリース段階 ](https://cloud.google.com/terms/launch-
 stages?hl=ja) に入っています。現在、Cloud ML Engine の [ 料金ポリシー
 ](https://cloud.google.com/ai-platform/prediction/docs/pricing?hl=ja)
-の対象となっており、バッチ予測と同じ価格設定式に従います。オンライン予測はまだベータ版で、重要度の高いアプリケーションで使用されることを意図していません。
+の対象となっており、バッチ予測と同じ価格設定式に従います。 まだベータ版のままで、オンライン予測は重要なアプリケーションでは使用できません。
 
 **CHANGED:**
 
@@ -549,18 +552,17 @@ list?hl=ja) をご覧ください。
 
 **CHANGED:**
 
-Cloud ML Engine でモデル バージョンとしてホストされていなくても、Google Cloud Storage
-に保存されていれば、TensorFlow SavedModels
-に対してバッチ予測ジョブを実行できるようになりました。ジョブの作成時にモデルまたはバージョンの ID を指定する代わりに、SavedModel の URI
-を使用できます。
+Google Cloud Storage でモデル バージョンとしてホストされていない Google Cloud Storage に保存されている
+TensorFlow SavedModels に対してバッチ予測ジョブを実行できるようになりました。ジョブの作成時にモデルまたはバージョンの ID
+を指定する代わりに、SavedModel の URI を使用できます。
 
 **DEPRECATED:**
 
 以前はアルファ版としてリリースされていた Google Cloud Machine Learning SDK は非推奨となり、2017 年 5 月 7
 日以降はサポートされなくなります。SDK によって公開されている機能のほとんどは、新しい TensorFlow パッケージ [ tf.Transform
-](https://github.com/tensorflow/transform)
-に移行されました。どのような技術やツールを使用しても、入力データを前処理できます。ただし、 ` tf.Transform ` とともに、Google
-Cloud Platform で使用可能なサービス（Google Cloud Dataflow、Google Cloud Dataproc、Google
+](https://github.com/tensorflow/transform) に移行されました。
+どのような技術やツールを使用しても、入力データを前処理できます。ただし、 ` tf.Transform ` とともに、Google Cloud
+Platform で使用可能なサービス（Google Cloud Dataflow、Google Cloud Dataproc、Google
 BigQuery など）をおすすめしています。
 
 ##  v1 ベータ 1（2016 年 9 月 29 日）
@@ -574,6 +576,6 @@ BigQuery など）をおすすめしています。
 
 **FEATURE:**
 
-前処理とその他の Cloud ML Engine SDK はアルファ版機能です。Cloud ML Engine と Apache Beam
+前処理とその他の Cloud ML Engine SDK はアルファ版の機能です。Cloud ML Engine と Apache Beam
 の統合を進めるため、SDK の開発が積極的に進められています。
 

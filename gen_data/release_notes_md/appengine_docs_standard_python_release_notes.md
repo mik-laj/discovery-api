@@ -1,6 +1,6 @@
 Python 2 is no longer supported by the community. We recommend that you [
 migrate Python 2 apps to Python 3 ](/appengine/docs/standard/python/migrate-
-to-python3/) .
+to-python3) .
 
 #  Python 2.7 release notes
 
@@ -11,6 +11,47 @@ To get the latest product updates delivered to you, add the URL of this page
 to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gaestd-py-release-notes.xml `
+
+##  July 23, 2020
+
+**FEATURE:**
+
+[ Serverless VPC Access support for Shared VPC
+](https://cloud.google.com/appengine/docs/standard/python/connecting-
+vpc#shared-vpc) is now available in Beta.
+
+##  July 08, 2020
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for App Engine via [
+Serverless network endpoint groups ](https://cloud.google.com//load-
+balancing/docs/negs/setting-up-serverless-negs) . Notably, this feature allows
+you to use [ Cloud CDN ](https://cloud.google.com/cdn) with App Engine.  
+This feature is available in Beta.
+
+##  June 08, 2020
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
+##  May 14, 2020
+
+**FEATURE:**
+
+To get a fine-grained view of billing data for each resource used by your App
+Engine services, you can apply labels to the services, export your billing
+data to BigQuery, and run queries. For more information, see [ Labeling App
+Engine resources
+](https://cloud.google.com/appengine/docs/standard/python/labeling-resources)
+.
+
+##  May 11, 2020
+
+**CHANGED:**
+
+Updated Python SDK to version 1.9.91.
 
 ##  April 20, 2020
 

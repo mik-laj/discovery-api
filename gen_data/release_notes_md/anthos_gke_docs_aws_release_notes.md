@@ -1,17 +1,111 @@
-A new version of Anthos GKE on AWS was released on May 7. See the [ release
+A new version of Anthos GKE on AWS was released on August 5. See the [ release
 notes ](/anthos/gke/docs/aws/release-notes) for information on breaking
 changes.
 
 #  Release notes
 
-This page documents production updates to Anthos GKE on AWS. Check this page
-for announcements about new or updated features, bug fixes, known issues, and
+This page documents production updates to GKE on AWS. Check this page for
+announcements about new or updated features, bug fixes, known issues, and
 deprecated functionality.
 
 You can see the latest product updates for all of Google Cloud on the [ Google
 Cloud release notes ](/release-notes) page.
 
-##  April 30, 2020
+##  August 04, 2020
+
+**FIXED:**
+
+Anthos GKE on AWS 1.4.1-gke.17 is released. This release fixes a memory leak
+that causes clusters to become unresponsive.
+
+To upgrade your clusters, perform the following steps:
+
+  1. Restart your [ control plane instances ](https://cloud.google.com/anthos/gke/docs/aws/troubleshooting#rebooting_your_control_plane) . 
+  2. Upgrade your [ management service ](http://cloud.google.com/anthos/gke/docs/aws/how-to/upgrading-management) to aws-1.4.1-gke.17. 
+  3. Upgrade your [ user cluster's ](http://cloud.google.com/anthos/gke/docs/aws/how-to/upgrading-user-cluster) AWSCluster and AWSNodePools to 1.16.9-gke.15. 
+
+**CHANGED:**
+
+Use version 1.16.9-gke.15 for creating new clusters.
+
+##  August 03, 2020
+
+**ISSUE:**
+
+Anthos GKE on AWS 1.4.1-gke.15 clusters will experience a memory leak that
+results in an unresponsive cluster. A fix for this issue is in development.
+
+If you are planning to deploy an Anthos GKE on AWS cluster, wait until the fix
+is ready.
+
+##  July 24, 2020
+
+**CHANGED:**
+
+Anthos GKE on AWS is now generally available.
+
+**CHANGED:**
+
+Clusters support in-place upgrades, with the ability to upgrade the control
+plane and node pools separately.
+
+**CHANGED:**
+
+Clusters can be deployed in a high availability (HA) configuration, where
+control plane instances and node pools are spread across multiple availability
+zones.
+
+**CHANGED:**
+
+Clusters have been validated to support up to 200 nodes and 6000 pods.
+
+**CHANGED:**
+
+Allows the number of nodes to be scaled dynamically based on traffic volume to
+increase utilization and reduce cost, and improve performance
+
+**CHANGED:**
+
+Anthos can be deployed within existing AWS VPCs, leveraging existing security
+groups to secure those clusters. Customers can ingress traffic using NLB and
+ALBs. Additionally Anthos on AWS supports AWS IAM and OIDC. This makes
+deploying Anthos easy, eliminates the need to provision new accounts, and
+minimizes configuration of the environment.
+
+**CHANGED:**
+
+With Anthos Config Management enterprises can set policies on their AWS
+workloads and with Anthos Service Mesh, they can monitor, manage, and secure
+them.
+
+**CHANGED:**
+
+Kubernetes settings (flags and sysctl settings) have been updated to match
+GKE.
+
+**BREAKING:**
+
+Upgrades from beta versions are not supported. To install Anthos GKE on AWS,
+you must remove your user and management clusters, then reinstall them.
+
+##  May 29, 2020
+
+**CHANGED:**
+
+A new build of Anthos GKE on AWS has been released. This build removes the
+need to check AWS IAM privileges when creating a management cluster. **You
+don't need to update** if you have not encountered this issue.
+
+To install this build, download the ` anthos-gke ` tool by running the
+following command:
+
+` gsutil cp gs://gke-multi-cloud-release/bin/aws-0.2.1-gke.8/anthos-gke . `
+
+Then, recreate your [ Terraform configuration
+](https://cloud.google.com/anthos/gke/docs/aws/how-to/installing-management)
+and continue with your installation.
+
+##  May 07, 2020
 
 **BREAKING:**
 

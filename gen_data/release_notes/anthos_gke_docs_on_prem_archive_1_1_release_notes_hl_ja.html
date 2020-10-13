@@ -1,0 +1,2752 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <h1 class="devsite-page-title">
+   リリースノート
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <section class="intro">
+    <p>
+     このページには Anthos GKE On-Prem に関する更新内容が記載されています。このページを定期的にチェックして、新機能や更新された機能、バグ修正、既知の問題、サポートが終了した（非推奨になった）機能に関するお知らせを確認してください。
+    </p>
+    <p>
+     関連情報:
+    </p>
+    <ul>
+     <li>
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/downloads?hl=ja">
+       ダウンロード
+      </a>
+     </li>
+     <li>
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/versioning-and-upgrades?hl=ja">
+       バージョニングとアップグレード
+      </a>
+     </li>
+     <li>
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=ja">
+       GKE On-Prem のアップグレード
+      </a>
+     </li>
+    </ul>
+    <p>
+    </p>
+   </section>
+   <section>
+    <p>
+     <a href="https://cloud.google.com/release-notes?hl=ja">
+      Google Cloud リリースノート
+     </a>
+     のページで、Google Cloud の最新のプロダクト更新情報をすべて確認できます。
+    </p>
+   </section>
+   <section class="xml">
+    <p>
+     プロダクトのアップデートに関する最新情報を受け取るには、このページの URL を
+     <a class="external" href="https://wikipedia.org/wiki/Comparison_of_feed_aggregators">
+      フィード リーダー
+     </a>
+     に追加するか、またはフィード URL ディレクトリ
+     <code dir="ltr" translate="no">
+      https://cloud.google.com/feeds/gkeonprem-release-notes.xml
+     </code>
+     を直接追加します。
+    </p>
+   </section>
+   <section class="releases">
+    <h2 data-text="2019 年 11 月 19 日" id="november_19_2019" tabindex="0">
+     2019 年 11 月 19 日
+    </h2>
+    <p>
+     GKE on-prem バージョン 1.1.2-gke.0 が利用可能になりました。バージョン 1.1.2-gke.0 の OVA
+     <code dir="ltr" translate="no">
+      gkectl
+     </code>
+     をダウンロードしてバンドルをアップグレードするには、
+     <a href="https://cloud.google.com/anthos/gke/docs/on-prem/downloads?hl=ja#latest">
+      ダウンロード
+     </a>
+     をご覧ください。その後、
+     <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=ja">
+      管理ワークステーションのアップグレード
+     </a>
+     と
+     <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=ja">
+      クラスタのアップグレード
+     </a>
+     をご覧ください。
+    </p>
+    <p>
+     このパッチ バージョンには以下の変更内容が含まれています。
+    </p>
+    <h3 data-text="新機能" id="new-features" tabindex="0">
+     新機能
+    </h3>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/security/hardening-your-cluster?hl=ja">
+       クラスタの強化
+      </a>
+      を公開しました。
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/administration/managing-clusters?hl=ja">
+       クラスタの管理
+      </a>
+      を公開しました。
+     </p>
+    </div>
+    <h3 data-text="修正済み" id="fixes" tabindex="0">
+     修正済み
+    </h3>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      <a href="#vsan-datadisk-issue">
+       11 月 5 日
+      </a>
+      からの既知の問題を修正しました。
+     </p>
+    </div>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      <a href="#docker-registry-issue">
+       11 月 8 日
+      </a>
+      からの既知の問題を修正しました。
+     </p>
+    </div>
+    <h3 data-text="既知の問題" id="known-issues" tabindex="0">
+     既知の問題
+    </h3>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      vSphere で複数のデータセンターを実行している場合に
+      <code dir="ltr" translate="no">
+       gkectl diagnose cluster
+      </code>
+      を実行すると次のエラーが返されることがありますが、無視しても問題ありません。
+     </p>
+     <pre dir="ltr" translate="no">Checking storage...FAIL
+path '*' resolves to multiple datacenters</pre>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      vSAN データストアを実行している場合に
+      <code dir="ltr" translate="no">
+       gkectl diagnose cluster
+      </code>
+      を実行すると次のエラーが返されることがありますが、無視しても問題ありません。
+     </p>
+     <pre dir="ltr" translate="no">PersistentVolume [NAME]: virtual disk "[[DATASTORE_NAME]]
+[PVC]" IS NOT attached to machine "[MACHINE_NAME]" but IS listed in the Node.Status</pre>
+    </div>
+    <h2 data-text="2019 年 11 月 8 日" id="november_8_2019" tabindex="0">
+     2019 年 11 月 8 日
+    </h2>
+    <div class="release-issue" id="docker-registry-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      GKE on-prem バージョン 1.1.1-gke.2 では、Docker レジストリを使用するように構成されたクラスタを作成できないことが報告されています。GKE on-prem 構成ファイルの
+      <code dir="ltr" translate="no">
+       privateregistryconfig
+      </code>
+      フィールドに入力して、Docker レジストリを構成します。クラスタの作成が
+      <code dir="ltr" translate="no">
+       Failed to create root cluster: could not create external client:
+could not create external control plane: docker run error: exit status 125
+      </code>
+      などのエラーで失敗します。
+     </p>
+     <p>
+      修正はバージョン 1.1.2 を対象としています。当面の間、Docker レジストリを使用するように構成されたクラスタを作成する場合は、
+      <code dir="ltr" translate="no">
+       --skip-validation-docker
+      </code>
+      フラグを
+      <code dir="ltr" translate="no">
+       gkectl create cluster
+      </code>
+      に渡します。
+     </p>
+    </div>
+    <h2 data-text="2019 年 11 月 5 日" id="november_5_2019" tabindex="0">
+     2019 年 11 月 5 日
+    </h2>
+    <div class="release-issue" id="vsan-datadisk-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      GKE on-prem の構成ファイルには、仮想マシンディスク（VMDK）ファイルへのパスを検索する
+      <code dir="ltr" translate="no">
+       vcenter.datadisk
+      </code>
+      フィールドがあります。インストール中に、VMDK の名前を選択します。デフォルトでは、GKE on-prem によって VMDK が作成され、vSphere データストアのルートに保存されます。
+     </p>
+     <p>
+      vSAN データストアを使用する場合は、VMDK を保存するフォルダをデータストアに作成する必要があります。フィールドへのフルパス（
+      <code dir="ltr" translate="no">
+       datadisk: anthos/gke/docs/on-prem/datadisk.vmdk
+      </code>
+      など）を指定すると、GKE on-prem によって VMDK がそのフォルダに保存されます。
+     </p>
+     <p>
+      フォルダを作成すると、vSphere によって Universally Unique Identifier（UUID）がフォルダに割り当てられます。GKE on-prem 構成のフォルダパスを指定しますが、vSphere API はフォルダの UUID を検索します。現在、この不一致によりクラスタの作成とアップグレードが失敗する可能性があります。
+     </p>
+     <p>
+      修正はバージョン 1.1.2 を対象としています。当面の間は、フォルダパスの代わりにフォルダの UUID を指定する必要があります。
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/administration/upgrading-clusters?hl=ja#admin_datadisk_folder">
+       クラスタのアップグレード
+      </a>
+      とインストール トピックに記載されている、現在利用可能な回避策の手順に従ってください。
+     </p>
+    </div>
+    <h2 data-text="2019 年 10 月 25 日" id="october_25_2019" tabindex="0">
+     2019 年 10 月 25 日
+    </h2>
+    <p>
+     GKE on-prem バージョン 1.1.1-gke.2 が利用可能になりました。バージョン 1.1.1-gke.2 の OVA
+     <code dir="ltr" translate="no">
+      gkectl
+     </code>
+     をダウンロードしてバンドルをアップグレードするには、
+     <a href="https://cloud.google.com/anthos/gke/docs/on-prem/downloads?hl=ja#latest">
+      ダウンロード
+     </a>
+     をご覧ください。その後、
+     <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=ja">
+      管理ワークステーションのアップグレード
+     </a>
+     と
+     <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=ja">
+      クラスタのアップグレード
+     </a>
+     をご覧ください。
+    </p>
+    <p>
+     このパッチ バージョンには以下の変更内容が含まれています。
+    </p>
+    <h3 data-text="新機能" id="new-features_1" tabindex="0">
+     新機能
+    </h3>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <strong>
+       要対応:
+      </strong>
+      このバージョンでは、管理ワークステーションの最小
+      <code dir="ltr" translate="no">
+       gcloud
+      </code>
+      バージョンが 256.0.0 にアップグレードされます。
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/administration/upgrading-admin-workstation?hl=ja">
+       管理ワークステーションをアップグレード
+      </a>
+      してください。その後、
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/administration/upgrading-clusters?hl=ja">
+       クラスタをアップグレード
+      </a>
+      してください。
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      オープンソースの
+      <a class="external" href="https://github.com/coreos/toolbox">
+       CoreOS ツールボックス
+      </a>
+      がすべての GKE on-prem クラスタ ノードに含まれるようになりました。このツールセットは、ノードの問題のトラブルシューティングに役立ちます。
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/support/toolbox?hl=ja">
+       ツールボックスを使用してノードの問題をデバッグする
+      </a>
+      をご覧ください。
+     </p>
+    </div>
+    <h3 data-text="修正済み" id="fixes_1" tabindex="0">
+     修正済み
+    </h3>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      OIDC で構成されたクラスタがアップグレードされない問題を修正しました。
+     </p>
+    </div>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/security-bulletins?hl=ja#october-16-2019">
+       セキュリティに関する情報
+      </a>
+      で説明されている
+      <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11253">
+       CVE-2019-11253
+      </a>
+      を修正しました。
+     </p>
+    </div>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      Google Cloud への接続が失われたためにクラスタ指標が失われる問題を修正しました。GKE on-prem クラスタの Google Cloud への接続が一定時間失われた場合、そのクラスタの指標が完全に復元されるようになりました。
+     </p>
+    </div>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      管理クラスタの指標の取り込みが、ユーザー クラスタの指標の取り込みよりも遅くなる問題を修正しました。
+     </p>
+    </div>
+    <h3 data-text="既知の問題" id="known-issues_1" tabindex="0">
+     既知の問題
+    </h3>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      静的 IP を使用し、管理クラスタとは異なるネットワークを使用しているユーザー クラスタの場合: ユーザー クラスタのネットワーク構成を上書きする際、ユーザー コントロール プレーンを起動できない場合があります。これは、ユーザー クラスタのネットワークを使用しているが、管理クラスタから IP アドレスとゲートウェイが割り当てられているため発生します。
+     </p>
+     <p>
+      この問題を回避するには、適切なネットワークを使用するように各ユーザー コントロール プレーンの MachineDeployment 仕様を更新します。次に、各ユーザー コントロール プレーンの Machine を削除して、MachineDeployment で新しい Machine を作成します。
+     </p>
+     <ol>
+      <li>
+       <pre class="devsite-click-to-copy" dir="ltr" translate="no"># List MachineDeployments in the admin cluster
+    kubectl get machinedeployments --kubeconfig [ADMIN_CLUSTER_KUBECONFIG]</pre>
+      </li>
+      <li>
+       <pre class="devsite-click-to-copy" dir="ltr" translate="no"># Update a user control plane MachineDeployment from your shell
+    kubectl edit machinedeployment --kubeconfig [ADMIN_CLUSTER_KUBECONFIG] [MACHINEDEPLOYMENT_NAME]</pre>
+      </li>
+      <li>
+       <pre class="devsite-click-to-copy" dir="ltr" translate="no"># List Machines in the admin cluster
+    kubectl get machines --kubeconfig [ADMIN_CLUSTER_KUBECONFIG]</pre>
+      </li>
+      <li>
+       <pre class="devsite-click-to-copy" dir="ltr" translate="no"># Delete user control plane Machines in the admin cluster
+    kubectl delete machines --kubeconfig [ADMIN_CLUSTER_KUBECONFIG] [MACHINE_NAME]</pre>
+      </li>
+     </ol>
+    </div>
+    <h2 data-text="2019 年 9 月 26 日" id="september_26_2019" tabindex="0">
+     2019 年 9 月 26 日
+    </h2>
+    <p>
+     GKE on-prem バージョン 1.1.0-gke.6 が利用可能になりました。バージョン 1.1.0-gke.6 の
+     <code dir="ltr" translate="no">
+      gkectl
+     </code>
+     をダウンロードしてバンドルをアップグレードするには、
+     <a href="https://cloud.google.com/anthos/gke/docs/on-prem/downloads?hl=ja#latest">
+      ダウンロード
+     </a>
+     をご覧ください。次に、
+     <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=ja">
+      クラスタのアップグレード
+     </a>
+     をご覧ください。
+    </p>
+    <p>
+     このマイナー バージョンには以下の変更内容が含まれています。
+    </p>
+    <h3 data-text="新機能" id="new-features_2" tabindex="0">
+     新機能
+    </h3>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      クラスタ ノードのデフォルトの Kubernetes バージョンが、バージョン 1.13.7-gke.20 になりました（以前は 1.12.7-gke.19）。
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <strong>
+       要対応:
+      </strong>
+      バージョン 1.1.0-gke.6 以降、GKE On-Prem はユーザー クラスタのノード（vSphere VM）に対して vShere
+      <a class="external" href="https://www.vmware.com/products/vsphere/drs-dpm.html">
+       Distributed Resource Scheduler（DRS）
+      </a>
+      のルールを作成し、データセンター内の少なくとも 3 つの物理ホストにそれらを分散させます。
+     </p>
+     <p>
+      <strong>
+       この機能は、バージョン 1.1.0-gke.6 を実行するすべての新規および既存のユーザー クラスタでデフォルトで有効になっています。
+      </strong>
+     </p>
+     <p>
+      この機能を使用するには、vSphere 環境が次の条件を満たしている必要があります。
+     </p>
+     <ul>
+      <li>
+       VMware DRS が有効になっていること。VMware DRS には、vSphere Enterprise Plus ライセンス エディションが必要です。DRS を有効にする方法については、
+       <a class="external" href="https://kb.vmware.com/s/article/1034280">
+        クラスタ内の VMware DRS の有効化
+       </a>
+       をご覧ください。
+      </li>
+      <li>
+       GKE on-prem 構成ファイルの
+       <code dir="ltr" translate="no">
+        vcenter
+       </code>
+       フィールドで指定されている vSphere ユーザー アカウントに
+       <code dir="ltr" translate="no">
+        Host.Inventory.EditCluster
+       </code>
+       権限が付与されていること。
+      </li>
+      <li>
+       利用可能な物理ホストが少なくとも 3 つあること。
+      </li>
+     </ul>
+     <p>
+      既存のユーザー クラスタでこの機能を有効にしない場合（たとえば、機能に対応するのに十分なホストがない場合）は、ユーザー クラスターをアップグレードする前に、次の手順を実行します。
+      <i>
+       <i>
+       </i>
+      </i>
+     </p>
+     <ol>
+      <li>
+       既存の GKE On-Prem 構成ファイルを開きます。
+      </li>
+      <li>
+       <code dir="ltr" translate="no">
+        usercluster
+       </code>
+       仕様で、
+       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/installation/install?hl=ja#antiaffinitygroups">
+        <code dir="ltr" translate="no">
+         antiaffinitygroups
+        </code>
+        のドキュメント
+       </a>
+       の説明に従って
+       <code dir="ltr" translate="no">
+        antiaffinitygroups
+       </code>
+       フィールドを追加します。
+       <pre dir="ltr" translate="no">
+usercluster:
+      ...
+      antiaffinitygroups:
+        enabled: false
+</pre>
+      </li>
+      <li>
+       ファイルを保存します。
+      </li>
+      <li>
+       構成ファイルを使用してアップグレードします。クラスタはアップグレードされますが、この機能は有効になりません。
+      </li>
+     </ol>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      これで、クラスタの
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/administration/default-storage-class?hl=ja">
+       デフォルトのストレージ クラス
+      </a>
+      を設定できるようになります。
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      クラスタのストレージ クラスとして
+      <a class="external" href="https://github.com/container-storage-interface/spec">
+       Container Storage Interface (CSI) 1.0
+      </a>
+      を使用できるようになりました。
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       gkectl delete cluster --force
+      </code>
+      を使用して、
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/administration/deleting-a-user-cluster?hl=ja#delete_unhealthy_cluster">
+       破損している、あるいは異常なユーザー クラスタを削除
+      </a>
+      できるようになりました。
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       debug-toolbox
+      </code>
+      コンテナ イメージを使用して
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/support/debug-toolbox?hl=ja">
+       ノードの問題を診断
+      </a>
+      できるようになりました。
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       gkectl
+      </code>
+      コマンドで実行される
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/installation/install?hl=ja#skip_validate">
+       検証をスキップ
+      </a>
+      できるようになりました。
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       gkectl diagnose snapshot
+      </code>
+      が作成する tarball に、デフォルトでコマンドの出力のログが含まれるようになりました。
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       gkectl diagnose snapshot
+      </code>
+      フラグ
+      <code dir="ltr" translate="no">
+       --seed-config
+      </code>
+      を追加します。このフラグを渡すと、
+      <code dir="ltr" translate="no">
+       snapshot
+      </code>
+      によって生成された tarball にクラスタの GKE on-prem 構成ファイルが含まれます。
+     </p>
+    </div>
+    <h3 data-text="変更" id="changes" tabindex="0">
+     変更
+    </h3>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       gkeplatformversion
+      </code>
+      フィールドが GKE on-prem 構成ファイルから削除されました。クラスタのバージョンを指定するには、
+      <code dir="ltr" translate="no">
+       bundlepath
+      </code>
+      フィールドにバージョンのバンドルを指定します。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/installation/install?hl=ja#antiaffinitygroups">
+       <code dir="ltr" translate="no">
+        antiaffinitygroups
+       </code>
+      </a>
+      を使用するには、vSphere 権限
+      <code dir="ltr" translate="no">
+       Host.Inventory.EditCluster
+      </code>
+      を追加する必要があります。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       --snapshot-config
+      </code>
+      （以前は
+      <code dir="ltr" translate="no">
+       --config
+      </code>
+      ）を渡して
+      <code dir="ltr" translate="no">
+       gkectl diagnose snapshot
+      </code>
+      の構成ファイルを指定するようになりました。
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/support/diagnose?hl=ja#diagnose_snapshot">
+       クラスタの問題の診断
+      </a>
+      を参照してください。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       --snapshot-config
+      </code>
+      （以前は
+      <code dir="ltr" translate="no">
+       --config
+      </code>
+      ）を渡して、
+      <code dir="ltr" translate="no">
+       gkectl diagnose snapshot
+      </code>
+      でクラスタの構成ファイルを取得するようになりました。
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/support/diagnose?hl=ja#diagnose_snapshot">
+       クラスタの問題の診断
+      </a>
+      を参照してください。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      管理クラスタの kubeconfig ではなくユーザー クラスタの kubeconfig を指定した場合、
+      <code dir="ltr" translate="no">
+       gkectl diagnose
+      </code>
+      コマンドでエラーが返されるようになりました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Cloud Console で、登録済みユーザー クラスタのアップグレードが可能になると通知されるようになりました。
+     </p>
+    </div>
+    <h3 data-text="既知の問題" id="known-issues_2" tabindex="0">
+     既知の問題
+    </h3>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      OIDC を使用するバージョン 1.0.11、1.0.1-gke.5、1.0.2-gke.3 クラスタがバージョン 1.1 にアップグレードされないことが報告されています。修正はバージョン 1.1.1 を対象としています。バージョン 1.0.11、1.0.1-gke.5、1.0.2-gke.3 のクラスタを OIDC で構成した場合、クラスタをアップグレードできません。
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/install?hl=ja">
+       GKE on-prem のインストール
+      </a>
+      に従ってバージョン 1.1 クラスタを作成します。
+     </p>
+    </div>
+    <h2 data-text="2019 年 8 月 22 日" id="august_22_2019" tabindex="0">
+     2019 年 8 月 22 日
+    </h2>
+    <p>
+     GKE on-prem バージョン 1.0.2-gke.3 が利用可能になりました。このパッチリリースには次の変更が含まれています。
+    </p>
+    <h3 data-text="新機能" id="new-features_3" tabindex="0">
+     新機能
+    </h3>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      手動負荷分散で Seesaw がサポートされるようになりました。
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      管理者クラスタとユーザー クラスタに別の vSphere ネットワークを指定できるようになりました。
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       gkectl
+      </code>
+      を使用してユーザー クラスタを削除できるようになりました。
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/administration/deleting-a-user-cluster?hl=ja">
+       ユーザー クラスタの削除
+      </a>
+      をご覧ください。
+     </p>
+    </div>
+    <h3 data-text="変更" id="changes_1" tabindex="0">
+     変更
+    </h3>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <code dir="ltr" translate="no">
+      gkectl diagnose snapshot
+     </code>
+     が、ユーザー クラスタ コントロール プレーンからログが取得するようになりました。
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      GKE on-prem OIDC 仕様が新しいフィールド（
+      <code dir="ltr" translate="no">
+       kubectlredirecturl
+      </code>
+      、
+      <code dir="ltr" translate="no">
+       scopes
+      </code>
+      、
+      <code dir="ltr" translate="no">
+       extraparams
+      </code>
+      、
+      <code dir="ltr" translate="no">
+       usehttpproxy
+      </code>
+      ）で更新されました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Calico がバージョン 3.7.4 に更新されました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      接頭辞が付いた Cloud Monitoring のシステム指標が
+      <code dir="ltr" translate="no">
+       external.googleapis.com/prometheus/
+      </code>
+      から
+      <code dir="ltr" translate="no">
+       kubernetes.io/anthos/
+      </code>
+      に変更されました。指標やアラートをトラッキングする場合は、ダッシュボードを次の接頭辞で更新します。
+     </p>
+    </div>
+    <h3 data-text="固定" id="fixed" tabindex="0">
+     修正
+    </h3>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/security-bulletins?hl=ja#august-22-2019">
+       CVE-2019-11247 に起因する脆弱性を修正しました
+      </a>
+      。
+     </p>
+    </div>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/security-bulletins?hl=ja#august-23-2019">
+       RBAC プロキシの脆弱性を修正しました
+      </a>
+      。
+     </p>
+    </div>
+    <h2 data-text="2019 年 7 月 30 日" id="july_30_2019" tabindex="0">
+     2019 年 7 月 30 日
+    </h2>
+    <p>
+     GKE on-prem バージョン 1.0.1-gke.5 が利用可能になりました。このパッチリリースには次の変更が含まれています。
+    </p>
+    <h3 data-text="新機能" id="new-features_4" tabindex="0">
+     新機能
+    </h3>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/reference/cheatsheet?hl=ja">
+       GKE on-prem クイック リファレンス
+      </a>
+      を公開しました。
+     </p>
+    </div>
+    <h3 data-text="変更" id="changes_2" tabindex="0">
+     変更
+    </h3>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      静的 IP を使用している場合に、ノード IP の可用性が
+      <code dir="ltr" translate="no">
+       gkectl check-config
+      </code>
+      によりチェックされるようになりました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       gkectl prepare
+      </code>
+      が、VM の OVA イメージをアップロードする前に、VM が存在し、vSphere でテンプレートとしてマークされているかどうかを確認するようになりました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      vCenter クラスタとそのクラスタ内のリソースプールを指定するためのサポートを追加します。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      F5 BIG-IP コントローラをバージョン 1.9.0 にアップグレードします。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Istio Ingress コントローラをバージョン 1.2.2 にアップグレードします。
+     </p>
+    </div>
+    <h3 data-text="修正済み" id="fixes_2" tabindex="0">
+     修正済み
+    </h3>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      管理ワークステーションの Docker レジストリのレジストリ データの永続性の問題を修正しました。
+     </p>
+    </div>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      ユーザー クラスタの名前が既に使用されているかどうかを確認する検証を修正しました。
+     </p>
+    </div>
+    <h2 data-text="2019 年 7 月 25 日" id="july_25_2019" tabindex="0">
+     2019 年 7 月 25 日
+    </h2>
+    <p>
+     GKE on-prem バージョン 1.0.11 が利用可能になりました。
+    </p>
+    <h2 data-text="2019 年 6 月 17 日" id="june_17_2019" tabindex="0">
+     2019 年 6 月 17 日
+    </h2>
+    <p>
+     GKE on-prem が一般提供されるようになりました。バージョン 1.0.10 には次の変更が含まれています。
+    </p>
+    <h3 data-text="ベータ版 -1.4 から 1.0.10 へのアップグレード" id="beta-upgrade" tabindex="0">
+     ベータ版 -1.4 から 1.0.10 へのアップグレード
+    </h3>
+    <p>
+     ベータ版クラスタを最初の一般提供バージョンにアップグレードする前に、
+     <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/upgrading/from-beta?hl=ja">
+      GKE on-prem ベータ版から一般提供にアップグレードする
+     </a>
+     の手順を行い、次の点を確認してください。
+    </p>
+    <ul>
+     <li>
+      <p>
+       ベータ版 -1.4 より前のベータ版を実行している場合は、必ずベータ版 -1.4 にアップグレードしてください。
+      </p>
+     </li>
+     <li>
+      <p>
+       ベータ版クラスタが（デフォルトの F5-BIG-IP ではなく）独自の L4 ロードバランサを実行している場合、最新の GKE on-prem バージョンを実行するには、クラスタを削除して再作成する必要があります。
+      </p>
+     </li>
+     <li>
+      <p>
+       クラスタがベータ版 -1.3 からベータ版 -1.4 にアップグレードされた場合は、アップグレードの前に各ユーザー クラスタ
+       <i>
+       </i>
+       に対して次のコマンドを実行します。
+      </p>
+      <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl delete crd networkpolicies.crd.projectcalico.org</pre>
+     </li>
+     <li>
+      <p>
+       vCenter 証明書の検証が必要になりました。（
+       <code dir="ltr" translate="no">
+        vsphereinsecure
+       </code>
+       は現在サポートされていません。）ベータ版 1.4 クラスタを 1.0.10 にアップグレードする場合は、vCenter の信頼できるルート CA 公開証明書をアップグレード構成ファイルで指定する必要があります。
+      </p>
+     </li>
+     <li>
+      <p>
+       実行中のクラスタをすべて
+       <i>
+       </i>
+       アップグレードする必要があります。クラスタがバージョンが混在した状態で実行されると、このアップグレードは上手くいきません。
+      </p>
+     </li>
+     <li>
+      <p>
+       まず管理クラスタを最新バージョンにアップグレードしてから、ユーザー クラスタをアップグレードする必要があります。
+      </p>
+     </li>
+    </ul>
+    <p>
+    </p>
+    <h3 data-text="新機能" id="new-features_5" tabindex="0">
+     新機能
+    </h3>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/installation/manual-lb?hl=ja">
+       手動負荷分散モード
+      </a>
+      を有効にして、L4 ロードバランサを構成できるようになりました。デフォルトのロードバランサ F5 BIG-IP を使用することもできます。
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      GKE on-prem の構成に基づくインストール プロセスが更新されました。単一の
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/overview?hl=ja#config">
+       構成ファイル
+      </a>
+      を使用して宣言的にインストールするようになりました。
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       gkectl create-config
+      </code>
+      を追加します。これは、GKE on-prem のインストール、既存のクラスタのアップグレード、および既存のインストールでの追加のユーザー クラスタの作成のための構成ファイルを生成します。これは、以前のバージョンのインストール ウィザードと
+      <code dir="ltr" translate="no">
+       create-config.yaml
+      </code>
+      に置き換わるものです。
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/installation/install?hl=ja#generate_config">
+       GKE on-prem のインストール
+      </a>
+      に関する最新のドキュメントをご覧ください。
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      GKE on-prem 構成ファイルを検証する
+      <code dir="ltr" translate="no">
+       gkectl check-config
+      </code>
+      を追加します。
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/installation/install?hl=ja#validate_config">
+       GKE on-prem のインストール
+      </a>
+      に関する最新のドキュメントをご覧ください。
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      オプションの
+      <code dir="ltr" translate="no">
+       --validate-attestations
+      </code>
+      フラグを
+      <code dir="ltr" translate="no">
+       gkectl prepare
+      </code>
+      に追加します。このフラグは、管理者ワークステーションに含まれるコンテナ イメージが Google によって作成、署名され、デプロイの準備ができていることを確認します。
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/installation/install?hl=ja#prepare">
+       GKE on-prem のインストール
+      </a>
+      に関する最新のドキュメントをご覧ください。
+     </p>
+    </div>
+    <h3 data-text="変更" id="changes_3" tabindex="0">
+     変更
+    </h3>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Kubernetes バージョンを 1.12.7-gke.19 にアップグレードします。
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/administration/upgrading-clusters?hl=ja">
+       クラスタをこのバージョンにアップグレード
+      </a>
+      できるようになりました。Kubernetes バージョン 1.11.2-gke.19 を実行するクラスタは作成できなくなりました。
+     </p>
+     <p>
+      管理クラスタをアップグレードしてから、ユーザー クラスタをアップグレードすることをおすすめします。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Istio Ingress コントローラをバージョン 1.1.7 にアップグレードします。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      vCenter 証明書の検証が必要になりました。（
+      <code dir="ltr" translate="no">
+       vsphereinsecure
+      </code>
+      は現在サポートされていません。）GKE on-prem 構成ファイルの
+      <code dir="ltr" translate="no">
+       cacertpath
+      </code>
+      フィールドで、証明書を指定します。
+     </p>
+     <p>
+      クライアントが vCenter Server を呼び出す場合、vCenter Server は証明書を提示してクライアントに自身の ID を証明する必要があります。証明書には認証局（CA）が署名する必要があります。証明書は自己署名できません。
+     </p>
+     <p>
+      ベータ版 1.4 クラスタを 1.0.10 にアップグレードする場合は、vCenter の信頼できるルート CA 公開証明書をアップグレード構成ファイルで指定する必要があります。
+     </p>
+    </div>
+    <h3 data-text="既知の問題" id="known-issues_3" tabindex="0">
+     既知の問題
+    </h3>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/upgrading-clusters?hl=ja">
+       クラスタをアップグレードする
+      </a>
+      と、
+      <a class="external" href="https://kubernetes.io/docs/concepts/workloads/pods/disruptions/#how-disruption-budgets-work">
+       PodDisruptionBudgets
+      </a>
+      （PDB）を使用するワークロードで中断やダウンタイムが発生することがあります。
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/installation/manual-lb?hl=ja">
+       手動負荷分散モード
+      </a>
+      を使用するベータ版クラスタは、GKE on-prem バージョン 1.0.10 にアップグレードできない場合があります。これらのクラスタでアップグレードして独自のロードバランサを引き続き使用するには、クラスタを再作成する必要があります。
+     </p>
+    </div>
+    <h2 data-text="2019 年 5 月 24 日" id="may_24_2019" tabindex="0">
+     2019 年 5 月 24 日
+    </h2>
+    <p>
+     GKE on-prem ベータ版バージョン 1.4.7 が利用可能になりました。このリリースには次の変更が含まれています。
+    </p>
+    <h3 data-text="新機能" id="new-features_6" tabindex="0">
+     新機能
+    </h3>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/beta-1.4/how-to/administration/diagnose?hl=ja#capture_admin">
+       <code dir="ltr" translate="no">
+        gkectl diagnose snapshot
+       </code>
+      </a>
+      コマンドで、
+      <code dir="ltr" translate="no">
+       --admin-ssh-key-path
+      </code>
+      パラメータを省略できるようになりました。
+     </p>
+    </div>
+    <h3 data-text="変更" id="changes_4" tabindex="0">
+     変更
+    </h3>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      2019 年 5 月 8 日に、Cloud Console を使用して GKE On-Prem クラスタを操作できるサービス Connect に変更を加えました。新しい Connect エージェントを使用するには、クラスタを Cloud Console に再登録するか、Anthos GKE On-Prem ベータ版 -1.4 にアップグレードする必要があります。
+     </p>
+     <p>
+      GKE on-prem クラスタ、およびこれらのクラスタで実行されているワークロードは、中断なく動作し続けます。ただし、クラスタを再登録するか、ベータ版 -1.4 にアップグレードするまで Cloud Console には表示されません。
+     </p>
+     <p>
+      再登録またはアップグレードする前に、サービス アカウントに
+      <code dir="ltr" translate="no">
+       gkehub.connect
+      </code>
+      のロールがあることを確認してください。また、サービス アカウントに以前の clusterregistry.connect ロールがある場合は、そのロールを削除することをおすすめします。
+     </p>
+     <p>
+      サービス アカウントに gkehub.connect のロールを付与します。
+     </p>
+     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects add-iam-policy-binding <var class="edit" translate="no">[PROJECT_ID]</var> \
+      --member="serviceAccount:<var class="edit" translate="no">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit" translate="no">[PROJECT_ID]</var>.iam.gserviceaccount.com" \
+      --role="roles/gkehub.connect"</pre>
+     <p>
+      サービス アカウントに以前の
+      <code dir="ltr" translate="no">
+       clusterregistry.connect
+      </code>
+      ロールがある場合は、以前のロールを削除します。
+     </p>
+     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects remove-iam-policy-binding <var class="edit" translate="no">[PROJECT_ID]</var> \
+      --member="serviceAccount:<var class="edit" translate="no">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit" translate="no">[PROJECT_ID]</var>.iam.gserviceaccount.com" \
+      --role="roles/clusterregistry.connect"</pre>
+     <p>
+      クラスタを再登録するか、Anthos GKE on-prem ベータ版 -1.4 にアップグレードします。
+     </p>
+     <p>
+      <a href="https://cloud.google.com/kubernetes-engine/connect/updating-agent?hl=ja">
+       クラスタを再登録するには
+      </a>
+      :
+     </p>
+     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud alpha container hub register-cluster <var class="edit" translate="no">[CLUSTER_NAME]</var> \
+      --context=<var class="edit" translate="no">[USER_CLUSTER_CONTEXT]</var> \
+      --service-account-key-file=<var class="edit" translate="no">[LOCAL_KEY_PATH]</var> \
+      --kubeconfig-file=<var class="edit" translate="no">[KUBECONFIG_PATH]</var> \
+      --project=<var class="edit" translate="no">[PROJECT_ID]</var>
+      </pre>
+     <p>
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/beta-1.4/how-to/administration/upgrading-a-cluster?hl=ja">
+       Anthos GKE on-prem ベータ版 -1.4 にアップグレードするには
+      </a>
+      :
+     </p>
+     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gkectl upgrade --kubeconfig [ADMIN_CLUSTER_KUBECONFIG]</pre>
+    </div>
+    <h3 data-text="既知の問題" id="known-issues_4" tabindex="0">
+     既知の問題
+    </h3>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      アップグレード中に Connect エージェントが新しいバージョンに更新されない問題があります。この問題を回避するには、クラスタをアップグレードした後に次のコマンドを実行します。
+     </p>
+     <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl delete pod gke-connect-agent-install -n gke-connect</pre>
+    </div>
+    <h2 data-text="2019 年 5 月 13 日" id="may_13_2019" tabindex="0">
+     2019 年 5 月 13 日
+    </h2>
+    <h3 data-text="既知の問題" id="known-issues_5" tabindex="0">
+     既知の問題
+    </h3>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      ベータ版 -1.2 からベータ版 -1.3 にアップグレードされたクラスタは、クラスタの構成ファイルを損傷し、将来のクラスタのアップグレードを妨げる既知の問題の影響を受ける可能性があります。この問題は、今後のクラスタのアップグレードに影響します。
+     </p>
+     <p>
+      この問題は、ベータ版 -1.2 からベータ版 -1.3 にアップグレードしたクラスタを削除して再作成することで解決できます。
+     </p>
+     <p>
+      クラスタの削除および再作成をせずに問題を解決するには、各クラスタの Secret を再エンコードして適用する必要があります。次の手順を行います。
+     </p>
+     <ol>
+      <li>
+       管理クラスタに保存されている
+       <code dir="ltr" translate="no">
+        create-config
+       </code>
+       Secret の内容を取得します。これは、kube-system 名前空間の
+       <code dir="ltr" translate="no">
+        create-config
+       </code>
+       Secret と、各ユーザー クラスタの名前空間の
+       <code dir="ltr" translate="no">
+        create-config
+       </code>
+       Secret に対して行う必要があります。
+       <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl get secret create-config -n kube-system -o jsonpath={.data.cfg} | base64 -d &gt; kube-system_create_secret.yaml</pre>
+       <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl get secret create-config -n <var translate="no">[USER_CLUSTER_NAME]</var> -o jsonpath={.data.cfg} | base64 -d &gt; <var translate="no">[USER_CLUSTER_NAME]</var>_create_secret.yaml</pre>
+      </li>
+      <li>
+       ユーザー クラスタごとに、エディタで
+       <code dir="ltr" translate="no">
+        <var translate="no">
+         [USER_CLUSTER_NAME]
+        </var>
+        _create_secret.yaml
+       </code>
+       ファイルを開きます。
+       <code dir="ltr" translate="no">
+        registerserviceaccountkey
+       </code>
+       と
+       <code dir="ltr" translate="no">
+        connectserviceaccountkey
+       </code>
+       の値が
+       <code dir="ltr" translate="no">
+        REDACTED
+       </code>
+       でない場合、追加の操作は必要ありません（Secret を再エンコードしてクラスタに書き込む必要はありません）。
+      </li>
+      <li>
+       別のエディタで元の
+       <code dir="ltr" translate="no">
+        create_config.yaml
+       </code>
+       ファイルを開きます。
+      </li>
+      <li>
+       <code dir="ltr" translate="no">
+        <var translate="no">
+         [USER_CLUSTER_NAME]
+        </var>
+        _create_secret.yaml
+       </code>
+       で、
+       <code dir="ltr" translate="no">
+        registerserviceaccountkey
+       </code>
+       値と
+       <code dir="ltr" translate="no">
+        connectserviceaccountkey
+       </code>
+       値を元の
+       <code dir="ltr" translate="no">
+        create_config.yaml
+       </code>
+       ファイルの値に置き換えます。変更したファイルを保存します。
+      </li>
+      <li>
+       各
+       <code dir="ltr" translate="no">
+        <var translate="no">
+         [USER_CLUSTER_NAME]
+        </var>
+        _create_secret.yaml
+       </code>
+       と
+       <code dir="ltr" translate="no">
+        kube-system_create_secret.yaml
+       </code>
+       ファイルでステップ 3～5 を繰り返します。
+      </li>
+      <li>
+       各
+       <code dir="ltr" translate="no">
+        <var translate="no">
+         [USER_CLUSTER_NAME]
+        </var>
+        _create_secret.yaml
+       </code>
+       ファイルと
+       <code dir="ltr" translate="no">
+        kube-system_create_secret.yaml
+       </code>
+       ファイルを Base64 エンコードします。
+       <pre class="devsite-click-to-copy" dir="ltr" translate="no">cat <var translate="no">[USER_CLUSTER_NAME]</var>_create_secret.yaml | base64 &gt; <var translate="no">[USER_CLUSTER_NAME]</var>_create_secret_create_secret.b64</pre>
+       <pre class="devsite-click-to-copy" dir="ltr" translate="no">cat kube-system-cluster_create_secret.yaml | base64 &gt;kube-system-cluster_create_secret.b64</pre>
+      </li>
+      <li>
+       クラスタ内の各 Secret の
+       <code dir="ltr" translate="no">
+        data[cfg]
+       </code>
+       フィールドを、対応するファイルの内容に置き換えます。
+       <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl edit secret create-config -n <var class="edit" translate="no">[USER_CLUSTER_NAME]</var>
+
+  # kubectl edit opens the file in the shell's default text editor
+  # Open `first-user-cluster_create_secret.b64` in another editor, and replace
+  # the `cfg` value with the copied value
+  # Make sure the copied string has no newlines in it!</pre>
+      </li>
+      <li>
+       各
+       <code dir="ltr" translate="no">
+        <var translate="no">
+         [USER_CLUSTER_NAME]
+        </var>
+        _create_secret.yaml
+       </code>
+       Secret と
+       <code dir="ltr" translate="no">
+        kube-system_create_secret.yaml
+       </code>
+       Secret でステップ 8 を繰り返します。
+      </li>
+      <li>
+       更新が正常に完了したことを確認するには、ステップ 1 を繰り返します。
+      </li>
+     </ol>
+    </div>
+    <h2 data-text="2019 年 5 月 7 日" id="may_7_2019" tabindex="0">
+     2019 年 5 月 7 日
+    </h2>
+    <p>
+     GKE on-prem ベータ版バージョン 1.4.1 が利用可能になりました。このリリースには次の変更が含まれています。
+    </p>
+    <h3 data-text="新機能" id="new-features_7" tabindex="0">
+     新機能
+    </h3>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/beta-1.4/how-to/administration/diagnose?hl=ja#capture_admin">
+       <code dir="ltr" translate="no">
+        gkectl diagnose snapshot
+       </code>
+      </a>
+      コマンドで、
+      <code dir="ltr" translate="no">
+       --admin-ssh-key-path
+      </code>
+      パラメータを省略できるようになりました。
+     </p>
+    </div>
+    <h3 data-text="変更" id="changes_5" tabindex="0">
+     変更
+    </h3>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      2019 年 5 月 8 日に、Cloud Console を使用して GKE On-Prem クラスタを操作できるサービス Connect に変更を加えました。新しい Connect エージェントを使用するには、クラスタを Cloud Console に再登録するか、Anthos GKE On-Prem ベータ版 -1.4 にアップグレードする必要があります。
+     </p>
+     <p>
+      GKE on-prem クラスタ、およびこれらのクラスタで実行されているワークロードは、中断なく動作し続けます。ただし、クラスタを再登録するか、ベータ版 -1.4 にアップグレードするまで Cloud Console には表示されません。
+     </p>
+     <p>
+      再登録またはアップグレードする前に、サービス アカウントに gkehub.connect のロールがあることを確認してください。また、サービス アカウントに以前の clusterregistry.connect ロールがある場合は、そのロールを削除することをおすすめします。
+     </p>
+     <p>
+      サービス アカウントに gkehub.connect のロールを付与します。
+     </p>
+     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects add-iam-policy-binding <var class="edit" translate="no">[PROJECT_ID]</var> \
+      --member="serviceAccount:<var class="edit" translate="no">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit" translate="no">[PROJECT_ID]</var>.iam.gserviceaccount.com" \
+      --role="roles/gkehub.connect"</pre>
+     <p>
+      サービス アカウントに以前の clusterregistry.connect ロールがある場合は、以前のロールを削除します。
+     </p>
+     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects remove-iam-policy-binding <var class="edit" translate="no">[PROJECT_ID]</var> \
+      --member="serviceAccount:<var class="edit" translate="no">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit" translate="no">[PROJECT_ID]</var>.iam.gserviceaccount.com" \
+      --role="roles/clusterregistry.connect"</pre>
+     <p>
+      クラスタを再登録するか、Anthos GKE on-prem ベータ版 -1.4 にアップグレードします。
+     </p>
+     <p>
+      <a href="https://cloud.google.com/kubernetes-engine/connect/updating-agent?hl=ja">
+       クラスタを再登録するには
+      </a>
+      :
+     </p>
+     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud alpha container hub register-cluster <var class="edit" translate="no">[CLUSTER_NAME]</var> \
+      --context=<var class="edit" translate="no">[USER_CLUSTER_CONTEXT]</var> \
+      --service-account-key-file=<var class="edit" translate="no">[LOCAL_KEY_PATH]</var> \
+      --kubeconfig-file=<var class="edit" translate="no">[KUBECONFIG_PATH]</var> \
+      --project=<var class="edit" translate="no">[PROJECT_ID]</var>
+      </pre>
+     <p>
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/beta-1.4/how-to/administration/upgrading-a-cluster?hl=ja">
+       Anthos GKE on-prem ベータ版 -1.4 にアップグレードするには
+      </a>
+      :
+     </p>
+     <pre class="devsite-click-to-copy" dir="ltr" translate="no">gkectl upgrade --kubeconfig [ADMIN_CLUSTER_KUBECONFIG]</pre>
+    </div>
+    <h3 data-text="既知の問題" id="known-issues_6" tabindex="0">
+     既知の問題
+    </h3>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      アップグレード中に Connect エージェントが新しいバージョンに更新されない問題があります。この問題を回避するには、クラスタをアップグレードした後に次のコマンドを実行します。
+     </p>
+     <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl delete pod gke-connect-agent-install -n gke-connect</pre>
+    </div>
+    <h2 data-text="2019 年 4 月 25 日" id="april_25_2019" tabindex="0">
+     2019 年 4 月 25 日
+    </h2>
+    <p>
+     GKE on-prem ベータ版バージョン 1.3.1 が利用可能になりました。このリリースには次の変更が含まれています。
+    </p>
+    <h3 data-text="新機能" id="new-features_8" tabindex="0">
+     新機能
+    </h3>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       gkectl diagnose snapshot
+      </code>
+      コマンドに
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/beta-1.3/how-to/administration/diagnose?hl=ja#performing_a_dry_run_for_a_snapshot">
+       <code dir="ltr" translate="no">
+        --dry-run
+       </code>
+      </a>
+      フラグが追加されました。
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       gkectl diagnose snapshot
+      </code>
+      コマンドで 4 つの
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/beta-1.3/how-to/administration/diagnose?hl=ja#snapshot_scenarios">
+       シナリオ
+      </a>
+      がサポートされるようになりました。
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       gkectl diagnose snapshot
+      </code>
+      コマンドで、名前空間を指定する正規表現がサポートされるようになりました。
+     </p>
+    </div>
+    <h3 data-text="変更" id="changes_6" tabindex="0">
+     変更
+    </h3>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Istio 1.1 がデフォルトの
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/beta-1.3/how-to/administration/upgrading-a-cluster?hl=ja#upgrading_the_ingress_controller">
+       Ingress コントローラ
+      </a>
+      になりました。Ingress コントローラは、管理クラスタとユーザー クラスタの両方の
+      <code dir="ltr" translate="no">
+       gke-system
+      </code>
+      名前空間で実行されます。これにより、Ingress の TLS 管理が容易になります。Ingress を有効にするか、アップグレード後に Ingress を再度有効にするには、
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/beta-1.3/how-to/installation/install?hl=ja#enabling_ingress">
+       Ingress を有効にする
+      </a>
+      の手順に従います。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       gkectl
+      </code>
+      ツールは、ブートストラップに Minikube と KVM を使用しなくなりました。つまり、管理ワークステーション VM でネストされた仮想化を有効にする必要はありません。
+     </p>
+    </div>
+    <h3 data-text="既知の問題" id="known-issues_7" tabindex="0">
+     既知の問題
+    </h3>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      GKE on-prem の Ingress コントローラは、Istio 1.1 と自動 Secret 検出を使用します。ただし、Secret 検出のノード エージェントは、Secret の削除後に Secret の更新を取得できない場合があります。そのため、Secret は削除しないでください。Secret を削除する必要があり、その後 Ingress TLS が失敗する場合は、gke-system 名前空間で Ingress Pod を手動で再起動します。
+     </p>
+    </div>
+    <h2 data-text="2019 年 4 月 11 日" id="april_11_2019" tabindex="0">
+     2019 年 4 月 11 日
+    </h2>
+    <p>
+     GKE on-prem ベータ版バージョン 1.2.1 が利用可能になりました。このリリースには次の変更が含まれています。
+    </p>
+    <h3 data-text="新機能" id="new-features_9" tabindex="0">
+     新機能
+    </h3>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      GKE On-prem クラスタが、
+      <a href="https://cloud.google.com/kubernetes-engine/connect?hl=ja">
+       Connect
+      </a>
+      を使用して自動的に Google に接続するようになりました。
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      ユーザー クラスタごとに最大 3 つのコントロール プレーンを実行できるようになりました。
+     </p>
+    </div>
+    <h3 data-text="変更" id="changes_7" tabindex="0">
+     変更
+    </h3>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       gkectl
+      </code>
+      が、クラスタを作成する vSphere と F5 BIG-IP 認証情報を検証するようになりました。
+     </p>
+    </div>
+    <h3 data-text="既知の問題" id="known-issues_8" tabindex="0">
+     既知の問題
+    </h3>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      回帰により
+      <code dir="ltr" translate="no">
+       gkectl diagnose snapshot
+      </code>
+      コマンドが誤った SSH キーを使用するため、このコマンドがユーザー クラスタから情報を収集できなくなります。サポートケースの回避策として、個々のユーザー クラスタノードに SSH 接続し、手動でデータを収集する必要がある場合があります。
+     </p>
+    </div>
+    <h2 data-text="2019 年 4 月 2 日" id="april_2_2019" tabindex="0">
+     2019 年 4 月 2 日
+    </h2>
+    <p>
+     GKE on-prem ベータ版バージョン 1.1.1 が利用可能になりました。このリリースには次の変更が含まれています。
+    </p>
+    <h3 data-text="新機能" id="new-features_10" tabindex="0">
+     新機能
+    </h3>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/beta-1.1/how-to/installation/getting-started?hl=ja#download_ova">
+       Open Virtual Appliance
+      </a>
+      （OVA、複数のコマンドライン インターフェース ツールを含む事前構成済みの仮想マシンイメージ）で GKE on-prem をインストールするようになりました。この変更により、インストールが容易になり、仮想化のレイヤが取り除かれます。Docker コンテナ内で
+      <code dir="ltr" translate="no">
+       gkectl
+      </code>
+      を実行する必要はありません。
+     </p>
+     <p>
+      ベータ版 -1.1.1 より前の GKE on-prem バージョンをインストールした場合は、文書化された手順に従い新しい管理ワークステーションを作成する必要があります。新しい管理ワークステーションをインストールしたら、SSH 認証鍵、構成ファイル、kubeconfigs などの必要なファイルを以前のワークステーションから新しいワークステーションにコピーします。
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/beta-1.1/how-to/administration/backing-up?hl=ja">
+       クラスタのバックアップと復元
+      </a>
+      に関するドキュメントを追加しました。
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      OIDC と ADFS を使用して、クラスタの認証を構成できるようになりました。詳しくは、
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/beta-1.1/how-to/security/oidc-adfs?hl=ja">
+       OIDC と ADFS による認証
+      </a>
+      と
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/concepts/authentication?hl=ja">
+       認証
+      </a>
+      をご覧ください。
+     </p>
+    </div>
+    <h3 data-text="変更" id="changes_8" tabindex="0">
+     変更
+    </h3>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       gkectl diagnose snapshot
+      </code>
+      を実行するために、管理クラスタの秘密鍵を使用しなければならなくなりました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      インストール中に、マルチマスター ユーザー クラスタをデプロイするための構成オプションを追加しました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      <a href="https://cloud.google.com/kubernetes-engine/connect?hl=ja">
+       Connect のドキュメント
+      </a>
+      が移行されました。
+     </p>
+    </div>
+    <h3 data-text="修正済み" id="fixes_3" tabindex="0">
+     修正済み
+    </h3>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      ノードが予期せず削除された場合にクラスタ ネットワークが中断される問題を修正しました。
+     </p>
+    </div>
+    <h3 data-text="既知の問題" id="known-issues_9" tabindex="0">
+     既知の問題
+    </h3>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      GKE on-prem の構成管理がバージョン 0.11 から 0.13 にアップグレードされました。一部のシステム コンポーネントの名前が変更されました。以前のバージョンのリソースをクリーンアップして新しいインスタンスをインストールするには、いくつかの手順を実行する必要があります。
+     </p>
+     <p>
+      構成管理のアクティブなインスタンスがある場合:
+     </p>
+     <ol>
+      <li>
+       <p>
+        インスタンスをアンインストールします。
+       </p>
+       <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl -n=nomos-system delete nomos --all</pre>
+      </li>
+      <li>
+       <p>
+        インスタンスの名前空間にリソースがないことを確認します。
+       </p>
+       <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl -n nomos-system get all</pre>
+      </li>
+      <li>
+       <p>
+        名前空間を削除します。
+       </p>
+       <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl delete ns nomos-system</pre>
+      </li>
+      <li>
+       <p>
+        CRD を削除します。
+       </p>
+       <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl delete crd nomos.addons.sigs.k8s.io</pre>
+      </li>
+      <li>
+       <p>
+        演算子の kube-system リソースをすべて削除します。
+       </p>
+       <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl -n kube-system delete all -l k8s-app=nomos-operator</pre>
+      </li>
+     </ol>
+     <p>
+      構成管理のアクティブなインスタンスがない場合:
+     </p>
+     <ol>
+      <li>
+       <p>
+        構成管理の名前空間を削除します。
+       </p>
+       <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl delete ns nomos-system</pre>
+      </li>
+      <li>
+       <p>
+        CRD を削除します。
+       </p>
+       <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl delete crd nomos.addons.sigs.k8s.io</pre>
+      </li>
+      <li>
+       <p>
+        演算子の kube-system リソースをすべて削除します。
+       </p>
+       <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl -n kube-system delete all -l k8s-app=nomos-operator</pre>
+      </li>
+     </ol>
+    </div>
+    <h2 data-text="2019 年 3 月 12 日" id="march_12_2019" tabindex="0">
+     2019 年 3 月 12 日
+    </h2>
+    <p>
+     GKE on-prem ベータ版バージョン 1.0.3 が利用可能になりました。このリリースには次の変更が含まれています。
+    </p>
+    <h3 data-text="修正済み" id="fixes_4" tabindex="0">
+     修正済み
+    </h3>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      Docker 証明書が間違った場所に保存される問題を修正しました。
+     </p>
+    </div>
+    <h2 data-text="2019 年 3 月 4 日" id="march_4_2019" tabindex="0">
+     2019 年 3 月 4 日
+    </h2>
+    <p>
+     GKE on-prem ベータ版バージョン 1.0.2 が利用可能になりました。このリリースには次の変更が含まれています。
+    </p>
+    <h3 data-text="新機能" id="new-features_11" tabindex="0">
+     新機能
+    </h3>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       gkectl version
+      </code>
+      を実行して、実行中の
+      <code dir="ltr" translate="no">
+       gkectl
+      </code>
+      のバージョンを確認できるようになりました。
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/beta-1.0/how-to/administration/upgrading-a-cluster?hl=ja">
+       ユーザー クラスタを今後のベータ版にアップグレード
+      </a>
+      できるようになりました。
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <a href="https://cloud.google.com/anthos-config-management/docs?hl=ja">
+       Anthos Config Management
+      </a>
+      バージョン 0.11.6 が利用可能になりました。
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Stackdriver Logging が各ノードで有効になりました。デフォルトでは、ロギング エージェントは、コントロール プレーン サービス、クラスタ API、vSphere コントローラ、Calico、BIG-IP コントローラ、Envoy プロキシ、Connect、Anthos Config Management、Prometheus サービス、Grafana サービス、Istio コントロール プレーン、Docker のログのみを GCP プロジェクトに複製します。アプリケーション コンテナ ログはデフォルトで除外されますが、必要に応じて有効にできます。
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      Stackdriver Prometheus Sidecar は、ロギング エージェントと同じコンポーネントの指標を取得します。
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <a href="https://kubernetes.io/docs/concepts/services-networking/network-policies/">
+       Kubernetes ネットワーク ポリシー
+      </a>
+      がサポートされるようになりました。
+     </p>
+    </div>
+    <h3 data-text="変更" id="changes_9" tabindex="0">
+     変更
+    </h3>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      クラスタ仕様の IP ブロックを更新して、特定のクラスタの IP 範囲を拡張できるようになりました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      アルファ版でインストールしたクラスタがベータ版後に Google から接続解除された場合は、再度接続する必要があることがあります。
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/installation/registering-a-user-cluster?hl=ja">
+       手動によるユーザー クラスタの登録
+      </a>
+      をご覧ください。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/installation/getting-started?hl=ja">
+       スタートガイド
+      </a>
+      が更新され、サービス アカウントを有効にして
+      <code dir="ltr" translate="no">
+       gkectl prepare
+      </code>
+      を実行する手順が追加されました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       gkectl diagnose snapshot
+      </code>
+      が構成データのみを収集し、ログを除外するようになりました。このツールは、サポートケースを開く前に環境の詳細を取得するために使用されます。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      クラスタ作成時の F5 BIG-IP のオプションの SNAT プール名構成のサポート。これを使用して、
+      <a class="external" href="https://clouddocs.f5.com/products/connectors/k8s-bigip-ctlr/v1.8/">
+       F5 BIG-IP コントローラ
+      </a>
+      で「--vs-snat-pool-name」の値を設定できます。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      管理クラスタで実行されるアドオンの VIP を指定しなければならなくなりました。
+     </p>
+    </div>
+    <h3 data-text="修正済み" id="fixes_5" tabindex="0">
+     修正済み
+    </h3>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      クラスタのサイズ変更操作が改善され、意図しないノードの削除が防止されるようになりました。
+     </p>
+    </div>
+    <h2 data-text="2019 年 2 月 7 日" id="february_7_2019" tabindex="0">
+     2019 年 2 月 7 日
+    </h2>
+    <p>
+     GKE on-prem アルファ版バージョン 1.3 が利用可能になりました。このリリースには次の変更が含まれています。
+    </p>
+    <h3 data-text="新機能" id="new-features_12" tabindex="0">
+     新機能
+    </h3>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      インストール時に、YAML ファイルに
+      <code dir="ltr" translate="no">
+       nodeip
+      </code>
+      ブロックを指定して静的 IPAM を構成できるようになりました。
+     </p>
+    </div>
+    <h3 data-text="変更" id="changes_10" tabindex="0">
+     変更
+    </h3>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      vSphere データストアに 100 GB のディスクをプロビジョニングしなければならなくなりました。GKE on-prem はこのディスクを使用して、重要なデータ（etcd など）を保存します。
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/requirements?hl=ja">
+       システム要件
+      </a>
+      でご確認ください。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       nodeip
+      </code>
+      ブロックに小文字のホスト名のみを指定できるようになりました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      GKE on-prem でユーザー クラスタに一意の名前が適用されるようになりました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Istio エンドポイントを使用する指標エンドポイントと API は、mTLS とロールベースのアクセス制御を使用して保護されるようになりました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Grafana による外部通信が無効になりました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Prometheus と Alertmanager のヘルスチェックを改善しました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Prometheus がセキュリティ保護されたポートを使用して指標を取得するようになりました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Grafana ダッシュボードに関するアップデート。
+     </p>
+    </div>
+    <h3 data-text="既知の問題" id="known-issues_10" tabindex="0">
+     既知の問題
+    </h3>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      vCenter ユーザー アカウントで
+      <code dir="ltr" translate="no">
+       DOMAIN\USER
+      </code>
+      のような形式を使用している場合に、バックスラッシュ（
+      <code dir="ltr" translate="no">
+       DOMAIN\\USER
+      </code>
+      ）をエスケープする必要がある場合があります。インストール中にユーザー アカウントを入力するよう求められた場合に、必ずこれを実行してください。
+     </p>
+    </div>
+    <h2 data-text="2019 年 1 月 23 日" id="january_23_2019" tabindex="0">
+     2019 年 1 月 23 日
+    </h2>
+    <p>
+     GKE on-prem アルファ版バージョン 1.2.1 が利用可能になりました。このリリースには次の変更が含まれています。
+    </p>
+    <h3 data-text="新機能" id="new-features_13" tabindex="0">
+     新機能
+    </h3>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       gkectl
+      </code>
+      を使用して
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.1/how-to/administration/deleting-an-admin-cluster?hl=ja">
+       管理クラスタを削除
+      </a>
+      できるようになりました。
+     </p>
+    </div>
+    <h3 data-text="変更" id="changes_11" tabindex="0">
+     変更
+    </h3>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       gkectl diagnose snapshot
+      </code>
+      コマンドで、リモート コマンドの結果とファイルのスナップショットの取得中にノードを指定できるようになりました。
+     </p>
+    </div>
+    <h2 data-text="2019 年 1 月 14 日" id="january_14_2019" tabindex="0">
+     2019 年 1 月 14 日
+    </h2>
+    <p>
+     GKE on-prem アルファ版バージョン 1.1.2 が利用可能になりました。このリリースには次の変更が含まれています。
+    </p>
+    <h3 data-text="新機能" id="new-features_14" tabindex="0">
+     新機能
+    </h3>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       gkectl prepare
+      </code>
+      コマンドで、GKE on-prem のコンテナ イメージの pull および push ができるようになりました。そのため、
+      <code dir="ltr" translate="no">
+       populate_registry.sh
+      </code>
+      スクリプトは非推奨になります。
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       gkectl prepare
+      </code>
+      で、vSphere クラスタとリソースプールに関する情報を入力するように求められるようになりました。
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       gkectl create
+      </code>
+      コマンドで、ユーザー クラスタを作成して既存の管理コントロール プレーンに追加できるようになりました。これは、クラスタの作成時にプロンプトが表示されたときに、既存の kubeconfig ファイルを渡すことにより達成できます。
+     </p>
+    </div>
+    <div class="release-feature">
+     <strong>
+      FEATURE:
+     </strong>
+     <p>
+      クラスタの作成時に、管理者クラスタとユーザー クラスタの Ingress TLS Secret を渡すことができるようになりました。次のプロンプトが表示されます。
+     </p>
+     <p>
+      <code dir="ltr" translate="no">
+       Do you want to use TLS for Admin Control Plane/User Cluster ingress?
+      </code>
+     </p>
+     <p>
+      TLS Secret と証明書を指定すると、
+      <code dir="ltr" translate="no">
+       gkectl
+      </code>
+      で Ingress TLS を設定できます。TLS のインストールでは、HTTP は自動的に無効になりません。
+     </p>
+    </div>
+    <h3 data-text="変更" id="changes_12" tabindex="0">
+     変更
+    </h3>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      GKE On-Prem で Kubernetes バージョン
+      <strong>
+       1.11.2-gke.19
+      </strong>
+      が実行されるようになりました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      GKE On-Prem のデフォルトのフットプリントが変更されました。
+     </p>
+     <ul>
+      <li>
+       <p>
+        ユーザー クラスタ ノードの最小メモリ要件が 8,192 MB になりました。
+       </p>
+      </li>
+     </ul>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      GKE On-Prem で minikube バージョン
+      <strong>
+       0.28.0
+      </strong>
+      が実行されるようになりました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      GKE Policy Management がバージョン
+      <strong>
+       0.11.1
+      </strong>
+      にアップグレードされました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       gkectl
+      </code>
+      で、デフォルトでプロキシ構成を指定するように求められなくなりました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      ユーザー クラスタの名前空間には、
+      <code dir="ltr" translate="no">
+       cluster-api-etcd-metrics-config
+      </code>
+      、
+      <code dir="ltr" translate="no">
+       kube-etcd-metrics-config
+      </code>
+      、
+      <code dir="ltr" translate="no">
+       kube-apiserver-config
+      </code>
+      の 3 つの新しい ConfigMap リソースがあります。GKE on-prem はこれらのファイルを使用して、指標プロキシ コンテナをすばやくブートストラップします。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      kube-apiserver イベントがイベントの etcd に配置されるようになりました。kube-etcd イベントはユーザー クラスタの名前空間に表示されます。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      クラスタ API コントローラでリーダー選択が使用されるようになりました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      vSphere の認証情報が認証情報ファイルから取得されるようになりました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       gkectl diagnose
+      </code>
+      コマンドが管理者クラスタとユーザー クラスタの両方で機能するようになりました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       gkectl diagnose snapshot
+      </code>
+      で、ノード上のリモート ファイルのスナップショット、ノード上のリモート コマンドの結果、および Prometheus クエリを取得できるようになりました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       gkectl diagnose snapshot
+      </code>
+      が複数の並列スレッドでスナップショットを取得できるようになりました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       gkectl diagnose snapshot
+      </code>
+      で、スナップショットの結果から除外する単語を指定できるようになりました。
+     </p>
+    </div>
+    <h3 data-text="修正済み" id="fixes_6" tabindex="0">
+     修正済み
+    </h3>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      予期しないネットワーク呼び出しを引き起こした minikube キャッシュの問題を修正しました。
+     </p>
+    </div>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      F5 BIG-IP 認証情報の取得に関する問題を修正しました。環境変数を使用せずに認証情報ファイルから認証情報を読み取るようになりました。
+     </p>
+    </div>
+    <h3 data-text="既知の問題" id="known-issues_11" tabindex="0">
+     既知の問題
+    </h3>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      <code dir="ltr" translate="no">
+       gkectl prepare
+      </code>
+      を実行すると、次の
+      <a class="external" href="https://github.com/vmware/govmomi">
+       <code dir="ltr" translate="no">
+        govmomi
+       </code>
+      </a>
+      警告が表示されることがあります。
+     </p>
+     <p>
+      <code dir="ltr" translate="no">
+       Warning: Line 102: Unable to parse 'enableMPTSupport' for attribute 'key' on element 'Config'
+      </code>
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      ユーザー クラスタのサイズを変更すると、意図しないノードの削除や再作成が発生する可能性があります。
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      PersistentVolumes がマウントに失敗し、
+      <code dir="ltr" translate="no">
+       devicePath is empty
+      </code>
+      エラーが発生することがあります。この問題を回避するには、関連する PersistentVolumeClaim を削除してから再作成してください。
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      IPAM アドレス ブロックのサイズ変更はアルファ版ではサポートされません（ノードに静的 IP 割り当てを使用する場合）。これを回避するには、現在より多くの IP アドレスを割り当てることを検討してください。
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      遅いディスクでは、VM の作成がタイムアウトし、デプロイが失敗する可能性があります。このような場合は、すべてのリソースを削除してからもう一度試してください。
+     </p>
+    </div>
+    <h2 data-text="2018 年 12 月 19 日" id="december_19_2018" tabindex="0">
+     2018 年 12 月 19 日
+    </h2>
+    <p>
+     GKE on-prem アルファ版 1.0.4 が利用可能になりました。このリリースには次の変更が含まれています。
+    </p>
+    <h3 data-text="修正済み" id="fixes_7" tabindex="0">
+     修正済み
+    </h3>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      <a class="external" href="https://github.com/kubernetes/kubernetes/issues/71411">
+       CVE-2018-1002105
+      </a>
+      に起因する脆弱性が修正されました。
+     </p>
+    </div>
+    <h2 data-text="2018 年 11 月 30 日" id="november_30_2018" tabindex="0">
+     2018 年 11 月 30 日
+    </h2>
+    <p>
+     GKE on-prem アルファ版 1.0 が利用可能になりました。このリリースには次の変更が含まれています。
+    </p>
+    <h3 data-text="変更" id="changes_13" tabindex="0">
+     変更
+    </h3>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      GKE On-Prem アルファ版 1.0 は Kubernetes 1.11 を実行します。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      GKE On-Prem のデフォルトのフットプリントが変更されました。
+     </p>
+     <ul>
+      <li>
+       管理コントロール プレーンは 3 つのノードを実行し、4 基の CPU と 16 GB のメモリを使用します。
+      </li>
+      <li>
+       ユーザー コントロール プレーンは 1 つのノードを実行し、4 基の CPU と 16 GB のメモリを使用します。
+      </li>
+      <li>
+       ユーザー クラスタは 3 つ以上のノードを実行し、4 基の CPU と 16 GB のメモリを使用します。
+      </li>
+     </ul>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      高可用性 Prometheus セットアップのサポート。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      カスタム アラート マネージャー構成のサポート。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Prometheus が
+      <strong>
+       2.3.2
+      </strong>
+      から
+      <strong>
+       2.4.3
+      </strong>
+      にアップグレードされました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Grafana が
+      <strong>
+       5.0.4
+      </strong>
+      から
+      <strong>
+       5.3.4
+      </strong>
+      にアップグレードされました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      kube-state-metrics が
+      <strong>
+       1.3.1
+      </strong>
+      から
+      <strong>
+       1.4.0
+      </strong>
+      にアップグレードされました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Alert Manager が
+      <strong>
+       1.14.0
+      </strong>
+      から
+      <strong>
+       1.15.2
+      </strong>
+      にアップグレードされました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      node_exporter が
+      <strong>
+       1.15.2
+      </strong>
+      から
+      <strong>
+       1.16.0
+      </strong>
+      にアップグレードされました。
+     </p>
+    </div>
+    <h3 data-text="修正済み" id="fixes_8" tabindex="0">
+     修正済み
+    </h3>
+    <div class="release-fixed">
+     <strong>
+      FIXED:
+     </strong>
+     <p>
+      <a class="external" href="https://github.com/kubernetes/minikube/issues/3208">
+       CVE-2018-1002103
+      </a>
+      に起因する脆弱性が修正されました。
+     </p>
+    </div>
+    <h3 data-text="既知の問題" id="known-issues_12" tabindex="0">
+     既知の問題
+    </h3>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      PersistentVolumes がマウントに失敗し、
+      <code dir="ltr" translate="no">
+       devicePath is empty
+      </code>
+      エラーが発生することがあります。この問題を回避するには、関連する PersistentVolumeClaim を削除してから再作成してください。
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      IPAM アドレス ブロックのサイズ変更はアルファ版ではサポートされません（ノードに静的 IP 割り当てを使用する場合）。これを回避するには、現在より多くの IP アドレスを割り当てることを検討してください。
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      GKE on-prem アルファ版 1.0 は、まだすべての適合性テストに合格していません。
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      管理クラスタごとに作成できるユーザー クラスタは 1 つだけです。追加のユーザー クラスタを作成するには、別の管理者クラスタを作成します。
+     </p>
+    </div>
+    <h2 data-text="2018 年 10 月 31 日" id="october_31_2018" tabindex="0">
+     2018 年 10 月 31 日
+    </h2>
+    <p>
+     GKE on-prem EAP 2.1 が利用可能になりました。このリリースには次の変更が含まれています。
+    </p>
+    <h3 data-text="変更" id="changes_14" tabindex="0">
+     変更
+    </h3>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      管理者クラスタとユーザー クラスタを同時に作成する場合に、管理者クラスタの F5 BIG-IP 認証情報を再利用してユーザー クラスタを作成できるようになりました。また、CLI では BIG-IP 認証情報を指定する必要があります。この要件は、
+      <code dir="ltr" translate="no">
+       --dry-run
+      </code>
+      を使用してスキップすることはできません。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      F5 BIG-IP コントローラが、最新の OSS バージョン 1.7.0 を使用するようにアップグレードされました。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      遅い vSphere マシンの安定性を向上させるために、クラスタマシンの作成タイムアウト時間が 15 分（以前は 5 分）になりました。
+     </p>
+    </div>
+    <h2 data-text="2018 年 10 月 17 日" id="october_17_2018" tabindex="0">
+     2018 年 10 月 17 日
+    </h2>
+    <p>
+     GKE on-prem EAP 2.0 が利用可能になりました。このリリースには次の変更が含まれています。
+    </p>
+    <h3 data-text="変更" id="changes_15" tabindex="0">
+     変更
+    </h3>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      GKE Connect のサポート。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      Monitoring のサポート。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      限定公開レジストリを使用したインストールのサポート。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      F5 BIG-IP で L4 VIP として L7 ロードバランサのフロントエンドをサポート。
+     </p>
+    </div>
+    <div class="release-changed">
+     <strong>
+      CHANGED:
+     </strong>
+     <p>
+      クラスタ ブートストラップ時のノードの静的 IP 割り当てのサポート。
+     </p>
+    </div>
+    <h3 data-text="既知の問題" id="known-issues_13" tabindex="0">
+     既知の問題
+    </h3>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      管理クラスタごとに作成できるユーザー クラスタは 1 つだけです。追加のユーザー クラスタを作成するには、別の管理者クラスタを作成します。
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      クラスタのアップグレードは EAP 2.0 ではサポートされていません。
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      遅いディスクでは、VM の作成がタイムアウトし、デプロイが失敗する可能性があります。このような場合は、すべてのリソースを削除してからもう一度試してください。
+     </p>
+    </div>
+    <div class="release-issue">
+     <strong>
+      ISSUE:
+     </strong>
+     <p>
+      クラスタのブートストラップ プロセスの一環として、存続期間の短い Minikube インスタンスが実行されます。使用される Minikube バージョンにはセキュリティの脆弱性
+      <a class="external" href="https://github.com/kubernetes/minikube/issues/3208">
+       CVE-2018-1002103
+      </a>
+      があります。
+     </p>
+    </div>
+   </section>
+  </div>
+ </article>
+</article>

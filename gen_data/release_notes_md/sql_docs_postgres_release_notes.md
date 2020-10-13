@@ -13,6 +13,70 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloud-sql-postgres-release-
 notes.xml `
 
+##  July 09, 2020
+
+**FEATURE:**
+
+Cloud SQL now supports [ point-in-time recovery (PITR) for PostgreSQL
+](https://cloud.google.com/sql/docs/postgres/backup-recovery/pitr) . Point-in-
+time recovery helps you recover an instance to a specific point in time. For
+example, if an error causes a loss of data, you can recover a database to its
+state before the error occurred.
+
+##  June 23, 2020
+
+**FEATURE:**
+
+Committed use discounts (CUDs) are now available to purchase for Cloud SQL.
+CUDs provide discounted prices in exchange for your commitment to use a
+minimum level of resources for a specified term. With committed use discounts
+for Cloud SQL, you can earn a deep discount off your cost of use in exchange
+for committing to continuously use database instances in a particular region
+for a 1- or 3-year term. See the [ documentation
+](https://cloud.google.com/sql/docs/mysql/cud) for more details.
+
+##  June 08, 2020
+
+**FEATURE:**
+
+Support for [ asia-southeast2
+](https://cloud.google.com/sql/docs/mysql/locations) region (Jakarta).
+
+##  May 21, 2020
+
+**FEATURE:**
+
+PostgreSQL version 12 is now generally available. To start using PostgreSQL
+12, see [ Creating instances
+](https://cloud.google.com/sql/docs/postgres/create-instance) .
+
+##  May 15, 2020
+
+**FEATURE:**
+
+PostgreSQL 9.6 minor version is upgraded to 9.6.16. PostgreSQL 10 minor
+version is upgraded to 10.11. PostgreSQL 11 minor version is upgraded to 11.6.
+PostgreSQL 12 minor version is upgraded to 12.1.
+
+##  May 11, 2020
+
+**FEATURE:**
+
+Cloud SQL has expanded support for PostgreSQL extensions. Eight additional
+PostgreSQL extensions are now available:
+
+  * pageinspect 
+  * pgfincore 
+  * pg_freespacemap 
+  * pg_repack 
+  * pg_visibility 
+  * PL/Proxy 
+  * postgres_fdw 
+  * postgresql-hll 
+
+For information about these newly-added extensions, see [ PostgreSQL
+extensions ](https://cloud.google.com/sql/docs/postgres/extensions) .
+
 ##  April 20, 2020
 
 **FEATURE:**

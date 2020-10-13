@@ -1,7 +1,7 @@
 #  Release notes
 
-This page contains the latest release notes for features and updates to Google
-Cloud Marketplace.
+This page contains the latest release notes for features and updates to Cloud
+Marketplace.
 
 You can see the latest product updates for all of Google Cloud on the [ Google
 Cloud release notes ](/release-notes) page.
@@ -11,6 +11,46 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/gcpmarketplace-release-
 notes.xml `
+
+##  July 13, 2020
+
+**CHANGED:**
+
+The IAM permissions required for purchasing the following solutions from
+Google Cloud Marketplace have changed:
+
+  * Apache Kafka® on Confluent Cloud™ 
+  * DataStax Astra for Apache Cassandra 
+  * Elasticsearch Service on Elastic Cloud 
+  * NetApp Cloud Volumes Service 
+  * Redis Enterprise Cloud 
+
+If you use [ custom roles ](https://cloud.google.com/iam/docs/understanding-
+custom-roles) to purchase these solutions, you must update the custom roles to
+include the permissions described in [ Access Control for Google Cloud
+Marketplace ](https://cloud.google.com/marketplace/docs/access-control) .
+
+Specifically, if your custom role includes the ` billing.subscriptions.create
+` permission, you must update it to include the `
+consumerprocurement.orders.place ` and the `
+consumerprocurement.accounts.create ` permissions.
+
+If you use the [ Billing Administrator
+](https://cloud.google.com/iam/docs/understanding-roles#billing-roles) role to
+purchase these solutions, you don't need to take any action.
+
+##  April 14, 2020
+
+**CHANGED:**
+
+Security software agents on Google Cloud Marketplace are now **Generally
+available** .
+
+Security software agents are typically part of larger security solutions, and
+can be deployed to VM instances in your projects.
+
+[ Learn about Deploying security software agents
+](https://cloud.google.com/marketplace/docs/deploy-security-software-agents) .
 
 ##  February 27, 2020
 

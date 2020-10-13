@@ -8,7 +8,7 @@
   <div class="devsite-article-body clearfix">
    <section class="intro">
     <p>
-     This page documents production updates to Anthos GKE on-prem. You can
+     This page documents production updates to GKE on-prem. You can
     periodically check this page for announcements about new or updated features,
     bug fixes, known issues, and deprecated functionality.
     </p>
@@ -57,6 +57,856 @@
    </section>
    <section class="releases">
     <section class="releases">
+     <h2 data-text="August 20, 2020" id="August_20_2020" tabindex="0">
+      August 20, 2020
+     </h2>
+     <div class="release-feature" id="cc2c2e62">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Anthos GKE on-prem 1.4.2-gke.3 is now available. To upgrade, see
+       <a href="https://cloud.google.comanthos/gke/docs/on-prem/how-to/upgrading">
+        Upgrading GKE on-prem
+       </a>
+       . GKE on-prem 1.4.2-gke.3 clusters run on Kubernetes 1.16.11-gke.11.
+      </p>
+     </div>
+     <div class="release-feature" id="367a7ff5">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       GPU support (beta solution in collaboration with Nvidia)
+      </p>
+      <p>
+       <a href="https://cloud.google.com/blog/products/compute/anthos-supports-nvidia-gpus">
+        In partnership with Nvidia
+       </a>
+       , users can now manually attach a GPU to a worker node VM to run GPU workloads. This requires using the
+       <a href="https://github.com/NVIDIA/gpu-operator">
+        open source Nvidia GPU operator
+       </a>
+       .
+      </p>
+      <p>
+       <strong>
+        Note:
+       </strong>
+       Manually attached GPUs do not persist through node lifecycle events. You must manually re-attach them. This is a beta solution and can be used for evaluation and proof of concept.
+      </p>
+     </div>
+     <div class="release-changed" id="d6408e7d">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       The Ubuntu image is upgraded to include the newest packages.
+      </p>
+     </div>
+     <div class="release-changed" id="270371fb">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <code dir="ltr" translate="no">
+        gkectl delete loadbalancer
+       </code>
+       is updated to support the new version of configuration files for admin and user clusters.
+      </p>
+     </div>
+     <div class="release-fixed" id="69546256">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       <strong>
+        Fixes:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        Resolved a few incorrect Kubelet Metrics' names collected by Prometheus.
+       </li>
+       <li>
+        Updated restarting machines process during admin cluster upgrade to make the upgrade process more resilient to transient connection issues.
+       </li>
+       <li>
+        Resolved a preflight check OS image validation error when using a non-default vSphere folder for cluster creation; the OS image template is expected to be in that folder.
+       </li>
+       <li>
+        Resolved a
+        <code dir="ltr" translate="no">
+         gkectl upgrade loadbalancer
+        </code>
+        issue to avoid validating the upgraded SeesawGroup. This fix lets the existing SeesawGroup config be updated without negatively affecting the upgrade process.
+       </li>
+       <li>
+        Resolved an issue where ClientConfig CRD is deleted when the upgrade to the latest version is run multiple times.
+       </li>
+       <li>
+        Resolved a
+        <code dir="ltr" translate="no">
+         gkectl update credentials vsphere
+        </code>
+        issue where the vsphere-metrics-exporter was using the old credentials even after updating the credentials.
+       </li>
+       <li>
+        Resolved an issue where the VIP preflight check reported a user cluster add-on load balancer IP false positive.
+       </li>
+       <li>
+        Fixed
+        <code dir="ltr" translate="no">
+         gkeadm
+        </code>
+        updating config after upgrading on Windows, specifically for the
+        <code dir="ltr" translate="no">
+         gkeOnPremVersion
+        </code>
+        and
+        <code dir="ltr" translate="no">
+         bundlePath
+        </code>
+        fields.
+       </li>
+       <li>
+        Automatically mount the data disk after rebooting on admin workstations created using
+        <code dir="ltr" translate="no">
+         gkeadm
+        </code>
+        1.4.0 and later.
+       </li>
+       <li>
+        Reverted thin disk provisioning change for boot disks in 1.4.0 and 1.4.1 on all normal (excludes test VMs) cluster nodes.
+       </li>
+       <li>
+        Removed vCenter Server access check from user cluster nodes.
+       </li>
+      </ul>
+     </div>
+     <h2 data-text="July 30, 2020" id="July_30_2020" tabindex="0">
+      July 30, 2020
+     </h2>
+     <div class="release-feature" id="c63e2f9e">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Anthos GKE on-prem 1.3.3-gke.0 is now available. To upgrade, see
+       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading">
+        Upgrading GKE on-prem
+       </a>
+       . GKE on-prem 1.3.3-gke.0 clusters run on Kubernetes 1.15.12-gke.9.
+      </p>
+     </div>
+     <div class="release-fixed" id="f4a0ff0b">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       <strong>
+        Fixes:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        Fixed
+        <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8559">
+         CVE-2020-8559
+        </a>
+        described in
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/security-bulletins#gcp-2020-009">
+         Security bulletins
+        </a>
+        .
+       </li>
+       <li>
+        Updated the git-sync image to fix security vulnerability
+        <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5482">
+         CVE-2019-5482
+        </a>
+        .
+       </li>
+       <li>
+        Updated the kindest/node image to fix security vulnerability
+        <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-13777">
+         CVE-2020-13777
+        </a>
+        .
+       </li>
+      </ul>
+     </div>
+     <h2 data-text="July 23, 2020" id="July_23_2020" tabindex="0">
+      July 23, 2020
+     </h2>
+     <div class="release-feature" id="bab62f13">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Anthos GKE on-prem 1.4.1-gke.1 is now available. To upgrade, see
+       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading">
+        Upgrading GKE on-prem
+       </a>
+       . GKE on-prem 1.4.1-gke.1 clusters run on Kubernetes 1.16.9-gke.14.
+      </p>
+     </div>
+     <div class="release-feature" id="d9fc1f89">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <strong>
+        Anthos Identity Service LDAP authentication is now available in Alpha for GKE on-prem
+       </strong>
+      </p>
+      <p>
+       Contact support if you are interested in a trial of the LDAP authentication feature in GKE on-prem.
+      </p>
+     </div>
+     <div class="release-feature" id="72615558">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <strong>
+        Support for F5 BIG-IP load balancer credentials update
+       </strong>
+      </p>
+      <p>
+       This preview release enables customers to manage and update the F5 BIG-IP load balancer credentials by using the
+       <code dir="ltr" translate="no">
+        gkectl update credentials f5bigip
+       </code>
+       command.
+      </p>
+     </div>
+     <div class="release-changed" id="29a6cd97">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <strong>
+        Functionality changes:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        The Ubuntu image is upgraded to include the newest packages.
+       </li>
+       <li>
+        Preflight checks are updated to validate that the
+        <code dir="ltr" translate="no">
+         gkectl
+        </code>
+        version matches the target cluster version for cluster creation and upgrade.
+       </li>
+       <li>
+        Preflight checks are updated to validate the Window OS version used for running
+        <code dir="ltr" translate="no">
+         gkeadm
+        </code>
+        . The
+        <code dir="ltr" translate="no">
+         gkeadm
+        </code>
+        command-line tool is only available for Linux, Windows 10, and Windows Server 2019.
+       </li>
+       <li>
+        <code dir="ltr" translate="no">
+         gkeadm
+        </code>
+        is updated to populate
+        <code dir="ltr" translate="no">
+         network.vCenter.networkName
+        </code>
+        in both
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/admin-cluster-configuration-file">
+         admin cluster
+        </a>
+        and
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/user-cluster-configuration-file">
+         user cluster
+        </a>
+        configuration files.
+       </li>
+      </ul>
+     </div>
+     <div class="release-fixed" id="c691282a">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       <strong>
+        Fixes:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        Removed the static IP used by admin workstation after upgrade from
+        <code dir="ltr" translate="no">
+         ~/.ssh/known_hosts
+        </code>
+        to avoid manual workaround.
+       </li>
+       <li>
+        Resolved a known issue that
+        <code dir="ltr" translate="no">
+         network.vCenter.networkName
+        </code>
+        is not populated in the user cluster configuration file during user cluster creation.
+       </li>
+       <li>
+        Resolved a user cluster upgrade–related issue to only wait for the machines and pods in the same namespace within the cluster to be ready to complete the cluster upgrade.
+       </li>
+       <li>
+        Updated the default value for
+        <code dir="ltr" translate="no">
+         ingressHTTPNodePort
+        </code>
+        and
+        <code dir="ltr" translate="no">
+         ingressHTTPSNodePort
+        </code>
+        in the
+        <code dir="ltr" translate="no">
+         loadBalancer.manualLB
+        </code>
+        section of the
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/admin-cluster-configuration-file">
+         admin cluster configuration
+        </a>
+        file.
+       </li>
+       <li>
+        Fixed
+        <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8558">
+         CVE-2020-8558
+        </a>
+        and
+        <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8559">
+         CVE-2020-8559
+        </a>
+        described in
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/security-bulletins#gcp-2020-009">
+         Security bulletins
+        </a>
+        .
+       </li>
+       <li>
+        Logging and monitoring: Resolved an issue that stackdriver-log-forwarder was not scheduled on the master node on the admin cluster.
+       </li>
+       <li>
+        Resolved the following known issues published in the 1.4.0 release notes:
+        <ul>
+         <li>
+          If a user cluster is created without any node pool named the same as the cluster, managing the node pools using
+          <code dir="ltr" translate="no">
+           gkectl update cluster
+          </code>
+          would fail. To avoid this issue, when creating a user cluster, you need to name one node pool the same as the cluster.
+         </li>
+         <li>
+          The
+          <code dir="ltr" translate="no">
+           gkectl
+          </code>
+          command might exit with panic when converting config from "/path/to/config.yaml" to v1 config files. When that occurs, you can resolve the issue by removing the unused bundled load balancer section ("loadbalancerconfig") in the config file.
+         </li>
+         <li>
+          When using gkeadm to upgrade an admin workstation on Windows, the info file filled out from this template needs to have the line endings converted to use Unix line endings (LF) instead of Windows line endings (CRLF). You can use Notepad++ to convert the line endings.
+         </li>
+         <li>
+          When running a preflight check for
+          <code dir="ltr" translate="no">
+           config.yaml
+          </code>
+          that contains both
+          <code dir="ltr" translate="no">
+           admincluster
+          </code>
+          and
+          <code dir="ltr" translate="no">
+           usercluster
+          </code>
+          sections, the "data disk" check in the "user cluster vCenter" category might fail with the message:
+          <code dir="ltr" translate="no">
+           [FAILURE] Data Disk: Data disk is not in a folder. Use a data disk in a folder when using vSAN datastore.
+          </code>
+          User clusters don't use data disks, and it's safe to ignore the failure.
+         </li>
+         <li>
+          When upgrading the admin cluster, the preflight check for the user cluster OS image validation will fail. The user cluster OS image is not used in this case, and it's safe to ignore the "User Cluster OS Image Exists"  failure in this case.
+         </li>
+         <li>
+          User cluster creation and upgrade might be stuck with the error:
+          <code dir="ltr" translate="no">
+           Failed to update machine status: no matches for kind "Machine" in version "cluster.k8s.io/v1alpha1".
+          </code>
+          To resolve this, you need to delete the clusterapi pod in the user cluster namespace in the admin cluster.
+         </li>
+        </ul>
+       </li>
+      </ul>
+     </div>
+     <div class="release-issue" id="2b4ec957">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        Known issues:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        During reboots, the data disk is not remounted on the admin workstation when using GKE on-prem 1.4.0 or 1.4.1 because the startup script is not run after the initial creation. To resolve this, you can run
+        <code dir="ltr" translate="no">
+         sudo mount /dev/sdb1 /home/ubuntu
+        </code>
+        .
+       </li>
+      </ul>
+     </div>
+     <h2 data-text="June 25, 2020" id="June_25_2020" tabindex="0">
+      June 25, 2020
+     </h2>
+     <div class="release-feature" id="6d5edfc9">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Anthos GKE on-prem 1.4.0-gke.13 is now available. To upgrade, see
+       <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading">
+        Upgrading GKE on-prem
+       </a>
+       . GKE on-prem 1.4.0-gke.13 clusters run on Kubernetes 1.16.8-gke.6.
+      </p>
+     </div>
+     <div class="release-feature" id="20e8bc12">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <strong>
+        Updated to Kubernetes 1.16:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        Please note that Kubernetes 1.16 has deprecated some of its APIs. For more information, see
+        <a href="https://cloud.google.com/kubernetes-engine/docs/deprecations/apis-1-16">
+         Kubernetes 1.16 deprecated APIs
+        </a>
+        .
+       </li>
+      </ul>
+     </div>
+     <div class="release-feature" id="1ce044f0">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <strong>
+        Simplified upgrade:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        <p>
+         This release provides a simplified upgrade experience via the following changes:
+        </p>
+        <ul>
+         <li>
+          Automatically migrate information from the previous version of admin workstation using
+          <code dir="ltr" translate="no">
+           gkeadm
+          </code>
+          .
+         </li>
+         <li>
+          Extend preflight checks to better prepare for upgrades.
+         </li>
+         <li>
+          Support skip version upgrade to enable users to upgrade the cluster from any patch release of a minor release to any patch release of the next minor release. For more information about the detailed upgrade procedure and limitations, see
+          <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading">
+           upgrading GKE on-prem
+          </a>
+          .
+         </li>
+         <li>
+          The
+          <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading">
+           alternate upgrade scenario for Common Vulnerabilities and Exposures
+          </a>
+          has been deprecated. All upgrades starting with version 1.3.2 need to upgrade the entire admin workstation.
+         </li>
+         <li>
+          The bundled load balancer is now automatically upgraded during cluster upgrade.
+         </li>
+        </ul>
+       </li>
+      </ul>
+     </div>
+     <div class="release-feature" id="872b803b">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <strong>
+        Improved installation and cluster configuration:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        The user cluster
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/user-cluster-basic#nodepoolsname">
+         node pools
+        </a>
+        feature is now generally available.
+       </li>
+       <li>
+        <p>
+         This release improves the installation experience via the following changes:
+        </p>
+        <ul>
+         <li>
+          Supports
+          <code dir="ltr" translate="no">
+           gkeadm
+          </code>
+          for Windows OS.
+         </li>
+         <li>
+          Introduces a standalone command for creating admin clusters.
+         </li>
+        </ul>
+       </li>
+       <li>
+        <p>
+         Introduce a new version of configuration files to separate admin and user cluster configurations and commands. This is designed to provide a consistent user experience and better configuration management.
+        </p>
+       </li>
+      </ul>
+     </div>
+     <div class="release-feature" id="90e2b4c5">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <strong>
+        Improved disaster recovery capabilities:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        This release provides enhanced disaster recovery functionality to
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/backing-up#user_cluster_backups">
+         support backup and restore
+        </a>
+        HA user cluster with etcd.
+       </li>
+       <li>
+        This release also provides a manual process to recover a single etcd replica failure in a HA cluster without any data loss.
+       </li>
+      </ul>
+     </div>
+     <div class="release-feature" id="b7bb2217">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       <strong>
+        Enhanced monitoring with Cloud Monitoring (formerly Stackdriver):
+       </strong>
+      </p>
+      <ul>
+       <li>
+        <p>
+         This release provides better product monitoring and resource usage management via the following changes:
+        </p>
+        <ul>
+         <li>
+          Introduces a
+          <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/logging-and-monitoring#dashboards">
+           default monitoring dashboard
+          </a>
+          .
+         </li>
+         <li>
+          Enables vSphere resource metrics collection by default.
+         </li>
+        </ul>
+       </li>
+       <li>
+        <p>
+         Ubuntu Image now conforms with PCI DSS, NIST Baseline High, and DoD SRG IL2 compliance configurations.
+        </p>
+       </li>
+      </ul>
+     </div>
+     <div class="release-changed" id="2e1bba1b">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <strong>
+        Functionality changes:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        Enabled Horizontal Pod Autoscaler (HPA) for the Istio ingress gateway.
+       </li>
+       <li>
+        Removed ingress controller from admin cluster.
+       </li>
+       <li>
+        Consolidated sysctl configs with Google Kubernetes Engine.
+       </li>
+       <li>
+        Added etcd defrag pod in admin cluster and user cluster, which will be responsible for monitoring etcd's database size and defragmenting it as needed. This helps reclaim etcd database size and recover etcd when its disk space is exceeded.
+       </li>
+      </ul>
+     </div>
+     <div class="release-changed" id="08498e2d">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <strong>
+        Support for a vSphere folder (Preview):
+       </strong>
+      </p>
+      <ul>
+       <li>
+        This release allows customers to install GKE on-prem in a vSphere folder, reducing the scope of the permission required for the vSphere user.
+       </li>
+      </ul>
+     </div>
+     <div class="release-changed" id="90ae9b46">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       <strong>
+        Improved scale:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        This release improves the cluster scalability by supporting
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/quotas">
+         a maximum of 10 instead of 5 user clusters for each admin cluster
+        </a>
+        .
+       </li>
+      </ul>
+     </div>
+     <div class="release-fixed" id="33ed1474">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       <strong>
+        Fixes:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        Fixed the issue of the user cluster's Kubernetes API server not being able to connect to kube-etcd after admin nodes and user cluster master reboot. In previous versions, kube-dns in admin clusters was configured through kubeadm. In 1.4, this configuration is moved from kubeadm to bundle, which enables deploying two kube-dns replicas on two admin nodes. As a result, a single admin node reboot/failure won't disrupt user cluster API access.
+       </li>
+       <li>
+        Fixed the issue that controllers such as calico-typha can't be scheduled on an admin cluster master node, when the admin cluster master node is under disk pressure.
+       </li>
+       <li>
+        Resolved pods failure with MatchNodeSelector on admin cluster master after node reboot or kubelet restart.
+       </li>
+       <li>
+        Tuned etcd quota limit settings based on the etcd data disk size and the settings in GKE Classic.
+       </li>
+      </ul>
+     </div>
+     <div class="release-issue" id="ddd737da">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       <strong>
+        Known issues:
+       </strong>
+      </p>
+      <ul>
+       <li>
+        If a user cluster is created without any node pool named the same as the cluster, managing the node pools using
+        <code dir="ltr" translate="no">
+         gkectl update cluster
+        </code>
+        would fail. To avoid this issue, when creating a user cluster, you need to name one node pool the same as the cluster.
+       </li>
+       <li>
+        The
+        <code dir="ltr" translate="no">
+         gkectl
+        </code>
+        command might exit with panic when converting config from "/path/to/config.yaml" to v1 config files. When that occurs, you can resolve the issue by removing the unused bundled load balancer section ("loadbalancerconfig") in the config file.
+       </li>
+       <li>
+        When using gkeadm to upgrade an admin workstation on Windows, the info file filled out from this template needs to have the line endings converted to use Unix line endings (LF) instead of Windows line endings (CRLF). You can use Notepad++ to convert the line endings.
+       </li>
+       <li>
+        After upgrading an admin workstation with a static IP using gkeadm, you need to run
+        <code dir="ltr" translate="no">
+         ssh-keygen -R &lt;admin-workstation-ip&gt;
+        </code>
+        to remove the IP from the known hosts, because the host identification changed after VM re-creation.
+       </li>
+       <li>
+        We have added Horizontal Pod Autoscaler for istio-ingress and istio-pilot deployments. HPA can scale up unnecessarily for istio-ingress and istio-pilot deployments during cluster upgrades. This happens because the metrics server is not able to report usage of some pods (newly created and terminating; for more information, see
+        <a href="https://github.com/kubernetes/kubernetes/issues/72775">
+         this Kubernetes issue
+        </a>
+        ). No actions are needed; scale down will happen five minutes after the upgrade finishes.
+       </li>
+       <li>
+        When running a preflight check for
+        <code dir="ltr" translate="no">
+         config.yaml
+        </code>
+        that contains both
+        <code dir="ltr" translate="no">
+         admincluster
+        </code>
+        and
+        <code dir="ltr" translate="no">
+         usercluster
+        </code>
+        sections, the "data disk" check in the "user cluster vCenter" category might fail with the message:
+        <code dir="ltr" translate="no">
+         [FAILURE] Data Disk: Data disk is not in a folder. Use a data disk in a folder when using vSAN datastore.
+        </code>
+        User clusters don't use data disks, and it's safe to ignore the failure.
+       </li>
+       <li>
+        When upgrading the admin cluster, the preflight check for the user cluster OS image validation will fail. The user cluster OS image is not used in this case, and it's safe to ignore the "User Cluster OS Image Exists"  failure in this case.
+       </li>
+       <li>
+        A Calico-node pod might be stuck in an unready state after node IP changes. To resolve this issue, you need to delete any unready Calico-node pods.
+       </li>
+       <li>
+        The BIG-IP controller might fail to update F5 VIP after any admin cluster master IP changes. To resolve this, you need to use the admin cluster master node IP in kubeconfig and delete the bigip-controller pod from the admin master.
+       </li>
+       <li>
+        The stackdriver-prometheus-k8s pod could enter a crashloop after host failure. To resolve this, you need to remove any corrupted PersistentVolumes that the stackdriver-prometheus-k8s pod uses.
+       </li>
+       <li>
+        After node IP change, pods running with hostNetwork don't get podIP corrected until Kubelet restarts. To resolve this, you need to restart Kubelet or delete those pods using previous IPs.
+       </li>
+       <li>
+        An admin cluster fails after any admin cluster master node IP address changes. To avoid this, you should avoid changing the admin master IP address if possible by using a static IP or a non-expired DHCP lease instead. If you encounter this issue and need further assistance, please contact Google Support.
+       </li>
+       <li>
+        User cluster upgrade might be stuck with the error:
+        <code dir="ltr" translate="no">
+         Failed to update machine status: no matches for kind "Machine" in version "cluster.k8s.io/v1alpha1".
+        </code>
+        To resolve this, you need to delete the clusterapi pod in the user cluster namespace in the admin cluster.
+       </li>
+      </ul>
+     </div>
+     <div class="release-issue" id="40c10ea4">
+      <strong>
+       ISSUE:
+      </strong>
+      <p>
+       If your vSphere environment has fewer than three hosts, user cluster upgrade might fail. To resolve this, you need to disable
+       <code dir="ltr" translate="no">
+        antiAffinityGroups
+       </code>
+       in the cluster config before upgrading the user cluster. For v1 config, please set
+       <code dir="ltr" translate="no">
+        antiAffinityGroups.enabled = false
+       </code>
+       ; for v0 config, please set
+       <code dir="ltr" translate="no">
+        usercluster.antiaffinitygroups.enabled = false
+       </code>
+       .
+      </p>
+      <p>
+       <strong>
+        Note:
+       </strong>
+       Disabling
+       <code dir="ltr" translate="no">
+        antiAffinityGroups
+       </code>
+       in the cluster config during upgrade is only allowed for the 1.3.2 to 1.4.
+       <em>
+        x
+       </em>
+       upgrade to resolve the upgrade issue; the support might be removed in the future.
+      </p>
+     </div>
+     <h2 data-text="May 21, 2020" id="May_21_2020" tabindex="0">
+      May 21, 2020
+     </h2>
+     <div class="release-feature" id="540f5e71">
+      <strong>
+       FEATURE:
+      </strong>
+      <p>
+       Workload Identity is now available in Alpha for GKE on-prem. Please contact support if you are interested in a trial of Workload Identity in GKE on-prem.
+      </p>
+     </div>
+     <div class="release-changed" id="840cbab5">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Preflight check for VM internet and Docker Registry access validation is updated.
+      </p>
+     </div>
+     <div class="release-changed" id="77455072">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       Preflight check for internet validation is updated to not follow redirect. If your organization requires outbound traffic to pass through a proxy server, you no longer need to whitelist the following addresses in your proxy server:
+      </p>
+      <ul>
+       <li>
+        console.cloud.google.com
+       </li>
+       <li>
+        cloud.google.com
+       </li>
+      </ul>
+     </div>
+     <div class="release-changed" id="117739f6">
+      <strong>
+       CHANGED:
+      </strong>
+      <p>
+       The Ubuntu image is upgraded to include the newest packages.
+      </p>
+     </div>
+     <div class="release-fixed" id="f404adb4">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Upgraded the Istio image to version 1.4.7 to fix a security vulnerability.
+      </p>
+     </div>
+     <div class="release-fixed" id="1289239e">
+      <strong>
+       FIXED:
+      </strong>
+      <p>
+       Some ConfigMaps in the admin cluster were refactored to Secrets to allow for more granular access control of sensitive configuration data.
+      </p>
+     </div>
      <h2 data-text="April 23, 2020" id="April_23_2020" tabindex="0">
       April 23, 2020
      </h2>
@@ -1110,7 +1960,7 @@ while decoding JSON: json: unknown field "proxy"
        CHANGED:
       </strong>
       <p>
-       From the admin workstation, gcloud now requires that you log in to gcloud with a Google Cloud user account. The user account should have at least the Viewer Cloud IAM role in all Google Cloud projects associated with your clusters.
+       From the admin workstation, gcloud now requires that you log in to gcloud with a Google Cloud user account. The user account should have at least the Viewer IAM role in all Google Cloud projects associated with your clusters.
       </p>
      </div>
      <div class="release-changed" id="a25cf7e9">
@@ -2506,7 +3356,7 @@ path '*' resolves to multiple datacenters
       <p>
        Grant your service account the gkehub.connect role:
       </p>
-      <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects add-iam-policy-binding <var class="edit">[PROJECT_ID]</var> \n      --member="serviceAccount:<var class="edit">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit">[PROJECT_ID]</var>.iam.gserviceaccount.com" \n      --role="roles/gkehub.connect"</pre>
+      <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects add-iam-policy-binding <var class="edit" translate="no">[PROJECT_ID]</var> \n      --member="serviceAccount:<var class="edit" translate="no">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit" translate="no">[PROJECT_ID]</var>.iam.gserviceaccount.com" \n      --role="roles/gkehub.connect"</pre>
       <p>
        If your service account has the old
        <code dir="ltr" translate="no">
@@ -2514,7 +3364,7 @@ path '*' resolves to multiple datacenters
        </code>
        role, remove the old role:
       </p>
-      <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects remove-iam-policy-binding <var class="edit">[PROJECT_ID]</var> \n      --member="serviceAccount:<var class="edit">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit">[PROJECT_ID]</var>.iam.gserviceaccount.com" \n      --role="roles/clusterregistry.connect"</pre>
+      <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects remove-iam-policy-binding <var class="edit" translate="no">[PROJECT_ID]</var> \n      --member="serviceAccount:<var class="edit" translate="no">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit" translate="no">[PROJECT_ID]</var>.iam.gserviceaccount.com" \n      --role="roles/clusterregistry.connect"</pre>
       <p>
        Re-register you cluster, or upgrade to GKE On-Prem beta-1.4.
       </p>
@@ -2525,7 +3375,7 @@ path '*' resolves to multiple datacenters
        </a>
        :
       </p>
-      <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud alpha container hub register-cluster <var class="edit">[CLUSTER_NAME]</var> \n      --context=<var class="edit">[USER_CLUSTER_CONTEXT]</var> \n      --service-account-key-file=<var class="edit">[LOCAL_KEY_PATH]</var> \n      --kubeconfig-file=<var class="edit">[KUBECONFIG_PATH]</var> \n      --project=<var class="edit">[PROJECT_ID]</var>
+      <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud alpha container hub register-cluster <var class="edit" translate="no">[CLUSTER_NAME]</var> \n      --context=<var class="edit" translate="no">[USER_CLUSTER_CONTEXT]</var> \n      --service-account-key-file=<var class="edit" translate="no">[LOCAL_KEY_PATH]</var> \n      --kubeconfig-file=<var class="edit" translate="no">[KUBECONFIG_PATH]</var> \n      --project=<var class="edit" translate="no">[PROJECT_ID]</var>
       </pre>
       <p>
        To
@@ -2595,7 +3445,7 @@ path '*' resolves to multiple datacenters
          Secrets in each user cluster's namespace:
         </p>
         <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl get secret create-config -n kube-system -o jsonpath={.data.cfg} | base64 -d &gt; kube-system_create_secret.yaml</pre>
-        <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl get secret create-config -n <var>[USER_CLUSTER_NAME]</var> -o jsonpath={.data.cfg} | base64 -d &gt; <var>[USER_CLUSTER_NAME]</var>_create_secret.yaml</pre>
+        <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl get secret create-config -n <var translate="no">[USER_CLUSTER_NAME]</var> -o jsonpath={.data.cfg} | base64 -d &gt; <var translate="no">[USER_CLUSTER_NAME]</var>_create_secret.yaml</pre>
        </li>
        <li>
         <p>
@@ -2673,7 +3523,7 @@ path '*' resolves to multiple datacenters
          </code>
          file:
         </p>
-        <pre class="devsite-click-to-copy" dir="ltr" translate="no">cat <var>[USER_CLUSTER_NAME]</var>_create_secret.yaml | base64 &gt; <var>[USER_CLUSTER_NAME]</var>_create_secret_create_secret.b64</pre>
+        <pre class="devsite-click-to-copy" dir="ltr" translate="no">cat <var translate="no">[USER_CLUSTER_NAME]</var>_create_secret.yaml | base64 &gt; <var translate="no">[USER_CLUSTER_NAME]</var>_create_secret_create_secret.b64</pre>
         <pre class="devsite-click-to-copy" dir="ltr" translate="no">cat kube-system-cluster_create_secret.yaml | base64 &gt;kube-system-cluster_create_secret.b64</pre>
        </li>
        <li>
@@ -2684,7 +3534,7 @@ path '*' resolves to multiple datacenters
          </code>
          field in each Secret in the cluster with the contents of the corresponding file:
         </p>
-        <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl edit secret create-config -n <var class="edit">[USER_CLUSTER_NAME]</var>
+        <pre class="devsite-click-to-copy" dir="ltr" translate="no">kubectl edit secret create-config -n <var class="edit" translate="no">[USER_CLUSTER_NAME]</var>
   # kubectl edit opens the file in the shell's default text editor
   # Open `first-user-cluster_create_secret.b64` in another editor, and replace
   # the `cfg` value with the copied value
@@ -2771,11 +3621,11 @@ path '*' resolves to multiple datacenters
       <p>
        Grant your service account the gkehub.connect role:
       </p>
-      <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects add-iam-policy-binding <var class="edit">[PROJECT_ID]</var> \n      --member="serviceAccount:<var class="edit">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit">[PROJECT_ID]</var>.iam.gserviceaccount.com" \n      --role="roles/gkehub.connect"</pre>
+      <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects add-iam-policy-binding <var class="edit" translate="no">[PROJECT_ID]</var> \n      --member="serviceAccount:<var class="edit" translate="no">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit" translate="no">[PROJECT_ID]</var>.iam.gserviceaccount.com" \n      --role="roles/gkehub.connect"</pre>
       <p>
        If your service account has the old clusterregistry.connect role, remove the old role:
       </p>
-      <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects remove-iam-policy-binding <var class="edit">[PROJECT_ID]</var> \n      --member="serviceAccount:<var class="edit">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit">[PROJECT_ID]</var>.iam.gserviceaccount.com" \n      --role="roles/clusterregistry.connect"</pre>
+      <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud projects remove-iam-policy-binding <var class="edit" translate="no">[PROJECT_ID]</var> \n      --member="serviceAccount:<var class="edit" translate="no">[SERVICE_ACCOUNT_NAME]</var>@<var class="edit" translate="no">[PROJECT_ID]</var>.iam.gserviceaccount.com" \n      --role="roles/clusterregistry.connect"</pre>
       <p>
        Re-register you cluster, or upgrade to GKE On-Prem beta-1.4.
       </p>
@@ -2786,7 +3636,7 @@ path '*' resolves to multiple datacenters
        </a>
        :
       </p>
-      <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud alpha container hub register-cluster <var class="edit">[CLUSTER_NAME]</var> \n      --context=<var class="edit">[USER_CLUSTER_CONTEXT]</var> \n      --service-account-key-file=<var class="edit">[LOCAL_KEY_PATH]</var> \n      --kubeconfig-file=<var class="edit">[KUBECONFIG_PATH]</var> \n      --project=<var class="edit">[PROJECT_ID]</var>
+      <pre class="devsite-click-to-copy" dir="ltr" translate="no">gcloud alpha container hub register-cluster <var class="edit" translate="no">[CLUSTER_NAME]</var> \n      --context=<var class="edit" translate="no">[USER_CLUSTER_CONTEXT]</var> \n      --service-account-key-file=<var class="edit" translate="no">[LOCAL_KEY_PATH]</var> \n      --kubeconfig-file=<var class="edit" translate="no">[KUBECONFIG_PATH]</var> \n      --project=<var class="edit" translate="no">[PROJECT_ID]</var>
       </pre>
       <p>
        To

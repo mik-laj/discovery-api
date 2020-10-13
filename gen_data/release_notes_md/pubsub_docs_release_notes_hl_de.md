@@ -12,10 +12,52 @@ Pub/Sub-Dienst. Sprachspezifische Updates zu Pub/Sub- [ Client-Bibliothek
 ](https://github.com/googleapis/python-pubsub/releases) , und [ Ruby
 ](https://github.com/googleapis/google-cloud-ruby/releases) .
 
-Für neueste Produktaktualisierungen können Sie die URL dieser Seite in einen [
+Die neuesten Produktaktualisierungen für Google Cloud finden Sie auf der Seite
+mit den [ Google Cloud-Versionshinweisen ](https://cloud.google.com/release-
+notes?hl=de) .
+
+Für neueste Produktaktualisierungen können Sie die URL der Seite in den [
 Feedreader ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
 einfügen oder die Feed-URL direkt hinzufügen: `
-https://cloud.google.com/feeds/pubsub-release-notes.xml `
+https://cloud.google.com/feeds/pubsub-release-notes.xml ` .
+
+##  August 05, 2020
+
+**FEATURE:**
+
+Pub/Sub [ message ordering
+](https://cloud.google.com/pubsub/docs/ordering?hl=de) is now available at the
+[ beta launch stage ](https://cloud.google.com/products/?hl=de#product-launch-
+stages) .
+
+##  June 16, 2020
+
+**FEATURE:**
+
+[ Retry policies for Pub/Sub subscriptions
+](https://cloud.google.com/pubsub/docs/admin?hl=de#creating_subscriptions) are
+now available at the GA launch stage.
+
+##  June 08, 2020
+
+**FEATURE:**
+
+Pub/Sub is now available in the ` asia-southeast2 ` region (Jakarta).
+
+**FEATURE:**
+
+Pub/Sub [ message filtering
+](https://cloud.google.com/pubsub/docs/filtering?hl=de) is now available at
+the [ beta launch stage ](https://cloud.google.com/products/?hl=de#product-
+launch-stages) .
+
+##  May 26, 2020
+
+**FEATURE:**
+
+[ Pub/Sub Lite ](https://cloud.google.com/pubsub/docs/choosing-pubsub-or-
+lite?hl=de) is now available at the [ beta launch stage
+](https://cloud.google.com/products/?hl=de#product-launch-stages) .
 
 ##  April 20, 2020
 

@@ -3,9 +3,18 @@
 此页面记录了 Storage Transfer Service 的正式版更新。我们建议 Storage Transfer Service
 开发者定期查看此列表，以便及时获知新公告。
 
-如需接收最新产品动态，请将此页面的网址添加到您的 [ Feed 阅读器
+您可以在 [ Google Cloud 版本说明 ](https://cloud.google.com/release-notes?hl=zh-cn)
+页面上查看 Google Cloud 所有产品的最新产品动态。
+
+要接收最新产品动态，请将本页面的网址添加到您的 [ Feed 阅读器
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/storagetransfer-release-notes.xml `
+
+##  July 31, 2020
+
+**FEATURE:**
+
+Transfers from Microsoft Azure Blob Storage are now generally available.
 
 ##  March 31, 2020
 

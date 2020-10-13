@@ -14,6 +14,18 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/asset-release-notes.xml `
 
+##  August 03, 2020
+
+**DEPRECATED:**
+
+k8s.io/Node fields deprecation
+
+The following two fields for assets of ` k8s.io/Node ` are now deprecated in
+the exported output of Cloud Storage and BigQuery.
+
+  * ` metadata.resourceVersion `
+  * ` status.conditions.lastHeartbeatTime `
+
 ##  April 03, 2020
 
 **FEATURE:**
@@ -40,7 +52,7 @@ more information.
 Resource and policy search beta release
 
 You can now [ search resource metadata ](https://cloud.google.com/asset-
-inventory/docs/searching-resources) and [ Cloud IAM policies
+inventory/docs/searching-resources) and [ IAM policies
 ](https://cloud.google.com/asset-inventory/docs/searching-iam-policies) in
 your project, folder or organization.
 

@@ -12,6 +12,40 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/memorystore-release-notes.xml `
 
+##  July 28, 2020
+
+**FEATURE:**
+
+Support for [ VPC Service Controls on Memorystore for Redis
+](https://cloud.google.com/memorystore/docs/redis/using-vpc-service-controls)
+is now Generally Available.
+
+##  June 08, 2020
+
+**FEATURE:**
+
+Added new Memorystore for Redis [ region
+](https://cloud.google.com/memorystore/docs/redis/regions) : Jakarta ( ` asia-
+southeast2 ` ).
+
+##  June 03, 2020
+
+**FEATURE:**
+
+The [ Version Upgrade
+](https://cloud.google.com/memorystore/docs/redis/upgrading-instance-version)
+and [ Redis version 5.0
+](https://cloud.google.com/memorystore/docs/redis/supported-versions) features
+are now Generally Available on Memorystore for Redis.
+
+##  May 13, 2020
+
+**FEATURE:**
+
+Released support for [ VPC Service Controls
+](https://cloud.google.com/memorystore/docs/redis/using-vpc-service-controls)
+for Memorystore for Redis.
+
 ##  April 20, 2020
 
 **FEATURE:**

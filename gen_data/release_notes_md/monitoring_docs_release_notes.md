@@ -12,6 +12,108 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/stackdriver-release-notes.xml `
 
+##  August 13, 2020
+
+**FEATURE:**
+
+The new, out-of-the-box **Infrastructure Summary** dashboard for Compute
+Engine VMs provides a single-pane-of-glass view into your VM fleet and load
+balancers. At a glance, you can see the top 5 VMs across a variety of key
+metrics including memory, CPU, sent/received traffic, latency, disk
+read/write, and more.
+
+##  August 12, 2020
+
+**FEATURE:**
+
+Enhancements to the pre-configured Compute Engine **VM Instances** dashboard.
+The inventory table now includes a **Monitoring Agent Status** column, and the
+Monitoring agent can be installed by using a UI workflow from the table. The
+**Explore** tab gives an overview of additional metrics being sent (including
+agent metrics, custom metrics, and logs-based metrics) as well as a set of
+quick links to learn more about each type of metric. You can also use the
+**Recommended Alerts** button on the dashboard to configure fleet-wide alerts.
+
+##  July 10, 2020
+
+**FEATURE:**
+
+SLO monitoring for microservices is now Generally Available in the Cloud
+Console. This feature lets you create service-level objectives (SLOs) and set
+up alerting policies to monitor their performance using auto-generated
+dashboards with metrics, logs, and alerts in a single place. For more
+information, see [ SLO monitoring
+](https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring) .
+
+##  July 07, 2020
+
+**CHANGED:**
+
+Monitoring Query Language (MQL) is now Generally Available. MQL is an
+expressive, text-based interface to Cloud Monitoring time-series data. With
+MQL, you can create charts you can't create any other way. You can access MQL
+from both the Cloud Console and the Monitoring API. For more information, see
+[ Introduction to Monitoring Query Language
+](https://cloud.google.com/monitoring/mql/) .
+
+##  June 15, 2020
+
+**CHANGED:**
+
+The Service Monitoring API is now Generally Available. You can use this
+feature to create services, set service-level objectives (SLOs), and create
+alerting policies to monitor your SLOs. See [ Service monitoring
+](https://cloud.google.com/monitoring/service-monitoring/) for documentation,
+and [ ` services ` ](https://cloud.google.com/monitoring/api/v3/#service-
+monitoring) for reference material.
+
+##  June 08, 2020
+
+**FEATURE:**
+
+Enhancements to the pre-configured Compute Engine **VM Instances** dashboard.
+Compute Engine cross-fleet metrics and detail views specific to CPU, Disk,
+Memory, and Network are now available. Use filters to narrow down the set of
+VMs being inspected, and use the time selector or in-chart time selection to
+change the time window. VMs with the Monitoring agent installed get detailed
+memory and disk analysis out of the box.
+
+##  May 20, 2020
+
+**FEATURE:**
+
+Cloud Monitoring introduces an improved experience for viewing and managing
+incidents. Improvements include performance optimizations for Workspaces with
+large numbers of incidents, summary statics, and the ability to filter by
+alerting policy name, metric type, and resource type. For more information,
+see [ Incidents and events
+](https://cloud.google.com/monitoring/alerts/incidents-events) .
+
+##  May 19, 2020
+
+**CHANGED:**
+
+Alert notifications delivered by email now come from "alerting-
+noreply@google.com" instead of "alerts@stackdriver.com".
+
+##  May 14, 2020
+
+**CHANGED:**
+
+Starting in version 6.0.2, the Cloud Monitoring agent is available for the
+Ubuntu LTS 20.04 (Focal Fossa) distribution.
+
+##  May 08, 2020
+
+**FEATURE:**
+
+Monitoring Query Language (MQL) is now available in Beta. MQL is an
+expressive, text-based interface to Cloud Monitoring time-series data. With
+MQL, you can create charts you can't create any other way. You can access MQL
+from both the Cloud Console and the Monitoring API. For more information, see
+[ Introduction to Monitoring Query Language
+](https://cloud.google.com/monitoring/mql/) .
+
 ##  April 28, 2020
 
 **DEPRECATED:**
@@ -140,12 +242,11 @@ For more information, see [ Monitoring in the GCP Console
 
 **CHANGED:**
 
-Google Kubernetes Engine (GKE) version 1.15, which is now [ generally
-available ](https://cloud.google.com/kubernetes-engine/docs/release-
-notes#december_13_2019) , drops support for GKE versions 1.12 and earlier. As
-a result, the beta version of Stackdriver Kubernetes Engine Monitoring is no
-longer supported. If your GKE clusters are running version 1.12 or earlier,
-then you must upgrade them as soon as possible.
+Google Kubernetes Engine (GKE) version 1.15, which is now generally available,
+drops support for GKE versions 1.12 and earlier. As a result, the beta version
+of Stackdriver Kubernetes Engine Monitoring is no longer supported. If your
+GKE clusters are running version 1.12 or earlier, then you must upgrade them
+as soon as possible.
 
 ##  December 11, 2019
 
@@ -414,8 +515,8 @@ more information.
 
 **CHANGED:**
 
-If you are using custom Cloud IAM roles, any roles that load Stackdriver
-Monitoring dashboards now require additional IAM permissions. The `
+If you are using custom IAM roles, any roles that load Stackdriver Monitoring
+dashboards now require additional IAM permissions. The `
 monitoring.dashboards.* ` and ` monitoring.publicWidgets.* ` permissions are
 now public, and custom roles used to load dashboards must now include them.
 See [ Stackdriver Monitoring Access Control

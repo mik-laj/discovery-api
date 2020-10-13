@@ -1,3 +1,7 @@
+[ Python 3.8
+](https://cloud.google.com/appengine/docs/standard/python3/runtime?hl=de) ist
+jetzt allgemein verfügbar.
+
 #  Python 3 – Versionshinweise
 
 Die neuesten Produktupdates für Google Cloud finden Sie auf der Seite [ Google
@@ -7,6 +11,50 @@ Für neueste Produktaktualisierungen können Sie die URL der Seite in den [
 Feedreader ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
 einfügen oder die Feed-URL direkt hinzufügen: `
 https://cloud.google.com/feeds/gaestd-py-release-notes.xml ` .
+
+##  July 23, 2020
+
+**FEATURE:**
+
+[ Serverless VPC Access support for Shared VPC
+](https://cloud.google.com/appengine/docs/standard/python3/connecting-
+vpc?hl=de#shared-vpc) is now available in Beta.
+
+##  July 08, 2020
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for App Engine via [
+Serverless network endpoint groups ](https://cloud.google.com//load-
+balancing/docs/negs/setting-up-serverless-negs?hl=de) . Notably, this feature
+allows you to use [ Cloud CDN ](https://cloud.google.com/cdn?hl=de) with App
+Engine.  
+This feature is available in Beta.
+
+##  July 06, 2020
+
+**FEATURE:**
+
+The [ Python 3.8 runtime
+](https://cloud.google.com/appengine/docs/standard/python3/runtime?hl=de) for
+the App Engine standard environment is now generally available.
+
+##  June 08, 2020
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
+##  May 14, 2020
+
+**FEATURE:**
+
+To get a fine-grained view of billing data for each resource used by your App
+Engine services, you can apply labels to the services, export your billing
+data to BigQuery, and run queries. For more information, see [ Labeling App
+Engine resources
+](https://cloud.google.com/appengine/docs/standard/python3/labeling-
+resources?hl=de) .
 
 ##  April 20, 2020
 

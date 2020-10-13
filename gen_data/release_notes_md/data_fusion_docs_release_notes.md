@@ -13,6 +13,18 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/clouddatafusion-release-
 notes.xml `
 
+##  July 16, 2020
+
+**FEATURE:**
+
+Cloud Data Fusion version 6.1.3 is now available. This version includes
+performance improvements and minor bug fixes.
+
+  * Improved performance of Joiner plugins, aggregators, program startup, and previews. 
+  * Added support for custom images. You can select a custom Dataproc image by specifying the image URI. 
+  * Added support for rendering large schemas (>1000 fields) in the pipelines UI. 
+  * Added payload compression support to the messaging service. 
+
 ##  April 22, 2020
 
 **FEATURE:**

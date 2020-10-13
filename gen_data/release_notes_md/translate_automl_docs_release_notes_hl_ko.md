@@ -5,131 +5,200 @@
 ](https://groups.google.com/forum/?hl=ko#!forum/google-translate-api) 메일링 리스트를
 통해서도 공지됩니다.
 
-**베타**
+[ Google Cloud 출시 노트 ](https://cloud.google.com/release-notes?hl=ko) 페이지에서 모든
+Google Cloud의 최신 제품 업데이트를 확인할 수 있습니다.
 
-이 기능은 출시 전 상태로 변경되거나 지원이 제한될 수 있습니다. 자세한 내용은 [ 제품 출시 단계
-](https://cloud.google.com/products?hl=ko#product-launch-stages) 를 참조하세요.
-
-최신 제품 업데이트를 제공받으려면 [ 피드 리더
+최신 제품 업데이트를 받으려면 [ 피드 리더
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) 에 이 페이지의 URL을
-추가하세요.
+추가하거나 다음의 피드 URL을 직접 추가하세요. ` https://cloud.google.com/feeds/automl-translate-
+release-notes.xml `
 
-##  2018년 12월 11일
-
-**CHANGED:**
-
-커스텀 모델을 학습시키는 데 필요한 최소 문장 쌍 수가 변경되었습니다. 학습, 검증, 테스트 세트를 명시적으로 지정하지 않으면 최소 문장 쌍
-수는 1,000개입니다. 학습, 검증, 테스트 세트를 명시적으로 지정하지 않으면 검증 및 테스트에 사용되는 최소 쌍 수는 각각
-100개입니다.
-
-##  2018년 11월 1일
-
-**CHANGED:**
-
-AutoML Translation 서비스 계정은 AutoML Translation UI를 사용할 때 프로젝트 리소스에 액세스하기 위한 추가
-권한이 필요합니다. ` serviceusage.serviceUsageAdmin ` 역할을 추가해야 합니다. [ 시작하기 전에
-](https://cloud.google.com/translate/automl/docs/before-you-begin?hl=ko) 의
-8단계를 참조하세요.
-
-##  2018년 9월 18일
-
-**많은 새로운 언어 지원**
-
-**CHANGED:**
-
-AutoML Translation은 영어와 조합을 이루는 출발어 또는 도착어로 많은 새로운 언어를 지원하여 이제 총 지원되는 언어 조합 수가
-100개에 이릅니다. 전체 목록은 [ 커스텀 모델에 대한 언어 지원
-](https://cloud.google.com/translate/automl/docs/languages?hl=ko) 을 참조하세요.
-
-##  2018년 8월 24일
-
-**CHANGED:**
-
-AutoML Translation UI의 URL이 [ https://cloud.google.com/automl/ui/translation
-](https://cloud.google.com/automl/ui/translation?hl=ko) 으로 변경되었습니다. 이전 URL
-https://beta-dot-custom-vision.appspot.com/translation/은 활성 상태로 유지됩니다.
-
-##  2018년 8월 2일
-
-**스와힐리어 지원**
-
-**CHANGED:**
-
-AutoML Translation은 스와힐리어(`sw`)를 영어(`en`) 출발어의 도착어로 지원합니다.
-
-언어 조합  |  언어 코드  
----|---  
-스와힐리어 <\- 영어  |  ` sw ` <\- ` en `  
-  
-##  2018년 7월 24일
-
-**AutoML Translation 베타 출시**
+##  July 17, 2020
 
 **FEATURE:**
 
-EAP 중에 생성된 모델은 베타 버전에서 계속 유효합니다. 모델을 다시 만들거나 재학습할 필요가 없습니다. 그러나 리소스 ID(데이터세트
-ID, 모델 ID, 작업 ID)의 형식이 변경됩니다. 하드코딩된 리소스를 사용하려면 해당 리소스에 대한 새 ID를 2018년 8월 31일까지
-발급받아야 합니다( ` get ` 또는 ` list ` 메소드 사용).
+For test data, added support for the ` .tmx ` file type when evaluating
+existing models. For more information, see [ Evaluating models
+](https://cloud.google.com/translate/automl/docs/evaluate?hl=ko#evaluate_and_compare_models_using_a_new_test_set)
+.
 
-프로젝트에 AutoML API를 사용하도록 설정하면 Cloud Vision API, Cloud Translation API, Cloud
-Natural Language API도 자동으로 사용하도록 설정됩니다. 이 세 API 중 하나를 사용 중지하면 AutoML API도 사용
-중지됩니다.
-
-##  2018년 5월 24일
+##  April 03, 2020
 
 **CHANGED:**
 
-새로워진 UI 디자인과 새 API를 선보이는 AutoML Translation EAP의 새 버전이 출시되었습니다. AutoML
-Translation EAP UI의 이전 버전은 지원이 중단되었으며, 새 AutoML API는 이전 API와 호환되지 않습니다.
+Integration with [ VPC Service Controls ](https://cloud.google.com/vpc-
+service-controls/docs/overview?hl=ko) is now in [ beta stage
+](https://cloud.google.com/products/?hl=ko#product-launch-stages) .
 
-이전에 생성된 데이터세트의 콘텐츠를 다시 가져와야 합니다. ` gs://  project-id  -vcm/  dataset-name
-/uploads/  document-name  .txt ` 에서 원래 콘텐츠를 찾을 수 있습니다.
-
-이전 버전의 AutoML Translation UI를 사용하여 기본 Google 인공신경망 기계 번역 모델 이외의 다른 커스텀 번역 모델을
-기반으로 커스텀 모델을 생성한 경우 새로운 UI를 사용하여 모델을 다시 생성하거나 재학습해야 합니다.
-
-AutoML Translation UI로 생성한 모델은 아직 AutoML API를 통해 사용할 수 없습니다.
-
-##  2018년 3월 30일
-
-**CHANGED:**
-
-  * 이제 AutoML Translation EAP 웹 애플리케이션을 통해 직접 작성한 다른 커스텀 번역 모델을 기반으로 커스텀 모델을 구축할 수 있습니다. 
-  * 번역 요청을 보내고 응답을 받는 방법을 보여주는 샘플 자바 애플리케이션이 제공됩니다. 
-
-##  2018년 2월 27일
-
-**CHANGED:**
-
-다음과 같은 언어 번역 조합이 추가되었습니다.
-
-언어 조합  |  언어 코드  
----|---  
-네덜란드어 -> 영어  |  ` nl ` -> ` en `  
-히브리어 -> 영어  |  ` iw ` -> ` en `  
-  
-##  2018년 2월 5일
-
-**CHANGED:**
-
-다음과 같은 언어 번역 조합이 추가되었습니다.
-
-언어 조합  |  언어 코드  
----|---  
-아랍어 -> 영어  |  ` ar ` -> ` en `  
-중국어(간체) -> 영어  |  ` zh-CN ` -> ` en `  
-프랑스어 <-> 영어  |  ` fr ` <-> ` en `  
-독일어 -> 영어  |  ` de ` -> ` en `  
-이탈리아어 <-> 영어  |  ` it ` <-> ` en `  
-일본어 <\- 영어  |  ` ja ` <\- ` en `  
-한국어 <\- 영어  |  ` ko ` <\- ` en `  
-포르투갈어(포르투갈, 브라질) -> 영어  |  ` pt ` -> ` en `  
-러시아어 <-> 영어  |  ` ru ` <-> ` en `  
-터키어 <\- 영어  |  ` tr ` <\- ` en `  
-  
-##  2018년 1월 17일
+##  October 14, 2019
 
 **FEATURE:**
 
-AutoML Translation EAP가 출시되었습니다.
+AutoML Translation is now generally available. Translations are now faster and
+quality should be improved or on par with previous versions; individual
+results will vary depending on your datasets. In addition, quality
+improvements can vary across language pairs.
+
+**CHANGED:**
+
+**Model lifetime** AutoML Models run on a managed platform that is regularly
+upgraded. AutoML Models need to be re-trained at least every 18 months to
+ensure consistent performance and stability in translations over time and to
+get any benefits of the upgrades since original training. Models created
+before AutoML GA (for example, models created during service Alpha /Beta) need
+to be re-trained within 18 months of GA to move all assets to the newest
+version of the platform.
+
+**FEATURE:**
+
+AutoML Translation has upgraded its Google NMT base models onto a new training
+architecture so that it now runs end-to-end on upgraded [ TPUs
+](https://cloud.google.com/tpu/docs/tpus?hl=ko) . Going forward, all training
+using Google NMT as the base model trains and serves on TPUs.
+
+**CHANGED:**
+
+Customers already using AutoML might experience additional differences between
+v1 and previous versions of the service:
+
+  * Data validation now provides warnings on data import to indicate certain data is not usable for training jobs. 
+  * Data import takes longer in order to support data validation. 
+  * To achieve higher quality on the new architecture, training durations are longer. 
+
+##  September 04, 2019
+
+**FEATURE:**
+
+AutoML Translation has enabled Google Cloud Platform (GCP) Console-based UI
+for all its customers. This improves the Cloud AutoML Translation experience
+by adding UI elements such as controls to sort/filter datasets, which provides
+consistency with the rest of GCP and allows for faster release of new
+features.
+
+**CHANGED:**
+
+The URL for the AutoML Translation UI has changed to
+https://console.cloud.google.com/translation.
+
+##  December 11, 2018
+
+**CHANGED:**
+
+The minimum number of sentence pairs required to train a custom model has
+changed. If you don't explicitly specify training, validation, and test sets,
+the minimum number of sentence pairs is 1000. If you do explicitly specify
+training, validation, and test sets, the minimum number of pairs used for
+validation and test is 100 each.
+
+##  November 01, 2018
+
+**CHANGED:**
+
+The AutoML Translation service account requires additional permissions to
+access project resources when using the AutoML Translation UI. You must add
+the role ` serviceusage.serviceUsageAdmin ` . See step 8 in [ Before You Begin
+](https://cloud.google.com/translate/automl/docs/before-you-begin?hl=ko) .
+
+##  September 18, 2018
+
+**CHANGED:**
+
+AutoML Translation supports many new languages as source or target languages
+paired with English, bringing the total number of supported language pairs to
+100. See [ Language Support for Custom Models
+](https://cloud.google.com/translate/automl/docs/languages?hl=ko) for the
+complete list.
+
+##  August 24, 2018
+
+**CHANGED:**
+
+The URL for the AutoML Translation UI has changed to
+https://cloud.google.com/automl/ui/translation. The previous URL https://beta-
+dot-custom-vision.appspot.com/translation/ will remain active.
+
+##  August 02, 2018
+
+**CHANGED:**
+
+AutoML Translation supports Swahili ( ` sw ` ) as a target language from
+English ( ` en ` ) as a source language.
+
+Language Pair  |  Language Codes  
+---|---  
+Swahili <\- English  |  ` sw ` <\- ` en `  
+  
+##  July 24, 2018
+
+**FEATURE:**
+
+Models created during the EAP will continue to be valid for the Beta. You do
+not need to recreate/retrain models. However, the format of resource IDs
+(dataset IDs, model IDs, and operation IDs) is changing. If you are using
+hardcoded resource IDs, you need to obtain new IDs for those resources (using
+the get or list method) by August 31, 2018.
+
+**Note:** Enabling the AutoML API for your project automatically also enables
+the Cloud Vision API, Cloud Translation API, and Cloud Natural Language API.
+Disabling any of these three APIs will also disable the AutoML API
+
+##  May 24, 2018
+
+**CHANGED:**
+
+The refresh of the AutoML Translation EAP release introduces a new UI design
+and a new API. The previous version of the AutoML Translation EAP UI is
+deprecated, and the new AutoML API is not compatible with the previous API.
+
+You must reimport the contents any previously created datasets. You can find
+the original contents at ` gs://{project-id}-vcm/{dataset-
+name}/uploads/{document-name}.txt ` .
+
+If you used the previous version of the AutoML Translation UI to create custom
+models based on other custom translation models (rather than the default
+Google Neural Machine Translation model), you will also need to recreate or
+retrain those models using the new UI.
+
+##  March 30, 2018
+
+**CHANGED:**
+
+  * The AutoML Translation EAP web application now enables you to build a custom model based on another custom translation model that you built. 
+  * A sample Java application is available that demonstrates how to send a request for translation and obtain the response back. 
+
+##  February 27, 2018
+
+**CHANGED:**
+
+The following language translation pairs have been added:
+
+Language Pair  |  Language Codes  
+---|---  
+Dutch -> English  |  ` nl ` -> ` en `  
+Hebrew -> English  |  ` iw ` -> ` en `  
+  
+##  February 05, 2018
+
+**CHANGED:**
+
+The following language translation pairs have been added:
+
+Language Pair  |  Language Codes  
+---|---  
+Arabic -> English  |  ` ar ` -> ` ens `  
+Chinese (Simplified) -> English  |  ` zh-CN ` -> ` ens `  
+French <-> English  |  ` fr ` <-> ` ens `  
+German -> English  |  ` de ` -> ` ens `  
+Italian <-> English  |  ` it ` <-> ` ens `  
+Japanese <\- English  |  ` ja ` <\- ` ens `  
+Korean <\- English  |  ` ko ` <\- ` ens `  
+Portuguese (Portugal, Brazil) -> English  |  ` pt ` -> ` ens `  
+Russian <-> English  |  ` ru ` <-> ` ens `  
+Turkish <\- English  |  ` tr ` <\- ` en `  
+  
+##  January 17, 2018
+
+**FEATURE:**
+
+AutoML Translation EAP release.
 

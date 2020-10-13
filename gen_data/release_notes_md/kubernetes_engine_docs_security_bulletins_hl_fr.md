@@ -26,9 +26,350 @@ Pour recevoir les derniers bulletins de sécurité, ajoutez l'URL de cette page
 également ajouter l'URL du flux directement : `
 https://cloud.google.com/feeds/kubernetes-engine-security-bulletins.xml `
 
+##  GCP-2020-011
+
+**Publié :** 2020-07-24  
+Description  |  Niveau de gravité  |  Notes  
+---|---|---  
+  
+Une faille réseau, [ CVE-2020-8558
+](https://github.com/kubernetes/kubernetes/issues/92315) , a été récemment
+détectée dans Kubernetes. Les services communiquent parfois avec d'autres
+applications s'exécutant dans le même pod à l'aide de l'interface de
+rebouclage local (127.0.0.1). Cette faille permet à un pirate informatique
+ayant accès au réseau du cluster d'envoyer du trafic à l'interface de
+rebouclage des pods et nœuds adjacents. Les services reposant sur l'interface
+de rebouclage et non accessibles en dehors de leur pod peuvent être exploités.
+
+Pour exploiter cette faille sur les clusters GKE, le pirate informatique doit
+disposer de droits d'administrateur réseau sur le service Google Cloud
+hébergeant le VPC du cluster. Cette faille seule n'accorde pas de privilèges
+d'administrateur réseau au pirate informatique. Pour cette raison, le niveau
+de gravité de cette faille est faible pour GKE.
+
+####  Que dois-je faire ?
+
+Pour corriger cette faille, [ mettez à jour
+](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-
+upgrades?hl=fr) les pools de nœuds de votre cluster vers les versions GKE
+suivantes (ou ultérieures) :
+
+  * 1.17.7-gke.0 
+  * 1.16.11-gke.0 
+  * 1.16.10-gke.11 
+  * 1.16.9-gke.14 
+
+####  Quelle faille ce correctif permet-il de résoudre ?
+
+Ce correctif résout la faille suivante : [ CVE-2020-8558
+](https://github.com/kubernetes/kubernetes/issues/92315) .
+
+|
+
+Faible
+
+|
+
+[ CVE-2020-8558 ](https://github.com/kubernetes/kubernetes/issues/92315)  
+  
+##  GCP-2020-009
+
+**Publié :** 2020-07-15  Description  |  Niveau de gravité  |  Notes  
+---|---|---  
+  
+Une faille d'élévation des privilèges, [ CVE-2020-8559
+](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8559) , a été
+récemment détectée dans Kubernetes. Cette faille permet à un pirate
+informatique ayant déjà compromis un nœud d'exécuter une commande dans
+n'importe quel pod du cluster. Le pirate peut ainsi utiliser le nœud déjà
+compromis pour en compromettre d'autres et potentiellement lire des
+informations, ou provoquer des actions de destruction.
+
+Notez que pour qu'un pirate informatique puisse exploiter cette faille, un
+nœud de votre cluster doit déjà avoir été compromis. Cette faille, en elle-
+même, ne compromettra pas les nœuds de votre cluster.
+
+####  Que dois-je faire ?
+
+[ Mettez à jour ](https://cloud.google.com/kubernetes-
+engine/docs/concepts/cluster-upgrades?hl=fr) votre cluster vers une version
+corrigée. Les clusters seront mis à jour automatiquement au cours des
+prochaines semaines, et des versions corrigées seront disponibles d'ici le 19
+juillet 2020 en suivant un calendrier accéléré des mises à jour manuelles. Les
+versions suivantes du plan de contrôle GKE et les versions plus ultérieures
+contiennent un correctif permettant de remédier à cette faille :
+
+  * v1.14.10-gke.46 
+  * v1.15.12-gke.8 
+  * v1.16.9-gke.11 
+  * v1.16.10-gke.9 
+  * v1.16.11-gke.3+ 
+  * v1.17.7-gke.6+ 
+
+####  Quelle faille ce correctif permet-il de résoudre ?
+
+Ce correctif réduit les risques liés à la faille CVE-2020-8559. La gravité de
+cette faille est évaluée comme moyenne pour GKE, car elle nécessite que le
+pirate informatique ait préalablement reçu des informations personnelles sur
+le cluster, les nœuds et les charges de travail pour réaliser efficacement
+cette attaque en plus de disposer d'une nœud compromis. Cette faille en elle-
+même ne fournit pas un nœud compromis au pirate informatique.
+
+|
+
+Moyen
+
+|
+
+[ CVE-2020-8559 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8559)  
+  
+##  GCP-2020-007
+
+**Date de publication** : 2020-06-01  
+Description  |  Niveau de gravité  |  Notes  
+---|---|---  
+  
+La faille SSRF (Server Side Request Forgery) [ CVE-2020-8555
+](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555) a été détectée
+dans Kubernetes. Elle permet à certains utilisateurs autorisés de divulguer
+jusqu'à 500 octets d'informations sensibles à partir du plan de contrôle du
+réseau hôte. Le plan de contrôle de Google Kubernetes Engine (GKE) utilise des
+contrôleurs Kubernetes. Il est donc concerné par cette faille. Nous vous
+recommandons de [ mettre à jour ](https://cloud.google.com/kubernetes-
+engine/docs/how-to/upgrading-a-container-cluster?hl=fr) le plan de contrôle en
+installant la dernière version du correctif, conformément à la procédure
+expliquée ci-dessous. Il n'est pas nécessaire de mettre à niveau le nœud.  
+
+####  Que dois-je faire ?
+
+Pour la plupart des clients, aucune action n'est requise. La grande majorité
+des clusters exécutent déjà une version corrigée. Les versions de GKE
+suivantes, ainsi que les versions ultérieures, contiennent le correctif de
+cette faille :
+
+  * 1.14.7-gke.39 
+  * 1.14.8-gke.32 
+  * 1.14.9-gke.17 
+  * 1.14.10-gke.12 
+  * 1.15.7-gke.17 
+  * 1.16.4-gke.21 
+  * 1.17.0-gke.0 
+
+Les clusters qui ont recours à des [ canaux de publication
+](https://cloud.google.com/kubernetes-engine/docs/concepts/release-
+channels?hl=fr) utilisent déjà les versions du plan de contrôle permettant de
+réduire les risques liés à la faille.
+
+####  Quelle faille ce correctif permet-il de résoudre ?
+
+Ce correctif réduit les risques liés à la faille CVE-2020-8555. La gravité de
+cette faille est évaluée comme moyenne pour GKE, car elle était difficile à
+exploiter en raison des diverses mesures de renforcement des plans de
+contrôle.
+
+Un pirate informatique autorisé à créer un pod avec certains types de volumes
+intégrés (comme GlusterFS, Quobyte, StorageFS ou ScaleIO) ou à créer un objet
+StorageClass, peut activer l'envoi de requêtes ` GET ` ou ` POST ` par ` kube-
+controller-manager ` _sans_ que le corps de la requête contrôlée par le pirate
+provienne du réseau hôte du maître. Ces types de volumes étant rarement
+employés sur GKE, leur utilisation récente constitue un bon signal de
+détection.
+
+Associés à des moyens permettant de partager les résultats de la commande `
+GET/POST ` avec le pirate (via des journaux, par exemple), ils peuvent
+entraîner la divulgation d'informations sensibles. Nous avons mis à jour les
+pilotes de stockage concernés afin de supprimer les risques de telles
+divulgations.
+
+|
+
+Moyen
+
+|
+
+[ CVE-2020-8555 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8555)  
+  
+##  GCP-2020-006
+
+**Date de publication** : 2020-06-01  
+Description  |  Niveau de gravité  |  Notes  
+---|---|---  
+  
+Kubernetes a révélé la présence d'une [ faille
+](https://github.com/kubernetes/kubernetes/issues/91507) autorisant un
+conteneur privilégié à rediriger le trafic des nœuds vers un autre conteneur.
+Le trafic TLS/SSH mutuel (entre le kubelet et le serveur d'API, ou en
+provenance d'applications via le protocole mTLS) ne peut pas être lu ni
+modifié par cette attaque. Tous les nœuds Google Kubernetes Engine (GKE) sont
+affectés par cette faille. Par conséquent, nous vous recommandons de procéder
+à la [ mise à niveau ](https://cloud.google.com/kubernetes-engine/docs/how-
+to/upgrading-a-cluster?hl=fr) en installant la dernière version du correctif,
+conformément à la procédure expliquée ci-dessous.
+
+####  Que dois-je faire ?
+
+Pour réduire les risques liés à cette faille, [ mettez
+](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-
+cluster?hl=fr) votre plan de contrôle, puis vos nœuds en installant l'une des
+versions corrigées répertoriées ci-dessous. Les clusters situés sur des canaux
+de publication exécutent déjà une version corrigée aussi bien sur le plan de
+contrôle que sur les nœuds :
+
+  * 1.14.10-gke.36 
+  * 1.15.11-gke.15 
+  * 1.16.8-gke.15 
+
+Très peu de conteneurs nécessitent généralement ` CAP_NET_RAW ` . Il faut donc
+la bloquer par défaut, ainsi que d'autres fonctionnalités puissantes, via [
+PodSecurityPolicy ](https://cloud.google.com/kubernetes-engine/docs/how-
+to/pod-security-policies?hl=fr) ou [ Anthos Policy Controller
+](https://cloud.google.com/anthos-config-management/docs/concepts/policy-
+controller?hl=fr) :
+
+  * Supprimez la fonctionnalité ` CAP_NET_RAW ` des conteneurs : 
+    * En appliquant cette mesure via [ PodSecurityPolicy ](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies?hl=fr) à l'aide de la commande ci-dessous : 
+        
+                
+        # Require dropping CAP_NET_RAW with a PSP
+        apiversion: extensions/v1beta1
+        kind: PodSecurityPolicy
+        metadata:
+          name: no-cap-net-raw
+        spec:
+          requiredDropCapabilities:
+            -NET_RAW
+             ...
+             # Unrelated fields omitted
+        
+
+    * Ou en utilisant Anthos Policy Controller/Gatekeeper, avec ce [ modèle de contrainte ](https://github.com/open-policy-agent/gatekeeper/blob/master/library/pod-security-policy/capabilities/template.yaml) et en appliquant ce dernier. Exemple : 
+        
+                
+        # Dropping CAP_NET_RAW with Gatekeeper
+        # (requires the K8sPSPCapabilities template)
+        apiversion: constraints.gatekeeper.sh/v1beta1
+        kind:  K8sPSPCapabilities
+        metadata:
+          name: forbid-cap-net-raw
+        spec:
+          match:
+            kinds:
+              - apiGroups: [""]
+              kinds: ["Pod"]
+            namespaces:
+              #List of namespaces to enforce this constraint on
+              - default
+            # If running gatekeeper >= v3.1.0-beta.5,
+            # you can exclude namespaces rather than including them above.
+            excludedNamespaces:
+              - kube-system
+          parameters:
+            requiredDropCapabilities:
+              - "NET_RAW"
+        
+
+    * Ou en mettant à jour les spécifications du pod : 
+        
+                
+        # Dropping CAP_NET_RAW from a Pod:
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          name: no-cap-net-raw
+        spec:
+          containers:
+            -name: may-container
+             ...
+            securityContext:
+              capabilities:
+                drop:
+                  -NET_RAW
+        
+
+####  Quelle faille ce correctif permet-il de résoudre ?
+
+Ce correctif réduit les risques liés à la faille suivante :
+
+La faille décrite dans l'article [ Problème Kubernetes 91507
+](https://github.com/kubernetes/kubernetes/issues/91507) est liée à la
+fonctionnalité ` CAP_NET_RAW ` (qui fait partie de l'ensemble de
+fonctionnalités par défaut du conteneur). Elle configure de manière
+malveillante la pile IPv6 sur le nœud, et redirige le trafic de nœuds vers le
+conteneur contrôlé par le pirate. Cela permet au pirate d'intercepter ou de
+modifier le trafic en provenance du nœud ou à destination de celui-ci. Le
+trafic TLS/SSH mutuel (entre le kubelet et le serveur d'API, ou en provenance
+d'applications via le protocole mTLS) ne peut pas être lu ni modifié par cette
+attaque.
+
+|
+
+Moyen
+
+|
+
+[ Problème Kubernetes 91507
+](https://github.com/kubernetes/kubernetes/issues/91507)  
+  
+  
+##  GCP-2020-005
+
+**Date de publication** : 07-05-2020  
+**Dernière mise à jour** : 07-05-2020  Description  |  Niveau de gravité  |
+Remarques  
+---|---|---  
+  
+La faille [ CVE-2020-8835 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8835) a été récemment découverte dans le noyau
+Linux. Elle permet de "s'échapper d'un conteneur" pour obtenir un accès root
+(racine) sur le nœud hôte.
+
+Cette faille affecte les nœuds Ubuntu exécutant Google Kubernetes Engine (GKE)
+version 1.16 ou 1.17. Nous vous recommandons donc d'effectuer dès que possible
+une mise à niveau en installant la dernière version du correctif, conformément
+à la procédure décrite ci-dessous.
+
+Les nœuds exécutant Container-Optimized OS ne sont pas concernés, ni ceux
+exécutant GKE On-Prem.
+
+####  Que dois-je faire ?
+
+**Pour la plupart des clients, aucune action n'est requise. Seuls les nœuds
+Ubuntu exécutant GKE version 1.16 ou 1.17 sont concernés.**
+
+Avant tout, vous devez mettre à niveau votre nœud maître vers la toute
+dernière version. Le correctif sera disponible dans Kubernetes 1.16.8-gke.12
+et 1.17.4-gke.10, ainsi que dans les versions ultérieures. Pour vérifier la
+disponibilité de ces correctifs, consultez les [ notes de version
+](https://cloud.google.com/kubernetes-engine/docs/release-notes?hl=fr) .
+
+####  Quelle faille ce correctif permet-il de résoudre ?
+
+Ce correctif réduit les risques liés à la faille suivante :
+
+La faille [ CVE-2020-8835 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8835) affecte les versions 5.5.0 et ultérieures
+du noyau Linux. Elle permet à un conteneur malveillant d'accéder en lecture et
+en écriture à la mémoire du noyau, et ainsi d'exécuter des codes avec un accès
+root par le biais d'un simple appel système "exec". La gravité de cette faille
+est évaluée comme élevée.
+
+|
+
+Élevé
+
+|
+
+[ CVE-2020-8835 ](https://cve.mitre.org/cgi-
+bin/cvename.cgi?name=CVE-2020-8835)  
+  
+  
 ##  GCP-2020-003
 
-Description  |  Niveau de gravité  |  Remarques  
+**Date de publication** : 31-03-2020  
+**Dernière mise à jour** : 31-03-2020  Description  |  Niveau de gravité  |
+Remarques  
 ---|---|---  
   
 La faille [ CVE-2019-11254 ](https://cve.mitre.org/cgi-
@@ -38,8 +379,8 @@ POST afin de réaliser une attaque par déni de service à distance sur un
 serveur d'API Kubernetes. Le comité de sécurité des produits (PSC, Product
 Security Committee) Kubernetes a publié des informations complémentaires sur
 cette faille. Pour les consulter, [ cliquez ici
-](https://groups.google.com/g/kubernetes-security-
-announce/c/wuwEwZigXBc?hl=fr) .
+](https://groups.google.com/forum/?hl=fr#!topic/kubernetes-security-
+announce/wuwEwZigXBc) .
 
 Les clusters GKE qui utilisent des [ réseaux autorisés maîtres
 ](https://cloud.google.com/kubernetes-engine/docs/how-to/authorized-
@@ -78,7 +419,9 @@ bin/cvename.cgi?name=CVE-2019-11254)
   
 ##  GCP-2020-002
 
-Description  |  Niveau de gravité  |  Remarques  
+**Date de publication** : 23-03-2020  
+**Dernière mise à jour** : 23-03-2020  Description  |  Niveau de gravité  |
+Remarques  
 ---|---|---  
   
 La communauté Kubernetes a divulgué [ deux failles de déni de service
@@ -130,7 +473,9 @@ bin/cvename.cgi?name=CVE-2020-8552)
   
 ##  21 janvier 2020 (dernière mise à jour le 24 janvier 2020)
 
-Description  |  Niveau de gravité  |  Remarques  
+**Date de publication** : 21-01-2020  
+**Dernière mise à jour** : 24-01-2020  Description  |  Niveau de gravité  |
+Remarques  
 ---|---|---  
   
 **Mise à jour du 24/01/2020** : le processus de mise à disposition des
@@ -206,7 +551,9 @@ bin/cvename.cgi?name=CVE-2020-0601)
   
 ##  14 novembre 2019
 
-Description  |  Niveau de gravité  |  Remarques  
+**Date de publication** : 14-11-2019  
+**Dernière mise à jour** : 14-11-2019  Description  |  Niveau de gravité  |
+Remarques  
 ---|---|---  
   
 La communauté Kubernetes a divulgué une faille de sécurité dans les side-cars
@@ -252,7 +599,9 @@ bin/cvename.cgi?name=CVE-2019-11255)
   
 ##  12 novembre 2019
 
-Description  |  Niveau de gravité  |  Remarques  
+**Date de publication** : 12-11-2019  
+**Dernière mise à jour** : 12-11-2019  Description  |  Niveau de gravité  |
+Remarques  
 ---|---|---  
   
 Intel a divulgué des failles CVE qui permettent des interactions entre
@@ -318,7 +667,9 @@ Moyen
   
 ##  22 octobre 2019
 
-Description  |  Niveau de gravité  |  Remarques  
+**Date de publication** : 22-10-2019  
+**Dernière mise à jour** : 22-10-2019  Description  |  Niveau de gravité  |
+Remarques  
 ---|---|---  
   
 La faille [ CVE-2019-16276 ](https://cve.mitre.org/cgi-
@@ -344,7 +695,9 @@ bin/cvename.cgi?name=CVE-2019-16276)
   
 ##  16 octobre 2019
 
-Description  |  Niveau de gravité  |  Remarques  
+**Date de publication** : 16-10-2019  
+**Dernière mise à jour** : 24-10-2019  Description  |  Niveau de gravité  |
+Remarques  
 ---|---|---  
   
 **Mise à jour du 24/10/2019** : les versions corrigées sont désormais
@@ -401,7 +754,9 @@ bin/cvename.cgi?name=CVE-2019-11253)
   
 ##  16 septembre 2019
 
-Description  |  Niveau de gravité  |  Remarques  
+**Date de publication** : 16-09-2019  
+**Dernière mise à jour** : 16-10-2019  Description  |  Niveau de gravité  |
+Remarques  
 ---|---|---  
   
 Ce bulletin a été mis à jour depuis sa publication initiale.
@@ -423,8 +778,8 @@ Nous vous recommandons de mettre à niveau votre cluster vers la dernière
 version du correctif, qui permet de limiter les risques liés à cette faille,
 dès sa mise à disposition. Elle devrait être proposée dans toutes les zones
 avec la prochaine version de GKE, selon le [ calendrier des lancements
-](https://cloud.google.com/kubernetes-engine/docs/release-
-notes?hl=fr#september_16_2019) .
+](https://cloud.google.com/kubernetes-engine/docs/release-notes-
+archive?hl=fr#september_16_2019) .
 
 Les versions du correctif permettant de limiter les risques liés à cette
 faille sont indiquées ci-dessous.
@@ -456,17 +811,26 @@ bin/cvename.cgi?name=CVE-2019-9514)
   
 ##  5 septembre 2019
 
+**Date de publication** : 05-09-2019  
+**Dernière mise à jour** : 05-09-2019
+
 Le bulletin concernant le correctif de la faille documentée dans le bulletin
 du  31 mai 2019  a été mis à jour.
 
 ##  22 août 2019
 
+**Date de publication** : 22-08-2019  
+**Dernière mise à jour** : 22-08-2019
+
 Le bulletin du  5 août 2019  a été mis à jour. Le correctif de la faille
 documentée dans le bulletin antérieur est [ disponible
-](https://cloud.google.com/kubernetes-engine/docs/release-
-notes?hl=fr#august_22_2019) .
+](https://cloud.google.com/kubernetes-engine/docs/release-notes-
+archive?hl=fr#august_22_2019) .
 
 ##  8 août 2019
+
+**Date de publication** : 08-08-2019  
+**Dernière mise à jour** : 08-08-2019
 
 Le bulletin du  5 août 2019  a été mis à jour. Le correctif de la faille
 documentée dans ce bulletin devrait être disponible dans la prochaine version
@@ -474,7 +838,9 @@ de GKE.
 
 ##  5 août 2019
 
-Description  |  Niveau de gravité  |  Remarques  
+**Date de publication** : 05-08-2019  
+**Dernière mise à jour** : 09-08-2019  Description  |  Niveau de gravité  |
+Remarques  
 ---|---|---  
   
 Ce bulletin a été mis à jour depuis sa publication initiale.
@@ -523,7 +889,9 @@ bin/cvename.cgi?name=CVE-2019-11247)
   
 ##  3 juillet 2019
 
-Description  |  Niveau de gravité  |  Remarques  
+**Date de publication** : 03-07-2019  
+**Dernière mise à jour** : 03-07-2019  Description  |  Niveau de gravité  |
+Remarques  
 ---|---|---  
   
 Une version corrigée de ` kubectl ` permettant de remédier à la faille
@@ -544,7 +912,9 @@ bin/cvename.cgi?name=CVE-2018-15664)
   
 ##  3 juillet 2019
 
-Description  |  Niveau de gravité  |  Remarques  
+**Date de publication** : 25-06-2019  
+**Dernière mise à jour** : 03-07-2019  Description  |  Niveau de gravité  |
+Remarques  
 ---|---|---  
   
 ######  Mise à jour du 3 juillet 2019
@@ -980,6 +1350,13 @@ Vous devriez recevoir une réponse semblable à celle-ci :
         
     kubectl logs disable-smt-2xnnc disable-smt -n kube-system
 
+Remarque : Les options de démarrage ne peuvent pas être modifiées si la
+fonctionnalité de [ démarrage sécurisé ](https://cloud.google.com/kubernetes-
+engine/docs/how-to/shielded-gke-nodes?hl=fr#secure_boot) est activée sur le
+nœud. Si le démarrage sécurisé est activé, il doit être [ désactivé
+](https://cloud.google.com/kubernetes-engine/docs/how-to/shielded-gke-
+nodes?hl=fr#disabling) avant que le DaemonSet soit créé.
+
 Le DaemonSet doit rester en cours d'exécution sur le pool de nœuds pour que
 les modifications soient automatiquement appliquées aux nœuds qui seront créés
 dans le pool. Des créations de nœuds peuvent être déclenchées par les
@@ -1048,7 +1425,7 @@ nœuds soit activée ou non, nous vous recommandons d'exécuter les opérations
 suivantes :**
 
   1. **[ Mettez à niveau manuellement ](https://cloud.google.com/kubernetes-engine/docs/how-to/upgrading-a-cluster?hl=fr) votre cluster dès que le correctif est disponible. **
-  2. **Mettez à niveau vos side-cars en vous reportant à la[ documentation correspondante ](https://istio.io/docs/setup/kubernetes/upgrade/steps/#sidecar-upgrade) . **
+  2. **Mettez à niveau vos side-cars en vous reportant à la[ documentation correspondante ](https://archive.istio.io/v1.5/docs/setup/upgrade/cni-helm-upgrade/#control-plane-upgrade) . **
 
 Les versions corrigées seront mises à disposition pour tous les projets GKE
 aujourd'hui avant 19:00 PDT.
@@ -1092,14 +1469,14 @@ savoir plus sur ces failles, consultez le [ blog Istio
   
 ##  1er mars 2019
 
-Description  |  Niveau de gravité  |  Remarques  
+Description  |  Niveau de gravité  |  Notes  
 ---|---|---  
   
 **Mise à jour du 22/03/2019** : ce correctif est disponible dans Kubernetes
 1.11.8-gke.4 et 1.13.4-gke.1, ainsi que dans les versions plus récentes. Il
 n'est pas encore inclus dans la version 1.12. Pour vérifier sa disponibilité,
 consultez les [ notes de version ](https://cloud.google.com/kubernetes-
-engine/docs/release-notes?hl=fr#march_19_2019) .
+engine/docs/release-notes-archive?hl=fr#march_19_2019) .
 
 La communauté Kubernetes a récemment découvert une nouvelle faille par déni de
 service, [ CVE-2019-1002100 ](https://cve.mitre.org/cgi-
@@ -1165,8 +1542,8 @@ Avant tout, vous devez mettre à niveau votre nœud maître vers la toute
 dernière version. Ce correctif est disponible dans Kubernetes 1.10.12-gke.7,
 1.11.6-gke.11, 1.11.7-gke.4 et 1.12.5-gke.5, ainsi que dans les versions plus
 récentes. Pour vérifier sa disponibilité, consultez les [ notes de version
-](https://cloud.google.com/kubernetes-engine/docs/release-
-notes?hl=fr#february-11-2019) .
+](https://cloud.google.com/kubernetes-engine/docs/release-notes-
+archive?hl=fr#february-11-2019) .
 
 Sachez que seuls les nœuds Ubuntu dans GKE sont affectés. Les nœuds exécutant
 COS ne sont pas concernés.
@@ -1214,11 +1591,11 @@ consultez le [ communiqué sur le langage de programmation Go
 
 **Cette faille affecte l'ensemble des instances maîtres de Google Kubernetes
 Engine (GKE). La[ dernière version du correctif
-](https://cloud.google.com/kubernetes-engine/docs/release-
-notes?hl=fr#february-11-2019) permet de limiter les risques qu'elle engendre.
-Nous mettrons automatiquement à niveau les maîtres de cluster vers la version
-incluant le correctif au cours des prochaines semaines, selon le rythme de
-mise à niveau habituel. **
+](https://cloud.google.com/kubernetes-engine/docs/release-notes-
+archive?hl=fr#february-11-2019) permet de limiter les risques qu'elle
+engendre. Nous mettrons automatiquement à niveau les maîtres de cluster vers
+la version incluant le correctif au cours des prochaines semaines, selon le
+rythme de mise à niveau habituel. **
 
 ####  Que dois-je faire ?
 
@@ -1258,8 +1635,8 @@ Pour en savoir plus, consultez le [ communiqué de Kubernetes
 announce/GVllWCg6L88) . **Cette faille affectait l'ensemble des instances
 maîtres de Google Kubernetes Engine (GKE), et nous avons déjà procédé à la
 mise à niveau des clusters vers les[ dernières versions du correctif
-](https://cloud.google.com/kubernetes-engine/docs/release-
-notes?hl=fr#november-12-2018) . Aucune action n'est requise. **
+](https://cloud.google.com/kubernetes-engine/docs/release-notes-
+archive?hl=fr#november-12-2018) . Aucune action n'est requise. **
 
 ####  Que dois-je faire ?
 
@@ -1347,15 +1724,12 @@ progressive de tous les jetons potentiellement impactés. Ce bulletin sera mis
 votre part n'est nécessaire.** (Cette rotation est terminée depuis le 16
 novembre 2018.)
 
-Si vous souhaitez révoquer ces jetons immédiatement, vous pouvez exécuter la
+Si vous souhaitez alterner ces jetons immédiatement, vous pouvez exécuter la
 commande ci-dessous. Le nouveau secret du compte de service devrait être
 recréé automatiquement en quelques secondes :  
-      
-    
-    
-    kubectl get sa --namespace kube-system calico -o template --template '{{(index .secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system
-            
   
+kubectl get sa --namespace kube-system calico -o template --template '{{(index
+.secrets 0).name}}' | xargs kubectl delete secret --namespace kube-system  
 ---  
   
 ####  Détection
@@ -1716,8 +2090,8 @@ manuellement ](https://cloud.google.com/kubernetes-engine/docs/how-
 to/upgrading-a-container-cluster?hl=fr) vos nœuds dès que le correctif est
 disponible. Celui-ci sera mis à la disposition de tous les clients au plus
 tard le 16 mars. Toutefois, en fonction du [ calendrier des lancements
-](https://cloud.google.com/kubernetes-engine/docs/release-
-notes?hl=fr#march-12-2018) , vous pourriez avoir accès à ce correctif plus
+](https://cloud.google.com/kubernetes-engine/docs/release-notes-
+archive?hl=fr#march-12-2018) , vous pourriez avoir accès à ce correctif plus
 tôt, selon la zone dans laquelle se trouve votre cluster.
 
 Avant tout, vous devez mettre à niveau votre instance maître vers la toute

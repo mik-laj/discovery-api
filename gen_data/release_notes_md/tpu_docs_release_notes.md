@@ -12,6 +12,94 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/tpu-release-notes.xml `
 
+##  August 20, 2020
+
+**FEATURE:**
+
+#  PyTorch/XLA 1.6 Release (GA)
+
+##  Highlights
+
+Cloud TPUs now support the [ PyTorch 1.6 release
+](https://github.com/pytorch/pytorch/releases/tag/v1.6.0) , via PyTorch/XLA
+integration. With this release we mark our general availability (GA) with the
+models such as ResNet, FairSeq Transformer and RoBERTa, and HuggingFace GLUE
+task models that have been rigorously tested and optimized.
+
+In addition, with our PyTorch/XLA 1.6 release, you no longer need to run the [
+env-setup.py ](https://github.com/pytorch/xla/blob/master/contrib/scripts/env-
+setup.py) script on Colab/Kaggle as those are now compatible with native `
+torch ` wheels. You can still continue to use that script if you would like to
+run with our latest unstable releases.
+
+##  New Features
+
+  * XLA RNG state checkpointing/loading (https://github.com/pytorch/xla/pull/2096) 
+  * Device Memory XRT API (https://github.com/pytorch/xla/pull/2295) 
+  * [Kaggle/Colab] Small host VM memory environment utility (https://github.com/pytorch/xla/pull/2025) 
+  * [Advanced User] XLA Builder Support (https://github.com/pytorch/xla/pull/2125) 
+  * New op supported on PyTorch/XLA 
+    * Hardsigmoid (https://github.com/pytorch/xla/pull/1940) 
+    * true_divide (https://github.com/pytorch/xla/pull/1782) 
+    * max_unpool2d (https://github.com/pytorch/xla/pull/2188) 
+    * max_unpool3d (https://github.com/pytorch/xla/pull/2188) 
+    * Replication_pad1d (https://github.com/pytorch/xla/pull/2188) 
+    * Replication_pad2d (https://github.com/pytorch/xla/pull/2188) 
+  * Dynamic shape support on XLA:CPU and XLA:GPU (experimental) 
+
+##  Bug Fixes
+
+  * RNG Fix (proper dropout) 
+  * Manual all-reduce in backward pass (https://github.com/pytorch/xla/pull/2325) 
+
+##  August 19, 2020
+
+**FEATURE:**
+
+Cloud TPU now supports Shared VPC in Beta.
+
+Shared VPC allows an organization to connect resources from multiple projects
+to a common VPC network to communicate with each other securely and
+efficiently using internal IPs from that network. This release enables
+connecting to Cloud TPU Nodes from Shared VPC networks.
+
+##  May 29, 2020
+
+**CHANGED:**
+
+Cloud TPU now supports TensorFlow version 1.15.3. See the [ TensorFlow 1.15.3
+Release Notes ](https://github.com/tensorflow/tensorflow/releases/tag/v1.15.3)
+.
+
+##  May 21, 2020
+
+**CHANGED:**
+
+Cloud TPU now supports TensorFlow 2.1.1 with Keras support. See the [
+TensorFlow 2.1.1 Release Notes
+](https://github.com/tensorflow/tensorflow/releases/tag/v2.1.1) for a complete
+list of features included in this release.
+
+##  May 12, 2020
+
+**CHANGED:**
+
+Cloud TPU currently supports TensorFlow version 1.15.2. See the [ Release
+Notes ](https://github.com/tensorflow/tensorflow/releases/tag/v1.15.2) .
+
+TensorFlow 1.15 supported Python 2, but that support has been discontinued
+with TensorFlow 1.15.2.
+
+##  May 08, 2020
+
+**CHANGED:**
+
+Cloud TPU now supports TensorFlow 2.2. See the [ TensorFlow 2.2 Release Notes
+](https://github.com/tensorflow/tensorflow/releases/tag/v2.2.0) for a complete
+list of features included with this release. New models for Image segmentation
+and Image classification have been added to the official cloud [ TPU supported
+models list ](https://cloud.google.com/tpu/docs/tutorials/support-matrix) .
+
 ##  April 21, 2020
 
 **FEATURE:**
@@ -26,16 +114,6 @@ scale on Google Cloud (all the way up to full Cloud TPU Pods).
 See the ⁠ [ PyTorch/XLA 1.5 Release Notes
 ](https://github.com/pytorch/xla/releases/tag/v1.5.0) for a complete list of
 features included in this release.
-
-##  April 01, 2020
-
-**CHANGED:**
-
-Cloud TPU now supports TensorFlow version 1.15.2 [ Release Notes
-](https://github.com/tensorflow/tensorflow/releases/tag/v1.15.2) . No changes
-to the API or the [ official Cloud TPU supported models list
-](https://cloud.google.com/tpu/docs/tutorials/support-matrix) has been
-introduced with this release.
 
 ##  January 09, 2020
 

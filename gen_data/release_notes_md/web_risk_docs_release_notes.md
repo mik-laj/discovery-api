@@ -14,11 +14,15 @@ URL directly: ` https://cloud.google.com/feeds/webrisk-release-notes.xml `
 
 ##  January 13, 2020
 
+v1
+
 **FEATURE:**
 
 The Web Risk API is now generally available.
 
 ##  March 31, 2019
+
+v1beta1
 
 **FEATURE:**
 

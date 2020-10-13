@@ -12,6 +12,76 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/spanner-release-notes.xml `
 
+##  August 20, 2020
+
+**FEATURE:**
+
+A new [ multi-region instance configuration
+](https://cloud.google.com/spanner/docs/instances#available-configurations-
+multi-region) is now available in North America - ` nam11 ` (Iowa/South
+Carolina).
+
+##  August 06, 2020
+
+**FEATURE:**
+
+A new [ multi-region instance configuration
+](https://cloud.google.com/spanner/docs/instances#available-configurations-
+multi-region) is now available in North America - ` nam10 ` (Iowa/Salt Lake).
+
+##  July 30, 2020
+
+**FEATURE:**
+
+The Cloud Spanner emulator is now [ generally available
+](https://cloud.google.com/products/#product-launch-stages) , enabling you to
+develop and test applications locally. For more information, see [ Using the
+Cloud Spanner Emulator ](https://cloud.google.com/spanner/docs/emulator) .
+
+##  July 15, 2020
+
+**FEATURE:**
+
+You can now run SQL queries to retrieve [ read statistics
+](https://cloud.google.com/spanner/docs/introspection/read-statistics) for
+your database over recent one-minute, 10-minute, and one-hour time periods.
+
+##  June 08, 2020
+
+**FEATURE:**
+
+A second [ multi-region instance configuration
+](https://cloud.google.com/spanner/docs/instances#available-configurations-
+multi-region) is now available in Europe - ` eur5 ` (London/Belgium).
+
+**FEATURE:**
+
+A [ multi-region instance configuration
+](https://cloud.google.com/spanner/docs/instances#available-configurations-
+multi-region) is now available in Asia - ` asia1 ` (Tokyo/Osaka).
+
+**FEATURE:**
+
+Cloud Spanner [ regional instances
+](https://cloud.google.com/spanner/docs/instances#available-configurations-
+regional) can now be created in Jakarta (asia-southeast2).
+
+##  June 03, 2020
+
+**CHANGED:**
+
+Cloud Spanner SQL now supports the following statistical aggregate functions -
+STDDEV, VARIANCE. For more information, see [ Statistical Aggregate Functions
+](https://cloud.google.com/spanner/docs/statistical_aggregate_functions) .
+
+##  May 18, 2020
+
+**FEATURE:**
+
+You can now run SQL queries to retrieve [ transaction statistics
+](https://cloud.google.com/spanner/docs/transaction-stats-tables) for your
+database over recent one-minute, 10-minute, and one-hour time periods.
+
 ##  April 20, 2020
 
 **FEATURE:**

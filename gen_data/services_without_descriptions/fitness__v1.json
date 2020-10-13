@@ -27,22 +27,41 @@
     "baseUrl": "https://www.googleapis.com/fitness/v1/users/",
     "batchPath": "batch/fitness/v1",
     "discoveryVersion": "v1",
-    "documentationLink": "https://developers.google.com/fit/rest/",
+    "documentationLink": "https://developers.google.com/fit/rest/v1/get-started",
     "icons": {
-        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
-        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+        "x16": "http://www.google.com/images/icons/product/search-16.gif",
+        "x32": "http://www.google.com/images/icons/product/search-32.gif"
     },
     "id": "fitness:v1",
     "kind": "discovery#restDescription",
+    "mtlsRootUrl": "https://www.mtls.googleapis.com/",
     "name": "fitness",
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "$.xgafv": {
+            "enum": [
+                "1",
+                "2"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "location": "query",
+            "type": "string"
+        },
         "alt": {
             "default": "json",
             "enum": [
-                "json"
+                "json",
+                "media",
+                "proto"
             ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
             "location": "query",
             "type": "string"
         },
@@ -67,7 +86,11 @@
             "location": "query",
             "type": "string"
         },
-        "userIp": {
+        "uploadType": {
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
             "location": "query",
             "type": "string"
         }
@@ -79,6 +102,7 @@
                 "dataSources": {
                     "methods": {
                         "create": {
+                            "flatPath": "{userId}/dataSources",
                             "httpMethod": "POST",
                             "id": "fitness.users.dataSources.create",
                             "parameterOrder": [
@@ -111,6 +135,7 @@
                             ]
                         },
                         "delete": {
+                            "flatPath": "{userId}/dataSources/{dataSourceId}",
                             "httpMethod": "DELETE",
                             "id": "fitness.users.dataSources.delete",
                             "parameterOrder": [
@@ -146,6 +171,7 @@
                             ]
                         },
                         "get": {
+                            "flatPath": "{userId}/dataSources/{dataSourceId}",
                             "httpMethod": "GET",
                             "id": "fitness.users.dataSources.get",
                             "parameterOrder": [
@@ -190,6 +216,7 @@
                             ]
                         },
                         "list": {
+                            "flatPath": "{userId}/dataSources",
                             "httpMethod": "GET",
                             "id": "fitness.users.dataSources.list",
                             "parameterOrder": [
@@ -233,6 +260,7 @@
                             ]
                         },
                         "update": {
+                            "flatPath": "{userId}/dataSources/{dataSourceId}",
                             "httpMethod": "PUT",
                             "id": "fitness.users.dataSources.update",
                             "parameterOrder": [
@@ -275,6 +303,7 @@
                         "dataPointChanges": {
                             "methods": {
                                 "list": {
+                                    "flatPath": "{userId}/dataSources/{dataSourceId}/dataPointChanges",
                                     "httpMethod": "GET",
                                     "id": "fitness.users.dataSources.dataPointChanges.list",
                                     "parameterOrder": [
@@ -332,6 +361,7 @@
                         "datasets": {
                             "methods": {
                                 "delete": {
+                                    "flatPath": "{userId}/dataSources/{dataSourceId}/datasets/{datasetId}",
                                     "httpMethod": "DELETE",
                                     "id": "fitness.users.dataSources.datasets.delete",
                                     "parameterOrder": [
@@ -380,6 +410,7 @@
                                     ]
                                 },
                                 "get": {
+                                    "flatPath": "{userId}/dataSources/{dataSourceId}/datasets/{datasetId}",
                                     "httpMethod": "GET",
                                     "id": "fitness.users.dataSources.datasets.get",
                                     "parameterOrder": [
@@ -439,6 +470,7 @@
                                     ]
                                 },
                                 "patch": {
+                                    "flatPath": "{userId}/dataSources/{dataSourceId}/datasets/{datasetId}",
                                     "httpMethod": "PATCH",
                                     "id": "fitness.users.dataSources.datasets.patch",
                                     "parameterOrder": [
@@ -494,6 +526,7 @@
                 "dataset": {
                     "methods": {
                         "aggregate": {
+                            "flatPath": "{userId}/dataset:aggregate",
                             "httpMethod": "POST",
                             "id": "fitness.users.dataset.aggregate",
                             "parameterOrder": [
@@ -539,6 +572,7 @@
                 "sessions": {
                     "methods": {
                         "delete": {
+                            "flatPath": "{userId}/sessions/{sessionId}",
                             "httpMethod": "DELETE",
                             "id": "fitness.users.sessions.delete",
                             "parameterOrder": [
@@ -568,6 +602,7 @@
                             ]
                         },
                         "list": {
+                            "flatPath": "{userId}/sessions",
                             "httpMethod": "GET",
                             "id": "fitness.users.sessions.list",
                             "parameterOrder": [
@@ -628,6 +663,7 @@
                             ]
                         },
                         "update": {
+                            "flatPath": "{userId}/sessions/{sessionId}",
                             "httpMethod": "PUT",
                             "id": "fitness.users.sessions.update",
                             "parameterOrder": [
@@ -695,11 +731,11 @@
                 },
                 "type": {
                     "enum": [
-                        "activitySegment",
-                        "activityType",
-                        "session",
+                        "unknown",
                         "time",
-                        "unknown"
+                        "session",
+                        "activityType",
+                        "activitySegment"
                     ],
                     "type": "string"
                 }
@@ -756,16 +792,16 @@
                 "filteredDataQualityStandard": {
                     "items": {
                         "enum": [
-                            "dataQualityBloodGlucoseIso151972003",
-                            "dataQualityBloodGlucoseIso151972013",
+                            "dataQualityUnknown",
+                            "dataQualityBloodPressureEsh2002",
+                            "dataQualityBloodPressureEsh2010",
                             "dataQualityBloodPressureAami",
                             "dataQualityBloodPressureBhsAA",
                             "dataQualityBloodPressureBhsAB",
                             "dataQualityBloodPressureBhsBA",
                             "dataQualityBloodPressureBhsBB",
-                            "dataQualityBloodPressureEsh2002",
-                            "dataQualityBloodPressureEsh2010",
-                            "dataQualityUnknown"
+                            "dataQualityBloodGlucoseIso151972003",
+                            "dataQualityBloodGlucoseIso151972013"
                         ],
                         "type": "string"
                     },
@@ -865,8 +901,8 @@
                 "type": {
                     "enum": [
                         "day",
-                        "month",
-                        "week"
+                        "week",
+                        "month"
                     ],
                     "type": "string"
                 },
@@ -950,16 +986,16 @@
                 "dataQualityStandard": {
                     "items": {
                         "enum": [
-                            "dataQualityBloodGlucoseIso151972003",
-                            "dataQualityBloodGlucoseIso151972013",
+                            "dataQualityUnknown",
+                            "dataQualityBloodPressureEsh2002",
+                            "dataQualityBloodPressureEsh2010",
                             "dataQualityBloodPressureAami",
                             "dataQualityBloodPressureBhsAA",
                             "dataQualityBloodPressureBhsAB",
                             "dataQualityBloodPressureBhsBA",
                             "dataQualityBloodPressureBhsBB",
-                            "dataQualityBloodPressureEsh2002",
-                            "dataQualityBloodPressureEsh2010",
-                            "dataQualityUnknown"
+                            "dataQualityBloodGlucoseIso151972003",
+                            "dataQualityBloodGlucoseIso151972013"
                         ],
                         "type": "string"
                     },
@@ -1005,8 +1041,8 @@
                         ]
                     },
                     "enum": [
-                        "derived",
-                        "raw"
+                        "raw",
+                        "derived"
                     ],
                     "type": "string"
                 }
@@ -1051,13 +1087,13 @@
                         ]
                     },
                     "enum": [
-                        "blob",
-                        "floatList",
-                        "floatPoint",
                         "integer",
-                        "integerList",
+                        "floatPoint",
+                        "string",
                         "map",
-                        "string"
+                        "integerList",
+                        "floatList",
+                        "blob"
                     ],
                     "type": "string"
                 },
@@ -1151,13 +1187,14 @@
                         ]
                     },
                     "enum": [
-                        "chestStrap",
-                        "headMounted",
-                        "phone",
-                        "scale",
-                        "tablet",
                         "unknown",
-                        "watch"
+                        "phone",
+                        "tablet",
+                        "watch",
+                        "chestStrap",
+                        "scale",
+                        "headMounted",
+                        "smartDisplay"
                     ],
                     "type": "string"
                 },
@@ -1354,6 +1391,6 @@
         }
     },
     "servicePath": "fitness/v1/users/",
-    "title": "Fitness",
+    "title": "Fitness API",
     "version": "v1"
 }

@@ -1,21 +1,109 @@
 #  Versionshinweise
 
-Auf dieser Seite werden Produktionsaktualisierungen für Dialogflow
+Auf dieser Seite werden Produktionsaktualisierungen von Dialogflow
 dokumentiert. Wir empfehlen Dialogflow-Entwicklern, diese Liste regelmäßig auf
-neue Ankündigungen zu prüfen. Wichtige Änderungen werden auch bekannt gegeben
-über:
-
-  * [ Die Dialogflow Enterprise-Mailingliste ](https://groups.google.com/forum/?hl=de#!forum/dialogflow-enterprise-edition-users)
-  * [ Cloud-Blog: KI und maschinelles Lernen ](https://cloud.google.com/blog/products/ai-machine-learning?hl=de)
+neue Ankündigungen zu prüfen. Wesentliche Änderungen werden auch im [ Cloud
+Blog: AI & Machine Learning ](https://cloud.google.com/blog/products/ai-
+machine-learning?hl=de) angekündigt.
 
 **Hinweis:** Sie können auch die [ alten Versionshinweise
 ](https://cloud.google.com/dialogflow/docs/data/historic-release-
 notes.pdf?hl=de) lesen, die vor dem 16. November 2017 erschienen sind.
 
-Für neueste Produktaktualisierungen können Sie die URL dieser Seite in einen [
+Die neuesten Produktaktualisierungen für Google Cloud finden Sie auf der Seite
+mit den [ Google Cloud-Versionshinweisen ](https://cloud.google.com/release-
+notes?hl=de) .
+
+Für neueste Produktaktualisierungen können Sie die URL der Seite in Ihren [
 Feedreader ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators)
 einfügen oder die Feed-URL direkt hinzufügen: `
-https://cloud.google.com/feeds/dialogflow-release-notes.xml `
+https://cloud.google.com/feeds/dialogflow-release-notes.xml ` .
+
+##  August 10, 2020
+
+**FEATURE:**
+
+Beta launch of [ regionalization and data residency
+](https://cloud.google.com/dialogflow/docs/how/region?hl=de) .
+
+##  July 30, 2020
+
+**FEATURE:**
+
+GA (general availability) launch of [ mega agents
+](https://cloud.google.com/dialogflow/docs/agents-mega?hl=de) .
+
+**FEATURE:**
+
+Beta launch of the [ Facebook Workplace integration
+](https://cloud.google.com/dialogflow/docs/integrations/workplace?hl=de) .
+
+##  July 27, 2020
+
+**FEATURE:**
+
+Beta launch of [ Dialogflow Messenger
+](https://cloud.google.com/dialogflow/docs/integrations/dialogflow-
+messenger?hl=de) . This new integration provides a customizable chat dialog
+for your agent that can be embedded in your website.
+
+##  July 23, 2020
+
+**DEPRECATED:**
+
+Amazon Alexa importer and exporter are no longer supported.
+
+##  July 06, 2020
+
+**FEATURE:**
+
+The Dialogflow Console has been upgraded with an improved [ Analytics page
+](https://cloud.google.com/dialogflow/docs/analytics?hl=de) (Beta) that
+provides new metrics and data views.
+
+##  June 29, 2020
+
+**DEPRECATED:**
+
+The V1 API is in the process of a gradual shutdown. See the [ November 14,
+2019 release note ](https://cloud.google.com/dialogflow/docs/release-
+notes?hl=de#November_14_2019) for details.
+
+##  June 01, 2020
+
+**CHANGED:**
+
+The shutdown of 7 integrations [ announced in January
+](https://cloud.google.com/dialogflow/docs/release-
+notes?hl=de#January_06_2020) is now extended to July 6th, 2020.
+
+##  May 29, 2020
+
+**CHANGED:**
+
+The [ Dialogflow Facebook Messenger integration
+](https://cloud.google.com/dialogflow/docs/integrations/facebook?hl=de) has
+been updated to to be compliant with newer Facebook Messenger API versions. If
+you have an agent that enabled this integration prior to today, you should
+have received an email from Dialogflow with upgrade instructions. If you have
+not received this email, please [ contact Dialogflow support
+](https://cloud.google.com/dialogflow/docs/support/getting-support?hl=de) .
+
+##  May 17, 2020
+
+**CHANGED:**
+
+Old Node.js client library require statements must be updated. Your require
+statements should look like this:
+
+` const dialogflow = require('@google-cloud/dialogflow').v2; `
+
+or this:
+
+` const dialogflow = require('@google-cloud/dialogflow').v2beta1; `
+
+Old syntax that does not include ` @google-cloud ` is now deprecated. The old
+syntax will continue to work, but you will not receive updates.
 
 ##  May 08, 2020
 
@@ -31,14 +119,6 @@ telephony partner:
 
 GA (general availability) launch of [ auto speech adaptation
 ](https://cloud.google.com/dialogflow/docs/speech-adaptation?hl=de) .
-
-##  May 04, 2020
-
-**CHANGED:**
-
-The shutdown of 7 integrations [ announced in January
-](https://cloud.google.com/dialogflow/docs/release-
-notes?hl=de#January_06_2020) is now extended to June 6th, 2020.
 
 ##  April 30, 2020
 
@@ -100,15 +180,6 @@ The shutdown of the V1 API [ announced in November
 ](https://cloud.google.com/dialogflow/docs/release-
 notes?hl=de#November_14_2019) has been extended to May 31, 2020,
 
-##  March 25, 2020
-
-**CHANGED:**
-
-The shutdown of 7 integrations [ announced in January
-](https://cloud.google.com/dialogflow/docs/release-
-notes?hl=de#January_06_2020) is now extended to ~~May 6th, 2020~~ June 6th,
-2020.
-
 ##  March 13, 2020
 
 **CHANGED:**
@@ -160,8 +231,8 @@ multiple sub-agents agents into a single mega agent.
 
 The following [ integrations
 ](https://cloud.google.com/dialogflow/docs/integrations/?hl=de) are now
-deprecated and will be shut down on ~~April 6th, 2020~~ ~~May 6th, 2020~~ June
-6th, 2020 :
+deprecated and will be shut down on ~~April 6th, 2020~~ ~~May 6th, 2020~~
+~~June 6th, 2020~~ July 6th, 2020 :
 
   * Kik 
   * Skype 

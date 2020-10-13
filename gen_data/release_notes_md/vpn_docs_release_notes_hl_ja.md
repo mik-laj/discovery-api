@@ -7,6 +7,25 @@
 URL ディレクトリ ` https://cloud.google.com/feeds/cloudvpn-release-notes.xml `
 を直接追加します。
 
+##  June 15, 2020
+
+**FEATURE:**
+
+Cloud VPN now supports [ an org-level policy
+](https://cloud.google.com/vpn/docs/concepts/overview?hl=ja#vpn-org-policy)
+that restricts peer IP addresses through a Cloud VPN tunnel.
+
+##  June 08, 2020
+
+**FEATURE:**
+
+Cloud VPN is now available in [ region
+](https://cloud.google.com/compute/docs/regions-zones/?hl=ja#available) asia-
+southeast2 (Jakarta, Indonesia).
+
+Pricing is available on the [ Cloud VPN pricing page
+](https://cloud.google.com/vpn/pricing?hl=ja) .
+
 ##  April 20, 2020
 
 **FEATURE:**

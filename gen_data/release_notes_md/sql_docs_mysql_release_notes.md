@@ -13,6 +13,32 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/cloud-sql-mysql-release-
 notes.xml `
 
+##  June 23, 2020
+
+**FEATURE:**
+
+Committed use discounts (CUDs) are now available to purchase for Cloud SQL.
+CUDs provide discounted prices in exchange for your commitment to use a
+minimum level of resources for a specified term. With committed use discounts
+for Cloud SQL, you can earn a deep discount off your cost of use in exchange
+for committing to continuously use database instances in a particular region
+for a 1- or 3-year term. See the [ documentation
+](https://cloud.google.com/sql/docs/mysql/cud) for more details.
+
+##  June 08, 2020
+
+**FEATURE:**
+
+Support for [ asia-southeast2
+](https://cloud.google.com/sql/docs/mysql/locations) region (Jakarta).
+
+##  May 18, 2020
+
+**FEATURE:**
+
+MySQL 5.6 minor version is upgraded to 5.6.42. MySQL 5.7 minor version is
+upgraded to 5.7.25.
+
 ##  May 04, 2020
 
 **DEPRECATED:**

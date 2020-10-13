@@ -849,6 +849,42 @@
         },
         "projects": {
             "resources": {
+                "authorizeddomains": {
+                    "methods": {
+                        "list": {
+                            "flatPath": "v1/projects/{projectsId}/authorizeddomains",
+                            "httpMethod": "GET",
+                            "id": "run.projects.authorizeddomains.list",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "pageSize": {
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "pageToken": {
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "parent": {
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+parent}/authorizeddomains",
+                            "response": {
+                                "$ref": "ListAuthorizedDomainsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        }
+                    }
+                },
                 "locations": {
                     "methods": {
                         "list": {
@@ -2059,6 +2095,9 @@
                         "$ref": "ResourceRecord"
                     },
                     "type": "array"
+                },
+                "url": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2109,7 +2148,10 @@
             "id": "ExecAction",
             "properties": {
                 "command": {
-                    "type": "string"
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -2183,23 +2225,6 @@
                 },
                 "value": {
                     "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "IntOrString": {
-            "id": "IntOrString",
-            "properties": {
-                "intVal": {
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "strVal": {
-                    "type": "string"
-                },
-                "type": {
-                    "format": "int32",
-                    "type": "integer"
                 }
             },
             "type": "object"
@@ -3059,7 +3084,8 @@
                     "type": "string"
                 },
                 "port": {
-                    "$ref": "IntOrString"
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -3148,7 +3174,7 @@
         }
     },
     "servicePath": "",
-    "title": "Cloud Run API",
+    "title": "Cloud Run Admin API",
     "version": "v1",
     "version_module": true
 }

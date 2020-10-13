@@ -101,6 +101,10 @@
                         "locationId": {
                             "location": "query",
                             "type": "string"
+                        },
+                        "parent": {
+                            "location": "query",
+                            "type": "string"
                         }
                     },
                     "path": "v2/infoTypes",
@@ -118,11 +122,11 @@
                 "infoTypes": {
                     "methods": {
                         "list": {
-                            "flatPath": "v2/locations/{locationId}/infoTypes",
+                            "flatPath": "v2/locations/{locationsId}/infoTypes",
                             "httpMethod": "GET",
                             "id": "dlp.locations.infoTypes.list",
                             "parameterOrder": [
-                                "locationId"
+                                "parent"
                             ],
                             "parameters": {
                                 "filter": {
@@ -134,12 +138,17 @@
                                     "type": "string"
                                 },
                                 "locationId": {
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "parent": {
                                     "location": "path",
+                                    "pattern": "^locations/[^/]+$",
                                     "required": true,
                                     "type": "string"
                                 }
                             },
-                            "path": "v2/locations/{locationId}/infoTypes",
+                            "path": "v2/{+parent}/infoTypes",
                             "response": {
                                 "$ref": "GooglePrivacyDlpV2ListInfoTypesResponse"
                             },
@@ -442,27 +451,21 @@
                         "deidentifyTemplates": {
                             "methods": {
                                 "create": {
-                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationId}/deidentifyTemplates",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/deidentifyTemplates",
                                     "httpMethod": "POST",
                                     "id": "dlp.organizations.locations.deidentifyTemplates.create",
                                     "parameterOrder": [
-                                        "parent",
-                                        "locationId"
+                                        "parent"
                                     ],
                                     "parameters": {
-                                        "locationId": {
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
                                         "parent": {
                                             "location": "path",
-                                            "pattern": "^organizations/[^/]+$",
+                                            "pattern": "^organizations/[^/]+/locations/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v2/{+parent}/locations/{locationId}/deidentifyTemplates",
+                                    "path": "v2/{+parent}/deidentifyTemplates",
                                     "request": {
                                         "$ref": "GooglePrivacyDlpV2CreateDeidentifyTemplateRequest"
                                     },
@@ -520,17 +523,15 @@
                                     ]
                                 },
                                 "list": {
-                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationId}/deidentifyTemplates",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/deidentifyTemplates",
                                     "httpMethod": "GET",
                                     "id": "dlp.organizations.locations.deidentifyTemplates.list",
                                     "parameterOrder": [
-                                        "parent",
-                                        "locationId"
+                                        "parent"
                                     ],
                                     "parameters": {
                                         "locationId": {
-                                            "location": "path",
-                                            "required": true,
+                                            "location": "query",
                                             "type": "string"
                                         },
                                         "orderBy": {
@@ -548,12 +549,12 @@
                                         },
                                         "parent": {
                                             "location": "path",
-                                            "pattern": "^organizations/[^/]+$",
+                                            "pattern": "^organizations/[^/]+/locations/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v2/{+parent}/locations/{locationId}/deidentifyTemplates",
+                                    "path": "v2/{+parent}/deidentifyTemplates",
                                     "response": {
                                         "$ref": "GooglePrivacyDlpV2ListDeidentifyTemplatesResponse"
                                     },
@@ -592,27 +593,21 @@
                         "inspectTemplates": {
                             "methods": {
                                 "create": {
-                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationId}/inspectTemplates",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/inspectTemplates",
                                     "httpMethod": "POST",
                                     "id": "dlp.organizations.locations.inspectTemplates.create",
                                     "parameterOrder": [
-                                        "parent",
-                                        "locationId"
+                                        "parent"
                                     ],
                                     "parameters": {
-                                        "locationId": {
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
                                         "parent": {
                                             "location": "path",
-                                            "pattern": "^organizations/[^/]+$",
+                                            "pattern": "^organizations/[^/]+/locations/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v2/{+parent}/locations/{locationId}/inspectTemplates",
+                                    "path": "v2/{+parent}/inspectTemplates",
                                     "request": {
                                         "$ref": "GooglePrivacyDlpV2CreateInspectTemplateRequest"
                                     },
@@ -670,17 +665,15 @@
                                     ]
                                 },
                                 "list": {
-                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationId}/inspectTemplates",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/inspectTemplates",
                                     "httpMethod": "GET",
                                     "id": "dlp.organizations.locations.inspectTemplates.list",
                                     "parameterOrder": [
-                                        "parent",
-                                        "locationId"
+                                        "parent"
                                     ],
                                     "parameters": {
                                         "locationId": {
-                                            "location": "path",
-                                            "required": true,
+                                            "location": "query",
                                             "type": "string"
                                         },
                                         "orderBy": {
@@ -698,12 +691,12 @@
                                         },
                                         "parent": {
                                             "location": "path",
-                                            "pattern": "^organizations/[^/]+$",
+                                            "pattern": "^organizations/[^/]+/locations/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v2/{+parent}/locations/{locationId}/inspectTemplates",
+                                    "path": "v2/{+parent}/inspectTemplates",
                                     "response": {
                                         "$ref": "GooglePrivacyDlpV2ListInspectTemplatesResponse"
                                     },
@@ -742,27 +735,21 @@
                         "storedInfoTypes": {
                             "methods": {
                                 "create": {
-                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationId}/storedInfoTypes",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/storedInfoTypes",
                                     "httpMethod": "POST",
                                     "id": "dlp.organizations.locations.storedInfoTypes.create",
                                     "parameterOrder": [
-                                        "parent",
-                                        "locationId"
+                                        "parent"
                                     ],
                                     "parameters": {
-                                        "locationId": {
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
                                         "parent": {
                                             "location": "path",
-                                            "pattern": "^organizations/[^/]+$",
+                                            "pattern": "^organizations/[^/]+/locations/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v2/{+parent}/locations/{locationId}/storedInfoTypes",
+                                    "path": "v2/{+parent}/storedInfoTypes",
                                     "request": {
                                         "$ref": "GooglePrivacyDlpV2CreateStoredInfoTypeRequest"
                                     },
@@ -820,17 +807,15 @@
                                     ]
                                 },
                                 "list": {
-                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationId}/storedInfoTypes",
+                                    "flatPath": "v2/organizations/{organizationsId}/locations/{locationsId}/storedInfoTypes",
                                     "httpMethod": "GET",
                                     "id": "dlp.organizations.locations.storedInfoTypes.list",
                                     "parameterOrder": [
-                                        "parent",
-                                        "locationId"
+                                        "parent"
                                     ],
                                     "parameters": {
                                         "locationId": {
-                                            "location": "path",
-                                            "required": true,
+                                            "location": "query",
                                             "type": "string"
                                         },
                                         "orderBy": {
@@ -848,12 +833,12 @@
                                         },
                                         "parent": {
                                             "location": "path",
-                                            "pattern": "^organizations/[^/]+$",
+                                            "pattern": "^organizations/[^/]+/locations/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v2/{+parent}/locations/{locationId}/storedInfoTypes",
+                                    "path": "v2/{+parent}/storedInfoTypes",
                                     "response": {
                                         "$ref": "GooglePrivacyDlpV2ListStoredInfoTypesResponse"
                                     },
@@ -1765,27 +1750,21 @@
                         "content": {
                             "methods": {
                                 "deidentify": {
-                                    "flatPath": "v2/projects/{projectsId}/locations/{locationId}/content:deidentify",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/content:deidentify",
                                     "httpMethod": "POST",
                                     "id": "dlp.projects.locations.content.deidentify",
                                     "parameterOrder": [
-                                        "parent",
-                                        "locationId"
+                                        "parent"
                                     ],
                                     "parameters": {
-                                        "locationId": {
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
                                         "parent": {
                                             "location": "path",
-                                            "pattern": "^projects/[^/]+$",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v2/{+parent}/locations/{locationId}/content:deidentify",
+                                    "path": "v2/{+parent}/content:deidentify",
                                     "request": {
                                         "$ref": "GooglePrivacyDlpV2DeidentifyContentRequest"
                                     },
@@ -1797,27 +1776,21 @@
                                     ]
                                 },
                                 "inspect": {
-                                    "flatPath": "v2/projects/{projectsId}/locations/{locationId}/content:inspect",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/content:inspect",
                                     "httpMethod": "POST",
                                     "id": "dlp.projects.locations.content.inspect",
                                     "parameterOrder": [
-                                        "parent",
-                                        "locationId"
+                                        "parent"
                                     ],
                                     "parameters": {
-                                        "locationId": {
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
                                         "parent": {
                                             "location": "path",
-                                            "pattern": "^projects/[^/]+$",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v2/{+parent}/locations/{locationId}/content:inspect",
+                                    "path": "v2/{+parent}/content:inspect",
                                     "request": {
                                         "$ref": "GooglePrivacyDlpV2InspectContentRequest"
                                     },
@@ -1829,27 +1802,21 @@
                                     ]
                                 },
                                 "reidentify": {
-                                    "flatPath": "v2/projects/{projectsId}/locations/{locationId}/content:reidentify",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/content:reidentify",
                                     "httpMethod": "POST",
                                     "id": "dlp.projects.locations.content.reidentify",
                                     "parameterOrder": [
-                                        "parent",
-                                        "locationId"
+                                        "parent"
                                     ],
                                     "parameters": {
-                                        "locationId": {
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
                                         "parent": {
                                             "location": "path",
-                                            "pattern": "^projects/[^/]+$",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v2/{+parent}/locations/{locationId}/content:reidentify",
+                                    "path": "v2/{+parent}/content:reidentify",
                                     "request": {
                                         "$ref": "GooglePrivacyDlpV2ReidentifyContentRequest"
                                     },
@@ -1865,27 +1832,21 @@
                         "deidentifyTemplates": {
                             "methods": {
                                 "create": {
-                                    "flatPath": "v2/projects/{projectsId}/locations/{locationId}/deidentifyTemplates",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/deidentifyTemplates",
                                     "httpMethod": "POST",
                                     "id": "dlp.projects.locations.deidentifyTemplates.create",
                                     "parameterOrder": [
-                                        "parent",
-                                        "locationId"
+                                        "parent"
                                     ],
                                     "parameters": {
-                                        "locationId": {
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
                                         "parent": {
                                             "location": "path",
-                                            "pattern": "^projects/[^/]+$",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v2/{+parent}/locations/{locationId}/deidentifyTemplates",
+                                    "path": "v2/{+parent}/deidentifyTemplates",
                                     "request": {
                                         "$ref": "GooglePrivacyDlpV2CreateDeidentifyTemplateRequest"
                                     },
@@ -1943,17 +1904,15 @@
                                     ]
                                 },
                                 "list": {
-                                    "flatPath": "v2/projects/{projectsId}/locations/{locationId}/deidentifyTemplates",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/deidentifyTemplates",
                                     "httpMethod": "GET",
                                     "id": "dlp.projects.locations.deidentifyTemplates.list",
                                     "parameterOrder": [
-                                        "parent",
-                                        "locationId"
+                                        "parent"
                                     ],
                                     "parameters": {
                                         "locationId": {
-                                            "location": "path",
-                                            "required": true,
+                                            "location": "query",
                                             "type": "string"
                                         },
                                         "orderBy": {
@@ -1971,12 +1930,12 @@
                                         },
                                         "parent": {
                                             "location": "path",
-                                            "pattern": "^projects/[^/]+$",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v2/{+parent}/locations/{locationId}/deidentifyTemplates",
+                                    "path": "v2/{+parent}/deidentifyTemplates",
                                     "response": {
                                         "$ref": "GooglePrivacyDlpV2ListDeidentifyTemplatesResponse"
                                     },
@@ -2041,27 +2000,21 @@
                                     ]
                                 },
                                 "create": {
-                                    "flatPath": "v2/projects/{projectsId}/locations/{locationId}/dlpJobs",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/dlpJobs",
                                     "httpMethod": "POST",
                                     "id": "dlp.projects.locations.dlpJobs.create",
                                     "parameterOrder": [
-                                        "parent",
-                                        "locationId"
+                                        "parent"
                                     ],
                                     "parameters": {
-                                        "locationId": {
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
                                         "parent": {
                                             "location": "path",
-                                            "pattern": "^projects/[^/]+$",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v2/{+parent}/locations/{locationId}/dlpJobs",
+                                    "path": "v2/{+parent}/dlpJobs",
                                     "request": {
                                         "$ref": "GooglePrivacyDlpV2CreateDlpJobRequest"
                                     },
@@ -2171,12 +2124,11 @@
                                     ]
                                 },
                                 "list": {
-                                    "flatPath": "v2/projects/{projectsId}/locations/{locationId}/dlpJobs",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/dlpJobs",
                                     "httpMethod": "GET",
                                     "id": "dlp.projects.locations.dlpJobs.list",
                                     "parameterOrder": [
-                                        "parent",
-                                        "locationId"
+                                        "parent"
                                     ],
                                     "parameters": {
                                         "filter": {
@@ -2184,8 +2136,7 @@
                                             "type": "string"
                                         },
                                         "locationId": {
-                                            "location": "path",
-                                            "required": true,
+                                            "location": "query",
                                             "type": "string"
                                         },
                                         "orderBy": {
@@ -2203,7 +2154,7 @@
                                         },
                                         "parent": {
                                             "location": "path",
-                                            "pattern": "^projects/[^/]+$",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         },
@@ -2217,7 +2168,7 @@
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v2/{+parent}/locations/{locationId}/dlpJobs",
+                                    "path": "v2/{+parent}/dlpJobs",
                                     "response": {
                                         "$ref": "GooglePrivacyDlpV2ListDlpJobsResponse"
                                     },
@@ -2230,27 +2181,21 @@
                         "image": {
                             "methods": {
                                 "redact": {
-                                    "flatPath": "v2/projects/{projectsId}/locations/{locationId}/image:redact",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/image:redact",
                                     "httpMethod": "POST",
                                     "id": "dlp.projects.locations.image.redact",
                                     "parameterOrder": [
-                                        "parent",
-                                        "locationId"
+                                        "parent"
                                     ],
                                     "parameters": {
-                                        "locationId": {
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
                                         "parent": {
                                             "location": "path",
-                                            "pattern": "^projects/[^/]+$",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v2/{+parent}/locations/{locationId}/image:redact",
+                                    "path": "v2/{+parent}/image:redact",
                                     "request": {
                                         "$ref": "GooglePrivacyDlpV2RedactImageRequest"
                                     },
@@ -2266,27 +2211,21 @@
                         "inspectTemplates": {
                             "methods": {
                                 "create": {
-                                    "flatPath": "v2/projects/{projectsId}/locations/{locationId}/inspectTemplates",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/inspectTemplates",
                                     "httpMethod": "POST",
                                     "id": "dlp.projects.locations.inspectTemplates.create",
                                     "parameterOrder": [
-                                        "parent",
-                                        "locationId"
+                                        "parent"
                                     ],
                                     "parameters": {
-                                        "locationId": {
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
                                         "parent": {
                                             "location": "path",
-                                            "pattern": "^projects/[^/]+$",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v2/{+parent}/locations/{locationId}/inspectTemplates",
+                                    "path": "v2/{+parent}/inspectTemplates",
                                     "request": {
                                         "$ref": "GooglePrivacyDlpV2CreateInspectTemplateRequest"
                                     },
@@ -2344,17 +2283,15 @@
                                     ]
                                 },
                                 "list": {
-                                    "flatPath": "v2/projects/{projectsId}/locations/{locationId}/inspectTemplates",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/inspectTemplates",
                                     "httpMethod": "GET",
                                     "id": "dlp.projects.locations.inspectTemplates.list",
                                     "parameterOrder": [
-                                        "parent",
-                                        "locationId"
+                                        "parent"
                                     ],
                                     "parameters": {
                                         "locationId": {
-                                            "location": "path",
-                                            "required": true,
+                                            "location": "query",
                                             "type": "string"
                                         },
                                         "orderBy": {
@@ -2372,12 +2309,12 @@
                                         },
                                         "parent": {
                                             "location": "path",
-                                            "pattern": "^projects/[^/]+$",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v2/{+parent}/locations/{locationId}/inspectTemplates",
+                                    "path": "v2/{+parent}/inspectTemplates",
                                     "response": {
                                         "$ref": "GooglePrivacyDlpV2ListInspectTemplatesResponse"
                                     },
@@ -2442,27 +2379,21 @@
                                     ]
                                 },
                                 "create": {
-                                    "flatPath": "v2/projects/{projectsId}/locations/{locationId}/jobTriggers",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/jobTriggers",
                                     "httpMethod": "POST",
                                     "id": "dlp.projects.locations.jobTriggers.create",
                                     "parameterOrder": [
-                                        "parent",
-                                        "locationId"
+                                        "parent"
                                     ],
                                     "parameters": {
-                                        "locationId": {
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
                                         "parent": {
                                             "location": "path",
-                                            "pattern": "^projects/[^/]+$",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v2/{+parent}/locations/{locationId}/jobTriggers",
+                                    "path": "v2/{+parent}/jobTriggers",
                                     "request": {
                                         "$ref": "GooglePrivacyDlpV2CreateJobTriggerRequest"
                                     },
@@ -2546,12 +2477,11 @@
                                     ]
                                 },
                                 "list": {
-                                    "flatPath": "v2/projects/{projectsId}/locations/{locationId}/jobTriggers",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/jobTriggers",
                                     "httpMethod": "GET",
                                     "id": "dlp.projects.locations.jobTriggers.list",
                                     "parameterOrder": [
-                                        "parent",
-                                        "locationId"
+                                        "parent"
                                     ],
                                     "parameters": {
                                         "filter": {
@@ -2559,8 +2489,7 @@
                                             "type": "string"
                                         },
                                         "locationId": {
-                                            "location": "path",
-                                            "required": true,
+                                            "location": "query",
                                             "type": "string"
                                         },
                                         "orderBy": {
@@ -2578,12 +2507,12 @@
                                         },
                                         "parent": {
                                             "location": "path",
-                                            "pattern": "^projects/[^/]+$",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v2/{+parent}/locations/{locationId}/jobTriggers",
+                                    "path": "v2/{+parent}/jobTriggers",
                                     "response": {
                                         "$ref": "GooglePrivacyDlpV2ListJobTriggersResponse"
                                     },
@@ -2622,27 +2551,21 @@
                         "storedInfoTypes": {
                             "methods": {
                                 "create": {
-                                    "flatPath": "v2/projects/{projectsId}/locations/{locationId}/storedInfoTypes",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/storedInfoTypes",
                                     "httpMethod": "POST",
                                     "id": "dlp.projects.locations.storedInfoTypes.create",
                                     "parameterOrder": [
-                                        "parent",
-                                        "locationId"
+                                        "parent"
                                     ],
                                     "parameters": {
-                                        "locationId": {
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
                                         "parent": {
                                             "location": "path",
-                                            "pattern": "^projects/[^/]+$",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v2/{+parent}/locations/{locationId}/storedInfoTypes",
+                                    "path": "v2/{+parent}/storedInfoTypes",
                                     "request": {
                                         "$ref": "GooglePrivacyDlpV2CreateStoredInfoTypeRequest"
                                     },
@@ -2700,17 +2623,15 @@
                                     ]
                                 },
                                 "list": {
-                                    "flatPath": "v2/projects/{projectsId}/locations/{locationId}/storedInfoTypes",
+                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/storedInfoTypes",
                                     "httpMethod": "GET",
                                     "id": "dlp.projects.locations.storedInfoTypes.list",
                                     "parameterOrder": [
-                                        "parent",
-                                        "locationId"
+                                        "parent"
                                     ],
                                     "parameters": {
                                         "locationId": {
-                                            "location": "path",
-                                            "required": true,
+                                            "location": "query",
                                             "type": "string"
                                         },
                                         "orderBy": {
@@ -2728,12 +2649,12 @@
                                         },
                                         "parent": {
                                             "location": "path",
-                                            "pattern": "^projects/[^/]+$",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v2/{+parent}/locations/{locationId}/storedInfoTypes",
+                                    "path": "v2/{+parent}/storedInfoTypes",
                                     "response": {
                                         "$ref": "GooglePrivacyDlpV2ListStoredInfoTypesResponse"
                                     },
@@ -3139,7 +3060,9 @@
                         "TEXT_UTF8",
                         "WORD_DOCUMENT",
                         "PDF",
-                        "AVRO"
+                        "AVRO",
+                        "CSV",
+                        "TSV"
                     ],
                     "type": "string"
                 }
@@ -3274,7 +3197,9 @@
                             "IMAGE",
                             "WORD",
                             "PDF",
-                            "AVRO"
+                            "AVRO",
+                            "CSV",
+                            "TSV"
                         ],
                         "type": "string"
                     },
@@ -3770,6 +3695,7 @@
             "properties": {
                 "createTime": {
                     "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "deidentifyConfig": {
@@ -3779,10 +3705,12 @@
                     "type": "string"
                 },
                 "name": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "updateTime": {
                     "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -4529,6 +4457,7 @@
             "properties": {
                 "createTime": {
                     "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "displayName": {
@@ -4538,10 +4467,12 @@
                     "$ref": "GooglePrivacyDlpV2InspectConfig"
                 },
                 "name": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "updateTime": {
                     "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -4587,6 +4518,7 @@
             "properties": {
                 "createTime": {
                     "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "displayName": {
@@ -4596,6 +4528,7 @@
                     "items": {
                         "$ref": "GooglePrivacyDlpV2Error"
                     },
+                    "readOnly": true,
                     "type": "array"
                 },
                 "inspectJob": {
@@ -4603,6 +4536,7 @@
                 },
                 "lastRunTime": {
                     "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "name": {
@@ -4625,6 +4559,7 @@
                 },
                 "updateTime": {
                     "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 }
             },

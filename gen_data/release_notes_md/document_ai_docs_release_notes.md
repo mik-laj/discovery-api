@@ -2,9 +2,12 @@
 
 **Beta**
 
-This product or feature is in a pre-release state and might change or have
-limited support. For more information, see the [ product launch stages
-](/products#product-launch-stages) .
+This product or feature is covered by the [ Pre-GA Offerings Terms
+](/terms/service-terms#1) of the Google Cloud Platform Terms of Service. Pre-
+GA products and features may have limited support, and changes to pre-GA
+products and features may not be compatible with other pre-GA versions. For
+more information, see the [ launch stage descriptions ](/products#product-
+launch-stages) .
 
 This page documents production updates to Document AI. We recommend that
 Document AI developers periodically check this list for any new announcements.
@@ -16,6 +19,23 @@ To get the latest product updates delivered to you, add the URL of this page
 to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/duai-release-notes.xml `
+
+##  July 04, 2020
+
+**CHANGED:**
+
+**Invoice Parsing Beta model upgrade**
+
+The Invoice Parsing Beta model has been upgraded. This model upgrade results
+in higher quality results for the [ entities
+](https://cloud.google.com/document-
+ai/docs/reference/rest/v1beta2/Document#Entity) and [ entityRelations
+](https://cloud.google.com/document-
+ai/docs/reference/rest/v1beta2/Document#EntityRelation) . There is no API
+change.
+
+See the [ product documentation ](https://cloud.google.com/solutions/document-
+ai/docs/process-invoices) for more information.
 
 ##  April 14, 2020
 

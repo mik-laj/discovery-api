@@ -1,13 +1,58 @@
-Python 2는 더 이상 커뮤니티에서 지원하지 않습니다. [ Python 2 앱을 Python 3로 마이그레이션
+커뮤니티에서 더 이상 Python 2를 더 이상 지원하지 않습니다. [ Python 2 앱을 Python 3로 마이그레이션
 ](https://cloud.google.com/appengine/docs/standard/python/migrate-to-
-python3/?hl=ko) 하는 것이 좋습니다.
+python3?hl=ko) 하는 것이 좋습니다.
 
 #  Python 2.7 출시 노트
+
+[ Google Cloud 출시 노트 ](https://cloud.google.com/release-notes?hl=ko) 페이지에서 모든
+Google Cloud의 최신 제품 업데이트를 확인할 수 있습니다.
 
 최신 제품 업데이트를 받으려면 [ 피드 리더
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) 에 이 페이지의 URL을
 추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/gaestd-py-
 release-notes.xml `
+
+##  July 23, 2020
+
+**FEATURE:**
+
+[ Serverless VPC Access support for Shared VPC
+](https://cloud.google.com/appengine/docs/standard/python/connecting-
+vpc?hl=ko#shared-vpc) is now available in Beta.
+
+##  July 08, 2020
+
+**FEATURE:**
+
+External HTTP(S) Load Balancing is now supported for App Engine via [
+Serverless network endpoint groups ](https://cloud.google.com//load-
+balancing/docs/negs/setting-up-serverless-negs?hl=ko) . Notably, this feature
+allows you to use [ Cloud CDN ](https://cloud.google.com/cdn?hl=ko) with App
+Engine.  
+This feature is available in Beta.
+
+##  June 08, 2020
+
+**FEATURE:**
+
+App Engine is now available in the ` asia-southeast2 ` region (Jakarta).
+
+##  May 14, 2020
+
+**FEATURE:**
+
+To get a fine-grained view of billing data for each resource used by your App
+Engine services, you can apply labels to the services, export your billing
+data to BigQuery, and run queries. For more information, see [ Labeling App
+Engine resources
+](https://cloud.google.com/appengine/docs/standard/python/labeling-
+resources?hl=ko) .
+
+##  May 11, 2020
+
+**CHANGED:**
+
+Updated Python SDK to version 1.9.91.
 
 ##  April 20, 2020
 

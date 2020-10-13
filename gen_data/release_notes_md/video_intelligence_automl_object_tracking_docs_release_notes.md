@@ -2,9 +2,11 @@
 
 **Beta**
 
-This product is in a pre-release state and might change or have limited
-support. For more information, see the [ product launch stages
-](/products#product-launch-stages) .
+This product is covered by the [ Pre-GA Offerings Terms ](/terms/service-
+terms#1) of the Google Cloud Platform Terms of Service. Pre-GA products may
+have limited support, and changes to pre-GA products may not be compatible
+with other pre-GA versions. For more information, see the [ launch stage
+descriptions ](/products#product-launch-stages) .
 
 This page documents production updates to AutoML Video Object Tracking. You
 can periodically check this page for announcements about new or updated
@@ -18,6 +20,14 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/automl-video-intelligence-
 object-tracking-release-notes.xml `
+
+##  July 21, 2020
+
+**CHANGED:**
+
+In April 2020, a model upgrade for the AutoML Video Object Tracking feature
+was released. This release is for non-downloadable models only. Models trained
+after April 2020 may show improvements in the evaluation results.
 
 ##  September 23, 2019
 

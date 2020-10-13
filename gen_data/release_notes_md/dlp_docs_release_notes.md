@@ -17,6 +17,52 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/dlp-release-notes.xml `
 
+##  July 15, 2020
+
+**CHANGED:**
+
+Added [ infoType detector ](https://cloud.google.com/dlp/docs/infotypes-
+reference) :
+
+  * ISRAEL_IDENTITY_CARD_NUMBER 
+
+##  June 19, 2020
+
+**FEATURE:**
+
+Added support for location-based processing. Learn more:
+
+  * [ Cloud DLP locations ](https://cloud.google.com/dlp/docs/locations)
+  * [ Specifying processing locations ](https://cloud.google.com/dlp/docs/specifying-location)
+
+##  June 15, 2020
+
+**FEATURE:**
+
+Added [ infoType detector ](https://cloud.google.com/dlp/docs/infotypes-
+reference) :
+
+  * VEHICLE_IDENTIFICATION_NUMBER 
+
+##  May 21, 2020
+
+**FEATURE:**
+
+Added additional [ infoType detectors
+](https://cloud.google.com/dlp/docs/infotypes-reference) :
+
+  * IRELAND_DRIVING_LICENSE_NUMBER 
+  * IRELAND_EIRCODE 
+
+##  May 16, 2020
+
+**FEATURE:**
+
+Added [ infoType detectors ](https://cloud.google.com/dlp/docs/infotypes-
+reference) :
+
+AWS_CREDENTIALS
+
 ##  May 04, 2020
 
 **CHANGED:**

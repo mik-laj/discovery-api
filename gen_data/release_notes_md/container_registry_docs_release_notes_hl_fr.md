@@ -5,6 +5,10 @@ Consultez-la régulièrement pour obtenir des informations sur les
 fonctionnalités nouvelles ou mises à jour, les corrections de bugs, les
 problèmes connus et les fonctionnalités obsolètes.
 
+Vous pouvez consulter les dernières mises à jour de produits pour l'ensemble
+de Google Cloud sur la page [ Notes de version de Google Cloud
+](https://cloud.google.com/release-notes?hl=fr) .
+
 Pour recevoir les dernières mises à jour concernant ce produit, ajoutez l'URL
 de cette page à votre [ lecteur de flux
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ou ajoutez l'URL
@@ -18,9 +22,9 @@ release-notes.xml `
 Artifact Registry, the evolution of Container Registry, is now available in
 beta. It includes support for Docker as well as Maven and npm package formats.
 
-If you currently use Container Registry, see [ Planning for the upgrade from
-Container Registry ](https://cloud.google.com/artifacts/docs/upgrade?hl=fr)
-for more information.
+If you currently use Container Registry, see [ Transitioning from Container
+Registry ](https://cloud.google.com/artifact-registry/docs/transition-from-
+gcr?hl=fr) for more information.
 
 ##  September 20, 2019
 

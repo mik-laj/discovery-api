@@ -32,10 +32,6 @@
             "location": "query",
             "type": "string"
         },
-        "access_token": {
-            "location": "query",
-            "type": "string"
-        },
         "alt": {
             "default": "json",
             "enum": [
@@ -55,10 +51,6 @@
             "type": "string"
         },
         "key": {
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
             "location": "query",
             "type": "string"
         },
@@ -545,6 +537,46 @@
                                     ]
                                 }
                             }
+                        },
+                        "versions": {
+                            "methods": {
+                                "list": {
+                                    "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/versions",
+                                    "httpMethod": "GET",
+                                    "id": "datafusion.projects.locations.versions.list",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "latestPatchOnly": {
+                                            "location": "query",
+                                            "type": "boolean"
+                                        },
+                                        "pageSize": {
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "pageToken": {
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "parent": {
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1beta1/{+parent}/versions",
+                                    "response": {
+                                        "$ref": "ListAvailableVersionsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                }
+                            }
                         }
                     }
                 }
@@ -742,6 +774,21 @@
                     "type": "string"
                 },
                 "zone": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListAvailableVersionsResponse": {
+            "id": "ListAvailableVersionsResponse",
+            "properties": {
+                "availableVersions": {
+                    "items": {
+                        "$ref": "Version"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
                     "type": "string"
                 }
             },
@@ -991,6 +1038,9 @@
         "Version": {
             "id": "Version",
             "properties": {
+                "defaultVersion": {
+                    "type": "boolean"
+                },
                 "versionNumber": {
                     "type": "string"
                 }

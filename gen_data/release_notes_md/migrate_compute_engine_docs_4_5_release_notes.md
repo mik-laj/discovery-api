@@ -1,6 +1,6 @@
 You're viewing documentation for a prior version of Migrate for Compute Engine
 (formerly Velostrata). You can continue using this version, or use the [
-current version ](/migrate/compute-engine/docs/) .
+current version ](/migrate/compute-engine/docs) .
 
 #  Release Notes
 

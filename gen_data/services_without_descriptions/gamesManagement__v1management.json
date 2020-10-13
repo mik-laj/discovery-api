@@ -6,27 +6,46 @@
             }
         }
     },
-    "basePath": "/games/v1management/",
-    "baseUrl": "https://www.googleapis.com/games/v1management/",
-    "batchPath": "batch/gamesManagement/v1management",
+    "basePath": "",
+    "baseUrl": "https://gamesmanagement.googleapis.com/",
+    "batchPath": "batch",
     "canonicalName": "Games Management",
     "discoveryVersion": "v1",
-    "documentationLink": "https://developers.google.com/games/services",
+    "documentationLink": "https://developers.google.com/games/",
     "icons": {
-        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
-        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+        "x16": "http://www.google.com/images/icons/product/search-16.gif",
+        "x32": "http://www.google.com/images/icons/product/search-32.gif"
     },
     "id": "gamesManagement:v1management",
     "kind": "discovery#restDescription",
+    "mtlsRootUrl": "https://gamesmanagement.mtls.googleapis.com/",
     "name": "gamesManagement",
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "$.xgafv": {
+            "enum": [
+                "1",
+                "2"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "location": "query",
+            "type": "string"
+        },
         "alt": {
             "default": "json",
             "enum": [
-                "json"
+                "json",
+                "media",
+                "proto"
             ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
             "location": "query",
             "type": "string"
         },
@@ -51,7 +70,11 @@
             "location": "query",
             "type": "string"
         },
-        "userIp": {
+        "uploadType": {
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
             "location": "query",
             "type": "string"
         }
@@ -61,6 +84,7 @@
         "achievements": {
             "methods": {
                 "reset": {
+                    "flatPath": "games/v1management/achievements/{achievementId}/reset",
                     "httpMethod": "POST",
                     "id": "gamesManagement.achievements.reset",
                     "parameterOrder": [
@@ -73,7 +97,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "achievements/{achievementId}/reset",
+                    "path": "games/v1management/achievements/{achievementId}/reset",
                     "response": {
                         "$ref": "AchievementResetResponse"
                     },
@@ -82,9 +106,12 @@
                     ]
                 },
                 "resetAll": {
+                    "flatPath": "games/v1management/achievements/reset",
                     "httpMethod": "POST",
                     "id": "gamesManagement.achievements.resetAll",
-                    "path": "achievements/reset",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "games/v1management/achievements/reset",
                     "response": {
                         "$ref": "AchievementResetAllResponse"
                     },
@@ -93,14 +120,18 @@
                     ]
                 },
                 "resetAllForAllPlayers": {
+                    "flatPath": "games/v1management/achievements/resetAllForAllPlayers",
                     "httpMethod": "POST",
                     "id": "gamesManagement.achievements.resetAllForAllPlayers",
-                    "path": "achievements/resetAllForAllPlayers",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "games/v1management/achievements/resetAllForAllPlayers",
                     "scopes": [
                         "https://www.googleapis.com/auth/games"
                     ]
                 },
                 "resetForAllPlayers": {
+                    "flatPath": "games/v1management/achievements/{achievementId}/resetForAllPlayers",
                     "httpMethod": "POST",
                     "id": "gamesManagement.achievements.resetForAllPlayers",
                     "parameterOrder": [
@@ -113,15 +144,18 @@
                             "type": "string"
                         }
                     },
-                    "path": "achievements/{achievementId}/resetForAllPlayers",
+                    "path": "games/v1management/achievements/{achievementId}/resetForAllPlayers",
                     "scopes": [
                         "https://www.googleapis.com/auth/games"
                     ]
                 },
                 "resetMultipleForAllPlayers": {
+                    "flatPath": "games/v1management/achievements/resetMultipleForAllPlayers",
                     "httpMethod": "POST",
                     "id": "gamesManagement.achievements.resetMultipleForAllPlayers",
-                    "path": "achievements/resetMultipleForAllPlayers",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "games/v1management/achievements/resetMultipleForAllPlayers",
                     "request": {
                         "$ref": "AchievementResetMultipleForAllRequest"
                     },
@@ -134,6 +168,7 @@
         "applications": {
             "methods": {
                 "listHidden": {
+                    "flatPath": "games/v1management/applications/{applicationId}/players/hidden",
                     "httpMethod": "GET",
                     "id": "gamesManagement.applications.listHidden",
                     "parameterOrder": [
@@ -148,8 +183,6 @@
                         "maxResults": {
                             "format": "int32",
                             "location": "query",
-                            "maximum": "50",
-                            "minimum": "1",
                             "type": "integer"
                         },
                         "pageToken": {
@@ -157,7 +190,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "applications/{applicationId}/players/hidden",
+                    "path": "games/v1management/applications/{applicationId}/players/hidden",
                     "response": {
                         "$ref": "HiddenPlayerList"
                     },
@@ -170,6 +203,7 @@
         "events": {
             "methods": {
                 "reset": {
+                    "flatPath": "games/v1management/events/{eventId}/reset",
                     "httpMethod": "POST",
                     "id": "gamesManagement.events.reset",
                     "parameterOrder": [
@@ -182,28 +216,35 @@
                             "type": "string"
                         }
                     },
-                    "path": "events/{eventId}/reset",
+                    "path": "games/v1management/events/{eventId}/reset",
                     "scopes": [
                         "https://www.googleapis.com/auth/games"
                     ]
                 },
                 "resetAll": {
+                    "flatPath": "games/v1management/events/reset",
                     "httpMethod": "POST",
                     "id": "gamesManagement.events.resetAll",
-                    "path": "events/reset",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "games/v1management/events/reset",
                     "scopes": [
                         "https://www.googleapis.com/auth/games"
                     ]
                 },
                 "resetAllForAllPlayers": {
+                    "flatPath": "games/v1management/events/resetAllForAllPlayers",
                     "httpMethod": "POST",
                     "id": "gamesManagement.events.resetAllForAllPlayers",
-                    "path": "events/resetAllForAllPlayers",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "games/v1management/events/resetAllForAllPlayers",
                     "scopes": [
                         "https://www.googleapis.com/auth/games"
                     ]
                 },
                 "resetForAllPlayers": {
+                    "flatPath": "games/v1management/events/{eventId}/resetForAllPlayers",
                     "httpMethod": "POST",
                     "id": "gamesManagement.events.resetForAllPlayers",
                     "parameterOrder": [
@@ -216,15 +257,18 @@
                             "type": "string"
                         }
                     },
-                    "path": "events/{eventId}/resetForAllPlayers",
+                    "path": "games/v1management/events/{eventId}/resetForAllPlayers",
                     "scopes": [
                         "https://www.googleapis.com/auth/games"
                     ]
                 },
                 "resetMultipleForAllPlayers": {
+                    "flatPath": "games/v1management/events/resetMultipleForAllPlayers",
                     "httpMethod": "POST",
                     "id": "gamesManagement.events.resetMultipleForAllPlayers",
-                    "path": "events/resetMultipleForAllPlayers",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "games/v1management/events/resetMultipleForAllPlayers",
                     "request": {
                         "$ref": "EventsResetMultipleForAllRequest"
                     },
@@ -237,6 +281,7 @@
         "players": {
             "methods": {
                 "hide": {
+                    "flatPath": "games/v1management/applications/{applicationId}/players/hidden/{playerId}",
                     "httpMethod": "POST",
                     "id": "gamesManagement.players.hide",
                     "parameterOrder": [
@@ -255,12 +300,13 @@
                             "type": "string"
                         }
                     },
-                    "path": "applications/{applicationId}/players/hidden/{playerId}",
+                    "path": "games/v1management/applications/{applicationId}/players/hidden/{playerId}",
                     "scopes": [
                         "https://www.googleapis.com/auth/games"
                     ]
                 },
                 "unhide": {
+                    "flatPath": "games/v1management/applications/{applicationId}/players/hidden/{playerId}",
                     "httpMethod": "DELETE",
                     "id": "gamesManagement.players.unhide",
                     "parameterOrder": [
@@ -279,27 +325,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "applications/{applicationId}/players/hidden/{playerId}",
-                    "scopes": [
-                        "https://www.googleapis.com/auth/games"
-                    ]
-                }
-            }
-        },
-        "rooms": {
-            "methods": {
-                "reset": {
-                    "httpMethod": "POST",
-                    "id": "gamesManagement.rooms.reset",
-                    "path": "rooms/reset",
-                    "scopes": [
-                        "https://www.googleapis.com/auth/games"
-                    ]
-                },
-                "resetForAllPlayers": {
-                    "httpMethod": "POST",
-                    "id": "gamesManagement.rooms.resetForAllPlayers",
-                    "path": "rooms/resetForAllPlayers",
+                    "path": "games/v1management/applications/{applicationId}/players/hidden/{playerId}",
                     "scopes": [
                         "https://www.googleapis.com/auth/games"
                     ]
@@ -309,6 +335,7 @@
         "scores": {
             "methods": {
                 "reset": {
+                    "flatPath": "games/v1management/leaderboards/{leaderboardId}/scores/reset",
                     "httpMethod": "POST",
                     "id": "gamesManagement.scores.reset",
                     "parameterOrder": [
@@ -321,7 +348,7 @@
                             "type": "string"
                         }
                     },
-                    "path": "leaderboards/{leaderboardId}/scores/reset",
+                    "path": "games/v1management/leaderboards/{leaderboardId}/scores/reset",
                     "response": {
                         "$ref": "PlayerScoreResetResponse"
                     },
@@ -330,9 +357,12 @@
                     ]
                 },
                 "resetAll": {
+                    "flatPath": "games/v1management/scores/reset",
                     "httpMethod": "POST",
                     "id": "gamesManagement.scores.resetAll",
-                    "path": "scores/reset",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "games/v1management/scores/reset",
                     "response": {
                         "$ref": "PlayerScoreResetAllResponse"
                     },
@@ -341,14 +371,18 @@
                     ]
                 },
                 "resetAllForAllPlayers": {
+                    "flatPath": "games/v1management/scores/resetAllForAllPlayers",
                     "httpMethod": "POST",
                     "id": "gamesManagement.scores.resetAllForAllPlayers",
-                    "path": "scores/resetAllForAllPlayers",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "games/v1management/scores/resetAllForAllPlayers",
                     "scopes": [
                         "https://www.googleapis.com/auth/games"
                     ]
                 },
                 "resetForAllPlayers": {
+                    "flatPath": "games/v1management/leaderboards/{leaderboardId}/scores/resetForAllPlayers",
                     "httpMethod": "POST",
                     "id": "gamesManagement.scores.resetForAllPlayers",
                     "parameterOrder": [
@@ -361,15 +395,18 @@
                             "type": "string"
                         }
                     },
-                    "path": "leaderboards/{leaderboardId}/scores/resetForAllPlayers",
+                    "path": "games/v1management/leaderboards/{leaderboardId}/scores/resetForAllPlayers",
                     "scopes": [
                         "https://www.googleapis.com/auth/games"
                     ]
                 },
                 "resetMultipleForAllPlayers": {
+                    "flatPath": "games/v1management/scores/resetMultipleForAllPlayers",
                     "httpMethod": "POST",
                     "id": "gamesManagement.scores.resetMultipleForAllPlayers",
-                    "path": "scores/resetMultipleForAllPlayers",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "games/v1management/scores/resetMultipleForAllPlayers",
                     "request": {
                         "$ref": "ScoresResetMultipleForAllRequest"
                     },
@@ -378,35 +415,14 @@
                     ]
                 }
             }
-        },
-        "turnBasedMatches": {
-            "methods": {
-                "reset": {
-                    "httpMethod": "POST",
-                    "id": "gamesManagement.turnBasedMatches.reset",
-                    "path": "turnbasedmatches/reset",
-                    "scopes": [
-                        "https://www.googleapis.com/auth/games"
-                    ]
-                },
-                "resetForAllPlayers": {
-                    "httpMethod": "POST",
-                    "id": "gamesManagement.turnBasedMatches.resetForAllPlayers",
-                    "path": "turnbasedmatches/resetForAllPlayers",
-                    "scopes": [
-                        "https://www.googleapis.com/auth/games"
-                    ]
-                }
-            }
         }
     },
-    "rootUrl": "https://www.googleapis.com/",
+    "rootUrl": "https://gamesmanagement.googleapis.com/",
     "schemas": {
         "AchievementResetAllResponse": {
             "id": "AchievementResetAllResponse",
             "properties": {
                 "kind": {
-                    "default": "gamesManagement#achievementResetAllResponse",
                     "type": "string"
                 },
                 "results": {
@@ -428,7 +444,6 @@
                     "type": "array"
                 },
                 "kind": {
-                    "default": "gamesManagement#achievementResetMultipleForAllRequest",
                     "type": "string"
                 }
             },
@@ -444,7 +459,6 @@
                     "type": "string"
                 },
                 "kind": {
-                    "default": "gamesManagement#achievementResetResponse",
                     "type": "string"
                 },
                 "updateOccurred": {
@@ -463,20 +477,6 @@
                     "type": "array"
                 },
                 "kind": {
-                    "default": "gamesManagement#eventsResetMultipleForAllRequest",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "GamesPlayedResource": {
-            "id": "GamesPlayedResource",
-            "properties": {
-                "autoMatched": {
-                    "type": "boolean"
-                },
-                "timeMillis": {
-                    "format": "int64",
                     "type": "string"
                 }
             },
@@ -525,14 +525,16 @@
             "properties": {
                 "hiddenTimeMillis": {
                     "format": "int64",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "kind": {
-                    "default": "gamesManagement#hiddenPlayer",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "player": {
-                    "$ref": "Player"
+                    "$ref": "Player",
+                    "readOnly": true
                 }
             },
             "type": "object"
@@ -547,7 +549,6 @@
                     "type": "array"
                 },
                 "kind": {
-                    "default": "gamesManagement#hiddenPlayerList",
                     "type": "string"
                 },
                 "nextPageToken": {
@@ -574,15 +575,8 @@
                 "experienceInfo": {
                     "$ref": "GamesPlayerExperienceInfoResource"
                 },
-                "friendStatus": {
-                    "type": "string"
-                },
                 "kind": {
-                    "default": "gamesManagement#player",
                     "type": "string"
-                },
-                "lastPlayedWith": {
-                    "$ref": "GamesPlayedResource"
                 },
                 "name": {
                     "properties": {
@@ -614,7 +608,6 @@
             "id": "PlayerScoreResetAllResponse",
             "properties": {
                 "kind": {
-                    "default": "gamesManagement#playerScoreResetAllResponse",
                     "type": "string"
                 },
                 "results": {
@@ -633,7 +626,6 @@
                     "type": "string"
                 },
                 "kind": {
-                    "default": "gamesManagement#playerScoreResetResponse",
                     "type": "string"
                 },
                 "resetScoreTimeSpans": {
@@ -649,7 +641,6 @@
             "id": "ProfileSettings",
             "properties": {
                 "kind": {
-                    "default": "gamesManagement#profileSettings",
                     "type": "string"
                 },
                 "profileVisible": {
@@ -662,7 +653,6 @@
             "id": "ScoresResetMultipleForAllRequest",
             "properties": {
                 "kind": {
-                    "default": "gamesManagement#scoresResetMultipleForAllRequest",
                     "type": "string"
                 },
                 "leaderboard_ids": {
@@ -675,7 +665,7 @@
             "type": "object"
         }
     },
-    "servicePath": "games/v1management/",
-    "title": "Google Play Game Services Management API",
+    "servicePath": "",
+    "title": "Google Play Game Management",
     "version": "v1management"
 }

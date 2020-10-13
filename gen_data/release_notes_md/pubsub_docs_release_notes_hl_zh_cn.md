@@ -10,9 +10,50 @@ go/releases) 、 [ Java ](https://github.com/googleapis/java-pubsub/releases) �
 ](https://github.com/googleapis/python-pubsub/releases) 、 [ Ruby
 ](https://github.com/googleapis/google-cloud-ruby/releases) 。
 
-如需接收最新产品动态，请将此页面的网址添加到您的 [ Feed 阅读器
+您可以在 [ Google Cloud 版本说明 ](https://cloud.google.com/release-notes?hl=zh-cn)
+页面上查看所有 Google Cloud 的最新产品动态。
+
+要接收最新产品动态，请将本页面的网址添加到您的 [ Feed 阅读器
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ，或直接添加 Feed 网址： `
 https://cloud.google.com/feeds/pubsub-release-notes.xml `
+
+##  August 05, 2020
+
+**FEATURE:**
+
+Pub/Sub [ message ordering
+](https://cloud.google.com/pubsub/docs/ordering?hl=zh-cn) is now available at
+the [ beta launch stage ](https://cloud.google.com/products/?hl=zh-cn#product-
+launch-stages) .
+
+##  June 16, 2020
+
+**FEATURE:**
+
+[ Retry policies for Pub/Sub subscriptions
+](https://cloud.google.com/pubsub/docs/admin?hl=zh-cn#creating_subscriptions)
+are now available at the GA launch stage.
+
+##  June 08, 2020
+
+**FEATURE:**
+
+Pub/Sub is now available in the ` asia-southeast2 ` region (Jakarta).
+
+**FEATURE:**
+
+Pub/Sub [ message filtering
+](https://cloud.google.com/pubsub/docs/filtering?hl=zh-cn) is now available at
+the [ beta launch stage ](https://cloud.google.com/products/?hl=zh-cn#product-
+launch-stages) .
+
+##  May 26, 2020
+
+**FEATURE:**
+
+[ Pub/Sub Lite ](https://cloud.google.com/pubsub/docs/choosing-pubsub-or-
+lite?hl=zh-cn) is now available at the [ beta launch stage
+](https://cloud.google.com/products/?hl=zh-cn#product-launch-stages) .
 
 ##  April 20, 2020
 

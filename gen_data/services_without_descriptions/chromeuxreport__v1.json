@@ -1,0 +1,231 @@
+{
+    "basePath": "",
+    "baseUrl": "https://chromeuxreport.googleapis.com/",
+    "batchPath": "batch",
+    "canonicalName": "Chrome UX Report",
+    "discoveryVersion": "v1",
+    "documentationLink": "https://developers.google.com/web/tools/chrome-user-experience-report/api/reference",
+    "fullyEncodeReservedExpansion": true,
+    "icons": {
+        "x16": "http://www.google.com/images/icons/product/search-16.gif",
+        "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    },
+    "id": "chromeuxreport:v1",
+    "kind": "discovery#restDescription",
+    "mtlsRootUrl": "https://chromeuxreport.mtls.googleapis.com/",
+    "name": "chromeuxreport",
+    "ownerDomain": "google.com",
+    "ownerName": "Google",
+    "parameters": {
+        "$.xgafv": {
+            "enum": [
+                "1",
+                "2"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "alt": {
+            "default": "json",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "location": "query",
+            "type": "boolean"
+        },
+        "quotaUser": {
+            "location": "query",
+            "type": "string"
+        },
+        "uploadType": {
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "location": "query",
+            "type": "string"
+        }
+    },
+    "protocol": "rest",
+    "resources": {
+        "records": {
+            "methods": {
+                "queryRecord": {
+                    "flatPath": "v1/records:queryRecord",
+                    "httpMethod": "POST",
+                    "id": "chromeuxreport.records.queryRecord",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1/records:queryRecord",
+                    "request": {
+                        "$ref": "QueryRequest"
+                    },
+                    "response": {
+                        "$ref": "QueryResponse"
+                    }
+                }
+            }
+        }
+    },
+    "rootUrl": "https://chromeuxreport.googleapis.com/",
+    "schemas": {
+        "Bin": {
+            "id": "Bin",
+            "properties": {
+                "density": {
+                    "format": "double",
+                    "type": "number"
+                },
+                "end": {
+                    "type": "any"
+                },
+                "start": {
+                    "type": "any"
+                }
+            },
+            "type": "object"
+        },
+        "Key": {
+            "id": "Key",
+            "properties": {
+                "formFactor": {
+                    "enum": [
+                        "ALL_FORM_FACTORS",
+                        "PHONE",
+                        "DESKTOP",
+                        "TABLET"
+                    ],
+                    "type": "string"
+                },
+                "origin": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Metric": {
+            "id": "Metric",
+            "properties": {
+                "histogram": {
+                    "items": {
+                        "$ref": "Bin"
+                    },
+                    "type": "array"
+                },
+                "percentiles": {
+                    "$ref": "Percentiles"
+                }
+            },
+            "type": "object"
+        },
+        "Percentiles": {
+            "id": "Percentiles",
+            "properties": {
+                "p75": {
+                    "type": "any"
+                }
+            },
+            "type": "object"
+        },
+        "QueryRequest": {
+            "id": "QueryRequest",
+            "properties": {
+                "formFactor": {
+                    "enum": [
+                        "ALL_FORM_FACTORS",
+                        "PHONE",
+                        "DESKTOP",
+                        "TABLET"
+                    ],
+                    "type": "string"
+                },
+                "metrics": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "origin": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "QueryResponse": {
+            "id": "QueryResponse",
+            "properties": {
+                "record": {
+                    "$ref": "Record"
+                },
+                "urlNormalizationDetails": {
+                    "$ref": "UrlNormalization"
+                }
+            },
+            "type": "object"
+        },
+        "Record": {
+            "id": "Record",
+            "properties": {
+                "key": {
+                    "$ref": "Key"
+                },
+                "metrics": {
+                    "additionalProperties": {
+                        "$ref": "Metric"
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "UrlNormalization": {
+            "id": "UrlNormalization",
+            "properties": {
+                "normalizedUrl": {
+                    "type": "string"
+                },
+                "originalUrl": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "servicePath": "",
+    "title": "Chrome UX Report API",
+    "version": "v1",
+    "version_module": true
+}

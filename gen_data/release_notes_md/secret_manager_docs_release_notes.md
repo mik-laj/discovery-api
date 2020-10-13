@@ -13,6 +13,26 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/secretmanager-release-notes.xml
 `
 
+##  July 20, 2020
+
+**FEATURE:**
+
+Secret Manager adds support for the following curated IAM roles:
+
+  * Secret Manager Secret Version Adder ( ` roles/secretmanager.secretVersionAdder ` ) 
+  * Secret Manager Secret Version Manager ( ` roles/secretmanager.secretVersionManager ` ) 
+
+To learn more, see [ IAM and access control ](https://cloud.google.com/secret-
+manager/docs/access-control) .
+
+##  July 13, 2020
+
+**FEATURE:**
+
+Secret Manager resources can now be stored in the ` australia-southeast1 `
+region. To learn more, see [ Locations ](https://cloud.google.com/secret-
+manager/docs/locations/) .
+
 ##  March 11, 2020
 
 **FEATURE:**

@@ -6,6 +6,769 @@ Subscribe to these release notes at [
 https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
 ](https://groups.google.com/forum/#!forum/google-cloud-sdk-announce) .
 
+**Note:** Cloud SDK introduced support for Python 3 in release 274.0.0 and
+users are strongly encouraged to migrate to Python 3. Support for Python 2
+will be deprecated on September 30, 2020. See also [ Python 2 Sunset
+](https://cloud.google.com/python/docs/python2-sunset/) and [ Using Python 3
+](https://cloud.google.com/sdk/gcloud/reference/topic/startup) .
+
+##  306.0.0 (2020-08-18)
+
+###  BigQuery
+
+  * Fixed issue where ` ls --reservation ` command randomly failed with internal error. 
+  * Added ` add-iam-policy-binding ` and ` remove-iam-policy-binding ` commands, with support for modifying IAM policies for tables and views. 
+
+###  Cloud Dataproc
+
+  * Added ` --dataproc-metastore ` flag to ` gcloud beta dataproc clusters create ` to allow clusters to be created with a Dataproc Metastore service. 
+  * Added ` --dataproc-metastore ` flag to ` gcloud beta dataproc workflow-templates set-managed-cluster ` to allow managed clusters to be created with a Dataproc Metastore service. 
+
+###  Cloud Firestore Emulator
+
+  * Release Cloud Firestore emulator v1.11.7 
+    * Includes latest features and improvements from production. 
+
+###  Cloud Key Management Service
+
+  * Added ` gcloud beta kms keys versions get-certificate-chain ` to retrieve HSM attestation certificate chains. 
+
+###  Cloud Pub/Sub
+
+  * Promoted ` gcloud pubsub topics detach-subscription ` to GA. 
+
+###  Cloud Resource Manager
+
+  * Fixed issue where ` gcloud resource-manager org-policies <allow|deny> ` gave an error when a restore default policy exists. 
+
+###  Cloud Security Command Center
+
+  * Promoted ` gcloud scc notifications ` command group to beta and GA. 
+
+###  Cloud TPU
+
+  * Added ` --use-service-networking ` flag to ` gcloud beta compute tpus create ` . 
+
+###  Compute Engine
+
+  * Added ` gcloud beta compute os-config os-upgrade ` to enable major OS version updates on support distributions. 
+  * Promoted ` --condition ` flag to GA for 
+    * ` gcloud compute instances add-iam-policy-binding `
+    * ` gcloud compute instances remove-iam-policy-binding ` . 
+  * Promoted Regional Network Endpoint Groups to GA. 
+  * Promoted Hybrid Network Endpoint Groups to GA. 
+  * Promoted ` gcloud compute commitments create-license ` to beta and GA. 
+  * Promoted the following commands to GA: 
+    * ` gcloud compute instance-groups managed instance-configs create `
+    * ` gcloud compute instance-groups managed instance-configs update `
+    * ` gcloud compute instance-groups managed instance-configs list `
+    * ` gcloud compute instance-groups managed instance-configs delete `
+  * Promoted ` --stateful-disk ` and ` --stateful-metadata ` for ` gcloud compute instance-groups managed create-instance ` to GA. 
+  * Added ` --network ` flag to ` gcloud beta compute target-instances create ` . 
+
+###  Game Servers
+
+  * Promoted ` gcloud game servers ` to GA. 
+
+###  Notebooks
+
+  * Added ` n1-standard-1 ` as the default for notebook instances. 
+  * Added ` deeplearning-platform ` as the default for notebook instance project and environment project. 
+
+###  Secret Manager
+
+  * Updated ` gcloud secrets versions access ` command to redact the output from logs produced by the gcloud command-line tool. For more information, see [ https://cloud.google.com/secret-manager/docs/creating-and-accessing-secrets#secretmanager-access-secret-version-cli ](https://cloud.google.com/secret-manager/docs/creating-and-accessing-secrets#secretmanager-access-secret-version-cli) . 
+
+Subscribe to these release notes at [
+https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
+](https://groups.google.com/forum/#!forum/google-cloud-sdk-announce) .
+
+**Note:** Cloud SDK introduced support for Python 3 in release 274.0.0 and
+users are strongly encouraged to migrate to Python 3. Support for Python 2
+will be deprecated on September 30, 2020. See also [ Python 2 Sunset
+](https://cloud.google.com/python/docs/python2-sunset/) and [ Using Python 3
+](https://cloud.google.com/sdk/gcloud/reference/topic/startup) .
+
+##  305.0.0 (2020-08-11)
+
+###  Artifact Registry
+
+  * Added ` --json-key flag ` to ` gcloud beta artifacts print-settings ` . 
+  * Added bearer auth for npm support to ` gcloud beta artifacts print-settings ` . 
+
+###  Cloud Build
+
+  * Added the flag ` --worker-pool ` to the command ` gcloud builds submit ` . 
+
+###  Cloud Dataflow
+
+  * Added flex template docker container building support in build command ` gcloud beta dataflow flex-template build ` . 
+
+###  Cloud Pub/Sub
+
+  * Replaced ` --scale ` in ` gcloud beta pubsub lite-topics create ` and ` gcloud beta pubsub lite-topics update ` with ` --per-partition-publish-mib ` and ` --per-partition-subscribe-mib ` flags. 
+
+###  Cloud Run
+
+  * Added ` --image ` flag to ` gcloud run services update ` command in beta and GA to support updating container image. 
+
+###  Cloud Security Command Center
+
+  * Promoted ` gcloud scc assets ` command group to beta and GA. 
+
+###  Compute Engine
+
+  * Promoted ` cpu-overcommit-type ` flag of ` gcloud beta compute sole-tenancy node-templates create ` to GA. 
+  * Promoted ` --stateful-disk ` flag for ` gcloud compute instance-groups managed create ` to GA. 
+  * Promoted ` --stateful-disk ` , ` --remove-stateful-disk ` flags for ` gcloud compute instance-groups managed update ` to GA. 
+  * Promoted ` --scale-in-control ` flag of ` gcloud compute instance-groups managed set-autoscaling ` to GA. 
+  * Promoted ` --scale-in-control ` and ` --clear-scale-in-control ` flags of ` gcloud compute instance-groups managed update-autoscaling ` to GA. 
+
+###  Deployment Manager
+
+  * Added ` --custom-certificate-authority-roots ` flag to ` gcloud deployment-manager type-providers <create|update> ` . 
+
+###  Kubernetes Engine
+
+  * Promoted the GKE add-on ` ConfigConnector ` of ` gcloud container clusters <create|update> ` to GA. This add-on is disabled by default. 
+    * Use ` --addons=ConfigConnector ` to enable the add-on during cluster creation. 
+    * Use ` --update-addons=ConfigConnector=ENABLED|DISABLED ` to enable/disable the add-on for existing GKE clusters. 
+  * Updates default kubectl from 1.15 to 1.16. 
+  * Additional kubectl versions: 
+    * kubectl.1.14 (1.14.10) 
+    * kubectl.1.15 (1.15.12) 
+    * kubectl.1.16 (1.16.13) 
+    * kubectl.1.17 (1.17.9) 
+    * kubectl.1.18 (1.18.6) 
+  * Promoted ` --disable-default-snat ` flag of ` gcloud container clusters <create|update> ` to GA. 
+  * Modified GKE nodes to have serial port output logging enabled by default. To disable, use ` --metadata serial-port-logging-enable=false ` . 
+
+Subscribe to these release notes at [
+https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
+](https://groups.google.com/forum/#!forum/google-cloud-sdk-announce) .
+
+**Note:** Cloud SDK introduced support for Python 3 in release 274.0.0 and
+users are strongly encouraged to migrate to Python 3. Support for Python 2
+will be deprecated on July 31, 2020. See also [ Python 2 Sunset
+](https://cloud.google.com/python/docs/python2-sunset/) and [ Using Python 3
+](https://cloud.google.com/sdk/gcloud/reference/topic/startup) .
+
+##  304.0.0 (2020-08-04)
+
+###  Cloud Build
+
+  * Modifed the command group ` gcloud beta builds worker-pools ` such that all underlying commands now use a regional Cloud Build API endpoint (instead of the global one). 
+  * Modifed the command group ` gcloud builds ` such that all underlying commands may optionally use a regional Cloud Build API endpoint (instead of the global one). This is controlled by the new flag ` --region ` , as well as the configuration of submitted builds. 
+
+###  Cloud Composer
+
+  * Fixed a bug where an argument added to ` backfill ` subcommand of ` gcloud composer environments run ` fails in older Airflow versions. 
+  * Added ` --web-server-machine-type ` flag to ` gcloud beta composer environments ` commands to specify the machine type used by the Airflow web server. 
+
+###  Cloud IAM
+
+  * Promoted ` gcloud iam service-accounts keys upload ` to GA. 
+
+###  Compute Engine
+
+  * Added ` gcloud beta compute os-config os-upgrade ` to enable major OS version updates on support distributions. 
+  * Promoted ` gcloud compute diagnose export-logs ` to GA. 
+
+###  Firebase Test Lab
+
+  * Added the command ` gcloud [alpha|beta] firebase test ip-blocks list ` , which retrieves a catalog of IP blocks used by Firebase Test Lab devices. 
+
+###  Kubernetes Engine
+
+  * Added ` --node-group ` to ` gcloud container node-pools create ` . This flag is used to enable the Compute Engine sole tenant node feature on Kubernetes Engine node pools. 
+
+###  Secret Manager
+
+  * Updated the following commands to better support IAM Conditions: 
+    * ` gcloud secrets get-iam-policy ` outputs conditions associated with each binding. 
+    * ` gcloud secrets set-iam-policy ` accepts policies with conditional bindings. 
+    * ` gcloud secrets <add|remove>-iam-policy-binding ` accepts conditional bindings. 
+
+Subscribe to these release notes at [
+https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
+](https://groups.google.com/forum/#!forum/google-cloud-sdk-announce) .
+
+**Note:** Cloud SDK introduced support for Python 3 in release 274.0.0 and
+users are strongly encouraged to migrate to Python 3. Support for Python 2
+will be deprecated on September 30, 2020. See also [ Python 2 Sunset
+](https://cloud.google.com/python/docs/python2-sunset/) and [ Using Python 3
+](https://cloud.google.com/sdk/gcloud/reference/topic/startup) .
+
+##  303.0.0 (2020-07-28)
+
+###  AI Platform
+
+  * Promoted ` --kms-key ` flag of ` gcloud ai-platform jobs submit training ` to GA. 
+
+###  Cloud Bigtable
+
+  * Promoted ` gcloud bigtable backups ` commands group to GA. 
+  * Promated ` gcloud bigtable instances tables restore ` and ` gcloud bigtable instances tables list ` to GA. 
+
+###  Cloud Build
+
+  * Added ` --comment-control ` flag option COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY to ` gcloud builds triggers create github ` in alpha and beta. 
+
+###  Cloud Composer
+
+  * Added ` --cloud-sql-machine-type ` flag to ` gcloud beta composer environments ` commands to specify the Cloud SQL machine type used by the Airflow database. 
+
+###  Cloud Data Catalog
+
+  * Added ` --restricted-locations ` to ` gcloud data-catalog search ` to enable regional search. 
+
+###  Compute Engine
+
+  * Added ` --log-location ` flag to ` gcloud compute instances import ` and ` gcloud beta compute machine-images import ` . 
+  * Promoted ` --condition ` flag for 
+    * ` gcloud compute images add-iam-policy-binding `
+    * ` gcloud compute images remove-iam-policy-binding ` to GA. 
+  * Promoted ` --rollout-mode ` , ` --rollout-disruption-budget ` , and ` --rollout-disruption-budget-percent ` flags of ` gcloud compute os-config patch-jobs execute ` to GA. 
+  * Allowed using ` user-data ` key in metadata with ` gcloud compute instances create-with-container ` . 
+  * Promoted ` --condition ` flag to GA for 
+    * ` gcloud compute images add-iam-policy-binding `
+    * ` gcloud compute images remove-iam-policy-binding `
+    * ` gcloud compute snapshots add-iam-policy-binding `
+    * ` gcloud compute snapshots remove-iam-policy-binding ` . 
+
+###  Kubernetes Engine
+
+  * Added ` --identity-provider ` to ` gcloud beta container clusters create ` and ` gcloud beta container clusters update ` . This flag is used to enable a 3P identity provider on a cluster. 
+  * Added flag ` --enable-dataplane-v2 ` to ` gcloud <alpha|beta> container clusters create ` . This flag allows GKE clusters to use the new and improved datapath with additional visibility and observability features. 
+
+Subscribe to these release notes at [
+https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
+](https://groups.google.com/forum/#!forum/google-cloud-sdk-announce) .
+
+**Note:** Cloud SDK introduced support for Python 3 in release 274.0.0 and
+users are strongly encouraged to migrate to Python 3. Support for Python 2
+will be deprecated on September 30, 2020. See also [ Python 2 Sunset
+](https://cloud.google.com/python/docs/python2-sunset/) and [ Using Python 3
+](https://cloud.google.com/sdk/gcloud/reference/topic/startup) .
+
+##  302.0.0 (2020-07-21)
+
+###  AI Platform
+
+  * Promoted ` --machine-type ` and ` --accelerator ` flags to GA. While these flags are GA, some machine types themselves may be in beta; for more information, see [ https://cloud.google.com/ai-platform/prediction/docs/machine-types-online-prediction#available_machine_types ](https://cloud.google.com/ai-platform/prediction/docs/machine-types-online-prediction#available_machine_types) . 
+  * Promoted ` --region ` to GA to enable regional endpoint specification; this is the preferred method for using online prediction for n1* machine types. 
+
+###  App Engine
+
+  * Added support for directly deploying the Gradle project 'build.gradle' file. 
+
+###  Cloud Asset Inventory
+
+  * Modified ` gcloud asset search-all-resources ` and ` gcloud asset search-all-iam-policies ` to apply ` --page-size=20 ` by default. 
+
+###  Cloud Dataproc
+
+  * Added ` --dag-timeout ` flag to ` gcloud dataproc workflow-templates create ` to allow timeouts to be set on Workflow jobs DAGs. 
+  * Added ` gcloud dataproc workflow-templates set-dag-timeout ` to allow DAG timeouts to be updated or set on existing Workflows. 
+  * Added ` gcloud dataproc workflow-templates remove-dag-timeout ` to allow DAG timeouts to be removed from Workflows. 
+
+###  Cloud Firestore Emulator
+
+  * Release Cloud Firestore emulator v1.11.5 
+    * Bug fix for camel case query parameters 
+    * Add support for ` != ` style queries 
+
+###  Cloud Pub/Sub
+
+  * Promoted ` --enable-message-ordering ` flag of ` gcloud pubsub subscriptions create ` and ` --ordering-key ` flag of ` gcloud pubsub topics publish ` to beta. 
+
+###  Cloud Resource Manager
+
+  * Promoted ` gcloud resource-manager org-policies ` command group to GA. 
+
+###  Cloud Run
+
+  * Promoted ` --tag ` flag of ` gcloud run deploy ` to beta. 
+  * Promoted ` --tag ` flag of ` gcloud run services update ` to beta. 
+  * Promoted ` --to-tags ` , ` --set-tags ` , ` --update-tags ` , ` --remove-tags ` , and ` --clear-tags ` flags of ` gcloud run services update-traffic ` to beta. 
+
+###  Cloud SQL
+
+  * Promoted server-level ` --collation ` flag of ` gcloud sql instances create ` to GA. 
+
+###  Cloud Storage
+
+  * Updated gsutil component to 4.52. 
+
+###  Compute Engine
+
+  * Promoted ` --rollout-mode ` , ` --rollout-disruption-budget ` , and ` --rollout-disruption-budget-percent ` flags of ` gcloud compute os-config patch-jobs execute ` to beta. 
+  * Promoted ` gcloud compute health-checks <create|update> grpc ` commands to GA. 
+
+###  Firebase Test Lab
+
+  * Added ` --grant-permissions ` flag to ` gcloud beta firebase test android run ` . This flag allows you to specify if runtime permissions should be granted prior to running a test. 
+  * Modified the limit for ` --num-uniform-shards ` and ` --test-targets-for-shard ` to be 250 when no physical devices are selected. 
+
+###  Kubernetes Engine
+
+  * Added flag ` --private-ipv6-access-type ` of ` gcloud container clusters create ` and ` gcloud container clusters update ` to beta. This flag is used to allow GKE pods to connect to Google services over a low latency, secure, IPv6 network path. 
+  * Promoted ` --release-channel ` of ` gcloud container clusters create ` and ` gcloud container clusters update ` to GA. This flag is used to configure the cluster release channel. 
+
+###  Secret Manager
+
+  * Updated ` gcloud secrets create ` command to default to an automatic replication policy if a replication policy is not provided. 
+
+Subscribe to these release notes at [
+https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
+](https://groups.google.com/forum/#!forum/google-cloud-sdk-announce) .
+
+**Note:** Cloud SDK introduced support for Python 3 in release 274.0.0 and
+users are strongly encouraged to migrate to Python 3. Support for Python 2
+will be deprecated on September 30, 2020. See also [ Python 2 Sunset
+](https://cloud.google.com/python/docs/python2-sunset/) and [ Using Python 3
+](https://cloud.google.com/sdk/gcloud/reference/topic/startup) .
+
+##  301.0.0 (2020-07-14)
+
+###  Cloud SDK
+
+  * Prefer Python 3 for deb and rpm package installations. The Cloud SDK now prefers Python 3 for bq, gcloud, and gsutil on all installation paths. See ` gcloud topic startup ` for information on configuring the Python interpreter used by the Cloud SDK. 
+
+###  Anthos
+
+  * Upgraded ` anthos-auth ` component to version 1.1.2. 
+  * Added ldap support to ` gcloud anthos auth login ` . 
+
+###  App Engine
+
+  * Updated the Java SDK to version 1.9.81. Please visit the following release notes for details: [ https://cloud.google.com/appengine/docs/java/release-notes ](https://cloud.google.com/appengine/docs/java/release-notes) . 
+
+###  Artifact Registry
+
+  * Added support for CMEK repository creation with customer managed encryption key. 
+  * Added ` gcloud beta artifacts repositories describe ` . 
+
+###  Compute Engine
+
+  * Promoted ` --description ` and ` --family ` flags of ` gcloud compute images update ` to beta. 
+  * Promoted ` --target-grpc-proxy ` for ` gcloud compute forwarding-rules <create|set-target> ` to GA. 
+  * Promoted documentation for ` --protocol ` to include GRPC for ` gcloud compute backend-services <create|update> ` to GA. 
+  * Promoted ` gcloud compute target-grpc-proxies <create|delete|describe|list> ` to GA. 
+  * Added ` only-scale-out ` ` mode ` enum value to ` gcloud compute instance-groups managed <set|update>-autoscaling ` . The ` only-scale-out ` value directly replaces and deprecates the ` only-up ` value. 
+
+###  Kubernetes Engine
+
+  * Promoted NodeLocalDNS Addon to GA. Use NodeLocalDNS addons with ` gcloud container clusters create ` and ` gcloud container clusters update ` . 
+
+Subscribe to these release notes at [
+https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
+](https://groups.google.com/forum/#!forum/google-cloud-sdk-announce) .
+
+**Note:** Cloud SDK introduced support for Python 3 in release 274.0.0 and
+users are strongly encouraged to migrate to Python 3. Support for Python 2
+will be deprecated on September 30, 2020. See also [ Python 2 Sunset
+](https://cloud.google.com/python/docs/python2-sunset/) and [ Using Python 3
+](https://cloud.google.com/sdk/gcloud/reference/topic/startup) .
+
+##  300.0.0 (2020-07-08)
+
+###  Breaking Changes
+
+  * **(Recommender)** Modified headers in output of ` gcloud recommender recommendations list ` . 
+    * Renamed ID to RECOMMENDATION_ID and STATE to RECOMMENDATION_STATE. 
+  * **(Recommender)** Modified headers in output of ` gcloud recommender insights list ` . 
+    * Renamed ID to INSIGHT_ID and STATE to INSIGHT_STATE. 
+
+###  Cloud Dataproc
+
+  * Added ` --temp-bucket ` flag to ` gcloud dataproc clusters create ` and ` gcloud dataproc workflow-templates set-managed-cluster ` to allow users to configure a Cloud Storage bucket that stores ephemeral cluster and jobs data, such as Spark and MapReduce history files. 
+
+###  Cloud SQL
+
+  * Promoted ` --enable-point-in-time-recovery ` flag of ` gcloud sql instances create ` and ` gcloud sql instances patch ` to GA. 
+  * Promoted ` --point-in-time ` flag of ` gcloud sql instances clone ` to GA. 
+
+###  Compute Engine
+
+  * Promoted ` --source-disk ` flag of ` gcloud compute disks create ` to GA. 
+
+###  Kpt
+
+  * Updated kpt from v0.24.0 to v0.30.1. 
+  * Updated import of cli-utils from v0.8.0 to v0.15.0. 
+  * Updated import of kyaml from v0.1.8 to v0.3.1. 
+  * Updated import of cmd/config from v0.1.7 to v0.3.0. 
+
+###  Kubernetes Engine
+
+  * Added ` --system-config-from-file ` flag to ` gcloud beta container clusters create ` , ` gcloud beta container node-pools create ` , and ` gcloud beta container node-pools update ` to configure kubelet and Linux configuration settings on nodes. 
+
+###  Recommender
+
+  * Promoted ` gcloud recommender insights ` to GA. 
+
+Subscribe to these release notes at [
+https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
+](https://groups.google.com/forum/#!forum/google-cloud-sdk-announce) .
+
+**Note:** Cloud SDK introduced support for Python 3 in release 274.0.0 and
+users are strongly encouraged to migrate to Python 3. Support for Python 2
+will be deprecated on September 30, 2020. See also [ Python 2 Sunset
+](https://cloud.google.com/python/docs/python2-sunset/) and [ Using Python 3
+](https://cloud.google.com/sdk/gcloud/reference/topic/startup) .
+
+##  299.0.0 (2020-06-30)
+
+###  Cloud SDK
+
+  * Added ` gcloud cheat-sheet ` command to display the gcloud command-line tool cheat sheet. For the full cheat sheet, refer to [ https://cloud.google.com/sdk/docs/cheatsheet ](https://cloud.google.com/sdk/docs/cheatsheet) . 
+
+###  Anthos
+
+  * Added ` gcloud anthos create-login-config ` command to GA. 
+
+###  Cloud Asset Inventory
+
+  * Promoted Cloud assets search commands ` gcloud asset search-all-resources ` and ` gcloud asset search-all-iam-policies ` to GA. 
+
+###  Cloud Data Catalog
+
+  * Added possibility to rename enum values using ` gcloud data-catalog tag-templates fields enum-values rename ` . 
+
+###  Cloud Dataproc
+
+  * Promoted ` --enable-component-gateway ` flag of ` gcloud dataproc clusters create ` and ` gcloud dataproc workflow-templates set-managed-cluster ` to GA. 
+
+###  Cloud Run
+
+  * Updated ` --service-account ` flag to accept a Kubernetes service account for ` --platform=gke ` and ` --platform=kubernetes ` . 
+
+###  Compute Engine
+
+  * Added ` --interface ` flag to ` gcloud beta compute disks create ` . 
+  * Removed ` interface ` key from ` --disk ` key of ` gcloud beta compute instances create ` . 
+  * Promoted ` gcloud compute security-policies list-preconfigured-expression-sets ` to GA. 
+  * Promote ` --condition ` flag to GA for the following commands: 
+    * ` gcloud compute disks add-iam-policy-binding `
+    * ` gcloud compute disks remove-iam-policy-binding `
+    * ` gcloud compute instance-templates add-iam-policy-binding `
+    * ` gcloud compute instance-templates remove-iam-policy-binding ` . 
+  * Added ` --service-proxy ` and '--service-proxy-labels' flags to ` gcloud beta compute instance-templates create ` to populate the fields in Instance Template required to automatically deploy and configure the service proxy and service-proxy-agent. 
+  * Added ` --chain-name ` flag ` gcloud beta compute disks snapshot ` . 
+  * Promoted Regional Network Endpoint Groups to beta. 
+
+###  Kubernetes Engine
+
+  * Promoted NodeLocalDNS Addon to GA. Use NodeLocalDNS addons with ` gcloud container clusters create ` and ` gcloud container clusters update ` . 
+
+###  VPC Access
+
+  * Added ` --vpc-connector ` flag to ` gcloud run deploy ` and ` gcloud run services update ` which allows cloud run services to connect to a VPC Connector. 
+
+Subscribe to these release notes at [
+https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
+](https://groups.google.com/forum/#!forum/google-cloud-sdk-announce) .
+
+**Note:** Cloud SDK introduced support for Python 3 in release 274.0.0 and
+users are strongly encouraged to migrate to Python 3. Support for Python 2
+will be deprecated on September 30, 2020. See also [ Python 2 Sunset
+](https://cloud.google.com/python/docs/python2-sunset/) and [ Using Python 3
+](https://cloud.google.com/sdk/gcloud/reference/topic/startup) .
+
+##  298.0.0 (2020-06-23)
+
+###  Breaking Changes
+
+  * **(Cloud Data Catalog)** Removed add-enum-values flag from ` gcloud data-catalog tag-templates fields update ` . 
+
+###  Cloud SDK
+
+  * Changed the bq and gcloud command-line tools to prefer Python 3 for component-based Cloud SDK installs on Unix. See ` gcloud topic startup ` for information on configuring the Python interpreter used by the Cloud SDK. 
+
+###  AI Platform
+
+  * Added ` --network ` flag to ` gcloud ml-engine jobs submit training ` and ` gcloud ai-platform jobs submit training ` . 
+
+###  App Engine
+
+  * Added an optional ` --appyaml ` flag to change the app.yaml file location for an application. 
+
+###  Cloud Data Catalog
+
+  * Added enum-values flag in ` gcloud data-catalog tag-templates fields update ` . 
+
+###  Compute Engine
+
+  * Promote ` --condition ` flag for 
+
+    * ` gcloud compute disks add-iam-policy-binding `
+    * ` gcloud compute disks remove-iam-policy-binding ` to GA. 
+  * Promote ` --condition ` flag for 
+
+    * ` gcloud compute reservations add-iam-policy-binding `
+    * ` gcloud compute reservations remove-iam-policy-binding ` to GA. 
+
+###  Secret Manager
+
+  * Updated the following beta commands to better support IAM Conditions: 
+    * ` gcloud beta secrets get-iam-policy ` outputs conditions associated with each binding. 
+    * ` gcloud beta secrets set-iam-policy ` accepts policies with conditional bindings. 
+    * ` gcloud beta secrets <add|remove>-iam-policy-binding ` accepts conditional bindings. 
+
+Subscribe to these release notes at [
+https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
+](https://groups.google.com/forum/#!forum/google-cloud-sdk-announce) .
+
+**Note:** Cloud SDK introduced support for Python 3 in release 274.0.0 and
+users are strongly encouraged to migrate to Python 3. Support for Python 2
+will be deprecated on September 30, 2020. See also [ Python 2 Sunset
+](https://cloud.google.com/python/docs/python2-sunset/) and [ Using Python 3
+](https://cloud.google.com/sdk/gcloud/reference/topic/startup) .
+
+##  297.0.1 (2020-06-17)
+
+  * Fixed bug in ` gcloud app deploy ` command. This issue can be tracked at [ https://issuetracker.google.com/issues/159109983 ](https://issuetracker.google.com/issues/159109983)
+
+##  297.0.0 (2020-06-16)
+
+###  Anthos
+
+  * Added support for preferred authentication methods to ` anthos auth login ` command. 
+
+###  BigQuery
+
+  * Added support for splitting/merging capacity commitments. 
+  * Added support for autoscale based on reservations. 
+  * Fixed CLI json.loads error for Python 3.5. 
+
+###  Compute Engine
+
+  * Added ` --preemptible ` flag to ` gcloud compute instances set-scheduling ` . 
+  * Promoted ` --multi-writer ` flag of ` gcloud compute disks create ` to beta. 
+
+Subscribe to these release notes at [
+https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
+](https://groups.google.com/forum/#!forum/google-cloud-sdk-announce) .
+
+**Note:** Cloud SDK introduced support for Python 3 in release 274.0.0 and
+users are strongly encouraged to migrate to Python 3. Support for Python 2
+will be deprecated on September 30, 2020. See also [ Python 2 Sunset
+](https://cloud.google.com/python/docs/python2-sunset/) and [ Using Python 3
+](https://cloud.google.com/sdk/gcloud/reference/topic/startup) .
+
+##  296.0.1 (2020-06-10)
+
+###  Anthos
+
+  * Fixed blocking bug in ` anthos auth login ` command. 
+
+##  296.0.0 (2020-06-09)
+
+###  Cloud SDK
+
+  * Updated bundled Python executable to 3.7.5. 
+
+###  Cloud Composer
+
+  * Fixed a bug that causes ` backfill ` subcommand of ` gcloud composer environments run ` to be stuck indefinitely. 
+  * Updated ` gcloud composer environments run ` command to prefer GKE pods with 'Ready: true' condition state. 
+
+###  Cloud Filestore
+
+  * Updated ` gcloud beta filestore instances create ` and ` gcloud beta filestore instances update ` to include: 
+    * Added HIGH_SCALE_SSD, BASIC_HDD and BASIC_SSD tiers. 
+    * Added ` nfs-export-options ` to ` --file-share ` flag. 
+    * Support for NfsExportOptions. Run ` gcloud filestore --help ` or visit [ https://cloud.google.com/filestore/docs/ ](https://cloud.google.com/filestore/docs/) to learn more. 
+
+###  Cloud Firestore Emulator
+
+  * Release Cloud Firestore emulator v1.11.4 
+    * Fixes bug for evaluating rules in query listening. 
+    * Fixes support for ` ?show_missing ` in listing collection. 
+
+###  Cloud Resource Manager
+
+  * Promoted ` gcloud projects create ` to beta. 
+
+###  Cloud Run
+
+  * Modified ` --vpc-connector ` and ` --clear-vpc-connector ` flags to be applicable for ` --platform=managed ` only. 
+  * Added ` --format export ` option to ` gcloud run services describe ` and ` gcloud run revisions describe ` , to output resources without deployment-specific metadata or status information. 
+
+###  Compute Engine
+
+  * Replaced coreos-cloud with fedora-coreos-cloud in the list of public image projects for ` --standard-images ` flag of ` gcloud compute images list ` . 
+  * Promoted ` gcloud compute commitments create-license ` to beta. 
+  * Added flag ` --instance-update-minimal-action ` flag to ` gcloud beta compute instance-groups managed instance-configs <create|update|delete> ` . 
+
+###  Kubernetes Engine
+
+  * Added ` --master-logs ` and '--enable-master-metrics' flags to ` gcloud beta container clusters ` to enable sending master logs and metrics to Cloud Operations (fka Stackdriver). 
+
+Subscribe to these release notes at [
+https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
+](https://groups.google.com/forum/#!forum/google-cloud-sdk-announce) .
+
+**Note:** Cloud SDK introduced support for Python 3 in release 274.0.0 and
+users are strongly encouraged to migrate to Python 3. Support for Python 2
+will be deprecated on September 30, 2020. See also [ Python 2 Sunset
+](https://cloud.google.com/python/docs/python2-sunset/) and [ Using Python 3
+](https://cloud.google.com/sdk/gcloud/reference/topic/startup) .
+
+##  295.0.0 (2020-06-02)
+
+###  Anthos
+
+  * Added ` gcloud anthos apply ` command to beta. This command declaratively applies Config Connector resource configurations. 
+  * Added ` gcloud anthos export ` command to beta. This command exports Config Connector resource configurations of existing Google Kubernetes Engine clusters. 
+
+###  Cloud Memorystore
+
+  * Enabled support for Redis version 5.0. Added ` redis_5_0 ` as a new option for ` --redis_version ` flag of ` gcloud redis instances create ` . 
+  * Added ` gcloud redis instances upgrade ` to upgrade a Memorystore Redis instance to a specified Redis version. 
+
+###  Cloud Pub/Sub
+
+  * Rename ` --filter ` flag of ` gcloud pubsub subscriptions create ` to ` --message-filter ` . This is done to avoid confusion with ` --filter ` flag of [ https://cloud.google.com/sdk/gcloud/reference/topic/filters ](https://cloud.google.com/sdk/gcloud/reference/topic/filters) . 
+  * Promoted ` --message-filter ` flag of ` gcloud pubsub subscriptions create ` to beta. This feature allows users to specify a filter expression on a Cloud Pub/Sub subscription which will automatically drop messages. 
+
+###  Compute Engine
+
+  * Promoted ` gcloud compute instance-groups managed describe-instance ` to beta. 
+  * Added ` --accelerator ` flag to ` gcloud beta compute instances create-with-container ` . 
+  * Promoted ` --private-ipv6-google-access-type ` flag of ` gcloud compute instances <create|create-with-container> ` to GA. 
+  * Promoted ` --private-ipv6-google-access-type ` flag of ` gcloud compute instance-templates <create|create-with-container> ` to GA. 
+  * Promoted ` --private-ipv6-google-access-type ` flag of ` gcloud compute networks subnets <create|update> ` to GA. 
+  * Added ` --interface ` flag to ` gcloud beta compute disks create ` . 
+  * Added ` --interface ` flag to ` gcloud beta compute instances attach-disk ` . 
+  * Added ` interface ` key to ` --disk ` key of ` gcloud beta compute instances create ` . 
+
+###  Game Servers
+
+  * Added ` --description ` to ` gcloud <alpha|beta> game servers <clusters/realms/deployments> update ` to allow updating description for resources. 
+
+Subscribe to these release notes at [
+https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
+](https://groups.google.com/forum/#!forum/google-cloud-sdk-announce) .
+
+**Note:** Cloud SDK introduced support for Python 3 in release 274.0.0 and
+users are strongly encouraged to migrate to Python 3. Support for Python 2
+will be deprecated on September 30, 2020. See also [ Python 2 Sunset
+](https://cloud.google.com/python/docs/python2-sunset/) and [ Using Python 3
+](https://cloud.google.com/sdk/gcloud/reference/topic/startup) .
+
+##  294.0.0 (2020-05-27)
+
+###  Breaking Changes
+
+  * **(Secret Manager)** Modified ` gcloud secrets ` beta command group to use the Secret Manager v1 API. The ` --uri ` flag now formats output to begin with ` https://secretmanager.googleapis.com/v1/ ` instead of ` https://secretmanager.googleapis.com/v1beta1/ ` when used with the following commands: 
+    * ` gcloud beta secrets list `
+    * ` gcloud beta locations list `
+    * ` gcloud beta secrets versions list `
+
+###  AI Platform
+
+  * Added ` --kms-key ` to ` gcloud <alpha|beta> ai-platform jobs submit training ` to allow specifying a customer-managed encryption key for a training job. 
+
+###  Cloud Pub/Sub
+
+  * Promoted configurable retry-related flags in ` gcloud pubsub subscriptions create ` and ` gcloud pubsub subscriptions update ` to GA. 
+
+###  Cloud Run
+
+  * Change ` gcloud run services get-iam-policy ` , ` gcloud run services set-iam-policy ` , ` gcloud run services add-iam-policy-binding ` , and ` gcloud run services remove-iam-policy-binding ` to use the v1 api. 
+
+###  Cloud Storage
+
+  * Updated gsutil component to 4.51. 
+
+###  Cloud Tasks
+
+  * Promoted ` gcloud tasks queues create-pull-queue ` to beta. 
+
+###  Compute Engine
+
+  * Changed default action from ` RESTART ` to ` REPLACE ` for ` --update-instance ` flag of ` gcloud compute instance-groups managed instance-configs create|update ` . 
+  * Promoted ` --maintenance-policy ` of ` gcloud compute sole-tenancy node-groups create ` to GA. 
+
+Subscribe to these release notes at [
+https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
+](https://groups.google.com/forum/#!forum/google-cloud-sdk-announce) .
+
+##  293.0.0 (2020-05-19)
+
+###  App Engine
+
+  * Updated the Python SDK to version 1.9.91. Please visit the following release notes for details: [ https://cloud.google.com/appengine/docs/python/release-notes ](https://cloud.google.com/appengine/docs/python/release-notes) . 
+
+###  Cloud SQL
+
+  * Promoted Postgres 12 to GA. 
+
+###  Compute Engine
+
+  * Promoted ` gcloud compute instance-groups managed list-errors ` to GA. 
+  * Added ` gcloud beta compute instances get-screenshot ` command to beta. 
+
+###  Firebase Test Lab
+
+  * Promoted ` --additional-apks ` , ` --other-files ` , ` --network-profile ` , and ` --robo-script ` flags of ` gcloud firebase test android run ` to GA. 
+
+###  Kubernetes Engine
+
+  * Promoted ` --disable-default-snat ` flag of ` gcloud container clusters <create|update> ` to beta. 
+
+Subscribe to these release notes at [
+https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
+](https://groups.google.com/forum/#!forum/google-cloud-sdk-announce) .
+
+##  292.0.0 (2020-05-12)
+
+###  Breaking Changes
+
+  * **(Cloud SDK)** Modified ` gcloud auth application-default login ` to add a quota project by default. Use ` --disable-quota-project ` to skip setting the quota project. 
+  * **(Cloud SDK)** Modified ` gcloud auth application-default login ` and ` gcloud auth application-default set-quota-project ` so that a quota project is added to the application default credentials only when the credentials have the permission to bill the project. 
+
+###  Cloud SDK
+
+  * Fixed an issue in ` gcloud auth login ` and ` gcloud init ` when running behind a proxy/firewall. This issue can be tracked at [ https://issuetracker.google.com/issues/155818300 ](https://issuetracker.google.com/issues/155818300) . 
+
+###  App Engine Flexible Environment
+
+  * Fixed issue where CloudBuild timeout value without 's' suffix was rejected sometimes. 
+
+###  Cloud DNS
+
+  * Promoted Non-RFC 1918 Cloud DNS features to GA. 
+
+###  Cloud Dataproc
+
+  * Fixed bug in ` gcloud dataproc clusters list ` where Google Kubernetes Engine-based clusters are listed with ` PLATFORM ` as ` GCE ` when accessed by the GA command. 
+
+###  Cloud Key Management Service
+
+  * Promoted ` --condition ` flag to GA for the following commands: 
+    * ` gcloud kms keyrings add-iam-policy-binding `
+    * ` gcloud kms keyrings remove-iam-policy-binding `
+    * ` gcloud kms keys add-iam-policy-binding `
+    * ` gcloud kms keys remove-iam-policy-binding `
+
+###  Compute Engine
+
+  * Added ` import ` and ` export ` commands to ` gcloud compute <target-http-proxies|target-https-proxies> ` . 
+  * Promoted ` --private-ipv6-google-access-type ` flag of ` gcloud compute instances <create|create-with-container> ` to beta. 
+  * Promoted ` --private-ipv6-google-access-type ` flag of ` gcloud compute instance-templates <create|create-with-container> ` to beta. 
+  * Promoted ` --autoscaler-mode ` , ` --min-nodes ` , and ` --max-nodes ` flags of command ` gcloud compute sole-tenancy node-groups create ` to GA. 
+
+###  Kubernetes Engine
+
+  * ` gcloud container ` now respects ` compute/region ` property. 
+
+Subscribe to these release notes at [
+https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
+](https://groups.google.com/forum/#!forum/google-cloud-sdk-announce) .
+
 ##  291.0.0 (2020-05-05)
 
 ###  AI Platform
@@ -73,7 +836,7 @@ https://groups.google.com/forum/#!forum/google-cloud-sdk-announce
 
 ###  Cloud Storage
 
-  *   * Updated gsutil component to 4.50. 
+  * Updated gsutil component to 4.50. 
 
 ###  Compute Engine
 

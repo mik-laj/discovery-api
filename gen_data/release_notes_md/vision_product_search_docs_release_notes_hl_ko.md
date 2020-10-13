@@ -1,12 +1,15 @@
 #  출시 노트
 
-이 페이지는 Vision 제품 검색의 프로덕션 업데이트를 설명합니다. Vision 제품 검색 개발자는 정기적으로 이 목록에서 새로운 공지
-사항을 확인하시기 바랍니다.
+이 페이지는 Vision 제품 검색의 프로덕션 업데이트를 설명합니다. Vision 제품 검색 개발자는 이 목록을 주기적으로 참고하여 새로운
+공지사항을 확인하는 것이 좋습니다.
+
+[ Google Cloud 출시 노트 ](https://cloud.google.com/release-notes?hl=ko) 페이지에서 모든
+Google Cloud의 최신 제품 업데이트를 확인할 수 있습니다.
 
 최신 제품 업데이트를 받으려면 [ 피드 리더
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) 에 이 페이지의 URL을
-추가하거나 피드 URL을 다음과 같이 직접 추가하세요. ` https://cloud.google.com/feeds/cloud-vision-
-api-product-search-release-notes.xml `
+추가하거나 피드 URL을 다음과 같이 직접 추가하세요. `
+https://cloud.google.com/feeds/visionproductsearch-release-notes.xml `
 
 ##  September 18, 2019
 

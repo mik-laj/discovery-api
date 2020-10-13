@@ -3,10 +3,89 @@
 このページには Cloud Spanner
 に関する本番環境の更新内容が記載されています。このページを定期的にチェックして、新機能や更新された機能、バグ修正、既知の問題、非推奨になった機能に関するお知らせを確認してください。
 
+[ Google Cloud リリースノート ](https://cloud.google.com/release-notes?hl=ja)
+のページで、Google Cloud の最新のプロダクト更新情報をすべて確認できます。
+
 プロダクトのアップデートに関する最新情報を受け取るには、このページの URL を [ フィード リーダー
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) に追加するか、またはフィード
-URL ディレクトリ ` https://cloud.google.com/feeds/cloud-spanner-release-notes.xml `
+URL ディレクトリ ` https://cloud.google.com/feeds/spanner-release-notes.xml `
 を直接追加します。
+
+##  August 20, 2020
+
+**FEATURE:**
+
+A new [ multi-region instance configuration
+](https://cloud.google.com/spanner/docs/instances?hl=ja#available-
+configurations-multi-region) is now available in North America - ` nam11 `
+(Iowa/South Carolina).
+
+##  August 06, 2020
+
+**FEATURE:**
+
+A new [ multi-region instance configuration
+](https://cloud.google.com/spanner/docs/instances?hl=ja#available-
+configurations-multi-region) is now available in North America - ` nam10 `
+(Iowa/Salt Lake).
+
+##  July 30, 2020
+
+**FEATURE:**
+
+The Cloud Spanner emulator is now [ generally available
+](https://cloud.google.com/products/?hl=ja#product-launch-stages) , enabling
+you to develop and test applications locally. For more information, see [
+Using the Cloud Spanner Emulator
+](https://cloud.google.com/spanner/docs/emulator?hl=ja) .
+
+##  July 15, 2020
+
+**FEATURE:**
+
+You can now run SQL queries to retrieve [ read statistics
+](https://cloud.google.com/spanner/docs/introspection/read-statistics?hl=ja)
+for your database over recent one-minute, 10-minute, and one-hour time
+periods.
+
+##  June 08, 2020
+
+**FEATURE:**
+
+A second [ multi-region instance configuration
+](https://cloud.google.com/spanner/docs/instances?hl=ja#available-
+configurations-multi-region) is now available in Europe - ` eur5 `
+(London/Belgium).
+
+**FEATURE:**
+
+A [ multi-region instance configuration
+](https://cloud.google.com/spanner/docs/instances?hl=ja#available-
+configurations-multi-region) is now available in Asia - ` asia1 `
+(Tokyo/Osaka).
+
+**FEATURE:**
+
+Cloud Spanner [ regional instances
+](https://cloud.google.com/spanner/docs/instances?hl=ja#available-
+configurations-regional) can now be created in Jakarta (asia-southeast2).
+
+##  June 03, 2020
+
+**CHANGED:**
+
+Cloud Spanner SQL now supports the following statistical aggregate functions -
+STDDEV, VARIANCE. For more information, see [ Statistical Aggregate Functions
+](https://cloud.google.com/spanner/docs/statistical_aggregate_functions?hl=ja)
+.
+
+##  May 18, 2020
+
+**FEATURE:**
+
+You can now run SQL queries to retrieve [ transaction statistics
+](https://cloud.google.com/spanner/docs/transaction-stats-tables?hl=ja) for
+your database over recent one-minute, 10-minute, and one-hour time periods.
 
 ##  April 20, 2020
 

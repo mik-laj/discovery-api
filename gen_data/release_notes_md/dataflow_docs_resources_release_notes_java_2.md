@@ -5,8 +5,8 @@ started/downloads/#releases) page contains release notes for the Apache Beam
 SDK releases.
 
 **SDK Decommission Notice:** The following SDK versions will be decommissioned
-in late 2019 due to the [ discontinuation of support for JSON-RPC and Global
-HTTP Batch Endpoints
+by August 12, 2020 due to the [ discontinuation of support for JSON-RPC and
+Global HTTP Batch Endpoints
 ](https://developers.googleblog.com/2018/03/discontinuing-support-for-json-
 rpc-and.html) .
 
@@ -15,12 +15,10 @@ rpc-and.html) .
   * Dataflow SDK for Java, versions 2.0.0 to 2.4.0 (inclusive) 
   * Dataflow SDK for Python, 2.0.0 to 2.4.0 (inclusive) 
 
-Previously, the date planned for this decommissioning was March 25, 2019, but
-in response to customer requests, we are extending this timeline. The new end
-date has yet to be finalized but is expected to happen in 2019. When
-decommissioning happens, you will no longer be able to submit new Dataflow
-jobs or update running Dataflow jobs that use the decommissioned SDKs. In
-addition, existing streaming jobs that use these SDK versions may fail.
+When decommissioning happens, you will no longer be able to submit new
+Dataflow jobs or update running Dataflow jobs that use the decommissioned
+SDKs. In addition, existing streaming jobs that use these SDK versions may
+fail.
 
 **Dataflow SDK Deprecation Notice:** The Dataflow SDK 2.5.0 is the last
 Dataflow SDK release that is separate from the Apache Beam SDK releases. The

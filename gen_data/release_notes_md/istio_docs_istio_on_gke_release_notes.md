@@ -12,6 +12,45 @@ to your [ feed reader
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the feed
 URL directly: ` https://cloud.google.com/feeds/istio-release-notes.xml `
 
+##  August 20, 2020
+
+1.4.x
+
+**FIXED:**
+
+**Istio 1.4.10-gke.5**
+
+Fixes an issue with protocol detection connection timeouts.
+
+##  August 05, 2020
+
+1.4.x
+
+**FEATURE:**
+
+Starting with version 1.6, the Istio on GKE add-on uses the Istio Operator for
+installation and configuration. When you upgrade your cluster to
+1.17.7-gke.8+, 1.17.8-gke.6+, or higher, the Istio 1.6 Operator and control
+plane are installed alongside the existing 1.4.x Istio control plane. The
+upgrade requires user action and follows the [ dual control plane upgrade
+](https://istio.io/latest/blog/2020/multiple-control-planes/) process
+(referred to as canary upgrades in the Istio documentation). With a dual
+control plane upgrade, you can migrate to the 1.6 version by setting a label
+on your workloads to point to the new control plane and performing a rolling
+restart. To learn more, see [ Upgrading to Istio 1.6 with Operator
+](https://cloud.google.com/istio/docs/istio-on-gke/upgrade-with-operator) .
+
+##  July 21, 2020
+
+1.4.x
+
+**FIXED:**
+
+**Istio 1.4.10-gke.4**
+
+Fixes known security issues with the same fixes as [ OSS Istio 1.4.10
+](https://istio.io/news/releases/1.4.x/announcing-1.4.10/)
+
 ##  March 27, 2020
 
 1.4.x

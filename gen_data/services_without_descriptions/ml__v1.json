@@ -1754,6 +1754,21 @@
             },
             "type": "object"
         },
+        "GoogleCloudMlV1__EndpointMap": {
+            "id": "GoogleCloudMlV1__EndpointMap",
+            "properties": {
+                "explain": {
+                    "type": "string"
+                },
+                "health": {
+                    "type": "string"
+                },
+                "predict": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudMlV1__ExplainRequest": {
             "id": "GoogleCloudMlV1__ExplainRequest",
             "properties": {
@@ -2157,7 +2172,8 @@
                         "DELETE_MODEL",
                         "UPDATE_MODEL",
                         "UPDATE_VERSION",
-                        "UPDATE_CONFIG"
+                        "UPDATE_CONFIG",
+                        "MIGRATE_TO_UCAIP"
                     ],
                     "type": "string"
                 },
@@ -2323,6 +2339,18 @@
                 "acceleratorConfig": {
                     "$ref": "GoogleCloudMlV1__AcceleratorConfig"
                 },
+                "containerArgs": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "containerCommand": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "imageUri": {
                     "type": "string"
                 },
@@ -2361,6 +2389,10 @@
                 "maxRunningTime": {
                     "format": "google-duration",
                     "type": "string"
+                },
+                "maxWaitTime": {
+                    "format": "google-duration",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2380,12 +2412,15 @@
             "properties": {
                 "createTime": {
                     "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "inactiveReason": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "name": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "state": {
@@ -2395,6 +2430,7 @@
                         "INACTIVE",
                         "COMPLETED"
                     ],
+                    "readOnly": true,
                     "type": "string"
                 },
                 "studyConfig": {
@@ -2529,6 +2565,9 @@
                 "masterType": {
                     "type": "string"
                 },
+                "network": {
+                    "type": "string"
+                },
                 "packageUris": {
                     "items": {
                         "type": "string"
@@ -2570,6 +2609,9 @@
                 },
                 "scheduling": {
                     "$ref": "GoogleCloudMlV1__Scheduling"
+                },
+                "serviceAccount": {
+                    "type": "string"
                 },
                 "useChiefInTfConfig": {
                     "type": "boolean"
@@ -2623,16 +2665,19 @@
             "id": "GoogleCloudMlV1__Trial",
             "properties": {
                 "clientId": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "endTime": {
                     "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "finalMeasurement": {
                     "$ref": "GoogleCloudMlV1__Measurement"
                 },
                 "infeasibleReason": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "measurements": {
@@ -2642,6 +2687,7 @@
                     "type": "array"
                 },
                 "name": {
+                    "readOnly": true,
                     "type": "string"
                 },
                 "parameters": {
@@ -2652,6 +2698,7 @@
                 },
                 "startTime": {
                     "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "state": {
@@ -2665,6 +2712,7 @@
                     "type": "string"
                 },
                 "trialInfeasible": {
+                    "readOnly": true,
                     "type": "boolean"
                 }
             },
@@ -2685,6 +2733,10 @@
                 },
                 "deploymentUri": {
                     "type": "string"
+                },
+                "endpoints": {
+                    "$ref": "GoogleCloudMlV1__EndpointMap",
+                    "readOnly": true
                 },
                 "errorMessage": {
                     "type": "string"

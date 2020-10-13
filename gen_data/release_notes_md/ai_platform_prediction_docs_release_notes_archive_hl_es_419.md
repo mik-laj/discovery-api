@@ -1,5 +1,9 @@
 #  Notas de la versión archivadas
 
+Puedes ver las últimas actualizaciones de productos de todo Google Cloud en la
+página [ Notas de la versión de Google Cloud
+](https://cloud.google.com/release-notes?hl=es_419) .
+
 El 10 de abril de 2019, Cloud Machine Learning Engine se convirtió en [ AI
 Platform Training ](https://cloud.google.com/ai-platform/training?hl=es_419) y
 [ AI Platform Prediction ](https://cloud.google.com/ai-
@@ -31,7 +35,7 @@ modelo en el [ algoritmo de aprendizaje lineal
 ](https://www.tensorflow.org/tutorials/representation/linear?hl=es_419) de
 TensorFlow, el [ algoritmo de amplitud y profundidad
 ](https://ai.googleblog.com/2016/06/wide-deep-learning-better-together-
-with.html) de TensorFlow y los algoritmos [ XGBoost
+with.html) de TensorFlow y los algoritmos de [ XGBoost
 ](https://xgboost.readthedocs.io/en/latest/tutorials/model.html) sin escribir
 ningún código.
 
@@ -87,7 +91,7 @@ un conjunto de software de aprendizaje profundo.
 Visita la [ descripción general de AI Platform Notebooks
 ](https://cloud.google.com/ai-
 platform/prediction/docs/notebooks/overview?hl=es_419) y la [ guía para crear
-una nueva instancia de notebook ](https://cloud.google.com/ai-
+una instancia nueva de notebook ](https://cloud.google.com/ai-
 platform/prediction/docs/notebooks/create-new?hl=es_419) a fin de obtener más
 información.
 
@@ -112,8 +116,8 @@ Cloud ML Engine y obtén más información sobre [ sus precios
 El entrenamiento con contenedores personalizados ahora está disponible en
 versión Beta. Esta función te permite ejecutar tu aplicación de entrenamiento
 en Cloud ML Engine mediante el uso de una imagen personalizada de Docker.
-Puedes compilar el contenedor personalizado con los marcos de trabajo de AA
-que elijas. Comienza a [ entrenar un modelo de PyTorch con contenedores
+Puedes compilar el contenedor personalizado con los frameworks de AA que
+elijas. Comienza a [ entrenar un modelo de PyTorch con contenedores
 personalizados ](https://cloud.google.com/ai-platform/prediction/docs/custom-
 containers-training?hl=es_419) .
 
@@ -125,19 +129,19 @@ la asignación de recursos de procesamiento a los trabajos de entrenamiento.
 Está función está disponible en versión Beta.
 
 Cuando configuras tu trabajo con los tipos de máquinas de Compute Engine,
-puedes adjuntar un conjunto personalizado de GPU.
+puedes conectar un conjunto personalizado de GPU.
 
-Obtén más información sobre los [ tipos de máquina de Compute Engine
+Obtén más información sobre los [ tipos de máquinas de Compute Engine
 ](https://cloud.google.com/ai-platform/prediction/docs/machine-
-types?hl=es_419#compute-engine-machine-types) , los [ adjuntos de GPU
+types?hl=es_419#compute-engine-machine-types) , las [ GPU conectadas
 ](https://cloud.google.com/ml-engine/docs/tensorflow/using-
 gpus?hl=es_419#compute-engine-machine-types-with-gpu) y [ sus precios
 ](https://cloud.google.com/ai-platform/prediction/docs/pricing?hl=es_419) .
 
 **FEATURE:**
 
-Las GPU de P4 ahora están disponibles en versión Beta para el entrenamiento.
-Para obtener más información, consulta las guías sobre [ el uso de GPU
+Las GPU P4 ahora están en versión Beta para entrenamiento. Para obtener más
+información, consulta las guías sobre [ el uso de GPU
 ](https://cloud.google.com/ml-engine/docs/tensorflow/using-gpus?hl=es_419) , [
 su disponibilidad regional ](https://cloud.google.com/ml-
 engine/docs/tensorflow/regions?hl=es_419#training_with_accelerators) y [ sus
@@ -153,9 +157,9 @@ predicción en línea. Se cambian los nombres de los tipos de máquina y se
 actualiza el precio.
 
   * Configura ` machineType ` como [ ` projects.models.versions.create ` ](https://cloud.google.com/ai-platform/prediction/docs/reference/rest/v1/projects.models.versions?hl=es_419) a fin de especificar el tipo de máquina que se usará para la entrega. Usa ` mls1-c4-m2 ` para las CPU de cuatro núcleos. La opción de configuración predeterminada es la CPU de un núcleo, ` mls1-c1-m2 ` . 
-  * Los siguientes nombres de máquina usados en la versión Alfa están **obsoletos** : ` mls1-highmem-1 ` y ` mls1-highcpu-4 ` . 
+  * Los siguientes nombres de máquinas usados en la versión Alfa están **obsoletos** : ` mls1-highmem-1 ` y ` mls1-highcpu-4 ` . 
   * Para obtener más información, consulta la guía sobre la [ predicción en línea ](https://cloud.google.com/ai-platform/prediction/docs/online-predict?hl=es_419#machine-types) . 
-  * Consulta los [ precios ](https://cloud.google.com/ai-platform/prediction/docs/pricing?hl=es_419) actualizados para la entrega de tipos de máquina. 
+  * Consulta los [ precios ](https://cloud.google.com/ai-platform/prediction/docs/pricing?hl=es_419) actualizados para la entrega de tipos de máquinas. 
 
 ##  25 de enero de 2019
 
@@ -169,8 +173,8 @@ platform/prediction/docs/regions?hl=es_419) .
 
 **FEATURE:**
 
-Las GPU V100 ahora están disponibles de forma general para el entrenamiento.
-Para obtener más información, consulta las guías sobre [ el uso de GPU
+Las GPU V100 ahora están disponibles para entrenamiento. Para obtener más
+información, consulta las guías sobre [ el uso de GPU
 ](https://cloud.google.com/ml-engine/docs/tensorflow/using-gpus?hl=es_419) y [
 los precios ](https://cloud.google.com/ai-
 platform/prediction/docs/pricing?hl=es_419) .
@@ -340,8 +344,8 @@ training?hl=es_419) .
 La compatibilidad con la predicción en línea para **scikit-learn** y
 **XGBoost** ahora está disponible de forma general.
 
-  * Cuando crees una versión del modelo, configura ` framework ` como [ ` projects.models.versions.create ` ](https://cloud.google.com/ai-platform/prediction/docs/reference/rest/v1/projects.models.versions?hl=es_419) para especificar el marco de trabajo de aprendizaje automático. Los valores válidos son ` TENSORFLOW ` , ` SCIKIT_LEARN ` y ` XGBOOST ` . El valor predeterminado es ` TENSORFLOW ` . Si especificas ` SCIKIT_LEARN ` o ` XGBOOST ` , también debes configurar ` runtimeVersion ` como 1.4 o superior para la versión del modelo. 
-  * Consulta la guía sobre [ el entrenamiento y las predicciones en línea locales con scikit-learn y XGBoost ](https://cloud.google.com/ml-engine/docs/scikit/quickstart?hl=es_419) . 
+  * Cuando crees una versión del modelo, configura ` framework ` como [ ` projects.models.versions.create ` ](https://cloud.google.com/ai-platform/prediction/docs/reference/rest/v1/projects.models.versions?hl=es_419) para especificar el framework de aprendizaje automático. Los valores válidos son ` TENSORFLOW ` , ` SCIKIT_LEARN ` y ` XGBOOST ` . El valor predeterminado es ` TENSORFLOW ` . Si especificas ` SCIKIT_LEARN ` o ` XGBOOST ` , también debes configurar ` runtimeVersion ` como 1.4 o superior para la versión del modelo. 
+  * Consulta la guía sobre [ el entrenamiento local y las predicciones en línea con scikit-learn y XGBoost ](https://cloud.google.com/ml-engine/docs/scikit/quickstart?hl=es_419) . 
 
 ##  12 de julio de 2018
 
@@ -389,13 +393,13 @@ version-list?hl=es_419#tpu-support) .
 **CHANGED:**
 
 Ahora puedes usar Cloud TPU ( _versión Beta_ ) con TensorFlow 1.8 y con la
-versión 1.8 del entorno de ejecución de Cloud ML Engine versión.
+versión 1.8 del entorno de ejecución de Cloud ML Engine.
 
 _Información general:_ Cloud TPU está disponible en Cloud ML Engine desde el
 14 de mayo en las versiones 1.6 y 1.7 del entorno de ejecución. La semana
 pasada se lanzó la versión 1.8 del entorno de ejecución, pero en ese momento
 Cloud TPU aún no estaba disponible para TensorFlow 1.8. Ahora lo está.
-Consulta cómo [ usar las TPU para entrenar tu modelo
+Consulta cómo [ usar las TPU para entrenar tus modelos
 ](https://cloud.google.com/ml-engine/docs/tensorflow/using-tpus?hl=es_419) en
 Cloud ML Engine.
 
@@ -444,11 +448,11 @@ engine/docs/tensorflow/runtime-version-list?hl=es_419) .
 
 **FEATURE:**
 
-**Algoritmos de los hiperparámetros:** ahora, cuando ajustas los
+**Algoritmos de los hiperparámetros:** Ahora, cuando ajustas los
 hiperparámetros en el trabajo de entrenamiento, puedes especificar un
 algoritmo de búsqueda en [ HyperparameterSpec ](https://cloud.google.com/ai-
 platform/prediction/docs/reference/rest/v1/projects.jobs?hl=es_419#hyperparameterspec)
-. Los valores disponibles son:
+. Los valores disponibles son estos:
 
   * ` GRID_SEARCH ` : Es una búsqueda por cuadrícula simple dentro del espacio posible. Esta opción es particularmente útil si deseas especificar un número de pruebas que sea mayor que el número de puntos en el espacio posible. En tales casos, si no especificas una búsqueda por cuadrícula, el algoritmo predeterminado de Cloud ML Engine podría generar sugerencias duplicadas. Para usar la búsqueda por cuadrícula, todos los parámetros deben ser del tipo ` INTEGER ` , ` CATEGORICAL ` o ` DISCRETE ` . 
   * ` RANDOM_SEARCH ` : Es una búsqueda aleatoria simple dentro del espacio posible. 
@@ -466,9 +470,9 @@ overview?hl=es_419) .
 **FEATURE:**
 
 Cloud ML Engine ahora es compatible con **scikit-learn** y **XGBoost** para la
-predicción en línea. Esta función se encuentra en versión _Beta_ .
+predicción en línea. Esta función está en _versión Beta_ .
 
-  * Cuando crees una versión del modelo, configura ` framework ` como [ ` projects.models.versions.create ` ](https://cloud.google.com/ai-platform/prediction/docs/reference/rest/v1/projects.models.versions?hl=es_419) para especificar el marco de trabajo de aprendizaje automático. Los valores válidos son ` TENSORFLOW ` , ` SCIKIT_LEARN ` y ` XGBOOST ` . El valor predeterminado es ` TENSORFLOW ` . Si especificas ` SCIKIT_LEARN ` o ` XGBOOST ` , también debes configurar ` runtimeVersion ` como 1.4 o superior para la versión del modelo. 
+  * Cuando crees una versión del modelo, configura ` framework ` como [ ` projects.models.versions.create ` ](https://cloud.google.com/ai-platform/prediction/docs/reference/rest/v1/projects.models.versions?hl=es_419) para especificar el framework de aprendizaje automático. Los valores válidos son ` TENSORFLOW ` , ` SCIKIT_LEARN ` y ` XGBOOST ` . El valor predeterminado es ` TENSORFLOW ` . Si especificas ` SCIKIT_LEARN ` o ` XGBOOST ` , también debes configurar ` runtimeVersion ` como 1.4 o superior para la versión del modelo. 
   * Consulta la guía sobre [ scikit-learn y XGBoost en Cloud ML Engine ](https://cloud.google.com/ml-engine/docs/scikit/quickstart?hl=es_419) . 
 
 **FEATURE:**
@@ -476,7 +480,7 @@ predicción en línea. Esta función se encuentra en versión _Beta_ .
 Python 3.5 está disponible para la predicción en línea.
 
   * Cuando crees una versión del modelo, configura ` pythonVersion ` como [ ` projects.models.versions.create ` ](https://cloud.google.com/ai-platform/prediction/docs/reference/rest/v1/projects.models.versions?hl=es_419) para especificar la versión de Python. La opción predeterminada es Python 2.7. 
-  * Para obtener más información sobre todos los paquetes disponibles en Cloud ML Engine, consulta la [ lista de versiones de entorno de ejecución ](https://cloud.google.com/ml-engine/docs/scikit/runtime-version-list?hl=es_419) . 
+  * Para obtener más información sobre todos los paquetes disponibles en Cloud ML Engine, consulta la [ lista de versiones del entorno de ejecución ](https://cloud.google.com/ml-engine/docs/scikit/runtime-version-list?hl=es_419) . 
 
 ##  20 de marzo de 2018
 
@@ -551,7 +555,7 @@ engine/docs/tensorflow/pricing-faq?hl=es_419) .
 **FEATURE:**
 
 Las GPU P100 ahora se encuentran en versión Beta. El uso de las GPU P100 ahora
-genera cargos. Para obtener más información, consulta [ Uso de GPU
+genera cargos. Para obtener más información, consulta [ Usa GPU
 ](https://cloud.google.com/ml-engine/docs/tensorflow/using-gpus?hl=es_419) y [
 Precios ](https://cloud.google.com/ai-
 platform/prediction/docs/pricing?hl=es_419) .
@@ -570,9 +574,9 @@ logs?hl=es_419) .
 **FEATURE:**
 
 Las funciones de IAM predefinidas de Cloud ML Engine están disponibles para su
-uso general. Para obtener más información, consulta [ Guía de control de
-acceso ](https://cloud.google.com/ml-engine/docs/tensorflow/access-
-control?hl=es_419) .
+uso general. Para obtener más información, consulta [ Control de acceso
+](https://cloud.google.com/ml-engine/docs/tensorflow/access-control?hl=es_419)
+.
 
 ##  27 de junio de 2017
 
@@ -629,12 +633,12 @@ engine/docs/tensorflow/using-gpus?hl=es_419) permanecen en versión Beta.
 **FEATURE:**
 
 La predicción en línea ahora se encuentra en la [ etapa de lanzamiento
-](https://cloud.google.com/terms/launch-stages?hl=es_419) Beta. Su uso ahora
-está sujeto a la [ política de precios ](https://cloud.google.com/ai-
-platform/prediction/docs/pricing?hl=es_419) de Cloud ML Engine y sigue la
-misma fórmula de precios que la predicción por lotes. Si bien permanece en
-versión Beta, la predicción en línea no está diseñada para su uso en
-aplicaciones críticas.
+](https://cloud.google.com/terms/launch-stages?hl=es_419) en versión Beta. Su
+uso ahora está sujeto a la [ política de precios
+](https://cloud.google.com/ai-platform/prediction/docs/pricing?hl=es_419) de
+Cloud ML Engine y sigue la misma fórmula de precios que la predicción por
+lotes. Si bien permanece en versión Beta, la predicción en línea no está
+diseñada para su uso en aplicaciones críticas.
 
 **CHANGED:**
 
@@ -661,7 +665,7 @@ modelo guardado.
 
 **DEPRECATED:**
 
-El SDK de aprendizaje automático de Google Cloud, lanzado inicialmente en
+El SDK de aprendizaje automático de Google Cloud, lanzado en un principio en
 versión Alfa, se volvió obsoleto y ya no será compatible a partir del 7 de
 mayo de 2017. La mayor parte de la funcionalidad que expuso el SDK se trasladó
 al nuevo paquete de TensorFlow, [ tf.Transform

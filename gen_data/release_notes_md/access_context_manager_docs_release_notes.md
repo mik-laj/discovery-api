@@ -13,6 +13,31 @@ to your [ feed reader
 URL directly: ` https://cloud.google.com/feeds/access-context-manager-release-
 notes.xml `
 
+##  June 11, 2020
+
+**FEATURE:**
+
+General availability of the Access Context Manager Bulk API.
+
+Use the Access Context Manager Bulk API to replace all of your organization's
+access levels in one operation. For more information, see [ Making bulk
+changes to access levels ](https://cloud.google.com/access-context-
+manager/docs/bulk-operations) .
+
+##  June 01, 2020
+
+**FEATURE:**
+
+General availability of custom access levels.
+
+[ Custom access levels ](https://cloud.google.com/access-context-
+manager/docs/custom-access-levels) provide a way to use Common Expression
+Language to craft custom conditions. [ Create custom access levels
+](https://cloud.google.com/access-context-manager/docs/create-custom-access-
+level) using the ` gcloud ` command line tool, the Access Context Manager API,
+and in the Google Cloud Console using the Advanced Mode for configuring access
+levels.
+
 ##  April 03, 2020
 
 **FEATURE:**

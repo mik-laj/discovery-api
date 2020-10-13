@@ -7,6 +7,17 @@ bug fixes, known issues, and deprecated functionality.
 You can see the latest product updates for all of Google Cloud on the [ Google
 Cloud release notes ](/release-notes) page.
 
+##  August 6, 2020
+
+**FEATURE:**
+
+Added 'implicit' field to DismissDecision structure to indicate if an approval
+request was dismissed implicitly by timeout rather than by user action.
+
+**FEATURE:**
+
+Added 'history' filter value to ListApprovalRequests method.
+
 ##  April 15, 2020
 
 **FEATURE:**

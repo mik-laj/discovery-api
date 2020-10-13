@@ -1,5 +1,9 @@
 #  Archivierte Versionshinweise
 
+Die neuesten Produktaktualisierungen für Google Cloud finden Sie auf der Seite
+mit den [ Google Cloud-Versionshinweisen ](https://cloud.google.com/release-
+notes?hl=de) .
+
 Am 10. April 2019 wurde die Cloud Machine Learning Engine zu [ AI Platform
 Training ](https://cloud.google.com/ai-platform/training?hl=de) und [ AI
 Platform Prediction ](https://cloud.google.com/ai-platform/prediction?hl=de) .
@@ -15,10 +19,10 @@ Die aktuellen Versionshinweise finden Sie hier:
 
 **FEATURE:**
 
-Cloud ML Engine bietet nun reduzierte Preise für Schulungen, Onlinevorhersagen
+Cloud ML Engine bietet jetzt reduzierte Preise für Training, Onlinevorhersagen
 und Batchvorhersagen.
 
-Weitere Informationen zu [ Cloud ML Engine-Preisen
+[ Hier finden Sie Informationen zu Cloud ML Engine-Preisen.
 ](https://cloud.google.com/ai-platform/prediction/docs/pricing?hl=de)
 
 ##  28\. März 2019
@@ -32,7 +36,7 @@ anhand der [ Linear Learner
 Wide and Deep ](https://ai.googleblog.com/2016/06/wide-deep-learning-better-
 together-with.html) -Algorithmen von TensorFlow sowie des [ XGBoost
 ](https://xgboost.readthedocs.io/en/latest/tutorials/model.html) -Algorithmus
-trainieren, ohne einen Code schreiben zu müssen.
+trainieren, ohne Code schreiben zu müssen.
 
 [ Weitere Informationen zum Trainieren mit integrierten Algorithmen
 ](https://cloud.google.com/ai-platform/training/docs/algorithms?hl=de)
@@ -92,10 +96,10 @@ Cloud TPU ist jetzt allgemein zum Trainieren von TensorFlow-Modellen
 verfügbar. Tensor Processing Units (TPUs) sind Beschleuniger, die von Google
 speziell für ML-Arbeitslasten entwickelt wurden.
 
-So [ verwenden Sie TPUs zum Trainieren von Modellen
-](https://cloud.google.com/ml-engine/docs/tensorflow/using-tpus?hl=de) in
-Cloud ML Engine. [ Hier erfahren Sie mehr zu den Preisen
-](https://cloud.google.com/ai-platform/prediction/docs/pricing?hl=de) .
+[ Hier finden Sie Informationen zur Verwendung von TPUs zum Trainieren von
+Modellen ](https://cloud.google.com/ml-engine/docs/tensorflow/using-
+tpus?hl=de) in Cloud ML Engine. [ Hier erfahren Sie mehr zu den Preisen.
+](https://cloud.google.com/ai-platform/prediction/docs/pricing?hl=de)
 
 ##  07\. Februar 2019
 
@@ -112,8 +116,8 @@ platform/prediction/docs/custom-containers-training?hl=de) .
 **FEATURE:**
 
 Sie können jetzt Trainingsjobs mit bestimmten Compute Engine-Maschinentypen
-konfigurieren. Dies eröffnet Ihnen zusätzliche Flexibilität beim Zuweisen von
-Rechenressourcen für Trainingsjobs. Dieses Feature ist als Betaversion
+konfigurieren. Dies eröffnet Ihnen zusätzliche Flexibilität bei der Zuordnung
+von Rechenressourcen zu Trainingsjobs. Dieses Feature ist als Betaversion
 verfügbar.
 
 Sie können beim Konfigurieren eines Jobs mit Compute Engine-Maschinentypen
@@ -123,18 +127,17 @@ Weitere Informationen zu [ Compute Engine-Maschinentypen
 ](https://cloud.google.com/ai-platform/prediction/docs/machine-
 types?hl=de#compute-engine-machine-types) , [ GPU-Anhängen
 ](https://cloud.google.com/ml-engine/docs/tensorflow/using-gpus?hl=de#compute-
-engine-machine-types-with-gpu) und [ Preisen ](https://cloud.google.com/ai-
-platform/prediction/docs/pricing?hl=de)
+engine-machine-types-with-gpu) und [ deren Preisen
+](https://cloud.google.com/ai-platform/prediction/docs/pricing?hl=de)
 
 **FEATURE:**
 
 P4-GPUs sind jetzt in der Betaversion zum Trainieren verfügbar. Weitere
 Informationen zur [ Verwendung von GPUs ](https://cloud.google.com/ml-
-engine/docs/tensorflow/using-gpus?hl=de) , der [ regionalen Verfügbarkeit
+engine/docs/tensorflow/using-gpus?hl=de) , zur [ regionalen Verfügbarkeit
 ](https://cloud.google.com/ml-
-engine/docs/tensorflow/regions?hl=de#training_with_accelerators) und [ zur
-Preisgestaltung ](https://cloud.google.com/ai-
-platform/prediction/docs/pricing?hl=de)
+engine/docs/tensorflow/regions?hl=de#training_with_accelerators) und zu den [
+Preisen ](https://cloud.google.com/ai-platform/prediction/docs/pricing?hl=de)
 
 ##  01\. Februar 2019
 
@@ -145,15 +148,15 @@ Die Namen der Maschinentypen wurden geändert und die Preise aktualisiert.
 
   * Legen Sie ` machineType ` auf [ ` projects.models.versions.create ` ](https://cloud.google.com/ai-platform/prediction/docs/reference/rest/v1/projects.models.versions?hl=de) fest, um den für die Bereitstellung zu verwendenden Maschinentyp anzugeben. Verwenden Sie ` mls1-c4-m2 ` für Quad-Core-CPUs. Der Standardwert ist die Single-Core-CPU ` mls1-c1-m2 ` . 
   * Die folgenden in der Alphaversion verwendeten Maschinennamen wurden **verworfen** : ` mls1-highmem-1 ` und ` mls1-highcpu-4 ` . 
-  * Weitere Informationen finden Sie im Leitfaden zur [ Onlinevorhersage ](https://cloud.google.com/ai-platform/prediction/docs/online-predict?hl=de#machine-types) . 
-  * Die aktuellen Preise der Maschinentypen finden Sie unter [ Preise ](https://cloud.google.com/ai-platform/prediction/docs/pricing?hl=de) . 
+  * Weitere Informationen [ finden Sie unter "Onlinevorhersage" ](https://cloud.google.com/ai-platform/prediction/docs/online-predict?hl=de#machine-types) . 
+  * Die aktuellen Preise der Maschinentypen [ finden Sie unter "Preise" ](https://cloud.google.com/ai-platform/prediction/docs/pricing?hl=de) . 
 
 ##  25\. Januar 2019
 
 **FEATURE:**
 
 Die Onlinevorhersage ist jetzt in der Region "us-east4" verfügbar. Weitere
-Informationen erhalten Sie im Leitfaden zur [ regionalen Verfügbarkeit
+Informationen erhalten Sie im [ Leitfaden zur regionalen Verfügbarkeit
 ](https://cloud.google.com/ai-platform/prediction/docs/regions?hl=de) .
 
 ##  10\. Januar 2019
@@ -161,10 +164,9 @@ Informationen erhalten Sie im Leitfaden zur [ regionalen Verfügbarkeit
 **FEATURE:**
 
 V100-GPUs sind jetzt allgemein zum Trainieren verfügbar. Weitere Informationen
-finden Sie in den Leitfäden zur [ Verwendung von GPUs
-](https://cloud.google.com/ml-engine/docs/tensorflow/using-gpus?hl=de) und zur
-[ Preisgestaltung ](https://cloud.google.com/ai-
-platform/prediction/docs/pricing?hl=de) .
+zur [ Verwendung von GPUs ](https://cloud.google.com/ml-
+engine/docs/tensorflow/using-gpus?hl=de) und zu [ Preisen
+](https://cloud.google.com/ai-platform/prediction/docs/pricing?hl=de)
 
 ##  19\. Dezember 2018
 
@@ -172,13 +174,13 @@ platform/prediction/docs/pricing?hl=de) .
 
 Die Cloud ML Engine-Laufzeitversionen 1.11 und 1.12 sind jetzt zum Trainieren
 und für Vorhersagen verfügbar. Diese Versionen unterstützen TensorFlow 1.11
-bzw. 1.12 und andere Pakete, die [ in der Laufzeitversionsliste
+bzw. 1.12 und andere Pakete, die in der [ Laufzeitversionsliste
 ](https://cloud.google.com/ai-platform/prediction/docs/runtime-version-
 list?hl=de) aufgeführt sind.
 
 Die Cloud ML Engine-Laufzeitversionen 1.11 und 1.12 unterstützen jetzt TPU-
-Training, Version 1.10 nicht. Aktuell unterstützte Versionen finden Sie [ in
-der Laufzeitversionsliste ](https://cloud.google.com/ml-
+Training, Version 1.10 nicht. Aktuell unterstützte Versionen finden Sie in der
+[ Laufzeitversionsliste ](https://cloud.google.com/ml-
 engine/docs/tensorflow/runtime-version-list?hl=de#tpu-support) .
 
 **CHANGED:**
@@ -204,7 +206,7 @@ Die Cloud ML Engine-Laufzeitversion 1.11 wird aufgrund von [ Fehlern
 zurückgesetzt, die durch eine nicht übereinstimmende CuDNN-Version
 ](https://stackoverflow.com/q/52733440) während des GPU-Trainings verursacht
 wurden. Verwenden Sie die Laufzeitversion 1.10, um das Problem zu umgehen.
-Weitere Informationen finden Sie [ in der Laufzeitversionsliste
+Weitere Informationen finden Sie in der [ Liste der Laufzeitversionen
 ](https://cloud.google.com/ai-platform/prediction/docs/runtime-version-
 list?hl=de) .
 
@@ -231,23 +233,22 @@ platform/prediction/docs/runtime-version-list?hl=de) aufgeführt sind.
 **FEATURE:**
 
 V100-GPUs sind jetzt in der Betaversion zum Trainieren verfügbar. Für die
-Verwendung von V100-GPUs fallen jetzt Gebühren an. Weitere Informationen
-finden Sie in den Leitfäden zur [ Verwendung von GPUs
-](https://cloud.google.com/ml-engine/docs/tensorflow/using-gpus?hl=de) und zur
-[ Preisgestaltung ](https://cloud.google.com/ai-
-platform/prediction/docs/pricing?hl=de) .
+Verwendung von V100-GPUs fallen jetzt Gebühren an. Weitere Informationen zur [
+Verwendung von GPUs ](https://cloud.google.com/ml-
+engine/docs/tensorflow/using-gpus?hl=de) und zu [ Preisen
+](https://cloud.google.com/ai-platform/prediction/docs/pricing?hl=de)
 
 **FEATURE:**
 
 P100-GPUs sind jetzt allgemein zum Trainieren verfügbar. Weitere Informationen
 zur [ Verwendung von GPUs ](https://cloud.google.com/ml-
-engine/docs/tensorflow/using-gpus?hl=de) und der [ Preisgestaltung
-](https://cloud.google.com/ai-platform/prediction/docs/pricing?hl=de) .
+engine/docs/tensorflow/using-gpus?hl=de) und zu [ Preisen
+](https://cloud.google.com/ai-platform/prediction/docs/pricing?hl=de)
 
 **FEATURE:**
 
 Zwei neue Regionen, us-west1 und europe-west4, sind jetzt zum Trainieren
-verfügbar. Weitere Informationen finden Sie auf der Seite [ Regionen
+verfügbar. Weitere Informationen finden Sie [ auf der Seite "Regionen"
 ](https://cloud.google.com/ai-platform/prediction/docs/regions?hl=de) .
 
 ##  24\. August 2018
@@ -275,14 +276,14 @@ USA  |  0,30 $  |  0,056 $
 Europa  |  0,348 $  |  0,061 $  
 Asiatisch-pazifischer Raum  |  0,348 $  |  0,071 $  
   
-[ Weitere Informationen zu den Preisen ](https://cloud.google.com/ai-
-platform/prediction/docs/pricing?hl=de)
+Weitere Informationen finden Sie [ in der Preisübersicht
+](https://cloud.google.com/ai-platform/prediction/docs/pricing?hl=de) .
 
 ##  8\. August 2018
 
 **CHANGED:**
 
-Wir freuen uns, Aktionspreise für Cloud TPU mit AI Platform Prediction
+Wir freuen uns, Angebotspreise für Cloud TPU mit AI Platform Prediction
 ankündigen zu können, die zu erheblichen Preissenkungen führen.
 
 In der folgenden Tabelle sind die bisherigen und die neuen Preise aufgeführt:
@@ -295,9 +296,9 @@ Benutzerdefinierter Maschinentyp: ` cloud_tpu ` _(Beta)_ |  9,4900 $  |
 6,5700 $  
   
 Diese Tabelle enthält nur Preise für die Region "USA". Die Cloud TPU-
-Verfügbarkeit in der Cloud ML Engine unterliegt keinen Änderungen. [ Weitere
-Informationen zu den Preisen ](https://cloud.google.com/ai-
-platform/prediction/docs/pricing?hl=de)
+Verfügbarkeit in der Cloud ML Engine wurde nicht geändert. Weitere
+Informationen finden Sie [ in der Preisübersicht
+](https://cloud.google.com/ai-platform/prediction/docs/pricing?hl=de) .
 
 ##  6\. August 2018
 
@@ -305,7 +306,7 @@ platform/prediction/docs/pricing?hl=de)
 
 Die Cloud ML Engine-Laufzeitversion 1.9 ist jetzt zum Trainieren und für
 Vorhersagen verfügbar. Diese Version unterstützt TensorFlow 1.9 und andere
-Pakete, die in der [ Laufzeitversionsliste ](https://cloud.google.com/ml-
+Pakete, die [ in der Laufzeitversionsliste ](https://cloud.google.com/ml-
 engine/docs/tensorflow/runtime-version-list?hl=de) aufgeführt sind.
 
 ##  23\. Juli 2018
@@ -314,7 +315,7 @@ engine/docs/tensorflow/runtime-version-list?hl=de) aufgeführt sind.
 
 Cloud ML Engine unterstützt jetzt **scikit-learn** und **XGBoost** zum
 Trainieren. Diese Funktion ist allgemein verfügbar. Weitere Informationen
-finden Sie unter [ Training mit scikit-learn und XGBoost unter Cloud ML Engine
+finden Sie unter [ Training mit scikit-learn und XGBoost in Cloud ML Engine
 ](https://cloud.google.com/ml-engine/docs/scikit/getting-started-
 training?hl=de) .
 
@@ -338,7 +339,7 @@ platform/prediction/docs/reference/rest/v1/projects.models?hl=de) und [
 Modellversionen). ](https://cloud.google.com/ai-
 platform/prediction/docs/reference/rest/v1/projects.models.versions?hl=de)
 Anschließend können Sie diese Labels verwenden, um die Ressourcen in
-Kategorien zu organisieren. Labels sind auch [ für Vorgänge
+Kategorien zu organisieren. Labels sind auch für [ Vorgänge
 ](https://cloud.google.com/ai-
 platform/prediction/docs/reference/rest/v1/projects.operations?hl=de)
 verfügbar. Sie werden jedoch von der Ressource abgeleitet, auf die der Vorgang
@@ -363,7 +364,7 @@ Weitere Informationen finden Sie unter [ Verfügbarkeit der Regionen
 **CHANGED:**
 
 TPU-Training für die Cloud ML-Laufzeitversion 1.6 wird seit dem 13. Juni 2018
-nicht mehr unterstützt. Aktuell unterstützte Versionen finden Sie [ in der
+nicht mehr unterstützt. Aktuell unterstützte Versionen finden Sie in der [
 Laufzeitversionsliste ](https://cloud.google.com/ml-
 engine/docs/tensorflow/runtime-version-list?hl=de#tpu-support) .
 
@@ -376,9 +377,9 @@ Laufzeitversion 1.8 verwenden.
 
 _Hintergrundinformationen:_ Cloud TPU ist seit dem 14. Mai in den Cloud ML
 Engine-Laufzeitversionen 1.6 und 1.7 verfügbar. Letzte Woche wurde die
-Laufzeitversion 1.8 veröffentlicht. Zu diesem Zeitpunkt war Cloud TPU jedoch
-noch nicht mit TensorFlow 1.8 verfügbar. Jetzt ist es so weit. [ Hier finden
-Sie weitere Informationen zum Trainieren Ihrer Modelle mit TPUs
+Laufzeitversion 1.8 veröffentlicht. Zu dieser Zeit war Cloud TPU jedoch noch
+nicht mit TensorFlow 1.8 verfügbar. Jetzt ist es so weit. [ Hier finden Sie
+weitere Informationen zum Trainieren Ihrer Modelle mit TPUs
 ](https://cloud.google.com/ml-engine/docs/tensorflow/using-tpus?hl=de) in
 Cloud ML Engine.
 
@@ -388,14 +389,14 @@ Cloud ML Engine.
 
 Die Cloud ML Engine-Laufzeitversion 1.8 ist jetzt zum Trainieren und für
 Vorhersagen verfügbar. Diese Version unterstützt TensorFlow 1.8 und andere
-Pakete, die [ in der Laufzeitversionsliste ](https://cloud.google.com/ml-
+Pakete, die in der [ Laufzeitversionsliste ](https://cloud.google.com/ml-
 engine/docs/tensorflow/runtime-version-list?hl=de) aufgeführt sind.
 
 ##  15\. Mai 2018
 
 **FEATURE:**
 
-Sie können jetzt die Mindestzahl der Knoten für das [ Autoscaling
+Sie können jetzt die Mindestzahl der Knoten für die [ automatische Skalierung
 ](https://cloud.google.com/ai-
 platform/prediction/docs/reference/rest/v1/projects.models.versions?hl=de#autoscaling)
 bei einer vorhandenen Modellversion aktualisieren und das Attribut beim
@@ -407,8 +408,8 @@ Erstellen einer neuen Version festlegen.
 
 In Cloud ML Engine lassen sich ab jetzt mit Cloud TPU _(Beta)_ TensorFlow-
 Modelle trainieren. Tensor Processing Units (TPUs) sind von Google speziell
-entwickelte ASICs, die dazu dienen, ML-Arbeitslasten zu beschleunigen. Weitere
-Informationen zur [ Verwendung von TPUs zum Trainieren von Modellen
+entwickelte ASICs, die dazu dienen, ML-Arbeitslasten zu beschleunigen. [ Hier
+finden Sie Informationen zur Verwendung von TPUs zum Trainieren von Modellen
 ](https://cloud.google.com/ml-engine/docs/tensorflow/using-tpus?hl=de) in
 Cloud ML Engine.
 
@@ -425,19 +426,19 @@ engine/docs/tensorflow/runtime-version-list?hl=de) aufgeführt sind.
 
 **FEATURE:**
 
-**Hyperparameter-Algorithmen:** Wenn Sie die Hyperparameter in Ihrem
+**Hyperparameter-Algorithmen** : Wenn Sie die Hyperparameter in Ihrem
 Trainingsjob optimieren möchten, können Sie dazu nun einen Suchalgorithmus in
 [ HyperparameterSpec ](https://cloud.google.com/ai-
 platform/prediction/docs/reference/rest/v1/projects.jobs?hl=de#hyperparameterspec)
 festlegen. Verfügbare Werte sind:
 
-  * ` GRID_SEARCH ` : eine einfache Rastersuche im zulässigen Bereich. Diese Option ist besonders nützlich, wenn Sie mehr Tests festlegen möchten als die Zahl der Punkte im zulässigen Bereich. Ist in solchen Fällen keine Rastersuche festgelegt, generiert der Cloud ML Engine-Standardalgorithmus möglicherweise doppelte Vorschläge. Alle Parameter müssen vom Typ ` INTEGER ` , ` CATEGORICAL ` oder ` DISCRETE ` sein, um die Rastersuche nutzen zu können. 
-  * ` RANDOM_SEARCH ` : eine einfache Zufallssuche im zulässigen Bereich. 
+  * ` GRID_SEARCH ` : Eine einfache Rastersuche im zulässigen Bereich. Diese Option ist besonders nützlich, wenn Sie mehr Tests festlegen möchten als die Zahl der Punkte im zulässigen Bereich. Ist in solchen Fällen keine Rastersuche festgelegt, generiert der Cloud ML Engine-Standardalgorithmus möglicherweise doppelte Vorschläge. Alle Parameter müssen vom Typ ` INTEGER ` , ` CATEGORICAL ` oder ` DISCRETE ` sein, um die Rastersuche nutzen zu können. 
+  * ` RANDOM_SEARCH ` : Eine einfache Zufallssuche im zulässigen Bereich. 
 
 Wenn Sie keinen Algorithmus angeben, verwendet der Job den Cloud ML Engine-
 Standardalgorithmus, der die Parametersuche steuert, um im Parameterbereich zu
 einer optimalen Lösung zu gelangen. Weitere Informationen zur Abstimmung von
-Hyperparametern finden Sie im [ Überblick zur Hyperparameter-Abstimmung
+Hyperparametern finden Sie in der [ Übersicht zur Hyperparameter-Abstimmung
 ](https://cloud.google.com/ml-engine/docs/tensorflow/hyperparameter-tuning-
 overview?hl=de) .
 
@@ -449,13 +450,13 @@ Cloud ML Engine unterstützt jetzt **scikit-learn** und **XGBoost** für
 Onlinevorhersagen. Diese Funktion befindet sich _in der Betaphase_ .
 
   * Legen Sie ` framework ` auf [ ` projects.models.versions.create ` ](https://cloud.google.com/ai-platform/prediction/docs/reference/rest/v1/projects.models.versions?hl=de) fest, um beim Erstellen einer Modellversion Ihr Framework für maschinelles Lernen anzugeben. Gültige Werte sind ` TENSORFLOW ` , ` SCIKIT_LEARN ` und ` XGBOOST ` . Der Standardwert ist ` TENSORFLOW ` . Wenn Sie ` SCIKIT_LEARN ` oder ` XGBOOST ` angeben, müssen Sie für die Modellversion ` runtimeVersion ` auf 1.4 oder höher festlegen. 
-  * Weitere Informationen finden Sie in der Anleitung zu [ scikit-learn und XGBoost unter Cloud ML Engine ](https://cloud.google.com/ml-engine/docs/scikit/quickstart?hl=de) . 
+  * Weitere Informationen finden Sie in der Anleitung [ scikit-learn und XGBoost unter Cloud ML Engine ](https://cloud.google.com/ml-engine/docs/scikit/quickstart?hl=de) . 
 
 **FEATURE:**
 
 Python 3.5 ist für Onlinevorhersagen verfügbar.
 
-  * Legen Sie ` pythonVersion ` auf [ ` projects.models.versions.create ` ](https://cloud.google.com/ai-platform/prediction/docs/reference/rest/v1/projects.models.versions?hl=de) fest, um beim Erstellen einer Modellversion Ihre Version von Python anzugeben. Python 2.7 ist die Standardeinstellung. 
+  * Legen Sie ` pythonVersion ` auf [ ` projects.models.versions.create ` ](https://cloud.google.com/ai-platform/prediction/docs/reference/rest/v1/projects.models.versions?hl=de) fest, um beim Erstellen einer Modellversion Ihre Version von Python anzugeben. Python 2.7 ist der Standard. 
   * Details zu allen verfügbaren Paketen in Cloud ML Engine finden Sie in der [ Laufzeitversionsliste ](https://cloud.google.com/ml-engine/docs/scikit/runtime-version-list?hl=de) . 
 
 ##  20\. März 2018
@@ -464,7 +465,7 @@ Python 3.5 ist für Onlinevorhersagen verfügbar.
 
 Die Cloud ML Engine-Laufzeitversion 1.6 ist jetzt zum Trainieren und für
 Vorhersagen verfügbar. Diese Version unterstützt TensorFlow 1.6 und andere
-Pakete, die [ in der Laufzeitversionsliste ](https://cloud.google.com/ml-
+Pakete, die in der [ Laufzeitversionsliste ](https://cloud.google.com/ml-
 engine/docs/tensorflow/runtime-version-list?hl=de) aufgeführt sind.
 
 ##  13\. März 2018
@@ -472,8 +473,8 @@ engine/docs/tensorflow/runtime-version-list?hl=de) aufgeführt sind.
 **FEATURE:**
 
 Die Cloud ML Engine-Laufzeitversion für TensorFlow 1.5 ist jetzt zum
-Trainieren und für Vorhersagen verfügbar. Weitere Informationen finden Sie [
-in der Laufzeitversionsliste ](https://cloud.google.com/ml-
+Trainieren und für Vorhersagen verfügbar. Weitere Informationen finden Sie in
+der [ Laufzeitversionsliste ](https://cloud.google.com/ml-
 engine/docs/tensorflow/runtime-version-list?hl=de) .
 
 ##  8\. Februar 2018
@@ -483,7 +484,7 @@ engine/docs/tensorflow/runtime-version-list?hl=de) .
 Es wurden neue Funktionen für die Abstimmung von Hyperparametern hinzugefügt:
 automatisches vorzeitiges Beenden von Tests, Wiederaufnahme eines vorherigen
 Hyperparameter-Abstimmungsjobs und zusätzliche Effizienzoptimierungen beim
-Ausführen ähnlicher Jobs. Weitere Informationen finden Sie in der [ Übersicht
+Ausführen ähnlicher Jobs. Weitere Informationen finden Sie unter [ Überblick
 zur Hyperparameter-Abstimmung ](https://cloud.google.com/ml-
 engine/docs/tensorflow/hyperparameter-tuning-overview?hl=de) .
 
@@ -492,15 +493,15 @@ engine/docs/tensorflow/hyperparameter-tuning-overview?hl=de) .
 **FEATURE:**
 
 Die Cloud ML Engine-Laufzeitversion für TensorFlow 1.4 ist jetzt zum
-Trainieren und für Vorhersagen verfügbar. Weitere Informationen finden Sie [
-in der Laufzeitversionsliste ](https://cloud.google.com/ml-
+Trainieren und für Vorhersagen verfügbar. Weitere Informationen finden Sie in
+der [ Laufzeitversionsliste ](https://cloud.google.com/ml-
 engine/docs/tensorflow/runtime-version-list?hl=de) .
 
 **FEATURE:**
 
 Python 3 ist jetzt zum Trainieren im Rahmen der Cloud ML Engine-
 Laufzeitversion für TensorFlow 1.4 verfügbar. Weitere Informationen finden Sie
-[ in der Laufzeitversionsliste ](https://cloud.google.com/ml-
+in der [ Laufzeitversionsliste ](https://cloud.google.com/ml-
 engine/docs/tensorflow/runtime-version-list?hl=de) .
 
 **FEATURE:**
@@ -526,10 +527,10 @@ einen Vergleich der alten und aktuellen Preise enthalten.
 **FEATURE:**
 
 P100 GPUs sind jetzt in der Betaversion verfügbar. Für die Verwendung von P100
-GPUs fallen jetzt Gebühren an. Weitere Informationen finden Sie unter [
-Verwendung von GPUs ](https://cloud.google.com/ml-
-engine/docs/tensorflow/using-gpus?hl=de) und unter [ Preisgestaltung
-](https://cloud.google.com/ai-platform/prediction/docs/pricing?hl=de) .
+GPUs fallen jetzt Gebühren an. Weitere Informationen zur [ Verwendung von GPUs
+](https://cloud.google.com/ml-engine/docs/tensorflow/using-gpus?hl=de) und zu
+[ Preisen ](https://cloud.google.com/ai-
+platform/prediction/docs/pricing?hl=de)
 
 ##  26\. Oktober 2017
 
@@ -552,15 +553,15 @@ Weitere Informationen finden Sie unter [ Zugriffssteuerung
 **FEATURE:**
 
 Die Cloud ML Engine-Laufzeitversion für TensorFlow 1.2 ist jetzt zum
-Trainieren und für Vorhersagen verfügbar. Weitere Informationen finden Sie [
-in der Laufzeitversionsliste ](https://cloud.google.com/ml-
+Trainieren und für Vorhersagen verfügbar. Weitere Informationen finden Sie in
+der [ Laufzeitversionsliste ](https://cloud.google.com/ml-
 engine/docs/tensorflow/runtime-version-list?hl=de) .
 
 **DEPRECATED:**
 
 Die älteren Laufzeitversionen mit TensorFlow 0.11 und 0.12 werden von der
-Cloud ML Engine nicht mehr unterstützt. Weitere Informationen finden Sie [ in
-der Laufzeitversionsliste ](https://cloud.google.com/ml-
+Cloud ML Engine nicht mehr unterstützt. Weitere Informationen finden Sie in
+der [ Liste der Laufzeitversionen ](https://cloud.google.com/ml-
 engine/docs/tensorflow/runtime-version-list?hl=de) und unter [ Unterstützung
 für ältere Laufzeitversionen ](https://cloud.google.com/ml-
 engine/docs/tensorflow/runtime-version-list?hl=de#runtime-version-support) mit
@@ -587,10 +588,10 @@ engine/docs/tensorflow/using-gpus?hl=de#requesting_gpu-enabled_machines) .
 
 **FEATURE:**
 
-Ankündigung der allgemeinen Verfügbarkeit von AI Platform Prediction. Version
+Bekanntgabe der allgemeinen Verfügbarkeit von AI Platform Prediction. Version
 1 von Cloud ML Engine ist allgemein für Trainingsmodelle, für
 Bereitstellungsmodelle und für das Generieren von Batchvorhersagen verfügbar.
-Die Funktion der [ Hyperparameter-Abstimmung ](https://cloud.google.com/ml-
+Das Feature [ Hyperparameter-Abstimmung ](https://cloud.google.com/ml-
 engine/docs/tensorflow/hyperparameter-tuning-overview?hl=de) ist ebenfalls
 allgemein verfügbar. Dagegen befinden sich die Onlinevorhersage und [ GPU-
 fähige Maschinen ](https://cloud.google.com/ml-engine/docs/tensorflow/using-
@@ -608,16 +609,16 @@ geschäftskritischen Anwendungen verwendet werden.
 
 **CHANGED:**
 
-Die Umgebungen, die Cloud ML Engine zum Trainieren von Modellen und zum
-Durchführen von Vorhersagen verwendet, wurden als Cloud ML Engine- [
+Die Umgebungen, die Cloud ML Engine zum Trainieren von Modellen und für
+Vorhersagen verwendet, wurden als Cloud ML Engine- [ Laufzeitversionen
+](https://cloud.google.com/ml-engine/docs/tensorflow/versioning?hl=de)
+definiert. Sie können zum Trainieren, für die Definition einer Modellressource
+oder bei Anfragen für Batchvorhersagen die Verwendung einer unterstützten
+Laufzeitversion festlegen. Laufzeitversionen unterscheiden sich zum jetzigen
+Zeitpunkt primär in der von einer Laufzeitversion unterstützten TensorFlow-
+Version. Es können im Laufe der Zeit aber noch weitere Unterschiede
+hinzukommen. Ausführliche Informationen dazu finden Sie in der [ Liste der
 Laufzeitversionen ](https://cloud.google.com/ml-
-engine/docs/tensorflow/versioning?hl=de) definiert. Sie können zum Trainieren,
-für die Definition einer Modellressource oder bei Anfragen für
-Batchvorhersagen die Verwendung einer unterstützten Laufzeitversion festlegen.
-Laufzeitversionen unterscheiden sich zum jetzigen Zeitpunkt primär in der von
-einer Laufzeitversion unterstützten TensorFlow-Version. Es können im Laufe der
-Zeit aber noch weitere Unterschiede hinzukommen. Ausführliche Informationen
-dazu finden Sie [ in der Laufzeitversionsliste ](https://cloud.google.com/ml-
 engine/docs/tensorflow/runtime-version-list?hl=de) .
 
 **CHANGED:**
@@ -653,7 +654,7 @@ solange sie sich in der Alphaphase befinden.
 
 **FEATURE:**
 
-Die Vorverarbeitung und die übrigen Features des Cloud ML Engine SDK sind
-Alphafeatures. Das SDK wird weiterhin aktiv weiterentwickelt, um die
+Die Vorverarbeitung und die übrigen Funktionen des Cloud ML Engine SDK sind
+Alphafunktionen. Das SDK wird weiterhin aktiv weiterentwickelt, um die
 Einbindung von Cloud ML Engine in Apache Beam zu optimieren.
 

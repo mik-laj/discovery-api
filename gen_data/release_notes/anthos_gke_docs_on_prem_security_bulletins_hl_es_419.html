@@ -1,0 +1,620 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <h1 class="devsite-page-title">
+   Boletines de seguridad
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <p>
+    Todos los boletines de seguridad para Anthos GKE On-Prem (Anthos GKE On-Prem) se describen en este tema.
+   </p>
+   <p>
+    Las vulnerabilidades se suelen mantener en secreto y no se las puede divulgar hasta que las partes afectadas hayan tenido la oportunidad de tratar el tema. En estos casos, las
+    <a href="https://cloud.google.com/anthos/gke/docs/on-prem/release-notes?hl=es-419">
+     notas de la versión
+    </a>
+    de GKE On-Prem harán referencia a las “actualizaciones de seguridad” hasta que se apruebe la divulgación. En ese momento, las notas se actualizarán para reflejar la vulnerabilidad tratada en el parche.
+   </p>
+   <aside class="note">
+    <strong>
+     Nota:
+    </strong>
+    <span>
+     Si ejecutas cargas de trabajo de varios usuarios en GKE On-Prem, presta especial atención a estos boletines. Es más probable que estas vulnerabilidades afecten a cargas de trabajo de instancias múltiples. Para obtener una descripción técnica de los límites de seguridad en GKE On-Prem y cómo estos afectan las cargas de trabajo, consulta
+     <a href="https://cloudplatform.googleblog.com/2018/05/Exploring-container-security-Isolation-at-different-layers-of-the-Kubernetes-stack.html">
+      Aislamiento en diferentes capas de la pila de Kubernetes
+     </a>
+     .
+    </span>
+   </aside>
+   <p>
+    Para recibir los boletines de seguridad más recientes, agrega la URL de esta página a tu
+    <a class="external" href="https://wikipedia.org/wiki/Comparison_of_feed_aggregators">
+     lector de feeds
+    </a>
+    .
+   </p>
+   <section class="bulletins">
+    <h2 data-text="GCP-2020-007" id="gcp-2020-007" tabindex="0">
+     GCP-2020-007
+    </h2>
+    <strong>
+     Fecha de publicación:
+    </strong>
+    1 de junio de 2020
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Descripción
+       </th>
+       <th>
+        Gravedad
+       </th>
+       <th>
+        Notas
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Recientemente, se descubrió la vulnerabilidad de falsificación de solicitudes del servidor (SSRF)
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555">
+          CVE-2020-8555
+         </a>
+         en Kubernetes, que permitió a ciertos usuarios autorizados filtrar hasta 500 bytes de información sensible desde la red host del plano de control. En el plano de control de Google Kubernetes Engine (GKE), se usan controladores de Kubernetes a los que afecta esta vulnerabilidad. Te recomendamos actualizar el plano de control a la versión más reciente del parche, como se muestra a continuación. No es necesario actualizar el nodo.
+         <br/>
+        </p>
+        <h4 data-text="¿Qué debo hacer?" id="what-should-i-do" tabindex="0">
+         ¿Qué debo hacer?
+        </h4>
+        <p>
+         Las siguientes versiones de Anthos GKE On-Prem (GKE On-Prem) o más recientes contienen la solución para esta vulnerabilidad:
+        </p>
+        <ul>
+         <li>
+          Anthos 1.3.0
+         </li>
+        </ul>
+        <p>
+         Si usas una versión anterior,
+         <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=es-419">
+          actualiza tu clúster existente
+         </a>
+         a una versión que contenga la corrección.
+        </p>
+        <h4 data-text="¿Qué vulnerabilidad corrige este parche?" id="what-vulnerability-is-addressed-by-this-patch" tabindex="0">
+         ¿Qué vulnerabilidad corrige este parche?
+        </h4>
+        <p>
+         Estos parches mitigan la vulnerabilidad CVE-2020-8555. Esta tiene una calificación de vulnerabilidad media para GKE, ya que fue difícil aprovecharla debido a las medidas de endurecimiento del plano de control.
+        </p>
+        <p>
+         Un atacante con permisos para crear un Pod con ciertos tipos de volúmenes incluidos (GlusterFS, Quobyte, StorageFS, ScaleIO) o con permisos para crear un StorageClass puede hacer que
+         <code dir="ltr" translate="no">
+          kube-controller-manager
+         </code>
+         cree solicitudes
+         <code dir="ltr" translate="no">
+          GET
+         </code>
+         o
+         <code dir="ltr" translate="no">
+          POST
+         </code>
+         <em>
+          sin
+         </em>
+         un cuerpo de solicitud que controle el atacante desde la red de host de la instancia principal. En GKE rara vez se usan estos tipos de volúmenes, por lo que un uso nuevo de ellos puede ser un indicador de detección útil.
+        </p>
+        <p>
+         Combinados con un medio para que el atacante reciba los resultados filtrados del
+         <code dir="ltr" translate="no">
+          GET/POST
+         </code>
+         (como los registros), puede provocar que se divulgue información sensible. Actualizamos los controladores de almacenamiento en cuestión para evitar la posibilidad de que ocurran tales fugas.
+        </p>
+       </td>
+       <td>
+        <p>
+         Media
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8555">
+          CVE-2020-8555
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-006" id="gcp-2020-006" tabindex="0">
+     GCP-2020-006
+    </h2>
+    <strong>
+     Fecha de publicación:
+    </strong>
+    1 de junio de 2020
+    <br/>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Descripción
+       </th>
+       <th>
+        Gravedad
+       </th>
+       <th>
+        Notas
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Kubernetes divulgó una
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          vulnerabilidad
+         </a>
+         que permite que un contenedor con privilegios redireccione el tráfico de nodo a otro contenedor. El ataque no permite leer ni modificar el tráfico mutuo de TLS/SSH, como aquel entre el kubelet y el servidor de la API, o el tráfico desde aplicaciones mediante mTLS. Esta vulnerabilidad afecta a todos los nodos de Google Kubernetes Engine (GKE). Te recomendamos actualizar a la versión más reciente del parche, como se muestra a continuación.
+        </p>
+        <h4 data-text="¿Qué debo hacer?" id="what-should-i-do_1" tabindex="0">
+         ¿Qué debo hacer?
+        </h4>
+        Con el fin de mitigar esta vulnerabilidad para Anthos GKE On-Prem (GKE On-Prem),
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=es-419">
+         actualiza tus clústeres
+        </a>
+        a la versión siguiente o más reciente:
+        <ul>
+         <li>
+          Anthos 1.3.2
+         </li>
+        </ul>
+        <p>
+         Por lo general, muy pocos contenedores requieren
+         <code dir="ltr" translate="no">
+          CAP_NET_RAW
+         </code>
+         . Esta y otras funciones potentes se deben bloquear de forma predeterminada mediante el
+         <a href="https://cloud.google.com/anthos-config-management/docs/concepts/policy-controller?hl=es-419">
+          controlador de políticas de Anthos
+         </a>
+         o mediante la actualización de las especificaciones del pod:
+        </p>
+        <ul>
+         <li>
+          Descarta la capacidad
+          <code dir="ltr" translate="no">
+           CAP_NET_RAW
+          </code>
+          de los contenedores:
+         </li>
+         <ul>
+         </ul>
+         <ul>
+          <li>
+           Mediante el controlador o el guardián de políticas de Anthos con esta
+           <a class="external" href="https://github.com/open-policy-agent/gatekeeper/blob/master/library/pod-security-policy/capabilities/template.yaml">
+            plantilla de restricciones
+           </a>
+           y aplicando, por ejemplo, lo siguiente:
+          </li>
+          <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Dropping CAP_NET_RAW with Gatekeeper
+# (requires the K8sPSPCapabilities template)
+apiversion: constraints.gatekeeper.sh/v1beta1
+kind:  K8sPSPCapabilities
+metadata:
+  name: forbid-cap-net-raw
+spec:
+  match:
+    kinds:
+      - apiGroups: [""]
+      kinds: ["Pod"]
+    namespaces:
+      #List of namespaces to enforce this constraint on
+      - default
+    # If running gatekeeper &gt;= v3.1.0-beta.5,
+    # you can exclude namespaces rather than including them above.
+    excludedNamespaces:
+      - kube-system
+  parameters:
+    requiredDropCapabilities:
+      - "NET_RAW"
+</pre>
+         </ul>
+         <ul>
+          <li>
+           Mediante la actualización de las especificaciones del pod:
+          </li>
+          <pre class="devsite-click-to-copy" dir="ltr" translate="no">
+
+# Dropping CAP_NET_RAW from a Pod:
+apiVersion: v1
+kind: Pod
+metadata:
+  name: no-cap-net-raw
+spec:
+  containers:
+    -name: may-container
+     ...
+    securityContext:
+      capabilities:
+        drop:
+          -NET_RAW
+</pre>
+         </ul>
+        </ul>
+        <h4 data-text="¿Qué vulnerabilidad corrige este parche?" id="what-vulnerability-is-addressed-by-this-patch_1" tabindex="0">
+         ¿Qué vulnerabilidad corrige este parche?
+        </h4>
+        <p>
+         El parche mitiga las siguientes vulnerabilidades:
+        </p>
+        <p>
+         La vulnerabilidad descrita en el
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          problema 91507 de Kubernetes
+         </a>
+         : la capacidad
+         <code dir="ltr" translate="no">
+          CAP_NET_RAW
+         </code>
+         (que se incluye en el conjunto de capacidades del contenedor predeterminado) por configurar de forma maliciosa la pila de IPv6 en el nodo y redireccionar el tráfico del nodo al contenedor que controla el atacante. Esto permitirá que el atacante intercepte o modifique el tráfico que se origina en el nodo o que se destina a este. El ataque no permite leer ni modificar el tráfico mutuo de TLS/SSH, como entre el kubelet y el servidor de la API, o el tráfico de aplicaciones con mTLS.
+        </p>
+       </td>
+       <td>
+        <p>
+         Media
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://github.com/kubernetes/kubernetes/issues/91507">
+          Problema 91507 de Kubernetes
+         </a>
+         <br/>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="GCP-2020-004" id="gcp-2020-004" tabindex="0">
+     GCP-2020-004
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Descripción
+       </th>
+       <th>
+        Gravedad
+       </th>
+       <th>
+        Notas
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Hace poco, se descubrió una vulnerabilidad en Kubernetes, descrita en
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11254">
+          CVE-2019-11254
+         </a>
+         , que permite que cualquier usuario con autorización para realizar solicitudes POST ejecute un ataque de denegación del servicio de forma remota en un servidor de la API de Kubernetes. El Comité de seguridad de productos (PSC) de Kubernetes publicó información adicional sobre esta vulnerabilidad, que puedes encontrar
+         <a href="https://groups.google.com/g/kubernetes-security-announce/c/wuwEwZigXBc?hl=es-419">
+          aquí
+         </a>
+         .
+        </p>
+        <p>
+         Puedes mitigar esta vulnerabilidad si limitas qué clientes tienen acceso a la red a tus servidores de la API de Kubernetes.
+        </p>
+        <h4 data-text="¿Qué debo hacer?" id="what-should-i-do_2" tabindex="0">
+         ¿Qué debo hacer?
+        </h4>
+        <p>
+         Recomendamos que actualices tus clústeres a las versiones de parches que contengan la corrección para esta vulnerabilidad en cuanto estén disponibles.
+        </p>
+        <p>
+         Estas son las versiones de parche que incluyen la corrección:
+        </p>
+        <ul>
+         <li>
+          Anthos 1.3.0, que ejecuta la versión 1.15.7-gke.32 de Kubernetes
+         </li>
+        </ul>
+        <h4 data-text="¿Qué vulnerabilidades trata este parche?" id="what-vulnerabilities-are-addressed-by-this-patch" tabindex="0">
+         ¿Qué vulnerabilidades trata este parche?
+        </h4>
+        <p>
+         El parche corrige la siguiente vulnerabilidad de denegación del servicio (DoS):
+        </p>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11254">
+          CVE‑2019‑11254
+         </a>
+        </p>
+       </td>
+       <td>
+        <p>
+         Media
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11254">
+          CVE‑2019‑11254
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="16 de octubre de 2019" id="october-16-2019" tabindex="0">
+     16 de octubre de 2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Descripción
+       </th>
+       <th>
+        Gravedad
+       </th>
+       <th>
+        Notas
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Hace poco tiempo, se descubrió una vulnerabilidad en Kubernetes, descrita en
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11253">
+          CVE-2019-11253
+         </a>
+         , que permite que cualquier usuario autorizado haga solicitudes POST para ejecutar un ataque a distancia de denegación del servicio en un servidor de la API de Kubernetes. El Product Security Committee (PSC) de Kubernetes publicó información adicional sobre esta vulnerabilidad, que puedes encontrar
+         <a href="https://groups.google.com/forum/?hl=es-419#!topic/kubernetes-security-announce/jk8polzSUxs">
+          aquí
+         </a>
+         .
+        </p>
+        <p>
+         Puedes mitigar esta vulnerabilidad si limitas qué clientes tienen acceso a la red a tus servidores de API de Kubernetes.
+        </p>
+        <h6 data-text="¿Qué debo hacer?" id="what-should-i-do_3" tabindex="0">
+         ¿Qué debo hacer?
+        </h6>
+        <p>
+         Te recomendamos
+         <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=es-419#clusters">
+          actualizar tu clúster
+         </a>
+         a una versión de parche que contenga la corrección en cuanto esté disponible.
+        </p>
+        <p>
+         Las versiones del parche que contendrán la corrección se enumeran a continuación:
+        </p>
+        <ul>
+         <li>
+          Anthos 1.1.1, que ejecuta la versión 1.13.7-gke.30 de Kubernetes
+         </li>
+        </ul>
+        <h6 data-text="¿Qué vulnerabilidad trata este parche?" id="what-vulnerability-is-addressed-by-this-patch_2" tabindex="0">
+         ¿Qué vulnerabilidad trata este parche?
+        </h6>
+        <p>
+         El parche mitiga la siguiente vulnerabilidad:
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11253">
+          CVE-2019-11253
+         </a>
+         .
+        </p>
+       </td>
+       <td>
+        <p>
+         Alta
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11253">
+          CVE-2019-11253
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="#august-05-2019" id="august-23-2019" tabindex="0">
+     #august-05-2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Descripción
+       </th>
+       <th>
+        Gravedad
+       </th>
+       <th>
+        Notas
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Hace poco, descubrimos y mitigamos una vulnerabilidad en la que el proxy de RBAC que se usa para los extremos de supervisión de seguridad no autorizaba a los usuarios de forma correcta.
+      Como resultado, las métricas de ciertos componentes están disponibles para los usuarios no autorizados desde la red interna del clúster. Los siguientes componentes se vieron afectados:
+        </p>
+        <ul>
+         <li>
+          <code dir="ltr" translate="no">
+           etcd
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           etcd-events
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           kube-apiserver
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           kube-controller-manager
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           kube-scheduler
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           node-exporter
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           kube-state-metrics
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           prometheus
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           alertmanager
+          </code>
+         </li>
+        </ul>
+        <h6 data-text="¿Qué debo hacer?" id="what-should-i-do_4" tabindex="0">
+         ¿Qué debo hacer?
+        </h6>
+        <p>
+         Te recomendamos
+         <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=es-419#clusters">
+          actualizar
+         </a>
+         tus clústeres a la versión
+         <a href="https://cloud.google.com/anthos/gke/docs/on-prem/downloads?hl=es-419#gkectl_latest">
+          1.0.2-gke.3
+         </a>
+         , que incluye el parche para esta vulnerabilidad, lo antes posible.
+        </p>
+       </td>
+       <td>
+        <p>
+         Medio
+        </p>
+       </td>
+       <td>
+        <p>
+         <a href="https://cloud.google.com/anthos/gke/docs/on-prem/downloads?hl=es-419#gkectl_latest">
+          Versiones de Anthos GKE local
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    <h2 data-text="22 de agosto de 2019" id="august-22-2019" tabindex="0">
+     22 de agosto de 2019
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        Descripción
+       </th>
+       <th>
+        Gravedad
+       </th>
+       <th>
+        Notas
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Hace poco tiempo, se descubrió una vulnerabilidad en Kubernetes,
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11247">
+          CVE-2019-11247
+         </a>
+         , que permite que se actúe sobre instancias de
+         <a class="external" href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">
+          recursos personalizados
+         </a>
+         de alcance de clúster como si fueran objetos con espacio de nombres existentes en todos los espacios de nombres. Esto significa que las cuentas de usuario y de servicio solo deben contar con permisos de RBAC a nivel de espacio de nombres para interactuar con recursos personalizados de alcance de clúster. A fin de aprovechar esta vulnerabilidad, el atacante debe tener privilegios para acceder al recurso en cualquier espacio de nombres.
+        </p>
+        <h6 data-text="¿Qué debo hacer?" id="what-should-i-do_5" tabindex="0">
+         ¿Qué debo hacer?
+        </h6>
+        <p>
+         Te recomendamos
+         <a href="https://cloud.google.com/anthos/gke/docs/on-prem/how-to/upgrading?hl=es-419#clusters">
+          actualizar
+         </a>
+         tus clústeres a la versión
+         <a href="https://cloud.google.com/anthos/gke/docs/on-prem/downloads?hl=es-419#gkectl_latest">
+          1.0.2-gke.3
+         </a>
+         , que incluye el parche para esta vulnerabilidad, lo antes posible.
+        </p>
+        <h6 data-text="¿Qué vulnerabilidad trata este parche?" id="what-vulnerability-is-addressed-by-this-patch_3" tabindex="0">
+         ¿Qué vulnerabilidad trata este parche?
+        </h6>
+        <p>
+         El parche mitiga la siguiente vulnerabilidad:
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11247">
+          CVE-2019-11247
+         </a>
+         .
+        </p>
+       </td>
+       <td>
+        <p>
+         Media
+        </p>
+       </td>
+       <td>
+        <p>
+         <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11247">
+          CVE-2019-11247
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+   </section>
+  </div>
+ </article>
+</article>

@@ -1,0 +1,226 @@
+<article class="devsite-article">
+ <article class="devsite-article-inner">
+  <div background="google-blue" class="devsite-banner devsite-banner-announcement">
+   <div class="devsite-banner-message">
+    <div class="devsite-banner-message-text">
+     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+      以前のバージョンの GKE On-Prem のドキュメントを表示しています。
+      <a href="https://cloud.google.com/anthos/gke/docs/on-prem?hl=ja">
+       最新のドキュメントをご覧ください
+      </a>
+      。
+     </meta>
+    </div>
+   </div>
+  </div>
+  <h1 class="devsite-page-title">
+   セキュリティに関する情報
+  </h1>
+  <devsite-toc class="devsite-nav" devsite-toc-embedded="">
+  </devsite-toc>
+  <div class="devsite-article-body clearfix">
+   <p>
+    このトピックでは、GKE On-Prem に関するすべてのセキュリティ情報について説明します。
+   </p>
+   <p>
+    脆弱性に関する情報は多くの場合、影響を受けた当事者が対処するまで、情報制限により非公開となります。このような場合、GKE On-Prem の
+    <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.0/release-notes?hl=ja">
+     リリースノート
+    </a>
+    には、情報制限が解除されるまで「セキュリティ更新」が記載されます。リリースノートは情報制限が解除された時点で更新され、パッチによって対処された脆弱性の情報が反映されます。
+   </p>
+   <aside class="note">
+    <strong>
+     注:
+    </strong>
+    <span>
+     GKE On-Prem でマルチテナントワークロードを実行する場合は、これらの公開情報に特に注意してください。これらの脆弱性はマルチテナント ワークロードに影響を及ぼす可能性が高くなります。GKE のセキュリティ境界とそれによるワークロードへの影響に関する技術的説明については、
+     <a href="https://cloudplatform.googleblog.com/2018/05/Exploring-container-security-Isolation-at-different-layers-of-the-Kubernetes-stack.html">
+      Kubernetes スタックのさまざまなレイヤーでの隔離
+     </a>
+     をご覧ください。
+    </span>
+   </aside>
+   <p>
+    最新のセキュリティ情報を入手するには、このページの URL を
+    <a class="external" href="https://wikipedia.org/wiki/Comparison_of_feed_aggregators">
+     フィード リーダー
+    </a>
+    に追加します。
+   </p>
+   <section class="bulletins">
+    <h2 data-text="2019 年 8 月 23 日" id="august-23-2019" tabindex="0">
+     2019 年 8 月 23 日
+    </h2>
+    <table>
+     <thead>
+      <tr>
+       <th width="70%">
+        説明
+       </th>
+       <th>
+        重大度
+       </th>
+       <th>
+        注
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td>
+        <p>
+         Google では最近、モニタリング エンドポイントの保護に使用される RBAC プロキシがユーザーを正しく承認しない脆弱性を発見し、緩和しました。その結果、権限のないユーザーが内部クラスタ ネットワークから一部のコンポーネント指標を取得できるようになっています。影響を受けたのは次のコンポーネントです。
+        </p>
+        <ul>
+         <li>
+          <code dir="ltr" translate="no">
+           etcd
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           etcd-events
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           kube-apiserver
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           kube-controller-manager
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           kube-scheduler
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           node-exporter
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           kube-state-metrics
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           prometheus
+          </code>
+         </li>
+         <li>
+          <code dir="ltr" translate="no">
+           alertmanager
+          </code>
+         </li>
+        </ul>
+        <h6 data-text="必要な対策" id="what-should-i-do" tabindex="0">
+         必要な対策
+        </h6>
+        <p>
+         クラスタをバージョン
+         <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.0/downloads?hl=ja#gkectl_latest">
+          1.0.2-gke.3
+         </a>
+         に
+         <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.0/how-to/administration/upgrading-clusters?hl=ja">
+          アップグレード
+         </a>
+         することをおすすめします。新バージョンにはこの脆弱性に対するパッチが含まれています。
+        </p>
+       </td>
+       <td>
+        <p>
+         中
+        </p>
+       </td>
+       <td>
+        <p>
+         <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.0/downloads?hl=ja#gkectl_latest">
+          GKE On-Prem リリース
+         </a>
+        </p>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+   </section>
+   <h2 data-text="2019 年 8 月 22 日" id="august-22-2019" tabindex="0">
+    2019 年 8 月 22 日
+   </h2>
+   <table>
+    <thead>
+     <tr>
+      <th width="70%">
+       説明
+      </th>
+      <th>
+       重大度
+      </th>
+      <th>
+       注
+      </th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td>
+       <p>
+        先ごろ、Kubernetes で脆弱性
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11247">
+         CVE-2019-11247
+        </a>
+        が発見されました。これは、クラスタ スコープの
+        <a class="external" href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/">
+         カスタム リソース
+        </a>
+        インスタンスを、あたかもすべての名前空間に存在する名前空間オブジェクトであるかのように動作させることができるというものです。つまり、名前空間レベルの RBAC 権限しか持たないユーザー アカウントまたはサービス アカウントでも、クラスタ スコープのカスタム リソースとやり取りできてしまいます。攻撃者がこの脆弱性を悪用するためには、任意の名前空間のリソースにアクセスする権限が必要です。
+       </p>
+       <h6 data-text="必要な対策" id="what-should-i-do_1" tabindex="0">
+        必要な対策
+       </h6>
+       <p>
+        クラスタをバージョン
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.0/downloads?hl=ja#gkectl_latest">
+         1.0.2-gke.3
+        </a>
+        に
+        <a href="https://cloud.google.com/anthos/gke/docs/on-prem/archive/1.0/how-to/administration/upgrading-clusters?hl=ja">
+         アップグレード
+        </a>
+        することをおすすめします。新バージョンにはこの脆弱性に対するパッチが含まれています。
+       </p>
+       <h6 data-text="このパッチで対処される脆弱性" id="what-vulnerability-is-addressed-by-this-patch" tabindex="0">
+        このパッチで対処される脆弱性
+       </h6>
+       <p>
+        このパッチにより、次の脆弱性が緩和されます。
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11247">
+         CVE-2019-11247
+        </a>
+        。
+       </p>
+      </td>
+      <td>
+       <p>
+        中
+       </p>
+      </td>
+      <td>
+       <p>
+        <a class="external" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11247">
+         CVE-2019-11247
+        </a>
+       </p>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+ </article>
+</article>

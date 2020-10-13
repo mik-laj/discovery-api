@@ -7,11 +7,24 @@ Les changements majeurs seront également annoncés via la liste de diffusion [
 google-translate-api ](https://groups.google.com/forum/?hl=fr#!forum/google-
 translate-api) .
 
+Vous pouvez consulter les dernières mises à jour de produits pour l'ensemble
+de Google Cloud sur la page [ Notes de version de Google Cloud
+](https://cloud.google.com/release-notes?hl=fr) .
+
 Pour recevoir les dernières mises à jour concernant ce produit, ajoutez l'URL
 de cette page à votre [ lecteur de flux
 ](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) ou ajoutez l'URL
-du flux directement : ` https://cloud.google.com/feeds/automl-translation-
+du flux directement : ` https://cloud.google.com/feeds/automl-translate-
 release-notes.xml `
+
+##  July 17, 2020
+
+**FEATURE:**
+
+For test data, added support for the ` .tmx ` file type when evaluating
+existing models. For more information, see [ Evaluating models
+](https://cloud.google.com/translate/automl/docs/evaluate?hl=fr#evaluate_and_compare_models_using_a_new_test_set)
+.
 
 ##  April 03, 2020
 
